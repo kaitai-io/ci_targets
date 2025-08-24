@@ -56,22 +56,22 @@ impl KStruct for RepeatNStrzDouble {
 impl RepeatNStrzDouble {
 }
 impl RepeatNStrzDouble {
-    pub fn qty(&self) -> Ref<u32> {
+    pub fn qty(&self) -> Ref<'_, u32> {
         self.qty.borrow()
     }
 }
 impl RepeatNStrzDouble {
-    pub fn lines1(&self) -> Ref<Vec<String>> {
+    pub fn lines1(&self) -> Ref<'_, Vec<String>> {
         self.lines1.borrow()
     }
 }
 impl RepeatNStrzDouble {
-    pub fn lines2(&self) -> Ref<Vec<String>> {
+    pub fn lines2(&self) -> Ref<'_, Vec<String>> {
         self.lines2.borrow()
     }
 }
 impl RepeatNStrzDouble {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

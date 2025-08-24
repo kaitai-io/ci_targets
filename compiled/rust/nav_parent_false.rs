@@ -50,22 +50,22 @@ impl KStruct for NavParentFalse {
 impl NavParentFalse {
 }
 impl NavParentFalse {
-    pub fn child_size(&self) -> Ref<u8> {
+    pub fn child_size(&self) -> Ref<'_, u8> {
         self.child_size.borrow()
     }
 }
 impl NavParentFalse {
-    pub fn element_a(&self) -> Ref<OptRc<NavParentFalse_ParentA>> {
+    pub fn element_a(&self) -> Ref<'_, OptRc<NavParentFalse_ParentA>> {
         self.element_a.borrow()
     }
 }
 impl NavParentFalse {
-    pub fn element_b(&self) -> Ref<OptRc<NavParentFalse_ParentB>> {
+    pub fn element_b(&self) -> Ref<'_, OptRc<NavParentFalse_ParentB>> {
         self.element_b.borrow()
     }
 }
 impl NavParentFalse {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -106,17 +106,17 @@ impl KStruct for NavParentFalse_Child {
 impl NavParentFalse_Child {
 }
 impl NavParentFalse_Child {
-    pub fn code(&self) -> Ref<u8> {
+    pub fn code(&self) -> Ref<'_, u8> {
         self.code.borrow()
     }
 }
 impl NavParentFalse_Child {
-    pub fn more(&self) -> Ref<Vec<u8>> {
+    pub fn more(&self) -> Ref<'_, Vec<u8>> {
         self.more.borrow()
     }
 }
 impl NavParentFalse_Child {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -157,17 +157,17 @@ impl KStruct for NavParentFalse_ParentA {
 impl NavParentFalse_ParentA {
 }
 impl NavParentFalse_ParentA {
-    pub fn foo(&self) -> Ref<OptRc<NavParentFalse_Child>> {
+    pub fn foo(&self) -> Ref<'_, OptRc<NavParentFalse_Child>> {
         self.foo.borrow()
     }
 }
 impl NavParentFalse_ParentA {
-    pub fn bar(&self) -> Ref<OptRc<NavParentFalse_ParentB>> {
+    pub fn bar(&self) -> Ref<'_, OptRc<NavParentFalse_ParentB>> {
         self.bar.borrow()
     }
 }
 impl NavParentFalse_ParentA {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -205,12 +205,12 @@ impl KStruct for NavParentFalse_ParentB {
 impl NavParentFalse_ParentB {
 }
 impl NavParentFalse_ParentB {
-    pub fn foo(&self) -> Ref<OptRc<NavParentFalse_Child>> {
+    pub fn foo(&self) -> Ref<'_, OptRc<NavParentFalse_Child>> {
         self.foo.borrow()
     }
 }
 impl NavParentFalse_ParentB {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

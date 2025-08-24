@@ -48,7 +48,7 @@ impl KStruct for CombineEnum {
 impl CombineEnum {
     pub fn enum_u4_u2(
         &self
-    ) -> KResult<Ref<CombineEnum_Animal>> {
+    ) -> KResult<Ref<'_, CombineEnum_Animal>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -62,17 +62,17 @@ impl CombineEnum {
     }
 }
 impl CombineEnum {
-    pub fn enum_u4(&self) -> Ref<CombineEnum_Animal> {
+    pub fn enum_u4(&self) -> Ref<'_, CombineEnum_Animal> {
         self.enum_u4.borrow()
     }
 }
 impl CombineEnum {
-    pub fn enum_u2(&self) -> Ref<CombineEnum_Animal> {
+    pub fn enum_u2(&self) -> Ref<'_, CombineEnum_Animal> {
         self.enum_u2.borrow()
     }
 }
 impl CombineEnum {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

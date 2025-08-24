@@ -45,12 +45,12 @@ impl KStruct for DefaultEndianMod {
 impl DefaultEndianMod {
 }
 impl DefaultEndianMod {
-    pub fn main(&self) -> Ref<OptRc<DefaultEndianMod_MainObj>> {
+    pub fn main(&self) -> Ref<'_, OptRc<DefaultEndianMod_MainObj>> {
         self.main.borrow()
     }
 }
 impl DefaultEndianMod {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -93,22 +93,22 @@ impl KStruct for DefaultEndianMod_MainObj {
 impl DefaultEndianMod_MainObj {
 }
 impl DefaultEndianMod_MainObj {
-    pub fn one(&self) -> Ref<i32> {
+    pub fn one(&self) -> Ref<'_, i32> {
         self.one.borrow()
     }
 }
 impl DefaultEndianMod_MainObj {
-    pub fn nest(&self) -> Ref<OptRc<DefaultEndianMod_MainObj_Subnest>> {
+    pub fn nest(&self) -> Ref<'_, OptRc<DefaultEndianMod_MainObj_Subnest>> {
         self.nest.borrow()
     }
 }
 impl DefaultEndianMod_MainObj {
-    pub fn nest_be(&self) -> Ref<OptRc<DefaultEndianMod_MainObj_SubnestBe>> {
+    pub fn nest_be(&self) -> Ref<'_, OptRc<DefaultEndianMod_MainObj_SubnestBe>> {
         self.nest_be.borrow()
     }
 }
 impl DefaultEndianMod_MainObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -145,12 +145,12 @@ impl KStruct for DefaultEndianMod_MainObj_Subnest {
 impl DefaultEndianMod_MainObj_Subnest {
 }
 impl DefaultEndianMod_MainObj_Subnest {
-    pub fn two(&self) -> Ref<i32> {
+    pub fn two(&self) -> Ref<'_, i32> {
         self.two.borrow()
     }
 }
 impl DefaultEndianMod_MainObj_Subnest {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -187,12 +187,12 @@ impl KStruct for DefaultEndianMod_MainObj_SubnestBe {
 impl DefaultEndianMod_MainObj_SubnestBe {
 }
 impl DefaultEndianMod_MainObj_SubnestBe {
-    pub fn two(&self) -> Ref<i32> {
+    pub fn two(&self) -> Ref<'_, i32> {
         self.two.borrow()
     }
 }
 impl DefaultEndianMod_MainObj_SubnestBe {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

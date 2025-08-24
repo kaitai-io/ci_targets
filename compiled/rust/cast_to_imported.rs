@@ -43,7 +43,7 @@ impl KStruct for CastToImported {
     }
 }
 impl CastToImported {
-    pub fn hw_param(&self) -> Ref<KStructUnit> {
+    pub fn hw_param(&self) -> Ref<'_, KStructUnit> {
         self.hw_param.borrow()
     }
 }
@@ -55,7 +55,7 @@ impl CastToImported {
 impl CastToImported {
     pub fn hw_one(
         &self
-    ) -> KResult<Ref<u8>> {
+    ) -> KResult<Ref<'_, u8>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -69,7 +69,7 @@ impl CastToImported {
     }
 }
 impl CastToImported {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

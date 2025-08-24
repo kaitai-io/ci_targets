@@ -58,7 +58,7 @@ impl KStruct for EnumToIInvalid {
 impl EnumToIInvalid {
     pub fn one_lt_two(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -72,7 +72,7 @@ impl EnumToIInvalid {
     }
     pub fn pet_2_eq_int_f(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -86,7 +86,7 @@ impl EnumToIInvalid {
     }
     pub fn pet_2_eq_int_t(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -100,7 +100,7 @@ impl EnumToIInvalid {
     }
     pub fn pet_2_i(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -114,7 +114,7 @@ impl EnumToIInvalid {
     }
     pub fn pet_2_i_to_s(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -128,7 +128,7 @@ impl EnumToIInvalid {
     }
     pub fn pet_2_mod(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -142,17 +142,17 @@ impl EnumToIInvalid {
     }
 }
 impl EnumToIInvalid {
-    pub fn pet_1(&self) -> Ref<EnumToIInvalid_Animal> {
+    pub fn pet_1(&self) -> Ref<'_, EnumToIInvalid_Animal> {
         self.pet_1.borrow()
     }
 }
 impl EnumToIInvalid {
-    pub fn pet_2(&self) -> Ref<EnumToIInvalid_Animal> {
+    pub fn pet_2(&self) -> Ref<'_, EnumToIInvalid_Animal> {
         self.pet_2.borrow()
     }
 }
 impl EnumToIInvalid {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

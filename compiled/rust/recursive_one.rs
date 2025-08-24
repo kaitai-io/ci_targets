@@ -95,17 +95,17 @@ impl KStruct for RecursiveOne {
 impl RecursiveOne {
 }
 impl RecursiveOne {
-    pub fn one(&self) -> Ref<u8> {
+    pub fn one(&self) -> Ref<'_, u8> {
         self.one.borrow()
     }
 }
 impl RecursiveOne {
-    pub fn next(&self) -> Ref<Option<RecursiveOne_Next>> {
+    pub fn next(&self) -> Ref<'_, Option<RecursiveOne_Next>> {
         self.next.borrow()
     }
 }
 impl RecursiveOne {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -142,12 +142,12 @@ impl KStruct for RecursiveOne_Fini {
 impl RecursiveOne_Fini {
 }
 impl RecursiveOne_Fini {
-    pub fn finisher(&self) -> Ref<u16> {
+    pub fn finisher(&self) -> Ref<'_, u16> {
         self.finisher.borrow()
     }
 }
 impl RecursiveOne_Fini {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

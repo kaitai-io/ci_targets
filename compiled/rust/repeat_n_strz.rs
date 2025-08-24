@@ -50,17 +50,17 @@ impl KStruct for RepeatNStrz {
 impl RepeatNStrz {
 }
 impl RepeatNStrz {
-    pub fn qty(&self) -> Ref<u32> {
+    pub fn qty(&self) -> Ref<'_, u32> {
         self.qty.borrow()
     }
 }
 impl RepeatNStrz {
-    pub fn lines(&self) -> Ref<Vec<String>> {
+    pub fn lines(&self) -> Ref<'_, Vec<String>> {
         self.lines.borrow()
     }
 }
 impl RepeatNStrz {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -84,7 +84,7 @@ impl KStruct for ValidSwitch {
 impl ValidSwitch {
 }
 impl ValidSwitch {
-    pub fn a(&self) -> Ref<u8> {
+    pub fn a(&self) -> Ref<'_, u8> {
         self.a.borrow()
     }
 }
@@ -92,12 +92,12 @@ impl ValidSwitch {
     pub fn b(&self) -> usize {
         self.b.borrow().as_ref().unwrap().into()
     }
-    pub fn b_enum(&self) -> Ref<Option<ValidSwitch_B>> {
+    pub fn b_enum(&self) -> Ref<'_, Option<ValidSwitch_B>> {
         self.b.borrow()
     }
 }
 impl ValidSwitch {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

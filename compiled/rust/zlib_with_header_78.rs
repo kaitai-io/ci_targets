@@ -46,17 +46,17 @@ impl KStruct for ZlibWithHeader78 {
 impl ZlibWithHeader78 {
 }
 impl ZlibWithHeader78 {
-    pub fn data(&self) -> Ref<Vec<u8>> {
+    pub fn data(&self) -> Ref<'_, Vec<u8>> {
         self.data.borrow()
     }
 }
 impl ZlibWithHeader78 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl ZlibWithHeader78 {
-    pub fn data_raw(&self) -> Ref<Vec<u8>> {
+    pub fn data_raw(&self) -> Ref<'_, Vec<u8>> {
         self.data_raw.borrow()
     }
 }

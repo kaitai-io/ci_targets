@@ -45,12 +45,12 @@ impl KStruct for NavParentFalse2 {
 impl NavParentFalse2 {
 }
 impl NavParentFalse2 {
-    pub fn parentless(&self) -> Ref<OptRc<NavParentFalse2_Child>> {
+    pub fn parentless(&self) -> Ref<'_, OptRc<NavParentFalse2_Child>> {
         self.parentless.borrow()
     }
 }
 impl NavParentFalse2 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -87,12 +87,12 @@ impl KStruct for NavParentFalse2_Child {
 impl NavParentFalse2_Child {
 }
 impl NavParentFalse2_Child {
-    pub fn foo(&self) -> Ref<u8> {
+    pub fn foo(&self) -> Ref<'_, u8> {
         self.foo.borrow()
     }
 }
 impl NavParentFalse2_Child {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

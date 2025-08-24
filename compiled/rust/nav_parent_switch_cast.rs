@@ -45,12 +45,12 @@ impl KStruct for NavParentSwitchCast {
 impl NavParentSwitchCast {
 }
 impl NavParentSwitchCast {
-    pub fn main(&self) -> Ref<OptRc<NavParentSwitchCast_Foo>> {
+    pub fn main(&self) -> Ref<'_, OptRc<NavParentSwitchCast_Foo>> {
         self.main.borrow()
     }
 }
 impl NavParentSwitchCast {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -155,27 +155,27 @@ impl KStruct for NavParentSwitchCast_Foo {
 impl NavParentSwitchCast_Foo {
 }
 impl NavParentSwitchCast_Foo {
-    pub fn buf_type(&self) -> Ref<u8> {
+    pub fn buf_type(&self) -> Ref<'_, u8> {
         self.buf_type.borrow()
     }
 }
 impl NavParentSwitchCast_Foo {
-    pub fn flag(&self) -> Ref<u8> {
+    pub fn flag(&self) -> Ref<'_, u8> {
         self.flag.borrow()
     }
 }
 impl NavParentSwitchCast_Foo {
-    pub fn buf(&self) -> Ref<Option<NavParentSwitchCast_Foo_Buf>> {
+    pub fn buf(&self) -> Ref<'_, Option<NavParentSwitchCast_Foo_Buf>> {
         self.buf.borrow()
     }
 }
 impl NavParentSwitchCast_Foo {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl NavParentSwitchCast_Foo {
-    pub fn buf_raw(&self) -> Ref<Vec<u8>> {
+    pub fn buf_raw(&self) -> Ref<'_, Vec<u8>> {
         self.buf_raw.borrow()
     }
 }
@@ -212,7 +212,7 @@ impl KStruct for NavParentSwitchCast_Foo_Common {
 impl NavParentSwitchCast_Foo_Common {
     pub fn flag(
         &self
-    ) -> KResult<Ref<u8>> {
+    ) -> KResult<Ref<'_, u8>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -226,7 +226,7 @@ impl NavParentSwitchCast_Foo_Common {
     }
 }
 impl NavParentSwitchCast_Foo_Common {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -264,12 +264,12 @@ impl KStruct for NavParentSwitchCast_Foo_One {
 impl NavParentSwitchCast_Foo_One {
 }
 impl NavParentSwitchCast_Foo_One {
-    pub fn branch(&self) -> Ref<OptRc<NavParentSwitchCast_Foo_Common>> {
+    pub fn branch(&self) -> Ref<'_, OptRc<NavParentSwitchCast_Foo_Common>> {
         self.branch.borrow()
     }
 }
 impl NavParentSwitchCast_Foo_One {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -307,12 +307,12 @@ impl KStruct for NavParentSwitchCast_Foo_Zero {
 impl NavParentSwitchCast_Foo_Zero {
 }
 impl NavParentSwitchCast_Foo_Zero {
-    pub fn branch(&self) -> Ref<OptRc<NavParentSwitchCast_Foo_Common>> {
+    pub fn branch(&self) -> Ref<'_, OptRc<NavParentSwitchCast_Foo_Common>> {
         self.branch.borrow()
     }
 }
 impl NavParentSwitchCast_Foo_Zero {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

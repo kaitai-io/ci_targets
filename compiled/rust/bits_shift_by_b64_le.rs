@@ -46,17 +46,17 @@ impl KStruct for BitsShiftByB64Le {
 impl BitsShiftByB64Le {
 }
 impl BitsShiftByB64Le {
-    pub fn a(&self) -> Ref<u64> {
+    pub fn a(&self) -> Ref<'_, u64> {
         self.a.borrow()
     }
 }
 impl BitsShiftByB64Le {
-    pub fn b(&self) -> Ref<u64> {
+    pub fn b(&self) -> Ref<'_, u64> {
         self.b.borrow()
     }
 }
 impl BitsShiftByB64Le {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

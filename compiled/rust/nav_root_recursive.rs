@@ -51,7 +51,7 @@ impl KStruct for NavRootRecursive {
 impl NavRootRecursive {
     pub fn root_value(
         &self
-    ) -> KResult<Ref<u8>> {
+    ) -> KResult<Ref<'_, u8>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -65,17 +65,17 @@ impl NavRootRecursive {
     }
 }
 impl NavRootRecursive {
-    pub fn value(&self) -> Ref<u8> {
+    pub fn value(&self) -> Ref<'_, u8> {
         self.value.borrow()
     }
 }
 impl NavRootRecursive {
-    pub fn next(&self) -> Ref<OptRc<NavRootRecursive>> {
+    pub fn next(&self) -> Ref<'_, OptRc<NavRootRecursive>> {
         self.next.borrow()
     }
 }
 impl NavRootRecursive {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

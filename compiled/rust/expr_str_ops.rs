@@ -78,7 +78,7 @@ impl KStruct for ExprStrOps {
 impl ExprStrOps {
     pub fn one_len(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -92,7 +92,7 @@ impl ExprStrOps {
     }
     pub fn one_rev(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -106,7 +106,7 @@ impl ExprStrOps {
     }
     pub fn one_substr_0_to_0(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -120,7 +120,7 @@ impl ExprStrOps {
     }
     pub fn one_substr_0_to_3(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -134,7 +134,7 @@ impl ExprStrOps {
     }
     pub fn one_substr_2_to_5(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -148,7 +148,7 @@ impl ExprStrOps {
     }
     pub fn one_substr_3_to_3(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -162,7 +162,7 @@ impl ExprStrOps {
     }
     pub fn to_i_attr(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -176,7 +176,7 @@ impl ExprStrOps {
     }
     pub fn to_i_r10(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -190,7 +190,7 @@ impl ExprStrOps {
     }
     pub fn to_i_r16(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -204,7 +204,7 @@ impl ExprStrOps {
     }
     pub fn to_i_r2(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -218,7 +218,7 @@ impl ExprStrOps {
     }
     pub fn to_i_r8(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -232,7 +232,7 @@ impl ExprStrOps {
     }
     pub fn two(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -246,7 +246,7 @@ impl ExprStrOps {
     }
     pub fn two_len(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -260,7 +260,7 @@ impl ExprStrOps {
     }
     pub fn two_rev(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -274,7 +274,7 @@ impl ExprStrOps {
     }
     pub fn two_substr_0_to_10(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -288,7 +288,7 @@ impl ExprStrOps {
     }
     pub fn two_substr_0_to_7(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -302,7 +302,7 @@ impl ExprStrOps {
     }
     pub fn two_substr_4_to_10(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -316,12 +316,12 @@ impl ExprStrOps {
     }
 }
 impl ExprStrOps {
-    pub fn one(&self) -> Ref<String> {
+    pub fn one(&self) -> Ref<'_, String> {
         self.one.borrow()
     }
 }
 impl ExprStrOps {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

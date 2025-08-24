@@ -51,17 +51,17 @@ impl KStruct for ProcessRepeatBytes {
 impl ProcessRepeatBytes {
 }
 impl ProcessRepeatBytes {
-    pub fn bufs(&self) -> Ref<Vec<Vec<u8>>> {
+    pub fn bufs(&self) -> Ref<'_, Vec<Vec<u8>>> {
         self.bufs.borrow()
     }
 }
 impl ProcessRepeatBytes {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl ProcessRepeatBytes {
-    pub fn bufs_raw(&self) -> Ref<Vec<Vec<u8>>> {
+    pub fn bufs_raw(&self) -> Ref<'_, Vec<Vec<u8>>> {
         self.bufs_raw.borrow()
     }
 }

@@ -44,12 +44,12 @@ impl KStruct for ParamsDefEnumImported {
     }
 }
 impl ParamsDefEnumImported {
-    pub fn pet_1_param(&self) -> Ref<Enum0_Animal> {
+    pub fn pet_1_param(&self) -> Ref<'_, Enum0_Animal> {
         self.pet_1_param.borrow()
     }
 }
 impl ParamsDefEnumImported {
-    pub fn pet_2_param(&self) -> Ref<EnumDeep_Container1_Container2_Animal> {
+    pub fn pet_2_param(&self) -> Ref<'_, EnumDeep_Container1_Container2_Animal> {
         self.pet_2_param.borrow()
     }
 }
@@ -62,7 +62,7 @@ impl ParamsDefEnumImported {
 impl ParamsDefEnumImported {
 }
 impl ParamsDefEnumImported {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

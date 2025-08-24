@@ -44,12 +44,12 @@ impl KStruct for HelloWorld {
 impl HelloWorld {
 }
 impl HelloWorld {
-    pub fn one(&self) -> Ref<u8> {
+    pub fn one(&self) -> Ref<'_, u8> {
         self.one.borrow()
     }
 }
 impl HelloWorld {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

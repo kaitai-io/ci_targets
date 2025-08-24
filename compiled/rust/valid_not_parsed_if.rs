@@ -56,17 +56,17 @@ impl KStruct for ValidNotParsedIf {
 impl ValidNotParsedIf {
 }
 impl ValidNotParsedIf {
-    pub fn not_parsed(&self) -> Ref<u8> {
+    pub fn not_parsed(&self) -> Ref<'_, u8> {
         self.not_parsed.borrow()
     }
 }
 impl ValidNotParsedIf {
-    pub fn parsed(&self) -> Ref<u8> {
+    pub fn parsed(&self) -> Ref<'_, u8> {
         self.parsed.borrow()
     }
 }
 impl ValidNotParsedIf {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

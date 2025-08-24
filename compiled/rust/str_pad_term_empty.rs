@@ -50,27 +50,27 @@ impl KStruct for StrPadTermEmpty {
 impl StrPadTermEmpty {
 }
 impl StrPadTermEmpty {
-    pub fn str_pad(&self) -> Ref<String> {
+    pub fn str_pad(&self) -> Ref<'_, String> {
         self.str_pad.borrow()
     }
 }
 impl StrPadTermEmpty {
-    pub fn str_term(&self) -> Ref<String> {
+    pub fn str_term(&self) -> Ref<'_, String> {
         self.str_term.borrow()
     }
 }
 impl StrPadTermEmpty {
-    pub fn str_term_and_pad(&self) -> Ref<String> {
+    pub fn str_term_and_pad(&self) -> Ref<'_, String> {
         self.str_term_and_pad.borrow()
     }
 }
 impl StrPadTermEmpty {
-    pub fn str_term_include(&self) -> Ref<String> {
+    pub fn str_term_include(&self) -> Ref<'_, String> {
         self.str_term_include.borrow()
     }
 }
 impl StrPadTermEmpty {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

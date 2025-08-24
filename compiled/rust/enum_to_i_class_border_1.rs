@@ -51,7 +51,7 @@ impl KStruct for EnumToIClassBorder1 {
 impl EnumToIClassBorder1 {
     pub fn checker(
         &self
-    ) -> KResult<Ref<OptRc<EnumToIClassBorder2>>> {
+    ) -> KResult<Ref<'_, OptRc<EnumToIClassBorder2>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -69,7 +69,7 @@ impl EnumToIClassBorder1 {
     }
     pub fn some_dog(
         &self
-    ) -> KResult<Ref<EnumToIClassBorder1_Animal>> {
+    ) -> KResult<Ref<'_, EnumToIClassBorder1_Animal>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -83,17 +83,17 @@ impl EnumToIClassBorder1 {
     }
 }
 impl EnumToIClassBorder1 {
-    pub fn pet_1(&self) -> Ref<EnumToIClassBorder1_Animal> {
+    pub fn pet_1(&self) -> Ref<'_, EnumToIClassBorder1_Animal> {
         self.pet_1.borrow()
     }
 }
 impl EnumToIClassBorder1 {
-    pub fn pet_2(&self) -> Ref<EnumToIClassBorder1_Animal> {
+    pub fn pet_2(&self) -> Ref<'_, EnumToIClassBorder1_Animal> {
         self.pet_2.borrow()
     }
 }
 impl EnumToIClassBorder1 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

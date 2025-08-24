@@ -56,42 +56,42 @@ impl KStruct for EnumLongRangeS {
 impl EnumLongRangeS {
 }
 impl EnumLongRangeS {
-    pub fn f1(&self) -> Ref<EnumLongRangeS_Constants> {
+    pub fn f1(&self) -> Ref<'_, EnumLongRangeS_Constants> {
         self.f1.borrow()
     }
 }
 impl EnumLongRangeS {
-    pub fn f2(&self) -> Ref<EnumLongRangeS_Constants> {
+    pub fn f2(&self) -> Ref<'_, EnumLongRangeS_Constants> {
         self.f2.borrow()
     }
 }
 impl EnumLongRangeS {
-    pub fn f3(&self) -> Ref<EnumLongRangeS_Constants> {
+    pub fn f3(&self) -> Ref<'_, EnumLongRangeS_Constants> {
         self.f3.borrow()
     }
 }
 impl EnumLongRangeS {
-    pub fn f4(&self) -> Ref<EnumLongRangeS_Constants> {
+    pub fn f4(&self) -> Ref<'_, EnumLongRangeS_Constants> {
         self.f4.borrow()
     }
 }
 impl EnumLongRangeS {
-    pub fn f5(&self) -> Ref<EnumLongRangeS_Constants> {
+    pub fn f5(&self) -> Ref<'_, EnumLongRangeS_Constants> {
         self.f5.borrow()
     }
 }
 impl EnumLongRangeS {
-    pub fn f6(&self) -> Ref<EnumLongRangeS_Constants> {
+    pub fn f6(&self) -> Ref<'_, EnumLongRangeS_Constants> {
         self.f6.borrow()
     }
 }
 impl EnumLongRangeS {
-    pub fn f7(&self) -> Ref<EnumLongRangeS_Constants> {
+    pub fn f7(&self) -> Ref<'_, EnumLongRangeS_Constants> {
         self.f7.borrow()
     }
 }
 impl EnumLongRangeS {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

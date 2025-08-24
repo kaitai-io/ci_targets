@@ -66,7 +66,7 @@ impl KStruct for TypeTernary {
 impl TypeTernary {
     pub fn dif(
         &self
-    ) -> KResult<Ref<OptRc<TypeTernary_Dummy>>> {
+    ) -> KResult<Ref<'_, OptRc<TypeTernary_Dummy>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -79,7 +79,7 @@ impl TypeTernary {
     }
     pub fn dif_value(
         &self
-    ) -> KResult<Ref<u8>> {
+    ) -> KResult<Ref<'_, u8>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -93,7 +93,7 @@ impl TypeTernary {
     }
     pub fn is_hack(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -107,32 +107,32 @@ impl TypeTernary {
     }
 }
 impl TypeTernary {
-    pub fn dif_wo_hack(&self) -> Ref<OptRc<TypeTernary_Dummy>> {
+    pub fn dif_wo_hack(&self) -> Ref<'_, OptRc<TypeTernary_Dummy>> {
         self.dif_wo_hack.borrow()
     }
 }
 impl TypeTernary {
-    pub fn dif_with_hack(&self) -> Ref<OptRc<TypeTernary_Dummy>> {
+    pub fn dif_with_hack(&self) -> Ref<'_, OptRc<TypeTernary_Dummy>> {
         self.dif_with_hack.borrow()
     }
 }
 impl TypeTernary {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl TypeTernary {
-    pub fn dif_wo_hack_raw(&self) -> Ref<Vec<u8>> {
+    pub fn dif_wo_hack_raw(&self) -> Ref<'_, Vec<u8>> {
         self.dif_wo_hack_raw.borrow()
     }
 }
 impl TypeTernary {
-    pub fn dif_with_hack_raw(&self) -> Ref<Vec<u8>> {
+    pub fn dif_with_hack_raw(&self) -> Ref<'_, Vec<u8>> {
         self.dif_with_hack_raw.borrow()
     }
 }
 impl TypeTernary {
-    pub fn dif_with_hack_raw_raw(&self) -> Ref<Vec<u8>> {
+    pub fn dif_with_hack_raw_raw(&self) -> Ref<'_, Vec<u8>> {
         self.dif_with_hack_raw_raw.borrow()
     }
 }
@@ -169,12 +169,12 @@ impl KStruct for TypeTernary_Dummy {
 impl TypeTernary_Dummy {
 }
 impl TypeTernary_Dummy {
-    pub fn value(&self) -> Ref<u8> {
+    pub fn value(&self) -> Ref<'_, u8> {
         self.value.borrow()
     }
 }
 impl TypeTernary_Dummy {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

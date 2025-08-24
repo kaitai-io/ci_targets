@@ -72,7 +72,7 @@ class VlqBase128Le(KaitaiStruct):
         if hasattr(self, '_m_sign_bit'):
             return self._m_sign_bit
 
-        self._m_sign_bit = 1 << 7 * self.len - 1
+        self._m_sign_bit = (1 << 7 * self.len - 1)
         return getattr(self, '_m_sign_bit', None)
 
     @property
@@ -81,7 +81,7 @@ class VlqBase128Le(KaitaiStruct):
         if hasattr(self, '_m_value'):
             return self._m_value
 
-        self._m_value = ((((((self.groups[0].value + (self.groups[1].value << 7 if self.len >= 2 else 0)) + (self.groups[2].value << 14 if self.len >= 3 else 0)) + (self.groups[3].value << 21 if self.len >= 4 else 0)) + (self.groups[4].value << 28 if self.len >= 5 else 0)) + (self.groups[5].value << 35 if self.len >= 6 else 0)) + (self.groups[6].value << 42 if self.len >= 7 else 0)) + (self.groups[7].value << 49 if self.len >= 8 else 0)
+        self._m_value = (((((((self.groups[0].value + (self.groups[1].value << 7 if self.len >= 2 else 0)) + (self.groups[2].value << 14 if self.len >= 3 else 0)) + (self.groups[3].value << 21 if self.len >= 4 else 0)) + (self.groups[4].value << 28 if self.len >= 5 else 0)) + (self.groups[5].value << 35 if self.len >= 6 else 0)) + (self.groups[6].value << 42 if self.len >= 7 else 0)) + (self.groups[7].value << 49 if self.len >= 8 else 0))
         return getattr(self, '_m_value', None)
 
     @property
@@ -93,7 +93,7 @@ class VlqBase128Le(KaitaiStruct):
         if hasattr(self, '_m_value_signed'):
             return self._m_value_signed
 
-        self._m_value_signed = self.value ^ self.sign_bit - self.sign_bit
+        self._m_value_signed = ((self.value ^ self.sign_bit) - self.sign_bit)
         return getattr(self, '_m_value_signed', None)
 
 

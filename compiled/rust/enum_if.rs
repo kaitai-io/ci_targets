@@ -51,22 +51,22 @@ impl KStruct for EnumIf {
 impl EnumIf {
 }
 impl EnumIf {
-    pub fn op1(&self) -> Ref<OptRc<EnumIf_Operation>> {
+    pub fn op1(&self) -> Ref<'_, OptRc<EnumIf_Operation>> {
         self.op1.borrow()
     }
 }
 impl EnumIf {
-    pub fn op2(&self) -> Ref<OptRc<EnumIf_Operation>> {
+    pub fn op2(&self) -> Ref<'_, OptRc<EnumIf_Operation>> {
         self.op2.borrow()
     }
 }
 impl EnumIf {
-    pub fn op3(&self) -> Ref<OptRc<EnumIf_Operation>> {
+    pub fn op3(&self) -> Ref<'_, OptRc<EnumIf_Operation>> {
         self.op3.borrow()
     }
 }
 impl EnumIf {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -137,17 +137,17 @@ impl KStruct for EnumIf_ArgStr {
 impl EnumIf_ArgStr {
 }
 impl EnumIf_ArgStr {
-    pub fn len(&self) -> Ref<u8> {
+    pub fn len(&self) -> Ref<'_, u8> {
         self.len.borrow()
     }
 }
 impl EnumIf_ArgStr {
-    pub fn str(&self) -> Ref<String> {
+    pub fn str(&self) -> Ref<'_, String> {
         self.str.borrow()
     }
 }
 impl EnumIf_ArgStr {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -186,17 +186,17 @@ impl KStruct for EnumIf_ArgTuple {
 impl EnumIf_ArgTuple {
 }
 impl EnumIf_ArgTuple {
-    pub fn num1(&self) -> Ref<u8> {
+    pub fn num1(&self) -> Ref<'_, u8> {
         self.num1.borrow()
     }
 }
 impl EnumIf_ArgTuple {
-    pub fn num2(&self) -> Ref<u8> {
+    pub fn num2(&self) -> Ref<'_, u8> {
         self.num2.borrow()
     }
 }
 impl EnumIf_ArgTuple {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -243,22 +243,22 @@ impl KStruct for EnumIf_Operation {
 impl EnumIf_Operation {
 }
 impl EnumIf_Operation {
-    pub fn opcode(&self) -> Ref<EnumIf_Opcodes> {
+    pub fn opcode(&self) -> Ref<'_, EnumIf_Opcodes> {
         self.opcode.borrow()
     }
 }
 impl EnumIf_Operation {
-    pub fn arg_tuple(&self) -> Ref<OptRc<EnumIf_ArgTuple>> {
+    pub fn arg_tuple(&self) -> Ref<'_, OptRc<EnumIf_ArgTuple>> {
         self.arg_tuple.borrow()
     }
 }
 impl EnumIf_Operation {
-    pub fn arg_str(&self) -> Ref<OptRc<EnumIf_ArgStr>> {
+    pub fn arg_str(&self) -> Ref<'_, OptRc<EnumIf_ArgStr>> {
         self.arg_str.borrow()
     }
 }
 impl EnumIf_Operation {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

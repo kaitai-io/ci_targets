@@ -81,7 +81,7 @@ impl KStruct for TypeTernary2ndFalsy {
 impl TypeTernary2ndFalsy {
     pub fn null_ut(
         &self
-    ) -> KResult<Ref<OptRc<TypeTernary2ndFalsy_Foo>>> {
+    ) -> KResult<Ref<'_, OptRc<TypeTernary2ndFalsy_Foo>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -96,7 +96,7 @@ impl TypeTernary2ndFalsy {
     }
     pub fn t(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -110,7 +110,7 @@ impl TypeTernary2ndFalsy {
     }
     pub fn v_false(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -124,7 +124,7 @@ impl TypeTernary2ndFalsy {
     }
     pub fn v_float_neg_zero(
         &self
-    ) -> KResult<Ref<f64>> {
+    ) -> KResult<Ref<'_, f64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -138,7 +138,7 @@ impl TypeTernary2ndFalsy {
     }
     pub fn v_float_zero(
         &self
-    ) -> KResult<Ref<f64>> {
+    ) -> KResult<Ref<'_, f64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -152,7 +152,7 @@ impl TypeTernary2ndFalsy {
     }
     pub fn v_int_array_empty(
         &self
-    ) -> KResult<Ref<Vec<u8>>> {
+    ) -> KResult<Ref<'_, Vec<u8>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -166,7 +166,7 @@ impl TypeTernary2ndFalsy {
     }
     pub fn v_int_neg_zero(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -180,7 +180,7 @@ impl TypeTernary2ndFalsy {
     }
     pub fn v_int_zero(
         &self
-    ) -> KResult<Ref<i8>> {
+    ) -> KResult<Ref<'_, i8>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -194,7 +194,7 @@ impl TypeTernary2ndFalsy {
     }
     pub fn v_null_ut(
         &self
-    ) -> KResult<Ref<OptRc<TypeTernary2ndFalsy_Foo>>> {
+    ) -> KResult<Ref<'_, OptRc<TypeTernary2ndFalsy_Foo>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -207,7 +207,7 @@ impl TypeTernary2ndFalsy {
     }
     pub fn v_str_empty(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -221,7 +221,7 @@ impl TypeTernary2ndFalsy {
     }
     pub fn v_str_w_zero(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -235,27 +235,27 @@ impl TypeTernary2ndFalsy {
     }
 }
 impl TypeTernary2ndFalsy {
-    pub fn int_truthy(&self) -> Ref<u8> {
+    pub fn int_truthy(&self) -> Ref<'_, u8> {
         self.int_truthy.borrow()
     }
 }
 impl TypeTernary2ndFalsy {
-    pub fn ut(&self) -> Ref<OptRc<TypeTernary2ndFalsy_Foo>> {
+    pub fn ut(&self) -> Ref<'_, OptRc<TypeTernary2ndFalsy_Foo>> {
         self.ut.borrow()
     }
 }
 impl TypeTernary2ndFalsy {
-    pub fn int_array(&self) -> Ref<Vec<u8>> {
+    pub fn int_array(&self) -> Ref<'_, Vec<u8>> {
         self.int_array.borrow()
     }
 }
 impl TypeTernary2ndFalsy {
-    pub fn int_array_empty(&self) -> Ref<Vec<u8>> {
+    pub fn int_array_empty(&self) -> Ref<'_, Vec<u8>> {
         self.int_array_empty.borrow()
     }
 }
 impl TypeTernary2ndFalsy {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -292,12 +292,12 @@ impl KStruct for TypeTernary2ndFalsy_Foo {
 impl TypeTernary2ndFalsy_Foo {
 }
 impl TypeTernary2ndFalsy_Foo {
-    pub fn m(&self) -> Ref<u8> {
+    pub fn m(&self) -> Ref<'_, u8> {
         self.m.borrow()
     }
 }
 impl TypeTernary2ndFalsy_Foo {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

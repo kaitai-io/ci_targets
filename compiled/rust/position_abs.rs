@@ -46,7 +46,7 @@ impl KStruct for PositionAbs {
 impl PositionAbs {
     pub fn index(
         &self
-    ) -> KResult<Ref<OptRc<PositionAbs_IndexObj>>> {
+    ) -> KResult<Ref<'_, OptRc<PositionAbs_IndexObj>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -63,12 +63,12 @@ impl PositionAbs {
     }
 }
 impl PositionAbs {
-    pub fn index_offset(&self) -> Ref<u32> {
+    pub fn index_offset(&self) -> Ref<'_, u32> {
         self.index_offset.borrow()
     }
 }
 impl PositionAbs {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -105,12 +105,12 @@ impl KStruct for PositionAbs_IndexObj {
 impl PositionAbs_IndexObj {
 }
 impl PositionAbs_IndexObj {
-    pub fn entry(&self) -> Ref<String> {
+    pub fn entry(&self) -> Ref<'_, String> {
         self.entry.borrow()
     }
 }
 impl PositionAbs_IndexObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

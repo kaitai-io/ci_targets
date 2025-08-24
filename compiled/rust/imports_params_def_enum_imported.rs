@@ -51,17 +51,17 @@ impl KStruct for ImportsParamsDefEnumImported {
 impl ImportsParamsDefEnumImported {
 }
 impl ImportsParamsDefEnumImported {
-    pub fn one(&self) -> Ref<OptRc<EnumImportSeq>> {
+    pub fn one(&self) -> Ref<'_, OptRc<EnumImportSeq>> {
         self.one.borrow()
     }
 }
 impl ImportsParamsDefEnumImported {
-    pub fn two(&self) -> Ref<OptRc<ParamsDefEnumImported>> {
+    pub fn two(&self) -> Ref<'_, OptRc<ParamsDefEnumImported>> {
         self.two.borrow()
     }
 }
 impl ImportsParamsDefEnumImported {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

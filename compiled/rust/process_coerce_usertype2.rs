@@ -49,12 +49,12 @@ impl KStruct for ProcessCoerceUsertype2 {
 impl ProcessCoerceUsertype2 {
 }
 impl ProcessCoerceUsertype2 {
-    pub fn records(&self) -> Ref<Vec<OptRc<ProcessCoerceUsertype2_Record>>> {
+    pub fn records(&self) -> Ref<'_, Vec<OptRc<ProcessCoerceUsertype2_Record>>> {
         self.records.borrow()
     }
 }
 impl ProcessCoerceUsertype2 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -91,12 +91,12 @@ impl KStruct for ProcessCoerceUsertype2_Foo {
 impl ProcessCoerceUsertype2_Foo {
 }
 impl ProcessCoerceUsertype2_Foo {
-    pub fn value(&self) -> Ref<u32> {
+    pub fn value(&self) -> Ref<'_, u32> {
         self.value.borrow()
     }
 }
 impl ProcessCoerceUsertype2_Foo {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -151,7 +151,7 @@ impl KStruct for ProcessCoerceUsertype2_Record {
 impl ProcessCoerceUsertype2_Record {
     pub fn buf(
         &self
-    ) -> KResult<Ref<OptRc<ProcessCoerceUsertype2_Foo>>> {
+    ) -> KResult<Ref<'_, OptRc<ProcessCoerceUsertype2_Foo>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -164,32 +164,32 @@ impl ProcessCoerceUsertype2_Record {
     }
 }
 impl ProcessCoerceUsertype2_Record {
-    pub fn flag(&self) -> Ref<u8> {
+    pub fn flag(&self) -> Ref<'_, u8> {
         self.flag.borrow()
     }
 }
 impl ProcessCoerceUsertype2_Record {
-    pub fn buf_unproc(&self) -> Ref<OptRc<ProcessCoerceUsertype2_Foo>> {
+    pub fn buf_unproc(&self) -> Ref<'_, OptRc<ProcessCoerceUsertype2_Foo>> {
         self.buf_unproc.borrow()
     }
 }
 impl ProcessCoerceUsertype2_Record {
-    pub fn buf_proc(&self) -> Ref<OptRc<ProcessCoerceUsertype2_Foo>> {
+    pub fn buf_proc(&self) -> Ref<'_, OptRc<ProcessCoerceUsertype2_Foo>> {
         self.buf_proc.borrow()
     }
 }
 impl ProcessCoerceUsertype2_Record {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl ProcessCoerceUsertype2_Record {
-    pub fn buf_proc_raw(&self) -> Ref<Vec<u8>> {
+    pub fn buf_proc_raw(&self) -> Ref<'_, Vec<u8>> {
         self.buf_proc_raw.borrow()
     }
 }
 impl ProcessCoerceUsertype2_Record {
-    pub fn buf_proc_raw_raw(&self) -> Ref<Vec<u8>> {
+    pub fn buf_proc_raw_raw(&self) -> Ref<'_, Vec<u8>> {
         self.buf_proc_raw_raw.borrow()
     }
 }

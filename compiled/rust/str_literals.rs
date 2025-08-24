@@ -52,7 +52,7 @@ impl KStruct for StrLiterals {
 impl StrLiterals {
     pub fn backslashes(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -66,7 +66,7 @@ impl StrLiterals {
     }
     pub fn complex_str(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -80,7 +80,7 @@ impl StrLiterals {
     }
     pub fn double_quotes(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -94,7 +94,7 @@ impl StrLiterals {
     }
     pub fn octal_eatup(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -108,7 +108,7 @@ impl StrLiterals {
     }
     pub fn octal_eatup2(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -122,7 +122,7 @@ impl StrLiterals {
     }
 }
 impl StrLiterals {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

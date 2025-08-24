@@ -48,17 +48,17 @@ impl KStruct for ImportsAbs {
 impl ImportsAbs {
 }
 impl ImportsAbs {
-    pub fn len(&self) -> Ref<OptRc<VlqBase128Le>> {
+    pub fn len(&self) -> Ref<'_, OptRc<VlqBase128Le>> {
         self.len.borrow()
     }
 }
 impl ImportsAbs {
-    pub fn body(&self) -> Ref<Vec<u8>> {
+    pub fn body(&self) -> Ref<'_, Vec<u8>> {
         self.body.borrow()
     }
 }
 impl ImportsAbs {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

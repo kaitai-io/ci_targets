@@ -54,7 +54,7 @@ impl KStruct for ExprIntDiv {
 impl ExprIntDiv {
     pub fn div_neg_const(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -68,7 +68,7 @@ impl ExprIntDiv {
     }
     pub fn div_neg_seq(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -82,7 +82,7 @@ impl ExprIntDiv {
     }
     pub fn div_pos_const(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -96,7 +96,7 @@ impl ExprIntDiv {
     }
     pub fn div_pos_seq(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -110,17 +110,17 @@ impl ExprIntDiv {
     }
 }
 impl ExprIntDiv {
-    pub fn int_u(&self) -> Ref<u32> {
+    pub fn int_u(&self) -> Ref<'_, u32> {
         self.int_u.borrow()
     }
 }
 impl ExprIntDiv {
-    pub fn int_s(&self) -> Ref<i32> {
+    pub fn int_s(&self) -> Ref<'_, i32> {
         self.int_s.borrow()
     }
 }
 impl ExprIntDiv {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

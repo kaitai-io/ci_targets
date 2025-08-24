@@ -44,12 +44,12 @@ impl KStruct for DefaultBigEndian {
 impl DefaultBigEndian {
 }
 impl DefaultBigEndian {
-    pub fn one(&self) -> Ref<u32> {
+    pub fn one(&self) -> Ref<'_, u32> {
         self.one.borrow()
     }
 }
 impl DefaultBigEndian {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

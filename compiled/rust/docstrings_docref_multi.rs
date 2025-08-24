@@ -49,7 +49,7 @@ impl KStruct for DocstringsDocrefMulti {
 impl DocstringsDocrefMulti {
 }
 impl DocstringsDocrefMulti {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

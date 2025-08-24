@@ -52,12 +52,12 @@ impl KStruct for SwitchMultiBoolOps {
 impl SwitchMultiBoolOps {
 }
 impl SwitchMultiBoolOps {
-    pub fn opcodes(&self) -> Ref<Vec<OptRc<SwitchMultiBoolOps_Opcode>>> {
+    pub fn opcodes(&self) -> Ref<'_, Vec<OptRc<SwitchMultiBoolOps_Opcode>>> {
         self.opcodes.borrow()
     }
 }
 impl SwitchMultiBoolOps {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -180,7 +180,7 @@ impl KStruct for SwitchMultiBoolOps_Opcode {
 impl SwitchMultiBoolOps_Opcode {
 }
 impl SwitchMultiBoolOps_Opcode {
-    pub fn code(&self) -> Ref<u8> {
+    pub fn code(&self) -> Ref<'_, u8> {
         self.code.borrow()
     }
 }
@@ -188,12 +188,12 @@ impl SwitchMultiBoolOps_Opcode {
     pub fn body(&self) -> usize {
         self.body.borrow().as_ref().unwrap().into()
     }
-    pub fn body_enum(&self) -> Ref<Option<SwitchMultiBoolOps_Opcode_Body>> {
+    pub fn body_enum(&self) -> Ref<'_, Option<SwitchMultiBoolOps_Opcode_Body>> {
         self.body.borrow()
     }
 }
 impl SwitchMultiBoolOps_Opcode {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

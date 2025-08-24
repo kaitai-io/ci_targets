@@ -44,7 +44,7 @@ impl KStruct for ParamsDefUsertypeImported {
     }
 }
 impl ParamsDefUsertypeImported {
-    pub fn hw_param(&self) -> Ref<OptRc<HelloWorld>> {
+    pub fn hw_param(&self) -> Ref<'_, OptRc<HelloWorld>> {
         self.hw_param.borrow()
     }
 }
@@ -56,7 +56,7 @@ impl ParamsDefUsertypeImported {
 impl ParamsDefUsertypeImported {
     pub fn hw_one(
         &self
-    ) -> KResult<Ref<u8>> {
+    ) -> KResult<Ref<'_, u8>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -70,7 +70,7 @@ impl ParamsDefUsertypeImported {
     }
 }
 impl ParamsDefUsertypeImported {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

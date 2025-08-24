@@ -55,17 +55,17 @@ impl KStruct for ImportsParamsDefArrayUsertypeImported {
 impl ImportsParamsDefArrayUsertypeImported {
 }
 impl ImportsParamsDefArrayUsertypeImported {
-    pub fn hws(&self) -> Ref<Vec<OptRc<HelloWorld>>> {
+    pub fn hws(&self) -> Ref<'_, Vec<OptRc<HelloWorld>>> {
         self.hws.borrow()
     }
 }
 impl ImportsParamsDefArrayUsertypeImported {
-    pub fn two(&self) -> Ref<OptRc<ParamsDefArrayUsertypeImported>> {
+    pub fn two(&self) -> Ref<'_, OptRc<ParamsDefArrayUsertypeImported>> {
         self.two.borrow()
     }
 }
 impl ImportsParamsDefArrayUsertypeImported {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

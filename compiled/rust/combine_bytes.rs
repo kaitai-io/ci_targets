@@ -62,7 +62,7 @@ impl KStruct for CombineBytes {
 impl CombineBytes {
     pub fn bytes_calc(
         &self
-    ) -> KResult<Ref<Vec<u8>>> {
+    ) -> KResult<Ref<'_, Vec<u8>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -76,7 +76,7 @@ impl CombineBytes {
     }
     pub fn eos_or_calc(
         &self
-    ) -> KResult<Ref<Vec<u8>>> {
+    ) -> KResult<Ref<'_, Vec<u8>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -90,7 +90,7 @@ impl CombineBytes {
     }
     pub fn limit_or_calc(
         &self
-    ) -> KResult<Ref<Vec<u8>>> {
+    ) -> KResult<Ref<'_, Vec<u8>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -104,7 +104,7 @@ impl CombineBytes {
     }
     pub fn limit_or_eos(
         &self
-    ) -> KResult<Ref<Vec<u8>>> {
+    ) -> KResult<Ref<'_, Vec<u8>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -118,7 +118,7 @@ impl CombineBytes {
     }
     pub fn term_or_calc(
         &self
-    ) -> KResult<Ref<Vec<u8>>> {
+    ) -> KResult<Ref<'_, Vec<u8>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -132,7 +132,7 @@ impl CombineBytes {
     }
     pub fn term_or_eos(
         &self
-    ) -> KResult<Ref<Vec<u8>>> {
+    ) -> KResult<Ref<'_, Vec<u8>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -146,7 +146,7 @@ impl CombineBytes {
     }
     pub fn term_or_limit(
         &self
-    ) -> KResult<Ref<Vec<u8>>> {
+    ) -> KResult<Ref<'_, Vec<u8>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -160,22 +160,22 @@ impl CombineBytes {
     }
 }
 impl CombineBytes {
-    pub fn bytes_term(&self) -> Ref<Vec<u8>> {
+    pub fn bytes_term(&self) -> Ref<'_, Vec<u8>> {
         self.bytes_term.borrow()
     }
 }
 impl CombineBytes {
-    pub fn bytes_limit(&self) -> Ref<Vec<u8>> {
+    pub fn bytes_limit(&self) -> Ref<'_, Vec<u8>> {
         self.bytes_limit.borrow()
     }
 }
 impl CombineBytes {
-    pub fn bytes_eos(&self) -> Ref<Vec<u8>> {
+    pub fn bytes_eos(&self) -> Ref<'_, Vec<u8>> {
         self.bytes_eos.borrow()
     }
 }
 impl CombineBytes {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

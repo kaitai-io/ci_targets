@@ -63,37 +63,37 @@ impl KStruct for BcdUserTypeBe {
 impl BcdUserTypeBe {
 }
 impl BcdUserTypeBe {
-    pub fn ltr(&self) -> Ref<OptRc<BcdUserTypeBe_LtrObj>> {
+    pub fn ltr(&self) -> Ref<'_, OptRc<BcdUserTypeBe_LtrObj>> {
         self.ltr.borrow()
     }
 }
 impl BcdUserTypeBe {
-    pub fn rtl(&self) -> Ref<OptRc<BcdUserTypeBe_RtlObj>> {
+    pub fn rtl(&self) -> Ref<'_, OptRc<BcdUserTypeBe_RtlObj>> {
         self.rtl.borrow()
     }
 }
 impl BcdUserTypeBe {
-    pub fn leading_zero_ltr(&self) -> Ref<OptRc<BcdUserTypeBe_LeadingZeroLtrObj>> {
+    pub fn leading_zero_ltr(&self) -> Ref<'_, OptRc<BcdUserTypeBe_LeadingZeroLtrObj>> {
         self.leading_zero_ltr.borrow()
     }
 }
 impl BcdUserTypeBe {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl BcdUserTypeBe {
-    pub fn ltr_raw(&self) -> Ref<Vec<u8>> {
+    pub fn ltr_raw(&self) -> Ref<'_, Vec<u8>> {
         self.ltr_raw.borrow()
     }
 }
 impl BcdUserTypeBe {
-    pub fn rtl_raw(&self) -> Ref<Vec<u8>> {
+    pub fn rtl_raw(&self) -> Ref<'_, Vec<u8>> {
         self.rtl_raw.borrow()
     }
 }
 impl BcdUserTypeBe {
-    pub fn leading_zero_ltr_raw(&self) -> Ref<Vec<u8>> {
+    pub fn leading_zero_ltr_raw(&self) -> Ref<'_, Vec<u8>> {
         self.leading_zero_ltr_raw.borrow()
     }
 }
@@ -156,7 +156,7 @@ impl KStruct for BcdUserTypeBe_LeadingZeroLtrObj {
 impl BcdUserTypeBe_LeadingZeroLtrObj {
     pub fn as_int(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -170,7 +170,7 @@ impl BcdUserTypeBe_LeadingZeroLtrObj {
     }
     pub fn as_str(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -184,7 +184,7 @@ impl BcdUserTypeBe_LeadingZeroLtrObj {
     }
     pub fn digit1(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -198,7 +198,7 @@ impl BcdUserTypeBe_LeadingZeroLtrObj {
     }
     pub fn digit2(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -212,7 +212,7 @@ impl BcdUserTypeBe_LeadingZeroLtrObj {
     }
     pub fn digit3(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -226,7 +226,7 @@ impl BcdUserTypeBe_LeadingZeroLtrObj {
     }
     pub fn digit4(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -240,7 +240,7 @@ impl BcdUserTypeBe_LeadingZeroLtrObj {
     }
     pub fn digit5(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -254,7 +254,7 @@ impl BcdUserTypeBe_LeadingZeroLtrObj {
     }
     pub fn digit6(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -268,7 +268,7 @@ impl BcdUserTypeBe_LeadingZeroLtrObj {
     }
     pub fn digit7(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -282,7 +282,7 @@ impl BcdUserTypeBe_LeadingZeroLtrObj {
     }
     pub fn digit8(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -296,27 +296,27 @@ impl BcdUserTypeBe_LeadingZeroLtrObj {
     }
 }
 impl BcdUserTypeBe_LeadingZeroLtrObj {
-    pub fn b1(&self) -> Ref<u8> {
+    pub fn b1(&self) -> Ref<'_, u8> {
         self.b1.borrow()
     }
 }
 impl BcdUserTypeBe_LeadingZeroLtrObj {
-    pub fn b2(&self) -> Ref<u8> {
+    pub fn b2(&self) -> Ref<'_, u8> {
         self.b2.borrow()
     }
 }
 impl BcdUserTypeBe_LeadingZeroLtrObj {
-    pub fn b3(&self) -> Ref<u8> {
+    pub fn b3(&self) -> Ref<'_, u8> {
         self.b3.borrow()
     }
 }
 impl BcdUserTypeBe_LeadingZeroLtrObj {
-    pub fn b4(&self) -> Ref<u8> {
+    pub fn b4(&self) -> Ref<'_, u8> {
         self.b4.borrow()
     }
 }
 impl BcdUserTypeBe_LeadingZeroLtrObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -379,7 +379,7 @@ impl KStruct for BcdUserTypeBe_LtrObj {
 impl BcdUserTypeBe_LtrObj {
     pub fn as_int(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -393,7 +393,7 @@ impl BcdUserTypeBe_LtrObj {
     }
     pub fn as_str(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -407,7 +407,7 @@ impl BcdUserTypeBe_LtrObj {
     }
     pub fn digit1(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -421,7 +421,7 @@ impl BcdUserTypeBe_LtrObj {
     }
     pub fn digit2(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -435,7 +435,7 @@ impl BcdUserTypeBe_LtrObj {
     }
     pub fn digit3(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -449,7 +449,7 @@ impl BcdUserTypeBe_LtrObj {
     }
     pub fn digit4(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -463,7 +463,7 @@ impl BcdUserTypeBe_LtrObj {
     }
     pub fn digit5(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -477,7 +477,7 @@ impl BcdUserTypeBe_LtrObj {
     }
     pub fn digit6(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -491,7 +491,7 @@ impl BcdUserTypeBe_LtrObj {
     }
     pub fn digit7(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -505,7 +505,7 @@ impl BcdUserTypeBe_LtrObj {
     }
     pub fn digit8(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -519,27 +519,27 @@ impl BcdUserTypeBe_LtrObj {
     }
 }
 impl BcdUserTypeBe_LtrObj {
-    pub fn b1(&self) -> Ref<u8> {
+    pub fn b1(&self) -> Ref<'_, u8> {
         self.b1.borrow()
     }
 }
 impl BcdUserTypeBe_LtrObj {
-    pub fn b2(&self) -> Ref<u8> {
+    pub fn b2(&self) -> Ref<'_, u8> {
         self.b2.borrow()
     }
 }
 impl BcdUserTypeBe_LtrObj {
-    pub fn b3(&self) -> Ref<u8> {
+    pub fn b3(&self) -> Ref<'_, u8> {
         self.b3.borrow()
     }
 }
 impl BcdUserTypeBe_LtrObj {
-    pub fn b4(&self) -> Ref<u8> {
+    pub fn b4(&self) -> Ref<'_, u8> {
         self.b4.borrow()
     }
 }
 impl BcdUserTypeBe_LtrObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -602,7 +602,7 @@ impl KStruct for BcdUserTypeBe_RtlObj {
 impl BcdUserTypeBe_RtlObj {
     pub fn as_int(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -616,7 +616,7 @@ impl BcdUserTypeBe_RtlObj {
     }
     pub fn as_str(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -630,7 +630,7 @@ impl BcdUserTypeBe_RtlObj {
     }
     pub fn digit1(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -644,7 +644,7 @@ impl BcdUserTypeBe_RtlObj {
     }
     pub fn digit2(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -658,7 +658,7 @@ impl BcdUserTypeBe_RtlObj {
     }
     pub fn digit3(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -672,7 +672,7 @@ impl BcdUserTypeBe_RtlObj {
     }
     pub fn digit4(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -686,7 +686,7 @@ impl BcdUserTypeBe_RtlObj {
     }
     pub fn digit5(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -700,7 +700,7 @@ impl BcdUserTypeBe_RtlObj {
     }
     pub fn digit6(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -714,7 +714,7 @@ impl BcdUserTypeBe_RtlObj {
     }
     pub fn digit7(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -728,7 +728,7 @@ impl BcdUserTypeBe_RtlObj {
     }
     pub fn digit8(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -742,27 +742,27 @@ impl BcdUserTypeBe_RtlObj {
     }
 }
 impl BcdUserTypeBe_RtlObj {
-    pub fn b1(&self) -> Ref<u8> {
+    pub fn b1(&self) -> Ref<'_, u8> {
         self.b1.borrow()
     }
 }
 impl BcdUserTypeBe_RtlObj {
-    pub fn b2(&self) -> Ref<u8> {
+    pub fn b2(&self) -> Ref<'_, u8> {
         self.b2.borrow()
     }
 }
 impl BcdUserTypeBe_RtlObj {
-    pub fn b3(&self) -> Ref<u8> {
+    pub fn b3(&self) -> Ref<'_, u8> {
         self.b3.borrow()
     }
 }
 impl BcdUserTypeBe_RtlObj {
-    pub fn b4(&self) -> Ref<u8> {
+    pub fn b4(&self) -> Ref<'_, u8> {
         self.b4.borrow()
     }
 }
 impl BcdUserTypeBe_RtlObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

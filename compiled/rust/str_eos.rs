@@ -44,12 +44,12 @@ impl KStruct for StrEos {
 impl StrEos {
 }
 impl StrEos {
-    pub fn str(&self) -> Ref<String> {
+    pub fn str(&self) -> Ref<'_, String> {
         self.str.borrow()
     }
 }
 impl StrEos {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

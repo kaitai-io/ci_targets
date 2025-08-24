@@ -60,7 +60,7 @@ impl KStruct for CastNested {
 impl CastNested {
     pub fn opcodes_0_str(
         &self
-    ) -> KResult<Ref<OptRc<CastNested_Opcode_Strval>>> {
+    ) -> KResult<Ref<'_, OptRc<CastNested_Opcode_Strval>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -73,7 +73,7 @@ impl CastNested {
     }
     pub fn opcodes_0_str_value(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -87,7 +87,7 @@ impl CastNested {
     }
     pub fn opcodes_1_int(
         &self
-    ) -> KResult<Ref<OptRc<CastNested_Opcode_Intval>>> {
+    ) -> KResult<Ref<'_, OptRc<CastNested_Opcode_Intval>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -100,7 +100,7 @@ impl CastNested {
     }
     pub fn opcodes_1_int_value(
         &self
-    ) -> KResult<Ref<u8>> {
+    ) -> KResult<Ref<'_, u8>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -114,12 +114,12 @@ impl CastNested {
     }
 }
 impl CastNested {
-    pub fn opcodes(&self) -> Ref<Vec<OptRc<CastNested_Opcode>>> {
+    pub fn opcodes(&self) -> Ref<'_, Vec<OptRc<CastNested_Opcode>>> {
         self.opcodes.borrow()
     }
 }
 impl CastNested {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -199,17 +199,17 @@ impl KStruct for CastNested_Opcode {
 impl CastNested_Opcode {
 }
 impl CastNested_Opcode {
-    pub fn code(&self) -> Ref<u8> {
+    pub fn code(&self) -> Ref<'_, u8> {
         self.code.borrow()
     }
 }
 impl CastNested_Opcode {
-    pub fn body(&self) -> Ref<Option<CastNested_Opcode_Body>> {
+    pub fn body(&self) -> Ref<'_, Option<CastNested_Opcode_Body>> {
         self.body.borrow()
     }
 }
 impl CastNested_Opcode {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -246,12 +246,12 @@ impl KStruct for CastNested_Opcode_Intval {
 impl CastNested_Opcode_Intval {
 }
 impl CastNested_Opcode_Intval {
-    pub fn value(&self) -> Ref<u8> {
+    pub fn value(&self) -> Ref<'_, u8> {
         self.value.borrow()
     }
 }
 impl CastNested_Opcode_Intval {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -288,12 +288,12 @@ impl KStruct for CastNested_Opcode_Strval {
 impl CastNested_Opcode_Strval {
 }
 impl CastNested_Opcode_Strval {
-    pub fn value(&self) -> Ref<String> {
+    pub fn value(&self) -> Ref<'_, String> {
         self.value.borrow()
     }
 }
 impl CastNested_Opcode_Strval {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

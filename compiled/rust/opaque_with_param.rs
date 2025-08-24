@@ -47,12 +47,12 @@ impl KStruct for OpaqueWithParam {
 impl OpaqueWithParam {
 }
 impl OpaqueWithParam {
-    pub fn one(&self) -> Ref<OptRc<ParamsDef>> {
+    pub fn one(&self) -> Ref<'_, OptRc<ParamsDef>> {
         self.one.borrow()
     }
 }
 impl OpaqueWithParam {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

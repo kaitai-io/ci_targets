@@ -55,32 +55,32 @@ impl KStruct for ZlibSurrounded {
 impl ZlibSurrounded {
 }
 impl ZlibSurrounded {
-    pub fn pre(&self) -> Ref<Vec<u8>> {
+    pub fn pre(&self) -> Ref<'_, Vec<u8>> {
         self.pre.borrow()
     }
 }
 impl ZlibSurrounded {
-    pub fn zlib(&self) -> Ref<OptRc<ZlibSurrounded_Inflated>> {
+    pub fn zlib(&self) -> Ref<'_, OptRc<ZlibSurrounded_Inflated>> {
         self.zlib.borrow()
     }
 }
 impl ZlibSurrounded {
-    pub fn post(&self) -> Ref<Vec<u8>> {
+    pub fn post(&self) -> Ref<'_, Vec<u8>> {
         self.post.borrow()
     }
 }
 impl ZlibSurrounded {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl ZlibSurrounded {
-    pub fn zlib_raw(&self) -> Ref<Vec<u8>> {
+    pub fn zlib_raw(&self) -> Ref<'_, Vec<u8>> {
         self.zlib_raw.borrow()
     }
 }
 impl ZlibSurrounded {
-    pub fn zlib_raw_raw(&self) -> Ref<Vec<u8>> {
+    pub fn zlib_raw_raw(&self) -> Ref<'_, Vec<u8>> {
         self.zlib_raw_raw.borrow()
     }
 }
@@ -117,12 +117,12 @@ impl KStruct for ZlibSurrounded_Inflated {
 impl ZlibSurrounded_Inflated {
 }
 impl ZlibSurrounded_Inflated {
-    pub fn num(&self) -> Ref<i32> {
+    pub fn num(&self) -> Ref<'_, i32> {
         self.num.borrow()
     }
 }
 impl ZlibSurrounded_Inflated {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

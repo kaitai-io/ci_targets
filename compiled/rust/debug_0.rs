@@ -52,22 +52,22 @@ impl KStruct for Debug0 {
 impl Debug0 {
 }
 impl Debug0 {
-    pub fn one(&self) -> Ref<u8> {
+    pub fn one(&self) -> Ref<'_, u8> {
         self.one.borrow()
     }
 }
 impl Debug0 {
-    pub fn array_of_ints(&self) -> Ref<Vec<u8>> {
+    pub fn array_of_ints(&self) -> Ref<'_, Vec<u8>> {
         self.array_of_ints.borrow()
     }
 }
 impl Debug0 {
-    pub fn unnamed2(&self) -> Ref<u8> {
+    pub fn unnamed2(&self) -> Ref<'_, u8> {
         self.unnamed2.borrow()
     }
 }
 impl Debug0 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

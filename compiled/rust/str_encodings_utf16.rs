@@ -60,37 +60,37 @@ impl KStruct for StrEncodingsUtf16 {
 impl StrEncodingsUtf16 {
 }
 impl StrEncodingsUtf16 {
-    pub fn len_be(&self) -> Ref<u32> {
+    pub fn len_be(&self) -> Ref<'_, u32> {
         self.len_be.borrow()
     }
 }
 impl StrEncodingsUtf16 {
-    pub fn be_bom_removed(&self) -> Ref<OptRc<StrEncodingsUtf16_StrBeBomRemoved>> {
+    pub fn be_bom_removed(&self) -> Ref<'_, OptRc<StrEncodingsUtf16_StrBeBomRemoved>> {
         self.be_bom_removed.borrow()
     }
 }
 impl StrEncodingsUtf16 {
-    pub fn len_le(&self) -> Ref<u32> {
+    pub fn len_le(&self) -> Ref<'_, u32> {
         self.len_le.borrow()
     }
 }
 impl StrEncodingsUtf16 {
-    pub fn le_bom_removed(&self) -> Ref<OptRc<StrEncodingsUtf16_StrLeBomRemoved>> {
+    pub fn le_bom_removed(&self) -> Ref<'_, OptRc<StrEncodingsUtf16_StrLeBomRemoved>> {
         self.le_bom_removed.borrow()
     }
 }
 impl StrEncodingsUtf16 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl StrEncodingsUtf16 {
-    pub fn be_bom_removed_raw(&self) -> Ref<Vec<u8>> {
+    pub fn be_bom_removed_raw(&self) -> Ref<'_, Vec<u8>> {
         self.be_bom_removed_raw.borrow()
     }
 }
 impl StrEncodingsUtf16 {
-    pub fn le_bom_removed_raw(&self) -> Ref<Vec<u8>> {
+    pub fn le_bom_removed_raw(&self) -> Ref<'_, Vec<u8>> {
         self.le_bom_removed_raw.borrow()
     }
 }
@@ -129,17 +129,17 @@ impl KStruct for StrEncodingsUtf16_StrBeBomRemoved {
 impl StrEncodingsUtf16_StrBeBomRemoved {
 }
 impl StrEncodingsUtf16_StrBeBomRemoved {
-    pub fn bom(&self) -> Ref<u16> {
+    pub fn bom(&self) -> Ref<'_, u16> {
         self.bom.borrow()
     }
 }
 impl StrEncodingsUtf16_StrBeBomRemoved {
-    pub fn str(&self) -> Ref<String> {
+    pub fn str(&self) -> Ref<'_, String> {
         self.str.borrow()
     }
 }
 impl StrEncodingsUtf16_StrBeBomRemoved {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -178,17 +178,17 @@ impl KStruct for StrEncodingsUtf16_StrLeBomRemoved {
 impl StrEncodingsUtf16_StrLeBomRemoved {
 }
 impl StrEncodingsUtf16_StrLeBomRemoved {
-    pub fn bom(&self) -> Ref<u16> {
+    pub fn bom(&self) -> Ref<'_, u16> {
         self.bom.borrow()
     }
 }
 impl StrEncodingsUtf16_StrLeBomRemoved {
-    pub fn str(&self) -> Ref<String> {
+    pub fn str(&self) -> Ref<'_, String> {
         self.str.borrow()
     }
 }
 impl StrEncodingsUtf16_StrLeBomRemoved {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

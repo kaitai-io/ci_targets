@@ -49,17 +49,17 @@ impl KStruct for ParamsPassStruct {
 impl ParamsPassStruct {
 }
 impl ParamsPassStruct {
-    pub fn first(&self) -> Ref<OptRc<ParamsPassStruct_Block>> {
+    pub fn first(&self) -> Ref<'_, OptRc<ParamsPassStruct_Block>> {
         self.first.borrow()
     }
 }
 impl ParamsPassStruct {
-    pub fn one(&self) -> Ref<OptRc<ParamsPassStruct_StructType>> {
+    pub fn one(&self) -> Ref<'_, OptRc<ParamsPassStruct_StructType>> {
         self.one.borrow()
     }
 }
 impl ParamsPassStruct {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -96,12 +96,12 @@ impl KStruct for ParamsPassStruct_Block {
 impl ParamsPassStruct_Block {
 }
 impl ParamsPassStruct_Block {
-    pub fn foo(&self) -> Ref<u8> {
+    pub fn foo(&self) -> Ref<'_, u8> {
         self.foo.borrow()
     }
 }
 impl ParamsPassStruct_Block {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -139,7 +139,7 @@ impl KStruct for ParamsPassStruct_StructType {
     }
 }
 impl ParamsPassStruct_StructType {
-    pub fn foo(&self) -> Ref<KStructUnit> {
+    pub fn foo(&self) -> Ref<'_, KStructUnit> {
         self.foo.borrow()
     }
 }
@@ -151,12 +151,12 @@ impl ParamsPassStruct_StructType {
 impl ParamsPassStruct_StructType {
 }
 impl ParamsPassStruct_StructType {
-    pub fn bar(&self) -> Ref<OptRc<ParamsPassStruct_StructType_Baz>> {
+    pub fn bar(&self) -> Ref<'_, OptRc<ParamsPassStruct_StructType_Baz>> {
         self.bar.borrow()
     }
 }
 impl ParamsPassStruct_StructType {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -192,7 +192,7 @@ impl KStruct for ParamsPassStruct_StructType_Baz {
     }
 }
 impl ParamsPassStruct_StructType_Baz {
-    pub fn foo(&self) -> Ref<KStructUnit> {
+    pub fn foo(&self) -> Ref<'_, KStructUnit> {
         self.foo.borrow()
     }
 }
@@ -204,12 +204,12 @@ impl ParamsPassStruct_StructType_Baz {
 impl ParamsPassStruct_StructType_Baz {
 }
 impl ParamsPassStruct_StructType_Baz {
-    pub fn qux(&self) -> Ref<u8> {
+    pub fn qux(&self) -> Ref<'_, u8> {
         self.qux.borrow()
     }
 }
 impl ParamsPassStruct_StructType_Baz {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

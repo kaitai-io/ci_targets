@@ -44,12 +44,12 @@ impl KStruct for EofExceptionBytes {
 impl EofExceptionBytes {
 }
 impl EofExceptionBytes {
-    pub fn buf(&self) -> Ref<Vec<u8>> {
+    pub fn buf(&self) -> Ref<'_, Vec<u8>> {
         self.buf.borrow()
     }
 }
 impl EofExceptionBytes {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

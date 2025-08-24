@@ -56,42 +56,42 @@ impl KStruct for ProcessRotate {
 impl ProcessRotate {
 }
 impl ProcessRotate {
-    pub fn buf1(&self) -> Ref<Vec<u8>> {
+    pub fn buf1(&self) -> Ref<'_, Vec<u8>> {
         self.buf1.borrow()
     }
 }
 impl ProcessRotate {
-    pub fn buf2(&self) -> Ref<Vec<u8>> {
+    pub fn buf2(&self) -> Ref<'_, Vec<u8>> {
         self.buf2.borrow()
     }
 }
 impl ProcessRotate {
-    pub fn key(&self) -> Ref<u8> {
+    pub fn key(&self) -> Ref<'_, u8> {
         self.key.borrow()
     }
 }
 impl ProcessRotate {
-    pub fn buf3(&self) -> Ref<Vec<u8>> {
+    pub fn buf3(&self) -> Ref<'_, Vec<u8>> {
         self.buf3.borrow()
     }
 }
 impl ProcessRotate {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl ProcessRotate {
-    pub fn buf1_raw(&self) -> Ref<Vec<u8>> {
+    pub fn buf1_raw(&self) -> Ref<'_, Vec<u8>> {
         self.buf1_raw.borrow()
     }
 }
 impl ProcessRotate {
-    pub fn buf2_raw(&self) -> Ref<Vec<u8>> {
+    pub fn buf2_raw(&self) -> Ref<'_, Vec<u8>> {
         self.buf2_raw.borrow()
     }
 }
 impl ProcessRotate {
-    pub fn buf3_raw(&self) -> Ref<Vec<u8>> {
+    pub fn buf3_raw(&self) -> Ref<'_, Vec<u8>> {
         self.buf3_raw.borrow()
     }
 }

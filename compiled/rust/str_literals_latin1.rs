@@ -48,7 +48,7 @@ impl KStruct for StrLiteralsLatin1 {
 impl StrLiteralsLatin1 {
     pub fn parsed_eq_literal(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -62,17 +62,17 @@ impl StrLiteralsLatin1 {
     }
 }
 impl StrLiteralsLatin1 {
-    pub fn len_parsed(&self) -> Ref<u16> {
+    pub fn len_parsed(&self) -> Ref<'_, u16> {
         self.len_parsed.borrow()
     }
 }
 impl StrLiteralsLatin1 {
-    pub fn parsed(&self) -> Ref<String> {
+    pub fn parsed(&self) -> Ref<'_, String> {
         self.parsed.borrow()
     }
 }
 impl StrLiteralsLatin1 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

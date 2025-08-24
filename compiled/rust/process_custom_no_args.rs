@@ -48,17 +48,17 @@ impl KStruct for ProcessCustomNoArgs {
 impl ProcessCustomNoArgs {
 }
 impl ProcessCustomNoArgs {
-    pub fn buf(&self) -> Ref<Vec<u8>> {
+    pub fn buf(&self) -> Ref<'_, Vec<u8>> {
         self.buf.borrow()
     }
 }
 impl ProcessCustomNoArgs {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl ProcessCustomNoArgs {
-    pub fn buf_raw(&self) -> Ref<Vec<u8>> {
+    pub fn buf_raw(&self) -> Ref<'_, Vec<u8>> {
         self.buf_raw.borrow()
     }
 }

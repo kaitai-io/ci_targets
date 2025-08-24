@@ -50,12 +50,12 @@ impl KStruct for ValidFailRangeFloat {
 impl ValidFailRangeFloat {
 }
 impl ValidFailRangeFloat {
-    pub fn foo(&self) -> Ref<f32> {
+    pub fn foo(&self) -> Ref<'_, f32> {
         self.foo.borrow()
     }
 }
 impl ValidFailRangeFloat {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

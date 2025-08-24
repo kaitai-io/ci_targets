@@ -62,42 +62,42 @@ impl KStruct for BufferedStruct {
 impl BufferedStruct {
 }
 impl BufferedStruct {
-    pub fn len1(&self) -> Ref<u32> {
+    pub fn len1(&self) -> Ref<'_, u32> {
         self.len1.borrow()
     }
 }
 impl BufferedStruct {
-    pub fn block1(&self) -> Ref<OptRc<BufferedStruct_Block>> {
+    pub fn block1(&self) -> Ref<'_, OptRc<BufferedStruct_Block>> {
         self.block1.borrow()
     }
 }
 impl BufferedStruct {
-    pub fn len2(&self) -> Ref<u32> {
+    pub fn len2(&self) -> Ref<'_, u32> {
         self.len2.borrow()
     }
 }
 impl BufferedStruct {
-    pub fn block2(&self) -> Ref<OptRc<BufferedStruct_Block>> {
+    pub fn block2(&self) -> Ref<'_, OptRc<BufferedStruct_Block>> {
         self.block2.borrow()
     }
 }
 impl BufferedStruct {
-    pub fn finisher(&self) -> Ref<u32> {
+    pub fn finisher(&self) -> Ref<'_, u32> {
         self.finisher.borrow()
     }
 }
 impl BufferedStruct {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl BufferedStruct {
-    pub fn block1_raw(&self) -> Ref<Vec<u8>> {
+    pub fn block1_raw(&self) -> Ref<'_, Vec<u8>> {
         self.block1_raw.borrow()
     }
 }
 impl BufferedStruct {
-    pub fn block2_raw(&self) -> Ref<Vec<u8>> {
+    pub fn block2_raw(&self) -> Ref<'_, Vec<u8>> {
         self.block2_raw.borrow()
     }
 }
@@ -136,17 +136,17 @@ impl KStruct for BufferedStruct_Block {
 impl BufferedStruct_Block {
 }
 impl BufferedStruct_Block {
-    pub fn number1(&self) -> Ref<u32> {
+    pub fn number1(&self) -> Ref<'_, u32> {
         self.number1.borrow()
     }
 }
 impl BufferedStruct_Block {
-    pub fn number2(&self) -> Ref<u32> {
+    pub fn number2(&self) -> Ref<'_, u32> {
         self.number2.borrow()
     }
 }
 impl BufferedStruct_Block {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -62,7 +62,7 @@ impl KStruct for Expr2 {
 impl Expr2 {
     pub fn str1_avg(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -76,7 +76,7 @@ impl Expr2 {
     }
     pub fn str1_byte1(
         &self
-    ) -> KResult<Ref<u8>> {
+    ) -> KResult<Ref<'_, u8>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -90,7 +90,7 @@ impl Expr2 {
     }
     pub fn str1_char5(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -104,7 +104,7 @@ impl Expr2 {
     }
     pub fn str1_len(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -118,7 +118,7 @@ impl Expr2 {
     }
     pub fn str1_len_mod(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -132,7 +132,7 @@ impl Expr2 {
     }
     pub fn str1_tuple5(
         &self
-    ) -> KResult<Ref<OptRc<Expr2_Tuple>>> {
+    ) -> KResult<Ref<'_, OptRc<Expr2_Tuple>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -145,7 +145,7 @@ impl Expr2 {
     }
     pub fn str2_tuple5(
         &self
-    ) -> KResult<Ref<OptRc<Expr2_Tuple>>> {
+    ) -> KResult<Ref<'_, OptRc<Expr2_Tuple>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -158,17 +158,17 @@ impl Expr2 {
     }
 }
 impl Expr2 {
-    pub fn str1(&self) -> Ref<OptRc<Expr2_ModStr>> {
+    pub fn str1(&self) -> Ref<'_, OptRc<Expr2_ModStr>> {
         self.str1.borrow()
     }
 }
 impl Expr2 {
-    pub fn str2(&self) -> Ref<OptRc<Expr2_ModStr>> {
+    pub fn str2(&self) -> Ref<'_, OptRc<Expr2_ModStr>> {
         self.str2.borrow()
     }
 }
 impl Expr2 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -220,7 +220,7 @@ impl KStruct for Expr2_ModStr {
 impl Expr2_ModStr {
     pub fn char5(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -237,7 +237,7 @@ impl Expr2_ModStr {
     }
     pub fn len_mod(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -251,7 +251,7 @@ impl Expr2_ModStr {
     }
     pub fn tuple5(
         &self
-    ) -> KResult<Ref<OptRc<Expr2_Tuple>>> {
+    ) -> KResult<Ref<'_, OptRc<Expr2_Tuple>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -268,27 +268,27 @@ impl Expr2_ModStr {
     }
 }
 impl Expr2_ModStr {
-    pub fn len_orig(&self) -> Ref<u16> {
+    pub fn len_orig(&self) -> Ref<'_, u16> {
         self.len_orig.borrow()
     }
 }
 impl Expr2_ModStr {
-    pub fn str(&self) -> Ref<String> {
+    pub fn str(&self) -> Ref<'_, String> {
         self.str.borrow()
     }
 }
 impl Expr2_ModStr {
-    pub fn rest(&self) -> Ref<OptRc<Expr2_Tuple>> {
+    pub fn rest(&self) -> Ref<'_, OptRc<Expr2_Tuple>> {
         self.rest.borrow()
     }
 }
 impl Expr2_ModStr {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl Expr2_ModStr {
-    pub fn rest_raw(&self) -> Ref<Vec<u8>> {
+    pub fn rest_raw(&self) -> Ref<'_, Vec<u8>> {
         self.rest_raw.borrow()
     }
 }
@@ -331,7 +331,7 @@ impl KStruct for Expr2_Tuple {
 impl Expr2_Tuple {
     pub fn avg(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -345,22 +345,22 @@ impl Expr2_Tuple {
     }
 }
 impl Expr2_Tuple {
-    pub fn byte0(&self) -> Ref<u8> {
+    pub fn byte0(&self) -> Ref<'_, u8> {
         self.byte0.borrow()
     }
 }
 impl Expr2_Tuple {
-    pub fn byte1(&self) -> Ref<u8> {
+    pub fn byte1(&self) -> Ref<'_, u8> {
         self.byte1.borrow()
     }
 }
 impl Expr2_Tuple {
-    pub fn byte2(&self) -> Ref<u8> {
+    pub fn byte2(&self) -> Ref<'_, u8> {
         self.byte2.borrow()
     }
 }
 impl Expr2_Tuple {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

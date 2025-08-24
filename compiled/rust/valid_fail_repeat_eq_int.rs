@@ -54,12 +54,12 @@ impl KStruct for ValidFailRepeatEqInt {
 impl ValidFailRepeatEqInt {
 }
 impl ValidFailRepeatEqInt {
-    pub fn foo(&self) -> Ref<Vec<u32>> {
+    pub fn foo(&self) -> Ref<'_, Vec<u32>> {
         self.foo.borrow()
     }
 }
 impl ValidFailRepeatEqInt {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

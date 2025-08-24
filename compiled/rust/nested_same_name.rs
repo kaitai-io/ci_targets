@@ -48,17 +48,17 @@ impl KStruct for NestedSameName {
 impl NestedSameName {
 }
 impl NestedSameName {
-    pub fn main_data(&self) -> Ref<OptRc<NestedSameName_Main>> {
+    pub fn main_data(&self) -> Ref<'_, OptRc<NestedSameName_Main>> {
         self.main_data.borrow()
     }
 }
 impl NestedSameName {
-    pub fn dummy(&self) -> Ref<OptRc<NestedSameName_DummyObj>> {
+    pub fn dummy(&self) -> Ref<'_, OptRc<NestedSameName_DummyObj>> {
         self.dummy.borrow()
     }
 }
 impl NestedSameName {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -93,7 +93,7 @@ impl KStruct for NestedSameName_DummyObj {
 impl NestedSameName_DummyObj {
 }
 impl NestedSameName_DummyObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -128,7 +128,7 @@ impl KStruct for NestedSameName_DummyObj_Foo {
 impl NestedSameName_DummyObj_Foo {
 }
 impl NestedSameName_DummyObj_Foo {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -168,17 +168,17 @@ impl KStruct for NestedSameName_Main {
 impl NestedSameName_Main {
 }
 impl NestedSameName_Main {
-    pub fn main_size(&self) -> Ref<i32> {
+    pub fn main_size(&self) -> Ref<'_, i32> {
         self.main_size.borrow()
     }
 }
 impl NestedSameName_Main {
-    pub fn foo(&self) -> Ref<OptRc<NestedSameName_Main_FooObj>> {
+    pub fn foo(&self) -> Ref<'_, OptRc<NestedSameName_Main_FooObj>> {
         self.foo.borrow()
     }
 }
 impl NestedSameName_Main {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -215,12 +215,12 @@ impl KStruct for NestedSameName_Main_FooObj {
 impl NestedSameName_Main_FooObj {
 }
 impl NestedSameName_Main_FooObj {
-    pub fn data(&self) -> Ref<Vec<u8>> {
+    pub fn data(&self) -> Ref<'_, Vec<u8>> {
         self.data.borrow()
     }
 }
 impl NestedSameName_Main_FooObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

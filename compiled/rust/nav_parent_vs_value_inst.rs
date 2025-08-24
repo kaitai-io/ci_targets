@@ -47,17 +47,17 @@ impl KStruct for NavParentVsValueInst {
 impl NavParentVsValueInst {
 }
 impl NavParentVsValueInst {
-    pub fn s1(&self) -> Ref<String> {
+    pub fn s1(&self) -> Ref<'_, String> {
         self.s1.borrow()
     }
 }
 impl NavParentVsValueInst {
-    pub fn child(&self) -> Ref<OptRc<NavParentVsValueInst_ChildObj>> {
+    pub fn child(&self) -> Ref<'_, OptRc<NavParentVsValueInst_ChildObj>> {
         self.child.borrow()
     }
 }
 impl NavParentVsValueInst {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -94,7 +94,7 @@ impl KStruct for NavParentVsValueInst_ChildObj {
 impl NavParentVsValueInst_ChildObj {
     pub fn do_something(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -108,7 +108,7 @@ impl NavParentVsValueInst_ChildObj {
     }
 }
 impl NavParentVsValueInst_ChildObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

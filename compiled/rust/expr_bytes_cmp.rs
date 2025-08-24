@@ -68,7 +68,7 @@ impl KStruct for ExprBytesCmp {
 impl ExprBytesCmp {
     pub fn ack(
         &self
-    ) -> KResult<Ref<Vec<u8>>> {
+    ) -> KResult<Ref<'_, Vec<u8>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -82,7 +82,7 @@ impl ExprBytesCmp {
     }
     pub fn ack2(
         &self
-    ) -> KResult<Ref<Vec<u8>>> {
+    ) -> KResult<Ref<'_, Vec<u8>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -96,7 +96,7 @@ impl ExprBytesCmp {
     }
     pub fn hi_val(
         &self
-    ) -> KResult<Ref<Vec<u8>>> {
+    ) -> KResult<Ref<'_, Vec<u8>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -110,7 +110,7 @@ impl ExprBytesCmp {
     }
     pub fn is_eq(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -124,7 +124,7 @@ impl ExprBytesCmp {
     }
     pub fn is_ge(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -138,7 +138,7 @@ impl ExprBytesCmp {
     }
     pub fn is_gt(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -152,7 +152,7 @@ impl ExprBytesCmp {
     }
     pub fn is_gt2(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -166,7 +166,7 @@ impl ExprBytesCmp {
     }
     pub fn is_le(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -180,7 +180,7 @@ impl ExprBytesCmp {
     }
     pub fn is_lt(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -194,7 +194,7 @@ impl ExprBytesCmp {
     }
     pub fn is_lt2(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -208,7 +208,7 @@ impl ExprBytesCmp {
     }
     pub fn is_ne(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -222,17 +222,17 @@ impl ExprBytesCmp {
     }
 }
 impl ExprBytesCmp {
-    pub fn one(&self) -> Ref<Vec<u8>> {
+    pub fn one(&self) -> Ref<'_, Vec<u8>> {
         self.one.borrow()
     }
 }
 impl ExprBytesCmp {
-    pub fn two(&self) -> Ref<Vec<u8>> {
+    pub fn two(&self) -> Ref<'_, Vec<u8>> {
         self.two.borrow()
     }
 }
 impl ExprBytesCmp {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

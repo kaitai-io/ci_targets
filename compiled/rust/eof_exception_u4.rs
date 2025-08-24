@@ -46,17 +46,17 @@ impl KStruct for EofExceptionU4 {
 impl EofExceptionU4 {
 }
 impl EofExceptionU4 {
-    pub fn prebuf(&self) -> Ref<Vec<u8>> {
+    pub fn prebuf(&self) -> Ref<'_, Vec<u8>> {
         self.prebuf.borrow()
     }
 }
 impl EofExceptionU4 {
-    pub fn fail_int(&self) -> Ref<u32> {
+    pub fn fail_int(&self) -> Ref<'_, u32> {
         self.fail_int.borrow()
     }
 }
 impl EofExceptionU4 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

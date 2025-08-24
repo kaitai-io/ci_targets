@@ -58,7 +58,7 @@ impl KStruct for ParamsPassArrayInt {
 impl ParamsPassArrayInt {
     pub fn ints_calc(
         &self
-    ) -> KResult<Ref<Vec<u16>>> {
+    ) -> KResult<Ref<'_, Vec<u16>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -72,22 +72,22 @@ impl ParamsPassArrayInt {
     }
 }
 impl ParamsPassArrayInt {
-    pub fn ints(&self) -> Ref<Vec<u16>> {
+    pub fn ints(&self) -> Ref<'_, Vec<u16>> {
         self.ints.borrow()
     }
 }
 impl ParamsPassArrayInt {
-    pub fn pass_ints(&self) -> Ref<OptRc<ParamsPassArrayInt_WantsInts>> {
+    pub fn pass_ints(&self) -> Ref<'_, OptRc<ParamsPassArrayInt_WantsInts>> {
         self.pass_ints.borrow()
     }
 }
 impl ParamsPassArrayInt {
-    pub fn pass_ints_calc(&self) -> Ref<OptRc<ParamsPassArrayInt_WantsInts>> {
+    pub fn pass_ints_calc(&self) -> Ref<'_, OptRc<ParamsPassArrayInt_WantsInts>> {
         self.pass_ints_calc.borrow()
     }
 }
 impl ParamsPassArrayInt {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -121,7 +121,7 @@ impl KStruct for ParamsPassArrayInt_WantsInts {
     }
 }
 impl ParamsPassArrayInt_WantsInts {
-    pub fn nums(&self) -> Ref<Vec<u16>> {
+    pub fn nums(&self) -> Ref<'_, Vec<u16>> {
         self.nums.borrow()
     }
 }
@@ -133,7 +133,7 @@ impl ParamsPassArrayInt_WantsInts {
 impl ParamsPassArrayInt_WantsInts {
 }
 impl ParamsPassArrayInt_WantsInts {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

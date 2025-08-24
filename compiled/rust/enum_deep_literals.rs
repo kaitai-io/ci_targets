@@ -50,7 +50,7 @@ impl KStruct for EnumDeepLiterals {
 impl EnumDeepLiterals {
     pub fn is_pet_1_ok(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -64,7 +64,7 @@ impl EnumDeepLiterals {
     }
     pub fn is_pet_2_ok(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -78,17 +78,17 @@ impl EnumDeepLiterals {
     }
 }
 impl EnumDeepLiterals {
-    pub fn pet_1(&self) -> Ref<EnumDeepLiterals_Container1_Animal> {
+    pub fn pet_1(&self) -> Ref<'_, EnumDeepLiterals_Container1_Animal> {
         self.pet_1.borrow()
     }
 }
 impl EnumDeepLiterals {
-    pub fn pet_2(&self) -> Ref<EnumDeepLiterals_Container1_Container2_Animal> {
+    pub fn pet_2(&self) -> Ref<'_, EnumDeepLiterals_Container1_Container2_Animal> {
         self.pet_2.borrow()
     }
 }
 impl EnumDeepLiterals {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -123,7 +123,7 @@ impl KStruct for EnumDeepLiterals_Container1 {
 impl EnumDeepLiterals_Container1 {
 }
 impl EnumDeepLiterals_Container1 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -193,7 +193,7 @@ impl KStruct for EnumDeepLiterals_Container1_Container2 {
 impl EnumDeepLiterals_Container1_Container2 {
 }
 impl EnumDeepLiterals_Container1_Container2 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

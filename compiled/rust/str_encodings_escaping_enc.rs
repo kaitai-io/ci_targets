@@ -78,67 +78,67 @@ impl KStruct for StrEncodingsEscapingEnc {
 impl StrEncodingsEscapingEnc {
 }
 impl StrEncodingsEscapingEnc {
-    pub fn len_of_1(&self) -> Ref<u16> {
+    pub fn len_of_1(&self) -> Ref<'_, u16> {
         self.len_of_1.borrow()
     }
 }
 impl StrEncodingsEscapingEnc {
-    pub fn str1(&self) -> Ref<OptRc<StrEncodingsEscapingEnc_Str1Wrapper>> {
+    pub fn str1(&self) -> Ref<'_, OptRc<StrEncodingsEscapingEnc_Str1Wrapper>> {
         self.str1.borrow()
     }
 }
 impl StrEncodingsEscapingEnc {
-    pub fn len_of_2(&self) -> Ref<u16> {
+    pub fn len_of_2(&self) -> Ref<'_, u16> {
         self.len_of_2.borrow()
     }
 }
 impl StrEncodingsEscapingEnc {
-    pub fn str2(&self) -> Ref<OptRc<StrEncodingsEscapingEnc_Str2Wrapper>> {
+    pub fn str2(&self) -> Ref<'_, OptRc<StrEncodingsEscapingEnc_Str2Wrapper>> {
         self.str2.borrow()
     }
 }
 impl StrEncodingsEscapingEnc {
-    pub fn len_of_3(&self) -> Ref<u16> {
+    pub fn len_of_3(&self) -> Ref<'_, u16> {
         self.len_of_3.borrow()
     }
 }
 impl StrEncodingsEscapingEnc {
-    pub fn str3(&self) -> Ref<OptRc<StrEncodingsEscapingEnc_Str3Wrapper>> {
+    pub fn str3(&self) -> Ref<'_, OptRc<StrEncodingsEscapingEnc_Str3Wrapper>> {
         self.str3.borrow()
     }
 }
 impl StrEncodingsEscapingEnc {
-    pub fn len_of_4(&self) -> Ref<u16> {
+    pub fn len_of_4(&self) -> Ref<'_, u16> {
         self.len_of_4.borrow()
     }
 }
 impl StrEncodingsEscapingEnc {
-    pub fn str4(&self) -> Ref<OptRc<StrEncodingsEscapingEnc_Str4Wrapper>> {
+    pub fn str4(&self) -> Ref<'_, OptRc<StrEncodingsEscapingEnc_Str4Wrapper>> {
         self.str4.borrow()
     }
 }
 impl StrEncodingsEscapingEnc {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl StrEncodingsEscapingEnc {
-    pub fn str1_raw(&self) -> Ref<Vec<u8>> {
+    pub fn str1_raw(&self) -> Ref<'_, Vec<u8>> {
         self.str1_raw.borrow()
     }
 }
 impl StrEncodingsEscapingEnc {
-    pub fn str2_raw(&self) -> Ref<Vec<u8>> {
+    pub fn str2_raw(&self) -> Ref<'_, Vec<u8>> {
         self.str2_raw.borrow()
     }
 }
 impl StrEncodingsEscapingEnc {
-    pub fn str3_raw(&self) -> Ref<Vec<u8>> {
+    pub fn str3_raw(&self) -> Ref<'_, Vec<u8>> {
         self.str3_raw.borrow()
     }
 }
 impl StrEncodingsEscapingEnc {
-    pub fn str4_raw(&self) -> Ref<Vec<u8>> {
+    pub fn str4_raw(&self) -> Ref<'_, Vec<u8>> {
         self.str4_raw.borrow()
     }
 }
@@ -175,7 +175,7 @@ impl KStruct for StrEncodingsEscapingEnc_Str1Wrapper {
 impl StrEncodingsEscapingEnc_Str1Wrapper {
     pub fn v(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -192,7 +192,7 @@ impl StrEncodingsEscapingEnc_Str1Wrapper {
     }
 }
 impl StrEncodingsEscapingEnc_Str1Wrapper {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -229,7 +229,7 @@ impl KStruct for StrEncodingsEscapingEnc_Str2Wrapper {
 impl StrEncodingsEscapingEnc_Str2Wrapper {
     pub fn v(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -246,7 +246,7 @@ impl StrEncodingsEscapingEnc_Str2Wrapper {
     }
 }
 impl StrEncodingsEscapingEnc_Str2Wrapper {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -283,7 +283,7 @@ impl KStruct for StrEncodingsEscapingEnc_Str3Wrapper {
 impl StrEncodingsEscapingEnc_Str3Wrapper {
     pub fn v(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -300,7 +300,7 @@ impl StrEncodingsEscapingEnc_Str3Wrapper {
     }
 }
 impl StrEncodingsEscapingEnc_Str3Wrapper {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -337,7 +337,7 @@ impl KStruct for StrEncodingsEscapingEnc_Str4Wrapper {
 impl StrEncodingsEscapingEnc_Str4Wrapper {
     pub fn v(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -354,7 +354,7 @@ impl StrEncodingsEscapingEnc_Str4Wrapper {
     }
 }
 impl StrEncodingsEscapingEnc_Str4Wrapper {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -54,12 +54,12 @@ impl KStruct for ValidFailRepeatContents {
 impl ValidFailRepeatContents {
 }
 impl ValidFailRepeatContents {
-    pub fn foo(&self) -> Ref<Vec<Vec<u8>>> {
+    pub fn foo(&self) -> Ref<'_, Vec<Vec<u8>>> {
         self.foo.borrow()
     }
 }
 impl ValidFailRepeatContents {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

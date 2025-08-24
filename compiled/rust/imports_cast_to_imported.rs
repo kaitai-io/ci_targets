@@ -51,17 +51,17 @@ impl KStruct for ImportsCastToImported {
 impl ImportsCastToImported {
 }
 impl ImportsCastToImported {
-    pub fn hw(&self) -> Ref<OptRc<HelloWorld>> {
+    pub fn hw(&self) -> Ref<'_, OptRc<HelloWorld>> {
         self.hw.borrow()
     }
 }
 impl ImportsCastToImported {
-    pub fn two(&self) -> Ref<OptRc<CastToImported>> {
+    pub fn two(&self) -> Ref<'_, OptRc<CastToImported>> {
         self.two.borrow()
     }
 }
 impl ImportsCastToImported {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

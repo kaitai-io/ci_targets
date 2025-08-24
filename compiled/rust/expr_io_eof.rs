@@ -56,27 +56,27 @@ impl KStruct for ExprIoEof {
 impl ExprIoEof {
 }
 impl ExprIoEof {
-    pub fn substream1(&self) -> Ref<OptRc<ExprIoEof_OneOrTwo>> {
+    pub fn substream1(&self) -> Ref<'_, OptRc<ExprIoEof_OneOrTwo>> {
         self.substream1.borrow()
     }
 }
 impl ExprIoEof {
-    pub fn substream2(&self) -> Ref<OptRc<ExprIoEof_OneOrTwo>> {
+    pub fn substream2(&self) -> Ref<'_, OptRc<ExprIoEof_OneOrTwo>> {
         self.substream2.borrow()
     }
 }
 impl ExprIoEof {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl ExprIoEof {
-    pub fn substream1_raw(&self) -> Ref<Vec<u8>> {
+    pub fn substream1_raw(&self) -> Ref<'_, Vec<u8>> {
         self.substream1_raw.borrow()
     }
 }
 impl ExprIoEof {
-    pub fn substream2_raw(&self) -> Ref<Vec<u8>> {
+    pub fn substream2_raw(&self) -> Ref<'_, Vec<u8>> {
         self.substream2_raw.borrow()
     }
 }
@@ -119,7 +119,7 @@ impl KStruct for ExprIoEof_OneOrTwo {
 impl ExprIoEof_OneOrTwo {
     pub fn reflect_eof(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -133,17 +133,17 @@ impl ExprIoEof_OneOrTwo {
     }
 }
 impl ExprIoEof_OneOrTwo {
-    pub fn one(&self) -> Ref<u32> {
+    pub fn one(&self) -> Ref<'_, u32> {
         self.one.borrow()
     }
 }
 impl ExprIoEof_OneOrTwo {
-    pub fn two(&self) -> Ref<u32> {
+    pub fn two(&self) -> Ref<'_, u32> {
         self.two.borrow()
     }
 }
 impl ExprIoEof_OneOrTwo {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

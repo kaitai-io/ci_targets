@@ -50,12 +50,12 @@ impl KStruct for ValidFailRangeBytes {
 impl ValidFailRangeBytes {
 }
 impl ValidFailRangeBytes {
-    pub fn foo(&self) -> Ref<Vec<u8>> {
+    pub fn foo(&self) -> Ref<'_, Vec<u8>> {
         self.foo.borrow()
     }
 }
 impl ValidFailRangeBytes {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

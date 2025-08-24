@@ -73,7 +73,7 @@ class VlqBase128Le < Kaitai::Struct::Struct
   end
   def sign_bit
     return @sign_bit unless @sign_bit.nil?
-    @sign_bit = 1 << 7 * len - 1
+    @sign_bit = (1 << 7 * len - 1)
     @sign_bit
   end
 
@@ -81,7 +81,7 @@ class VlqBase128Le < Kaitai::Struct::Struct
   # Resulting unsigned value as normal integer
   def value
     return @value unless @value.nil?
-    @value = ((((((groups[0].value + (len >= 2 ? groups[1].value << 7 : 0)) + (len >= 3 ? groups[2].value << 14 : 0)) + (len >= 4 ? groups[3].value << 21 : 0)) + (len >= 5 ? groups[4].value << 28 : 0)) + (len >= 6 ? groups[5].value << 35 : 0)) + (len >= 7 ? groups[6].value << 42 : 0)) + (len >= 8 ? groups[7].value << 49 : 0)
+    @value = (((((((groups[0].value + (len >= 2 ? groups[1].value << 7 : 0)) + (len >= 3 ? groups[2].value << 14 : 0)) + (len >= 4 ? groups[3].value << 21 : 0)) + (len >= 5 ? groups[4].value << 28 : 0)) + (len >= 6 ? groups[5].value << 35 : 0)) + (len >= 7 ? groups[6].value << 42 : 0)) + (len >= 8 ? groups[7].value << 49 : 0))
     @value
   end
 
@@ -89,7 +89,7 @@ class VlqBase128Le < Kaitai::Struct::Struct
   # @see https://graphics.stanford.edu/~seander/bithacks.html#VariableSignExtend Source
   def value_signed
     return @value_signed unless @value_signed.nil?
-    @value_signed = value ^ sign_bit - sign_bit
+    @value_signed = ((value ^ sign_bit) - sign_bit)
     @value_signed
   end
   attr_reader :groups

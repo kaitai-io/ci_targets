@@ -52,12 +52,12 @@ impl KStruct for DefaultEndianExprInherited {
 impl DefaultEndianExprInherited {
 }
 impl DefaultEndianExprInherited {
-    pub fn docs(&self) -> Ref<Vec<OptRc<DefaultEndianExprInherited_Doc>>> {
+    pub fn docs(&self) -> Ref<'_, Vec<OptRc<DefaultEndianExprInherited_Doc>>> {
         self.docs.borrow()
     }
 }
 impl DefaultEndianExprInherited {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -97,17 +97,17 @@ impl KStruct for DefaultEndianExprInherited_Doc {
 impl DefaultEndianExprInherited_Doc {
 }
 impl DefaultEndianExprInherited_Doc {
-    pub fn indicator(&self) -> Ref<Vec<u8>> {
+    pub fn indicator(&self) -> Ref<'_, Vec<u8>> {
         self.indicator.borrow()
     }
 }
 impl DefaultEndianExprInherited_Doc {
-    pub fn main(&self) -> Ref<OptRc<DefaultEndianExprInherited_Doc_MainObj>> {
+    pub fn main(&self) -> Ref<'_, OptRc<DefaultEndianExprInherited_Doc_MainObj>> {
         self.main.borrow()
     }
 }
 impl DefaultEndianExprInherited_Doc {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -164,12 +164,12 @@ impl DefaultEndianExprInherited_Doc_MainObj {
 impl DefaultEndianExprInherited_Doc_MainObj {
 }
 impl DefaultEndianExprInherited_Doc_MainObj {
-    pub fn insides(&self) -> Ref<OptRc<DefaultEndianExprInherited_Doc_MainObj_SubObj>> {
+    pub fn insides(&self) -> Ref<'_, OptRc<DefaultEndianExprInherited_Doc_MainObj_SubObj>> {
         self.insides.borrow()
     }
 }
 impl DefaultEndianExprInherited_Doc_MainObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -216,17 +216,17 @@ impl DefaultEndianExprInherited_Doc_MainObj_SubObj {
 impl DefaultEndianExprInherited_Doc_MainObj_SubObj {
 }
 impl DefaultEndianExprInherited_Doc_MainObj_SubObj {
-    pub fn some_int(&self) -> Ref<u32> {
+    pub fn some_int(&self) -> Ref<'_, u32> {
         self.some_int.borrow()
     }
 }
 impl DefaultEndianExprInherited_Doc_MainObj_SubObj {
-    pub fn more(&self) -> Ref<OptRc<DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj>> {
+    pub fn more(&self) -> Ref<'_, OptRc<DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj>> {
         self.more.borrow()
     }
 }
 impl DefaultEndianExprInherited_Doc_MainObj_SubObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -273,7 +273,7 @@ impl DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj {
 impl DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj {
     pub fn some_inst(
         &self
-    ) -> KResult<Ref<u32>> {
+    ) -> KResult<Ref<'_, u32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -290,17 +290,17 @@ impl DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj {
     }
 }
 impl DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj {
-    pub fn some_int1(&self) -> Ref<u16> {
+    pub fn some_int1(&self) -> Ref<'_, u16> {
         self.some_int1.borrow()
     }
 }
 impl DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj {
-    pub fn some_int2(&self) -> Ref<u16> {
+    pub fn some_int2(&self) -> Ref<'_, u16> {
         self.some_int2.borrow()
     }
 }
 impl DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

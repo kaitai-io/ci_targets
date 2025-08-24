@@ -63,17 +63,17 @@ impl KStruct for RepeatUntilSized {
 impl RepeatUntilSized {
 }
 impl RepeatUntilSized {
-    pub fn records(&self) -> Ref<Vec<OptRc<RepeatUntilSized_Record>>> {
+    pub fn records(&self) -> Ref<'_, Vec<OptRc<RepeatUntilSized_Record>>> {
         self.records.borrow()
     }
 }
 impl RepeatUntilSized {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl RepeatUntilSized {
-    pub fn records_raw(&self) -> Ref<Vec<Vec<u8>>> {
+    pub fn records_raw(&self) -> Ref<'_, Vec<Vec<u8>>> {
         self.records_raw.borrow()
     }
 }
@@ -112,17 +112,17 @@ impl KStruct for RepeatUntilSized_Record {
 impl RepeatUntilSized_Record {
 }
 impl RepeatUntilSized_Record {
-    pub fn marker(&self) -> Ref<u8> {
+    pub fn marker(&self) -> Ref<'_, u8> {
         self.marker.borrow()
     }
 }
 impl RepeatUntilSized_Record {
-    pub fn body(&self) -> Ref<u32> {
+    pub fn body(&self) -> Ref<'_, u32> {
         self.body.borrow()
     }
 }
 impl RepeatUntilSized_Record {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

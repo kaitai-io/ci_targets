@@ -48,22 +48,22 @@ impl KStruct for TermBytes {
 impl TermBytes {
 }
 impl TermBytes {
-    pub fn s1(&self) -> Ref<Vec<u8>> {
+    pub fn s1(&self) -> Ref<'_, Vec<u8>> {
         self.s1.borrow()
     }
 }
 impl TermBytes {
-    pub fn s2(&self) -> Ref<Vec<u8>> {
+    pub fn s2(&self) -> Ref<'_, Vec<u8>> {
         self.s2.borrow()
     }
 }
 impl TermBytes {
-    pub fn s3(&self) -> Ref<Vec<u8>> {
+    pub fn s3(&self) -> Ref<'_, Vec<u8>> {
         self.s3.borrow()
     }
 }
 impl TermBytes {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -61,22 +61,22 @@ impl KStruct for IndexToParamEos {
 impl IndexToParamEos {
 }
 impl IndexToParamEos {
-    pub fn qty(&self) -> Ref<u32> {
+    pub fn qty(&self) -> Ref<'_, u32> {
         self.qty.borrow()
     }
 }
 impl IndexToParamEos {
-    pub fn sizes(&self) -> Ref<Vec<u32>> {
+    pub fn sizes(&self) -> Ref<'_, Vec<u32>> {
         self.sizes.borrow()
     }
 }
 impl IndexToParamEos {
-    pub fn blocks(&self) -> Ref<Vec<OptRc<IndexToParamEos_Block>>> {
+    pub fn blocks(&self) -> Ref<'_, Vec<OptRc<IndexToParamEos_Block>>> {
         self.blocks.borrow()
     }
 }
 impl IndexToParamEos {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -112,7 +112,7 @@ impl KStruct for IndexToParamEos_Block {
     }
 }
 impl IndexToParamEos_Block {
-    pub fn idx(&self) -> Ref<i32> {
+    pub fn idx(&self) -> Ref<'_, i32> {
         self.idx.borrow()
     }
 }
@@ -124,12 +124,12 @@ impl IndexToParamEos_Block {
 impl IndexToParamEos_Block {
 }
 impl IndexToParamEos_Block {
-    pub fn buf(&self) -> Ref<String> {
+    pub fn buf(&self) -> Ref<'_, String> {
         self.buf.borrow()
     }
 }
 impl IndexToParamEos_Block {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

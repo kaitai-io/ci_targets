@@ -52,12 +52,12 @@ impl KStruct for SwitchManualEnum {
 impl SwitchManualEnum {
 }
 impl SwitchManualEnum {
-    pub fn opcodes(&self) -> Ref<Vec<OptRc<SwitchManualEnum_Opcode>>> {
+    pub fn opcodes(&self) -> Ref<'_, Vec<OptRc<SwitchManualEnum_Opcode>>> {
         self.opcodes.borrow()
     }
 }
 impl SwitchManualEnum {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -137,17 +137,17 @@ impl KStruct for SwitchManualEnum_Opcode {
 impl SwitchManualEnum_Opcode {
 }
 impl SwitchManualEnum_Opcode {
-    pub fn code(&self) -> Ref<SwitchManualEnum_Opcode_CodeEnum> {
+    pub fn code(&self) -> Ref<'_, SwitchManualEnum_Opcode_CodeEnum> {
         self.code.borrow()
     }
 }
 impl SwitchManualEnum_Opcode {
-    pub fn body(&self) -> Ref<Option<SwitchManualEnum_Opcode_Body>> {
+    pub fn body(&self) -> Ref<'_, Option<SwitchManualEnum_Opcode_Body>> {
         self.body.borrow()
     }
 }
 impl SwitchManualEnum_Opcode {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -216,12 +216,12 @@ impl KStruct for SwitchManualEnum_Opcode_Intval {
 impl SwitchManualEnum_Opcode_Intval {
 }
 impl SwitchManualEnum_Opcode_Intval {
-    pub fn value(&self) -> Ref<u8> {
+    pub fn value(&self) -> Ref<'_, u8> {
         self.value.borrow()
     }
 }
 impl SwitchManualEnum_Opcode_Intval {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -258,12 +258,12 @@ impl KStruct for SwitchManualEnum_Opcode_Strval {
 impl SwitchManualEnum_Opcode_Strval {
 }
 impl SwitchManualEnum_Opcode_Strval {
-    pub fn value(&self) -> Ref<String> {
+    pub fn value(&self) -> Ref<'_, String> {
         self.value.borrow()
     }
 }
 impl SwitchManualEnum_Opcode_Strval {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

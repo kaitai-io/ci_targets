@@ -50,7 +50,7 @@ impl KStruct for InstanceStdArray {
 impl InstanceStdArray {
     pub fn entries(
         &self
-    ) -> KResult<Ref<Vec<Vec<u8>>>> {
+    ) -> KResult<Ref<'_, Vec<Vec<u8>>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -71,22 +71,22 @@ impl InstanceStdArray {
     }
 }
 impl InstanceStdArray {
-    pub fn ofs(&self) -> Ref<u32> {
+    pub fn ofs(&self) -> Ref<'_, u32> {
         self.ofs.borrow()
     }
 }
 impl InstanceStdArray {
-    pub fn entry_size(&self) -> Ref<u32> {
+    pub fn entry_size(&self) -> Ref<'_, u32> {
         self.entry_size.borrow()
     }
 }
 impl InstanceStdArray {
-    pub fn qty_entries(&self) -> Ref<u32> {
+    pub fn qty_entries(&self) -> Ref<'_, u32> {
         self.qty_entries.borrow()
     }
 }
 impl InstanceStdArray {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

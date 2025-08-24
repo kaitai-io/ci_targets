@@ -48,22 +48,22 @@ impl KStruct for BitsEnum {
 impl BitsEnum {
 }
 impl BitsEnum {
-    pub fn one(&self) -> Ref<BitsEnum_Animal> {
+    pub fn one(&self) -> Ref<'_, BitsEnum_Animal> {
         self.one.borrow()
     }
 }
 impl BitsEnum {
-    pub fn two(&self) -> Ref<BitsEnum_Animal> {
+    pub fn two(&self) -> Ref<'_, BitsEnum_Animal> {
         self.two.borrow()
     }
 }
 impl BitsEnum {
-    pub fn three(&self) -> Ref<BitsEnum_Animal> {
+    pub fn three(&self) -> Ref<'_, BitsEnum_Animal> {
         self.three.borrow()
     }
 }
 impl BitsEnum {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

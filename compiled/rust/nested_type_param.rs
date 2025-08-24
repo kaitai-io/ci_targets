@@ -46,12 +46,12 @@ impl KStruct for NestedTypeParam {
 impl NestedTypeParam {
 }
 impl NestedTypeParam {
-    pub fn main_seq(&self) -> Ref<OptRc<NestedTypeParam_Nested_MyType>> {
+    pub fn main_seq(&self) -> Ref<'_, OptRc<NestedTypeParam_Nested_MyType>> {
         self.main_seq.borrow()
     }
 }
 impl NestedTypeParam {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -86,7 +86,7 @@ impl KStruct for NestedTypeParam_Nested {
 impl NestedTypeParam_Nested {
 }
 impl NestedTypeParam_Nested {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -122,7 +122,7 @@ impl KStruct for NestedTypeParam_Nested_MyType {
     }
 }
 impl NestedTypeParam_Nested_MyType {
-    pub fn my_len(&self) -> Ref<u32> {
+    pub fn my_len(&self) -> Ref<'_, u32> {
         self.my_len.borrow()
     }
 }
@@ -134,12 +134,12 @@ impl NestedTypeParam_Nested_MyType {
 impl NestedTypeParam_Nested_MyType {
 }
 impl NestedTypeParam_Nested_MyType {
-    pub fn body(&self) -> Ref<String> {
+    pub fn body(&self) -> Ref<'_, String> {
         self.body.borrow()
     }
 }
 impl NestedTypeParam_Nested_MyType {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

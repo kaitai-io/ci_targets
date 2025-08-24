@@ -46,17 +46,17 @@ impl KStruct for EnumDeep {
 impl EnumDeep {
 }
 impl EnumDeep {
-    pub fn pet_1(&self) -> Ref<EnumDeep_Container1_Animal> {
+    pub fn pet_1(&self) -> Ref<'_, EnumDeep_Container1_Animal> {
         self.pet_1.borrow()
     }
 }
 impl EnumDeep {
-    pub fn pet_2(&self) -> Ref<EnumDeep_Container1_Container2_Animal> {
+    pub fn pet_2(&self) -> Ref<'_, EnumDeep_Container1_Container2_Animal> {
         self.pet_2.borrow()
     }
 }
 impl EnumDeep {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -91,7 +91,7 @@ impl KStruct for EnumDeep_Container1 {
 impl EnumDeep_Container1 {
 }
 impl EnumDeep_Container1 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -161,7 +161,7 @@ impl KStruct for EnumDeep_Container1_Container2 {
 impl EnumDeep_Container1_Container2 {
 }
 impl EnumDeep_Container1_Container2 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

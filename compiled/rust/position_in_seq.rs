@@ -50,7 +50,7 @@ impl KStruct for PositionInSeq {
 impl PositionInSeq {
     pub fn header(
         &self
-    ) -> KResult<Ref<OptRc<PositionInSeq_HeaderObj>>> {
+    ) -> KResult<Ref<'_, OptRc<PositionInSeq_HeaderObj>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -67,12 +67,12 @@ impl PositionInSeq {
     }
 }
 impl PositionInSeq {
-    pub fn numbers(&self) -> Ref<Vec<u8>> {
+    pub fn numbers(&self) -> Ref<'_, Vec<u8>> {
         self.numbers.borrow()
     }
 }
 impl PositionInSeq {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -109,12 +109,12 @@ impl KStruct for PositionInSeq_HeaderObj {
 impl PositionInSeq_HeaderObj {
 }
 impl PositionInSeq_HeaderObj {
-    pub fn qty_numbers(&self) -> Ref<u32> {
+    pub fn qty_numbers(&self) -> Ref<'_, u32> {
         self.qty_numbers.borrow()
     }
 }
 impl PositionInSeq_HeaderObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

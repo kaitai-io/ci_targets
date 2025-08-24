@@ -46,12 +46,12 @@ impl KStruct for OpaqueExternalType02Parent {
 impl OpaqueExternalType02Parent {
 }
 impl OpaqueExternalType02Parent {
-    pub fn parent(&self) -> Ref<OptRc<OpaqueExternalType02Parent_ParentObj>> {
+    pub fn parent(&self) -> Ref<'_, OptRc<OpaqueExternalType02Parent_ParentObj>> {
         self.parent.borrow()
     }
 }
 impl OpaqueExternalType02Parent {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -89,12 +89,12 @@ impl KStruct for OpaqueExternalType02Parent_ParentObj {
 impl OpaqueExternalType02Parent_ParentObj {
 }
 impl OpaqueExternalType02Parent_ParentObj {
-    pub fn child(&self) -> Ref<OptRc<OpaqueExternalType02Child>> {
+    pub fn child(&self) -> Ref<'_, OptRc<OpaqueExternalType02Child>> {
         self.child.borrow()
     }
 }
 impl OpaqueExternalType02Parent_ParentObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

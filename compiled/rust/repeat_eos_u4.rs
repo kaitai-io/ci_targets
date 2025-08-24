@@ -51,12 +51,12 @@ impl KStruct for RepeatEosU4 {
 impl RepeatEosU4 {
 }
 impl RepeatEosU4 {
-    pub fn numbers(&self) -> Ref<Vec<u32>> {
+    pub fn numbers(&self) -> Ref<'_, Vec<u32>> {
         self.numbers.borrow()
     }
 }
 impl RepeatEosU4 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

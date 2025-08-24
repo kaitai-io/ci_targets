@@ -57,7 +57,7 @@ impl KStruct for ExprSizeofValue0 {
 impl ExprSizeofValue0 {
     pub fn self_sizeof(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -71,7 +71,7 @@ impl ExprSizeofValue0 {
     }
     pub fn sizeof_block(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -85,7 +85,7 @@ impl ExprSizeofValue0 {
     }
     pub fn sizeof_block_a(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -99,7 +99,7 @@ impl ExprSizeofValue0 {
     }
     pub fn sizeof_block_b(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -113,7 +113,7 @@ impl ExprSizeofValue0 {
     }
     pub fn sizeof_block_c(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -127,17 +127,17 @@ impl ExprSizeofValue0 {
     }
 }
 impl ExprSizeofValue0 {
-    pub fn block1(&self) -> Ref<OptRc<ExprSizeofValue0_Block>> {
+    pub fn block1(&self) -> Ref<'_, OptRc<ExprSizeofValue0_Block>> {
         self.block1.borrow()
     }
 }
 impl ExprSizeofValue0 {
-    pub fn more(&self) -> Ref<u16> {
+    pub fn more(&self) -> Ref<'_, u16> {
         self.more.borrow()
     }
 }
 impl ExprSizeofValue0 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -178,22 +178,22 @@ impl KStruct for ExprSizeofValue0_Block {
 impl ExprSizeofValue0_Block {
 }
 impl ExprSizeofValue0_Block {
-    pub fn a(&self) -> Ref<u8> {
+    pub fn a(&self) -> Ref<'_, u8> {
         self.a.borrow()
     }
 }
 impl ExprSizeofValue0_Block {
-    pub fn b(&self) -> Ref<u32> {
+    pub fn b(&self) -> Ref<'_, u32> {
         self.b.borrow()
     }
 }
 impl ExprSizeofValue0_Block {
-    pub fn c(&self) -> Ref<Vec<u8>> {
+    pub fn c(&self) -> Ref<'_, Vec<u8>> {
         self.c.borrow()
     }
 }
 impl ExprSizeofValue0_Block {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

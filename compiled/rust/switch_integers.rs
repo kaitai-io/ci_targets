@@ -52,12 +52,12 @@ impl KStruct for SwitchIntegers {
 impl SwitchIntegers {
 }
 impl SwitchIntegers {
-    pub fn opcodes(&self) -> Ref<Vec<OptRc<SwitchIntegers_Opcode>>> {
+    pub fn opcodes(&self) -> Ref<'_, Vec<OptRc<SwitchIntegers_Opcode>>> {
         self.opcodes.borrow()
     }
 }
 impl SwitchIntegers {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -180,7 +180,7 @@ impl KStruct for SwitchIntegers_Opcode {
 impl SwitchIntegers_Opcode {
 }
 impl SwitchIntegers_Opcode {
-    pub fn code(&self) -> Ref<u8> {
+    pub fn code(&self) -> Ref<'_, u8> {
         self.code.borrow()
     }
 }
@@ -188,12 +188,12 @@ impl SwitchIntegers_Opcode {
     pub fn body(&self) -> usize {
         self.body.borrow().as_ref().unwrap().into()
     }
-    pub fn body_enum(&self) -> Ref<Option<SwitchIntegers_Opcode_Body>> {
+    pub fn body_enum(&self) -> Ref<'_, Option<SwitchIntegers_Opcode_Body>> {
         self.body.borrow()
     }
 }
 impl SwitchIntegers_Opcode {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

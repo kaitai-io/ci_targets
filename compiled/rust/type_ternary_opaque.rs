@@ -67,7 +67,7 @@ impl KStruct for TypeTernaryOpaque {
 impl TypeTernaryOpaque {
     pub fn dif(
         &self
-    ) -> KResult<Ref<OptRc<TermStrz>>> {
+    ) -> KResult<Ref<'_, OptRc<TermStrz>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -80,7 +80,7 @@ impl TypeTernaryOpaque {
     }
     pub fn is_hack(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -94,32 +94,32 @@ impl TypeTernaryOpaque {
     }
 }
 impl TypeTernaryOpaque {
-    pub fn dif_wo_hack(&self) -> Ref<OptRc<TermStrz>> {
+    pub fn dif_wo_hack(&self) -> Ref<'_, OptRc<TermStrz>> {
         self.dif_wo_hack.borrow()
     }
 }
 impl TypeTernaryOpaque {
-    pub fn dif_with_hack(&self) -> Ref<OptRc<TermStrz>> {
+    pub fn dif_with_hack(&self) -> Ref<'_, OptRc<TermStrz>> {
         self.dif_with_hack.borrow()
     }
 }
 impl TypeTernaryOpaque {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl TypeTernaryOpaque {
-    pub fn dif_wo_hack_raw(&self) -> Ref<Vec<u8>> {
+    pub fn dif_wo_hack_raw(&self) -> Ref<'_, Vec<u8>> {
         self.dif_wo_hack_raw.borrow()
     }
 }
 impl TypeTernaryOpaque {
-    pub fn dif_with_hack_raw(&self) -> Ref<Vec<u8>> {
+    pub fn dif_with_hack_raw(&self) -> Ref<'_, Vec<u8>> {
         self.dif_with_hack_raw.borrow()
     }
 }
 impl TypeTernaryOpaque {
-    pub fn dif_with_hack_raw_raw(&self) -> Ref<Vec<u8>> {
+    pub fn dif_with_hack_raw_raw(&self) -> Ref<'_, Vec<u8>> {
         self.dif_with_hack_raw_raw.borrow()
     }
 }

@@ -94,7 +94,7 @@ impl KStruct for ExprBits {
 impl ExprBits {
     pub fn enum_inst(
         &self
-    ) -> KResult<Ref<ExprBits_Items>> {
+    ) -> KResult<Ref<'_, ExprBits_Items>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -108,7 +108,7 @@ impl ExprBits {
     }
     pub fn inst_pos(
         &self
-    ) -> KResult<Ref<i8>> {
+    ) -> KResult<Ref<'_, i8>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -125,22 +125,22 @@ impl ExprBits {
     }
 }
 impl ExprBits {
-    pub fn enum_seq(&self) -> Ref<ExprBits_Items> {
+    pub fn enum_seq(&self) -> Ref<'_, ExprBits_Items> {
         self.enum_seq.borrow()
     }
 }
 impl ExprBits {
-    pub fn a(&self) -> Ref<u64> {
+    pub fn a(&self) -> Ref<'_, u64> {
         self.a.borrow()
     }
 }
 impl ExprBits {
-    pub fn byte_size(&self) -> Ref<Vec<u8>> {
+    pub fn byte_size(&self) -> Ref<'_, Vec<u8>> {
         self.byte_size.borrow()
     }
 }
 impl ExprBits {
-    pub fn repeat_expr(&self) -> Ref<Vec<i8>> {
+    pub fn repeat_expr(&self) -> Ref<'_, Vec<i8>> {
         self.repeat_expr.borrow()
     }
 }
@@ -148,17 +148,17 @@ impl ExprBits {
     pub fn switch_on_type(&self) -> usize {
         self.switch_on_type.borrow().as_ref().unwrap().into()
     }
-    pub fn switch_on_type_enum(&self) -> Ref<Option<ExprBits_SwitchOnType>> {
+    pub fn switch_on_type_enum(&self) -> Ref<'_, Option<ExprBits_SwitchOnType>> {
         self.switch_on_type.borrow()
     }
 }
 impl ExprBits {
-    pub fn switch_on_endian(&self) -> Ref<OptRc<ExprBits_EndianSwitch>> {
+    pub fn switch_on_endian(&self) -> Ref<'_, OptRc<ExprBits_EndianSwitch>> {
         self.switch_on_endian.borrow()
     }
 }
 impl ExprBits {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -245,12 +245,12 @@ impl ExprBits_EndianSwitch {
 impl ExprBits_EndianSwitch {
 }
 impl ExprBits_EndianSwitch {
-    pub fn foo(&self) -> Ref<i16> {
+    pub fn foo(&self) -> Ref<'_, i16> {
         self.foo.borrow()
     }
 }
 impl ExprBits_EndianSwitch {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

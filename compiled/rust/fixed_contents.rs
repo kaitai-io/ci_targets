@@ -52,17 +52,17 @@ impl KStruct for FixedContents {
 impl FixedContents {
 }
 impl FixedContents {
-    pub fn normal(&self) -> Ref<Vec<u8>> {
+    pub fn normal(&self) -> Ref<'_, Vec<u8>> {
         self.normal.borrow()
     }
 }
 impl FixedContents {
-    pub fn high_bit_8(&self) -> Ref<Vec<u8>> {
+    pub fn high_bit_8(&self) -> Ref<'_, Vec<u8>> {
         self.high_bit_8.borrow()
     }
 }
 impl FixedContents {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

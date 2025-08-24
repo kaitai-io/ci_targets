@@ -39,7 +39,7 @@ impl From<OptRc<NavParentSwitch_Element1>> for NavParentSwitch_Content {
     }
 }
 impl NavParentSwitch_Content {
-    pub fn foo(&self) -> Ref<u8> {
+    pub fn foo(&self) -> Ref<'_, u8> {
         match self {
             NavParentSwitch_Content::NavParentSwitch_Element1(x) => x.foo.borrow(),
         }
@@ -83,17 +83,17 @@ impl KStruct for NavParentSwitch {
 impl NavParentSwitch {
 }
 impl NavParentSwitch {
-    pub fn category(&self) -> Ref<u8> {
+    pub fn category(&self) -> Ref<'_, u8> {
         self.category.borrow()
     }
 }
 impl NavParentSwitch {
-    pub fn content(&self) -> Ref<Option<NavParentSwitch_Content>> {
+    pub fn content(&self) -> Ref<'_, Option<NavParentSwitch_Content>> {
         self.content.borrow()
     }
 }
 impl NavParentSwitch {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -133,17 +133,17 @@ impl KStruct for NavParentSwitch_Element1 {
 impl NavParentSwitch_Element1 {
 }
 impl NavParentSwitch_Element1 {
-    pub fn foo(&self) -> Ref<u8> {
+    pub fn foo(&self) -> Ref<'_, u8> {
         self.foo.borrow()
     }
 }
 impl NavParentSwitch_Element1 {
-    pub fn subelement(&self) -> Ref<OptRc<NavParentSwitch_Subelement1>> {
+    pub fn subelement(&self) -> Ref<'_, OptRc<NavParentSwitch_Subelement1>> {
         self.subelement.borrow()
     }
 }
 impl NavParentSwitch_Element1 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -182,12 +182,12 @@ impl KStruct for NavParentSwitch_Subelement1 {
 impl NavParentSwitch_Subelement1 {
 }
 impl NavParentSwitch_Subelement1 {
-    pub fn bar(&self) -> Ref<u8> {
+    pub fn bar(&self) -> Ref<'_, u8> {
         self.bar.borrow()
     }
 }
 impl NavParentSwitch_Subelement1 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

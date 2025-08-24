@@ -54,7 +54,7 @@ impl KStruct for ParamsPassArrayStruct {
 impl ParamsPassArrayStruct {
     pub fn one_two(
         &self
-    ) -> KResult<Ref<Vec<KStructUnit>>> {
+    ) -> KResult<Ref<'_, Vec<KStructUnit>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -68,22 +68,22 @@ impl ParamsPassArrayStruct {
     }
 }
 impl ParamsPassArrayStruct {
-    pub fn one(&self) -> Ref<OptRc<ParamsPassArrayStruct_Foo>> {
+    pub fn one(&self) -> Ref<'_, OptRc<ParamsPassArrayStruct_Foo>> {
         self.one.borrow()
     }
 }
 impl ParamsPassArrayStruct {
-    pub fn two(&self) -> Ref<OptRc<ParamsPassArrayStruct_Bar>> {
+    pub fn two(&self) -> Ref<'_, OptRc<ParamsPassArrayStruct_Bar>> {
         self.two.borrow()
     }
 }
 impl ParamsPassArrayStruct {
-    pub fn pass_structs(&self) -> Ref<OptRc<ParamsPassArrayStruct_StructType>> {
+    pub fn pass_structs(&self) -> Ref<'_, OptRc<ParamsPassArrayStruct_StructType>> {
         self.pass_structs.borrow()
     }
 }
 impl ParamsPassArrayStruct {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -120,12 +120,12 @@ impl KStruct for ParamsPassArrayStruct_Bar {
 impl ParamsPassArrayStruct_Bar {
 }
 impl ParamsPassArrayStruct_Bar {
-    pub fn b(&self) -> Ref<u8> {
+    pub fn b(&self) -> Ref<'_, u8> {
         self.b.borrow()
     }
 }
 impl ParamsPassArrayStruct_Bar {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -162,12 +162,12 @@ impl KStruct for ParamsPassArrayStruct_Foo {
 impl ParamsPassArrayStruct_Foo {
 }
 impl ParamsPassArrayStruct_Foo {
-    pub fn f(&self) -> Ref<u8> {
+    pub fn f(&self) -> Ref<'_, u8> {
         self.f.borrow()
     }
 }
 impl ParamsPassArrayStruct_Foo {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -201,7 +201,7 @@ impl KStruct for ParamsPassArrayStruct_StructType {
     }
 }
 impl ParamsPassArrayStruct_StructType {
-    pub fn structs(&self) -> Ref<Vec<KStructUnit>> {
+    pub fn structs(&self) -> Ref<'_, Vec<KStructUnit>> {
         self.structs.borrow()
     }
 }
@@ -213,7 +213,7 @@ impl ParamsPassArrayStruct_StructType {
 impl ParamsPassArrayStruct_StructType {
 }
 impl ParamsPassArrayStruct_StructType {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -48,12 +48,12 @@ impl KStruct for ParamsDef {
     }
 }
 impl ParamsDef {
-    pub fn len(&self) -> Ref<u32> {
+    pub fn len(&self) -> Ref<'_, u32> {
         self.len.borrow()
     }
 }
 impl ParamsDef {
-    pub fn has_trailer(&self) -> Ref<bool> {
+    pub fn has_trailer(&self) -> Ref<'_, bool> {
         self.has_trailer.borrow()
     }
 }
@@ -66,17 +66,17 @@ impl ParamsDef {
 impl ParamsDef {
 }
 impl ParamsDef {
-    pub fn buf(&self) -> Ref<String> {
+    pub fn buf(&self) -> Ref<'_, String> {
         self.buf.borrow()
     }
 }
 impl ParamsDef {
-    pub fn trailer(&self) -> Ref<u8> {
+    pub fn trailer(&self) -> Ref<'_, u8> {
         self.trailer.borrow()
     }
 }
 impl ParamsDef {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

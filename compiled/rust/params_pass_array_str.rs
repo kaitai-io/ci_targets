@@ -58,7 +58,7 @@ impl KStruct for ParamsPassArrayStr {
 impl ParamsPassArrayStr {
     pub fn str_array_calc(
         &self
-    ) -> KResult<Ref<Vec<String>>> {
+    ) -> KResult<Ref<'_, Vec<String>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -72,22 +72,22 @@ impl ParamsPassArrayStr {
     }
 }
 impl ParamsPassArrayStr {
-    pub fn str_array(&self) -> Ref<Vec<String>> {
+    pub fn str_array(&self) -> Ref<'_, Vec<String>> {
         self.str_array.borrow()
     }
 }
 impl ParamsPassArrayStr {
-    pub fn pass_str_array(&self) -> Ref<OptRc<ParamsPassArrayStr_WantsStrs>> {
+    pub fn pass_str_array(&self) -> Ref<'_, OptRc<ParamsPassArrayStr_WantsStrs>> {
         self.pass_str_array.borrow()
     }
 }
 impl ParamsPassArrayStr {
-    pub fn pass_str_array_calc(&self) -> Ref<OptRc<ParamsPassArrayStr_WantsStrs>> {
+    pub fn pass_str_array_calc(&self) -> Ref<'_, OptRc<ParamsPassArrayStr_WantsStrs>> {
         self.pass_str_array_calc.borrow()
     }
 }
 impl ParamsPassArrayStr {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -121,7 +121,7 @@ impl KStruct for ParamsPassArrayStr_WantsStrs {
     }
 }
 impl ParamsPassArrayStr_WantsStrs {
-    pub fn strs(&self) -> Ref<Vec<String>> {
+    pub fn strs(&self) -> Ref<'_, Vec<String>> {
         self.strs.borrow()
     }
 }
@@ -133,7 +133,7 @@ impl ParamsPassArrayStr_WantsStrs {
 impl ParamsPassArrayStr_WantsStrs {
 }
 impl ParamsPassArrayStr_WantsStrs {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

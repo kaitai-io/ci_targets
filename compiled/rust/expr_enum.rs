@@ -50,7 +50,7 @@ impl KStruct for ExprEnum {
 impl ExprEnum {
     pub fn const_dog(
         &self
-    ) -> KResult<Ref<ExprEnum_Animal>> {
+    ) -> KResult<Ref<'_, ExprEnum_Animal>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -64,7 +64,7 @@ impl ExprEnum {
     }
     pub fn derived_boom(
         &self
-    ) -> KResult<Ref<ExprEnum_Animal>> {
+    ) -> KResult<Ref<'_, ExprEnum_Animal>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -78,7 +78,7 @@ impl ExprEnum {
     }
     pub fn derived_dog(
         &self
-    ) -> KResult<Ref<ExprEnum_Animal>> {
+    ) -> KResult<Ref<'_, ExprEnum_Animal>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -92,12 +92,12 @@ impl ExprEnum {
     }
 }
 impl ExprEnum {
-    pub fn one(&self) -> Ref<u8> {
+    pub fn one(&self) -> Ref<'_, u8> {
         self.one.borrow()
     }
 }
 impl ExprEnum {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

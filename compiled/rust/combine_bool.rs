@@ -48,7 +48,7 @@ impl KStruct for CombineBool {
 impl CombineBool {
     pub fn bool_calc(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -62,7 +62,7 @@ impl CombineBool {
     }
     pub fn bool_calc_bit(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -76,12 +76,12 @@ impl CombineBool {
     }
 }
 impl CombineBool {
-    pub fn bool_bit(&self) -> Ref<bool> {
+    pub fn bool_bit(&self) -> Ref<'_, bool> {
         self.bool_bit.borrow()
     }
 }
 impl CombineBool {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

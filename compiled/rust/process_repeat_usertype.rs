@@ -57,22 +57,22 @@ impl KStruct for ProcessRepeatUsertype {
 impl ProcessRepeatUsertype {
 }
 impl ProcessRepeatUsertype {
-    pub fn blocks(&self) -> Ref<Vec<OptRc<ProcessRepeatUsertype_Block>>> {
+    pub fn blocks(&self) -> Ref<'_, Vec<OptRc<ProcessRepeatUsertype_Block>>> {
         self.blocks.borrow()
     }
 }
 impl ProcessRepeatUsertype {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl ProcessRepeatUsertype {
-    pub fn blocks_raw(&self) -> Ref<Vec<Vec<u8>>> {
+    pub fn blocks_raw(&self) -> Ref<'_, Vec<Vec<u8>>> {
         self.blocks_raw.borrow()
     }
 }
 impl ProcessRepeatUsertype {
-    pub fn blocks_raw_raw(&self) -> Ref<Vec<Vec<u8>>> {
+    pub fn blocks_raw_raw(&self) -> Ref<'_, Vec<Vec<u8>>> {
         self.blocks_raw_raw.borrow()
     }
 }
@@ -111,17 +111,17 @@ impl KStruct for ProcessRepeatUsertype_Block {
 impl ProcessRepeatUsertype_Block {
 }
 impl ProcessRepeatUsertype_Block {
-    pub fn a(&self) -> Ref<i32> {
+    pub fn a(&self) -> Ref<'_, i32> {
         self.a.borrow()
     }
 }
 impl ProcessRepeatUsertype_Block {
-    pub fn b(&self) -> Ref<i8> {
+    pub fn b(&self) -> Ref<'_, i8> {
         self.b.borrow()
     }
 }
 impl ProcessRepeatUsertype_Block {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

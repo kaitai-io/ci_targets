@@ -47,12 +47,12 @@ impl KStruct for ValidFailEqStr {
 impl ValidFailEqStr {
 }
 impl ValidFailEqStr {
-    pub fn foo(&self) -> Ref<String> {
+    pub fn foo(&self) -> Ref<'_, String> {
         self.foo.borrow()
     }
 }
 impl ValidFailEqStr {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

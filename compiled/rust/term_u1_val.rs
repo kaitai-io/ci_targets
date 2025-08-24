@@ -46,17 +46,17 @@ impl KStruct for TermU1Val {
 impl TermU1Val {
 }
 impl TermU1Val {
-    pub fn foo(&self) -> Ref<Vec<u8>> {
+    pub fn foo(&self) -> Ref<'_, Vec<u8>> {
         self.foo.borrow()
     }
 }
 impl TermU1Val {
-    pub fn bar(&self) -> Ref<String> {
+    pub fn bar(&self) -> Ref<'_, String> {
         self.bar.borrow()
     }
 }
 impl TermU1Val {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

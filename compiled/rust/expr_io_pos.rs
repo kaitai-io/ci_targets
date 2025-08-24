@@ -56,27 +56,27 @@ impl KStruct for ExprIoPos {
 impl ExprIoPos {
 }
 impl ExprIoPos {
-    pub fn substream1(&self) -> Ref<OptRc<ExprIoPos_AllPlusNumber>> {
+    pub fn substream1(&self) -> Ref<'_, OptRc<ExprIoPos_AllPlusNumber>> {
         self.substream1.borrow()
     }
 }
 impl ExprIoPos {
-    pub fn substream2(&self) -> Ref<OptRc<ExprIoPos_AllPlusNumber>> {
+    pub fn substream2(&self) -> Ref<'_, OptRc<ExprIoPos_AllPlusNumber>> {
         self.substream2.borrow()
     }
 }
 impl ExprIoPos {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl ExprIoPos {
-    pub fn substream1_raw(&self) -> Ref<Vec<u8>> {
+    pub fn substream1_raw(&self) -> Ref<'_, Vec<u8>> {
         self.substream1_raw.borrow()
     }
 }
 impl ExprIoPos {
-    pub fn substream2_raw(&self) -> Ref<Vec<u8>> {
+    pub fn substream2_raw(&self) -> Ref<'_, Vec<u8>> {
         self.substream2_raw.borrow()
     }
 }
@@ -117,22 +117,22 @@ impl KStruct for ExprIoPos_AllPlusNumber {
 impl ExprIoPos_AllPlusNumber {
 }
 impl ExprIoPos_AllPlusNumber {
-    pub fn my_str(&self) -> Ref<String> {
+    pub fn my_str(&self) -> Ref<'_, String> {
         self.my_str.borrow()
     }
 }
 impl ExprIoPos_AllPlusNumber {
-    pub fn body(&self) -> Ref<Vec<u8>> {
+    pub fn body(&self) -> Ref<'_, Vec<u8>> {
         self.body.borrow()
     }
 }
 impl ExprIoPos_AllPlusNumber {
-    pub fn number(&self) -> Ref<u16> {
+    pub fn number(&self) -> Ref<'_, u16> {
         self.number.borrow()
     }
 }
 impl ExprIoPos_AllPlusNumber {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

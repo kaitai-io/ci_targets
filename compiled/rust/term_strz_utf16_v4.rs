@@ -67,47 +67,47 @@ impl KStruct for TermStrzUtf16V4 {
 impl TermStrzUtf16V4 {
 }
 impl TermStrzUtf16V4 {
-    pub fn s1(&self) -> Ref<OptRc<TermStrzUtf16V4_S1Type>> {
+    pub fn s1(&self) -> Ref<'_, OptRc<TermStrzUtf16V4_S1Type>> {
         self.s1.borrow()
     }
 }
 impl TermStrzUtf16V4 {
-    pub fn skip_term1(&self) -> Ref<Vec<u8>> {
+    pub fn skip_term1(&self) -> Ref<'_, Vec<u8>> {
         self.skip_term1.borrow()
     }
 }
 impl TermStrzUtf16V4 {
-    pub fn s2(&self) -> Ref<OptRc<TermStrzUtf16V4_S2Type>> {
+    pub fn s2(&self) -> Ref<'_, OptRc<TermStrzUtf16V4_S2Type>> {
         self.s2.borrow()
     }
 }
 impl TermStrzUtf16V4 {
-    pub fn skip_term2(&self) -> Ref<Vec<u8>> {
+    pub fn skip_term2(&self) -> Ref<'_, Vec<u8>> {
         self.skip_term2.borrow()
     }
 }
 impl TermStrzUtf16V4 {
-    pub fn s3(&self) -> Ref<OptRc<TermStrzUtf16V4_S3Type>> {
+    pub fn s3(&self) -> Ref<'_, OptRc<TermStrzUtf16V4_S3Type>> {
         self.s3.borrow()
     }
 }
 impl TermStrzUtf16V4 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl TermStrzUtf16V4 {
-    pub fn s1_raw(&self) -> Ref<Vec<u8>> {
+    pub fn s1_raw(&self) -> Ref<'_, Vec<u8>> {
         self.s1_raw.borrow()
     }
 }
 impl TermStrzUtf16V4 {
-    pub fn s2_raw(&self) -> Ref<Vec<u8>> {
+    pub fn s2_raw(&self) -> Ref<'_, Vec<u8>> {
         self.s2_raw.borrow()
     }
 }
 impl TermStrzUtf16V4 {
-    pub fn s3_raw(&self) -> Ref<Vec<u8>> {
+    pub fn s3_raw(&self) -> Ref<'_, Vec<u8>> {
         self.s3_raw.borrow()
     }
 }
@@ -144,12 +144,12 @@ impl KStruct for TermStrzUtf16V4_S1Type {
 impl TermStrzUtf16V4_S1Type {
 }
 impl TermStrzUtf16V4_S1Type {
-    pub fn value(&self) -> Ref<String> {
+    pub fn value(&self) -> Ref<'_, String> {
         self.value.borrow()
     }
 }
 impl TermStrzUtf16V4_S1Type {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -186,12 +186,12 @@ impl KStruct for TermStrzUtf16V4_S2Type {
 impl TermStrzUtf16V4_S2Type {
 }
 impl TermStrzUtf16V4_S2Type {
-    pub fn value(&self) -> Ref<String> {
+    pub fn value(&self) -> Ref<'_, String> {
         self.value.borrow()
     }
 }
 impl TermStrzUtf16V4_S2Type {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -228,12 +228,12 @@ impl KStruct for TermStrzUtf16V4_S3Type {
 impl TermStrzUtf16V4_S3Type {
 }
 impl TermStrzUtf16V4_S3Type {
-    pub fn value(&self) -> Ref<String> {
+    pub fn value(&self) -> Ref<'_, String> {
         self.value.borrow()
     }
 }
 impl TermStrzUtf16V4_S3Type {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

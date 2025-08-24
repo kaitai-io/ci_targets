@@ -49,17 +49,17 @@ impl KStruct for ParamsPassUsertype {
 impl ParamsPassUsertype {
 }
 impl ParamsPassUsertype {
-    pub fn first(&self) -> Ref<OptRc<ParamsPassUsertype_Block>> {
+    pub fn first(&self) -> Ref<'_, OptRc<ParamsPassUsertype_Block>> {
         self.first.borrow()
     }
 }
 impl ParamsPassUsertype {
-    pub fn one(&self) -> Ref<OptRc<ParamsPassUsertype_ParamType>> {
+    pub fn one(&self) -> Ref<'_, OptRc<ParamsPassUsertype_ParamType>> {
         self.one.borrow()
     }
 }
 impl ParamsPassUsertype {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -96,12 +96,12 @@ impl KStruct for ParamsPassUsertype_Block {
 impl ParamsPassUsertype_Block {
 }
 impl ParamsPassUsertype_Block {
-    pub fn foo(&self) -> Ref<u8> {
+    pub fn foo(&self) -> Ref<'_, u8> {
         self.foo.borrow()
     }
 }
 impl ParamsPassUsertype_Block {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -137,7 +137,7 @@ impl KStruct for ParamsPassUsertype_ParamType {
     }
 }
 impl ParamsPassUsertype_ParamType {
-    pub fn foo(&self) -> Ref<OptRc<ParamsPassUsertype_Block>> {
+    pub fn foo(&self) -> Ref<'_, OptRc<ParamsPassUsertype_Block>> {
         self.foo.borrow()
     }
 }
@@ -149,12 +149,12 @@ impl ParamsPassUsertype_ParamType {
 impl ParamsPassUsertype_ParamType {
 }
 impl ParamsPassUsertype_ParamType {
-    pub fn buf(&self) -> Ref<Vec<u8>> {
+    pub fn buf(&self) -> Ref<'_, Vec<u8>> {
         self.buf.borrow()
     }
 }
 impl ParamsPassUsertype_ParamType {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

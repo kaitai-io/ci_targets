@@ -58,7 +58,7 @@ impl KStruct for FloatingPoints {
 impl FloatingPoints {
     pub fn double_value_plus_float(
         &self
-    ) -> KResult<Ref<f64>> {
+    ) -> KResult<Ref<'_, f64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -72,7 +72,7 @@ impl FloatingPoints {
     }
     pub fn single_value_plus_float(
         &self
-    ) -> KResult<Ref<f64>> {
+    ) -> KResult<Ref<'_, f64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -86,7 +86,7 @@ impl FloatingPoints {
     }
     pub fn single_value_plus_int(
         &self
-    ) -> KResult<Ref<f64>> {
+    ) -> KResult<Ref<'_, f64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -100,32 +100,32 @@ impl FloatingPoints {
     }
 }
 impl FloatingPoints {
-    pub fn single_value(&self) -> Ref<f32> {
+    pub fn single_value(&self) -> Ref<'_, f32> {
         self.single_value.borrow()
     }
 }
 impl FloatingPoints {
-    pub fn double_value(&self) -> Ref<f64> {
+    pub fn double_value(&self) -> Ref<'_, f64> {
         self.double_value.borrow()
     }
 }
 impl FloatingPoints {
-    pub fn single_value_be(&self) -> Ref<f32> {
+    pub fn single_value_be(&self) -> Ref<'_, f32> {
         self.single_value_be.borrow()
     }
 }
 impl FloatingPoints {
-    pub fn double_value_be(&self) -> Ref<f64> {
+    pub fn double_value_be(&self) -> Ref<'_, f64> {
         self.double_value_be.borrow()
     }
 }
 impl FloatingPoints {
-    pub fn approximate_value(&self) -> Ref<f32> {
+    pub fn approximate_value(&self) -> Ref<'_, f32> {
         self.approximate_value.borrow()
     }
 }
 impl FloatingPoints {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

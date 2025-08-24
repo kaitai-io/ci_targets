@@ -54,12 +54,12 @@ impl KStruct for ValidFailRepeatMinInt {
 impl ValidFailRepeatMinInt {
 }
 impl ValidFailRepeatMinInt {
-    pub fn foo(&self) -> Ref<Vec<i8>> {
+    pub fn foo(&self) -> Ref<'_, Vec<i8>> {
         self.foo.borrow()
     }
 }
 impl ValidFailRepeatMinInt {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

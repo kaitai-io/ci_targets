@@ -53,22 +53,22 @@ impl KStruct for DebugEnumName {
 impl DebugEnumName {
 }
 impl DebugEnumName {
-    pub fn one(&self) -> Ref<DebugEnumName_TestEnum1> {
+    pub fn one(&self) -> Ref<'_, DebugEnumName_TestEnum1> {
         self.one.borrow()
     }
 }
 impl DebugEnumName {
-    pub fn array_of_ints(&self) -> Ref<Vec<DebugEnumName_TestEnum2>> {
+    pub fn array_of_ints(&self) -> Ref<'_, Vec<DebugEnumName_TestEnum2>> {
         self.array_of_ints.borrow()
     }
 }
 impl DebugEnumName {
-    pub fn test_type(&self) -> Ref<OptRc<DebugEnumName_TestSubtype>> {
+    pub fn test_type(&self) -> Ref<'_, OptRc<DebugEnumName_TestSubtype>> {
         self.test_type.borrow()
     }
 }
 impl DebugEnumName {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -167,7 +167,7 @@ impl KStruct for DebugEnumName_TestSubtype {
 impl DebugEnumName_TestSubtype {
     pub fn instance_field(
         &self
-    ) -> KResult<Ref<DebugEnumName_TestSubtype_InnerEnum2>> {
+    ) -> KResult<Ref<'_, DebugEnumName_TestSubtype_InnerEnum2>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -181,17 +181,17 @@ impl DebugEnumName_TestSubtype {
     }
 }
 impl DebugEnumName_TestSubtype {
-    pub fn field1(&self) -> Ref<DebugEnumName_TestSubtype_InnerEnum1> {
+    pub fn field1(&self) -> Ref<'_, DebugEnumName_TestSubtype_InnerEnum1> {
         self.field1.borrow()
     }
 }
 impl DebugEnumName_TestSubtype {
-    pub fn field2(&self) -> Ref<u8> {
+    pub fn field2(&self) -> Ref<'_, u8> {
         self.field2.borrow()
     }
 }
 impl DebugEnumName_TestSubtype {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

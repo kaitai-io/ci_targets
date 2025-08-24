@@ -48,17 +48,17 @@ impl KStruct for NavParent {
 impl NavParent {
 }
 impl NavParent {
-    pub fn header(&self) -> Ref<OptRc<NavParent_HeaderObj>> {
+    pub fn header(&self) -> Ref<'_, OptRc<NavParent_HeaderObj>> {
         self.header.borrow()
     }
 }
 impl NavParent {
-    pub fn index(&self) -> Ref<OptRc<NavParent_IndexObj>> {
+    pub fn index(&self) -> Ref<'_, OptRc<NavParent_IndexObj>> {
         self.index.borrow()
     }
 }
 impl NavParent {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -95,12 +95,12 @@ impl KStruct for NavParent_Entry {
 impl NavParent_Entry {
 }
 impl NavParent_Entry {
-    pub fn filename(&self) -> Ref<String> {
+    pub fn filename(&self) -> Ref<'_, String> {
         self.filename.borrow()
     }
 }
 impl NavParent_Entry {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -139,17 +139,17 @@ impl KStruct for NavParent_HeaderObj {
 impl NavParent_HeaderObj {
 }
 impl NavParent_HeaderObj {
-    pub fn qty_entries(&self) -> Ref<u32> {
+    pub fn qty_entries(&self) -> Ref<'_, u32> {
         self.qty_entries.borrow()
     }
 }
 impl NavParent_HeaderObj {
-    pub fn filename_len(&self) -> Ref<u32> {
+    pub fn filename_len(&self) -> Ref<'_, u32> {
         self.filename_len.borrow()
     }
 }
 impl NavParent_HeaderObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -193,17 +193,17 @@ impl KStruct for NavParent_IndexObj {
 impl NavParent_IndexObj {
 }
 impl NavParent_IndexObj {
-    pub fn magic(&self) -> Ref<Vec<u8>> {
+    pub fn magic(&self) -> Ref<'_, Vec<u8>> {
         self.magic.borrow()
     }
 }
 impl NavParent_IndexObj {
-    pub fn entries(&self) -> Ref<Vec<OptRc<NavParent_Entry>>> {
+    pub fn entries(&self) -> Ref<'_, Vec<OptRc<NavParent_Entry>>> {
         self.entries.borrow()
     }
 }
 impl NavParent_IndexObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

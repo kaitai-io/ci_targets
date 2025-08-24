@@ -46,12 +46,12 @@ impl KStruct for ParamsCallExtraParens {
 impl ParamsCallExtraParens {
 }
 impl ParamsCallExtraParens {
-    pub fn buf1(&self) -> Ref<OptRc<ParamsCallExtraParens_MyStr1>> {
+    pub fn buf1(&self) -> Ref<'_, OptRc<ParamsCallExtraParens_MyStr1>> {
         self.buf1.borrow()
     }
 }
 impl ParamsCallExtraParens {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -87,7 +87,7 @@ impl KStruct for ParamsCallExtraParens_MyStr1 {
     }
 }
 impl ParamsCallExtraParens_MyStr1 {
-    pub fn len(&self) -> Ref<u32> {
+    pub fn len(&self) -> Ref<'_, u32> {
         self.len.borrow()
     }
 }
@@ -99,12 +99,12 @@ impl ParamsCallExtraParens_MyStr1 {
 impl ParamsCallExtraParens_MyStr1 {
 }
 impl ParamsCallExtraParens_MyStr1 {
-    pub fn body(&self) -> Ref<String> {
+    pub fn body(&self) -> Ref<'_, String> {
         self.body.borrow()
     }
 }
 impl ParamsCallExtraParens_MyStr1 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

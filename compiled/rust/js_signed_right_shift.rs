@@ -46,7 +46,7 @@ impl KStruct for JsSignedRightShift {
 impl JsSignedRightShift {
     pub fn should_be_40000000(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -60,7 +60,7 @@ impl JsSignedRightShift {
     }
     pub fn should_be_a00000(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -74,7 +74,7 @@ impl JsSignedRightShift {
     }
 }
 impl JsSignedRightShift {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

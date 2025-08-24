@@ -66,7 +66,7 @@ impl KStruct for StrEncodingsEscapingToS {
 impl StrEncodingsEscapingToS {
     pub fn str1(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -80,7 +80,7 @@ impl StrEncodingsEscapingToS {
     }
     pub fn str2(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -94,7 +94,7 @@ impl StrEncodingsEscapingToS {
     }
     pub fn str3(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -108,7 +108,7 @@ impl StrEncodingsEscapingToS {
     }
     pub fn str4(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -122,47 +122,47 @@ impl StrEncodingsEscapingToS {
     }
 }
 impl StrEncodingsEscapingToS {
-    pub fn len_of_1(&self) -> Ref<u16> {
+    pub fn len_of_1(&self) -> Ref<'_, u16> {
         self.len_of_1.borrow()
     }
 }
 impl StrEncodingsEscapingToS {
-    pub fn str1_raw(&self) -> Ref<Vec<u8>> {
+    pub fn str1_raw(&self) -> Ref<'_, Vec<u8>> {
         self.str1_raw.borrow()
     }
 }
 impl StrEncodingsEscapingToS {
-    pub fn len_of_2(&self) -> Ref<u16> {
+    pub fn len_of_2(&self) -> Ref<'_, u16> {
         self.len_of_2.borrow()
     }
 }
 impl StrEncodingsEscapingToS {
-    pub fn str2_raw(&self) -> Ref<Vec<u8>> {
+    pub fn str2_raw(&self) -> Ref<'_, Vec<u8>> {
         self.str2_raw.borrow()
     }
 }
 impl StrEncodingsEscapingToS {
-    pub fn len_of_3(&self) -> Ref<u16> {
+    pub fn len_of_3(&self) -> Ref<'_, u16> {
         self.len_of_3.borrow()
     }
 }
 impl StrEncodingsEscapingToS {
-    pub fn str3_raw(&self) -> Ref<Vec<u8>> {
+    pub fn str3_raw(&self) -> Ref<'_, Vec<u8>> {
         self.str3_raw.borrow()
     }
 }
 impl StrEncodingsEscapingToS {
-    pub fn len_of_4(&self) -> Ref<u16> {
+    pub fn len_of_4(&self) -> Ref<'_, u16> {
         self.len_of_4.borrow()
     }
 }
 impl StrEncodingsEscapingToS {
-    pub fn str4_raw(&self) -> Ref<Vec<u8>> {
+    pub fn str4_raw(&self) -> Ref<'_, Vec<u8>> {
         self.str4_raw.borrow()
     }
 }
 impl StrEncodingsEscapingToS {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

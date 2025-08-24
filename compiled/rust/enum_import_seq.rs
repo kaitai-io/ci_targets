@@ -48,17 +48,17 @@ impl KStruct for EnumImportSeq {
 impl EnumImportSeq {
 }
 impl EnumImportSeq {
-    pub fn pet_1(&self) -> Ref<Enum0_Animal> {
+    pub fn pet_1(&self) -> Ref<'_, Enum0_Animal> {
         self.pet_1.borrow()
     }
 }
 impl EnumImportSeq {
-    pub fn pet_2(&self) -> Ref<EnumDeep_Container1_Container2_Animal> {
+    pub fn pet_2(&self) -> Ref<'_, EnumDeep_Container1_Container2_Animal> {
         self.pet_2.borrow()
     }
 }
 impl EnumImportSeq {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -52,12 +52,12 @@ impl KStruct for DefaultEndianExprIsBe {
 impl DefaultEndianExprIsBe {
 }
 impl DefaultEndianExprIsBe {
-    pub fn docs(&self) -> Ref<Vec<OptRc<DefaultEndianExprIsBe_Doc>>> {
+    pub fn docs(&self) -> Ref<'_, Vec<OptRc<DefaultEndianExprIsBe_Doc>>> {
         self.docs.borrow()
     }
 }
 impl DefaultEndianExprIsBe {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -97,17 +97,17 @@ impl KStruct for DefaultEndianExprIsBe_Doc {
 impl DefaultEndianExprIsBe_Doc {
 }
 impl DefaultEndianExprIsBe_Doc {
-    pub fn indicator(&self) -> Ref<Vec<u8>> {
+    pub fn indicator(&self) -> Ref<'_, Vec<u8>> {
         self.indicator.borrow()
     }
 }
 impl DefaultEndianExprIsBe_Doc {
-    pub fn main(&self) -> Ref<OptRc<DefaultEndianExprIsBe_Doc_MainObj>> {
+    pub fn main(&self) -> Ref<'_, OptRc<DefaultEndianExprIsBe_Doc_MainObj>> {
         self.main.borrow()
     }
 }
 impl DefaultEndianExprIsBe_Doc {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -170,7 +170,7 @@ impl DefaultEndianExprIsBe_Doc_MainObj {
 impl DefaultEndianExprIsBe_Doc_MainObj {
     pub fn inst_int(
         &self
-    ) -> KResult<Ref<u32>> {
+    ) -> KResult<Ref<'_, u32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -187,7 +187,7 @@ impl DefaultEndianExprIsBe_Doc_MainObj {
     }
     pub fn inst_sub(
         &self
-    ) -> KResult<Ref<OptRc<DefaultEndianExprIsBe_Doc_MainObj_SubMainObj>>> {
+    ) -> KResult<Ref<'_, OptRc<DefaultEndianExprIsBe_Doc_MainObj_SubMainObj>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -205,22 +205,22 @@ impl DefaultEndianExprIsBe_Doc_MainObj {
     }
 }
 impl DefaultEndianExprIsBe_Doc_MainObj {
-    pub fn some_int(&self) -> Ref<u32> {
+    pub fn some_int(&self) -> Ref<'_, u32> {
         self.some_int.borrow()
     }
 }
 impl DefaultEndianExprIsBe_Doc_MainObj {
-    pub fn some_int_be(&self) -> Ref<u16> {
+    pub fn some_int_be(&self) -> Ref<'_, u16> {
         self.some_int_be.borrow()
     }
 }
 impl DefaultEndianExprIsBe_Doc_MainObj {
-    pub fn some_int_le(&self) -> Ref<u16> {
+    pub fn some_int_le(&self) -> Ref<'_, u16> {
         self.some_int_le.borrow()
     }
 }
 impl DefaultEndianExprIsBe_Doc_MainObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -263,12 +263,12 @@ impl DefaultEndianExprIsBe_Doc_MainObj_SubMainObj {
 impl DefaultEndianExprIsBe_Doc_MainObj_SubMainObj {
 }
 impl DefaultEndianExprIsBe_Doc_MainObj_SubMainObj {
-    pub fn foo(&self) -> Ref<u32> {
+    pub fn foo(&self) -> Ref<'_, u32> {
         self.foo.borrow()
     }
 }
 impl DefaultEndianExprIsBe_Doc_MainObj_SubMainObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

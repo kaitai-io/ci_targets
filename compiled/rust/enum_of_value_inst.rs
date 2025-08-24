@@ -50,7 +50,7 @@ impl KStruct for EnumOfValueInst {
 impl EnumOfValueInst {
     pub fn pet_3(
         &self
-    ) -> KResult<Ref<EnumOfValueInst_Animal>> {
+    ) -> KResult<Ref<'_, EnumOfValueInst_Animal>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -64,7 +64,7 @@ impl EnumOfValueInst {
     }
     pub fn pet_4(
         &self
-    ) -> KResult<Ref<EnumOfValueInst_Animal>> {
+    ) -> KResult<Ref<'_, EnumOfValueInst_Animal>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -78,17 +78,17 @@ impl EnumOfValueInst {
     }
 }
 impl EnumOfValueInst {
-    pub fn pet_1(&self) -> Ref<EnumOfValueInst_Animal> {
+    pub fn pet_1(&self) -> Ref<'_, EnumOfValueInst_Animal> {
         self.pet_1.borrow()
     }
 }
 impl EnumOfValueInst {
-    pub fn pet_2(&self) -> Ref<EnumOfValueInst_Animal> {
+    pub fn pet_2(&self) -> Ref<'_, EnumOfValueInst_Animal> {
         self.pet_2.borrow()
     }
 }
 impl EnumOfValueInst {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

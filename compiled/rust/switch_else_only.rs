@@ -66,7 +66,7 @@ impl From<OptRc<SwitchElseOnly_Data>> for SwitchElseOnly_Ut {
     }
 }
 impl SwitchElseOnly_Ut {
-    pub fn value(&self) -> Ref<Vec<u8>> {
+    pub fn value(&self) -> Ref<'_, Vec<u8>> {
         match self {
             SwitchElseOnly_Ut::SwitchElseOnly_Data(x) => x.value.borrow(),
         }
@@ -100,7 +100,7 @@ impl KStruct for SwitchElseOnly {
 impl SwitchElseOnly {
 }
 impl SwitchElseOnly {
-    pub fn opcode(&self) -> Ref<i8> {
+    pub fn opcode(&self) -> Ref<'_, i8> {
         self.opcode.borrow()
     }
 }
@@ -108,22 +108,22 @@ impl SwitchElseOnly {
     pub fn prim_byte(&self) -> usize {
         self.prim_byte.borrow().as_ref().unwrap().into()
     }
-    pub fn prim_byte_enum(&self) -> Ref<Option<SwitchElseOnly_PrimByte>> {
+    pub fn prim_byte_enum(&self) -> Ref<'_, Option<SwitchElseOnly_PrimByte>> {
         self.prim_byte.borrow()
     }
 }
 impl SwitchElseOnly {
-    pub fn indicator(&self) -> Ref<Vec<u8>> {
+    pub fn indicator(&self) -> Ref<'_, Vec<u8>> {
         self.indicator.borrow()
     }
 }
 impl SwitchElseOnly {
-    pub fn ut(&self) -> Ref<Option<SwitchElseOnly_Ut>> {
+    pub fn ut(&self) -> Ref<'_, Option<SwitchElseOnly_Ut>> {
         self.ut.borrow()
     }
 }
 impl SwitchElseOnly {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -160,12 +160,12 @@ impl KStruct for SwitchElseOnly_Data {
 impl SwitchElseOnly_Data {
 }
 impl SwitchElseOnly_Data {
-    pub fn value(&self) -> Ref<Vec<u8>> {
+    pub fn value(&self) -> Ref<'_, Vec<u8>> {
         self.value.borrow()
     }
 }
 impl SwitchElseOnly_Data {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

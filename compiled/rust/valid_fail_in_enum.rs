@@ -44,12 +44,12 @@ impl KStruct for ValidFailInEnum {
 impl ValidFailInEnum {
 }
 impl ValidFailInEnum {
-    pub fn foo(&self) -> Ref<ValidFailInEnum_Animal> {
+    pub fn foo(&self) -> Ref<'_, ValidFailInEnum_Animal> {
         self.foo.borrow()
     }
 }
 impl ValidFailInEnum {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

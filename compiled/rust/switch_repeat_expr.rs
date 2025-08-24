@@ -117,27 +117,27 @@ impl KStruct for SwitchRepeatExpr {
 impl SwitchRepeatExpr {
 }
 impl SwitchRepeatExpr {
-    pub fn code(&self) -> Ref<u8> {
+    pub fn code(&self) -> Ref<'_, u8> {
         self.code.borrow()
     }
 }
 impl SwitchRepeatExpr {
-    pub fn size(&self) -> Ref<u32> {
+    pub fn size(&self) -> Ref<'_, u32> {
         self.size.borrow()
     }
 }
 impl SwitchRepeatExpr {
-    pub fn body(&self) -> Ref<Vec<SwitchRepeatExpr_Body>> {
+    pub fn body(&self) -> Ref<'_, Vec<SwitchRepeatExpr_Body>> {
         self.body.borrow()
     }
 }
 impl SwitchRepeatExpr {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl SwitchRepeatExpr {
-    pub fn body_raw(&self) -> Ref<Vec<Vec<u8>>> {
+    pub fn body_raw(&self) -> Ref<'_, Vec<Vec<u8>>> {
         self.body_raw.borrow()
     }
 }
@@ -174,12 +174,12 @@ impl KStruct for SwitchRepeatExpr_One {
 impl SwitchRepeatExpr_One {
 }
 impl SwitchRepeatExpr_One {
-    pub fn first(&self) -> Ref<Vec<u8>> {
+    pub fn first(&self) -> Ref<'_, Vec<u8>> {
         self.first.borrow()
     }
 }
 impl SwitchRepeatExpr_One {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -216,12 +216,12 @@ impl KStruct for SwitchRepeatExpr_Two {
 impl SwitchRepeatExpr_Two {
 }
 impl SwitchRepeatExpr_Two {
-    pub fn second(&self) -> Ref<Vec<u8>> {
+    pub fn second(&self) -> Ref<'_, Vec<u8>> {
         self.second.borrow()
     }
 }
 impl SwitchRepeatExpr_Two {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

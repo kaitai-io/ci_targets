@@ -84,7 +84,7 @@ impl KStruct for ExprCalcArrayOps {
 impl ExprCalcArrayOps {
     pub fn double_array(
         &self
-    ) -> KResult<Ref<Vec<f64>>> {
+    ) -> KResult<Ref<'_, Vec<f64>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -98,7 +98,7 @@ impl ExprCalcArrayOps {
     }
     pub fn double_array_first(
         &self
-    ) -> KResult<Ref<f64>> {
+    ) -> KResult<Ref<'_, f64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -112,7 +112,7 @@ impl ExprCalcArrayOps {
     }
     pub fn double_array_last(
         &self
-    ) -> KResult<Ref<f64>> {
+    ) -> KResult<Ref<'_, f64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -126,7 +126,7 @@ impl ExprCalcArrayOps {
     }
     pub fn double_array_max(
         &self
-    ) -> KResult<Ref<f64>> {
+    ) -> KResult<Ref<'_, f64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -140,7 +140,7 @@ impl ExprCalcArrayOps {
     }
     pub fn double_array_mid(
         &self
-    ) -> KResult<Ref<f64>> {
+    ) -> KResult<Ref<'_, f64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -154,7 +154,7 @@ impl ExprCalcArrayOps {
     }
     pub fn double_array_min(
         &self
-    ) -> KResult<Ref<f64>> {
+    ) -> KResult<Ref<'_, f64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -168,7 +168,7 @@ impl ExprCalcArrayOps {
     }
     pub fn double_array_size(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -182,7 +182,7 @@ impl ExprCalcArrayOps {
     }
     pub fn int_array(
         &self
-    ) -> KResult<Ref<Vec<i32>>> {
+    ) -> KResult<Ref<'_, Vec<i32>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -196,7 +196,7 @@ impl ExprCalcArrayOps {
     }
     pub fn int_array_first(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -210,7 +210,7 @@ impl ExprCalcArrayOps {
     }
     pub fn int_array_last(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -224,7 +224,7 @@ impl ExprCalcArrayOps {
     }
     pub fn int_array_max(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -238,7 +238,7 @@ impl ExprCalcArrayOps {
     }
     pub fn int_array_mid(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -252,7 +252,7 @@ impl ExprCalcArrayOps {
     }
     pub fn int_array_min(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -266,7 +266,7 @@ impl ExprCalcArrayOps {
     }
     pub fn int_array_size(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -280,7 +280,7 @@ impl ExprCalcArrayOps {
     }
     pub fn str_array(
         &self
-    ) -> KResult<Ref<Vec<String>>> {
+    ) -> KResult<Ref<'_, Vec<String>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -294,7 +294,7 @@ impl ExprCalcArrayOps {
     }
     pub fn str_array_first(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -308,7 +308,7 @@ impl ExprCalcArrayOps {
     }
     pub fn str_array_last(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -322,7 +322,7 @@ impl ExprCalcArrayOps {
     }
     pub fn str_array_max(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -336,7 +336,7 @@ impl ExprCalcArrayOps {
     }
     pub fn str_array_mid(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -350,7 +350,7 @@ impl ExprCalcArrayOps {
     }
     pub fn str_array_min(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -364,7 +364,7 @@ impl ExprCalcArrayOps {
     }
     pub fn str_array_size(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -378,7 +378,7 @@ impl ExprCalcArrayOps {
     }
 }
 impl ExprCalcArrayOps {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

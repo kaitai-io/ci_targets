@@ -50,7 +50,7 @@ impl KStruct for TypeIntUnaryOp {
 impl TypeIntUnaryOp {
     pub fn unary_s2(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -64,7 +64,7 @@ impl TypeIntUnaryOp {
     }
     pub fn unary_s8(
         &self
-    ) -> KResult<Ref<i64>> {
+    ) -> KResult<Ref<'_, i64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -78,17 +78,17 @@ impl TypeIntUnaryOp {
     }
 }
 impl TypeIntUnaryOp {
-    pub fn value_s2(&self) -> Ref<i16> {
+    pub fn value_s2(&self) -> Ref<'_, i16> {
         self.value_s2.borrow()
     }
 }
 impl TypeIntUnaryOp {
-    pub fn value_s8(&self) -> Ref<i64> {
+    pub fn value_s8(&self) -> Ref<'_, i64> {
         self.value_s8.borrow()
     }
 }
 impl TypeIntUnaryOp {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -58,22 +58,22 @@ impl KStruct for ValidOptionalId {
 impl ValidOptionalId {
 }
 impl ValidOptionalId {
-    pub fn unnamed0(&self) -> Ref<Vec<u8>> {
+    pub fn unnamed0(&self) -> Ref<'_, Vec<u8>> {
         self.unnamed0.borrow()
     }
 }
 impl ValidOptionalId {
-    pub fn unnamed1(&self) -> Ref<u8> {
+    pub fn unnamed1(&self) -> Ref<'_, u8> {
         self.unnamed1.borrow()
     }
 }
 impl ValidOptionalId {
-    pub fn unnamed2(&self) -> Ref<i8> {
+    pub fn unnamed2(&self) -> Ref<'_, i8> {
         self.unnamed2.borrow()
     }
 }
 impl ValidOptionalId {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

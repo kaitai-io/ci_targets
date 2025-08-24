@@ -49,12 +49,12 @@ impl KStruct for ProcessCoerceBytes {
 impl ProcessCoerceBytes {
 }
 impl ProcessCoerceBytes {
-    pub fn records(&self) -> Ref<Vec<OptRc<ProcessCoerceBytes_Record>>> {
+    pub fn records(&self) -> Ref<'_, Vec<OptRc<ProcessCoerceBytes_Record>>> {
         self.records.borrow()
     }
 }
 impl ProcessCoerceBytes {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -103,7 +103,7 @@ impl KStruct for ProcessCoerceBytes_Record {
 impl ProcessCoerceBytes_Record {
     pub fn buf(
         &self
-    ) -> KResult<Ref<Vec<u8>>> {
+    ) -> KResult<Ref<'_, Vec<u8>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -117,27 +117,27 @@ impl ProcessCoerceBytes_Record {
     }
 }
 impl ProcessCoerceBytes_Record {
-    pub fn flag(&self) -> Ref<u8> {
+    pub fn flag(&self) -> Ref<'_, u8> {
         self.flag.borrow()
     }
 }
 impl ProcessCoerceBytes_Record {
-    pub fn buf_unproc(&self) -> Ref<Vec<u8>> {
+    pub fn buf_unproc(&self) -> Ref<'_, Vec<u8>> {
         self.buf_unproc.borrow()
     }
 }
 impl ProcessCoerceBytes_Record {
-    pub fn buf_proc(&self) -> Ref<Vec<u8>> {
+    pub fn buf_proc(&self) -> Ref<'_, Vec<u8>> {
         self.buf_proc.borrow()
     }
 }
 impl ProcessCoerceBytes_Record {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl ProcessCoerceBytes_Record {
-    pub fn buf_proc_raw(&self) -> Ref<Vec<u8>> {
+    pub fn buf_proc_raw(&self) -> Ref<'_, Vec<u8>> {
         self.buf_proc_raw.borrow()
     }
 }

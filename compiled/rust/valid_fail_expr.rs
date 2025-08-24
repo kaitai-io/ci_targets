@@ -54,17 +54,17 @@ impl KStruct for ValidFailExpr {
 impl ValidFailExpr {
 }
 impl ValidFailExpr {
-    pub fn foo(&self) -> Ref<u8> {
+    pub fn foo(&self) -> Ref<'_, u8> {
         self.foo.borrow()
     }
 }
 impl ValidFailExpr {
-    pub fn bar(&self) -> Ref<i16> {
+    pub fn bar(&self) -> Ref<'_, i16> {
         self.bar.borrow()
     }
 }
 impl ValidFailExpr {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

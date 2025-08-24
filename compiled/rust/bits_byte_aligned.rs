@@ -64,52 +64,52 @@ impl KStruct for BitsByteAligned {
 impl BitsByteAligned {
 }
 impl BitsByteAligned {
-    pub fn one(&self) -> Ref<u64> {
+    pub fn one(&self) -> Ref<'_, u64> {
         self.one.borrow()
     }
 }
 impl BitsByteAligned {
-    pub fn byte_1(&self) -> Ref<u8> {
+    pub fn byte_1(&self) -> Ref<'_, u8> {
         self.byte_1.borrow()
     }
 }
 impl BitsByteAligned {
-    pub fn two(&self) -> Ref<u64> {
+    pub fn two(&self) -> Ref<'_, u64> {
         self.two.borrow()
     }
 }
 impl BitsByteAligned {
-    pub fn three(&self) -> Ref<bool> {
+    pub fn three(&self) -> Ref<'_, bool> {
         self.three.borrow()
     }
 }
 impl BitsByteAligned {
-    pub fn byte_2(&self) -> Ref<u8> {
+    pub fn byte_2(&self) -> Ref<'_, u8> {
         self.byte_2.borrow()
     }
 }
 impl BitsByteAligned {
-    pub fn four(&self) -> Ref<u64> {
+    pub fn four(&self) -> Ref<'_, u64> {
         self.four.borrow()
     }
 }
 impl BitsByteAligned {
-    pub fn byte_3(&self) -> Ref<Vec<u8>> {
+    pub fn byte_3(&self) -> Ref<'_, Vec<u8>> {
         self.byte_3.borrow()
     }
 }
 impl BitsByteAligned {
-    pub fn full_byte(&self) -> Ref<u64> {
+    pub fn full_byte(&self) -> Ref<'_, u64> {
         self.full_byte.borrow()
     }
 }
 impl BitsByteAligned {
-    pub fn byte_4(&self) -> Ref<u8> {
+    pub fn byte_4(&self) -> Ref<'_, u8> {
         self.byte_4.borrow()
     }
 }
 impl BitsByteAligned {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

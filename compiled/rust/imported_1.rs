@@ -48,17 +48,17 @@ impl KStruct for Imported1 {
 impl Imported1 {
 }
 impl Imported1 {
-    pub fn one(&self) -> Ref<u8> {
+    pub fn one(&self) -> Ref<'_, u8> {
         self.one.borrow()
     }
 }
 impl Imported1 {
-    pub fn two(&self) -> Ref<OptRc<Imported2>> {
+    pub fn two(&self) -> Ref<'_, OptRc<Imported2>> {
         self.two.borrow()
     }
 }
 impl Imported1 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

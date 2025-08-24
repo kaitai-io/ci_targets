@@ -48,22 +48,22 @@ impl KStruct for ProcessXorValue {
 impl ProcessXorValue {
 }
 impl ProcessXorValue {
-    pub fn key(&self) -> Ref<u8> {
+    pub fn key(&self) -> Ref<'_, u8> {
         self.key.borrow()
     }
 }
 impl ProcessXorValue {
-    pub fn buf(&self) -> Ref<Vec<u8>> {
+    pub fn buf(&self) -> Ref<'_, Vec<u8>> {
         self.buf.borrow()
     }
 }
 impl ProcessXorValue {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl ProcessXorValue {
-    pub fn buf_raw(&self) -> Ref<Vec<u8>> {
+    pub fn buf_raw(&self) -> Ref<'_, Vec<u8>> {
         self.buf_raw.borrow()
     }
 }

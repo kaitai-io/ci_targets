@@ -47,12 +47,12 @@ impl KStruct for ValidFailMinInt {
 impl ValidFailMinInt {
 }
 impl ValidFailMinInt {
-    pub fn foo(&self) -> Ref<u8> {
+    pub fn foo(&self) -> Ref<'_, u8> {
         self.foo.borrow()
     }
 }
 impl ValidFailMinInt {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

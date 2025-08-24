@@ -44,12 +44,12 @@ impl KStruct for BitsSignedResB32Be {
 impl BitsSignedResB32Be {
 }
 impl BitsSignedResB32Be {
-    pub fn a(&self) -> Ref<u64> {
+    pub fn a(&self) -> Ref<'_, u64> {
         self.a.borrow()
     }
 }
 impl BitsSignedResB32Be {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -56,7 +56,7 @@ impl Docstrings {
      */
     pub fn three(
         &self
-    ) -> KResult<Ref<i8>> {
+    ) -> KResult<Ref<'_, i8>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -74,7 +74,7 @@ impl Docstrings {
      */
     pub fn two(
         &self
-    ) -> KResult<Ref<u8>> {
+    ) -> KResult<Ref<'_, u8>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -95,12 +95,12 @@ impl Docstrings {
  * A pretty verbose description for sequence attribute "one"
  */
 impl Docstrings {
-    pub fn one(&self) -> Ref<u8> {
+    pub fn one(&self) -> Ref<'_, u8> {
         self.one.borrow()
     }
 }
 impl Docstrings {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -151,7 +151,7 @@ impl KStruct for Docstrings_ComplexSubtype {
 impl Docstrings_ComplexSubtype {
 }
 impl Docstrings_ComplexSubtype {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -71,7 +71,7 @@ impl KStruct for BitsSimple {
 impl BitsSimple {
     pub fn test_if_b1(
         &self
-    ) -> KResult<Ref<i8>> {
+    ) -> KResult<Ref<'_, i8>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -87,72 +87,72 @@ impl BitsSimple {
     }
 }
 impl BitsSimple {
-    pub fn byte_1(&self) -> Ref<u64> {
+    pub fn byte_1(&self) -> Ref<'_, u64> {
         self.byte_1.borrow()
     }
 }
 impl BitsSimple {
-    pub fn byte_2(&self) -> Ref<u64> {
+    pub fn byte_2(&self) -> Ref<'_, u64> {
         self.byte_2.borrow()
     }
 }
 impl BitsSimple {
-    pub fn bits_a(&self) -> Ref<bool> {
+    pub fn bits_a(&self) -> Ref<'_, bool> {
         self.bits_a.borrow()
     }
 }
 impl BitsSimple {
-    pub fn bits_b(&self) -> Ref<u64> {
+    pub fn bits_b(&self) -> Ref<'_, u64> {
         self.bits_b.borrow()
     }
 }
 impl BitsSimple {
-    pub fn bits_c(&self) -> Ref<u64> {
+    pub fn bits_c(&self) -> Ref<'_, u64> {
         self.bits_c.borrow()
     }
 }
 impl BitsSimple {
-    pub fn large_bits_1(&self) -> Ref<u64> {
+    pub fn large_bits_1(&self) -> Ref<'_, u64> {
         self.large_bits_1.borrow()
     }
 }
 impl BitsSimple {
-    pub fn spacer(&self) -> Ref<u64> {
+    pub fn spacer(&self) -> Ref<'_, u64> {
         self.spacer.borrow()
     }
 }
 impl BitsSimple {
-    pub fn large_bits_2(&self) -> Ref<u64> {
+    pub fn large_bits_2(&self) -> Ref<'_, u64> {
         self.large_bits_2.borrow()
     }
 }
 impl BitsSimple {
-    pub fn normal_s2(&self) -> Ref<i16> {
+    pub fn normal_s2(&self) -> Ref<'_, i16> {
         self.normal_s2.borrow()
     }
 }
 impl BitsSimple {
-    pub fn byte_8_9_10(&self) -> Ref<u64> {
+    pub fn byte_8_9_10(&self) -> Ref<'_, u64> {
         self.byte_8_9_10.borrow()
     }
 }
 impl BitsSimple {
-    pub fn byte_11_to_14(&self) -> Ref<u64> {
+    pub fn byte_11_to_14(&self) -> Ref<'_, u64> {
         self.byte_11_to_14.borrow()
     }
 }
 impl BitsSimple {
-    pub fn byte_15_to_19(&self) -> Ref<u64> {
+    pub fn byte_15_to_19(&self) -> Ref<'_, u64> {
         self.byte_15_to_19.borrow()
     }
 }
 impl BitsSimple {
-    pub fn byte_20_to_27(&self) -> Ref<u64> {
+    pub fn byte_20_to_27(&self) -> Ref<'_, u64> {
         self.byte_20_to_27.borrow()
     }
 }
 impl BitsSimple {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

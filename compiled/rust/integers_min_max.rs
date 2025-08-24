@@ -54,27 +54,27 @@ impl KStruct for IntegersMinMax {
 impl IntegersMinMax {
 }
 impl IntegersMinMax {
-    pub fn unsigned_min(&self) -> Ref<OptRc<IntegersMinMax_Unsigned>> {
+    pub fn unsigned_min(&self) -> Ref<'_, OptRc<IntegersMinMax_Unsigned>> {
         self.unsigned_min.borrow()
     }
 }
 impl IntegersMinMax {
-    pub fn unsigned_max(&self) -> Ref<OptRc<IntegersMinMax_Unsigned>> {
+    pub fn unsigned_max(&self) -> Ref<'_, OptRc<IntegersMinMax_Unsigned>> {
         self.unsigned_max.borrow()
     }
 }
 impl IntegersMinMax {
-    pub fn signed_min(&self) -> Ref<OptRc<IntegersMinMax_Signed>> {
+    pub fn signed_min(&self) -> Ref<'_, OptRc<IntegersMinMax_Signed>> {
         self.signed_min.borrow()
     }
 }
 impl IntegersMinMax {
-    pub fn signed_max(&self) -> Ref<OptRc<IntegersMinMax_Signed>> {
+    pub fn signed_max(&self) -> Ref<'_, OptRc<IntegersMinMax_Signed>> {
         self.signed_max.borrow()
     }
 }
 impl IntegersMinMax {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -123,42 +123,42 @@ impl KStruct for IntegersMinMax_Signed {
 impl IntegersMinMax_Signed {
 }
 impl IntegersMinMax_Signed {
-    pub fn s1(&self) -> Ref<i8> {
+    pub fn s1(&self) -> Ref<'_, i8> {
         self.s1.borrow()
     }
 }
 impl IntegersMinMax_Signed {
-    pub fn s2le(&self) -> Ref<i16> {
+    pub fn s2le(&self) -> Ref<'_, i16> {
         self.s2le.borrow()
     }
 }
 impl IntegersMinMax_Signed {
-    pub fn s4le(&self) -> Ref<i32> {
+    pub fn s4le(&self) -> Ref<'_, i32> {
         self.s4le.borrow()
     }
 }
 impl IntegersMinMax_Signed {
-    pub fn s8le(&self) -> Ref<i64> {
+    pub fn s8le(&self) -> Ref<'_, i64> {
         self.s8le.borrow()
     }
 }
 impl IntegersMinMax_Signed {
-    pub fn s2be(&self) -> Ref<i16> {
+    pub fn s2be(&self) -> Ref<'_, i16> {
         self.s2be.borrow()
     }
 }
 impl IntegersMinMax_Signed {
-    pub fn s4be(&self) -> Ref<i32> {
+    pub fn s4be(&self) -> Ref<'_, i32> {
         self.s4be.borrow()
     }
 }
 impl IntegersMinMax_Signed {
-    pub fn s8be(&self) -> Ref<i64> {
+    pub fn s8be(&self) -> Ref<'_, i64> {
         self.s8be.borrow()
     }
 }
 impl IntegersMinMax_Signed {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -207,42 +207,42 @@ impl KStruct for IntegersMinMax_Unsigned {
 impl IntegersMinMax_Unsigned {
 }
 impl IntegersMinMax_Unsigned {
-    pub fn u1(&self) -> Ref<u8> {
+    pub fn u1(&self) -> Ref<'_, u8> {
         self.u1.borrow()
     }
 }
 impl IntegersMinMax_Unsigned {
-    pub fn u2le(&self) -> Ref<u16> {
+    pub fn u2le(&self) -> Ref<'_, u16> {
         self.u2le.borrow()
     }
 }
 impl IntegersMinMax_Unsigned {
-    pub fn u4le(&self) -> Ref<u32> {
+    pub fn u4le(&self) -> Ref<'_, u32> {
         self.u4le.borrow()
     }
 }
 impl IntegersMinMax_Unsigned {
-    pub fn u8le(&self) -> Ref<u64> {
+    pub fn u8le(&self) -> Ref<'_, u64> {
         self.u8le.borrow()
     }
 }
 impl IntegersMinMax_Unsigned {
-    pub fn u2be(&self) -> Ref<u16> {
+    pub fn u2be(&self) -> Ref<'_, u16> {
         self.u2be.borrow()
     }
 }
 impl IntegersMinMax_Unsigned {
-    pub fn u4be(&self) -> Ref<u32> {
+    pub fn u4be(&self) -> Ref<'_, u32> {
         self.u4be.borrow()
     }
 }
 impl IntegersMinMax_Unsigned {
-    pub fn u8be(&self) -> Ref<u64> {
+    pub fn u8be(&self) -> Ref<'_, u64> {
         self.u8be.borrow()
     }
 }
 impl IntegersMinMax_Unsigned {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

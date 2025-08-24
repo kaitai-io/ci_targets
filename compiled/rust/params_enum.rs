@@ -48,17 +48,17 @@ impl KStruct for ParamsEnum {
 impl ParamsEnum {
 }
 impl ParamsEnum {
-    pub fn one(&self) -> Ref<ParamsEnum_Animal> {
+    pub fn one(&self) -> Ref<'_, ParamsEnum_Animal> {
         self.one.borrow()
     }
 }
 impl ParamsEnum {
-    pub fn invoke_with_param(&self) -> Ref<OptRc<ParamsEnum_WithParam>> {
+    pub fn invoke_with_param(&self) -> Ref<'_, OptRc<ParamsEnum_WithParam>> {
         self.invoke_with_param.borrow()
     }
 }
 impl ParamsEnum {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -129,7 +129,7 @@ impl KStruct for ParamsEnum_WithParam {
     }
 }
 impl ParamsEnum_WithParam {
-    pub fn enumerated_one(&self) -> Ref<ParamsEnum_Animal> {
+    pub fn enumerated_one(&self) -> Ref<'_, ParamsEnum_Animal> {
         self.enumerated_one.borrow()
     }
 }
@@ -141,7 +141,7 @@ impl ParamsEnum_WithParam {
 impl ParamsEnum_WithParam {
     pub fn is_cat(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -155,7 +155,7 @@ impl ParamsEnum_WithParam {
     }
 }
 impl ParamsEnum_WithParam {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

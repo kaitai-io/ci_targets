@@ -44,7 +44,7 @@ impl KStruct for PositionToEnd {
 impl PositionToEnd {
     pub fn index(
         &self
-    ) -> KResult<Ref<OptRc<PositionToEnd_IndexObj>>> {
+    ) -> KResult<Ref<'_, OptRc<PositionToEnd_IndexObj>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -61,7 +61,7 @@ impl PositionToEnd {
     }
 }
 impl PositionToEnd {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -100,17 +100,17 @@ impl KStruct for PositionToEnd_IndexObj {
 impl PositionToEnd_IndexObj {
 }
 impl PositionToEnd_IndexObj {
-    pub fn foo(&self) -> Ref<u32> {
+    pub fn foo(&self) -> Ref<'_, u32> {
         self.foo.borrow()
     }
 }
 impl PositionToEnd_IndexObj {
-    pub fn bar(&self) -> Ref<u32> {
+    pub fn bar(&self) -> Ref<'_, u32> {
         self.bar.borrow()
     }
 }
 impl PositionToEnd_IndexObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

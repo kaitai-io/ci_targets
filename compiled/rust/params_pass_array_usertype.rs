@@ -53,17 +53,17 @@ impl KStruct for ParamsPassArrayUsertype {
 impl ParamsPassArrayUsertype {
 }
 impl ParamsPassArrayUsertype {
-    pub fn blocks(&self) -> Ref<Vec<OptRc<ParamsPassArrayUsertype_Block>>> {
+    pub fn blocks(&self) -> Ref<'_, Vec<OptRc<ParamsPassArrayUsertype_Block>>> {
         self.blocks.borrow()
     }
 }
 impl ParamsPassArrayUsertype {
-    pub fn pass_blocks(&self) -> Ref<OptRc<ParamsPassArrayUsertype_ParamType>> {
+    pub fn pass_blocks(&self) -> Ref<'_, OptRc<ParamsPassArrayUsertype_ParamType>> {
         self.pass_blocks.borrow()
     }
 }
 impl ParamsPassArrayUsertype {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -100,12 +100,12 @@ impl KStruct for ParamsPassArrayUsertype_Block {
 impl ParamsPassArrayUsertype_Block {
 }
 impl ParamsPassArrayUsertype_Block {
-    pub fn foo(&self) -> Ref<u8> {
+    pub fn foo(&self) -> Ref<'_, u8> {
         self.foo.borrow()
     }
 }
 impl ParamsPassArrayUsertype_Block {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -143,7 +143,7 @@ impl KStruct for ParamsPassArrayUsertype_ParamType {
     }
 }
 impl ParamsPassArrayUsertype_ParamType {
-    pub fn bar(&self) -> Ref<Vec<OptRc<ParamsPassArrayUsertype_Block>>> {
+    pub fn bar(&self) -> Ref<'_, Vec<OptRc<ParamsPassArrayUsertype_Block>>> {
         self.bar.borrow()
     }
 }
@@ -155,17 +155,17 @@ impl ParamsPassArrayUsertype_ParamType {
 impl ParamsPassArrayUsertype_ParamType {
 }
 impl ParamsPassArrayUsertype_ParamType {
-    pub fn one(&self) -> Ref<Vec<u8>> {
+    pub fn one(&self) -> Ref<'_, Vec<u8>> {
         self.one.borrow()
     }
 }
 impl ParamsPassArrayUsertype_ParamType {
-    pub fn two(&self) -> Ref<Vec<u8>> {
+    pub fn two(&self) -> Ref<'_, Vec<u8>> {
         self.two.borrow()
     }
 }
 impl ParamsPassArrayUsertype_ParamType {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

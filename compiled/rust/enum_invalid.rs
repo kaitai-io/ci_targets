@@ -46,17 +46,17 @@ impl KStruct for EnumInvalid {
 impl EnumInvalid {
 }
 impl EnumInvalid {
-    pub fn pet_1(&self) -> Ref<EnumInvalid_Animal> {
+    pub fn pet_1(&self) -> Ref<'_, EnumInvalid_Animal> {
         self.pet_1.borrow()
     }
 }
 impl EnumInvalid {
-    pub fn pet_2(&self) -> Ref<EnumInvalid_Animal> {
+    pub fn pet_2(&self) -> Ref<'_, EnumInvalid_Animal> {
         self.pet_2.borrow()
     }
 }
 impl EnumInvalid {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

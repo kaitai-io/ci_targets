@@ -57,17 +57,17 @@ impl KStruct for RepeatUntilS4 {
 impl RepeatUntilS4 {
 }
 impl RepeatUntilS4 {
-    pub fn entries(&self) -> Ref<Vec<i32>> {
+    pub fn entries(&self) -> Ref<'_, Vec<i32>> {
         self.entries.borrow()
     }
 }
 impl RepeatUntilS4 {
-    pub fn afterall(&self) -> Ref<String> {
+    pub fn afterall(&self) -> Ref<'_, String> {
         self.afterall.borrow()
     }
 }
 impl RepeatUntilS4 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

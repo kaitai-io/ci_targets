@@ -65,52 +65,52 @@ impl KStruct for TsPacketHeader {
 impl TsPacketHeader {
 }
 impl TsPacketHeader {
-    pub fn sync_byte(&self) -> Ref<u8> {
+    pub fn sync_byte(&self) -> Ref<'_, u8> {
         self.sync_byte.borrow()
     }
 }
 impl TsPacketHeader {
-    pub fn transport_error_indicator(&self) -> Ref<bool> {
+    pub fn transport_error_indicator(&self) -> Ref<'_, bool> {
         self.transport_error_indicator.borrow()
     }
 }
 impl TsPacketHeader {
-    pub fn payload_unit_start_indicator(&self) -> Ref<bool> {
+    pub fn payload_unit_start_indicator(&self) -> Ref<'_, bool> {
         self.payload_unit_start_indicator.borrow()
     }
 }
 impl TsPacketHeader {
-    pub fn transport_priority(&self) -> Ref<bool> {
+    pub fn transport_priority(&self) -> Ref<'_, bool> {
         self.transport_priority.borrow()
     }
 }
 impl TsPacketHeader {
-    pub fn pid(&self) -> Ref<u64> {
+    pub fn pid(&self) -> Ref<'_, u64> {
         self.pid.borrow()
     }
 }
 impl TsPacketHeader {
-    pub fn transport_scrambling_control(&self) -> Ref<u64> {
+    pub fn transport_scrambling_control(&self) -> Ref<'_, u64> {
         self.transport_scrambling_control.borrow()
     }
 }
 impl TsPacketHeader {
-    pub fn adaptation_field_control(&self) -> Ref<TsPacketHeader_AdaptationFieldControlEnum> {
+    pub fn adaptation_field_control(&self) -> Ref<'_, TsPacketHeader_AdaptationFieldControlEnum> {
         self.adaptation_field_control.borrow()
     }
 }
 impl TsPacketHeader {
-    pub fn continuity_counter(&self) -> Ref<u64> {
+    pub fn continuity_counter(&self) -> Ref<'_, u64> {
         self.continuity_counter.borrow()
     }
 }
 impl TsPacketHeader {
-    pub fn ts_packet_remain(&self) -> Ref<Vec<u8>> {
+    pub fn ts_packet_remain(&self) -> Ref<'_, Vec<u8>> {
         self.ts_packet_remain.borrow()
     }
 }
 impl TsPacketHeader {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

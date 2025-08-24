@@ -86,7 +86,7 @@ impl KStruct for VlqBase128Le {
 impl VlqBase128Le {
     pub fn len(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -100,7 +100,7 @@ impl VlqBase128Le {
     }
     pub fn sign_bit(
         &self
-    ) -> KResult<Ref<u64>> {
+    ) -> KResult<Ref<'_, u64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -118,7 +118,7 @@ impl VlqBase128Le {
      */
     pub fn value(
         &self
-    ) -> KResult<Ref<u64>> {
+    ) -> KResult<Ref<'_, u64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -136,7 +136,7 @@ impl VlqBase128Le {
      */
     pub fn value_signed(
         &self
-    ) -> KResult<Ref<i64>> {
+    ) -> KResult<Ref<'_, i64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -150,12 +150,12 @@ impl VlqBase128Le {
     }
 }
 impl VlqBase128Le {
-    pub fn groups(&self) -> Ref<Vec<OptRc<VlqBase128Le_Group>>> {
+    pub fn groups(&self) -> Ref<'_, Vec<OptRc<VlqBase128Le_Group>>> {
         self.groups.borrow()
     }
 }
 impl VlqBase128Le {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -202,7 +202,7 @@ impl VlqBase128Le_Group {
  * If true, then we have more bytes to read
  */
 impl VlqBase128Le_Group {
-    pub fn has_next(&self) -> Ref<bool> {
+    pub fn has_next(&self) -> Ref<'_, bool> {
         self.has_next.borrow()
     }
 }
@@ -211,12 +211,12 @@ impl VlqBase128Le_Group {
  * The 7-bit (base128) numeric value chunk of this group
  */
 impl VlqBase128Le_Group {
-    pub fn value(&self) -> Ref<u64> {
+    pub fn value(&self) -> Ref<'_, u64> {
         self.value.borrow()
     }
 }
 impl VlqBase128Le_Group {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

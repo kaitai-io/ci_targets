@@ -49,17 +49,17 @@ impl KStruct for EosExceptionSized {
 impl EosExceptionSized {
 }
 impl EosExceptionSized {
-    pub fn envelope(&self) -> Ref<OptRc<EosExceptionSized_Data>> {
+    pub fn envelope(&self) -> Ref<'_, OptRc<EosExceptionSized_Data>> {
         self.envelope.borrow()
     }
 }
 impl EosExceptionSized {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl EosExceptionSized {
-    pub fn envelope_raw(&self) -> Ref<Vec<u8>> {
+    pub fn envelope_raw(&self) -> Ref<'_, Vec<u8>> {
         self.envelope_raw.borrow()
     }
 }
@@ -101,17 +101,17 @@ impl KStruct for EosExceptionSized_Data {
 impl EosExceptionSized_Data {
 }
 impl EosExceptionSized_Data {
-    pub fn buf(&self) -> Ref<OptRc<EosExceptionSized_Foo>> {
+    pub fn buf(&self) -> Ref<'_, OptRc<EosExceptionSized_Foo>> {
         self.buf.borrow()
     }
 }
 impl EosExceptionSized_Data {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl EosExceptionSized_Data {
-    pub fn buf_raw(&self) -> Ref<Vec<u8>> {
+    pub fn buf_raw(&self) -> Ref<'_, Vec<u8>> {
         self.buf_raw.borrow()
     }
 }
@@ -146,7 +146,7 @@ impl KStruct for EosExceptionSized_Foo {
 impl EosExceptionSized_Foo {
 }
 impl EosExceptionSized_Foo {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

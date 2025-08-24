@@ -49,17 +49,17 @@ impl KStruct for EofExceptionSized {
 impl EofExceptionSized {
 }
 impl EofExceptionSized {
-    pub fn buf(&self) -> Ref<OptRc<EofExceptionSized_Foo>> {
+    pub fn buf(&self) -> Ref<'_, OptRc<EofExceptionSized_Foo>> {
         self.buf.borrow()
     }
 }
 impl EofExceptionSized {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl EofExceptionSized {
-    pub fn buf_raw(&self) -> Ref<Vec<u8>> {
+    pub fn buf_raw(&self) -> Ref<'_, Vec<u8>> {
         self.buf_raw.borrow()
     }
 }
@@ -94,7 +94,7 @@ impl KStruct for EofExceptionSized_Foo {
 impl EofExceptionSized_Foo {
 }
 impl EofExceptionSized_Foo {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -52,12 +52,12 @@ impl KStruct for RepeatEosStruct {
 impl RepeatEosStruct {
 }
 impl RepeatEosStruct {
-    pub fn chunks(&self) -> Ref<Vec<OptRc<RepeatEosStruct_Chunk>>> {
+    pub fn chunks(&self) -> Ref<'_, Vec<OptRc<RepeatEosStruct_Chunk>>> {
         self.chunks.borrow()
     }
 }
 impl RepeatEosStruct {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -96,17 +96,17 @@ impl KStruct for RepeatEosStruct_Chunk {
 impl RepeatEosStruct_Chunk {
 }
 impl RepeatEosStruct_Chunk {
-    pub fn offset(&self) -> Ref<u32> {
+    pub fn offset(&self) -> Ref<'_, u32> {
         self.offset.borrow()
     }
 }
 impl RepeatEosStruct_Chunk {
-    pub fn len(&self) -> Ref<u32> {
+    pub fn len(&self) -> Ref<'_, u32> {
         self.len.borrow()
     }
 }
 impl RepeatEosStruct_Chunk {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

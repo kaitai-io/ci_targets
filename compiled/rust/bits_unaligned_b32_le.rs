@@ -48,22 +48,22 @@ impl KStruct for BitsUnalignedB32Le {
 impl BitsUnalignedB32Le {
 }
 impl BitsUnalignedB32Le {
-    pub fn a(&self) -> Ref<bool> {
+    pub fn a(&self) -> Ref<'_, bool> {
         self.a.borrow()
     }
 }
 impl BitsUnalignedB32Le {
-    pub fn b(&self) -> Ref<u64> {
+    pub fn b(&self) -> Ref<'_, u64> {
         self.b.borrow()
     }
 }
 impl BitsUnalignedB32Le {
-    pub fn c(&self) -> Ref<u64> {
+    pub fn c(&self) -> Ref<'_, u64> {
         self.c.borrow()
     }
 }
 impl BitsUnalignedB32Le {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -49,22 +49,22 @@ impl KStruct for StrEncodingsDefault {
 impl StrEncodingsDefault {
 }
 impl StrEncodingsDefault {
-    pub fn len_of_1(&self) -> Ref<u16> {
+    pub fn len_of_1(&self) -> Ref<'_, u16> {
         self.len_of_1.borrow()
     }
 }
 impl StrEncodingsDefault {
-    pub fn str1(&self) -> Ref<String> {
+    pub fn str1(&self) -> Ref<'_, String> {
         self.str1.borrow()
     }
 }
 impl StrEncodingsDefault {
-    pub fn rest(&self) -> Ref<OptRc<StrEncodingsDefault_Subtype>> {
+    pub fn rest(&self) -> Ref<'_, OptRc<StrEncodingsDefault_Subtype>> {
         self.rest.borrow()
     }
 }
 impl StrEncodingsDefault {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -111,37 +111,37 @@ impl KStruct for StrEncodingsDefault_Subtype {
 impl StrEncodingsDefault_Subtype {
 }
 impl StrEncodingsDefault_Subtype {
-    pub fn len_of_2(&self) -> Ref<u16> {
+    pub fn len_of_2(&self) -> Ref<'_, u16> {
         self.len_of_2.borrow()
     }
 }
 impl StrEncodingsDefault_Subtype {
-    pub fn str2(&self) -> Ref<String> {
+    pub fn str2(&self) -> Ref<'_, String> {
         self.str2.borrow()
     }
 }
 impl StrEncodingsDefault_Subtype {
-    pub fn len_of_3(&self) -> Ref<u16> {
+    pub fn len_of_3(&self) -> Ref<'_, u16> {
         self.len_of_3.borrow()
     }
 }
 impl StrEncodingsDefault_Subtype {
-    pub fn str3(&self) -> Ref<String> {
+    pub fn str3(&self) -> Ref<'_, String> {
         self.str3.borrow()
     }
 }
 impl StrEncodingsDefault_Subtype {
-    pub fn len_of_4(&self) -> Ref<u16> {
+    pub fn len_of_4(&self) -> Ref<'_, u16> {
         self.len_of_4.borrow()
     }
 }
 impl StrEncodingsDefault_Subtype {
-    pub fn str4(&self) -> Ref<String> {
+    pub fn str4(&self) -> Ref<'_, String> {
         self.str4.borrow()
     }
 }
 impl StrEncodingsDefault_Subtype {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -44,7 +44,7 @@ impl KStruct for InstanceStd {
 impl InstanceStd {
     pub fn header(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -61,7 +61,7 @@ impl InstanceStd {
     }
 }
 impl InstanceStd {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -83,22 +83,22 @@ impl KStruct for RepeatUntilComplex {
 impl RepeatUntilComplex {
 }
 impl RepeatUntilComplex {
-    pub fn first(&self) -> Ref<Vec<OptRc<RepeatUntilComplex_TypeU1>>> {
+    pub fn first(&self) -> Ref<'_, Vec<OptRc<RepeatUntilComplex_TypeU1>>> {
         self.first.borrow()
     }
 }
 impl RepeatUntilComplex {
-    pub fn second(&self) -> Ref<Vec<OptRc<RepeatUntilComplex_TypeU2>>> {
+    pub fn second(&self) -> Ref<'_, Vec<OptRc<RepeatUntilComplex_TypeU2>>> {
         self.second.borrow()
     }
 }
 impl RepeatUntilComplex {
-    pub fn third(&self) -> Ref<Vec<u8>> {
+    pub fn third(&self) -> Ref<'_, Vec<u8>> {
         self.third.borrow()
     }
 }
 impl RepeatUntilComplex {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -141,17 +141,17 @@ impl KStruct for RepeatUntilComplex_TypeU1 {
 impl RepeatUntilComplex_TypeU1 {
 }
 impl RepeatUntilComplex_TypeU1 {
-    pub fn count(&self) -> Ref<u8> {
+    pub fn count(&self) -> Ref<'_, u8> {
         self.count.borrow()
     }
 }
 impl RepeatUntilComplex_TypeU1 {
-    pub fn values(&self) -> Ref<Vec<u8>> {
+    pub fn values(&self) -> Ref<'_, Vec<u8>> {
         self.values.borrow()
     }
 }
 impl RepeatUntilComplex_TypeU1 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -194,17 +194,17 @@ impl KStruct for RepeatUntilComplex_TypeU2 {
 impl RepeatUntilComplex_TypeU2 {
 }
 impl RepeatUntilComplex_TypeU2 {
-    pub fn count(&self) -> Ref<u16> {
+    pub fn count(&self) -> Ref<'_, u16> {
         self.count.borrow()
     }
 }
 impl RepeatUntilComplex_TypeU2 {
-    pub fn values(&self) -> Ref<Vec<u16>> {
+    pub fn values(&self) -> Ref<'_, Vec<u16>> {
         self.values.borrow()
     }
 }
 impl RepeatUntilComplex_TypeU2 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

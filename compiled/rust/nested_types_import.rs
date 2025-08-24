@@ -54,22 +54,22 @@ impl KStruct for NestedTypesImport {
 impl NestedTypesImport {
 }
 impl NestedTypesImport {
-    pub fn a_cc(&self) -> Ref<OptRc<NestedTypes3_SubtypeA_SubtypeCc>> {
+    pub fn a_cc(&self) -> Ref<'_, OptRc<NestedTypes3_SubtypeA_SubtypeCc>> {
         self.a_cc.borrow()
     }
 }
 impl NestedTypesImport {
-    pub fn a_c_d(&self) -> Ref<OptRc<NestedTypes3_SubtypeA_SubtypeC_SubtypeD>> {
+    pub fn a_c_d(&self) -> Ref<'_, OptRc<NestedTypes3_SubtypeA_SubtypeC_SubtypeD>> {
         self.a_c_d.borrow()
     }
 }
 impl NestedTypesImport {
-    pub fn b(&self) -> Ref<OptRc<NestedTypes3_SubtypeB>> {
+    pub fn b(&self) -> Ref<'_, OptRc<NestedTypes3_SubtypeB>> {
         self.b.borrow()
     }
 }
 impl NestedTypesImport {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

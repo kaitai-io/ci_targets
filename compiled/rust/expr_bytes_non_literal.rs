@@ -48,7 +48,7 @@ impl KStruct for ExprBytesNonLiteral {
 impl ExprBytesNonLiteral {
     pub fn calc_bytes(
         &self
-    ) -> KResult<Ref<Vec<u8>>> {
+    ) -> KResult<Ref<'_, Vec<u8>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -62,17 +62,17 @@ impl ExprBytesNonLiteral {
     }
 }
 impl ExprBytesNonLiteral {
-    pub fn one(&self) -> Ref<u8> {
+    pub fn one(&self) -> Ref<'_, u8> {
         self.one.borrow()
     }
 }
 impl ExprBytesNonLiteral {
-    pub fn two(&self) -> Ref<u8> {
+    pub fn two(&self) -> Ref<'_, u8> {
         self.two.borrow()
     }
 }
 impl ExprBytesNonLiteral {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

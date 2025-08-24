@@ -87,17 +87,17 @@ impl KStruct for DebugSwitchUser {
 impl DebugSwitchUser {
 }
 impl DebugSwitchUser {
-    pub fn code(&self) -> Ref<u8> {
+    pub fn code(&self) -> Ref<'_, u8> {
         self.code.borrow()
     }
 }
 impl DebugSwitchUser {
-    pub fn data(&self) -> Ref<Option<DebugSwitchUser_Data>> {
+    pub fn data(&self) -> Ref<'_, Option<DebugSwitchUser_Data>> {
         self.data.borrow()
     }
 }
 impl DebugSwitchUser {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -134,12 +134,12 @@ impl KStruct for DebugSwitchUser_One {
 impl DebugSwitchUser_One {
 }
 impl DebugSwitchUser_One {
-    pub fn val(&self) -> Ref<i16> {
+    pub fn val(&self) -> Ref<'_, i16> {
         self.val.borrow()
     }
 }
 impl DebugSwitchUser_One {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -176,12 +176,12 @@ impl KStruct for DebugSwitchUser_Two {
 impl DebugSwitchUser_Two {
 }
 impl DebugSwitchUser_Two {
-    pub fn val(&self) -> Ref<u16> {
+    pub fn val(&self) -> Ref<'_, u16> {
         self.val.borrow()
     }
 }
 impl DebugSwitchUser_Two {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

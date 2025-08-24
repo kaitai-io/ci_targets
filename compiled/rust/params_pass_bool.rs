@@ -75,7 +75,7 @@ impl KStruct for ParamsPassBool {
 impl ParamsPassBool {
     pub fn v_false(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -89,7 +89,7 @@ impl ParamsPassBool {
     }
     pub fn v_true(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -103,47 +103,47 @@ impl ParamsPassBool {
     }
 }
 impl ParamsPassBool {
-    pub fn s_false(&self) -> Ref<bool> {
+    pub fn s_false(&self) -> Ref<'_, bool> {
         self.s_false.borrow()
     }
 }
 impl ParamsPassBool {
-    pub fn s_true(&self) -> Ref<bool> {
+    pub fn s_true(&self) -> Ref<'_, bool> {
         self.s_true.borrow()
     }
 }
 impl ParamsPassBool {
-    pub fn seq_b1(&self) -> Ref<OptRc<ParamsPassBool_ParamTypeB1>> {
+    pub fn seq_b1(&self) -> Ref<'_, OptRc<ParamsPassBool_ParamTypeB1>> {
         self.seq_b1.borrow()
     }
 }
 impl ParamsPassBool {
-    pub fn seq_bool(&self) -> Ref<OptRc<ParamsPassBool_ParamTypeBool>> {
+    pub fn seq_bool(&self) -> Ref<'_, OptRc<ParamsPassBool_ParamTypeBool>> {
         self.seq_bool.borrow()
     }
 }
 impl ParamsPassBool {
-    pub fn literal_b1(&self) -> Ref<OptRc<ParamsPassBool_ParamTypeB1>> {
+    pub fn literal_b1(&self) -> Ref<'_, OptRc<ParamsPassBool_ParamTypeB1>> {
         self.literal_b1.borrow()
     }
 }
 impl ParamsPassBool {
-    pub fn literal_bool(&self) -> Ref<OptRc<ParamsPassBool_ParamTypeBool>> {
+    pub fn literal_bool(&self) -> Ref<'_, OptRc<ParamsPassBool_ParamTypeBool>> {
         self.literal_bool.borrow()
     }
 }
 impl ParamsPassBool {
-    pub fn inst_b1(&self) -> Ref<OptRc<ParamsPassBool_ParamTypeB1>> {
+    pub fn inst_b1(&self) -> Ref<'_, OptRc<ParamsPassBool_ParamTypeB1>> {
         self.inst_b1.borrow()
     }
 }
 impl ParamsPassBool {
-    pub fn inst_bool(&self) -> Ref<OptRc<ParamsPassBool_ParamTypeBool>> {
+    pub fn inst_bool(&self) -> Ref<'_, OptRc<ParamsPassBool_ParamTypeBool>> {
         self.inst_bool.borrow()
     }
 }
 impl ParamsPassBool {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -179,7 +179,7 @@ impl KStruct for ParamsPassBool_ParamTypeB1 {
     }
 }
 impl ParamsPassBool_ParamTypeB1 {
-    pub fn arg(&self) -> Ref<bool> {
+    pub fn arg(&self) -> Ref<'_, bool> {
         self.arg.borrow()
     }
 }
@@ -191,12 +191,12 @@ impl ParamsPassBool_ParamTypeB1 {
 impl ParamsPassBool_ParamTypeB1 {
 }
 impl ParamsPassBool_ParamTypeB1 {
-    pub fn foo(&self) -> Ref<Vec<u8>> {
+    pub fn foo(&self) -> Ref<'_, Vec<u8>> {
         self.foo.borrow()
     }
 }
 impl ParamsPassBool_ParamTypeB1 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -232,7 +232,7 @@ impl KStruct for ParamsPassBool_ParamTypeBool {
     }
 }
 impl ParamsPassBool_ParamTypeBool {
-    pub fn arg(&self) -> Ref<bool> {
+    pub fn arg(&self) -> Ref<'_, bool> {
         self.arg.borrow()
     }
 }
@@ -244,12 +244,12 @@ impl ParamsPassBool_ParamTypeBool {
 impl ParamsPassBool_ParamTypeBool {
 }
 impl ParamsPassBool_ParamTypeBool {
-    pub fn foo(&self) -> Ref<Vec<u8>> {
+    pub fn foo(&self) -> Ref<'_, Vec<u8>> {
         self.foo.borrow()
     }
 }
 impl ParamsPassBool_ParamTypeBool {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

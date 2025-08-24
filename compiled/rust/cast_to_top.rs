@@ -48,7 +48,7 @@ impl KStruct for CastToTop {
 impl CastToTop {
     pub fn header(
         &self
-    ) -> KResult<Ref<OptRc<CastToTop>>> {
+    ) -> KResult<Ref<'_, OptRc<CastToTop>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -65,7 +65,7 @@ impl CastToTop {
     }
     pub fn header_casted(
         &self
-    ) -> KResult<Ref<OptRc<CastToTop>>> {
+    ) -> KResult<Ref<'_, OptRc<CastToTop>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -78,12 +78,12 @@ impl CastToTop {
     }
 }
 impl CastToTop {
-    pub fn code(&self) -> Ref<u8> {
+    pub fn code(&self) -> Ref<'_, u8> {
         self.code.borrow()
     }
 }
 impl CastToTop {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

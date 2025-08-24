@@ -50,27 +50,27 @@ impl KStruct for BytesPadTerm {
 impl BytesPadTerm {
 }
 impl BytesPadTerm {
-    pub fn str_pad(&self) -> Ref<Vec<u8>> {
+    pub fn str_pad(&self) -> Ref<'_, Vec<u8>> {
         self.str_pad.borrow()
     }
 }
 impl BytesPadTerm {
-    pub fn str_term(&self) -> Ref<Vec<u8>> {
+    pub fn str_term(&self) -> Ref<'_, Vec<u8>> {
         self.str_term.borrow()
     }
 }
 impl BytesPadTerm {
-    pub fn str_term_and_pad(&self) -> Ref<Vec<u8>> {
+    pub fn str_term_and_pad(&self) -> Ref<'_, Vec<u8>> {
         self.str_term_and_pad.borrow()
     }
 }
 impl BytesPadTerm {
-    pub fn str_term_include(&self) -> Ref<Vec<u8>> {
+    pub fn str_term_include(&self) -> Ref<'_, Vec<u8>> {
         self.str_term_include.borrow()
     }
 }
 impl BytesPadTerm {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

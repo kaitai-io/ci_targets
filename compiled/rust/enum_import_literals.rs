@@ -48,7 +48,7 @@ impl KStruct for EnumImportLiterals {
 impl EnumImportLiterals {
     pub fn pet_1_eq(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -62,7 +62,7 @@ impl EnumImportLiterals {
     }
     pub fn pet_1_to_i(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -76,7 +76,7 @@ impl EnumImportLiterals {
     }
     pub fn pet_2(
         &self
-    ) -> KResult<Ref<EnumDeep_Container1_Container2_Animal>> {
+    ) -> KResult<Ref<'_, EnumDeep_Container1_Container2_Animal>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -90,7 +90,7 @@ impl EnumImportLiterals {
     }
 }
 impl EnumImportLiterals {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

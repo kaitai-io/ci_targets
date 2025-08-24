@@ -66,7 +66,7 @@ impl KStruct for FloatToI {
 impl FloatToI {
     pub fn calc_float1(
         &self
-    ) -> KResult<Ref<f64>> {
+    ) -> KResult<Ref<'_, f64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -80,7 +80,7 @@ impl FloatToI {
     }
     pub fn calc_float2(
         &self
-    ) -> KResult<Ref<f64>> {
+    ) -> KResult<Ref<'_, f64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -94,7 +94,7 @@ impl FloatToI {
     }
     pub fn calc_float3(
         &self
-    ) -> KResult<Ref<f64>> {
+    ) -> KResult<Ref<'_, f64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -108,7 +108,7 @@ impl FloatToI {
     }
     pub fn calc_float4(
         &self
-    ) -> KResult<Ref<f64>> {
+    ) -> KResult<Ref<'_, f64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -122,7 +122,7 @@ impl FloatToI {
     }
     pub fn double_i(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -136,7 +136,7 @@ impl FloatToI {
     }
     pub fn float1_i(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -150,7 +150,7 @@ impl FloatToI {
     }
     pub fn float2_i(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -164,7 +164,7 @@ impl FloatToI {
     }
     pub fn float3_i(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -178,7 +178,7 @@ impl FloatToI {
     }
     pub fn float4_i(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -192,7 +192,7 @@ impl FloatToI {
     }
     pub fn single_i(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -206,17 +206,17 @@ impl FloatToI {
     }
 }
 impl FloatToI {
-    pub fn single_value(&self) -> Ref<f32> {
+    pub fn single_value(&self) -> Ref<'_, f32> {
         self.single_value.borrow()
     }
 }
 impl FloatToI {
-    pub fn double_value(&self) -> Ref<f64> {
+    pub fn double_value(&self) -> Ref<'_, f64> {
         self.double_value.borrow()
     }
 }
 impl FloatToI {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -72,7 +72,7 @@ impl KStruct for ExprStrEncodings {
 impl ExprStrEncodings {
     pub fn str1_eq(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -86,7 +86,7 @@ impl ExprStrEncodings {
     }
     pub fn str2_eq(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -100,7 +100,7 @@ impl ExprStrEncodings {
     }
     pub fn str3_eq(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -114,7 +114,7 @@ impl ExprStrEncodings {
     }
     pub fn str3_eq_str2(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -128,7 +128,7 @@ impl ExprStrEncodings {
     }
     pub fn str4_eq(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -142,7 +142,7 @@ impl ExprStrEncodings {
     }
     pub fn str4_gt_str_calc(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -156,7 +156,7 @@ impl ExprStrEncodings {
     }
     pub fn str4_gt_str_from_bytes(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -170,47 +170,47 @@ impl ExprStrEncodings {
     }
 }
 impl ExprStrEncodings {
-    pub fn len_of_1(&self) -> Ref<u16> {
+    pub fn len_of_1(&self) -> Ref<'_, u16> {
         self.len_of_1.borrow()
     }
 }
 impl ExprStrEncodings {
-    pub fn str1(&self) -> Ref<String> {
+    pub fn str1(&self) -> Ref<'_, String> {
         self.str1.borrow()
     }
 }
 impl ExprStrEncodings {
-    pub fn len_of_2(&self) -> Ref<u16> {
+    pub fn len_of_2(&self) -> Ref<'_, u16> {
         self.len_of_2.borrow()
     }
 }
 impl ExprStrEncodings {
-    pub fn str2(&self) -> Ref<String> {
+    pub fn str2(&self) -> Ref<'_, String> {
         self.str2.borrow()
     }
 }
 impl ExprStrEncodings {
-    pub fn len_of_3(&self) -> Ref<u16> {
+    pub fn len_of_3(&self) -> Ref<'_, u16> {
         self.len_of_3.borrow()
     }
 }
 impl ExprStrEncodings {
-    pub fn str3(&self) -> Ref<String> {
+    pub fn str3(&self) -> Ref<'_, String> {
         self.str3.borrow()
     }
 }
 impl ExprStrEncodings {
-    pub fn len_of_4(&self) -> Ref<u16> {
+    pub fn len_of_4(&self) -> Ref<'_, u16> {
         self.len_of_4.borrow()
     }
 }
 impl ExprStrEncodings {
-    pub fn str4(&self) -> Ref<String> {
+    pub fn str4(&self) -> Ref<'_, String> {
         self.str4.borrow()
     }
 }
 impl ExprStrEncodings {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -44,7 +44,7 @@ impl KStruct for FixedStruct {
 impl FixedStruct {
     pub fn hdr(
         &self
-    ) -> KResult<Ref<OptRc<FixedStruct_Header>>> {
+    ) -> KResult<Ref<'_, OptRc<FixedStruct_Header>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -61,7 +61,7 @@ impl FixedStruct {
     }
 }
 impl FixedStruct {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -171,142 +171,142 @@ impl KStruct for FixedStruct_Header {
 impl FixedStruct_Header {
 }
 impl FixedStruct_Header {
-    pub fn magic1(&self) -> Ref<Vec<u8>> {
+    pub fn magic1(&self) -> Ref<'_, Vec<u8>> {
         self.magic1.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn uint8(&self) -> Ref<u8> {
+    pub fn uint8(&self) -> Ref<'_, u8> {
         self.uint8.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn sint8(&self) -> Ref<i8> {
+    pub fn sint8(&self) -> Ref<'_, i8> {
         self.sint8.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn magic_uint(&self) -> Ref<Vec<u8>> {
+    pub fn magic_uint(&self) -> Ref<'_, Vec<u8>> {
         self.magic_uint.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn uint16(&self) -> Ref<u16> {
+    pub fn uint16(&self) -> Ref<'_, u16> {
         self.uint16.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn uint32(&self) -> Ref<u32> {
+    pub fn uint32(&self) -> Ref<'_, u32> {
         self.uint32.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn uint64(&self) -> Ref<u64> {
+    pub fn uint64(&self) -> Ref<'_, u64> {
         self.uint64.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn magic_sint(&self) -> Ref<Vec<u8>> {
+    pub fn magic_sint(&self) -> Ref<'_, Vec<u8>> {
         self.magic_sint.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn sint16(&self) -> Ref<i16> {
+    pub fn sint16(&self) -> Ref<'_, i16> {
         self.sint16.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn sint32(&self) -> Ref<i32> {
+    pub fn sint32(&self) -> Ref<'_, i32> {
         self.sint32.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn sint64(&self) -> Ref<i64> {
+    pub fn sint64(&self) -> Ref<'_, i64> {
         self.sint64.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn magic_uint_le(&self) -> Ref<Vec<u8>> {
+    pub fn magic_uint_le(&self) -> Ref<'_, Vec<u8>> {
         self.magic_uint_le.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn uint16le(&self) -> Ref<u16> {
+    pub fn uint16le(&self) -> Ref<'_, u16> {
         self.uint16le.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn uint32le(&self) -> Ref<u32> {
+    pub fn uint32le(&self) -> Ref<'_, u32> {
         self.uint32le.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn uint64le(&self) -> Ref<u64> {
+    pub fn uint64le(&self) -> Ref<'_, u64> {
         self.uint64le.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn magic_sint_le(&self) -> Ref<Vec<u8>> {
+    pub fn magic_sint_le(&self) -> Ref<'_, Vec<u8>> {
         self.magic_sint_le.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn sint16le(&self) -> Ref<i16> {
+    pub fn sint16le(&self) -> Ref<'_, i16> {
         self.sint16le.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn sint32le(&self) -> Ref<i32> {
+    pub fn sint32le(&self) -> Ref<'_, i32> {
         self.sint32le.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn sint64le(&self) -> Ref<i64> {
+    pub fn sint64le(&self) -> Ref<'_, i64> {
         self.sint64le.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn magic_uint_be(&self) -> Ref<Vec<u8>> {
+    pub fn magic_uint_be(&self) -> Ref<'_, Vec<u8>> {
         self.magic_uint_be.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn uint16be(&self) -> Ref<u16> {
+    pub fn uint16be(&self) -> Ref<'_, u16> {
         self.uint16be.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn uint32be(&self) -> Ref<u32> {
+    pub fn uint32be(&self) -> Ref<'_, u32> {
         self.uint32be.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn uint64be(&self) -> Ref<u64> {
+    pub fn uint64be(&self) -> Ref<'_, u64> {
         self.uint64be.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn magic_sint_be(&self) -> Ref<Vec<u8>> {
+    pub fn magic_sint_be(&self) -> Ref<'_, Vec<u8>> {
         self.magic_sint_be.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn sint16be(&self) -> Ref<i16> {
+    pub fn sint16be(&self) -> Ref<'_, i16> {
         self.sint16be.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn sint32be(&self) -> Ref<i32> {
+    pub fn sint32be(&self) -> Ref<'_, i32> {
         self.sint32be.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn sint64be(&self) -> Ref<i64> {
+    pub fn sint64be(&self) -> Ref<'_, i64> {
         self.sint64be.borrow()
     }
 }
 impl FixedStruct_Header {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

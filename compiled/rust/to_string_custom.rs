@@ -47,17 +47,17 @@ impl KStruct for ToStringCustom {
 impl ToStringCustom {
 }
 impl ToStringCustom {
-    pub fn s1(&self) -> Ref<String> {
+    pub fn s1(&self) -> Ref<'_, String> {
         self.s1.borrow()
     }
 }
 impl ToStringCustom {
-    pub fn s2(&self) -> Ref<String> {
+    pub fn s2(&self) -> Ref<'_, String> {
         self.s2.borrow()
     }
 }
 impl ToStringCustom {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

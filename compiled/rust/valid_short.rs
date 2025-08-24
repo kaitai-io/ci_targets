@@ -97,62 +97,62 @@ impl KStruct for ValidShort {
 impl ValidShort {
 }
 impl ValidShort {
-    pub fn magic1(&self) -> Ref<Vec<u8>> {
+    pub fn magic1(&self) -> Ref<'_, Vec<u8>> {
         self.magic1.borrow()
     }
 }
 impl ValidShort {
-    pub fn uint8(&self) -> Ref<u8> {
+    pub fn uint8(&self) -> Ref<'_, u8> {
         self.uint8.borrow()
     }
 }
 impl ValidShort {
-    pub fn sint8(&self) -> Ref<i8> {
+    pub fn sint8(&self) -> Ref<'_, i8> {
         self.sint8.borrow()
     }
 }
 impl ValidShort {
-    pub fn magic_uint(&self) -> Ref<String> {
+    pub fn magic_uint(&self) -> Ref<'_, String> {
         self.magic_uint.borrow()
     }
 }
 impl ValidShort {
-    pub fn uint16(&self) -> Ref<u16> {
+    pub fn uint16(&self) -> Ref<'_, u16> {
         self.uint16.borrow()
     }
 }
 impl ValidShort {
-    pub fn uint32(&self) -> Ref<u32> {
+    pub fn uint32(&self) -> Ref<'_, u32> {
         self.uint32.borrow()
     }
 }
 impl ValidShort {
-    pub fn uint64(&self) -> Ref<u64> {
+    pub fn uint64(&self) -> Ref<'_, u64> {
         self.uint64.borrow()
     }
 }
 impl ValidShort {
-    pub fn magic_sint(&self) -> Ref<String> {
+    pub fn magic_sint(&self) -> Ref<'_, String> {
         self.magic_sint.borrow()
     }
 }
 impl ValidShort {
-    pub fn sint16(&self) -> Ref<i16> {
+    pub fn sint16(&self) -> Ref<'_, i16> {
         self.sint16.borrow()
     }
 }
 impl ValidShort {
-    pub fn sint32(&self) -> Ref<i32> {
+    pub fn sint32(&self) -> Ref<'_, i32> {
         self.sint32.borrow()
     }
 }
 impl ValidShort {
-    pub fn sint64(&self) -> Ref<i64> {
+    pub fn sint64(&self) -> Ref<'_, i64> {
         self.sint64.borrow()
     }
 }
 impl ValidShort {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

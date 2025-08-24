@@ -48,22 +48,22 @@ impl KStruct for StrPadTermUtf16 {
 impl StrPadTermUtf16 {
 }
 impl StrPadTermUtf16 {
-    pub fn str_term(&self) -> Ref<String> {
+    pub fn str_term(&self) -> Ref<'_, String> {
         self.str_term.borrow()
     }
 }
 impl StrPadTermUtf16 {
-    pub fn str_term_include(&self) -> Ref<String> {
+    pub fn str_term_include(&self) -> Ref<'_, String> {
         self.str_term_include.borrow()
     }
 }
 impl StrPadTermUtf16 {
-    pub fn str_term_and_pad(&self) -> Ref<String> {
+    pub fn str_term_and_pad(&self) -> Ref<'_, String> {
         self.str_term_and_pad.borrow()
     }
 }
 impl StrPadTermUtf16 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

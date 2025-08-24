@@ -42,7 +42,7 @@ impl KStruct for MetaTags {
 impl MetaTags {
 }
 impl MetaTags {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

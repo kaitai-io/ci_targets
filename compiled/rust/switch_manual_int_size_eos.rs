@@ -52,12 +52,12 @@ impl KStruct for SwitchManualIntSizeEos {
 impl SwitchManualIntSizeEos {
 }
 impl SwitchManualIntSizeEos {
-    pub fn chunks(&self) -> Ref<Vec<OptRc<SwitchManualIntSizeEos_Chunk>>> {
+    pub fn chunks(&self) -> Ref<'_, Vec<OptRc<SwitchManualIntSizeEos_Chunk>>> {
         self.chunks.borrow()
     }
 }
 impl SwitchManualIntSizeEos {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -103,27 +103,27 @@ impl KStruct for SwitchManualIntSizeEos_Chunk {
 impl SwitchManualIntSizeEos_Chunk {
 }
 impl SwitchManualIntSizeEos_Chunk {
-    pub fn code(&self) -> Ref<u8> {
+    pub fn code(&self) -> Ref<'_, u8> {
         self.code.borrow()
     }
 }
 impl SwitchManualIntSizeEos_Chunk {
-    pub fn size(&self) -> Ref<u32> {
+    pub fn size(&self) -> Ref<'_, u32> {
         self.size.borrow()
     }
 }
 impl SwitchManualIntSizeEos_Chunk {
-    pub fn body(&self) -> Ref<OptRc<SwitchManualIntSizeEos_ChunkBody>> {
+    pub fn body(&self) -> Ref<'_, OptRc<SwitchManualIntSizeEos_ChunkBody>> {
         self.body.borrow()
     }
 }
 impl SwitchManualIntSizeEos_Chunk {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl SwitchManualIntSizeEos_Chunk {
-    pub fn body_raw(&self) -> Ref<Vec<u8>> {
+    pub fn body_raw(&self) -> Ref<'_, Vec<u8>> {
         self.body_raw.borrow()
     }
 }
@@ -224,17 +224,17 @@ impl KStruct for SwitchManualIntSizeEos_ChunkBody {
 impl SwitchManualIntSizeEos_ChunkBody {
 }
 impl SwitchManualIntSizeEos_ChunkBody {
-    pub fn body(&self) -> Ref<Option<SwitchManualIntSizeEos_ChunkBody_Body>> {
+    pub fn body(&self) -> Ref<'_, Option<SwitchManualIntSizeEos_ChunkBody_Body>> {
         self.body.borrow()
     }
 }
 impl SwitchManualIntSizeEos_ChunkBody {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl SwitchManualIntSizeEos_ChunkBody {
-    pub fn body_raw(&self) -> Ref<Vec<u8>> {
+    pub fn body_raw(&self) -> Ref<'_, Vec<u8>> {
         self.body_raw.borrow()
     }
 }
@@ -278,12 +278,12 @@ impl KStruct for SwitchManualIntSizeEos_ChunkBody_ChunkDir {
 impl SwitchManualIntSizeEos_ChunkBody_ChunkDir {
 }
 impl SwitchManualIntSizeEos_ChunkBody_ChunkDir {
-    pub fn entries(&self) -> Ref<Vec<String>> {
+    pub fn entries(&self) -> Ref<'_, Vec<String>> {
         self.entries.borrow()
     }
 }
 impl SwitchManualIntSizeEos_ChunkBody_ChunkDir {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -322,17 +322,17 @@ impl KStruct for SwitchManualIntSizeEos_ChunkBody_ChunkMeta {
 impl SwitchManualIntSizeEos_ChunkBody_ChunkMeta {
 }
 impl SwitchManualIntSizeEos_ChunkBody_ChunkMeta {
-    pub fn title(&self) -> Ref<String> {
+    pub fn title(&self) -> Ref<'_, String> {
         self.title.borrow()
     }
 }
 impl SwitchManualIntSizeEos_ChunkBody_ChunkMeta {
-    pub fn author(&self) -> Ref<String> {
+    pub fn author(&self) -> Ref<'_, String> {
         self.author.borrow()
     }
 }
 impl SwitchManualIntSizeEos_ChunkBody_ChunkMeta {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

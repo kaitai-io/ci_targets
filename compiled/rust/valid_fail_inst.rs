@@ -48,7 +48,7 @@ impl KStruct for ValidFailInst {
 impl ValidFailInst {
     pub fn inst(
         &self
-    ) -> KResult<Ref<u8>> {
+    ) -> KResult<Ref<'_, u8>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -68,12 +68,12 @@ impl ValidFailInst {
     }
 }
 impl ValidFailInst {
-    pub fn a(&self) -> Ref<u8> {
+    pub fn a(&self) -> Ref<'_, u8> {
         self.a.borrow()
     }
 }
 impl ValidFailInst {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

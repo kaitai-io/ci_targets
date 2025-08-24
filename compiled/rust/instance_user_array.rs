@@ -51,7 +51,7 @@ impl KStruct for InstanceUserArray {
 impl InstanceUserArray {
     pub fn user_entries(
         &self
-    ) -> KResult<Ref<Vec<OptRc<InstanceUserArray_Entry>>>> {
+    ) -> KResult<Ref<'_, Vec<OptRc<InstanceUserArray_Entry>>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -79,27 +79,27 @@ impl InstanceUserArray {
     }
 }
 impl InstanceUserArray {
-    pub fn ofs(&self) -> Ref<u32> {
+    pub fn ofs(&self) -> Ref<'_, u32> {
         self.ofs.borrow()
     }
 }
 impl InstanceUserArray {
-    pub fn entry_size(&self) -> Ref<u32> {
+    pub fn entry_size(&self) -> Ref<'_, u32> {
         self.entry_size.borrow()
     }
 }
 impl InstanceUserArray {
-    pub fn qty_entries(&self) -> Ref<u32> {
+    pub fn qty_entries(&self) -> Ref<'_, u32> {
         self.qty_entries.borrow()
     }
 }
 impl InstanceUserArray {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl InstanceUserArray {
-    pub fn user_entries_raw(&self) -> Ref<Vec<Vec<u8>>> {
+    pub fn user_entries_raw(&self) -> Ref<'_, Vec<Vec<u8>>> {
         self.user_entries_raw.borrow()
     }
 }
@@ -138,17 +138,17 @@ impl KStruct for InstanceUserArray_Entry {
 impl InstanceUserArray_Entry {
 }
 impl InstanceUserArray_Entry {
-    pub fn word1(&self) -> Ref<u16> {
+    pub fn word1(&self) -> Ref<'_, u16> {
         self.word1.borrow()
     }
 }
 impl InstanceUserArray_Entry {
-    pub fn word2(&self) -> Ref<u16> {
+    pub fn word2(&self) -> Ref<'_, u16> {
         self.word2.borrow()
     }
 }
 impl InstanceUserArray_Entry {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

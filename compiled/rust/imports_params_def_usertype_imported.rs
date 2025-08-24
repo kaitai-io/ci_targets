@@ -51,17 +51,17 @@ impl KStruct for ImportsParamsDefUsertypeImported {
 impl ImportsParamsDefUsertypeImported {
 }
 impl ImportsParamsDefUsertypeImported {
-    pub fn hw(&self) -> Ref<OptRc<HelloWorld>> {
+    pub fn hw(&self) -> Ref<'_, OptRc<HelloWorld>> {
         self.hw.borrow()
     }
 }
 impl ImportsParamsDefUsertypeImported {
-    pub fn two(&self) -> Ref<OptRc<ParamsDefUsertypeImported>> {
+    pub fn two(&self) -> Ref<'_, OptRc<ParamsDefUsertypeImported>> {
         self.two.borrow()
     }
 }
 impl ImportsParamsDefUsertypeImported {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

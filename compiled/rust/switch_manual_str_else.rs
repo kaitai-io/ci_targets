@@ -52,12 +52,12 @@ impl KStruct for SwitchManualStrElse {
 impl SwitchManualStrElse {
 }
 impl SwitchManualStrElse {
-    pub fn opcodes(&self) -> Ref<Vec<OptRc<SwitchManualStrElse_Opcode>>> {
+    pub fn opcodes(&self) -> Ref<'_, Vec<OptRc<SwitchManualStrElse_Opcode>>> {
         self.opcodes.borrow()
     }
 }
 impl SwitchManualStrElse {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -155,17 +155,17 @@ impl KStruct for SwitchManualStrElse_Opcode {
 impl SwitchManualStrElse_Opcode {
 }
 impl SwitchManualStrElse_Opcode {
-    pub fn code(&self) -> Ref<String> {
+    pub fn code(&self) -> Ref<'_, String> {
         self.code.borrow()
     }
 }
 impl SwitchManualStrElse_Opcode {
-    pub fn body(&self) -> Ref<Option<SwitchManualStrElse_Opcode_Body>> {
+    pub fn body(&self) -> Ref<'_, Option<SwitchManualStrElse_Opcode_Body>> {
         self.body.borrow()
     }
 }
 impl SwitchManualStrElse_Opcode {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -202,12 +202,12 @@ impl KStruct for SwitchManualStrElse_Opcode_Intval {
 impl SwitchManualStrElse_Opcode_Intval {
 }
 impl SwitchManualStrElse_Opcode_Intval {
-    pub fn value(&self) -> Ref<u8> {
+    pub fn value(&self) -> Ref<'_, u8> {
         self.value.borrow()
     }
 }
 impl SwitchManualStrElse_Opcode_Intval {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -244,12 +244,12 @@ impl KStruct for SwitchManualStrElse_Opcode_Noneval {
 impl SwitchManualStrElse_Opcode_Noneval {
 }
 impl SwitchManualStrElse_Opcode_Noneval {
-    pub fn filler(&self) -> Ref<u32> {
+    pub fn filler(&self) -> Ref<'_, u32> {
         self.filler.borrow()
     }
 }
 impl SwitchManualStrElse_Opcode_Noneval {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -286,12 +286,12 @@ impl KStruct for SwitchManualStrElse_Opcode_Strval {
 impl SwitchManualStrElse_Opcode_Strval {
 }
 impl SwitchManualStrElse_Opcode_Strval {
-    pub fn value(&self) -> Ref<String> {
+    pub fn value(&self) -> Ref<'_, String> {
         self.value.borrow()
     }
 }
 impl SwitchManualStrElse_Opcode_Strval {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

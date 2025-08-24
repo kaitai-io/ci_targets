@@ -50,7 +50,7 @@ impl KStruct for Imports0 {
 impl Imports0 {
     pub fn hw_one(
         &self
-    ) -> KResult<Ref<u8>> {
+    ) -> KResult<Ref<'_, u8>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -64,17 +64,17 @@ impl Imports0 {
     }
 }
 impl Imports0 {
-    pub fn two(&self) -> Ref<u8> {
+    pub fn two(&self) -> Ref<'_, u8> {
         self.two.borrow()
     }
 }
 impl Imports0 {
-    pub fn hw(&self) -> Ref<OptRc<HelloWorld>> {
+    pub fn hw(&self) -> Ref<'_, OptRc<HelloWorld>> {
         self.hw.borrow()
     }
 }
 impl Imports0 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

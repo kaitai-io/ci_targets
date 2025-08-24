@@ -51,22 +51,22 @@ impl KStruct for ProcessToUser {
 impl ProcessToUser {
 }
 impl ProcessToUser {
-    pub fn buf1(&self) -> Ref<OptRc<ProcessToUser_JustStr>> {
+    pub fn buf1(&self) -> Ref<'_, OptRc<ProcessToUser_JustStr>> {
         self.buf1.borrow()
     }
 }
 impl ProcessToUser {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl ProcessToUser {
-    pub fn buf1_raw(&self) -> Ref<Vec<u8>> {
+    pub fn buf1_raw(&self) -> Ref<'_, Vec<u8>> {
         self.buf1_raw.borrow()
     }
 }
 impl ProcessToUser {
-    pub fn buf1_raw_raw(&self) -> Ref<Vec<u8>> {
+    pub fn buf1_raw_raw(&self) -> Ref<'_, Vec<u8>> {
         self.buf1_raw_raw.borrow()
     }
 }
@@ -103,12 +103,12 @@ impl KStruct for ProcessToUser_JustStr {
 impl ProcessToUser_JustStr {
 }
 impl ProcessToUser_JustStr {
-    pub fn str(&self) -> Ref<String> {
+    pub fn str(&self) -> Ref<'_, String> {
         self.str.borrow()
     }
 }
 impl ProcessToUser_JustStr {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

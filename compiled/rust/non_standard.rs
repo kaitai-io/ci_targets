@@ -98,7 +98,7 @@ impl KStruct for NonStandard {
 impl NonStandard {
     pub fn pi(
         &self
-    ) -> KResult<Ref<u8>> {
+    ) -> KResult<Ref<'_, u8>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -115,7 +115,7 @@ impl NonStandard {
     }
     pub fn vi(
         &self
-    ) -> KResult<Ref<u8>> {
+    ) -> KResult<Ref<'_, u8>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -129,7 +129,7 @@ impl NonStandard {
     }
 }
 impl NonStandard {
-    pub fn foo(&self) -> Ref<u8> {
+    pub fn foo(&self) -> Ref<'_, u8> {
         self.foo.borrow()
     }
 }
@@ -137,12 +137,12 @@ impl NonStandard {
     pub fn bar(&self) -> usize {
         self.bar.borrow().as_ref().unwrap().into()
     }
-    pub fn bar_enum(&self) -> Ref<Option<NonStandard_Bar>> {
+    pub fn bar_enum(&self) -> Ref<'_, Option<NonStandard_Bar>> {
         self.bar.borrow()
     }
 }
 impl NonStandard {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

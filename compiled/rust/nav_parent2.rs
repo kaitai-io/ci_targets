@@ -53,22 +53,22 @@ impl KStruct for NavParent2 {
 impl NavParent2 {
 }
 impl NavParent2 {
-    pub fn ofs_tags(&self) -> Ref<u32> {
+    pub fn ofs_tags(&self) -> Ref<'_, u32> {
         self.ofs_tags.borrow()
     }
 }
 impl NavParent2 {
-    pub fn num_tags(&self) -> Ref<u32> {
+    pub fn num_tags(&self) -> Ref<'_, u32> {
         self.num_tags.borrow()
     }
 }
 impl NavParent2 {
-    pub fn tags(&self) -> Ref<Vec<OptRc<NavParent2_Tag>>> {
+    pub fn tags(&self) -> Ref<'_, Vec<OptRc<NavParent2_Tag>>> {
         self.tags.borrow()
     }
 }
 impl NavParent2 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -103,7 +103,7 @@ impl From<OptRc<NavParent2_Tag_TagChar>> for NavParent2_Tag_TagContent {
     }
 }
 impl NavParent2_Tag_TagContent {
-    pub fn content(&self) -> Ref<String> {
+    pub fn content(&self) -> Ref<'_, String> {
         match self {
             NavParent2_Tag_TagContent::NavParent2_Tag_TagChar(x) => x.content.borrow(),
         }
@@ -135,7 +135,7 @@ impl KStruct for NavParent2_Tag {
 impl NavParent2_Tag {
     pub fn tag_content(
         &self
-    ) -> KResult<Ref<Option<NavParent2_Tag_TagContent>>> {
+    ) -> KResult<Ref<'_, Option<NavParent2_Tag_TagContent>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -159,22 +159,22 @@ impl NavParent2_Tag {
     }
 }
 impl NavParent2_Tag {
-    pub fn name(&self) -> Ref<String> {
+    pub fn name(&self) -> Ref<'_, String> {
         self.name.borrow()
     }
 }
 impl NavParent2_Tag {
-    pub fn ofs(&self) -> Ref<u32> {
+    pub fn ofs(&self) -> Ref<'_, u32> {
         self.ofs.borrow()
     }
 }
 impl NavParent2_Tag {
-    pub fn num_items(&self) -> Ref<u32> {
+    pub fn num_items(&self) -> Ref<'_, u32> {
         self.num_items.borrow()
     }
 }
 impl NavParent2_Tag {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -211,12 +211,12 @@ impl KStruct for NavParent2_Tag_TagChar {
 impl NavParent2_Tag_TagChar {
 }
 impl NavParent2_Tag_TagChar {
-    pub fn content(&self) -> Ref<String> {
+    pub fn content(&self) -> Ref<'_, String> {
         self.content.borrow()
     }
 }
 impl NavParent2_Tag_TagChar {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

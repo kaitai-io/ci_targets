@@ -58,47 +58,47 @@ impl KStruct for BitsSeqEndianCombo {
 impl BitsSeqEndianCombo {
 }
 impl BitsSeqEndianCombo {
-    pub fn be1(&self) -> Ref<u64> {
+    pub fn be1(&self) -> Ref<'_, u64> {
         self.be1.borrow()
     }
 }
 impl BitsSeqEndianCombo {
-    pub fn be2(&self) -> Ref<u64> {
+    pub fn be2(&self) -> Ref<'_, u64> {
         self.be2.borrow()
     }
 }
 impl BitsSeqEndianCombo {
-    pub fn le3(&self) -> Ref<u64> {
+    pub fn le3(&self) -> Ref<'_, u64> {
         self.le3.borrow()
     }
 }
 impl BitsSeqEndianCombo {
-    pub fn be4(&self) -> Ref<u64> {
+    pub fn be4(&self) -> Ref<'_, u64> {
         self.be4.borrow()
     }
 }
 impl BitsSeqEndianCombo {
-    pub fn le5(&self) -> Ref<u64> {
+    pub fn le5(&self) -> Ref<'_, u64> {
         self.le5.borrow()
     }
 }
 impl BitsSeqEndianCombo {
-    pub fn le6(&self) -> Ref<u64> {
+    pub fn le6(&self) -> Ref<'_, u64> {
         self.le6.borrow()
     }
 }
 impl BitsSeqEndianCombo {
-    pub fn le7(&self) -> Ref<u64> {
+    pub fn le7(&self) -> Ref<'_, u64> {
         self.le7.borrow()
     }
 }
 impl BitsSeqEndianCombo {
-    pub fn be8(&self) -> Ref<bool> {
+    pub fn be8(&self) -> Ref<'_, bool> {
         self.be8.borrow()
     }
 }
 impl BitsSeqEndianCombo {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

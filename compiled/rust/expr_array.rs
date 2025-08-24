@@ -90,7 +90,7 @@ impl KStruct for ExprArray {
 impl ExprArray {
     pub fn afloat_first(
         &self
-    ) -> KResult<Ref<f64>> {
+    ) -> KResult<Ref<'_, f64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -104,7 +104,7 @@ impl ExprArray {
     }
     pub fn afloat_last(
         &self
-    ) -> KResult<Ref<f64>> {
+    ) -> KResult<Ref<'_, f64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -118,7 +118,7 @@ impl ExprArray {
     }
     pub fn afloat_max(
         &self
-    ) -> KResult<Ref<f64>> {
+    ) -> KResult<Ref<'_, f64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -132,7 +132,7 @@ impl ExprArray {
     }
     pub fn afloat_min(
         &self
-    ) -> KResult<Ref<f64>> {
+    ) -> KResult<Ref<'_, f64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -146,7 +146,7 @@ impl ExprArray {
     }
     pub fn afloat_size(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -160,7 +160,7 @@ impl ExprArray {
     }
     pub fn aint_first(
         &self
-    ) -> KResult<Ref<u32>> {
+    ) -> KResult<Ref<'_, u32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -174,7 +174,7 @@ impl ExprArray {
     }
     pub fn aint_last(
         &self
-    ) -> KResult<Ref<u32>> {
+    ) -> KResult<Ref<'_, u32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -188,7 +188,7 @@ impl ExprArray {
     }
     pub fn aint_max(
         &self
-    ) -> KResult<Ref<u32>> {
+    ) -> KResult<Ref<'_, u32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -202,7 +202,7 @@ impl ExprArray {
     }
     pub fn aint_min(
         &self
-    ) -> KResult<Ref<u32>> {
+    ) -> KResult<Ref<'_, u32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -216,7 +216,7 @@ impl ExprArray {
     }
     pub fn aint_size(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -230,7 +230,7 @@ impl ExprArray {
     }
     pub fn astr_first(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -244,7 +244,7 @@ impl ExprArray {
     }
     pub fn astr_last(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -258,7 +258,7 @@ impl ExprArray {
     }
     pub fn astr_max(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -272,7 +272,7 @@ impl ExprArray {
     }
     pub fn astr_min(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -286,7 +286,7 @@ impl ExprArray {
     }
     pub fn astr_size(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -300,22 +300,22 @@ impl ExprArray {
     }
 }
 impl ExprArray {
-    pub fn aint(&self) -> Ref<Vec<u32>> {
+    pub fn aint(&self) -> Ref<'_, Vec<u32>> {
         self.aint.borrow()
     }
 }
 impl ExprArray {
-    pub fn afloat(&self) -> Ref<Vec<f64>> {
+    pub fn afloat(&self) -> Ref<'_, Vec<f64>> {
         self.afloat.borrow()
     }
 }
 impl ExprArray {
-    pub fn astr(&self) -> Ref<Vec<String>> {
+    pub fn astr(&self) -> Ref<'_, Vec<String>> {
         self.astr.borrow()
     }
 }
 impl ExprArray {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

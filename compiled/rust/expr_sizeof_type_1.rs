@@ -46,7 +46,7 @@ impl KStruct for ExprSizeofType1 {
 impl ExprSizeofType1 {
     pub fn sizeof_block(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -60,7 +60,7 @@ impl ExprSizeofType1 {
     }
     pub fn sizeof_subblock(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -74,7 +74,7 @@ impl ExprSizeofType1 {
     }
 }
 impl ExprSizeofType1 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -118,27 +118,27 @@ impl KStruct for ExprSizeofType1_Block {
 impl ExprSizeofType1_Block {
 }
 impl ExprSizeofType1_Block {
-    pub fn a(&self) -> Ref<u8> {
+    pub fn a(&self) -> Ref<'_, u8> {
         self.a.borrow()
     }
 }
 impl ExprSizeofType1_Block {
-    pub fn b(&self) -> Ref<u32> {
+    pub fn b(&self) -> Ref<'_, u32> {
         self.b.borrow()
     }
 }
 impl ExprSizeofType1_Block {
-    pub fn c(&self) -> Ref<Vec<u8>> {
+    pub fn c(&self) -> Ref<'_, Vec<u8>> {
         self.c.borrow()
     }
 }
 impl ExprSizeofType1_Block {
-    pub fn d(&self) -> Ref<OptRc<ExprSizeofType1_Block_Subblock>> {
+    pub fn d(&self) -> Ref<'_, OptRc<ExprSizeofType1_Block_Subblock>> {
         self.d.borrow()
     }
 }
 impl ExprSizeofType1_Block {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -175,12 +175,12 @@ impl KStruct for ExprSizeofType1_Block_Subblock {
 impl ExprSizeofType1_Block_Subblock {
 }
 impl ExprSizeofType1_Block_Subblock {
-    pub fn a(&self) -> Ref<Vec<u8>> {
+    pub fn a(&self) -> Ref<'_, Vec<u8>> {
         self.a.borrow()
     }
 }
 impl ExprSizeofType1_Block_Subblock {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

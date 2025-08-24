@@ -54,12 +54,12 @@ impl KStruct for ValidFailRepeatMaxInt {
 impl ValidFailRepeatMaxInt {
 }
 impl ValidFailRepeatMaxInt {
-    pub fn foo(&self) -> Ref<Vec<u8>> {
+    pub fn foo(&self) -> Ref<'_, Vec<u8>> {
         self.foo.borrow()
     }
 }
 impl ValidFailRepeatMaxInt {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

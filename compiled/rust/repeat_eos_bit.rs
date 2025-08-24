@@ -51,12 +51,12 @@ impl KStruct for RepeatEosBit {
 impl RepeatEosBit {
 }
 impl RepeatEosBit {
-    pub fn nibbles(&self) -> Ref<Vec<u64>> {
+    pub fn nibbles(&self) -> Ref<'_, Vec<u64>> {
         self.nibbles.borrow()
     }
 }
 impl RepeatEosBit {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

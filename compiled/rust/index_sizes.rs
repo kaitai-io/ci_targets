@@ -56,22 +56,22 @@ impl KStruct for IndexSizes {
 impl IndexSizes {
 }
 impl IndexSizes {
-    pub fn qty(&self) -> Ref<u32> {
+    pub fn qty(&self) -> Ref<'_, u32> {
         self.qty.borrow()
     }
 }
 impl IndexSizes {
-    pub fn sizes(&self) -> Ref<Vec<u32>> {
+    pub fn sizes(&self) -> Ref<'_, Vec<u32>> {
         self.sizes.borrow()
     }
 }
 impl IndexSizes {
-    pub fn bufs(&self) -> Ref<Vec<String>> {
+    pub fn bufs(&self) -> Ref<'_, Vec<String>> {
         self.bufs.borrow()
     }
 }
 impl IndexSizes {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

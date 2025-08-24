@@ -45,12 +45,12 @@ impl KStruct for UserType {
 impl UserType {
 }
 impl UserType {
-    pub fn one(&self) -> Ref<OptRc<UserType_Header>> {
+    pub fn one(&self) -> Ref<'_, OptRc<UserType_Header>> {
         self.one.borrow()
     }
 }
 impl UserType {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -89,17 +89,17 @@ impl KStruct for UserType_Header {
 impl UserType_Header {
 }
 impl UserType_Header {
-    pub fn width(&self) -> Ref<u32> {
+    pub fn width(&self) -> Ref<'_, u32> {
         self.width.borrow()
     }
 }
 impl UserType_Header {
-    pub fn height(&self) -> Ref<u32> {
+    pub fn height(&self) -> Ref<'_, u32> {
         self.height.borrow()
     }
 }
 impl UserType_Header {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

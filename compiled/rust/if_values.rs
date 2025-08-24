@@ -49,12 +49,12 @@ impl KStruct for IfValues {
 impl IfValues {
 }
 impl IfValues {
-    pub fn codes(&self) -> Ref<Vec<OptRc<IfValues_Code>>> {
+    pub fn codes(&self) -> Ref<'_, Vec<OptRc<IfValues_Code>>> {
         self.codes.borrow()
     }
 }
 impl IfValues {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -93,7 +93,7 @@ impl KStruct for IfValues_Code {
 impl IfValues_Code {
     pub fn half_opcode(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -109,12 +109,12 @@ impl IfValues_Code {
     }
 }
 impl IfValues_Code {
-    pub fn opcode(&self) -> Ref<u8> {
+    pub fn opcode(&self) -> Ref<'_, u8> {
         self.opcode.borrow()
     }
 }
 impl IfValues_Code {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

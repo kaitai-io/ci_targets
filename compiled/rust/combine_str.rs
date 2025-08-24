@@ -74,7 +74,7 @@ impl KStruct for CombineStr {
 impl CombineStr {
     pub fn calc_bytes(
         &self
-    ) -> KResult<Ref<Vec<u8>>> {
+    ) -> KResult<Ref<'_, Vec<u8>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -88,7 +88,7 @@ impl CombineStr {
     }
     pub fn calc_or_calc_bytes(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -102,7 +102,7 @@ impl CombineStr {
     }
     pub fn eos_or_calc(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -116,7 +116,7 @@ impl CombineStr {
     }
     pub fn eos_or_calc_bytes(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -130,7 +130,7 @@ impl CombineStr {
     }
     pub fn limit_or_calc(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -144,7 +144,7 @@ impl CombineStr {
     }
     pub fn limit_or_calc_bytes(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -158,7 +158,7 @@ impl CombineStr {
     }
     pub fn limit_or_eos(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -172,7 +172,7 @@ impl CombineStr {
     }
     pub fn str_calc(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -186,7 +186,7 @@ impl CombineStr {
     }
     pub fn str_calc_bytes(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -200,7 +200,7 @@ impl CombineStr {
     }
     pub fn term_or_calc(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -214,7 +214,7 @@ impl CombineStr {
     }
     pub fn term_or_calc_bytes(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -228,7 +228,7 @@ impl CombineStr {
     }
     pub fn term_or_eos(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -242,7 +242,7 @@ impl CombineStr {
     }
     pub fn term_or_limit(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -256,22 +256,22 @@ impl CombineStr {
     }
 }
 impl CombineStr {
-    pub fn str_term(&self) -> Ref<String> {
+    pub fn str_term(&self) -> Ref<'_, String> {
         self.str_term.borrow()
     }
 }
 impl CombineStr {
-    pub fn str_limit(&self) -> Ref<String> {
+    pub fn str_limit(&self) -> Ref<'_, String> {
         self.str_limit.borrow()
     }
 }
 impl CombineStr {
-    pub fn str_eos(&self) -> Ref<String> {
+    pub fn str_eos(&self) -> Ref<'_, String> {
         self.str_eos.borrow()
     }
 }
 impl CombineStr {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

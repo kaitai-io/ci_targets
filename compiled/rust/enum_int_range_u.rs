@@ -46,17 +46,17 @@ impl KStruct for EnumIntRangeU {
 impl EnumIntRangeU {
 }
 impl EnumIntRangeU {
-    pub fn f1(&self) -> Ref<EnumIntRangeU_Constants> {
+    pub fn f1(&self) -> Ref<'_, EnumIntRangeU_Constants> {
         self.f1.borrow()
     }
 }
 impl EnumIntRangeU {
-    pub fn f2(&self) -> Ref<EnumIntRangeU_Constants> {
+    pub fn f2(&self) -> Ref<'_, EnumIntRangeU_Constants> {
         self.f2.borrow()
     }
 }
 impl EnumIntRangeU {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

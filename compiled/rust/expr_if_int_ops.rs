@@ -56,7 +56,7 @@ impl KStruct for ExprIfIntOps {
 impl ExprIfIntOps {
     pub fn is_eq_boxed(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -70,7 +70,7 @@ impl ExprIfIntOps {
     }
     pub fn is_eq_prim(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -84,22 +84,22 @@ impl ExprIfIntOps {
     }
 }
 impl ExprIfIntOps {
-    pub fn skip(&self) -> Ref<Vec<u8>> {
+    pub fn skip(&self) -> Ref<'_, Vec<u8>> {
         self.skip.borrow()
     }
 }
 impl ExprIfIntOps {
-    pub fn it(&self) -> Ref<i16> {
+    pub fn it(&self) -> Ref<'_, i16> {
         self.it.borrow()
     }
 }
 impl ExprIfIntOps {
-    pub fn boxed(&self) -> Ref<i16> {
+    pub fn boxed(&self) -> Ref<'_, i16> {
         self.boxed.borrow()
     }
 }
 impl ExprIfIntOps {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

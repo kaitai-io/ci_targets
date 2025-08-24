@@ -138,7 +138,7 @@ impl KStruct for SwitchIntegers2 {
 impl SwitchIntegers2 {
     pub fn len_mod_str(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -152,7 +152,7 @@ impl SwitchIntegers2 {
     }
 }
 impl SwitchIntegers2 {
-    pub fn code(&self) -> Ref<u8> {
+    pub fn code(&self) -> Ref<'_, u8> {
         self.code.borrow()
     }
 }
@@ -160,22 +160,22 @@ impl SwitchIntegers2 {
     pub fn len(&self) -> usize {
         self.len.borrow().as_ref().unwrap().into()
     }
-    pub fn len_enum(&self) -> Ref<Option<SwitchIntegers2_Len>> {
+    pub fn len_enum(&self) -> Ref<'_, Option<SwitchIntegers2_Len>> {
         self.len.borrow()
     }
 }
 impl SwitchIntegers2 {
-    pub fn ham(&self) -> Ref<Vec<u8>> {
+    pub fn ham(&self) -> Ref<'_, Vec<u8>> {
         self.ham.borrow()
     }
 }
 impl SwitchIntegers2 {
-    pub fn padding(&self) -> Ref<u8> {
+    pub fn padding(&self) -> Ref<'_, u8> {
         self.padding.borrow()
     }
 }
 impl SwitchIntegers2 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

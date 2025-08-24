@@ -61,7 +61,7 @@ impl DocstringsDocref {
      */
     pub fn foo(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -81,7 +81,7 @@ impl DocstringsDocref {
      */
     pub fn parse_inst(
         &self
-    ) -> KResult<Ref<u8>> {
+    ) -> KResult<Ref<'_, u8>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -102,7 +102,7 @@ impl DocstringsDocref {
  * \sa Plain text description of doc ref, page 42
  */
 impl DocstringsDocref {
-    pub fn one(&self) -> Ref<u8> {
+    pub fn one(&self) -> Ref<'_, u8> {
         self.one.borrow()
     }
 }
@@ -112,7 +112,7 @@ impl DocstringsDocref {
  * \sa http://www.example.com/with/url/again Source
  */
 impl DocstringsDocref {
-    pub fn two(&self) -> Ref<u8> {
+    pub fn two(&self) -> Ref<'_, u8> {
         self.two.borrow()
     }
 }
@@ -121,12 +121,12 @@ impl DocstringsDocref {
  * \sa http://www.example.com/three Documentation name
  */
 impl DocstringsDocref {
-    pub fn three(&self) -> Ref<u8> {
+    pub fn three(&self) -> Ref<'_, u8> {
         self.three.borrow()
     }
 }
 impl DocstringsDocref {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

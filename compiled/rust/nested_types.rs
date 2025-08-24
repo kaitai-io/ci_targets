@@ -48,17 +48,17 @@ impl KStruct for NestedTypes {
 impl NestedTypes {
 }
 impl NestedTypes {
-    pub fn one(&self) -> Ref<OptRc<NestedTypes_SubtypeA>> {
+    pub fn one(&self) -> Ref<'_, OptRc<NestedTypes_SubtypeA>> {
         self.one.borrow()
     }
 }
 impl NestedTypes {
-    pub fn two(&self) -> Ref<OptRc<NestedTypes_SubtypeB>> {
+    pub fn two(&self) -> Ref<'_, OptRc<NestedTypes_SubtypeB>> {
         self.two.borrow()
     }
 }
 impl NestedTypes {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -99,17 +99,17 @@ impl KStruct for NestedTypes_SubtypeA {
 impl NestedTypes_SubtypeA {
 }
 impl NestedTypes_SubtypeA {
-    pub fn typed_at_root(&self) -> Ref<OptRc<NestedTypes_SubtypeB>> {
+    pub fn typed_at_root(&self) -> Ref<'_, OptRc<NestedTypes_SubtypeB>> {
         self.typed_at_root.borrow()
     }
 }
 impl NestedTypes_SubtypeA {
-    pub fn typed_here(&self) -> Ref<OptRc<NestedTypes_SubtypeA_SubtypeC>> {
+    pub fn typed_here(&self) -> Ref<'_, OptRc<NestedTypes_SubtypeA_SubtypeC>> {
         self.typed_here.borrow()
     }
 }
 impl NestedTypes_SubtypeA {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -146,12 +146,12 @@ impl KStruct for NestedTypes_SubtypeA_SubtypeC {
 impl NestedTypes_SubtypeA_SubtypeC {
 }
 impl NestedTypes_SubtypeA_SubtypeC {
-    pub fn value_c(&self) -> Ref<i8> {
+    pub fn value_c(&self) -> Ref<'_, i8> {
         self.value_c.borrow()
     }
 }
 impl NestedTypes_SubtypeA_SubtypeC {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -188,12 +188,12 @@ impl KStruct for NestedTypes_SubtypeB {
 impl NestedTypes_SubtypeB {
 }
 impl NestedTypes_SubtypeB {
-    pub fn value_b(&self) -> Ref<i8> {
+    pub fn value_b(&self) -> Ref<'_, i8> {
         self.value_b.borrow()
     }
 }
 impl NestedTypes_SubtypeB {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

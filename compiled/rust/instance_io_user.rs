@@ -58,27 +58,27 @@ impl KStruct for InstanceIoUser {
 impl InstanceIoUser {
 }
 impl InstanceIoUser {
-    pub fn qty_entries(&self) -> Ref<u32> {
+    pub fn qty_entries(&self) -> Ref<'_, u32> {
         self.qty_entries.borrow()
     }
 }
 impl InstanceIoUser {
-    pub fn entries(&self) -> Ref<Vec<OptRc<InstanceIoUser_Entry>>> {
+    pub fn entries(&self) -> Ref<'_, Vec<OptRc<InstanceIoUser_Entry>>> {
         self.entries.borrow()
     }
 }
 impl InstanceIoUser {
-    pub fn strings(&self) -> Ref<OptRc<InstanceIoUser_StringsObj>> {
+    pub fn strings(&self) -> Ref<'_, OptRc<InstanceIoUser_StringsObj>> {
         self.strings.borrow()
     }
 }
 impl InstanceIoUser {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl InstanceIoUser {
-    pub fn strings_raw(&self) -> Ref<Vec<u8>> {
+    pub fn strings_raw(&self) -> Ref<'_, Vec<u8>> {
         self.strings_raw.borrow()
     }
 }
@@ -119,7 +119,7 @@ impl KStruct for InstanceIoUser_Entry {
 impl InstanceIoUser_Entry {
     pub fn name(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -137,17 +137,17 @@ impl InstanceIoUser_Entry {
     }
 }
 impl InstanceIoUser_Entry {
-    pub fn name_ofs(&self) -> Ref<u32> {
+    pub fn name_ofs(&self) -> Ref<'_, u32> {
         self.name_ofs.borrow()
     }
 }
 impl InstanceIoUser_Entry {
-    pub fn value(&self) -> Ref<u32> {
+    pub fn value(&self) -> Ref<'_, u32> {
         self.value.borrow()
     }
 }
 impl InstanceIoUser_Entry {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -191,12 +191,12 @@ impl KStruct for InstanceIoUser_StringsObj {
 impl InstanceIoUser_StringsObj {
 }
 impl InstanceIoUser_StringsObj {
-    pub fn str(&self) -> Ref<Vec<String>> {
+    pub fn str(&self) -> Ref<'_, Vec<String>> {
         self.str.borrow()
     }
 }
 impl InstanceIoUser_StringsObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

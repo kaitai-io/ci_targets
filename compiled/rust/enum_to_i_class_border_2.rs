@@ -44,7 +44,7 @@ impl KStruct for EnumToIClassBorder2 {
     }
 }
 impl EnumToIClassBorder2 {
-    pub fn parent(&self) -> Ref<OptRc<EnumToIClassBorder1>> {
+    pub fn parent(&self) -> Ref<'_, OptRc<EnumToIClassBorder1>> {
         self.parent.borrow()
     }
 }
@@ -56,7 +56,7 @@ impl EnumToIClassBorder2 {
 impl EnumToIClassBorder2 {
     pub fn is_dog(
         &self
-    ) -> KResult<Ref<bool>> {
+    ) -> KResult<Ref<'_, bool>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -70,7 +70,7 @@ impl EnumToIClassBorder2 {
     }
 }
 impl EnumToIClassBorder2 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -51,22 +51,22 @@ impl KStruct for IfStruct {
 impl IfStruct {
 }
 impl IfStruct {
-    pub fn op1(&self) -> Ref<OptRc<IfStruct_Operation>> {
+    pub fn op1(&self) -> Ref<'_, OptRc<IfStruct_Operation>> {
         self.op1.borrow()
     }
 }
 impl IfStruct {
-    pub fn op2(&self) -> Ref<OptRc<IfStruct_Operation>> {
+    pub fn op2(&self) -> Ref<'_, OptRc<IfStruct_Operation>> {
         self.op2.borrow()
     }
 }
 impl IfStruct {
-    pub fn op3(&self) -> Ref<OptRc<IfStruct_Operation>> {
+    pub fn op3(&self) -> Ref<'_, OptRc<IfStruct_Operation>> {
         self.op3.borrow()
     }
 }
 impl IfStruct {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -105,17 +105,17 @@ impl KStruct for IfStruct_ArgStr {
 impl IfStruct_ArgStr {
 }
 impl IfStruct_ArgStr {
-    pub fn len(&self) -> Ref<u8> {
+    pub fn len(&self) -> Ref<'_, u8> {
         self.len.borrow()
     }
 }
 impl IfStruct_ArgStr {
-    pub fn str(&self) -> Ref<String> {
+    pub fn str(&self) -> Ref<'_, String> {
         self.str.borrow()
     }
 }
 impl IfStruct_ArgStr {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -154,17 +154,17 @@ impl KStruct for IfStruct_ArgTuple {
 impl IfStruct_ArgTuple {
 }
 impl IfStruct_ArgTuple {
-    pub fn num1(&self) -> Ref<u8> {
+    pub fn num1(&self) -> Ref<'_, u8> {
         self.num1.borrow()
     }
 }
 impl IfStruct_ArgTuple {
-    pub fn num2(&self) -> Ref<u8> {
+    pub fn num2(&self) -> Ref<'_, u8> {
         self.num2.borrow()
     }
 }
 impl IfStruct_ArgTuple {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -211,22 +211,22 @@ impl KStruct for IfStruct_Operation {
 impl IfStruct_Operation {
 }
 impl IfStruct_Operation {
-    pub fn opcode(&self) -> Ref<u8> {
+    pub fn opcode(&self) -> Ref<'_, u8> {
         self.opcode.borrow()
     }
 }
 impl IfStruct_Operation {
-    pub fn arg_tuple(&self) -> Ref<OptRc<IfStruct_ArgTuple>> {
+    pub fn arg_tuple(&self) -> Ref<'_, OptRc<IfStruct_ArgTuple>> {
         self.arg_tuple.borrow()
     }
 }
 impl IfStruct_Operation {
-    pub fn arg_str(&self) -> Ref<OptRc<IfStruct_ArgStr>> {
+    pub fn arg_str(&self) -> Ref<'_, OptRc<IfStruct_ArgStr>> {
         self.arg_str.borrow()
     }
 }
 impl IfStruct_Operation {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

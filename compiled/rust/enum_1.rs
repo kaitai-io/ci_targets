@@ -45,12 +45,12 @@ impl KStruct for Enum1 {
 impl Enum1 {
 }
 impl Enum1 {
-    pub fn main(&self) -> Ref<OptRc<Enum1_MainObj>> {
+    pub fn main(&self) -> Ref<'_, OptRc<Enum1_MainObj>> {
         self.main.borrow()
     }
 }
 impl Enum1 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -88,12 +88,12 @@ impl KStruct for Enum1_MainObj {
 impl Enum1_MainObj {
 }
 impl Enum1_MainObj {
-    pub fn submain(&self) -> Ref<OptRc<Enum1_MainObj_SubmainObj>> {
+    pub fn submain(&self) -> Ref<'_, OptRc<Enum1_MainObj_SubmainObj>> {
         self.submain.borrow()
     }
 }
 impl Enum1_MainObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -167,17 +167,17 @@ impl KStruct for Enum1_MainObj_SubmainObj {
 impl Enum1_MainObj_SubmainObj {
 }
 impl Enum1_MainObj_SubmainObj {
-    pub fn pet_1(&self) -> Ref<Enum1_MainObj_Animal> {
+    pub fn pet_1(&self) -> Ref<'_, Enum1_MainObj_Animal> {
         self.pet_1.borrow()
     }
 }
 impl Enum1_MainObj_SubmainObj {
-    pub fn pet_2(&self) -> Ref<Enum1_MainObj_Animal> {
+    pub fn pet_2(&self) -> Ref<'_, Enum1_MainObj_Animal> {
         self.pet_2.borrow()
     }
 }
 impl Enum1_MainObj_SubmainObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

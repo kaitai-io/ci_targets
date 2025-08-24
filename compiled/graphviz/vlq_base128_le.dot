@@ -16,15 +16,15 @@ digraph {
 		</TABLE>>];
 		vlq_base128_le__inst__sign_bit [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>sign_bit</TD><TD>1 &lt;&lt; 7 * len - 1</TD></TR>
+			<TR><TD>sign_bit</TD><TD>(1 &lt;&lt; 7 * len - 1)</TD></TR>
 		</TABLE>>];
 		vlq_base128_le__inst__value [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>value</TD><TD>((((((groups[0].value + (len &gt;= 2 ? groups[1].value &lt;&lt; 7 : 0)) + (len &gt;= 3 ? groups[2].value &lt;&lt; 14 : 0)) + (len &gt;= 4 ? groups[3].value &lt;&lt; 21 : 0)) + (len &gt;= 5 ? groups[4].value &lt;&lt; 28 : 0)) + (len &gt;= 6 ? groups[5].value &lt;&lt; 35 : 0)) + (len &gt;= 7 ? groups[6].value &lt;&lt; 42 : 0)) + (len &gt;= 8 ? groups[7].value &lt;&lt; 49 : 0)</TD></TR>
+			<TR><TD>value</TD><TD>(((((((groups[0].value + (len &gt;= 2 ? groups[1].value &lt;&lt; 7 : 0)) + (len &gt;= 3 ? groups[2].value &lt;&lt; 14 : 0)) + (len &gt;= 4 ? groups[3].value &lt;&lt; 21 : 0)) + (len &gt;= 5 ? groups[4].value &lt;&lt; 28 : 0)) + (len &gt;= 6 ? groups[5].value &lt;&lt; 35 : 0)) + (len &gt;= 7 ? groups[6].value &lt;&lt; 42 : 0)) + (len &gt;= 8 ? groups[7].value &lt;&lt; 49 : 0))</TD></TR>
 		</TABLE>>];
 		vlq_base128_le__inst__value_signed [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>value_signed</TD><TD>value ^ sign_bit - sign_bit</TD></TR>
+			<TR><TD>value_signed</TD><TD>((value ^ sign_bit) - sign_bit)</TD></TR>
 		</TABLE>>];
 		subgraph cluster__group {
 			label="VlqBase128Le::Group";

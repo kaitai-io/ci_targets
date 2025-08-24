@@ -50,27 +50,27 @@ impl KStruct for EnumLongRangeU {
 impl EnumLongRangeU {
 }
 impl EnumLongRangeU {
-    pub fn f1(&self) -> Ref<EnumLongRangeU_Constants> {
+    pub fn f1(&self) -> Ref<'_, EnumLongRangeU_Constants> {
         self.f1.borrow()
     }
 }
 impl EnumLongRangeU {
-    pub fn f2(&self) -> Ref<EnumLongRangeU_Constants> {
+    pub fn f2(&self) -> Ref<'_, EnumLongRangeU_Constants> {
         self.f2.borrow()
     }
 }
 impl EnumLongRangeU {
-    pub fn f3(&self) -> Ref<EnumLongRangeU_Constants> {
+    pub fn f3(&self) -> Ref<'_, EnumLongRangeU_Constants> {
         self.f3.borrow()
     }
 }
 impl EnumLongRangeU {
-    pub fn f4(&self) -> Ref<EnumLongRangeU_Constants> {
+    pub fn f4(&self) -> Ref<'_, EnumLongRangeU_Constants> {
         self.f4.borrow()
     }
 }
 impl EnumLongRangeU {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -46,17 +46,17 @@ impl KStruct for EnumNegative {
 impl EnumNegative {
 }
 impl EnumNegative {
-    pub fn f1(&self) -> Ref<EnumNegative_Constants> {
+    pub fn f1(&self) -> Ref<'_, EnumNegative_Constants> {
         self.f1.borrow()
     }
 }
 impl EnumNegative {
-    pub fn f2(&self) -> Ref<EnumNegative_Constants> {
+    pub fn f2(&self) -> Ref<'_, EnumNegative_Constants> {
         self.f2.borrow()
     }
 }
 impl EnumNegative {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -48,17 +48,17 @@ impl KStruct for MultipleUse {
 impl MultipleUse {
 }
 impl MultipleUse {
-    pub fn t1(&self) -> Ref<OptRc<MultipleUse_Type1>> {
+    pub fn t1(&self) -> Ref<'_, OptRc<MultipleUse_Type1>> {
         self.t1.borrow()
     }
 }
 impl MultipleUse {
-    pub fn t2(&self) -> Ref<OptRc<MultipleUse_Type2>> {
+    pub fn t2(&self) -> Ref<'_, OptRc<MultipleUse_Type2>> {
         self.t2.borrow()
     }
 }
 impl MultipleUse {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -95,12 +95,12 @@ impl KStruct for MultipleUse_Multi {
 impl MultipleUse_Multi {
 }
 impl MultipleUse_Multi {
-    pub fn value(&self) -> Ref<i32> {
+    pub fn value(&self) -> Ref<'_, i32> {
         self.value.borrow()
     }
 }
 impl MultipleUse_Multi {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -138,12 +138,12 @@ impl KStruct for MultipleUse_Type1 {
 impl MultipleUse_Type1 {
 }
 impl MultipleUse_Type1 {
-    pub fn first_use(&self) -> Ref<OptRc<MultipleUse_Multi>> {
+    pub fn first_use(&self) -> Ref<'_, OptRc<MultipleUse_Multi>> {
         self.first_use.borrow()
     }
 }
 impl MultipleUse_Type1 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -180,7 +180,7 @@ impl KStruct for MultipleUse_Type2 {
 impl MultipleUse_Type2 {
     pub fn second_use(
         &self
-    ) -> KResult<Ref<OptRc<MultipleUse_Multi>>> {
+    ) -> KResult<Ref<'_, OptRc<MultipleUse_Multi>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -197,7 +197,7 @@ impl MultipleUse_Type2 {
     }
 }
 impl MultipleUse_Type2 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -46,12 +46,12 @@ impl KStruct for OpaqueExternalType {
 impl OpaqueExternalType {
 }
 impl OpaqueExternalType {
-    pub fn one(&self) -> Ref<OptRc<TermStrz>> {
+    pub fn one(&self) -> Ref<'_, OptRc<TermStrz>> {
         self.one.borrow()
     }
 }
 impl OpaqueExternalType {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

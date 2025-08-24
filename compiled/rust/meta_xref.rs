@@ -42,7 +42,7 @@ impl KStruct for MetaXref {
 impl MetaXref {
 }
 impl MetaXref {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

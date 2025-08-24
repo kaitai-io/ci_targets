@@ -67,7 +67,7 @@ impl KStruct for RepeatUntilCalcArrayType {
 impl RepeatUntilCalcArrayType {
     pub fn first_rec(
         &self
-    ) -> KResult<Ref<OptRc<RepeatUntilCalcArrayType_Record>>> {
+    ) -> KResult<Ref<'_, OptRc<RepeatUntilCalcArrayType_Record>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -80,7 +80,7 @@ impl RepeatUntilCalcArrayType {
     }
     pub fn recs_accessor(
         &self
-    ) -> KResult<Ref<Vec<OptRc<RepeatUntilCalcArrayType_Record>>>> {
+    ) -> KResult<Ref<'_, Vec<OptRc<RepeatUntilCalcArrayType_Record>>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -94,17 +94,17 @@ impl RepeatUntilCalcArrayType {
     }
 }
 impl RepeatUntilCalcArrayType {
-    pub fn records(&self) -> Ref<Vec<OptRc<RepeatUntilCalcArrayType_Record>>> {
+    pub fn records(&self) -> Ref<'_, Vec<OptRc<RepeatUntilCalcArrayType_Record>>> {
         self.records.borrow()
     }
 }
 impl RepeatUntilCalcArrayType {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl RepeatUntilCalcArrayType {
-    pub fn records_raw(&self) -> Ref<Vec<Vec<u8>>> {
+    pub fn records_raw(&self) -> Ref<'_, Vec<Vec<u8>>> {
         self.records_raw.borrow()
     }
 }
@@ -143,17 +143,17 @@ impl KStruct for RepeatUntilCalcArrayType_Record {
 impl RepeatUntilCalcArrayType_Record {
 }
 impl RepeatUntilCalcArrayType_Record {
-    pub fn marker(&self) -> Ref<u8> {
+    pub fn marker(&self) -> Ref<'_, u8> {
         self.marker.borrow()
     }
 }
 impl RepeatUntilCalcArrayType_Record {
-    pub fn body(&self) -> Ref<u32> {
+    pub fn body(&self) -> Ref<'_, u32> {
         self.body.borrow()
     }
 }
 impl RepeatUntilCalcArrayType_Record {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

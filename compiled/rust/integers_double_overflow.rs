@@ -66,7 +66,7 @@ impl KStruct for IntegersDoubleOverflow {
 impl IntegersDoubleOverflow {
     pub fn unsigned_safe_max_be(
         &self
-    ) -> KResult<Ref<u64>> {
+    ) -> KResult<Ref<'_, u64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -83,7 +83,7 @@ impl IntegersDoubleOverflow {
     }
     pub fn unsigned_safe_max_le(
         &self
-    ) -> KResult<Ref<u64>> {
+    ) -> KResult<Ref<'_, u64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -100,7 +100,7 @@ impl IntegersDoubleOverflow {
     }
     pub fn unsigned_unsafe_pos_be(
         &self
-    ) -> KResult<Ref<u64>> {
+    ) -> KResult<Ref<'_, u64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -117,7 +117,7 @@ impl IntegersDoubleOverflow {
     }
     pub fn unsigned_unsafe_pos_le(
         &self
-    ) -> KResult<Ref<u64>> {
+    ) -> KResult<Ref<'_, u64>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -134,47 +134,47 @@ impl IntegersDoubleOverflow {
     }
 }
 impl IntegersDoubleOverflow {
-    pub fn signed_safe_min_be(&self) -> Ref<i64> {
+    pub fn signed_safe_min_be(&self) -> Ref<'_, i64> {
         self.signed_safe_min_be.borrow()
     }
 }
 impl IntegersDoubleOverflow {
-    pub fn signed_safe_min_le(&self) -> Ref<i64> {
+    pub fn signed_safe_min_le(&self) -> Ref<'_, i64> {
         self.signed_safe_min_le.borrow()
     }
 }
 impl IntegersDoubleOverflow {
-    pub fn signed_safe_max_be(&self) -> Ref<i64> {
+    pub fn signed_safe_max_be(&self) -> Ref<'_, i64> {
         self.signed_safe_max_be.borrow()
     }
 }
 impl IntegersDoubleOverflow {
-    pub fn signed_safe_max_le(&self) -> Ref<i64> {
+    pub fn signed_safe_max_le(&self) -> Ref<'_, i64> {
         self.signed_safe_max_le.borrow()
     }
 }
 impl IntegersDoubleOverflow {
-    pub fn signed_unsafe_neg_be(&self) -> Ref<i64> {
+    pub fn signed_unsafe_neg_be(&self) -> Ref<'_, i64> {
         self.signed_unsafe_neg_be.borrow()
     }
 }
 impl IntegersDoubleOverflow {
-    pub fn signed_unsafe_neg_le(&self) -> Ref<i64> {
+    pub fn signed_unsafe_neg_le(&self) -> Ref<'_, i64> {
         self.signed_unsafe_neg_le.borrow()
     }
 }
 impl IntegersDoubleOverflow {
-    pub fn signed_unsafe_pos_be(&self) -> Ref<i64> {
+    pub fn signed_unsafe_pos_be(&self) -> Ref<'_, i64> {
         self.signed_unsafe_pos_be.borrow()
     }
 }
 impl IntegersDoubleOverflow {
-    pub fn signed_unsafe_pos_le(&self) -> Ref<i64> {
+    pub fn signed_unsafe_pos_le(&self) -> Ref<'_, i64> {
         self.signed_unsafe_pos_le.borrow()
     }
 }
 impl IntegersDoubleOverflow {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

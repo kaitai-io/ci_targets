@@ -45,12 +45,12 @@ impl KStruct for DefaultBitEndianMod {
 impl DefaultBitEndianMod {
 }
 impl DefaultBitEndianMod {
-    pub fn main(&self) -> Ref<OptRc<DefaultBitEndianMod_MainObj>> {
+    pub fn main(&self) -> Ref<'_, OptRc<DefaultBitEndianMod_MainObj>> {
         self.main.borrow()
     }
 }
 impl DefaultBitEndianMod {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -96,27 +96,27 @@ impl KStruct for DefaultBitEndianMod_MainObj {
 impl DefaultBitEndianMod_MainObj {
 }
 impl DefaultBitEndianMod_MainObj {
-    pub fn one(&self) -> Ref<u64> {
+    pub fn one(&self) -> Ref<'_, u64> {
         self.one.borrow()
     }
 }
 impl DefaultBitEndianMod_MainObj {
-    pub fn two(&self) -> Ref<u64> {
+    pub fn two(&self) -> Ref<'_, u64> {
         self.two.borrow()
     }
 }
 impl DefaultBitEndianMod_MainObj {
-    pub fn nest(&self) -> Ref<OptRc<DefaultBitEndianMod_MainObj_Subnest>> {
+    pub fn nest(&self) -> Ref<'_, OptRc<DefaultBitEndianMod_MainObj_Subnest>> {
         self.nest.borrow()
     }
 }
 impl DefaultBitEndianMod_MainObj {
-    pub fn nest_be(&self) -> Ref<OptRc<DefaultBitEndianMod_MainObj_SubnestBe>> {
+    pub fn nest_be(&self) -> Ref<'_, OptRc<DefaultBitEndianMod_MainObj_SubnestBe>> {
         self.nest_be.borrow()
     }
 }
 impl DefaultBitEndianMod_MainObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -153,12 +153,12 @@ impl KStruct for DefaultBitEndianMod_MainObj_Subnest {
 impl DefaultBitEndianMod_MainObj_Subnest {
 }
 impl DefaultBitEndianMod_MainObj_Subnest {
-    pub fn two(&self) -> Ref<u64> {
+    pub fn two(&self) -> Ref<'_, u64> {
         self.two.borrow()
     }
 }
 impl DefaultBitEndianMod_MainObj_Subnest {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -195,12 +195,12 @@ impl KStruct for DefaultBitEndianMod_MainObj_SubnestBe {
 impl DefaultBitEndianMod_MainObj_SubnestBe {
 }
 impl DefaultBitEndianMod_MainObj_SubnestBe {
-    pub fn two(&self) -> Ref<u64> {
+    pub fn two(&self) -> Ref<'_, u64> {
         self.two.borrow()
     }
 }
 impl DefaultBitEndianMod_MainObj_SubnestBe {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

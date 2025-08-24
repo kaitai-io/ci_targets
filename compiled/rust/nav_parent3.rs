@@ -48,7 +48,7 @@ impl KStruct for NavParent3 {
 impl NavParent3 {
     pub fn tags(
         &self
-    ) -> KResult<Ref<Vec<OptRc<NavParent3_Tag>>>> {
+    ) -> KResult<Ref<'_, Vec<OptRc<NavParent3_Tag>>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -70,17 +70,17 @@ impl NavParent3 {
     }
 }
 impl NavParent3 {
-    pub fn ofs_tags(&self) -> Ref<u32> {
+    pub fn ofs_tags(&self) -> Ref<'_, u32> {
         self.ofs_tags.borrow()
     }
 }
 impl NavParent3 {
-    pub fn num_tags(&self) -> Ref<u32> {
+    pub fn num_tags(&self) -> Ref<'_, u32> {
         self.num_tags.borrow()
     }
 }
 impl NavParent3 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -115,7 +115,7 @@ impl From<OptRc<NavParent3_Tag_TagChar>> for NavParent3_Tag_TagContent {
     }
 }
 impl NavParent3_Tag_TagContent {
-    pub fn content(&self) -> Ref<String> {
+    pub fn content(&self) -> Ref<'_, String> {
         match self {
             NavParent3_Tag_TagContent::NavParent3_Tag_TagChar(x) => x.content.borrow(),
         }
@@ -147,7 +147,7 @@ impl KStruct for NavParent3_Tag {
 impl NavParent3_Tag {
     pub fn tag_content(
         &self
-    ) -> KResult<Ref<Option<NavParent3_Tag_TagContent>>> {
+    ) -> KResult<Ref<'_, Option<NavParent3_Tag_TagContent>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -171,22 +171,22 @@ impl NavParent3_Tag {
     }
 }
 impl NavParent3_Tag {
-    pub fn name(&self) -> Ref<String> {
+    pub fn name(&self) -> Ref<'_, String> {
         self.name.borrow()
     }
 }
 impl NavParent3_Tag {
-    pub fn ofs(&self) -> Ref<u32> {
+    pub fn ofs(&self) -> Ref<'_, u32> {
         self.ofs.borrow()
     }
 }
 impl NavParent3_Tag {
-    pub fn num_items(&self) -> Ref<u32> {
+    pub fn num_items(&self) -> Ref<'_, u32> {
         self.num_items.borrow()
     }
 }
 impl NavParent3_Tag {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -223,12 +223,12 @@ impl KStruct for NavParent3_Tag_TagChar {
 impl NavParent3_Tag_TagChar {
 }
 impl NavParent3_Tag_TagChar {
-    pub fn content(&self) -> Ref<String> {
+    pub fn content(&self) -> Ref<'_, String> {
         self.content.borrow()
     }
 }
 impl NavParent3_Tag_TagChar {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

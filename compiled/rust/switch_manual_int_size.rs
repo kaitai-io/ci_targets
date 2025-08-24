@@ -52,12 +52,12 @@ impl KStruct for SwitchManualIntSize {
 impl SwitchManualIntSize {
 }
 impl SwitchManualIntSize {
-    pub fn chunks(&self) -> Ref<Vec<OptRc<SwitchManualIntSize_Chunk>>> {
+    pub fn chunks(&self) -> Ref<'_, Vec<OptRc<SwitchManualIntSize_Chunk>>> {
         self.chunks.borrow()
     }
 }
 impl SwitchManualIntSize {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -162,27 +162,27 @@ impl KStruct for SwitchManualIntSize_Chunk {
 impl SwitchManualIntSize_Chunk {
 }
 impl SwitchManualIntSize_Chunk {
-    pub fn code(&self) -> Ref<u8> {
+    pub fn code(&self) -> Ref<'_, u8> {
         self.code.borrow()
     }
 }
 impl SwitchManualIntSize_Chunk {
-    pub fn size(&self) -> Ref<u32> {
+    pub fn size(&self) -> Ref<'_, u32> {
         self.size.borrow()
     }
 }
 impl SwitchManualIntSize_Chunk {
-    pub fn body(&self) -> Ref<Option<SwitchManualIntSize_Chunk_Body>> {
+    pub fn body(&self) -> Ref<'_, Option<SwitchManualIntSize_Chunk_Body>> {
         self.body.borrow()
     }
 }
 impl SwitchManualIntSize_Chunk {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl SwitchManualIntSize_Chunk {
-    pub fn body_raw(&self) -> Ref<Vec<u8>> {
+    pub fn body_raw(&self) -> Ref<'_, Vec<u8>> {
         self.body_raw.borrow()
     }
 }
@@ -226,12 +226,12 @@ impl KStruct for SwitchManualIntSize_Chunk_ChunkDir {
 impl SwitchManualIntSize_Chunk_ChunkDir {
 }
 impl SwitchManualIntSize_Chunk_ChunkDir {
-    pub fn entries(&self) -> Ref<Vec<String>> {
+    pub fn entries(&self) -> Ref<'_, Vec<String>> {
         self.entries.borrow()
     }
 }
 impl SwitchManualIntSize_Chunk_ChunkDir {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -270,17 +270,17 @@ impl KStruct for SwitchManualIntSize_Chunk_ChunkMeta {
 impl SwitchManualIntSize_Chunk_ChunkMeta {
 }
 impl SwitchManualIntSize_Chunk_ChunkMeta {
-    pub fn title(&self) -> Ref<String> {
+    pub fn title(&self) -> Ref<'_, String> {
         self.title.borrow()
     }
 }
 impl SwitchManualIntSize_Chunk_ChunkMeta {
-    pub fn author(&self) -> Ref<String> {
+    pub fn author(&self) -> Ref<'_, String> {
         self.author.borrow()
     }
 }
 impl SwitchManualIntSize_Chunk_ChunkMeta {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

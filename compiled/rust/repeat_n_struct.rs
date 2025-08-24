@@ -51,17 +51,17 @@ impl KStruct for RepeatNStruct {
 impl RepeatNStruct {
 }
 impl RepeatNStruct {
-    pub fn qty(&self) -> Ref<u32> {
+    pub fn qty(&self) -> Ref<'_, u32> {
         self.qty.borrow()
     }
 }
 impl RepeatNStruct {
-    pub fn chunks(&self) -> Ref<Vec<OptRc<RepeatNStruct_Chunk>>> {
+    pub fn chunks(&self) -> Ref<'_, Vec<OptRc<RepeatNStruct_Chunk>>> {
         self.chunks.borrow()
     }
 }
 impl RepeatNStruct {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -100,17 +100,17 @@ impl KStruct for RepeatNStruct_Chunk {
 impl RepeatNStruct_Chunk {
 }
 impl RepeatNStruct_Chunk {
-    pub fn offset(&self) -> Ref<u32> {
+    pub fn offset(&self) -> Ref<'_, u32> {
         self.offset.borrow()
     }
 }
 impl RepeatNStruct_Chunk {
-    pub fn len(&self) -> Ref<u32> {
+    pub fn len(&self) -> Ref<'_, u32> {
         self.len.borrow()
     }
 }
 impl RepeatNStruct_Chunk {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

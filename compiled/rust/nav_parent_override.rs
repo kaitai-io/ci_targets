@@ -50,22 +50,22 @@ impl KStruct for NavParentOverride {
 impl NavParentOverride {
 }
 impl NavParentOverride {
-    pub fn child_size(&self) -> Ref<u8> {
+    pub fn child_size(&self) -> Ref<'_, u8> {
         self.child_size.borrow()
     }
 }
 impl NavParentOverride {
-    pub fn child_1(&self) -> Ref<OptRc<NavParentOverride_Child>> {
+    pub fn child_1(&self) -> Ref<'_, OptRc<NavParentOverride_Child>> {
         self.child_1.borrow()
     }
 }
 impl NavParentOverride {
-    pub fn mediator_2(&self) -> Ref<OptRc<NavParentOverride_Mediator>> {
+    pub fn mediator_2(&self) -> Ref<'_, OptRc<NavParentOverride_Mediator>> {
         self.mediator_2.borrow()
     }
 }
 impl NavParentOverride {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -102,12 +102,12 @@ impl KStruct for NavParentOverride_Child {
 impl NavParentOverride_Child {
 }
 impl NavParentOverride_Child {
-    pub fn data(&self) -> Ref<Vec<u8>> {
+    pub fn data(&self) -> Ref<'_, Vec<u8>> {
         self.data.borrow()
     }
 }
 impl NavParentOverride_Child {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -145,12 +145,12 @@ impl KStruct for NavParentOverride_Mediator {
 impl NavParentOverride_Mediator {
 }
 impl NavParentOverride_Mediator {
-    pub fn child_2(&self) -> Ref<OptRc<NavParentOverride_Child>> {
+    pub fn child_2(&self) -> Ref<'_, OptRc<NavParentOverride_Child>> {
         self.child_2.borrow()
     }
 }
 impl NavParentOverride_Mediator {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

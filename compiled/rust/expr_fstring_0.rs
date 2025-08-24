@@ -60,7 +60,7 @@ impl KStruct for ExprFstring0 {
 impl ExprFstring0 {
     pub fn empty(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -74,7 +74,7 @@ impl ExprFstring0 {
     }
     pub fn head_and_int(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -88,7 +88,7 @@ impl ExprFstring0 {
     }
     pub fn head_and_int_literal(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -102,7 +102,7 @@ impl ExprFstring0 {
     }
     pub fn head_and_str(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -116,7 +116,7 @@ impl ExprFstring0 {
     }
     pub fn head_and_str_literal(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -130,7 +130,7 @@ impl ExprFstring0 {
     }
     pub fn literal(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -144,7 +144,7 @@ impl ExprFstring0 {
     }
     pub fn literal_with_escapes(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -158,17 +158,17 @@ impl ExprFstring0 {
     }
 }
 impl ExprFstring0 {
-    pub fn seq_str(&self) -> Ref<String> {
+    pub fn seq_str(&self) -> Ref<'_, String> {
         self.seq_str.borrow()
     }
 }
 impl ExprFstring0 {
-    pub fn seq_int(&self) -> Ref<u8> {
+    pub fn seq_int(&self) -> Ref<'_, u8> {
         self.seq_int.borrow()
     }
 }
 impl ExprFstring0 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

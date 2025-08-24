@@ -50,17 +50,17 @@ impl KStruct for ParamsCall {
 impl ParamsCall {
 }
 impl ParamsCall {
-    pub fn buf1(&self) -> Ref<OptRc<ParamsCall_MyStr1>> {
+    pub fn buf1(&self) -> Ref<'_, OptRc<ParamsCall_MyStr1>> {
         self.buf1.borrow()
     }
 }
 impl ParamsCall {
-    pub fn buf2(&self) -> Ref<OptRc<ParamsCall_MyStr2>> {
+    pub fn buf2(&self) -> Ref<'_, OptRc<ParamsCall_MyStr2>> {
         self.buf2.borrow()
     }
 }
 impl ParamsCall {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -96,7 +96,7 @@ impl KStruct for ParamsCall_MyStr1 {
     }
 }
 impl ParamsCall_MyStr1 {
-    pub fn len(&self) -> Ref<u32> {
+    pub fn len(&self) -> Ref<'_, u32> {
         self.len.borrow()
     }
 }
@@ -108,12 +108,12 @@ impl ParamsCall_MyStr1 {
 impl ParamsCall_MyStr1 {
 }
 impl ParamsCall_MyStr1 {
-    pub fn body(&self) -> Ref<String> {
+    pub fn body(&self) -> Ref<'_, String> {
         self.body.borrow()
     }
 }
 impl ParamsCall_MyStr1 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -154,12 +154,12 @@ impl KStruct for ParamsCall_MyStr2 {
     }
 }
 impl ParamsCall_MyStr2 {
-    pub fn len(&self) -> Ref<u32> {
+    pub fn len(&self) -> Ref<'_, u32> {
         self.len.borrow()
     }
 }
 impl ParamsCall_MyStr2 {
-    pub fn has_trailer(&self) -> Ref<bool> {
+    pub fn has_trailer(&self) -> Ref<'_, bool> {
         self.has_trailer.borrow()
     }
 }
@@ -172,17 +172,17 @@ impl ParamsCall_MyStr2 {
 impl ParamsCall_MyStr2 {
 }
 impl ParamsCall_MyStr2 {
-    pub fn body(&self) -> Ref<String> {
+    pub fn body(&self) -> Ref<'_, String> {
         self.body.borrow()
     }
 }
 impl ParamsCall_MyStr2 {
-    pub fn trailer(&self) -> Ref<u8> {
+    pub fn trailer(&self) -> Ref<'_, u8> {
         self.trailer.borrow()
     }
 }
 impl ParamsCall_MyStr2 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

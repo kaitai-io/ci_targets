@@ -52,12 +52,12 @@ impl KStruct for SwitchManualEnumInvalid {
 impl SwitchManualEnumInvalid {
 }
 impl SwitchManualEnumInvalid {
-    pub fn opcodes(&self) -> Ref<Vec<OptRc<SwitchManualEnumInvalid_Opcode>>> {
+    pub fn opcodes(&self) -> Ref<'_, Vec<OptRc<SwitchManualEnumInvalid_Opcode>>> {
         self.opcodes.borrow()
     }
 }
 impl SwitchManualEnumInvalid {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -137,17 +137,17 @@ impl KStruct for SwitchManualEnumInvalid_Opcode {
 impl SwitchManualEnumInvalid_Opcode {
 }
 impl SwitchManualEnumInvalid_Opcode {
-    pub fn code(&self) -> Ref<SwitchManualEnumInvalid_Opcode_CodeEnum> {
+    pub fn code(&self) -> Ref<'_, SwitchManualEnumInvalid_Opcode_CodeEnum> {
         self.code.borrow()
     }
 }
 impl SwitchManualEnumInvalid_Opcode {
-    pub fn body(&self) -> Ref<Option<SwitchManualEnumInvalid_Opcode_Body>> {
+    pub fn body(&self) -> Ref<'_, Option<SwitchManualEnumInvalid_Opcode_Body>> {
         self.body.borrow()
     }
 }
 impl SwitchManualEnumInvalid_Opcode {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -216,12 +216,12 @@ impl KStruct for SwitchManualEnumInvalid_Opcode_Intval {
 impl SwitchManualEnumInvalid_Opcode_Intval {
 }
 impl SwitchManualEnumInvalid_Opcode_Intval {
-    pub fn value(&self) -> Ref<u8> {
+    pub fn value(&self) -> Ref<'_, u8> {
         self.value.borrow()
     }
 }
 impl SwitchManualEnumInvalid_Opcode_Intval {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -258,12 +258,12 @@ impl KStruct for SwitchManualEnumInvalid_Opcode_Strval {
 impl SwitchManualEnumInvalid_Opcode_Strval {
 }
 impl SwitchManualEnumInvalid_Opcode_Strval {
-    pub fn value(&self) -> Ref<String> {
+    pub fn value(&self) -> Ref<'_, String> {
         self.value.borrow()
     }
 }
 impl SwitchManualEnumInvalid_Opcode_Strval {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -49,17 +49,17 @@ impl KStruct for EosExceptionBytes {
 impl EosExceptionBytes {
 }
 impl EosExceptionBytes {
-    pub fn envelope(&self) -> Ref<OptRc<EosExceptionBytes_Data>> {
+    pub fn envelope(&self) -> Ref<'_, OptRc<EosExceptionBytes_Data>> {
         self.envelope.borrow()
     }
 }
 impl EosExceptionBytes {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl EosExceptionBytes {
-    pub fn envelope_raw(&self) -> Ref<Vec<u8>> {
+    pub fn envelope_raw(&self) -> Ref<'_, Vec<u8>> {
         self.envelope_raw.borrow()
     }
 }
@@ -96,12 +96,12 @@ impl KStruct for EosExceptionBytes_Data {
 impl EosExceptionBytes_Data {
 }
 impl EosExceptionBytes_Data {
-    pub fn buf(&self) -> Ref<Vec<u8>> {
+    pub fn buf(&self) -> Ref<'_, Vec<u8>> {
         self.buf.borrow()
     }
 }
 impl EosExceptionBytes_Data {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

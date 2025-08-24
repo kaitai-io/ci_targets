@@ -48,7 +48,7 @@ impl KStruct for Expr0 {
 impl Expr0 {
     pub fn must_be_abc123(
         &self
-    ) -> KResult<Ref<String>> {
+    ) -> KResult<Ref<'_, String>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -62,7 +62,7 @@ impl Expr0 {
     }
     pub fn must_be_f7(
         &self
-    ) -> KResult<Ref<i32>> {
+    ) -> KResult<Ref<'_, i32>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -76,12 +76,12 @@ impl Expr0 {
     }
 }
 impl Expr0 {
-    pub fn len_of_1(&self) -> Ref<u16> {
+    pub fn len_of_1(&self) -> Ref<'_, u16> {
         self.len_of_1.borrow()
     }
 }
 impl Expr0 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

@@ -50,17 +50,17 @@ impl KStruct for ImportsCircularB {
 impl ImportsCircularB {
 }
 impl ImportsCircularB {
-    pub fn initial(&self) -> Ref<u8> {
+    pub fn initial(&self) -> Ref<'_, u8> {
         self.initial.borrow()
     }
 }
 impl ImportsCircularB {
-    pub fn back_ref(&self) -> Ref<OptRc<ImportsCircularA>> {
+    pub fn back_ref(&self) -> Ref<'_, OptRc<ImportsCircularA>> {
         self.back_ref.borrow()
     }
 }
 impl ImportsCircularB {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

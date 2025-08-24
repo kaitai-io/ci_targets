@@ -84,7 +84,7 @@ impl KStruct for IoLocalVar {
 impl IoLocalVar {
     pub fn mess_up(
         &self
-    ) -> KResult<Ref<Option<IoLocalVar_MessUp>>> {
+    ) -> KResult<Ref<'_, Option<IoLocalVar_MessUp>>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
@@ -120,27 +120,27 @@ impl IoLocalVar {
     }
 }
 impl IoLocalVar {
-    pub fn skip(&self) -> Ref<Vec<u8>> {
+    pub fn skip(&self) -> Ref<'_, Vec<u8>> {
         self.skip.borrow()
     }
 }
 impl IoLocalVar {
-    pub fn always_null(&self) -> Ref<u8> {
+    pub fn always_null(&self) -> Ref<'_, u8> {
         self.always_null.borrow()
     }
 }
 impl IoLocalVar {
-    pub fn followup(&self) -> Ref<u8> {
+    pub fn followup(&self) -> Ref<'_, u8> {
         self.followup.borrow()
     }
 }
 impl IoLocalVar {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
 impl IoLocalVar {
-    pub fn mess_up_raw(&self) -> Ref<Vec<u8>> {
+    pub fn mess_up_raw(&self) -> Ref<'_, Vec<u8>> {
         self.mess_up_raw.borrow()
     }
 }
@@ -175,7 +175,7 @@ impl KStruct for IoLocalVar_Dummy {
 impl IoLocalVar_Dummy {
 }
 impl IoLocalVar_Dummy {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

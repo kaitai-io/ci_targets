@@ -48,22 +48,22 @@ impl KStruct for TermStrz {
 impl TermStrz {
 }
 impl TermStrz {
-    pub fn s1(&self) -> Ref<String> {
+    pub fn s1(&self) -> Ref<'_, String> {
         self.s1.borrow()
     }
 }
 impl TermStrz {
-    pub fn s2(&self) -> Ref<String> {
+    pub fn s2(&self) -> Ref<'_, String> {
         self.s2.borrow()
     }
 }
 impl TermStrz {
-    pub fn s3(&self) -> Ref<String> {
+    pub fn s3(&self) -> Ref<'_, String> {
         self.s3.borrow()
     }
 }
 impl TermStrz {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

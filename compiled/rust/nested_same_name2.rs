@@ -50,22 +50,22 @@ impl KStruct for NestedSameName2 {
 impl NestedSameName2 {
 }
 impl NestedSameName2 {
-    pub fn version(&self) -> Ref<u32> {
+    pub fn version(&self) -> Ref<'_, u32> {
         self.version.borrow()
     }
 }
 impl NestedSameName2 {
-    pub fn main_data(&self) -> Ref<OptRc<NestedSameName2_Main>> {
+    pub fn main_data(&self) -> Ref<'_, OptRc<NestedSameName2_Main>> {
         self.main_data.borrow()
     }
 }
 impl NestedSameName2 {
-    pub fn dummy(&self) -> Ref<OptRc<NestedSameName2_DummyObj>> {
+    pub fn dummy(&self) -> Ref<'_, OptRc<NestedSameName2_DummyObj>> {
         self.dummy.borrow()
     }
 }
 impl NestedSameName2 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -105,17 +105,17 @@ impl KStruct for NestedSameName2_DummyObj {
 impl NestedSameName2_DummyObj {
 }
 impl NestedSameName2_DummyObj {
-    pub fn dummy_size(&self) -> Ref<i32> {
+    pub fn dummy_size(&self) -> Ref<'_, i32> {
         self.dummy_size.borrow()
     }
 }
 impl NestedSameName2_DummyObj {
-    pub fn foo(&self) -> Ref<OptRc<NestedSameName2_DummyObj_FooObj>> {
+    pub fn foo(&self) -> Ref<'_, OptRc<NestedSameName2_DummyObj_FooObj>> {
         self.foo.borrow()
     }
 }
 impl NestedSameName2_DummyObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -152,12 +152,12 @@ impl KStruct for NestedSameName2_DummyObj_FooObj {
 impl NestedSameName2_DummyObj_FooObj {
 }
 impl NestedSameName2_DummyObj_FooObj {
-    pub fn data2(&self) -> Ref<Vec<u8>> {
+    pub fn data2(&self) -> Ref<'_, Vec<u8>> {
         self.data2.borrow()
     }
 }
 impl NestedSameName2_DummyObj_FooObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -197,17 +197,17 @@ impl KStruct for NestedSameName2_Main {
 impl NestedSameName2_Main {
 }
 impl NestedSameName2_Main {
-    pub fn main_size(&self) -> Ref<i32> {
+    pub fn main_size(&self) -> Ref<'_, i32> {
         self.main_size.borrow()
     }
 }
 impl NestedSameName2_Main {
-    pub fn foo(&self) -> Ref<OptRc<NestedSameName2_Main_FooObj>> {
+    pub fn foo(&self) -> Ref<'_, OptRc<NestedSameName2_Main_FooObj>> {
         self.foo.borrow()
     }
 }
 impl NestedSameName2_Main {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -244,12 +244,12 @@ impl KStruct for NestedSameName2_Main_FooObj {
 impl NestedSameName2_Main_FooObj {
 }
 impl NestedSameName2_Main_FooObj {
-    pub fn data1(&self) -> Ref<Vec<u8>> {
+    pub fn data1(&self) -> Ref<'_, Vec<u8>> {
         self.data1.borrow()
     }
 }
 impl NestedSameName2_Main_FooObj {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }

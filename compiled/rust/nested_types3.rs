@@ -51,22 +51,22 @@ impl KStruct for NestedTypes3 {
 impl NestedTypes3 {
 }
 impl NestedTypes3 {
-    pub fn a_cc(&self) -> Ref<OptRc<NestedTypes3_SubtypeA_SubtypeCc>> {
+    pub fn a_cc(&self) -> Ref<'_, OptRc<NestedTypes3_SubtypeA_SubtypeCc>> {
         self.a_cc.borrow()
     }
 }
 impl NestedTypes3 {
-    pub fn a_c_d(&self) -> Ref<OptRc<NestedTypes3_SubtypeA_SubtypeC_SubtypeD>> {
+    pub fn a_c_d(&self) -> Ref<'_, OptRc<NestedTypes3_SubtypeA_SubtypeC_SubtypeD>> {
         self.a_c_d.borrow()
     }
 }
 impl NestedTypes3 {
-    pub fn b(&self) -> Ref<OptRc<NestedTypes3_SubtypeB>> {
+    pub fn b(&self) -> Ref<'_, OptRc<NestedTypes3_SubtypeB>> {
         self.b.borrow()
     }
 }
 impl NestedTypes3 {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -101,7 +101,7 @@ impl KStruct for NestedTypes3_SubtypeA {
 impl NestedTypes3_SubtypeA {
 }
 impl NestedTypes3_SubtypeA {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -136,7 +136,7 @@ impl KStruct for NestedTypes3_SubtypeA_SubtypeC {
 impl NestedTypes3_SubtypeA_SubtypeC {
 }
 impl NestedTypes3_SubtypeA_SubtypeC {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -173,12 +173,12 @@ impl KStruct for NestedTypes3_SubtypeA_SubtypeC_SubtypeD {
 impl NestedTypes3_SubtypeA_SubtypeC_SubtypeD {
 }
 impl NestedTypes3_SubtypeA_SubtypeC_SubtypeD {
-    pub fn value_d(&self) -> Ref<i8> {
+    pub fn value_d(&self) -> Ref<'_, i8> {
         self.value_d.borrow()
     }
 }
 impl NestedTypes3_SubtypeA_SubtypeC_SubtypeD {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -215,12 +215,12 @@ impl KStruct for NestedTypes3_SubtypeA_SubtypeCc {
 impl NestedTypes3_SubtypeA_SubtypeCc {
 }
 impl NestedTypes3_SubtypeA_SubtypeCc {
-    pub fn value_cc(&self) -> Ref<i8> {
+    pub fn value_cc(&self) -> Ref<'_, i8> {
         self.value_cc.borrow()
     }
 }
 impl NestedTypes3_SubtypeA_SubtypeCc {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
@@ -263,22 +263,22 @@ impl KStruct for NestedTypes3_SubtypeB {
 impl NestedTypes3_SubtypeB {
 }
 impl NestedTypes3_SubtypeB {
-    pub fn value_b(&self) -> Ref<i8> {
+    pub fn value_b(&self) -> Ref<'_, i8> {
         self.value_b.borrow()
     }
 }
 impl NestedTypes3_SubtypeB {
-    pub fn a_cc(&self) -> Ref<OptRc<NestedTypes3_SubtypeA_SubtypeCc>> {
+    pub fn a_cc(&self) -> Ref<'_, OptRc<NestedTypes3_SubtypeA_SubtypeCc>> {
         self.a_cc.borrow()
     }
 }
 impl NestedTypes3_SubtypeB {
-    pub fn a_c_d(&self) -> Ref<OptRc<NestedTypes3_SubtypeA_SubtypeC_SubtypeD>> {
+    pub fn a_c_d(&self) -> Ref<'_, OptRc<NestedTypes3_SubtypeA_SubtypeC_SubtypeD>> {
         self.a_c_d.borrow()
     }
 }
 impl NestedTypes3_SubtypeB {
-    pub fn _io(&self) -> Ref<BytesReader> {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }
 }
