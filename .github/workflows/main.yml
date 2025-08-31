@@ -82,10 +82,10 @@ jobs:
         tsv:
           - target: cpp_stl
             subtarget: _98
-            implementation: clang16
+            implementation: clang17
           - target: cpp_stl
             subtarget: _11
-            implementation: clang16
+            implementation: clang17
     env:
       TARGET: ${{matrix.tsv.target}}
       SUBTARGET: ${{matrix.tsv.subtarget}}
@@ -97,8 +97,12 @@ jobs:
         run: echo "$MATRIX_CONTEXT"
       - name: Validate Clang version
         run: |
-          ver=$(c++ --version) || exit 1
-          echo "$ver" | grep -q 'clang version 16\.'
+          ver=$(c++ --version)
+          echo 'Clang version:'
+          echo '---'
+          echo "$ver"
+          echo '---'
+          echo "$ver" | grep -q 'clang version 17\.'
       - uses: actions/checkout@v4
         with:
           submodules: 'true'
