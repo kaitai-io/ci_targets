@@ -1,0 +1,29 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__struct_pad_term_equal {
+		label="StructPadTermEqual";
+		graph[style=dotted];
+
+		struct_pad_term_equal__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="s1_pos">0</TD><TD PORT="s1_size">20</TD><TD>BytesWrapper</TD><TD PORT="s1_type">s1</TD></TR>
+			<TR><TD PORT="s2_pos">20</TD><TD PORT="s2_size">20</TD><TD>BytesWrapper</TD><TD PORT="s2_type">s2</TD></TR>
+			<TR><TD PORT="s3_pos">40</TD><TD PORT="s3_size">20</TD><TD>BytesWrapper</TD><TD PORT="s3_type">s3</TD></TR>
+			<TR><TD PORT="s4_pos">60</TD><TD PORT="s4_size">20</TD><TD>BytesWrapper</TD><TD PORT="s4_type">s4</TD></TR>
+		</TABLE>>];
+		subgraph cluster__bytes_wrapper {
+			label="StructPadTermEqual::BytesWrapper";
+			graph[style=dotted];
+
+			bytes_wrapper__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="value_pos">0</TD><TD PORT="value_size">⇲</TD><TD></TD><TD PORT="value_type">value</TD></TR>
+			</TABLE>>];
+		}
+	}
+	struct_pad_term_equal__seq:s1_type -> bytes_wrapper__seq [style=bold];
+	struct_pad_term_equal__seq:s2_type -> bytes_wrapper__seq [style=bold];
+	struct_pad_term_equal__seq:s3_type -> bytes_wrapper__seq [style=bold];
+	struct_pad_term_equal__seq:s4_type -> bytes_wrapper__seq [style=bold];
+}

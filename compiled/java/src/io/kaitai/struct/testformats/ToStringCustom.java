@@ -31,6 +31,9 @@ public class ToStringCustom extends KaitaiStruct {
         this.s1 = new String(this._io.readBytesTerm((byte) 124, false, true, true), StandardCharsets.UTF_8);
         this.s2 = new String(this._io.readBytesTerm((byte) 124, false, true, true), StandardCharsets.UTF_8);
     }
+
+    public void _fetchInstances() {
+    }
     private String s1;
     private String s2;
     private ToStringCustom _root;

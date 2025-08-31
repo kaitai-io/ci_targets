@@ -30,6 +30,10 @@ public class ParamsCallExtraParens extends KaitaiStruct {
     private void _read() {
         this.buf1 = new MyStr1(this._io, this, _root, 5);
     }
+
+    public void _fetchInstances() {
+        this.buf1._fetchInstances();
+    }
     public static class MyStr1 extends KaitaiStruct {
 
         public MyStr1(KaitaiStream _io, long len) {
@@ -49,6 +53,9 @@ public class ParamsCallExtraParens extends KaitaiStruct {
         }
         private void _read() {
             this.body = new String(this._io.readBytes(len()), StandardCharsets.UTF_8);
+        }
+
+        public void _fetchInstances() {
         }
         private String body;
         private long len;

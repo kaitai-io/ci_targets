@@ -54,11 +54,32 @@ public:
     double calc_float4();
 
 private:
+    bool f_calc_if;
+    double m_calc_if;
+
+public:
+    double calc_if();
+
+private:
+    bool f_calc_if_i;
+    int32_t m_calc_if_i;
+
+public:
+    int32_t calc_if_i();
+
+private:
     bool f_double_i;
     int32_t m_double_i;
 
 public:
     int32_t double_i();
+
+private:
+    bool f_double_if_i;
+    int32_t m_double_if_i;
+
+public:
+    int32_t double_if_i();
 
 private:
     bool f_float1_i;
@@ -96,14 +117,37 @@ public:
     int32_t single_i();
 
 private:
+    bool f_single_if_i;
+    int32_t m_single_if_i;
+
+public:
+    int32_t single_if_i();
+
+private:
     float m_single_value;
     double m_double_value;
+    float m_single_value_if;
+    bool n_single_value_if;
+
+public:
+    bool _is_null_single_value_if() { single_value_if(); return n_single_value_if; };
+
+private:
+    double m_double_value_if;
+    bool n_double_value_if;
+
+public:
+    bool _is_null_double_value_if() { double_value_if(); return n_double_value_if; };
+
+private:
     float_to_i_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     float single_value() const { return m_single_value; }
     double double_value() const { return m_double_value; }
+    float single_value_if() const { return m_single_value_if; }
+    double double_value_if() const { return m_double_value_if; }
     float_to_i_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -15,6 +15,12 @@ class FloatToI < Kaitai::Struct::Struct
   def _read
     @single_value = @_io.read_f4le
     @double_value = @_io.read_f8le
+    if true
+      @single_value_if = @_io.read_f4be
+    end
+    if true
+      @double_value_if = @_io.read_f8be
+    end
     self
   end
   def calc_float1
@@ -37,10 +43,25 @@ class FloatToI < Kaitai::Struct::Struct
     @calc_float4 = -2.7
     @calc_float4
   end
+  def calc_if
+    return @calc_if unless @calc_if.nil?
+    @calc_if = 13.9
+    @calc_if
+  end
+  def calc_if_i
+    return @calc_if_i unless @calc_if_i.nil?
+    @calc_if_i = calc_if.to_i
+    @calc_if_i
+  end
   def double_i
     return @double_i unless @double_i.nil?
     @double_i = double_value.to_i
     @double_i
+  end
+  def double_if_i
+    return @double_if_i unless @double_if_i.nil?
+    @double_if_i = double_value_if.to_i
+    @double_if_i
   end
   def float1_i
     return @float1_i unless @float1_i.nil?
@@ -67,6 +88,13 @@ class FloatToI < Kaitai::Struct::Struct
     @single_i = single_value.to_i
     @single_i
   end
+  def single_if_i
+    return @single_if_i unless @single_if_i.nil?
+    @single_if_i = single_value_if.to_i
+    @single_if_i
+  end
   attr_reader :single_value
   attr_reader :double_value
+  attr_reader :single_value_if
+  attr_reader :double_value_if
 end

@@ -29,6 +29,10 @@ public class DefaultEndianMod extends KaitaiStruct {
     private void _read() {
         this.main = new MainObj(this._io, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.main._fetchInstances();
+    }
     public static class MainObj extends KaitaiStruct {
         public static MainObj fromFile(String fileName) throws IOException {
             return new MainObj(new ByteBufferKaitaiStream(fileName));
@@ -53,6 +57,11 @@ public class DefaultEndianMod extends KaitaiStruct {
             this.nest = new Subnest(this._io, this, _root);
             this.nestBe = new SubnestBe(this._io, this, _root);
         }
+
+        public void _fetchInstances() {
+            this.nest._fetchInstances();
+            this.nestBe._fetchInstances();
+        }
         public static class Subnest extends KaitaiStruct {
             public static Subnest fromFile(String fileName) throws IOException {
                 return new Subnest(new ByteBufferKaitaiStream(fileName));
@@ -74,6 +83,9 @@ public class DefaultEndianMod extends KaitaiStruct {
             }
             private void _read() {
                 this.two = this._io.readS4le();
+            }
+
+            public void _fetchInstances() {
             }
             private int two;
             private DefaultEndianMod _root;
@@ -103,6 +115,9 @@ public class DefaultEndianMod extends KaitaiStruct {
             }
             private void _read() {
                 this.two = this._io.readS4be();
+            }
+
+            public void _fetchInstances() {
             }
             private int two;
             private DefaultEndianMod _root;

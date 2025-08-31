@@ -1,0 +1,43 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__process_repeat_usertype_dynarg_custom {
+		label="ProcessRepeatUsertypeDynargCustom";
+		graph[style=dotted];
+
+		process_repeat_usertype_dynarg_custom__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="blocks_pos">0</TD><TD PORT="blocks_size">5</TD><TD>Block</TD><TD PORT="blocks_type">blocks</TD></TR>
+			<TR><TD COLSPAN="4" PORT="blocks__repeat">repeat 2 times</TD></TR>
+			<TR><TD PORT="blocks_b_pos">10</TD><TD PORT="blocks_b_size">1</TD><TD>BlocksBWrapper</TD><TD PORT="blocks_b_type">blocks_b</TD></TR>
+		</TABLE>>];
+		subgraph cluster__block {
+			label="ProcessRepeatUsertypeDynargCustom::Block";
+			graph[style=dotted];
+
+			block__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="a_pos">0</TD><TD PORT="a_size">4</TD><TD>u4le</TD><TD PORT="a_type">a</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__blocks_b_wrapper {
+			label="ProcessRepeatUsertypeDynargCustom::BlocksBWrapper";
+			graph[style=dotted];
+
+			blocks_b_wrapper__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="dummy_pos">0</TD><TD PORT="dummy_size">1</TD><TD>u1</TD><TD PORT="dummy_type">dummy</TD></TR>
+			</TABLE>>];
+			blocks_b_wrapper__inst__blocks_0_b [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="blocks_0_b_pos">4</TD><TD PORT="blocks_0_b_size">1</TD><TD>u1</TD><TD PORT="blocks_0_b_type">blocks_0_b</TD></TR>
+			</TABLE>>];
+			blocks_b_wrapper__inst__blocks_1_b [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="blocks_1_b_pos">4</TD><TD PORT="blocks_1_b_size">1</TD><TD>u1</TD><TD PORT="blocks_1_b_type">blocks_1_b</TD></TR>
+			</TABLE>>];
+		}
+	}
+	process_repeat_usertype_dynarg_custom__seq:blocks_type -> block__seq [style=bold];
+	process_repeat_usertype_dynarg_custom__seq:blocks_b_type -> blocks_b_wrapper__seq [style=bold];
+}

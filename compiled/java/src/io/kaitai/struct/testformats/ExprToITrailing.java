@@ -28,28 +28,28 @@ public class ExprToITrailing extends KaitaiStruct {
     }
     private void _read() {
     }
+
+    public void _fetchInstances() {
+    }
     private Integer toIGarbage;
     public Integer toIGarbage() {
         if (this.toIGarbage != null)
             return this.toIGarbage;
-        int _tmp = (int) (Long.parseLong("123_.^", 10));
-        this.toIGarbage = _tmp;
+        this.toIGarbage = ((Number) (Long.parseLong("123_.^", 10))).intValue();
         return this.toIGarbage;
     }
     private Integer toIR10;
     public Integer toIR10() {
         if (this.toIR10 != null)
             return this.toIR10;
-        int _tmp = (int) (Long.parseLong("9173abc", 10));
-        this.toIR10 = _tmp;
+        this.toIR10 = ((Number) (Long.parseLong("9173abc", 10))).intValue();
         return this.toIR10;
     }
     private Integer toIR16;
     public Integer toIR16() {
         if (this.toIR16 != null)
             return this.toIR16;
-        int _tmp = (int) (Long.parseLong("9173abc", 16));
-        this.toIR16 = _tmp;
+        this.toIR16 = ((Number) (Long.parseLong("9173abc", 16))).intValue();
         return this.toIR16;
     }
     private ExprToITrailing _root;

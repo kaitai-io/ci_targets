@@ -33,6 +33,11 @@ public class ExprIoTernary extends KaitaiStruct {
         KaitaiStream _io_obj2 = this._io.substream(8);
         this.obj2 = new Two(_io_obj2, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.obj1._fetchInstances();
+        this.obj2._fetchInstances();
+    }
     public static class One extends KaitaiStruct {
         public static One fromFile(String fileName) throws IOException {
             return new One(new ByteBufferKaitaiStream(fileName));
@@ -54,6 +59,9 @@ public class ExprIoTernary extends KaitaiStruct {
         }
         private void _read() {
             this.one = this._io.readU1();
+        }
+
+        public void _fetchInstances() {
         }
         private int one;
         private ExprIoTernary _root;
@@ -84,6 +92,9 @@ public class ExprIoTernary extends KaitaiStruct {
         private void _read() {
             this.two = this._io.readU1();
         }
+
+        public void _fetchInstances() {
+        }
         private int two;
         private ExprIoTernary _root;
         private ExprIoTernary _parent;
@@ -102,24 +113,21 @@ public class ExprIoTernary extends KaitaiStruct {
     public Integer oneOrTwoIoSize1() {
         if (this.oneOrTwoIoSize1 != null)
             return this.oneOrTwoIoSize1;
-        int _tmp = (int) ((flag() == 64 ? obj1() : obj2())._io().size());
-        this.oneOrTwoIoSize1 = _tmp;
+        this.oneOrTwoIoSize1 = ((Number) ((flag() == 64 ? obj1() : obj2())._io().size())).intValue();
         return this.oneOrTwoIoSize1;
     }
     private Integer oneOrTwoIoSize2;
     public Integer oneOrTwoIoSize2() {
         if (this.oneOrTwoIoSize2 != null)
             return this.oneOrTwoIoSize2;
-        int _tmp = (int) (oneOrTwoIo().size());
-        this.oneOrTwoIoSize2 = _tmp;
+        this.oneOrTwoIoSize2 = ((Number) (oneOrTwoIo().size())).intValue();
         return this.oneOrTwoIoSize2;
     }
     private Integer oneOrTwoIoSizeAdd3;
     public Integer oneOrTwoIoSizeAdd3() {
         if (this.oneOrTwoIoSizeAdd3 != null)
             return this.oneOrTwoIoSizeAdd3;
-        int _tmp = (int) ((flag() == 64 ? obj1() : obj2())._io().size() + 3);
-        this.oneOrTwoIoSizeAdd3 = _tmp;
+        this.oneOrTwoIoSizeAdd3 = ((Number) ((flag() == 64 ? obj1() : obj2())._io().size() + 3)).intValue();
         return this.oneOrTwoIoSizeAdd3;
     }
     private KaitaiStruct oneOrTwoObj;

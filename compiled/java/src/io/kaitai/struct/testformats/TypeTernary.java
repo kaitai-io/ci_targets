@@ -32,9 +32,16 @@ public class TypeTernary extends KaitaiStruct {
             this.difWoHack = new Dummy(_io_difWoHack, this, _root);
         }
         this._raw__raw_difWithHack = this._io.readBytes(1);
-        this._raw_difWithHack = KaitaiStream.processXor(_raw__raw_difWithHack, ((byte) (3)));
-        KaitaiStream _io__raw_difWithHack = new ByteBufferKaitaiStream(_raw_difWithHack);
+        this._raw_difWithHack = KaitaiStream.processXor(this._raw__raw_difWithHack, ((byte) 3));
+        KaitaiStream _io__raw_difWithHack = new ByteBufferKaitaiStream(this._raw_difWithHack);
         this.difWithHack = new Dummy(_io__raw_difWithHack, this, _root);
+    }
+
+    public void _fetchInstances() {
+        if (!(isHack())) {
+            this.difWoHack._fetchInstances();
+        }
+        this.difWithHack._fetchInstances();
     }
     public static class Dummy extends KaitaiStruct {
         public static Dummy fromFile(String fileName) throws IOException {
@@ -58,6 +65,9 @@ public class TypeTernary extends KaitaiStruct {
         private void _read() {
             this.value = this._io.readU1();
         }
+
+        public void _fetchInstances() {
+        }
         private int value;
         private TypeTernary _root;
         private TypeTernary _parent;
@@ -76,16 +86,14 @@ public class TypeTernary extends KaitaiStruct {
     public Integer difValue() {
         if (this.difValue != null)
             return this.difValue;
-        int _tmp = (int) (dif().value());
-        this.difValue = _tmp;
+        this.difValue = ((Number) (dif().value())).intValue();
         return this.difValue;
     }
     private Boolean isHack;
     public Boolean isHack() {
         if (this.isHack != null)
             return this.isHack;
-        boolean _tmp = (boolean) (true);
-        this.isHack = _tmp;
+        this.isHack = true;
         return this.isHack;
     }
     private Dummy difWoHack;

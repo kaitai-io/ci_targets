@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SwitchRepeatExpr extends KaitaiStruct {
     public static SwitchRepeatExpr fromFile(String fileName) throws IOException {
@@ -50,6 +51,24 @@ public class SwitchRepeatExpr extends KaitaiStruct {
             }
         }
     }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.body.size(); i++) {
+            switch (code()) {
+            case 17: {
+                ((One) (this.body.get(((Number) (i)).intValue())))._fetchInstances();
+                break;
+            }
+            case 34: {
+                ((Two) (this.body.get(((Number) (i)).intValue())))._fetchInstances();
+                break;
+            }
+            default: {
+                break;
+            }
+            }
+        }
+    }
     public static class One extends KaitaiStruct {
         public static One fromFile(String fileName) throws IOException {
             return new One(new ByteBufferKaitaiStream(fileName));
@@ -71,6 +90,9 @@ public class SwitchRepeatExpr extends KaitaiStruct {
         }
         private void _read() {
             this.first = this._io.readBytesFull();
+        }
+
+        public void _fetchInstances() {
         }
         private byte[] first;
         private SwitchRepeatExpr _root;
@@ -101,6 +123,9 @@ public class SwitchRepeatExpr extends KaitaiStruct {
         private void _read() {
             this.second = this._io.readBytesFull();
         }
+
+        public void _fetchInstances() {
+        }
         private byte[] second;
         private SwitchRepeatExpr _root;
         private SwitchRepeatExpr _parent;
@@ -110,12 +135,12 @@ public class SwitchRepeatExpr extends KaitaiStruct {
     }
     private int code;
     private long size;
-    private ArrayList<Object> body;
+    private List<Object> body;
     private SwitchRepeatExpr _root;
     private KaitaiStruct _parent;
     public int code() { return code; }
     public long size() { return size; }
-    public ArrayList<Object> body() { return body; }
+    public List<Object> body() { return body; }
     public SwitchRepeatExpr _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

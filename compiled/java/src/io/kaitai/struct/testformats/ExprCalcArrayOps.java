@@ -6,6 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -31,8 +32,11 @@ public class ExprCalcArrayOps extends KaitaiStruct {
     }
     private void _read() {
     }
-    private ArrayList<Double> doubleArray;
-    public ArrayList<Double> doubleArray() {
+
+    public void _fetchInstances() {
+    }
+    private List<Double> doubleArray;
+    public List<Double> doubleArray() {
         if (this.doubleArray != null)
             return this.doubleArray;
         this.doubleArray = new ArrayList<Double>(Arrays.asList(10.0, 25.0, 50.0, 100.0, 3.14159));
@@ -42,52 +46,46 @@ public class ExprCalcArrayOps extends KaitaiStruct {
     public Double doubleArrayFirst() {
         if (this.doubleArrayFirst != null)
             return this.doubleArrayFirst;
-        double _tmp = (double) (doubleArray().get(0));
-        this.doubleArrayFirst = _tmp;
+        this.doubleArrayFirst = ((Number) (doubleArray().get(0))).doubleValue();
         return this.doubleArrayFirst;
     }
     private Double doubleArrayLast;
     public Double doubleArrayLast() {
         if (this.doubleArrayLast != null)
             return this.doubleArrayLast;
-        double _tmp = (double) (doubleArray().get(doubleArray().size() - 1));
-        this.doubleArrayLast = _tmp;
+        this.doubleArrayLast = ((Number) (doubleArray().get(doubleArray().size() - 1))).doubleValue();
         return this.doubleArrayLast;
     }
     private Double doubleArrayMax;
     public Double doubleArrayMax() {
         if (this.doubleArrayMax != null)
             return this.doubleArrayMax;
-        double _tmp = (double) (Collections.max(doubleArray()));
-        this.doubleArrayMax = _tmp;
+        this.doubleArrayMax = ((Number) (Collections.max(doubleArray()))).doubleValue();
         return this.doubleArrayMax;
     }
     private Double doubleArrayMid;
     public Double doubleArrayMid() {
         if (this.doubleArrayMid != null)
             return this.doubleArrayMid;
-        double _tmp = (double) (doubleArray().get((int) 1));
-        this.doubleArrayMid = _tmp;
+        this.doubleArrayMid = ((Number) (doubleArray().get(((int) 1)))).doubleValue();
         return this.doubleArrayMid;
     }
     private Double doubleArrayMin;
     public Double doubleArrayMin() {
         if (this.doubleArrayMin != null)
             return this.doubleArrayMin;
-        double _tmp = (double) (Collections.min(doubleArray()));
-        this.doubleArrayMin = _tmp;
+        this.doubleArrayMin = ((Number) (Collections.min(doubleArray()))).doubleValue();
         return this.doubleArrayMin;
     }
     private Integer doubleArraySize;
     public Integer doubleArraySize() {
         if (this.doubleArraySize != null)
             return this.doubleArraySize;
-        int _tmp = (int) (doubleArray().size());
-        this.doubleArraySize = _tmp;
+        this.doubleArraySize = ((Number) (doubleArray().size())).intValue();
         return this.doubleArraySize;
     }
-    private ArrayList<Integer> intArray;
-    public ArrayList<Integer> intArray() {
+    private List<Integer> intArray;
+    public List<Integer> intArray() {
         if (this.intArray != null)
             return this.intArray;
         this.intArray = new ArrayList<Integer>(Arrays.asList(10, 25, 50, 100, 200, 500, 1000));
@@ -97,52 +95,46 @@ public class ExprCalcArrayOps extends KaitaiStruct {
     public Integer intArrayFirst() {
         if (this.intArrayFirst != null)
             return this.intArrayFirst;
-        int _tmp = (int) (intArray().get(0));
-        this.intArrayFirst = _tmp;
+        this.intArrayFirst = ((Number) (intArray().get(0))).intValue();
         return this.intArrayFirst;
     }
     private Integer intArrayLast;
     public Integer intArrayLast() {
         if (this.intArrayLast != null)
             return this.intArrayLast;
-        int _tmp = (int) (intArray().get(intArray().size() - 1));
-        this.intArrayLast = _tmp;
+        this.intArrayLast = ((Number) (intArray().get(intArray().size() - 1))).intValue();
         return this.intArrayLast;
     }
     private Integer intArrayMax;
     public Integer intArrayMax() {
         if (this.intArrayMax != null)
             return this.intArrayMax;
-        int _tmp = (int) (Collections.max(intArray()));
-        this.intArrayMax = _tmp;
+        this.intArrayMax = ((Number) (Collections.max(intArray()))).intValue();
         return this.intArrayMax;
     }
     private Integer intArrayMid;
     public Integer intArrayMid() {
         if (this.intArrayMid != null)
             return this.intArrayMid;
-        int _tmp = (int) (intArray().get((int) 1));
-        this.intArrayMid = _tmp;
+        this.intArrayMid = ((Number) (intArray().get(((int) 1)))).intValue();
         return this.intArrayMid;
     }
     private Integer intArrayMin;
     public Integer intArrayMin() {
         if (this.intArrayMin != null)
             return this.intArrayMin;
-        int _tmp = (int) (Collections.min(intArray()));
-        this.intArrayMin = _tmp;
+        this.intArrayMin = ((Number) (Collections.min(intArray()))).intValue();
         return this.intArrayMin;
     }
     private Integer intArraySize;
     public Integer intArraySize() {
         if (this.intArraySize != null)
             return this.intArraySize;
-        int _tmp = (int) (intArray().size());
-        this.intArraySize = _tmp;
+        this.intArraySize = ((Number) (intArray().size())).intValue();
         return this.intArraySize;
     }
-    private ArrayList<String> strArray;
-    public ArrayList<String> strArray() {
+    private List<String> strArray;
+    public List<String> strArray() {
         if (this.strArray != null)
             return this.strArray;
         this.strArray = new ArrayList<String>(Arrays.asList("un", "deux", "trois", "quatre"));
@@ -173,7 +165,7 @@ public class ExprCalcArrayOps extends KaitaiStruct {
     public String strArrayMid() {
         if (this.strArrayMid != null)
             return this.strArrayMid;
-        this.strArrayMid = strArray().get((int) 1);
+        this.strArrayMid = strArray().get(((int) 1));
         return this.strArrayMid;
     }
     private String strArrayMin;
@@ -187,8 +179,7 @@ public class ExprCalcArrayOps extends KaitaiStruct {
     public Integer strArraySize() {
         if (this.strArraySize != null)
             return this.strArraySize;
-        int _tmp = (int) (strArray().size());
-        this.strArraySize = _tmp;
+        this.strArraySize = ((Number) (strArray().size())).intValue();
         return this.strArraySize;
     }
     private ExprCalcArrayOps _root;

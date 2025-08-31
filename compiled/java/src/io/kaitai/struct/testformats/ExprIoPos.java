@@ -33,6 +33,11 @@ public class ExprIoPos extends KaitaiStruct {
         KaitaiStream _io_substream2 = this._io.substream(14);
         this.substream2 = new AllPlusNumber(_io_substream2, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.substream1._fetchInstances();
+        this.substream2._fetchInstances();
+    }
     public static class AllPlusNumber extends KaitaiStruct {
         public static AllPlusNumber fromFile(String fileName) throws IOException {
             return new AllPlusNumber(new ByteBufferKaitaiStream(fileName));
@@ -56,6 +61,9 @@ public class ExprIoPos extends KaitaiStruct {
             this.myStr = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8);
             this.body = this._io.readBytes((_io().size() - _io().pos()) - 2);
             this.number = this._io.readU2le();
+        }
+
+        public void _fetchInstances() {
         }
         private String myStr;
         private byte[] body;

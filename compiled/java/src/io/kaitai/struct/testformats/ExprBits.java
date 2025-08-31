@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExprBits extends KaitaiStruct {
     public static ExprBits fromFile(String fileName) throws IOException {
@@ -47,7 +48,6 @@ public class ExprBits extends KaitaiStruct {
     private void _read() {
         this.enumSeq = Items.byId(this._io.readBitsIntBe(2));
         this.a = this._io.readBitsIntBe(3);
-        this._io.alignToByte();
         this.byteSize = this._io.readBytes(a());
         this.repeatExpr = new ArrayList<Byte>();
         for (int i = 0; i < a(); i++) {
@@ -60,6 +60,18 @@ public class ExprBits extends KaitaiStruct {
         }
         }
         this.switchOnEndian = new EndianSwitch(this._io, this, _root);
+    }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.repeatExpr.size(); i++) {
+        }
+        switch (a()) {
+        case 2: {
+            break;
+        }
+        }
+        this.switchOnEndian._fetchInstances();
+        instPos();
     }
     public static class EndianSwitch extends KaitaiStruct {
         public static EndianSwitch fromFile(String fileName) throws IOException {
@@ -84,13 +96,11 @@ public class ExprBits extends KaitaiStruct {
         private void _read() {
             switch (_parent().a()) {
             case 1: {
-                boolean _tmp = (boolean) (true);
-                this._is_le = _tmp;
+                this._is_le = true;
                 break;
             }
             case 2: {
-                boolean _tmp = (boolean) (false);
-                this._is_le = _tmp;
+                this._is_le = false;
                 break;
             }
             }
@@ -108,6 +118,9 @@ public class ExprBits extends KaitaiStruct {
         }
         private void _readBE() {
             this.foo = this._io.readS2be();
+        }
+
+        public void _fetchInstances() {
         }
         private short foo;
         private ExprBits _root;
@@ -136,7 +149,7 @@ public class ExprBits extends KaitaiStruct {
     private Items enumSeq;
     private long a;
     private byte[] byteSize;
-    private ArrayList<Byte> repeatExpr;
+    private List<Byte> repeatExpr;
     private Byte switchOnType;
     private EndianSwitch switchOnEndian;
     private ExprBits _root;
@@ -144,7 +157,7 @@ public class ExprBits extends KaitaiStruct {
     public Items enumSeq() { return enumSeq; }
     public long a() { return a; }
     public byte[] byteSize() { return byteSize; }
-    public ArrayList<Byte> repeatExpr() { return repeatExpr; }
+    public List<Byte> repeatExpr() { return repeatExpr; }
     public Byte switchOnType() { return switchOnType; }
     public EndianSwitch switchOnEndian() { return switchOnEndian; }
     public ExprBits _root() { return _root; }

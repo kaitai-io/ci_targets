@@ -7,8 +7,8 @@ digraph {
 
 		opaque_external_type__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			<TR><TD PORT="one_pos">0</TD><TD PORT="one_size">0</TD><TD>TermStrz</TD><TD PORT="one_type">one</TD></TR>
+			<TR><TD PORT="hw_pos">0</TD><TD PORT="hw_size">0</TD><TD>HelloWorld</TD><TD PORT="hw_type">hw</TD></TR>
 		</TABLE>>];
 	}
-	opaque_external_type__seq:one_type -> term_strz__seq [style=bold];
+	opaque_external_type__seq:hw_type -> hello_world__seq [style=bold];
 }

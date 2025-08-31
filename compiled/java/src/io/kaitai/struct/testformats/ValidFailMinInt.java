@@ -32,6 +32,9 @@ public class ValidFailMinInt extends KaitaiStruct {
             throw new KaitaiStream.ValidationLessThanError(123, this.foo, this._io, "/seq/0");
         }
     }
+
+    public void _fetchInstances() {
+    }
     private int foo;
     private ValidFailMinInt _root;
     private KaitaiStruct _parent;

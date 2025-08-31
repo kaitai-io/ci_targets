@@ -32,6 +32,10 @@ public class OpaqueExternalType02Child extends KaitaiStruct {
         this.s2 = new String(this._io.readBytesTerm((byte) 124, false, false, true), StandardCharsets.UTF_8);
         this.s3 = new OpaqueExternalType02ChildChild(this._io, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.s3._fetchInstances();
+    }
     public static class OpaqueExternalType02ChildChild extends KaitaiStruct {
         public static OpaqueExternalType02ChildChild fromFile(String fileName) throws IOException {
             return new OpaqueExternalType02ChildChild(new ByteBufferKaitaiStream(fileName));
@@ -56,6 +60,11 @@ public class OpaqueExternalType02Child extends KaitaiStruct {
                 this.s3 = new String(this._io.readBytesTerm((byte) 64, true, true, true), StandardCharsets.UTF_8);
             }
         }
+
+        public void _fetchInstances() {
+            if (_root().someMethod()) {
+            }
+        }
         private String s3;
         private OpaqueExternalType02Child _root;
         private OpaqueExternalType02Child _parent;
@@ -67,8 +76,7 @@ public class OpaqueExternalType02Child extends KaitaiStruct {
     public Boolean someMethod() {
         if (this.someMethod != null)
             return this.someMethod;
-        boolean _tmp = (boolean) (true);
-        this.someMethod = _tmp;
+        this.someMethod = true;
         return this.someMethod;
     }
     private String s1;

@@ -44,6 +44,9 @@ public class ValidOptionalId extends KaitaiStruct {
             }
         }
     }
+
+    public void _fetchInstances() {
+    }
     private byte[] _unnamed0;
     private int _unnamed1;
     private byte _unnamed2;

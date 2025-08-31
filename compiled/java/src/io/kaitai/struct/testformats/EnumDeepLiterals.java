@@ -32,6 +32,9 @@ public class EnumDeepLiterals extends KaitaiStruct {
         this.pet1 = Container1.Animal.byId(this._io.readU4le());
         this.pet2 = Container1.Container2.Animal.byId(this._io.readU4le());
     }
+
+    public void _fetchInstances() {
+    }
     public static class Container1 extends KaitaiStruct {
         public static Container1 fromFile(String fileName) throws IOException {
             return new Container1(new ByteBufferKaitaiStream(fileName));
@@ -68,6 +71,9 @@ public class EnumDeepLiterals extends KaitaiStruct {
             _read();
         }
         private void _read() {
+        }
+
+        public void _fetchInstances() {
         }
         public static class Container2 extends KaitaiStruct {
             public static Container2 fromFile(String fileName) throws IOException {
@@ -106,6 +112,9 @@ public class EnumDeepLiterals extends KaitaiStruct {
             }
             private void _read() {
             }
+
+            public void _fetchInstances() {
+            }
             private EnumDeepLiterals _root;
             private KaitaiStruct _parent;
             public EnumDeepLiterals _root() { return _root; }
@@ -120,16 +129,14 @@ public class EnumDeepLiterals extends KaitaiStruct {
     public Boolean isPet1Ok() {
         if (this.isPet1Ok != null)
             return this.isPet1Ok;
-        boolean _tmp = (boolean) (pet1() == Container1.Animal.CAT);
-        this.isPet1Ok = _tmp;
+        this.isPet1Ok = pet1() == Container1.Animal.CAT;
         return this.isPet1Ok;
     }
     private Boolean isPet2Ok;
     public Boolean isPet2Ok() {
         if (this.isPet2Ok != null)
             return this.isPet2Ok;
-        boolean _tmp = (boolean) (pet2() == Container1.Container2.Animal.HARE);
-        this.isPet2Ok = _tmp;
+        this.isPet2Ok = pet2() == Container1.Container2.Animal.HARE;
         return this.isPet2Ok;
     }
     private Container1.Animal pet1;

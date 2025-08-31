@@ -32,6 +32,9 @@ public class TermStrz extends KaitaiStruct {
         this.s2 = new String(this._io.readBytesTerm((byte) 124, false, false, true), StandardCharsets.UTF_8);
         this.s3 = new String(this._io.readBytesTerm((byte) 64, true, true, true), StandardCharsets.UTF_8);
     }
+
+    public void _fetchInstances() {
+    }
     private String s1;
     private String s2;
     private String s3;

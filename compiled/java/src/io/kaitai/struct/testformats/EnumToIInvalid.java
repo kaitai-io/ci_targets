@@ -47,36 +47,35 @@ public class EnumToIInvalid extends KaitaiStruct {
         this.pet1 = Animal.byId(this._io.readU1());
         this.pet2 = Animal.byId(this._io.readU1());
     }
+
+    public void _fetchInstances() {
+    }
     private Boolean oneLtTwo;
     public Boolean oneLtTwo() {
         if (this.oneLtTwo != null)
             return this.oneLtTwo;
-        boolean _tmp = (boolean) (pet1().id() < pet2().id());
-        this.oneLtTwo = _tmp;
+        this.oneLtTwo = pet1().id() < pet2().id();
         return this.oneLtTwo;
     }
     private Boolean pet2EqIntF;
     public Boolean pet2EqIntF() {
         if (this.pet2EqIntF != null)
             return this.pet2EqIntF;
-        boolean _tmp = (boolean) (pet2().id() == 110);
-        this.pet2EqIntF = _tmp;
+        this.pet2EqIntF = pet2().id() == 110;
         return this.pet2EqIntF;
     }
     private Boolean pet2EqIntT;
     public Boolean pet2EqIntT() {
         if (this.pet2EqIntT != null)
             return this.pet2EqIntT;
-        boolean _tmp = (boolean) (pet2().id() == 111);
-        this.pet2EqIntT = _tmp;
+        this.pet2EqIntT = pet2().id() == 111;
         return this.pet2EqIntT;
     }
     private Integer pet2I;
     public Integer pet2I() {
         if (this.pet2I != null)
             return this.pet2I;
-        int _tmp = (int) (pet2().id());
-        this.pet2I = _tmp;
+        this.pet2I = ((Number) (pet2().id())).intValue();
         return this.pet2I;
     }
     private String pet2IToS;
@@ -90,8 +89,7 @@ public class EnumToIInvalid extends KaitaiStruct {
     public Integer pet2Mod() {
         if (this.pet2Mod != null)
             return this.pet2Mod;
-        int _tmp = (int) (pet2().id() + 32768);
-        this.pet2Mod = _tmp;
+        this.pet2Mod = ((Number) (pet2().id() + 32768)).intValue();
         return this.pet2Mod;
     }
     private Animal pet1;

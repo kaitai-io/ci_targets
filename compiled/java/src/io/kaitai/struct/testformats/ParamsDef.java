@@ -32,6 +32,11 @@ public class ParamsDef extends KaitaiStruct {
             this.trailer = this._io.readU1();
         }
     }
+
+    public void _fetchInstances() {
+        if (hasTrailer()) {
+        }
+    }
     private String buf;
     private Integer trailer;
     private long len;

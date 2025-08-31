@@ -1,0 +1,24 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__repeat_eos_term_struct {
+		label="RepeatEosTermStruct";
+		graph[style=dotted];
+
+		repeat_eos_term_struct__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="records_pos">0</TD><TD PORT="records_size">...</TD><TD>BytesWrapper</TD><TD PORT="records_type">records</TD></TR>
+			<TR><TD COLSPAN="4" PORT="records__repeat">repeat to end of stream</TD></TR>
+		</TABLE>>];
+		subgraph cluster__bytes_wrapper {
+			label="RepeatEosTermStruct::BytesWrapper";
+			graph[style=dotted];
+
+			bytes_wrapper__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="value_pos">0</TD><TD PORT="value_size">⇲</TD><TD></TD><TD PORT="value_type">value</TD></TR>
+			</TABLE>>];
+		}
+	}
+	repeat_eos_term_struct__seq:records_type -> bytes_wrapper__seq [style=bold];
+}

@@ -48,6 +48,9 @@ public class Enum0 extends KaitaiStruct {
         this.pet1 = Animal.byId(this._io.readU4le());
         this.pet2 = Animal.byId(this._io.readU4le());
     }
+
+    public void _fetchInstances() {
+    }
     private Animal pet1;
     private Animal pet2;
     private Enum0 _root;

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 public class SwitchManualEnum extends KaitaiStruct {
     public static SwitchManualEnum fromFile(String fileName) throws IOException {
@@ -38,6 +39,12 @@ public class SwitchManualEnum extends KaitaiStruct {
                 this.opcodes.add(new Opcode(this._io, this, _root));
                 i++;
             }
+        }
+    }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.opcodes.size(); i++) {
+            this.opcodes.get(((Number) (i)).intValue())._fetchInstances();
         }
     }
     public static class Opcode extends KaitaiStruct {
@@ -92,6 +99,24 @@ public class SwitchManualEnum extends KaitaiStruct {
                 }
             }
         }
+
+        public void _fetchInstances() {
+            {
+                CodeEnum on = code();
+                if (on != null) {
+                    switch (code()) {
+                    case INTVAL: {
+                        ((Intval) (this.body))._fetchInstances();
+                        break;
+                    }
+                    case STRVAL: {
+                        ((Strval) (this.body))._fetchInstances();
+                        break;
+                    }
+                    }
+                }
+            }
+        }
         public static class Intval extends KaitaiStruct {
             public static Intval fromFile(String fileName) throws IOException {
                 return new Intval(new ByteBufferKaitaiStream(fileName));
@@ -113,6 +138,9 @@ public class SwitchManualEnum extends KaitaiStruct {
             }
             private void _read() {
                 this.value = this._io.readU1();
+            }
+
+            public void _fetchInstances() {
             }
             private int value;
             private SwitchManualEnum _root;
@@ -143,6 +171,9 @@ public class SwitchManualEnum extends KaitaiStruct {
             private void _read() {
                 this.value = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.US_ASCII);
             }
+
+            public void _fetchInstances() {
+            }
             private String value;
             private SwitchManualEnum _root;
             private SwitchManualEnum.Opcode _parent;
@@ -159,10 +190,10 @@ public class SwitchManualEnum extends KaitaiStruct {
         public SwitchManualEnum _root() { return _root; }
         public SwitchManualEnum _parent() { return _parent; }
     }
-    private ArrayList<Opcode> opcodes;
+    private List<Opcode> opcodes;
     private SwitchManualEnum _root;
     private KaitaiStruct _parent;
-    public ArrayList<Opcode> opcodes() { return opcodes; }
+    public List<Opcode> opcodes() { return opcodes; }
     public SwitchManualEnum _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

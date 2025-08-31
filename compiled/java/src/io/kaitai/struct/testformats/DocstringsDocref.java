@@ -36,6 +36,10 @@ public class DocstringsDocref extends KaitaiStruct {
         this.two = this._io.readU1();
         this.three = this._io.readU1();
     }
+
+    public void _fetchInstances() {
+        parseInst();
+    }
     private Boolean foo;
 
     /**
@@ -44,8 +48,7 @@ public class DocstringsDocref extends KaitaiStruct {
     public Boolean foo() {
         if (this.foo != null)
             return this.foo;
-        boolean _tmp = (boolean) (true);
-        this.foo = _tmp;
+        this.foo = true;
         return this.foo;
     }
     private Integer parseInst;

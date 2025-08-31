@@ -29,6 +29,11 @@ public class FixedStruct extends KaitaiStruct {
     }
     private void _read() {
     }
+
+    public void _fetchInstances() {
+        hdr();
+        this.hdr._fetchInstances();
+    }
     public static class Header extends KaitaiStruct {
         public static Header fromFile(String fileName) throws IOException {
             return new Header(new ByteBufferKaitaiStream(fileName));
@@ -97,6 +102,9 @@ public class FixedStruct extends KaitaiStruct {
             this.sint16be = this._io.readS2be();
             this.sint32be = this._io.readS4be();
             this.sint64be = this._io.readS8be();
+        }
+
+        public void _fetchInstances() {
         }
         private byte[] magic1;
         private int uint8;

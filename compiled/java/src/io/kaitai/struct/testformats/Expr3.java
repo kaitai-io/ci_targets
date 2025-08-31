@@ -31,6 +31,9 @@ public class Expr3 extends KaitaiStruct {
         this.one = this._io.readU1();
         this.two = new String(this._io.readBytes(3), StandardCharsets.US_ASCII);
     }
+
+    public void _fetchInstances() {
+    }
     private String four;
     public String four() {
         if (this.four != null)
@@ -42,64 +45,56 @@ public class Expr3 extends KaitaiStruct {
     public Boolean isStrEq() {
         if (this.isStrEq != null)
             return this.isStrEq;
-        boolean _tmp = (boolean) (two().equals("ACK"));
-        this.isStrEq = _tmp;
+        this.isStrEq = two().equals("ACK");
         return this.isStrEq;
     }
     private Boolean isStrGe;
     public Boolean isStrGe() {
         if (this.isStrGe != null)
             return this.isStrGe;
-        boolean _tmp = (boolean) ((two().compareTo("ACK2") >= 0));
-        this.isStrGe = _tmp;
+        this.isStrGe = (two().compareTo("ACK2") >= 0);
         return this.isStrGe;
     }
     private Boolean isStrGt;
     public Boolean isStrGt() {
         if (this.isStrGt != null)
             return this.isStrGt;
-        boolean _tmp = (boolean) ((two().compareTo("ACK2") > 0));
-        this.isStrGt = _tmp;
+        this.isStrGt = (two().compareTo("ACK2") > 0);
         return this.isStrGt;
     }
     private Boolean isStrLe;
     public Boolean isStrLe() {
         if (this.isStrLe != null)
             return this.isStrLe;
-        boolean _tmp = (boolean) ((two().compareTo("ACK2") <= 0));
-        this.isStrLe = _tmp;
+        this.isStrLe = (two().compareTo("ACK2") <= 0);
         return this.isStrLe;
     }
     private Boolean isStrLt;
     public Boolean isStrLt() {
         if (this.isStrLt != null)
             return this.isStrLt;
-        boolean _tmp = (boolean) ((two().compareTo("ACK2") < 0));
-        this.isStrLt = _tmp;
+        this.isStrLt = (two().compareTo("ACK2") < 0);
         return this.isStrLt;
     }
     private Boolean isStrLt2;
     public Boolean isStrLt2() {
         if (this.isStrLt2 != null)
             return this.isStrLt2;
-        boolean _tmp = (boolean) ((three().compareTo(two()) < 0));
-        this.isStrLt2 = _tmp;
+        this.isStrLt2 = (three().compareTo(two()) < 0);
         return this.isStrLt2;
     }
     private Boolean isStrNe;
     public Boolean isStrNe() {
         if (this.isStrNe != null)
             return this.isStrNe;
-        boolean _tmp = (boolean) (!two().equals("ACK"));
-        this.isStrNe = _tmp;
+        this.isStrNe = !two().equals("ACK");
         return this.isStrNe;
     }
     private Boolean testNot;
     public Boolean testNot() {
         if (this.testNot != null)
             return this.testNot;
-        boolean _tmp = (boolean) (!(false));
-        this.testNot = _tmp;
+        this.testNot = !(false);
         return this.testNot;
     }
     private String three;

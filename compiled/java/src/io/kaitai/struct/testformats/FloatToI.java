@@ -29,93 +29,128 @@ public class FloatToI extends KaitaiStruct {
     private void _read() {
         this.singleValue = this._io.readF4le();
         this.doubleValue = this._io.readF8le();
+        if (true) {
+            this.singleValueIf = this._io.readF4be();
+        }
+        if (true) {
+            this.doubleValueIf = this._io.readF8be();
+        }
+    }
+
+    public void _fetchInstances() {
+        if (true) {
+        }
+        if (true) {
+        }
     }
     private Double calcFloat1;
     public Double calcFloat1() {
         if (this.calcFloat1 != null)
             return this.calcFloat1;
-        double _tmp = (double) (1.234);
-        this.calcFloat1 = _tmp;
+        this.calcFloat1 = ((double) 1.234);
         return this.calcFloat1;
     }
     private Double calcFloat2;
     public Double calcFloat2() {
         if (this.calcFloat2 != null)
             return this.calcFloat2;
-        double _tmp = (double) (1.5);
-        this.calcFloat2 = _tmp;
+        this.calcFloat2 = ((double) 1.5);
         return this.calcFloat2;
     }
     private Double calcFloat3;
     public Double calcFloat3() {
         if (this.calcFloat3 != null)
             return this.calcFloat3;
-        double _tmp = (double) (1.9);
-        this.calcFloat3 = _tmp;
+        this.calcFloat3 = ((double) 1.9);
         return this.calcFloat3;
     }
     private Double calcFloat4;
     public Double calcFloat4() {
         if (this.calcFloat4 != null)
             return this.calcFloat4;
-        double _tmp = (double) (-2.7);
-        this.calcFloat4 = _tmp;
+        this.calcFloat4 = ((Number) (-2.7)).doubleValue();
         return this.calcFloat4;
+    }
+    private Double calcIf;
+    public Double calcIf() {
+        if (this.calcIf != null)
+            return this.calcIf;
+        this.calcIf = ((double) 13.9);
+        return this.calcIf;
+    }
+    private Integer calcIfI;
+    public Integer calcIfI() {
+        if (this.calcIfI != null)
+            return this.calcIfI;
+        this.calcIfI = ((Number) (((Number) (calcIf())).intValue())).intValue();
+        return this.calcIfI;
     }
     private Integer doubleI;
     public Integer doubleI() {
         if (this.doubleI != null)
             return this.doubleI;
-        int _tmp = (int) ((int) (doubleValue() + 0));
-        this.doubleI = _tmp;
+        this.doubleI = ((Number) (((Number) (doubleValue())).intValue())).intValue();
         return this.doubleI;
+    }
+    private Integer doubleIfI;
+    public Integer doubleIfI() {
+        if (this.doubleIfI != null)
+            return this.doubleIfI;
+        this.doubleIfI = ((Number) (((Number) (doubleValueIf())).intValue())).intValue();
+        return this.doubleIfI;
     }
     private Integer float1I;
     public Integer float1I() {
         if (this.float1I != null)
             return this.float1I;
-        int _tmp = (int) ((int) (calcFloat1() + 0));
-        this.float1I = _tmp;
+        this.float1I = ((Number) (((Number) (calcFloat1())).intValue())).intValue();
         return this.float1I;
     }
     private Integer float2I;
     public Integer float2I() {
         if (this.float2I != null)
             return this.float2I;
-        int _tmp = (int) ((int) (calcFloat2() + 0));
-        this.float2I = _tmp;
+        this.float2I = ((Number) (((Number) (calcFloat2())).intValue())).intValue();
         return this.float2I;
     }
     private Integer float3I;
     public Integer float3I() {
         if (this.float3I != null)
             return this.float3I;
-        int _tmp = (int) ((int) (calcFloat3() + 0));
-        this.float3I = _tmp;
+        this.float3I = ((Number) (((Number) (calcFloat3())).intValue())).intValue();
         return this.float3I;
     }
     private Integer float4I;
     public Integer float4I() {
         if (this.float4I != null)
             return this.float4I;
-        int _tmp = (int) ((int) (calcFloat4() + 0));
-        this.float4I = _tmp;
+        this.float4I = ((Number) (((Number) (calcFloat4())).intValue())).intValue();
         return this.float4I;
     }
     private Integer singleI;
     public Integer singleI() {
         if (this.singleI != null)
             return this.singleI;
-        int _tmp = (int) ((int) (singleValue() + 0));
-        this.singleI = _tmp;
+        this.singleI = ((Number) (((Number) (singleValue())).intValue())).intValue();
         return this.singleI;
+    }
+    private Integer singleIfI;
+    public Integer singleIfI() {
+        if (this.singleIfI != null)
+            return this.singleIfI;
+        this.singleIfI = ((Number) (((Number) (singleValueIf())).intValue())).intValue();
+        return this.singleIfI;
     }
     private float singleValue;
     private double doubleValue;
+    private Float singleValueIf;
+    private Double doubleValueIf;
     private FloatToI _root;
     private KaitaiStruct _parent;
     public float singleValue() { return singleValue; }
     public double doubleValue() { return doubleValue; }
+    public Float singleValueIf() { return singleValueIf; }
+    public Double doubleValueIf() { return doubleValueIf; }
     public FloatToI _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

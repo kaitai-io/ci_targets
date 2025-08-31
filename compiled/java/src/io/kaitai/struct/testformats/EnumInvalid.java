@@ -47,6 +47,9 @@ public class EnumInvalid extends KaitaiStruct {
         this.pet1 = Animal.byId(this._io.readU1());
         this.pet2 = Animal.byId(this._io.readU1());
     }
+
+    public void _fetchInstances() {
+    }
     private Animal pet1;
     private Animal pet2;
     private EnumInvalid _root;

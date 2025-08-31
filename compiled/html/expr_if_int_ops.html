@@ -24,27 +24,34 @@
 <tr>
 <td>0</td>
 <td>...</td>
+<td>key</td>
+<td>u8le</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>...</td>
 <td>skip</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>2</td>
+<td>16</td>
 <td>...</td>
-<td>it</td>
-<td>s2le</td>
+<td>bytes</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
-<td>4</td>
+<td>24</td>
 <td>...</td>
-<td>boxed</td>
-<td>s2le</td>
+<td>items</td>
+<td>s1</td>
 <td></td>
 </tr>
 </table>
-value instance: ValueInstanceSpec(InstanceIdentifier(is_eq_boxed),List(instances, is_eq_boxed),Compare(Name(identifier(it)),Eq,Name(identifier(boxed))),None,Some(CalcBooleanType),DocSpec(None,List()))
-value instance: ValueInstanceSpec(InstanceIdentifier(is_eq_prim),List(instances, is_eq_prim),Compare(Name(identifier(it)),Eq,IntNum(16705)),None,Some(CalcBooleanType),DocSpec(None,List()))
+value instance: ValueInstanceSpec(InstanceIdentifier(bytes_sub_key),List(instances, bytes_sub_key),Subscript(Name(identifier(bytes)),Name(identifier(key))),None,Some(Int1Type(false)),DocSpec(None,List()))
+value instance: ValueInstanceSpec(InstanceIdentifier(items_sub_key),List(instances, items_sub_key),Subscript(Name(identifier(items)),Name(identifier(key))),None,Some(Int1Type(true)),DocSpec(None,List()))
 
   </div>
     <!-- Optional JavaScript -->

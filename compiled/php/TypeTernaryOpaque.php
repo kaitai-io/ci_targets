@@ -10,15 +10,15 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
             if (!($this->isHack())) {
-                $this->_m__raw_difWoHack = $this->_io->readBytes(12);
+                $this->_m__raw_difWoHack = $this->_io->readBytes(1);
                 $_io__raw_difWoHack = new \Kaitai\Struct\Stream($this->_m__raw_difWoHack);
-                $this->_m_difWoHack = new \Kaitai\Struct\Tests\TermStrz($_io__raw_difWoHack);
+                $this->_m_difWoHack = new \Kaitai\Struct\Tests\HelloWorld($_io__raw_difWoHack);
             }
             if ($this->isHack()) {
-                $this->_m__raw__raw_difWithHack = $this->_io->readBytes(12);
+                $this->_m__raw__raw_difWithHack = $this->_io->readBytes(1);
                 $this->_m__raw_difWithHack = \Kaitai\Struct\Stream::processXorOne($this->_m__raw__raw_difWithHack, 3);
                 $_io__raw_difWithHack = new \Kaitai\Struct\Stream($this->_m__raw_difWithHack);
-                $this->_m_difWithHack = new \Kaitai\Struct\Tests\TermStrz($_io__raw_difWithHack);
+                $this->_m_difWithHack = new \Kaitai\Struct\Tests\HelloWorld($_io__raw_difWithHack);
             }
         }
         protected $_m_dif;

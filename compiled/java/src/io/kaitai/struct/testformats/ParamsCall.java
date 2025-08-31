@@ -31,6 +31,11 @@ public class ParamsCall extends KaitaiStruct {
         this.buf1 = new MyStr1(this._io, this, _root, 5);
         this.buf2 = new MyStr2(this._io, this, _root, 2 + 3, true);
     }
+
+    public void _fetchInstances() {
+        this.buf1._fetchInstances();
+        this.buf2._fetchInstances();
+    }
     public static class MyStr1 extends KaitaiStruct {
 
         public MyStr1(KaitaiStream _io, long len) {
@@ -50,6 +55,9 @@ public class ParamsCall extends KaitaiStruct {
         }
         private void _read() {
             this.body = new String(this._io.readBytes(len()), StandardCharsets.UTF_8);
+        }
+
+        public void _fetchInstances() {
         }
         private String body;
         private long len;
@@ -82,6 +90,11 @@ public class ParamsCall extends KaitaiStruct {
             this.body = new String(this._io.readBytes(len()), StandardCharsets.UTF_8);
             if (hasTrailer()) {
                 this.trailer = this._io.readU1();
+            }
+        }
+
+        public void _fetchInstances() {
+            if (hasTrailer()) {
             }
         }
         private String body;

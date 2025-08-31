@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RepeatEosU4 extends KaitaiStruct {
     public static RepeatEosU4 fromFile(String fileName) throws IOException {
@@ -37,10 +38,15 @@ public class RepeatEosU4 extends KaitaiStruct {
             }
         }
     }
-    private ArrayList<Long> numbers;
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.numbers.size(); i++) {
+        }
+    }
+    private List<Long> numbers;
     private RepeatEosU4 _root;
     private KaitaiStruct _parent;
-    public ArrayList<Long> numbers() { return numbers; }
+    public List<Long> numbers() { return numbers; }
     public RepeatEosU4 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

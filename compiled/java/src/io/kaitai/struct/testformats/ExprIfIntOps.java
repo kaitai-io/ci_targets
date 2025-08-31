@@ -6,6 +6,8 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ExprIfIntOps extends KaitaiStruct {
     public static ExprIfIntOps fromFile(String fileName) throws IOException {
@@ -27,38 +29,50 @@ public class ExprIfIntOps extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this.skip = this._io.readBytes(2);
         if (true) {
-            this.it = this._io.readS2le();
+            this.key = this._io.readU8le();
         }
+        this.skip = this._io.readBytes(8);
+        this._raw_bytes = this._io.readBytes(8);
+        this.bytes = KaitaiStream.processXor(this._raw_bytes, ((Number) (key())).byteValue());
+        this.items = new ArrayList<Byte>();
+        for (int i = 0; i < 4; i++) {
+            this.items.add(this._io.readS1());
+        }
+    }
+
+    public void _fetchInstances() {
         if (true) {
-            this.boxed = this._io.readS2le();
+        }
+        for (int i = 0; i < this.items.size(); i++) {
         }
     }
-    private Boolean isEqBoxed;
-    public Boolean isEqBoxed() {
-        if (this.isEqBoxed != null)
-            return this.isEqBoxed;
-        boolean _tmp = (boolean) (it() == boxed());
-        this.isEqBoxed = _tmp;
-        return this.isEqBoxed;
+    private Integer bytesSubKey;
+    public Integer bytesSubKey() {
+        if (this.bytesSubKey != null)
+            return this.bytesSubKey;
+        this.bytesSubKey = ((Number) ((bytes()[((Number) (key())).intValue()] & 0xff))).intValue();
+        return this.bytesSubKey;
     }
-    private Boolean isEqPrim;
-    public Boolean isEqPrim() {
-        if (this.isEqPrim != null)
-            return this.isEqPrim;
-        boolean _tmp = (boolean) (it() == 16705);
-        this.isEqPrim = _tmp;
-        return this.isEqPrim;
+    private Byte itemsSubKey;
+    public Byte itemsSubKey() {
+        if (this.itemsSubKey != null)
+            return this.itemsSubKey;
+        this.itemsSubKey = ((Number) (items().get(((Number) (key())).intValue()))).byteValue();
+        return this.itemsSubKey;
     }
+    private Long key;
     private byte[] skip;
-    private Short it;
-    private Short boxed;
+    private byte[] bytes;
+    private List<Byte> items;
     private ExprIfIntOps _root;
     private KaitaiStruct _parent;
+    private byte[] _raw_bytes;
+    public Long key() { return key; }
     public byte[] skip() { return skip; }
-    public Short it() { return it; }
-    public Short boxed() { return boxed; }
+    public byte[] bytes() { return bytes; }
+    public List<Byte> items() { return items; }
     public ExprIfIntOps _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    public byte[] _raw_bytes() { return _raw_bytes; }
 }

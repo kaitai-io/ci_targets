@@ -1,0 +1,47 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__term_bytes4 {
+		label="TermBytes4";
+		graph[style=dotted];
+
+		term_bytes4__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="s1_pos">0</TD><TD PORT="s1_size">3</TD><TD>S1Type</TD><TD PORT="s1_type">s1</TD></TR>
+			<TR><TD PORT="skip_term1_pos">3</TD><TD PORT="skip_term1_size">1</TD><TD>u1</TD><TD PORT="skip_term1_type">skip_term1</TD></TR>
+			<TR><TD PORT="s2_pos">4</TD><TD PORT="s2_size">3</TD><TD>S2Type</TD><TD PORT="s2_type">s2</TD></TR>
+			<TR><TD PORT="skip_term2_pos">7</TD><TD PORT="skip_term2_size">1</TD><TD>u1</TD><TD PORT="skip_term2_type">skip_term2</TD></TR>
+			<TR><TD PORT="s3_pos">8</TD><TD PORT="s3_size">3</TD><TD>S3Type</TD><TD PORT="s3_type">s3</TD></TR>
+		</TABLE>>];
+		subgraph cluster__s1_type {
+			label="TermBytes4::S1Type";
+			graph[style=dotted];
+
+			s1_type__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="value_pos">0</TD><TD PORT="value_size">...</TD><TD>term=124, ignore EOS</TD><TD PORT="value_type">value</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__s2_type {
+			label="TermBytes4::S2Type";
+			graph[style=dotted];
+
+			s2_type__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="value_pos">0</TD><TD PORT="value_size">...</TD><TD>term=124, don't consume, ignore EOS</TD><TD PORT="value_type">value</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__s3_type {
+			label="TermBytes4::S3Type";
+			graph[style=dotted];
+
+			s3_type__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="value_pos">0</TD><TD PORT="value_size">...</TD><TD>term=64, include, ignore EOS</TD><TD PORT="value_type">value</TD></TR>
+			</TABLE>>];
+		}
+	}
+	term_bytes4__seq:s1_type -> s1_type__seq [style=bold];
+	term_bytes4__seq:s2_type -> s2_type__seq [style=bold];
+	term_bytes4__seq:s3_type -> s3_type__seq [style=bold];
+}

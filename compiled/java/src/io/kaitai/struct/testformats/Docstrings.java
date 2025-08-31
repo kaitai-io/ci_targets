@@ -34,6 +34,10 @@ public class Docstrings extends KaitaiStruct {
         this.one = this._io.readU1();
     }
 
+    public void _fetchInstances() {
+        two();
+    }
+
     /**
      * This subtype is never used, yet has a very long description
      * that spans multiple lines. It should be formatted accordingly,
@@ -70,6 +74,9 @@ public class Docstrings extends KaitaiStruct {
         }
         private void _read() {
         }
+
+        public void _fetchInstances() {
+        }
         private Docstrings _root;
         private KaitaiStruct _parent;
         public Docstrings _root() { return _root; }
@@ -83,8 +90,7 @@ public class Docstrings extends KaitaiStruct {
     public Byte three() {
         if (this.three != null)
             return this.three;
-        byte _tmp = (byte) (66);
-        this.three = _tmp;
+        this.three = ((byte) 66);
         return this.three;
     }
     private Integer two;

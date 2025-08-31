@@ -17,14 +17,16 @@ pub struct ExprIfIntOps {
     pub _root: SharedType<ExprIfIntOps>,
     pub _parent: SharedType<ExprIfIntOps>,
     pub _self: SharedType<Self>,
+    key: RefCell<u64>,
     skip: RefCell<Vec<u8>>,
-    it: RefCell<i16>,
-    boxed: RefCell<i16>,
+    bytes: RefCell<Vec<u8>>,
+    items: RefCell<Vec<i8>>,
     _io: RefCell<BytesReader>,
-    f_is_eq_boxed: Cell<bool>,
-    is_eq_boxed: RefCell<bool>,
-    f_is_eq_prim: Cell<bool>,
-    is_eq_prim: RefCell<bool>,
+    bytes_raw: RefCell<Vec<u8>>,
+    f_bytes_sub_key: Cell<bool>,
+    bytes_sub_key: RefCell<u8>,
+    f_items_sub_key: Cell<bool>,
+    items_sub_key: RefCell<i8>,
 }
 impl KStruct for ExprIfIntOps {
     type Root = ExprIfIntOps;
@@ -43,44 +45,53 @@ impl KStruct for ExprIfIntOps {
         let _rrc = self_rc._root.get_value().borrow().upgrade();
         let _prc = self_rc._parent.get_value().borrow().upgrade();
         let _r = _rrc.as_ref().unwrap();
-        *self_rc.skip.borrow_mut() = _io.read_bytes(2 as usize)?.into();
         if true {
-            *self_rc.it.borrow_mut() = _io.read_s2le()?.into();
+            *self_rc.key.borrow_mut() = _io.read_u8le()?.into();
         }
-        if true {
-            *self_rc.boxed.borrow_mut() = _io.read_s2le()?.into();
+        *self_rc.skip.borrow_mut() = _io.read_bytes(8 as usize)?.into();
+        *self_rc.bytes_raw.borrow_mut() = _io.read_bytes(8 as usize)?.into();
+        *self_rc.bytes.borrow_mut() = process_xor_one(&self_rc.bytes_raw.borrow(), *self_rc.key());
+        *self_rc.items.borrow_mut() = Vec::new();
+        let l_items = 4;
+        for _i in 0..l_items {
+            self_rc.items.borrow_mut().push(_io.read_s1()?.into());
         }
         Ok(())
     }
 }
 impl ExprIfIntOps {
-    pub fn is_eq_boxed(
+    pub fn bytes_sub_key(
         &self
-    ) -> KResult<Ref<'_, bool>> {
+    ) -> KResult<Ref<'_, u8>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
         let _r = _rrc.as_ref().unwrap();
-        if self.f_is_eq_boxed.get() {
-            return Ok(self.is_eq_boxed.borrow());
+        if self.f_bytes_sub_key.get() {
+            return Ok(self.bytes_sub_key.borrow());
         }
-        self.f_is_eq_boxed.set(true);
-        *self.is_eq_boxed.borrow_mut() = (*self.it() == *self.boxed()) as bool;
-        Ok(self.is_eq_boxed.borrow())
+        self.f_bytes_sub_key.set(true);
+        *self.bytes_sub_key.borrow_mut() = (self.bytes()[*self.key() as usize]) as u8;
+        Ok(self.bytes_sub_key.borrow())
     }
-    pub fn is_eq_prim(
+    pub fn items_sub_key(
         &self
-    ) -> KResult<Ref<'_, bool>> {
+    ) -> KResult<Ref<'_, i8>> {
         let _io = self._io.borrow();
         let _rrc = self._root.get_value().borrow().upgrade();
         let _prc = self._parent.get_value().borrow().upgrade();
         let _r = _rrc.as_ref().unwrap();
-        if self.f_is_eq_prim.get() {
-            return Ok(self.is_eq_prim.borrow());
+        if self.f_items_sub_key.get() {
+            return Ok(self.items_sub_key.borrow());
         }
-        self.f_is_eq_prim.set(true);
-        *self.is_eq_prim.borrow_mut() = (((*self.it() as i32) == (16705 as i32))) as bool;
-        Ok(self.is_eq_prim.borrow())
+        self.f_items_sub_key.set(true);
+        *self.items_sub_key.borrow_mut() = (self.items()[*self.key() as usize]) as i8;
+        Ok(self.items_sub_key.borrow())
+    }
+}
+impl ExprIfIntOps {
+    pub fn key(&self) -> Ref<'_, u64> {
+        self.key.borrow()
     }
 }
 impl ExprIfIntOps {
@@ -89,17 +100,22 @@ impl ExprIfIntOps {
     }
 }
 impl ExprIfIntOps {
-    pub fn it(&self) -> Ref<'_, i16> {
-        self.it.borrow()
+    pub fn bytes(&self) -> Ref<'_, Vec<u8>> {
+        self.bytes.borrow()
     }
 }
 impl ExprIfIntOps {
-    pub fn boxed(&self) -> Ref<'_, i16> {
-        self.boxed.borrow()
+    pub fn items(&self) -> Ref<'_, Vec<i8>> {
+        self.items.borrow()
     }
 }
 impl ExprIfIntOps {
     pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
+    }
+}
+impl ExprIfIntOps {
+    pub fn bytes_raw(&self) -> Ref<'_, Vec<u8>> {
+        self.bytes_raw.borrow()
     }
 }

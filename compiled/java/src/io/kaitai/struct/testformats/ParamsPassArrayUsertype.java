@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ParamsPassArrayUsertype extends KaitaiStruct {
     public static ParamsPassArrayUsertype fromFile(String fileName) throws IOException {
@@ -34,6 +35,13 @@ public class ParamsPassArrayUsertype extends KaitaiStruct {
         }
         this.passBlocks = new ParamType(this._io, this, _root, blocks());
     }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.blocks.size(); i++) {
+            this.blocks.get(((Number) (i)).intValue())._fetchInstances();
+        }
+        this.passBlocks._fetchInstances();
+    }
     public static class Block extends KaitaiStruct {
         public static Block fromFile(String fileName) throws IOException {
             return new Block(new ByteBufferKaitaiStream(fileName));
@@ -56,6 +64,9 @@ public class ParamsPassArrayUsertype extends KaitaiStruct {
         private void _read() {
             this.foo = this._io.readU1();
         }
+
+        public void _fetchInstances() {
+        }
         private int foo;
         private ParamsPassArrayUsertype _root;
         private ParamsPassArrayUsertype _parent;
@@ -65,15 +76,15 @@ public class ParamsPassArrayUsertype extends KaitaiStruct {
     }
     public static class ParamType extends KaitaiStruct {
 
-        public ParamType(KaitaiStream _io, ArrayList<Block> bar) {
+        public ParamType(KaitaiStream _io, List<Block> bar) {
             this(_io, null, null, bar);
         }
 
-        public ParamType(KaitaiStream _io, ParamsPassArrayUsertype _parent, ArrayList<Block> bar) {
+        public ParamType(KaitaiStream _io, ParamsPassArrayUsertype _parent, List<Block> bar) {
             this(_io, _parent, null, bar);
         }
 
-        public ParamType(KaitaiStream _io, ParamsPassArrayUsertype _parent, ParamsPassArrayUsertype _root, ArrayList<Block> bar) {
+        public ParamType(KaitaiStream _io, ParamsPassArrayUsertype _parent, ParamsPassArrayUsertype _root, List<Block> bar) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
@@ -81,25 +92,28 @@ public class ParamsPassArrayUsertype extends KaitaiStruct {
             _read();
         }
         private void _read() {
-            this.one = this._io.readBytes(bar().get((int) 0).foo());
-            this.two = this._io.readBytes(bar().get((int) 1).foo());
+            this.one = this._io.readBytes(bar().get(((int) 0)).foo());
+            this.two = this._io.readBytes(bar().get(((int) 1)).foo());
+        }
+
+        public void _fetchInstances() {
         }
         private byte[] one;
         private byte[] two;
-        private ArrayList<Block> bar;
+        private List<Block> bar;
         private ParamsPassArrayUsertype _root;
         private ParamsPassArrayUsertype _parent;
         public byte[] one() { return one; }
         public byte[] two() { return two; }
-        public ArrayList<Block> bar() { return bar; }
+        public List<Block> bar() { return bar; }
         public ParamsPassArrayUsertype _root() { return _root; }
         public ParamsPassArrayUsertype _parent() { return _parent; }
     }
-    private ArrayList<Block> blocks;
+    private List<Block> blocks;
     private ParamType passBlocks;
     private ParamsPassArrayUsertype _root;
     private KaitaiStruct _parent;
-    public ArrayList<Block> blocks() { return blocks; }
+    public List<Block> blocks() { return blocks; }
     public ParamType passBlocks() { return passBlocks; }
     public ParamsPassArrayUsertype _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }

@@ -6,6 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.ArrayList;
 
 public class InstanceStdArray extends KaitaiStruct {
@@ -32,8 +33,14 @@ public class InstanceStdArray extends KaitaiStruct {
         this.entrySize = this._io.readU4le();
         this.qtyEntries = this._io.readU4le();
     }
-    private ArrayList<byte[]> entries;
-    public ArrayList<byte[]> entries() {
+
+    public void _fetchInstances() {
+        entries();
+        for (int i = 0; i < this.entries.size(); i++) {
+        }
+    }
+    private List<byte[]> entries;
+    public List<byte[]> entries() {
         if (this.entries != null)
             return this.entries;
         long _pos = this._io.pos();

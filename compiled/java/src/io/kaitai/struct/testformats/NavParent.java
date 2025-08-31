@@ -8,6 +8,7 @@ import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.List;
 
 public class NavParent extends KaitaiStruct {
     public static NavParent fromFile(String fileName) throws IOException {
@@ -32,6 +33,11 @@ public class NavParent extends KaitaiStruct {
         this.header = new HeaderObj(this._io, this, _root);
         this.index = new IndexObj(this._io, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.header._fetchInstances();
+        this.index._fetchInstances();
+    }
     public static class Entry extends KaitaiStruct {
         public static Entry fromFile(String fileName) throws IOException {
             return new Entry(new ByteBufferKaitaiStream(fileName));
@@ -53,6 +59,9 @@ public class NavParent extends KaitaiStruct {
         }
         private void _read() {
             this.filename = new String(this._io.readBytes(_parent()._parent().header().filenameLen()), StandardCharsets.UTF_8);
+        }
+
+        public void _fetchInstances() {
         }
         private String filename;
         private NavParent _root;
@@ -83,6 +92,9 @@ public class NavParent extends KaitaiStruct {
         private void _read() {
             this.qtyEntries = this._io.readU4le();
             this.filenameLen = this._io.readU4le();
+        }
+
+        public void _fetchInstances() {
         }
         private long qtyEntries;
         private long filenameLen;
@@ -119,12 +131,18 @@ public class NavParent extends KaitaiStruct {
                 this.entries.add(new Entry(this._io, this, _root));
             }
         }
+
+        public void _fetchInstances() {
+            for (int i = 0; i < this.entries.size(); i++) {
+                this.entries.get(((Number) (i)).intValue())._fetchInstances();
+            }
+        }
         private byte[] magic;
-        private ArrayList<Entry> entries;
+        private List<Entry> entries;
         private NavParent _root;
         private NavParent _parent;
         public byte[] magic() { return magic; }
-        public ArrayList<Entry> entries() { return entries; }
+        public List<Entry> entries() { return entries; }
         public NavParent _root() { return _root; }
         public NavParent _parent() { return _parent; }
     }

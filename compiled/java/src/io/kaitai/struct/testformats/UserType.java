@@ -29,6 +29,10 @@ public class UserType extends KaitaiStruct {
     private void _read() {
         this.one = new Header(this._io, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.one._fetchInstances();
+    }
     public static class Header extends KaitaiStruct {
         public static Header fromFile(String fileName) throws IOException {
             return new Header(new ByteBufferKaitaiStream(fileName));
@@ -51,6 +55,9 @@ public class UserType extends KaitaiStruct {
         private void _read() {
             this.width = this._io.readU4le();
             this.height = this._io.readU4le();
+        }
+
+        public void _fetchInstances() {
         }
         private long width;
         private long height;

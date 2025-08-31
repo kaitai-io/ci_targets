@@ -3,19 +3,21 @@ import options
 
 type
   ExprIfIntOps* = ref object of KaitaiStruct
+    `key`*: uint64
     `skip`*: seq[byte]
-    `it`*: int16
-    `boxed`*: int16
+    `bytes`*: seq[byte]
+    `items`*: seq[int8]
     `parent`*: KaitaiStruct
-    `isEqBoxedInst`: bool
-    `isEqBoxedInstFlag`: bool
-    `isEqPrimInst`: bool
-    `isEqPrimInstFlag`: bool
+    `rawBytes`*: seq[byte]
+    `bytesSubKeyInst`: uint8
+    `bytesSubKeyInstFlag`: bool
+    `itemsSubKeyInst`: int8
+    `itemsSubKeyInstFlag`: bool
 
 proc read*(_: typedesc[ExprIfIntOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprIfIntOps
 
-proc isEqBoxed*(this: ExprIfIntOps): bool
-proc isEqPrim*(this: ExprIfIntOps): bool
+proc bytesSubKey*(this: ExprIfIntOps): uint8
+proc itemsSubKey*(this: ExprIfIntOps): int8
 
 proc read*(_: typedesc[ExprIfIntOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprIfIntOps =
   template this: untyped = result
@@ -25,30 +27,34 @@ proc read*(_: typedesc[ExprIfIntOps], io: KaitaiStream, root: KaitaiStruct, pare
   this.root = root
   this.parent = parent
 
-  let skipExpr = this.io.readBytes(int(2))
+  if true:
+    let keyExpr = this.io.readU8le()
+    this.key = keyExpr
+  let skipExpr = this.io.readBytes(int(8))
   this.skip = skipExpr
-  if true:
-    let itExpr = this.io.readS2le()
-    this.it = itExpr
-  if true:
-    let boxedExpr = this.io.readS2le()
-    this.boxed = boxedExpr
+  let rawBytesExpr = this.io.readBytes(int(8))
+  this.rawBytes = rawBytesExpr
+  let bytesExpr = this.rawBytes.processXor(this.key)
+  this.bytes = bytesExpr
+  for i in 0 ..< int(4):
+    let it = this.io.readS1()
+    this.items.add(it)
 
-proc isEqBoxed(this: ExprIfIntOps): bool = 
-  if this.isEqBoxedInstFlag:
-    return this.isEqBoxedInst
-  let isEqBoxedInstExpr = bool(this.it == this.boxed)
-  this.isEqBoxedInst = isEqBoxedInstExpr
-  this.isEqBoxedInstFlag = true
-  return this.isEqBoxedInst
+proc bytesSubKey(this: ExprIfIntOps): uint8 = 
+  if this.bytesSubKeyInstFlag:
+    return this.bytesSubKeyInst
+  let bytesSubKeyInstExpr = uint8(this.bytes[this.key])
+  this.bytesSubKeyInst = bytesSubKeyInstExpr
+  this.bytesSubKeyInstFlag = true
+  return this.bytesSubKeyInst
 
-proc isEqPrim(this: ExprIfIntOps): bool = 
-  if this.isEqPrimInstFlag:
-    return this.isEqPrimInst
-  let isEqPrimInstExpr = bool(this.it == 16705)
-  this.isEqPrimInst = isEqPrimInstExpr
-  this.isEqPrimInstFlag = true
-  return this.isEqPrimInst
+proc itemsSubKey(this: ExprIfIntOps): int8 = 
+  if this.itemsSubKeyInstFlag:
+    return this.itemsSubKeyInst
+  let itemsSubKeyInstExpr = int8(this.items[this.key])
+  this.itemsSubKeyInst = itemsSubKeyInstExpr
+  this.itemsSubKeyInstFlag = true
+  return this.itemsSubKeyInst
 
 proc fromFile*(_: typedesc[ExprIfIntOps], filename: string): ExprIfIntOps =
   ExprIfIntOps.read(newKaitaiFileStream(filename), nil, nil)

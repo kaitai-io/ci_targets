@@ -30,6 +30,9 @@ public class EnumImportSeq extends KaitaiStruct {
         this.pet1 = Enum0.Animal.byId(this._io.readU4le());
         this.pet2 = EnumDeep.Container1.Container2.Animal.byId(this._io.readU4le());
     }
+
+    public void _fetchInstances() {
+    }
     private Enum0.Animal pet1;
     private EnumDeep.Container1.Container2.Animal pet2;
     private EnumImportSeq _root;

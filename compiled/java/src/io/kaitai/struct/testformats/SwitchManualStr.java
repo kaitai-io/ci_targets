@@ -8,6 +8,7 @@ import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 public class SwitchManualStr extends KaitaiStruct {
     public static SwitchManualStr fromFile(String fileName) throws IOException {
@@ -36,6 +37,12 @@ public class SwitchManualStr extends KaitaiStruct {
                 this.opcodes.add(new Opcode(this._io, this, _root));
                 i++;
             }
+        }
+    }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.opcodes.size(); i++) {
+            this.opcodes.get(((Number) (i)).intValue())._fetchInstances();
         }
     }
     public static class Opcode extends KaitaiStruct {
@@ -70,6 +77,19 @@ public class SwitchManualStr extends KaitaiStruct {
             }
             }
         }
+
+        public void _fetchInstances() {
+            switch (code()) {
+            case "I": {
+                ((Intval) (this.body))._fetchInstances();
+                break;
+            }
+            case "S": {
+                ((Strval) (this.body))._fetchInstances();
+                break;
+            }
+            }
+        }
         public static class Intval extends KaitaiStruct {
             public static Intval fromFile(String fileName) throws IOException {
                 return new Intval(new ByteBufferKaitaiStream(fileName));
@@ -91,6 +111,9 @@ public class SwitchManualStr extends KaitaiStruct {
             }
             private void _read() {
                 this.value = this._io.readU1();
+            }
+
+            public void _fetchInstances() {
             }
             private int value;
             private SwitchManualStr _root;
@@ -121,6 +144,9 @@ public class SwitchManualStr extends KaitaiStruct {
             private void _read() {
                 this.value = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.US_ASCII);
             }
+
+            public void _fetchInstances() {
+            }
             private String value;
             private SwitchManualStr _root;
             private SwitchManualStr.Opcode _parent;
@@ -137,10 +163,10 @@ public class SwitchManualStr extends KaitaiStruct {
         public SwitchManualStr _root() { return _root; }
         public SwitchManualStr _parent() { return _parent; }
     }
-    private ArrayList<Opcode> opcodes;
+    private List<Opcode> opcodes;
     private SwitchManualStr _root;
     private KaitaiStruct _parent;
-    public ArrayList<Opcode> opcodes() { return opcodes; }
+    public List<Opcode> opcodes() { return opcodes; }
     public SwitchManualStr _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

@@ -30,6 +30,10 @@ public class ImportsCircularA extends KaitaiStruct {
         this.code = this._io.readU1();
         this.two = new ImportsCircularB(this._io);
     }
+
+    public void _fetchInstances() {
+        this.two._fetchInstances();
+    }
     private int code;
     private ImportsCircularB two;
     private ImportsCircularA _root;

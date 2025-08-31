@@ -1,10 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
-import term_strz
+import hello_world
 
 type
   OpaqueExternalType* = ref object of KaitaiStruct
-    `one`*: TermStrz
+    `hw`*: HelloWorld
     `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[OpaqueExternalType], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): OpaqueExternalType
@@ -18,8 +18,8 @@ proc read*(_: typedesc[OpaqueExternalType], io: KaitaiStream, root: KaitaiStruct
   this.root = root
   this.parent = parent
 
-  let oneExpr = TermStrz.read(this.io, nil, nil)
-  this.one = oneExpr
+  let hwExpr = HelloWorld.read(this.io, nil, nil)
+  this.hw = hwExpr
 
 proc fromFile*(_: typedesc[OpaqueExternalType], filename: string): OpaqueExternalType =
   OpaqueExternalType.read(newKaitaiFileStream(filename), nil, nil)

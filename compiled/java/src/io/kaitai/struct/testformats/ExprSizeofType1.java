@@ -28,6 +28,9 @@ public class ExprSizeofType1 extends KaitaiStruct {
     }
     private void _read() {
     }
+
+    public void _fetchInstances() {
+    }
     public static class Block extends KaitaiStruct {
         public static Block fromFile(String fileName) throws IOException {
             return new Block(new ByteBufferKaitaiStream(fileName));
@@ -53,6 +56,10 @@ public class ExprSizeofType1 extends KaitaiStruct {
             this.c = this._io.readBytes(2);
             this.d = new Subblock(this._io, this, _root);
         }
+
+        public void _fetchInstances() {
+            this.d._fetchInstances();
+        }
         public static class Subblock extends KaitaiStruct {
             public static Subblock fromFile(String fileName) throws IOException {
                 return new Subblock(new ByteBufferKaitaiStream(fileName));
@@ -74,6 +81,9 @@ public class ExprSizeofType1 extends KaitaiStruct {
             }
             private void _read() {
                 this.a = this._io.readBytes(4);
+            }
+
+            public void _fetchInstances() {
             }
             private byte[] a;
             private ExprSizeofType1 _root;
@@ -99,16 +109,14 @@ public class ExprSizeofType1 extends KaitaiStruct {
     public Integer sizeofBlock() {
         if (this.sizeofBlock != null)
             return this.sizeofBlock;
-        int _tmp = (int) (11);
-        this.sizeofBlock = _tmp;
+        this.sizeofBlock = ((Number) (11)).intValue();
         return this.sizeofBlock;
     }
     private Integer sizeofSubblock;
     public Integer sizeofSubblock() {
         if (this.sizeofSubblock != null)
             return this.sizeofSubblock;
-        int _tmp = (int) (4);
-        this.sizeofSubblock = _tmp;
+        this.sizeofSubblock = ((Number) (4)).intValue();
         return this.sizeofSubblock;
     }
     private ExprSizeofType1 _root;

@@ -8,6 +8,7 @@ import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class ValidFailRepeatExpr extends KaitaiStruct {
     public static ValidFailRepeatExpr fromFile(String fileName) throws IOException {
@@ -35,19 +36,24 @@ public class ValidFailRepeatExpr extends KaitaiStruct {
             while (!this._io.isEof()) {
                 this.foo.add(this._io.readBytes(4));
                 {
-                    byte[] _it = this.foo.get((int) i);
+                    byte[] _it = this.foo.get(((Number) (i)).intValue());
                     if (!(!Arrays.equals(_it, new byte[] { 0, 18, 52, 86 }))) {
-                        throw new KaitaiStream.ValidationExprError(this.foo.get((int) i), this._io, "/seq/0");
+                        throw new KaitaiStream.ValidationExprError(this.foo.get(((Number) (i)).intValue()), this._io, "/seq/0");
                     }
                 }
                 i++;
             }
         }
     }
-    private ArrayList<byte[]> foo;
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.foo.size(); i++) {
+        }
+    }
+    private List<byte[]> foo;
     private ValidFailRepeatExpr _root;
     private KaitaiStruct _parent;
-    public ArrayList<byte[]> foo() { return foo; }
+    public List<byte[]> foo() { return foo; }
     public ValidFailRepeatExpr _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

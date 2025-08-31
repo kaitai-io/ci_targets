@@ -58,8 +58,10 @@ public class TsPacketHeader extends KaitaiStruct {
         this.transportScramblingControl = this._io.readBitsIntBe(2);
         this.adaptationFieldControl = AdaptationFieldControlEnum.byId(this._io.readBitsIntBe(2));
         this.continuityCounter = this._io.readBitsIntBe(4);
-        this._io.alignToByte();
         this.tsPacketRemain = this._io.readBytes(184);
+    }
+
+    public void _fetchInstances() {
     }
     private int syncByte;
     private boolean transportErrorIndicator;

@@ -13,8 +13,8 @@ class OpaqueExternalType < Kaitai::Struct::Struct
   end
 
   def _read
-    @one = TermStrz.new(@_io)
+    @hw = HelloWorld.new(@_io)
     self
   end
-  attr_reader :one
+  attr_reader :hw
 end

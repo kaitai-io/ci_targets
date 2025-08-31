@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.011_000;
-use TermStrz;
+use HelloWorld;
 
 ########################################################################
 package TypeTernaryOpaque;
@@ -36,15 +36,15 @@ sub _read {
     my ($self) = @_;
 
     if (!($self->is_hack())) {
-        $self->{_raw_dif_wo_hack} = $self->{_io}->read_bytes(12);
+        $self->{_raw_dif_wo_hack} = $self->{_io}->read_bytes(1);
         my $io__raw_dif_wo_hack = IO::KaitaiStruct::Stream->new($self->{_raw_dif_wo_hack});
-        $self->{dif_wo_hack} = TermStrz->new($io__raw_dif_wo_hack);
+        $self->{dif_wo_hack} = HelloWorld->new($io__raw_dif_wo_hack);
     }
     if ($self->is_hack()) {
-        $self->{_raw__raw_dif_with_hack} = $self->{_io}->read_bytes(12);
+        $self->{_raw__raw_dif_with_hack} = $self->{_io}->read_bytes(1);
         $self->{_raw_dif_with_hack} = IO::KaitaiStruct::Stream::process_xor_one($self->{_raw__raw_dif_with_hack}, 3);
         my $io__raw_dif_with_hack = IO::KaitaiStruct::Stream->new($self->{_raw_dif_with_hack});
-        $self->{dif_with_hack} = TermStrz->new($io__raw_dif_with_hack);
+        $self->{dif_with_hack} = HelloWorld->new($io__raw_dif_with_hack);
     }
 }
 

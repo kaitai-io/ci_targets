@@ -32,6 +32,9 @@ public class EnumDeep extends KaitaiStruct {
         this.pet1 = Container1.Animal.byId(this._io.readU4le());
         this.pet2 = Container1.Container2.Animal.byId(this._io.readU4le());
     }
+
+    public void _fetchInstances() {
+    }
     public static class Container1 extends KaitaiStruct {
         public static Container1 fromFile(String fileName) throws IOException {
             return new Container1(new ByteBufferKaitaiStream(fileName));
@@ -69,6 +72,9 @@ public class EnumDeep extends KaitaiStruct {
         }
         private void _read() {
         }
+
+        public void _fetchInstances() {
+        }
         public static class Container2 extends KaitaiStruct {
             public static Container2 fromFile(String fileName) throws IOException {
                 return new Container2(new ByteBufferKaitaiStream(fileName));
@@ -105,6 +111,9 @@ public class EnumDeep extends KaitaiStruct {
                 _read();
             }
             private void _read() {
+            }
+
+            public void _fetchInstances() {
             }
             private EnumDeep _root;
             private KaitaiStruct _parent;

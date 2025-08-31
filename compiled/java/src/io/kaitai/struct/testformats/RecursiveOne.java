@@ -47,6 +47,27 @@ public class RecursiveOne extends KaitaiStruct {
         }
         }
     }
+
+    public void _fetchInstances() {
+        switch (one() & 3) {
+        case 0: {
+            ((RecursiveOne) (this.next))._fetchInstances();
+            break;
+        }
+        case 1: {
+            ((RecursiveOne) (this.next))._fetchInstances();
+            break;
+        }
+        case 2: {
+            ((RecursiveOne) (this.next))._fetchInstances();
+            break;
+        }
+        case 3: {
+            ((Fini) (this.next))._fetchInstances();
+            break;
+        }
+        }
+    }
     public static class Fini extends KaitaiStruct {
         public static Fini fromFile(String fileName) throws IOException {
             return new Fini(new ByteBufferKaitaiStream(fileName));
@@ -68,6 +89,9 @@ public class RecursiveOne extends KaitaiStruct {
         }
         private void _read() {
             this.finisher = this._io.readU2le();
+        }
+
+        public void _fetchInstances() {
         }
         private int finisher;
         private RecursiveOne _root;

@@ -29,6 +29,10 @@ public class NavParentSwitchCast extends KaitaiStruct {
     private void _read() {
         this.main = new Foo(this._io, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.main._fetchInstances();
+    }
     public static class Foo extends KaitaiStruct {
         public static Foo fromFile(String fileName) throws IOException {
             return new Foo(new ByteBufferKaitaiStream(fileName));
@@ -68,6 +72,22 @@ public class NavParentSwitchCast extends KaitaiStruct {
             }
             }
         }
+
+        public void _fetchInstances() {
+            switch (bufType()) {
+            case 0: {
+                ((Zero) (this.buf))._fetchInstances();
+                break;
+            }
+            case 1: {
+                ((One) (this.buf))._fetchInstances();
+                break;
+            }
+            default: {
+                break;
+            }
+            }
+        }
         public static class Common extends KaitaiStruct {
             public static Common fromFile(String fileName) throws IOException {
                 return new Common(new ByteBufferKaitaiStream(fileName));
@@ -89,12 +109,14 @@ public class NavParentSwitchCast extends KaitaiStruct {
             }
             private void _read() {
             }
+
+            public void _fetchInstances() {
+            }
             private Integer flag;
             public Integer flag() {
                 if (this.flag != null)
                     return this.flag;
-                int _tmp = (int) (((NavParentSwitchCast.Foo) (_parent()._parent())).flag());
-                this.flag = _tmp;
+                this.flag = ((Number) (((NavParentSwitchCast.Foo) (_parent()._parent())).flag())).intValue();
                 return this.flag;
             }
             private NavParentSwitchCast _root;
@@ -124,6 +146,10 @@ public class NavParentSwitchCast extends KaitaiStruct {
             private void _read() {
                 this.branch = new Common(this._io, this, _root);
             }
+
+            public void _fetchInstances() {
+                this.branch._fetchInstances();
+            }
             private Common branch;
             private NavParentSwitchCast _root;
             private NavParentSwitchCast.Foo _parent;
@@ -152,6 +178,10 @@ public class NavParentSwitchCast extends KaitaiStruct {
             }
             private void _read() {
                 this.branch = new Common(this._io, this, _root);
+            }
+
+            public void _fetchInstances() {
+                this.branch._fetchInstances();
             }
             private Common branch;
             private NavParentSwitchCast _root;

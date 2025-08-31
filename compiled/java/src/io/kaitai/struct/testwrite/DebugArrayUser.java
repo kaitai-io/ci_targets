@@ -1,0 +1,169 @@
+// This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+
+package io.kaitai.struct.testwrite;
+
+import io.kaitai.struct.ByteBufferKaitaiStream;
+import io.kaitai.struct.KaitaiStruct;
+import io.kaitai.struct.KaitaiStream;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.ArrayList;
+import java.util.Objects;
+import io.kaitai.struct.ConsistencyError;
+
+public class DebugArrayUser extends KaitaiStruct.ReadWrite {
+    public Map<String, Integer> _attrStart = new HashMap<String, Integer>();
+    public Map<String, Integer> _attrEnd = new HashMap<String, Integer>();
+    public Map<String, List<Integer>> _arrStart = new HashMap<String, List<Integer>>();
+    public Map<String, List<Integer>> _arrEnd = new HashMap<String, List<Integer>>();
+
+    public static DebugArrayUser fromFile(String fileName) throws IOException {
+        return new DebugArrayUser(new ByteBufferKaitaiStream(fileName));
+    }
+    public static String[] _seqFields = new String[] { "oneCat", "arrayOfCats" };
+    public DebugArrayUser() {
+        this(null, null, null);
+    }
+
+    public DebugArrayUser(KaitaiStream _io) {
+        this(_io, null, null);
+    }
+
+    public DebugArrayUser(KaitaiStream _io, KaitaiStruct.ReadWrite _parent) {
+        this(_io, _parent, null);
+    }
+
+    public DebugArrayUser(KaitaiStream _io, KaitaiStruct.ReadWrite _parent, DebugArrayUser _root) {
+        super(_io);
+        this._parent = _parent;
+        this._root = _root == null ? this : _root;
+    }
+    public void _read() {
+        _attrStart.put("oneCat", this._io.pos());
+        this.oneCat = new Cat(this._io, this, _root);
+        this.oneCat._read();
+        _attrEnd.put("oneCat", this._io.pos());
+        _attrStart.put("arrayOfCats", this._io.pos());
+        this.arrayOfCats = new ArrayList<Cat>();
+        for (int i = 0; i < 3; i++) {
+            {
+                List<Integer> _posList = _arrStart.get("arrayOfCats");
+                if (_posList == null) {
+                    _posList = new ArrayList<Integer>();
+                    _arrStart.put("arrayOfCats", _posList);
+                }
+                _posList.add(this._io.pos());
+            }
+            Cat _t_arrayOfCats = new Cat(this._io, this, _root);
+            try {
+                _t_arrayOfCats._read();
+            } finally {
+                this.arrayOfCats.add(_t_arrayOfCats);
+            }
+            {
+                List<Integer> _posList = _arrEnd.get("arrayOfCats");
+                if (_posList == null) {
+                    _posList = new ArrayList<Integer>();
+                    _arrEnd.put("arrayOfCats", _posList);
+                }
+                _posList.add(this._io.pos());
+            }
+        }
+        _attrEnd.put("arrayOfCats", this._io.pos());
+    }
+
+    public void _fetchInstances() {
+        this.oneCat._fetchInstances();
+        for (int i = 0; i < this.arrayOfCats.size(); i++) {
+            this.arrayOfCats.get(((Number) (i)).intValue())._fetchInstances();
+        }
+    }
+
+    public void _write_Seq() {
+        this.oneCat._write_Seq(this._io);
+        for (int i = 0; i < this.arrayOfCats.size(); i++) {
+            this.arrayOfCats.get(((Number) (i)).intValue())._write_Seq(this._io);
+        }
+    }
+
+    public void _check() {
+        if (!Objects.equals(this.oneCat._root(), _root()))
+            throw new ConsistencyError("one_cat", this.oneCat._root(), _root());
+        if (!Objects.equals(this.oneCat._parent(), this))
+            throw new ConsistencyError("one_cat", this.oneCat._parent(), this);
+        if (this.arrayOfCats.size() != 3)
+            throw new ConsistencyError("array_of_cats", this.arrayOfCats.size(), 3);
+        for (int i = 0; i < this.arrayOfCats.size(); i++) {
+            if (!Objects.equals(this.arrayOfCats.get(((Number) (i)).intValue())._root(), _root()))
+                throw new ConsistencyError("array_of_cats", this.arrayOfCats.get(((Number) (i)).intValue())._root(), _root());
+            if (!Objects.equals(this.arrayOfCats.get(((Number) (i)).intValue())._parent(), this))
+                throw new ConsistencyError("array_of_cats", this.arrayOfCats.get(((Number) (i)).intValue())._parent(), this);
+        }
+    }
+    public static class Cat extends KaitaiStruct.ReadWrite {
+        public Map<String, Integer> _attrStart = new HashMap<String, Integer>();
+        public Map<String, Integer> _attrEnd = new HashMap<String, Integer>();
+        public Map<String, List<Integer>> _arrStart = new HashMap<String, List<Integer>>();
+        public Map<String, List<Integer>> _arrEnd = new HashMap<String, List<Integer>>();
+
+        public static Cat fromFile(String fileName) throws IOException {
+            return new Cat(new ByteBufferKaitaiStream(fileName));
+        }
+        public static String[] _seqFields = new String[] { "meow" };
+        public Cat() {
+            this(null, null, null);
+        }
+
+        public Cat(KaitaiStream _io) {
+            this(_io, null, null);
+        }
+
+        public Cat(KaitaiStream _io, DebugArrayUser _parent) {
+            this(_io, _parent, null);
+        }
+
+        public Cat(KaitaiStream _io, DebugArrayUser _parent, DebugArrayUser _root) {
+            super(_io);
+            this._parent = _parent;
+            this._root = _root;
+        }
+        public void _read() {
+            _attrStart.put("meow", this._io.pos());
+            this.meow = this._io.readU1();
+            _attrEnd.put("meow", this._io.pos());
+        }
+
+        public void _fetchInstances() {
+        }
+
+        public void _write_Seq() {
+            this._io.writeU1(this.meow);
+        }
+
+        public void _check() {
+        }
+        private int meow;
+        private DebugArrayUser _root;
+        private DebugArrayUser _parent;
+        public int meow() { return meow; }
+        public void setMeow(int _v) { meow = _v; }
+        public DebugArrayUser _root() { return _root; }
+        public void set_root(DebugArrayUser _v) { _root = _v; }
+        public DebugArrayUser _parent() { return _parent; }
+        public void set_parent(DebugArrayUser _v) { _parent = _v; }
+    }
+    private Cat oneCat;
+    private List<Cat> arrayOfCats;
+    private DebugArrayUser _root;
+    private KaitaiStruct.ReadWrite _parent;
+    public Cat oneCat() { return oneCat; }
+    public void setOneCat(Cat _v) { oneCat = _v; }
+    public List<Cat> arrayOfCats() { return arrayOfCats; }
+    public void setArrayOfCats(List<Cat> _v) { arrayOfCats = _v; }
+    public DebugArrayUser _root() { return _root; }
+    public void set_root(DebugArrayUser _v) { _root = _v; }
+    public KaitaiStruct.ReadWrite _parent() { return _parent; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+}

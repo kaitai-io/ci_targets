@@ -8,6 +8,7 @@ import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 public class CastNested extends KaitaiStruct {
     public static CastNested fromFile(String fileName) throws IOException {
@@ -36,6 +37,12 @@ public class CastNested extends KaitaiStruct {
                 this.opcodes.add(new Opcode(this._io, this, _root));
                 i++;
             }
+        }
+    }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.opcodes.size(); i++) {
+            this.opcodes.get(((Number) (i)).intValue())._fetchInstances();
         }
     }
     public static class Opcode extends KaitaiStruct {
@@ -70,6 +77,19 @@ public class CastNested extends KaitaiStruct {
             }
             }
         }
+
+        public void _fetchInstances() {
+            switch (code()) {
+            case 73: {
+                ((Intval) (this.body))._fetchInstances();
+                break;
+            }
+            case 83: {
+                ((Strval) (this.body))._fetchInstances();
+                break;
+            }
+            }
+        }
         public static class Intval extends KaitaiStruct {
             public static Intval fromFile(String fileName) throws IOException {
                 return new Intval(new ByteBufferKaitaiStream(fileName));
@@ -91,6 +111,9 @@ public class CastNested extends KaitaiStruct {
             }
             private void _read() {
                 this.value = this._io.readU1();
+            }
+
+            public void _fetchInstances() {
             }
             private int value;
             private CastNested _root;
@@ -121,6 +144,9 @@ public class CastNested extends KaitaiStruct {
             private void _read() {
                 this.value = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.US_ASCII);
             }
+
+            public void _fetchInstances() {
+            }
             private String value;
             private CastNested _root;
             private CastNested.Opcode _parent;
@@ -141,35 +167,34 @@ public class CastNested extends KaitaiStruct {
     public CastNested.Opcode.Strval opcodes0Str() {
         if (this.opcodes0Str != null)
             return this.opcodes0Str;
-        this.opcodes0Str = ((CastNested.Opcode.Strval) (opcodes().get((int) 0).body()));
+        this.opcodes0Str = ((CastNested.Opcode.Strval) (opcodes().get(((int) 0)).body()));
         return this.opcodes0Str;
     }
     private String opcodes0StrValue;
     public String opcodes0StrValue() {
         if (this.opcodes0StrValue != null)
             return this.opcodes0StrValue;
-        this.opcodes0StrValue = ((CastNested.Opcode.Strval) (opcodes().get((int) 0).body())).value();
+        this.opcodes0StrValue = ((CastNested.Opcode.Strval) (opcodes().get(((int) 0)).body())).value();
         return this.opcodes0StrValue;
     }
     private CastNested.Opcode.Intval opcodes1Int;
     public CastNested.Opcode.Intval opcodes1Int() {
         if (this.opcodes1Int != null)
             return this.opcodes1Int;
-        this.opcodes1Int = ((CastNested.Opcode.Intval) (opcodes().get((int) 1).body()));
+        this.opcodes1Int = ((CastNested.Opcode.Intval) (opcodes().get(((int) 1)).body()));
         return this.opcodes1Int;
     }
     private Integer opcodes1IntValue;
     public Integer opcodes1IntValue() {
         if (this.opcodes1IntValue != null)
             return this.opcodes1IntValue;
-        int _tmp = (int) (((CastNested.Opcode.Intval) (opcodes().get((int) 1).body())).value());
-        this.opcodes1IntValue = _tmp;
+        this.opcodes1IntValue = ((Number) (((CastNested.Opcode.Intval) (opcodes().get(((int) 1)).body())).value())).intValue();
         return this.opcodes1IntValue;
     }
-    private ArrayList<Opcode> opcodes;
+    private List<Opcode> opcodes;
     private CastNested _root;
     private KaitaiStruct _parent;
-    public ArrayList<Opcode> opcodes() { return opcodes; }
+    public List<Opcode> opcodes() { return opcodes; }
     public CastNested _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

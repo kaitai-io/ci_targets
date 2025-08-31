@@ -17,7 +17,7 @@ end
 function ValidFailContents:_read()
   self.foo = self._io:read_bytes(2)
   if not(self.foo == "\081\065") then
-    error("not equal, expected " ..  "\081\065" .. ", but got " .. self.foo)
+    error("not equal, expected " .. "\081\065" .. ", but got " .. self.foo)
   end
 end
 

@@ -32,6 +32,12 @@ public class ImportsCircularB extends KaitaiStruct {
             this.backRef = new ImportsCircularA(this._io);
         }
     }
+
+    public void _fetchInstances() {
+        if (initial() == 65) {
+            this.backRef._fetchInstances();
+        }
+    }
     private int initial;
     private ImportsCircularA backRef;
     private ImportsCircularB _root;

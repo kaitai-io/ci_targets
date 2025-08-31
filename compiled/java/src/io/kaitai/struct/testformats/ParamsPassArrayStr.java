@@ -8,6 +8,7 @@ import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Arrays;
 
 public class ParamsPassArrayStr extends KaitaiStruct {
@@ -37,17 +38,24 @@ public class ParamsPassArrayStr extends KaitaiStruct {
         this.passStrArray = new WantsStrs(this._io, this, _root, strArray());
         this.passStrArrayCalc = new WantsStrs(this._io, this, _root, strArrayCalc());
     }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.strArray.size(); i++) {
+        }
+        this.passStrArray._fetchInstances();
+        this.passStrArrayCalc._fetchInstances();
+    }
     public static class WantsStrs extends KaitaiStruct {
 
-        public WantsStrs(KaitaiStream _io, ArrayList<String> strs) {
+        public WantsStrs(KaitaiStream _io, List<String> strs) {
             this(_io, null, null, strs);
         }
 
-        public WantsStrs(KaitaiStream _io, ParamsPassArrayStr _parent, ArrayList<String> strs) {
+        public WantsStrs(KaitaiStream _io, ParamsPassArrayStr _parent, List<String> strs) {
             this(_io, _parent, null, strs);
         }
 
-        public WantsStrs(KaitaiStream _io, ParamsPassArrayStr _parent, ParamsPassArrayStr _root, ArrayList<String> strs) {
+        public WantsStrs(KaitaiStream _io, ParamsPassArrayStr _parent, ParamsPassArrayStr _root, List<String> strs) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
@@ -56,26 +64,29 @@ public class ParamsPassArrayStr extends KaitaiStruct {
         }
         private void _read() {
         }
-        private ArrayList<String> strs;
+
+        public void _fetchInstances() {
+        }
+        private List<String> strs;
         private ParamsPassArrayStr _root;
         private ParamsPassArrayStr _parent;
-        public ArrayList<String> strs() { return strs; }
+        public List<String> strs() { return strs; }
         public ParamsPassArrayStr _root() { return _root; }
         public ParamsPassArrayStr _parent() { return _parent; }
     }
-    private ArrayList<String> strArrayCalc;
-    public ArrayList<String> strArrayCalc() {
+    private List<String> strArrayCalc;
+    public List<String> strArrayCalc() {
         if (this.strArrayCalc != null)
             return this.strArrayCalc;
         this.strArrayCalc = new ArrayList<String>(Arrays.asList("aB", "Cd"));
         return this.strArrayCalc;
     }
-    private ArrayList<String> strArray;
+    private List<String> strArray;
     private WantsStrs passStrArray;
     private WantsStrs passStrArrayCalc;
     private ParamsPassArrayStr _root;
     private KaitaiStruct _parent;
-    public ArrayList<String> strArray() { return strArray; }
+    public List<String> strArray() { return strArray; }
     public WantsStrs passStrArray() { return passStrArray; }
     public WantsStrs passStrArrayCalc() { return passStrArrayCalc; }
     public ParamsPassArrayStr _root() { return _root; }

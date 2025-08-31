@@ -32,6 +32,9 @@ public class ValidFailMaxInt extends KaitaiStruct {
             throw new KaitaiStream.ValidationGreaterThanError(12, this.foo, this._io, "/seq/0");
         }
     }
+
+    public void _fetchInstances() {
+    }
     private int foo;
     private ValidFailMaxInt _root;
     private KaitaiStruct _parent;

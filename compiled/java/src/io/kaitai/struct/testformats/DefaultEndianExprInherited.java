@@ -8,6 +8,7 @@ import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class DefaultEndianExprInherited extends KaitaiStruct {
     public static DefaultEndianExprInherited fromFile(String fileName) throws IOException {
@@ -38,6 +39,12 @@ public class DefaultEndianExprInherited extends KaitaiStruct {
             }
         }
     }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.docs.size(); i++) {
+            this.docs.get(((Number) (i)).intValue())._fetchInstances();
+        }
+    }
     public static class Doc extends KaitaiStruct {
         public static Doc fromFile(String fileName) throws IOException {
             return new Doc(new ByteBufferKaitaiStream(fileName));
@@ -60,6 +67,10 @@ public class DefaultEndianExprInherited extends KaitaiStruct {
         private void _read() {
             this.indicator = this._io.readBytes(2);
             this.main = new MainObj(this._io, this, _root);
+        }
+
+        public void _fetchInstances() {
+            this.main._fetchInstances();
         }
         public static class MainObj extends KaitaiStruct {
             public static MainObj fromFile(String fileName) throws IOException {
@@ -85,12 +96,10 @@ public class DefaultEndianExprInherited extends KaitaiStruct {
                 {
                     byte[] on = _parent().indicator();
                     if (Arrays.equals(on, new byte[] { 73, 73 })) {
-                        boolean _tmp = (boolean) (true);
-                        this._is_le = _tmp;
+                        this._is_le = true;
                     }
                     else {
-                        boolean _tmp = (boolean) (false);
-                        this._is_le = _tmp;
+                        this._is_le = false;
                     }
                 }
 
@@ -107,6 +116,10 @@ public class DefaultEndianExprInherited extends KaitaiStruct {
             }
             private void _readBE() {
                 this.insides = new SubObj(this._io, this, _root, _is_le);
+            }
+
+            public void _fetchInstances() {
+                this.insides._fetchInstances();
             }
             public static class SubObj extends KaitaiStruct {
                 private Boolean _is_le;
@@ -136,6 +149,10 @@ public class DefaultEndianExprInherited extends KaitaiStruct {
                     this.someInt = this._io.readU4be();
                     this.more = new SubsubObj(this._io, this, _root, _is_le);
                 }
+
+                public void _fetchInstances() {
+                    this.more._fetchInstances();
+                }
                 public static class SubsubObj extends KaitaiStruct {
                     private Boolean _is_le;
 
@@ -163,6 +180,10 @@ public class DefaultEndianExprInherited extends KaitaiStruct {
                     private void _readBE() {
                         this.someInt1 = this._io.readU2be();
                         this.someInt2 = this._io.readU2be();
+                    }
+
+                    public void _fetchInstances() {
+                        someInst();
                     }
                     private Long someInst;
                     public Long someInst() {
@@ -212,10 +233,10 @@ public class DefaultEndianExprInherited extends KaitaiStruct {
         public DefaultEndianExprInherited _root() { return _root; }
         public DefaultEndianExprInherited _parent() { return _parent; }
     }
-    private ArrayList<Doc> docs;
+    private List<Doc> docs;
     private DefaultEndianExprInherited _root;
     private KaitaiStruct _parent;
-    public ArrayList<Doc> docs() { return docs; }
+    public List<Doc> docs() { return docs; }
     public DefaultEndianExprInherited _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

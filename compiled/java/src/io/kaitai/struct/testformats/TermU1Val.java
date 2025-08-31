@@ -31,6 +31,9 @@ public class TermU1Val extends KaitaiStruct {
         this.foo = this._io.readBytesTerm((byte) 227, false, false, true);
         this.bar = new String(this._io.readBytesTerm((byte) 171, true, true, true), StandardCharsets.UTF_8);
     }
+
+    public void _fetchInstances() {
+    }
     private byte[] foo;
     private String bar;
     private TermU1Val _root;

@@ -5,22 +5,25 @@
 expr_if_int_ops_t::expr_if_int_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_if_int_ops_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    f_is_eq_boxed = false;
-    f_is_eq_prim = false;
+    m_items = nullptr;
+    f_bytes_sub_key = false;
+    f_items_sub_key = false;
     _read();
 }
 
 void expr_if_int_ops_t::_read() {
-    m_skip = m__io->read_bytes(2);
-    n_it = true;
+    n_key = true;
     if (true) {
-        n_it = false;
-        m_it = m__io->read_s2le();
+        n_key = false;
+        m_key = m__io->read_u8le();
     }
-    n_boxed = true;
-    if (true) {
-        n_boxed = false;
-        m_boxed = m__io->read_s2le();
+    m_skip = m__io->read_bytes(8);
+    m__raw_bytes = m__io->read_bytes(8);
+    m_bytes = kaitai::kstream::process_xor_one(m__raw_bytes, key());
+    m_items = std::unique_ptr<std::vector<int8_t>>(new std::vector<int8_t>());
+    const int l_items = 4;
+    for (int i = 0; i < l_items; i++) {
+        m_items->push_back(std::move(m__io->read_s1()));
     }
 }
 
@@ -29,24 +32,22 @@ expr_if_int_ops_t::~expr_if_int_ops_t() {
 }
 
 void expr_if_int_ops_t::_clean_up() {
-    if (!n_it) {
-    }
-    if (!n_boxed) {
+    if (!n_key) {
     }
 }
 
-bool expr_if_int_ops_t::is_eq_boxed() {
-    if (f_is_eq_boxed)
-        return m_is_eq_boxed;
-    f_is_eq_boxed = true;
-    m_is_eq_boxed = it() == boxed();
-    return m_is_eq_boxed;
+uint8_t expr_if_int_ops_t::bytes_sub_key() {
+    if (f_bytes_sub_key)
+        return m_bytes_sub_key;
+    f_bytes_sub_key = true;
+    m_bytes_sub_key = bytes().at(key());
+    return m_bytes_sub_key;
 }
 
-bool expr_if_int_ops_t::is_eq_prim() {
-    if (f_is_eq_prim)
-        return m_is_eq_prim;
-    f_is_eq_prim = true;
-    m_is_eq_prim = it() == 16705;
-    return m_is_eq_prim;
+int8_t expr_if_int_ops_t::items_sub_key() {
+    if (f_items_sub_key)
+        return m_items_sub_key;
+    f_items_sub_key = true;
+    m_items_sub_key = items()->at(key());
+    return m_items_sub_key;
 }

@@ -18,13 +18,13 @@ function ValidNotParsedIf:_read()
   if false then
     self.not_parsed = self._io:read_u1()
     if not(self.not_parsed == 42) then
-      error("not equal, expected " ..  42 .. ", but got " .. self.not_parsed)
+      error("not equal, expected " .. 42 .. ", but got " .. self.not_parsed)
     end
   end
   if true then
     self.parsed = self._io:read_u1()
     if not(self.parsed == 80) then
-      error("not equal, expected " ..  80 .. ", but got " .. self.parsed)
+      error("not equal, expected " .. 80 .. ", but got " .. self.parsed)
     end
   end
 end

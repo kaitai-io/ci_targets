@@ -8,6 +8,7 @@ import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 public class IndexToParamExpr extends KaitaiStruct {
     public static IndexToParamExpr fromFile(String fileName) throws IOException {
@@ -39,6 +40,14 @@ public class IndexToParamExpr extends KaitaiStruct {
             this.blocks.add(new Block(this._io, this, _root, i));
         }
     }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.sizes.size(); i++) {
+        }
+        for (int i = 0; i < this.blocks.size(); i++) {
+            this.blocks.get(((Number) (i)).intValue())._fetchInstances();
+        }
+    }
     public static class Block extends KaitaiStruct {
 
         public Block(KaitaiStream _io, int idx) {
@@ -57,7 +66,10 @@ public class IndexToParamExpr extends KaitaiStruct {
             _read();
         }
         private void _read() {
-            this.buf = new String(this._io.readBytes(_root().sizes().get((int) idx())), StandardCharsets.US_ASCII);
+            this.buf = new String(this._io.readBytes(_root().sizes().get(((Number) (idx())).intValue())), StandardCharsets.US_ASCII);
+        }
+
+        public void _fetchInstances() {
         }
         private String buf;
         private int idx;
@@ -69,13 +81,13 @@ public class IndexToParamExpr extends KaitaiStruct {
         public IndexToParamExpr _parent() { return _parent; }
     }
     private long qty;
-    private ArrayList<Long> sizes;
-    private ArrayList<Block> blocks;
+    private List<Long> sizes;
+    private List<Block> blocks;
     private IndexToParamExpr _root;
     private KaitaiStruct _parent;
     public long qty() { return qty; }
-    public ArrayList<Long> sizes() { return sizes; }
-    public ArrayList<Block> blocks() { return blocks; }
+    public List<Long> sizes() { return sizes; }
+    public List<Block> blocks() { return blocks; }
     public IndexToParamExpr _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

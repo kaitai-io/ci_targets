@@ -31,6 +31,10 @@ public class ExprSizeofValueSized extends KaitaiStruct {
         this.block1 = new Block(_io_block1, this, _root);
         this.more = this._io.readU2le();
     }
+
+    public void _fetchInstances() {
+        this.block1._fetchInstances();
+    }
     public static class Block extends KaitaiStruct {
         public static Block fromFile(String fileName) throws IOException {
             return new Block(new ByteBufferKaitaiStream(fileName));
@@ -55,6 +59,9 @@ public class ExprSizeofValueSized extends KaitaiStruct {
             this.b = this._io.readU4le();
             this.c = this._io.readBytes(2);
         }
+
+        public void _fetchInstances() {
+        }
         private int a;
         private long b;
         private byte[] c;
@@ -70,40 +77,35 @@ public class ExprSizeofValueSized extends KaitaiStruct {
     public Integer selfSizeof() {
         if (this.selfSizeof != null)
             return this.selfSizeof;
-        int _tmp = (int) (14);
-        this.selfSizeof = _tmp;
+        this.selfSizeof = ((Number) (14)).intValue();
         return this.selfSizeof;
     }
     private Integer sizeofBlock;
     public Integer sizeofBlock() {
         if (this.sizeofBlock != null)
             return this.sizeofBlock;
-        int _tmp = (int) (12);
-        this.sizeofBlock = _tmp;
+        this.sizeofBlock = ((Number) (12)).intValue();
         return this.sizeofBlock;
     }
     private Integer sizeofBlockA;
     public Integer sizeofBlockA() {
         if (this.sizeofBlockA != null)
             return this.sizeofBlockA;
-        int _tmp = (int) (1);
-        this.sizeofBlockA = _tmp;
+        this.sizeofBlockA = ((Number) (1)).intValue();
         return this.sizeofBlockA;
     }
     private Integer sizeofBlockB;
     public Integer sizeofBlockB() {
         if (this.sizeofBlockB != null)
             return this.sizeofBlockB;
-        int _tmp = (int) (4);
-        this.sizeofBlockB = _tmp;
+        this.sizeofBlockB = ((Number) (4)).intValue();
         return this.sizeofBlockB;
     }
     private Integer sizeofBlockC;
     public Integer sizeofBlockC() {
         if (this.sizeofBlockC != null)
             return this.sizeofBlockC;
-        int _tmp = (int) (2);
-        this.sizeofBlockC = _tmp;
+        this.sizeofBlockC = ((Number) (2)).intValue();
         return this.sizeofBlockC;
     }
     private Block block1;

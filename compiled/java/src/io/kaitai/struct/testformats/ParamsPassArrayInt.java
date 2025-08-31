@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Arrays;
 
 public class ParamsPassArrayInt extends KaitaiStruct {
@@ -36,17 +37,24 @@ public class ParamsPassArrayInt extends KaitaiStruct {
         this.passInts = new WantsInts(this._io, this, _root, ints());
         this.passIntsCalc = new WantsInts(this._io, this, _root, intsCalc());
     }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.ints.size(); i++) {
+        }
+        this.passInts._fetchInstances();
+        this.passIntsCalc._fetchInstances();
+    }
     public static class WantsInts extends KaitaiStruct {
 
-        public WantsInts(KaitaiStream _io, ArrayList<Integer> nums) {
+        public WantsInts(KaitaiStream _io, List<Integer> nums) {
             this(_io, null, null, nums);
         }
 
-        public WantsInts(KaitaiStream _io, ParamsPassArrayInt _parent, ArrayList<Integer> nums) {
+        public WantsInts(KaitaiStream _io, ParamsPassArrayInt _parent, List<Integer> nums) {
             this(_io, _parent, null, nums);
         }
 
-        public WantsInts(KaitaiStream _io, ParamsPassArrayInt _parent, ParamsPassArrayInt _root, ArrayList<Integer> nums) {
+        public WantsInts(KaitaiStream _io, ParamsPassArrayInt _parent, ParamsPassArrayInt _root, List<Integer> nums) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
@@ -55,26 +63,29 @@ public class ParamsPassArrayInt extends KaitaiStruct {
         }
         private void _read() {
         }
-        private ArrayList<Integer> nums;
+
+        public void _fetchInstances() {
+        }
+        private List<Integer> nums;
         private ParamsPassArrayInt _root;
         private ParamsPassArrayInt _parent;
-        public ArrayList<Integer> nums() { return nums; }
+        public List<Integer> nums() { return nums; }
         public ParamsPassArrayInt _root() { return _root; }
         public ParamsPassArrayInt _parent() { return _parent; }
     }
-    private ArrayList<Integer> intsCalc;
-    public ArrayList<Integer> intsCalc() {
+    private List<Integer> intsCalc;
+    public List<Integer> intsCalc() {
         if (this.intsCalc != null)
             return this.intsCalc;
         this.intsCalc = new ArrayList<Integer>(Arrays.asList(27643, 7));
         return this.intsCalc;
     }
-    private ArrayList<Integer> ints;
+    private List<Integer> ints;
     private WantsInts passInts;
     private WantsInts passIntsCalc;
     private ParamsPassArrayInt _root;
     private KaitaiStruct _parent;
-    public ArrayList<Integer> ints() { return ints; }
+    public List<Integer> ints() { return ints; }
     public WantsInts passInts() { return passInts; }
     public WantsInts passIntsCalc() { return passIntsCalc; }
     public ParamsPassArrayInt _root() { return _root; }

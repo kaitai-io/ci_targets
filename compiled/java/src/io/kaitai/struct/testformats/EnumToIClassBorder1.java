@@ -48,6 +48,11 @@ public class EnumToIClassBorder1 extends KaitaiStruct {
         this.pet1 = Animal.byId(this._io.readU4le());
         this.pet2 = Animal.byId(this._io.readU4le());
     }
+
+    public void _fetchInstances() {
+        checker();
+        this.checker._fetchInstances();
+    }
     private EnumToIClassBorder2 checker;
     public EnumToIClassBorder2 checker() {
         if (this.checker != null)

@@ -4,7 +4,7 @@
 
 local class = require("class")
 require("kaitaistruct")
-require("term_strz")
+require("hello_world")
 local stringstream = require("string_stream")
 local utils = require("utils")
 
@@ -19,15 +19,15 @@ end
 
 function TypeTernaryOpaque:_read()
   if not(self.is_hack) then
-    self._raw_dif_wo_hack = self._io:read_bytes(12)
+    self._raw_dif_wo_hack = self._io:read_bytes(1)
     local _io = KaitaiStream(stringstream(self._raw_dif_wo_hack))
-    self.dif_wo_hack = TermStrz(_io)
+    self.dif_wo_hack = HelloWorld(_io)
   end
   if self.is_hack then
-    self._raw__raw_dif_with_hack = self._io:read_bytes(12)
+    self._raw__raw_dif_with_hack = self._io:read_bytes(1)
     self._raw_dif_with_hack = KaitaiStream.process_xor_one(self._raw__raw_dif_with_hack, 3)
     local _io = KaitaiStream(stringstream(self._raw_dif_with_hack))
-    self.dif_with_hack = TermStrz(_io)
+    self.dif_with_hack = HelloWorld(_io)
   end
 end
 

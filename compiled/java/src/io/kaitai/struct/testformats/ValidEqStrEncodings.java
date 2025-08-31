@@ -50,6 +50,9 @@ public class ValidEqStrEncodings extends KaitaiStruct {
             throw new KaitaiStream.ValidationNotEqualError("\u2591\u2592\u2593", this.str4, this._io, "/seq/7");
         }
     }
+
+    public void _fetchInstances() {
+    }
     private int lenOf1;
     private String str1;
     private int lenOf2;

@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.ArrayList;
 
 public class NavParent3 extends KaitaiStruct {
@@ -32,6 +33,13 @@ public class NavParent3 extends KaitaiStruct {
         this.ofsTags = this._io.readU4le();
         this.numTags = this._io.readU4le();
     }
+
+    public void _fetchInstances() {
+        tags();
+        for (int i = 0; i < this.tags.size(); i++) {
+            this.tags.get(((Number) (i)).intValue())._fetchInstances();
+        }
+    }
     public static class Tag extends KaitaiStruct {
         public static Tag fromFile(String fileName) throws IOException {
             return new Tag(new ByteBufferKaitaiStream(fileName));
@@ -56,6 +64,16 @@ public class NavParent3 extends KaitaiStruct {
             this.ofs = this._io.readU4le();
             this.numItems = this._io.readU4le();
         }
+
+        public void _fetchInstances() {
+            tagContent();
+            switch (name()) {
+            case "RAHC": {
+                this.tagContent._fetchInstances();
+                break;
+            }
+            }
+        }
         public static class TagChar extends KaitaiStruct {
             public static TagChar fromFile(String fileName) throws IOException {
                 return new TagChar(new ByteBufferKaitaiStream(fileName));
@@ -77,6 +95,9 @@ public class NavParent3 extends KaitaiStruct {
             }
             private void _read() {
                 this.content = new String(this._io.readBytes(_parent().numItems()), StandardCharsets.US_ASCII);
+            }
+
+            public void _fetchInstances() {
             }
             private String content;
             private NavParent3 _root;
@@ -112,8 +133,8 @@ public class NavParent3 extends KaitaiStruct {
         public NavParent3 _root() { return _root; }
         public NavParent3 _parent() { return _parent; }
     }
-    private ArrayList<Tag> tags;
-    public ArrayList<Tag> tags() {
+    private List<Tag> tags;
+    public List<Tag> tags() {
         if (this.tags != null)
             return this.tags;
         long _pos = this._io.pos();

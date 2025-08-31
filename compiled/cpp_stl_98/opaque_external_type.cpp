@@ -5,7 +5,7 @@
 opaque_external_type_t::opaque_external_type_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, opaque_external_type_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_one = 0;
+    m_hw = 0;
 
     try {
         _read();
@@ -16,7 +16,7 @@ opaque_external_type_t::opaque_external_type_t(kaitai::kstream* p__io, kaitai::k
 }
 
 void opaque_external_type_t::_read() {
-    m_one = new term_strz_t(m__io);
+    m_hw = new hello_world_t(m__io);
 }
 
 opaque_external_type_t::~opaque_external_type_t() {
@@ -24,7 +24,7 @@ opaque_external_type_t::~opaque_external_type_t() {
 }
 
 void opaque_external_type_t::_clean_up() {
-    if (m_one) {
-        delete m_one; m_one = 0;
+    if (m_hw) {
+        delete m_hw; m_hw = 0;
     }
 }

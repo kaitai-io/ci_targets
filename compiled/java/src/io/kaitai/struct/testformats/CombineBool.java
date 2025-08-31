@@ -29,20 +29,21 @@ public class CombineBool extends KaitaiStruct {
     private void _read() {
         this.boolBit = this._io.readBitsIntBe(1) != 0;
     }
+
+    public void _fetchInstances() {
+    }
     private Boolean boolCalc;
     public Boolean boolCalc() {
         if (this.boolCalc != null)
             return this.boolCalc;
-        boolean _tmp = (boolean) (false);
-        this.boolCalc = _tmp;
+        this.boolCalc = false;
         return this.boolCalc;
     }
     private Boolean boolCalcBit;
     public Boolean boolCalcBit() {
         if (this.boolCalcBit != null)
             return this.boolCalcBit;
-        boolean _tmp = (boolean) ((true ? boolCalc() : boolBit()));
-        this.boolCalcBit = _tmp;
+        this.boolCalcBit = (true ? boolCalc() : boolBit());
         return this.boolCalcBit;
     }
     private boolean boolBit;

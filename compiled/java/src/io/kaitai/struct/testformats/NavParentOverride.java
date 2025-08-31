@@ -31,6 +31,11 @@ public class NavParentOverride extends KaitaiStruct {
         this.child1 = new Child(this._io, this, _root);
         this.mediator2 = new Mediator(this._io, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.child1._fetchInstances();
+        this.mediator2._fetchInstances();
+    }
     public static class Child extends KaitaiStruct {
         public static Child fromFile(String fileName) throws IOException {
             return new Child(new ByteBufferKaitaiStream(fileName));
@@ -52,6 +57,9 @@ public class NavParentOverride extends KaitaiStruct {
         }
         private void _read() {
             this.data = this._io.readBytes(_parent().childSize());
+        }
+
+        public void _fetchInstances() {
         }
         private byte[] data;
         private NavParentOverride _root;
@@ -81,6 +89,10 @@ public class NavParentOverride extends KaitaiStruct {
         }
         private void _read() {
             this.child2 = new Child(this._io, _parent(), _root);
+        }
+
+        public void _fetchInstances() {
+            this.child2._fetchInstances();
         }
         private Child child2;
         private NavParentOverride _root;

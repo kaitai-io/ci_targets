@@ -36,6 +36,12 @@ sub _read {
 
     $self->{single_value} = $self->{_io}->read_f4le();
     $self->{double_value} = $self->{_io}->read_f8le();
+    if (1) {
+        $self->{single_value_if} = $self->{_io}->read_f4be();
+    }
+    if (1) {
+        $self->{double_value_if} = $self->{_io}->read_f8be();
+    }
 }
 
 sub calc_float1 {
@@ -66,11 +72,32 @@ sub calc_float4 {
     return $self->{calc_float4};
 }
 
+sub calc_if {
+    my ($self) = @_;
+    return $self->{calc_if} if ($self->{calc_if});
+    $self->{calc_if} = 13.9;
+    return $self->{calc_if};
+}
+
+sub calc_if_i {
+    my ($self) = @_;
+    return $self->{calc_if_i} if ($self->{calc_if_i});
+    $self->{calc_if_i} = int($self->calc_if());
+    return $self->{calc_if_i};
+}
+
 sub double_i {
     my ($self) = @_;
     return $self->{double_i} if ($self->{double_i});
     $self->{double_i} = int($self->double_value());
     return $self->{double_i};
+}
+
+sub double_if_i {
+    my ($self) = @_;
+    return $self->{double_if_i} if ($self->{double_if_i});
+    $self->{double_if_i} = int($self->double_value_if());
+    return $self->{double_if_i};
 }
 
 sub float1_i {
@@ -108,6 +135,13 @@ sub single_i {
     return $self->{single_i};
 }
 
+sub single_if_i {
+    my ($self) = @_;
+    return $self->{single_if_i} if ($self->{single_if_i});
+    $self->{single_if_i} = int($self->single_value_if());
+    return $self->{single_if_i};
+}
+
 sub single_value {
     my ($self) = @_;
     return $self->{single_value};
@@ -116,6 +150,16 @@ sub single_value {
 sub double_value {
     my ($self) = @_;
     return $self->{double_value};
+}
+
+sub single_value_if {
+    my ($self) = @_;
+    return $self->{single_value_if};
+}
+
+sub double_value_if {
+    my ($self) = @_;
+    return $self->{double_value_if};
 }
 
 1;

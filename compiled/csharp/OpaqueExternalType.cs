@@ -19,12 +19,12 @@ namespace Kaitai
         }
         private void _read()
         {
-            _one = new TermStrz(m_io);
+            _hw = new HelloWorld(m_io);
         }
-        private TermStrz _one;
+        private HelloWorld _hw;
         private OpaqueExternalType m_root;
         private KaitaiStruct m_parent;
-        public TermStrz One { get { return _one; } }
+        public HelloWorld Hw { get { return _hw; } }
         public OpaqueExternalType M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
     }

@@ -5,16 +5,18 @@ package test_formats
 import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 
 type ExprIfIntOps struct {
+	Key uint64
 	Skip []byte
-	It int16
-	Boxed int16
+	Bytes []byte
+	Items []int8
 	_io *kaitai.Stream
 	_root *ExprIfIntOps
 	_parent kaitai.Struct
-	_f_isEqBoxed bool
-	isEqBoxed bool
-	_f_isEqPrim bool
-	isEqPrim bool
+	_raw_Bytes []byte
+	_f_bytesSubKey bool
+	bytesSubKey uint8
+	_f_itemsSubKey bool
+	itemsSubKey int8
 }
 func NewExprIfIntOps() *ExprIfIntOps {
 	return &ExprIfIntOps{
@@ -30,41 +32,49 @@ func (this *ExprIfIntOps) Read(io *kaitai.Stream, parent kaitai.Struct, root *Ex
 	this._parent = parent
 	this._root = root
 
-	tmp1, err := this._io.ReadBytes(int(2))
+	if (true) {
+		tmp1, err := this._io.ReadU8le()
+		if err != nil {
+			return err
+		}
+		this.Key = uint64(tmp1)
+	}
+	tmp2, err := this._io.ReadBytes(int(8))
 	if err != nil {
 		return err
 	}
-	tmp1 = tmp1
-	this.Skip = tmp1
-	if (true) {
-		tmp2, err := this._io.ReadS2le()
-		if err != nil {
-			return err
-		}
-		this.It = int16(tmp2)
+	tmp2 = tmp2
+	this.Skip = tmp2
+	tmp3, err := this._io.ReadBytes(int(8))
+	if err != nil {
+		return err
 	}
-	if (true) {
-		tmp3, err := this._io.ReadS2le()
+	tmp3 = tmp3
+	this._raw_Bytes = tmp3
+	this.Bytes = kaitai.ProcessXOR(this._raw_Bytes, []byte{this.Key})
+	for i := 0; i < int(4); i++ {
+		_ = i
+		tmp4, err := this._io.ReadS1()
 		if err != nil {
 			return err
 		}
-		this.Boxed = int16(tmp3)
+		this.Items = append(this.Items, tmp4)
 	}
 	return err
 }
-func (this *ExprIfIntOps) IsEqBoxed() (v bool, err error) {
-	if (this._f_isEqBoxed) {
-		return this.isEqBoxed, nil
+func (this *ExprIfIntOps) BytesSubKey() (v uint8, err error) {
+	if (this._f_bytesSubKey) {
+		return this.bytesSubKey, nil
 	}
-	this._f_isEqBoxed = true
-	this.isEqBoxed = bool(this.It == this.Boxed)
-	return this.isEqBoxed, nil
+	this._f_bytesSubKey = true
+	this.bytesSubKey = uint8(this.Bytes[this.Key])
+	return this.bytesSubKey, nil
 }
-func (this *ExprIfIntOps) IsEqPrim() (v bool, err error) {
-	if (this._f_isEqPrim) {
-		return this.isEqPrim, nil
+func (this *ExprIfIntOps) ItemsSubKey() (v int8, err error) {
+	if (this._f_itemsSubKey) {
+		return this.itemsSubKey, nil
 	}
-	this._f_isEqPrim = true
-	this.isEqPrim = bool(this.It == 16705)
-	return this.isEqPrim, nil
+	this._f_itemsSubKey = true
+	this.itemsSubKey = int8(this.Items[this.Key])
+	return this.itemsSubKey, nil
 }

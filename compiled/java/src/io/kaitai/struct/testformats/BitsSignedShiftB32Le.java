@@ -30,6 +30,9 @@ public class BitsSignedShiftB32Le extends KaitaiStruct {
         this.a = this._io.readBitsIntLe(31);
         this.b = this._io.readBitsIntLe(9);
     }
+
+    public void _fetchInstances() {
+    }
     private long a;
     private long b;
     private BitsSignedShiftB32Le _root;

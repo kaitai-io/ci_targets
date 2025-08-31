@@ -26,12 +26,14 @@ public class EnumToIClassBorder2 extends KaitaiStruct {
     }
     private void _read() {
     }
+
+    public void _fetchInstances() {
+    }
     private Boolean isDog;
     public Boolean isDog() {
         if (this.isDog != null)
             return this.isDog;
-        boolean _tmp = (boolean) (parent().someDog().id() == 4);
-        this.isDog = _tmp;
+        this.isDog = parent().someDog().id() == 4;
         return this.isDog;
     }
     private EnumToIClassBorder1 parent;

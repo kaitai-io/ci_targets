@@ -35,6 +35,11 @@ public class StrEncodingsUtf16 extends KaitaiStruct {
         KaitaiStream _io_leBomRemoved = this._io.substream(lenLe());
         this.leBomRemoved = new StrLeBomRemoved(_io_leBomRemoved, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.beBomRemoved._fetchInstances();
+        this.leBomRemoved._fetchInstances();
+    }
     public static class StrBeBomRemoved extends KaitaiStruct {
         public static StrBeBomRemoved fromFile(String fileName) throws IOException {
             return new StrBeBomRemoved(new ByteBufferKaitaiStream(fileName));
@@ -57,6 +62,9 @@ public class StrEncodingsUtf16 extends KaitaiStruct {
         private void _read() {
             this.bom = this._io.readU2be();
             this.str = new String(this._io.readBytesFull(), StandardCharsets.UTF_16BE);
+        }
+
+        public void _fetchInstances() {
         }
         private int bom;
         private String str;
@@ -89,6 +97,9 @@ public class StrEncodingsUtf16 extends KaitaiStruct {
         private void _read() {
             this.bom = this._io.readU2le();
             this.str = new String(this._io.readBytesFull(), StandardCharsets.UTF_16LE);
+        }
+
+        public void _fetchInstances() {
         }
         private int bom;
         private String str;

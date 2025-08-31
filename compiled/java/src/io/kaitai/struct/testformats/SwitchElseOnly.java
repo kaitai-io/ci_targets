@@ -32,6 +32,10 @@ public class SwitchElseOnly extends KaitaiStruct {
         this.indicator = this._io.readBytes(4);
         this.ut = new Data(this._io, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.ut._fetchInstances();
+    }
     public static class Data extends KaitaiStruct {
         public static Data fromFile(String fileName) throws IOException {
             return new Data(new ByteBufferKaitaiStream(fileName));
@@ -53,6 +57,9 @@ public class SwitchElseOnly extends KaitaiStruct {
         }
         private void _read() {
             this.value = this._io.readBytes(4);
+        }
+
+        public void _fetchInstances() {
         }
         private byte[] value;
         private SwitchElseOnly _root;

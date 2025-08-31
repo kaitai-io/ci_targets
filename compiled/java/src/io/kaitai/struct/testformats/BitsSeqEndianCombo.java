@@ -36,6 +36,9 @@ public class BitsSeqEndianCombo extends KaitaiStruct {
         this.le7 = this._io.readBitsIntLe(5);
         this.be8 = this._io.readBitsIntBe(1) != 0;
     }
+
+    public void _fetchInstances() {
+    }
     private long be1;
     private long be2;
     private long le3;

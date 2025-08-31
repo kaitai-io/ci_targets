@@ -36,6 +36,13 @@ public class IntegersDoubleOverflow extends KaitaiStruct {
         this.signedUnsafePosBe = this._io.readS8be();
         this.signedUnsafePosLe = this._io.readS8le();
     }
+
+    public void _fetchInstances() {
+        unsignedSafeMaxBe();
+        unsignedSafeMaxLe();
+        unsignedUnsafePosBe();
+        unsignedUnsafePosLe();
+    }
     private Long unsignedSafeMaxBe;
     public Long unsignedSafeMaxBe() {
         if (this.unsignedSafeMaxBe != null)

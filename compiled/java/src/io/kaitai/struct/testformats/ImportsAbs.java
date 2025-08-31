@@ -30,6 +30,10 @@ public class ImportsAbs extends KaitaiStruct {
         this.len = new VlqBase128Le(this._io);
         this.body = this._io.readBytes(len().value());
     }
+
+    public void _fetchInstances() {
+        this.len._fetchInstances();
+    }
     private VlqBase128Le len;
     private byte[] body;
     private ImportsAbs _root;

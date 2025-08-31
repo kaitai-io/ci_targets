@@ -19,18 +19,28 @@ namespace Kaitai
             f_calcFloat2 = false;
             f_calcFloat3 = false;
             f_calcFloat4 = false;
+            f_calcIf = false;
+            f_calcIfI = false;
             f_doubleI = false;
+            f_doubleIfI = false;
             f_float1I = false;
             f_float2I = false;
             f_float3I = false;
             f_float4I = false;
             f_singleI = false;
+            f_singleIfI = false;
             _read();
         }
         private void _read()
         {
             _singleValue = m_io.ReadF4le();
             _doubleValue = m_io.ReadF8le();
+            if (true) {
+                _singleValueIf = m_io.ReadF4be();
+            }
+            if (true) {
+                _doubleValueIf = m_io.ReadF8be();
+            }
         }
         private bool f_calcFloat1;
         private double _calcFloat1;
@@ -84,6 +94,32 @@ namespace Kaitai
                 return _calcFloat4;
             }
         }
+        private bool f_calcIf;
+        private double _calcIf;
+        public double CalcIf
+        {
+            get
+            {
+                if (f_calcIf)
+                    return _calcIf;
+                f_calcIf = true;
+                _calcIf = (double) (13.9);
+                return _calcIf;
+            }
+        }
+        private bool f_calcIfI;
+        private int _calcIfI;
+        public int CalcIfI
+        {
+            get
+            {
+                if (f_calcIfI)
+                    return _calcIfI;
+                f_calcIfI = true;
+                _calcIfI = (int) ((long) (CalcIf));
+                return _calcIfI;
+            }
+        }
         private bool f_doubleI;
         private int _doubleI;
         public int DoubleI
@@ -95,6 +131,19 @@ namespace Kaitai
                 f_doubleI = true;
                 _doubleI = (int) ((long) (DoubleValue));
                 return _doubleI;
+            }
+        }
+        private bool f_doubleIfI;
+        private int _doubleIfI;
+        public int DoubleIfI
+        {
+            get
+            {
+                if (f_doubleIfI)
+                    return _doubleIfI;
+                f_doubleIfI = true;
+                _doubleIfI = (int) ((long) (DoubleValueIf));
+                return _doubleIfI;
             }
         }
         private bool f_float1I;
@@ -162,12 +211,29 @@ namespace Kaitai
                 return _singleI;
             }
         }
+        private bool f_singleIfI;
+        private int _singleIfI;
+        public int SingleIfI
+        {
+            get
+            {
+                if (f_singleIfI)
+                    return _singleIfI;
+                f_singleIfI = true;
+                _singleIfI = (int) ((long) (SingleValueIf));
+                return _singleIfI;
+            }
+        }
         private float _singleValue;
         private double _doubleValue;
+        private float? _singleValueIf;
+        private double? _doubleValueIf;
         private FloatToI m_root;
         private KaitaiStruct m_parent;
         public float SingleValue { get { return _singleValue; } }
         public double DoubleValue { get { return _doubleValue; } }
+        public float? SingleValueIf { get { return _singleValueIf; } }
+        public double? DoubleValueIf { get { return _doubleValueIf; } }
         public FloatToI M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
     }

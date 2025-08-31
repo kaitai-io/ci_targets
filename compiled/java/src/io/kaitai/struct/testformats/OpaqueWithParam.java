@@ -29,6 +29,10 @@ public class OpaqueWithParam extends KaitaiStruct {
     private void _read() {
         this.one = new ParamsDef(this._io, 5, true);
     }
+
+    public void _fetchInstances() {
+        this.one._fetchInstances();
+    }
     private ParamsDef one;
     private OpaqueWithParam _root;
     private KaitaiStruct _parent;

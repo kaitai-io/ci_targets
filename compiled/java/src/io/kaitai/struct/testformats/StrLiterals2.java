@@ -28,6 +28,9 @@ public class StrLiterals2 extends KaitaiStruct {
     }
     private void _read() {
     }
+
+    public void _fetchInstances() {
+    }
     private String atSign;
     public String atSign() {
         if (this.atSign != null)

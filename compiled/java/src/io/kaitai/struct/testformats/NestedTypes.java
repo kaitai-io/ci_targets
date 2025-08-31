@@ -30,6 +30,11 @@ public class NestedTypes extends KaitaiStruct {
         this.one = new SubtypeA(this._io, this, _root);
         this.two = new SubtypeB(this._io, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.one._fetchInstances();
+        this.two._fetchInstances();
+    }
     public static class SubtypeA extends KaitaiStruct {
         public static SubtypeA fromFile(String fileName) throws IOException {
             return new SubtypeA(new ByteBufferKaitaiStream(fileName));
@@ -53,6 +58,11 @@ public class NestedTypes extends KaitaiStruct {
             this.typedAtRoot = new SubtypeB(this._io, this, _root);
             this.typedHere = new SubtypeC(this._io, this, _root);
         }
+
+        public void _fetchInstances() {
+            this.typedAtRoot._fetchInstances();
+            this.typedHere._fetchInstances();
+        }
         public static class SubtypeC extends KaitaiStruct {
             public static SubtypeC fromFile(String fileName) throws IOException {
                 return new SubtypeC(new ByteBufferKaitaiStream(fileName));
@@ -74,6 +84,9 @@ public class NestedTypes extends KaitaiStruct {
             }
             private void _read() {
                 this.valueC = this._io.readS1();
+            }
+
+            public void _fetchInstances() {
             }
             private byte valueC;
             private NestedTypes _root;
@@ -112,6 +125,9 @@ public class NestedTypes extends KaitaiStruct {
         }
         private void _read() {
             this.valueB = this._io.readS1();
+        }
+
+        public void _fetchInstances() {
         }
         private byte valueB;
         private NestedTypes _root;

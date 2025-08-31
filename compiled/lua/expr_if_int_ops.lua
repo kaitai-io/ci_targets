@@ -15,33 +15,36 @@ function ExprIfIntOps:_init(io, parent, root)
 end
 
 function ExprIfIntOps:_read()
-  self.skip = self._io:read_bytes(2)
   if true then
-    self.it = self._io:read_s2le()
+    self.key = self._io:read_u8le()
   end
-  if true then
-    self.boxed = self._io:read_s2le()
+  self.skip = self._io:read_bytes(8)
+  self._raw_bytes = self._io:read_bytes(8)
+  self.bytes = KaitaiStream.process_xor_one(self._raw_bytes, self.key)
+  self.items = {}
+  for i = 0, 4 - 1 do
+    self.items[i + 1] = self._io:read_s1()
   end
 end
 
-ExprIfIntOps.property.is_eq_boxed = {}
-function ExprIfIntOps.property.is_eq_boxed:get()
-  if self._m_is_eq_boxed ~= nil then
-    return self._m_is_eq_boxed
+ExprIfIntOps.property.bytes_sub_key = {}
+function ExprIfIntOps.property.bytes_sub_key:get()
+  if self._m_bytes_sub_key ~= nil then
+    return self._m_bytes_sub_key
   end
 
-  self._m_is_eq_boxed = self.it == self.boxed
-  return self._m_is_eq_boxed
+  self._m_bytes_sub_key = string.byte(self.bytes, self.key + 1)
+  return self._m_bytes_sub_key
 end
 
-ExprIfIntOps.property.is_eq_prim = {}
-function ExprIfIntOps.property.is_eq_prim:get()
-  if self._m_is_eq_prim ~= nil then
-    return self._m_is_eq_prim
+ExprIfIntOps.property.items_sub_key = {}
+function ExprIfIntOps.property.items_sub_key:get()
+  if self._m_items_sub_key ~= nil then
+    return self._m_items_sub_key
   end
 
-  self._m_is_eq_prim = self.it == 16705
-  return self._m_is_eq_prim
+  self._m_items_sub_key = self.items[self.key + 1]
+  return self._m_items_sub_key
 end
 
 

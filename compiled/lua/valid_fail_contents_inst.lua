@@ -30,7 +30,7 @@ function ValidFailContentsInst.property.foo:get()
   self._io:seek(0)
   self._m_foo = self._io:read_bytes(2)
   if not(self._m_foo == "\081\065") then
-    error("not equal, expected " ..  "\081\065" .. ", but got " .. self._m_foo)
+    error("not equal, expected " .. "\081\065" .. ", but got " .. self._m_foo)
   end
   self._io:seek(_pos)
   return self._m_foo

@@ -47,6 +47,9 @@ public class EnumNegative extends KaitaiStruct {
         this.f1 = Constants.byId(this._io.readS1());
         this.f2 = Constants.byId(this._io.readS1());
     }
+
+    public void _fetchInstances() {
+    }
     private Constants f1;
     private Constants f2;
     private EnumNegative _root;

@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ValidFailRepeatEqInt extends KaitaiStruct {
     public static ValidFailRepeatEqInt fromFile(String fileName) throws IOException {
@@ -33,17 +34,22 @@ public class ValidFailRepeatEqInt extends KaitaiStruct {
             int i = 0;
             while (!this._io.isEof()) {
                 this.foo.add(this._io.readU4be());
-                if (!(this.foo.get((int) i) == 305419896)) {
-                    throw new KaitaiStream.ValidationNotEqualError(305419896, this.foo.get((int) i), this._io, "/seq/0");
+                if (!(this.foo.get(((Number) (i)).intValue()) == 305419896)) {
+                    throw new KaitaiStream.ValidationNotEqualError(305419896, this.foo.get(((Number) (i)).intValue()), this._io, "/seq/0");
                 }
                 i++;
             }
         }
     }
-    private ArrayList<Long> foo;
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.foo.size(); i++) {
+        }
+    }
+    private List<Long> foo;
     private ValidFailRepeatEqInt _root;
     private KaitaiStruct _parent;
-    public ArrayList<Long> foo() { return foo; }
+    public List<Long> foo() { return foo; }
     public ValidFailRepeatEqInt _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

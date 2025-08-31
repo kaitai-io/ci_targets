@@ -20,7 +20,7 @@ function ValidFailRepeatEqInt:_read()
   while not self._io:is_eof() do
     self.foo[i + 1] = self._io:read_u4be()
     if not(self.foo[i + 1] == 305419896) then
-      error("not equal, expected " ..  305419896 .. ", but got " .. self.foo[i + 1])
+      error("not equal, expected " .. 305419896 .. ", but got " .. self.foo[i + 1])
     end
     i = i + 1
   end

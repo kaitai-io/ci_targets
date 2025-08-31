@@ -74,6 +74,9 @@ public class ValidShort extends KaitaiStruct {
             throw new KaitaiStream.ValidationNotEqualError(-1, this.sint64, this._io, "/seq/10");
         }
     }
+
+    public void _fetchInstances() {
+    }
     private byte[] magic1;
     private int uint8;
     private byte sint8;

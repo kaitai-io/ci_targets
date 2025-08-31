@@ -9,33 +9,41 @@ namespace Kaitai\Struct\Tests {
         }
 
         private function _read() {
-            $this->_m_skip = $this->_io->readBytes(2);
             if (true) {
-                $this->_m_it = $this->_io->readS2le();
+                $this->_m_key = $this->_io->readU8le();
             }
-            if (true) {
-                $this->_m_boxed = $this->_io->readS2le();
+            $this->_m_skip = $this->_io->readBytes(8);
+            $this->_m__raw_bytes = $this->_io->readBytes(8);
+            $this->_m_bytes = \Kaitai\Struct\Stream::processXorOne($this->_m__raw_bytes, $this->key());
+            $this->_m_items = [];
+            $n = 4;
+            for ($i = 0; $i < $n; $i++) {
+                $this->_m_items[] = $this->_io->readS1();
             }
         }
-        protected $_m_isEqBoxed;
-        public function isEqBoxed() {
-            if ($this->_m_isEqBoxed !== null)
-                return $this->_m_isEqBoxed;
-            $this->_m_isEqBoxed = $this->it() == $this->boxed();
-            return $this->_m_isEqBoxed;
+        protected $_m_bytesSubKey;
+        public function bytesSubKey() {
+            if ($this->_m_bytesSubKey !== null)
+                return $this->_m_bytesSubKey;
+            $this->_m_bytesSubKey = ord($this->bytes()[$this->key()]);
+            return $this->_m_bytesSubKey;
         }
-        protected $_m_isEqPrim;
-        public function isEqPrim() {
-            if ($this->_m_isEqPrim !== null)
-                return $this->_m_isEqPrim;
-            $this->_m_isEqPrim = $this->it() == 16705;
-            return $this->_m_isEqPrim;
+        protected $_m_itemsSubKey;
+        public function itemsSubKey() {
+            if ($this->_m_itemsSubKey !== null)
+                return $this->_m_itemsSubKey;
+            $this->_m_itemsSubKey = $this->items()[$this->key()];
+            return $this->_m_itemsSubKey;
         }
+        protected $_m_key;
         protected $_m_skip;
-        protected $_m_it;
-        protected $_m_boxed;
+        protected $_m_bytes;
+        protected $_m_items;
+        protected $_m__raw_bytes;
+        public function key() { return $this->_m_key; }
         public function skip() { return $this->_m_skip; }
-        public function it() { return $this->_m_it; }
-        public function boxed() { return $this->_m_boxed; }
+        public function bytes() { return $this->_m_bytes; }
+        public function items() { return $this->_m_items; }
+        public function _raw_bytes() { return $this->_m__raw_bytes; }
     }
 }

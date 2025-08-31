@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RepeatEosStruct extends KaitaiStruct {
     public static RepeatEosStruct fromFile(String fileName) throws IOException {
@@ -37,6 +38,12 @@ public class RepeatEosStruct extends KaitaiStruct {
             }
         }
     }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.chunks.size(); i++) {
+            this.chunks.get(((Number) (i)).intValue())._fetchInstances();
+        }
+    }
     public static class Chunk extends KaitaiStruct {
         public static Chunk fromFile(String fileName) throws IOException {
             return new Chunk(new ByteBufferKaitaiStream(fileName));
@@ -60,6 +67,9 @@ public class RepeatEosStruct extends KaitaiStruct {
             this.offset = this._io.readU4le();
             this.len = this._io.readU4le();
         }
+
+        public void _fetchInstances() {
+        }
         private long offset;
         private long len;
         private RepeatEosStruct _root;
@@ -69,10 +79,10 @@ public class RepeatEosStruct extends KaitaiStruct {
         public RepeatEosStruct _root() { return _root; }
         public RepeatEosStruct _parent() { return _parent; }
     }
-    private ArrayList<Chunk> chunks;
+    private List<Chunk> chunks;
     private RepeatEosStruct _root;
     private KaitaiStruct _parent;
-    public ArrayList<Chunk> chunks() { return chunks; }
+    public List<Chunk> chunks() { return chunks; }
     public RepeatEosStruct _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

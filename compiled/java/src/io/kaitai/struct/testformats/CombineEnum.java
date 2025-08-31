@@ -47,6 +47,9 @@ public class CombineEnum extends KaitaiStruct {
         this.enumU4 = Animal.byId(this._io.readU4le());
         this.enumU2 = Animal.byId(this._io.readU2le());
     }
+
+    public void _fetchInstances() {
+    }
     private Animal enumU4U2;
     public Animal enumU4U2() {
         if (this.enumU4U2 != null)

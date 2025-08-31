@@ -17,7 +17,7 @@ end
 function ValidFailEqInt:_read()
   self.foo = self._io:read_u1()
   if not(self.foo == 123) then
-    error("not equal, expected " ..  123 .. ", but got " .. self.foo)
+    error("not equal, expected " .. 123 .. ", but got " .. self.foo)
   end
 end
 

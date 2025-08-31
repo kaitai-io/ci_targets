@@ -41,6 +41,13 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
         KaitaiStream _io_str4 = this._io.substream(lenOf4());
         this.str4 = new Str4Wrapper(_io_str4, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.str1._fetchInstances();
+        this.str2._fetchInstances();
+        this.str3._fetchInstances();
+        this.str4._fetchInstances();
+    }
     public static class Str1Wrapper extends KaitaiStruct {
         public static Str1Wrapper fromFile(String fileName) throws IOException {
             return new Str1Wrapper(new ByteBufferKaitaiStream(fileName));
@@ -61,6 +68,10 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
             _read();
         }
         private void _read() {
+        }
+
+        public void _fetchInstances() {
+            v();
         }
         private String v;
         public String v() {
@@ -98,6 +109,10 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
         }
         private void _read() {
         }
+
+        public void _fetchInstances() {
+            v();
+        }
         private String v;
         public String v() {
             if (this.v != null)
@@ -134,6 +149,10 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
         }
         private void _read() {
         }
+
+        public void _fetchInstances() {
+            v();
+        }
         private String v;
         public String v() {
             if (this.v != null)
@@ -169,6 +188,10 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
             _read();
         }
         private void _read() {
+        }
+
+        public void _fetchInstances() {
+            v();
         }
         private String v;
         public String v() {

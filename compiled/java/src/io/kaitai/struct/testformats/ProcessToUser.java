@@ -29,9 +29,13 @@ public class ProcessToUser extends KaitaiStruct {
     }
     private void _read() {
         this._raw__raw_buf1 = this._io.readBytes(5);
-        this._raw_buf1 = KaitaiStream.processRotateLeft(_raw__raw_buf1, 3, 1);
-        KaitaiStream _io__raw_buf1 = new ByteBufferKaitaiStream(_raw_buf1);
+        this._raw_buf1 = KaitaiStream.processRotateLeft(this._raw__raw_buf1, 3, 1);
+        KaitaiStream _io__raw_buf1 = new ByteBufferKaitaiStream(this._raw_buf1);
         this.buf1 = new JustStr(_io__raw_buf1, this, _root);
+    }
+
+    public void _fetchInstances() {
+        this.buf1._fetchInstances();
     }
     public static class JustStr extends KaitaiStruct {
         public static JustStr fromFile(String fileName) throws IOException {
@@ -54,6 +58,9 @@ public class ProcessToUser extends KaitaiStruct {
         }
         private void _read() {
             this.str = new String(this._io.readBytesFull(), StandardCharsets.UTF_8);
+        }
+
+        public void _fetchInstances() {
         }
         private String str;
         private ProcessToUser _root;

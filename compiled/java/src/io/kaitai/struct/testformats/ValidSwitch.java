@@ -33,16 +33,27 @@ public class ValidSwitch extends KaitaiStruct {
         }
         switch (a()) {
         case 80: {
-            this.b = (int) (this._io.readU2le());
+            this.b = ((Number) (this._io.readU2le())).intValue();
             break;
         }
         default: {
-            this.b = (int) (this._io.readU2be());
+            this.b = ((Number) (this._io.readU2be())).intValue();
             break;
         }
         }
         if (!(this.b == 17217)) {
             throw new KaitaiStream.ValidationNotEqualError(17217, this.b, this._io, "/seq/1");
+        }
+    }
+
+    public void _fetchInstances() {
+        switch (a()) {
+        case 80: {
+            break;
+        }
+        default: {
+            break;
+        }
         }
     }
     private int a;

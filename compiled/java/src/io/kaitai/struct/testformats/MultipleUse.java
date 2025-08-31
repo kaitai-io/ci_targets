@@ -30,6 +30,11 @@ public class MultipleUse extends KaitaiStruct {
         this.t1 = new Type1(this._io, this, _root);
         this.t2 = new Type2(this._io, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.t1._fetchInstances();
+        this.t2._fetchInstances();
+    }
     public static class Multi extends KaitaiStruct {
         public static Multi fromFile(String fileName) throws IOException {
             return new Multi(new ByteBufferKaitaiStream(fileName));
@@ -51,6 +56,9 @@ public class MultipleUse extends KaitaiStruct {
         }
         private void _read() {
             this.value = this._io.readS4le();
+        }
+
+        public void _fetchInstances() {
         }
         private int value;
         private MultipleUse _root;
@@ -81,6 +89,10 @@ public class MultipleUse extends KaitaiStruct {
         private void _read() {
             this.firstUse = new Multi(this._io, this, _root);
         }
+
+        public void _fetchInstances() {
+            this.firstUse._fetchInstances();
+        }
         private Multi firstUse;
         private MultipleUse _root;
         private MultipleUse _parent;
@@ -108,6 +120,11 @@ public class MultipleUse extends KaitaiStruct {
             _read();
         }
         private void _read() {
+        }
+
+        public void _fetchInstances() {
+            secondUse();
+            this.secondUse._fetchInstances();
         }
         private Multi secondUse;
         public Multi secondUse() {

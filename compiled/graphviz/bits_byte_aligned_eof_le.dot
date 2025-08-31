@@ -1,0 +1,14 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__bits_byte_aligned_eof_le {
+		label="BitsByteAlignedEofLe";
+		graph[style=dotted];
+
+		bits_byte_aligned_eof_le__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="prebuf_pos">0</TD><TD PORT="prebuf_size">8</TD><TD></TD><TD PORT="prebuf_type">prebuf</TD></TR>
+			<TR><TD PORT="bits_pos">8</TD><TD PORT="bits_size">31b</TD><TD>b31le</TD><TD PORT="bits_type">bits</TD></TR>
+		</TABLE>>];
+	}
+}

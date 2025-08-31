@@ -30,6 +30,10 @@ public class EofExceptionSized extends KaitaiStruct {
         KaitaiStream _io_buf = this._io.substream(13);
         this.buf = new Foo(_io_buf, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.buf._fetchInstances();
+    }
     public static class Foo extends KaitaiStruct {
         public static Foo fromFile(String fileName) throws IOException {
             return new Foo(new ByteBufferKaitaiStream(fileName));
@@ -50,6 +54,9 @@ public class EofExceptionSized extends KaitaiStruct {
             _read();
         }
         private void _read() {
+        }
+
+        public void _fetchInstances() {
         }
         private EofExceptionSized _root;
         private EofExceptionSized _parent;

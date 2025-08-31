@@ -14,8 +14,8 @@ class ValidFailRangeFloat < Kaitai::Struct::Struct
 
   def _read
     @foo = @_io.read_f4le
-    raise Kaitai::Struct::ValidationLessThanError.new(0.2, @foo, @_io, "/seq/0") if not @foo >= 0.2
-    raise Kaitai::Struct::ValidationGreaterThanError.new(0.4, @foo, @_io, "/seq/0") if not @foo <= 0.4
+    raise Kaitai::Struct::ValidationLessThanError.new(0.25, @foo, @_io, "/seq/0") if not @foo >= 0.25
+    raise Kaitai::Struct::ValidationGreaterThanError.new(0.375, @foo, @_io, "/seq/0") if not @foo <= 0.375
     self
   end
   attr_reader :foo

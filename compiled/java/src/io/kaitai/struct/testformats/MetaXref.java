@@ -28,6 +28,9 @@ public class MetaXref extends KaitaiStruct {
     }
     private void _read() {
     }
+
+    public void _fetchInstances() {
+    }
     private MetaXref _root;
     private KaitaiStruct _parent;
     public MetaXref _root() { return _root; }

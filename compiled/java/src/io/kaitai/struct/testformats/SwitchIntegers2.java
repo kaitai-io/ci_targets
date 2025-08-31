@@ -30,15 +30,15 @@ public class SwitchIntegers2 extends KaitaiStruct {
         this.code = this._io.readU1();
         switch (code()) {
         case 1: {
-            this.len = (long) (this._io.readU1());
+            this.len = ((Number) (this._io.readU1())).longValue();
             break;
         }
         case 2: {
-            this.len = (long) (this._io.readU2le());
+            this.len = ((Number) (this._io.readU2le())).longValue();
             break;
         }
         case 4: {
-            this.len = (long) (this._io.readU4le());
+            this.len = ((Number) (this._io.readU4le())).longValue();
             break;
         }
         case 8: {
@@ -49,6 +49,25 @@ public class SwitchIntegers2 extends KaitaiStruct {
         this.ham = this._io.readBytes(len());
         if (len() > 3) {
             this.padding = this._io.readU1();
+        }
+    }
+
+    public void _fetchInstances() {
+        switch (code()) {
+        case 1: {
+            break;
+        }
+        case 2: {
+            break;
+        }
+        case 4: {
+            break;
+        }
+        case 8: {
+            break;
+        }
+        }
+        if (len() > 3) {
         }
     }
     private String lenModStr;

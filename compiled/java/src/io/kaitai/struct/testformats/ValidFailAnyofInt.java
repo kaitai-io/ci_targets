@@ -32,6 +32,9 @@ public class ValidFailAnyofInt extends KaitaiStruct {
             throw new KaitaiStream.ValidationNotAnyOfError(this.foo, this._io, "/seq/0");
         }
     }
+
+    public void _fetchInstances() {
+    }
     private int foo;
     private ValidFailAnyofInt _root;
     private KaitaiStruct _parent;

@@ -37,6 +37,9 @@ public class StrEncodingsEscapingToS extends KaitaiStruct {
         this.lenOf4 = this._io.readU2le();
         this.str4Raw = this._io.readBytes(lenOf4());
     }
+
+    public void _fetchInstances() {
+    }
     private String str1;
     public String str1() {
         if (this.str1 != null)

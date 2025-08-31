@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -62,6 +63,12 @@ public class VlqBase128Le extends KaitaiStruct {
         }
     }
 
+    public void _fetchInstances() {
+        for (int i = 0; i < this.groups.size(); i++) {
+            this.groups.get(((Number) (i)).intValue())._fetchInstances();
+        }
+    }
+
     /**
      * One byte group, clearly divided into 7-bit "value" chunk and 1-bit "continuation" flag.
      */
@@ -88,6 +95,9 @@ public class VlqBase128Le extends KaitaiStruct {
             this.hasNext = this._io.readBitsIntBe(1) != 0;
             this.value = this._io.readBitsIntBe(7);
         }
+
+        public void _fetchInstances() {
+        }
         private boolean hasNext;
         private long value;
         private VlqBase128Le _root;
@@ -109,16 +119,14 @@ public class VlqBase128Le extends KaitaiStruct {
     public Integer len() {
         if (this.len != null)
             return this.len;
-        int _tmp = (int) (groups().size());
-        this.len = _tmp;
+        this.len = ((Number) (groups().size())).intValue();
         return this.len;
     }
     private Long signBit;
     public Long signBit() {
         if (this.signBit != null)
             return this.signBit;
-        long _tmp = (long) (((long) (((long) (1)) << 7 * len() - 1)));
-        this.signBit = _tmp;
+        this.signBit = ((Number) (((Number) (((long) 1) << 7 * len() - 1)).longValue())).longValue();
         return this.signBit;
     }
     private Long value;
@@ -129,8 +137,7 @@ public class VlqBase128Le extends KaitaiStruct {
     public Long value() {
         if (this.value != null)
             return this.value;
-        long _tmp = (long) (((long) (((((((groups().get((int) 0).value() + (len() >= 2 ? groups().get((int) 1).value() << 7 : 0)) + (len() >= 3 ? groups().get((int) 2).value() << 14 : 0)) + (len() >= 4 ? groups().get((int) 3).value() << 21 : 0)) + (len() >= 5 ? groups().get((int) 4).value() << 28 : 0)) + (len() >= 6 ? groups().get((int) 5).value() << 35 : 0)) + (len() >= 7 ? groups().get((int) 6).value() << 42 : 0)) + (len() >= 8 ? groups().get((int) 7).value() << 49 : 0))));
-        this.value = _tmp;
+        this.value = ((Number) (((Number) (((((((groups().get(((int) 0)).value() + (len() >= 2 ? groups().get(((int) 1)).value() << 7 : 0)) + (len() >= 3 ? groups().get(((int) 2)).value() << 14 : 0)) + (len() >= 4 ? groups().get(((int) 3)).value() << 21 : 0)) + (len() >= 5 ? groups().get(((int) 4)).value() << 28 : 0)) + (len() >= 6 ? groups().get(((int) 5)).value() << 35 : 0)) + (len() >= 7 ? groups().get(((int) 6)).value() << 42 : 0)) + (len() >= 8 ? groups().get(((int) 7)).value() << 49 : 0))).longValue())).longValue();
         return this.value;
     }
     private Long valueSigned;
@@ -141,14 +148,13 @@ public class VlqBase128Le extends KaitaiStruct {
     public Long valueSigned() {
         if (this.valueSigned != null)
             return this.valueSigned;
-        long _tmp = (long) (((long) (((long) (value() ^ signBit())) - ((long) (signBit())))));
-        this.valueSigned = _tmp;
+        this.valueSigned = ((Number) (((Number) (((Number) (value() ^ signBit())).longValue() - ((Number) (signBit())).longValue())).longValue())).longValue();
         return this.valueSigned;
     }
-    private ArrayList<Group> groups;
+    private List<Group> groups;
     private VlqBase128Le _root;
     private KaitaiStruct _parent;
-    public ArrayList<Group> groups() { return groups; }
+    public List<Group> groups() { return groups; }
     public VlqBase128Le _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

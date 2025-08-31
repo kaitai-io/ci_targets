@@ -33,6 +33,25 @@ public class IoLocalVar extends KaitaiStruct {
         }
         this.followup = this._io.readU1();
     }
+
+    public void _fetchInstances() {
+        if (((IoLocalVar.Dummy) (messUp()))._io().pos() < 0) {
+        }
+        messUp();
+        switch (2) {
+        case 1: {
+            ((Dummy) (this.messUp))._fetchInstances();
+            break;
+        }
+        case 2: {
+            ((Dummy) (this.messUp))._fetchInstances();
+            break;
+        }
+        default: {
+            break;
+        }
+        }
+    }
     public static class Dummy extends KaitaiStruct {
         public static Dummy fromFile(String fileName) throws IOException {
             return new Dummy(new ByteBufferKaitaiStream(fileName));
@@ -53,6 +72,9 @@ public class IoLocalVar extends KaitaiStruct {
             _read();
         }
         private void _read() {
+        }
+
+        public void _fetchInstances() {
         }
         private IoLocalVar _root;
         private IoLocalVar _parent;

@@ -42,6 +42,9 @@ public class ValidFailExpr extends KaitaiStruct {
             }
         }
     }
+
+    public void _fetchInstances() {
+    }
     private int foo;
     private short bar;
     private ValidFailExpr _root;

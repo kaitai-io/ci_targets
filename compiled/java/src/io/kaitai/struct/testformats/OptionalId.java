@@ -31,6 +31,9 @@ public class OptionalId extends KaitaiStruct {
         this._unnamed1 = this._io.readU1();
         this._unnamed2 = this._io.readBytes(5);
     }
+
+    public void _fetchInstances() {
+    }
     private int _unnamed0;
     private int _unnamed1;
     private byte[] _unnamed2;

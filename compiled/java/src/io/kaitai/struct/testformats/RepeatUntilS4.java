@@ -8,6 +8,7 @@ import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 public class RepeatUntilS4 extends KaitaiStruct {
     public static RepeatUntilS4 fromFile(String fileName) throws IOException {
@@ -41,11 +42,16 @@ public class RepeatUntilS4 extends KaitaiStruct {
         }
         this.afterall = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.US_ASCII);
     }
-    private ArrayList<Integer> entries;
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.entries.size(); i++) {
+        }
+    }
+    private List<Integer> entries;
     private String afterall;
     private RepeatUntilS4 _root;
     private KaitaiStruct _parent;
-    public ArrayList<Integer> entries() { return entries; }
+    public List<Integer> entries() { return entries; }
     public String afterall() { return afterall; }
     public RepeatUntilS4 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }

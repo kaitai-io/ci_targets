@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProcessCoerceUsertype2 extends KaitaiStruct {
     public static ProcessCoerceUsertype2 fromFile(String fileName) throws IOException {
@@ -33,6 +34,12 @@ public class ProcessCoerceUsertype2 extends KaitaiStruct {
             this.records.add(new Record(this._io, this, _root));
         }
     }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.records.size(); i++) {
+            this.records.get(((Number) (i)).intValue())._fetchInstances();
+        }
+    }
     public static class Foo extends KaitaiStruct {
         public static Foo fromFile(String fileName) throws IOException {
             return new Foo(new ByteBufferKaitaiStream(fileName));
@@ -54,6 +61,9 @@ public class ProcessCoerceUsertype2 extends KaitaiStruct {
         }
         private void _read() {
             this.value = this._io.readU4le();
+        }
+
+        public void _fetchInstances() {
         }
         private long value;
         private ProcessCoerceUsertype2 _root;
@@ -88,9 +98,18 @@ public class ProcessCoerceUsertype2 extends KaitaiStruct {
             }
             if (flag() != 0) {
                 this._raw__raw_bufProc = this._io.readBytes(4);
-                this._raw_bufProc = KaitaiStream.processXor(_raw__raw_bufProc, ((byte) (170)));
-                KaitaiStream _io__raw_bufProc = new ByteBufferKaitaiStream(_raw_bufProc);
+                this._raw_bufProc = KaitaiStream.processXor(this._raw__raw_bufProc, ((byte) 170));
+                KaitaiStream _io__raw_bufProc = new ByteBufferKaitaiStream(this._raw_bufProc);
                 this.bufProc = new Foo(_io__raw_bufProc, this, _root);
+            }
+        }
+
+        public void _fetchInstances() {
+            if (flag() == 0) {
+                this.bufUnproc._fetchInstances();
+            }
+            if (flag() != 0) {
+                this.bufProc._fetchInstances();
             }
         }
         private Foo buf;
@@ -115,10 +134,10 @@ public class ProcessCoerceUsertype2 extends KaitaiStruct {
         public byte[] _raw_bufProc() { return _raw_bufProc; }
         public byte[] _raw__raw_bufProc() { return _raw__raw_bufProc; }
     }
-    private ArrayList<Record> records;
+    private List<Record> records;
     private ProcessCoerceUsertype2 _root;
     private KaitaiStruct _parent;
-    public ArrayList<Record> records() { return records; }
+    public List<Record> records() { return records; }
     public ProcessCoerceUsertype2 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

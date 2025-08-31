@@ -33,6 +33,9 @@ public class ValidFailEqBytes extends KaitaiStruct {
             throw new KaitaiStream.ValidationNotEqualError(new byte[] { 81, 65 }, this.foo, this._io, "/seq/0");
         }
     }
+
+    public void _fetchInstances() {
+    }
     private byte[] foo;
     private ValidFailEqBytes _root;
     private KaitaiStruct _parent;

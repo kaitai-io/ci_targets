@@ -38,60 +38,56 @@ public class ExprStrEncodings extends KaitaiStruct {
         this.lenOf4 = this._io.readU2le();
         this.str4 = new String(this._io.readBytes(lenOf4()), Charset.forName("IBM437"));
     }
+
+    public void _fetchInstances() {
+    }
     private Boolean str1Eq;
     public Boolean str1Eq() {
         if (this.str1Eq != null)
             return this.str1Eq;
-        boolean _tmp = (boolean) (str1().equals("Some ASCII"));
-        this.str1Eq = _tmp;
+        this.str1Eq = str1().equals("Some ASCII");
         return this.str1Eq;
     }
     private Boolean str2Eq;
     public Boolean str2Eq() {
         if (this.str2Eq != null)
             return this.str2Eq;
-        boolean _tmp = (boolean) (str2().equals("\u3053\u3093\u306b\u3061\u306f"));
-        this.str2Eq = _tmp;
+        this.str2Eq = str2().equals("\u3053\u3093\u306b\u3061\u306f");
         return this.str2Eq;
     }
     private Boolean str3Eq;
     public Boolean str3Eq() {
         if (this.str3Eq != null)
             return this.str3Eq;
-        boolean _tmp = (boolean) (str3().equals("\u3053\u3093\u306b\u3061\u306f"));
-        this.str3Eq = _tmp;
+        this.str3Eq = str3().equals("\u3053\u3093\u306b\u3061\u306f");
         return this.str3Eq;
     }
     private Boolean str3EqStr2;
     public Boolean str3EqStr2() {
         if (this.str3EqStr2 != null)
             return this.str3EqStr2;
-        boolean _tmp = (boolean) (str3().equals(str2()));
-        this.str3EqStr2 = _tmp;
+        this.str3EqStr2 = str3().equals(str2());
         return this.str3EqStr2;
     }
     private Boolean str4Eq;
     public Boolean str4Eq() {
         if (this.str4Eq != null)
             return this.str4Eq;
-        boolean _tmp = (boolean) (str4().equals("\u2591\u2592\u2593"));
-        this.str4Eq = _tmp;
+        this.str4Eq = str4().equals("\u2591\u2592\u2593");
         return this.str4Eq;
     }
     private Boolean str4GtStrCalc;
     public Boolean str4GtStrCalc() {
         if (this.str4GtStrCalc != null)
             return this.str4GtStrCalc;
-        boolean _tmp = (boolean) ((str4().compareTo("\u2524") > 0));
-        this.str4GtStrCalc = _tmp;
+        this.str4GtStrCalc = (str4().compareTo("\u2524") > 0);
         return this.str4GtStrCalc;
     }
     private Boolean str4GtStrFromBytes;
     public Boolean str4GtStrFromBytes() {
         if (this.str4GtStrFromBytes != null)
             return this.str4GtStrFromBytes;
-        boolean _tmp = (boolean) ((str4().compareTo(new String(new byte[] { -76 }, Charset.forName("IBM437"))) > 0));
-        this.str4GtStrFromBytes = _tmp;
+        this.str4GtStrFromBytes = (str4().compareTo(new String(new byte[] { -76 }, Charset.forName("IBM437"))) > 0);
         return this.str4GtStrFromBytes;
     }
     private int lenOf1;

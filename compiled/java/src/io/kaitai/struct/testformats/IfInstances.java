@@ -28,6 +28,12 @@ public class IfInstances extends KaitaiStruct {
     }
     private void _read() {
     }
+
+    public void _fetchInstances() {
+        if (false) {
+            neverHappens();
+        }
+    }
     private Integer neverHappens;
     public Integer neverHappens() {
         if (this.neverHappens != null)

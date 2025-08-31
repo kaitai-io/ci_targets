@@ -11,14 +11,14 @@ use kaitai::*;
 use std::convert::{TryFrom, TryInto};
 use std::cell::{Ref, Cell, RefCell};
 use std::rc::{Rc, Weak};
-use super::term_strz::TermStrz;
+use super::hello_world::HelloWorld;
 
 #[derive(Default, Debug, Clone)]
 pub struct OpaqueExternalType {
     pub _root: SharedType<OpaqueExternalType>,
     pub _parent: SharedType<OpaqueExternalType>,
     pub _self: SharedType<Self>,
-    one: RefCell<OptRc<TermStrz>>,
+    hw: RefCell<OptRc<HelloWorld>>,
     _io: RefCell<BytesReader>,
 }
 impl KStruct for OpaqueExternalType {
@@ -38,16 +38,16 @@ impl KStruct for OpaqueExternalType {
         let _rrc = self_rc._root.get_value().borrow().upgrade();
         let _prc = self_rc._parent.get_value().borrow().upgrade();
         let _r = _rrc.as_ref().unwrap();
-        let t = Self::read_into::<_, TermStrz>(&*_io, None, None)?.into();
-        *self_rc.one.borrow_mut() = t;
+        let t = Self::read_into::<_, HelloWorld>(&*_io, None, None)?.into();
+        *self_rc.hw.borrow_mut() = t;
         Ok(())
     }
 }
 impl OpaqueExternalType {
 }
 impl OpaqueExternalType {
-    pub fn one(&self) -> Ref<'_, OptRc<TermStrz>> {
-        self.one.borrow()
+    pub fn hw(&self) -> Ref<'_, OptRc<HelloWorld>> {
+        self.hw.borrow()
     }
 }
 impl OpaqueExternalType {

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 public class SwitchBytearray extends KaitaiStruct {
     public static SwitchBytearray fromFile(String fileName) throws IOException {
@@ -37,6 +38,12 @@ public class SwitchBytearray extends KaitaiStruct {
                 this.opcodes.add(new Opcode(this._io, this, _root));
                 i++;
             }
+        }
+    }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.opcodes.size(); i++) {
+            this.opcodes.get(((Number) (i)).intValue())._fetchInstances();
         }
     }
     public static class Opcode extends KaitaiStruct {
@@ -70,6 +77,18 @@ public class SwitchBytearray extends KaitaiStruct {
                 }
             }
         }
+
+        public void _fetchInstances() {
+            {
+                byte[] on = code();
+                if (Arrays.equals(on, new byte[] { 73 })) {
+                    ((Intval) (this.body))._fetchInstances();
+                }
+                else if (Arrays.equals(on, new byte[] { 83 })) {
+                    ((Strval) (this.body))._fetchInstances();
+                }
+            }
+        }
         public static class Intval extends KaitaiStruct {
             public static Intval fromFile(String fileName) throws IOException {
                 return new Intval(new ByteBufferKaitaiStream(fileName));
@@ -91,6 +110,9 @@ public class SwitchBytearray extends KaitaiStruct {
             }
             private void _read() {
                 this.value = this._io.readU1();
+            }
+
+            public void _fetchInstances() {
             }
             private int value;
             private SwitchBytearray _root;
@@ -121,6 +143,9 @@ public class SwitchBytearray extends KaitaiStruct {
             private void _read() {
                 this.value = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.US_ASCII);
             }
+
+            public void _fetchInstances() {
+            }
             private String value;
             private SwitchBytearray _root;
             private SwitchBytearray.Opcode _parent;
@@ -137,10 +162,10 @@ public class SwitchBytearray extends KaitaiStruct {
         public SwitchBytearray _root() { return _root; }
         public SwitchBytearray _parent() { return _parent; }
     }
-    private ArrayList<Opcode> opcodes;
+    private List<Opcode> opcodes;
     private SwitchBytearray _root;
     private KaitaiStruct _parent;
-    public ArrayList<Opcode> opcodes() { return opcodes; }
+    public List<Opcode> opcodes() { return opcodes; }
     public SwitchBytearray _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

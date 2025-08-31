@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProcessRepeatBytes extends KaitaiStruct {
     public static ProcessRepeatBytes fromFile(String fileName) throws IOException {
@@ -32,15 +33,20 @@ public class ProcessRepeatBytes extends KaitaiStruct {
         this.bufs = new ArrayList<byte[]>();
         for (int i = 0; i < 2; i++) {
             this._raw_bufs.add(this._io.readBytes(5));
-            this.bufs.add(KaitaiStream.processXor(_raw_bufs.get(_raw_bufs.size() - 1), ((byte) (158))));
+            this.bufs.add(KaitaiStream.processXor(this._raw_bufs.get(i), ((byte) 158)));
         }
     }
-    private ArrayList<byte[]> bufs;
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.bufs.size(); i++) {
+        }
+    }
+    private List<byte[]> bufs;
     private ProcessRepeatBytes _root;
     private KaitaiStruct _parent;
-    private ArrayList<byte[]> _raw_bufs;
-    public ArrayList<byte[]> bufs() { return bufs; }
+    private List<byte[]> _raw_bufs;
+    public List<byte[]> bufs() { return bufs; }
     public ProcessRepeatBytes _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
-    public ArrayList<byte[]> _raw_bufs() { return _raw_bufs; }
+    public List<byte[]> _raw_bufs() { return _raw_bufs; }
 }

@@ -50,6 +50,9 @@ public class BitsEnum extends KaitaiStruct {
         this.two = Animal.byId(this._io.readBitsIntBe(8));
         this.three = Animal.byId(this._io.readBitsIntBe(1));
     }
+
+    public void _fetchInstances() {
+    }
     private Animal one;
     private Animal two;
     private Animal three;

@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['exports', 'kaitai-struct/KaitaiStream', './TermStrz'], factory);
+    define(['exports', 'kaitai-struct/KaitaiStream', './HelloWorld'], factory);
   } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
-    factory(exports, require('kaitai-struct/KaitaiStream'), require('./TermStrz'));
+    factory(exports, require('kaitai-struct/KaitaiStream'), require('./HelloWorld'));
   } else {
-    factory(root.OpaqueExternalType || (root.OpaqueExternalType = {}), root.KaitaiStream, root.TermStrz || (root.TermStrz = {}));
+    factory(root.OpaqueExternalType || (root.OpaqueExternalType = {}), root.KaitaiStream, root.HelloWorld || (root.HelloWorld = {}));
   }
-})(typeof self !== 'undefined' ? self : this, function (OpaqueExternalType_, KaitaiStream, TermStrz_) {
+})(typeof self !== 'undefined' ? self : this, function (OpaqueExternalType_, KaitaiStream, HelloWorld_) {
 var OpaqueExternalType = (function() {
   function OpaqueExternalType(_io, _parent, _root) {
     this._io = _io;
@@ -18,7 +18,7 @@ var OpaqueExternalType = (function() {
     this._read();
   }
   OpaqueExternalType.prototype._read = function() {
-    this.one = new TermStrz_.TermStrz(this._io, null, null);
+    this.hw = new HelloWorld_.HelloWorld(this._io, null, null);
   }
 
   return OpaqueExternalType;

@@ -1,0 +1,33 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__repeat_until_term_struct {
+		label="RepeatUntilTermStruct";
+		graph[style=dotted];
+
+		repeat_until_term_struct__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="records1_pos">0</TD><TD PORT="records1_size">...</TD><TD>BytesWrapper</TD><TD PORT="records1_type">records1</TD></TR>
+			<TR><TD COLSPAN="4" PORT="records1__repeat">repeat until _.value.size == 0</TD></TR>
+			<TR><TD PORT="records2_pos">...</TD><TD PORT="records2_size">...</TD><TD>BytesWrapper</TD><TD PORT="records2_type">records2</TD></TR>
+			<TR><TD COLSPAN="4" PORT="records2__repeat">repeat until _.value != [170].pack('C*')</TD></TR>
+			<TR><TD PORT="records3_pos">...</TD><TD PORT="records3_size">...</TD><TD>BytesWrapper</TD><TD PORT="records3_type">records3</TD></TR>
+			<TR><TD COLSPAN="4" PORT="records3__repeat">repeat until _.value == records1.last.value</TD></TR>
+		</TABLE>>];
+		subgraph cluster__bytes_wrapper {
+			label="RepeatUntilTermStruct::BytesWrapper";
+			graph[style=dotted];
+
+			bytes_wrapper__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="value_pos">0</TD><TD PORT="value_size">⇲</TD><TD></TD><TD PORT="value_type">value</TD></TR>
+			</TABLE>>];
+		}
+	}
+	repeat_until_term_struct__seq:records1_type -> bytes_wrapper__seq [style=bold];
+	bytes_wrapper__seq:value_type -> repeat_until_term_struct__seq:records1__repeat [color="#404040"];
+	repeat_until_term_struct__seq:records2_type -> bytes_wrapper__seq [style=bold];
+	bytes_wrapper__seq:value_type -> repeat_until_term_struct__seq:records2__repeat [color="#404040"];
+	repeat_until_term_struct__seq:records3_type -> bytes_wrapper__seq [style=bold];
+	bytes_wrapper__seq:value_type -> repeat_until_term_struct__seq:records3__repeat [color="#404040"];
+}

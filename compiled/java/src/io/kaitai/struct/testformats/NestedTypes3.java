@@ -31,6 +31,12 @@ public class NestedTypes3 extends KaitaiStruct {
         this.aCD = new SubtypeA.SubtypeC.SubtypeD(this._io, this, _root);
         this.b = new SubtypeB(this._io, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.aCc._fetchInstances();
+        this.aCD._fetchInstances();
+        this.b._fetchInstances();
+    }
     public static class SubtypeA extends KaitaiStruct {
         public static SubtypeA fromFile(String fileName) throws IOException {
             return new SubtypeA(new ByteBufferKaitaiStream(fileName));
@@ -51,6 +57,9 @@ public class NestedTypes3 extends KaitaiStruct {
             _read();
         }
         private void _read() {
+        }
+
+        public void _fetchInstances() {
         }
         public static class SubtypeC extends KaitaiStruct {
             public static SubtypeC fromFile(String fileName) throws IOException {
@@ -73,6 +82,9 @@ public class NestedTypes3 extends KaitaiStruct {
             }
             private void _read() {
             }
+
+            public void _fetchInstances() {
+            }
             public static class SubtypeD extends KaitaiStruct {
                 public static SubtypeD fromFile(String fileName) throws IOException {
                     return new SubtypeD(new ByteBufferKaitaiStream(fileName));
@@ -94,6 +106,9 @@ public class NestedTypes3 extends KaitaiStruct {
                 }
                 private void _read() {
                     this.valueD = this._io.readS1();
+                }
+
+                public void _fetchInstances() {
                 }
                 private byte valueD;
                 private NestedTypes3 _root;
@@ -128,6 +143,9 @@ public class NestedTypes3 extends KaitaiStruct {
             }
             private void _read() {
                 this.valueCc = this._io.readS1();
+            }
+
+            public void _fetchInstances() {
             }
             private byte valueCc;
             private NestedTypes3 _root;
@@ -164,6 +182,11 @@ public class NestedTypes3 extends KaitaiStruct {
             this.valueB = this._io.readS1();
             this.aCc = new SubtypeA.SubtypeCc(this._io, this, _root);
             this.aCD = new SubtypeA.SubtypeC.SubtypeD(this._io, this, _root);
+        }
+
+        public void _fetchInstances() {
+            this.aCc._fetchInstances();
+            this.aCD._fetchInstances();
         }
         private byte valueB;
         private SubtypeA.SubtypeCc aCc;

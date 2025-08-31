@@ -30,6 +30,9 @@ public class StrEos extends KaitaiStruct {
     private void _read() {
         this.str = new String(this._io.readBytesFull(), StandardCharsets.UTF_8);
     }
+
+    public void _fetchInstances() {
+    }
     private String str;
     private StrEos _root;
     private KaitaiStruct _parent;

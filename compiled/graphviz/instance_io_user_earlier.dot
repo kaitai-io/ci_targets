@@ -1,0 +1,76 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__instance_io_user_earlier {
+		label="InstanceIoUserEarlier";
+		graph[style=dotted];
+
+		instance_io_user_earlier__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="sized_a_pos">0</TD><TD PORT="sized_a_size">6</TD><TD>Slot</TD><TD PORT="sized_a_type">sized_a</TD></TR>
+			<TR><TD PORT="sized_b_pos">6</TD><TD PORT="sized_b_size">6</TD><TD>Slot</TD><TD PORT="sized_b_type">sized_b</TD></TR>
+			<TR><TD PORT="into_b_pos">12</TD><TD PORT="into_b_size">2</TD><TD>Foo</TD><TD PORT="into_b_type">into_b</TD></TR>
+			<TR><TD PORT="into_a_skipped_pos">14</TD><TD PORT="into_a_skipped_size">2</TD><TD>Foo</TD><TD PORT="into_a_skipped_type">into_a_skipped</TD></TR>
+			<TR><TD PORT="into_a_pos">16</TD><TD PORT="into_a_size">2</TD><TD>Foo</TD><TD PORT="into_a_type">into_a</TD></TR>
+			<TR><TD PORT="last_accessor_pos">18</TD><TD PORT="last_accessor_size">1</TD><TD>Baz</TD><TD PORT="last_accessor_type">last_accessor</TD></TR>
+		</TABLE>>];
+		instance_io_user_earlier__inst__a_mid [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="a_mid_pos">1</TD><TD PORT="a_mid_size">2</TD><TD>u2le</TD><TD PORT="a_mid_type">a_mid</TD></TR>
+		</TABLE>>];
+		instance_io_user_earlier__inst__b_mid [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="b_mid_pos">1</TD><TD PORT="b_mid_size">2</TD><TD>u2le</TD><TD PORT="b_mid_type">b_mid</TD></TR>
+		</TABLE>>];
+		subgraph cluster__baz {
+			label="InstanceIoUserEarlier::Baz";
+			graph[style=dotted];
+
+			baz__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="v_pos">0</TD><TD PORT="v_size">1</TD><TD>u1</TD><TD PORT="v_type">v</TD></TR>
+				<TR><TD COLSPAN="4" PORT="v__if">if _parent.into_b.inst.last == 89</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__foo {
+			label="InstanceIoUserEarlier::Foo";
+			graph[style=dotted];
+
+			foo__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="indicator_pos">0</TD><TD PORT="indicator_size">1</TD><TD>u1</TD><TD PORT="indicator_type">indicator</TD></TR>
+				<TR><TD PORT="bar_pos">1</TD><TD PORT="bar_size">1</TD><TD>u1</TD><TD PORT="bar_type">bar</TD></TR>
+				<TR><TD COLSPAN="4" PORT="bar__if">if  ((inst._io.size != 0) &amp;&amp; (inst.content == 102)) </TD></TR>
+			</TABLE>>];
+			foo__inst__inst [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="inst_pos">1</TD><TD PORT="inst_size">(_io.pos != 14 ? 4 : 0)</TD><TD>Slot</TD><TD PORT="inst_type">inst</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__slot {
+			label="InstanceIoUserEarlier::Slot";
+			graph[style=dotted];
+
+			slot__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="content_pos">0</TD><TD PORT="content_size">1</TD><TD>u1</TD><TD PORT="content_type">content</TD></TR>
+				<TR><TD COLSPAN="4" PORT="content__if">if _io.size != 0</TD></TR>
+			</TABLE>>];
+			slot__inst__last [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="last_pos">_io.size - 1</TD><TD PORT="last_size">1</TD><TD>u1</TD><TD PORT="last_type">last</TD></TR>
+				<TR><TD COLSPAN="4" PORT="last__if">if _io.size != 0</TD></TR>
+			</TABLE>>];
+		}
+	}
+	instance_io_user_earlier__seq:sized_a_type -> slot__seq [style=bold];
+	instance_io_user_earlier__seq:sized_b_type -> slot__seq [style=bold];
+	instance_io_user_earlier__seq:into_b_type -> foo__seq [style=bold];
+	instance_io_user_earlier__seq:into_a_skipped_type -> foo__seq [style=bold];
+	instance_io_user_earlier__seq:into_a_type -> foo__seq [style=bold];
+	instance_io_user_earlier__seq:last_accessor_type -> baz__seq [style=bold];
+	slot__inst__last:last_type -> baz__seq:v__if [color="#404040"];
+	foo__inst__inst:inst_type -> foo__seq:bar__if [color="#404040"];
+	slot__seq:content_type -> foo__seq:bar__if [color="#404040"];
+	foo__inst__inst:inst_type -> slot__seq [style=bold];
+}

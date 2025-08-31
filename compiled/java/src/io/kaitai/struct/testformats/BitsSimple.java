@@ -35,20 +35,21 @@ public class BitsSimple extends KaitaiStruct {
         this.largeBits1 = this._io.readBitsIntBe(10);
         this.spacer = this._io.readBitsIntBe(3);
         this.largeBits2 = this._io.readBitsIntBe(11);
-        this._io.alignToByte();
         this.normalS2 = this._io.readS2be();
         this.byte8910 = this._io.readBitsIntBe(24);
         this.byte11To14 = this._io.readBitsIntBe(32);
         this.byte15To19 = this._io.readBitsIntBe(40);
         this.byte20To27 = this._io.readBitsIntBe(64);
     }
+
+    public void _fetchInstances() {
+    }
     private Byte testIfB1;
     public Byte testIfB1() {
         if (this.testIfB1 != null)
             return this.testIfB1;
         if (bitsA() == false) {
-            byte _tmp = (byte) (123);
-            this.testIfB1 = _tmp;
+            this.testIfB1 = ((byte) 123);
         }
         return this.testIfB1;
     }

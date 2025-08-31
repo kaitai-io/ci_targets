@@ -18,7 +18,7 @@ end
 function ValidFailEqStr:_read()
   self.foo = str_decode.decode(self._io:read_bytes(4), "ASCII")
   if not(self.foo == "BACK") then
-    error("not equal, expected " ..  "BACK" .. ", but got " .. self.foo)
+    error("not equal, expected " .. "BACK" .. ", but got " .. self.foo)
   end
 end
 

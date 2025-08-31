@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProcessCoerceBytes extends KaitaiStruct {
     public static ProcessCoerceBytes fromFile(String fileName) throws IOException {
@@ -31,6 +32,12 @@ public class ProcessCoerceBytes extends KaitaiStruct {
         this.records = new ArrayList<Record>();
         for (int i = 0; i < 2; i++) {
             this.records.add(new Record(this._io, this, _root));
+        }
+    }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.records.size(); i++) {
+            this.records.get(((Number) (i)).intValue())._fetchInstances();
         }
     }
     public static class Record extends KaitaiStruct {
@@ -59,7 +66,14 @@ public class ProcessCoerceBytes extends KaitaiStruct {
             }
             if (flag() != 0) {
                 this._raw_bufProc = this._io.readBytes(4);
-                this.bufProc = KaitaiStream.processXor(_raw_bufProc, ((byte) (170)));
+                this.bufProc = KaitaiStream.processXor(this._raw_bufProc, ((byte) 170));
+            }
+        }
+
+        public void _fetchInstances() {
+            if (flag() == 0) {
+            }
+            if (flag() != 0) {
             }
         }
         private byte[] buf;
@@ -82,10 +96,10 @@ public class ProcessCoerceBytes extends KaitaiStruct {
         public ProcessCoerceBytes _parent() { return _parent; }
         public byte[] _raw_bufProc() { return _raw_bufProc; }
     }
-    private ArrayList<Record> records;
+    private List<Record> records;
     private ProcessCoerceBytes _root;
     private KaitaiStruct _parent;
-    public ArrayList<Record> records() { return records; }
+    public List<Record> records() { return records; }
     public ProcessCoerceBytes _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

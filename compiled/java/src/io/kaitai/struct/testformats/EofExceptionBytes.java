@@ -29,6 +29,9 @@ public class EofExceptionBytes extends KaitaiStruct {
     private void _read() {
         this.buf = this._io.readBytes(13);
     }
+
+    public void _fetchInstances() {
+    }
     private byte[] buf;
     private EofExceptionBytes _root;
     private KaitaiStruct _parent;

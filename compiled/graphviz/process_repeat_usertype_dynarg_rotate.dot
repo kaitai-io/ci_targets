@@ -1,0 +1,58 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__process_repeat_usertype_dynarg_rotate {
+		label="ProcessRepeatUsertypeDynargRotate";
+		graph[style=dotted];
+
+		process_repeat_usertype_dynarg_rotate__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="blocks_rol_pos">0</TD><TD PORT="blocks_rol_size">3</TD><TD>Block</TD><TD PORT="blocks_rol_type">blocks_rol</TD></TR>
+			<TR><TD COLSPAN="4" PORT="blocks_rol__repeat">repeat 2 times</TD></TR>
+			<TR><TD PORT="blocks_ror_pos">6</TD><TD PORT="blocks_ror_size">3</TD><TD>Block</TD><TD PORT="blocks_ror_type">blocks_ror</TD></TR>
+			<TR><TD COLSPAN="4" PORT="blocks_ror__repeat">repeat 3 times</TD></TR>
+			<TR><TD PORT="blocks_b_pos">15</TD><TD PORT="blocks_b_size">1</TD><TD>BlocksBWrapper</TD><TD PORT="blocks_b_type">blocks_b</TD></TR>
+		</TABLE>>];
+		subgraph cluster__block {
+			label="ProcessRepeatUsertypeDynargRotate::Block";
+			graph[style=dotted];
+
+			block__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="a_pos">0</TD><TD PORT="a_size">2</TD><TD>u2le</TD><TD PORT="a_type">a</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__blocks_b_wrapper {
+			label="ProcessRepeatUsertypeDynargRotate::BlocksBWrapper";
+			graph[style=dotted];
+
+			blocks_b_wrapper__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="dummy_pos">0</TD><TD PORT="dummy_size">1</TD><TD>u1</TD><TD PORT="dummy_type">dummy</TD></TR>
+			</TABLE>>];
+			blocks_b_wrapper__inst__blocks_rol_0_b [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="blocks_rol_0_b_pos">2</TD><TD PORT="blocks_rol_0_b_size">1</TD><TD>u1</TD><TD PORT="blocks_rol_0_b_type">blocks_rol_0_b</TD></TR>
+			</TABLE>>];
+			blocks_b_wrapper__inst__blocks_rol_1_b [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="blocks_rol_1_b_pos">2</TD><TD PORT="blocks_rol_1_b_size">1</TD><TD>u1</TD><TD PORT="blocks_rol_1_b_type">blocks_rol_1_b</TD></TR>
+			</TABLE>>];
+			blocks_b_wrapper__inst__blocks_ror_0_b [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="blocks_ror_0_b_pos">2</TD><TD PORT="blocks_ror_0_b_size">1</TD><TD>u1</TD><TD PORT="blocks_ror_0_b_type">blocks_ror_0_b</TD></TR>
+			</TABLE>>];
+			blocks_b_wrapper__inst__blocks_ror_1_b [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="blocks_ror_1_b_pos">2</TD><TD PORT="blocks_ror_1_b_size">1</TD><TD>u1</TD><TD PORT="blocks_ror_1_b_type">blocks_ror_1_b</TD></TR>
+			</TABLE>>];
+			blocks_b_wrapper__inst__blocks_ror_2_b [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="blocks_ror_2_b_pos">2</TD><TD PORT="blocks_ror_2_b_size">1</TD><TD>u1</TD><TD PORT="blocks_ror_2_b_type">blocks_ror_2_b</TD></TR>
+			</TABLE>>];
+		}
+	}
+	process_repeat_usertype_dynarg_rotate__seq:blocks_rol_type -> block__seq [style=bold];
+	process_repeat_usertype_dynarg_rotate__seq:blocks_ror_type -> block__seq [style=bold];
+	process_repeat_usertype_dynarg_rotate__seq:blocks_b_type -> blocks_b_wrapper__seq [style=bold];
+}

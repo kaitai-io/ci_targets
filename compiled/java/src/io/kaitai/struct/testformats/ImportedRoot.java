@@ -29,6 +29,9 @@ public class ImportedRoot extends KaitaiStruct {
     private void _read() {
         this.one = this._io.readU1();
     }
+
+    public void _fetchInstances() {
+    }
     private int one;
     private ImportedRoot _root;
     private KaitaiStruct _parent;

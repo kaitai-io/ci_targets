@@ -30,6 +30,10 @@ public class NestedTypeParam extends KaitaiStruct {
     private void _read() {
         this.mainSeq = new Nested.MyType(this._io, this, _root, 5);
     }
+
+    public void _fetchInstances() {
+        this.mainSeq._fetchInstances();
+    }
     public static class Nested extends KaitaiStruct {
         public static Nested fromFile(String fileName) throws IOException {
             return new Nested(new ByteBufferKaitaiStream(fileName));
@@ -51,6 +55,9 @@ public class NestedTypeParam extends KaitaiStruct {
         }
         private void _read() {
         }
+
+        public void _fetchInstances() {
+        }
         public static class MyType extends KaitaiStruct {
 
             public MyType(KaitaiStream _io, long myLen) {
@@ -70,6 +77,9 @@ public class NestedTypeParam extends KaitaiStruct {
             }
             private void _read() {
                 this.body = new String(this._io.readBytes(myLen()), StandardCharsets.US_ASCII);
+            }
+
+            public void _fetchInstances() {
             }
             private String body;
             private long myLen;

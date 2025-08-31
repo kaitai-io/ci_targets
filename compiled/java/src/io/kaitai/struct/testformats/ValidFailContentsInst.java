@@ -32,6 +32,12 @@ public class ValidFailContentsInst extends KaitaiStruct {
             this.a = this._io.readBytes(0);
         }
     }
+
+    public void _fetchInstances() {
+        if (foo().length == 0) {
+        }
+        foo();
+    }
     private byte[] foo;
     public byte[] foo() {
         if (this.foo != null)

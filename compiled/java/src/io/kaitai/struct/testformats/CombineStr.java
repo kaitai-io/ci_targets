@@ -32,6 +32,9 @@ public class CombineStr extends KaitaiStruct {
         this.strLimit = new String(this._io.readBytes(4), StandardCharsets.US_ASCII);
         this.strEos = new String(this._io.readBytesFull(), StandardCharsets.US_ASCII);
     }
+
+    public void _fetchInstances() {
+    }
     private byte[] calcBytes;
     public byte[] calcBytes() {
         if (this.calcBytes != null)

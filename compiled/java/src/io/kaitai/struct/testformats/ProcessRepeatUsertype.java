@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProcessRepeatUsertype extends KaitaiStruct {
     public static ProcessRepeatUsertype fromFile(String fileName) throws IOException {
@@ -33,9 +34,15 @@ public class ProcessRepeatUsertype extends KaitaiStruct {
         this.blocks = new ArrayList<Block>();
         for (int i = 0; i < 2; i++) {
             this._raw__raw_blocks.add(this._io.readBytes(5));
-            this._raw_blocks.add(KaitaiStream.processXor(_raw__raw_blocks.get(_raw__raw_blocks.size() - 1), ((byte) (158))));
-            KaitaiStream _io__raw_blocks = new ByteBufferKaitaiStream(_raw_blocks.get(_raw_blocks.size() - 1));
+            this._raw_blocks.add(KaitaiStream.processXor(this._raw__raw_blocks.get(i), ((byte) 158)));
+            KaitaiStream _io__raw_blocks = new ByteBufferKaitaiStream(this._raw_blocks.get(i));
             this.blocks.add(new Block(_io__raw_blocks, this, _root));
+        }
+    }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.blocks.size(); i++) {
+            this.blocks.get(((Number) (i)).intValue())._fetchInstances();
         }
     }
     public static class Block extends KaitaiStruct {
@@ -61,6 +68,9 @@ public class ProcessRepeatUsertype extends KaitaiStruct {
             this.a = this._io.readS4le();
             this.b = this._io.readS1();
         }
+
+        public void _fetchInstances() {
+        }
         private int a;
         private byte b;
         private ProcessRepeatUsertype _root;
@@ -70,14 +80,14 @@ public class ProcessRepeatUsertype extends KaitaiStruct {
         public ProcessRepeatUsertype _root() { return _root; }
         public ProcessRepeatUsertype _parent() { return _parent; }
     }
-    private ArrayList<Block> blocks;
+    private List<Block> blocks;
     private ProcessRepeatUsertype _root;
     private KaitaiStruct _parent;
-    private ArrayList<byte[]> _raw_blocks;
-    private ArrayList<byte[]> _raw__raw_blocks;
-    public ArrayList<Block> blocks() { return blocks; }
+    private List<byte[]> _raw_blocks;
+    private List<byte[]> _raw__raw_blocks;
+    public List<Block> blocks() { return blocks; }
     public ProcessRepeatUsertype _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
-    public ArrayList<byte[]> _raw_blocks() { return _raw_blocks; }
-    public ArrayList<byte[]> _raw__raw_blocks() { return _raw__raw_blocks; }
+    public List<byte[]> _raw_blocks() { return _raw_blocks; }
+    public List<byte[]> _raw__raw_blocks() { return _raw__raw_blocks; }
 }

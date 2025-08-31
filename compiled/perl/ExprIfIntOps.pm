@@ -34,27 +34,36 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{skip} = $self->{_io}->read_bytes(2);
     if (1) {
-        $self->{it} = $self->{_io}->read_s2le();
+        $self->{key} = $self->{_io}->read_u8le();
     }
-    if (1) {
-        $self->{boxed} = $self->{_io}->read_s2le();
+    $self->{skip} = $self->{_io}->read_bytes(8);
+    $self->{_raw_bytes} = $self->{_io}->read_bytes(8);
+    $self->{bytes} = IO::KaitaiStruct::Stream::process_xor_one($self->{_raw_bytes}, $self->key());
+    $self->{items} = [];
+    my $n_items = 4;
+    for (my $i = 0; $i < $n_items; $i++) {
+        push @{$self->{items}}, $self->{_io}->read_s1();
     }
 }
 
-sub is_eq_boxed {
+sub bytes_sub_key {
     my ($self) = @_;
-    return $self->{is_eq_boxed} if ($self->{is_eq_boxed});
-    $self->{is_eq_boxed} = $self->it() == $self->boxed();
-    return $self->{is_eq_boxed};
+    return $self->{bytes_sub_key} if ($self->{bytes_sub_key});
+    $self->{bytes_sub_key} = unpack('C', substr($self->bytes(), $self->key(), 1));
+    return $self->{bytes_sub_key};
 }
 
-sub is_eq_prim {
+sub items_sub_key {
     my ($self) = @_;
-    return $self->{is_eq_prim} if ($self->{is_eq_prim});
-    $self->{is_eq_prim} = $self->it() == 16705;
-    return $self->{is_eq_prim};
+    return $self->{items_sub_key} if ($self->{items_sub_key});
+    $self->{items_sub_key} = @{$self->items()}[$self->key()];
+    return $self->{items_sub_key};
+}
+
+sub key {
+    my ($self) = @_;
+    return $self->{key};
 }
 
 sub skip {
@@ -62,14 +71,19 @@ sub skip {
     return $self->{skip};
 }
 
-sub it {
+sub bytes {
     my ($self) = @_;
-    return $self->{it};
+    return $self->{bytes};
 }
 
-sub boxed {
+sub items {
     my ($self) = @_;
-    return $self->{boxed};
+    return $self->{items};
+}
+
+sub _raw_bytes {
+    my ($self) = @_;
+    return $self->{_raw_bytes};
 }
 
 1;

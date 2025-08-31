@@ -20,6 +20,12 @@ var FloatToI = (function() {
   FloatToI.prototype._read = function() {
     this.singleValue = this._io.readF4le();
     this.doubleValue = this._io.readF8le();
+    if (true) {
+      this.singleValueIf = this._io.readF4be();
+    }
+    if (true) {
+      this.doubleValueIf = this._io.readF8be();
+    }
   }
   Object.defineProperty(FloatToI.prototype, 'calcFloat1', {
     get: function() {
@@ -53,12 +59,36 @@ var FloatToI = (function() {
       return this._m_calcFloat4;
     }
   });
+  Object.defineProperty(FloatToI.prototype, 'calcIf', {
+    get: function() {
+      if (this._m_calcIf !== undefined)
+        return this._m_calcIf;
+      this._m_calcIf = 13.9;
+      return this._m_calcIf;
+    }
+  });
+  Object.defineProperty(FloatToI.prototype, 'calcIfI', {
+    get: function() {
+      if (this._m_calcIfI !== undefined)
+        return this._m_calcIfI;
+      this._m_calcIfI = Math.trunc(this.calcIf);
+      return this._m_calcIfI;
+    }
+  });
   Object.defineProperty(FloatToI.prototype, 'doubleI', {
     get: function() {
       if (this._m_doubleI !== undefined)
         return this._m_doubleI;
       this._m_doubleI = Math.trunc(this.doubleValue);
       return this._m_doubleI;
+    }
+  });
+  Object.defineProperty(FloatToI.prototype, 'doubleIfI', {
+    get: function() {
+      if (this._m_doubleIfI !== undefined)
+        return this._m_doubleIfI;
+      this._m_doubleIfI = Math.trunc(this.doubleValueIf);
+      return this._m_doubleIfI;
     }
   });
   Object.defineProperty(FloatToI.prototype, 'float1I', {
@@ -99,6 +129,14 @@ var FloatToI = (function() {
         return this._m_singleI;
       this._m_singleI = Math.trunc(this.singleValue);
       return this._m_singleI;
+    }
+  });
+  Object.defineProperty(FloatToI.prototype, 'singleIfI', {
+    get: function() {
+      if (this._m_singleIfI !== undefined)
+        return this._m_singleIfI;
+      this._m_singleIfI = Math.trunc(this.singleValueIf);
+      return this._m_singleIfI;
     }
   });
 

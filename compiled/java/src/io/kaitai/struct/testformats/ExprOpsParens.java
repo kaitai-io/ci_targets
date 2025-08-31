@@ -28,68 +28,63 @@ public class ExprOpsParens extends KaitaiStruct {
     }
     private void _read() {
     }
+
+    public void _fetchInstances() {
+    }
     private Integer boolAnd;
     public Integer boolAnd() {
         if (this.boolAnd != null)
             return this.boolAnd;
-        int _tmp = (int) (( ((false) && (true))  ? 1 : 0));
-        this.boolAnd = _tmp;
+        this.boolAnd = ((Number) (( ((false) && (true))  ? 1 : 0))).intValue();
         return this.boolAnd;
     }
     private Integer boolEq;
     public Integer boolEq() {
         if (this.boolEq != null)
             return this.boolEq;
-        int _tmp = (int) ((false == true ? 1 : 0));
-        this.boolEq = _tmp;
+        this.boolEq = ((Number) ((false == true ? 1 : 0))).intValue();
         return this.boolEq;
     }
     private Integer boolOr;
     public Integer boolOr() {
         if (this.boolOr != null)
             return this.boolOr;
-        int _tmp = (int) (( ((!(false)) || (false))  ? 1 : 0));
-        this.boolOr = _tmp;
+        this.boolOr = ((Number) (( ((!(false)) || (false))  ? 1 : 0))).intValue();
         return this.boolOr;
     }
     private Double f2pi;
     public Double f2pi() {
         if (this.f2pi != null)
             return this.f2pi;
-        double _tmp = (double) (6.28);
-        this.f2pi = _tmp;
+        this.f2pi = ((double) 6.28);
         return this.f2pi;
     }
     private Double fE;
     public Double fE() {
         if (this.fE != null)
             return this.fE;
-        double _tmp = (double) (2.72);
-        this.fE = _tmp;
+        this.fE = ((double) 2.72);
         return this.fE;
     }
     private Integer fSumToInt;
     public Integer fSumToInt() {
         if (this.fSumToInt != null)
             return this.fSumToInt;
-        int _tmp = (int) ((int) (f2pi() + fE() + 0));
-        this.fSumToInt = _tmp;
+        this.fSumToInt = ((Number) (((Number) (f2pi() + fE())).intValue())).intValue();
         return this.fSumToInt;
     }
     private Byte i42;
     public Byte i42() {
         if (this.i42 != null)
             return this.i42;
-        byte _tmp = (byte) (42);
-        this.i42 = _tmp;
+        this.i42 = ((byte) 42);
         return this.i42;
     }
     private Integer iM13;
     public Integer iM13() {
         if (this.iM13 != null)
             return this.iM13;
-        int _tmp = (int) (-13);
-        this.iM13 = _tmp;
+        this.iM13 = ((Number) (-13)).intValue();
         return this.iM13;
     }
     private String iSumToStr;
@@ -117,8 +112,7 @@ public class ExprOpsParens extends KaitaiStruct {
     public Integer strConcatLen() {
         if (this.strConcatLen != null)
             return this.strConcatLen;
-        int _tmp = (int) ((str0To4() + str5To9()).length());
-        this.strConcatLen = _tmp;
+        this.strConcatLen = ((Number) ((str0To4() + str5To9()).length())).intValue();
         return this.strConcatLen;
     }
     private String strConcatRev;
@@ -139,8 +133,7 @@ public class ExprOpsParens extends KaitaiStruct {
     public Integer strConcatToI() {
         if (this.strConcatToI != null)
             return this.strConcatToI;
-        int _tmp = (int) (Long.parseLong(str0To4() + str5To9(), 10));
-        this.strConcatToI = _tmp;
+        this.strConcatToI = ((Number) (Long.parseLong(str0To4() + str5To9(), 10))).intValue();
         return this.strConcatToI;
     }
     private ExprOpsParens _root;

@@ -35,6 +35,15 @@ public class NavParentSwitch extends KaitaiStruct {
         }
         }
     }
+
+    public void _fetchInstances() {
+        switch (category()) {
+        case 1: {
+            this.content._fetchInstances();
+            break;
+        }
+        }
+    }
     public static class Element1 extends KaitaiStruct {
         public static Element1 fromFile(String fileName) throws IOException {
             return new Element1(new ByteBufferKaitaiStream(fileName));
@@ -57,6 +66,10 @@ public class NavParentSwitch extends KaitaiStruct {
         private void _read() {
             this.foo = this._io.readU1();
             this.subelement = new Subelement1(this._io, this, _root);
+        }
+
+        public void _fetchInstances() {
+            this.subelement._fetchInstances();
         }
         private int foo;
         private Subelement1 subelement;
@@ -89,6 +102,11 @@ public class NavParentSwitch extends KaitaiStruct {
         private void _read() {
             if (_parent().foo() == 66) {
                 this.bar = this._io.readU1();
+            }
+        }
+
+        public void _fetchInstances() {
+            if (_parent().foo() == 66) {
             }
         }
         private Integer bar;

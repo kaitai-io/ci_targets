@@ -1,0 +1,56 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__str_eos_pad_term_empty {
+		label="StrEosPadTermEmpty";
+		graph[style=dotted];
+
+		str_eos_pad_term_empty__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="str_pad_pos">0</TD><TD PORT="str_pad_size">20</TD><TD>StrPadType</TD><TD PORT="str_pad_type">str_pad</TD></TR>
+			<TR><TD PORT="str_term_pos">20</TD><TD PORT="str_term_size">20</TD><TD>StrTermType</TD><TD PORT="str_term_type">str_term</TD></TR>
+			<TR><TD PORT="str_term_and_pad_pos">40</TD><TD PORT="str_term_and_pad_size">20</TD><TD>StrTermAndPadType</TD><TD PORT="str_term_and_pad_type">str_term_and_pad</TD></TR>
+			<TR><TD PORT="str_term_include_pos">60</TD><TD PORT="str_term_include_size">20</TD><TD>StrTermIncludeType</TD><TD PORT="str_term_include_type">str_term_include</TD></TR>
+		</TABLE>>];
+		subgraph cluster__str_pad_type {
+			label="StrEosPadTermEmpty::StrPadType";
+			graph[style=dotted];
+
+			str_pad_type__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="value_pos">0</TD><TD PORT="value_size">⇲</TD><TD>str(UTF-8)</TD><TD PORT="value_type">value</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__str_term_and_pad_type {
+			label="StrEosPadTermEmpty::StrTermAndPadType";
+			graph[style=dotted];
+
+			str_term_and_pad_type__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="value_pos">0</TD><TD PORT="value_size">⇲</TD><TD>str(UTF-8)</TD><TD PORT="value_type">value</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__str_term_include_type {
+			label="StrEosPadTermEmpty::StrTermIncludeType";
+			graph[style=dotted];
+
+			str_term_include_type__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="value_pos">0</TD><TD PORT="value_size">⇲</TD><TD>str(UTF-8)</TD><TD PORT="value_type">value</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__str_term_type {
+			label="StrEosPadTermEmpty::StrTermType";
+			graph[style=dotted];
+
+			str_term_type__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="value_pos">0</TD><TD PORT="value_size">⇲</TD><TD>str(UTF-8)</TD><TD PORT="value_type">value</TD></TR>
+			</TABLE>>];
+		}
+	}
+	str_eos_pad_term_empty__seq:str_pad_type -> str_pad_type__seq [style=bold];
+	str_eos_pad_term_empty__seq:str_term_type -> str_term_type__seq [style=bold];
+	str_eos_pad_term_empty__seq:str_term_and_pad_type -> str_term_and_pad_type__seq [style=bold];
+	str_eos_pad_term_empty__seq:str_term_include_type -> str_term_include_type__seq [style=bold];
+}

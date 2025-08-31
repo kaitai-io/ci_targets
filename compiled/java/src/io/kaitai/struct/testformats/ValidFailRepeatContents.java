@@ -8,6 +8,7 @@ import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class ValidFailRepeatContents extends KaitaiStruct {
     public static ValidFailRepeatContents fromFile(String fileName) throws IOException {
@@ -34,17 +35,22 @@ public class ValidFailRepeatContents extends KaitaiStruct {
             int i = 0;
             while (!this._io.isEof()) {
                 this.foo.add(this._io.readBytes(4));
-                if (!(Arrays.equals(this.foo.get((int) i), new byte[] { 18, 52, 86, 120 }))) {
-                    throw new KaitaiStream.ValidationNotEqualError(new byte[] { 18, 52, 86, 120 }, this.foo.get((int) i), this._io, "/seq/0");
+                if (!(Arrays.equals(this.foo.get(((Number) (i)).intValue()), new byte[] { 18, 52, 86, 120 }))) {
+                    throw new KaitaiStream.ValidationNotEqualError(new byte[] { 18, 52, 86, 120 }, this.foo.get(((Number) (i)).intValue()), this._io, "/seq/0");
                 }
                 i++;
             }
         }
     }
-    private ArrayList<byte[]> foo;
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.foo.size(); i++) {
+        }
+    }
+    private List<byte[]> foo;
     private ValidFailRepeatContents _root;
     private KaitaiStruct _parent;
-    public ArrayList<byte[]> foo() { return foo; }
+    public List<byte[]> foo() { return foo; }
     public ValidFailRepeatContents _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

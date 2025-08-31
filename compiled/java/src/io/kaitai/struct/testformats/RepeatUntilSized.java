@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RepeatUntilSized extends KaitaiStruct {
     public static RepeatUntilSized fromFile(String fileName) throws IOException {
@@ -40,6 +41,12 @@ public class RepeatUntilSized extends KaitaiStruct {
             } while (!(_it.marker() == 170));
         }
     }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.records.size(); i++) {
+            this.records.get(((Number) (i)).intValue())._fetchInstances();
+        }
+    }
     public static class Record extends KaitaiStruct {
         public static Record fromFile(String fileName) throws IOException {
             return new Record(new ByteBufferKaitaiStream(fileName));
@@ -63,6 +70,9 @@ public class RepeatUntilSized extends KaitaiStruct {
             this.marker = this._io.readU1();
             this.body = this._io.readU4le();
         }
+
+        public void _fetchInstances() {
+        }
         private int marker;
         private long body;
         private RepeatUntilSized _root;
@@ -72,10 +82,10 @@ public class RepeatUntilSized extends KaitaiStruct {
         public RepeatUntilSized _root() { return _root; }
         public RepeatUntilSized _parent() { return _parent; }
     }
-    private ArrayList<Record> records;
+    private List<Record> records;
     private RepeatUntilSized _root;
     private KaitaiStruct _parent;
-    public ArrayList<Record> records() { return records; }
+    public List<Record> records() { return records; }
     public RepeatUntilSized _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

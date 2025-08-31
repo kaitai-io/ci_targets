@@ -27,12 +27,16 @@ public class OpaqueExternalType extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this.one = new TermStrz(this._io);
+        this.hw = new HelloWorld(this._io);
     }
-    private TermStrz one;
+
+    public void _fetchInstances() {
+        this.hw._fetchInstances();
+    }
+    private HelloWorld hw;
     private OpaqueExternalType _root;
     private KaitaiStruct _parent;
-    public TermStrz one() { return one; }
+    public HelloWorld hw() { return hw; }
     public OpaqueExternalType _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

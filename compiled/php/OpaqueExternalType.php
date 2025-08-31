@@ -9,9 +9,9 @@ namespace Kaitai\Struct\Tests {
         }
 
         private function _read() {
-            $this->_m_one = new \Kaitai\Struct\Tests\TermStrz($this->_io);
+            $this->_m_hw = new \Kaitai\Struct\Tests\HelloWorld($this->_io);
         }
-        protected $_m_one;
-        public function one() { return $this->_m_one; }
+        protected $_m_hw;
+        public function hw() { return $this->_m_hw; }
     }
 }

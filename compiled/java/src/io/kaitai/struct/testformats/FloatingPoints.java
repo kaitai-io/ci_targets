@@ -33,28 +33,28 @@ public class FloatingPoints extends KaitaiStruct {
         this.doubleValueBe = this._io.readF8be();
         this.approximateValue = this._io.readF4le();
     }
+
+    public void _fetchInstances() {
+    }
     private Double doubleValuePlusFloat;
     public Double doubleValuePlusFloat() {
         if (this.doubleValuePlusFloat != null)
             return this.doubleValuePlusFloat;
-        double _tmp = (double) (doubleValue() + 0.05);
-        this.doubleValuePlusFloat = _tmp;
+        this.doubleValuePlusFloat = ((Number) (doubleValue() + 0.05)).doubleValue();
         return this.doubleValuePlusFloat;
     }
     private Double singleValuePlusFloat;
     public Double singleValuePlusFloat() {
         if (this.singleValuePlusFloat != null)
             return this.singleValuePlusFloat;
-        double _tmp = (double) (singleValue() + 0.5);
-        this.singleValuePlusFloat = _tmp;
+        this.singleValuePlusFloat = ((Number) (singleValue() + 0.5)).doubleValue();
         return this.singleValuePlusFloat;
     }
     private Double singleValuePlusInt;
     public Double singleValuePlusInt() {
         if (this.singleValuePlusInt != null)
             return this.singleValuePlusInt;
-        double _tmp = (double) (singleValue() + 1);
-        this.singleValuePlusInt = _tmp;
+        this.singleValuePlusInt = ((Number) (singleValue() + 1)).doubleValue();
         return this.singleValuePlusInt;
     }
     private float singleValue;

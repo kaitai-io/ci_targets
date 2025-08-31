@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RepeatNStruct extends KaitaiStruct {
     public static RepeatNStruct fromFile(String fileName) throws IOException {
@@ -34,6 +35,12 @@ public class RepeatNStruct extends KaitaiStruct {
             this.chunks.add(new Chunk(this._io, this, _root));
         }
     }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.chunks.size(); i++) {
+            this.chunks.get(((Number) (i)).intValue())._fetchInstances();
+        }
+    }
     public static class Chunk extends KaitaiStruct {
         public static Chunk fromFile(String fileName) throws IOException {
             return new Chunk(new ByteBufferKaitaiStream(fileName));
@@ -57,6 +64,9 @@ public class RepeatNStruct extends KaitaiStruct {
             this.offset = this._io.readU4le();
             this.len = this._io.readU4le();
         }
+
+        public void _fetchInstances() {
+        }
         private long offset;
         private long len;
         private RepeatNStruct _root;
@@ -67,11 +77,11 @@ public class RepeatNStruct extends KaitaiStruct {
         public RepeatNStruct _parent() { return _parent; }
     }
     private long qty;
-    private ArrayList<Chunk> chunks;
+    private List<Chunk> chunks;
     private RepeatNStruct _root;
     private KaitaiStruct _parent;
     public long qty() { return qty; }
-    public ArrayList<Chunk> chunks() { return chunks; }
+    public List<Chunk> chunks() { return chunks; }
     public RepeatNStruct _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

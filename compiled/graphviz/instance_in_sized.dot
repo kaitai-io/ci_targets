@@ -1,0 +1,81 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__instance_in_sized {
+		label="InstanceInSized";
+		graph[style=dotted];
+
+		instance_in_sized__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="cont_pos">0</TD><TD PORT="cont_size">16</TD><TD>Wrapper</TD><TD PORT="cont_type">cont</TD></TR>
+		</TABLE>>];
+		subgraph cluster__bar {
+			label="InstanceInSized::Bar";
+			graph[style=dotted];
+
+			bar__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="seq_f_pos">0</TD><TD PORT="seq_f_size">1</TD><TD>u1</TD><TD PORT="seq_f_type">seq_f</TD></TR>
+			</TABLE>>];
+			bar__inst__inst [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="inst_pos">4 + 1</TD><TD PORT="inst_size">3</TD><TD></TD><TD PORT="inst_type">inst</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__baz {
+			label="InstanceInSized::Baz";
+			graph[style=dotted];
+
+			baz__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="seq_f_pos">0</TD><TD PORT="seq_f_size">1</TD><TD>u1</TD><TD PORT="seq_f_type">seq_f</TD></TR>
+			</TABLE>>];
+			baz__inst__inst [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="inst_pos">8 + 1</TD><TD PORT="inst_size">3</TD><TD></TD><TD PORT="inst_type">inst</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__qux {
+			label="InstanceInSized::Qux";
+			graph[style=dotted];
+
+			qux__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="seq_f_pos">0</TD><TD PORT="seq_f_size">1</TD><TD>u1</TD><TD PORT="seq_f_type">seq_f</TD></TR>
+				<TR><TD COLSPAN="4" PORT="seq_f__if">if inst_invoked &gt; 0</TD></TR>
+			</TABLE>>];
+			qux__inst__inst_invoked [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="inst_invoked_pos">_io.pos + 1</TD><TD PORT="inst_invoked_size">1</TD><TD>u1</TD><TD PORT="inst_invoked_type">inst_invoked</TD></TR>
+			</TABLE>>];
+			qux__inst__inst_unused_by_seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="inst_unused_by_seq_pos">_io.pos + 1</TD><TD PORT="inst_unused_by_seq_size">2</TD><TD></TD><TD PORT="inst_unused_by_seq_type">inst_unused_by_seq</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__wrapper {
+			label="InstanceInSized::Wrapper";
+			graph[style=dotted];
+
+			wrapper__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="seq_sized_pos">0</TD><TD PORT="seq_sized_size">4</TD><TD>Qux</TD><TD PORT="seq_sized_type">seq_sized</TD></TR>
+				<TR><TD PORT="seq_in_stream_pos">4</TD><TD PORT="seq_in_stream_size">1</TD><TD>Bar</TD><TD PORT="seq_in_stream_type">seq_in_stream</TD></TR>
+			</TABLE>>];
+			wrapper__inst__inst_in_stream [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="inst_in_stream_pos">_io.pos + 3</TD><TD PORT="inst_in_stream_size">1</TD><TD>Baz</TD><TD PORT="inst_in_stream_type">inst_in_stream</TD></TR>
+			</TABLE>>];
+			wrapper__inst__inst_sized [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="inst_sized_pos">_io.pos + 7</TD><TD PORT="inst_sized_size">4</TD><TD>Qux</TD><TD PORT="inst_sized_type">inst_sized</TD></TR>
+			</TABLE>>];
+		}
+	}
+	instance_in_sized__seq:cont_type -> wrapper__seq [style=bold];
+	qux__inst__inst_invoked:inst_invoked_type -> qux__seq:seq_f__if [color="#404040"];
+	wrapper__seq:seq_sized_type -> qux__seq [style=bold];
+	wrapper__seq:seq_in_stream_type -> bar__seq [style=bold];
+	wrapper__inst__inst_in_stream:inst_in_stream_type -> baz__seq [style=bold];
+	wrapper__inst__inst_sized:inst_sized_type -> qux__seq [style=bold];
+}

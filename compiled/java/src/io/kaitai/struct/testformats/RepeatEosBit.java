@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RepeatEosBit extends KaitaiStruct {
     public static RepeatEosBit fromFile(String fileName) throws IOException {
@@ -37,10 +38,15 @@ public class RepeatEosBit extends KaitaiStruct {
             }
         }
     }
-    private ArrayList<Long> nibbles;
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.nibbles.size(); i++) {
+        }
+    }
+    private List<Long> nibbles;
     private RepeatEosBit _root;
     private KaitaiStruct _parent;
-    public ArrayList<Long> nibbles() { return nibbles; }
+    public List<Long> nibbles() { return nibbles; }
     public RepeatEosBit _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

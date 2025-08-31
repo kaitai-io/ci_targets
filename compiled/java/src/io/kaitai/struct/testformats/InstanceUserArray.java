@@ -6,6 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.ArrayList;
 
 public class InstanceUserArray extends KaitaiStruct {
@@ -32,6 +33,15 @@ public class InstanceUserArray extends KaitaiStruct {
         this.entrySize = this._io.readU4le();
         this.qtyEntries = this._io.readU4le();
     }
+
+    public void _fetchInstances() {
+        if (ofs() > 0) {
+            userEntries();
+            for (int i = 0; i < this.userEntries.size(); i++) {
+                this.userEntries.get(((Number) (i)).intValue())._fetchInstances();
+            }
+        }
+    }
     public static class Entry extends KaitaiStruct {
         public static Entry fromFile(String fileName) throws IOException {
             return new Entry(new ByteBufferKaitaiStream(fileName));
@@ -55,6 +65,9 @@ public class InstanceUserArray extends KaitaiStruct {
             this.word1 = this._io.readU2le();
             this.word2 = this._io.readU2le();
         }
+
+        public void _fetchInstances() {
+        }
         private int word1;
         private int word2;
         private InstanceUserArray _root;
@@ -64,8 +77,8 @@ public class InstanceUserArray extends KaitaiStruct {
         public InstanceUserArray _root() { return _root; }
         public InstanceUserArray _parent() { return _parent; }
     }
-    private ArrayList<Entry> userEntries;
-    public ArrayList<Entry> userEntries() {
+    private List<Entry> userEntries;
+    public List<Entry> userEntries() {
         if (this.userEntries != null)
             return this.userEntries;
         if (ofs() > 0) {

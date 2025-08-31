@@ -30,6 +30,10 @@ public class EosExceptionSized extends KaitaiStruct {
         KaitaiStream _io_envelope = this._io.substream(6);
         this.envelope = new Data(_io_envelope, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.envelope._fetchInstances();
+    }
     public static class Data extends KaitaiStruct {
         public static Data fromFile(String fileName) throws IOException {
             return new Data(new ByteBufferKaitaiStream(fileName));
@@ -52,6 +56,10 @@ public class EosExceptionSized extends KaitaiStruct {
         private void _read() {
             KaitaiStream _io_buf = this._io.substream(7);
             this.buf = new Foo(_io_buf, this, _root);
+        }
+
+        public void _fetchInstances() {
+            this.buf._fetchInstances();
         }
         private Foo buf;
         private EosExceptionSized _root;
@@ -80,6 +88,9 @@ public class EosExceptionSized extends KaitaiStruct {
             _read();
         }
         private void _read() {
+        }
+
+        public void _fetchInstances() {
         }
         private EosExceptionSized _root;
         private EosExceptionSized.Data _parent;

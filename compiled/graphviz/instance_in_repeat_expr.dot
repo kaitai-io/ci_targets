@@ -1,0 +1,30 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__instance_in_repeat_expr {
+		label="InstanceInRepeatExpr";
+		graph[style=dotted];
+
+		instance_in_repeat_expr__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="chunks_pos">0</TD><TD PORT="chunks_size">8</TD><TD>Chunk</TD><TD PORT="chunks_type">chunks</TD></TR>
+			<TR><TD COLSPAN="4" PORT="chunks__repeat">repeat num_chunks times</TD></TR>
+		</TABLE>>];
+		instance_in_repeat_expr__inst__num_chunks [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="num_chunks_pos">_io.pos + 16</TD><TD PORT="num_chunks_size">4</TD><TD>u4le</TD><TD PORT="num_chunks_type">num_chunks</TD></TR>
+		</TABLE>>];
+		subgraph cluster__chunk {
+			label="InstanceInRepeatExpr::Chunk";
+			graph[style=dotted];
+
+			chunk__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="offset_pos">0</TD><TD PORT="offset_size">4</TD><TD>u4le</TD><TD PORT="offset_type">offset</TD></TR>
+				<TR><TD PORT="len_pos">4</TD><TD PORT="len_size">4</TD><TD>u4le</TD><TD PORT="len_type">len</TD></TR>
+			</TABLE>>];
+		}
+	}
+	instance_in_repeat_expr__seq:chunks_type -> chunk__seq [style=bold];
+	instance_in_repeat_expr__inst__num_chunks:num_chunks_type -> instance_in_repeat_expr__seq:chunks__repeat [color="#404040"];
+}

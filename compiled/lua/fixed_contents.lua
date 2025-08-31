@@ -17,11 +17,11 @@ end
 function FixedContents:_read()
   self.normal = self._io:read_bytes(6)
   if not(self.normal == "\080\065\067\075\045\049") then
-    error("not equal, expected " ..  "\080\065\067\075\045\049" .. ", but got " .. self.normal)
+    error("not equal, expected " .. "\080\065\067\075\045\049" .. ", but got " .. self.normal)
   end
   self.high_bit_8 = self._io:read_bytes(2)
   if not(self.high_bit_8 == "\255\255") then
-    error("not equal, expected " ..  "\255\255" .. ", but got " .. self.high_bit_8)
+    error("not equal, expected " .. "\255\255" .. ", but got " .. self.high_bit_8)
   end
 end
 

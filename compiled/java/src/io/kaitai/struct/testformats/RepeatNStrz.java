@@ -8,6 +8,7 @@ import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 public class RepeatNStrz extends KaitaiStruct {
     public static RepeatNStrz fromFile(String fileName) throws IOException {
@@ -35,12 +36,17 @@ public class RepeatNStrz extends KaitaiStruct {
             this.lines.add(new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8));
         }
     }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.lines.size(); i++) {
+        }
+    }
     private long qty;
-    private ArrayList<String> lines;
+    private List<String> lines;
     private RepeatNStrz _root;
     private KaitaiStruct _parent;
     public long qty() { return qty; }
-    public ArrayList<String> lines() { return lines; }
+    public List<String> lines() { return lines; }
     public RepeatNStrz _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

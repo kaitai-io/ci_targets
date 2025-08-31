@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SwitchIntegers extends KaitaiStruct {
     public static SwitchIntegers fromFile(String fileName) throws IOException {
@@ -37,6 +38,12 @@ public class SwitchIntegers extends KaitaiStruct {
             }
         }
     }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.opcodes.size(); i++) {
+            this.opcodes.get(((Number) (i)).intValue())._fetchInstances();
+        }
+    }
     public static class Opcode extends KaitaiStruct {
         public static Opcode fromFile(String fileName) throws IOException {
             return new Opcode(new ByteBufferKaitaiStream(fileName));
@@ -60,19 +67,36 @@ public class SwitchIntegers extends KaitaiStruct {
             this.code = this._io.readU1();
             switch (code()) {
             case 1: {
-                this.body = (long) (this._io.readU1());
+                this.body = ((Number) (this._io.readU1())).longValue();
                 break;
             }
             case 2: {
-                this.body = (long) (this._io.readU2le());
+                this.body = ((Number) (this._io.readU2le())).longValue();
                 break;
             }
             case 4: {
-                this.body = (long) (this._io.readU4le());
+                this.body = ((Number) (this._io.readU4le())).longValue();
                 break;
             }
             case 8: {
                 this.body = this._io.readU8le();
+                break;
+            }
+            }
+        }
+
+        public void _fetchInstances() {
+            switch (code()) {
+            case 1: {
+                break;
+            }
+            case 2: {
+                break;
+            }
+            case 4: {
+                break;
+            }
+            case 8: {
                 break;
             }
             }
@@ -86,10 +110,10 @@ public class SwitchIntegers extends KaitaiStruct {
         public SwitchIntegers _root() { return _root; }
         public SwitchIntegers _parent() { return _parent; }
     }
-    private ArrayList<Opcode> opcodes;
+    private List<Opcode> opcodes;
     private SwitchIntegers _root;
     private KaitaiStruct _parent;
-    public ArrayList<Opcode> opcodes() { return opcodes; }
+    public List<Opcode> opcodes() { return opcodes; }
     public SwitchIntegers _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

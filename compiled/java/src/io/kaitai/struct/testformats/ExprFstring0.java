@@ -31,6 +31,9 @@ public class ExprFstring0 extends KaitaiStruct {
         this.seqStr = new String(this._io.readBytes(5), StandardCharsets.US_ASCII);
         this.seqInt = this._io.readU1();
     }
+
+    public void _fetchInstances() {
+    }
     private String empty;
     public String empty() {
         if (this.empty != null)

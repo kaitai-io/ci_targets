@@ -2,11 +2,12 @@ from construct import *
 from construct.lib import *
 
 expr_if_int_ops = Struct(
-	'skip' / FixedSized(2, GreedyBytes),
-	'it' / If(True, Int16sl),
-	'boxed' / If(True, Int16sl),
-	'is_eq_boxed' / Computed(lambda this: this.it == this.boxed),
-	'is_eq_prim' / Computed(lambda this: this.it == 16705),
+	'key' / If(True, Int64ul),
+	'skip' / FixedSized(8, GreedyBytes),
+	'bytes' / FixedSized(8, GreedyBytes),
+	'items' / Array(4, Int8sb),
+	'bytes_sub_key' / Computed(lambda this: KaitaiStream.byte_array_index(this.bytes, this.key)),
+	'items_sub_key' / Computed(lambda this: this.items[this.key]),
 )
 
 _schema = expr_if_int_ops

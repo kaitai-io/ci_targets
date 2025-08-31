@@ -49,6 +49,9 @@ public class ValidFailInEnum extends KaitaiStruct {
             throw new KaitaiStream.ValidationNotInEnumError(this.foo, this._io, "/seq/0");
         }
     }
+
+    public void _fetchInstances() {
+    }
     private Animal foo;
     private ValidFailInEnum _root;
     private KaitaiStruct _parent;

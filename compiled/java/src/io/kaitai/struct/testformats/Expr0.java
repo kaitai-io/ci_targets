@@ -29,6 +29,9 @@ public class Expr0 extends KaitaiStruct {
     private void _read() {
         this.lenOf1 = this._io.readU2le();
     }
+
+    public void _fetchInstances() {
+    }
     private String mustBeAbc123;
     public String mustBeAbc123() {
         if (this.mustBeAbc123 != null)
@@ -40,8 +43,7 @@ public class Expr0 extends KaitaiStruct {
     public Integer mustBeF7() {
         if (this.mustBeF7 != null)
             return this.mustBeF7;
-        int _tmp = (int) (7 + 240);
-        this.mustBeF7 = _tmp;
+        this.mustBeF7 = ((Number) (7 + 240)).intValue();
         return this.mustBeF7;
     }
     private int lenOf1;

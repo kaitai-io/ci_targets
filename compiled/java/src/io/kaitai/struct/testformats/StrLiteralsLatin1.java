@@ -31,12 +31,14 @@ public class StrLiteralsLatin1 extends KaitaiStruct {
         this.lenParsed = this._io.readU2le();
         this.parsed = new String(this._io.readBytes(lenParsed()), StandardCharsets.UTF_8);
     }
+
+    public void _fetchInstances() {
+    }
     private Boolean parsedEqLiteral;
     public Boolean parsedEqLiteral() {
         if (this.parsedEqLiteral != null)
             return this.parsedEqLiteral;
-        boolean _tmp = (boolean) (parsed().equals("\243"));
-        this.parsedEqLiteral = _tmp;
+        this.parsedEqLiteral = parsed().equals("\243");
         return this.parsedEqLiteral;
     }
     private int lenParsed;

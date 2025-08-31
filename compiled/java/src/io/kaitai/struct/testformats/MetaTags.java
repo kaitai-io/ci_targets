@@ -28,6 +28,9 @@ public class MetaTags extends KaitaiStruct {
     }
     private void _read() {
     }
+
+    public void _fetchInstances() {
+    }
     private MetaTags _root;
     private KaitaiStruct _parent;
     public MetaTags _root() { return _root; }

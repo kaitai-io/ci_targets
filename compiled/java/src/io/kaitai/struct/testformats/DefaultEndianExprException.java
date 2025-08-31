@@ -8,6 +8,7 @@ import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class DefaultEndianExprException extends KaitaiStruct {
     public static DefaultEndianExprException fromFile(String fileName) throws IOException {
@@ -38,6 +39,12 @@ public class DefaultEndianExprException extends KaitaiStruct {
             }
         }
     }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.docs.size(); i++) {
+            this.docs.get(((Number) (i)).intValue())._fetchInstances();
+        }
+    }
     public static class Doc extends KaitaiStruct {
         public static Doc fromFile(String fileName) throws IOException {
             return new Doc(new ByteBufferKaitaiStream(fileName));
@@ -60,6 +67,10 @@ public class DefaultEndianExprException extends KaitaiStruct {
         private void _read() {
             this.indicator = this._io.readBytes(2);
             this.main = new MainObj(this._io, this, _root);
+        }
+
+        public void _fetchInstances() {
+            this.main._fetchInstances();
         }
         public static class MainObj extends KaitaiStruct {
             public static MainObj fromFile(String fileName) throws IOException {
@@ -85,12 +96,10 @@ public class DefaultEndianExprException extends KaitaiStruct {
                 {
                     byte[] on = _parent().indicator();
                     if (Arrays.equals(on, new byte[] { 73, 73 })) {
-                        boolean _tmp = (boolean) (true);
-                        this._is_le = _tmp;
+                        this._is_le = true;
                     }
                     else if (Arrays.equals(on, new byte[] { 77, 77 })) {
-                        boolean _tmp = (boolean) (false);
-                        this._is_le = _tmp;
+                        this._is_le = false;
                     }
                 }
 
@@ -112,6 +121,9 @@ public class DefaultEndianExprException extends KaitaiStruct {
                 this.someIntBe = this._io.readU2be();
                 this.someIntLe = this._io.readU2le();
             }
+
+            public void _fetchInstances() {
+            }
             private long someInt;
             private int someIntBe;
             private int someIntLe;
@@ -132,10 +144,10 @@ public class DefaultEndianExprException extends KaitaiStruct {
         public DefaultEndianExprException _root() { return _root; }
         public DefaultEndianExprException _parent() { return _parent; }
     }
-    private ArrayList<Doc> docs;
+    private List<Doc> docs;
     private DefaultEndianExprException _root;
     private KaitaiStruct _parent;
-    public ArrayList<Doc> docs() { return docs; }
+    public List<Doc> docs() { return docs; }
     public DefaultEndianExprException _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

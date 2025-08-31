@@ -29,6 +29,10 @@ public class DefaultBitEndianMod extends KaitaiStruct {
     private void _read() {
         this.main = new MainObj(this._io, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.main._fetchInstances();
+    }
     public static class MainObj extends KaitaiStruct {
         public static MainObj fromFile(String fileName) throws IOException {
             return new MainObj(new ByteBufferKaitaiStream(fileName));
@@ -51,9 +55,13 @@ public class DefaultBitEndianMod extends KaitaiStruct {
         private void _read() {
             this.one = this._io.readBitsIntLe(9);
             this.two = this._io.readBitsIntLe(15);
-            this._io.alignToByte();
             this.nest = new Subnest(this._io, this, _root);
             this.nestBe = new SubnestBe(this._io, this, _root);
+        }
+
+        public void _fetchInstances() {
+            this.nest._fetchInstances();
+            this.nestBe._fetchInstances();
         }
         public static class Subnest extends KaitaiStruct {
             public static Subnest fromFile(String fileName) throws IOException {
@@ -76,6 +84,9 @@ public class DefaultBitEndianMod extends KaitaiStruct {
             }
             private void _read() {
                 this.two = this._io.readBitsIntLe(16);
+            }
+
+            public void _fetchInstances() {
             }
             private long two;
             private DefaultBitEndianMod _root;
@@ -105,6 +116,9 @@ public class DefaultBitEndianMod extends KaitaiStruct {
             }
             private void _read() {
                 this.two = this._io.readBitsIntBe(16);
+            }
+
+            public void _fetchInstances() {
             }
             private long two;
             private DefaultBitEndianMod _root;

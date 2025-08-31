@@ -8,6 +8,7 @@ import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 public class SwitchManualIntSizeEos extends KaitaiStruct {
     public static SwitchManualIntSizeEos fromFile(String fileName) throws IOException {
@@ -38,6 +39,12 @@ public class SwitchManualIntSizeEos extends KaitaiStruct {
             }
         }
     }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.chunks.size(); i++) {
+            this.chunks.get(((Number) (i)).intValue())._fetchInstances();
+        }
+    }
     public static class Chunk extends KaitaiStruct {
         public static Chunk fromFile(String fileName) throws IOException {
             return new Chunk(new ByteBufferKaitaiStream(fileName));
@@ -62,6 +69,10 @@ public class SwitchManualIntSizeEos extends KaitaiStruct {
             this.size = this._io.readU4le();
             KaitaiStream _io_body = this._io.substream(size());
             this.body = new ChunkBody(_io_body, this, _root);
+        }
+
+        public void _fetchInstances() {
+            this.body._fetchInstances();
         }
         private int code;
         private long size;
@@ -97,18 +108,34 @@ public class SwitchManualIntSizeEos extends KaitaiStruct {
             switch (_parent().code()) {
             case 17: {
                 this._raw_body = this._io.readBytesFull();
-                KaitaiStream _io__raw_body = new ByteBufferKaitaiStream(_raw_body);
+                KaitaiStream _io__raw_body = new ByteBufferKaitaiStream(this._raw_body);
                 this.body = new ChunkMeta(_io__raw_body, this, _root);
                 break;
             }
             case 34: {
                 this._raw_body = this._io.readBytesFull();
-                KaitaiStream _io__raw_body = new ByteBufferKaitaiStream(_raw_body);
+                KaitaiStream _io__raw_body = new ByteBufferKaitaiStream(this._raw_body);
                 this.body = new ChunkDir(_io__raw_body, this, _root);
                 break;
             }
             default: {
                 this.body = this._io.readBytesFull();
+                break;
+            }
+            }
+        }
+
+        public void _fetchInstances() {
+            switch (_parent().code()) {
+            case 17: {
+                ((ChunkMeta) (this.body))._fetchInstances();
+                break;
+            }
+            case 34: {
+                ((ChunkDir) (this.body))._fetchInstances();
+                break;
+            }
+            default: {
                 break;
             }
             }
@@ -142,10 +169,15 @@ public class SwitchManualIntSizeEos extends KaitaiStruct {
                     }
                 }
             }
-            private ArrayList<String> entries;
+
+            public void _fetchInstances() {
+                for (int i = 0; i < this.entries.size(); i++) {
+                }
+            }
+            private List<String> entries;
             private SwitchManualIntSizeEos _root;
             private SwitchManualIntSizeEos.ChunkBody _parent;
-            public ArrayList<String> entries() { return entries; }
+            public List<String> entries() { return entries; }
             public SwitchManualIntSizeEos _root() { return _root; }
             public SwitchManualIntSizeEos.ChunkBody _parent() { return _parent; }
         }
@@ -172,6 +204,9 @@ public class SwitchManualIntSizeEos extends KaitaiStruct {
                 this.title = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8);
                 this.author = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8);
             }
+
+            public void _fetchInstances() {
+            }
             private String title;
             private String author;
             private SwitchManualIntSizeEos _root;
@@ -190,10 +225,10 @@ public class SwitchManualIntSizeEos extends KaitaiStruct {
         public SwitchManualIntSizeEos.Chunk _parent() { return _parent; }
         public byte[] _raw_body() { return _raw_body; }
     }
-    private ArrayList<Chunk> chunks;
+    private List<Chunk> chunks;
     private SwitchManualIntSizeEos _root;
     private KaitaiStruct _parent;
-    public ArrayList<Chunk> chunks() { return chunks; }
+    public List<Chunk> chunks() { return chunks; }
     public SwitchManualIntSizeEos _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

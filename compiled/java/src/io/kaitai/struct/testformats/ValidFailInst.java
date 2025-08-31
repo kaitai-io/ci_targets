@@ -31,6 +31,12 @@ public class ValidFailInst extends KaitaiStruct {
             this.a = this._io.readU1();
         }
     }
+
+    public void _fetchInstances() {
+        if (inst() >= 0) {
+        }
+        inst();
+    }
     private Integer inst;
     public Integer inst() {
         if (this.inst != null)

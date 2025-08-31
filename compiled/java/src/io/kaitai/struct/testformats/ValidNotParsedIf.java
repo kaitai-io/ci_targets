@@ -40,6 +40,13 @@ public class ValidNotParsedIf extends KaitaiStruct {
             }
         }
     }
+
+    public void _fetchInstances() {
+        if (false) {
+        }
+        if (true) {
+        }
+    }
     private Integer notParsed;
     private Integer parsed;
     private ValidNotParsedIf _root;

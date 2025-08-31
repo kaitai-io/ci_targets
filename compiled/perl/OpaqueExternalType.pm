@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.011_000;
-use TermStrz;
+use HelloWorld;
 
 ########################################################################
 package OpaqueExternalType;
@@ -35,12 +35,12 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{one} = TermStrz->new($self->{_io});
+    $self->{hw} = HelloWorld->new($self->{_io});
 }
 
-sub one {
+sub hw {
     my ($self) = @_;
-    return $self->{one};
+    return $self->{hw};
 }
 
 1;

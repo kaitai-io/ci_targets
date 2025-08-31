@@ -28,12 +28,15 @@ public class ProcessRotate extends KaitaiStruct {
     }
     private void _read() {
         this._raw_buf1 = this._io.readBytes(5);
-        this.buf1 = KaitaiStream.processRotateLeft(_raw_buf1, 3, 1);
+        this.buf1 = KaitaiStream.processRotateLeft(this._raw_buf1, 3, 1);
         this._raw_buf2 = this._io.readBytes(5);
-        this.buf2 = KaitaiStream.processRotateLeft(_raw_buf2, 8 - (3), 1);
+        this.buf2 = KaitaiStream.processRotateLeft(this._raw_buf2, 8 - (3), 1);
         this.key = this._io.readU1();
         this._raw_buf3 = this._io.readBytes(5);
-        this.buf3 = KaitaiStream.processRotateLeft(_raw_buf3, key(), 1);
+        this.buf3 = KaitaiStream.processRotateLeft(this._raw_buf3, key(), 1);
+    }
+
+    public void _fetchInstances() {
     }
     private byte[] buf1;
     private byte[] buf2;

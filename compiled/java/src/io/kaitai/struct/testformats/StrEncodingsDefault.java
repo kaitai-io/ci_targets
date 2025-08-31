@@ -33,6 +33,10 @@ public class StrEncodingsDefault extends KaitaiStruct {
         this.str1 = new String(this._io.readBytes(lenOf1()), StandardCharsets.UTF_8);
         this.rest = new Subtype(this._io, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.rest._fetchInstances();
+    }
     public static class Subtype extends KaitaiStruct {
         public static Subtype fromFile(String fileName) throws IOException {
             return new Subtype(new ByteBufferKaitaiStream(fileName));
@@ -59,6 +63,9 @@ public class StrEncodingsDefault extends KaitaiStruct {
             this.str3 = new String(this._io.readBytes(lenOf3()), Charset.forName("Shift_JIS"));
             this.lenOf4 = this._io.readU2le();
             this.str4 = new String(this._io.readBytes(lenOf4()), Charset.forName("IBM437"));
+        }
+
+        public void _fetchInstances() {
         }
         private int lenOf2;
         private String str2;

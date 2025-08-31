@@ -31,6 +31,10 @@ public class Enum1 extends KaitaiStruct {
     private void _read() {
         this.main = new MainObj(this._io, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.main._fetchInstances();
+    }
     public static class MainObj extends KaitaiStruct {
         public static MainObj fromFile(String fileName) throws IOException {
             return new MainObj(new ByteBufferKaitaiStream(fileName));
@@ -69,6 +73,10 @@ public class Enum1 extends KaitaiStruct {
         private void _read() {
             this.submain = new SubmainObj(this._io, this, _root);
         }
+
+        public void _fetchInstances() {
+            this.submain._fetchInstances();
+        }
         public static class SubmainObj extends KaitaiStruct {
             public static SubmainObj fromFile(String fileName) throws IOException {
                 return new SubmainObj(new ByteBufferKaitaiStream(fileName));
@@ -91,6 +99,9 @@ public class Enum1 extends KaitaiStruct {
             private void _read() {
                 this.pet1 = Enum1.MainObj.Animal.byId(this._io.readU4le());
                 this.pet2 = Enum1.MainObj.Animal.byId(this._io.readU4le());
+            }
+
+            public void _fetchInstances() {
             }
             private Animal pet1;
             private Animal pet2;

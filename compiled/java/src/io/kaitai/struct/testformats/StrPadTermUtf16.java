@@ -32,6 +32,9 @@ public class StrPadTermUtf16 extends KaitaiStruct {
         this.strTermInclude = new String(KaitaiStream.bytesTerminateMulti(this._io.readBytes(10), new byte[] { 0, 0 }, true), StandardCharsets.UTF_16LE);
         this.strTermAndPad = new String(KaitaiStream.bytesTerminateMulti(KaitaiStream.bytesStripRight(this._io.readBytes(9), (byte) 43), new byte[] { 0, 0 }, false), StandardCharsets.UTF_16LE);
     }
+
+    public void _fetchInstances() {
+    }
     private String strTerm;
     private String strTermInclude;
     private String strTermAndPad;

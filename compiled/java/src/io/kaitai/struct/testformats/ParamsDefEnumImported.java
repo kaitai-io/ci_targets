@@ -27,6 +27,9 @@ public class ParamsDefEnumImported extends KaitaiStruct {
     }
     private void _read() {
     }
+
+    public void _fetchInstances() {
+    }
     private Enum0.Animal pet1Param;
     private EnumDeep.Container1.Container2.Animal pet2Param;
     private ParamsDefEnumImported _root;

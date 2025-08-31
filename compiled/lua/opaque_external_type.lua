@@ -4,7 +4,7 @@
 
 local class = require("class")
 require("kaitaistruct")
-require("term_strz")
+require("hello_world")
 
 OpaqueExternalType = class.class(KaitaiStruct)
 
@@ -16,7 +16,7 @@ function OpaqueExternalType:_init(io, parent, root)
 end
 
 function OpaqueExternalType:_read()
-  self.one = TermStrz(self._io)
+  self.hw = HelloWorld(self._io)
 end
 
 

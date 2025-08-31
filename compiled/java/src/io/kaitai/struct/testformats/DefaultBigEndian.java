@@ -29,6 +29,9 @@ public class DefaultBigEndian extends KaitaiStruct {
     private void _read() {
         this.one = this._io.readU4be();
     }
+
+    public void _fetchInstances() {
+    }
     private long one;
     private DefaultBigEndian _root;
     private KaitaiStruct _parent;

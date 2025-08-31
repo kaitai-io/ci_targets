@@ -1,0 +1,19 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__instance_in_repeat_until {
+		label="InstanceInRepeatUntil";
+		graph[style=dotted];
+
+		instance_in_repeat_until__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="entries_pos">0</TD><TD PORT="entries_size">2</TD><TD>s2le</TD><TD PORT="entries_type">entries</TD></TR>
+			<TR><TD COLSPAN="4" PORT="entries__repeat">repeat until _ == until_val</TD></TR>
+		</TABLE>>];
+		instance_in_repeat_until__inst__until_val [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="until_val_pos">_io.pos + 12</TD><TD PORT="until_val_size">2</TD><TD>s2le</TD><TD PORT="until_val_type">until_val</TD></TR>
+		</TABLE>>];
+	}
+	instance_in_repeat_until__inst__until_val:until_val_type -> instance_in_repeat_until__seq:entries__repeat [color="#404040"];
+}

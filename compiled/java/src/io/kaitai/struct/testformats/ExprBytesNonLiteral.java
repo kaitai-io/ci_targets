@@ -30,6 +30,9 @@ public class ExprBytesNonLiteral extends KaitaiStruct {
         this.one = this._io.readU1();
         this.two = this._io.readU1();
     }
+
+    public void _fetchInstances() {
+    }
     private byte[] calcBytes;
     public byte[] calcBytes() {
         if (this.calcBytes != null)

@@ -48,6 +48,9 @@ public class ExprEnum extends KaitaiStruct {
     private void _read() {
         this.one = this._io.readU1();
     }
+
+    public void _fetchInstances() {
+    }
     private Animal constDog;
     public Animal constDog() {
         if (this.constDog != null)

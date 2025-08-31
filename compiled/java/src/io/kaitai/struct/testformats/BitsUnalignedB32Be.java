@@ -31,6 +31,9 @@ public class BitsUnalignedB32Be extends KaitaiStruct {
         this.b = this._io.readBitsIntBe(32);
         this.c = this._io.readBitsIntBe(7);
     }
+
+    public void _fetchInstances() {
+    }
     private boolean a;
     private long b;
     private long c;

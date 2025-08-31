@@ -17,7 +17,7 @@ end
 function ValidSwitch:_read()
   self.a = self._io:read_u1()
   if not(self.a == 80) then
-    error("not equal, expected " ..  80 .. ", but got " .. self.a)
+    error("not equal, expected " .. 80 .. ", but got " .. self.a)
   end
   local _on = self.a
   if _on == 80 then
@@ -26,7 +26,7 @@ function ValidSwitch:_read()
     self.b = self._io:read_u2be()
   end
   if not(self.b == 17217) then
-    error("not equal, expected " ..  17217 .. ", but got " .. self.b)
+    error("not equal, expected " .. 17217 .. ", but got " .. self.b)
   end
 end
 

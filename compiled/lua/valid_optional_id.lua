@@ -17,11 +17,11 @@ end
 function ValidOptionalId:_read()
   self._unnamed0 = self._io:read_bytes(6)
   if not(self._unnamed0 == "\080\065\067\075\045\049") then
-    error("not equal, expected " ..  "\080\065\067\075\045\049" .. ", but got " .. self._unnamed0)
+    error("not equal, expected " .. "\080\065\067\075\045\049" .. ", but got " .. self._unnamed0)
   end
   self._unnamed1 = self._io:read_u1()
   if not(self._unnamed1 == 255) then
-    error("not equal, expected " ..  255 .. ", but got " .. self._unnamed1)
+    error("not equal, expected " .. 255 .. ", but got " .. self._unnamed1)
   end
   self._unnamed2 = self._io:read_s1()
   local _ = self._unnamed2

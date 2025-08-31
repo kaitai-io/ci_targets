@@ -49,6 +49,12 @@ public class EnumIf extends KaitaiStruct {
         this.op2 = new Operation(this._io, this, _root);
         this.op3 = new Operation(this._io, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.op1._fetchInstances();
+        this.op2._fetchInstances();
+        this.op3._fetchInstances();
+    }
     public static class ArgStr extends KaitaiStruct {
         public static ArgStr fromFile(String fileName) throws IOException {
             return new ArgStr(new ByteBufferKaitaiStream(fileName));
@@ -71,6 +77,9 @@ public class EnumIf extends KaitaiStruct {
         private void _read() {
             this.len = this._io.readU1();
             this.str = new String(this._io.readBytes(len()), StandardCharsets.UTF_8);
+        }
+
+        public void _fetchInstances() {
         }
         private int len;
         private String str;
@@ -103,6 +112,9 @@ public class EnumIf extends KaitaiStruct {
         private void _read() {
             this.num1 = this._io.readU1();
             this.num2 = this._io.readU1();
+        }
+
+        public void _fetchInstances() {
         }
         private int num1;
         private int num2;
@@ -139,6 +151,15 @@ public class EnumIf extends KaitaiStruct {
             }
             if (opcode() == EnumIf.Opcodes.A_STRING) {
                 this.argStr = new ArgStr(this._io, this, _root);
+            }
+        }
+
+        public void _fetchInstances() {
+            if (opcode() == EnumIf.Opcodes.A_TUPLE) {
+                this.argTuple._fetchInstances();
+            }
+            if (opcode() == EnumIf.Opcodes.A_STRING) {
+                this.argStr._fetchInstances();
             }
         }
         private Opcodes opcode;

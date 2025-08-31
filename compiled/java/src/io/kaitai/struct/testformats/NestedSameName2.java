@@ -31,6 +31,11 @@ public class NestedSameName2 extends KaitaiStruct {
         this.mainData = new Main(this._io, this, _root);
         this.dummy = new DummyObj(this._io, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.mainData._fetchInstances();
+        this.dummy._fetchInstances();
+    }
     public static class DummyObj extends KaitaiStruct {
         public static DummyObj fromFile(String fileName) throws IOException {
             return new DummyObj(new ByteBufferKaitaiStream(fileName));
@@ -54,6 +59,10 @@ public class NestedSameName2 extends KaitaiStruct {
             this.dummySize = this._io.readS4le();
             this.foo = new FooObj(this._io, this, _root);
         }
+
+        public void _fetchInstances() {
+            this.foo._fetchInstances();
+        }
         public static class FooObj extends KaitaiStruct {
             public static FooObj fromFile(String fileName) throws IOException {
                 return new FooObj(new ByteBufferKaitaiStream(fileName));
@@ -75,6 +84,9 @@ public class NestedSameName2 extends KaitaiStruct {
             }
             private void _read() {
                 this.data2 = this._io.readBytes(_parent().dummySize() * 2);
+            }
+
+            public void _fetchInstances() {
             }
             private byte[] data2;
             private NestedSameName2 _root;
@@ -115,6 +127,10 @@ public class NestedSameName2 extends KaitaiStruct {
             this.mainSize = this._io.readS4le();
             this.foo = new FooObj(this._io, this, _root);
         }
+
+        public void _fetchInstances() {
+            this.foo._fetchInstances();
+        }
         public static class FooObj extends KaitaiStruct {
             public static FooObj fromFile(String fileName) throws IOException {
                 return new FooObj(new ByteBufferKaitaiStream(fileName));
@@ -136,6 +152,9 @@ public class NestedSameName2 extends KaitaiStruct {
             }
             private void _read() {
                 this.data1 = this._io.readBytes(_parent().mainSize() * 2);
+            }
+
+            public void _fetchInstances() {
             }
             private byte[] data1;
             private NestedSameName2 _root;

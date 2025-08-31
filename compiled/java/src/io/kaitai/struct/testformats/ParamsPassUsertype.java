@@ -30,6 +30,11 @@ public class ParamsPassUsertype extends KaitaiStruct {
         this.first = new Block(this._io, this, _root);
         this.one = new ParamType(this._io, this, _root, first());
     }
+
+    public void _fetchInstances() {
+        this.first._fetchInstances();
+        this.one._fetchInstances();
+    }
     public static class Block extends KaitaiStruct {
         public static Block fromFile(String fileName) throws IOException {
             return new Block(new ByteBufferKaitaiStream(fileName));
@@ -51,6 +56,9 @@ public class ParamsPassUsertype extends KaitaiStruct {
         }
         private void _read() {
             this.foo = this._io.readU1();
+        }
+
+        public void _fetchInstances() {
         }
         private int foo;
         private ParamsPassUsertype _root;
@@ -78,6 +86,9 @@ public class ParamsPassUsertype extends KaitaiStruct {
         }
         private void _read() {
             this.buf = this._io.readBytes(foo().foo());
+        }
+
+        public void _fetchInstances() {
         }
         private byte[] buf;
         private Block foo;

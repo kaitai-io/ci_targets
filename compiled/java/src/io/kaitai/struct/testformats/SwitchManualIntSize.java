@@ -8,6 +8,7 @@ import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 public class SwitchManualIntSize extends KaitaiStruct {
     public static SwitchManualIntSize fromFile(String fileName) throws IOException {
@@ -36,6 +37,12 @@ public class SwitchManualIntSize extends KaitaiStruct {
                 this.chunks.add(new Chunk(this._io, this, _root));
                 i++;
             }
+        }
+    }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.chunks.size(); i++) {
+            this.chunks.get(((Number) (i)).intValue())._fetchInstances();
         }
     }
     public static class Chunk extends KaitaiStruct {
@@ -77,6 +84,22 @@ public class SwitchManualIntSize extends KaitaiStruct {
             }
             }
         }
+
+        public void _fetchInstances() {
+            switch (code()) {
+            case 17: {
+                ((ChunkMeta) (this.body))._fetchInstances();
+                break;
+            }
+            case 34: {
+                ((ChunkDir) (this.body))._fetchInstances();
+                break;
+            }
+            default: {
+                break;
+            }
+            }
+        }
         public static class ChunkDir extends KaitaiStruct {
             public static ChunkDir fromFile(String fileName) throws IOException {
                 return new ChunkDir(new ByteBufferKaitaiStream(fileName));
@@ -106,10 +129,15 @@ public class SwitchManualIntSize extends KaitaiStruct {
                     }
                 }
             }
-            private ArrayList<String> entries;
+
+            public void _fetchInstances() {
+                for (int i = 0; i < this.entries.size(); i++) {
+                }
+            }
+            private List<String> entries;
             private SwitchManualIntSize _root;
             private SwitchManualIntSize.Chunk _parent;
-            public ArrayList<String> entries() { return entries; }
+            public List<String> entries() { return entries; }
             public SwitchManualIntSize _root() { return _root; }
             public SwitchManualIntSize.Chunk _parent() { return _parent; }
         }
@@ -136,6 +164,9 @@ public class SwitchManualIntSize extends KaitaiStruct {
                 this.title = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8);
                 this.author = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8);
             }
+
+            public void _fetchInstances() {
+            }
             private String title;
             private String author;
             private SwitchManualIntSize _root;
@@ -156,10 +187,10 @@ public class SwitchManualIntSize extends KaitaiStruct {
         public SwitchManualIntSize _root() { return _root; }
         public SwitchManualIntSize _parent() { return _parent; }
     }
-    private ArrayList<Chunk> chunks;
+    private List<Chunk> chunks;
     private SwitchManualIntSize _root;
     private KaitaiStruct _parent;
-    public ArrayList<Chunk> chunks() { return chunks; }
+    public List<Chunk> chunks() { return chunks; }
     public SwitchManualIntSize _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

@@ -6,6 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.ArrayList;
 
 public class ValidFailRepeatInst extends KaitaiStruct {
@@ -32,8 +33,16 @@ public class ValidFailRepeatInst extends KaitaiStruct {
             this.a = this._io.readBytes(0);
         }
     }
-    private ArrayList<Long> inst;
-    public ArrayList<Long> inst() {
+
+    public void _fetchInstances() {
+        if (inst().size() == 0) {
+        }
+        inst();
+        for (int i = 0; i < this.inst.size(); i++) {
+        }
+    }
+    private List<Long> inst;
+    public List<Long> inst() {
         if (this.inst != null)
             return this.inst;
         long _pos = this._io.pos();
@@ -43,8 +52,8 @@ public class ValidFailRepeatInst extends KaitaiStruct {
             int i = 0;
             while (!this._io.isEof()) {
                 this.inst.add(this._io.readU4be());
-                if (!(this.inst.get((int) i) == 305419896)) {
-                    throw new KaitaiStream.ValidationNotEqualError(305419896, this.inst.get((int) i), this._io, "/instances/inst");
+                if (!(this.inst.get(((Number) (i)).intValue()) == 305419896)) {
+                    throw new KaitaiStream.ValidationNotEqualError(305419896, this.inst.get(((Number) (i)).intValue()), this._io, "/instances/inst");
                 }
                 i++;
             }

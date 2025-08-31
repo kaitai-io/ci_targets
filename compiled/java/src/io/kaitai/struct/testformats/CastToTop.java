@@ -29,6 +29,11 @@ public class CastToTop extends KaitaiStruct {
     private void _read() {
         this.code = this._io.readU1();
     }
+
+    public void _fetchInstances() {
+        header();
+        this.header._fetchInstances();
+    }
     private CastToTop header;
     public CastToTop header() {
         if (this.header != null)

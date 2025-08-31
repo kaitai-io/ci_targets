@@ -30,20 +30,21 @@ public class TypeIntUnaryOp extends KaitaiStruct {
         this.valueS2 = this._io.readS2le();
         this.valueS8 = this._io.readS8le();
     }
+
+    public void _fetchInstances() {
+    }
     private Integer unaryS2;
     public Integer unaryS2() {
         if (this.unaryS2 != null)
             return this.unaryS2;
-        int _tmp = (int) (-(valueS2()));
-        this.unaryS2 = _tmp;
+        this.unaryS2 = ((Number) (-(valueS2()))).intValue();
         return this.unaryS2;
     }
     private Long unaryS8;
     public Long unaryS8() {
         if (this.unaryS8 != null)
             return this.unaryS8;
-        long _tmp = (long) (-(valueS8()));
-        this.unaryS8 = _tmp;
+        this.unaryS8 = ((Number) (-(valueS8()))).longValue();
         return this.unaryS8;
     }
     private short valueS2;

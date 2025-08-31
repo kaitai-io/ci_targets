@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TypeTernary2ndFalsy extends KaitaiStruct {
     public static TypeTernary2ndFalsy fromFile(String fileName) throws IOException {
@@ -39,6 +40,14 @@ public class TypeTernary2ndFalsy extends KaitaiStruct {
             this.intArrayEmpty.add(this._io.readU1());
         }
     }
+
+    public void _fetchInstances() {
+        this.ut._fetchInstances();
+        for (int i = 0; i < this.intArray.size(); i++) {
+        }
+        for (int i = 0; i < this.intArrayEmpty.size(); i++) {
+        }
+    }
     public static class Foo extends KaitaiStruct {
         public static Foo fromFile(String fileName) throws IOException {
             return new Foo(new ByteBufferKaitaiStream(fileName));
@@ -61,6 +70,9 @@ public class TypeTernary2ndFalsy extends KaitaiStruct {
         private void _read() {
             this.m = this._io.readU1();
         }
+
+        public void _fetchInstances() {
+        }
         private int m;
         private TypeTernary2ndFalsy _root;
         private TypeTernary2ndFalsy _parent;
@@ -81,36 +93,32 @@ public class TypeTernary2ndFalsy extends KaitaiStruct {
     public Boolean t() {
         if (this.t != null)
             return this.t;
-        boolean _tmp = (boolean) (true);
-        this.t = _tmp;
+        this.t = true;
         return this.t;
     }
     private Boolean vFalse;
     public Boolean vFalse() {
         if (this.vFalse != null)
             return this.vFalse;
-        boolean _tmp = (boolean) ((t() ? false : true));
-        this.vFalse = _tmp;
+        this.vFalse = (t() ? false : true);
         return this.vFalse;
     }
     private Double vFloatNegZero;
     public Double vFloatNegZero() {
         if (this.vFloatNegZero != null)
             return this.vFloatNegZero;
-        double _tmp = (double) ((t() ? -0.0 : -2.72));
-        this.vFloatNegZero = _tmp;
+        this.vFloatNegZero = ((Number) ((t() ? -0.0 : -2.72))).doubleValue();
         return this.vFloatNegZero;
     }
     private Double vFloatZero;
     public Double vFloatZero() {
         if (this.vFloatZero != null)
             return this.vFloatZero;
-        double _tmp = (double) ((t() ? 0.0 : 3.14));
-        this.vFloatZero = _tmp;
+        this.vFloatZero = ((Number) ((t() ? 0.0 : 3.14))).doubleValue();
         return this.vFloatZero;
     }
-    private ArrayList<Integer> vIntArrayEmpty;
-    public ArrayList<Integer> vIntArrayEmpty() {
+    private List<Integer> vIntArrayEmpty;
+    public List<Integer> vIntArrayEmpty() {
         if (this.vIntArrayEmpty != null)
             return this.vIntArrayEmpty;
         this.vIntArrayEmpty = (t() ? intArrayEmpty() : intArray());
@@ -120,16 +128,14 @@ public class TypeTernary2ndFalsy extends KaitaiStruct {
     public Integer vIntNegZero() {
         if (this.vIntNegZero != null)
             return this.vIntNegZero;
-        int _tmp = (int) ((t() ? 0 : -20));
-        this.vIntNegZero = _tmp;
+        this.vIntNegZero = ((Number) ((t() ? 0 : -20))).intValue();
         return this.vIntNegZero;
     }
     private Byte vIntZero;
     public Byte vIntZero() {
         if (this.vIntZero != null)
             return this.vIntZero;
-        byte _tmp = (byte) ((t() ? 0 : 10));
-        this.vIntZero = _tmp;
+        this.vIntZero = ((Number) ((t() ? 0 : 10))).byteValue();
         return this.vIntZero;
     }
     private Foo vNullUt;
@@ -155,14 +161,14 @@ public class TypeTernary2ndFalsy extends KaitaiStruct {
     }
     private int intTruthy;
     private Foo ut;
-    private ArrayList<Integer> intArray;
-    private ArrayList<Integer> intArrayEmpty;
+    private List<Integer> intArray;
+    private List<Integer> intArrayEmpty;
     private TypeTernary2ndFalsy _root;
     private KaitaiStruct _parent;
     public int intTruthy() { return intTruthy; }
     public Foo ut() { return ut; }
-    public ArrayList<Integer> intArray() { return intArray; }
-    public ArrayList<Integer> intArrayEmpty() { return intArrayEmpty; }
+    public List<Integer> intArray() { return intArray; }
+    public List<Integer> intArrayEmpty() { return intArrayEmpty; }
     public TypeTernary2ndFalsy _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

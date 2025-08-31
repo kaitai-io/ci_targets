@@ -28,18 +28,27 @@ public class TypeTernaryOpaque extends KaitaiStruct {
     }
     private void _read() {
         if (!(isHack())) {
-            KaitaiStream _io_difWoHack = this._io.substream(12);
-            this.difWoHack = new TermStrz(_io_difWoHack);
+            KaitaiStream _io_difWoHack = this._io.substream(1);
+            this.difWoHack = new HelloWorld(_io_difWoHack);
         }
         if (isHack()) {
-            this._raw__raw_difWithHack = this._io.readBytes(12);
-            this._raw_difWithHack = KaitaiStream.processXor(_raw__raw_difWithHack, ((byte) (3)));
-            KaitaiStream _io__raw_difWithHack = new ByteBufferKaitaiStream(_raw_difWithHack);
-            this.difWithHack = new TermStrz(_io__raw_difWithHack);
+            this._raw__raw_difWithHack = this._io.readBytes(1);
+            this._raw_difWithHack = KaitaiStream.processXor(this._raw__raw_difWithHack, ((byte) 3));
+            KaitaiStream _io__raw_difWithHack = new ByteBufferKaitaiStream(this._raw_difWithHack);
+            this.difWithHack = new HelloWorld(_io__raw_difWithHack);
         }
     }
-    private TermStrz dif;
-    public TermStrz dif() {
+
+    public void _fetchInstances() {
+        if (!(isHack())) {
+            this.difWoHack._fetchInstances();
+        }
+        if (isHack()) {
+            this.difWithHack._fetchInstances();
+        }
+    }
+    private HelloWorld dif;
+    public HelloWorld dif() {
         if (this.dif != null)
             return this.dif;
         this.dif = (!(isHack()) ? difWoHack() : difWithHack());
@@ -49,18 +58,17 @@ public class TypeTernaryOpaque extends KaitaiStruct {
     public Boolean isHack() {
         if (this.isHack != null)
             return this.isHack;
-        boolean _tmp = (boolean) (false);
-        this.isHack = _tmp;
+        this.isHack = false;
         return this.isHack;
     }
-    private TermStrz difWoHack;
-    private TermStrz difWithHack;
+    private HelloWorld difWoHack;
+    private HelloWorld difWithHack;
     private TypeTernaryOpaque _root;
     private KaitaiStruct _parent;
     private byte[] _raw_difWithHack;
     private byte[] _raw__raw_difWithHack;
-    public TermStrz difWoHack() { return difWoHack; }
-    public TermStrz difWithHack() { return difWithHack; }
+    public HelloWorld difWoHack() { return difWoHack; }
+    public HelloWorld difWithHack() { return difWithHack; }
     public TypeTernaryOpaque _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
     public byte[] _raw_difWithHack() { return _raw_difWithHack; }

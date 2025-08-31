@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class IfValues extends KaitaiStruct {
     public static IfValues fromFile(String fileName) throws IOException {
@@ -33,6 +34,12 @@ public class IfValues extends KaitaiStruct {
             this.codes.add(new Code(this._io, this, _root));
         }
     }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.codes.size(); i++) {
+            this.codes.get(((Number) (i)).intValue())._fetchInstances();
+        }
+    }
     public static class Code extends KaitaiStruct {
         public static Code fromFile(String fileName) throws IOException {
             return new Code(new ByteBufferKaitaiStream(fileName));
@@ -55,13 +62,15 @@ public class IfValues extends KaitaiStruct {
         private void _read() {
             this.opcode = this._io.readU1();
         }
+
+        public void _fetchInstances() {
+        }
         private Integer halfOpcode;
         public Integer halfOpcode() {
             if (this.halfOpcode != null)
                 return this.halfOpcode;
             if (KaitaiStream.mod(opcode(), 2) == 0) {
-                int _tmp = (int) (opcode() / 2);
-                this.halfOpcode = _tmp;
+                this.halfOpcode = ((Number) (opcode() / 2)).intValue();
             }
             return this.halfOpcode;
         }
@@ -72,10 +81,10 @@ public class IfValues extends KaitaiStruct {
         public IfValues _root() { return _root; }
         public IfValues _parent() { return _parent; }
     }
-    private ArrayList<Code> codes;
+    private List<Code> codes;
     private IfValues _root;
     private KaitaiStruct _parent;
-    public ArrayList<Code> codes() { return codes; }
+    public List<Code> codes() { return codes; }
     public IfValues _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

@@ -38,10 +38,10 @@ impl KStruct for ValidFailRangeFloat {
         let _prc = self_rc._parent.get_value().borrow().upgrade();
         let _r = _rrc.as_ref().unwrap();
         *self_rc.foo.borrow_mut() = _io.read_f4le()?.into();
-        if !(((*self_rc.foo() as f64) >= (0.2 as f64))) {
+        if !(((*self_rc.foo() as f64) >= (0.25 as f64))) {
             return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::LessThan, src_path: "/seq/0".to_string() }));
         }
-        if !(((*self_rc.foo() as f64) <= (0.4 as f64))) {
+        if !(((*self_rc.foo() as f64) <= (0.375 as f64))) {
             return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::GreaterThan, src_path: "/seq/0".to_string() }));
         }
         Ok(())

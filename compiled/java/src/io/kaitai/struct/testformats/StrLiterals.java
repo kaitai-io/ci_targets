@@ -28,6 +28,9 @@ public class StrLiterals extends KaitaiStruct {
     }
     private void _read() {
     }
+
+    public void _fetchInstances() {
+    }
     private String backslashes;
     public String backslashes() {
         if (this.backslashes != null)

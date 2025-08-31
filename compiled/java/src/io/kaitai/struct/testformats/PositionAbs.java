@@ -30,6 +30,11 @@ public class PositionAbs extends KaitaiStruct {
     private void _read() {
         this.indexOffset = this._io.readU4le();
     }
+
+    public void _fetchInstances() {
+        index();
+        this.index._fetchInstances();
+    }
     public static class IndexObj extends KaitaiStruct {
         public static IndexObj fromFile(String fileName) throws IOException {
             return new IndexObj(new ByteBufferKaitaiStream(fileName));
@@ -51,6 +56,9 @@ public class PositionAbs extends KaitaiStruct {
         }
         private void _read() {
             this.entry = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8);
+        }
+
+        public void _fetchInstances() {
         }
         private String entry;
         private PositionAbs _root;

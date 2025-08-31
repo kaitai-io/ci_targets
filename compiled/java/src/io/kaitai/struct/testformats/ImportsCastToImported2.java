@@ -30,6 +30,11 @@ public class ImportsCastToImported2 extends KaitaiStruct {
         this.hw = new HelloWorld(this._io);
         this.two = new CastToImported2(this._io, hw());
     }
+
+    public void _fetchInstances() {
+        this.hw._fetchInstances();
+        this.two._fetchInstances();
+    }
     private HelloWorld hw;
     private CastToImported2 two;
     private ImportsCastToImported2 _root;

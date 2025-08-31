@@ -35,6 +35,9 @@ public class ValidFailRangeInt extends KaitaiStruct {
             throw new KaitaiStream.ValidationGreaterThanError(10, this.foo, this._io, "/seq/0");
         }
     }
+
+    public void _fetchInstances() {
+    }
     private int foo;
     private ValidFailRangeInt _root;
     private KaitaiStruct _parent;

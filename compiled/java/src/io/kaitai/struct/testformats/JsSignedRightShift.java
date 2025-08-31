@@ -28,20 +28,21 @@ public class JsSignedRightShift extends KaitaiStruct {
     }
     private void _read() {
     }
+
+    public void _fetchInstances() {
+    }
     private Integer shouldBe40000000;
     public Integer shouldBe40000000() {
         if (this.shouldBe40000000 != null)
             return this.shouldBe40000000;
-        int _tmp = (int) (2147483648L >> 1);
-        this.shouldBe40000000 = _tmp;
+        this.shouldBe40000000 = ((Number) (2147483648L >> 1)).intValue();
         return this.shouldBe40000000;
     }
     private Integer shouldBeA00000;
     public Integer shouldBeA00000() {
         if (this.shouldBeA00000 != null)
             return this.shouldBeA00000;
-        int _tmp = (int) (2684354560L >> 8);
-        this.shouldBeA00000 = _tmp;
+        this.shouldBeA00000 = ((Number) (2684354560L >> 8)).intValue();
         return this.shouldBeA00000;
     }
     private JsSignedRightShift _root;

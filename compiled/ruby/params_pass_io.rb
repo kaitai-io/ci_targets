@@ -1,0 +1,50 @@
+# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+
+require 'kaitai/struct/struct'
+
+unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.11')
+  raise "Incompatible Kaitai Struct Ruby API: 0.11 or later is required, but you have #{Kaitai::Struct::VERSION}"
+end
+
+class ParamsPassIo < Kaitai::Struct::Struct
+  def initialize(_io, _parent = nil, _root = nil)
+    super(_io, _parent, _root || self)
+    _read
+  end
+
+  def _read
+    _io_first = @_io.substream(1)
+    @first = Block.new(_io_first, self, @_root)
+    @one = ParamType.new(@_io, self, @_root, (first.foo == 255 ? first._io : _root._io))
+    self
+  end
+  class Block < Kaitai::Struct::Struct
+    def initialize(_io, _parent = nil, _root = nil)
+      super(_io, _parent, _root)
+      _read
+    end
+
+    def _read
+      @foo = @_io.read_u1
+      self
+    end
+    attr_reader :foo
+  end
+  class ParamType < Kaitai::Struct::Struct
+    def initialize(_io, _parent = nil, _root = nil, arg_stream)
+      super(_io, _parent, _root)
+      @arg_stream = arg_stream
+      _read
+    end
+
+    def _read
+      @buf = @_io.read_bytes(arg_stream.size)
+      self
+    end
+    attr_reader :buf
+    attr_reader :arg_stream
+  end
+  attr_reader :first
+  attr_reader :one
+  attr_reader :_raw_first
+end

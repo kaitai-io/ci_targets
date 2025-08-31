@@ -7,22 +7,24 @@ digraph {
 
 		expr_if_int_ops__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			<TR><TD PORT="skip_pos">0</TD><TD PORT="skip_size">2</TD><TD></TD><TD PORT="skip_type">skip</TD></TR>
-			<TR><TD PORT="it_pos">2</TD><TD PORT="it_size">2</TD><TD>s2le</TD><TD PORT="it_type">it</TD></TR>
-			<TR><TD COLSPAN="4" PORT="it__if">if true</TD></TR>
-			<TR><TD PORT="boxed_pos">4</TD><TD PORT="boxed_size">2</TD><TD>s2le</TD><TD PORT="boxed_type">boxed</TD></TR>
-			<TR><TD COLSPAN="4" PORT="boxed__if">if true</TD></TR>
+			<TR><TD PORT="key_pos">0</TD><TD PORT="key_size">8</TD><TD>u8le</TD><TD PORT="key_type">key</TD></TR>
+			<TR><TD COLSPAN="4" PORT="key__if">if true</TD></TR>
+			<TR><TD PORT="skip_pos">8</TD><TD PORT="skip_size">8</TD><TD></TD><TD PORT="skip_type">skip</TD></TR>
+			<TR><TD PORT="bytes_pos">16</TD><TD PORT="bytes_size">8</TD><TD></TD><TD PORT="bytes_type">bytes</TD></TR>
+			<TR><TD PORT="items_pos">24</TD><TD PORT="items_size">1</TD><TD>s1</TD><TD PORT="items_type">items</TD></TR>
+			<TR><TD COLSPAN="4" PORT="items__repeat">repeat 4 times</TD></TR>
 		</TABLE>>];
-		expr_if_int_ops__inst__is_eq_boxed [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		expr_if_int_ops__inst__bytes_sub_key [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>is_eq_boxed</TD><TD>it == boxed</TD></TR>
+			<TR><TD>bytes_sub_key</TD><TD>bytes[key].ord</TD></TR>
 		</TABLE>>];
-		expr_if_int_ops__inst__is_eq_prim [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		expr_if_int_ops__inst__items_sub_key [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>is_eq_prim</TD><TD>it == 16705</TD></TR>
+			<TR><TD>items_sub_key</TD><TD>items[key]</TD></TR>
 		</TABLE>>];
 	}
-	expr_if_int_ops__seq:it_type -> expr_if_int_ops__inst__is_eq_boxed [color="#404040"];
-	expr_if_int_ops__seq:boxed_type -> expr_if_int_ops__inst__is_eq_boxed [color="#404040"];
-	expr_if_int_ops__seq:it_type -> expr_if_int_ops__inst__is_eq_prim [color="#404040"];
+	expr_if_int_ops__seq:bytes_type -> expr_if_int_ops__inst__bytes_sub_key [color="#404040"];
+	expr_if_int_ops__seq:key_type -> expr_if_int_ops__inst__bytes_sub_key [color="#404040"];
+	expr_if_int_ops__seq:items_type -> expr_if_int_ops__inst__items_sub_key [color="#404040"];
+	expr_if_int_ops__seq:key_type -> expr_if_int_ops__inst__items_sub_key [color="#404040"];
 }

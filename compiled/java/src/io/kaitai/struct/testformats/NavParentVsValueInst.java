@@ -31,6 +31,10 @@ public class NavParentVsValueInst extends KaitaiStruct {
         this.s1 = new String(this._io.readBytesTerm((byte) 124, false, true, true), StandardCharsets.UTF_8);
         this.child = new ChildObj(this._io, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.child._fetchInstances();
+    }
     public static class ChildObj extends KaitaiStruct {
         public static ChildObj fromFile(String fileName) throws IOException {
             return new ChildObj(new ByteBufferKaitaiStream(fileName));
@@ -52,12 +56,14 @@ public class NavParentVsValueInst extends KaitaiStruct {
         }
         private void _read() {
         }
+
+        public void _fetchInstances() {
+        }
         private Boolean doSomething;
         public Boolean doSomething() {
             if (this.doSomething != null)
                 return this.doSomething;
-            boolean _tmp = (boolean) ((_parent().s1().equals("foo") ? true : false));
-            this.doSomething = _tmp;
+            this.doSomething = (_parent().s1().equals("foo") ? true : false);
             return this.doSomething;
         }
         private NavParentVsValueInst _root;

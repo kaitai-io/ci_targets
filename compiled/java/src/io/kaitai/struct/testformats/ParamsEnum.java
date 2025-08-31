@@ -48,6 +48,10 @@ public class ParamsEnum extends KaitaiStruct {
         this.one = Animal.byId(this._io.readU1());
         this.invokeWithParam = new WithParam(this._io, this, _root, one());
     }
+
+    public void _fetchInstances() {
+        this.invokeWithParam._fetchInstances();
+    }
     public static class WithParam extends KaitaiStruct {
 
         public WithParam(KaitaiStream _io, Animal enumeratedOne) {
@@ -67,12 +71,14 @@ public class ParamsEnum extends KaitaiStruct {
         }
         private void _read() {
         }
+
+        public void _fetchInstances() {
+        }
         private Boolean isCat;
         public Boolean isCat() {
             if (this.isCat != null)
                 return this.isCat;
-            boolean _tmp = (boolean) (enumeratedOne() == ParamsEnum.Animal.CAT);
-            this.isCat = _tmp;
+            this.isCat = enumeratedOne() == ParamsEnum.Animal.CAT;
             return this.isCat;
         }
         private Animal enumeratedOne;

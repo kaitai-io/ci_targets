@@ -18,17 +18,17 @@ void type_ternary_opaque_t::_read() {
     n_dif_wo_hack = true;
     if (!(is_hack())) {
         n_dif_wo_hack = false;
-        m__raw_dif_wo_hack = m__io->read_bytes(12);
+        m__raw_dif_wo_hack = m__io->read_bytes(1);
         m__io__raw_dif_wo_hack = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_dif_wo_hack));
-        m_dif_wo_hack = std::unique_ptr<term_strz_t>(new term_strz_t(m__io__raw_dif_wo_hack.get()));
+        m_dif_wo_hack = std::unique_ptr<hello_world_t>(new hello_world_t(m__io__raw_dif_wo_hack.get()));
     }
     n_dif_with_hack = true;
     if (is_hack()) {
         n_dif_with_hack = false;
-        m__raw__raw_dif_with_hack = m__io->read_bytes(12);
+        m__raw__raw_dif_with_hack = m__io->read_bytes(1);
         m__raw_dif_with_hack = kaitai::kstream::process_xor_one(m__raw__raw_dif_with_hack, 3);
         m__io__raw_dif_with_hack = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_dif_with_hack));
-        m_dif_with_hack = std::unique_ptr<term_strz_t>(new term_strz_t(m__io__raw_dif_with_hack.get()));
+        m_dif_with_hack = std::unique_ptr<hello_world_t>(new hello_world_t(m__io__raw_dif_with_hack.get()));
     }
 }
 
@@ -43,7 +43,7 @@ void type_ternary_opaque_t::_clean_up() {
     }
 }
 
-term_strz_t* type_ternary_opaque_t::dif() {
+hello_world_t* type_ternary_opaque_t::dif() {
     if (f_dif)
         return m_dif;
     f_dif = true;

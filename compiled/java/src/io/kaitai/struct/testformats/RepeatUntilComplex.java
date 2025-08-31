@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RepeatUntilComplex extends KaitaiStruct {
     public static RepeatUntilComplex fromFile(String fileName) throws IOException {
@@ -59,6 +60,17 @@ public class RepeatUntilComplex extends KaitaiStruct {
             } while (!(_it == 0));
         }
     }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.first.size(); i++) {
+            this.first.get(((Number) (i)).intValue())._fetchInstances();
+        }
+        for (int i = 0; i < this.second.size(); i++) {
+            this.second.get(((Number) (i)).intValue())._fetchInstances();
+        }
+        for (int i = 0; i < this.third.size(); i++) {
+        }
+    }
     public static class TypeU1 extends KaitaiStruct {
         public static TypeU1 fromFile(String fileName) throws IOException {
             return new TypeU1(new ByteBufferKaitaiStream(fileName));
@@ -85,12 +97,17 @@ public class RepeatUntilComplex extends KaitaiStruct {
                 this.values.add(this._io.readU1());
             }
         }
+
+        public void _fetchInstances() {
+            for (int i = 0; i < this.values.size(); i++) {
+            }
+        }
         private int count;
-        private ArrayList<Integer> values;
+        private List<Integer> values;
         private RepeatUntilComplex _root;
         private RepeatUntilComplex _parent;
         public int count() { return count; }
-        public ArrayList<Integer> values() { return values; }
+        public List<Integer> values() { return values; }
         public RepeatUntilComplex _root() { return _root; }
         public RepeatUntilComplex _parent() { return _parent; }
     }
@@ -120,23 +137,28 @@ public class RepeatUntilComplex extends KaitaiStruct {
                 this.values.add(this._io.readU2le());
             }
         }
+
+        public void _fetchInstances() {
+            for (int i = 0; i < this.values.size(); i++) {
+            }
+        }
         private int count;
-        private ArrayList<Integer> values;
+        private List<Integer> values;
         private RepeatUntilComplex _root;
         private RepeatUntilComplex _parent;
         public int count() { return count; }
-        public ArrayList<Integer> values() { return values; }
+        public List<Integer> values() { return values; }
         public RepeatUntilComplex _root() { return _root; }
         public RepeatUntilComplex _parent() { return _parent; }
     }
-    private ArrayList<TypeU1> first;
-    private ArrayList<TypeU2> second;
-    private ArrayList<Integer> third;
+    private List<TypeU1> first;
+    private List<TypeU2> second;
+    private List<Integer> third;
     private RepeatUntilComplex _root;
     private KaitaiStruct _parent;
-    public ArrayList<TypeU1> first() { return first; }
-    public ArrayList<TypeU2> second() { return second; }
-    public ArrayList<Integer> third() { return third; }
+    public List<TypeU1> first() { return first; }
+    public List<TypeU2> second() { return second; }
+    public List<Integer> third() { return third; }
     public RepeatUntilComplex _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

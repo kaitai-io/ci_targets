@@ -11,6 +11,12 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_singleValue = $this->_io->readF4le();
             $this->_m_doubleValue = $this->_io->readF8le();
+            if (true) {
+                $this->_m_singleValueIf = $this->_io->readF4be();
+            }
+            if (true) {
+                $this->_m_doubleValueIf = $this->_io->readF8be();
+            }
         }
         protected $_m_calcFloat1;
         public function calcFloat1() {
@@ -40,12 +46,33 @@ namespace Kaitai\Struct\Tests {
             $this->_m_calcFloat4 = -2.7;
             return $this->_m_calcFloat4;
         }
+        protected $_m_calcIf;
+        public function calcIf() {
+            if ($this->_m_calcIf !== null)
+                return $this->_m_calcIf;
+            $this->_m_calcIf = 13.9;
+            return $this->_m_calcIf;
+        }
+        protected $_m_calcIfI;
+        public function calcIfI() {
+            if ($this->_m_calcIfI !== null)
+                return $this->_m_calcIfI;
+            $this->_m_calcIfI = intval($this->calcIf());
+            return $this->_m_calcIfI;
+        }
         protected $_m_doubleI;
         public function doubleI() {
             if ($this->_m_doubleI !== null)
                 return $this->_m_doubleI;
             $this->_m_doubleI = intval($this->doubleValue());
             return $this->_m_doubleI;
+        }
+        protected $_m_doubleIfI;
+        public function doubleIfI() {
+            if ($this->_m_doubleIfI !== null)
+                return $this->_m_doubleIfI;
+            $this->_m_doubleIfI = intval($this->doubleValueIf());
+            return $this->_m_doubleIfI;
         }
         protected $_m_float1I;
         public function float1I() {
@@ -82,9 +109,20 @@ namespace Kaitai\Struct\Tests {
             $this->_m_singleI = intval($this->singleValue());
             return $this->_m_singleI;
         }
+        protected $_m_singleIfI;
+        public function singleIfI() {
+            if ($this->_m_singleIfI !== null)
+                return $this->_m_singleIfI;
+            $this->_m_singleIfI = intval($this->singleValueIf());
+            return $this->_m_singleIfI;
+        }
         protected $_m_singleValue;
         protected $_m_doubleValue;
+        protected $_m_singleValueIf;
+        protected $_m_doubleValueIf;
         public function singleValue() { return $this->_m_singleValue; }
         public function doubleValue() { return $this->_m_doubleValue; }
+        public function singleValueIf() { return $this->_m_singleValueIf; }
+        public function doubleValueIf() { return $this->_m_doubleValueIf; }
     }
 }

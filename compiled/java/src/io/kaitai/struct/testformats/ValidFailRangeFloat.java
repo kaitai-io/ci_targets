@@ -28,12 +28,15 @@ public class ValidFailRangeFloat extends KaitaiStruct {
     }
     private void _read() {
         this.foo = this._io.readF4le();
-        if (!(this.foo >= 0.2)) {
-            throw new KaitaiStream.ValidationLessThanError(0.2, this.foo, this._io, "/seq/0");
+        if (!(this.foo >= 0.25)) {
+            throw new KaitaiStream.ValidationLessThanError(0.25, this.foo, this._io, "/seq/0");
         }
-        if (!(this.foo <= 0.4)) {
-            throw new KaitaiStream.ValidationGreaterThanError(0.4, this.foo, this._io, "/seq/0");
+        if (!(this.foo <= 0.375)) {
+            throw new KaitaiStream.ValidationGreaterThanError(0.375, this.foo, this._io, "/seq/0");
         }
+    }
+
+    public void _fetchInstances() {
     }
     private float foo;
     private ValidFailRangeFloat _root;

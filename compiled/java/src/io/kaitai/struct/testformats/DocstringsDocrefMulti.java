@@ -35,6 +35,9 @@ public class DocstringsDocrefMulti extends KaitaiStruct {
     }
     private void _read() {
     }
+
+    public void _fetchInstances() {
+    }
     private DocstringsDocrefMulti _root;
     private KaitaiStruct _parent;
     public DocstringsDocrefMulti _root() { return _root; }

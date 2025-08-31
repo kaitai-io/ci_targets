@@ -30,36 +30,35 @@ public class ExprIntDiv extends KaitaiStruct {
         this.intU = this._io.readU4le();
         this.intS = this._io.readS4le();
     }
+
+    public void _fetchInstances() {
+    }
     private Integer divNegConst;
     public Integer divNegConst() {
         if (this.divNegConst != null)
             return this.divNegConst;
-        int _tmp = (int) (-9837 / 13);
-        this.divNegConst = _tmp;
+        this.divNegConst = ((Number) (-9837 / 13)).intValue();
         return this.divNegConst;
     }
     private Integer divNegSeq;
     public Integer divNegSeq() {
         if (this.divNegSeq != null)
             return this.divNegSeq;
-        int _tmp = (int) (intS() / 13);
-        this.divNegSeq = _tmp;
+        this.divNegSeq = ((Number) (intS() / 13)).intValue();
         return this.divNegSeq;
     }
     private Integer divPosConst;
     public Integer divPosConst() {
         if (this.divPosConst != null)
             return this.divPosConst;
-        int _tmp = (int) (9837 / 13);
-        this.divPosConst = _tmp;
+        this.divPosConst = ((Number) (9837 / 13)).intValue();
         return this.divPosConst;
     }
     private Integer divPosSeq;
     public Integer divPosSeq() {
         if (this.divPosSeq != null)
             return this.divPosSeq;
-        int _tmp = (int) (intU() / 13);
-        this.divPosSeq = _tmp;
+        this.divPosSeq = ((Number) (intU() / 13)).intValue();
         return this.divPosSeq;
     }
     private long intU;

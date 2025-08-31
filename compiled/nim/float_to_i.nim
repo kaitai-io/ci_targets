@@ -5,6 +5,8 @@ type
   FloatToI* = ref object of KaitaiStruct
     `singleValue`*: float32
     `doubleValue`*: float64
+    `singleValueIf`*: float32
+    `doubleValueIf`*: float64
     `parent`*: KaitaiStruct
     `calcFloat1Inst`: float64
     `calcFloat1InstFlag`: bool
@@ -14,8 +16,14 @@ type
     `calcFloat3InstFlag`: bool
     `calcFloat4Inst`: float64
     `calcFloat4InstFlag`: bool
+    `calcIfInst`: float64
+    `calcIfInstFlag`: bool
+    `calcIfIInst`: int
+    `calcIfIInstFlag`: bool
     `doubleIInst`: int
     `doubleIInstFlag`: bool
+    `doubleIfIInst`: int
+    `doubleIfIInstFlag`: bool
     `float1IInst`: int
     `float1IInstFlag`: bool
     `float2IInst`: int
@@ -26,6 +34,8 @@ type
     `float4IInstFlag`: bool
     `singleIInst`: int
     `singleIInstFlag`: bool
+    `singleIfIInst`: int
+    `singleIfIInstFlag`: bool
 
 proc read*(_: typedesc[FloatToI], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FloatToI
 
@@ -33,12 +43,16 @@ proc calcFloat1*(this: FloatToI): float64
 proc calcFloat2*(this: FloatToI): float64
 proc calcFloat3*(this: FloatToI): float64
 proc calcFloat4*(this: FloatToI): float64
+proc calcIf*(this: FloatToI): float64
+proc calcIfI*(this: FloatToI): int
 proc doubleI*(this: FloatToI): int
+proc doubleIfI*(this: FloatToI): int
 proc float1I*(this: FloatToI): int
 proc float2I*(this: FloatToI): int
 proc float3I*(this: FloatToI): int
 proc float4I*(this: FloatToI): int
 proc singleI*(this: FloatToI): int
+proc singleIfI*(this: FloatToI): int
 
 proc read*(_: typedesc[FloatToI], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FloatToI =
   template this: untyped = result
@@ -52,6 +66,12 @@ proc read*(_: typedesc[FloatToI], io: KaitaiStream, root: KaitaiStruct, parent: 
   this.singleValue = singleValueExpr
   let doubleValueExpr = this.io.readF8le()
   this.doubleValue = doubleValueExpr
+  if true:
+    let singleValueIfExpr = this.io.readF4be()
+    this.singleValueIf = singleValueIfExpr
+  if true:
+    let doubleValueIfExpr = this.io.readF8be()
+    this.doubleValueIf = doubleValueIfExpr
 
 proc calcFloat1(this: FloatToI): float64 = 
   if this.calcFloat1InstFlag:
@@ -85,6 +105,22 @@ proc calcFloat4(this: FloatToI): float64 =
   this.calcFloat4InstFlag = true
   return this.calcFloat4Inst
 
+proc calcIf(this: FloatToI): float64 = 
+  if this.calcIfInstFlag:
+    return this.calcIfInst
+  let calcIfInstExpr = float64(13.9)
+  this.calcIfInst = calcIfInstExpr
+  this.calcIfInstFlag = true
+  return this.calcIfInst
+
+proc calcIfI(this: FloatToI): int = 
+  if this.calcIfIInstFlag:
+    return this.calcIfIInst
+  let calcIfIInstExpr = int(int(this.calcIf))
+  this.calcIfIInst = calcIfIInstExpr
+  this.calcIfIInstFlag = true
+  return this.calcIfIInst
+
 proc doubleI(this: FloatToI): int = 
   if this.doubleIInstFlag:
     return this.doubleIInst
@@ -92,6 +128,14 @@ proc doubleI(this: FloatToI): int =
   this.doubleIInst = doubleIInstExpr
   this.doubleIInstFlag = true
   return this.doubleIInst
+
+proc doubleIfI(this: FloatToI): int = 
+  if this.doubleIfIInstFlag:
+    return this.doubleIfIInst
+  let doubleIfIInstExpr = int(int(this.doubleValueIf))
+  this.doubleIfIInst = doubleIfIInstExpr
+  this.doubleIfIInstFlag = true
+  return this.doubleIfIInst
 
 proc float1I(this: FloatToI): int = 
   if this.float1IInstFlag:
@@ -132,6 +176,14 @@ proc singleI(this: FloatToI): int =
   this.singleIInst = singleIInstExpr
   this.singleIInstFlag = true
   return this.singleIInst
+
+proc singleIfI(this: FloatToI): int = 
+  if this.singleIfIInstFlag:
+    return this.singleIfIInst
+  let singleIfIInstExpr = int(int(this.singleValueIf))
+  this.singleIfIInst = singleIfIInstExpr
+  this.singleIfIInstFlag = true
+  return this.singleIfIInst
 
 proc fromFile*(_: typedesc[FloatToI], filename: string): FloatToI =
   FloatToI.read(newKaitaiFileStream(filename), nil, nil)

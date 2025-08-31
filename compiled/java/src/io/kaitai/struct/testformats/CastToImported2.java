@@ -26,6 +26,9 @@ public class CastToImported2 extends KaitaiStruct {
     }
     private void _read() {
     }
+
+    public void _fetchInstances() {
+    }
     private HelloWorld hw;
     public HelloWorld hw() {
         if (this.hw != null)

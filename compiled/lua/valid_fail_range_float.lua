@@ -16,10 +16,10 @@ end
 
 function ValidFailRangeFloat:_read()
   self.foo = self._io:read_f4le()
-  if not(self.foo >= 0.2) then
+  if not(self.foo >= 0.25) then
     error("ValidationLessThanError")
   end
-  if not(self.foo <= 0.4) then
+  if not(self.foo <= 0.375) then
     error("ValidationGreaterThanError")
   end
 end

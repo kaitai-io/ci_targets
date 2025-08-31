@@ -35,6 +35,11 @@ public class BufferedStruct extends KaitaiStruct {
         this.block2 = new Block(_io_block2, this, _root);
         this.finisher = this._io.readU4le();
     }
+
+    public void _fetchInstances() {
+        this.block1._fetchInstances();
+        this.block2._fetchInstances();
+    }
     public static class Block extends KaitaiStruct {
         public static Block fromFile(String fileName) throws IOException {
             return new Block(new ByteBufferKaitaiStream(fileName));
@@ -57,6 +62,9 @@ public class BufferedStruct extends KaitaiStruct {
         private void _read() {
             this.number1 = this._io.readU4le();
             this.number2 = this._io.readU4le();
+        }
+
+        public void _fetchInstances() {
         }
         private long number1;
         private long number2;

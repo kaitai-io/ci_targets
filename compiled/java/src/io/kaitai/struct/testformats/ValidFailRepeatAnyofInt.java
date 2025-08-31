@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ValidFailRepeatAnyofInt extends KaitaiStruct {
     public static ValidFailRepeatAnyofInt fromFile(String fileName) throws IOException {
@@ -33,17 +34,22 @@ public class ValidFailRepeatAnyofInt extends KaitaiStruct {
             int i = 0;
             while (!this._io.isEof()) {
                 this.foo.add(this._io.readU1());
-                if (!( ((this.foo.get((int) i) == 0) || (this.foo.get((int) i) == 1) || (this.foo.get((int) i) == 65)) )) {
-                    throw new KaitaiStream.ValidationNotAnyOfError(this.foo.get((int) i), this._io, "/seq/0");
+                if (!( ((this.foo.get(((Number) (i)).intValue()) == 0) || (this.foo.get(((Number) (i)).intValue()) == 1) || (this.foo.get(((Number) (i)).intValue()) == 65)) )) {
+                    throw new KaitaiStream.ValidationNotAnyOfError(this.foo.get(((Number) (i)).intValue()), this._io, "/seq/0");
                 }
                 i++;
             }
         }
     }
-    private ArrayList<Integer> foo;
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.foo.size(); i++) {
+        }
+    }
+    private List<Integer> foo;
     private ValidFailRepeatAnyofInt _root;
     private KaitaiStruct _parent;
-    public ArrayList<Integer> foo() { return foo; }
+    public List<Integer> foo() { return foo; }
     public ValidFailRepeatAnyofInt _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

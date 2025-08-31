@@ -17,6 +17,12 @@ end
 function FloatToI:_read()
   self.single_value = self._io:read_f4le()
   self.double_value = self._io:read_f8le()
+  if true then
+    self.single_value_if = self._io:read_f4be()
+  end
+  if true then
+    self.double_value_if = self._io:read_f8be()
+  end
 end
 
 FloatToI.property.calc_float1 = {}
@@ -59,6 +65,26 @@ function FloatToI.property.calc_float4:get()
   return self._m_calc_float4
 end
 
+FloatToI.property.calc_if = {}
+function FloatToI.property.calc_if:get()
+  if self._m_calc_if ~= nil then
+    return self._m_calc_if
+  end
+
+  self._m_calc_if = 13.9
+  return self._m_calc_if
+end
+
+FloatToI.property.calc_if_i = {}
+function FloatToI.property.calc_if_i:get()
+  if self._m_calc_if_i ~= nil then
+    return self._m_calc_if_i
+  end
+
+  self._m_calc_if_i = ((self.calc_if > 0) and math.floor(self.calc_if) or math.ceil(self.calc_if))
+  return self._m_calc_if_i
+end
+
 FloatToI.property.double_i = {}
 function FloatToI.property.double_i:get()
   if self._m_double_i ~= nil then
@@ -67,6 +93,16 @@ function FloatToI.property.double_i:get()
 
   self._m_double_i = ((self.double_value > 0) and math.floor(self.double_value) or math.ceil(self.double_value))
   return self._m_double_i
+end
+
+FloatToI.property.double_if_i = {}
+function FloatToI.property.double_if_i:get()
+  if self._m_double_if_i ~= nil then
+    return self._m_double_if_i
+  end
+
+  self._m_double_if_i = ((self.double_value_if > 0) and math.floor(self.double_value_if) or math.ceil(self.double_value_if))
+  return self._m_double_if_i
 end
 
 FloatToI.property.float1_i = {}
@@ -117,6 +153,16 @@ function FloatToI.property.single_i:get()
 
   self._m_single_i = ((self.single_value > 0) and math.floor(self.single_value) or math.ceil(self.single_value))
   return self._m_single_i
+end
+
+FloatToI.property.single_if_i = {}
+function FloatToI.property.single_if_i:get()
+  if self._m_single_if_i ~= nil then
+    return self._m_single_if_i
+  end
+
+  self._m_single_if_i = ((self.single_value_if > 0) and math.floor(self.single_value_if) or math.ceil(self.single_value_if))
+  return self._m_single_if_i
 end
 
 

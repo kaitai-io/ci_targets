@@ -29,13 +29,21 @@ public class ParamsPassBool extends KaitaiStruct {
     private void _read() {
         this.sFalse = this._io.readBitsIntBe(1) != 0;
         this.sTrue = this._io.readBitsIntBe(1) != 0;
-        this._io.alignToByte();
         this.seqB1 = new ParamTypeB1(this._io, this, _root, sTrue());
         this.seqBool = new ParamTypeBool(this._io, this, _root, sFalse());
         this.literalB1 = new ParamTypeB1(this._io, this, _root, false);
         this.literalBool = new ParamTypeBool(this._io, this, _root, true);
         this.instB1 = new ParamTypeB1(this._io, this, _root, vTrue());
         this.instBool = new ParamTypeBool(this._io, this, _root, vFalse());
+    }
+
+    public void _fetchInstances() {
+        this.seqB1._fetchInstances();
+        this.seqBool._fetchInstances();
+        this.literalB1._fetchInstances();
+        this.literalBool._fetchInstances();
+        this.instB1._fetchInstances();
+        this.instBool._fetchInstances();
     }
     public static class ParamTypeB1 extends KaitaiStruct {
 
@@ -56,6 +64,9 @@ public class ParamsPassBool extends KaitaiStruct {
         }
         private void _read() {
             this.foo = this._io.readBytes((arg() ? 1 : 2));
+        }
+
+        public void _fetchInstances() {
         }
         private byte[] foo;
         private boolean arg;
@@ -86,6 +97,9 @@ public class ParamsPassBool extends KaitaiStruct {
         private void _read() {
             this.foo = this._io.readBytes((arg() ? 1 : 2));
         }
+
+        public void _fetchInstances() {
+        }
         private byte[] foo;
         private boolean arg;
         private ParamsPassBool _root;
@@ -99,16 +113,14 @@ public class ParamsPassBool extends KaitaiStruct {
     public Boolean vFalse() {
         if (this.vFalse != null)
             return this.vFalse;
-        boolean _tmp = (boolean) (false);
-        this.vFalse = _tmp;
+        this.vFalse = false;
         return this.vFalse;
     }
     private Boolean vTrue;
     public Boolean vTrue() {
         if (this.vTrue != null)
             return this.vTrue;
-        boolean _tmp = (boolean) (true);
-        this.vTrue = _tmp;
+        this.vTrue = true;
         return this.vTrue;
     }
     private boolean sFalse;

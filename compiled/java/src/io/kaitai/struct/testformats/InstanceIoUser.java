@@ -8,6 +8,7 @@ import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 public class InstanceIoUser extends KaitaiStruct {
     public static InstanceIoUser fromFile(String fileName) throws IOException {
@@ -35,8 +36,15 @@ public class InstanceIoUser extends KaitaiStruct {
             this.entries.add(new Entry(this._io, this, _root));
         }
         this._raw_strings = this._io.readBytesFull();
-        KaitaiStream _io__raw_strings = new ByteBufferKaitaiStream(_raw_strings);
+        KaitaiStream _io__raw_strings = new ByteBufferKaitaiStream(this._raw_strings);
         this.strings = new StringsObj(_io__raw_strings, this, _root);
+    }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.entries.size(); i++) {
+            this.entries.get(((Number) (i)).intValue())._fetchInstances();
+        }
+        this.strings._fetchInstances();
     }
     public static class Entry extends KaitaiStruct {
         public static Entry fromFile(String fileName) throws IOException {
@@ -60,6 +68,10 @@ public class InstanceIoUser extends KaitaiStruct {
         private void _read() {
             this.nameOfs = this._io.readU4le();
             this.value = this._io.readU4le();
+        }
+
+        public void _fetchInstances() {
+            name();
         }
         private String name;
         public String name() {
@@ -110,21 +122,26 @@ public class InstanceIoUser extends KaitaiStruct {
                 }
             }
         }
-        private ArrayList<String> str;
+
+        public void _fetchInstances() {
+            for (int i = 0; i < this.str.size(); i++) {
+            }
+        }
+        private List<String> str;
         private InstanceIoUser _root;
         private InstanceIoUser _parent;
-        public ArrayList<String> str() { return str; }
+        public List<String> str() { return str; }
         public InstanceIoUser _root() { return _root; }
         public InstanceIoUser _parent() { return _parent; }
     }
     private long qtyEntries;
-    private ArrayList<Entry> entries;
+    private List<Entry> entries;
     private StringsObj strings;
     private InstanceIoUser _root;
     private KaitaiStruct _parent;
     private byte[] _raw_strings;
     public long qtyEntries() { return qtyEntries; }
-    public ArrayList<Entry> entries() { return entries; }
+    public List<Entry> entries() { return entries; }
     public StringsObj strings() { return strings; }
     public InstanceIoUser _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }

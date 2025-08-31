@@ -33,6 +33,9 @@ public class StrPadTerm extends KaitaiStruct {
         this.strTermAndPad = new String(KaitaiStream.bytesTerminate(KaitaiStream.bytesStripRight(this._io.readBytes(20), (byte) 43), (byte) 64, false), StandardCharsets.UTF_8);
         this.strTermInclude = new String(KaitaiStream.bytesTerminate(this._io.readBytes(20), (byte) 64, true), StandardCharsets.UTF_8);
     }
+
+    public void _fetchInstances() {
+    }
     private String strPad;
     private String strTerm;
     private String strTermAndPad;

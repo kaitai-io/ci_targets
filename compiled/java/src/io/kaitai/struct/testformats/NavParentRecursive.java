@@ -32,13 +32,18 @@ public class NavParentRecursive extends KaitaiStruct {
             this.next = new NavParentRecursive(this._io, this, _root);
         }
     }
+
+    public void _fetchInstances() {
+        if (value() == 255) {
+            this.next._fetchInstances();
+        }
+    }
     private Integer parentValue;
     public Integer parentValue() {
         if (this.parentValue != null)
             return this.parentValue;
         if (value() != 255) {
-            int _tmp = (int) (((NavParentRecursive) (_parent())).value());
-            this.parentValue = _tmp;
+            this.parentValue = ((Number) (((NavParentRecursive) (_parent())).value())).intValue();
         }
         return this.parentValue;
     }

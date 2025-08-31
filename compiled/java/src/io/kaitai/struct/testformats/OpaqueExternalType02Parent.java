@@ -29,6 +29,10 @@ public class OpaqueExternalType02Parent extends KaitaiStruct {
     private void _read() {
         this.parent = new ParentObj(this._io, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.parent._fetchInstances();
+    }
     public static class ParentObj extends KaitaiStruct {
         public static ParentObj fromFile(String fileName) throws IOException {
             return new ParentObj(new ByteBufferKaitaiStream(fileName));
@@ -50,6 +54,10 @@ public class OpaqueExternalType02Parent extends KaitaiStruct {
         }
         private void _read() {
             this.child = new OpaqueExternalType02Child(this._io);
+        }
+
+        public void _fetchInstances() {
+            this.child._fetchInstances();
         }
         private OpaqueExternalType02Child child;
         private OpaqueExternalType02Parent _root;

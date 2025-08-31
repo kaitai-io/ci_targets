@@ -38,6 +38,9 @@ public class StrEncodings extends KaitaiStruct {
         this.lenOf4 = this._io.readU2le();
         this.str4 = new String(this._io.readBytes(lenOf4()), Charset.forName("IBM437"));
     }
+
+    public void _fetchInstances() {
+    }
     private int lenOf1;
     private String str1;
     private int lenOf2;

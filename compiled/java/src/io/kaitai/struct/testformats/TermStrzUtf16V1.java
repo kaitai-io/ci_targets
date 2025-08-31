@@ -33,6 +33,9 @@ public class TermStrzUtf16V1 extends KaitaiStruct {
         this.term = this._io.readU2le();
         this.s3 = new String(this._io.readBytesTermMulti(new byte[] { 0, 0 }, true, true, true), StandardCharsets.UTF_16LE);
     }
+
+    public void _fetchInstances() {
+    }
     private String s1;
     private String s2;
     private int term;

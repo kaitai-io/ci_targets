@@ -30,6 +30,10 @@ public class Imported1 extends KaitaiStruct {
         this.one = this._io.readU1();
         this.two = new Imported2(this._io);
     }
+
+    public void _fetchInstances() {
+        this.two._fetchInstances();
+    }
     private int one;
     private Imported2 two;
     private Imported1 _root;

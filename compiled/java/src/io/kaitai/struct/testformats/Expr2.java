@@ -31,6 +31,11 @@ public class Expr2 extends KaitaiStruct {
         this.str1 = new ModStr(this._io, this, _root);
         this.str2 = new ModStr(this._io, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.str1._fetchInstances();
+        this.str2._fetchInstances();
+    }
     public static class ModStr extends KaitaiStruct {
         public static ModStr fromFile(String fileName) throws IOException {
             return new ModStr(new ByteBufferKaitaiStream(fileName));
@@ -56,6 +61,13 @@ public class Expr2 extends KaitaiStruct {
             KaitaiStream _io_rest = this._io.substream(3);
             this.rest = new Tuple(_io_rest, this, _root);
         }
+
+        public void _fetchInstances() {
+            this.rest._fetchInstances();
+            char5();
+            tuple5();
+            this.tuple5._fetchInstances();
+        }
         private String char5;
         public String char5() {
             if (this.char5 != null)
@@ -70,8 +82,7 @@ public class Expr2 extends KaitaiStruct {
         public Integer lenMod() {
             if (this.lenMod != null)
                 return this.lenMod;
-            int _tmp = (int) (lenOrig() - 3);
-            this.lenMod = _tmp;
+            this.lenMod = ((Number) (lenOrig() - 3)).intValue();
             return this.lenMod;
         }
         private Tuple tuple5;
@@ -119,12 +130,14 @@ public class Expr2 extends KaitaiStruct {
             this.byte1 = this._io.readU1();
             this.byte2 = this._io.readU1();
         }
+
+        public void _fetchInstances() {
+        }
         private Integer avg;
         public Integer avg() {
             if (this.avg != null)
                 return this.avg;
-            int _tmp = (int) ((byte1() + byte2()) / 2);
-            this.avg = _tmp;
+            this.avg = ((Number) ((byte1() + byte2()) / 2)).intValue();
             return this.avg;
         }
         private int byte0;
@@ -142,16 +155,14 @@ public class Expr2 extends KaitaiStruct {
     public Integer str1Avg() {
         if (this.str1Avg != null)
             return this.str1Avg;
-        int _tmp = (int) (str1().rest().avg());
-        this.str1Avg = _tmp;
+        this.str1Avg = ((Number) (str1().rest().avg())).intValue();
         return this.str1Avg;
     }
     private Integer str1Byte1;
     public Integer str1Byte1() {
         if (this.str1Byte1 != null)
             return this.str1Byte1;
-        int _tmp = (int) (str1().rest().byte1());
-        this.str1Byte1 = _tmp;
+        this.str1Byte1 = ((Number) (str1().rest().byte1())).intValue();
         return this.str1Byte1;
     }
     private String str1Char5;
@@ -165,16 +176,14 @@ public class Expr2 extends KaitaiStruct {
     public Integer str1Len() {
         if (this.str1Len != null)
             return this.str1Len;
-        int _tmp = (int) (str1().str().length());
-        this.str1Len = _tmp;
+        this.str1Len = ((Number) (str1().str().length())).intValue();
         return this.str1Len;
     }
     private Integer str1LenMod;
     public Integer str1LenMod() {
         if (this.str1LenMod != null)
             return this.str1LenMod;
-        int _tmp = (int) (str1().lenMod());
-        this.str1LenMod = _tmp;
+        this.str1LenMod = ((Number) (str1().lenMod())).intValue();
         return this.str1LenMod;
     }
     private Tuple str1Tuple5;

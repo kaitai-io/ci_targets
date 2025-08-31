@@ -32,6 +32,11 @@ public class ExprIoEof extends KaitaiStruct {
         KaitaiStream _io_substream2 = this._io.substream(8);
         this.substream2 = new OneOrTwo(_io_substream2, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.substream1._fetchInstances();
+        this.substream2._fetchInstances();
+    }
     public static class OneOrTwo extends KaitaiStruct {
         public static OneOrTwo fromFile(String fileName) throws IOException {
             return new OneOrTwo(new ByteBufferKaitaiStream(fileName));
@@ -57,12 +62,16 @@ public class ExprIoEof extends KaitaiStruct {
                 this.two = this._io.readU4le();
             }
         }
+
+        public void _fetchInstances() {
+            if (!(_io().isEof())) {
+            }
+        }
         private Boolean reflectEof;
         public Boolean reflectEof() {
             if (this.reflectEof != null)
                 return this.reflectEof;
-            boolean _tmp = (boolean) (_io().isEof());
-            this.reflectEof = _tmp;
+            this.reflectEof = _io().isEof();
             return this.reflectEof;
         }
         private long one;

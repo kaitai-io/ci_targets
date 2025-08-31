@@ -7,6 +7,7 @@ class expr_if_int_ops_t;
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
 #include <memory>
+#include <vector>
 
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
@@ -26,42 +27,40 @@ public:
     ~expr_if_int_ops_t();
 
 private:
-    bool f_is_eq_boxed;
-    bool m_is_eq_boxed;
+    bool f_bytes_sub_key;
+    uint8_t m_bytes_sub_key;
 
 public:
-    bool is_eq_boxed();
+    uint8_t bytes_sub_key();
 
 private:
-    bool f_is_eq_prim;
-    bool m_is_eq_prim;
+    bool f_items_sub_key;
+    int8_t m_items_sub_key;
 
 public:
-    bool is_eq_prim();
+    int8_t items_sub_key();
+
+private:
+    uint64_t m_key;
+    bool n_key;
+
+public:
+    bool _is_null_key() { key(); return n_key; };
 
 private:
     std::string m_skip;
-    int16_t m_it;
-    bool n_it;
-
-public:
-    bool _is_null_it() { it(); return n_it; };
-
-private:
-    int16_t m_boxed;
-    bool n_boxed;
-
-public:
-    bool _is_null_boxed() { boxed(); return n_boxed; };
-
-private:
+    std::string m_bytes;
+    std::unique_ptr<std::vector<int8_t>> m_items;
     expr_if_int_ops_t* m__root;
     kaitai::kstruct* m__parent;
+    std::string m__raw_bytes;
 
 public:
+    uint64_t key() const { return m_key; }
     std::string skip() const { return m_skip; }
-    int16_t it() const { return m_it; }
-    int16_t boxed() const { return m_boxed; }
+    std::string bytes() const { return m_bytes; }
+    std::vector<int8_t>* items() const { return m_items.get(); }
     expr_if_int_ops_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+    std::string _raw_bytes() const { return m__raw_bytes; }
 };

@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['exports', 'kaitai-struct/KaitaiStream', './TermStrz'], factory);
+    define(['exports', 'kaitai-struct/KaitaiStream', './HelloWorld'], factory);
   } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
-    factory(exports, require('kaitai-struct/KaitaiStream'), require('./TermStrz'));
+    factory(exports, require('kaitai-struct/KaitaiStream'), require('./HelloWorld'));
   } else {
-    factory(root.TypeTernaryOpaque || (root.TypeTernaryOpaque = {}), root.KaitaiStream, root.TermStrz || (root.TermStrz = {}));
+    factory(root.TypeTernaryOpaque || (root.TypeTernaryOpaque = {}), root.KaitaiStream, root.HelloWorld || (root.HelloWorld = {}));
   }
-})(typeof self !== 'undefined' ? self : this, function (TypeTernaryOpaque_, KaitaiStream, TermStrz_) {
+})(typeof self !== 'undefined' ? self : this, function (TypeTernaryOpaque_, KaitaiStream, HelloWorld_) {
 var TypeTernaryOpaque = (function() {
   function TypeTernaryOpaque(_io, _parent, _root) {
     this._io = _io;
@@ -19,15 +19,15 @@ var TypeTernaryOpaque = (function() {
   }
   TypeTernaryOpaque.prototype._read = function() {
     if (!(this.isHack)) {
-      this._raw_difWoHack = this._io.readBytes(12);
+      this._raw_difWoHack = this._io.readBytes(1);
       var _io__raw_difWoHack = new KaitaiStream(this._raw_difWoHack);
-      this.difWoHack = new TermStrz_.TermStrz(_io__raw_difWoHack, null, null);
+      this.difWoHack = new HelloWorld_.HelloWorld(_io__raw_difWoHack, null, null);
     }
     if (this.isHack) {
-      this._raw__raw_difWithHack = this._io.readBytes(12);
+      this._raw__raw_difWithHack = this._io.readBytes(1);
       this._raw_difWithHack = KaitaiStream.processXorOne(this._raw__raw_difWithHack, 3);
       var _io__raw_difWithHack = new KaitaiStream(this._raw_difWithHack);
-      this.difWithHack = new TermStrz_.TermStrz(_io__raw_difWithHack, null, null);
+      this.difWithHack = new HelloWorld_.HelloWorld(_io__raw_difWithHack, null, null);
     }
   }
   Object.defineProperty(TypeTernaryOpaque.prototype, 'dif', {

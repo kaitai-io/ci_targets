@@ -77,6 +77,9 @@ public class Integers extends KaitaiStruct {
         this.sint32be = this._io.readS4be();
         this.sint64be = this._io.readS8be();
     }
+
+    public void _fetchInstances() {
+    }
     private byte[] magic1;
     private int uint8;
     private byte sint8;

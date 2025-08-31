@@ -28,6 +28,9 @@ public class ExprSizeofType0 extends KaitaiStruct {
     }
     private void _read() {
     }
+
+    public void _fetchInstances() {
+    }
     public static class Block extends KaitaiStruct {
         public static Block fromFile(String fileName) throws IOException {
             return new Block(new ByteBufferKaitaiStream(fileName));
@@ -52,6 +55,9 @@ public class ExprSizeofType0 extends KaitaiStruct {
             this.b = this._io.readU4le();
             this.c = this._io.readBytes(2);
         }
+
+        public void _fetchInstances() {
+        }
         private int a;
         private long b;
         private byte[] c;
@@ -67,8 +73,7 @@ public class ExprSizeofType0 extends KaitaiStruct {
     public Integer sizeofBlock() {
         if (this.sizeofBlock != null)
             return this.sizeofBlock;
-        int _tmp = (int) (7);
-        this.sizeofBlock = _tmp;
+        this.sizeofBlock = ((Number) (7)).intValue();
         return this.sizeofBlock;
     }
     private ExprSizeofType0 _root;

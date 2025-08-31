@@ -5,7 +5,7 @@ package test_formats
 import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 
 type OpaqueExternalType struct {
-	One *TermStrz
+	Hw *HelloWorld
 	_io *kaitai.Stream
 	_root *OpaqueExternalType
 	_parent kaitai.Struct
@@ -24,11 +24,11 @@ func (this *OpaqueExternalType) Read(io *kaitai.Stream, parent kaitai.Struct, ro
 	this._parent = parent
 	this._root = root
 
-	tmp1 := NewTermStrz()
+	tmp1 := NewHelloWorld()
 	err = tmp1.Read(this._io, nil, nil)
 	if err != nil {
 		return err
 	}
-	this.One = tmp1
+	this.Hw = tmp1
 	return err
 }

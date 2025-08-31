@@ -30,6 +30,10 @@ public class ImportsAbsAbs extends KaitaiStruct {
         this.one = this._io.readU1();
         this.two = new ImportedAndAbs(this._io);
     }
+
+    public void _fetchInstances() {
+        this.two._fetchInstances();
+    }
     private int one;
     private ImportedAndAbs two;
     private ImportsAbsAbs _root;

@@ -7,6 +7,8 @@ import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 type FloatToI struct {
 	SingleValue float32
 	DoubleValue float64
+	SingleValueIf float32
+	DoubleValueIf float64
 	_io *kaitai.Stream
 	_root *FloatToI
 	_parent kaitai.Struct
@@ -18,8 +20,14 @@ type FloatToI struct {
 	calcFloat3 float64
 	_f_calcFloat4 bool
 	calcFloat4 float64
+	_f_calcIf bool
+	calcIf float64
+	_f_calcIfI bool
+	calcIfI int
 	_f_doubleI bool
 	doubleI int
+	_f_doubleIfI bool
+	doubleIfI int
 	_f_float1I bool
 	float1I int
 	_f_float2I bool
@@ -30,6 +38,8 @@ type FloatToI struct {
 	float4I int
 	_f_singleI bool
 	singleI int
+	_f_singleIfI bool
+	singleIfI int
 }
 func NewFloatToI() *FloatToI {
 	return &FloatToI{
@@ -55,6 +65,20 @@ func (this *FloatToI) Read(io *kaitai.Stream, parent kaitai.Struct, root *FloatT
 		return err
 	}
 	this.DoubleValue = float64(tmp2)
+	if (true) {
+		tmp3, err := this._io.ReadF4be()
+		if err != nil {
+			return err
+		}
+		this.SingleValueIf = float32(tmp3)
+	}
+	if (true) {
+		tmp4, err := this._io.ReadF8be()
+		if err != nil {
+			return err
+		}
+		this.DoubleValueIf = float64(tmp4)
+	}
 	return err
 }
 func (this *FloatToI) CalcFloat1() (v float64, err error) {
@@ -89,6 +113,26 @@ func (this *FloatToI) CalcFloat4() (v float64, err error) {
 	this.calcFloat4 = float64(-2.7)
 	return this.calcFloat4, nil
 }
+func (this *FloatToI) CalcIf() (v float64, err error) {
+	if (this._f_calcIf) {
+		return this.calcIf, nil
+	}
+	this._f_calcIf = true
+	this.calcIf = float64(13.9)
+	return this.calcIf, nil
+}
+func (this *FloatToI) CalcIfI() (v int, err error) {
+	if (this._f_calcIfI) {
+		return this.calcIfI, nil
+	}
+	this._f_calcIfI = true
+	tmp5, err := this.CalcIf()
+	if err != nil {
+		return 0, err
+	}
+	this.calcIfI = int(int(tmp5))
+	return this.calcIfI, nil
+}
 func (this *FloatToI) DoubleI() (v int, err error) {
 	if (this._f_doubleI) {
 		return this.doubleI, nil
@@ -97,16 +141,24 @@ func (this *FloatToI) DoubleI() (v int, err error) {
 	this.doubleI = int(int(this.DoubleValue))
 	return this.doubleI, nil
 }
+func (this *FloatToI) DoubleIfI() (v int, err error) {
+	if (this._f_doubleIfI) {
+		return this.doubleIfI, nil
+	}
+	this._f_doubleIfI = true
+	this.doubleIfI = int(int(this.DoubleValueIf))
+	return this.doubleIfI, nil
+}
 func (this *FloatToI) Float1I() (v int, err error) {
 	if (this._f_float1I) {
 		return this.float1I, nil
 	}
 	this._f_float1I = true
-	tmp3, err := this.CalcFloat1()
+	tmp6, err := this.CalcFloat1()
 	if err != nil {
 		return 0, err
 	}
-	this.float1I = int(int(tmp3))
+	this.float1I = int(int(tmp6))
 	return this.float1I, nil
 }
 func (this *FloatToI) Float2I() (v int, err error) {
@@ -114,11 +166,11 @@ func (this *FloatToI) Float2I() (v int, err error) {
 		return this.float2I, nil
 	}
 	this._f_float2I = true
-	tmp4, err := this.CalcFloat2()
+	tmp7, err := this.CalcFloat2()
 	if err != nil {
 		return 0, err
 	}
-	this.float2I = int(int(tmp4))
+	this.float2I = int(int(tmp7))
 	return this.float2I, nil
 }
 func (this *FloatToI) Float3I() (v int, err error) {
@@ -126,11 +178,11 @@ func (this *FloatToI) Float3I() (v int, err error) {
 		return this.float3I, nil
 	}
 	this._f_float3I = true
-	tmp5, err := this.CalcFloat3()
+	tmp8, err := this.CalcFloat3()
 	if err != nil {
 		return 0, err
 	}
-	this.float3I = int(int(tmp5))
+	this.float3I = int(int(tmp8))
 	return this.float3I, nil
 }
 func (this *FloatToI) Float4I() (v int, err error) {
@@ -138,11 +190,11 @@ func (this *FloatToI) Float4I() (v int, err error) {
 		return this.float4I, nil
 	}
 	this._f_float4I = true
-	tmp6, err := this.CalcFloat4()
+	tmp9, err := this.CalcFloat4()
 	if err != nil {
 		return 0, err
 	}
-	this.float4I = int(int(tmp6))
+	this.float4I = int(int(tmp9))
 	return this.float4I, nil
 }
 func (this *FloatToI) SingleI() (v int, err error) {
@@ -152,4 +204,12 @@ func (this *FloatToI) SingleI() (v int, err error) {
 	this._f_singleI = true
 	this.singleI = int(int(this.SingleValue))
 	return this.singleI, nil
+}
+func (this *FloatToI) SingleIfI() (v int, err error) {
+	if (this._f_singleIfI) {
+		return this.singleIfI, nil
+	}
+	this._f_singleIfI = true
+	this.singleIfI = int(int(this.SingleValueIf))
+	return this.singleIfI, nil
 }

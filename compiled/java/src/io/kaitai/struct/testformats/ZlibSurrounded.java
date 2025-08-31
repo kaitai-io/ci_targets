@@ -29,10 +29,14 @@ public class ZlibSurrounded extends KaitaiStruct {
     private void _read() {
         this.pre = this._io.readBytes(4);
         this._raw__raw_zlib = this._io.readBytes(12);
-        this._raw_zlib = KaitaiStream.processZlib(_raw__raw_zlib);
-        KaitaiStream _io__raw_zlib = new ByteBufferKaitaiStream(_raw_zlib);
+        this._raw_zlib = KaitaiStream.processZlib(this._raw__raw_zlib);
+        KaitaiStream _io__raw_zlib = new ByteBufferKaitaiStream(this._raw_zlib);
         this.zlib = new Inflated(_io__raw_zlib, this, _root);
         this.post = this._io.readBytes(4);
+    }
+
+    public void _fetchInstances() {
+        this.zlib._fetchInstances();
     }
     public static class Inflated extends KaitaiStruct {
         public static Inflated fromFile(String fileName) throws IOException {
@@ -55,6 +59,9 @@ public class ZlibSurrounded extends KaitaiStruct {
         }
         private void _read() {
             this.num = this._io.readS4le();
+        }
+
+        public void _fetchInstances() {
         }
         private int num;
         private ZlibSurrounded _root;

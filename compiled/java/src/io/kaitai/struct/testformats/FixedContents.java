@@ -37,6 +37,9 @@ public class FixedContents extends KaitaiStruct {
             throw new KaitaiStream.ValidationNotEqualError(new byte[] { -1, -1 }, this.highBit8, this._io, "/seq/1");
         }
     }
+
+    public void _fetchInstances() {
+    }
     private byte[] normal;
     private byte[] highBit8;
     private FixedContents _root;

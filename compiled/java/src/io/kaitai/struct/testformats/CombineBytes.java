@@ -31,6 +31,9 @@ public class CombineBytes extends KaitaiStruct {
         this.bytesLimit = this._io.readBytes(4);
         this.bytesEos = this._io.readBytesFull();
     }
+
+    public void _fetchInstances() {
+    }
     private byte[] bytesCalc;
     public byte[] bytesCalc() {
         if (this.bytesCalc != null)

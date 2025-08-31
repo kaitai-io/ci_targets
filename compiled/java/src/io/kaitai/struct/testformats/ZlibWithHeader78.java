@@ -28,7 +28,10 @@ public class ZlibWithHeader78 extends KaitaiStruct {
     }
     private void _read() {
         this._raw_data = this._io.readBytesFull();
-        this.data = KaitaiStream.processZlib(_raw_data);
+        this.data = KaitaiStream.processZlib(this._raw_data);
+    }
+
+    public void _fetchInstances() {
     }
     private byte[] data;
     private ZlibWithHeader78 _root;

@@ -31,6 +31,9 @@ public class ExprBytesCmp extends KaitaiStruct {
         this.one = this._io.readBytes(1);
         this.two = this._io.readBytes(3);
     }
+
+    public void _fetchInstances() {
+    }
     private byte[] ack;
     public byte[] ack() {
         if (this.ack != null)
@@ -56,64 +59,56 @@ public class ExprBytesCmp extends KaitaiStruct {
     public Boolean isEq() {
         if (this.isEq != null)
             return this.isEq;
-        boolean _tmp = (boolean) (Arrays.equals(two(), ack()));
-        this.isEq = _tmp;
+        this.isEq = Arrays.equals(two(), ack());
         return this.isEq;
     }
     private Boolean isGe;
     public Boolean isGe() {
         if (this.isGe != null)
             return this.isGe;
-        boolean _tmp = (boolean) ((KaitaiStream.byteArrayCompare(two(), ack2()) >= 0));
-        this.isGe = _tmp;
+        this.isGe = (KaitaiStream.byteArrayCompare(two(), ack2()) >= 0);
         return this.isGe;
     }
     private Boolean isGt;
     public Boolean isGt() {
         if (this.isGt != null)
             return this.isGt;
-        boolean _tmp = (boolean) ((KaitaiStream.byteArrayCompare(two(), ack2()) > 0));
-        this.isGt = _tmp;
+        this.isGt = (KaitaiStream.byteArrayCompare(two(), ack2()) > 0);
         return this.isGt;
     }
     private Boolean isGt2;
     public Boolean isGt2() {
         if (this.isGt2 != null)
             return this.isGt2;
-        boolean _tmp = (boolean) ((KaitaiStream.byteArrayCompare(hiVal(), two()) > 0));
-        this.isGt2 = _tmp;
+        this.isGt2 = (KaitaiStream.byteArrayCompare(hiVal(), two()) > 0);
         return this.isGt2;
     }
     private Boolean isLe;
     public Boolean isLe() {
         if (this.isLe != null)
             return this.isLe;
-        boolean _tmp = (boolean) ((KaitaiStream.byteArrayCompare(two(), ack2()) <= 0));
-        this.isLe = _tmp;
+        this.isLe = (KaitaiStream.byteArrayCompare(two(), ack2()) <= 0);
         return this.isLe;
     }
     private Boolean isLt;
     public Boolean isLt() {
         if (this.isLt != null)
             return this.isLt;
-        boolean _tmp = (boolean) ((KaitaiStream.byteArrayCompare(two(), ack2()) < 0));
-        this.isLt = _tmp;
+        this.isLt = (KaitaiStream.byteArrayCompare(two(), ack2()) < 0);
         return this.isLt;
     }
     private Boolean isLt2;
     public Boolean isLt2() {
         if (this.isLt2 != null)
             return this.isLt2;
-        boolean _tmp = (boolean) ((KaitaiStream.byteArrayCompare(one(), two()) < 0));
-        this.isLt2 = _tmp;
+        this.isLt2 = (KaitaiStream.byteArrayCompare(one(), two()) < 0);
         return this.isLt2;
     }
     private Boolean isNe;
     public Boolean isNe() {
         if (this.isNe != null)
             return this.isNe;
-        boolean _tmp = (boolean) (!Arrays.equals(two(), ack()));
-        this.isNe = _tmp;
+        this.isNe = !Arrays.equals(two(), ack());
         return this.isNe;
     }
     private byte[] one;

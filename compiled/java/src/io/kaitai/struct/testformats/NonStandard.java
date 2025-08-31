@@ -30,7 +30,7 @@ public class NonStandard extends KaitaiStruct {
         this.foo = this._io.readU1();
         switch (foo()) {
         case 42: {
-            this.bar = (long) (this._io.readU2le());
+            this.bar = ((Number) (this._io.readU2le())).longValue();
             break;
         }
         case 43: {
@@ -38,6 +38,18 @@ public class NonStandard extends KaitaiStruct {
             break;
         }
         }
+    }
+
+    public void _fetchInstances() {
+        switch (foo()) {
+        case 42: {
+            break;
+        }
+        case 43: {
+            break;
+        }
+        }
+        pi();
     }
     private Integer pi;
     public Integer pi() {
@@ -53,8 +65,7 @@ public class NonStandard extends KaitaiStruct {
     public Integer vi() {
         if (this.vi != null)
             return this.vi;
-        int _tmp = (int) (foo());
-        this.vi = _tmp;
+        this.vi = ((Number) (foo())).intValue();
         return this.vi;
     }
     private int foo;

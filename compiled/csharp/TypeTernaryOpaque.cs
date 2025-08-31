@@ -22,27 +22,27 @@ namespace Kaitai
         private void _read()
         {
             if (!(IsHack)) {
-                __raw_difWoHack = m_io.ReadBytes(12);
+                __raw_difWoHack = m_io.ReadBytes(1);
                 var io___raw_difWoHack = new KaitaiStream(__raw_difWoHack);
-                _difWoHack = new TermStrz(io___raw_difWoHack);
+                _difWoHack = new HelloWorld(io___raw_difWoHack);
             }
             if (IsHack) {
-                __raw__raw_difWithHack = m_io.ReadBytes(12);
+                __raw__raw_difWithHack = m_io.ReadBytes(1);
                 __raw_difWithHack = m_io.ProcessXor(__raw__raw_difWithHack, 3);
                 var io___raw_difWithHack = new KaitaiStream(__raw_difWithHack);
-                _difWithHack = new TermStrz(io___raw_difWithHack);
+                _difWithHack = new HelloWorld(io___raw_difWithHack);
             }
         }
         private bool f_dif;
-        private TermStrz _dif;
-        public TermStrz Dif
+        private HelloWorld _dif;
+        public HelloWorld Dif
         {
             get
             {
                 if (f_dif)
                     return _dif;
                 f_dif = true;
-                _dif = (TermStrz) ((!(IsHack) ? DifWoHack : DifWithHack));
+                _dif = (HelloWorld) ((!(IsHack) ? DifWoHack : DifWithHack));
                 return _dif;
             }
         }
@@ -59,15 +59,15 @@ namespace Kaitai
                 return _isHack;
             }
         }
-        private TermStrz _difWoHack;
-        private TermStrz _difWithHack;
+        private HelloWorld _difWoHack;
+        private HelloWorld _difWithHack;
         private TypeTernaryOpaque m_root;
         private KaitaiStruct m_parent;
         private byte[] __raw_difWoHack;
         private byte[] __raw_difWithHack;
         private byte[] __raw__raw_difWithHack;
-        public TermStrz DifWoHack { get { return _difWoHack; } }
-        public TermStrz DifWithHack { get { return _difWithHack; } }
+        public HelloWorld DifWoHack { get { return _difWoHack; } }
+        public HelloWorld DifWithHack { get { return _difWithHack; } }
         public TypeTernaryOpaque M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawDifWoHack { get { return __raw_difWoHack; } }

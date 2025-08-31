@@ -51,6 +51,9 @@ public class EnumLongRangeU extends KaitaiStruct {
         this.f3 = Constants.byId(this._io.readU8be());
         this.f4 = Constants.byId(this._io.readU8be());
     }
+
+    public void _fetchInstances() {
+    }
     private Constants f1;
     private Constants f2;
     private Constants f3;

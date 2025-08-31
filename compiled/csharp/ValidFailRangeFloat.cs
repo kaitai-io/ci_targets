@@ -20,13 +20,13 @@ namespace Kaitai
         private void _read()
         {
             _foo = m_io.ReadF4le();
-            if (!(_foo >= 0.2))
+            if (!(_foo >= 0.25))
             {
-                throw new ValidationLessThanError(0.2, _foo, m_io, "/seq/0");
+                throw new ValidationLessThanError(0.25, _foo, m_io, "/seq/0");
             }
-            if (!(_foo <= 0.4))
+            if (!(_foo <= 0.375))
             {
-                throw new ValidationGreaterThanError(0.4, _foo, m_io, "/seq/0");
+                throw new ValidationGreaterThanError(0.375, _foo, m_io, "/seq/0");
             }
         }
         private float _foo;

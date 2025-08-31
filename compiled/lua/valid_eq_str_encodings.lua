@@ -19,22 +19,22 @@ function ValidEqStrEncodings:_read()
   self.len_of_1 = self._io:read_u2le()
   self.str1 = str_decode.decode(self._io:read_bytes(self.len_of_1), "ASCII")
   if not(self.str1 == "Some ASCII") then
-    error("not equal, expected " ..  "Some ASCII" .. ", but got " .. self.str1)
+    error("not equal, expected " .. "Some ASCII" .. ", but got " .. self.str1)
   end
   self.len_of_2 = self._io:read_u2le()
   self.str2 = str_decode.decode(self._io:read_bytes(self.len_of_2), "UTF-8")
   if not(self.str2 == "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}") then
-    error("not equal, expected " ..  "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}" .. ", but got " .. self.str2)
+    error("not equal, expected " .. "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}" .. ", but got " .. self.str2)
   end
   self.len_of_3 = self._io:read_u2le()
   self.str3 = str_decode.decode(self._io:read_bytes(self.len_of_3), "Shift_JIS")
   if not(self.str3 == "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}") then
-    error("not equal, expected " ..  "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}" .. ", but got " .. self.str3)
+    error("not equal, expected " .. "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}" .. ", but got " .. self.str3)
   end
   self.len_of_4 = self._io:read_u2le()
   self.str4 = str_decode.decode(self._io:read_bytes(self.len_of_4), "IBM437")
   if not(self.str4 == "\u{2591}\u{2592}\u{2593}") then
-    error("not equal, expected " ..  "\u{2591}\u{2592}\u{2593}" .. ", but got " .. self.str4)
+    error("not equal, expected " .. "\u{2591}\u{2592}\u{2593}" .. ", but got " .. self.str4)
   end
 end
 

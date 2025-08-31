@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PositionInSeq extends KaitaiStruct {
     public static PositionInSeq fromFile(String fileName) throws IOException {
@@ -33,6 +34,13 @@ public class PositionInSeq extends KaitaiStruct {
             this.numbers.add(this._io.readU1());
         }
     }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.numbers.size(); i++) {
+        }
+        header();
+        this.header._fetchInstances();
+    }
     public static class HeaderObj extends KaitaiStruct {
         public static HeaderObj fromFile(String fileName) throws IOException {
             return new HeaderObj(new ByteBufferKaitaiStream(fileName));
@@ -55,6 +63,9 @@ public class PositionInSeq extends KaitaiStruct {
         private void _read() {
             this.qtyNumbers = this._io.readU4le();
         }
+
+        public void _fetchInstances() {
+        }
         private long qtyNumbers;
         private PositionInSeq _root;
         private PositionInSeq _parent;
@@ -72,10 +83,10 @@ public class PositionInSeq extends KaitaiStruct {
         this._io.seek(_pos);
         return this.header;
     }
-    private ArrayList<Integer> numbers;
+    private List<Integer> numbers;
     private PositionInSeq _root;
     private KaitaiStruct _parent;
-    public ArrayList<Integer> numbers() { return numbers; }
+    public List<Integer> numbers() { return numbers; }
     public PositionInSeq _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

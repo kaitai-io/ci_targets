@@ -35,6 +35,9 @@ public class ValidFailRangeBytes extends KaitaiStruct {
             throw new KaitaiStream.ValidationGreaterThanError(new byte[] { 80, 49 }, this.foo, this._io, "/seq/0");
         }
     }
+
+    public void _fetchInstances() {
+    }
     private byte[] foo;
     private ValidFailRangeBytes _root;
     private KaitaiStruct _parent;

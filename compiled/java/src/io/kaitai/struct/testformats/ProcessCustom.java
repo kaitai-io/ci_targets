@@ -29,14 +29,17 @@ public class ProcessCustom extends KaitaiStruct {
     private void _read() {
         this._raw_buf1 = this._io.readBytes(5);
         MyCustomFx _process__raw_buf1 = new MyCustomFx(7, true, new byte[] { 32, 48, 64 });
-        this.buf1 = _process__raw_buf1.decode(_raw_buf1);
+        this.buf1 = _process__raw_buf1.decode(this._raw_buf1);
         this._raw_buf2 = this._io.readBytes(5);
         nested.deeply.CustomFx _process__raw_buf2 = new nested.deeply.CustomFx(7);
-        this.buf2 = _process__raw_buf2.decode(_raw_buf2);
+        this.buf2 = _process__raw_buf2.decode(this._raw_buf2);
         this.key = this._io.readU1();
         this._raw_buf3 = this._io.readBytes(5);
         MyCustomFx _process__raw_buf3 = new MyCustomFx(key(), false, new byte[] { 0 });
-        this.buf3 = _process__raw_buf3.decode(_raw_buf3);
+        this.buf3 = _process__raw_buf3.decode(this._raw_buf3);
+    }
+
+    public void _fetchInstances() {
     }
     private byte[] buf1;
     private byte[] buf2;

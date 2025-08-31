@@ -30,12 +30,15 @@ public class Imports0 extends KaitaiStruct {
         this.two = this._io.readU1();
         this.hw = new HelloWorld(this._io);
     }
+
+    public void _fetchInstances() {
+        this.hw._fetchInstances();
+    }
     private Integer hwOne;
     public Integer hwOne() {
         if (this.hwOne != null)
             return this.hwOne;
-        int _tmp = (int) (hw().one());
-        this.hwOne = _tmp;
+        this.hwOne = ((Number) (hw().one())).intValue();
         return this.hwOne;
     }
     private int two;

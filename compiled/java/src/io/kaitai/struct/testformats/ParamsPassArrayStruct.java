@@ -6,6 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -33,6 +34,12 @@ public class ParamsPassArrayStruct extends KaitaiStruct {
         this.two = new Bar(this._io, this, _root);
         this.passStructs = new StructType(this._io, this, _root, oneTwo());
     }
+
+    public void _fetchInstances() {
+        this.one._fetchInstances();
+        this.two._fetchInstances();
+        this.passStructs._fetchInstances();
+    }
     public static class Bar extends KaitaiStruct {
         public static Bar fromFile(String fileName) throws IOException {
             return new Bar(new ByteBufferKaitaiStream(fileName));
@@ -54,6 +61,9 @@ public class ParamsPassArrayStruct extends KaitaiStruct {
         }
         private void _read() {
             this.b = this._io.readU1();
+        }
+
+        public void _fetchInstances() {
         }
         private int b;
         private ParamsPassArrayStruct _root;
@@ -84,6 +94,9 @@ public class ParamsPassArrayStruct extends KaitaiStruct {
         private void _read() {
             this.f = this._io.readU1();
         }
+
+        public void _fetchInstances() {
+        }
         private int f;
         private ParamsPassArrayStruct _root;
         private ParamsPassArrayStruct _parent;
@@ -93,15 +106,15 @@ public class ParamsPassArrayStruct extends KaitaiStruct {
     }
     public static class StructType extends KaitaiStruct {
 
-        public StructType(KaitaiStream _io, ArrayList<KaitaiStruct> structs) {
+        public StructType(KaitaiStream _io, List<KaitaiStruct> structs) {
             this(_io, null, null, structs);
         }
 
-        public StructType(KaitaiStream _io, ParamsPassArrayStruct _parent, ArrayList<KaitaiStruct> structs) {
+        public StructType(KaitaiStream _io, ParamsPassArrayStruct _parent, List<KaitaiStruct> structs) {
             this(_io, _parent, null, structs);
         }
 
-        public StructType(KaitaiStream _io, ParamsPassArrayStruct _parent, ParamsPassArrayStruct _root, ArrayList<KaitaiStruct> structs) {
+        public StructType(KaitaiStream _io, ParamsPassArrayStruct _parent, ParamsPassArrayStruct _root, List<KaitaiStruct> structs) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
@@ -110,15 +123,18 @@ public class ParamsPassArrayStruct extends KaitaiStruct {
         }
         private void _read() {
         }
-        private ArrayList<KaitaiStruct> structs;
+
+        public void _fetchInstances() {
+        }
+        private List<KaitaiStruct> structs;
         private ParamsPassArrayStruct _root;
         private ParamsPassArrayStruct _parent;
-        public ArrayList<KaitaiStruct> structs() { return structs; }
+        public List<KaitaiStruct> structs() { return structs; }
         public ParamsPassArrayStruct _root() { return _root; }
         public ParamsPassArrayStruct _parent() { return _parent; }
     }
-    private ArrayList<KaitaiStruct> oneTwo;
-    public ArrayList<KaitaiStruct> oneTwo() {
+    private List<KaitaiStruct> oneTwo;
+    public List<KaitaiStruct> oneTwo() {
         if (this.oneTwo != null)
             return this.oneTwo;
         this.oneTwo = new ArrayList<KaitaiStruct>(Arrays.asList(one(), two()));

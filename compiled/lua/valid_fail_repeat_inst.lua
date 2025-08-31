@@ -33,7 +33,7 @@ function ValidFailRepeatInst.property.inst:get()
   while not self._io:is_eof() do
     self._m_inst[i + 1] = self._io:read_u4be()
     if not(self._m_inst[i + 1] == 305419896) then
-      error("not equal, expected " ..  305419896 .. ", but got " .. self._m_inst[i + 1])
+      error("not equal, expected " .. 305419896 .. ", but got " .. self._m_inst[i + 1])
     end
     i = i + 1
   end

@@ -32,6 +32,13 @@ public class IntegersMinMax extends KaitaiStruct {
         this.signedMin = new Signed(this._io, this, _root);
         this.signedMax = new Signed(this._io, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.unsignedMin._fetchInstances();
+        this.unsignedMax._fetchInstances();
+        this.signedMin._fetchInstances();
+        this.signedMax._fetchInstances();
+    }
     public static class Signed extends KaitaiStruct {
         public static Signed fromFile(String fileName) throws IOException {
             return new Signed(new ByteBufferKaitaiStream(fileName));
@@ -59,6 +66,9 @@ public class IntegersMinMax extends KaitaiStruct {
             this.s2be = this._io.readS2be();
             this.s4be = this._io.readS4be();
             this.s8be = this._io.readS8be();
+        }
+
+        public void _fetchInstances() {
         }
         private byte s1;
         private short s2le;
@@ -106,6 +116,9 @@ public class IntegersMinMax extends KaitaiStruct {
             this.u2be = this._io.readU2be();
             this.u4be = this._io.readU4be();
             this.u8be = this._io.readU8be();
+        }
+
+        public void _fetchInstances() {
         }
         private int u1;
         private int u2le;

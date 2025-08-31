@@ -28,6 +28,11 @@ public class PositionToEnd extends KaitaiStruct {
     }
     private void _read() {
     }
+
+    public void _fetchInstances() {
+        index();
+        this.index._fetchInstances();
+    }
     public static class IndexObj extends KaitaiStruct {
         public static IndexObj fromFile(String fileName) throws IOException {
             return new IndexObj(new ByteBufferKaitaiStream(fileName));
@@ -50,6 +55,9 @@ public class PositionToEnd extends KaitaiStruct {
         private void _read() {
             this.foo = this._io.readU4le();
             this.bar = this._io.readU4le();
+        }
+
+        public void _fetchInstances() {
         }
         private long foo;
         private long bar;

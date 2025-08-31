@@ -30,6 +30,11 @@ public class ImportsParamsDefEnumImported extends KaitaiStruct {
         this.one = new EnumImportSeq(this._io);
         this.two = new ParamsDefEnumImported(this._io, one().pet1(), one().pet2());
     }
+
+    public void _fetchInstances() {
+        this.one._fetchInstances();
+        this.two._fetchInstances();
+    }
     private EnumImportSeq one;
     private ParamsDefEnumImported two;
     private ImportsParamsDefEnumImported _root;

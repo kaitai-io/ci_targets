@@ -7,7 +7,7 @@ class opaque_external_type_t;
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
 #include <memory>
-#include "term_strz.h"
+#include "hello_world.h"
 
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
@@ -27,12 +27,12 @@ public:
     ~opaque_external_type_t();
 
 private:
-    std::unique_ptr<term_strz_t> m_one;
+    std::unique_ptr<hello_world_t> m_hw;
     opaque_external_type_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    term_strz_t* one() const { return m_one.get(); }
+    hello_world_t* hw() const { return m_hw.get(); }
     opaque_external_type_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

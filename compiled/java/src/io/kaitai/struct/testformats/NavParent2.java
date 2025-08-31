@@ -8,6 +8,7 @@ import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 public class NavParent2 extends KaitaiStruct {
     public static NavParent2 fromFile(String fileName) throws IOException {
@@ -36,6 +37,12 @@ public class NavParent2 extends KaitaiStruct {
             this.tags.add(new Tag(this._io, this, _root));
         }
     }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.tags.size(); i++) {
+            this.tags.get(((Number) (i)).intValue())._fetchInstances();
+        }
+    }
     public static class Tag extends KaitaiStruct {
         public static Tag fromFile(String fileName) throws IOException {
             return new Tag(new ByteBufferKaitaiStream(fileName));
@@ -60,6 +67,16 @@ public class NavParent2 extends KaitaiStruct {
             this.ofs = this._io.readU4le();
             this.numItems = this._io.readU4le();
         }
+
+        public void _fetchInstances() {
+            tagContent();
+            switch (name()) {
+            case "RAHC": {
+                this.tagContent._fetchInstances();
+                break;
+            }
+            }
+        }
         public static class TagChar extends KaitaiStruct {
             public static TagChar fromFile(String fileName) throws IOException {
                 return new TagChar(new ByteBufferKaitaiStream(fileName));
@@ -81,6 +98,9 @@ public class NavParent2 extends KaitaiStruct {
             }
             private void _read() {
                 this.content = new String(this._io.readBytes(_parent().numItems()), StandardCharsets.US_ASCII);
+            }
+
+            public void _fetchInstances() {
             }
             private String content;
             private NavParent2 _root;
@@ -118,12 +138,12 @@ public class NavParent2 extends KaitaiStruct {
     }
     private long ofsTags;
     private long numTags;
-    private ArrayList<Tag> tags;
+    private List<Tag> tags;
     private NavParent2 _root;
     private KaitaiStruct _parent;
     public long ofsTags() { return ofsTags; }
     public long numTags() { return numTags; }
-    public ArrayList<Tag> tags() { return tags; }
+    public List<Tag> tags() { return tags; }
     public NavParent2 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

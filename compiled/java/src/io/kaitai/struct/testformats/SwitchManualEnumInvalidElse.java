@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 public class SwitchManualEnumInvalidElse extends KaitaiStruct {
     public static SwitchManualEnumInvalidElse fromFile(String fileName) throws IOException {
@@ -38,6 +39,12 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct {
                 this.opcodes.add(new Opcode(this._io, this, _root));
                 i++;
             }
+        }
+    }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.opcodes.size(); i++) {
+            this.opcodes.get(((Number) (i)).intValue())._fetchInstances();
         }
     }
     public static class Opcode extends KaitaiStruct {
@@ -98,6 +105,30 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct {
                 }
             }
         }
+
+        public void _fetchInstances() {
+            {
+                CodeEnum on = code();
+                if (on != null) {
+                    switch (code()) {
+                    case INTVAL: {
+                        ((Intval) (this.body))._fetchInstances();
+                        break;
+                    }
+                    case STRVAL: {
+                        ((Strval) (this.body))._fetchInstances();
+                        break;
+                    }
+                    default: {
+                        ((Defval) (this.body))._fetchInstances();
+                        break;
+                    }
+                    }
+                } else {
+                    ((Defval) (this.body))._fetchInstances();
+                }
+            }
+        }
         public static class Defval extends KaitaiStruct {
             public static Defval fromFile(String fileName) throws IOException {
                 return new Defval(new ByteBufferKaitaiStream(fileName));
@@ -119,12 +150,14 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct {
             }
             private void _read() {
             }
+
+            public void _fetchInstances() {
+            }
             private Byte value;
             public Byte value() {
                 if (this.value != null)
                     return this.value;
-                byte _tmp = (byte) (123);
-                this.value = _tmp;
+                this.value = ((byte) 123);
                 return this.value;
             }
             private SwitchManualEnumInvalidElse _root;
@@ -153,6 +186,9 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct {
             }
             private void _read() {
                 this.value = this._io.readU1();
+            }
+
+            public void _fetchInstances() {
             }
             private int value;
             private SwitchManualEnumInvalidElse _root;
@@ -183,6 +219,9 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct {
             private void _read() {
                 this.value = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.US_ASCII);
             }
+
+            public void _fetchInstances() {
+            }
             private String value;
             private SwitchManualEnumInvalidElse _root;
             private SwitchManualEnumInvalidElse.Opcode _parent;
@@ -199,10 +238,10 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct {
         public SwitchManualEnumInvalidElse _root() { return _root; }
         public SwitchManualEnumInvalidElse _parent() { return _parent; }
     }
-    private ArrayList<Opcode> opcodes;
+    private List<Opcode> opcodes;
     private SwitchManualEnumInvalidElse _root;
     private KaitaiStruct _parent;
-    public ArrayList<Opcode> opcodes() { return opcodes; }
+    public List<Opcode> opcodes() { return opcodes; }
     public SwitchManualEnumInvalidElse _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

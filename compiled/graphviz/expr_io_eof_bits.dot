@@ -1,0 +1,20 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__expr_io_eof_bits {
+		label="ExprIoEofBits";
+		graph[style=dotted];
+
+		expr_io_eof_bits__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="foo_pos">0</TD><TD PORT="foo_size">20b</TD><TD>b20be</TD><TD PORT="foo_type">foo</TD></TR>
+			<TR><TD PORT="bar_pos">2:4</TD><TD PORT="bar_size">4b</TD><TD>b4be</TD><TD PORT="bar_type">bar</TD></TR>
+			<TR><TD COLSPAN="4" PORT="bar__if">if !(_io.eof?)</TD></TR>
+			<TR><TD PORT="baz_pos">3</TD><TD PORT="baz_size">2</TD><TD>b16be</TD><TD PORT="baz_type">baz</TD></TR>
+			<TR><TD COLSPAN="4" PORT="baz__if">if !(_io.eof?)</TD></TR>
+			<TR><TD PORT="align_pos">5</TD><TD PORT="align_size">0</TD><TD></TD><TD PORT="align_type">align</TD></TR>
+			<TR><TD PORT="qux_pos">5</TD><TD PORT="qux_size">2</TD><TD>b16be</TD><TD PORT="qux_type">qux</TD></TR>
+			<TR><TD COLSPAN="4" PORT="qux__if">if !(_io.eof?)</TD></TR>
+		</TABLE>>];
+	}
+}

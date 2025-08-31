@@ -29,6 +29,10 @@ public class NavParentFalse2 extends KaitaiStruct {
     private void _read() {
         this.parentless = new Child(this._io, null, _root);
     }
+
+    public void _fetchInstances() {
+        this.parentless._fetchInstances();
+    }
     public static class Child extends KaitaiStruct {
         public static Child fromFile(String fileName) throws IOException {
             return new Child(new ByteBufferKaitaiStream(fileName));
@@ -50,6 +54,9 @@ public class NavParentFalse2 extends KaitaiStruct {
         }
         private void _read() {
             this.foo = this._io.readU1();
+        }
+
+        public void _fetchInstances() {
         }
         private int foo;
         private NavParentFalse2 _root;

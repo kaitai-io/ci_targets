@@ -13,26 +13,31 @@ class ExprIfIntOps < Kaitai::Struct::Struct
   end
 
   def _read
-    @skip = @_io.read_bytes(2)
     if true
-      @it = @_io.read_s2le
+      @key = @_io.read_u8le
     end
-    if true
-      @boxed = @_io.read_s2le
-    end
+    @skip = @_io.read_bytes(8)
+    @_raw_bytes = @_io.read_bytes(8)
+    @bytes = Kaitai::Struct::Stream::process_xor_one(@_raw_bytes, key)
+    @items = []
+    (4).times { |i|
+      @items << @_io.read_s1
+    }
     self
   end
-  def is_eq_boxed
-    return @is_eq_boxed unless @is_eq_boxed.nil?
-    @is_eq_boxed = it == boxed
-    @is_eq_boxed
+  def bytes_sub_key
+    return @bytes_sub_key unless @bytes_sub_key.nil?
+    @bytes_sub_key = bytes[key].ord
+    @bytes_sub_key
   end
-  def is_eq_prim
-    return @is_eq_prim unless @is_eq_prim.nil?
-    @is_eq_prim = it == 16705
-    @is_eq_prim
+  def items_sub_key
+    return @items_sub_key unless @items_sub_key.nil?
+    @items_sub_key = items[key]
+    @items_sub_key
   end
+  attr_reader :key
   attr_reader :skip
-  attr_reader :it
-  attr_reader :boxed
+  attr_reader :bytes
+  attr_reader :items
+  attr_reader :_raw_bytes
 end

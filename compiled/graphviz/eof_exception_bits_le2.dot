@@ -1,0 +1,14 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__eof_exception_bits_le2 {
+		label="EofExceptionBitsLe2";
+		graph[style=dotted];
+
+		eof_exception_bits_le2__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="pre_bits_pos">0</TD><TD PORT="pre_bits_size">1</TD><TD>b8le</TD><TD PORT="pre_bits_type">pre_bits</TD></TR>
+			<TR><TD PORT="fail_bits_pos">1</TD><TD PORT="fail_bits_size">17b</TD><TD>b17le</TD><TD PORT="fail_bits_type">fail_bits</TD></TR>
+		</TABLE>>];
+	}
+}

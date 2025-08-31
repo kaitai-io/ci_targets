@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ImportsParamsDefArrayUsertypeImported extends KaitaiStruct {
     public static ImportsParamsDefArrayUsertypeImported fromFile(String fileName) throws IOException {
@@ -34,11 +35,18 @@ public class ImportsParamsDefArrayUsertypeImported extends KaitaiStruct {
         }
         this.two = new ParamsDefArrayUsertypeImported(this._io, hws());
     }
-    private ArrayList<HelloWorld> hws;
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.hws.size(); i++) {
+            this.hws.get(((Number) (i)).intValue())._fetchInstances();
+        }
+        this.two._fetchInstances();
+    }
+    private List<HelloWorld> hws;
     private ParamsDefArrayUsertypeImported two;
     private ImportsParamsDefArrayUsertypeImported _root;
     private KaitaiStruct _parent;
-    public ArrayList<HelloWorld> hws() { return hws; }
+    public List<HelloWorld> hws() { return hws; }
     public ParamsDefArrayUsertypeImported two() { return two; }
     public ImportsParamsDefArrayUsertypeImported _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }

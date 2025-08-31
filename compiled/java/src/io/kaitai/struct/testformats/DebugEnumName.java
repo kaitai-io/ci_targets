@@ -6,15 +6,16 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.ArrayList;
 
-public class DebugEnumName extends KaitaiStruct {
+public class DebugEnumName extends KaitaiStruct.ReadOnly {
     public Map<String, Integer> _attrStart = new HashMap<String, Integer>();
     public Map<String, Integer> _attrEnd = new HashMap<String, Integer>();
-    public Map<String, ArrayList<Integer>> _arrStart = new HashMap<String, ArrayList<Integer>>();
-    public Map<String, ArrayList<Integer>> _arrEnd = new HashMap<String, ArrayList<Integer>>();
+    public Map<String, List<Integer>> _arrStart = new HashMap<String, List<Integer>>();
+    public Map<String, List<Integer>> _arrEnd = new HashMap<String, List<Integer>>();
 
     public static DebugEnumName fromFile(String fileName) throws IOException {
         return new DebugEnumName(new ByteBufferKaitaiStream(fileName));
@@ -53,11 +54,11 @@ public class DebugEnumName extends KaitaiStruct {
         this(_io, null, null);
     }
 
-    public DebugEnumName(KaitaiStream _io, KaitaiStruct _parent) {
+    public DebugEnumName(KaitaiStream _io, KaitaiStruct.ReadOnly _parent) {
         this(_io, _parent, null);
     }
 
-    public DebugEnumName(KaitaiStream _io, KaitaiStruct _parent, DebugEnumName _root) {
+    public DebugEnumName(KaitaiStream _io, KaitaiStruct.ReadOnly _parent, DebugEnumName _root) {
         super(_io);
         this._parent = _parent;
         this._root = _root == null ? this : _root;
@@ -70,7 +71,7 @@ public class DebugEnumName extends KaitaiStruct {
         this.arrayOfInts = new ArrayList<TestEnum2>();
         for (int i = 0; i < 1; i++) {
             {
-                ArrayList<Integer> _posList = _arrStart.get("arrayOfInts");
+                List<Integer> _posList = _arrStart.get("arrayOfInts");
                 if (_posList == null) {
                     _posList = new ArrayList<Integer>();
                     _arrStart.put("arrayOfInts", _posList);
@@ -79,7 +80,7 @@ public class DebugEnumName extends KaitaiStruct {
             }
             this.arrayOfInts.add(TestEnum2.byId(this._io.readU1()));
             {
-                ArrayList<Integer> _posList = _arrEnd.get("arrayOfInts");
+                List<Integer> _posList = _arrEnd.get("arrayOfInts");
                 if (_posList == null) {
                     _posList = new ArrayList<Integer>();
                     _arrEnd.put("arrayOfInts", _posList);
@@ -93,11 +94,17 @@ public class DebugEnumName extends KaitaiStruct {
         this.testType._read();
         _attrEnd.put("testType", this._io.pos());
     }
-    public static class TestSubtype extends KaitaiStruct {
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.arrayOfInts.size(); i++) {
+        }
+        this.testType._fetchInstances();
+    }
+    public static class TestSubtype extends KaitaiStruct.ReadOnly {
         public Map<String, Integer> _attrStart = new HashMap<String, Integer>();
         public Map<String, Integer> _attrEnd = new HashMap<String, Integer>();
-        public Map<String, ArrayList<Integer>> _arrStart = new HashMap<String, ArrayList<Integer>>();
-        public Map<String, ArrayList<Integer>> _arrEnd = new HashMap<String, ArrayList<Integer>>();
+        public Map<String, List<Integer>> _arrStart = new HashMap<String, List<Integer>>();
+        public Map<String, List<Integer>> _arrEnd = new HashMap<String, List<Integer>>();
 
         public static TestSubtype fromFile(String fileName) throws IOException {
             return new TestSubtype(new ByteBufferKaitaiStream(fileName));
@@ -153,6 +160,9 @@ public class DebugEnumName extends KaitaiStruct {
             this.field2 = this._io.readU1();
             _attrEnd.put("field2", this._io.pos());
         }
+
+        public void _fetchInstances() {
+        }
         private InnerEnum2 instanceField;
         public InnerEnum2 instanceField() {
             if (this.instanceField != null)
@@ -170,13 +180,13 @@ public class DebugEnumName extends KaitaiStruct {
         public DebugEnumName _parent() { return _parent; }
     }
     private TestEnum1 one;
-    private ArrayList<TestEnum2> arrayOfInts;
+    private List<TestEnum2> arrayOfInts;
     private TestSubtype testType;
     private DebugEnumName _root;
-    private KaitaiStruct _parent;
+    private KaitaiStruct.ReadOnly _parent;
     public TestEnum1 one() { return one; }
-    public ArrayList<TestEnum2> arrayOfInts() { return arrayOfInts; }
+    public List<TestEnum2> arrayOfInts() { return arrayOfInts; }
     public TestSubtype testType() { return testType; }
     public DebugEnumName _root() { return _root; }
-    public KaitaiStruct _parent() { return _parent; }
+    public KaitaiStruct.ReadOnly _parent() { return _parent; }
 }

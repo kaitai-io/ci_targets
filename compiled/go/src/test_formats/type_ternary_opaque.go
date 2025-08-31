@@ -8,8 +8,8 @@ import (
 )
 
 type TypeTernaryOpaque struct {
-	DifWoHack *TermStrz
-	DifWithHack *TermStrz
+	DifWoHack *HelloWorld
+	DifWithHack *HelloWorld
 	_io *kaitai.Stream
 	_root *TypeTernaryOpaque
 	_parent kaitai.Struct
@@ -17,7 +17,7 @@ type TypeTernaryOpaque struct {
 	_raw_DifWithHack []byte
 	_raw__raw_DifWithHack []byte
 	_f_dif bool
-	dif *TermStrz
+	dif *HelloWorld
 	_f_isHack bool
 	isHack bool
 }
@@ -40,14 +40,14 @@ func (this *TypeTernaryOpaque) Read(io *kaitai.Stream, parent kaitai.Struct, roo
 		return err
 	}
 	if (!(tmp1)) {
-		tmp2, err := this._io.ReadBytes(int(12))
+		tmp2, err := this._io.ReadBytes(int(1))
 		if err != nil {
 			return err
 		}
 		tmp2 = tmp2
 		this._raw_DifWoHack = tmp2
 		_io__raw_DifWoHack := kaitai.NewStream(bytes.NewReader(this._raw_DifWoHack))
-		tmp3 := NewTermStrz()
+		tmp3 := NewHelloWorld()
 		err = tmp3.Read(_io__raw_DifWoHack, nil, nil)
 		if err != nil {
 			return err
@@ -59,7 +59,7 @@ func (this *TypeTernaryOpaque) Read(io *kaitai.Stream, parent kaitai.Struct, roo
 		return err
 	}
 	if (tmp4) {
-		tmp5, err := this._io.ReadBytes(int(12))
+		tmp5, err := this._io.ReadBytes(int(1))
 		if err != nil {
 			return err
 		}
@@ -67,7 +67,7 @@ func (this *TypeTernaryOpaque) Read(io *kaitai.Stream, parent kaitai.Struct, roo
 		this._raw__raw_DifWithHack = tmp5
 		this._raw_DifWithHack = kaitai.ProcessXOR(this._raw__raw_DifWithHack, []byte{3})
 		_io__raw_DifWithHack := kaitai.NewStream(bytes.NewReader(this._raw_DifWithHack))
-		tmp6 := NewTermStrz()
+		tmp6 := NewHelloWorld()
 		err = tmp6.Read(_io__raw_DifWithHack, nil, nil)
 		if err != nil {
 			return err
@@ -76,12 +76,12 @@ func (this *TypeTernaryOpaque) Read(io *kaitai.Stream, parent kaitai.Struct, roo
 	}
 	return err
 }
-func (this *TypeTernaryOpaque) Dif() (v *TermStrz, err error) {
+func (this *TypeTernaryOpaque) Dif() (v *HelloWorld, err error) {
 	if (this._f_dif) {
 		return this.dif, nil
 	}
 	this._f_dif = true
-	var tmp7 *TermStrz;
+	var tmp7 *HelloWorld;
 	tmp8, err := this.IsHack()
 	if err != nil {
 		return nil, err

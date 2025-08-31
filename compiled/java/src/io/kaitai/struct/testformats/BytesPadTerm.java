@@ -32,6 +32,9 @@ public class BytesPadTerm extends KaitaiStruct {
         this.strTermAndPad = KaitaiStream.bytesTerminate(KaitaiStream.bytesStripRight(this._io.readBytes(20), (byte) 43), (byte) 64, false);
         this.strTermInclude = KaitaiStream.bytesTerminate(this._io.readBytes(20), (byte) 64, true);
     }
+
+    public void _fetchInstances() {
+    }
     private byte[] strPad;
     private byte[] strTerm;
     private byte[] strTermAndPad;

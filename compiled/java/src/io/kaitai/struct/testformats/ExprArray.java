@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
+import java.util.List;
 
 public class ExprArray extends KaitaiStruct {
     public static ExprArray fromFile(String fileName) throws IOException {
@@ -43,84 +44,83 @@ public class ExprArray extends KaitaiStruct {
             this.astr.add(new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8));
         }
     }
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.aint.size(); i++) {
+        }
+        for (int i = 0; i < this.afloat.size(); i++) {
+        }
+        for (int i = 0; i < this.astr.size(); i++) {
+        }
+    }
     private Double afloatFirst;
     public Double afloatFirst() {
         if (this.afloatFirst != null)
             return this.afloatFirst;
-        double _tmp = (double) (afloat().get(0));
-        this.afloatFirst = _tmp;
+        this.afloatFirst = ((Number) (afloat().get(0))).doubleValue();
         return this.afloatFirst;
     }
     private Double afloatLast;
     public Double afloatLast() {
         if (this.afloatLast != null)
             return this.afloatLast;
-        double _tmp = (double) (afloat().get(afloat().size() - 1));
-        this.afloatLast = _tmp;
+        this.afloatLast = ((Number) (afloat().get(afloat().size() - 1))).doubleValue();
         return this.afloatLast;
     }
     private Double afloatMax;
     public Double afloatMax() {
         if (this.afloatMax != null)
             return this.afloatMax;
-        double _tmp = (double) (Collections.max(afloat()));
-        this.afloatMax = _tmp;
+        this.afloatMax = ((Number) (Collections.max(afloat()))).doubleValue();
         return this.afloatMax;
     }
     private Double afloatMin;
     public Double afloatMin() {
         if (this.afloatMin != null)
             return this.afloatMin;
-        double _tmp = (double) (Collections.min(afloat()));
-        this.afloatMin = _tmp;
+        this.afloatMin = ((Number) (Collections.min(afloat()))).doubleValue();
         return this.afloatMin;
     }
     private Integer afloatSize;
     public Integer afloatSize() {
         if (this.afloatSize != null)
             return this.afloatSize;
-        int _tmp = (int) (afloat().size());
-        this.afloatSize = _tmp;
+        this.afloatSize = ((Number) (afloat().size())).intValue();
         return this.afloatSize;
     }
     private Long aintFirst;
     public Long aintFirst() {
         if (this.aintFirst != null)
             return this.aintFirst;
-        long _tmp = (long) (aint().get(0));
-        this.aintFirst = _tmp;
+        this.aintFirst = ((Number) (aint().get(0))).longValue();
         return this.aintFirst;
     }
     private Long aintLast;
     public Long aintLast() {
         if (this.aintLast != null)
             return this.aintLast;
-        long _tmp = (long) (aint().get(aint().size() - 1));
-        this.aintLast = _tmp;
+        this.aintLast = ((Number) (aint().get(aint().size() - 1))).longValue();
         return this.aintLast;
     }
     private Long aintMax;
     public Long aintMax() {
         if (this.aintMax != null)
             return this.aintMax;
-        long _tmp = (long) (Collections.max(aint()));
-        this.aintMax = _tmp;
+        this.aintMax = ((Number) (Collections.max(aint()))).longValue();
         return this.aintMax;
     }
     private Long aintMin;
     public Long aintMin() {
         if (this.aintMin != null)
             return this.aintMin;
-        long _tmp = (long) (Collections.min(aint()));
-        this.aintMin = _tmp;
+        this.aintMin = ((Number) (Collections.min(aint()))).longValue();
         return this.aintMin;
     }
     private Integer aintSize;
     public Integer aintSize() {
         if (this.aintSize != null)
             return this.aintSize;
-        int _tmp = (int) (aint().size());
-        this.aintSize = _tmp;
+        this.aintSize = ((Number) (aint().size())).intValue();
         return this.aintSize;
     }
     private String astrFirst;
@@ -155,18 +155,17 @@ public class ExprArray extends KaitaiStruct {
     public Integer astrSize() {
         if (this.astrSize != null)
             return this.astrSize;
-        int _tmp = (int) (astr().size());
-        this.astrSize = _tmp;
+        this.astrSize = ((Number) (astr().size())).intValue();
         return this.astrSize;
     }
-    private ArrayList<Long> aint;
-    private ArrayList<Double> afloat;
-    private ArrayList<String> astr;
+    private List<Long> aint;
+    private List<Double> afloat;
+    private List<String> astr;
     private ExprArray _root;
     private KaitaiStruct _parent;
-    public ArrayList<Long> aint() { return aint; }
-    public ArrayList<Double> afloat() { return afloat; }
-    public ArrayList<String> astr() { return astr; }
+    public List<Long> aint() { return aint; }
+    public List<Double> afloat() { return afloat; }
+    public List<String> astr() { return astr; }
     public ExprArray _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

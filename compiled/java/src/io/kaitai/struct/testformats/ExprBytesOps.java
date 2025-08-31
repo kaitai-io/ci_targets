@@ -29,52 +29,49 @@ public class ExprBytesOps extends KaitaiStruct {
     private void _read() {
         this.one = this._io.readBytes(3);
     }
+
+    public void _fetchInstances() {
+    }
     private Integer oneFirst;
     public Integer oneFirst() {
         if (this.oneFirst != null)
             return this.oneFirst;
-        int _tmp = (int) (one()[0]);
-        this.oneFirst = _tmp;
+        this.oneFirst = ((Number) ((one()[((int) 0)] & 0xff))).intValue();
         return this.oneFirst;
     }
     private Integer oneLast;
     public Integer oneLast() {
         if (this.oneLast != null)
             return this.oneLast;
-        int _tmp = (int) (one()[(one()).length - 1]);
-        this.oneLast = _tmp;
+        this.oneLast = ((Number) ((one()[((Number) (one().length - 1)).intValue()] & 0xff))).intValue();
         return this.oneLast;
     }
     private Integer oneMax;
     public Integer oneMax() {
         if (this.oneMax != null)
             return this.oneMax;
-        int _tmp = (int) (KaitaiStream.byteArrayMax(one()));
-        this.oneMax = _tmp;
+        this.oneMax = ((Number) (KaitaiStream.byteArrayMax(one()))).intValue();
         return this.oneMax;
     }
     private Integer oneMid;
     public Integer oneMid() {
         if (this.oneMid != null)
             return this.oneMid;
-        int _tmp = (int) (one()[1]);
-        this.oneMid = _tmp;
+        this.oneMid = ((Number) ((one()[((int) 1)] & 0xff))).intValue();
         return this.oneMid;
     }
     private Integer oneMin;
     public Integer oneMin() {
         if (this.oneMin != null)
             return this.oneMin;
-        int _tmp = (int) (KaitaiStream.byteArrayMin(one()));
-        this.oneMin = _tmp;
+        this.oneMin = ((Number) (KaitaiStream.byteArrayMin(one()))).intValue();
         return this.oneMin;
     }
     private Integer oneSize;
     public Integer oneSize() {
         if (this.oneSize != null)
             return this.oneSize;
-        int _tmp = (int) (one().length);
-        this.oneSize = _tmp;
+        this.oneSize = ((Number) (one().length)).intValue();
         return this.oneSize;
     }
     private byte[] two;
@@ -88,48 +85,42 @@ public class ExprBytesOps extends KaitaiStruct {
     public Integer twoFirst() {
         if (this.twoFirst != null)
             return this.twoFirst;
-        int _tmp = (int) (two()[0]);
-        this.twoFirst = _tmp;
+        this.twoFirst = ((Number) ((two()[((int) 0)] & 0xff))).intValue();
         return this.twoFirst;
     }
     private Integer twoLast;
     public Integer twoLast() {
         if (this.twoLast != null)
             return this.twoLast;
-        int _tmp = (int) (two()[(two()).length - 1]);
-        this.twoLast = _tmp;
+        this.twoLast = ((Number) ((two()[((Number) (two().length - 1)).intValue()] & 0xff))).intValue();
         return this.twoLast;
     }
     private Integer twoMax;
     public Integer twoMax() {
         if (this.twoMax != null)
             return this.twoMax;
-        int _tmp = (int) (KaitaiStream.byteArrayMax(two()));
-        this.twoMax = _tmp;
+        this.twoMax = ((Number) (KaitaiStream.byteArrayMax(two()))).intValue();
         return this.twoMax;
     }
     private Integer twoMid;
     public Integer twoMid() {
         if (this.twoMid != null)
             return this.twoMid;
-        int _tmp = (int) (two()[1]);
-        this.twoMid = _tmp;
+        this.twoMid = ((Number) ((two()[((int) 1)] & 0xff))).intValue();
         return this.twoMid;
     }
     private Integer twoMin;
     public Integer twoMin() {
         if (this.twoMin != null)
             return this.twoMin;
-        int _tmp = (int) (KaitaiStream.byteArrayMin(two()));
-        this.twoMin = _tmp;
+        this.twoMin = ((Number) (KaitaiStream.byteArrayMin(two()))).intValue();
         return this.twoMin;
     }
     private Integer twoSize;
     public Integer twoSize() {
         if (this.twoSize != null)
             return this.twoSize;
-        int _tmp = (int) (two().length);
-        this.twoSize = _tmp;
+        this.twoSize = ((Number) (two().length)).intValue();
         return this.twoSize;
     }
     private byte[] one;

@@ -31,20 +31,21 @@ public class Expr1 extends KaitaiStruct {
         this.lenOf1 = this._io.readU2le();
         this.str1 = new String(this._io.readBytes(lenOf1Mod()), StandardCharsets.US_ASCII);
     }
+
+    public void _fetchInstances() {
+    }
     private Integer lenOf1Mod;
     public Integer lenOf1Mod() {
         if (this.lenOf1Mod != null)
             return this.lenOf1Mod;
-        int _tmp = (int) (lenOf1() - 2);
-        this.lenOf1Mod = _tmp;
+        this.lenOf1Mod = ((Number) (lenOf1() - 2)).intValue();
         return this.lenOf1Mod;
     }
     private Integer str1Len;
     public Integer str1Len() {
         if (this.str1Len != null)
             return this.str1Len;
-        int _tmp = (int) (str1().length());
-        this.str1Len = _tmp;
+        this.str1Len = ((Number) (str1().length())).intValue();
         return this.str1Len;
     }
     private int lenOf1;

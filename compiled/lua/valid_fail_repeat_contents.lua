@@ -20,7 +20,7 @@ function ValidFailRepeatContents:_read()
   while not self._io:is_eof() do
     self.foo[i + 1] = self._io:read_bytes(4)
     if not(self.foo[i + 1] == "\018\052\086\120") then
-      error("not equal, expected " ..  "\018\052\086\120" .. ", but got " .. self.foo[i + 1])
+      error("not equal, expected " .. "\018\052\086\120" .. ", but got " .. self.foo[i + 1])
     end
     i = i + 1
   end

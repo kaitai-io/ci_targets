@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ValidFailRepeatMinInt extends KaitaiStruct {
     public static ValidFailRepeatMinInt fromFile(String fileName) throws IOException {
@@ -33,17 +34,22 @@ public class ValidFailRepeatMinInt extends KaitaiStruct {
             int i = 0;
             while (!this._io.isEof()) {
                 this.foo.add(this._io.readS1());
-                if (!(this.foo.get((int) i) >= 0)) {
-                    throw new KaitaiStream.ValidationLessThanError(0, this.foo.get((int) i), this._io, "/seq/0");
+                if (!(this.foo.get(((Number) (i)).intValue()) >= 0)) {
+                    throw new KaitaiStream.ValidationLessThanError(0, this.foo.get(((Number) (i)).intValue()), this._io, "/seq/0");
                 }
                 i++;
             }
         }
     }
-    private ArrayList<Byte> foo;
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.foo.size(); i++) {
+        }
+    }
+    private List<Byte> foo;
     private ValidFailRepeatMinInt _root;
     private KaitaiStruct _parent;
-    public ArrayList<Byte> foo() { return foo; }
+    public List<Byte> foo() { return foo; }
     public ValidFailRepeatMinInt _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

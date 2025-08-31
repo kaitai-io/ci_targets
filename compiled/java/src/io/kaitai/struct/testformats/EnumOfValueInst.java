@@ -48,6 +48,9 @@ public class EnumOfValueInst extends KaitaiStruct {
         this.pet1 = Animal.byId(this._io.readU4le());
         this.pet2 = Animal.byId(this._io.readU4le());
     }
+
+    public void _fetchInstances() {
+    }
     private Animal pet3;
     public Animal pet3() {
         if (this.pet3 != null)

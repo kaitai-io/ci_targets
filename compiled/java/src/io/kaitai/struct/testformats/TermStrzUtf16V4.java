@@ -37,6 +37,12 @@ public class TermStrzUtf16V4 extends KaitaiStruct {
         KaitaiStream _io_s3 = this._io.substream(6);
         this.s3 = new S3Type(_io_s3, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.s1._fetchInstances();
+        this.s2._fetchInstances();
+        this.s3._fetchInstances();
+    }
     public static class S1Type extends KaitaiStruct {
         public static S1Type fromFile(String fileName) throws IOException {
             return new S1Type(new ByteBufferKaitaiStream(fileName));
@@ -58,6 +64,9 @@ public class TermStrzUtf16V4 extends KaitaiStruct {
         }
         private void _read() {
             this.value = new String(this._io.readBytesTermMulti(new byte[] { 0, 0 }, false, true, false), StandardCharsets.UTF_16LE);
+        }
+
+        public void _fetchInstances() {
         }
         private String value;
         private TermStrzUtf16V4 _root;
@@ -88,6 +97,9 @@ public class TermStrzUtf16V4 extends KaitaiStruct {
         private void _read() {
             this.value = new String(this._io.readBytesTermMulti(new byte[] { 0, 0 }, false, false, false), StandardCharsets.UTF_16LE);
         }
+
+        public void _fetchInstances() {
+        }
         private String value;
         private TermStrzUtf16V4 _root;
         private TermStrzUtf16V4 _parent;
@@ -116,6 +128,9 @@ public class TermStrzUtf16V4 extends KaitaiStruct {
         }
         private void _read() {
             this.value = new String(this._io.readBytesTermMulti(new byte[] { 0, 0 }, true, true, false), StandardCharsets.UTF_16LE);
+        }
+
+        public void _fetchInstances() {
         }
         private String value;
         private TermStrzUtf16V4 _root;

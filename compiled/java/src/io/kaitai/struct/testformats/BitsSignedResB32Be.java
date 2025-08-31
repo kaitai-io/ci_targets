@@ -29,6 +29,9 @@ public class BitsSignedResB32Be extends KaitaiStruct {
     private void _read() {
         this.a = this._io.readBitsIntBe(32);
     }
+
+    public void _fetchInstances() {
+    }
     private long a;
     private BitsSignedResB32Be _root;
     private KaitaiStruct _parent;

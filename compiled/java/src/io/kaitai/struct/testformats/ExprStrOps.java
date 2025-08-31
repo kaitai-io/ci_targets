@@ -30,12 +30,14 @@ public class ExprStrOps extends KaitaiStruct {
     private void _read() {
         this.one = new String(this._io.readBytes(5), StandardCharsets.US_ASCII);
     }
+
+    public void _fetchInstances() {
+    }
     private Integer oneLen;
     public Integer oneLen() {
         if (this.oneLen != null)
             return this.oneLen;
-        int _tmp = (int) (one().length());
-        this.oneLen = _tmp;
+        this.oneLen = ((Number) (one().length())).intValue();
         return this.oneLen;
     }
     private String oneRev;
@@ -77,40 +79,35 @@ public class ExprStrOps extends KaitaiStruct {
     public Integer toIAttr() {
         if (this.toIAttr != null)
             return this.toIAttr;
-        int _tmp = (int) (Long.parseLong("9173", 10));
-        this.toIAttr = _tmp;
+        this.toIAttr = ((Number) (Long.parseLong("9173", 10))).intValue();
         return this.toIAttr;
     }
     private Integer toIR10;
     public Integer toIR10() {
         if (this.toIR10 != null)
             return this.toIR10;
-        int _tmp = (int) (Long.parseLong("-072", 10));
-        this.toIR10 = _tmp;
+        this.toIR10 = ((Number) (Long.parseLong("-072", 10))).intValue();
         return this.toIR10;
     }
     private Integer toIR16;
     public Integer toIR16() {
         if (this.toIR16 != null)
             return this.toIR16;
-        int _tmp = (int) (Long.parseLong("47cf", 16));
-        this.toIR16 = _tmp;
+        this.toIR16 = ((Number) (Long.parseLong("47cf", 16))).intValue();
         return this.toIR16;
     }
     private Integer toIR2;
     public Integer toIR2() {
         if (this.toIR2 != null)
             return this.toIR2;
-        int _tmp = (int) (Long.parseLong("1010110", 2));
-        this.toIR2 = _tmp;
+        this.toIR2 = ((Number) (Long.parseLong("1010110", 2))).intValue();
         return this.toIR2;
     }
     private Integer toIR8;
     public Integer toIR8() {
         if (this.toIR8 != null)
             return this.toIR8;
-        int _tmp = (int) (Long.parseLong("721", 8));
-        this.toIR8 = _tmp;
+        this.toIR8 = ((Number) (Long.parseLong("721", 8))).intValue();
         return this.toIR8;
     }
     private String two;
@@ -124,8 +121,7 @@ public class ExprStrOps extends KaitaiStruct {
     public Integer twoLen() {
         if (this.twoLen != null)
             return this.twoLen;
-        int _tmp = (int) (two().length());
-        this.twoLen = _tmp;
+        this.twoLen = ((Number) (two().length())).intValue();
         return this.twoLen;
     }
     private String twoRev;

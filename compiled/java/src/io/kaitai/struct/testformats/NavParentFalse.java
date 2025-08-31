@@ -31,6 +31,11 @@ public class NavParentFalse extends KaitaiStruct {
         this.elementA = new ParentA(this._io, this, _root);
         this.elementB = new ParentB(this._io, this, _root);
     }
+
+    public void _fetchInstances() {
+        this.elementA._fetchInstances();
+        this.elementB._fetchInstances();
+    }
     public static class Child extends KaitaiStruct {
         public static Child fromFile(String fileName) throws IOException {
             return new Child(new ByteBufferKaitaiStream(fileName));
@@ -54,6 +59,11 @@ public class NavParentFalse extends KaitaiStruct {
             this.code = this._io.readU1();
             if (code() == 73) {
                 this.more = this._io.readBytes(_parent()._parent().childSize());
+            }
+        }
+
+        public void _fetchInstances() {
+            if (code() == 73) {
             }
         }
         private int code;
@@ -88,6 +98,11 @@ public class NavParentFalse extends KaitaiStruct {
             this.foo = new Child(this._io, this, _root);
             this.bar = new ParentB(this._io, this, _root);
         }
+
+        public void _fetchInstances() {
+            this.foo._fetchInstances();
+            this.bar._fetchInstances();
+        }
         private Child foo;
         private ParentB bar;
         private NavParentFalse _root;
@@ -118,6 +133,10 @@ public class NavParentFalse extends KaitaiStruct {
         }
         private void _read() {
             this.foo = new Child(this._io, null, _root);
+        }
+
+        public void _fetchInstances() {
+            this.foo._fetchInstances();
         }
         private Child foo;
         private NavParentFalse _root;

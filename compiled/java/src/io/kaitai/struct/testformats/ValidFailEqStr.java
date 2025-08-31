@@ -33,6 +33,9 @@ public class ValidFailEqStr extends KaitaiStruct {
             throw new KaitaiStream.ValidationNotEqualError("BACK", this.foo, this._io, "/seq/0");
         }
     }
+
+    public void _fetchInstances() {
+    }
     private String foo;
     private ValidFailEqStr _root;
     private KaitaiStruct _parent;

@@ -29,6 +29,10 @@ public class InstanceStd extends KaitaiStruct {
     }
     private void _read() {
     }
+
+    public void _fetchInstances() {
+        header();
+    }
     private String header;
     public String header() {
         if (this.header != null)

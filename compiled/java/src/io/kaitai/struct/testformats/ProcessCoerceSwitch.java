@@ -46,14 +46,39 @@ public class ProcessCoerceSwitch extends KaitaiStruct {
             switch (bufType()) {
             case 0: {
                 this._raw__raw_bufProc = this._io.readBytes(4);
-                this._raw_bufProc = KaitaiStream.processXor(_raw__raw_bufProc, ((byte) (170)));
-                KaitaiStream _io__raw_bufProc = new ByteBufferKaitaiStream(_raw_bufProc);
+                this._raw_bufProc = KaitaiStream.processXor(this._raw__raw_bufProc, ((byte) 170));
+                KaitaiStream _io__raw_bufProc = new ByteBufferKaitaiStream(this._raw_bufProc);
                 this.bufProc = new Foo(_io__raw_bufProc, this, _root);
                 break;
             }
             default: {
                 this._raw_bufProc = this._io.readBytes(4);
-                this.bufProc = KaitaiStream.processXor(_raw_bufProc, ((byte) (170)));
+                this.bufProc = KaitaiStream.processXor(this._raw_bufProc, ((byte) 170));
+                break;
+            }
+            }
+        }
+    }
+
+    public void _fetchInstances() {
+        if (flag() == 0) {
+            switch (bufType()) {
+            case 0: {
+                ((Foo) (this.bufUnproc))._fetchInstances();
+                break;
+            }
+            default: {
+                break;
+            }
+            }
+        }
+        if (flag() != 0) {
+            switch (bufType()) {
+            case 0: {
+                ((Foo) (this.bufProc))._fetchInstances();
+                break;
+            }
+            default: {
                 break;
             }
             }
@@ -80,6 +105,9 @@ public class ProcessCoerceSwitch extends KaitaiStruct {
         }
         private void _read() {
             this.bar = this._io.readBytes(4);
+        }
+
+        public void _fetchInstances() {
         }
         private byte[] bar;
         private ProcessCoerceSwitch _root;

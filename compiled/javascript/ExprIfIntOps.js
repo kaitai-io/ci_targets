@@ -18,28 +18,31 @@ var ExprIfIntOps = (function() {
     this._read();
   }
   ExprIfIntOps.prototype._read = function() {
-    this.skip = this._io.readBytes(2);
     if (true) {
-      this.it = this._io.readS2le();
+      this.key = this._io.readU8le();
     }
-    if (true) {
-      this.boxed = this._io.readS2le();
+    this.skip = this._io.readBytes(8);
+    this._raw_bytes = this._io.readBytes(8);
+    this.bytes = KaitaiStream.processXorOne(this._raw_bytes, this.key);
+    this.items = [];
+    for (var i = 0; i < 4; i++) {
+      this.items.push(this._io.readS1());
     }
   }
-  Object.defineProperty(ExprIfIntOps.prototype, 'isEqBoxed', {
+  Object.defineProperty(ExprIfIntOps.prototype, 'bytesSubKey', {
     get: function() {
-      if (this._m_isEqBoxed !== undefined)
-        return this._m_isEqBoxed;
-      this._m_isEqBoxed = this.it == this.boxed;
-      return this._m_isEqBoxed;
+      if (this._m_bytesSubKey !== undefined)
+        return this._m_bytesSubKey;
+      this._m_bytesSubKey = this.bytes[this.key];
+      return this._m_bytesSubKey;
     }
   });
-  Object.defineProperty(ExprIfIntOps.prototype, 'isEqPrim', {
+  Object.defineProperty(ExprIfIntOps.prototype, 'itemsSubKey', {
     get: function() {
-      if (this._m_isEqPrim !== undefined)
-        return this._m_isEqPrim;
-      this._m_isEqPrim = this.it == 16705;
-      return this._m_isEqPrim;
+      if (this._m_itemsSubKey !== undefined)
+        return this._m_itemsSubKey;
+      this._m_itemsSubKey = this.items[this.key];
+      return this._m_itemsSubKey;
     }
   });
 

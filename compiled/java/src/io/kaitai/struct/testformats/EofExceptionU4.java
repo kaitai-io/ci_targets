@@ -30,6 +30,9 @@ public class EofExceptionU4 extends KaitaiStruct {
         this.prebuf = this._io.readBytes(9);
         this.failInt = this._io.readU4le();
     }
+
+    public void _fetchInstances() {
+    }
     private byte[] prebuf;
     private long failInt;
     private EofExceptionU4 _root;

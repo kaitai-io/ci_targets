@@ -7,6 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ValidFailRepeatMaxInt extends KaitaiStruct {
     public static ValidFailRepeatMaxInt fromFile(String fileName) throws IOException {
@@ -33,17 +34,22 @@ public class ValidFailRepeatMaxInt extends KaitaiStruct {
             int i = 0;
             while (!this._io.isEof()) {
                 this.foo.add(this._io.readU1());
-                if (!(this.foo.get((int) i) <= 254)) {
-                    throw new KaitaiStream.ValidationGreaterThanError(254, this.foo.get((int) i), this._io, "/seq/0");
+                if (!(this.foo.get(((Number) (i)).intValue()) <= 254)) {
+                    throw new KaitaiStream.ValidationGreaterThanError(254, this.foo.get(((Number) (i)).intValue()), this._io, "/seq/0");
                 }
                 i++;
             }
         }
     }
-    private ArrayList<Integer> foo;
+
+    public void _fetchInstances() {
+        for (int i = 0; i < this.foo.size(); i++) {
+        }
+    }
+    private List<Integer> foo;
     private ValidFailRepeatMaxInt _root;
     private KaitaiStruct _parent;
-    public ArrayList<Integer> foo() { return foo; }
+    public List<Integer> foo() { return foo; }
     public ValidFailRepeatMaxInt _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

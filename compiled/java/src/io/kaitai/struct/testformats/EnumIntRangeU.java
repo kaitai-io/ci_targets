@@ -47,6 +47,9 @@ public class EnumIntRangeU extends KaitaiStruct {
         this.f1 = Constants.byId(this._io.readU4be());
         this.f2 = Constants.byId(this._io.readU4be());
     }
+
+    public void _fetchInstances() {
+    }
     private Constants f1;
     private Constants f2;
     private EnumIntRangeU _root;

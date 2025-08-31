@@ -9,12 +9,16 @@ float_to_i_t::float_to_i_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, f
     f_calc_float2 = false;
     f_calc_float3 = false;
     f_calc_float4 = false;
+    f_calc_if = false;
+    f_calc_if_i = false;
     f_double_i = false;
+    f_double_if_i = false;
     f_float1_i = false;
     f_float2_i = false;
     f_float3_i = false;
     f_float4_i = false;
     f_single_i = false;
+    f_single_if_i = false;
 
     try {
         _read();
@@ -27,6 +31,16 @@ float_to_i_t::float_to_i_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, f
 void float_to_i_t::_read() {
     m_single_value = m__io->read_f4le();
     m_double_value = m__io->read_f8le();
+    n_single_value_if = true;
+    if (true) {
+        n_single_value_if = false;
+        m_single_value_if = m__io->read_f4be();
+    }
+    n_double_value_if = true;
+    if (true) {
+        n_double_value_if = false;
+        m_double_value_if = m__io->read_f8be();
+    }
 }
 
 float_to_i_t::~float_to_i_t() {
@@ -34,6 +48,10 @@ float_to_i_t::~float_to_i_t() {
 }
 
 void float_to_i_t::_clean_up() {
+    if (!n_single_value_if) {
+    }
+    if (!n_double_value_if) {
+    }
 }
 
 double float_to_i_t::calc_float1() {
@@ -68,12 +86,36 @@ double float_to_i_t::calc_float4() {
     return m_calc_float4;
 }
 
+double float_to_i_t::calc_if() {
+    if (f_calc_if)
+        return m_calc_if;
+    f_calc_if = true;
+    m_calc_if = 13.9;
+    return m_calc_if;
+}
+
+int32_t float_to_i_t::calc_if_i() {
+    if (f_calc_if_i)
+        return m_calc_if_i;
+    f_calc_if_i = true;
+    m_calc_if_i = static_cast<int>(calc_if());
+    return m_calc_if_i;
+}
+
 int32_t float_to_i_t::double_i() {
     if (f_double_i)
         return m_double_i;
     f_double_i = true;
     m_double_i = static_cast<int>(double_value());
     return m_double_i;
+}
+
+int32_t float_to_i_t::double_if_i() {
+    if (f_double_if_i)
+        return m_double_if_i;
+    f_double_if_i = true;
+    m_double_if_i = static_cast<int>(double_value_if());
+    return m_double_if_i;
 }
 
 int32_t float_to_i_t::float1_i() {
@@ -114,4 +156,12 @@ int32_t float_to_i_t::single_i() {
     f_single_i = true;
     m_single_i = static_cast<int>(single_value());
     return m_single_i;
+}
+
+int32_t float_to_i_t::single_if_i() {
+    if (f_single_if_i)
+        return m_single_if_i;
+    f_single_if_i = true;
+    m_single_if_i = static_cast<int>(single_value_if());
+    return m_single_if_i;
 }
