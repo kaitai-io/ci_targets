@@ -41,6 +41,7 @@ public class ValidNotParsedIf extends KaitaiStruct.ReadWrite {
                 throw new KaitaiStream.ValidationNotEqualError(80, this.parsed, this._io, "/seq/1");
             }
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -51,6 +52,7 @@ public class ValidNotParsedIf extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         if (false) {
             this._io.writeU1(this.notParsed);
         }
@@ -70,17 +72,18 @@ public class ValidNotParsedIf extends KaitaiStruct.ReadWrite {
                 throw new KaitaiStream.ValidationNotEqualError(80, this.parsed, null, "/seq/1");
             }
         }
+        _dirty = false;
     }
     private Integer notParsed;
     private Integer parsed;
     private ValidNotParsedIf _root;
     private KaitaiStruct.ReadWrite _parent;
     public Integer notParsed() { return notParsed; }
-    public void setNotParsed(Integer _v) { notParsed = _v; }
+    public void setNotParsed(Integer _v) { _dirty = true; notParsed = _v; }
     public Integer parsed() { return parsed; }
-    public void setParsed(Integer _v) { parsed = _v; }
+    public void setParsed(Integer _v) { _dirty = true; parsed = _v; }
     public ValidNotParsedIf _root() { return _root; }
-    public void set_root(ValidNotParsedIf _v) { _root = _v; }
+    public void set_root(ValidNotParsedIf _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

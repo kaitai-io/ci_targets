@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class SwitchRepeatExpr(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(SwitchRepeatExpr, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -43,6 +43,7 @@ class SwitchRepeatExpr(ReadWriteKaitaiStruct):
                 pass
                 self.body.append(self._io.read_bytes(self.size))
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -102,7 +103,6 @@ class SwitchRepeatExpr(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.body) != 1:
             raise kaitaistruct.ConsistencyError(u"body", len(self.body), 1)
         for i in range(len(self.body)):
@@ -125,15 +125,17 @@ class SwitchRepeatExpr(ReadWriteKaitaiStruct):
                 if len(self.body[i]) != self.size:
                     raise kaitaistruct.ConsistencyError(u"body", len(self.body[i]), self.size)
 
+        self._dirty = False
 
     class One(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(SwitchRepeatExpr.One, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.first = self._io.read_bytes_full()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -148,17 +150,18 @@ class SwitchRepeatExpr(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     class Two(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(SwitchRepeatExpr.Two, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.second = self._io.read_bytes_full()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -173,7 +176,7 @@ class SwitchRepeatExpr(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
 

@@ -29,15 +29,18 @@ public class JsSignedRightShift extends KaitaiStruct.ReadWrite {
         this._root = _root == null ? this : _root;
     }
     public void _read() {
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
     }
 
     public void _check() {
+        _dirty = false;
     }
     private Integer shouldBe40000000;
     public Integer shouldBe40000000() {
@@ -58,7 +61,7 @@ public class JsSignedRightShift extends KaitaiStruct.ReadWrite {
     private JsSignedRightShift _root;
     private KaitaiStruct.ReadWrite _parent;
     public JsSignedRightShift _root() { return _root; }
-    public void set_root(JsSignedRightShift _v) { _root = _v; }
+    public void set_root(JsSignedRightShift _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ParamsPassBool(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ParamsPassBool, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -29,6 +29,7 @@ class ParamsPassBool(ReadWriteKaitaiStruct):
         self.inst_b1._read()
         self.inst_bool = ParamsPassBool.ParamTypeBool(self.v_false, self._io, self, self._root)
         self.inst_bool._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -54,7 +55,6 @@ class ParamsPassBool(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.seq_b1._root != self._root:
             raise kaitaistruct.ConsistencyError(u"seq_b1", self.seq_b1._root, self._root)
         if self.seq_b1._parent != self:
@@ -91,16 +91,18 @@ class ParamsPassBool(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"inst_bool", self.inst_bool._parent, self)
         if self.inst_bool.arg != self.v_false:
             raise kaitaistruct.ConsistencyError(u"inst_bool", self.inst_bool.arg, self.v_false)
+        self._dirty = False
 
     class ParamTypeB1(ReadWriteKaitaiStruct):
         def __init__(self, arg, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ParamsPassBool.ParamTypeB1, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self.arg = arg
 
         def _read(self):
             self.foo = self._io.read_bytes((1 if self.arg else 2))
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -113,20 +115,21 @@ class ParamsPassBool(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if len(self.foo) != (1 if self.arg else 2):
                 raise kaitaistruct.ConsistencyError(u"foo", len(self.foo), (1 if self.arg else 2))
+            self._dirty = False
 
 
     class ParamTypeBool(ReadWriteKaitaiStruct):
         def __init__(self, arg, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ParamsPassBool.ParamTypeBool, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self.arg = arg
 
         def _read(self):
             self.foo = self._io.read_bytes((1 if self.arg else 2))
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -139,9 +142,9 @@ class ParamsPassBool(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if len(self.foo) != (1 if self.arg else 2):
                 raise kaitaistruct.ConsistencyError(u"foo", len(self.foo), (1 if self.arg else 2))
+            self._dirty = False
 
 
     @property

@@ -6,10 +6,10 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.util.List;
-import java.util.ArrayList;
 import io.kaitai.struct.ConsistencyError;
 import java.util.Objects;
+import java.util.List;
+import java.util.ArrayList;
 
 public class InstanceUserArray extends KaitaiStruct.ReadWrite {
     public static InstanceUserArray fromFile(String fileName) throws IOException {
@@ -36,11 +36,12 @@ public class InstanceUserArray extends KaitaiStruct.ReadWrite {
         this.ofs = this._io.readU4le();
         this.entrySize = this._io.readU4le();
         this.qtyEntries = this._io.readU4le();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
-        if (ofs() > 0) {
-            userEntries();
+        userEntries();
+        if (this.userEntries != null) {
             for (int i = 0; i < this.userEntries.size(); i++) {
                 this.userEntries.get(((Number) (i)).intValue())._fetchInstances();
             }
@@ -48,13 +49,27 @@ public class InstanceUserArray extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
-        _writeUserEntries = _toWriteUserEntries;
+        _assertNotDirty();
+        _shouldWriteUserEntries = _enabledUserEntries;
         this._io.writeU4le(this.ofs);
         this._io.writeU4le(this.entrySize);
         this._io.writeU4le(this.qtyEntries);
     }
 
     public void _check() {
+        if (_enabledUserEntries) {
+            if (ofs() > 0) {
+                if (this.userEntries.size() != qtyEntries())
+                    throw new ConsistencyError("user_entries", this.userEntries.size(), qtyEntries());
+                for (int i = 0; i < this.userEntries.size(); i++) {
+                    if (!Objects.equals(this.userEntries.get(((Number) (i)).intValue())._root(), _root()))
+                        throw new ConsistencyError("user_entries", this.userEntries.get(((Number) (i)).intValue())._root(), _root());
+                    if (!Objects.equals(this.userEntries.get(((Number) (i)).intValue())._parent(), this))
+                        throw new ConsistencyError("user_entries", this.userEntries.get(((Number) (i)).intValue())._parent(), this);
+                }
+            }
+        }
+        _dirty = false;
     }
     public static class Entry extends KaitaiStruct.ReadWrite {
         public static Entry fromFile(String fileName) throws IOException {
@@ -80,39 +95,44 @@ public class InstanceUserArray extends KaitaiStruct.ReadWrite {
         public void _read() {
             this.word1 = this._io.readU2le();
             this.word2 = this._io.readU2le();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU2le(this.word1);
             this._io.writeU2le(this.word2);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private int word1;
         private int word2;
         private InstanceUserArray _root;
         private InstanceUserArray _parent;
         public int word1() { return word1; }
-        public void setWord1(int _v) { word1 = _v; }
+        public void setWord1(int _v) { _dirty = true; word1 = _v; }
         public int word2() { return word2; }
-        public void setWord2(int _v) { word2 = _v; }
+        public void setWord2(int _v) { _dirty = true; word2 = _v; }
         public InstanceUserArray _root() { return _root; }
-        public void set_root(InstanceUserArray _v) { _root = _v; }
+        public void set_root(InstanceUserArray _v) { _dirty = true; _root = _v; }
         public InstanceUserArray _parent() { return _parent; }
-        public void set_parent(InstanceUserArray _v) { _parent = _v; }
+        public void set_parent(InstanceUserArray _v) { _dirty = true; _parent = _v; }
     }
     private List<Entry> userEntries;
-    private boolean _writeUserEntries = false;
-    private boolean _toWriteUserEntries = true;
+    private boolean _shouldWriteUserEntries = false;
+    private boolean _enabledUserEntries = true;
     public List<Entry> userEntries() {
-        if (_writeUserEntries)
+        if (_shouldWriteUserEntries)
             _writeUserEntries();
         if (this.userEntries != null)
             return this.userEntries;
+        if (!_enabledUserEntries)
+            return null;
         if (ofs() > 0) {
             long _pos = this._io.pos();
             this._io.seek(ofs());
@@ -132,11 +152,11 @@ public class InstanceUserArray extends KaitaiStruct.ReadWrite {
         }
         return this.userEntries;
     }
-    public void setUserEntries(List<Entry> _v) { userEntries = _v; }
-    public void setUserEntries_ToWrite(boolean _v) { _toWriteUserEntries = _v; }
+    public void setUserEntries(List<Entry> _v) { _dirty = true; userEntries = _v; }
+    public void setUserEntries_Enabled(boolean _v) { _dirty = true; _enabledUserEntries = _v; }
 
-    public void _writeUserEntries() {
-        _writeUserEntries = false;
+    private void _writeUserEntries() {
+        _shouldWriteUserEntries = false;
         if (ofs() > 0) {
             long _pos = this._io.pos();
             this._io.seek(ofs());
@@ -164,19 +184,6 @@ public class InstanceUserArray extends KaitaiStruct.ReadWrite {
             this._io.seek(_pos);
         }
     }
-
-    public void _checkUserEntries() {
-        if (ofs() > 0) {
-            if (this.userEntries.size() != qtyEntries())
-                throw new ConsistencyError("user_entries", this.userEntries.size(), qtyEntries());
-            for (int i = 0; i < this.userEntries.size(); i++) {
-                if (!Objects.equals(this.userEntries.get(((Number) (i)).intValue())._root(), _root()))
-                    throw new ConsistencyError("user_entries", this.userEntries.get(((Number) (i)).intValue())._root(), _root());
-                if (!Objects.equals(this.userEntries.get(((Number) (i)).intValue())._parent(), this))
-                    throw new ConsistencyError("user_entries", this.userEntries.get(((Number) (i)).intValue())._parent(), this);
-            }
-        }
-    }
     private long ofs;
     private long entrySize;
     private long qtyEntries;
@@ -184,15 +191,15 @@ public class InstanceUserArray extends KaitaiStruct.ReadWrite {
     private KaitaiStruct.ReadWrite _parent;
     private List<byte[]> _raw_userEntries;
     public long ofs() { return ofs; }
-    public void setOfs(long _v) { ofs = _v; }
+    public void setOfs(long _v) { _dirty = true; ofs = _v; }
     public long entrySize() { return entrySize; }
-    public void setEntrySize(long _v) { entrySize = _v; }
+    public void setEntrySize(long _v) { _dirty = true; entrySize = _v; }
     public long qtyEntries() { return qtyEntries; }
-    public void setQtyEntries(long _v) { qtyEntries = _v; }
+    public void setQtyEntries(long _v) { _dirty = true; qtyEntries = _v; }
     public InstanceUserArray _root() { return _root; }
-    public void set_root(InstanceUserArray _v) { _root = _v; }
+    public void set_root(InstanceUserArray _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public List<byte[]> _raw_userEntries() { return _raw_userEntries; }
-    public void set_raw_UserEntries(List<byte[]> _v) { _raw_userEntries = _v; }
+    public void set_raw_UserEntries(List<byte[]> _v) { _dirty = true; _raw_userEntries = _v; }
 }

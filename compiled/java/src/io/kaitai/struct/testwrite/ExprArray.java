@@ -47,6 +47,7 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
         for (int i = 0; i < 3; i++) {
             this.astr.add(new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8));
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -59,6 +60,7 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         for (int i = 0; i < this.aint.size(); i++) {
             this._io.writeU4le(this.aint.get(((Number) (i)).intValue()));
         }
@@ -86,6 +88,7 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
             if (KaitaiStream.byteArrayIndexOf((this.astr.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)) != -1)
                 throw new ConsistencyError("astr", KaitaiStream.byteArrayIndexOf((this.astr.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)), -1);
         }
+        _dirty = false;
     }
     private Double afloatFirst;
     public Double afloatFirst() {
@@ -213,13 +216,13 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
     private ExprArray _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<Long> aint() { return aint; }
-    public void setAint(List<Long> _v) { aint = _v; }
+    public void setAint(List<Long> _v) { _dirty = true; aint = _v; }
     public List<Double> afloat() { return afloat; }
-    public void setAfloat(List<Double> _v) { afloat = _v; }
+    public void setAfloat(List<Double> _v) { _dirty = true; afloat = _v; }
     public List<String> astr() { return astr; }
-    public void setAstr(List<String> _v) { astr = _v; }
+    public void setAstr(List<String> _v) { _dirty = true; astr = _v; }
     public ExprArray _root() { return _root; }
-    public void set_root(ExprArray _v) { _root = _v; }
+    public void set_root(ExprArray _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

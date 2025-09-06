@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class BitsByteAligned(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(BitsByteAligned, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -24,6 +24,7 @@ class BitsByteAligned(ReadWriteKaitaiStruct):
         self.byte_3 = self._io.read_bytes(1)
         self.full_byte = self._io.read_bits_int_be(8)
         self.byte_4 = self._io.read_u1()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -44,8 +45,8 @@ class BitsByteAligned(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.byte_3) != 1:
             raise kaitaistruct.ConsistencyError(u"byte_3", len(self.byte_3), 1)
+        self._dirty = False
 
 

@@ -34,6 +34,7 @@ public class ImportsParamsDefEnumImported extends KaitaiStruct.ReadWrite {
         this.one._read();
         this.two = new ParamsDefEnumImported(this._io, one().pet1(), one().pet2());
         this.two._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -42,6 +43,7 @@ public class ImportsParamsDefEnumImported extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this.one._write_Seq(this._io);
         this.two._write_Seq(this._io);
     }
@@ -51,17 +53,18 @@ public class ImportsParamsDefEnumImported extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("two", this.two.pet1Param(), one().pet1());
         if (this.two.pet2Param() != one().pet2())
             throw new ConsistencyError("two", this.two.pet2Param(), one().pet2());
+        _dirty = false;
     }
     private EnumImportSeq one;
     private ParamsDefEnumImported two;
     private ImportsParamsDefEnumImported _root;
     private KaitaiStruct.ReadWrite _parent;
     public EnumImportSeq one() { return one; }
-    public void setOne(EnumImportSeq _v) { one = _v; }
+    public void setOne(EnumImportSeq _v) { _dirty = true; one = _v; }
     public ParamsDefEnumImported two() { return two; }
-    public void setTwo(ParamsDefEnumImported _v) { two = _v; }
+    public void setTwo(ParamsDefEnumImported _v) { _dirty = true; two = _v; }
     public ImportsParamsDefEnumImported _root() { return _root; }
-    public void set_root(ImportsParamsDefEnumImported _v) { _root = _v; }
+    public void set_root(ImportsParamsDefEnumImported _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

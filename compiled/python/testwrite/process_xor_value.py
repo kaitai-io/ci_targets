@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ProcessXorValue(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ProcessXorValue, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -18,6 +18,7 @@ class ProcessXorValue(ReadWriteKaitaiStruct):
         self.key = self._io.read_u1()
         self._raw_buf = self._io.read_bytes_full()
         self.buf = KaitaiStream.process_xor_one(self._raw_buf, self.key)
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -34,6 +35,6 @@ class ProcessXorValue(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
 

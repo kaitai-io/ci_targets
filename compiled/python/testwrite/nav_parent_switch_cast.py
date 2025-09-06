@@ -10,13 +10,14 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class NavParentSwitchCast(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(NavParentSwitchCast, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self.main = NavParentSwitchCast.Foo(self._io, self, self._root)
         self.main._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -30,15 +31,15 @@ class NavParentSwitchCast(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.main._root != self._root:
             raise kaitaistruct.ConsistencyError(u"main", self.main._root, self._root)
         if self.main._parent != self:
             raise kaitaistruct.ConsistencyError(u"main", self.main._parent, self)
+        self._dirty = False
 
     class Foo(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(NavParentSwitchCast.Foo, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -61,6 +62,7 @@ class NavParentSwitchCast(ReadWriteKaitaiStruct):
             else:
                 pass
                 self.buf = self._io.read_bytes(4)
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -113,7 +115,6 @@ class NavParentSwitchCast(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             _on = self.buf_type
             if _on == 0:
                 pass
@@ -131,15 +132,17 @@ class NavParentSwitchCast(ReadWriteKaitaiStruct):
                 pass
                 if len(self.buf) != 4:
                     raise kaitaistruct.ConsistencyError(u"buf", len(self.buf), 4)
+            self._dirty = False
 
         class Common(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                self._io = _io
+                super(NavParentSwitchCast.Foo.Common, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
             def _read(self):
                 pass
+                self._dirty = False
 
 
             def _fetch_instances(self):
@@ -151,7 +154,7 @@ class NavParentSwitchCast(ReadWriteKaitaiStruct):
 
 
             def _check(self):
-                pass
+                self._dirty = False
 
             @property
             def flag(self):
@@ -166,13 +169,14 @@ class NavParentSwitchCast(ReadWriteKaitaiStruct):
 
         class One(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                self._io = _io
+                super(NavParentSwitchCast.Foo.One, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
             def _read(self):
                 self.branch = NavParentSwitchCast.Foo.Common(self._io, self, self._root)
                 self.branch._read()
+                self._dirty = False
 
 
             def _fetch_instances(self):
@@ -186,22 +190,23 @@ class NavParentSwitchCast(ReadWriteKaitaiStruct):
 
 
             def _check(self):
-                pass
                 if self.branch._root != self._root:
                     raise kaitaistruct.ConsistencyError(u"branch", self.branch._root, self._root)
                 if self.branch._parent != self:
                     raise kaitaistruct.ConsistencyError(u"branch", self.branch._parent, self)
+                self._dirty = False
 
 
         class Zero(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                self._io = _io
+                super(NavParentSwitchCast.Foo.Zero, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
             def _read(self):
                 self.branch = NavParentSwitchCast.Foo.Common(self._io, self, self._root)
                 self.branch._read()
+                self._dirty = False
 
 
             def _fetch_instances(self):
@@ -215,11 +220,11 @@ class NavParentSwitchCast(ReadWriteKaitaiStruct):
 
 
             def _check(self):
-                pass
                 if self.branch._root != self._root:
                     raise kaitaistruct.ConsistencyError(u"branch", self.branch._root, self._root)
                 if self.branch._parent != self:
                     raise kaitaistruct.ConsistencyError(u"branch", self.branch._parent, self)
+                self._dirty = False
 
 
 

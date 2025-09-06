@@ -32,6 +32,7 @@ public class Imports0 extends KaitaiStruct.ReadWrite {
         this.two = this._io.readU1();
         this.hw = new HelloWorld(this._io);
         this.hw._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -39,11 +40,13 @@ public class Imports0 extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(this.two);
         this.hw._write_Seq(this._io);
     }
 
     public void _check() {
+        _dirty = false;
     }
     private Integer hwOne;
     public Integer hwOne() {
@@ -58,11 +61,11 @@ public class Imports0 extends KaitaiStruct.ReadWrite {
     private Imports0 _root;
     private KaitaiStruct.ReadWrite _parent;
     public int two() { return two; }
-    public void setTwo(int _v) { two = _v; }
+    public void setTwo(int _v) { _dirty = true; two = _v; }
     public HelloWorld hw() { return hw; }
-    public void setHw(HelloWorld _v) { hw = _v; }
+    public void setHw(HelloWorld _v) { _dirty = true; hw = _v; }
     public Imports0 _root() { return _root; }
-    public void set_root(Imports0 _v) { _root = _v; }
+    public void set_root(Imports0 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

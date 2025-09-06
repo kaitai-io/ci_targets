@@ -42,6 +42,7 @@ public class TypeTernary extends KaitaiStruct.ReadWrite {
         KaitaiStream _io__raw_difWithHack = new ByteBufferKaitaiStream(this._raw_difWithHack);
         this.difWithHack = new Dummy(_io__raw_difWithHack, this, _root);
         this.difWithHack._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -52,6 +53,7 @@ public class TypeTernary extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         if (!(isHack())) {
             final KaitaiStream _io__raw_difWoHack = new ByteBufferKaitaiStream(1);
             this._io.addChildStream(_io__raw_difWoHack);
@@ -103,6 +105,7 @@ public class TypeTernary extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("dif_with_hack", this.difWithHack._root(), _root());
         if (!Objects.equals(this.difWithHack._parent(), this))
             throw new ConsistencyError("dif_with_hack", this.difWithHack._parent(), this);
+        _dirty = false;
     }
     public static class Dummy extends KaitaiStruct.ReadWrite {
         public static Dummy fromFile(String fileName) throws IOException {
@@ -127,26 +130,29 @@ public class TypeTernary extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.value = this._io.readU1();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU1(this.value);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private int value;
         private TypeTernary _root;
         private TypeTernary _parent;
         public int value() { return value; }
-        public void setValue(int _v) { value = _v; }
+        public void setValue(int _v) { _dirty = true; value = _v; }
         public TypeTernary _root() { return _root; }
-        public void set_root(TypeTernary _v) { _root = _v; }
+        public void set_root(TypeTernary _v) { _dirty = true; _root = _v; }
         public TypeTernary _parent() { return _parent; }
-        public void set_parent(TypeTernary _v) { _parent = _v; }
+        public void set_parent(TypeTernary _v) { _dirty = true; _parent = _v; }
     }
     private Dummy dif;
     public Dummy dif() {
@@ -180,17 +186,17 @@ public class TypeTernary extends KaitaiStruct.ReadWrite {
     private byte[] _raw_difWithHack;
     private byte[] _raw__raw_difWithHack;
     public Dummy difWoHack() { return difWoHack; }
-    public void setDifWoHack(Dummy _v) { difWoHack = _v; }
+    public void setDifWoHack(Dummy _v) { _dirty = true; difWoHack = _v; }
     public Dummy difWithHack() { return difWithHack; }
-    public void setDifWithHack(Dummy _v) { difWithHack = _v; }
+    public void setDifWithHack(Dummy _v) { _dirty = true; difWithHack = _v; }
     public TypeTernary _root() { return _root; }
-    public void set_root(TypeTernary _v) { _root = _v; }
+    public void set_root(TypeTernary _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_difWoHack() { return _raw_difWoHack; }
-    public void set_raw_DifWoHack(byte[] _v) { _raw_difWoHack = _v; }
+    public void set_raw_DifWoHack(byte[] _v) { _dirty = true; _raw_difWoHack = _v; }
     public byte[] _raw_difWithHack() { return _raw_difWithHack; }
-    public void set_raw_DifWithHack(byte[] _v) { _raw_difWithHack = _v; }
+    public void set_raw_DifWithHack(byte[] _v) { _dirty = true; _raw_difWithHack = _v; }
     public byte[] _raw__raw_difWithHack() { return _raw__raw_difWithHack; }
-    public void set_raw__raw_DifWithHack(byte[] _v) { _raw__raw_difWithHack = _v; }
+    public void set_raw__raw_DifWithHack(byte[] _v) { _dirty = true; _raw__raw_difWithHack = _v; }
 }

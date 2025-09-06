@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ValidFailRepeatEqInt(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ValidFailRepeatEqInt, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -23,6 +23,7 @@ class ValidFailRepeatEqInt(ReadWriteKaitaiStruct):
                 raise kaitaistruct.ValidationNotEqualError(305419896, self.foo[i], self._io, u"/seq/0")
             i += 1
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -45,11 +46,11 @@ class ValidFailRepeatEqInt(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         for i in range(len(self.foo)):
             pass
             if not self.foo[i] == 305419896:
                 raise kaitaistruct.ValidationNotEqualError(305419896, self.foo[i], None, u"/seq/0")
 
+        self._dirty = False
 
 

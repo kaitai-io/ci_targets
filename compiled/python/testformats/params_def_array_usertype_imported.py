@@ -11,7 +11,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ParamsDefArrayUsertypeImported(KaitaiStruct):
     def __init__(self, hws_param, _io, _parent=None, _root=None):
-        self._io = _io
+        super(ParamsDefArrayUsertypeImported, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self.hws_param = hws_param

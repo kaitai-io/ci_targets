@@ -16,7 +16,7 @@ class EnumIntRangeS(ReadWriteKaitaiStruct):
         zero = 0
         int_max = 2147483647
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(EnumIntRangeS, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -24,6 +24,7 @@ class EnumIntRangeS(ReadWriteKaitaiStruct):
         self.f1 = KaitaiStream.resolve_enum(EnumIntRangeS.Constants, self._io.read_s4be())
         self.f2 = KaitaiStream.resolve_enum(EnumIntRangeS.Constants, self._io.read_s4be())
         self.f3 = KaitaiStream.resolve_enum(EnumIntRangeS.Constants, self._io.read_s4be())
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -38,6 +39,6 @@ class EnumIntRangeS(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
 

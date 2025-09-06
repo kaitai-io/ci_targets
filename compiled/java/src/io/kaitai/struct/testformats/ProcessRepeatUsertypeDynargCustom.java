@@ -105,7 +105,11 @@ public class ProcessRepeatUsertypeDynargCustom extends KaitaiStruct {
 
         public void _fetchInstances() {
             blocks0B();
+            if (this.blocks0B != null) {
+            }
             blocks1B();
+            if (this.blocks1B != null) {
+            }
         }
         private Integer blocks0B;
         public Integer blocks0B() {

@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class NestedTypes3(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(NestedTypes3, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -29,7 +29,7 @@ class NestedTypes3(KaitaiStruct):
 
     class SubtypeA(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(NestedTypes3.SubtypeA, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -43,7 +43,7 @@ class NestedTypes3(KaitaiStruct):
 
         class SubtypeC(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
-                self._io = _io
+                super(NestedTypes3.SubtypeA.SubtypeC, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
                 self._read()
@@ -57,7 +57,7 @@ class NestedTypes3(KaitaiStruct):
 
             class SubtypeD(KaitaiStruct):
                 def __init__(self, _io, _parent=None, _root=None):
-                    self._io = _io
+                    super(NestedTypes3.SubtypeA.SubtypeC.SubtypeD, self).__init__(_io)
                     self._parent = _parent
                     self._root = _root
                     self._read()
@@ -73,7 +73,7 @@ class NestedTypes3(KaitaiStruct):
 
         class SubtypeCc(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
-                self._io = _io
+                super(NestedTypes3.SubtypeA.SubtypeCc, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
                 self._read()
@@ -89,7 +89,7 @@ class NestedTypes3(KaitaiStruct):
 
     class SubtypeB(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(NestedTypes3.SubtypeB, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()

@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ProcessCoerceUsertype2(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ProcessCoerceUsertype2, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -23,6 +23,7 @@ class ProcessCoerceUsertype2(ReadWriteKaitaiStruct):
             finally:
                 self.records.append(_t_records)
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -42,7 +43,6 @@ class ProcessCoerceUsertype2(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.records) != 2:
             raise kaitaistruct.ConsistencyError(u"records", len(self.records), 2)
         for i in range(len(self.records)):
@@ -52,15 +52,17 @@ class ProcessCoerceUsertype2(ReadWriteKaitaiStruct):
             if self.records[i]._parent != self:
                 raise kaitaistruct.ConsistencyError(u"records", self.records[i]._parent, self)
 
+        self._dirty = False
 
     class Foo(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ProcessCoerceUsertype2.Foo, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.value = self._io.read_u4le()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -73,12 +75,12 @@ class ProcessCoerceUsertype2(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     class Record(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ProcessCoerceUsertype2.Record, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -97,6 +99,7 @@ class ProcessCoerceUsertype2(ReadWriteKaitaiStruct):
                 self.buf_proc = ProcessCoerceUsertype2.Foo(_io__raw_buf_proc, self, self._root)
                 self.buf_proc._read()
 
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -137,7 +140,6 @@ class ProcessCoerceUsertype2(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if self.flag == 0:
                 pass
                 if self.buf_unproc._root != self._root:
@@ -152,6 +154,7 @@ class ProcessCoerceUsertype2(ReadWriteKaitaiStruct):
                 if self.buf_proc._parent != self:
                     raise kaitaistruct.ConsistencyError(u"buf_proc", self.buf_proc._parent, self)
 
+            self._dirty = False
 
         @property
         def buf(self):

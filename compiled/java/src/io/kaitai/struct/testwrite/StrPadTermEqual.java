@@ -36,12 +36,14 @@ public class StrPadTermEqual extends KaitaiStruct.ReadWrite {
         this.s2 = new String(KaitaiStream.bytesTerminate(KaitaiStream.bytesStripRight(this._io.readBytes(20), (byte) 43), (byte) 64, true), StandardCharsets.UTF_8);
         this.s3 = new String(KaitaiStream.bytesTerminate(this._io.readBytes(20), (byte) 43, false), StandardCharsets.UTF_8);
         this.s4 = new String(KaitaiStream.bytesTerminate(this._io.readBytes(20), (byte) 46, true), StandardCharsets.UTF_8);
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytesLimit((this.s1).getBytes(Charset.forName("UTF-8")), 20, (byte) 64, (byte) 64);
         this._io.writeBytesLimit((this.s2).getBytes(Charset.forName("UTF-8")), 20, (byte) 43, (byte) 43);
         this._io.writeBytesLimit((this.s3).getBytes(Charset.forName("UTF-8")), 20, (byte) 43, (byte) 43);
@@ -77,6 +79,7 @@ public class StrPadTermEqual extends KaitaiStruct.ReadWrite {
             if ( ((KaitaiStream.byteArrayIndexOf((this.s4).getBytes(Charset.forName("UTF-8")), ((byte) 46)) != -1) && (KaitaiStream.byteArrayIndexOf((this.s4).getBytes(Charset.forName("UTF-8")), ((byte) 46)) != (this.s4).getBytes(Charset.forName("UTF-8")).length - 1)) )
                 throw new ConsistencyError("s4", KaitaiStream.byteArrayIndexOf((this.s4).getBytes(Charset.forName("UTF-8")), ((byte) 46)), (this.s4).getBytes(Charset.forName("UTF-8")).length - 1);
         }
+        _dirty = false;
     }
     private String s1;
     private String s2;
@@ -85,15 +88,15 @@ public class StrPadTermEqual extends KaitaiStruct.ReadWrite {
     private StrPadTermEqual _root;
     private KaitaiStruct.ReadWrite _parent;
     public String s1() { return s1; }
-    public void setS1(String _v) { s1 = _v; }
+    public void setS1(String _v) { _dirty = true; s1 = _v; }
     public String s2() { return s2; }
-    public void setS2(String _v) { s2 = _v; }
+    public void setS2(String _v) { _dirty = true; s2 = _v; }
     public String s3() { return s3; }
-    public void setS3(String _v) { s3 = _v; }
+    public void setS3(String _v) { _dirty = true; s3 = _v; }
     public String s4() { return s4; }
-    public void setS4(String _v) { s4 = _v; }
+    public void setS4(String _v) { _dirty = true; s4 = _v; }
     public StrPadTermEqual _root() { return _root; }
-    public void set_root(StrPadTermEqual _v) { _root = _v; }
+    public void set_root(StrPadTermEqual _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

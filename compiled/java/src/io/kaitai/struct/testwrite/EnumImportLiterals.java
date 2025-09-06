@@ -29,15 +29,18 @@ public class EnumImportLiterals extends KaitaiStruct.ReadWrite {
         this._root = _root == null ? this : _root;
     }
     public void _read() {
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
     }
 
     public void _check() {
+        _dirty = false;
     }
     private Boolean pet1Eq;
     public Boolean pet1Eq() {
@@ -66,7 +69,7 @@ public class EnumImportLiterals extends KaitaiStruct.ReadWrite {
     private EnumImportLiterals _root;
     private KaitaiStruct.ReadWrite _parent;
     public EnumImportLiterals _root() { return _root; }
-    public void set_root(EnumImportLiterals _v) { _root = _v; }
+    public void set_root(EnumImportLiterals _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

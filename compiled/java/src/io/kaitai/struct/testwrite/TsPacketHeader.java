@@ -62,12 +62,14 @@ public class TsPacketHeader extends KaitaiStruct.ReadWrite {
         this.adaptationFieldControl = AdaptationFieldControlEnum.byId(this._io.readBitsIntBe(2));
         this.continuityCounter = this._io.readBitsIntBe(4);
         this.tsPacketRemain = this._io.readBytes(184);
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(this.syncByte);
         this._io.writeBitsIntBe(1, (this.transportErrorIndicator ? 1 : 0));
         this._io.writeBitsIntBe(1, (this.payloadUnitStartIndicator ? 1 : 0));
@@ -82,6 +84,7 @@ public class TsPacketHeader extends KaitaiStruct.ReadWrite {
     public void _check() {
         if (this.tsPacketRemain.length != 184)
             throw new ConsistencyError("ts_packet_remain", this.tsPacketRemain.length, 184);
+        _dirty = false;
     }
     private int syncByte;
     private boolean transportErrorIndicator;
@@ -95,25 +98,25 @@ public class TsPacketHeader extends KaitaiStruct.ReadWrite {
     private TsPacketHeader _root;
     private KaitaiStruct.ReadWrite _parent;
     public int syncByte() { return syncByte; }
-    public void setSyncByte(int _v) { syncByte = _v; }
+    public void setSyncByte(int _v) { _dirty = true; syncByte = _v; }
     public boolean transportErrorIndicator() { return transportErrorIndicator; }
-    public void setTransportErrorIndicator(boolean _v) { transportErrorIndicator = _v; }
+    public void setTransportErrorIndicator(boolean _v) { _dirty = true; transportErrorIndicator = _v; }
     public boolean payloadUnitStartIndicator() { return payloadUnitStartIndicator; }
-    public void setPayloadUnitStartIndicator(boolean _v) { payloadUnitStartIndicator = _v; }
+    public void setPayloadUnitStartIndicator(boolean _v) { _dirty = true; payloadUnitStartIndicator = _v; }
     public boolean transportPriority() { return transportPriority; }
-    public void setTransportPriority(boolean _v) { transportPriority = _v; }
+    public void setTransportPriority(boolean _v) { _dirty = true; transportPriority = _v; }
     public long pid() { return pid; }
-    public void setPid(long _v) { pid = _v; }
+    public void setPid(long _v) { _dirty = true; pid = _v; }
     public long transportScramblingControl() { return transportScramblingControl; }
-    public void setTransportScramblingControl(long _v) { transportScramblingControl = _v; }
+    public void setTransportScramblingControl(long _v) { _dirty = true; transportScramblingControl = _v; }
     public AdaptationFieldControlEnum adaptationFieldControl() { return adaptationFieldControl; }
-    public void setAdaptationFieldControl(AdaptationFieldControlEnum _v) { adaptationFieldControl = _v; }
+    public void setAdaptationFieldControl(AdaptationFieldControlEnum _v) { _dirty = true; adaptationFieldControl = _v; }
     public long continuityCounter() { return continuityCounter; }
-    public void setContinuityCounter(long _v) { continuityCounter = _v; }
+    public void setContinuityCounter(long _v) { _dirty = true; continuityCounter = _v; }
     public byte[] tsPacketRemain() { return tsPacketRemain; }
-    public void setTsPacketRemain(byte[] _v) { tsPacketRemain = _v; }
+    public void setTsPacketRemain(byte[] _v) { _dirty = true; tsPacketRemain = _v; }
     public TsPacketHeader _root() { return _root; }
-    public void set_root(TsPacketHeader _v) { _root = _v; }
+    public void set_root(TsPacketHeader _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

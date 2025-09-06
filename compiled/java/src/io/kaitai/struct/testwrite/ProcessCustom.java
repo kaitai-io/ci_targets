@@ -40,12 +40,14 @@ public class ProcessCustom extends KaitaiStruct.ReadWrite {
         this._raw_buf3 = this._io.readBytes(5);
         MyCustomFx _process__raw_buf3 = new MyCustomFx(key(), false, new byte[] { 0 });
         this.buf3 = _process__raw_buf3.decode(this._raw_buf3);
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         MyCustomFx _process_buf1 = new MyCustomFx(7, true, new byte[] { 32, 48, 64 });
         this._raw_buf1 = _process_buf1.encode(this.buf1);
         if (this._raw_buf1.length != 5)
@@ -65,6 +67,7 @@ public class ProcessCustom extends KaitaiStruct.ReadWrite {
     }
 
     public void _check() {
+        _dirty = false;
     }
     private byte[] buf1;
     private byte[] buf2;
@@ -76,21 +79,21 @@ public class ProcessCustom extends KaitaiStruct.ReadWrite {
     private byte[] _raw_buf2;
     private byte[] _raw_buf3;
     public byte[] buf1() { return buf1; }
-    public void setBuf1(byte[] _v) { buf1 = _v; }
+    public void setBuf1(byte[] _v) { _dirty = true; buf1 = _v; }
     public byte[] buf2() { return buf2; }
-    public void setBuf2(byte[] _v) { buf2 = _v; }
+    public void setBuf2(byte[] _v) { _dirty = true; buf2 = _v; }
     public int key() { return key; }
-    public void setKey(int _v) { key = _v; }
+    public void setKey(int _v) { _dirty = true; key = _v; }
     public byte[] buf3() { return buf3; }
-    public void setBuf3(byte[] _v) { buf3 = _v; }
+    public void setBuf3(byte[] _v) { _dirty = true; buf3 = _v; }
     public ProcessCustom _root() { return _root; }
-    public void set_root(ProcessCustom _v) { _root = _v; }
+    public void set_root(ProcessCustom _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_buf1() { return _raw_buf1; }
-    public void set_raw_Buf1(byte[] _v) { _raw_buf1 = _v; }
+    public void set_raw_Buf1(byte[] _v) { _dirty = true; _raw_buf1 = _v; }
     public byte[] _raw_buf2() { return _raw_buf2; }
-    public void set_raw_Buf2(byte[] _v) { _raw_buf2 = _v; }
+    public void set_raw_Buf2(byte[] _v) { _dirty = true; _raw_buf2 = _v; }
     public byte[] _raw_buf3() { return _raw_buf3; }
-    public void set_raw_Buf3(byte[] _v) { _raw_buf3 = _v; }
+    public void set_raw_Buf3(byte[] _v) { _dirty = true; _raw_buf3 = _v; }
 }

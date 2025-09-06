@@ -15,7 +15,7 @@ class DocstringsDocref(KaitaiStruct):
        Source - http://www.example.com/some/path/?even_with=query&more=2
     """
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(DocstringsDocref, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -29,6 +29,9 @@ class DocstringsDocref(KaitaiStruct):
     def _fetch_instances(self):
         pass
         _ = self.parse_inst
+        if hasattr(self, '_m_parse_inst'):
+            pass
+
 
     @property
     def foo(self):

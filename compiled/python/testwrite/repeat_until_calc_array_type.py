@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class RepeatUntilCalcArrayType(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(RepeatUntilCalcArrayType, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -31,6 +31,7 @@ class RepeatUntilCalcArrayType(ReadWriteKaitaiStruct):
             if _.marker == 170:
                 break
             i += 1
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -62,7 +63,6 @@ class RepeatUntilCalcArrayType(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.records) == 0:
             raise kaitaistruct.ConsistencyError(u"records", len(self.records), 0)
         for i in range(len(self.records)):
@@ -75,16 +75,18 @@ class RepeatUntilCalcArrayType(ReadWriteKaitaiStruct):
             if (_.marker == 170) != (i == len(self.records) - 1):
                 raise kaitaistruct.ConsistencyError(u"records", _.marker == 170, i == len(self.records) - 1)
 
+        self._dirty = False
 
     class Record(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(RepeatUntilCalcArrayType.Record, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.marker = self._io.read_u1()
             self.body = self._io.read_u4le()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -98,7 +100,7 @@ class RepeatUntilCalcArrayType(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     @property

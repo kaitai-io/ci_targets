@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ProcessRepeatUsertypeDynargXor(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(ProcessRepeatUsertypeDynargXor, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -38,7 +38,7 @@ class ProcessRepeatUsertypeDynargXor(KaitaiStruct):
 
     class Block(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(ProcessRepeatUsertypeDynargXor.Block, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -53,7 +53,7 @@ class ProcessRepeatUsertypeDynargXor(KaitaiStruct):
 
     class BlocksBWrapper(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(ProcessRepeatUsertypeDynargXor.BlocksBWrapper, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -65,7 +65,13 @@ class ProcessRepeatUsertypeDynargXor(KaitaiStruct):
         def _fetch_instances(self):
             pass
             _ = self.blocks_0_b
+            if hasattr(self, '_m_blocks_0_b'):
+                pass
+
             _ = self.blocks_1_b
+            if hasattr(self, '_m_blocks_1_b'):
+                pass
+
 
         @property
         def blocks_0_b(self):

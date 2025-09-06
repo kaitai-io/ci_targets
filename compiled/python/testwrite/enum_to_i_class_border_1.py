@@ -17,32 +17,41 @@ class EnumToIClassBorder1(ReadWriteKaitaiStruct):
         cat = 7
         chicken = 12
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(EnumToIClassBorder1, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_checker = False
-        self.checker__to_write = True
+        self.checker__enabled = True
 
     def _read(self):
         self.pet_1 = KaitaiStream.resolve_enum(EnumToIClassBorder1.Animal, self._io.read_u4le())
         self.pet_2 = KaitaiStream.resolve_enum(EnumToIClassBorder1.Animal, self._io.read_u4le())
+        self._dirty = False
 
 
     def _fetch_instances(self):
         pass
         _ = self.checker
-        self._m_checker._fetch_instances()
+        if hasattr(self, '_m_checker'):
+            pass
+            self._m_checker._fetch_instances()
+
 
 
     def _write__seq(self, io=None):
         super(EnumToIClassBorder1, self)._write__seq(io)
-        self._should_write_checker = self.checker__to_write
+        self._should_write_checker = self.checker__enabled
         self._io.write_u4le(int(self.pet_1))
         self._io.write_u4le(int(self.pet_2))
 
 
     def _check(self):
-        pass
+        if self.checker__enabled:
+            pass
+            if self._m_checker.parent != self._root:
+                raise kaitaistruct.ConsistencyError(u"checker", self._m_checker.parent, self._root)
+
+        self._dirty = False
 
     @property
     def checker(self):
@@ -50,6 +59,9 @@ class EnumToIClassBorder1(ReadWriteKaitaiStruct):
             self._write_checker()
         if hasattr(self, '_m_checker'):
             return self._m_checker
+
+        if not self.checker__enabled:
+            return None
 
         _pos = self._io.pos()
         self._io.seek(0)
@@ -60,6 +72,7 @@ class EnumToIClassBorder1(ReadWriteKaitaiStruct):
 
     @checker.setter
     def checker(self, v):
+        self._dirty = True
         self._m_checker = v
 
     def _write_checker(self):
@@ -68,12 +81,6 @@ class EnumToIClassBorder1(ReadWriteKaitaiStruct):
         self._io.seek(0)
         self._m_checker._write__seq(self._io)
         self._io.seek(_pos)
-
-
-    def _check_checker(self):
-        pass
-        if self._m_checker.parent != self._root:
-            raise kaitaistruct.ConsistencyError(u"checker", self._m_checker.parent, self._root)
 
     @property
     def some_dog(self):

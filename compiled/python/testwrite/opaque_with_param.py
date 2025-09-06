@@ -11,13 +11,14 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class OpaqueWithParam(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(OpaqueWithParam, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self.one = params_def.ParamsDef(5, True, self._io)
         self.one._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -31,6 +32,6 @@ class OpaqueWithParam(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
 

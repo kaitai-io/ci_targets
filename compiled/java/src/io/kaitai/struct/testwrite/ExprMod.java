@@ -31,17 +31,20 @@ public class ExprMod extends KaitaiStruct.ReadWrite {
     public void _read() {
         this.intU = this._io.readU4le();
         this.intS = this._io.readS4le();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU4le(this.intU);
         this._io.writeS4le(this.intS);
     }
 
     public void _check() {
+        _dirty = false;
     }
     private Integer modNegConst;
     public Integer modNegConst() {
@@ -80,11 +83,11 @@ public class ExprMod extends KaitaiStruct.ReadWrite {
     private ExprMod _root;
     private KaitaiStruct.ReadWrite _parent;
     public long intU() { return intU; }
-    public void setIntU(long _v) { intU = _v; }
+    public void setIntU(long _v) { _dirty = true; intU = _v; }
     public int intS() { return intS; }
-    public void setIntS(int _v) { intS = _v; }
+    public void setIntS(int _v) { _dirty = true; intS = _v; }
     public ExprMod _root() { return _root; }
-    public void set_root(ExprMod _v) { _root = _v; }
+    public void set_root(ExprMod _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

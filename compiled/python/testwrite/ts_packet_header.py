@@ -19,7 +19,7 @@ class TsPacketHeader(ReadWriteKaitaiStruct):
         adaptation_field_only = 2
         adaptation_field_and_payload = 3
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(TsPacketHeader, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -33,6 +33,7 @@ class TsPacketHeader(ReadWriteKaitaiStruct):
         self.adaptation_field_control = KaitaiStream.resolve_enum(TsPacketHeader.AdaptationFieldControlEnum, self._io.read_bits_int_be(2))
         self.continuity_counter = self._io.read_bits_int_be(4)
         self.ts_packet_remain = self._io.read_bytes(184)
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -53,8 +54,8 @@ class TsPacketHeader(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.ts_packet_remain) != 184:
             raise kaitaistruct.ConsistencyError(u"ts_packet_remain", len(self.ts_packet_remain), 184)
+        self._dirty = False
 
 

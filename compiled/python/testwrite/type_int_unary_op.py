@@ -10,13 +10,14 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class TypeIntUnaryOp(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(TypeIntUnaryOp, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self.value_s2 = self._io.read_s2le()
         self.value_s8 = self._io.read_s8le()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -30,7 +31,7 @@ class TypeIntUnaryOp(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
     @property
     def unary_s2(self):

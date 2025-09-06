@@ -52,12 +52,14 @@ public class ValidEqStrEncodings extends KaitaiStruct.ReadWrite {
         if (!(this.str4.equals("\u2591\u2592\u2593"))) {
             throw new KaitaiStream.ValidationNotEqualError("\u2591\u2592\u2593", this.str4, this._io, "/seq/7");
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU2le(this.lenOf1);
         this._io.writeBytes((this.str1).getBytes(Charset.forName("ASCII")));
         this._io.writeU2le(this.lenOf2);
@@ -89,6 +91,7 @@ public class ValidEqStrEncodings extends KaitaiStruct.ReadWrite {
         if (!(this.str4.equals("\u2591\u2592\u2593"))) {
             throw new KaitaiStream.ValidationNotEqualError("\u2591\u2592\u2593", this.str4, null, "/seq/7");
         }
+        _dirty = false;
     }
     private int lenOf1;
     private String str1;
@@ -101,23 +104,23 @@ public class ValidEqStrEncodings extends KaitaiStruct.ReadWrite {
     private ValidEqStrEncodings _root;
     private KaitaiStruct.ReadWrite _parent;
     public int lenOf1() { return lenOf1; }
-    public void setLenOf1(int _v) { lenOf1 = _v; }
+    public void setLenOf1(int _v) { _dirty = true; lenOf1 = _v; }
     public String str1() { return str1; }
-    public void setStr1(String _v) { str1 = _v; }
+    public void setStr1(String _v) { _dirty = true; str1 = _v; }
     public int lenOf2() { return lenOf2; }
-    public void setLenOf2(int _v) { lenOf2 = _v; }
+    public void setLenOf2(int _v) { _dirty = true; lenOf2 = _v; }
     public String str2() { return str2; }
-    public void setStr2(String _v) { str2 = _v; }
+    public void setStr2(String _v) { _dirty = true; str2 = _v; }
     public int lenOf3() { return lenOf3; }
-    public void setLenOf3(int _v) { lenOf3 = _v; }
+    public void setLenOf3(int _v) { _dirty = true; lenOf3 = _v; }
     public String str3() { return str3; }
-    public void setStr3(String _v) { str3 = _v; }
+    public void setStr3(String _v) { _dirty = true; str3 = _v; }
     public int lenOf4() { return lenOf4; }
-    public void setLenOf4(int _v) { lenOf4 = _v; }
+    public void setLenOf4(int _v) { _dirty = true; lenOf4 = _v; }
     public String str4() { return str4; }
-    public void setStr4(String _v) { str4 = _v; }
+    public void setStr4(String _v) { _dirty = true; str4 = _v; }
     public ValidEqStrEncodings _root() { return _root; }
-    public void set_root(ValidEqStrEncodings _v) { _root = _v; }
+    public void set_root(ValidEqStrEncodings _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

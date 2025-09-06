@@ -39,12 +39,14 @@ public class BitsByteAligned extends KaitaiStruct.ReadWrite {
         this.byte3 = this._io.readBytes(1);
         this.fullByte = this._io.readBitsIntBe(8);
         this.byte4 = this._io.readU1();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBitsIntBe(6, this.one);
         this._io.writeU1(this.byte1);
         this._io.writeBitsIntBe(3, this.two);
@@ -59,6 +61,7 @@ public class BitsByteAligned extends KaitaiStruct.ReadWrite {
     public void _check() {
         if (this.byte3.length != 1)
             throw new ConsistencyError("byte_3", this.byte3.length, 1);
+        _dirty = false;
     }
     private long one;
     private int byte1;
@@ -72,25 +75,25 @@ public class BitsByteAligned extends KaitaiStruct.ReadWrite {
     private BitsByteAligned _root;
     private KaitaiStruct.ReadWrite _parent;
     public long one() { return one; }
-    public void setOne(long _v) { one = _v; }
+    public void setOne(long _v) { _dirty = true; one = _v; }
     public int byte1() { return byte1; }
-    public void setByte1(int _v) { byte1 = _v; }
+    public void setByte1(int _v) { _dirty = true; byte1 = _v; }
     public long two() { return two; }
-    public void setTwo(long _v) { two = _v; }
+    public void setTwo(long _v) { _dirty = true; two = _v; }
     public boolean three() { return three; }
-    public void setThree(boolean _v) { three = _v; }
+    public void setThree(boolean _v) { _dirty = true; three = _v; }
     public int byte2() { return byte2; }
-    public void setByte2(int _v) { byte2 = _v; }
+    public void setByte2(int _v) { _dirty = true; byte2 = _v; }
     public long four() { return four; }
-    public void setFour(long _v) { four = _v; }
+    public void setFour(long _v) { _dirty = true; four = _v; }
     public byte[] byte3() { return byte3; }
-    public void setByte3(byte[] _v) { byte3 = _v; }
+    public void setByte3(byte[] _v) { _dirty = true; byte3 = _v; }
     public long fullByte() { return fullByte; }
-    public void setFullByte(long _v) { fullByte = _v; }
+    public void setFullByte(long _v) { _dirty = true; fullByte = _v; }
     public int byte4() { return byte4; }
-    public void setByte4(int _v) { byte4 = _v; }
+    public void setByte4(int _v) { _dirty = true; byte4 = _v; }
     public BitsByteAligned _root() { return _root; }
-    public void set_root(BitsByteAligned _v) { _root = _v; }
+    public void set_root(BitsByteAligned _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

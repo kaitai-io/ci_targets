@@ -38,7 +38,9 @@ public class ValidFailRepeatInst extends KaitaiStruct {
         if (inst().size() == 0) {
         }
         inst();
-        for (int i = 0; i < this.inst.size(); i++) {
+        if (this.inst != null) {
+            for (int i = 0; i < this.inst.size(); i++) {
+            }
         }
     }
     private List<Long> inst;

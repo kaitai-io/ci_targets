@@ -40,6 +40,7 @@ public class RepeatEosU4 extends KaitaiStruct.ReadWrite {
                 i++;
             }
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -48,6 +49,7 @@ public class RepeatEosU4 extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         for (int i = 0; i < this.numbers.size(); i++) {
             if (this._io.isEof())
                 throw new ConsistencyError("numbers", this._io.size() - this._io.pos(), 0);
@@ -60,14 +62,15 @@ public class RepeatEosU4 extends KaitaiStruct.ReadWrite {
     public void _check() {
         for (int i = 0; i < this.numbers.size(); i++) {
         }
+        _dirty = false;
     }
     private List<Long> numbers;
     private RepeatEosU4 _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<Long> numbers() { return numbers; }
-    public void setNumbers(List<Long> _v) { numbers = _v; }
+    public void setNumbers(List<Long> _v) { _dirty = true; numbers = _v; }
     public RepeatEosU4 _root() { return _root; }
-    public void set_root(RepeatEosU4 _v) { _root = _v; }
+    public void set_root(RepeatEosU4 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

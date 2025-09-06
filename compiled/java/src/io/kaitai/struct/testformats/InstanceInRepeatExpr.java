@@ -40,6 +40,8 @@ public class InstanceInRepeatExpr extends KaitaiStruct {
             this.chunks.get(((Number) (i)).intValue())._fetchInstances();
         }
         numChunks();
+        if (this.numChunks != null) {
+        }
     }
     public static class Chunk extends KaitaiStruct {
         public static Chunk fromFile(String fileName) throws IOException {

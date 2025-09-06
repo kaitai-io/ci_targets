@@ -37,6 +37,7 @@ public class FloatToI extends KaitaiStruct.ReadWrite {
         if (true) {
             this.doubleValueIf = this._io.readF8be();
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -47,6 +48,7 @@ public class FloatToI extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeF4le(this.singleValue);
         this._io.writeF8le(this.doubleValue);
         if (true) {
@@ -62,6 +64,7 @@ public class FloatToI extends KaitaiStruct.ReadWrite {
         }
         if (true) {
         }
+        _dirty = false;
     }
     private Double calcFloat1;
     public Double calcFloat1() {
@@ -182,15 +185,15 @@ public class FloatToI extends KaitaiStruct.ReadWrite {
     private FloatToI _root;
     private KaitaiStruct.ReadWrite _parent;
     public float singleValue() { return singleValue; }
-    public void setSingleValue(float _v) { singleValue = _v; }
+    public void setSingleValue(float _v) { _dirty = true; singleValue = _v; }
     public double doubleValue() { return doubleValue; }
-    public void setDoubleValue(double _v) { doubleValue = _v; }
+    public void setDoubleValue(double _v) { _dirty = true; doubleValue = _v; }
     public Float singleValueIf() { return singleValueIf; }
-    public void setSingleValueIf(Float _v) { singleValueIf = _v; }
+    public void setSingleValueIf(Float _v) { _dirty = true; singleValueIf = _v; }
     public Double doubleValueIf() { return doubleValueIf; }
-    public void setDoubleValueIf(Double _v) { doubleValueIf = _v; }
+    public void setDoubleValueIf(Double _v) { _dirty = true; doubleValueIf = _v; }
     public FloatToI _root() { return _root; }
-    public void set_root(FloatToI _v) { _root = _v; }
+    public void set_root(FloatToI _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

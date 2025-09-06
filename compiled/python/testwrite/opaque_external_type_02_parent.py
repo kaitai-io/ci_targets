@@ -11,13 +11,14 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class OpaqueExternalType02Parent(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(OpaqueExternalType02Parent, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self.parent = OpaqueExternalType02Parent.ParentObj(self._io, self, self._root)
         self.parent._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -31,21 +32,22 @@ class OpaqueExternalType02Parent(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.parent._root != self._root:
             raise kaitaistruct.ConsistencyError(u"parent", self.parent._root, self._root)
         if self.parent._parent != self:
             raise kaitaistruct.ConsistencyError(u"parent", self.parent._parent, self)
+        self._dirty = False
 
     class ParentObj(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(OpaqueExternalType02Parent.ParentObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.child = opaque_external_type_02_child.OpaqueExternalType02Child(self._io)
             self.child._read()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -59,7 +61,7 @@ class OpaqueExternalType02Parent(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
 

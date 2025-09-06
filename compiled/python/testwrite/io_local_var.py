@@ -10,11 +10,11 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class IoLocalVar(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(IoLocalVar, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_mess_up = False
-        self.mess_up__to_write = True
+        self.mess_up__enabled = True
 
     def _read(self):
         self.skip = self._io.read_bytes(20)
@@ -23,6 +23,7 @@ class IoLocalVar(ReadWriteKaitaiStruct):
             self.always_null = self._io.read_u1()
 
         self.followup = self._io.read_u1()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -31,20 +32,23 @@ class IoLocalVar(ReadWriteKaitaiStruct):
             pass
 
         _ = self.mess_up
-        _on = 2
-        if _on == 1:
+        if hasattr(self, '_m_mess_up'):
             pass
-            self._m_mess_up._fetch_instances()
-        elif _on == 2:
-            pass
-            self._m_mess_up._fetch_instances()
-        else:
-            pass
+            _on = 2
+            if _on == 1:
+                pass
+                self._m_mess_up._fetch_instances()
+            elif _on == 2:
+                pass
+                self._m_mess_up._fetch_instances()
+            else:
+                pass
+
 
 
     def _write__seq(self, io=None):
         super(IoLocalVar, self)._write__seq(io)
-        self._should_write_mess_up = self.mess_up__to_write
+        self._should_write_mess_up = self.mess_up__enabled
         self._io.write_bytes(self.skip)
         if self.mess_up._io.pos() < 0:
             pass
@@ -54,18 +58,39 @@ class IoLocalVar(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.skip) != 20:
             raise kaitaistruct.ConsistencyError(u"skip", len(self.skip), 20)
+        if self.mess_up__enabled:
+            pass
+            _on = 2
+            if _on == 1:
+                pass
+                if self._m_mess_up._root != self._root:
+                    raise kaitaistruct.ConsistencyError(u"mess_up", self._m_mess_up._root, self._root)
+                if self._m_mess_up._parent != self:
+                    raise kaitaistruct.ConsistencyError(u"mess_up", self._m_mess_up._parent, self)
+            elif _on == 2:
+                pass
+                if self._m_mess_up._root != self._root:
+                    raise kaitaistruct.ConsistencyError(u"mess_up", self._m_mess_up._root, self._root)
+                if self._m_mess_up._parent != self:
+                    raise kaitaistruct.ConsistencyError(u"mess_up", self._m_mess_up._parent, self)
+            else:
+                pass
+                if len(self._m_mess_up) != 2:
+                    raise kaitaistruct.ConsistencyError(u"mess_up", len(self._m_mess_up), 2)
+
+        self._dirty = False
 
     class Dummy(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(IoLocalVar.Dummy, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             pass
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -77,7 +102,7 @@ class IoLocalVar(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     @property
@@ -86,6 +111,9 @@ class IoLocalVar(ReadWriteKaitaiStruct):
             self._write_mess_up()
         if hasattr(self, '_m_mess_up'):
             return self._m_mess_up
+
+        if not self.mess_up__enabled:
+            return None
 
         io = self._root._io
         _pos = io.pos()
@@ -111,6 +139,7 @@ class IoLocalVar(ReadWriteKaitaiStruct):
 
     @mess_up.setter
     def mess_up(self, v):
+        self._dirty = True
         self._m_mess_up = v
 
     def _write_mess_up(self):
@@ -149,26 +178,5 @@ class IoLocalVar(ReadWriteKaitaiStruct):
             pass
             io.write_bytes(self._m_mess_up)
         io.seek(_pos)
-
-
-    def _check_mess_up(self):
-        pass
-        _on = 2
-        if _on == 1:
-            pass
-            if self._m_mess_up._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"mess_up", self._m_mess_up._root, self._root)
-            if self._m_mess_up._parent != self:
-                raise kaitaistruct.ConsistencyError(u"mess_up", self._m_mess_up._parent, self)
-        elif _on == 2:
-            pass
-            if self._m_mess_up._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"mess_up", self._m_mess_up._root, self._root)
-            if self._m_mess_up._parent != self:
-                raise kaitaistruct.ConsistencyError(u"mess_up", self._m_mess_up._parent, self)
-        else:
-            pass
-            if len(self._m_mess_up) != 2:
-                raise kaitaistruct.ConsistencyError(u"mess_up", len(self._m_mess_up), 2)
 
 

@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class TypeTernary(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(TypeTernary, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -27,6 +27,7 @@ class TypeTernary(ReadWriteKaitaiStruct):
         _io__raw_dif_with_hack = KaitaiStream(BytesIO(self._raw_dif_with_hack))
         self.dif_with_hack = TypeTernary.Dummy(_io__raw_dif_with_hack, self, self._root)
         self.dif_with_hack._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -70,7 +71,6 @@ class TypeTernary(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if (not (self.is_hack)):
             pass
             if self.dif_wo_hack._root != self._root:
@@ -82,15 +82,17 @@ class TypeTernary(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"dif_with_hack", self.dif_with_hack._root, self._root)
         if self.dif_with_hack._parent != self:
             raise kaitaistruct.ConsistencyError(u"dif_with_hack", self.dif_with_hack._parent, self)
+        self._dirty = False
 
     class Dummy(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(TypeTernary.Dummy, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.value = self._io.read_u1()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -103,7 +105,7 @@ class TypeTernary(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     @property

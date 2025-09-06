@@ -36,12 +36,14 @@ public class ValidFailRangeFloat extends KaitaiStruct.ReadWrite {
         if (!(this.foo <= 0.375)) {
             throw new KaitaiStream.ValidationGreaterThanError(0.375, this.foo, this._io, "/seq/0");
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeF4le(this.foo);
     }
 
@@ -52,14 +54,15 @@ public class ValidFailRangeFloat extends KaitaiStruct.ReadWrite {
         if (!(this.foo <= 0.375)) {
             throw new KaitaiStream.ValidationGreaterThanError(0.375, this.foo, null, "/seq/0");
         }
+        _dirty = false;
     }
     private float foo;
     private ValidFailRangeFloat _root;
     private KaitaiStruct.ReadWrite _parent;
     public float foo() { return foo; }
-    public void setFoo(float _v) { foo = _v; }
+    public void setFoo(float _v) { _dirty = true; foo = _v; }
     public ValidFailRangeFloat _root() { return _root; }
-    public void set_root(ValidFailRangeFloat _v) { _root = _v; }
+    public void set_root(ValidFailRangeFloat _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

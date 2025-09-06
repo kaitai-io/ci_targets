@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class InstanceIoUserEarlier(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(InstanceIoUserEarlier, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -37,11 +37,17 @@ class InstanceIoUserEarlier(KaitaiStruct):
         self.into_a._fetch_instances()
         self.last_accessor._fetch_instances()
         _ = self.a_mid
+        if hasattr(self, '_m_a_mid'):
+            pass
+
         _ = self.b_mid
+        if hasattr(self, '_m_b_mid'):
+            pass
+
 
     class Baz(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(InstanceIoUserEarlier.Baz, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -62,7 +68,7 @@ class InstanceIoUserEarlier(KaitaiStruct):
 
     class Foo(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(InstanceIoUserEarlier.Foo, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -81,7 +87,10 @@ class InstanceIoUserEarlier(KaitaiStruct):
                 pass
 
             _ = self.inst
-            self._m_inst._fetch_instances()
+            if hasattr(self, '_m_inst'):
+                pass
+                self._m_inst._fetch_instances()
+
 
         @property
         def inst(self):
@@ -100,7 +109,7 @@ class InstanceIoUserEarlier(KaitaiStruct):
 
     class Slot(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(InstanceIoUserEarlier.Slot, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -117,9 +126,9 @@ class InstanceIoUserEarlier(KaitaiStruct):
             if self._io.size() != 0:
                 pass
 
-            if self._io.size() != 0:
+            _ = self.last
+            if hasattr(self, '_m_last'):
                 pass
-                _ = self.last
 
 
         @property

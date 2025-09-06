@@ -32,7 +32,9 @@ public class CastToTop extends KaitaiStruct {
 
     public void _fetchInstances() {
         header();
-        this.header._fetchInstances();
+        if (this.header != null) {
+            this.header._fetchInstances();
+        }
     }
     private CastToTop header;
     public CastToTop header() {

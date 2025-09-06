@@ -35,6 +35,7 @@ public class NestedTypeParam extends KaitaiStruct.ReadWrite {
     public void _read() {
         this.mainSeq = new Nested.MyType(this._io, this, _root, 5);
         this.mainSeq._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -42,6 +43,7 @@ public class NestedTypeParam extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this.mainSeq._write_Seq(this._io);
     }
 
@@ -52,6 +54,7 @@ public class NestedTypeParam extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("main_seq", this.mainSeq._parent(), this);
         if (this.mainSeq.myLen() != 5)
             throw new ConsistencyError("main_seq", this.mainSeq.myLen(), 5);
+        _dirty = false;
     }
     public static class Nested extends KaitaiStruct.ReadWrite {
         public static Nested fromFile(String fileName) throws IOException {
@@ -75,15 +78,18 @@ public class NestedTypeParam extends KaitaiStruct.ReadWrite {
             this._root = _root;
         }
         public void _read() {
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
         }
 
         public void _check() {
+            _dirty = false;
         }
         public static class MyType extends KaitaiStruct.ReadWrite {
             public MyType(long myLen) {
@@ -106,46 +112,49 @@ public class NestedTypeParam extends KaitaiStruct.ReadWrite {
             }
             public void _read() {
                 this.body = new String(this._io.readBytes(myLen()), StandardCharsets.US_ASCII);
+                _dirty = false;
             }
 
             public void _fetchInstances() {
             }
 
             public void _write_Seq() {
+                _assertNotDirty();
                 this._io.writeBytes((this.body).getBytes(Charset.forName("ASCII")));
             }
 
             public void _check() {
                 if ((this.body).getBytes(Charset.forName("ASCII")).length != myLen())
                     throw new ConsistencyError("body", (this.body).getBytes(Charset.forName("ASCII")).length, myLen());
+                _dirty = false;
             }
             private String body;
             private long myLen;
             private NestedTypeParam _root;
             private NestedTypeParam _parent;
             public String body() { return body; }
-            public void setBody(String _v) { body = _v; }
+            public void setBody(String _v) { _dirty = true; body = _v; }
             public long myLen() { return myLen; }
-            public void setMyLen(long _v) { myLen = _v; }
+            public void setMyLen(long _v) { _dirty = true; myLen = _v; }
             public NestedTypeParam _root() { return _root; }
-            public void set_root(NestedTypeParam _v) { _root = _v; }
+            public void set_root(NestedTypeParam _v) { _dirty = true; _root = _v; }
             public NestedTypeParam _parent() { return _parent; }
-            public void set_parent(NestedTypeParam _v) { _parent = _v; }
+            public void set_parent(NestedTypeParam _v) { _dirty = true; _parent = _v; }
         }
         private NestedTypeParam _root;
         private KaitaiStruct.ReadWrite _parent;
         public NestedTypeParam _root() { return _root; }
-        public void set_root(NestedTypeParam _v) { _root = _v; }
+        public void set_root(NestedTypeParam _v) { _dirty = true; _root = _v; }
         public KaitaiStruct.ReadWrite _parent() { return _parent; }
-        public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+        public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     }
     private Nested.MyType mainSeq;
     private NestedTypeParam _root;
     private KaitaiStruct.ReadWrite _parent;
     public Nested.MyType mainSeq() { return mainSeq; }
-    public void setMainSeq(Nested.MyType _v) { mainSeq = _v; }
+    public void setMainSeq(Nested.MyType _v) { _dirty = true; mainSeq = _v; }
     public NestedTypeParam _root() { return _root; }
-    public void set_root(NestedTypeParam _v) { _root = _v; }
+    public void set_root(NestedTypeParam _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

@@ -16,7 +16,7 @@ class EnumIntRangeS(KaitaiStruct):
         zero = 0
         int_max = 2147483647
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(EnumIntRangeS, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()

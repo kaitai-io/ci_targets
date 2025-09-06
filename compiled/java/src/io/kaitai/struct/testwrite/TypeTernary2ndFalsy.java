@@ -44,6 +44,7 @@ public class TypeTernary2ndFalsy extends KaitaiStruct.ReadWrite {
         for (int i = 0; i < 0; i++) {
             this.intArrayEmpty.add(this._io.readU1());
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -55,6 +56,7 @@ public class TypeTernary2ndFalsy extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(this.intTruthy);
         this.ut._write_Seq(this._io);
         for (int i = 0; i < this.intArray.size(); i++) {
@@ -78,6 +80,7 @@ public class TypeTernary2ndFalsy extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("int_array_empty", this.intArrayEmpty.size(), 0);
         for (int i = 0; i < this.intArrayEmpty.size(); i++) {
         }
+        _dirty = false;
     }
     public static class Foo extends KaitaiStruct.ReadWrite {
         public static Foo fromFile(String fileName) throws IOException {
@@ -102,26 +105,29 @@ public class TypeTernary2ndFalsy extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.m = this._io.readU1();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU1(this.m);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private int m;
         private TypeTernary2ndFalsy _root;
         private TypeTernary2ndFalsy _parent;
         public int m() { return m; }
-        public void setM(int _v) { m = _v; }
+        public void setM(int _v) { _dirty = true; m = _v; }
         public TypeTernary2ndFalsy _root() { return _root; }
-        public void set_root(TypeTernary2ndFalsy _v) { _root = _v; }
+        public void set_root(TypeTernary2ndFalsy _v) { _dirty = true; _root = _v; }
         public TypeTernary2ndFalsy _parent() { return _parent; }
-        public void set_parent(TypeTernary2ndFalsy _v) { _parent = _v; }
+        public void set_parent(TypeTernary2ndFalsy _v) { _dirty = true; _parent = _v; }
     }
     private Foo nullUt;
     public Foo nullUt() {
@@ -220,15 +226,15 @@ public class TypeTernary2ndFalsy extends KaitaiStruct.ReadWrite {
     private TypeTernary2ndFalsy _root;
     private KaitaiStruct.ReadWrite _parent;
     public int intTruthy() { return intTruthy; }
-    public void setIntTruthy(int _v) { intTruthy = _v; }
+    public void setIntTruthy(int _v) { _dirty = true; intTruthy = _v; }
     public Foo ut() { return ut; }
-    public void setUt(Foo _v) { ut = _v; }
+    public void setUt(Foo _v) { _dirty = true; ut = _v; }
     public List<Integer> intArray() { return intArray; }
-    public void setIntArray(List<Integer> _v) { intArray = _v; }
+    public void setIntArray(List<Integer> _v) { _dirty = true; intArray = _v; }
     public List<Integer> intArrayEmpty() { return intArrayEmpty; }
-    public void setIntArrayEmpty(List<Integer> _v) { intArrayEmpty = _v; }
+    public void setIntArrayEmpty(List<Integer> _v) { _dirty = true; intArrayEmpty = _v; }
     public TypeTernary2ndFalsy _root() { return _root; }
-    public void set_root(TypeTernary2ndFalsy _v) { _root = _v; }
+    public void set_root(TypeTernary2ndFalsy _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

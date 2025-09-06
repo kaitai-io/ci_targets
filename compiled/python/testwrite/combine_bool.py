@@ -10,12 +10,13 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class CombineBool(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(CombineBool, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self.bool_bit = self._io.read_bits_int_be(1) != 0
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -28,7 +29,7 @@ class CombineBool(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
     @property
     def bool_calc(self):

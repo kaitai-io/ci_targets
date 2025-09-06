@@ -19,7 +19,7 @@ class DebugEnumName(ReadWriteKaitaiStruct):
         enum_value_65 = 65
     SEQ_FIELDS = ["one", "array_of_ints", "test_type"]
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(DebugEnumName, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._debug = collections.defaultdict(dict)
@@ -41,6 +41,7 @@ class DebugEnumName(ReadWriteKaitaiStruct):
         self.test_type = DebugEnumName.TestSubtype(self._io, self, self._root)
         self.test_type._read()
         self._debug['test_type']['end'] = self._io.pos()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -62,7 +63,6 @@ class DebugEnumName(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.array_of_ints) != 1:
             raise kaitaistruct.ConsistencyError(u"array_of_ints", len(self.array_of_ints), 1)
         for i in range(len(self.array_of_ints)):
@@ -72,6 +72,7 @@ class DebugEnumName(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"test_type", self.test_type._root, self._root)
         if self.test_type._parent != self:
             raise kaitaistruct.ConsistencyError(u"test_type", self.test_type._parent, self)
+        self._dirty = False
 
     class TestSubtype(ReadWriteKaitaiStruct):
 
@@ -82,7 +83,7 @@ class DebugEnumName(ReadWriteKaitaiStruct):
             enum_value_11 = 11
         SEQ_FIELDS = ["field1", "field2"]
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(DebugEnumName.TestSubtype, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._debug = collections.defaultdict(dict)
@@ -94,6 +95,7 @@ class DebugEnumName(ReadWriteKaitaiStruct):
             self._debug['field2']['start'] = self._io.pos()
             self.field2 = self._io.read_u1()
             self._debug['field2']['end'] = self._io.pos()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -107,7 +109,7 @@ class DebugEnumName(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
         @property
         def instance_field(self):

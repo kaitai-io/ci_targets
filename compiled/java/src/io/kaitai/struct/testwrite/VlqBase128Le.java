@@ -70,6 +70,7 @@ public class VlqBase128Le extends KaitaiStruct.ReadWrite {
                 i++;
             } while (!(!(_it.hasNext())));
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -79,6 +80,7 @@ public class VlqBase128Le extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         for (int i = 0; i < this.groups.size(); i++) {
             this.groups.get(((Number) (i)).intValue())._write_Seq(this._io);
         }
@@ -98,6 +100,7 @@ public class VlqBase128Le extends KaitaiStruct.ReadWrite {
                     throw new ConsistencyError("groups", !(_it.hasNext()), i == this.groups.size() - 1);
             }
         }
+        _dirty = false;
     }
 
     /**
@@ -127,17 +130,20 @@ public class VlqBase128Le extends KaitaiStruct.ReadWrite {
         public void _read() {
             this.hasNext = this._io.readBitsIntBe(1) != 0;
             this.value = this._io.readBitsIntBe(7);
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBitsIntBe(1, (this.hasNext ? 1 : 0));
             this._io.writeBitsIntBe(7, this.value);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private boolean hasNext;
         private long value;
@@ -148,17 +154,17 @@ public class VlqBase128Le extends KaitaiStruct.ReadWrite {
          * If true, then we have more bytes to read
          */
         public boolean hasNext() { return hasNext; }
-        public void setHasNext(boolean _v) { hasNext = _v; }
+        public void setHasNext(boolean _v) { _dirty = true; hasNext = _v; }
 
         /**
          * The 7-bit (base128) numeric value chunk of this group
          */
         public long value() { return value; }
-        public void setValue(long _v) { value = _v; }
+        public void setValue(long _v) { _dirty = true; value = _v; }
         public VlqBase128Le _root() { return _root; }
-        public void set_root(VlqBase128Le _v) { _root = _v; }
+        public void set_root(VlqBase128Le _v) { _dirty = true; _root = _v; }
         public VlqBase128Le _parent() { return _parent; }
-        public void set_parent(VlqBase128Le _v) { _parent = _v; }
+        public void set_parent(VlqBase128Le _v) { _dirty = true; _parent = _v; }
     }
     private Integer len;
     public Integer len() {
@@ -204,9 +210,9 @@ public class VlqBase128Le extends KaitaiStruct.ReadWrite {
     private VlqBase128Le _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<Group> groups() { return groups; }
-    public void setGroups(List<Group> _v) { groups = _v; }
+    public void setGroups(List<Group> _v) { _dirty = true; groups = _v; }
     public VlqBase128Le _root() { return _root; }
-    public void set_root(VlqBase128Le _v) { _root = _v; }
+    public void set_root(VlqBase128Le _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

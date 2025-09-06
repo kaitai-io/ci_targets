@@ -15,7 +15,7 @@ class EnumIf(KaitaiStruct):
         a_string = 83
         a_tuple = 84
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(EnumIf, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -34,7 +34,7 @@ class EnumIf(KaitaiStruct):
 
     class ArgStr(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(EnumIf.ArgStr, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -50,7 +50,7 @@ class EnumIf(KaitaiStruct):
 
     class ArgTuple(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(EnumIf.ArgTuple, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -66,7 +66,7 @@ class EnumIf(KaitaiStruct):
 
     class Operation(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(EnumIf.Operation, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()

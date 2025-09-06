@@ -36,6 +36,8 @@ public class ValidFailInst extends KaitaiStruct {
         if (inst() >= 0) {
         }
         inst();
+        if (this.inst != null) {
+        }
     }
     private Integer inst;
     public Integer inst() {

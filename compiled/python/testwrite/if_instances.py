@@ -10,31 +10,38 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class IfInstances(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(IfInstances, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_never_happens = False
-        self.never_happens__to_write = True
+        self.never_happens__enabled = True
 
     def _read(self):
         pass
+        self._dirty = False
 
 
     def _fetch_instances(self):
         pass
-        if False:
+        _ = self.never_happens
+        if hasattr(self, '_m_never_happens'):
             pass
-            _ = self.never_happens
 
 
 
     def _write__seq(self, io=None):
         super(IfInstances, self)._write__seq(io)
-        self._should_write_never_happens = self.never_happens__to_write
+        self._should_write_never_happens = self.never_happens__enabled
 
 
     def _check(self):
-        pass
+        if self.never_happens__enabled:
+            pass
+            if False:
+                pass
+
+
+        self._dirty = False
 
     @property
     def never_happens(self):
@@ -42,6 +49,9 @@ class IfInstances(ReadWriteKaitaiStruct):
             self._write_never_happens()
         if hasattr(self, '_m_never_happens'):
             return self._m_never_happens
+
+        if not self.never_happens__enabled:
+            return None
 
         if False:
             pass
@@ -54,6 +64,7 @@ class IfInstances(ReadWriteKaitaiStruct):
 
     @never_happens.setter
     def never_happens(self, v):
+        self._dirty = True
         self._m_never_happens = v
 
     def _write_never_happens(self):
@@ -64,13 +75,6 @@ class IfInstances(ReadWriteKaitaiStruct):
             self._io.seek(100500)
             self._io.write_u1(self._m_never_happens)
             self._io.seek(_pos)
-
-
-
-    def _check_never_happens(self):
-        pass
-        if False:
-            pass
 
 
 

@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class OpaqueExternalType02Child(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(OpaqueExternalType02Child, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -27,7 +27,7 @@ class OpaqueExternalType02Child(KaitaiStruct):
 
     class OpaqueExternalType02ChildChild(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(OpaqueExternalType02Child.OpaqueExternalType02ChildChild, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()

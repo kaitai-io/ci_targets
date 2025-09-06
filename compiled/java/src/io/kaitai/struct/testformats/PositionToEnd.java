@@ -31,7 +31,9 @@ public class PositionToEnd extends KaitaiStruct {
 
     public void _fetchInstances() {
         index();
-        this.index._fetchInstances();
+        if (this.index != null) {
+            this.index._fetchInstances();
+        }
     }
     public static class IndexObj extends KaitaiStruct {
         public static IndexObj fromFile(String fileName) throws IOException {

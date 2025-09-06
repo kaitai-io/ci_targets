@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class DefaultEndianExprInherited(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(DefaultEndianExprInherited, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -33,7 +33,7 @@ class DefaultEndianExprInherited(KaitaiStruct):
 
     class Doc(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(DefaultEndianExprInherited.Doc, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -49,7 +49,7 @@ class DefaultEndianExprInherited(KaitaiStruct):
 
         class MainObj(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
-                self._io = _io
+                super(DefaultEndianExprInherited.Doc.MainObj, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
                 self._read()
@@ -82,7 +82,7 @@ class DefaultEndianExprInherited(KaitaiStruct):
 
             class SubObj(KaitaiStruct):
                 def __init__(self, _io, _parent=None, _root=None, _is_le=None):
-                    self._io = _io
+                    super(DefaultEndianExprInherited.Doc.MainObj.SubObj, self).__init__(_io)
                     self._parent = _parent
                     self._root = _root
                     self._is_le = _is_le
@@ -111,7 +111,7 @@ class DefaultEndianExprInherited(KaitaiStruct):
 
                 class SubsubObj(KaitaiStruct):
                     def __init__(self, _io, _parent=None, _root=None, _is_le=None):
-                        self._io = _io
+                        super(DefaultEndianExprInherited.Doc.MainObj.SubObj.SubsubObj, self).__init__(_io)
                         self._parent = _parent
                         self._root = _root
                         self._is_le = _is_le
@@ -137,6 +137,9 @@ class DefaultEndianExprInherited(KaitaiStruct):
                     def _fetch_instances(self):
                         pass
                         _ = self.some_inst
+                        if hasattr(self, '_m_some_inst'):
+                            pass
+
 
                     @property
                     def some_inst(self):

@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ProcessRotate(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ProcessRotate, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -22,6 +22,7 @@ class ProcessRotate(ReadWriteKaitaiStruct):
         self.key = self._io.read_u1()
         self._raw_buf3 = self._io.read_bytes(5)
         self.buf3 = KaitaiStream.process_rotate_left(self._raw_buf3, self.key, 1)
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -46,6 +47,6 @@ class ProcessRotate(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
 

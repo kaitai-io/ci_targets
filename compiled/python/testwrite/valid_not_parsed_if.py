@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ValidNotParsedIf(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ValidNotParsedIf, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -27,6 +27,7 @@ class ValidNotParsedIf(ReadWriteKaitaiStruct):
             if not self.parsed == 80:
                 raise kaitaistruct.ValidationNotEqualError(80, self.parsed, self._io, u"/seq/1")
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -52,7 +53,6 @@ class ValidNotParsedIf(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if False:
             pass
             if not self.not_parsed == 42:
@@ -63,5 +63,6 @@ class ValidNotParsedIf(ReadWriteKaitaiStruct):
             if not self.parsed == 80:
                 raise kaitaistruct.ValidationNotEqualError(80, self.parsed, None, u"/seq/1")
 
+        self._dirty = False
 
 

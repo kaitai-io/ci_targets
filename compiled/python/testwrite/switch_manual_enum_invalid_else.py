@@ -11,7 +11,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class SwitchManualEnumInvalidElse(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(SwitchManualEnumInvalidElse, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -26,6 +26,7 @@ class SwitchManualEnumInvalidElse(ReadWriteKaitaiStruct):
                 self.opcodes.append(_t_opcodes)
             i += 1
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -49,7 +50,6 @@ class SwitchManualEnumInvalidElse(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         for i in range(len(self.opcodes)):
             pass
             if self.opcodes[i]._root != self._root:
@@ -57,6 +57,7 @@ class SwitchManualEnumInvalidElse(ReadWriteKaitaiStruct):
             if self.opcodes[i]._parent != self:
                 raise kaitaistruct.ConsistencyError(u"opcodes", self.opcodes[i]._parent, self)
 
+        self._dirty = False
 
     class Opcode(ReadWriteKaitaiStruct):
 
@@ -64,7 +65,7 @@ class SwitchManualEnumInvalidElse(ReadWriteKaitaiStruct):
             intval = 73
             strval = 83
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(SwitchManualEnumInvalidElse.Opcode, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -83,6 +84,7 @@ class SwitchManualEnumInvalidElse(ReadWriteKaitaiStruct):
                 pass
                 self.body = SwitchManualEnumInvalidElse.Opcode.Defval(self._io, self, self._root)
                 self.body._read()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -115,7 +117,6 @@ class SwitchManualEnumInvalidElse(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             _on = self.code
             if _on == SwitchManualEnumInvalidElse.Opcode.CodeEnum.intval:
                 pass
@@ -135,15 +136,17 @@ class SwitchManualEnumInvalidElse(ReadWriteKaitaiStruct):
                     raise kaitaistruct.ConsistencyError(u"body", self.body._root, self._root)
                 if self.body._parent != self:
                     raise kaitaistruct.ConsistencyError(u"body", self.body._parent, self)
+            self._dirty = False
 
         class Defval(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                self._io = _io
+                super(SwitchManualEnumInvalidElse.Opcode.Defval, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
             def _read(self):
                 pass
+                self._dirty = False
 
 
             def _fetch_instances(self):
@@ -155,7 +158,7 @@ class SwitchManualEnumInvalidElse(ReadWriteKaitaiStruct):
 
 
             def _check(self):
-                pass
+                self._dirty = False
 
             @property
             def value(self):
@@ -170,12 +173,13 @@ class SwitchManualEnumInvalidElse(ReadWriteKaitaiStruct):
 
         class Intval(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                self._io = _io
+                super(SwitchManualEnumInvalidElse.Opcode.Intval, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
             def _read(self):
                 self.value = self._io.read_u1()
+                self._dirty = False
 
 
             def _fetch_instances(self):
@@ -188,17 +192,18 @@ class SwitchManualEnumInvalidElse(ReadWriteKaitaiStruct):
 
 
             def _check(self):
-                pass
+                self._dirty = False
 
 
         class Strval(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                self._io = _io
+                super(SwitchManualEnumInvalidElse.Opcode.Strval, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
             def _read(self):
                 self.value = (self._io.read_bytes_term(0, False, True, True)).decode(u"ASCII")
+                self._dirty = False
 
 
             def _fetch_instances(self):
@@ -212,9 +217,9 @@ class SwitchManualEnumInvalidElse(ReadWriteKaitaiStruct):
 
 
             def _check(self):
-                pass
                 if KaitaiStream.byte_array_index_of((self.value).encode(u"ASCII"), 0) != -1:
                     raise kaitaistruct.ConsistencyError(u"value", KaitaiStream.byte_array_index_of((self.value).encode(u"ASCII"), 0), -1)
+                self._dirty = False
 
 
 

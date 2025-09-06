@@ -40,6 +40,7 @@ public class RepeatEosBit extends KaitaiStruct.ReadWrite {
                 i++;
             }
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -48,6 +49,7 @@ public class RepeatEosBit extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         for (int i = 0; i < this.nibbles.size(); i++) {
             if (this._io.isEof())
                 throw new ConsistencyError("nibbles", this._io.size() - this._io.pos(), 0);
@@ -60,14 +62,15 @@ public class RepeatEosBit extends KaitaiStruct.ReadWrite {
     public void _check() {
         for (int i = 0; i < this.nibbles.size(); i++) {
         }
+        _dirty = false;
     }
     private List<Long> nibbles;
     private RepeatEosBit _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<Long> nibbles() { return nibbles; }
-    public void setNibbles(List<Long> _v) { nibbles = _v; }
+    public void setNibbles(List<Long> _v) { _dirty = true; nibbles = _v; }
     public RepeatEosBit _root() { return _root; }
-    public void set_root(RepeatEosBit _v) { _root = _v; }
+    public void set_root(RepeatEosBit _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

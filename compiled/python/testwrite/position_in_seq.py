@@ -10,17 +10,18 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class PositionInSeq(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(PositionInSeq, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_header = False
-        self.header__to_write = True
+        self.header__enabled = True
 
     def _read(self):
         self.numbers = []
         for i in range(self.header.qty_numbers):
             self.numbers.append(self._io.read_u1())
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -29,12 +30,15 @@ class PositionInSeq(ReadWriteKaitaiStruct):
             pass
 
         _ = self.header
-        self._m_header._fetch_instances()
+        if hasattr(self, '_m_header'):
+            pass
+            self._m_header._fetch_instances()
+
 
 
     def _write__seq(self, io=None):
         super(PositionInSeq, self)._write__seq(io)
-        self._should_write_header = self.header__to_write
+        self._should_write_header = self.header__enabled
         if len(self.numbers) != self.header.qty_numbers:
             raise kaitaistruct.ConsistencyError(u"numbers", len(self.numbers), self.header.qty_numbers)
         for i in range(len(self.numbers)):
@@ -44,19 +48,27 @@ class PositionInSeq(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         for i in range(len(self.numbers)):
             pass
 
+        if self.header__enabled:
+            pass
+            if self._m_header._root != self._root:
+                raise kaitaistruct.ConsistencyError(u"header", self._m_header._root, self._root)
+            if self._m_header._parent != self:
+                raise kaitaistruct.ConsistencyError(u"header", self._m_header._parent, self)
+
+        self._dirty = False
 
     class HeaderObj(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(PositionInSeq.HeaderObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.qty_numbers = self._io.read_u4le()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -69,7 +81,7 @@ class PositionInSeq(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     @property
@@ -78,6 +90,9 @@ class PositionInSeq(ReadWriteKaitaiStruct):
             self._write_header()
         if hasattr(self, '_m_header'):
             return self._m_header
+
+        if not self.header__enabled:
+            return None
 
         _pos = self._io.pos()
         self._io.seek(16)
@@ -88,6 +103,7 @@ class PositionInSeq(ReadWriteKaitaiStruct):
 
     @header.setter
     def header(self, v):
+        self._dirty = True
         self._m_header = v
 
     def _write_header(self):
@@ -96,13 +112,5 @@ class PositionInSeq(ReadWriteKaitaiStruct):
         self._io.seek(16)
         self._m_header._write__seq(self._io)
         self._io.seek(_pos)
-
-
-    def _check_header(self):
-        pass
-        if self._m_header._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"header", self._m_header._root, self._root)
-        if self._m_header._parent != self:
-            raise kaitaistruct.ConsistencyError(u"header", self._m_header._parent, self)
 
 

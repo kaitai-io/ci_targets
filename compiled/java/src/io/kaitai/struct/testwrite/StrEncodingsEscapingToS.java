@@ -39,12 +39,14 @@ public class StrEncodingsEscapingToS extends KaitaiStruct.ReadWrite {
         this.str3Raw = this._io.readBytes(lenOf3());
         this.lenOf4 = this._io.readU2le();
         this.str4Raw = this._io.readBytes(lenOf4());
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU2le(this.lenOf1);
         this._io.writeBytes(this.str1Raw);
         this._io.writeU2le(this.lenOf2);
@@ -64,6 +66,7 @@ public class StrEncodingsEscapingToS extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("str3_raw", this.str3Raw.length, lenOf3());
         if (this.str4Raw.length != lenOf4())
             throw new ConsistencyError("str4_raw", this.str4Raw.length, lenOf4());
+        _dirty = false;
     }
     private String str1;
     public String str1() {
@@ -108,23 +111,23 @@ public class StrEncodingsEscapingToS extends KaitaiStruct.ReadWrite {
     private StrEncodingsEscapingToS _root;
     private KaitaiStruct.ReadWrite _parent;
     public int lenOf1() { return lenOf1; }
-    public void setLenOf1(int _v) { lenOf1 = _v; }
+    public void setLenOf1(int _v) { _dirty = true; lenOf1 = _v; }
     public byte[] str1Raw() { return str1Raw; }
-    public void setStr1Raw(byte[] _v) { str1Raw = _v; }
+    public void setStr1Raw(byte[] _v) { _dirty = true; str1Raw = _v; }
     public int lenOf2() { return lenOf2; }
-    public void setLenOf2(int _v) { lenOf2 = _v; }
+    public void setLenOf2(int _v) { _dirty = true; lenOf2 = _v; }
     public byte[] str2Raw() { return str2Raw; }
-    public void setStr2Raw(byte[] _v) { str2Raw = _v; }
+    public void setStr2Raw(byte[] _v) { _dirty = true; str2Raw = _v; }
     public int lenOf3() { return lenOf3; }
-    public void setLenOf3(int _v) { lenOf3 = _v; }
+    public void setLenOf3(int _v) { _dirty = true; lenOf3 = _v; }
     public byte[] str3Raw() { return str3Raw; }
-    public void setStr3Raw(byte[] _v) { str3Raw = _v; }
+    public void setStr3Raw(byte[] _v) { _dirty = true; str3Raw = _v; }
     public int lenOf4() { return lenOf4; }
-    public void setLenOf4(int _v) { lenOf4 = _v; }
+    public void setLenOf4(int _v) { _dirty = true; lenOf4 = _v; }
     public byte[] str4Raw() { return str4Raw; }
-    public void setStr4Raw(byte[] _v) { str4Raw = _v; }
+    public void setStr4Raw(byte[] _v) { _dirty = true; str4Raw = _v; }
     public StrEncodingsEscapingToS _root() { return _root; }
-    public void set_root(StrEncodingsEscapingToS _v) { _root = _v; }
+    public void set_root(StrEncodingsEscapingToS _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

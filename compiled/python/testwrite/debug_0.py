@@ -12,7 +12,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 class Debug0(ReadWriteKaitaiStruct):
     SEQ_FIELDS = ["one", "array_of_ints", "_unnamed2"]
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(Debug0, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._debug = collections.defaultdict(dict)
@@ -33,6 +33,7 @@ class Debug0(ReadWriteKaitaiStruct):
         self._debug['_unnamed2']['start'] = self._io.pos()
         self._unnamed2 = self._io.read_u1()
         self._debug['_unnamed2']['end'] = self._io.pos()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -53,11 +54,11 @@ class Debug0(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.array_of_ints) != 3:
             raise kaitaistruct.ConsistencyError(u"array_of_ints", len(self.array_of_ints), 3)
         for i in range(len(self.array_of_ints)):
             pass
 
+        self._dirty = False
 
 

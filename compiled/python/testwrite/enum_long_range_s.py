@@ -20,7 +20,7 @@ class EnumLongRangeS(ReadWriteKaitaiStruct):
         int_over_max = 2147483648
         long_max = 9223372036854775807
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(EnumLongRangeS, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -32,6 +32,7 @@ class EnumLongRangeS(ReadWriteKaitaiStruct):
         self.f5 = KaitaiStream.resolve_enum(EnumLongRangeS.Constants, self._io.read_s8be())
         self.f6 = KaitaiStream.resolve_enum(EnumLongRangeS.Constants, self._io.read_s8be())
         self.f7 = KaitaiStream.resolve_enum(EnumLongRangeS.Constants, self._io.read_s8be())
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -50,6 +51,6 @@ class EnumLongRangeS(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
 

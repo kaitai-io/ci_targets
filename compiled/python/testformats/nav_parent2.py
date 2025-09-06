@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class NavParent2(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(NavParent2, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -33,7 +33,7 @@ class NavParent2(KaitaiStruct):
 
     class Tag(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(NavParent2.Tag, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -47,14 +47,17 @@ class NavParent2(KaitaiStruct):
         def _fetch_instances(self):
             pass
             _ = self.tag_content
-            _on = self.name
-            if _on == u"RAHC":
+            if hasattr(self, '_m_tag_content'):
                 pass
-                self._m_tag_content._fetch_instances()
+                _on = self.name
+                if _on == u"RAHC":
+                    pass
+                    self._m_tag_content._fetch_instances()
+
 
         class TagChar(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
-                self._io = _io
+                super(NavParent2.Tag.TagChar, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
                 self._read()

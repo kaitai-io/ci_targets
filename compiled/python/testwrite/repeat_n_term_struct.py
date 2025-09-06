@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class RepeatNTermStruct(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(RepeatNTermStruct, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -54,6 +54,7 @@ class RepeatNTermStruct(ReadWriteKaitaiStruct):
             finally:
                 self.records3.append(_t_records3)
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -129,7 +130,6 @@ class RepeatNTermStruct(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.records1) != 2:
             raise kaitaistruct.ConsistencyError(u"records1", len(self.records1), 2)
         for i in range(len(self.records1)):
@@ -157,15 +157,17 @@ class RepeatNTermStruct(ReadWriteKaitaiStruct):
             if self.records3[i]._parent != self:
                 raise kaitaistruct.ConsistencyError(u"records3", self.records3[i]._parent, self)
 
+        self._dirty = False
 
     class BytesWrapper(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(RepeatNTermStruct.BytesWrapper, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.value = self._io.read_bytes_full()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -180,7 +182,7 @@ class RepeatNTermStruct(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
 

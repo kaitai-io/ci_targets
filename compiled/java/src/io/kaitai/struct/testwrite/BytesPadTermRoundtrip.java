@@ -34,12 +34,14 @@ public class BytesPadTermRoundtrip extends KaitaiStruct.ReadWrite {
         this.strTerm = KaitaiStream.bytesTerminate(KaitaiStream.bytesStripRight(this._io.readBytes(20), (byte) 43), (byte) 64, false);
         this.strTermAndPad = KaitaiStream.bytesTerminate(KaitaiStream.bytesStripRight(this._io.readBytes(20), (byte) 43), (byte) 64, false);
         this.strTermInclude = KaitaiStream.bytesTerminate(KaitaiStream.bytesStripRight(this._io.readBytes(20), (byte) 46), (byte) 64, true);
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytesLimit(this.strPad, 20, (byte) 64, (byte) 64);
         this._io.writeBytesLimit(this.strTerm, 20, (byte) 64, (byte) 43);
         this._io.writeBytesLimit(this.strTermAndPad, 20, (byte) 64, (byte) 43);
@@ -75,6 +77,7 @@ public class BytesPadTermRoundtrip extends KaitaiStruct.ReadWrite {
             if ( ((this.strTermInclude.length != 0) && ((this.strTermInclude[((Number) (this.strTermInclude.length - 1)).intValue()] & 0xff) == 46)) )
                 throw new ConsistencyError("str_term_include", (this.strTermInclude[((Number) (this.strTermInclude.length - 1)).intValue()] & 0xff), 46);
         }
+        _dirty = false;
     }
     private byte[] strPad;
     private byte[] strTerm;
@@ -83,15 +86,15 @@ public class BytesPadTermRoundtrip extends KaitaiStruct.ReadWrite {
     private BytesPadTermRoundtrip _root;
     private KaitaiStruct.ReadWrite _parent;
     public byte[] strPad() { return strPad; }
-    public void setStrPad(byte[] _v) { strPad = _v; }
+    public void setStrPad(byte[] _v) { _dirty = true; strPad = _v; }
     public byte[] strTerm() { return strTerm; }
-    public void setStrTerm(byte[] _v) { strTerm = _v; }
+    public void setStrTerm(byte[] _v) { _dirty = true; strTerm = _v; }
     public byte[] strTermAndPad() { return strTermAndPad; }
-    public void setStrTermAndPad(byte[] _v) { strTermAndPad = _v; }
+    public void setStrTermAndPad(byte[] _v) { _dirty = true; strTermAndPad = _v; }
     public byte[] strTermInclude() { return strTermInclude; }
-    public void setStrTermInclude(byte[] _v) { strTermInclude = _v; }
+    public void setStrTermInclude(byte[] _v) { _dirty = true; strTermInclude = _v; }
     public BytesPadTermRoundtrip _root() { return _root; }
-    public void set_root(BytesPadTermRoundtrip _v) { _root = _v; }
+    public void set_root(BytesPadTermRoundtrip _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

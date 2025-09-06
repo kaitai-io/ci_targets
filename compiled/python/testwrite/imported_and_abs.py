@@ -11,7 +11,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ImportedAndAbs(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ImportedAndAbs, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -19,6 +19,7 @@ class ImportedAndAbs(ReadWriteKaitaiStruct):
         self.one = self._io.read_u1()
         self.two = imported_root.ImportedRoot(self._io)
         self.two._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -33,6 +34,6 @@ class ImportedAndAbs(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
 

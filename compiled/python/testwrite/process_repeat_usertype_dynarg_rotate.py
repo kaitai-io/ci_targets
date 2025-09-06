@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ProcessRepeatUsertypeDynargRotate, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -43,6 +43,7 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
 
         self.blocks_b = ProcessRepeatUsertypeDynargRotate.BlocksBWrapper(self._io, self, self._root)
         self.blocks_b._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -100,7 +101,6 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.blocks_rol) != 2:
             raise kaitaistruct.ConsistencyError(u"blocks_rol", len(self.blocks_rol), 2)
         for i in range(len(self.blocks_rol)):
@@ -123,15 +123,17 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"blocks_b", self.blocks_b._root, self._root)
         if self.blocks_b._parent != self:
             raise kaitaistruct.ConsistencyError(u"blocks_b", self.blocks_b._parent, self)
+        self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ProcessRepeatUsertypeDynargRotate.Block, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.a = self._io.read_u2le()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -144,50 +146,81 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     class BlocksBWrapper(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ProcessRepeatUsertypeDynargRotate.BlocksBWrapper, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._should_write_blocks_rol_0_b = False
-            self.blocks_rol_0_b__to_write = True
+            self.blocks_rol_0_b__enabled = True
             self._should_write_blocks_rol_1_b = False
-            self.blocks_rol_1_b__to_write = True
+            self.blocks_rol_1_b__enabled = True
             self._should_write_blocks_ror_0_b = False
-            self.blocks_ror_0_b__to_write = True
+            self.blocks_ror_0_b__enabled = True
             self._should_write_blocks_ror_1_b = False
-            self.blocks_ror_1_b__to_write = True
+            self.blocks_ror_1_b__enabled = True
             self._should_write_blocks_ror_2_b = False
-            self.blocks_ror_2_b__to_write = True
+            self.blocks_ror_2_b__enabled = True
 
         def _read(self):
             self.dummy = self._io.read_u1()
+            self._dirty = False
 
 
         def _fetch_instances(self):
             pass
             _ = self.blocks_rol_0_b
+            if hasattr(self, '_m_blocks_rol_0_b'):
+                pass
+
             _ = self.blocks_rol_1_b
+            if hasattr(self, '_m_blocks_rol_1_b'):
+                pass
+
             _ = self.blocks_ror_0_b
+            if hasattr(self, '_m_blocks_ror_0_b'):
+                pass
+
             _ = self.blocks_ror_1_b
+            if hasattr(self, '_m_blocks_ror_1_b'):
+                pass
+
             _ = self.blocks_ror_2_b
+            if hasattr(self, '_m_blocks_ror_2_b'):
+                pass
+
 
 
         def _write__seq(self, io=None):
             super(ProcessRepeatUsertypeDynargRotate.BlocksBWrapper, self)._write__seq(io)
-            self._should_write_blocks_rol_0_b = self.blocks_rol_0_b__to_write
-            self._should_write_blocks_rol_1_b = self.blocks_rol_1_b__to_write
-            self._should_write_blocks_ror_0_b = self.blocks_ror_0_b__to_write
-            self._should_write_blocks_ror_1_b = self.blocks_ror_1_b__to_write
-            self._should_write_blocks_ror_2_b = self.blocks_ror_2_b__to_write
+            self._should_write_blocks_rol_0_b = self.blocks_rol_0_b__enabled
+            self._should_write_blocks_rol_1_b = self.blocks_rol_1_b__enabled
+            self._should_write_blocks_ror_0_b = self.blocks_ror_0_b__enabled
+            self._should_write_blocks_ror_1_b = self.blocks_ror_1_b__enabled
+            self._should_write_blocks_ror_2_b = self.blocks_ror_2_b__enabled
             self._io.write_u1(self.dummy)
 
 
         def _check(self):
-            pass
+            if self.blocks_rol_0_b__enabled:
+                pass
+
+            if self.blocks_rol_1_b__enabled:
+                pass
+
+            if self.blocks_ror_0_b__enabled:
+                pass
+
+            if self.blocks_ror_1_b__enabled:
+                pass
+
+            if self.blocks_ror_2_b__enabled:
+                pass
+
+            self._dirty = False
 
         @property
         def blocks_rol_0_b(self):
@@ -195,6 +228,9 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
                 self._write_blocks_rol_0_b()
             if hasattr(self, '_m_blocks_rol_0_b'):
                 return self._m_blocks_rol_0_b
+
+            if not self.blocks_rol_0_b__enabled:
+                return None
 
             io = self._parent.blocks_rol[0]._io
             _pos = io.pos()
@@ -205,6 +241,7 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
 
         @blocks_rol_0_b.setter
         def blocks_rol_0_b(self, v):
+            self._dirty = True
             self._m_blocks_rol_0_b = v
 
         def _write_blocks_rol_0_b(self):
@@ -215,16 +252,15 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
             io.write_u1(self._m_blocks_rol_0_b)
             io.seek(_pos)
 
-
-        def _check_blocks_rol_0_b(self):
-            pass
-
         @property
         def blocks_rol_1_b(self):
             if self._should_write_blocks_rol_1_b:
                 self._write_blocks_rol_1_b()
             if hasattr(self, '_m_blocks_rol_1_b'):
                 return self._m_blocks_rol_1_b
+
+            if not self.blocks_rol_1_b__enabled:
+                return None
 
             io = self._parent.blocks_rol[1]._io
             _pos = io.pos()
@@ -235,6 +271,7 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
 
         @blocks_rol_1_b.setter
         def blocks_rol_1_b(self, v):
+            self._dirty = True
             self._m_blocks_rol_1_b = v
 
         def _write_blocks_rol_1_b(self):
@@ -245,16 +282,15 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
             io.write_u1(self._m_blocks_rol_1_b)
             io.seek(_pos)
 
-
-        def _check_blocks_rol_1_b(self):
-            pass
-
         @property
         def blocks_ror_0_b(self):
             if self._should_write_blocks_ror_0_b:
                 self._write_blocks_ror_0_b()
             if hasattr(self, '_m_blocks_ror_0_b'):
                 return self._m_blocks_ror_0_b
+
+            if not self.blocks_ror_0_b__enabled:
+                return None
 
             io = self._parent.blocks_ror[0]._io
             _pos = io.pos()
@@ -265,6 +301,7 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
 
         @blocks_ror_0_b.setter
         def blocks_ror_0_b(self, v):
+            self._dirty = True
             self._m_blocks_ror_0_b = v
 
         def _write_blocks_ror_0_b(self):
@@ -275,16 +312,15 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
             io.write_u1(self._m_blocks_ror_0_b)
             io.seek(_pos)
 
-
-        def _check_blocks_ror_0_b(self):
-            pass
-
         @property
         def blocks_ror_1_b(self):
             if self._should_write_blocks_ror_1_b:
                 self._write_blocks_ror_1_b()
             if hasattr(self, '_m_blocks_ror_1_b'):
                 return self._m_blocks_ror_1_b
+
+            if not self.blocks_ror_1_b__enabled:
+                return None
 
             io = self._parent.blocks_ror[1]._io
             _pos = io.pos()
@@ -295,6 +331,7 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
 
         @blocks_ror_1_b.setter
         def blocks_ror_1_b(self, v):
+            self._dirty = True
             self._m_blocks_ror_1_b = v
 
         def _write_blocks_ror_1_b(self):
@@ -305,16 +342,15 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
             io.write_u1(self._m_blocks_ror_1_b)
             io.seek(_pos)
 
-
-        def _check_blocks_ror_1_b(self):
-            pass
-
         @property
         def blocks_ror_2_b(self):
             if self._should_write_blocks_ror_2_b:
                 self._write_blocks_ror_2_b()
             if hasattr(self, '_m_blocks_ror_2_b'):
                 return self._m_blocks_ror_2_b
+
+            if not self.blocks_ror_2_b__enabled:
+                return None
 
             io = self._parent.blocks_ror[2]._io
             _pos = io.pos()
@@ -325,6 +361,7 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
 
         @blocks_ror_2_b.setter
         def blocks_ror_2_b(self, v):
+            self._dirty = True
             self._m_blocks_ror_2_b = v
 
         def _write_blocks_ror_2_b(self):
@@ -334,10 +371,6 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
             io.seek(2)
             io.write_u1(self._m_blocks_ror_2_b)
             io.seek(_pos)
-
-
-        def _check_blocks_ror_2_b(self):
-            pass
 
 
 

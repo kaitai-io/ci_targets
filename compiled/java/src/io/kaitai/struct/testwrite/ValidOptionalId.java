@@ -46,12 +46,14 @@ public class ValidOptionalId extends KaitaiStruct.ReadWrite {
                 throw new KaitaiStream.ValidationExprError(this._unnamed2, this._io, "/seq/2");
             }
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytes(this._unnamed0);
         this._io.writeU1(this._unnamed1);
         this._io.writeS1(this._unnamed2);
@@ -72,6 +74,7 @@ public class ValidOptionalId extends KaitaiStruct.ReadWrite {
                 throw new KaitaiStream.ValidationExprError(this._unnamed2, null, "/seq/2");
             }
         }
+        _dirty = false;
     }
     private byte[] _unnamed0;
     private int _unnamed1;
@@ -79,13 +82,13 @@ public class ValidOptionalId extends KaitaiStruct.ReadWrite {
     private ValidOptionalId _root;
     private KaitaiStruct.ReadWrite _parent;
     public byte[] _unnamed0() { return _unnamed0; }
-    public void set_unnamed0(byte[] _v) { _unnamed0 = _v; }
+    public void set_unnamed0(byte[] _v) { _dirty = true; _unnamed0 = _v; }
     public int _unnamed1() { return _unnamed1; }
-    public void set_unnamed1(int _v) { _unnamed1 = _v; }
+    public void set_unnamed1(int _v) { _dirty = true; _unnamed1 = _v; }
     public byte _unnamed2() { return _unnamed2; }
-    public void set_unnamed2(byte _v) { _unnamed2 = _v; }
+    public void set_unnamed2(byte _v) { _dirty = true; _unnamed2 = _v; }
     public ValidOptionalId _root() { return _root; }
-    public void set_root(ValidOptionalId _v) { _root = _v; }
+    public void set_root(ValidOptionalId _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

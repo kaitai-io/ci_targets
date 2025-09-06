@@ -37,12 +37,14 @@ public class ProcessRotate extends KaitaiStruct.ReadWrite {
         this.key = this._io.readU1();
         this._raw_buf3 = this._io.readBytes(5);
         this.buf3 = KaitaiStream.processRotateLeft(this._raw_buf3, key(), 1);
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._raw_buf1 = KaitaiStream.processRotateLeft(this.buf1, 8 - (3), 1);
         if (this._raw_buf1.length != 5)
             throw new ConsistencyError("buf1", this._raw_buf1.length, 5);
@@ -59,6 +61,7 @@ public class ProcessRotate extends KaitaiStruct.ReadWrite {
     }
 
     public void _check() {
+        _dirty = false;
     }
     private byte[] buf1;
     private byte[] buf2;
@@ -70,21 +73,21 @@ public class ProcessRotate extends KaitaiStruct.ReadWrite {
     private byte[] _raw_buf2;
     private byte[] _raw_buf3;
     public byte[] buf1() { return buf1; }
-    public void setBuf1(byte[] _v) { buf1 = _v; }
+    public void setBuf1(byte[] _v) { _dirty = true; buf1 = _v; }
     public byte[] buf2() { return buf2; }
-    public void setBuf2(byte[] _v) { buf2 = _v; }
+    public void setBuf2(byte[] _v) { _dirty = true; buf2 = _v; }
     public int key() { return key; }
-    public void setKey(int _v) { key = _v; }
+    public void setKey(int _v) { _dirty = true; key = _v; }
     public byte[] buf3() { return buf3; }
-    public void setBuf3(byte[] _v) { buf3 = _v; }
+    public void setBuf3(byte[] _v) { _dirty = true; buf3 = _v; }
     public ProcessRotate _root() { return _root; }
-    public void set_root(ProcessRotate _v) { _root = _v; }
+    public void set_root(ProcessRotate _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_buf1() { return _raw_buf1; }
-    public void set_raw_Buf1(byte[] _v) { _raw_buf1 = _v; }
+    public void set_raw_Buf1(byte[] _v) { _dirty = true; _raw_buf1 = _v; }
     public byte[] _raw_buf2() { return _raw_buf2; }
-    public void set_raw_Buf2(byte[] _v) { _raw_buf2 = _v; }
+    public void set_raw_Buf2(byte[] _v) { _dirty = true; _raw_buf2 = _v; }
     public byte[] _raw_buf3() { return _raw_buf3; }
-    public void set_raw_Buf3(byte[] _v) { _raw_buf3 = _v; }
+    public void set_raw_Buf3(byte[] _v) { _dirty = true; _raw_buf3 = _v; }
 }

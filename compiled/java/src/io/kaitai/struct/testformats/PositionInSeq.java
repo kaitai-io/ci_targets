@@ -39,7 +39,9 @@ public class PositionInSeq extends KaitaiStruct {
         for (int i = 0; i < this.numbers.size(); i++) {
         }
         header();
-        this.header._fetchInstances();
+        if (this.header != null) {
+            this.header._fetchInstances();
+        }
     }
     public static class HeaderObj extends KaitaiStruct {
         public static HeaderObj fromFile(String fileName) throws IOException {

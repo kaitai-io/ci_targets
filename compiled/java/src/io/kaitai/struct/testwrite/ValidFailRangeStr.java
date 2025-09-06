@@ -39,12 +39,14 @@ public class ValidFailRangeStr extends KaitaiStruct.ReadWrite {
         if (!((this.foo.compareTo("P1") <= 0))) {
             throw new KaitaiStream.ValidationGreaterThanError("P1", this.foo, this._io, "/seq/0");
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytes((this.foo).getBytes(Charset.forName("ASCII")));
     }
 
@@ -57,14 +59,15 @@ public class ValidFailRangeStr extends KaitaiStruct.ReadWrite {
         if (!((this.foo.compareTo("P1") <= 0))) {
             throw new KaitaiStream.ValidationGreaterThanError("P1", this.foo, null, "/seq/0");
         }
+        _dirty = false;
     }
     private String foo;
     private ValidFailRangeStr _root;
     private KaitaiStruct.ReadWrite _parent;
     public String foo() { return foo; }
-    public void setFoo(String _v) { foo = _v; }
+    public void setFoo(String _v) { _dirty = true; foo = _v; }
     public ValidFailRangeStr _root() { return _root; }
-    public void set_root(ValidFailRangeStr _v) { _root = _v; }
+    public void set_root(ValidFailRangeStr _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class StrEncodingsEscapingEnc(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(StrEncodingsEscapingEnc, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -43,7 +43,7 @@ class StrEncodingsEscapingEnc(KaitaiStruct):
 
     class Str1Wrapper(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(StrEncodingsEscapingEnc.Str1Wrapper, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -55,6 +55,9 @@ class StrEncodingsEscapingEnc(KaitaiStruct):
         def _fetch_instances(self):
             pass
             _ = self.v
+            if hasattr(self, '_m_v'):
+                pass
+
 
         @property
         def v(self):
@@ -70,7 +73,7 @@ class StrEncodingsEscapingEnc(KaitaiStruct):
 
     class Str2Wrapper(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(StrEncodingsEscapingEnc.Str2Wrapper, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -82,6 +85,9 @@ class StrEncodingsEscapingEnc(KaitaiStruct):
         def _fetch_instances(self):
             pass
             _ = self.v
+            if hasattr(self, '_m_v'):
+                pass
+
 
         @property
         def v(self):
@@ -97,7 +103,7 @@ class StrEncodingsEscapingEnc(KaitaiStruct):
 
     class Str3Wrapper(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(StrEncodingsEscapingEnc.Str3Wrapper, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -109,6 +115,9 @@ class StrEncodingsEscapingEnc(KaitaiStruct):
         def _fetch_instances(self):
             pass
             _ = self.v
+            if hasattr(self, '_m_v'):
+                pass
+
 
         @property
         def v(self):
@@ -124,7 +133,7 @@ class StrEncodingsEscapingEnc(KaitaiStruct):
 
     class Str4Wrapper(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(StrEncodingsEscapingEnc.Str4Wrapper, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -136,6 +145,9 @@ class StrEncodingsEscapingEnc(KaitaiStruct):
         def _fetch_instances(self):
             pass
             _ = self.v
+            if hasattr(self, '_m_v'):
+                pass
+
 
         @property
         def v(self):

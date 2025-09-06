@@ -63,6 +63,7 @@ public class RepeatUntilTermBytes extends KaitaiStruct.ReadWrite {
                 i++;
             } while (!(Arrays.equals(_it, records1().get(records1().size() - 1))));
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -75,6 +76,7 @@ public class RepeatUntilTermBytes extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         for (int i = 0; i < this.records1.size(); i++) {
             this._io.writeBytes(this.records1.get(((Number) (i)).intValue()));
             this._io.writeU1(170);
@@ -128,6 +130,7 @@ public class RepeatUntilTermBytes extends KaitaiStruct.ReadWrite {
                     throw new ConsistencyError("records3", Arrays.equals(_it, records1().get(records1().size() - 1)), i == this.records3.size() - 1);
             }
         }
+        _dirty = false;
     }
     private List<byte[]> records1;
     private List<byte[]> records2;
@@ -135,13 +138,13 @@ public class RepeatUntilTermBytes extends KaitaiStruct.ReadWrite {
     private RepeatUntilTermBytes _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<byte[]> records1() { return records1; }
-    public void setRecords1(List<byte[]> _v) { records1 = _v; }
+    public void setRecords1(List<byte[]> _v) { _dirty = true; records1 = _v; }
     public List<byte[]> records2() { return records2; }
-    public void setRecords2(List<byte[]> _v) { records2 = _v; }
+    public void setRecords2(List<byte[]> _v) { _dirty = true; records2 = _v; }
     public List<byte[]> records3() { return records3; }
-    public void setRecords3(List<byte[]> _v) { records3 = _v; }
+    public void setRecords3(List<byte[]> _v) { _dirty = true; records3 = _v; }
     public RepeatUntilTermBytes _root() { return _root; }
-    public void set_root(RepeatUntilTermBytes _v) { _root = _v; }
+    public void set_root(RepeatUntilTermBytes _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

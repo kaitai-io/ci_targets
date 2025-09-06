@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class RepeatUntilBytesPadTerm(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(RepeatUntilBytesPadTerm, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -23,6 +23,7 @@ class RepeatUntilBytesPadTerm(ReadWriteKaitaiStruct):
             if _ == b"\xAA\x55":
                 break
             i += 1
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -41,7 +42,6 @@ class RepeatUntilBytesPadTerm(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.records) == 0:
             raise kaitaistruct.ConsistencyError(u"records", len(self.records), 0)
         for i in range(len(self.records)):
@@ -59,5 +59,6 @@ class RepeatUntilBytesPadTerm(ReadWriteKaitaiStruct):
             if (_ == b"\xAA\x55") != (i == len(self.records) - 1):
                 raise kaitaistruct.ConsistencyError(u"records", _ == b"\xAA\x55", i == len(self.records) - 1)
 
+        self._dirty = False
 
 

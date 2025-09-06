@@ -33,6 +33,7 @@ public class OpaqueExternalType02Parent extends KaitaiStruct.ReadWrite {
     public void _read() {
         this.parent = new ParentObj(this._io, this, _root);
         this.parent._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -40,6 +41,7 @@ public class OpaqueExternalType02Parent extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this.parent._write_Seq(this._io);
     }
 
@@ -48,6 +50,7 @@ public class OpaqueExternalType02Parent extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("parent", this.parent._root(), _root());
         if (!Objects.equals(this.parent._parent(), this))
             throw new ConsistencyError("parent", this.parent._parent(), this);
+        _dirty = false;
     }
     public static class ParentObj extends KaitaiStruct.ReadWrite {
         public static ParentObj fromFile(String fileName) throws IOException {
@@ -73,6 +76,7 @@ public class OpaqueExternalType02Parent extends KaitaiStruct.ReadWrite {
         public void _read() {
             this.child = new OpaqueExternalType02Child(this._io);
             this.child._read();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
@@ -80,28 +84,30 @@ public class OpaqueExternalType02Parent extends KaitaiStruct.ReadWrite {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this.child._write_Seq(this._io);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private OpaqueExternalType02Child child;
         private OpaqueExternalType02Parent _root;
         private OpaqueExternalType02Parent _parent;
         public OpaqueExternalType02Child child() { return child; }
-        public void setChild(OpaqueExternalType02Child _v) { child = _v; }
+        public void setChild(OpaqueExternalType02Child _v) { _dirty = true; child = _v; }
         public OpaqueExternalType02Parent _root() { return _root; }
-        public void set_root(OpaqueExternalType02Parent _v) { _root = _v; }
+        public void set_root(OpaqueExternalType02Parent _v) { _dirty = true; _root = _v; }
         public OpaqueExternalType02Parent _parent() { return _parent; }
-        public void set_parent(OpaqueExternalType02Parent _v) { _parent = _v; }
+        public void set_parent(OpaqueExternalType02Parent _v) { _dirty = true; _parent = _v; }
     }
     private ParentObj parent;
     private OpaqueExternalType02Parent _root;
     private KaitaiStruct.ReadWrite _parent;
     public ParentObj parent() { return parent; }
-    public void setParent(ParentObj _v) { parent = _v; }
+    public void setParent(ParentObj _v) { _dirty = true; parent = _v; }
     public OpaqueExternalType02Parent _root() { return _root; }
-    public void set_root(OpaqueExternalType02Parent _v) { _root = _v; }
+    public void set_root(OpaqueExternalType02Parent _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

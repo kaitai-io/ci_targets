@@ -49,6 +49,7 @@ public class StrEosPadTermEmpty extends KaitaiStruct.ReadWrite {
         KaitaiStream _io__raw_strTermInclude = new ByteBufferKaitaiStream(this._raw_strTermInclude);
         this.strTermInclude = new StrTermIncludeType(_io__raw_strTermInclude, this, _root);
         this.strTermInclude._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -59,6 +60,7 @@ public class StrEosPadTermEmpty extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         final KaitaiStream _io__raw_strPad = new ByteBufferKaitaiStream(20);
         this._io.addChildStream(_io__raw_strPad);
         {
@@ -146,6 +148,7 @@ public class StrEosPadTermEmpty extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("str_term_include", this.strTermInclude._root(), _root());
         if (!Objects.equals(this.strTermInclude._parent(), this))
             throw new ConsistencyError("str_term_include", this.strTermInclude._parent(), this);
+        _dirty = false;
     }
     public static class StrPadType extends KaitaiStruct.ReadWrite {
         public static StrPadType fromFile(String fileName) throws IOException {
@@ -170,28 +173,31 @@ public class StrEosPadTermEmpty extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.value = new String(KaitaiStream.bytesStripRight(this._io.readBytesFull(), (byte) 64), StandardCharsets.UTF_8);
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytesLimit((this.value).getBytes(Charset.forName("UTF-8")), this._io.size() - this._io.pos(), (byte) 64, (byte) 64);
             if (!(this._io.isEof()))
                 throw new ConsistencyError("value", this._io.size() - this._io.pos(), 0);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private String value;
         private StrEosPadTermEmpty _root;
         private StrEosPadTermEmpty _parent;
         public String value() { return value; }
-        public void setValue(String _v) { value = _v; }
+        public void setValue(String _v) { _dirty = true; value = _v; }
         public StrEosPadTermEmpty _root() { return _root; }
-        public void set_root(StrEosPadTermEmpty _v) { _root = _v; }
+        public void set_root(StrEosPadTermEmpty _v) { _dirty = true; _root = _v; }
         public StrEosPadTermEmpty _parent() { return _parent; }
-        public void set_parent(StrEosPadTermEmpty _v) { _parent = _v; }
+        public void set_parent(StrEosPadTermEmpty _v) { _dirty = true; _parent = _v; }
     }
     public static class StrTermAndPadType extends KaitaiStruct.ReadWrite {
         public static StrTermAndPadType fromFile(String fileName) throws IOException {
@@ -216,28 +222,31 @@ public class StrEosPadTermEmpty extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.value = new String(KaitaiStream.bytesTerminate(KaitaiStream.bytesStripRight(this._io.readBytesFull(), (byte) 43), (byte) 64, false), StandardCharsets.UTF_8);
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytesLimit((this.value).getBytes(Charset.forName("UTF-8")), this._io.size() - this._io.pos(), (byte) 64, (byte) 43);
             if (!(this._io.isEof()))
                 throw new ConsistencyError("value", this._io.size() - this._io.pos(), 0);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private String value;
         private StrEosPadTermEmpty _root;
         private StrEosPadTermEmpty _parent;
         public String value() { return value; }
-        public void setValue(String _v) { value = _v; }
+        public void setValue(String _v) { _dirty = true; value = _v; }
         public StrEosPadTermEmpty _root() { return _root; }
-        public void set_root(StrEosPadTermEmpty _v) { _root = _v; }
+        public void set_root(StrEosPadTermEmpty _v) { _dirty = true; _root = _v; }
         public StrEosPadTermEmpty _parent() { return _parent; }
-        public void set_parent(StrEosPadTermEmpty _v) { _parent = _v; }
+        public void set_parent(StrEosPadTermEmpty _v) { _dirty = true; _parent = _v; }
     }
     public static class StrTermIncludeType extends KaitaiStruct.ReadWrite {
         public static StrTermIncludeType fromFile(String fileName) throws IOException {
@@ -262,28 +271,31 @@ public class StrEosPadTermEmpty extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.value = new String(KaitaiStream.bytesTerminate(this._io.readBytesFull(), (byte) 64, true), StandardCharsets.UTF_8);
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytesLimit((this.value).getBytes(Charset.forName("UTF-8")), this._io.size() - this._io.pos(), (byte) 0, (byte) 0);
             if (!(this._io.isEof()))
                 throw new ConsistencyError("value", this._io.size() - this._io.pos(), 0);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private String value;
         private StrEosPadTermEmpty _root;
         private StrEosPadTermEmpty _parent;
         public String value() { return value; }
-        public void setValue(String _v) { value = _v; }
+        public void setValue(String _v) { _dirty = true; value = _v; }
         public StrEosPadTermEmpty _root() { return _root; }
-        public void set_root(StrEosPadTermEmpty _v) { _root = _v; }
+        public void set_root(StrEosPadTermEmpty _v) { _dirty = true; _root = _v; }
         public StrEosPadTermEmpty _parent() { return _parent; }
-        public void set_parent(StrEosPadTermEmpty _v) { _parent = _v; }
+        public void set_parent(StrEosPadTermEmpty _v) { _dirty = true; _parent = _v; }
     }
     public static class StrTermType extends KaitaiStruct.ReadWrite {
         public static StrTermType fromFile(String fileName) throws IOException {
@@ -308,28 +320,31 @@ public class StrEosPadTermEmpty extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.value = new String(KaitaiStream.bytesTerminate(this._io.readBytesFull(), (byte) 64, false), StandardCharsets.UTF_8);
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytesLimit((this.value).getBytes(Charset.forName("UTF-8")), this._io.size() - this._io.pos(), (byte) 64, (byte) 0);
             if (!(this._io.isEof()))
                 throw new ConsistencyError("value", this._io.size() - this._io.pos(), 0);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private String value;
         private StrEosPadTermEmpty _root;
         private StrEosPadTermEmpty _parent;
         public String value() { return value; }
-        public void setValue(String _v) { value = _v; }
+        public void setValue(String _v) { _dirty = true; value = _v; }
         public StrEosPadTermEmpty _root() { return _root; }
-        public void set_root(StrEosPadTermEmpty _v) { _root = _v; }
+        public void set_root(StrEosPadTermEmpty _v) { _dirty = true; _root = _v; }
         public StrEosPadTermEmpty _parent() { return _parent; }
-        public void set_parent(StrEosPadTermEmpty _v) { _parent = _v; }
+        public void set_parent(StrEosPadTermEmpty _v) { _dirty = true; _parent = _v; }
     }
     private StrPadType strPad;
     private StrTermType strTerm;
@@ -342,23 +357,23 @@ public class StrEosPadTermEmpty extends KaitaiStruct.ReadWrite {
     private byte[] _raw_strTermAndPad;
     private byte[] _raw_strTermInclude;
     public StrPadType strPad() { return strPad; }
-    public void setStrPad(StrPadType _v) { strPad = _v; }
+    public void setStrPad(StrPadType _v) { _dirty = true; strPad = _v; }
     public StrTermType strTerm() { return strTerm; }
-    public void setStrTerm(StrTermType _v) { strTerm = _v; }
+    public void setStrTerm(StrTermType _v) { _dirty = true; strTerm = _v; }
     public StrTermAndPadType strTermAndPad() { return strTermAndPad; }
-    public void setStrTermAndPad(StrTermAndPadType _v) { strTermAndPad = _v; }
+    public void setStrTermAndPad(StrTermAndPadType _v) { _dirty = true; strTermAndPad = _v; }
     public StrTermIncludeType strTermInclude() { return strTermInclude; }
-    public void setStrTermInclude(StrTermIncludeType _v) { strTermInclude = _v; }
+    public void setStrTermInclude(StrTermIncludeType _v) { _dirty = true; strTermInclude = _v; }
     public StrEosPadTermEmpty _root() { return _root; }
-    public void set_root(StrEosPadTermEmpty _v) { _root = _v; }
+    public void set_root(StrEosPadTermEmpty _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_strPad() { return _raw_strPad; }
-    public void set_raw_StrPad(byte[] _v) { _raw_strPad = _v; }
+    public void set_raw_StrPad(byte[] _v) { _dirty = true; _raw_strPad = _v; }
     public byte[] _raw_strTerm() { return _raw_strTerm; }
-    public void set_raw_StrTerm(byte[] _v) { _raw_strTerm = _v; }
+    public void set_raw_StrTerm(byte[] _v) { _dirty = true; _raw_strTerm = _v; }
     public byte[] _raw_strTermAndPad() { return _raw_strTermAndPad; }
-    public void set_raw_StrTermAndPad(byte[] _v) { _raw_strTermAndPad = _v; }
+    public void set_raw_StrTermAndPad(byte[] _v) { _dirty = true; _raw_strTermAndPad = _v; }
     public byte[] _raw_strTermInclude() { return _raw_strTermInclude; }
-    public void set_raw_StrTermInclude(byte[] _v) { _raw_strTermInclude = _v; }
+    public void set_raw_StrTermInclude(byte[] _v) { _dirty = true; _raw_strTermInclude = _v; }
 }

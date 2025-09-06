@@ -30,24 +30,27 @@ public class HelloWorld extends KaitaiStruct.ReadWrite {
     }
     public void _read() {
         this.one = this._io.readU1();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(this.one);
     }
 
     public void _check() {
+        _dirty = false;
     }
     private int one;
     private HelloWorld _root;
     private KaitaiStruct.ReadWrite _parent;
     public int one() { return one; }
-    public void setOne(int _v) { one = _v; }
+    public void setOne(int _v) { _dirty = true; one = _v; }
     public HelloWorld _root() { return _root; }
-    public void set_root(HelloWorld _v) { _root = _v; }
+    public void set_root(HelloWorld _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

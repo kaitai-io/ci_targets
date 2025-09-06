@@ -60,6 +60,7 @@ public class ExprIoEofBits extends KaitaiStruct.ReadWrite {
             this.qux = this._io.readBitsIntBe(16);
             _attrEnd.put("qux", this._io.pos());
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -72,6 +73,7 @@ public class ExprIoEofBits extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBitsIntBe(20, this.foo);
         if (!(_io().isEof())) {
             this._io.writeBitsIntBe(4, this.bar);
@@ -88,6 +90,7 @@ public class ExprIoEofBits extends KaitaiStruct.ReadWrite {
     public void _check() {
         if (this.align.length != 0)
             throw new ConsistencyError("align", this.align.length, 0);
+        _dirty = false;
     }
     private long foo;
     private Long bar;
@@ -97,17 +100,17 @@ public class ExprIoEofBits extends KaitaiStruct.ReadWrite {
     private ExprIoEofBits _root;
     private KaitaiStruct.ReadWrite _parent;
     public long foo() { return foo; }
-    public void setFoo(long _v) { foo = _v; }
+    public void setFoo(long _v) { _dirty = true; foo = _v; }
     public Long bar() { return bar; }
-    public void setBar(Long _v) { bar = _v; }
+    public void setBar(Long _v) { _dirty = true; bar = _v; }
     public Long baz() { return baz; }
-    public void setBaz(Long _v) { baz = _v; }
+    public void setBaz(Long _v) { _dirty = true; baz = _v; }
     public byte[] align() { return align; }
-    public void setAlign(byte[] _v) { align = _v; }
+    public void setAlign(byte[] _v) { _dirty = true; align = _v; }
     public Long qux() { return qux; }
-    public void setQux(Long _v) { qux = _v; }
+    public void setQux(Long _v) { _dirty = true; qux = _v; }
     public ExprIoEofBits _root() { return _root; }
-    public void set_root(ExprIoEofBits _v) { _root = _v; }
+    public void set_root(ExprIoEofBits _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

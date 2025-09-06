@@ -15,33 +15,40 @@ class DocstringsDocref(ReadWriteKaitaiStruct):
        Source - http://www.example.com/some/path/?even_with=query&more=2
     """
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(DocstringsDocref, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_parse_inst = False
-        self.parse_inst__to_write = True
+        self.parse_inst__enabled = True
 
     def _read(self):
         self.one = self._io.read_u1()
         self.two = self._io.read_u1()
         self.three = self._io.read_u1()
+        self._dirty = False
 
 
     def _fetch_instances(self):
         pass
         _ = self.parse_inst
+        if hasattr(self, '_m_parse_inst'):
+            pass
+
 
 
     def _write__seq(self, io=None):
         super(DocstringsDocref, self)._write__seq(io)
-        self._should_write_parse_inst = self.parse_inst__to_write
+        self._should_write_parse_inst = self.parse_inst__enabled
         self._io.write_u1(self.one)
         self._io.write_u1(self.two)
         self._io.write_u1(self.three)
 
 
     def _check(self):
-        pass
+        if self.parse_inst__enabled:
+            pass
+
+        self._dirty = False
 
     @property
     def foo(self):
@@ -70,6 +77,9 @@ class DocstringsDocref(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_parse_inst'):
             return self._m_parse_inst
 
+        if not self.parse_inst__enabled:
+            return None
+
         _pos = self._io.pos()
         self._io.seek(0)
         self._m_parse_inst = self._io.read_u1()
@@ -78,6 +88,7 @@ class DocstringsDocref(ReadWriteKaitaiStruct):
 
     @parse_inst.setter
     def parse_inst(self, v):
+        self._dirty = True
         self._m_parse_inst = v
 
     def _write_parse_inst(self):
@@ -86,9 +97,5 @@ class DocstringsDocref(ReadWriteKaitaiStruct):
         self._io.seek(0)
         self._io.write_u1(self._m_parse_inst)
         self._io.seek(_pos)
-
-
-    def _check_parse_inst(self):
-        pass
 
 

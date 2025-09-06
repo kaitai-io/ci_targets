@@ -47,6 +47,7 @@ public class TermStrz4 extends KaitaiStruct.ReadWrite {
         KaitaiStream _io__raw_s3 = new ByteBufferKaitaiStream(this._raw_s3);
         this.s3 = new S3Type(_io__raw_s3, this, _root);
         this.s3._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -56,6 +57,7 @@ public class TermStrz4 extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         final KaitaiStream _io__raw_s1 = new ByteBufferKaitaiStream(3);
         this._io.addChildStream(_io__raw_s1);
         {
@@ -124,6 +126,7 @@ public class TermStrz4 extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("s3", this.s3._root(), _root());
         if (!Objects.equals(this.s3._parent(), this))
             throw new ConsistencyError("s3", this.s3._parent(), this);
+        _dirty = false;
     }
     public static class S1Type extends KaitaiStruct.ReadWrite {
         public static S1Type fromFile(String fileName) throws IOException {
@@ -148,12 +151,14 @@ public class TermStrz4 extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.value = new String(this._io.readBytesTerm((byte) 124, false, true, false), StandardCharsets.UTF_8);
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytes((this.value).getBytes(Charset.forName("UTF-8")));
             if (!(this._io.isEof())) {
                 this._io.writeU1(124);
@@ -163,16 +168,17 @@ public class TermStrz4 extends KaitaiStruct.ReadWrite {
         public void _check() {
             if (KaitaiStream.byteArrayIndexOf((this.value).getBytes(Charset.forName("UTF-8")), ((byte) 124)) != -1)
                 throw new ConsistencyError("value", KaitaiStream.byteArrayIndexOf((this.value).getBytes(Charset.forName("UTF-8")), ((byte) 124)), -1);
+            _dirty = false;
         }
         private String value;
         private TermStrz4 _root;
         private TermStrz4 _parent;
         public String value() { return value; }
-        public void setValue(String _v) { value = _v; }
+        public void setValue(String _v) { _dirty = true; value = _v; }
         public TermStrz4 _root() { return _root; }
-        public void set_root(TermStrz4 _v) { _root = _v; }
+        public void set_root(TermStrz4 _v) { _dirty = true; _root = _v; }
         public TermStrz4 _parent() { return _parent; }
-        public void set_parent(TermStrz4 _v) { _parent = _v; }
+        public void set_parent(TermStrz4 _v) { _dirty = true; _parent = _v; }
     }
     public static class S2Type extends KaitaiStruct.ReadWrite {
         public static S2Type fromFile(String fileName) throws IOException {
@@ -197,12 +203,14 @@ public class TermStrz4 extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.value = new String(this._io.readBytesTerm((byte) 124, false, false, false), StandardCharsets.UTF_8);
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytes((this.value).getBytes(Charset.forName("UTF-8")));
             if (!(this._io.isEof())) {
                 long _pos = this._io.pos();
@@ -214,16 +222,17 @@ public class TermStrz4 extends KaitaiStruct.ReadWrite {
         public void _check() {
             if (KaitaiStream.byteArrayIndexOf((this.value).getBytes(Charset.forName("UTF-8")), ((byte) 124)) != -1)
                 throw new ConsistencyError("value", KaitaiStream.byteArrayIndexOf((this.value).getBytes(Charset.forName("UTF-8")), ((byte) 124)), -1);
+            _dirty = false;
         }
         private String value;
         private TermStrz4 _root;
         private TermStrz4 _parent;
         public String value() { return value; }
-        public void setValue(String _v) { value = _v; }
+        public void setValue(String _v) { _dirty = true; value = _v; }
         public TermStrz4 _root() { return _root; }
-        public void set_root(TermStrz4 _v) { _root = _v; }
+        public void set_root(TermStrz4 _v) { _dirty = true; _root = _v; }
         public TermStrz4 _parent() { return _parent; }
-        public void set_parent(TermStrz4 _v) { _parent = _v; }
+        public void set_parent(TermStrz4 _v) { _dirty = true; _parent = _v; }
     }
     public static class S3Type extends KaitaiStruct.ReadWrite {
         public static S3Type fromFile(String fileName) throws IOException {
@@ -248,12 +257,14 @@ public class TermStrz4 extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.value = new String(this._io.readBytesTerm((byte) 64, true, true, false), StandardCharsets.UTF_8);
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytes((this.value).getBytes(Charset.forName("UTF-8")));
             if (KaitaiStream.byteArrayIndexOf((this.value).getBytes(Charset.forName("UTF-8")), ((byte) 64)) == -1) {
                 if (!(this._io.isEof()))
@@ -264,16 +275,17 @@ public class TermStrz4 extends KaitaiStruct.ReadWrite {
         public void _check() {
             if ( ((KaitaiStream.byteArrayIndexOf((this.value).getBytes(Charset.forName("UTF-8")), ((byte) 64)) != -1) && (KaitaiStream.byteArrayIndexOf((this.value).getBytes(Charset.forName("UTF-8")), ((byte) 64)) != (this.value).getBytes(Charset.forName("UTF-8")).length - 1)) )
                 throw new ConsistencyError("value", KaitaiStream.byteArrayIndexOf((this.value).getBytes(Charset.forName("UTF-8")), ((byte) 64)), (this.value).getBytes(Charset.forName("UTF-8")).length - 1);
+            _dirty = false;
         }
         private String value;
         private TermStrz4 _root;
         private TermStrz4 _parent;
         public String value() { return value; }
-        public void setValue(String _v) { value = _v; }
+        public void setValue(String _v) { _dirty = true; value = _v; }
         public TermStrz4 _root() { return _root; }
-        public void set_root(TermStrz4 _v) { _root = _v; }
+        public void set_root(TermStrz4 _v) { _dirty = true; _root = _v; }
         public TermStrz4 _parent() { return _parent; }
-        public void set_parent(TermStrz4 _v) { _parent = _v; }
+        public void set_parent(TermStrz4 _v) { _dirty = true; _parent = _v; }
     }
     private S1Type s1;
     private int skipTerm1;
@@ -286,23 +298,23 @@ public class TermStrz4 extends KaitaiStruct.ReadWrite {
     private byte[] _raw_s2;
     private byte[] _raw_s3;
     public S1Type s1() { return s1; }
-    public void setS1(S1Type _v) { s1 = _v; }
+    public void setS1(S1Type _v) { _dirty = true; s1 = _v; }
     public int skipTerm1() { return skipTerm1; }
-    public void setSkipTerm1(int _v) { skipTerm1 = _v; }
+    public void setSkipTerm1(int _v) { _dirty = true; skipTerm1 = _v; }
     public S2Type s2() { return s2; }
-    public void setS2(S2Type _v) { s2 = _v; }
+    public void setS2(S2Type _v) { _dirty = true; s2 = _v; }
     public int skipTerm2() { return skipTerm2; }
-    public void setSkipTerm2(int _v) { skipTerm2 = _v; }
+    public void setSkipTerm2(int _v) { _dirty = true; skipTerm2 = _v; }
     public S3Type s3() { return s3; }
-    public void setS3(S3Type _v) { s3 = _v; }
+    public void setS3(S3Type _v) { _dirty = true; s3 = _v; }
     public TermStrz4 _root() { return _root; }
-    public void set_root(TermStrz4 _v) { _root = _v; }
+    public void set_root(TermStrz4 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_s1() { return _raw_s1; }
-    public void set_raw_S1(byte[] _v) { _raw_s1 = _v; }
+    public void set_raw_S1(byte[] _v) { _dirty = true; _raw_s1 = _v; }
     public byte[] _raw_s2() { return _raw_s2; }
-    public void set_raw_S2(byte[] _v) { _raw_s2 = _v; }
+    public void set_raw_S2(byte[] _v) { _dirty = true; _raw_s2 = _v; }
     public byte[] _raw_s3() { return _raw_s3; }
-    public void set_raw_S3(byte[] _v) { _raw_s3 = _v; }
+    public void set_raw_S3(byte[] _v) { _dirty = true; _raw_s3 = _v; }
 }

@@ -30,7 +30,7 @@ class VlqBase128Le(KaitaiStruct):
     This particular implementation supports serialized values to up 8 bytes long.
     """
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(VlqBase128Le, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -57,7 +57,7 @@ class VlqBase128Le(KaitaiStruct):
         """One byte group, clearly divided into 7-bit "value" chunk and 1-bit "continuation" flag.
         """
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(VlqBase128Le.Group, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()

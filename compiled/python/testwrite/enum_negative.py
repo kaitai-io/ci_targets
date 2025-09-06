@@ -15,13 +15,14 @@ class EnumNegative(ReadWriteKaitaiStruct):
         negative_one = -1
         positive_one = 1
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(EnumNegative, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self.f1 = KaitaiStream.resolve_enum(EnumNegative.Constants, self._io.read_s1())
         self.f2 = KaitaiStream.resolve_enum(EnumNegative.Constants, self._io.read_s1())
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -35,6 +36,6 @@ class EnumNegative(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
 

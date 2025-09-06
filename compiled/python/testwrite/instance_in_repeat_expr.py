@@ -10,11 +10,11 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class InstanceInRepeatExpr(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(InstanceInRepeatExpr, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_num_chunks = False
-        self.num_chunks__to_write = True
+        self.num_chunks__enabled = True
 
     def _read(self):
         self.chunks = []
@@ -25,6 +25,7 @@ class InstanceInRepeatExpr(ReadWriteKaitaiStruct):
             finally:
                 self.chunks.append(_t_chunks)
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -34,11 +35,14 @@ class InstanceInRepeatExpr(ReadWriteKaitaiStruct):
             self.chunks[i]._fetch_instances()
 
         _ = self.num_chunks
+        if hasattr(self, '_m_num_chunks'):
+            pass
+
 
 
     def _write__seq(self, io=None):
         super(InstanceInRepeatExpr, self)._write__seq(io)
-        self._should_write_num_chunks = self.num_chunks__to_write
+        self._should_write_num_chunks = self.num_chunks__enabled
         if len(self.chunks) != self.num_chunks:
             raise kaitaistruct.ConsistencyError(u"chunks", len(self.chunks), self.num_chunks)
         for i in range(len(self.chunks)):
@@ -48,7 +52,6 @@ class InstanceInRepeatExpr(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         for i in range(len(self.chunks)):
             pass
             if self.chunks[i]._root != self._root:
@@ -56,16 +59,21 @@ class InstanceInRepeatExpr(ReadWriteKaitaiStruct):
             if self.chunks[i]._parent != self:
                 raise kaitaistruct.ConsistencyError(u"chunks", self.chunks[i]._parent, self)
 
+        if self.num_chunks__enabled:
+            pass
+
+        self._dirty = False
 
     class Chunk(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(InstanceInRepeatExpr.Chunk, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.offset = self._io.read_u4le()
             self.len = self._io.read_u4le()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -79,7 +87,7 @@ class InstanceInRepeatExpr(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     @property
@@ -89,6 +97,9 @@ class InstanceInRepeatExpr(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_num_chunks'):
             return self._m_num_chunks
 
+        if not self.num_chunks__enabled:
+            return None
+
         _pos = self._io.pos()
         self._io.seek(self._io.pos() + 16)
         self._m_num_chunks = self._io.read_u4le()
@@ -97,6 +108,7 @@ class InstanceInRepeatExpr(ReadWriteKaitaiStruct):
 
     @num_chunks.setter
     def num_chunks(self, v):
+        self._dirty = True
         self._m_num_chunks = v
 
     def _write_num_chunks(self):
@@ -105,9 +117,5 @@ class InstanceInRepeatExpr(ReadWriteKaitaiStruct):
         self._io.seek(self._io.pos() + 16)
         self._io.write_u4le(self._m_num_chunks)
         self._io.seek(_pos)
-
-
-    def _check_num_chunks(self):
-        pass
 
 

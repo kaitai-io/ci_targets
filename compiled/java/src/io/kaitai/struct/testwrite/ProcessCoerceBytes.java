@@ -42,6 +42,7 @@ public class ProcessCoerceBytes extends KaitaiStruct.ReadWrite {
                 this.records.add(_t_records);
             }
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -51,6 +52,7 @@ public class ProcessCoerceBytes extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         for (int i = 0; i < this.records.size(); i++) {
             this.records.get(((Number) (i)).intValue())._write_Seq(this._io);
         }
@@ -65,6 +67,7 @@ public class ProcessCoerceBytes extends KaitaiStruct.ReadWrite {
             if (!Objects.equals(this.records.get(((Number) (i)).intValue())._parent(), this))
                 throw new ConsistencyError("records", this.records.get(((Number) (i)).intValue())._parent(), this);
         }
+        _dirty = false;
     }
     public static class Record extends KaitaiStruct.ReadWrite {
         public static Record fromFile(String fileName) throws IOException {
@@ -96,6 +99,7 @@ public class ProcessCoerceBytes extends KaitaiStruct.ReadWrite {
                 this._raw_bufProc = this._io.readBytes(4);
                 this.bufProc = KaitaiStream.processXor(this._raw_bufProc, ((byte) 170));
             }
+            _dirty = false;
         }
 
         public void _fetchInstances() {
@@ -106,6 +110,7 @@ public class ProcessCoerceBytes extends KaitaiStruct.ReadWrite {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU1(this.flag);
             if (flag() == 0) {
                 this._io.writeBytes(this.bufUnproc);
@@ -125,6 +130,7 @@ public class ProcessCoerceBytes extends KaitaiStruct.ReadWrite {
             }
             if (flag() != 0) {
             }
+            _dirty = false;
         }
         private byte[] buf;
         public byte[] buf() {
@@ -141,25 +147,25 @@ public class ProcessCoerceBytes extends KaitaiStruct.ReadWrite {
         private ProcessCoerceBytes _parent;
         private byte[] _raw_bufProc;
         public int flag() { return flag; }
-        public void setFlag(int _v) { flag = _v; }
+        public void setFlag(int _v) { _dirty = true; flag = _v; }
         public byte[] bufUnproc() { return bufUnproc; }
-        public void setBufUnproc(byte[] _v) { bufUnproc = _v; }
+        public void setBufUnproc(byte[] _v) { _dirty = true; bufUnproc = _v; }
         public byte[] bufProc() { return bufProc; }
-        public void setBufProc(byte[] _v) { bufProc = _v; }
+        public void setBufProc(byte[] _v) { _dirty = true; bufProc = _v; }
         public ProcessCoerceBytes _root() { return _root; }
-        public void set_root(ProcessCoerceBytes _v) { _root = _v; }
+        public void set_root(ProcessCoerceBytes _v) { _dirty = true; _root = _v; }
         public ProcessCoerceBytes _parent() { return _parent; }
-        public void set_parent(ProcessCoerceBytes _v) { _parent = _v; }
+        public void set_parent(ProcessCoerceBytes _v) { _dirty = true; _parent = _v; }
         public byte[] _raw_bufProc() { return _raw_bufProc; }
-        public void set_raw_BufProc(byte[] _v) { _raw_bufProc = _v; }
+        public void set_raw_BufProc(byte[] _v) { _dirty = true; _raw_bufProc = _v; }
     }
     private List<Record> records;
     private ProcessCoerceBytes _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<Record> records() { return records; }
-    public void setRecords(List<Record> _v) { records = _v; }
+    public void setRecords(List<Record> _v) { _dirty = true; records = _v; }
     public ProcessCoerceBytes _root() { return _root; }
-    public void set_root(ProcessCoerceBytes _v) { _root = _v; }
+    public void set_root(ProcessCoerceBytes _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

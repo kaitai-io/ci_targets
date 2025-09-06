@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class BcdUserTypeLe(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(BcdUserTypeLe, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -35,7 +35,7 @@ class BcdUserTypeLe(KaitaiStruct):
 
     class LeadingZeroLtrObj(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(BcdUserTypeLe.LeadingZeroLtrObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -133,7 +133,7 @@ class BcdUserTypeLe(KaitaiStruct):
 
     class LtrObj(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(BcdUserTypeLe.LtrObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -231,7 +231,7 @@ class BcdUserTypeLe(KaitaiStruct):
 
     class RtlObj(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(BcdUserTypeLe.RtlObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()

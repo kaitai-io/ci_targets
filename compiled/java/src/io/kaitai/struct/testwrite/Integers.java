@@ -79,12 +79,14 @@ public class Integers extends KaitaiStruct.ReadWrite {
         this.sint16be = this._io.readS2be();
         this.sint32be = this._io.readS4be();
         this.sint64be = this._io.readS8be();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytes(this.magic1);
         this._io.writeU1(this.uint8);
         this._io.writeS1(this.sint8);
@@ -150,6 +152,7 @@ public class Integers extends KaitaiStruct.ReadWrite {
         if (!(Arrays.equals(this.magicSintBe, new byte[] { 80, 65, 67, 75, 45, 83, 45, 66, 69 }))) {
             throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 83, 45, 66, 69 }, this.magicSintBe, null, "/seq/23");
         }
+        _dirty = false;
     }
     private byte[] magic1;
     private int uint8;
@@ -181,61 +184,61 @@ public class Integers extends KaitaiStruct.ReadWrite {
     private Integers _root;
     private KaitaiStruct.ReadWrite _parent;
     public byte[] magic1() { return magic1; }
-    public void setMagic1(byte[] _v) { magic1 = _v; }
+    public void setMagic1(byte[] _v) { _dirty = true; magic1 = _v; }
     public int uint8() { return uint8; }
-    public void setUint8(int _v) { uint8 = _v; }
+    public void setUint8(int _v) { _dirty = true; uint8 = _v; }
     public byte sint8() { return sint8; }
-    public void setSint8(byte _v) { sint8 = _v; }
+    public void setSint8(byte _v) { _dirty = true; sint8 = _v; }
     public byte[] magicUint() { return magicUint; }
-    public void setMagicUint(byte[] _v) { magicUint = _v; }
+    public void setMagicUint(byte[] _v) { _dirty = true; magicUint = _v; }
     public int uint16() { return uint16; }
-    public void setUint16(int _v) { uint16 = _v; }
+    public void setUint16(int _v) { _dirty = true; uint16 = _v; }
     public long uint32() { return uint32; }
-    public void setUint32(long _v) { uint32 = _v; }
+    public void setUint32(long _v) { _dirty = true; uint32 = _v; }
     public long uint64() { return uint64; }
-    public void setUint64(long _v) { uint64 = _v; }
+    public void setUint64(long _v) { _dirty = true; uint64 = _v; }
     public byte[] magicSint() { return magicSint; }
-    public void setMagicSint(byte[] _v) { magicSint = _v; }
+    public void setMagicSint(byte[] _v) { _dirty = true; magicSint = _v; }
     public short sint16() { return sint16; }
-    public void setSint16(short _v) { sint16 = _v; }
+    public void setSint16(short _v) { _dirty = true; sint16 = _v; }
     public int sint32() { return sint32; }
-    public void setSint32(int _v) { sint32 = _v; }
+    public void setSint32(int _v) { _dirty = true; sint32 = _v; }
     public long sint64() { return sint64; }
-    public void setSint64(long _v) { sint64 = _v; }
+    public void setSint64(long _v) { _dirty = true; sint64 = _v; }
     public byte[] magicUintLe() { return magicUintLe; }
-    public void setMagicUintLe(byte[] _v) { magicUintLe = _v; }
+    public void setMagicUintLe(byte[] _v) { _dirty = true; magicUintLe = _v; }
     public int uint16le() { return uint16le; }
-    public void setUint16le(int _v) { uint16le = _v; }
+    public void setUint16le(int _v) { _dirty = true; uint16le = _v; }
     public long uint32le() { return uint32le; }
-    public void setUint32le(long _v) { uint32le = _v; }
+    public void setUint32le(long _v) { _dirty = true; uint32le = _v; }
     public long uint64le() { return uint64le; }
-    public void setUint64le(long _v) { uint64le = _v; }
+    public void setUint64le(long _v) { _dirty = true; uint64le = _v; }
     public byte[] magicSintLe() { return magicSintLe; }
-    public void setMagicSintLe(byte[] _v) { magicSintLe = _v; }
+    public void setMagicSintLe(byte[] _v) { _dirty = true; magicSintLe = _v; }
     public short sint16le() { return sint16le; }
-    public void setSint16le(short _v) { sint16le = _v; }
+    public void setSint16le(short _v) { _dirty = true; sint16le = _v; }
     public int sint32le() { return sint32le; }
-    public void setSint32le(int _v) { sint32le = _v; }
+    public void setSint32le(int _v) { _dirty = true; sint32le = _v; }
     public long sint64le() { return sint64le; }
-    public void setSint64le(long _v) { sint64le = _v; }
+    public void setSint64le(long _v) { _dirty = true; sint64le = _v; }
     public byte[] magicUintBe() { return magicUintBe; }
-    public void setMagicUintBe(byte[] _v) { magicUintBe = _v; }
+    public void setMagicUintBe(byte[] _v) { _dirty = true; magicUintBe = _v; }
     public int uint16be() { return uint16be; }
-    public void setUint16be(int _v) { uint16be = _v; }
+    public void setUint16be(int _v) { _dirty = true; uint16be = _v; }
     public long uint32be() { return uint32be; }
-    public void setUint32be(long _v) { uint32be = _v; }
+    public void setUint32be(long _v) { _dirty = true; uint32be = _v; }
     public long uint64be() { return uint64be; }
-    public void setUint64be(long _v) { uint64be = _v; }
+    public void setUint64be(long _v) { _dirty = true; uint64be = _v; }
     public byte[] magicSintBe() { return magicSintBe; }
-    public void setMagicSintBe(byte[] _v) { magicSintBe = _v; }
+    public void setMagicSintBe(byte[] _v) { _dirty = true; magicSintBe = _v; }
     public short sint16be() { return sint16be; }
-    public void setSint16be(short _v) { sint16be = _v; }
+    public void setSint16be(short _v) { _dirty = true; sint16be = _v; }
     public int sint32be() { return sint32be; }
-    public void setSint32be(int _v) { sint32be = _v; }
+    public void setSint32be(int _v) { _dirty = true; sint32be = _v; }
     public long sint64be() { return sint64be; }
-    public void setSint64be(long _v) { sint64be = _v; }
+    public void setSint64be(long _v) { _dirty = true; sint64be = _v; }
     public Integers _root() { return _root; }
-    public void set_root(Integers _v) { _root = _v; }
+    public void set_root(Integers _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

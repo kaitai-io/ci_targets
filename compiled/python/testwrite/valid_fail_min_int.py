@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ValidFailMinInt(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ValidFailMinInt, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -18,6 +18,7 @@ class ValidFailMinInt(ReadWriteKaitaiStruct):
         self.foo = self._io.read_u1()
         if not self.foo >= 123:
             raise kaitaistruct.ValidationLessThanError(123, self.foo, self._io, u"/seq/0")
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -30,8 +31,8 @@ class ValidFailMinInt(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if not self.foo >= 123:
             raise kaitaistruct.ValidationLessThanError(123, self.foo, None, u"/seq/0")
+        self._dirty = False
 
 

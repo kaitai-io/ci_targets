@@ -10,11 +10,11 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class InstanceInRepeatUntil(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(InstanceInRepeatUntil, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_until_val = False
-        self.until_val__to_write = True
+        self.until_val__enabled = True
 
     def _read(self):
         self.entries = []
@@ -25,6 +25,7 @@ class InstanceInRepeatUntil(ReadWriteKaitaiStruct):
             if _ == self.until_val:
                 break
             i += 1
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -33,11 +34,14 @@ class InstanceInRepeatUntil(ReadWriteKaitaiStruct):
             pass
 
         _ = self.until_val
+        if hasattr(self, '_m_until_val'):
+            pass
+
 
 
     def _write__seq(self, io=None):
         super(InstanceInRepeatUntil, self)._write__seq(io)
-        self._should_write_until_val = self.until_val__to_write
+        self._should_write_until_val = self.until_val__enabled
         for i in range(len(self.entries)):
             pass
             self._io.write_s2le(self.entries[i])
@@ -48,12 +52,15 @@ class InstanceInRepeatUntil(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.entries) == 0:
             raise kaitaistruct.ConsistencyError(u"entries", len(self.entries), 0)
         for i in range(len(self.entries)):
             pass
 
+        if self.until_val__enabled:
+            pass
+
+        self._dirty = False
 
     @property
     def until_val(self):
@@ -61,6 +68,9 @@ class InstanceInRepeatUntil(ReadWriteKaitaiStruct):
             self._write_until_val()
         if hasattr(self, '_m_until_val'):
             return self._m_until_val
+
+        if not self.until_val__enabled:
+            return None
 
         _pos = self._io.pos()
         self._io.seek(self._io.pos() + 12)
@@ -70,6 +80,7 @@ class InstanceInRepeatUntil(ReadWriteKaitaiStruct):
 
     @until_val.setter
     def until_val(self, v):
+        self._dirty = True
         self._m_until_val = v
 
     def _write_until_val(self):
@@ -78,9 +89,5 @@ class InstanceInRepeatUntil(ReadWriteKaitaiStruct):
         self._io.seek(self._io.pos() + 12)
         self._io.write_s2le(self._m_until_val)
         self._io.seek(_pos)
-
-
-    def _check_until_val(self):
-        pass
 
 

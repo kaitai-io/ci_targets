@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class IntegersDoubleOverflow(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(IntegersDoubleOverflow, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -29,9 +29,21 @@ class IntegersDoubleOverflow(KaitaiStruct):
     def _fetch_instances(self):
         pass
         _ = self.unsigned_safe_max_be
+        if hasattr(self, '_m_unsigned_safe_max_be'):
+            pass
+
         _ = self.unsigned_safe_max_le
+        if hasattr(self, '_m_unsigned_safe_max_le'):
+            pass
+
         _ = self.unsigned_unsafe_pos_be
+        if hasattr(self, '_m_unsigned_unsafe_pos_be'):
+            pass
+
         _ = self.unsigned_unsafe_pos_le
+        if hasattr(self, '_m_unsigned_unsafe_pos_le'):
+            pass
+
 
     @property
     def unsigned_safe_max_be(self):

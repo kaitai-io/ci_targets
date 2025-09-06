@@ -11,7 +11,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class TypeTernaryOpaque(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(TypeTernaryOpaque, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -31,6 +31,7 @@ class TypeTernaryOpaque(ReadWriteKaitaiStruct):
             self.dif_with_hack = hello_world.HelloWorld(_io__raw_dif_with_hack)
             self.dif_with_hack._read()
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -80,13 +81,13 @@ class TypeTernaryOpaque(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if (not (self.is_hack)):
             pass
 
         if self.is_hack:
             pass
 
+        self._dirty = False
 
     @property
     def dif(self):

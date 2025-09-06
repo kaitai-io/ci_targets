@@ -42,6 +42,7 @@ public class ExprIfIntOps extends KaitaiStruct.ReadWrite {
         for (int i = 0; i < 4; i++) {
             this.items.add(this._io.readS1());
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -52,6 +53,7 @@ public class ExprIfIntOps extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         if (true) {
             this._io.writeU8le(this.key);
         }
@@ -74,6 +76,7 @@ public class ExprIfIntOps extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("items", this.items.size(), 4);
         for (int i = 0; i < this.items.size(); i++) {
         }
+        _dirty = false;
     }
     private Integer bytesSubKey;
     public Integer bytesSubKey() {
@@ -99,17 +102,17 @@ public class ExprIfIntOps extends KaitaiStruct.ReadWrite {
     private KaitaiStruct.ReadWrite _parent;
     private byte[] _raw_bytes;
     public Long key() { return key; }
-    public void setKey(Long _v) { key = _v; }
+    public void setKey(Long _v) { _dirty = true; key = _v; }
     public byte[] skip() { return skip; }
-    public void setSkip(byte[] _v) { skip = _v; }
+    public void setSkip(byte[] _v) { _dirty = true; skip = _v; }
     public byte[] bytes() { return bytes; }
-    public void setBytes(byte[] _v) { bytes = _v; }
+    public void setBytes(byte[] _v) { _dirty = true; bytes = _v; }
     public List<Byte> items() { return items; }
-    public void setItems(List<Byte> _v) { items = _v; }
+    public void setItems(List<Byte> _v) { _dirty = true; items = _v; }
     public ExprIfIntOps _root() { return _root; }
-    public void set_root(ExprIfIntOps _v) { _root = _v; }
+    public void set_root(ExprIfIntOps _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_bytes() { return _raw_bytes; }
-    public void set_raw_Bytes(byte[] _v) { _raw_bytes = _v; }
+    public void set_raw_Bytes(byte[] _v) { _dirty = true; _raw_bytes = _v; }
 }

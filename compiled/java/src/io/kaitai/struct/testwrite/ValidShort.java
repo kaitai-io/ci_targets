@@ -77,12 +77,14 @@ public class ValidShort extends KaitaiStruct.ReadWrite {
         if (!(this.sint64 == -1)) {
             throw new KaitaiStream.ValidationNotEqualError(-1, this.sint64, this._io, "/seq/10");
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytes(this.magic1);
         this._io.writeU1(this.uint8);
         this._io.writeS1(this.sint8);
@@ -136,6 +138,7 @@ public class ValidShort extends KaitaiStruct.ReadWrite {
         if (!(this.sint64 == -1)) {
             throw new KaitaiStream.ValidationNotEqualError(-1, this.sint64, null, "/seq/10");
         }
+        _dirty = false;
     }
     private byte[] magic1;
     private int uint8;
@@ -151,29 +154,29 @@ public class ValidShort extends KaitaiStruct.ReadWrite {
     private ValidShort _root;
     private KaitaiStruct.ReadWrite _parent;
     public byte[] magic1() { return magic1; }
-    public void setMagic1(byte[] _v) { magic1 = _v; }
+    public void setMagic1(byte[] _v) { _dirty = true; magic1 = _v; }
     public int uint8() { return uint8; }
-    public void setUint8(int _v) { uint8 = _v; }
+    public void setUint8(int _v) { _dirty = true; uint8 = _v; }
     public byte sint8() { return sint8; }
-    public void setSint8(byte _v) { sint8 = _v; }
+    public void setSint8(byte _v) { _dirty = true; sint8 = _v; }
     public String magicUint() { return magicUint; }
-    public void setMagicUint(String _v) { magicUint = _v; }
+    public void setMagicUint(String _v) { _dirty = true; magicUint = _v; }
     public int uint16() { return uint16; }
-    public void setUint16(int _v) { uint16 = _v; }
+    public void setUint16(int _v) { _dirty = true; uint16 = _v; }
     public long uint32() { return uint32; }
-    public void setUint32(long _v) { uint32 = _v; }
+    public void setUint32(long _v) { _dirty = true; uint32 = _v; }
     public long uint64() { return uint64; }
-    public void setUint64(long _v) { uint64 = _v; }
+    public void setUint64(long _v) { _dirty = true; uint64 = _v; }
     public String magicSint() { return magicSint; }
-    public void setMagicSint(String _v) { magicSint = _v; }
+    public void setMagicSint(String _v) { _dirty = true; magicSint = _v; }
     public short sint16() { return sint16; }
-    public void setSint16(short _v) { sint16 = _v; }
+    public void setSint16(short _v) { _dirty = true; sint16 = _v; }
     public int sint32() { return sint32; }
-    public void setSint32(int _v) { sint32 = _v; }
+    public void setSint32(int _v) { _dirty = true; sint32 = _v; }
     public long sint64() { return sint64; }
-    public void setSint64(long _v) { sint64 = _v; }
+    public void setSint64(long _v) { _dirty = true; sint64 = _v; }
     public ValidShort _root() { return _root; }
-    public void set_root(ValidShort _v) { _root = _v; }
+    public void set_root(ValidShort _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class StrPadTerm(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(StrPadTerm, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -19,6 +19,7 @@ class StrPadTerm(ReadWriteKaitaiStruct):
         self.str_term = (KaitaiStream.bytes_terminate(self._io.read_bytes(20), 64, False)).decode(u"UTF-8")
         self.str_term_and_pad = (KaitaiStream.bytes_terminate(KaitaiStream.bytes_strip_right(self._io.read_bytes(20), 43), 64, False)).decode(u"UTF-8")
         self.str_term_include = (KaitaiStream.bytes_terminate(self._io.read_bytes(20), 64, True)).decode(u"UTF-8")
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -34,7 +35,6 @@ class StrPadTerm(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len((self.str_pad).encode(u"UTF-8")) > 20:
             raise kaitaistruct.ConsistencyError(u"str_pad", len((self.str_pad).encode(u"UTF-8")), 20)
         if  ((len((self.str_pad).encode(u"UTF-8")) != 0) and (KaitaiStream.byte_array_index((self.str_pad).encode(u"UTF-8"), -1) == 64)) :
@@ -66,5 +66,6 @@ class StrPadTerm(ReadWriteKaitaiStruct):
             if  ((KaitaiStream.byte_array_index_of((self.str_term_include).encode(u"UTF-8"), 64) != -1) and (KaitaiStream.byte_array_index_of((self.str_term_include).encode(u"UTF-8"), 64) != len((self.str_term_include).encode(u"UTF-8")) - 1)) :
                 raise kaitaistruct.ConsistencyError(u"str_term_include", KaitaiStream.byte_array_index_of((self.str_term_include).encode(u"UTF-8"), 64), len((self.str_term_include).encode(u"UTF-8")) - 1)
 
+        self._dirty = False
 
 

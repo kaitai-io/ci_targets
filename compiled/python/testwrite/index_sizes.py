@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class IndexSizes(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(IndexSizes, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -24,6 +24,7 @@ class IndexSizes(ReadWriteKaitaiStruct):
         for i in range(self.qty):
             self.bufs.append((self._io.read_bytes(self.sizes[i])).decode(u"ASCII"))
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -50,7 +51,6 @@ class IndexSizes(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.sizes) != self.qty:
             raise kaitaistruct.ConsistencyError(u"sizes", len(self.sizes), self.qty)
         for i in range(len(self.sizes)):
@@ -63,5 +63,6 @@ class IndexSizes(ReadWriteKaitaiStruct):
             if len((self.bufs[i]).encode(u"ASCII")) != self.sizes[i]:
                 raise kaitaistruct.ConsistencyError(u"bufs", len((self.bufs[i]).encode(u"ASCII")), self.sizes[i])
 
+        self._dirty = False
 
 

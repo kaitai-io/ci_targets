@@ -63,6 +63,7 @@ public class ProcessRepeatUsertypeDynargRotate extends KaitaiStruct.ReadWrite {
         }
         this.blocksB = new BlocksBWrapper(this._io, this, _root);
         this.blocksB._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -76,6 +77,7 @@ public class ProcessRepeatUsertypeDynargRotate extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._raw_blocksRol = new ArrayList<byte[]>();
         this._raw__raw_blocksRol = new ArrayList<byte[]>();
         for (int i = 0; i < this.blocksRol.size(); i++) {
@@ -148,6 +150,7 @@ public class ProcessRepeatUsertypeDynargRotate extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("blocks_b", this.blocksB._root(), _root());
         if (!Objects.equals(this.blocksB._parent(), this))
             throw new ConsistencyError("blocks_b", this.blocksB._parent(), this);
+        _dirty = false;
     }
     public static class Block extends KaitaiStruct.ReadWrite {
         public static Block fromFile(String fileName) throws IOException {
@@ -172,26 +175,29 @@ public class ProcessRepeatUsertypeDynargRotate extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.a = this._io.readU2le();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU2le(this.a);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private int a;
         private ProcessRepeatUsertypeDynargRotate _root;
         private ProcessRepeatUsertypeDynargRotate _parent;
         public int a() { return a; }
-        public void setA(int _v) { a = _v; }
+        public void setA(int _v) { _dirty = true; a = _v; }
         public ProcessRepeatUsertypeDynargRotate _root() { return _root; }
-        public void set_root(ProcessRepeatUsertypeDynargRotate _v) { _root = _v; }
+        public void set_root(ProcessRepeatUsertypeDynargRotate _v) { _dirty = true; _root = _v; }
         public ProcessRepeatUsertypeDynargRotate _parent() { return _parent; }
-        public void set_parent(ProcessRepeatUsertypeDynargRotate _v) { _parent = _v; }
+        public void set_parent(ProcessRepeatUsertypeDynargRotate _v) { _dirty = true; _parent = _v; }
     }
     public static class BlocksBWrapper extends KaitaiStruct.ReadWrite {
         public static BlocksBWrapper fromFile(String fileName) throws IOException {
@@ -216,35 +222,60 @@ public class ProcessRepeatUsertypeDynargRotate extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.dummy = this._io.readU1();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
             blocksRol0B();
+            if (this.blocksRol0B != null) {
+            }
             blocksRol1B();
+            if (this.blocksRol1B != null) {
+            }
             blocksRor0B();
+            if (this.blocksRor0B != null) {
+            }
             blocksRor1B();
+            if (this.blocksRor1B != null) {
+            }
             blocksRor2B();
+            if (this.blocksRor2B != null) {
+            }
         }
 
         public void _write_Seq() {
-            _writeBlocksRol0B = _toWriteBlocksRol0B;
-            _writeBlocksRol1B = _toWriteBlocksRol1B;
-            _writeBlocksRor0B = _toWriteBlocksRor0B;
-            _writeBlocksRor1B = _toWriteBlocksRor1B;
-            _writeBlocksRor2B = _toWriteBlocksRor2B;
+            _assertNotDirty();
+            _shouldWriteBlocksRol0B = _enabledBlocksRol0B;
+            _shouldWriteBlocksRol1B = _enabledBlocksRol1B;
+            _shouldWriteBlocksRor0B = _enabledBlocksRor0B;
+            _shouldWriteBlocksRor1B = _enabledBlocksRor1B;
+            _shouldWriteBlocksRor2B = _enabledBlocksRor2B;
             this._io.writeU1(this.dummy);
         }
 
         public void _check() {
+            if (_enabledBlocksRol0B) {
+            }
+            if (_enabledBlocksRol1B) {
+            }
+            if (_enabledBlocksRor0B) {
+            }
+            if (_enabledBlocksRor1B) {
+            }
+            if (_enabledBlocksRor2B) {
+            }
+            _dirty = false;
         }
         private Integer blocksRol0B;
-        private boolean _writeBlocksRol0B = false;
-        private boolean _toWriteBlocksRol0B = true;
+        private boolean _shouldWriteBlocksRol0B = false;
+        private boolean _enabledBlocksRol0B = true;
         public Integer blocksRol0B() {
-            if (_writeBlocksRol0B)
+            if (_shouldWriteBlocksRol0B)
                 _writeBlocksRol0B();
             if (this.blocksRol0B != null)
                 return this.blocksRol0B;
+            if (!_enabledBlocksRol0B)
+                return null;
             KaitaiStream io = _parent().blocksRol().get(((int) 0))._io();
             long _pos = io.pos();
             io.seek(2);
@@ -252,28 +283,27 @@ public class ProcessRepeatUsertypeDynargRotate extends KaitaiStruct.ReadWrite {
             io.seek(_pos);
             return this.blocksRol0B;
         }
-        public void setBlocksRol0B(int _v) { blocksRol0B = _v; }
-        public void setBlocksRol0B_ToWrite(boolean _v) { _toWriteBlocksRol0B = _v; }
+        public void setBlocksRol0B(int _v) { _dirty = true; blocksRol0B = _v; }
+        public void setBlocksRol0B_Enabled(boolean _v) { _dirty = true; _enabledBlocksRol0B = _v; }
 
-        public void _writeBlocksRol0B() {
-            _writeBlocksRol0B = false;
+        private void _writeBlocksRol0B() {
+            _shouldWriteBlocksRol0B = false;
             KaitaiStream io = _parent().blocksRol().get(((int) 0))._io();
             long _pos = io.pos();
             io.seek(2);
             io.writeU1(this.blocksRol0B);
             io.seek(_pos);
         }
-
-        public void _checkBlocksRol0B() {
-        }
         private Integer blocksRol1B;
-        private boolean _writeBlocksRol1B = false;
-        private boolean _toWriteBlocksRol1B = true;
+        private boolean _shouldWriteBlocksRol1B = false;
+        private boolean _enabledBlocksRol1B = true;
         public Integer blocksRol1B() {
-            if (_writeBlocksRol1B)
+            if (_shouldWriteBlocksRol1B)
                 _writeBlocksRol1B();
             if (this.blocksRol1B != null)
                 return this.blocksRol1B;
+            if (!_enabledBlocksRol1B)
+                return null;
             KaitaiStream io = _parent().blocksRol().get(((int) 1))._io();
             long _pos = io.pos();
             io.seek(2);
@@ -281,28 +311,27 @@ public class ProcessRepeatUsertypeDynargRotate extends KaitaiStruct.ReadWrite {
             io.seek(_pos);
             return this.blocksRol1B;
         }
-        public void setBlocksRol1B(int _v) { blocksRol1B = _v; }
-        public void setBlocksRol1B_ToWrite(boolean _v) { _toWriteBlocksRol1B = _v; }
+        public void setBlocksRol1B(int _v) { _dirty = true; blocksRol1B = _v; }
+        public void setBlocksRol1B_Enabled(boolean _v) { _dirty = true; _enabledBlocksRol1B = _v; }
 
-        public void _writeBlocksRol1B() {
-            _writeBlocksRol1B = false;
+        private void _writeBlocksRol1B() {
+            _shouldWriteBlocksRol1B = false;
             KaitaiStream io = _parent().blocksRol().get(((int) 1))._io();
             long _pos = io.pos();
             io.seek(2);
             io.writeU1(this.blocksRol1B);
             io.seek(_pos);
         }
-
-        public void _checkBlocksRol1B() {
-        }
         private Integer blocksRor0B;
-        private boolean _writeBlocksRor0B = false;
-        private boolean _toWriteBlocksRor0B = true;
+        private boolean _shouldWriteBlocksRor0B = false;
+        private boolean _enabledBlocksRor0B = true;
         public Integer blocksRor0B() {
-            if (_writeBlocksRor0B)
+            if (_shouldWriteBlocksRor0B)
                 _writeBlocksRor0B();
             if (this.blocksRor0B != null)
                 return this.blocksRor0B;
+            if (!_enabledBlocksRor0B)
+                return null;
             KaitaiStream io = _parent().blocksRor().get(((int) 0))._io();
             long _pos = io.pos();
             io.seek(2);
@@ -310,28 +339,27 @@ public class ProcessRepeatUsertypeDynargRotate extends KaitaiStruct.ReadWrite {
             io.seek(_pos);
             return this.blocksRor0B;
         }
-        public void setBlocksRor0B(int _v) { blocksRor0B = _v; }
-        public void setBlocksRor0B_ToWrite(boolean _v) { _toWriteBlocksRor0B = _v; }
+        public void setBlocksRor0B(int _v) { _dirty = true; blocksRor0B = _v; }
+        public void setBlocksRor0B_Enabled(boolean _v) { _dirty = true; _enabledBlocksRor0B = _v; }
 
-        public void _writeBlocksRor0B() {
-            _writeBlocksRor0B = false;
+        private void _writeBlocksRor0B() {
+            _shouldWriteBlocksRor0B = false;
             KaitaiStream io = _parent().blocksRor().get(((int) 0))._io();
             long _pos = io.pos();
             io.seek(2);
             io.writeU1(this.blocksRor0B);
             io.seek(_pos);
         }
-
-        public void _checkBlocksRor0B() {
-        }
         private Integer blocksRor1B;
-        private boolean _writeBlocksRor1B = false;
-        private boolean _toWriteBlocksRor1B = true;
+        private boolean _shouldWriteBlocksRor1B = false;
+        private boolean _enabledBlocksRor1B = true;
         public Integer blocksRor1B() {
-            if (_writeBlocksRor1B)
+            if (_shouldWriteBlocksRor1B)
                 _writeBlocksRor1B();
             if (this.blocksRor1B != null)
                 return this.blocksRor1B;
+            if (!_enabledBlocksRor1B)
+                return null;
             KaitaiStream io = _parent().blocksRor().get(((int) 1))._io();
             long _pos = io.pos();
             io.seek(2);
@@ -339,28 +367,27 @@ public class ProcessRepeatUsertypeDynargRotate extends KaitaiStruct.ReadWrite {
             io.seek(_pos);
             return this.blocksRor1B;
         }
-        public void setBlocksRor1B(int _v) { blocksRor1B = _v; }
-        public void setBlocksRor1B_ToWrite(boolean _v) { _toWriteBlocksRor1B = _v; }
+        public void setBlocksRor1B(int _v) { _dirty = true; blocksRor1B = _v; }
+        public void setBlocksRor1B_Enabled(boolean _v) { _dirty = true; _enabledBlocksRor1B = _v; }
 
-        public void _writeBlocksRor1B() {
-            _writeBlocksRor1B = false;
+        private void _writeBlocksRor1B() {
+            _shouldWriteBlocksRor1B = false;
             KaitaiStream io = _parent().blocksRor().get(((int) 1))._io();
             long _pos = io.pos();
             io.seek(2);
             io.writeU1(this.blocksRor1B);
             io.seek(_pos);
         }
-
-        public void _checkBlocksRor1B() {
-        }
         private Integer blocksRor2B;
-        private boolean _writeBlocksRor2B = false;
-        private boolean _toWriteBlocksRor2B = true;
+        private boolean _shouldWriteBlocksRor2B = false;
+        private boolean _enabledBlocksRor2B = true;
         public Integer blocksRor2B() {
-            if (_writeBlocksRor2B)
+            if (_shouldWriteBlocksRor2B)
                 _writeBlocksRor2B();
             if (this.blocksRor2B != null)
                 return this.blocksRor2B;
+            if (!_enabledBlocksRor2B)
+                return null;
             KaitaiStream io = _parent().blocksRor().get(((int) 2))._io();
             long _pos = io.pos();
             io.seek(2);
@@ -368,29 +395,26 @@ public class ProcessRepeatUsertypeDynargRotate extends KaitaiStruct.ReadWrite {
             io.seek(_pos);
             return this.blocksRor2B;
         }
-        public void setBlocksRor2B(int _v) { blocksRor2B = _v; }
-        public void setBlocksRor2B_ToWrite(boolean _v) { _toWriteBlocksRor2B = _v; }
+        public void setBlocksRor2B(int _v) { _dirty = true; blocksRor2B = _v; }
+        public void setBlocksRor2B_Enabled(boolean _v) { _dirty = true; _enabledBlocksRor2B = _v; }
 
-        public void _writeBlocksRor2B() {
-            _writeBlocksRor2B = false;
+        private void _writeBlocksRor2B() {
+            _shouldWriteBlocksRor2B = false;
             KaitaiStream io = _parent().blocksRor().get(((int) 2))._io();
             long _pos = io.pos();
             io.seek(2);
             io.writeU1(this.blocksRor2B);
             io.seek(_pos);
         }
-
-        public void _checkBlocksRor2B() {
-        }
         private int dummy;
         private ProcessRepeatUsertypeDynargRotate _root;
         private ProcessRepeatUsertypeDynargRotate _parent;
         public int dummy() { return dummy; }
-        public void setDummy(int _v) { dummy = _v; }
+        public void setDummy(int _v) { _dirty = true; dummy = _v; }
         public ProcessRepeatUsertypeDynargRotate _root() { return _root; }
-        public void set_root(ProcessRepeatUsertypeDynargRotate _v) { _root = _v; }
+        public void set_root(ProcessRepeatUsertypeDynargRotate _v) { _dirty = true; _root = _v; }
         public ProcessRepeatUsertypeDynargRotate _parent() { return _parent; }
-        public void set_parent(ProcessRepeatUsertypeDynargRotate _v) { _parent = _v; }
+        public void set_parent(ProcessRepeatUsertypeDynargRotate _v) { _dirty = true; _parent = _v; }
     }
     private List<Block> blocksRol;
     private List<Block> blocksRor;
@@ -402,21 +426,21 @@ public class ProcessRepeatUsertypeDynargRotate extends KaitaiStruct.ReadWrite {
     private List<byte[]> _raw_blocksRor;
     private List<byte[]> _raw__raw_blocksRor;
     public List<Block> blocksRol() { return blocksRol; }
-    public void setBlocksRol(List<Block> _v) { blocksRol = _v; }
+    public void setBlocksRol(List<Block> _v) { _dirty = true; blocksRol = _v; }
     public List<Block> blocksRor() { return blocksRor; }
-    public void setBlocksRor(List<Block> _v) { blocksRor = _v; }
+    public void setBlocksRor(List<Block> _v) { _dirty = true; blocksRor = _v; }
     public BlocksBWrapper blocksB() { return blocksB; }
-    public void setBlocksB(BlocksBWrapper _v) { blocksB = _v; }
+    public void setBlocksB(BlocksBWrapper _v) { _dirty = true; blocksB = _v; }
     public ProcessRepeatUsertypeDynargRotate _root() { return _root; }
-    public void set_root(ProcessRepeatUsertypeDynargRotate _v) { _root = _v; }
+    public void set_root(ProcessRepeatUsertypeDynargRotate _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public List<byte[]> _raw_blocksRol() { return _raw_blocksRol; }
-    public void set_raw_BlocksRol(List<byte[]> _v) { _raw_blocksRol = _v; }
+    public void set_raw_BlocksRol(List<byte[]> _v) { _dirty = true; _raw_blocksRol = _v; }
     public List<byte[]> _raw__raw_blocksRol() { return _raw__raw_blocksRol; }
-    public void set_raw__raw_BlocksRol(List<byte[]> _v) { _raw__raw_blocksRol = _v; }
+    public void set_raw__raw_BlocksRol(List<byte[]> _v) { _dirty = true; _raw__raw_blocksRol = _v; }
     public List<byte[]> _raw_blocksRor() { return _raw_blocksRor; }
-    public void set_raw_BlocksRor(List<byte[]> _v) { _raw_blocksRor = _v; }
+    public void set_raw_BlocksRor(List<byte[]> _v) { _dirty = true; _raw_blocksRor = _v; }
     public List<byte[]> _raw__raw_blocksRor() { return _raw__raw_blocksRor; }
-    public void set_raw__raw_BlocksRor(List<byte[]> _v) { _raw__raw_blocksRor = _v; }
+    public void set_raw__raw_BlocksRor(List<byte[]> _v) { _dirty = true; _raw__raw_blocksRor = _v; }
 }

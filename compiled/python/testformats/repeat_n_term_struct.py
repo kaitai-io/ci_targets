@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class RepeatNTermStruct(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(RepeatNTermStruct, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -56,7 +56,7 @@ class RepeatNTermStruct(KaitaiStruct):
 
     class BytesWrapper(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(RepeatNTermStruct.BytesWrapper, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()

@@ -39,12 +39,14 @@ public class FixedContents extends KaitaiStruct.ReadWrite {
         if (!(Arrays.equals(this.highBit8, new byte[] { -1, -1 }))) {
             throw new KaitaiStream.ValidationNotEqualError(new byte[] { -1, -1 }, this.highBit8, this._io, "/seq/1");
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytes(this.normal);
         this._io.writeBytes(this.highBit8);
     }
@@ -60,17 +62,18 @@ public class FixedContents extends KaitaiStruct.ReadWrite {
         if (!(Arrays.equals(this.highBit8, new byte[] { -1, -1 }))) {
             throw new KaitaiStream.ValidationNotEqualError(new byte[] { -1, -1 }, this.highBit8, null, "/seq/1");
         }
+        _dirty = false;
     }
     private byte[] normal;
     private byte[] highBit8;
     private FixedContents _root;
     private KaitaiStruct.ReadWrite _parent;
     public byte[] normal() { return normal; }
-    public void setNormal(byte[] _v) { normal = _v; }
+    public void setNormal(byte[] _v) { _dirty = true; normal = _v; }
     public byte[] highBit8() { return highBit8; }
-    public void setHighBit8(byte[] _v) { highBit8 = _v; }
+    public void setHighBit8(byte[] _v) { _dirty = true; highBit8 = _v; }
     public FixedContents _root() { return _root; }
-    public void set_root(FixedContents _v) { _root = _v; }
+    public void set_root(FixedContents _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ProcessRepeatUsertype(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ProcessRepeatUsertype, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -28,6 +28,7 @@ class ProcessRepeatUsertype(ReadWriteKaitaiStruct):
             finally:
                 self.blocks.append(_t_blocks)
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -61,7 +62,6 @@ class ProcessRepeatUsertype(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.blocks) != 2:
             raise kaitaistruct.ConsistencyError(u"blocks", len(self.blocks), 2)
         for i in range(len(self.blocks)):
@@ -71,16 +71,18 @@ class ProcessRepeatUsertype(ReadWriteKaitaiStruct):
             if self.blocks[i]._parent != self:
                 raise kaitaistruct.ConsistencyError(u"blocks", self.blocks[i]._parent, self)
 
+        self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ProcessRepeatUsertype.Block, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.a = self._io.read_s4le()
             self.b = self._io.read_s1()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -94,7 +96,7 @@ class ProcessRepeatUsertype(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
 

@@ -30,24 +30,27 @@ public class DefaultBigEndian extends KaitaiStruct.ReadWrite {
     }
     public void _read() {
         this.one = this._io.readU4be();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU4be(this.one);
     }
 
     public void _check() {
+        _dirty = false;
     }
     private long one;
     private DefaultBigEndian _root;
     private KaitaiStruct.ReadWrite _parent;
     public long one() { return one; }
-    public void setOne(long _v) { one = _v; }
+    public void setOne(long _v) { _dirty = true; one = _v; }
     public DefaultBigEndian _root() { return _root; }
-    public void set_root(DefaultBigEndian _v) { _root = _v; }
+    public void set_root(DefaultBigEndian _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

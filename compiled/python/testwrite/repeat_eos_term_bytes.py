@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class RepeatEosTermBytes(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(RepeatEosTermBytes, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -21,6 +21,7 @@ class RepeatEosTermBytes(ReadWriteKaitaiStruct):
             self.records.append(self._io.read_bytes_term(178, True, True, True))
             i += 1
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -43,7 +44,6 @@ class RepeatEosTermBytes(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         for i in range(len(self.records)):
             pass
             if len(self.records[i]) == 0:
@@ -51,5 +51,6 @@ class RepeatEosTermBytes(ReadWriteKaitaiStruct):
             if KaitaiStream.byte_array_index_of(self.records[i], 178) != len(self.records[i]) - 1:
                 raise kaitaistruct.ConsistencyError(u"records", KaitaiStream.byte_array_index_of(self.records[i], 178), len(self.records[i]) - 1)
 
+        self._dirty = False
 
 

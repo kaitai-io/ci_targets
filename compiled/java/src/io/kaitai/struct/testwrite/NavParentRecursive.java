@@ -36,6 +36,7 @@ public class NavParentRecursive extends KaitaiStruct.ReadWrite {
             this.next = new NavParentRecursive(this._io, this, _root);
             this.next._read();
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -45,6 +46,7 @@ public class NavParentRecursive extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(this.value);
         if (value() == 255) {
             this.next._write_Seq(this._io);
@@ -58,6 +60,7 @@ public class NavParentRecursive extends KaitaiStruct.ReadWrite {
             if (!Objects.equals(this.next._parent(), this))
                 throw new ConsistencyError("next", this.next._parent(), this);
         }
+        _dirty = false;
     }
     private Integer parentValue;
     public Integer parentValue() {
@@ -74,11 +77,11 @@ public class NavParentRecursive extends KaitaiStruct.ReadWrite {
     private NavParentRecursive _root;
     private KaitaiStruct.ReadWrite _parent;
     public int value() { return value; }
-    public void setValue(int _v) { value = _v; }
+    public void setValue(int _v) { _dirty = true; value = _v; }
     public NavParentRecursive next() { return next; }
-    public void setNext(NavParentRecursive _v) { next = _v; }
+    public void setNext(NavParentRecursive _v) { _dirty = true; next = _v; }
     public NavParentRecursive _root() { return _root; }
-    public void set_root(NavParentRecursive _v) { _root = _v; }
+    public void set_root(NavParentRecursive _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

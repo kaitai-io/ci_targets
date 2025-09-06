@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class BitsSimple(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(BitsSimple, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -28,6 +28,7 @@ class BitsSimple(ReadWriteKaitaiStruct):
         self.byte_11_to_14 = self._io.read_bits_int_be(32)
         self.byte_15_to_19 = self._io.read_bits_int_be(40)
         self.byte_20_to_27 = self._io.read_bits_int_be(64)
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -52,7 +53,7 @@ class BitsSimple(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
     @property
     def test_if_b1(self):

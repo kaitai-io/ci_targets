@@ -15,7 +15,7 @@ class EnumInvalid(KaitaiStruct):
         dog = 102
         cat = 124
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(EnumInvalid, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()

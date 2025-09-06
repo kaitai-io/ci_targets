@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ExprSizeofValue0(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ExprSizeofValue0, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -18,6 +18,7 @@ class ExprSizeofValue0(ReadWriteKaitaiStruct):
         self.block1 = ExprSizeofValue0.Block(self._io, self, self._root)
         self.block1._read()
         self.more = self._io.read_u2le()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -32,15 +33,15 @@ class ExprSizeofValue0(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.block1._root != self._root:
             raise kaitaistruct.ConsistencyError(u"block1", self.block1._root, self._root)
         if self.block1._parent != self:
             raise kaitaistruct.ConsistencyError(u"block1", self.block1._parent, self)
+        self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ExprSizeofValue0.Block, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -48,6 +49,7 @@ class ExprSizeofValue0(ReadWriteKaitaiStruct):
             self.a = self._io.read_u1()
             self.b = self._io.read_u4le()
             self.c = self._io.read_bytes(2)
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -62,9 +64,9 @@ class ExprSizeofValue0(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if len(self.c) != 2:
                 raise kaitaistruct.ConsistencyError(u"c", len(self.c), 2)
+            self._dirty = False
 
 
     @property

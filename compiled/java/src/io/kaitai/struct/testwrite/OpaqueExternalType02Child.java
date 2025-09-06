@@ -37,6 +37,7 @@ public class OpaqueExternalType02Child extends KaitaiStruct.ReadWrite {
         this.s2 = new String(this._io.readBytesTerm((byte) 124, false, false, true), StandardCharsets.UTF_8);
         this.s3 = new OpaqueExternalType02ChildChild(this._io, this, _root);
         this.s3._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -44,6 +45,7 @@ public class OpaqueExternalType02Child extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytes((this.s1).getBytes(Charset.forName("UTF-8")));
         this._io.writeU1(124);
         this._io.writeBytes((this.s2).getBytes(Charset.forName("UTF-8")));
@@ -64,6 +66,7 @@ public class OpaqueExternalType02Child extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("s3", this.s3._root(), _root());
         if (!Objects.equals(this.s3._parent(), this))
             throw new ConsistencyError("s3", this.s3._parent(), this);
+        _dirty = false;
     }
     public static class OpaqueExternalType02ChildChild extends KaitaiStruct.ReadWrite {
         public static OpaqueExternalType02ChildChild fromFile(String fileName) throws IOException {
@@ -90,6 +93,7 @@ public class OpaqueExternalType02Child extends KaitaiStruct.ReadWrite {
             if (_root().someMethod()) {
                 this.s3 = new String(this._io.readBytesTerm((byte) 64, true, true, true), StandardCharsets.UTF_8);
             }
+            _dirty = false;
         }
 
         public void _fetchInstances() {
@@ -98,6 +102,7 @@ public class OpaqueExternalType02Child extends KaitaiStruct.ReadWrite {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             if (_root().someMethod()) {
                 this._io.writeBytes((this.s3).getBytes(Charset.forName("UTF-8")));
             }
@@ -110,16 +115,17 @@ public class OpaqueExternalType02Child extends KaitaiStruct.ReadWrite {
                 if (KaitaiStream.byteArrayIndexOf((this.s3).getBytes(Charset.forName("UTF-8")), ((byte) 64)) != (this.s3).getBytes(Charset.forName("UTF-8")).length - 1)
                     throw new ConsistencyError("s3", KaitaiStream.byteArrayIndexOf((this.s3).getBytes(Charset.forName("UTF-8")), ((byte) 64)), (this.s3).getBytes(Charset.forName("UTF-8")).length - 1);
             }
+            _dirty = false;
         }
         private String s3;
         private OpaqueExternalType02Child _root;
         private OpaqueExternalType02Child _parent;
         public String s3() { return s3; }
-        public void setS3(String _v) { s3 = _v; }
+        public void setS3(String _v) { _dirty = true; s3 = _v; }
         public OpaqueExternalType02Child _root() { return _root; }
-        public void set_root(OpaqueExternalType02Child _v) { _root = _v; }
+        public void set_root(OpaqueExternalType02Child _v) { _dirty = true; _root = _v; }
         public OpaqueExternalType02Child _parent() { return _parent; }
-        public void set_parent(OpaqueExternalType02Child _v) { _parent = _v; }
+        public void set_parent(OpaqueExternalType02Child _v) { _dirty = true; _parent = _v; }
     }
     private Boolean someMethod;
     public Boolean someMethod() {
@@ -135,13 +141,13 @@ public class OpaqueExternalType02Child extends KaitaiStruct.ReadWrite {
     private OpaqueExternalType02Child _root;
     private KaitaiStruct.ReadWrite _parent;
     public String s1() { return s1; }
-    public void setS1(String _v) { s1 = _v; }
+    public void setS1(String _v) { _dirty = true; s1 = _v; }
     public String s2() { return s2; }
-    public void setS2(String _v) { s2 = _v; }
+    public void setS2(String _v) { _dirty = true; s2 = _v; }
     public OpaqueExternalType02ChildChild s3() { return s3; }
-    public void setS3(OpaqueExternalType02ChildChild _v) { s3 = _v; }
+    public void setS3(OpaqueExternalType02ChildChild _v) { _dirty = true; s3 = _v; }
     public OpaqueExternalType02Child _root() { return _root; }
-    public void set_root(OpaqueExternalType02Child _v) { _root = _v; }
+    public void set_root(OpaqueExternalType02Child _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

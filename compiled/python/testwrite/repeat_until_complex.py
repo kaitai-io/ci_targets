@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class RepeatUntilComplex(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(RepeatUntilComplex, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -47,6 +47,7 @@ class RepeatUntilComplex(ReadWriteKaitaiStruct):
             if _ == 0:
                 break
             i += 1
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -81,7 +82,6 @@ class RepeatUntilComplex(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.first) == 0:
             raise kaitaistruct.ConsistencyError(u"first", len(self.first), 0)
         for i in range(len(self.first)):
@@ -114,10 +114,11 @@ class RepeatUntilComplex(ReadWriteKaitaiStruct):
             if (_ == 0) != (i == len(self.third) - 1):
                 raise kaitaistruct.ConsistencyError(u"third", _ == 0, i == len(self.third) - 1)
 
+        self._dirty = False
 
     class TypeU1(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(RepeatUntilComplex.TypeU1, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -127,6 +128,7 @@ class RepeatUntilComplex(ReadWriteKaitaiStruct):
             for i in range(self.count):
                 self.values.append(self._io.read_u1())
 
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -146,17 +148,17 @@ class RepeatUntilComplex(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if len(self.values) != self.count:
                 raise kaitaistruct.ConsistencyError(u"values", len(self.values), self.count)
             for i in range(len(self.values)):
                 pass
 
+            self._dirty = False
 
 
     class TypeU2(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(RepeatUntilComplex.TypeU2, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -166,6 +168,7 @@ class RepeatUntilComplex(ReadWriteKaitaiStruct):
             for i in range(self.count):
                 self.values.append(self._io.read_u2le())
 
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -185,12 +188,12 @@ class RepeatUntilComplex(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if len(self.values) != self.count:
                 raise kaitaistruct.ConsistencyError(u"values", len(self.values), self.count)
             for i in range(len(self.values)):
                 pass
 
+            self._dirty = False
 
 
 

@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class BcdUserTypeBe(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(BcdUserTypeBe, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -27,6 +27,7 @@ class BcdUserTypeBe(ReadWriteKaitaiStruct):
         _io__raw_leading_zero_ltr = KaitaiStream(BytesIO(self._raw_leading_zero_ltr))
         self.leading_zero_ltr = BcdUserTypeBe.LeadingZeroLtrObj(_io__raw_leading_zero_ltr, self, self._root)
         self.leading_zero_ltr._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -74,7 +75,6 @@ class BcdUserTypeBe(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.ltr._root != self._root:
             raise kaitaistruct.ConsistencyError(u"ltr", self.ltr._root, self._root)
         if self.ltr._parent != self:
@@ -87,10 +87,11 @@ class BcdUserTypeBe(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"leading_zero_ltr", self.leading_zero_ltr._root, self._root)
         if self.leading_zero_ltr._parent != self:
             raise kaitaistruct.ConsistencyError(u"leading_zero_ltr", self.leading_zero_ltr._parent, self)
+        self._dirty = False
 
     class LeadingZeroLtrObj(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(BcdUserTypeBe.LeadingZeroLtrObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -99,6 +100,7 @@ class BcdUserTypeBe(ReadWriteKaitaiStruct):
             self.b2 = self._io.read_u1()
             self.b3 = self._io.read_u1()
             self.b4 = self._io.read_u1()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -114,7 +116,7 @@ class BcdUserTypeBe(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
         @property
         def as_int(self):
@@ -219,7 +221,7 @@ class BcdUserTypeBe(ReadWriteKaitaiStruct):
 
     class LtrObj(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(BcdUserTypeBe.LtrObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -228,6 +230,7 @@ class BcdUserTypeBe(ReadWriteKaitaiStruct):
             self.b2 = self._io.read_u1()
             self.b3 = self._io.read_u1()
             self.b4 = self._io.read_u1()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -243,7 +246,7 @@ class BcdUserTypeBe(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
         @property
         def as_int(self):
@@ -348,7 +351,7 @@ class BcdUserTypeBe(ReadWriteKaitaiStruct):
 
     class RtlObj(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(BcdUserTypeBe.RtlObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -357,6 +360,7 @@ class BcdUserTypeBe(ReadWriteKaitaiStruct):
             self.b2 = self._io.read_u1()
             self.b3 = self._io.read_u1()
             self.b4 = self._io.read_u1()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -372,7 +376,7 @@ class BcdUserTypeBe(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
         @property
         def as_int(self):

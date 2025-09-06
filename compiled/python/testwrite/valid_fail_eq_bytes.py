@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ValidFailEqBytes(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ValidFailEqBytes, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -18,6 +18,7 @@ class ValidFailEqBytes(ReadWriteKaitaiStruct):
         self.foo = self._io.read_bytes(2)
         if not self.foo == b"\x51\x41":
             raise kaitaistruct.ValidationNotEqualError(b"\x51\x41", self.foo, self._io, u"/seq/0")
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -30,10 +31,10 @@ class ValidFailEqBytes(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.foo) != 2:
             raise kaitaistruct.ConsistencyError(u"foo", len(self.foo), 2)
         if not self.foo == b"\x51\x41":
             raise kaitaistruct.ValidationNotEqualError(b"\x51\x41", self.foo, None, u"/seq/0")
+        self._dirty = False
 
 

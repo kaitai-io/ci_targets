@@ -116,10 +116,20 @@ public class ProcessRepeatUsertypeDynargRotate extends KaitaiStruct {
 
         public void _fetchInstances() {
             blocksRol0B();
+            if (this.blocksRol0B != null) {
+            }
             blocksRol1B();
+            if (this.blocksRol1B != null) {
+            }
             blocksRor0B();
+            if (this.blocksRor0B != null) {
+            }
             blocksRor1B();
+            if (this.blocksRor1B != null) {
+            }
             blocksRor2B();
+            if (this.blocksRor2B != null) {
+            }
         }
         private Integer blocksRol0B;
         public Integer blocksRol0B() {

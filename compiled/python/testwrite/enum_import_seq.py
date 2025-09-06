@@ -12,13 +12,14 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class EnumImportSeq(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(EnumImportSeq, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self.pet_1 = KaitaiStream.resolve_enum(enum_0.Enum0.Animal, self._io.read_u4le())
         self.pet_2 = KaitaiStream.resolve_enum(enum_deep.EnumDeep.Container1.Container2.Animal, self._io.read_u4le())
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -32,6 +33,6 @@ class EnumImportSeq(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
 

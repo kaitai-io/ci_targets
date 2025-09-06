@@ -42,12 +42,14 @@ public class BitsSimpleLe extends KaitaiStruct.ReadWrite {
         this.byte11To14 = this._io.readBitsIntLe(32);
         this.byte15To19 = this._io.readBitsIntLe(40);
         this.byte20To27 = this._io.readBitsIntLe(64);
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBitsIntLe(8, this.byte1);
         this._io.writeBitsIntLe(8, this.byte2);
         this._io.writeBitsIntLe(1, (this.bitsA ? 1 : 0));
@@ -64,6 +66,7 @@ public class BitsSimpleLe extends KaitaiStruct.ReadWrite {
     }
 
     public void _check() {
+        _dirty = false;
     }
     private Byte testIfB1;
     public Byte testIfB1() {
@@ -91,33 +94,33 @@ public class BitsSimpleLe extends KaitaiStruct.ReadWrite {
     private BitsSimpleLe _root;
     private KaitaiStruct.ReadWrite _parent;
     public long byte1() { return byte1; }
-    public void setByte1(long _v) { byte1 = _v; }
+    public void setByte1(long _v) { _dirty = true; byte1 = _v; }
     public long byte2() { return byte2; }
-    public void setByte2(long _v) { byte2 = _v; }
+    public void setByte2(long _v) { _dirty = true; byte2 = _v; }
     public boolean bitsA() { return bitsA; }
-    public void setBitsA(boolean _v) { bitsA = _v; }
+    public void setBitsA(boolean _v) { _dirty = true; bitsA = _v; }
     public long bitsB() { return bitsB; }
-    public void setBitsB(long _v) { bitsB = _v; }
+    public void setBitsB(long _v) { _dirty = true; bitsB = _v; }
     public long bitsC() { return bitsC; }
-    public void setBitsC(long _v) { bitsC = _v; }
+    public void setBitsC(long _v) { _dirty = true; bitsC = _v; }
     public long largeBits1() { return largeBits1; }
-    public void setLargeBits1(long _v) { largeBits1 = _v; }
+    public void setLargeBits1(long _v) { _dirty = true; largeBits1 = _v; }
     public long spacer() { return spacer; }
-    public void setSpacer(long _v) { spacer = _v; }
+    public void setSpacer(long _v) { _dirty = true; spacer = _v; }
     public long largeBits2() { return largeBits2; }
-    public void setLargeBits2(long _v) { largeBits2 = _v; }
+    public void setLargeBits2(long _v) { _dirty = true; largeBits2 = _v; }
     public short normalS2() { return normalS2; }
-    public void setNormalS2(short _v) { normalS2 = _v; }
+    public void setNormalS2(short _v) { _dirty = true; normalS2 = _v; }
     public long byte8910() { return byte8910; }
-    public void setByte8910(long _v) { byte8910 = _v; }
+    public void setByte8910(long _v) { _dirty = true; byte8910 = _v; }
     public long byte11To14() { return byte11To14; }
-    public void setByte11To14(long _v) { byte11To14 = _v; }
+    public void setByte11To14(long _v) { _dirty = true; byte11To14 = _v; }
     public long byte15To19() { return byte15To19; }
-    public void setByte15To19(long _v) { byte15To19 = _v; }
+    public void setByte15To19(long _v) { _dirty = true; byte15To19 = _v; }
     public long byte20To27() { return byte20To27; }
-    public void setByte20To27(long _v) { byte20To27 = _v; }
+    public void setByte20To27(long _v) { _dirty = true; byte20To27 = _v; }
     public BitsSimpleLe _root() { return _root; }
-    public void set_root(BitsSimpleLe _v) { _root = _v; }
+    public void set_root(BitsSimpleLe _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

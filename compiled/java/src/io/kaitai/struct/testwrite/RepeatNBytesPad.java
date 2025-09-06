@@ -36,6 +36,7 @@ public class RepeatNBytesPad extends KaitaiStruct.ReadWrite {
         for (int i = 0; i < 3; i++) {
             this.records.add(KaitaiStream.bytesStripRight(this._io.readBytes(5), (byte) 170));
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -44,6 +45,7 @@ public class RepeatNBytesPad extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         for (int i = 0; i < this.records.size(); i++) {
             this._io.writeBytesLimit(this.records.get(((Number) (i)).intValue()), 5, (byte) 170, (byte) 170);
         }
@@ -58,14 +60,15 @@ public class RepeatNBytesPad extends KaitaiStruct.ReadWrite {
             if ( ((this.records.get(((Number) (i)).intValue()).length != 0) && ((this.records.get(((Number) (i)).intValue())[((Number) (this.records.get(((Number) (i)).intValue()).length - 1)).intValue()] & 0xff) == 170)) )
                 throw new ConsistencyError("records", (this.records.get(((Number) (i)).intValue())[((Number) (this.records.get(((Number) (i)).intValue()).length - 1)).intValue()] & 0xff), 170);
         }
+        _dirty = false;
     }
     private List<byte[]> records;
     private RepeatNBytesPad _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<byte[]> records() { return records; }
-    public void setRecords(List<byte[]> _v) { records = _v; }
+    public void setRecords(List<byte[]> _v) { _dirty = true; records = _v; }
     public RepeatNBytesPad _root() { return _root; }
-    public void set_root(RepeatNBytesPad _v) { _root = _v; }
+    public void set_root(RepeatNBytesPad _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

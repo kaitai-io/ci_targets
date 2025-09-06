@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class NavParentSwitch(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(NavParentSwitch, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -21,6 +21,7 @@ class NavParentSwitch(ReadWriteKaitaiStruct):
             pass
             self.content = NavParentSwitch.Element1(self._io, self, self._root)
             self.content._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -41,7 +42,6 @@ class NavParentSwitch(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         _on = self.category
         if _on == 1:
             pass
@@ -49,10 +49,11 @@ class NavParentSwitch(ReadWriteKaitaiStruct):
                 raise kaitaistruct.ConsistencyError(u"content", self.content._root, self._root)
             if self.content._parent != self:
                 raise kaitaistruct.ConsistencyError(u"content", self.content._parent, self)
+        self._dirty = False
 
     class Element1(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(NavParentSwitch.Element1, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -60,6 +61,7 @@ class NavParentSwitch(ReadWriteKaitaiStruct):
             self.foo = self._io.read_u1()
             self.subelement = NavParentSwitch.Subelement1(self._io, self, self._root)
             self.subelement._read()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -74,16 +76,16 @@ class NavParentSwitch(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if self.subelement._root != self._root:
                 raise kaitaistruct.ConsistencyError(u"subelement", self.subelement._root, self._root)
             if self.subelement._parent != self:
                 raise kaitaistruct.ConsistencyError(u"subelement", self.subelement._parent, self)
+            self._dirty = False
 
 
     class Subelement1(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(NavParentSwitch.Subelement1, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -92,6 +94,7 @@ class NavParentSwitch(ReadWriteKaitaiStruct):
                 pass
                 self.bar = self._io.read_u1()
 
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -110,10 +113,10 @@ class NavParentSwitch(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if self._parent.foo == 66:
                 pass
 
+            self._dirty = False
 
 
 

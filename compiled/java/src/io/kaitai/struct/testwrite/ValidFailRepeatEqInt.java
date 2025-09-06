@@ -43,6 +43,7 @@ public class ValidFailRepeatEqInt extends KaitaiStruct.ReadWrite {
                 i++;
             }
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -51,6 +52,7 @@ public class ValidFailRepeatEqInt extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         for (int i = 0; i < this.foo.size(); i++) {
             if (this._io.isEof())
                 throw new ConsistencyError("foo", this._io.size() - this._io.pos(), 0);
@@ -66,14 +68,15 @@ public class ValidFailRepeatEqInt extends KaitaiStruct.ReadWrite {
                 throw new KaitaiStream.ValidationNotEqualError(305419896, this.foo.get(((Number) (i)).intValue()), null, "/seq/0");
             }
         }
+        _dirty = false;
     }
     private List<Long> foo;
     private ValidFailRepeatEqInt _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<Long> foo() { return foo; }
-    public void setFoo(List<Long> _v) { foo = _v; }
+    public void setFoo(List<Long> _v) { _dirty = true; foo = _v; }
     public ValidFailRepeatEqInt _root() { return _root; }
-    public void set_root(ValidFailRepeatEqInt _v) { _root = _v; }
+    public void set_root(ValidFailRepeatEqInt _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

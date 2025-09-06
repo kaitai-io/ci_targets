@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ParamsDef(KaitaiStruct):
     def __init__(self, len, has_trailer, _io, _parent=None, _root=None):
-        self._io = _io
+        super(ParamsDef, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self.len = len

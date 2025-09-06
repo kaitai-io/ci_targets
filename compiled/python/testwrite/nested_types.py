@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class NestedTypes(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(NestedTypes, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -19,6 +19,7 @@ class NestedTypes(ReadWriteKaitaiStruct):
         self.one._read()
         self.two = NestedTypes.SubtypeB(self._io, self, self._root)
         self.two._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -34,7 +35,6 @@ class NestedTypes(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.one._root != self._root:
             raise kaitaistruct.ConsistencyError(u"one", self.one._root, self._root)
         if self.one._parent != self:
@@ -43,10 +43,11 @@ class NestedTypes(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"two", self.two._root, self._root)
         if self.two._parent != self:
             raise kaitaistruct.ConsistencyError(u"two", self.two._parent, self)
+        self._dirty = False
 
     class SubtypeA(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(NestedTypes.SubtypeA, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -55,6 +56,7 @@ class NestedTypes(ReadWriteKaitaiStruct):
             self.typed_at_root._read()
             self.typed_here = NestedTypes.SubtypeA.SubtypeC(self._io, self, self._root)
             self.typed_here._read()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -70,7 +72,6 @@ class NestedTypes(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if self.typed_at_root._root != self._root:
                 raise kaitaistruct.ConsistencyError(u"typed_at_root", self.typed_at_root._root, self._root)
             if self.typed_at_root._parent != self:
@@ -79,15 +80,17 @@ class NestedTypes(ReadWriteKaitaiStruct):
                 raise kaitaistruct.ConsistencyError(u"typed_here", self.typed_here._root, self._root)
             if self.typed_here._parent != self:
                 raise kaitaistruct.ConsistencyError(u"typed_here", self.typed_here._parent, self)
+            self._dirty = False
 
         class SubtypeC(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                self._io = _io
+                super(NestedTypes.SubtypeA.SubtypeC, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
             def _read(self):
                 self.value_c = self._io.read_s1()
+                self._dirty = False
 
 
             def _fetch_instances(self):
@@ -100,18 +103,19 @@ class NestedTypes(ReadWriteKaitaiStruct):
 
 
             def _check(self):
-                pass
+                self._dirty = False
 
 
 
     class SubtypeB(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(NestedTypes.SubtypeB, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.value_b = self._io.read_s1()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -124,7 +128,7 @@ class NestedTypes(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
 

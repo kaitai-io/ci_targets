@@ -36,7 +36,9 @@ public class InstanceStdArray extends KaitaiStruct {
 
     public void _fetchInstances() {
         entries();
-        for (int i = 0; i < this.entries.size(); i++) {
+        if (this.entries != null) {
+            for (int i = 0; i < this.entries.size(); i++) {
+            }
         }
     }
     private List<byte[]> entries;

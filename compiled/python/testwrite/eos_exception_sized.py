@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class EosExceptionSized(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(EosExceptionSized, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -19,6 +19,7 @@ class EosExceptionSized(ReadWriteKaitaiStruct):
         _io__raw_envelope = KaitaiStream(BytesIO(self._raw_envelope))
         self.envelope = EosExceptionSized.Data(_io__raw_envelope, self, self._root)
         self.envelope._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -42,15 +43,15 @@ class EosExceptionSized(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.envelope._root != self._root:
             raise kaitaistruct.ConsistencyError(u"envelope", self.envelope._root, self._root)
         if self.envelope._parent != self:
             raise kaitaistruct.ConsistencyError(u"envelope", self.envelope._parent, self)
+        self._dirty = False
 
     class Data(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(EosExceptionSized.Data, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -59,6 +60,7 @@ class EosExceptionSized(ReadWriteKaitaiStruct):
             _io__raw_buf = KaitaiStream(BytesIO(self._raw_buf))
             self.buf = EosExceptionSized.Foo(_io__raw_buf, self, self._root)
             self.buf._read()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -82,21 +84,22 @@ class EosExceptionSized(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if self.buf._root != self._root:
                 raise kaitaistruct.ConsistencyError(u"buf", self.buf._root, self._root)
             if self.buf._parent != self:
                 raise kaitaistruct.ConsistencyError(u"buf", self.buf._parent, self)
+            self._dirty = False
 
 
     class Foo(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(EosExceptionSized.Foo, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             pass
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -108,7 +111,7 @@ class EosExceptionSized(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
 

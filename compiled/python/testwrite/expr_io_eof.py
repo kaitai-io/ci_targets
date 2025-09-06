@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ExprIoEof(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ExprIoEof, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -23,6 +23,7 @@ class ExprIoEof(ReadWriteKaitaiStruct):
         _io__raw_substream2 = KaitaiStream(BytesIO(self._raw_substream2))
         self.substream2 = ExprIoEof.OneOrTwo(_io__raw_substream2, self, self._root)
         self.substream2._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -58,7 +59,6 @@ class ExprIoEof(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.substream1._root != self._root:
             raise kaitaistruct.ConsistencyError(u"substream1", self.substream1._root, self._root)
         if self.substream1._parent != self:
@@ -67,10 +67,11 @@ class ExprIoEof(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"substream2", self.substream2._root, self._root)
         if self.substream2._parent != self:
             raise kaitaistruct.ConsistencyError(u"substream2", self.substream2._parent, self)
+        self._dirty = False
 
     class OneOrTwo(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ExprIoEof.OneOrTwo, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -80,6 +81,7 @@ class ExprIoEof(ReadWriteKaitaiStruct):
                 pass
                 self.two = self._io.read_u4le()
 
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -99,7 +101,7 @@ class ExprIoEof(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
         @property
         def reflect_eof(self):

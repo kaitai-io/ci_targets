@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ValidEqStrEncodings(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ValidEqStrEncodings, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -31,6 +31,7 @@ class ValidEqStrEncodings(ReadWriteKaitaiStruct):
         self.str4 = (self._io.read_bytes(self.len_of_4)).decode(u"IBM437")
         if not self.str4 == u"\u2591\u2592\u2593":
             raise kaitaistruct.ValidationNotEqualError(u"\u2591\u2592\u2593", self.str4, self._io, u"/seq/7")
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -50,7 +51,6 @@ class ValidEqStrEncodings(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len((self.str1).encode(u"ASCII")) != self.len_of_1:
             raise kaitaistruct.ConsistencyError(u"str1", len((self.str1).encode(u"ASCII")), self.len_of_1)
         if not self.str1 == u"Some ASCII":
@@ -67,5 +67,6 @@ class ValidEqStrEncodings(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"str4", len((self.str4).encode(u"IBM437")), self.len_of_4)
         if not self.str4 == u"\u2591\u2592\u2593":
             raise kaitaistruct.ValidationNotEqualError(u"\u2591\u2592\u2593", self.str4, None, u"/seq/7")
+        self._dirty = False
 
 

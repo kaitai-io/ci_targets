@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class NavParentFalse(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(NavParentFalse, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -20,6 +20,7 @@ class NavParentFalse(ReadWriteKaitaiStruct):
         self.element_a._read()
         self.element_b = NavParentFalse.ParentB(self._io, self, self._root)
         self.element_b._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -36,7 +37,6 @@ class NavParentFalse(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.element_a._root != self._root:
             raise kaitaistruct.ConsistencyError(u"element_a", self.element_a._root, self._root)
         if self.element_a._parent != self:
@@ -45,10 +45,11 @@ class NavParentFalse(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"element_b", self.element_b._root, self._root)
         if self.element_b._parent != self:
             raise kaitaistruct.ConsistencyError(u"element_b", self.element_b._parent, self)
+        self._dirty = False
 
     class Child(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(NavParentFalse.Child, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -58,6 +59,7 @@ class NavParentFalse(ReadWriteKaitaiStruct):
                 pass
                 self.more = self._io.read_bytes(self._parent._parent.child_size)
 
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -77,17 +79,17 @@ class NavParentFalse(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if self.code == 73:
                 pass
                 if len(self.more) != self._parent._parent.child_size:
                     raise kaitaistruct.ConsistencyError(u"more", len(self.more), self._parent._parent.child_size)
 
+            self._dirty = False
 
 
     class ParentA(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(NavParentFalse.ParentA, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -96,6 +98,7 @@ class NavParentFalse(ReadWriteKaitaiStruct):
             self.foo._read()
             self.bar = NavParentFalse.ParentB(self._io, self, self._root)
             self.bar._read()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -111,7 +114,6 @@ class NavParentFalse(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if self.foo._root != self._root:
                 raise kaitaistruct.ConsistencyError(u"foo", self.foo._root, self._root)
             if self.foo._parent != self:
@@ -120,17 +122,19 @@ class NavParentFalse(ReadWriteKaitaiStruct):
                 raise kaitaistruct.ConsistencyError(u"bar", self.bar._root, self._root)
             if self.bar._parent != self:
                 raise kaitaistruct.ConsistencyError(u"bar", self.bar._parent, self)
+            self._dirty = False
 
 
     class ParentB(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(NavParentFalse.ParentB, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.foo = NavParentFalse.Child(self._io, None, self._root)
             self.foo._read()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -144,11 +148,11 @@ class NavParentFalse(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if self.foo._root != self._root:
                 raise kaitaistruct.ConsistencyError(u"foo", self.foo._root, self._root)
             if self.foo._parent != None:
                 raise kaitaistruct.ConsistencyError(u"foo", self.foo._parent, None)
+            self._dirty = False
 
 
 

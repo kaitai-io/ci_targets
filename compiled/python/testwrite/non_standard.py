@@ -10,11 +10,11 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class NonStandard(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(NonStandard, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_pi = False
-        self.pi__to_write = True
+        self.pi__enabled = True
 
     def _read(self):
         self.foo = self._io.read_u1()
@@ -25,6 +25,7 @@ class NonStandard(ReadWriteKaitaiStruct):
         elif _on == 43:
             pass
             self.bar = self._io.read_u4le()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -35,11 +36,14 @@ class NonStandard(ReadWriteKaitaiStruct):
         elif _on == 43:
             pass
         _ = self.pi
+        if hasattr(self, '_m_pi'):
+            pass
+
 
 
     def _write__seq(self, io=None):
         super(NonStandard, self)._write__seq(io)
-        self._should_write_pi = self.pi__to_write
+        self._should_write_pi = self.pi__enabled
         self._io.write_u1(self.foo)
         _on = self.foo
         if _on == 42:
@@ -51,12 +55,15 @@ class NonStandard(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         _on = self.foo
         if _on == 42:
             pass
         elif _on == 43:
             pass
+        if self.pi__enabled:
+            pass
+
+        self._dirty = False
 
     @property
     def pi(self):
@@ -64,6 +71,9 @@ class NonStandard(ReadWriteKaitaiStruct):
             self._write_pi()
         if hasattr(self, '_m_pi'):
             return self._m_pi
+
+        if not self.pi__enabled:
+            return None
 
         _pos = self._io.pos()
         self._io.seek(0)
@@ -73,6 +83,7 @@ class NonStandard(ReadWriteKaitaiStruct):
 
     @pi.setter
     def pi(self, v):
+        self._dirty = True
         self._m_pi = v
 
     def _write_pi(self):
@@ -81,10 +92,6 @@ class NonStandard(ReadWriteKaitaiStruct):
         self._io.seek(0)
         self._io.write_u1(self._m_pi)
         self._io.seek(_pos)
-
-
-    def _check_pi(self):
-        pass
 
     @property
     def vi(self):

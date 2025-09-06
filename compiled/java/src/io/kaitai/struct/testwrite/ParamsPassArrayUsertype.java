@@ -44,6 +44,7 @@ public class ParamsPassArrayUsertype extends KaitaiStruct.ReadWrite {
         }
         this.passBlocks = new ParamType(this._io, this, _root, blocks());
         this.passBlocks._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -54,6 +55,7 @@ public class ParamsPassArrayUsertype extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         for (int i = 0; i < this.blocks.size(); i++) {
             this.blocks.get(((Number) (i)).intValue())._write_Seq(this._io);
         }
@@ -75,6 +77,7 @@ public class ParamsPassArrayUsertype extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("pass_blocks", this.passBlocks._parent(), this);
         if (!Objects.equals(this.passBlocks.bar(), blocks()))
             throw new ConsistencyError("pass_blocks", this.passBlocks.bar(), blocks());
+        _dirty = false;
     }
     public static class Block extends KaitaiStruct.ReadWrite {
         public static Block fromFile(String fileName) throws IOException {
@@ -99,26 +102,29 @@ public class ParamsPassArrayUsertype extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.foo = this._io.readU1();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU1(this.foo);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private int foo;
         private ParamsPassArrayUsertype _root;
         private ParamsPassArrayUsertype _parent;
         public int foo() { return foo; }
-        public void setFoo(int _v) { foo = _v; }
+        public void setFoo(int _v) { _dirty = true; foo = _v; }
         public ParamsPassArrayUsertype _root() { return _root; }
-        public void set_root(ParamsPassArrayUsertype _v) { _root = _v; }
+        public void set_root(ParamsPassArrayUsertype _v) { _dirty = true; _root = _v; }
         public ParamsPassArrayUsertype _parent() { return _parent; }
-        public void set_parent(ParamsPassArrayUsertype _v) { _parent = _v; }
+        public void set_parent(ParamsPassArrayUsertype _v) { _dirty = true; _parent = _v; }
     }
     public static class ParamType extends KaitaiStruct.ReadWrite {
         public ParamType(List<Block> bar) {
@@ -142,12 +148,14 @@ public class ParamsPassArrayUsertype extends KaitaiStruct.ReadWrite {
         public void _read() {
             this.one = this._io.readBytes(bar().get(((int) 0)).foo());
             this.two = this._io.readBytes(bar().get(((int) 1)).foo());
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytes(this.one);
             this._io.writeBytes(this.two);
         }
@@ -157,6 +165,7 @@ public class ParamsPassArrayUsertype extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("one", this.one.length, bar().get(((int) 0)).foo());
             if (this.two.length != bar().get(((int) 1)).foo())
                 throw new ConsistencyError("two", this.two.length, bar().get(((int) 1)).foo());
+            _dirty = false;
         }
         private byte[] one;
         private byte[] two;
@@ -164,26 +173,26 @@ public class ParamsPassArrayUsertype extends KaitaiStruct.ReadWrite {
         private ParamsPassArrayUsertype _root;
         private ParamsPassArrayUsertype _parent;
         public byte[] one() { return one; }
-        public void setOne(byte[] _v) { one = _v; }
+        public void setOne(byte[] _v) { _dirty = true; one = _v; }
         public byte[] two() { return two; }
-        public void setTwo(byte[] _v) { two = _v; }
+        public void setTwo(byte[] _v) { _dirty = true; two = _v; }
         public List<Block> bar() { return bar; }
-        public void setBar(List<Block> _v) { bar = _v; }
+        public void setBar(List<Block> _v) { _dirty = true; bar = _v; }
         public ParamsPassArrayUsertype _root() { return _root; }
-        public void set_root(ParamsPassArrayUsertype _v) { _root = _v; }
+        public void set_root(ParamsPassArrayUsertype _v) { _dirty = true; _root = _v; }
         public ParamsPassArrayUsertype _parent() { return _parent; }
-        public void set_parent(ParamsPassArrayUsertype _v) { _parent = _v; }
+        public void set_parent(ParamsPassArrayUsertype _v) { _dirty = true; _parent = _v; }
     }
     private List<Block> blocks;
     private ParamType passBlocks;
     private ParamsPassArrayUsertype _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<Block> blocks() { return blocks; }
-    public void setBlocks(List<Block> _v) { blocks = _v; }
+    public void setBlocks(List<Block> _v) { _dirty = true; blocks = _v; }
     public ParamType passBlocks() { return passBlocks; }
-    public void setPassBlocks(ParamType _v) { passBlocks = _v; }
+    public void setPassBlocks(ParamType _v) { _dirty = true; passBlocks = _v; }
     public ParamsPassArrayUsertype _root() { return _root; }
-    public void set_root(ParamsPassArrayUsertype _v) { _root = _v; }
+    public void set_root(ParamsPassArrayUsertype _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

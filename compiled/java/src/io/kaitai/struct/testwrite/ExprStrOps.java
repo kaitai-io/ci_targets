@@ -33,18 +33,21 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
     }
     public void _read() {
         this.one = new String(this._io.readBytes(5), StandardCharsets.US_ASCII);
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytes((this.one).getBytes(Charset.forName("ASCII")));
     }
 
     public void _check() {
         if ((this.one).getBytes(Charset.forName("ASCII")).length != 5)
             throw new ConsistencyError("one", (this.one).getBytes(Charset.forName("ASCII")).length, 5);
+        _dirty = false;
     }
     private Integer oneLen;
     public Integer oneLen() {
@@ -186,9 +189,9 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
     private ExprStrOps _root;
     private KaitaiStruct.ReadWrite _parent;
     public String one() { return one; }
-    public void setOne(String _v) { one = _v; }
+    public void setOne(String _v) { _dirty = true; one = _v; }
     public ExprStrOps _root() { return _root; }
-    public void set_root(ExprStrOps _v) { _root = _v; }
+    public void set_root(ExprStrOps _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

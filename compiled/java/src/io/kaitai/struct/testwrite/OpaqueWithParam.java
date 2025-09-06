@@ -31,6 +31,7 @@ public class OpaqueWithParam extends KaitaiStruct.ReadWrite {
     public void _read() {
         this.one = new ParamsDef(this._io, 5, true);
         this.one._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -38,18 +39,20 @@ public class OpaqueWithParam extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this.one._write_Seq(this._io);
     }
 
     public void _check() {
+        _dirty = false;
     }
     private ParamsDef one;
     private OpaqueWithParam _root;
     private KaitaiStruct.ReadWrite _parent;
     public ParamsDef one() { return one; }
-    public void setOne(ParamsDef _v) { one = _v; }
+    public void setOne(ParamsDef _v) { _dirty = true; one = _v; }
     public OpaqueWithParam _root() { return _root; }
-    public void set_root(OpaqueWithParam _v) { _root = _v; }
+    public void set_root(OpaqueWithParam _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

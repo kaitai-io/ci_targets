@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ValidOptionalId(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ValidOptionalId, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -25,6 +25,7 @@ class ValidOptionalId(ReadWriteKaitaiStruct):
         _ = self._unnamed2
         if not _ == -1:
             raise kaitaistruct.ValidationExprError(self._unnamed2, self._io, u"/seq/2")
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -39,7 +40,6 @@ class ValidOptionalId(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self._unnamed0) != 6:
             raise kaitaistruct.ConsistencyError(u"_unnamed0", len(self._unnamed0), 6)
         if not self._unnamed0 == b"\x50\x41\x43\x4B\x2D\x31":
@@ -49,5 +49,6 @@ class ValidOptionalId(ReadWriteKaitaiStruct):
         _ = self._unnamed2
         if not _ == -1:
             raise kaitaistruct.ValidationExprError(self._unnamed2, None, u"/seq/2")
+        self._dirty = False
 
 

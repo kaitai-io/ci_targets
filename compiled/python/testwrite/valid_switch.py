@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ValidSwitch(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ValidSwitch, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -27,6 +27,7 @@ class ValidSwitch(ReadWriteKaitaiStruct):
             self.b = self._io.read_u2be()
         if not self.b == 17217:
             raise kaitaistruct.ValidationNotEqualError(17217, self.b, self._io, u"/seq/1")
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -51,7 +52,6 @@ class ValidSwitch(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if not self.a == 80:
             raise kaitaistruct.ValidationNotEqualError(80, self.a, None, u"/seq/0")
         _on = self.a
@@ -61,5 +61,6 @@ class ValidSwitch(ReadWriteKaitaiStruct):
             pass
         if not self.b == 17217:
             raise kaitaistruct.ValidationNotEqualError(17217, self.b, None, u"/seq/1")
+        self._dirty = False
 
 

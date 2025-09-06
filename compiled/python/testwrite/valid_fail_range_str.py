@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ValidFailRangeStr(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ValidFailRangeStr, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -20,6 +20,7 @@ class ValidFailRangeStr(ReadWriteKaitaiStruct):
             raise kaitaistruct.ValidationLessThanError(u"P", self.foo, self._io, u"/seq/0")
         if not self.foo <= u"P1":
             raise kaitaistruct.ValidationGreaterThanError(u"P1", self.foo, self._io, u"/seq/0")
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -32,12 +33,12 @@ class ValidFailRangeStr(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len((self.foo).encode(u"ASCII")) != 2:
             raise kaitaistruct.ConsistencyError(u"foo", len((self.foo).encode(u"ASCII")), 2)
         if not self.foo >= u"P":
             raise kaitaistruct.ValidationLessThanError(u"P", self.foo, None, u"/seq/0")
         if not self.foo <= u"P1":
             raise kaitaistruct.ValidationGreaterThanError(u"P1", self.foo, None, u"/seq/0")
+        self._dirty = False
 
 

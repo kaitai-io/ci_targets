@@ -10,23 +10,24 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class InstanceUserArray(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(InstanceUserArray, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_user_entries = False
-        self.user_entries__to_write = True
+        self.user_entries__enabled = True
 
     def _read(self):
         self.ofs = self._io.read_u4le()
         self.entry_size = self._io.read_u4le()
         self.qty_entries = self._io.read_u4le()
+        self._dirty = False
 
 
     def _fetch_instances(self):
         pass
-        if self.ofs > 0:
+        _ = self.user_entries
+        if hasattr(self, '_m_user_entries'):
             pass
-            _ = self.user_entries
             for i in range(len(self._m_user_entries)):
                 pass
                 self._m_user_entries[i]._fetch_instances()
@@ -36,24 +37,40 @@ class InstanceUserArray(ReadWriteKaitaiStruct):
 
     def _write__seq(self, io=None):
         super(InstanceUserArray, self)._write__seq(io)
-        self._should_write_user_entries = self.user_entries__to_write
+        self._should_write_user_entries = self.user_entries__enabled
         self._io.write_u4le(self.ofs)
         self._io.write_u4le(self.entry_size)
         self._io.write_u4le(self.qty_entries)
 
 
     def _check(self):
-        pass
+        if self.user_entries__enabled:
+            pass
+            if self.ofs > 0:
+                pass
+                if len(self._m_user_entries) != self.qty_entries:
+                    raise kaitaistruct.ConsistencyError(u"user_entries", len(self._m_user_entries), self.qty_entries)
+                for i in range(len(self._m_user_entries)):
+                    pass
+                    if self._m_user_entries[i]._root != self._root:
+                        raise kaitaistruct.ConsistencyError(u"user_entries", self._m_user_entries[i]._root, self._root)
+                    if self._m_user_entries[i]._parent != self:
+                        raise kaitaistruct.ConsistencyError(u"user_entries", self._m_user_entries[i]._parent, self)
+
+
+
+        self._dirty = False
 
     class Entry(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(InstanceUserArray.Entry, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.word1 = self._io.read_u2le()
             self.word2 = self._io.read_u2le()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -67,7 +84,7 @@ class InstanceUserArray(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     @property
@@ -76,6 +93,9 @@ class InstanceUserArray(ReadWriteKaitaiStruct):
             self._write_user_entries()
         if hasattr(self, '_m_user_entries'):
             return self._m_user_entries
+
+        if not self.user_entries__enabled:
+            return None
 
         if self.ofs > 0:
             pass
@@ -98,6 +118,7 @@ class InstanceUserArray(ReadWriteKaitaiStruct):
 
     @user_entries.setter
     def user_entries(self, v):
+        self._dirty = True
         self._m_user_entries = v
 
     def _write_user_entries(self):
@@ -122,22 +143,6 @@ class InstanceUserArray(ReadWriteKaitaiStruct):
                 self._m_user_entries[i]._write__seq(_io__raw__m_user_entries)
 
             self._io.seek(_pos)
-
-
-
-    def _check_user_entries(self):
-        pass
-        if self.ofs > 0:
-            pass
-            if len(self._m_user_entries) != self.qty_entries:
-                raise kaitaistruct.ConsistencyError(u"user_entries", len(self._m_user_entries), self.qty_entries)
-            for i in range(len(self._m_user_entries)):
-                pass
-                if self._m_user_entries[i]._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"user_entries", self._m_user_entries[i]._root, self._root)
-                if self._m_user_entries[i]._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"user_entries", self._m_user_entries[i]._parent, self)
-
 
 
 

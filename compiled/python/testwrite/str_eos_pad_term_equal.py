@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class StrEosPadTermEqual(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(StrEosPadTermEqual, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -31,6 +31,7 @@ class StrEosPadTermEqual(ReadWriteKaitaiStruct):
         _io__raw_s4 = KaitaiStream(BytesIO(self._raw_s4))
         self.s4 = StrEosPadTermEqual.S4Type(_io__raw_s4, self, self._root)
         self.s4._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -90,7 +91,6 @@ class StrEosPadTermEqual(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.s1._root != self._root:
             raise kaitaistruct.ConsistencyError(u"s1", self.s1._root, self._root)
         if self.s1._parent != self:
@@ -107,15 +107,17 @@ class StrEosPadTermEqual(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"s4", self.s4._root, self._root)
         if self.s4._parent != self:
             raise kaitaistruct.ConsistencyError(u"s4", self.s4._parent, self)
+        self._dirty = False
 
     class S1Type(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(StrEosPadTermEqual.S1Type, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.value = (KaitaiStream.bytes_terminate(self._io.read_bytes_full(), 64, False)).decode(u"UTF-8")
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -130,17 +132,18 @@ class StrEosPadTermEqual(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     class S2Type(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(StrEosPadTermEqual.S2Type, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.value = (KaitaiStream.bytes_terminate(KaitaiStream.bytes_strip_right(self._io.read_bytes_full(), 43), 64, True)).decode(u"UTF-8")
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -155,17 +158,18 @@ class StrEosPadTermEqual(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     class S3Type(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(StrEosPadTermEqual.S3Type, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.value = (KaitaiStream.bytes_terminate(self._io.read_bytes_full(), 43, False)).decode(u"UTF-8")
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -180,17 +184,18 @@ class StrEosPadTermEqual(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     class S4Type(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(StrEosPadTermEqual.S4Type, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.value = (KaitaiStream.bytes_terminate(self._io.read_bytes_full(), 46, True)).decode(u"UTF-8")
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -205,7 +210,7 @@ class StrEosPadTermEqual(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
 

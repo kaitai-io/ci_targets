@@ -35,6 +35,7 @@ public class ExprIfIntEq extends KaitaiStruct.ReadWrite {
         if (true) {
             this.seqIf = this._io.readS2le();
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -43,6 +44,7 @@ public class ExprIfIntEq extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytes(this.skip);
         this._io.writeS2le(this.seq);
         if (true) {
@@ -55,6 +57,7 @@ public class ExprIfIntEq extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("skip", this.skip.length, 2);
         if (true) {
         }
+        _dirty = false;
     }
     private Integer calc;
     public Integer calc() {
@@ -160,13 +163,13 @@ public class ExprIfIntEq extends KaitaiStruct.ReadWrite {
     private ExprIfIntEq _root;
     private KaitaiStruct.ReadWrite _parent;
     public byte[] skip() { return skip; }
-    public void setSkip(byte[] _v) { skip = _v; }
+    public void setSkip(byte[] _v) { _dirty = true; skip = _v; }
     public short seq() { return seq; }
-    public void setSeq(short _v) { seq = _v; }
+    public void setSeq(short _v) { _dirty = true; seq = _v; }
     public Short seqIf() { return seqIf; }
-    public void setSeqIf(Short _v) { seqIf = _v; }
+    public void setSeqIf(Short _v) { _dirty = true; seqIf = _v; }
     public ExprIfIntEq _root() { return _root; }
-    public void set_root(ExprIfIntEq _v) { _root = _v; }
+    public void set_root(ExprIfIntEq _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

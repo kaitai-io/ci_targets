@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ValidFailRepeatExpr(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ValidFailRepeatExpr, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -24,6 +24,7 @@ class ValidFailRepeatExpr(ReadWriteKaitaiStruct):
                 raise kaitaistruct.ValidationExprError(self.foo[i], self._io, u"/seq/0")
             i += 1
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -46,7 +47,6 @@ class ValidFailRepeatExpr(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         for i in range(len(self.foo)):
             pass
             if len(self.foo[i]) != 4:
@@ -55,5 +55,6 @@ class ValidFailRepeatExpr(ReadWriteKaitaiStruct):
             if not _ != b"\x00\x12\x34\x56":
                 raise kaitaistruct.ValidationExprError(self.foo[i], None, u"/seq/0")
 
+        self._dirty = False
 
 

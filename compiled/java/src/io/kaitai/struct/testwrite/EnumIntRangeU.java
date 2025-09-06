@@ -48,28 +48,31 @@ public class EnumIntRangeU extends KaitaiStruct.ReadWrite {
     public void _read() {
         this.f1 = Constants.byId(this._io.readU4be());
         this.f2 = Constants.byId(this._io.readU4be());
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU4be(((Number) (this.f1.id())).longValue());
         this._io.writeU4be(((Number) (this.f2.id())).longValue());
     }
 
     public void _check() {
+        _dirty = false;
     }
     private Constants f1;
     private Constants f2;
     private EnumIntRangeU _root;
     private KaitaiStruct.ReadWrite _parent;
     public Constants f1() { return f1; }
-    public void setF1(Constants _v) { f1 = _v; }
+    public void setF1(Constants _v) { _dirty = true; f1 = _v; }
     public Constants f2() { return f2; }
-    public void setF2(Constants _v) { f2 = _v; }
+    public void setF2(Constants _v) { _dirty = true; f2 = _v; }
     public EnumIntRangeU _root() { return _root; }
-    public void set_root(EnumIntRangeU _v) { _root = _v; }
+    public void set_root(EnumIntRangeU _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

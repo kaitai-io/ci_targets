@@ -36,6 +36,7 @@ public class SwitchElseOnly extends KaitaiStruct.ReadWrite {
         this.indicator = this._io.readBytes(4);
         this.ut = new Data(this._io, this, _root);
         this.ut._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -43,6 +44,7 @@ public class SwitchElseOnly extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeS1(this.opcode);
         this._io.writeS1(this.primByte);
         this._io.writeBytes(this.indicator);
@@ -56,6 +58,7 @@ public class SwitchElseOnly extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("ut", this.ut._root(), _root());
         if (!Objects.equals(this.ut._parent(), this))
             throw new ConsistencyError("ut", this.ut._parent(), this);
+        _dirty = false;
     }
     public static class Data extends KaitaiStruct.ReadWrite {
         public static Data fromFile(String fileName) throws IOException {
@@ -80,28 +83,31 @@ public class SwitchElseOnly extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.value = this._io.readBytes(4);
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytes(this.value);
         }
 
         public void _check() {
             if (this.value.length != 4)
                 throw new ConsistencyError("value", this.value.length, 4);
+            _dirty = false;
         }
         private byte[] value;
         private SwitchElseOnly _root;
         private SwitchElseOnly _parent;
         public byte[] value() { return value; }
-        public void setValue(byte[] _v) { value = _v; }
+        public void setValue(byte[] _v) { _dirty = true; value = _v; }
         public SwitchElseOnly _root() { return _root; }
-        public void set_root(SwitchElseOnly _v) { _root = _v; }
+        public void set_root(SwitchElseOnly _v) { _dirty = true; _root = _v; }
         public SwitchElseOnly _parent() { return _parent; }
-        public void set_parent(SwitchElseOnly _v) { _parent = _v; }
+        public void set_parent(SwitchElseOnly _v) { _dirty = true; _parent = _v; }
     }
     private byte opcode;
     private byte primByte;
@@ -110,15 +116,15 @@ public class SwitchElseOnly extends KaitaiStruct.ReadWrite {
     private SwitchElseOnly _root;
     private KaitaiStruct.ReadWrite _parent;
     public byte opcode() { return opcode; }
-    public void setOpcode(byte _v) { opcode = _v; }
+    public void setOpcode(byte _v) { _dirty = true; opcode = _v; }
     public byte primByte() { return primByte; }
-    public void setPrimByte(byte _v) { primByte = _v; }
+    public void setPrimByte(byte _v) { _dirty = true; primByte = _v; }
     public byte[] indicator() { return indicator; }
-    public void setIndicator(byte[] _v) { indicator = _v; }
+    public void setIndicator(byte[] _v) { _dirty = true; indicator = _v; }
     public Data ut() { return ut; }
-    public void setUt(Data _v) { ut = _v; }
+    public void setUt(Data _v) { _dirty = true; ut = _v; }
     public SwitchElseOnly _root() { return _root; }
-    public void set_root(SwitchElseOnly _v) { _root = _v; }
+    public void set_root(SwitchElseOnly _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

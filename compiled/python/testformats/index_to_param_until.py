@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class IndexToParamUntil(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(IndexToParamUntil, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -43,7 +43,7 @@ class IndexToParamUntil(KaitaiStruct):
 
     class Block(KaitaiStruct):
         def __init__(self, idx, _io, _parent=None, _root=None):
-            self._io = _io
+            super(IndexToParamUntil.Block, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self.idx = idx

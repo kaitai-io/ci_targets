@@ -35,6 +35,7 @@ public class ParamsDef extends KaitaiStruct.ReadWrite {
         if (hasTrailer()) {
             this.trailer = this._io.readU1();
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -43,6 +44,7 @@ public class ParamsDef extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytes((this.buf).getBytes(Charset.forName("UTF-8")));
         if (hasTrailer()) {
             this._io.writeU1(this.trailer);
@@ -54,6 +56,7 @@ public class ParamsDef extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("buf", (this.buf).getBytes(Charset.forName("UTF-8")).length, len());
         if (hasTrailer()) {
         }
+        _dirty = false;
     }
     private String buf;
     private Integer trailer;
@@ -62,15 +65,15 @@ public class ParamsDef extends KaitaiStruct.ReadWrite {
     private ParamsDef _root;
     private KaitaiStruct.ReadWrite _parent;
     public String buf() { return buf; }
-    public void setBuf(String _v) { buf = _v; }
+    public void setBuf(String _v) { _dirty = true; buf = _v; }
     public Integer trailer() { return trailer; }
-    public void setTrailer(Integer _v) { trailer = _v; }
+    public void setTrailer(Integer _v) { _dirty = true; trailer = _v; }
     public long len() { return len; }
-    public void setLen(long _v) { len = _v; }
+    public void setLen(long _v) { _dirty = true; len = _v; }
     public boolean hasTrailer() { return hasTrailer; }
-    public void setHasTrailer(boolean _v) { hasTrailer = _v; }
+    public void setHasTrailer(boolean _v) { _dirty = true; hasTrailer = _v; }
     public ParamsDef _root() { return _root; }
-    public void set_root(ParamsDef _v) { _root = _v; }
+    public void set_root(ParamsDef _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

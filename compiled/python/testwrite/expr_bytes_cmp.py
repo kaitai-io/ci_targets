@@ -10,13 +10,14 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ExprBytesCmp(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ExprBytesCmp, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self.one = self._io.read_bytes(1)
         self.two = self._io.read_bytes(3)
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -30,11 +31,11 @@ class ExprBytesCmp(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.one) != 1:
             raise kaitaistruct.ConsistencyError(u"one", len(self.one), 1)
         if len(self.two) != 3:
             raise kaitaistruct.ConsistencyError(u"two", len(self.two), 3)
+        self._dirty = False
 
     @property
     def ack(self):

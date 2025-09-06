@@ -48,17 +48,20 @@ public class CombineEnum extends KaitaiStruct.ReadWrite {
     public void _read() {
         this.enumU4 = Animal.byId(this._io.readU4le());
         this.enumU2 = Animal.byId(this._io.readU2le());
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU4le(((Number) (this.enumU4.id())).longValue());
         this._io.writeU2le(((Number) (this.enumU2.id())).intValue());
     }
 
     public void _check() {
+        _dirty = false;
     }
     private Animal enumU4U2;
     public Animal enumU4U2() {
@@ -73,11 +76,11 @@ public class CombineEnum extends KaitaiStruct.ReadWrite {
     private CombineEnum _root;
     private KaitaiStruct.ReadWrite _parent;
     public Animal enumU4() { return enumU4; }
-    public void setEnumU4(Animal _v) { enumU4 = _v; }
+    public void setEnumU4(Animal _v) { _dirty = true; enumU4 = _v; }
     public Animal enumU2() { return enumU2; }
-    public void setEnumU2(Animal _v) { enumU2 = _v; }
+    public void setEnumU2(Animal _v) { _dirty = true; enumU2 = _v; }
     public CombineEnum _root() { return _root; }
-    public void set_root(CombineEnum _v) { _root = _v; }
+    public void set_root(CombineEnum _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

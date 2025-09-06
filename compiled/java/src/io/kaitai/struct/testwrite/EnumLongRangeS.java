@@ -58,12 +58,14 @@ public class EnumLongRangeS extends KaitaiStruct.ReadWrite {
         this.f5 = Constants.byId(this._io.readS8be());
         this.f6 = Constants.byId(this._io.readS8be());
         this.f7 = Constants.byId(this._io.readS8be());
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeS8be(this.f1.id());
         this._io.writeS8be(this.f2.id());
         this._io.writeS8be(this.f3.id());
@@ -74,6 +76,7 @@ public class EnumLongRangeS extends KaitaiStruct.ReadWrite {
     }
 
     public void _check() {
+        _dirty = false;
     }
     private Constants f1;
     private Constants f2;
@@ -85,21 +88,21 @@ public class EnumLongRangeS extends KaitaiStruct.ReadWrite {
     private EnumLongRangeS _root;
     private KaitaiStruct.ReadWrite _parent;
     public Constants f1() { return f1; }
-    public void setF1(Constants _v) { f1 = _v; }
+    public void setF1(Constants _v) { _dirty = true; f1 = _v; }
     public Constants f2() { return f2; }
-    public void setF2(Constants _v) { f2 = _v; }
+    public void setF2(Constants _v) { _dirty = true; f2 = _v; }
     public Constants f3() { return f3; }
-    public void setF3(Constants _v) { f3 = _v; }
+    public void setF3(Constants _v) { _dirty = true; f3 = _v; }
     public Constants f4() { return f4; }
-    public void setF4(Constants _v) { f4 = _v; }
+    public void setF4(Constants _v) { _dirty = true; f4 = _v; }
     public Constants f5() { return f5; }
-    public void setF5(Constants _v) { f5 = _v; }
+    public void setF5(Constants _v) { _dirty = true; f5 = _v; }
     public Constants f6() { return f6; }
-    public void setF6(Constants _v) { f6 = _v; }
+    public void setF6(Constants _v) { _dirty = true; f6 = _v; }
     public Constants f7() { return f7; }
-    public void setF7(Constants _v) { f7 = _v; }
+    public void setF7(Constants _v) { _dirty = true; f7 = _v; }
     public EnumLongRangeS _root() { return _root; }
-    public void set_root(EnumLongRangeS _v) { _root = _v; }
+    public void set_root(EnumLongRangeS _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

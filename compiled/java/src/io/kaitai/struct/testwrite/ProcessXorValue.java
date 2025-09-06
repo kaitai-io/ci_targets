@@ -33,12 +33,14 @@ public class ProcessXorValue extends KaitaiStruct.ReadWrite {
         this.key = this._io.readU1();
         this._raw_buf = this._io.readBytesFull();
         this.buf = KaitaiStream.processXor(this._raw_buf, ((Number) (key())).byteValue());
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(this.key);
         this._raw_buf = KaitaiStream.processXor(this.buf, ((Number) (key())).byteValue());
         this._io.writeBytes(this._raw_buf);
@@ -47,6 +49,7 @@ public class ProcessXorValue extends KaitaiStruct.ReadWrite {
     }
 
     public void _check() {
+        _dirty = false;
     }
     private int key;
     private byte[] buf;
@@ -54,13 +57,13 @@ public class ProcessXorValue extends KaitaiStruct.ReadWrite {
     private KaitaiStruct.ReadWrite _parent;
     private byte[] _raw_buf;
     public int key() { return key; }
-    public void setKey(int _v) { key = _v; }
+    public void setKey(int _v) { _dirty = true; key = _v; }
     public byte[] buf() { return buf; }
-    public void setBuf(byte[] _v) { buf = _v; }
+    public void setBuf(byte[] _v) { _dirty = true; buf = _v; }
     public ProcessXorValue _root() { return _root; }
-    public void set_root(ProcessXorValue _v) { _root = _v; }
+    public void set_root(ProcessXorValue _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_buf() { return _raw_buf; }
-    public void set_raw_Buf(byte[] _v) { _raw_buf = _v; }
+    public void set_raw_Buf(byte[] _v) { _dirty = true; _raw_buf = _v; }
 }

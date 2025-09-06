@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class NavParentVsValueInst(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(NavParentVsValueInst, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -18,6 +18,7 @@ class NavParentVsValueInst(ReadWriteKaitaiStruct):
         self.s1 = (self._io.read_bytes_term(124, False, True, True)).decode(u"UTF-8")
         self.child = NavParentVsValueInst.ChildObj(self._io, self, self._root)
         self.child._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -33,22 +34,23 @@ class NavParentVsValueInst(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if KaitaiStream.byte_array_index_of((self.s1).encode(u"UTF-8"), 124) != -1:
             raise kaitaistruct.ConsistencyError(u"s1", KaitaiStream.byte_array_index_of((self.s1).encode(u"UTF-8"), 124), -1)
         if self.child._root != self._root:
             raise kaitaistruct.ConsistencyError(u"child", self.child._root, self._root)
         if self.child._parent != self:
             raise kaitaistruct.ConsistencyError(u"child", self.child._parent, self)
+        self._dirty = False
 
     class ChildObj(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(NavParentVsValueInst.ChildObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             pass
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -60,7 +62,7 @@ class NavParentVsValueInst(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
         @property
         def do_something(self):

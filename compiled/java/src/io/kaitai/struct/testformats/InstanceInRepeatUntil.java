@@ -45,6 +45,8 @@ public class InstanceInRepeatUntil extends KaitaiStruct {
         for (int i = 0; i < this.entries.size(); i++) {
         }
         untilVal();
+        if (this.untilVal != null) {
+        }
     }
     private Short untilVal;
     public Short untilVal() {

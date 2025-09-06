@@ -54,6 +54,7 @@ public class RecursiveOne extends KaitaiStruct.ReadWrite {
             break;
         }
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -78,6 +79,7 @@ public class RecursiveOne extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(this.one);
         switch (one() & 3) {
         case 0: {
@@ -130,6 +132,7 @@ public class RecursiveOne extends KaitaiStruct.ReadWrite {
             break;
         }
         }
+        _dirty = false;
     }
     public static class Fini extends KaitaiStruct.ReadWrite {
         public static Fini fromFile(String fileName) throws IOException {
@@ -154,37 +157,40 @@ public class RecursiveOne extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.finisher = this._io.readU2le();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU2le(this.finisher);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private int finisher;
         private RecursiveOne _root;
         private RecursiveOne _parent;
         public int finisher() { return finisher; }
-        public void setFinisher(int _v) { finisher = _v; }
+        public void setFinisher(int _v) { _dirty = true; finisher = _v; }
         public RecursiveOne _root() { return _root; }
-        public void set_root(RecursiveOne _v) { _root = _v; }
+        public void set_root(RecursiveOne _v) { _dirty = true; _root = _v; }
         public RecursiveOne _parent() { return _parent; }
-        public void set_parent(RecursiveOne _v) { _parent = _v; }
+        public void set_parent(RecursiveOne _v) { _dirty = true; _parent = _v; }
     }
     private int one;
     private KaitaiStruct.ReadWrite next;
     private RecursiveOne _root;
     private KaitaiStruct.ReadWrite _parent;
     public int one() { return one; }
-    public void setOne(int _v) { one = _v; }
+    public void setOne(int _v) { _dirty = true; one = _v; }
     public KaitaiStruct.ReadWrite next() { return next; }
-    public void setNext(KaitaiStruct.ReadWrite _v) { next = _v; }
+    public void setNext(KaitaiStruct.ReadWrite _v) { _dirty = true; next = _v; }
     public RecursiveOne _root() { return _root; }
-    public void set_root(RecursiveOne _v) { _root = _v; }
+    public void set_root(RecursiveOne _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

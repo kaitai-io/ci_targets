@@ -43,6 +43,7 @@ public class IndexSizes extends KaitaiStruct.ReadWrite {
         for (int i = 0; i < qty(); i++) {
             this.bufs.add(new String(this._io.readBytes(sizes().get(((Number) (i)).intValue())), StandardCharsets.US_ASCII));
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -53,6 +54,7 @@ public class IndexSizes extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU4le(this.qty);
         for (int i = 0; i < this.sizes.size(); i++) {
             this._io.writeU4le(this.sizes.get(((Number) (i)).intValue()));
@@ -73,6 +75,7 @@ public class IndexSizes extends KaitaiStruct.ReadWrite {
             if ((this.bufs.get(((Number) (i)).intValue())).getBytes(Charset.forName("ASCII")).length != sizes().get(((Number) (i)).intValue()))
                 throw new ConsistencyError("bufs", (this.bufs.get(((Number) (i)).intValue())).getBytes(Charset.forName("ASCII")).length, sizes().get(((Number) (i)).intValue()));
         }
+        _dirty = false;
     }
     private long qty;
     private List<Long> sizes;
@@ -80,13 +83,13 @@ public class IndexSizes extends KaitaiStruct.ReadWrite {
     private IndexSizes _root;
     private KaitaiStruct.ReadWrite _parent;
     public long qty() { return qty; }
-    public void setQty(long _v) { qty = _v; }
+    public void setQty(long _v) { _dirty = true; qty = _v; }
     public List<Long> sizes() { return sizes; }
-    public void setSizes(List<Long> _v) { sizes = _v; }
+    public void setSizes(List<Long> _v) { _dirty = true; sizes = _v; }
     public List<String> bufs() { return bufs; }
-    public void setBufs(List<String> _v) { bufs = _v; }
+    public void setBufs(List<String> _v) { _dirty = true; bufs = _v; }
     public IndexSizes _root() { return _root; }
-    public void set_root(IndexSizes _v) { _root = _v; }
+    public void set_root(IndexSizes _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

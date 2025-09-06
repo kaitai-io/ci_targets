@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class Expr2(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(Expr2, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -19,6 +19,7 @@ class Expr2(ReadWriteKaitaiStruct):
         self.str1._read()
         self.str2 = Expr2.ModStr(self._io, self, self._root)
         self.str2._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -34,7 +35,6 @@ class Expr2(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.str1._root != self._root:
             raise kaitaistruct.ConsistencyError(u"str1", self.str1._root, self._root)
         if self.str1._parent != self:
@@ -43,16 +43,17 @@ class Expr2(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"str2", self.str2._root, self._root)
         if self.str2._parent != self:
             raise kaitaistruct.ConsistencyError(u"str2", self.str2._parent, self)
+        self._dirty = False
 
     class ModStr(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(Expr2.ModStr, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._should_write_char5 = False
-            self.char5__to_write = True
+            self.char5__enabled = True
             self._should_write_tuple5 = False
-            self.tuple5__to_write = True
+            self.tuple5__enabled = True
 
         def _read(self):
             self.len_orig = self._io.read_u2le()
@@ -61,20 +62,27 @@ class Expr2(ReadWriteKaitaiStruct):
             _io__raw_rest = KaitaiStream(BytesIO(self._raw_rest))
             self.rest = Expr2.Tuple(_io__raw_rest, self, self._root)
             self.rest._read()
+            self._dirty = False
 
 
         def _fetch_instances(self):
             pass
             self.rest._fetch_instances()
             _ = self.char5
+            if hasattr(self, '_m_char5'):
+                pass
+
             _ = self.tuple5
-            self._m_tuple5._fetch_instances()
+            if hasattr(self, '_m_tuple5'):
+                pass
+                self._m_tuple5._fetch_instances()
+
 
 
         def _write__seq(self, io=None):
             super(Expr2.ModStr, self)._write__seq(io)
-            self._should_write_char5 = self.char5__to_write
-            self._should_write_tuple5 = self.tuple5__to_write
+            self._should_write_char5 = self.char5__enabled
+            self._should_write_tuple5 = self.tuple5__enabled
             self._io.write_u2le(self.len_orig)
             self._io.write_bytes((self.str).encode(u"UTF-8"))
             _io__raw_rest = KaitaiStream(BytesIO(bytearray(3)))
@@ -91,13 +99,25 @@ class Expr2(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if len((self.str).encode(u"UTF-8")) != self.len_mod:
                 raise kaitaistruct.ConsistencyError(u"str", len((self.str).encode(u"UTF-8")), self.len_mod)
             if self.rest._root != self._root:
                 raise kaitaistruct.ConsistencyError(u"rest", self.rest._root, self._root)
             if self.rest._parent != self:
                 raise kaitaistruct.ConsistencyError(u"rest", self.rest._parent, self)
+            if self.char5__enabled:
+                pass
+                if len((self._m_char5).encode(u"ASCII")) != 1:
+                    raise kaitaistruct.ConsistencyError(u"char5", len((self._m_char5).encode(u"ASCII")), 1)
+
+            if self.tuple5__enabled:
+                pass
+                if self._m_tuple5._root != self._root:
+                    raise kaitaistruct.ConsistencyError(u"tuple5", self._m_tuple5._root, self._root)
+                if self._m_tuple5._parent != self:
+                    raise kaitaistruct.ConsistencyError(u"tuple5", self._m_tuple5._parent, self)
+
+            self._dirty = False
 
         @property
         def char5(self):
@@ -105,6 +125,9 @@ class Expr2(ReadWriteKaitaiStruct):
                 self._write_char5()
             if hasattr(self, '_m_char5'):
                 return self._m_char5
+
+            if not self.char5__enabled:
+                return None
 
             _pos = self._io.pos()
             self._io.seek(5)
@@ -114,6 +137,7 @@ class Expr2(ReadWriteKaitaiStruct):
 
         @char5.setter
         def char5(self, v):
+            self._dirty = True
             self._m_char5 = v
 
         def _write_char5(self):
@@ -122,12 +146,6 @@ class Expr2(ReadWriteKaitaiStruct):
             self._io.seek(5)
             self._io.write_bytes((self._m_char5).encode(u"ASCII"))
             self._io.seek(_pos)
-
-
-        def _check_char5(self):
-            pass
-            if len((self._m_char5).encode(u"ASCII")) != 1:
-                raise kaitaistruct.ConsistencyError(u"char5", len((self._m_char5).encode(u"ASCII")), 1)
 
         @property
         def len_mod(self):
@@ -146,6 +164,9 @@ class Expr2(ReadWriteKaitaiStruct):
             if hasattr(self, '_m_tuple5'):
                 return self._m_tuple5
 
+            if not self.tuple5__enabled:
+                return None
+
             _pos = self._io.pos()
             self._io.seek(5)
             self._m_tuple5 = Expr2.Tuple(self._io, self, self._root)
@@ -155,6 +176,7 @@ class Expr2(ReadWriteKaitaiStruct):
 
         @tuple5.setter
         def tuple5(self, v):
+            self._dirty = True
             self._m_tuple5 = v
 
         def _write_tuple5(self):
@@ -165,17 +187,9 @@ class Expr2(ReadWriteKaitaiStruct):
             self._io.seek(_pos)
 
 
-        def _check_tuple5(self):
-            pass
-            if self._m_tuple5._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"tuple5", self._m_tuple5._root, self._root)
-            if self._m_tuple5._parent != self:
-                raise kaitaistruct.ConsistencyError(u"tuple5", self._m_tuple5._parent, self)
-
-
     class Tuple(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(Expr2.Tuple, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -183,6 +197,7 @@ class Expr2(ReadWriteKaitaiStruct):
             self.byte0 = self._io.read_u1()
             self.byte1 = self._io.read_u1()
             self.byte2 = self._io.read_u1()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -197,7 +212,7 @@ class Expr2(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
         @property
         def avg(self):

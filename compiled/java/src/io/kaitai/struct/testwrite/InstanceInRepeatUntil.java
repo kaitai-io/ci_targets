@@ -42,16 +42,20 @@ public class InstanceInRepeatUntil extends KaitaiStruct.ReadWrite {
                 i++;
             } while (!(_it == untilVal()));
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
         for (int i = 0; i < this.entries.size(); i++) {
         }
         untilVal();
+        if (this.untilVal != null) {
+        }
     }
 
     public void _write_Seq() {
-        _writeUntilVal = _toWriteUntilVal;
+        _assertNotDirty();
+        _shouldWriteUntilVal = _enabledUntilVal;
         for (int i = 0; i < this.entries.size(); i++) {
             this._io.writeS2le(this.entries.get(((Number) (i)).intValue()));
             {
@@ -67,41 +71,43 @@ public class InstanceInRepeatUntil extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("entries", this.entries.size(), 0);
         for (int i = 0; i < this.entries.size(); i++) {
         }
+        if (_enabledUntilVal) {
+        }
+        _dirty = false;
     }
     private Short untilVal;
-    private boolean _writeUntilVal = false;
-    private boolean _toWriteUntilVal = true;
+    private boolean _shouldWriteUntilVal = false;
+    private boolean _enabledUntilVal = true;
     public Short untilVal() {
-        if (_writeUntilVal)
+        if (_shouldWriteUntilVal)
             _writeUntilVal();
         if (this.untilVal != null)
             return this.untilVal;
+        if (!_enabledUntilVal)
+            return null;
         long _pos = this._io.pos();
         this._io.seek(_io().pos() + 12);
         this.untilVal = this._io.readS2le();
         this._io.seek(_pos);
         return this.untilVal;
     }
-    public void setUntilVal(short _v) { untilVal = _v; }
-    public void setUntilVal_ToWrite(boolean _v) { _toWriteUntilVal = _v; }
+    public void setUntilVal(short _v) { _dirty = true; untilVal = _v; }
+    public void setUntilVal_Enabled(boolean _v) { _dirty = true; _enabledUntilVal = _v; }
 
-    public void _writeUntilVal() {
-        _writeUntilVal = false;
+    private void _writeUntilVal() {
+        _shouldWriteUntilVal = false;
         long _pos = this._io.pos();
         this._io.seek(_io().pos() + 12);
         this._io.writeS2le(this.untilVal);
         this._io.seek(_pos);
     }
-
-    public void _checkUntilVal() {
-    }
     private List<Short> entries;
     private InstanceInRepeatUntil _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<Short> entries() { return entries; }
-    public void setEntries(List<Short> _v) { entries = _v; }
+    public void setEntries(List<Short> _v) { _dirty = true; entries = _v; }
     public InstanceInRepeatUntil _root() { return _root; }
-    public void set_root(InstanceInRepeatUntil _v) { _root = _v; }
+    public void set_root(InstanceInRepeatUntil _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

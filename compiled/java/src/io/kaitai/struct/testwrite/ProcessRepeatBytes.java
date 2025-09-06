@@ -38,6 +38,7 @@ public class ProcessRepeatBytes extends KaitaiStruct.ReadWrite {
             this._raw_bufs.add(this._io.readBytes(5));
             this.bufs.add(KaitaiStream.processXor(this._raw_bufs.get(i), ((byte) 158)));
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -46,6 +47,7 @@ public class ProcessRepeatBytes extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._raw_bufs = new ArrayList<byte[]>();
         for (int i = 0; i < this.bufs.size(); i++) {
             this._raw_bufs.add(KaitaiStream.processXor(this.bufs.get(((Number) (i)).intValue()), ((Number) (158)).byteValue()));
@@ -60,17 +62,18 @@ public class ProcessRepeatBytes extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("bufs", this.bufs.size(), 2);
         for (int i = 0; i < this.bufs.size(); i++) {
         }
+        _dirty = false;
     }
     private List<byte[]> bufs;
     private ProcessRepeatBytes _root;
     private KaitaiStruct.ReadWrite _parent;
     private List<byte[]> _raw_bufs;
     public List<byte[]> bufs() { return bufs; }
-    public void setBufs(List<byte[]> _v) { bufs = _v; }
+    public void setBufs(List<byte[]> _v) { _dirty = true; bufs = _v; }
     public ProcessRepeatBytes _root() { return _root; }
-    public void set_root(ProcessRepeatBytes _v) { _root = _v; }
+    public void set_root(ProcessRepeatBytes _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public List<byte[]> _raw_bufs() { return _raw_bufs; }
-    public void set_raw_Bufs(List<byte[]> _v) { _raw_bufs = _v; }
+    public void set_raw_Bufs(List<byte[]> _v) { _dirty = true; _raw_bufs = _v; }
 }

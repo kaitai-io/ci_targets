@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ParamsPassArrayInt(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ParamsPassArrayInt, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -23,6 +23,7 @@ class ParamsPassArrayInt(ReadWriteKaitaiStruct):
         self.pass_ints._read()
         self.pass_ints_calc = ParamsPassArrayInt.WantsInts(self.ints_calc, self._io, self, self._root)
         self.pass_ints_calc._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -45,7 +46,6 @@ class ParamsPassArrayInt(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.ints) != 3:
             raise kaitaistruct.ConsistencyError(u"ints", len(self.ints), 3)
         for i in range(len(self.ints)):
@@ -63,16 +63,18 @@ class ParamsPassArrayInt(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"pass_ints_calc", self.pass_ints_calc._parent, self)
         if self.pass_ints_calc.nums != self.ints_calc:
             raise kaitaistruct.ConsistencyError(u"pass_ints_calc", self.pass_ints_calc.nums, self.ints_calc)
+        self._dirty = False
 
     class WantsInts(ReadWriteKaitaiStruct):
         def __init__(self, nums, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ParamsPassArrayInt.WantsInts, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self.nums = nums
 
         def _read(self):
             pass
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -84,7 +86,7 @@ class ParamsPassArrayInt(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     @property

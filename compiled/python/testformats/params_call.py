@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ParamsCall(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(ParamsCall, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -27,7 +27,7 @@ class ParamsCall(KaitaiStruct):
 
     class MyStr1(KaitaiStruct):
         def __init__(self, len, _io, _parent=None, _root=None):
-            self._io = _io
+            super(ParamsCall.MyStr1, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self.len = len
@@ -43,7 +43,7 @@ class ParamsCall(KaitaiStruct):
 
     class MyStr2(KaitaiStruct):
         def __init__(self, len, has_trailer, _io, _parent=None, _root=None):
-            self._io = _io
+            super(ParamsCall.MyStr2, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self.len = len

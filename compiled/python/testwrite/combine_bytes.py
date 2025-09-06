@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class CombineBytes(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(CombineBytes, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -18,6 +18,7 @@ class CombineBytes(ReadWriteKaitaiStruct):
         self.bytes_term = self._io.read_bytes_term(124, False, True, True)
         self.bytes_limit = self._io.read_bytes(4)
         self.bytes_eos = self._io.read_bytes_full()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -35,11 +36,11 @@ class CombineBytes(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if KaitaiStream.byte_array_index_of(self.bytes_term, 124) != -1:
             raise kaitaistruct.ConsistencyError(u"bytes_term", KaitaiStream.byte_array_index_of(self.bytes_term, 124), -1)
         if len(self.bytes_limit) != 4:
             raise kaitaistruct.ConsistencyError(u"bytes_limit", len(self.bytes_limit), 4)
+        self._dirty = False
 
     @property
     def bytes_calc(self):

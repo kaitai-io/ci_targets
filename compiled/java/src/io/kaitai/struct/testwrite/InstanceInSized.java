@@ -35,6 +35,7 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
         KaitaiStream _io__raw_cont = new ByteBufferKaitaiStream(this._raw_cont);
         this.cont = new Wrapper(_io__raw_cont, this, _root);
         this.cont._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -42,6 +43,7 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         final KaitaiStream _io__raw_cont = new ByteBufferKaitaiStream(16);
         this._io.addChildStream(_io__raw_cont);
         {
@@ -66,6 +68,7 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("cont", this.cont._root(), _root());
         if (!Objects.equals(this.cont._parent(), this))
             throw new ConsistencyError("cont", this.cont._parent(), this);
+        _dirty = false;
     }
     public static class Bar extends KaitaiStruct.ReadWrite {
         public static Bar fromFile(String fileName) throws IOException {
@@ -90,57 +93,63 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.seqF = this._io.readU1();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
             inst();
+            if (this.inst != null) {
+            }
         }
 
         public void _write_Seq() {
-            _writeInst = _toWriteInst;
+            _assertNotDirty();
+            _shouldWriteInst = _enabledInst;
             this._io.writeU1(this.seqF);
         }
 
         public void _check() {
+            if (_enabledInst) {
+                if (this.inst.length != 3)
+                    throw new ConsistencyError("inst", this.inst.length, 3);
+            }
+            _dirty = false;
         }
         private byte[] inst;
-        private boolean _writeInst = false;
-        private boolean _toWriteInst = true;
+        private boolean _shouldWriteInst = false;
+        private boolean _enabledInst = true;
         public byte[] inst() {
-            if (_writeInst)
+            if (_shouldWriteInst)
                 _writeInst();
             if (this.inst != null)
                 return this.inst;
+            if (!_enabledInst)
+                return null;
             long _pos = this._io.pos();
             this._io.seek(4 + 1);
             this.inst = this._io.readBytes(3);
             this._io.seek(_pos);
             return this.inst;
         }
-        public void setInst(byte[] _v) { inst = _v; }
-        public void setInst_ToWrite(boolean _v) { _toWriteInst = _v; }
+        public void setInst(byte[] _v) { _dirty = true; inst = _v; }
+        public void setInst_Enabled(boolean _v) { _dirty = true; _enabledInst = _v; }
 
-        public void _writeInst() {
-            _writeInst = false;
+        private void _writeInst() {
+            _shouldWriteInst = false;
             long _pos = this._io.pos();
             this._io.seek(4 + 1);
             this._io.writeBytes(this.inst);
             this._io.seek(_pos);
         }
-
-        public void _checkInst() {
-            if (this.inst.length != 3)
-                throw new ConsistencyError("inst", this.inst.length, 3);
-        }
         private int seqF;
         private InstanceInSized _root;
         private InstanceInSized.Wrapper _parent;
         public int seqF() { return seqF; }
-        public void setSeqF(int _v) { seqF = _v; }
+        public void setSeqF(int _v) { _dirty = true; seqF = _v; }
         public InstanceInSized _root() { return _root; }
-        public void set_root(InstanceInSized _v) { _root = _v; }
+        public void set_root(InstanceInSized _v) { _dirty = true; _root = _v; }
         public InstanceInSized.Wrapper _parent() { return _parent; }
-        public void set_parent(InstanceInSized.Wrapper _v) { _parent = _v; }
+        public void set_parent(InstanceInSized.Wrapper _v) { _dirty = true; _parent = _v; }
     }
     public static class Baz extends KaitaiStruct.ReadWrite {
         public static Baz fromFile(String fileName) throws IOException {
@@ -165,57 +174,63 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.seqF = this._io.readU1();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
             inst();
+            if (this.inst != null) {
+            }
         }
 
         public void _write_Seq() {
-            _writeInst = _toWriteInst;
+            _assertNotDirty();
+            _shouldWriteInst = _enabledInst;
             this._io.writeU1(this.seqF);
         }
 
         public void _check() {
+            if (_enabledInst) {
+                if (this.inst.length != 3)
+                    throw new ConsistencyError("inst", this.inst.length, 3);
+            }
+            _dirty = false;
         }
         private byte[] inst;
-        private boolean _writeInst = false;
-        private boolean _toWriteInst = true;
+        private boolean _shouldWriteInst = false;
+        private boolean _enabledInst = true;
         public byte[] inst() {
-            if (_writeInst)
+            if (_shouldWriteInst)
                 _writeInst();
             if (this.inst != null)
                 return this.inst;
+            if (!_enabledInst)
+                return null;
             long _pos = this._io.pos();
             this._io.seek(8 + 1);
             this.inst = this._io.readBytes(3);
             this._io.seek(_pos);
             return this.inst;
         }
-        public void setInst(byte[] _v) { inst = _v; }
-        public void setInst_ToWrite(boolean _v) { _toWriteInst = _v; }
+        public void setInst(byte[] _v) { _dirty = true; inst = _v; }
+        public void setInst_Enabled(boolean _v) { _dirty = true; _enabledInst = _v; }
 
-        public void _writeInst() {
-            _writeInst = false;
+        private void _writeInst() {
+            _shouldWriteInst = false;
             long _pos = this._io.pos();
             this._io.seek(8 + 1);
             this._io.writeBytes(this.inst);
             this._io.seek(_pos);
         }
-
-        public void _checkInst() {
-            if (this.inst.length != 3)
-                throw new ConsistencyError("inst", this.inst.length, 3);
-        }
         private int seqF;
         private InstanceInSized _root;
         private InstanceInSized.Wrapper _parent;
         public int seqF() { return seqF; }
-        public void setSeqF(int _v) { seqF = _v; }
+        public void setSeqF(int _v) { _dirty = true; seqF = _v; }
         public InstanceInSized _root() { return _root; }
-        public void set_root(InstanceInSized _v) { _root = _v; }
+        public void set_root(InstanceInSized _v) { _dirty = true; _root = _v; }
         public InstanceInSized.Wrapper _parent() { return _parent; }
-        public void set_parent(InstanceInSized.Wrapper _v) { _parent = _v; }
+        public void set_parent(InstanceInSized.Wrapper _v) { _dirty = true; _parent = _v; }
     }
     public static class Qux extends KaitaiStruct.ReadWrite {
         public static Qux fromFile(String fileName) throws IOException {
@@ -242,90 +257,99 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
             if (instInvoked() > 0) {
                 this.seqF = this._io.readU1();
             }
+            _dirty = false;
         }
 
         public void _fetchInstances() {
             if (instInvoked() > 0) {
             }
             instInvoked();
+            if (this.instInvoked != null) {
+            }
             instUnusedBySeq();
+            if (this.instUnusedBySeq != null) {
+            }
         }
 
         public void _write_Seq() {
-            _writeInstInvoked = _toWriteInstInvoked;
-            _writeInstUnusedBySeq = _toWriteInstUnusedBySeq;
+            _assertNotDirty();
+            _shouldWriteInstInvoked = _enabledInstInvoked;
+            _shouldWriteInstUnusedBySeq = _enabledInstUnusedBySeq;
             if (instInvoked() > 0) {
                 this._io.writeU1(this.seqF);
             }
         }
 
         public void _check() {
+            if (_enabledInstInvoked) {
+            }
+            if (_enabledInstUnusedBySeq) {
+                if (this.instUnusedBySeq.length != 2)
+                    throw new ConsistencyError("inst_unused_by_seq", this.instUnusedBySeq.length, 2);
+            }
+            _dirty = false;
         }
         private Integer instInvoked;
-        private boolean _writeInstInvoked = false;
-        private boolean _toWriteInstInvoked = true;
+        private boolean _shouldWriteInstInvoked = false;
+        private boolean _enabledInstInvoked = true;
         public Integer instInvoked() {
-            if (_writeInstInvoked)
+            if (_shouldWriteInstInvoked)
                 _writeInstInvoked();
             if (this.instInvoked != null)
                 return this.instInvoked;
+            if (!_enabledInstInvoked)
+                return null;
             long _pos = this._io.pos();
             this._io.seek(_io().pos() + 1);
             this.instInvoked = this._io.readU1();
             this._io.seek(_pos);
             return this.instInvoked;
         }
-        public void setInstInvoked(int _v) { instInvoked = _v; }
-        public void setInstInvoked_ToWrite(boolean _v) { _toWriteInstInvoked = _v; }
+        public void setInstInvoked(int _v) { _dirty = true; instInvoked = _v; }
+        public void setInstInvoked_Enabled(boolean _v) { _dirty = true; _enabledInstInvoked = _v; }
 
-        public void _writeInstInvoked() {
-            _writeInstInvoked = false;
+        private void _writeInstInvoked() {
+            _shouldWriteInstInvoked = false;
             long _pos = this._io.pos();
             this._io.seek(_io().pos() + 1);
             this._io.writeU1(this.instInvoked);
             this._io.seek(_pos);
         }
-
-        public void _checkInstInvoked() {
-        }
         private byte[] instUnusedBySeq;
-        private boolean _writeInstUnusedBySeq = false;
-        private boolean _toWriteInstUnusedBySeq = true;
+        private boolean _shouldWriteInstUnusedBySeq = false;
+        private boolean _enabledInstUnusedBySeq = true;
         public byte[] instUnusedBySeq() {
-            if (_writeInstUnusedBySeq)
+            if (_shouldWriteInstUnusedBySeq)
                 _writeInstUnusedBySeq();
             if (this.instUnusedBySeq != null)
                 return this.instUnusedBySeq;
+            if (!_enabledInstUnusedBySeq)
+                return null;
             long _pos = this._io.pos();
             this._io.seek(_io().pos() + 1);
             this.instUnusedBySeq = this._io.readBytes(2);
             this._io.seek(_pos);
             return this.instUnusedBySeq;
         }
-        public void setInstUnusedBySeq(byte[] _v) { instUnusedBySeq = _v; }
-        public void setInstUnusedBySeq_ToWrite(boolean _v) { _toWriteInstUnusedBySeq = _v; }
+        public void setInstUnusedBySeq(byte[] _v) { _dirty = true; instUnusedBySeq = _v; }
+        public void setInstUnusedBySeq_Enabled(boolean _v) { _dirty = true; _enabledInstUnusedBySeq = _v; }
 
-        public void _writeInstUnusedBySeq() {
-            _writeInstUnusedBySeq = false;
+        private void _writeInstUnusedBySeq() {
+            _shouldWriteInstUnusedBySeq = false;
             long _pos = this._io.pos();
             this._io.seek(_io().pos() + 1);
             this._io.writeBytes(this.instUnusedBySeq);
             this._io.seek(_pos);
         }
-
-        public void _checkInstUnusedBySeq() {
-            if (this.instUnusedBySeq.length != 2)
-                throw new ConsistencyError("inst_unused_by_seq", this.instUnusedBySeq.length, 2);
-        }
         private Integer seqF;
         private InstanceInSized _root;
         private InstanceInSized.Wrapper _parent;
         public Integer seqF() { return seqF; }
-        public void setSeqF(Integer _v) { seqF = _v; }
+        public void setSeqF(Integer _v) { _dirty = true; seqF = _v; }
         public InstanceInSized _root() { return _root; }
-        public void set_root(InstanceInSized _v) { _root = _v; }
+        public void set_root(InstanceInSized _v) { _dirty = true; _root = _v; }
         public InstanceInSized.Wrapper _parent() { return _parent; }
-        public void set_parent(InstanceInSized.Wrapper _v) { _parent = _v; }
+        public void set_parent(InstanceInSized.Wrapper _v) { _dirty = true; _parent = _v; }
     }
     public static class Wrapper extends KaitaiStruct.ReadWrite {
         public static Wrapper fromFile(String fileName) throws IOException {
@@ -355,20 +379,26 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
             this.seqSized._read();
             this.seqInStream = new Bar(this._io, this, _root);
             this.seqInStream._read();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
             this.seqSized._fetchInstances();
             this.seqInStream._fetchInstances();
             instInStream();
-            this.instInStream._fetchInstances();
+            if (this.instInStream != null) {
+                this.instInStream._fetchInstances();
+            }
             instSized();
-            this.instSized._fetchInstances();
+            if (this.instSized != null) {
+                this.instSized._fetchInstances();
+            }
         }
 
         public void _write_Seq() {
-            _writeInstInStream = _toWriteInstInStream;
-            _writeInstSized = _toWriteInstSized;
+            _assertNotDirty();
+            _shouldWriteInstInStream = _enabledInstInStream;
+            _shouldWriteInstSized = _enabledInstSized;
             final KaitaiStream _io__raw_seqSized = new ByteBufferKaitaiStream(4);
             this._io.addChildStream(_io__raw_seqSized);
             {
@@ -398,15 +428,30 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("seq_in_stream", this.seqInStream._root(), _root());
             if (!Objects.equals(this.seqInStream._parent(), this))
                 throw new ConsistencyError("seq_in_stream", this.seqInStream._parent(), this);
+            if (_enabledInstInStream) {
+                if (!Objects.equals(this.instInStream._root(), _root()))
+                    throw new ConsistencyError("inst_in_stream", this.instInStream._root(), _root());
+                if (!Objects.equals(this.instInStream._parent(), this))
+                    throw new ConsistencyError("inst_in_stream", this.instInStream._parent(), this);
+            }
+            if (_enabledInstSized) {
+                if (!Objects.equals(this.instSized._root(), _root()))
+                    throw new ConsistencyError("inst_sized", this.instSized._root(), _root());
+                if (!Objects.equals(this.instSized._parent(), this))
+                    throw new ConsistencyError("inst_sized", this.instSized._parent(), this);
+            }
+            _dirty = false;
         }
         private Baz instInStream;
-        private boolean _writeInstInStream = false;
-        private boolean _toWriteInstInStream = true;
+        private boolean _shouldWriteInstInStream = false;
+        private boolean _enabledInstInStream = true;
         public Baz instInStream() {
-            if (_writeInstInStream)
+            if (_shouldWriteInstInStream)
                 _writeInstInStream();
             if (this.instInStream != null)
                 return this.instInStream;
+            if (!_enabledInstInStream)
+                return null;
             long _pos = this._io.pos();
             this._io.seek(_io().pos() + 3);
             this.instInStream = new Baz(this._io, this, _root);
@@ -414,31 +459,26 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
             this._io.seek(_pos);
             return this.instInStream;
         }
-        public void setInstInStream(Baz _v) { instInStream = _v; }
-        public void setInstInStream_ToWrite(boolean _v) { _toWriteInstInStream = _v; }
+        public void setInstInStream(Baz _v) { _dirty = true; instInStream = _v; }
+        public void setInstInStream_Enabled(boolean _v) { _dirty = true; _enabledInstInStream = _v; }
 
-        public void _writeInstInStream() {
-            _writeInstInStream = false;
+        private void _writeInstInStream() {
+            _shouldWriteInstInStream = false;
             long _pos = this._io.pos();
             this._io.seek(_io().pos() + 3);
             this.instInStream._write_Seq(this._io);
             this._io.seek(_pos);
         }
-
-        public void _checkInstInStream() {
-            if (!Objects.equals(this.instInStream._root(), _root()))
-                throw new ConsistencyError("inst_in_stream", this.instInStream._root(), _root());
-            if (!Objects.equals(this.instInStream._parent(), this))
-                throw new ConsistencyError("inst_in_stream", this.instInStream._parent(), this);
-        }
         private Qux instSized;
-        private boolean _writeInstSized = false;
-        private boolean _toWriteInstSized = true;
+        private boolean _shouldWriteInstSized = false;
+        private boolean _enabledInstSized = true;
         public Qux instSized() {
-            if (_writeInstSized)
+            if (_shouldWriteInstSized)
                 _writeInstSized();
             if (this.instSized != null)
                 return this.instSized;
+            if (!_enabledInstSized)
+                return null;
             long _pos = this._io.pos();
             this._io.seek(_io().pos() + 7);
             this._raw_instSized = this._io.readBytes(4);
@@ -448,11 +488,11 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
             this._io.seek(_pos);
             return this.instSized;
         }
-        public void setInstSized(Qux _v) { instSized = _v; }
-        public void setInstSized_ToWrite(boolean _v) { _toWriteInstSized = _v; }
+        public void setInstSized(Qux _v) { _dirty = true; instSized = _v; }
+        public void setInstSized_Enabled(boolean _v) { _dirty = true; _enabledInstSized = _v; }
 
-        public void _writeInstSized() {
-            _writeInstSized = false;
+        private void _writeInstSized() {
+            _shouldWriteInstSized = false;
             long _pos = this._io.pos();
             this._io.seek(_io().pos() + 7);
             final KaitaiStream _io__raw_instSized = new ByteBufferKaitaiStream(4);
@@ -474,13 +514,6 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
             this.instSized._write_Seq(_io__raw_instSized);
             this._io.seek(_pos);
         }
-
-        public void _checkInstSized() {
-            if (!Objects.equals(this.instSized._root(), _root()))
-                throw new ConsistencyError("inst_sized", this.instSized._root(), _root());
-            if (!Objects.equals(this.instSized._parent(), this))
-                throw new ConsistencyError("inst_sized", this.instSized._parent(), this);
-        }
         private Qux seqSized;
         private Bar seqInStream;
         private InstanceInSized _root;
@@ -488,28 +521,28 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
         private byte[] _raw_seqSized;
         private byte[] _raw_instSized;
         public Qux seqSized() { return seqSized; }
-        public void setSeqSized(Qux _v) { seqSized = _v; }
+        public void setSeqSized(Qux _v) { _dirty = true; seqSized = _v; }
         public Bar seqInStream() { return seqInStream; }
-        public void setSeqInStream(Bar _v) { seqInStream = _v; }
+        public void setSeqInStream(Bar _v) { _dirty = true; seqInStream = _v; }
         public InstanceInSized _root() { return _root; }
-        public void set_root(InstanceInSized _v) { _root = _v; }
+        public void set_root(InstanceInSized _v) { _dirty = true; _root = _v; }
         public InstanceInSized _parent() { return _parent; }
-        public void set_parent(InstanceInSized _v) { _parent = _v; }
+        public void set_parent(InstanceInSized _v) { _dirty = true; _parent = _v; }
         public byte[] _raw_seqSized() { return _raw_seqSized; }
-        public void set_raw_SeqSized(byte[] _v) { _raw_seqSized = _v; }
+        public void set_raw_SeqSized(byte[] _v) { _dirty = true; _raw_seqSized = _v; }
         public byte[] _raw_instSized() { return _raw_instSized; }
-        public void set_raw_InstSized(byte[] _v) { _raw_instSized = _v; }
+        public void set_raw_InstSized(byte[] _v) { _dirty = true; _raw_instSized = _v; }
     }
     private Wrapper cont;
     private InstanceInSized _root;
     private KaitaiStruct.ReadWrite _parent;
     private byte[] _raw_cont;
     public Wrapper cont() { return cont; }
-    public void setCont(Wrapper _v) { cont = _v; }
+    public void setCont(Wrapper _v) { _dirty = true; cont = _v; }
     public InstanceInSized _root() { return _root; }
-    public void set_root(InstanceInSized _v) { _root = _v; }
+    public void set_root(InstanceInSized _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_cont() { return _raw_cont; }
-    public void set_raw_Cont(byte[] _v) { _raw_cont = _v; }
+    public void set_raw_Cont(byte[] _v) { _dirty = true; _raw_cont = _v; }
 }

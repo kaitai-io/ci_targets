@@ -6,9 +6,9 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
+import io.kaitai.struct.ConsistencyError;
 import java.util.List;
 import java.util.ArrayList;
-import io.kaitai.struct.ConsistencyError;
 
 public class InstanceStdArray extends KaitaiStruct.ReadWrite {
     public static InstanceStdArray fromFile(String fileName) throws IOException {
@@ -35,31 +35,46 @@ public class InstanceStdArray extends KaitaiStruct.ReadWrite {
         this.ofs = this._io.readU4le();
         this.entrySize = this._io.readU4le();
         this.qtyEntries = this._io.readU4le();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
         entries();
-        for (int i = 0; i < this.entries.size(); i++) {
+        if (this.entries != null) {
+            for (int i = 0; i < this.entries.size(); i++) {
+            }
         }
     }
 
     public void _write_Seq() {
-        _writeEntries = _toWriteEntries;
+        _assertNotDirty();
+        _shouldWriteEntries = _enabledEntries;
         this._io.writeU4le(this.ofs);
         this._io.writeU4le(this.entrySize);
         this._io.writeU4le(this.qtyEntries);
     }
 
     public void _check() {
+        if (_enabledEntries) {
+            if (this.entries.size() != qtyEntries())
+                throw new ConsistencyError("entries", this.entries.size(), qtyEntries());
+            for (int i = 0; i < this.entries.size(); i++) {
+                if (this.entries.get(((Number) (i)).intValue()).length != entrySize())
+                    throw new ConsistencyError("entries", this.entries.get(((Number) (i)).intValue()).length, entrySize());
+            }
+        }
+        _dirty = false;
     }
     private List<byte[]> entries;
-    private boolean _writeEntries = false;
-    private boolean _toWriteEntries = true;
+    private boolean _shouldWriteEntries = false;
+    private boolean _enabledEntries = true;
     public List<byte[]> entries() {
-        if (_writeEntries)
+        if (_shouldWriteEntries)
             _writeEntries();
         if (this.entries != null)
             return this.entries;
+        if (!_enabledEntries)
+            return null;
         long _pos = this._io.pos();
         this._io.seek(ofs());
         this.entries = new ArrayList<byte[]>();
@@ -69,11 +84,11 @@ public class InstanceStdArray extends KaitaiStruct.ReadWrite {
         this._io.seek(_pos);
         return this.entries;
     }
-    public void setEntries(List<byte[]> _v) { entries = _v; }
-    public void setEntries_ToWrite(boolean _v) { _toWriteEntries = _v; }
+    public void setEntries(List<byte[]> _v) { _dirty = true; entries = _v; }
+    public void setEntries_Enabled(boolean _v) { _dirty = true; _enabledEntries = _v; }
 
-    public void _writeEntries() {
-        _writeEntries = false;
+    private void _writeEntries() {
+        _shouldWriteEntries = false;
         long _pos = this._io.pos();
         this._io.seek(ofs());
         for (int i = 0; i < this.entries.size(); i++) {
@@ -81,28 +96,19 @@ public class InstanceStdArray extends KaitaiStruct.ReadWrite {
         }
         this._io.seek(_pos);
     }
-
-    public void _checkEntries() {
-        if (this.entries.size() != qtyEntries())
-            throw new ConsistencyError("entries", this.entries.size(), qtyEntries());
-        for (int i = 0; i < this.entries.size(); i++) {
-            if (this.entries.get(((Number) (i)).intValue()).length != entrySize())
-                throw new ConsistencyError("entries", this.entries.get(((Number) (i)).intValue()).length, entrySize());
-        }
-    }
     private long ofs;
     private long entrySize;
     private long qtyEntries;
     private InstanceStdArray _root;
     private KaitaiStruct.ReadWrite _parent;
     public long ofs() { return ofs; }
-    public void setOfs(long _v) { ofs = _v; }
+    public void setOfs(long _v) { _dirty = true; ofs = _v; }
     public long entrySize() { return entrySize; }
-    public void setEntrySize(long _v) { entrySize = _v; }
+    public void setEntrySize(long _v) { _dirty = true; entrySize = _v; }
     public long qtyEntries() { return qtyEntries; }
-    public void setQtyEntries(long _v) { qtyEntries = _v; }
+    public void setQtyEntries(long _v) { _dirty = true; qtyEntries = _v; }
     public InstanceStdArray _root() { return _root; }
-    public void set_root(InstanceStdArray _v) { _root = _v; }
+    public void set_root(InstanceStdArray _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

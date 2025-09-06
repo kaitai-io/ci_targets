@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class StrEncodingsUtf16(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(StrEncodingsUtf16, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -25,6 +25,7 @@ class StrEncodingsUtf16(ReadWriteKaitaiStruct):
         _io__raw_le_bom_removed = KaitaiStream(BytesIO(self._raw_le_bom_removed))
         self.le_bom_removed = StrEncodingsUtf16.StrLeBomRemoved(_io__raw_le_bom_removed, self, self._root)
         self.le_bom_removed._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -62,7 +63,6 @@ class StrEncodingsUtf16(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.be_bom_removed._root != self._root:
             raise kaitaistruct.ConsistencyError(u"be_bom_removed", self.be_bom_removed._root, self._root)
         if self.be_bom_removed._parent != self:
@@ -71,16 +71,18 @@ class StrEncodingsUtf16(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"le_bom_removed", self.le_bom_removed._root, self._root)
         if self.le_bom_removed._parent != self:
             raise kaitaistruct.ConsistencyError(u"le_bom_removed", self.le_bom_removed._parent, self)
+        self._dirty = False
 
     class StrBeBomRemoved(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(StrEncodingsUtf16.StrBeBomRemoved, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.bom = self._io.read_u2be()
             self.str = (self._io.read_bytes_full()).decode(u"UTF-16BE")
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -96,18 +98,19 @@ class StrEncodingsUtf16(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     class StrLeBomRemoved(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(StrEncodingsUtf16.StrLeBomRemoved, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.bom = self._io.read_u2le()
             self.str = (self._io.read_bytes_full()).decode(u"UTF-16LE")
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -123,7 +126,7 @@ class StrEncodingsUtf16(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
 

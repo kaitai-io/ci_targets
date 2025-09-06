@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class IfStruct(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(IfStruct, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -21,6 +21,7 @@ class IfStruct(ReadWriteKaitaiStruct):
         self.op2._read()
         self.op3 = IfStruct.Operation(self._io, self, self._root)
         self.op3._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -38,7 +39,6 @@ class IfStruct(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.op1._root != self._root:
             raise kaitaistruct.ConsistencyError(u"op1", self.op1._root, self._root)
         if self.op1._parent != self:
@@ -51,16 +51,18 @@ class IfStruct(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"op3", self.op3._root, self._root)
         if self.op3._parent != self:
             raise kaitaistruct.ConsistencyError(u"op3", self.op3._parent, self)
+        self._dirty = False
 
     class ArgStr(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(IfStruct.ArgStr, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.len = self._io.read_u1()
             self.str = (self._io.read_bytes(self.len)).decode(u"UTF-8")
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -74,20 +76,21 @@ class IfStruct(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if len((self.str).encode(u"UTF-8")) != self.len:
                 raise kaitaistruct.ConsistencyError(u"str", len((self.str).encode(u"UTF-8")), self.len)
+            self._dirty = False
 
 
     class ArgTuple(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(IfStruct.ArgTuple, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.num1 = self._io.read_u1()
             self.num2 = self._io.read_u1()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -101,12 +104,12 @@ class IfStruct(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     class Operation(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(IfStruct.Operation, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -122,6 +125,7 @@ class IfStruct(ReadWriteKaitaiStruct):
                 self.arg_str = IfStruct.ArgStr(self._io, self, self._root)
                 self.arg_str._read()
 
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -150,7 +154,6 @@ class IfStruct(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if self.opcode == 84:
                 pass
                 if self.arg_tuple._root != self._root:
@@ -165,6 +168,7 @@ class IfStruct(ReadWriteKaitaiStruct):
                 if self.arg_str._parent != self:
                     raise kaitaistruct.ConsistencyError(u"arg_str", self.arg_str._parent, self)
 
+            self._dirty = False
 
 
 

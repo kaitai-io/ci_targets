@@ -17,7 +17,7 @@ class BitsEnum(ReadWriteKaitaiStruct):
         horse = 4
         platypus = 5
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(BitsEnum, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -25,6 +25,7 @@ class BitsEnum(ReadWriteKaitaiStruct):
         self.one = KaitaiStream.resolve_enum(BitsEnum.Animal, self._io.read_bits_int_be(4))
         self.two = KaitaiStream.resolve_enum(BitsEnum.Animal, self._io.read_bits_int_be(8))
         self.three = KaitaiStream.resolve_enum(BitsEnum.Animal, self._io.read_bits_int_be(1))
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -39,6 +40,6 @@ class BitsEnum(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
 

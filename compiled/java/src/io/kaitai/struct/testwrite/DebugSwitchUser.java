@@ -57,6 +57,7 @@ public class DebugSwitchUser extends KaitaiStruct.ReadWrite {
         }
         }
         _attrEnd.put("data", this._io.pos());
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -73,6 +74,7 @@ public class DebugSwitchUser extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(this.code);
         switch (code()) {
         case 1: {
@@ -103,6 +105,7 @@ public class DebugSwitchUser extends KaitaiStruct.ReadWrite {
             break;
         }
         }
+        _dirty = false;
     }
     public static class One extends KaitaiStruct.ReadWrite {
         public Map<String, Integer> _attrStart = new HashMap<String, Integer>();
@@ -135,26 +138,29 @@ public class DebugSwitchUser extends KaitaiStruct.ReadWrite {
             _attrStart.put("val", this._io.pos());
             this.val = this._io.readS2le();
             _attrEnd.put("val", this._io.pos());
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeS2le(this.val);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private short val;
         private DebugSwitchUser _root;
         private DebugSwitchUser _parent;
         public short val() { return val; }
-        public void setVal(short _v) { val = _v; }
+        public void setVal(short _v) { _dirty = true; val = _v; }
         public DebugSwitchUser _root() { return _root; }
-        public void set_root(DebugSwitchUser _v) { _root = _v; }
+        public void set_root(DebugSwitchUser _v) { _dirty = true; _root = _v; }
         public DebugSwitchUser _parent() { return _parent; }
-        public void set_parent(DebugSwitchUser _v) { _parent = _v; }
+        public void set_parent(DebugSwitchUser _v) { _dirty = true; _parent = _v; }
     }
     public static class Two extends KaitaiStruct.ReadWrite {
         public Map<String, Integer> _attrStart = new HashMap<String, Integer>();
@@ -187,37 +193,40 @@ public class DebugSwitchUser extends KaitaiStruct.ReadWrite {
             _attrStart.put("val", this._io.pos());
             this.val = this._io.readU2le();
             _attrEnd.put("val", this._io.pos());
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU2le(this.val);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private int val;
         private DebugSwitchUser _root;
         private DebugSwitchUser _parent;
         public int val() { return val; }
-        public void setVal(int _v) { val = _v; }
+        public void setVal(int _v) { _dirty = true; val = _v; }
         public DebugSwitchUser _root() { return _root; }
-        public void set_root(DebugSwitchUser _v) { _root = _v; }
+        public void set_root(DebugSwitchUser _v) { _dirty = true; _root = _v; }
         public DebugSwitchUser _parent() { return _parent; }
-        public void set_parent(DebugSwitchUser _v) { _parent = _v; }
+        public void set_parent(DebugSwitchUser _v) { _dirty = true; _parent = _v; }
     }
     private int code;
     private KaitaiStruct.ReadWrite data;
     private DebugSwitchUser _root;
     private KaitaiStruct.ReadWrite _parent;
     public int code() { return code; }
-    public void setCode(int _v) { code = _v; }
+    public void setCode(int _v) { _dirty = true; code = _v; }
     public KaitaiStruct.ReadWrite data() { return data; }
-    public void setData(KaitaiStruct.ReadWrite _v) { data = _v; }
+    public void setData(KaitaiStruct.ReadWrite _v) { _dirty = true; data = _v; }
     public DebugSwitchUser _root() { return _root; }
-    public void set_root(DebugSwitchUser _v) { _root = _v; }
+    public void set_root(DebugSwitchUser _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

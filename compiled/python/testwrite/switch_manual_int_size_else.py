@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class SwitchManualIntSizeElse(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(SwitchManualIntSizeElse, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -25,6 +25,7 @@ class SwitchManualIntSizeElse(ReadWriteKaitaiStruct):
                 self.chunks.append(_t_chunks)
             i += 1
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -48,7 +49,6 @@ class SwitchManualIntSizeElse(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         for i in range(len(self.chunks)):
             pass
             if self.chunks[i]._root != self._root:
@@ -56,10 +56,11 @@ class SwitchManualIntSizeElse(ReadWriteKaitaiStruct):
             if self.chunks[i]._parent != self:
                 raise kaitaistruct.ConsistencyError(u"chunks", self.chunks[i]._parent, self)
 
+        self._dirty = False
 
     class Chunk(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(SwitchManualIntSizeElse.Chunk, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -85,6 +86,7 @@ class SwitchManualIntSizeElse(ReadWriteKaitaiStruct):
                 _io__raw_body = KaitaiStream(BytesIO(self._raw_body))
                 self.body = SwitchManualIntSizeElse.Chunk.Dummy(_io__raw_body, self, self._root)
                 self.body._read()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -148,7 +150,6 @@ class SwitchManualIntSizeElse(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             _on = self.code
             if _on == 17:
                 pass
@@ -168,10 +169,11 @@ class SwitchManualIntSizeElse(ReadWriteKaitaiStruct):
                     raise kaitaistruct.ConsistencyError(u"body", self.body._root, self._root)
                 if self.body._parent != self:
                     raise kaitaistruct.ConsistencyError(u"body", self.body._parent, self)
+            self._dirty = False
 
         class ChunkDir(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                self._io = _io
+                super(SwitchManualIntSizeElse.Chunk.ChunkDir, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
@@ -182,6 +184,7 @@ class SwitchManualIntSizeElse(ReadWriteKaitaiStruct):
                     self.entries.append((self._io.read_bytes(4)).decode(u"UTF-8"))
                     i += 1
 
+                self._dirty = False
 
 
             def _fetch_instances(self):
@@ -204,23 +207,24 @@ class SwitchManualIntSizeElse(ReadWriteKaitaiStruct):
 
 
             def _check(self):
-                pass
                 for i in range(len(self.entries)):
                     pass
                     if len((self.entries[i]).encode(u"UTF-8")) != 4:
                         raise kaitaistruct.ConsistencyError(u"entries", len((self.entries[i]).encode(u"UTF-8")), 4)
 
+                self._dirty = False
 
 
         class ChunkMeta(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                self._io = _io
+                super(SwitchManualIntSizeElse.Chunk.ChunkMeta, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
             def _read(self):
                 self.title = (self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8")
                 self.author = (self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8")
+                self._dirty = False
 
 
             def _fetch_instances(self):
@@ -236,21 +240,22 @@ class SwitchManualIntSizeElse(ReadWriteKaitaiStruct):
 
 
             def _check(self):
-                pass
                 if KaitaiStream.byte_array_index_of((self.title).encode(u"UTF-8"), 0) != -1:
                     raise kaitaistruct.ConsistencyError(u"title", KaitaiStream.byte_array_index_of((self.title).encode(u"UTF-8"), 0), -1)
                 if KaitaiStream.byte_array_index_of((self.author).encode(u"UTF-8"), 0) != -1:
                     raise kaitaistruct.ConsistencyError(u"author", KaitaiStream.byte_array_index_of((self.author).encode(u"UTF-8"), 0), -1)
+                self._dirty = False
 
 
         class Dummy(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                self._io = _io
+                super(SwitchManualIntSizeElse.Chunk.Dummy, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
             def _read(self):
                 self.rest = self._io.read_bytes_full()
+                self._dirty = False
 
 
             def _fetch_instances(self):
@@ -265,7 +270,7 @@ class SwitchManualIntSizeElse(ReadWriteKaitaiStruct):
 
 
             def _check(self):
-                pass
+                self._dirty = False
 
 
 

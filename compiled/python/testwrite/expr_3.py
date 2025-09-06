@@ -10,13 +10,14 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class Expr3(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(Expr3, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self.one = self._io.read_u1()
         self.two = (self._io.read_bytes(3)).decode(u"ASCII")
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -30,9 +31,9 @@ class Expr3(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len((self.two).encode(u"ASCII")) != 3:
             raise kaitaistruct.ConsistencyError(u"two", len((self.two).encode(u"ASCII")), 3)
+        self._dirty = False
 
     @property
     def four(self):

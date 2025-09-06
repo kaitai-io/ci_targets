@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class IntegersMinMax(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(IntegersMinMax, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -23,6 +23,7 @@ class IntegersMinMax(ReadWriteKaitaiStruct):
         self.signed_min._read()
         self.signed_max = IntegersMinMax.Signed(self._io, self, self._root)
         self.signed_max._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -42,7 +43,6 @@ class IntegersMinMax(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.unsigned_min._root != self._root:
             raise kaitaistruct.ConsistencyError(u"unsigned_min", self.unsigned_min._root, self._root)
         if self.unsigned_min._parent != self:
@@ -59,10 +59,11 @@ class IntegersMinMax(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"signed_max", self.signed_max._root, self._root)
         if self.signed_max._parent != self:
             raise kaitaistruct.ConsistencyError(u"signed_max", self.signed_max._parent, self)
+        self._dirty = False
 
     class Signed(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(IntegersMinMax.Signed, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -74,6 +75,7 @@ class IntegersMinMax(ReadWriteKaitaiStruct):
             self.s2be = self._io.read_s2be()
             self.s4be = self._io.read_s4be()
             self.s8be = self._io.read_s8be()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -92,12 +94,12 @@ class IntegersMinMax(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     class Unsigned(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(IntegersMinMax.Unsigned, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -109,6 +111,7 @@ class IntegersMinMax(ReadWriteKaitaiStruct):
             self.u2be = self._io.read_u2be()
             self.u4be = self._io.read_u4be()
             self.u8be = self._io.read_u8be()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -127,7 +130,7 @@ class IntegersMinMax(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
 

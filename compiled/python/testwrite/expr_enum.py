@@ -17,12 +17,13 @@ class ExprEnum(ReadWriteKaitaiStruct):
         chicken = 12
         boom = 102
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ExprEnum, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self.one = self._io.read_u1()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -35,7 +36,7 @@ class ExprEnum(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
     @property
     def const_dog(self):

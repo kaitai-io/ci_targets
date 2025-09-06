@@ -39,6 +39,7 @@ public class IfStruct extends KaitaiStruct.ReadWrite {
         this.op2._read();
         this.op3 = new Operation(this._io, this, _root);
         this.op3._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -48,6 +49,7 @@ public class IfStruct extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this.op1._write_Seq(this._io);
         this.op2._write_Seq(this._io);
         this.op3._write_Seq(this._io);
@@ -66,6 +68,7 @@ public class IfStruct extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("op3", this.op3._root(), _root());
         if (!Objects.equals(this.op3._parent(), this))
             throw new ConsistencyError("op3", this.op3._parent(), this);
+        _dirty = false;
     }
     public static class ArgStr extends KaitaiStruct.ReadWrite {
         public static ArgStr fromFile(String fileName) throws IOException {
@@ -91,12 +94,14 @@ public class IfStruct extends KaitaiStruct.ReadWrite {
         public void _read() {
             this.len = this._io.readU1();
             this.str = new String(this._io.readBytes(len()), StandardCharsets.UTF_8);
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU1(this.len);
             this._io.writeBytes((this.str).getBytes(Charset.forName("UTF-8")));
         }
@@ -104,19 +109,20 @@ public class IfStruct extends KaitaiStruct.ReadWrite {
         public void _check() {
             if ((this.str).getBytes(Charset.forName("UTF-8")).length != len())
                 throw new ConsistencyError("str", (this.str).getBytes(Charset.forName("UTF-8")).length, len());
+            _dirty = false;
         }
         private int len;
         private String str;
         private IfStruct _root;
         private IfStruct.Operation _parent;
         public int len() { return len; }
-        public void setLen(int _v) { len = _v; }
+        public void setLen(int _v) { _dirty = true; len = _v; }
         public String str() { return str; }
-        public void setStr(String _v) { str = _v; }
+        public void setStr(String _v) { _dirty = true; str = _v; }
         public IfStruct _root() { return _root; }
-        public void set_root(IfStruct _v) { _root = _v; }
+        public void set_root(IfStruct _v) { _dirty = true; _root = _v; }
         public IfStruct.Operation _parent() { return _parent; }
-        public void set_parent(IfStruct.Operation _v) { _parent = _v; }
+        public void set_parent(IfStruct.Operation _v) { _dirty = true; _parent = _v; }
     }
     public static class ArgTuple extends KaitaiStruct.ReadWrite {
         public static ArgTuple fromFile(String fileName) throws IOException {
@@ -142,30 +148,33 @@ public class IfStruct extends KaitaiStruct.ReadWrite {
         public void _read() {
             this.num1 = this._io.readU1();
             this.num2 = this._io.readU1();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU1(this.num1);
             this._io.writeU1(this.num2);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private int num1;
         private int num2;
         private IfStruct _root;
         private IfStruct.Operation _parent;
         public int num1() { return num1; }
-        public void setNum1(int _v) { num1 = _v; }
+        public void setNum1(int _v) { _dirty = true; num1 = _v; }
         public int num2() { return num2; }
-        public void setNum2(int _v) { num2 = _v; }
+        public void setNum2(int _v) { _dirty = true; num2 = _v; }
         public IfStruct _root() { return _root; }
-        public void set_root(IfStruct _v) { _root = _v; }
+        public void set_root(IfStruct _v) { _dirty = true; _root = _v; }
         public IfStruct.Operation _parent() { return _parent; }
-        public void set_parent(IfStruct.Operation _v) { _parent = _v; }
+        public void set_parent(IfStruct.Operation _v) { _dirty = true; _parent = _v; }
     }
     public static class Operation extends KaitaiStruct.ReadWrite {
         public static Operation fromFile(String fileName) throws IOException {
@@ -198,6 +207,7 @@ public class IfStruct extends KaitaiStruct.ReadWrite {
                 this.argStr = new ArgStr(this._io, this, _root);
                 this.argStr._read();
             }
+            _dirty = false;
         }
 
         public void _fetchInstances() {
@@ -210,6 +220,7 @@ public class IfStruct extends KaitaiStruct.ReadWrite {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU1(this.opcode);
             if (opcode() == 84) {
                 this.argTuple._write_Seq(this._io);
@@ -232,6 +243,7 @@ public class IfStruct extends KaitaiStruct.ReadWrite {
                 if (!Objects.equals(this.argStr._parent(), this))
                     throw new ConsistencyError("arg_str", this.argStr._parent(), this);
             }
+            _dirty = false;
         }
         private int opcode;
         private ArgTuple argTuple;
@@ -239,15 +251,15 @@ public class IfStruct extends KaitaiStruct.ReadWrite {
         private IfStruct _root;
         private IfStruct _parent;
         public int opcode() { return opcode; }
-        public void setOpcode(int _v) { opcode = _v; }
+        public void setOpcode(int _v) { _dirty = true; opcode = _v; }
         public ArgTuple argTuple() { return argTuple; }
-        public void setArgTuple(ArgTuple _v) { argTuple = _v; }
+        public void setArgTuple(ArgTuple _v) { _dirty = true; argTuple = _v; }
         public ArgStr argStr() { return argStr; }
-        public void setArgStr(ArgStr _v) { argStr = _v; }
+        public void setArgStr(ArgStr _v) { _dirty = true; argStr = _v; }
         public IfStruct _root() { return _root; }
-        public void set_root(IfStruct _v) { _root = _v; }
+        public void set_root(IfStruct _v) { _dirty = true; _root = _v; }
         public IfStruct _parent() { return _parent; }
-        public void set_parent(IfStruct _v) { _parent = _v; }
+        public void set_parent(IfStruct _v) { _dirty = true; _parent = _v; }
     }
     private Operation op1;
     private Operation op2;
@@ -255,13 +267,13 @@ public class IfStruct extends KaitaiStruct.ReadWrite {
     private IfStruct _root;
     private KaitaiStruct.ReadWrite _parent;
     public Operation op1() { return op1; }
-    public void setOp1(Operation _v) { op1 = _v; }
+    public void setOp1(Operation _v) { _dirty = true; op1 = _v; }
     public Operation op2() { return op2; }
-    public void setOp2(Operation _v) { op2 = _v; }
+    public void setOp2(Operation _v) { _dirty = true; op2 = _v; }
     public Operation op3() { return op3; }
-    public void setOp3(Operation _v) { op3 = _v; }
+    public void setOp3(Operation _v) { _dirty = true; op3 = _v; }
     public IfStruct _root() { return _root; }
-    public void set_root(IfStruct _v) { _root = _v; }
+    public void set_root(IfStruct _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

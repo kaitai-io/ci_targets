@@ -32,12 +32,14 @@ public class BitsByteAlignedEofBe extends KaitaiStruct.ReadWrite {
     public void _read() {
         this.prebuf = this._io.readBytes(8);
         this.bits = this._io.readBitsIntBe(31);
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytes(this.prebuf);
         this._io.writeBitsIntBe(31, this.bits);
     }
@@ -45,17 +47,18 @@ public class BitsByteAlignedEofBe extends KaitaiStruct.ReadWrite {
     public void _check() {
         if (this.prebuf.length != 8)
             throw new ConsistencyError("prebuf", this.prebuf.length, 8);
+        _dirty = false;
     }
     private byte[] prebuf;
     private long bits;
     private BitsByteAlignedEofBe _root;
     private KaitaiStruct.ReadWrite _parent;
     public byte[] prebuf() { return prebuf; }
-    public void setPrebuf(byte[] _v) { prebuf = _v; }
+    public void setPrebuf(byte[] _v) { _dirty = true; prebuf = _v; }
     public long bits() { return bits; }
-    public void setBits(long _v) { bits = _v; }
+    public void setBits(long _v) { _dirty = true; bits = _v; }
     public BitsByteAlignedEofBe _root() { return _root; }
-    public void set_root(BitsByteAlignedEofBe _v) { _root = _v; }
+    public void set_root(BitsByteAlignedEofBe _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

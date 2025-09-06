@@ -44,6 +44,7 @@ public class ParamsPassArrayStr extends KaitaiStruct.ReadWrite {
         this.passStrArray._read();
         this.passStrArrayCalc = new WantsStrs(this._io, this, _root, strArrayCalc());
         this.passStrArrayCalc._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -54,6 +55,7 @@ public class ParamsPassArrayStr extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         for (int i = 0; i < this.strArray.size(); i++) {
             this._io.writeBytes((this.strArray.get(((Number) (i)).intValue())).getBytes(Charset.forName("ASCII")));
         }
@@ -80,6 +82,7 @@ public class ParamsPassArrayStr extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("pass_str_array_calc", this.passStrArrayCalc._parent(), this);
         if (!Objects.equals(this.passStrArrayCalc.strs(), strArrayCalc()))
             throw new ConsistencyError("pass_str_array_calc", this.passStrArrayCalc.strs(), strArrayCalc());
+        _dirty = false;
     }
     public static class WantsStrs extends KaitaiStruct.ReadWrite {
         public WantsStrs(List<String> strs) {
@@ -101,25 +104,28 @@ public class ParamsPassArrayStr extends KaitaiStruct.ReadWrite {
             this.strs = strs;
         }
         public void _read() {
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
         }
 
         public void _check() {
+            _dirty = false;
         }
         private List<String> strs;
         private ParamsPassArrayStr _root;
         private ParamsPassArrayStr _parent;
         public List<String> strs() { return strs; }
-        public void setStrs(List<String> _v) { strs = _v; }
+        public void setStrs(List<String> _v) { _dirty = true; strs = _v; }
         public ParamsPassArrayStr _root() { return _root; }
-        public void set_root(ParamsPassArrayStr _v) { _root = _v; }
+        public void set_root(ParamsPassArrayStr _v) { _dirty = true; _root = _v; }
         public ParamsPassArrayStr _parent() { return _parent; }
-        public void set_parent(ParamsPassArrayStr _v) { _parent = _v; }
+        public void set_parent(ParamsPassArrayStr _v) { _dirty = true; _parent = _v; }
     }
     private List<String> strArrayCalc;
     public List<String> strArrayCalc() {
@@ -135,13 +141,13 @@ public class ParamsPassArrayStr extends KaitaiStruct.ReadWrite {
     private ParamsPassArrayStr _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<String> strArray() { return strArray; }
-    public void setStrArray(List<String> _v) { strArray = _v; }
+    public void setStrArray(List<String> _v) { _dirty = true; strArray = _v; }
     public WantsStrs passStrArray() { return passStrArray; }
-    public void setPassStrArray(WantsStrs _v) { passStrArray = _v; }
+    public void setPassStrArray(WantsStrs _v) { _dirty = true; passStrArray = _v; }
     public WantsStrs passStrArrayCalc() { return passStrArrayCalc; }
-    public void setPassStrArrayCalc(WantsStrs _v) { passStrArrayCalc = _v; }
+    public void setPassStrArrayCalc(WantsStrs _v) { _dirty = true; passStrArrayCalc = _v; }
     public ParamsPassArrayStr _root() { return _root; }
-    public void set_root(ParamsPassArrayStr _v) { _root = _v; }
+    public void set_root(ParamsPassArrayStr _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

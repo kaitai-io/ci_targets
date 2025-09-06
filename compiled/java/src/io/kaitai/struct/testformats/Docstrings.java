@@ -36,6 +36,8 @@ public class Docstrings extends KaitaiStruct {
 
     public void _fetchInstances() {
         two();
+        if (this.two != null) {
+        }
     }
 
     /**

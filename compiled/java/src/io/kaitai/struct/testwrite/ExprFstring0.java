@@ -34,12 +34,14 @@ public class ExprFstring0 extends KaitaiStruct.ReadWrite {
     public void _read() {
         this.seqStr = new String(this._io.readBytes(5), StandardCharsets.US_ASCII);
         this.seqInt = this._io.readU1();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytes((this.seqStr).getBytes(Charset.forName("ASCII")));
         this._io.writeU1(this.seqInt);
     }
@@ -47,6 +49,7 @@ public class ExprFstring0 extends KaitaiStruct.ReadWrite {
     public void _check() {
         if ((this.seqStr).getBytes(Charset.forName("ASCII")).length != 5)
             throw new ConsistencyError("seq_str", (this.seqStr).getBytes(Charset.forName("ASCII")).length, 5);
+        _dirty = false;
     }
     private String empty;
     public String empty() {
@@ -109,11 +112,11 @@ public class ExprFstring0 extends KaitaiStruct.ReadWrite {
     private ExprFstring0 _root;
     private KaitaiStruct.ReadWrite _parent;
     public String seqStr() { return seqStr; }
-    public void setSeqStr(String _v) { seqStr = _v; }
+    public void setSeqStr(String _v) { _dirty = true; seqStr = _v; }
     public int seqInt() { return seqInt; }
-    public void setSeqInt(int _v) { seqInt = _v; }
+    public void setSeqInt(int _v) { _dirty = true; seqInt = _v; }
     public ExprFstring0 _root() { return _root; }
-    public void set_root(ExprFstring0 _v) { _root = _v; }
+    public void set_root(ExprFstring0 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

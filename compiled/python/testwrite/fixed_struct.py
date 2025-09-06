@@ -10,33 +10,44 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class FixedStruct(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(FixedStruct, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_hdr = False
-        self.hdr__to_write = True
+        self.hdr__enabled = True
 
     def _read(self):
         pass
+        self._dirty = False
 
 
     def _fetch_instances(self):
         pass
         _ = self.hdr
-        self._m_hdr._fetch_instances()
+        if hasattr(self, '_m_hdr'):
+            pass
+            self._m_hdr._fetch_instances()
+
 
 
     def _write__seq(self, io=None):
         super(FixedStruct, self)._write__seq(io)
-        self._should_write_hdr = self.hdr__to_write
+        self._should_write_hdr = self.hdr__enabled
 
 
     def _check(self):
-        pass
+        if self.hdr__enabled:
+            pass
+            if self._m_hdr._root != self._root:
+                raise kaitaistruct.ConsistencyError(u"hdr", self._m_hdr._root, self._root)
+            if self._m_hdr._parent != self:
+                raise kaitaistruct.ConsistencyError(u"hdr", self._m_hdr._parent, self)
+
+        self._dirty = False
 
     class Header(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(FixedStruct.Header, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -82,6 +93,7 @@ class FixedStruct(ReadWriteKaitaiStruct):
             self.sint16be = self._io.read_s2be()
             self.sint32be = self._io.read_s4be()
             self.sint64be = self._io.read_s8be()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -120,7 +132,6 @@ class FixedStruct(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if len(self.magic1) != 6:
                 raise kaitaistruct.ConsistencyError(u"magic1", len(self.magic1), 6)
             if not self.magic1 == b"\x50\x41\x43\x4B\x2D\x31":
@@ -149,6 +160,7 @@ class FixedStruct(ReadWriteKaitaiStruct):
                 raise kaitaistruct.ConsistencyError(u"magic_sint_be", len(self.magic_sint_be), 9)
             if not self.magic_sint_be == b"\x50\x41\x43\x4B\x2D\x53\x2D\x42\x45":
                 raise kaitaistruct.ValidationNotEqualError(b"\x50\x41\x43\x4B\x2D\x53\x2D\x42\x45", self.magic_sint_be, None, u"/types/header/seq/23")
+            self._dirty = False
 
 
     @property
@@ -157,6 +169,9 @@ class FixedStruct(ReadWriteKaitaiStruct):
             self._write_hdr()
         if hasattr(self, '_m_hdr'):
             return self._m_hdr
+
+        if not self.hdr__enabled:
+            return None
 
         _pos = self._io.pos()
         self._io.seek(0)
@@ -167,6 +182,7 @@ class FixedStruct(ReadWriteKaitaiStruct):
 
     @hdr.setter
     def hdr(self, v):
+        self._dirty = True
         self._m_hdr = v
 
     def _write_hdr(self):
@@ -175,13 +191,5 @@ class FixedStruct(ReadWriteKaitaiStruct):
         self._io.seek(0)
         self._m_hdr._write__seq(self._io)
         self._io.seek(_pos)
-
-
-    def _check_hdr(self):
-        pass
-        if self._m_hdr._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"hdr", self._m_hdr._root, self._root)
-        if self._m_hdr._parent != self:
-            raise kaitaistruct.ConsistencyError(u"hdr", self._m_hdr._parent, self)
 
 

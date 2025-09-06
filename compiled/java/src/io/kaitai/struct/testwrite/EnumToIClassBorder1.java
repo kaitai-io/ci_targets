@@ -51,29 +51,40 @@ public class EnumToIClassBorder1 extends KaitaiStruct.ReadWrite {
     public void _read() {
         this.pet1 = Animal.byId(this._io.readU4le());
         this.pet2 = Animal.byId(this._io.readU4le());
+        _dirty = false;
     }
 
     public void _fetchInstances() {
         checker();
-        this.checker._fetchInstances();
+        if (this.checker != null) {
+            this.checker._fetchInstances();
+        }
     }
 
     public void _write_Seq() {
-        _writeChecker = _toWriteChecker;
+        _assertNotDirty();
+        _shouldWriteChecker = _enabledChecker;
         this._io.writeU4le(((Number) (this.pet1.id())).longValue());
         this._io.writeU4le(((Number) (this.pet2.id())).longValue());
     }
 
     public void _check() {
+        if (_enabledChecker) {
+            if (!Objects.equals(this.checker.parent(), _root()))
+                throw new ConsistencyError("checker", this.checker.parent(), _root());
+        }
+        _dirty = false;
     }
     private EnumToIClassBorder2 checker;
-    private boolean _writeChecker = false;
-    private boolean _toWriteChecker = true;
+    private boolean _shouldWriteChecker = false;
+    private boolean _enabledChecker = true;
     public EnumToIClassBorder2 checker() {
-        if (_writeChecker)
+        if (_shouldWriteChecker)
             _writeChecker();
         if (this.checker != null)
             return this.checker;
+        if (!_enabledChecker)
+            return null;
         long _pos = this._io.pos();
         this._io.seek(0);
         this.checker = new EnumToIClassBorder2(this._io, _root());
@@ -81,20 +92,15 @@ public class EnumToIClassBorder1 extends KaitaiStruct.ReadWrite {
         this._io.seek(_pos);
         return this.checker;
     }
-    public void setChecker(EnumToIClassBorder2 _v) { checker = _v; }
-    public void setChecker_ToWrite(boolean _v) { _toWriteChecker = _v; }
+    public void setChecker(EnumToIClassBorder2 _v) { _dirty = true; checker = _v; }
+    public void setChecker_Enabled(boolean _v) { _dirty = true; _enabledChecker = _v; }
 
-    public void _writeChecker() {
-        _writeChecker = false;
+    private void _writeChecker() {
+        _shouldWriteChecker = false;
         long _pos = this._io.pos();
         this._io.seek(0);
         this.checker._write_Seq(this._io);
         this._io.seek(_pos);
-    }
-
-    public void _checkChecker() {
-        if (!Objects.equals(this.checker.parent(), _root()))
-            throw new ConsistencyError("checker", this.checker.parent(), _root());
     }
     private Animal someDog;
     public Animal someDog() {
@@ -109,11 +115,11 @@ public class EnumToIClassBorder1 extends KaitaiStruct.ReadWrite {
     private EnumToIClassBorder1 _root;
     private KaitaiStruct.ReadWrite _parent;
     public Animal pet1() { return pet1; }
-    public void setPet1(Animal _v) { pet1 = _v; }
+    public void setPet1(Animal _v) { _dirty = true; pet1 = _v; }
     public Animal pet2() { return pet2; }
-    public void setPet2(Animal _v) { pet2 = _v; }
+    public void setPet2(Animal _v) { _dirty = true; pet2 = _v; }
     public EnumToIClassBorder1 _root() { return _root; }
-    public void set_root(EnumToIClassBorder1 _v) { _root = _v; }
+    public void set_root(EnumToIClassBorder1 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

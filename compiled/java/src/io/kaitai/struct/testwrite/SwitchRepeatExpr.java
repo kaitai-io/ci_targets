@@ -67,6 +67,7 @@ public class SwitchRepeatExpr extends KaitaiStruct.ReadWrite {
             }
             }
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -88,6 +89,7 @@ public class SwitchRepeatExpr extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(this.code);
         this._io.writeU4le(this.size);
         this._raw_body = new ArrayList<byte[]>();
@@ -169,6 +171,7 @@ public class SwitchRepeatExpr extends KaitaiStruct.ReadWrite {
             }
             }
         }
+        _dirty = false;
     }
     public static class One extends KaitaiStruct.ReadWrite {
         public static One fromFile(String fileName) throws IOException {
@@ -193,28 +196,31 @@ public class SwitchRepeatExpr extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.first = this._io.readBytesFull();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytes(this.first);
             if (!(this._io.isEof()))
                 throw new ConsistencyError("first", this._io.size() - this._io.pos(), 0);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private byte[] first;
         private SwitchRepeatExpr _root;
         private SwitchRepeatExpr _parent;
         public byte[] first() { return first; }
-        public void setFirst(byte[] _v) { first = _v; }
+        public void setFirst(byte[] _v) { _dirty = true; first = _v; }
         public SwitchRepeatExpr _root() { return _root; }
-        public void set_root(SwitchRepeatExpr _v) { _root = _v; }
+        public void set_root(SwitchRepeatExpr _v) { _dirty = true; _root = _v; }
         public SwitchRepeatExpr _parent() { return _parent; }
-        public void set_parent(SwitchRepeatExpr _v) { _parent = _v; }
+        public void set_parent(SwitchRepeatExpr _v) { _dirty = true; _parent = _v; }
     }
     public static class Two extends KaitaiStruct.ReadWrite {
         public static Two fromFile(String fileName) throws IOException {
@@ -239,28 +245,31 @@ public class SwitchRepeatExpr extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.second = this._io.readBytesFull();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytes(this.second);
             if (!(this._io.isEof()))
                 throw new ConsistencyError("second", this._io.size() - this._io.pos(), 0);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private byte[] second;
         private SwitchRepeatExpr _root;
         private SwitchRepeatExpr _parent;
         public byte[] second() { return second; }
-        public void setSecond(byte[] _v) { second = _v; }
+        public void setSecond(byte[] _v) { _dirty = true; second = _v; }
         public SwitchRepeatExpr _root() { return _root; }
-        public void set_root(SwitchRepeatExpr _v) { _root = _v; }
+        public void set_root(SwitchRepeatExpr _v) { _dirty = true; _root = _v; }
         public SwitchRepeatExpr _parent() { return _parent; }
-        public void set_parent(SwitchRepeatExpr _v) { _parent = _v; }
+        public void set_parent(SwitchRepeatExpr _v) { _dirty = true; _parent = _v; }
     }
     private int code;
     private long size;
@@ -269,15 +278,15 @@ public class SwitchRepeatExpr extends KaitaiStruct.ReadWrite {
     private KaitaiStruct.ReadWrite _parent;
     private List<byte[]> _raw_body;
     public int code() { return code; }
-    public void setCode(int _v) { code = _v; }
+    public void setCode(int _v) { _dirty = true; code = _v; }
     public long size() { return size; }
-    public void setSize(long _v) { size = _v; }
+    public void setSize(long _v) { _dirty = true; size = _v; }
     public List<Object> body() { return body; }
-    public void setBody(List<Object> _v) { body = _v; }
+    public void setBody(List<Object> _v) { _dirty = true; body = _v; }
     public SwitchRepeatExpr _root() { return _root; }
-    public void set_root(SwitchRepeatExpr _v) { _root = _v; }
+    public void set_root(SwitchRepeatExpr _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public List<byte[]> _raw_body() { return _raw_body; }
-    public void set_raw_Body(List<byte[]> _v) { _raw_body = _v; }
+    public void set_raw_Body(List<byte[]> _v) { _dirty = true; _raw_body = _v; }
 }

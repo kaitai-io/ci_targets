@@ -65,6 +65,7 @@ public class ExprBits extends KaitaiStruct.ReadWrite {
         }
         this.switchOnEndian = new EndianSwitch(this._io, this, _root);
         this.switchOnEndian._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -77,10 +78,13 @@ public class ExprBits extends KaitaiStruct.ReadWrite {
         }
         this.switchOnEndian._fetchInstances();
         instPos();
+        if (this.instPos != null) {
+        }
     }
 
     public void _write_Seq() {
-        _writeInstPos = _toWriteInstPos;
+        _assertNotDirty();
+        _shouldWriteInstPos = _enabledInstPos;
         this._io.writeBitsIntBe(2, ((Number) (this.enumSeq.id())).longValue());
         this._io.writeBitsIntBe(3, this.a);
         this._io.writeBytes(this.byteSize);
@@ -112,6 +116,9 @@ public class ExprBits extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("switch_on_endian", this.switchOnEndian._root(), _root());
         if (!Objects.equals(this.switchOnEndian._parent(), this))
             throw new ConsistencyError("switch_on_endian", this.switchOnEndian._parent(), this);
+        if (_enabledInstPos) {
+        }
+        _dirty = false;
     }
     public static class EndianSwitch extends KaitaiStruct.ReadWrite {
         public static EndianSwitch fromFile(String fileName) throws IOException {
@@ -154,18 +161,22 @@ public class ExprBits extends KaitaiStruct.ReadWrite {
             } else {
                 _readBE();
             }
+            _dirty = false;
         }
         private void _readLE() {
             this.foo = this._io.readS2le();
+            _dirty = false;
         }
         private void _readBE() {
             this.foo = this._io.readS2be();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
 
             if (_is_le == null) {
                 throw new KaitaiStream.UndecidedEndiannessError();
@@ -185,16 +196,17 @@ public class ExprBits extends KaitaiStruct.ReadWrite {
         }
 
         public void _check() {
+            _dirty = false;
         }
         private short foo;
         private ExprBits _root;
         private ExprBits _parent;
         public short foo() { return foo; }
-        public void setFoo(short _v) { foo = _v; }
+        public void setFoo(short _v) { _dirty = true; foo = _v; }
         public ExprBits _root() { return _root; }
-        public void set_root(ExprBits _v) { _root = _v; }
+        public void set_root(ExprBits _v) { _dirty = true; _root = _v; }
         public ExprBits _parent() { return _parent; }
-        public void set_parent(ExprBits _v) { _parent = _v; }
+        public void set_parent(ExprBits _v) { _dirty = true; _parent = _v; }
     }
     private Items enumInst;
     public Items enumInst() {
@@ -205,31 +217,30 @@ public class ExprBits extends KaitaiStruct.ReadWrite {
     }
     public void _invalidateEnumInst() { this.enumInst = null; }
     private Byte instPos;
-    private boolean _writeInstPos = false;
-    private boolean _toWriteInstPos = true;
+    private boolean _shouldWriteInstPos = false;
+    private boolean _enabledInstPos = true;
     public Byte instPos() {
-        if (_writeInstPos)
+        if (_shouldWriteInstPos)
             _writeInstPos();
         if (this.instPos != null)
             return this.instPos;
+        if (!_enabledInstPos)
+            return null;
         long _pos = this._io.pos();
         this._io.seek(a());
         this.instPos = this._io.readS1();
         this._io.seek(_pos);
         return this.instPos;
     }
-    public void setInstPos(byte _v) { instPos = _v; }
-    public void setInstPos_ToWrite(boolean _v) { _toWriteInstPos = _v; }
+    public void setInstPos(byte _v) { _dirty = true; instPos = _v; }
+    public void setInstPos_Enabled(boolean _v) { _dirty = true; _enabledInstPos = _v; }
 
-    public void _writeInstPos() {
-        _writeInstPos = false;
+    private void _writeInstPos() {
+        _shouldWriteInstPos = false;
         long _pos = this._io.pos();
         this._io.seek(a());
         this._io.writeS1(this.instPos);
         this._io.seek(_pos);
-    }
-
-    public void _checkInstPos() {
     }
     private Items enumSeq;
     private long a;
@@ -240,19 +251,19 @@ public class ExprBits extends KaitaiStruct.ReadWrite {
     private ExprBits _root;
     private KaitaiStruct.ReadWrite _parent;
     public Items enumSeq() { return enumSeq; }
-    public void setEnumSeq(Items _v) { enumSeq = _v; }
+    public void setEnumSeq(Items _v) { _dirty = true; enumSeq = _v; }
     public long a() { return a; }
-    public void setA(long _v) { a = _v; }
+    public void setA(long _v) { _dirty = true; a = _v; }
     public byte[] byteSize() { return byteSize; }
-    public void setByteSize(byte[] _v) { byteSize = _v; }
+    public void setByteSize(byte[] _v) { _dirty = true; byteSize = _v; }
     public List<Byte> repeatExpr() { return repeatExpr; }
-    public void setRepeatExpr(List<Byte> _v) { repeatExpr = _v; }
+    public void setRepeatExpr(List<Byte> _v) { _dirty = true; repeatExpr = _v; }
     public Byte switchOnType() { return switchOnType; }
-    public void setSwitchOnType(Byte _v) { switchOnType = _v; }
+    public void setSwitchOnType(Byte _v) { _dirty = true; switchOnType = _v; }
     public EndianSwitch switchOnEndian() { return switchOnEndian; }
-    public void setSwitchOnEndian(EndianSwitch _v) { switchOnEndian = _v; }
+    public void setSwitchOnEndian(EndianSwitch _v) { _dirty = true; switchOnEndian = _v; }
     public ExprBits _root() { return _root; }
-    public void set_root(ExprBits _v) { _root = _v; }
+    public void set_root(ExprBits _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

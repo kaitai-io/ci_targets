@@ -39,6 +39,7 @@ public class IntegersMinMax extends KaitaiStruct.ReadWrite {
         this.signedMin._read();
         this.signedMax = new Signed(this._io, this, _root);
         this.signedMax._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -49,6 +50,7 @@ public class IntegersMinMax extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this.unsignedMin._write_Seq(this._io);
         this.unsignedMax._write_Seq(this._io);
         this.signedMin._write_Seq(this._io);
@@ -72,6 +74,7 @@ public class IntegersMinMax extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("signed_max", this.signedMax._root(), _root());
         if (!Objects.equals(this.signedMax._parent(), this))
             throw new ConsistencyError("signed_max", this.signedMax._parent(), this);
+        _dirty = false;
     }
     public static class Signed extends KaitaiStruct.ReadWrite {
         public static Signed fromFile(String fileName) throws IOException {
@@ -102,12 +105,14 @@ public class IntegersMinMax extends KaitaiStruct.ReadWrite {
             this.s2be = this._io.readS2be();
             this.s4be = this._io.readS4be();
             this.s8be = this._io.readS8be();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeS1(this.s1);
             this._io.writeS2le(this.s2le);
             this._io.writeS4le(this.s4le);
@@ -118,6 +123,7 @@ public class IntegersMinMax extends KaitaiStruct.ReadWrite {
         }
 
         public void _check() {
+            _dirty = false;
         }
         private byte s1;
         private short s2le;
@@ -129,23 +135,23 @@ public class IntegersMinMax extends KaitaiStruct.ReadWrite {
         private IntegersMinMax _root;
         private IntegersMinMax _parent;
         public byte s1() { return s1; }
-        public void setS1(byte _v) { s1 = _v; }
+        public void setS1(byte _v) { _dirty = true; s1 = _v; }
         public short s2le() { return s2le; }
-        public void setS2le(short _v) { s2le = _v; }
+        public void setS2le(short _v) { _dirty = true; s2le = _v; }
         public int s4le() { return s4le; }
-        public void setS4le(int _v) { s4le = _v; }
+        public void setS4le(int _v) { _dirty = true; s4le = _v; }
         public long s8le() { return s8le; }
-        public void setS8le(long _v) { s8le = _v; }
+        public void setS8le(long _v) { _dirty = true; s8le = _v; }
         public short s2be() { return s2be; }
-        public void setS2be(short _v) { s2be = _v; }
+        public void setS2be(short _v) { _dirty = true; s2be = _v; }
         public int s4be() { return s4be; }
-        public void setS4be(int _v) { s4be = _v; }
+        public void setS4be(int _v) { _dirty = true; s4be = _v; }
         public long s8be() { return s8be; }
-        public void setS8be(long _v) { s8be = _v; }
+        public void setS8be(long _v) { _dirty = true; s8be = _v; }
         public IntegersMinMax _root() { return _root; }
-        public void set_root(IntegersMinMax _v) { _root = _v; }
+        public void set_root(IntegersMinMax _v) { _dirty = true; _root = _v; }
         public IntegersMinMax _parent() { return _parent; }
-        public void set_parent(IntegersMinMax _v) { _parent = _v; }
+        public void set_parent(IntegersMinMax _v) { _dirty = true; _parent = _v; }
     }
     public static class Unsigned extends KaitaiStruct.ReadWrite {
         public static Unsigned fromFile(String fileName) throws IOException {
@@ -176,12 +182,14 @@ public class IntegersMinMax extends KaitaiStruct.ReadWrite {
             this.u2be = this._io.readU2be();
             this.u4be = this._io.readU4be();
             this.u8be = this._io.readU8be();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU1(this.u1);
             this._io.writeU2le(this.u2le);
             this._io.writeU4le(this.u4le);
@@ -192,6 +200,7 @@ public class IntegersMinMax extends KaitaiStruct.ReadWrite {
         }
 
         public void _check() {
+            _dirty = false;
         }
         private int u1;
         private int u2le;
@@ -203,23 +212,23 @@ public class IntegersMinMax extends KaitaiStruct.ReadWrite {
         private IntegersMinMax _root;
         private IntegersMinMax _parent;
         public int u1() { return u1; }
-        public void setU1(int _v) { u1 = _v; }
+        public void setU1(int _v) { _dirty = true; u1 = _v; }
         public int u2le() { return u2le; }
-        public void setU2le(int _v) { u2le = _v; }
+        public void setU2le(int _v) { _dirty = true; u2le = _v; }
         public long u4le() { return u4le; }
-        public void setU4le(long _v) { u4le = _v; }
+        public void setU4le(long _v) { _dirty = true; u4le = _v; }
         public long u8le() { return u8le; }
-        public void setU8le(long _v) { u8le = _v; }
+        public void setU8le(long _v) { _dirty = true; u8le = _v; }
         public int u2be() { return u2be; }
-        public void setU2be(int _v) { u2be = _v; }
+        public void setU2be(int _v) { _dirty = true; u2be = _v; }
         public long u4be() { return u4be; }
-        public void setU4be(long _v) { u4be = _v; }
+        public void setU4be(long _v) { _dirty = true; u4be = _v; }
         public long u8be() { return u8be; }
-        public void setU8be(long _v) { u8be = _v; }
+        public void setU8be(long _v) { _dirty = true; u8be = _v; }
         public IntegersMinMax _root() { return _root; }
-        public void set_root(IntegersMinMax _v) { _root = _v; }
+        public void set_root(IntegersMinMax _v) { _dirty = true; _root = _v; }
         public IntegersMinMax _parent() { return _parent; }
-        public void set_parent(IntegersMinMax _v) { _parent = _v; }
+        public void set_parent(IntegersMinMax _v) { _dirty = true; _parent = _v; }
     }
     private Unsigned unsignedMin;
     private Unsigned unsignedMax;
@@ -228,15 +237,15 @@ public class IntegersMinMax extends KaitaiStruct.ReadWrite {
     private IntegersMinMax _root;
     private KaitaiStruct.ReadWrite _parent;
     public Unsigned unsignedMin() { return unsignedMin; }
-    public void setUnsignedMin(Unsigned _v) { unsignedMin = _v; }
+    public void setUnsignedMin(Unsigned _v) { _dirty = true; unsignedMin = _v; }
     public Unsigned unsignedMax() { return unsignedMax; }
-    public void setUnsignedMax(Unsigned _v) { unsignedMax = _v; }
+    public void setUnsignedMax(Unsigned _v) { _dirty = true; unsignedMax = _v; }
     public Signed signedMin() { return signedMin; }
-    public void setSignedMin(Signed _v) { signedMin = _v; }
+    public void setSignedMin(Signed _v) { _dirty = true; signedMin = _v; }
     public Signed signedMax() { return signedMax; }
-    public void setSignedMax(Signed _v) { signedMax = _v; }
+    public void setSignedMax(Signed _v) { _dirty = true; signedMax = _v; }
     public IntegersMinMax _root() { return _root; }
-    public void set_root(IntegersMinMax _v) { _root = _v; }
+    public void set_root(IntegersMinMax _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

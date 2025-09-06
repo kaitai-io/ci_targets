@@ -36,8 +36,10 @@ public class NavParent3 extends KaitaiStruct {
 
     public void _fetchInstances() {
         tags();
-        for (int i = 0; i < this.tags.size(); i++) {
-            this.tags.get(((Number) (i)).intValue())._fetchInstances();
+        if (this.tags != null) {
+            for (int i = 0; i < this.tags.size(); i++) {
+                this.tags.get(((Number) (i)).intValue())._fetchInstances();
+            }
         }
     }
     public static class Tag extends KaitaiStruct {
@@ -67,11 +69,13 @@ public class NavParent3 extends KaitaiStruct {
 
         public void _fetchInstances() {
             tagContent();
-            switch (name()) {
-            case "RAHC": {
-                this.tagContent._fetchInstances();
-                break;
-            }
+            if (this.tagContent != null) {
+                switch (name()) {
+                case "RAHC": {
+                    this.tagContent._fetchInstances();
+                    break;
+                }
+                }
             }
         }
         public static class TagChar extends KaitaiStruct {

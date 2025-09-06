@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class TermStruct4(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(TermStruct4, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -29,6 +29,7 @@ class TermStruct4(ReadWriteKaitaiStruct):
         _io__raw_s3 = KaitaiStream(BytesIO(self._raw_s3))
         self.s3 = TermStruct4.S3Type(_io__raw_s3, self, self._root)
         self.s3._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -78,7 +79,6 @@ class TermStruct4(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.s1._root != self._root:
             raise kaitaistruct.ConsistencyError(u"s1", self.s1._root, self._root)
         if self.s1._parent != self:
@@ -91,15 +91,17 @@ class TermStruct4(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"s3", self.s3._root, self._root)
         if self.s3._parent != self:
             raise kaitaistruct.ConsistencyError(u"s3", self.s3._parent, self)
+        self._dirty = False
 
     class BytesWrapper(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(TermStruct4.BytesWrapper, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.value = self._io.read_bytes_full()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -114,12 +116,12 @@ class TermStruct4(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     class S1Type(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(TermStruct4.S1Type, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -129,6 +131,7 @@ class TermStruct4(ReadWriteKaitaiStruct):
             _io__raw_value = KaitaiStream(BytesIO(self._raw_value))
             self.value = TermStruct4.BytesWrapper(_io__raw_value, self, self._root)
             self.value._read()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -158,16 +161,16 @@ class TermStruct4(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if self.value._root != self._root:
                 raise kaitaistruct.ConsistencyError(u"value", self.value._root, self._root)
             if self.value._parent != self:
                 raise kaitaistruct.ConsistencyError(u"value", self.value._parent, self)
+            self._dirty = False
 
 
     class S2Type(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(TermStruct4.S2Type, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -177,6 +180,7 @@ class TermStruct4(ReadWriteKaitaiStruct):
             _io__raw_value = KaitaiStream(BytesIO(self._raw_value))
             self.value = TermStruct4.BytesWrapper(_io__raw_value, self, self._root)
             self.value._read()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -205,16 +209,16 @@ class TermStruct4(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if self.value._root != self._root:
                 raise kaitaistruct.ConsistencyError(u"value", self.value._root, self._root)
             if self.value._parent != self:
                 raise kaitaistruct.ConsistencyError(u"value", self.value._parent, self)
+            self._dirty = False
 
 
     class S3Type(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(TermStruct4.S3Type, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -224,6 +228,7 @@ class TermStruct4(ReadWriteKaitaiStruct):
             _io__raw_value = KaitaiStream(BytesIO(self._raw_value))
             self.value = TermStruct4.BytesWrapper(_io__raw_value, self, self._root)
             self.value._read()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -252,11 +257,11 @@ class TermStruct4(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if self.value._root != self._root:
                 raise kaitaistruct.ConsistencyError(u"value", self.value._root, self._root)
             if self.value._parent != self:
                 raise kaitaistruct.ConsistencyError(u"value", self.value._parent, self)
+            self._dirty = False
 
 
 

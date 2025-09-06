@@ -49,6 +49,7 @@ public class ProcessRepeatUsertypeDynargXor extends KaitaiStruct.ReadWrite {
         }
         this.blocksB = new BlocksBWrapper(this._io, this, _root);
         this.blocksB._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -59,6 +60,7 @@ public class ProcessRepeatUsertypeDynargXor extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._raw_blocks = new ArrayList<byte[]>();
         this._raw__raw_blocks = new ArrayList<byte[]>();
         for (int i = 0; i < this.blocks.size(); i++) {
@@ -99,6 +101,7 @@ public class ProcessRepeatUsertypeDynargXor extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("blocks_b", this.blocksB._root(), _root());
         if (!Objects.equals(this.blocksB._parent(), this))
             throw new ConsistencyError("blocks_b", this.blocksB._parent(), this);
+        _dirty = false;
     }
     public static class Block extends KaitaiStruct.ReadWrite {
         public static Block fromFile(String fileName) throws IOException {
@@ -123,26 +126,29 @@ public class ProcessRepeatUsertypeDynargXor extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.a = this._io.readU4le();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU4le(this.a);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private long a;
         private ProcessRepeatUsertypeDynargXor _root;
         private ProcessRepeatUsertypeDynargXor _parent;
         public long a() { return a; }
-        public void setA(long _v) { a = _v; }
+        public void setA(long _v) { _dirty = true; a = _v; }
         public ProcessRepeatUsertypeDynargXor _root() { return _root; }
-        public void set_root(ProcessRepeatUsertypeDynargXor _v) { _root = _v; }
+        public void set_root(ProcessRepeatUsertypeDynargXor _v) { _dirty = true; _root = _v; }
         public ProcessRepeatUsertypeDynargXor _parent() { return _parent; }
-        public void set_parent(ProcessRepeatUsertypeDynargXor _v) { _parent = _v; }
+        public void set_parent(ProcessRepeatUsertypeDynargXor _v) { _dirty = true; _parent = _v; }
     }
     public static class BlocksBWrapper extends KaitaiStruct.ReadWrite {
         public static BlocksBWrapper fromFile(String fileName) throws IOException {
@@ -167,29 +173,42 @@ public class ProcessRepeatUsertypeDynargXor extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.dummy = this._io.readU1();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
             blocks0B();
+            if (this.blocks0B != null) {
+            }
             blocks1B();
+            if (this.blocks1B != null) {
+            }
         }
 
         public void _write_Seq() {
-            _writeBlocks0B = _toWriteBlocks0B;
-            _writeBlocks1B = _toWriteBlocks1B;
+            _assertNotDirty();
+            _shouldWriteBlocks0B = _enabledBlocks0B;
+            _shouldWriteBlocks1B = _enabledBlocks1B;
             this._io.writeU1(this.dummy);
         }
 
         public void _check() {
+            if (_enabledBlocks0B) {
+            }
+            if (_enabledBlocks1B) {
+            }
+            _dirty = false;
         }
         private Integer blocks0B;
-        private boolean _writeBlocks0B = false;
-        private boolean _toWriteBlocks0B = true;
+        private boolean _shouldWriteBlocks0B = false;
+        private boolean _enabledBlocks0B = true;
         public Integer blocks0B() {
-            if (_writeBlocks0B)
+            if (_shouldWriteBlocks0B)
                 _writeBlocks0B();
             if (this.blocks0B != null)
                 return this.blocks0B;
+            if (!_enabledBlocks0B)
+                return null;
             KaitaiStream io = _parent().blocks().get(((int) 0))._io();
             long _pos = io.pos();
             io.seek(4);
@@ -197,28 +216,27 @@ public class ProcessRepeatUsertypeDynargXor extends KaitaiStruct.ReadWrite {
             io.seek(_pos);
             return this.blocks0B;
         }
-        public void setBlocks0B(int _v) { blocks0B = _v; }
-        public void setBlocks0B_ToWrite(boolean _v) { _toWriteBlocks0B = _v; }
+        public void setBlocks0B(int _v) { _dirty = true; blocks0B = _v; }
+        public void setBlocks0B_Enabled(boolean _v) { _dirty = true; _enabledBlocks0B = _v; }
 
-        public void _writeBlocks0B() {
-            _writeBlocks0B = false;
+        private void _writeBlocks0B() {
+            _shouldWriteBlocks0B = false;
             KaitaiStream io = _parent().blocks().get(((int) 0))._io();
             long _pos = io.pos();
             io.seek(4);
             io.writeU1(this.blocks0B);
             io.seek(_pos);
         }
-
-        public void _checkBlocks0B() {
-        }
         private Integer blocks1B;
-        private boolean _writeBlocks1B = false;
-        private boolean _toWriteBlocks1B = true;
+        private boolean _shouldWriteBlocks1B = false;
+        private boolean _enabledBlocks1B = true;
         public Integer blocks1B() {
-            if (_writeBlocks1B)
+            if (_shouldWriteBlocks1B)
                 _writeBlocks1B();
             if (this.blocks1B != null)
                 return this.blocks1B;
+            if (!_enabledBlocks1B)
+                return null;
             KaitaiStream io = _parent().blocks().get(((int) 1))._io();
             long _pos = io.pos();
             io.seek(4);
@@ -226,29 +244,26 @@ public class ProcessRepeatUsertypeDynargXor extends KaitaiStruct.ReadWrite {
             io.seek(_pos);
             return this.blocks1B;
         }
-        public void setBlocks1B(int _v) { blocks1B = _v; }
-        public void setBlocks1B_ToWrite(boolean _v) { _toWriteBlocks1B = _v; }
+        public void setBlocks1B(int _v) { _dirty = true; blocks1B = _v; }
+        public void setBlocks1B_Enabled(boolean _v) { _dirty = true; _enabledBlocks1B = _v; }
 
-        public void _writeBlocks1B() {
-            _writeBlocks1B = false;
+        private void _writeBlocks1B() {
+            _shouldWriteBlocks1B = false;
             KaitaiStream io = _parent().blocks().get(((int) 1))._io();
             long _pos = io.pos();
             io.seek(4);
             io.writeU1(this.blocks1B);
             io.seek(_pos);
         }
-
-        public void _checkBlocks1B() {
-        }
         private int dummy;
         private ProcessRepeatUsertypeDynargXor _root;
         private ProcessRepeatUsertypeDynargXor _parent;
         public int dummy() { return dummy; }
-        public void setDummy(int _v) { dummy = _v; }
+        public void setDummy(int _v) { _dirty = true; dummy = _v; }
         public ProcessRepeatUsertypeDynargXor _root() { return _root; }
-        public void set_root(ProcessRepeatUsertypeDynargXor _v) { _root = _v; }
+        public void set_root(ProcessRepeatUsertypeDynargXor _v) { _dirty = true; _root = _v; }
         public ProcessRepeatUsertypeDynargXor _parent() { return _parent; }
-        public void set_parent(ProcessRepeatUsertypeDynargXor _v) { _parent = _v; }
+        public void set_parent(ProcessRepeatUsertypeDynargXor _v) { _dirty = true; _parent = _v; }
     }
     private List<Block> blocks;
     private BlocksBWrapper blocksB;
@@ -257,15 +272,15 @@ public class ProcessRepeatUsertypeDynargXor extends KaitaiStruct.ReadWrite {
     private List<byte[]> _raw_blocks;
     private List<byte[]> _raw__raw_blocks;
     public List<Block> blocks() { return blocks; }
-    public void setBlocks(List<Block> _v) { blocks = _v; }
+    public void setBlocks(List<Block> _v) { _dirty = true; blocks = _v; }
     public BlocksBWrapper blocksB() { return blocksB; }
-    public void setBlocksB(BlocksBWrapper _v) { blocksB = _v; }
+    public void setBlocksB(BlocksBWrapper _v) { _dirty = true; blocksB = _v; }
     public ProcessRepeatUsertypeDynargXor _root() { return _root; }
-    public void set_root(ProcessRepeatUsertypeDynargXor _v) { _root = _v; }
+    public void set_root(ProcessRepeatUsertypeDynargXor _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public List<byte[]> _raw_blocks() { return _raw_blocks; }
-    public void set_raw_Blocks(List<byte[]> _v) { _raw_blocks = _v; }
+    public void set_raw_Blocks(List<byte[]> _v) { _dirty = true; _raw_blocks = _v; }
     public List<byte[]> _raw__raw_blocks() { return _raw__raw_blocks; }
-    public void set_raw__raw_Blocks(List<byte[]> _v) { _raw__raw_blocks = _v; }
+    public void set_raw__raw_Blocks(List<byte[]> _v) { _dirty = true; _raw__raw_blocks = _v; }
 }

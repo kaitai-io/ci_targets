@@ -65,8 +65,12 @@ public class Expr2 extends KaitaiStruct {
         public void _fetchInstances() {
             this.rest._fetchInstances();
             char5();
+            if (this.char5 != null) {
+            }
             tuple5();
-            this.tuple5._fetchInstances();
+            if (this.tuple5 != null) {
+                this.tuple5._fetchInstances();
+            }
         }
         private String char5;
         public String char5() {

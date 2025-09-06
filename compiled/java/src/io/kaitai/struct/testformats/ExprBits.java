@@ -72,6 +72,8 @@ public class ExprBits extends KaitaiStruct {
         }
         this.switchOnEndian._fetchInstances();
         instPos();
+        if (this.instPos != null) {
+        }
     }
     public static class EndianSwitch extends KaitaiStruct {
         public static EndianSwitch fromFile(String fileName) throws IOException {

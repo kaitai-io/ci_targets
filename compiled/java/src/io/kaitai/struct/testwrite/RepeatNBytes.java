@@ -36,6 +36,7 @@ public class RepeatNBytes extends KaitaiStruct.ReadWrite {
         for (int i = 0; i < 3; i++) {
             this.records.add(this._io.readBytes(5));
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -44,6 +45,7 @@ public class RepeatNBytes extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         for (int i = 0; i < this.records.size(); i++) {
             this._io.writeBytes(this.records.get(((Number) (i)).intValue()));
         }
@@ -56,14 +58,15 @@ public class RepeatNBytes extends KaitaiStruct.ReadWrite {
             if (this.records.get(((Number) (i)).intValue()).length != 5)
                 throw new ConsistencyError("records", this.records.get(((Number) (i)).intValue()).length, 5);
         }
+        _dirty = false;
     }
     private List<byte[]> records;
     private RepeatNBytes _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<byte[]> records() { return records; }
-    public void setRecords(List<byte[]> _v) { records = _v; }
+    public void setRecords(List<byte[]> _v) { _dirty = true; records = _v; }
     public RepeatNBytes _root() { return _root; }
-    public void set_root(RepeatNBytes _v) { _root = _v; }
+    public void set_root(RepeatNBytes _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

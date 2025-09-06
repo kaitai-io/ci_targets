@@ -46,6 +46,7 @@ public class RepeatEosStruct extends KaitaiStruct.ReadWrite {
                 i++;
             }
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -55,6 +56,7 @@ public class RepeatEosStruct extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         for (int i = 0; i < this.chunks.size(); i++) {
             if (this._io.isEof())
                 throw new ConsistencyError("chunks", this._io.size() - this._io.pos(), 0);
@@ -71,6 +73,7 @@ public class RepeatEosStruct extends KaitaiStruct.ReadWrite {
             if (!Objects.equals(this.chunks.get(((Number) (i)).intValue())._parent(), this))
                 throw new ConsistencyError("chunks", this.chunks.get(((Number) (i)).intValue())._parent(), this);
         }
+        _dirty = false;
     }
     public static class Chunk extends KaitaiStruct.ReadWrite {
         public static Chunk fromFile(String fileName) throws IOException {
@@ -96,38 +99,41 @@ public class RepeatEosStruct extends KaitaiStruct.ReadWrite {
         public void _read() {
             this.offset = this._io.readU4le();
             this.len = this._io.readU4le();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU4le(this.offset);
             this._io.writeU4le(this.len);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private long offset;
         private long len;
         private RepeatEosStruct _root;
         private RepeatEosStruct _parent;
         public long offset() { return offset; }
-        public void setOffset(long _v) { offset = _v; }
+        public void setOffset(long _v) { _dirty = true; offset = _v; }
         public long len() { return len; }
-        public void setLen(long _v) { len = _v; }
+        public void setLen(long _v) { _dirty = true; len = _v; }
         public RepeatEosStruct _root() { return _root; }
-        public void set_root(RepeatEosStruct _v) { _root = _v; }
+        public void set_root(RepeatEosStruct _v) { _dirty = true; _root = _v; }
         public RepeatEosStruct _parent() { return _parent; }
-        public void set_parent(RepeatEosStruct _v) { _parent = _v; }
+        public void set_parent(RepeatEosStruct _v) { _dirty = true; _parent = _v; }
     }
     private List<Chunk> chunks;
     private RepeatEosStruct _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<Chunk> chunks() { return chunks; }
-    public void setChunks(List<Chunk> _v) { chunks = _v; }
+    public void setChunks(List<Chunk> _v) { _dirty = true; chunks = _v; }
     public RepeatEosStruct _root() { return _root; }
-    public void set_root(RepeatEosStruct _v) { _root = _v; }
+    public void set_root(RepeatEosStruct _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

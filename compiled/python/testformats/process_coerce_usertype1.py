@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ProcessCoerceUsertype1(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(ProcessCoerceUsertype1, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -31,7 +31,7 @@ class ProcessCoerceUsertype1(KaitaiStruct):
 
     class Foo(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(ProcessCoerceUsertype1.Foo, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -46,7 +46,7 @@ class ProcessCoerceUsertype1(KaitaiStruct):
 
     class Record(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(ProcessCoerceUsertype1.Record, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()

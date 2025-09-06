@@ -10,12 +10,13 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ExprSizeofType1(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ExprSizeofType1, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         pass
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -27,11 +28,11 @@ class ExprSizeofType1(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ExprSizeofType1.Block, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -41,6 +42,7 @@ class ExprSizeofType1(ReadWriteKaitaiStruct):
             self.c = self._io.read_bytes(2)
             self.d = ExprSizeofType1.Block.Subblock(self._io, self, self._root)
             self.d._read()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -57,22 +59,23 @@ class ExprSizeofType1(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if len(self.c) != 2:
                 raise kaitaistruct.ConsistencyError(u"c", len(self.c), 2)
             if self.d._root != self._root:
                 raise kaitaistruct.ConsistencyError(u"d", self.d._root, self._root)
             if self.d._parent != self:
                 raise kaitaistruct.ConsistencyError(u"d", self.d._parent, self)
+            self._dirty = False
 
         class Subblock(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                self._io = _io
+                super(ExprSizeofType1.Block.Subblock, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
             def _read(self):
                 self.a = self._io.read_bytes(4)
+                self._dirty = False
 
 
             def _fetch_instances(self):
@@ -85,9 +88,9 @@ class ExprSizeofType1(ReadWriteKaitaiStruct):
 
 
             def _check(self):
-                pass
                 if len(self.a) != 4:
                     raise kaitaistruct.ConsistencyError(u"a", len(self.a), 4)
+                self._dirty = False
 
 
 

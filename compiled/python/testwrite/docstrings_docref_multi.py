@@ -25,12 +25,13 @@ class DocstringsDocrefMulti(ReadWriteKaitaiStruct):
        Documentation name - http://www.example.com/three
     """
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(DocstringsDocrefMulti, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         pass
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -42,6 +43,6 @@ class DocstringsDocrefMulti(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
 

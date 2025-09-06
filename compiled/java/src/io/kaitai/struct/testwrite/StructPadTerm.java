@@ -51,6 +51,7 @@ public class StructPadTerm extends KaitaiStruct.ReadWrite {
         KaitaiStream _io__raw_strTermInclude = new ByteBufferKaitaiStream(this._raw_strTermInclude);
         this.strTermInclude = new BytesWrapper(_io__raw_strTermInclude, this, _root);
         this.strTermInclude._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -61,6 +62,7 @@ public class StructPadTerm extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         final KaitaiStream _io__raw_strPad = new ByteBufferKaitaiStream(this.strPad_InnerSize);
         this._io.addChildStream(_io__raw_strPad);
         {
@@ -168,6 +170,7 @@ public class StructPadTerm extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("str_term_include", this.strTermInclude._root(), _root());
         if (!Objects.equals(this.strTermInclude._parent(), this))
             throw new ConsistencyError("str_term_include", this.strTermInclude._parent(), this);
+        _dirty = false;
     }
     public static class BytesWrapper extends KaitaiStruct.ReadWrite {
         public static BytesWrapper fromFile(String fileName) throws IOException {
@@ -192,28 +195,31 @@ public class StructPadTerm extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.value = this._io.readBytesFull();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytes(this.value);
             if (!(this._io.isEof()))
                 throw new ConsistencyError("value", this._io.size() - this._io.pos(), 0);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private byte[] value;
         private StructPadTerm _root;
         private StructPadTerm _parent;
         public byte[] value() { return value; }
-        public void setValue(byte[] _v) { value = _v; }
+        public void setValue(byte[] _v) { _dirty = true; value = _v; }
         public StructPadTerm _root() { return _root; }
-        public void set_root(StructPadTerm _v) { _root = _v; }
+        public void set_root(StructPadTerm _v) { _dirty = true; _root = _v; }
         public StructPadTerm _parent() { return _parent; }
-        public void set_parent(StructPadTerm _v) { _parent = _v; }
+        public void set_parent(StructPadTerm _v) { _dirty = true; _parent = _v; }
     }
     private BytesWrapper strPad;
     private BytesWrapper strTerm;
@@ -230,31 +236,31 @@ public class StructPadTerm extends KaitaiStruct.ReadWrite {
     private byte[] _raw_strTermInclude;
     private int strTermInclude_InnerSize;
     public BytesWrapper strPad() { return strPad; }
-    public void setStrPad(BytesWrapper _v) { strPad = _v; }
+    public void setStrPad(BytesWrapper _v) { _dirty = true; strPad = _v; }
     public BytesWrapper strTerm() { return strTerm; }
-    public void setStrTerm(BytesWrapper _v) { strTerm = _v; }
+    public void setStrTerm(BytesWrapper _v) { _dirty = true; strTerm = _v; }
     public BytesWrapper strTermAndPad() { return strTermAndPad; }
-    public void setStrTermAndPad(BytesWrapper _v) { strTermAndPad = _v; }
+    public void setStrTermAndPad(BytesWrapper _v) { _dirty = true; strTermAndPad = _v; }
     public BytesWrapper strTermInclude() { return strTermInclude; }
-    public void setStrTermInclude(BytesWrapper _v) { strTermInclude = _v; }
+    public void setStrTermInclude(BytesWrapper _v) { _dirty = true; strTermInclude = _v; }
     public StructPadTerm _root() { return _root; }
-    public void set_root(StructPadTerm _v) { _root = _v; }
+    public void set_root(StructPadTerm _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_strPad() { return _raw_strPad; }
-    public void set_raw_StrPad(byte[] _v) { _raw_strPad = _v; }
+    public void set_raw_StrPad(byte[] _v) { _dirty = true; _raw_strPad = _v; }
     public int strPad_InnerSize() { return strPad_InnerSize; }
-    public void setStrPad_InnerSize(int _v) { strPad_InnerSize = _v; }
+    public void setStrPad_InnerSize(int _v) { _dirty = true; strPad_InnerSize = _v; }
     public byte[] _raw_strTerm() { return _raw_strTerm; }
-    public void set_raw_StrTerm(byte[] _v) { _raw_strTerm = _v; }
+    public void set_raw_StrTerm(byte[] _v) { _dirty = true; _raw_strTerm = _v; }
     public int strTerm_InnerSize() { return strTerm_InnerSize; }
-    public void setStrTerm_InnerSize(int _v) { strTerm_InnerSize = _v; }
+    public void setStrTerm_InnerSize(int _v) { _dirty = true; strTerm_InnerSize = _v; }
     public byte[] _raw_strTermAndPad() { return _raw_strTermAndPad; }
-    public void set_raw_StrTermAndPad(byte[] _v) { _raw_strTermAndPad = _v; }
+    public void set_raw_StrTermAndPad(byte[] _v) { _dirty = true; _raw_strTermAndPad = _v; }
     public int strTermAndPad_InnerSize() { return strTermAndPad_InnerSize; }
-    public void setStrTermAndPad_InnerSize(int _v) { strTermAndPad_InnerSize = _v; }
+    public void setStrTermAndPad_InnerSize(int _v) { _dirty = true; strTermAndPad_InnerSize = _v; }
     public byte[] _raw_strTermInclude() { return _raw_strTermInclude; }
-    public void set_raw_StrTermInclude(byte[] _v) { _raw_strTermInclude = _v; }
+    public void set_raw_StrTermInclude(byte[] _v) { _dirty = true; _raw_strTermInclude = _v; }
     public int strTermInclude_InnerSize() { return strTermInclude_InnerSize; }
-    public void setStrTermInclude_InnerSize(int _v) { strTermInclude_InnerSize = _v; }
+    public void setStrTermInclude_InnerSize(int _v) { _dirty = true; strTermInclude_InnerSize = _v; }
 }

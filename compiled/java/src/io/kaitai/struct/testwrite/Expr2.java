@@ -37,6 +37,7 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
         this.str1._read();
         this.str2 = new ModStr(this._io, this, _root);
         this.str2._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -45,6 +46,7 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this.str1._write_Seq(this._io);
         this.str2._write_Seq(this._io);
     }
@@ -58,6 +60,7 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("str2", this.str2._root(), _root());
         if (!Objects.equals(this.str2._parent(), this))
             throw new ConsistencyError("str2", this.str2._parent(), this);
+        _dirty = false;
     }
     public static class ModStr extends KaitaiStruct.ReadWrite {
         public static ModStr fromFile(String fileName) throws IOException {
@@ -87,18 +90,24 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
             KaitaiStream _io__raw_rest = new ByteBufferKaitaiStream(this._raw_rest);
             this.rest = new Tuple(_io__raw_rest, this, _root);
             this.rest._read();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
             this.rest._fetchInstances();
             char5();
+            if (this.char5 != null) {
+            }
             tuple5();
-            this.tuple5._fetchInstances();
+            if (this.tuple5 != null) {
+                this.tuple5._fetchInstances();
+            }
         }
 
         public void _write_Seq() {
-            _writeChar5 = _toWriteChar5;
-            _writeTuple5 = _toWriteTuple5;
+            _assertNotDirty();
+            _shouldWriteChar5 = _enabledChar5;
+            _shouldWriteTuple5 = _enabledTuple5;
             this._io.writeU2le(this.lenOrig);
             this._io.writeBytes((this.str).getBytes(Charset.forName("UTF-8")));
             final KaitaiStream _io__raw_rest = new ByteBufferKaitaiStream(3);
@@ -127,35 +136,43 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("rest", this.rest._root(), _root());
             if (!Objects.equals(this.rest._parent(), this))
                 throw new ConsistencyError("rest", this.rest._parent(), this);
+            if (_enabledChar5) {
+                if ((this.char5).getBytes(Charset.forName("ASCII")).length != 1)
+                    throw new ConsistencyError("char5", (this.char5).getBytes(Charset.forName("ASCII")).length, 1);
+            }
+            if (_enabledTuple5) {
+                if (!Objects.equals(this.tuple5._root(), _root()))
+                    throw new ConsistencyError("tuple5", this.tuple5._root(), _root());
+                if (!Objects.equals(this.tuple5._parent(), this))
+                    throw new ConsistencyError("tuple5", this.tuple5._parent(), this);
+            }
+            _dirty = false;
         }
         private String char5;
-        private boolean _writeChar5 = false;
-        private boolean _toWriteChar5 = true;
+        private boolean _shouldWriteChar5 = false;
+        private boolean _enabledChar5 = true;
         public String char5() {
-            if (_writeChar5)
+            if (_shouldWriteChar5)
                 _writeChar5();
             if (this.char5 != null)
                 return this.char5;
+            if (!_enabledChar5)
+                return null;
             long _pos = this._io.pos();
             this._io.seek(5);
             this.char5 = new String(this._io.readBytes(1), StandardCharsets.US_ASCII);
             this._io.seek(_pos);
             return this.char5;
         }
-        public void setChar5(String _v) { char5 = _v; }
-        public void setChar5_ToWrite(boolean _v) { _toWriteChar5 = _v; }
+        public void setChar5(String _v) { _dirty = true; char5 = _v; }
+        public void setChar5_Enabled(boolean _v) { _dirty = true; _enabledChar5 = _v; }
 
-        public void _writeChar5() {
-            _writeChar5 = false;
+        private void _writeChar5() {
+            _shouldWriteChar5 = false;
             long _pos = this._io.pos();
             this._io.seek(5);
             this._io.writeBytes((this.char5).getBytes(Charset.forName("ASCII")));
             this._io.seek(_pos);
-        }
-
-        public void _checkChar5() {
-            if ((this.char5).getBytes(Charset.forName("ASCII")).length != 1)
-                throw new ConsistencyError("char5", (this.char5).getBytes(Charset.forName("ASCII")).length, 1);
         }
         private Integer lenMod;
         public Integer lenMod() {
@@ -166,13 +183,15 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
         }
         public void _invalidateLenMod() { this.lenMod = null; }
         private Tuple tuple5;
-        private boolean _writeTuple5 = false;
-        private boolean _toWriteTuple5 = true;
+        private boolean _shouldWriteTuple5 = false;
+        private boolean _enabledTuple5 = true;
         public Tuple tuple5() {
-            if (_writeTuple5)
+            if (_shouldWriteTuple5)
                 _writeTuple5();
             if (this.tuple5 != null)
                 return this.tuple5;
+            if (!_enabledTuple5)
+                return null;
             long _pos = this._io.pos();
             this._io.seek(5);
             this.tuple5 = new Tuple(this._io, this, _root);
@@ -180,22 +199,15 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
             this._io.seek(_pos);
             return this.tuple5;
         }
-        public void setTuple5(Tuple _v) { tuple5 = _v; }
-        public void setTuple5_ToWrite(boolean _v) { _toWriteTuple5 = _v; }
+        public void setTuple5(Tuple _v) { _dirty = true; tuple5 = _v; }
+        public void setTuple5_Enabled(boolean _v) { _dirty = true; _enabledTuple5 = _v; }
 
-        public void _writeTuple5() {
-            _writeTuple5 = false;
+        private void _writeTuple5() {
+            _shouldWriteTuple5 = false;
             long _pos = this._io.pos();
             this._io.seek(5);
             this.tuple5._write_Seq(this._io);
             this._io.seek(_pos);
-        }
-
-        public void _checkTuple5() {
-            if (!Objects.equals(this.tuple5._root(), _root()))
-                throw new ConsistencyError("tuple5", this.tuple5._root(), _root());
-            if (!Objects.equals(this.tuple5._parent(), this))
-                throw new ConsistencyError("tuple5", this.tuple5._parent(), this);
         }
         private int lenOrig;
         private String str;
@@ -204,17 +216,17 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
         private Expr2 _parent;
         private byte[] _raw_rest;
         public int lenOrig() { return lenOrig; }
-        public void setLenOrig(int _v) { lenOrig = _v; }
+        public void setLenOrig(int _v) { _dirty = true; lenOrig = _v; }
         public String str() { return str; }
-        public void setStr(String _v) { str = _v; }
+        public void setStr(String _v) { _dirty = true; str = _v; }
         public Tuple rest() { return rest; }
-        public void setRest(Tuple _v) { rest = _v; }
+        public void setRest(Tuple _v) { _dirty = true; rest = _v; }
         public Expr2 _root() { return _root; }
-        public void set_root(Expr2 _v) { _root = _v; }
+        public void set_root(Expr2 _v) { _dirty = true; _root = _v; }
         public Expr2 _parent() { return _parent; }
-        public void set_parent(Expr2 _v) { _parent = _v; }
+        public void set_parent(Expr2 _v) { _dirty = true; _parent = _v; }
         public byte[] _raw_rest() { return _raw_rest; }
-        public void set_raw_Rest(byte[] _v) { _raw_rest = _v; }
+        public void set_raw_Rest(byte[] _v) { _dirty = true; _raw_rest = _v; }
     }
     public static class Tuple extends KaitaiStruct.ReadWrite {
         public static Tuple fromFile(String fileName) throws IOException {
@@ -241,18 +253,21 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
             this.byte0 = this._io.readU1();
             this.byte1 = this._io.readU1();
             this.byte2 = this._io.readU1();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU1(this.byte0);
             this._io.writeU1(this.byte1);
             this._io.writeU1(this.byte2);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private Integer avg;
         public Integer avg() {
@@ -268,15 +283,15 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
         private Expr2 _root;
         private Expr2.ModStr _parent;
         public int byte0() { return byte0; }
-        public void setByte0(int _v) { byte0 = _v; }
+        public void setByte0(int _v) { _dirty = true; byte0 = _v; }
         public int byte1() { return byte1; }
-        public void setByte1(int _v) { byte1 = _v; }
+        public void setByte1(int _v) { _dirty = true; byte1 = _v; }
         public int byte2() { return byte2; }
-        public void setByte2(int _v) { byte2 = _v; }
+        public void setByte2(int _v) { _dirty = true; byte2 = _v; }
         public Expr2 _root() { return _root; }
-        public void set_root(Expr2 _v) { _root = _v; }
+        public void set_root(Expr2 _v) { _dirty = true; _root = _v; }
         public Expr2.ModStr _parent() { return _parent; }
-        public void set_parent(Expr2.ModStr _v) { _parent = _v; }
+        public void set_parent(Expr2.ModStr _v) { _dirty = true; _parent = _v; }
     }
     private Integer str1Avg;
     public Integer str1Avg() {
@@ -339,11 +354,11 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
     private Expr2 _root;
     private KaitaiStruct.ReadWrite _parent;
     public ModStr str1() { return str1; }
-    public void setStr1(ModStr _v) { str1 = _v; }
+    public void setStr1(ModStr _v) { _dirty = true; str1 = _v; }
     public ModStr str2() { return str2; }
-    public void setStr2(ModStr _v) { str2 = _v; }
+    public void setStr2(ModStr _v) { _dirty = true; str2 = _v; }
     public Expr2 _root() { return _root; }
-    public void set_root(Expr2 _v) { _root = _v; }
+    public void set_root(Expr2 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

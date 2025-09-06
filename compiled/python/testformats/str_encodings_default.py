@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class StrEncodingsDefault(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(StrEncodingsDefault, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -27,7 +27,7 @@ class StrEncodingsDefault(KaitaiStruct):
 
     class Subtype(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(StrEncodingsDefault.Subtype, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()

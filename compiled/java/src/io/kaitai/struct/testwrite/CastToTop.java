@@ -32,28 +32,41 @@ public class CastToTop extends KaitaiStruct.ReadWrite {
     }
     public void _read() {
         this.code = this._io.readU1();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
         header();
-        this.header._fetchInstances();
+        if (this.header != null) {
+            this.header._fetchInstances();
+        }
     }
 
     public void _write_Seq() {
-        _writeHeader = _toWriteHeader;
+        _assertNotDirty();
+        _shouldWriteHeader = _enabledHeader;
         this._io.writeU1(this.code);
     }
 
     public void _check() {
+        if (_enabledHeader) {
+            if (!Objects.equals(this.header._root(), _root()))
+                throw new ConsistencyError("header", this.header._root(), _root());
+            if (!Objects.equals(this.header._parent(), this))
+                throw new ConsistencyError("header", this.header._parent(), this);
+        }
+        _dirty = false;
     }
     private CastToTop header;
-    private boolean _writeHeader = false;
-    private boolean _toWriteHeader = true;
+    private boolean _shouldWriteHeader = false;
+    private boolean _enabledHeader = true;
     public CastToTop header() {
-        if (_writeHeader)
+        if (_shouldWriteHeader)
             _writeHeader();
         if (this.header != null)
             return this.header;
+        if (!_enabledHeader)
+            return null;
         long _pos = this._io.pos();
         this._io.seek(1);
         this.header = new CastToTop(this._io, this, _root);
@@ -61,22 +74,15 @@ public class CastToTop extends KaitaiStruct.ReadWrite {
         this._io.seek(_pos);
         return this.header;
     }
-    public void setHeader(CastToTop _v) { header = _v; }
-    public void setHeader_ToWrite(boolean _v) { _toWriteHeader = _v; }
+    public void setHeader(CastToTop _v) { _dirty = true; header = _v; }
+    public void setHeader_Enabled(boolean _v) { _dirty = true; _enabledHeader = _v; }
 
-    public void _writeHeader() {
-        _writeHeader = false;
+    private void _writeHeader() {
+        _shouldWriteHeader = false;
         long _pos = this._io.pos();
         this._io.seek(1);
         this.header._write_Seq(this._io);
         this._io.seek(_pos);
-    }
-
-    public void _checkHeader() {
-        if (!Objects.equals(this.header._root(), _root()))
-            throw new ConsistencyError("header", this.header._root(), _root());
-        if (!Objects.equals(this.header._parent(), this))
-            throw new ConsistencyError("header", this.header._parent(), this);
     }
     private CastToTop headerCasted;
     public CastToTop headerCasted() {
@@ -90,9 +96,9 @@ public class CastToTop extends KaitaiStruct.ReadWrite {
     private CastToTop _root;
     private KaitaiStruct.ReadWrite _parent;
     public int code() { return code; }
-    public void setCode(int _v) { code = _v; }
+    public void setCode(int _v) { _dirty = true; code = _v; }
     public CastToTop _root() { return _root; }
-    public void set_root(CastToTop _v) { _root = _v; }
+    public void set_root(CastToTop _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

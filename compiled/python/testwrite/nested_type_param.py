@@ -10,13 +10,14 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class NestedTypeParam(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(NestedTypeParam, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self.main_seq = NestedTypeParam.Nested.MyType(5, self._io, self, self._root)
         self.main_seq._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -30,22 +31,23 @@ class NestedTypeParam(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.main_seq._root != self._root:
             raise kaitaistruct.ConsistencyError(u"main_seq", self.main_seq._root, self._root)
         if self.main_seq._parent != self:
             raise kaitaistruct.ConsistencyError(u"main_seq", self.main_seq._parent, self)
         if self.main_seq.my_len != 5:
             raise kaitaistruct.ConsistencyError(u"main_seq", self.main_seq.my_len, 5)
+        self._dirty = False
 
     class Nested(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(NestedTypeParam.Nested, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             pass
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -57,17 +59,18 @@ class NestedTypeParam(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
         class MyType(ReadWriteKaitaiStruct):
             def __init__(self, my_len, _io=None, _parent=None, _root=None):
-                self._io = _io
+                super(NestedTypeParam.Nested.MyType, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
                 self.my_len = my_len
 
             def _read(self):
                 self.body = (self._io.read_bytes(self.my_len)).decode(u"ASCII")
+                self._dirty = False
 
 
             def _fetch_instances(self):
@@ -80,9 +83,9 @@ class NestedTypeParam(ReadWriteKaitaiStruct):
 
 
             def _check(self):
-                pass
                 if len((self.body).encode(u"ASCII")) != self.my_len:
                     raise kaitaistruct.ConsistencyError(u"body", len((self.body).encode(u"ASCII")), self.my_len)
+                self._dirty = False
 
 
 

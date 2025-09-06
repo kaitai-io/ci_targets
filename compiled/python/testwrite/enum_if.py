@@ -15,7 +15,7 @@ class EnumIf(ReadWriteKaitaiStruct):
         a_string = 83
         a_tuple = 84
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(EnumIf, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -26,6 +26,7 @@ class EnumIf(ReadWriteKaitaiStruct):
         self.op2._read()
         self.op3 = EnumIf.Operation(self._io, self, self._root)
         self.op3._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -43,7 +44,6 @@ class EnumIf(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.op1._root != self._root:
             raise kaitaistruct.ConsistencyError(u"op1", self.op1._root, self._root)
         if self.op1._parent != self:
@@ -56,16 +56,18 @@ class EnumIf(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"op3", self.op3._root, self._root)
         if self.op3._parent != self:
             raise kaitaistruct.ConsistencyError(u"op3", self.op3._parent, self)
+        self._dirty = False
 
     class ArgStr(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(EnumIf.ArgStr, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.len = self._io.read_u1()
             self.str = (self._io.read_bytes(self.len)).decode(u"UTF-8")
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -79,20 +81,21 @@ class EnumIf(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if len((self.str).encode(u"UTF-8")) != self.len:
                 raise kaitaistruct.ConsistencyError(u"str", len((self.str).encode(u"UTF-8")), self.len)
+            self._dirty = False
 
 
     class ArgTuple(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(EnumIf.ArgTuple, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.num1 = self._io.read_u1()
             self.num2 = self._io.read_u1()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -106,12 +109,12 @@ class EnumIf(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     class Operation(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(EnumIf.Operation, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -127,6 +130,7 @@ class EnumIf(ReadWriteKaitaiStruct):
                 self.arg_str = EnumIf.ArgStr(self._io, self, self._root)
                 self.arg_str._read()
 
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -155,7 +159,6 @@ class EnumIf(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if self.opcode == EnumIf.Opcodes.a_tuple:
                 pass
                 if self.arg_tuple._root != self._root:
@@ -170,6 +173,7 @@ class EnumIf(ReadWriteKaitaiStruct):
                 if self.arg_str._parent != self:
                     raise kaitaistruct.ConsistencyError(u"arg_str", self.arg_str._parent, self)
 
+            self._dirty = False
 
 
 

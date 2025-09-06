@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ParamsPassStruct(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(ParamsPassStruct, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -27,7 +27,7 @@ class ParamsPassStruct(KaitaiStruct):
 
     class Block(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(ParamsPassStruct.Block, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -42,7 +42,7 @@ class ParamsPassStruct(KaitaiStruct):
 
     class StructType(KaitaiStruct):
         def __init__(self, foo, _io, _parent=None, _root=None):
-            self._io = _io
+            super(ParamsPassStruct.StructType, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self.foo = foo
@@ -58,7 +58,7 @@ class ParamsPassStruct(KaitaiStruct):
 
         class Baz(KaitaiStruct):
             def __init__(self, foo, _io, _parent=None, _root=None):
-                self._io = _io
+                super(ParamsPassStruct.StructType.Baz, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
                 self.foo = foo

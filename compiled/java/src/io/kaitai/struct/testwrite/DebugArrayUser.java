@@ -72,6 +72,7 @@ public class DebugArrayUser extends KaitaiStruct.ReadWrite {
             }
         }
         _attrEnd.put("arrayOfCats", this._io.pos());
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -82,6 +83,7 @@ public class DebugArrayUser extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this.oneCat._write_Seq(this._io);
         for (int i = 0; i < this.arrayOfCats.size(); i++) {
             this.arrayOfCats.get(((Number) (i)).intValue())._write_Seq(this._io);
@@ -101,6 +103,7 @@ public class DebugArrayUser extends KaitaiStruct.ReadWrite {
             if (!Objects.equals(this.arrayOfCats.get(((Number) (i)).intValue())._parent(), this))
                 throw new ConsistencyError("array_of_cats", this.arrayOfCats.get(((Number) (i)).intValue())._parent(), this);
         }
+        _dirty = false;
     }
     public static class Cat extends KaitaiStruct.ReadWrite {
         public Map<String, Integer> _attrStart = new HashMap<String, Integer>();
@@ -133,37 +136,40 @@ public class DebugArrayUser extends KaitaiStruct.ReadWrite {
             _attrStart.put("meow", this._io.pos());
             this.meow = this._io.readU1();
             _attrEnd.put("meow", this._io.pos());
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU1(this.meow);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private int meow;
         private DebugArrayUser _root;
         private DebugArrayUser _parent;
         public int meow() { return meow; }
-        public void setMeow(int _v) { meow = _v; }
+        public void setMeow(int _v) { _dirty = true; meow = _v; }
         public DebugArrayUser _root() { return _root; }
-        public void set_root(DebugArrayUser _v) { _root = _v; }
+        public void set_root(DebugArrayUser _v) { _dirty = true; _root = _v; }
         public DebugArrayUser _parent() { return _parent; }
-        public void set_parent(DebugArrayUser _v) { _parent = _v; }
+        public void set_parent(DebugArrayUser _v) { _dirty = true; _parent = _v; }
     }
     private Cat oneCat;
     private List<Cat> arrayOfCats;
     private DebugArrayUser _root;
     private KaitaiStruct.ReadWrite _parent;
     public Cat oneCat() { return oneCat; }
-    public void setOneCat(Cat _v) { oneCat = _v; }
+    public void setOneCat(Cat _v) { _dirty = true; oneCat = _v; }
     public List<Cat> arrayOfCats() { return arrayOfCats; }
-    public void setArrayOfCats(List<Cat> _v) { arrayOfCats = _v; }
+    public void setArrayOfCats(List<Cat> _v) { _dirty = true; arrayOfCats = _v; }
     public DebugArrayUser _root() { return _root; }
-    public void set_root(DebugArrayUser _v) { _root = _v; }
+    public void set_root(DebugArrayUser _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

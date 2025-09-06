@@ -12,7 +12,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ImportsParamsDefEnumImported(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ImportsParamsDefEnumImported, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -21,6 +21,7 @@ class ImportsParamsDefEnumImported(ReadWriteKaitaiStruct):
         self.one._read()
         self.two = params_def_enum_imported.ParamsDefEnumImported(self.one.pet_1, self.one.pet_2, self._io)
         self.two._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -36,10 +37,10 @@ class ImportsParamsDefEnumImported(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.two.pet_1_param != self.one.pet_1:
             raise kaitaistruct.ConsistencyError(u"two", self.two.pet_1_param, self.one.pet_1)
         if self.two.pet_2_param != self.one.pet_2:
             raise kaitaistruct.ConsistencyError(u"two", self.two.pet_2_param, self.one.pet_2)
+        self._dirty = False
 
 

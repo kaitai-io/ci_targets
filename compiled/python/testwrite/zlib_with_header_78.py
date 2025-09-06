@@ -11,13 +11,14 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ZlibWithHeader78(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ZlibWithHeader78, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self._raw_data = self._io.read_bytes_full()
         self.data = zlib.decompress(self._raw_data)
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -33,6 +34,6 @@ class ZlibWithHeader78(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
 

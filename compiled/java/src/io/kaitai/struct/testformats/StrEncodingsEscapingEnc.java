@@ -72,6 +72,8 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
 
         public void _fetchInstances() {
             v();
+            if (this.v != null) {
+            }
         }
         private String v;
         public String v() {
@@ -112,6 +114,8 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
 
         public void _fetchInstances() {
             v();
+            if (this.v != null) {
+            }
         }
         private String v;
         public String v() {
@@ -152,6 +156,8 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
 
         public void _fetchInstances() {
             v();
+            if (this.v != null) {
+            }
         }
         private String v;
         public String v() {
@@ -192,6 +198,8 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
 
         public void _fetchInstances() {
             v();
+            if (this.v != null) {
+            }
         }
         private String v;
         public String v() {

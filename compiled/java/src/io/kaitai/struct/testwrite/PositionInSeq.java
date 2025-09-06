@@ -37,17 +37,21 @@ public class PositionInSeq extends KaitaiStruct.ReadWrite {
         for (int i = 0; i < header().qtyNumbers(); i++) {
             this.numbers.add(this._io.readU1());
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
         for (int i = 0; i < this.numbers.size(); i++) {
         }
         header();
-        this.header._fetchInstances();
+        if (this.header != null) {
+            this.header._fetchInstances();
+        }
     }
 
     public void _write_Seq() {
-        _writeHeader = _toWriteHeader;
+        _assertNotDirty();
+        _shouldWriteHeader = _enabledHeader;
         if (this.numbers.size() != header().qtyNumbers())
             throw new ConsistencyError("numbers", this.numbers.size(), header().qtyNumbers());
         for (int i = 0; i < this.numbers.size(); i++) {
@@ -58,6 +62,13 @@ public class PositionInSeq extends KaitaiStruct.ReadWrite {
     public void _check() {
         for (int i = 0; i < this.numbers.size(); i++) {
         }
+        if (_enabledHeader) {
+            if (!Objects.equals(this.header._root(), _root()))
+                throw new ConsistencyError("header", this.header._root(), _root());
+            if (!Objects.equals(this.header._parent(), this))
+                throw new ConsistencyError("header", this.header._parent(), this);
+        }
+        _dirty = false;
     }
     public static class HeaderObj extends KaitaiStruct.ReadWrite {
         public static HeaderObj fromFile(String fileName) throws IOException {
@@ -82,35 +93,40 @@ public class PositionInSeq extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.qtyNumbers = this._io.readU4le();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU4le(this.qtyNumbers);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private long qtyNumbers;
         private PositionInSeq _root;
         private PositionInSeq _parent;
         public long qtyNumbers() { return qtyNumbers; }
-        public void setQtyNumbers(long _v) { qtyNumbers = _v; }
+        public void setQtyNumbers(long _v) { _dirty = true; qtyNumbers = _v; }
         public PositionInSeq _root() { return _root; }
-        public void set_root(PositionInSeq _v) { _root = _v; }
+        public void set_root(PositionInSeq _v) { _dirty = true; _root = _v; }
         public PositionInSeq _parent() { return _parent; }
-        public void set_parent(PositionInSeq _v) { _parent = _v; }
+        public void set_parent(PositionInSeq _v) { _dirty = true; _parent = _v; }
     }
     private HeaderObj header;
-    private boolean _writeHeader = false;
-    private boolean _toWriteHeader = true;
+    private boolean _shouldWriteHeader = false;
+    private boolean _enabledHeader = true;
     public HeaderObj header() {
-        if (_writeHeader)
+        if (_shouldWriteHeader)
             _writeHeader();
         if (this.header != null)
             return this.header;
+        if (!_enabledHeader)
+            return null;
         long _pos = this._io.pos();
         this._io.seek(16);
         this.header = new HeaderObj(this._io, this, _root);
@@ -118,30 +134,23 @@ public class PositionInSeq extends KaitaiStruct.ReadWrite {
         this._io.seek(_pos);
         return this.header;
     }
-    public void setHeader(HeaderObj _v) { header = _v; }
-    public void setHeader_ToWrite(boolean _v) { _toWriteHeader = _v; }
+    public void setHeader(HeaderObj _v) { _dirty = true; header = _v; }
+    public void setHeader_Enabled(boolean _v) { _dirty = true; _enabledHeader = _v; }
 
-    public void _writeHeader() {
-        _writeHeader = false;
+    private void _writeHeader() {
+        _shouldWriteHeader = false;
         long _pos = this._io.pos();
         this._io.seek(16);
         this.header._write_Seq(this._io);
         this._io.seek(_pos);
     }
-
-    public void _checkHeader() {
-        if (!Objects.equals(this.header._root(), _root()))
-            throw new ConsistencyError("header", this.header._root(), _root());
-        if (!Objects.equals(this.header._parent(), this))
-            throw new ConsistencyError("header", this.header._parent(), this);
-    }
     private List<Integer> numbers;
     private PositionInSeq _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<Integer> numbers() { return numbers; }
-    public void setNumbers(List<Integer> _v) { numbers = _v; }
+    public void setNumbers(List<Integer> _v) { _dirty = true; numbers = _v; }
     public PositionInSeq _root() { return _root; }
-    public void set_root(PositionInSeq _v) { _root = _v; }
+    public void set_root(PositionInSeq _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

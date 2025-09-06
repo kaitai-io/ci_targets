@@ -39,6 +39,7 @@ public class RepeatNStrz extends KaitaiStruct.ReadWrite {
         for (int i = 0; i < qty(); i++) {
             this.lines.add(new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8));
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -47,6 +48,7 @@ public class RepeatNStrz extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU4le(this.qty);
         for (int i = 0; i < this.lines.size(); i++) {
             this._io.writeBytes((this.lines.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")));
@@ -61,17 +63,18 @@ public class RepeatNStrz extends KaitaiStruct.ReadWrite {
             if (KaitaiStream.byteArrayIndexOf((this.lines.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)) != -1)
                 throw new ConsistencyError("lines", KaitaiStream.byteArrayIndexOf((this.lines.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)), -1);
         }
+        _dirty = false;
     }
     private long qty;
     private List<String> lines;
     private RepeatNStrz _root;
     private KaitaiStruct.ReadWrite _parent;
     public long qty() { return qty; }
-    public void setQty(long _v) { qty = _v; }
+    public void setQty(long _v) { _dirty = true; qty = _v; }
     public List<String> lines() { return lines; }
-    public void setLines(List<String> _v) { lines = _v; }
+    public void setLines(List<String> _v) { _dirty = true; lines = _v; }
     public RepeatNStrz _root() { return _root; }
-    public void set_root(RepeatNStrz _v) { _root = _v; }
+    public void set_root(RepeatNStrz _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

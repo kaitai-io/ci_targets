@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class BufferedStruct(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(BufferedStruct, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -26,6 +26,7 @@ class BufferedStruct(ReadWriteKaitaiStruct):
         self.block2 = BufferedStruct.Block(_io__raw_block2, self, self._root)
         self.block2._read()
         self.finisher = self._io.read_u4le()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -64,7 +65,6 @@ class BufferedStruct(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.block1._root != self._root:
             raise kaitaistruct.ConsistencyError(u"block1", self.block1._root, self._root)
         if self.block1._parent != self:
@@ -73,16 +73,18 @@ class BufferedStruct(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"block2", self.block2._root, self._root)
         if self.block2._parent != self:
             raise kaitaistruct.ConsistencyError(u"block2", self.block2._parent, self)
+        self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(BufferedStruct.Block, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.number1 = self._io.read_u4le()
             self.number2 = self._io.read_u4le()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -96,7 +98,7 @@ class BufferedStruct(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
 

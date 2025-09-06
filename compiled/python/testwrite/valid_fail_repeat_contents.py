@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ValidFailRepeatContents(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ValidFailRepeatContents, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -23,6 +23,7 @@ class ValidFailRepeatContents(ReadWriteKaitaiStruct):
                 raise kaitaistruct.ValidationNotEqualError(b"\x12\x34\x56\x78", self.foo[i], self._io, u"/seq/0")
             i += 1
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -45,7 +46,6 @@ class ValidFailRepeatContents(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         for i in range(len(self.foo)):
             pass
             if len(self.foo[i]) != 4:
@@ -53,5 +53,6 @@ class ValidFailRepeatContents(ReadWriteKaitaiStruct):
             if not self.foo[i] == b"\x12\x34\x56\x78":
                 raise kaitaistruct.ValidationNotEqualError(b"\x12\x34\x56\x78", self.foo[i], None, u"/seq/0")
 
+        self._dirty = False
 
 

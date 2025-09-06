@@ -12,7 +12,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ImportsCastToImported2(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ImportsCastToImported2, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -21,6 +21,7 @@ class ImportsCastToImported2(ReadWriteKaitaiStruct):
         self.hw._read()
         self.two = cast_to_imported2.CastToImported2(self.hw, self._io)
         self.two._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -36,8 +37,8 @@ class ImportsCastToImported2(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.two.hw_param != self.hw:
             raise kaitaistruct.ConsistencyError(u"two", self.two.hw_param, self.hw)
+        self._dirty = False
 
 

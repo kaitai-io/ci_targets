@@ -10,17 +10,18 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ValidFailInst(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ValidFailInst, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_inst = False
-        self.inst__to_write = True
+        self.inst__enabled = True
 
     def _read(self):
         if self.inst >= 0:
             pass
             self.a = self._io.read_u1()
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -29,11 +30,14 @@ class ValidFailInst(ReadWriteKaitaiStruct):
             pass
 
         _ = self.inst
+        if hasattr(self, '_m_inst'):
+            pass
+
 
 
     def _write__seq(self, io=None):
         super(ValidFailInst, self)._write__seq(io)
-        self._should_write_inst = self.inst__to_write
+        self._should_write_inst = self.inst__enabled
         if self.inst >= 0:
             pass
             self._io.write_u1(self.a)
@@ -41,7 +45,12 @@ class ValidFailInst(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        if self.inst__enabled:
+            pass
+            if not self._m_inst == 80:
+                raise kaitaistruct.ValidationNotEqualError(80, self._m_inst, None, u"/instances/inst")
+
+        self._dirty = False
 
     @property
     def inst(self):
@@ -49,6 +58,9 @@ class ValidFailInst(ReadWriteKaitaiStruct):
             self._write_inst()
         if hasattr(self, '_m_inst'):
             return self._m_inst
+
+        if not self.inst__enabled:
+            return None
 
         _pos = self._io.pos()
         self._io.seek(5)
@@ -60,6 +72,7 @@ class ValidFailInst(ReadWriteKaitaiStruct):
 
     @inst.setter
     def inst(self, v):
+        self._dirty = True
         self._m_inst = v
 
     def _write_inst(self):
@@ -68,11 +81,5 @@ class ValidFailInst(ReadWriteKaitaiStruct):
         self._io.seek(5)
         self._io.write_u1(self._m_inst)
         self._io.seek(_pos)
-
-
-    def _check_inst(self):
-        pass
-        if not self._m_inst == 80:
-            raise kaitaistruct.ValidationNotEqualError(80, self._m_inst, None, u"/instances/inst")
 
 

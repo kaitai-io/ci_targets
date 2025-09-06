@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class StructPadTerm(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(StructPadTerm, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -35,6 +35,7 @@ class StructPadTerm(ReadWriteKaitaiStruct):
         _io__raw_str_term_include = KaitaiStream(BytesIO(self._raw_str_term_include))
         self.str_term_include = StructPadTerm.BytesWrapper(_io__raw_str_term_include, self, self._root)
         self.str_term_include._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -117,7 +118,6 @@ class StructPadTerm(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.str_pad._root != self._root:
             raise kaitaistruct.ConsistencyError(u"str_pad", self.str_pad._root, self._root)
         if self.str_pad._parent != self:
@@ -134,15 +134,17 @@ class StructPadTerm(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"str_term_include", self.str_term_include._root, self._root)
         if self.str_term_include._parent != self:
             raise kaitaistruct.ConsistencyError(u"str_term_include", self.str_term_include._parent, self)
+        self._dirty = False
 
     class BytesWrapper(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(StructPadTerm.BytesWrapper, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.value = self._io.read_bytes_full()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -157,7 +159,7 @@ class StructPadTerm(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
 

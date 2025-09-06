@@ -47,6 +47,7 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
         this.intoA._read();
         this.lastAccessor = new Baz(this._io, this, _root);
         this.lastAccessor._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -57,12 +58,17 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
         this.intoA._fetchInstances();
         this.lastAccessor._fetchInstances();
         aMid();
+        if (this.aMid != null) {
+        }
         bMid();
+        if (this.bMid != null) {
+        }
     }
 
     public void _write_Seq() {
-        _writeAMid = _toWriteAMid;
-        _writeBMid = _toWriteBMid;
+        _assertNotDirty();
+        _shouldWriteAMid = _enabledAMid;
+        _shouldWriteBMid = _enabledBMid;
         final KaitaiStream _io__raw_sizedA = new ByteBufferKaitaiStream(6);
         this._io.addChildStream(_io__raw_sizedA);
         {
@@ -128,6 +134,11 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("last_accessor", this.lastAccessor._root(), _root());
         if (!Objects.equals(this.lastAccessor._parent(), this))
             throw new ConsistencyError("last_accessor", this.lastAccessor._parent(), this);
+        if (_enabledAMid) {
+        }
+        if (_enabledBMid) {
+        }
+        _dirty = false;
     }
     public static class Baz extends KaitaiStruct.ReadWrite {
         public static Baz fromFile(String fileName) throws IOException {
@@ -154,6 +165,7 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
             if (_parent().intoB().inst().last() == 89) {
                 this.v = this._io.readU1();
             }
+            _dirty = false;
         }
 
         public void _fetchInstances() {
@@ -162,6 +174,7 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             if (_parent().intoB().inst().last() == 89) {
                 this._io.writeU1(this.v);
             }
@@ -170,16 +183,17 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
         public void _check() {
             if (_parent().intoB().inst().last() == 89) {
             }
+            _dirty = false;
         }
         private Integer v;
         private InstanceIoUserEarlier _root;
         private InstanceIoUserEarlier _parent;
         public Integer v() { return v; }
-        public void setV(Integer _v) { v = _v; }
+        public void setV(Integer _v) { _dirty = true; v = _v; }
         public InstanceIoUserEarlier _root() { return _root; }
-        public void set_root(InstanceIoUserEarlier _v) { _root = _v; }
+        public void set_root(InstanceIoUserEarlier _v) { _dirty = true; _root = _v; }
         public InstanceIoUserEarlier _parent() { return _parent; }
-        public void set_parent(InstanceIoUserEarlier _v) { _parent = _v; }
+        public void set_parent(InstanceIoUserEarlier _v) { _dirty = true; _parent = _v; }
     }
     public static class Foo extends KaitaiStruct.ReadWrite {
         public static Foo fromFile(String fileName) throws IOException {
@@ -207,17 +221,21 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
             if ( ((inst()._io().size() != 0) && (inst().content() == 102)) ) {
                 this.bar = this._io.readU1();
             }
+            _dirty = false;
         }
 
         public void _fetchInstances() {
             if ( ((inst()._io().size() != 0) && (inst().content() == 102)) ) {
             }
             inst();
-            this.inst._fetchInstances();
+            if (this.inst != null) {
+                this.inst._fetchInstances();
+            }
         }
 
         public void _write_Seq() {
-            _writeInst = _toWriteInst;
+            _assertNotDirty();
+            _shouldWriteInst = _enabledInst;
             this._io.writeU1(this.indicator);
             if ( ((inst()._io().size() != 0) && (inst().content() == 102)) ) {
                 this._io.writeU1(this.bar);
@@ -225,15 +243,24 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
         }
 
         public void _check() {
+            if (_enabledInst) {
+                if (!Objects.equals(this.inst._root(), _root()))
+                    throw new ConsistencyError("inst", this.inst._root(), _root());
+                if (!Objects.equals(this.inst._parent(), this))
+                    throw new ConsistencyError("inst", this.inst._parent(), this);
+            }
+            _dirty = false;
         }
         private Slot inst;
-        private boolean _writeInst = false;
-        private boolean _toWriteInst = true;
+        private boolean _shouldWriteInst = false;
+        private boolean _enabledInst = true;
         public Slot inst() {
-            if (_writeInst)
+            if (_shouldWriteInst)
                 _writeInst();
             if (this.inst != null)
                 return this.inst;
+            if (!_enabledInst)
+                return null;
             KaitaiStream io = (indicator() == 202 ? _parent().sizedB()._io() : _parent().sizedA()._io());
             long _pos = io.pos();
             io.seek(1);
@@ -244,11 +271,11 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
             io.seek(_pos);
             return this.inst;
         }
-        public void setInst(Slot _v) { inst = _v; }
-        public void setInst_ToWrite(boolean _v) { _toWriteInst = _v; }
+        public void setInst(Slot _v) { _dirty = true; inst = _v; }
+        public void setInst_Enabled(boolean _v) { _dirty = true; _enabledInst = _v; }
 
-        public void _writeInst() {
-            _writeInst = false;
+        private void _writeInst() {
+            _shouldWriteInst = false;
             KaitaiStream io = (indicator() == 202 ? _parent().sizedB()._io() : _parent().sizedA()._io());
             long _pos = io.pos();
             io.seek(1);
@@ -271,28 +298,21 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
             this.inst._write_Seq(_io__raw_inst);
             io.seek(_pos);
         }
-
-        public void _checkInst() {
-            if (!Objects.equals(this.inst._root(), _root()))
-                throw new ConsistencyError("inst", this.inst._root(), _root());
-            if (!Objects.equals(this.inst._parent(), this))
-                throw new ConsistencyError("inst", this.inst._parent(), this);
-        }
         private int indicator;
         private Integer bar;
         private InstanceIoUserEarlier _root;
         private InstanceIoUserEarlier _parent;
         private byte[] _raw_inst;
         public int indicator() { return indicator; }
-        public void setIndicator(int _v) { indicator = _v; }
+        public void setIndicator(int _v) { _dirty = true; indicator = _v; }
         public Integer bar() { return bar; }
-        public void setBar(Integer _v) { bar = _v; }
+        public void setBar(Integer _v) { _dirty = true; bar = _v; }
         public InstanceIoUserEarlier _root() { return _root; }
-        public void set_root(InstanceIoUserEarlier _v) { _root = _v; }
+        public void set_root(InstanceIoUserEarlier _v) { _dirty = true; _root = _v; }
         public InstanceIoUserEarlier _parent() { return _parent; }
-        public void set_parent(InstanceIoUserEarlier _v) { _parent = _v; }
+        public void set_parent(InstanceIoUserEarlier _v) { _dirty = true; _parent = _v; }
         public byte[] _raw_inst() { return _raw_inst; }
-        public void set_raw_Inst(byte[] _v) { _raw_inst = _v; }
+        public void set_raw_Inst(byte[] _v) { _dirty = true; _raw_inst = _v; }
     }
     public static class Slot extends KaitaiStruct.ReadWrite {
         public static Slot fromFile(String fileName) throws IOException {
@@ -319,33 +339,40 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
             if (_io().size() != 0) {
                 this.content = this._io.readU1();
             }
+            _dirty = false;
         }
 
         public void _fetchInstances() {
             if (_io().size() != 0) {
             }
-            if (_io().size() != 0) {
-                last();
+            last();
+            if (this.last != null) {
             }
         }
 
         public void _write_Seq() {
-            _writeLast = _toWriteLast;
+            _assertNotDirty();
+            _shouldWriteLast = _enabledLast;
             if (_io().size() != 0) {
                 this._io.writeU1(this.content);
             }
         }
 
         public void _check() {
+            if (_enabledLast) {
+            }
+            _dirty = false;
         }
         private Integer last;
-        private boolean _writeLast = false;
-        private boolean _toWriteLast = true;
+        private boolean _shouldWriteLast = false;
+        private boolean _enabledLast = true;
         public Integer last() {
-            if (_writeLast)
+            if (_shouldWriteLast)
                 _writeLast();
             if (this.last != null)
                 return this.last;
+            if (!_enabledLast)
+                return null;
             if (_io().size() != 0) {
                 long _pos = this._io.pos();
                 this._io.seek(_io().size() - 1);
@@ -354,11 +381,11 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
             }
             return this.last;
         }
-        public void setLast(Integer _v) { last = _v; }
-        public void setLast_ToWrite(boolean _v) { _toWriteLast = _v; }
+        public void setLast(Integer _v) { _dirty = true; last = _v; }
+        public void setLast_Enabled(boolean _v) { _dirty = true; _enabledLast = _v; }
 
-        public void _writeLast() {
-            _writeLast = false;
+        private void _writeLast() {
+            _shouldWriteLast = false;
             if (_io().size() != 0) {
                 long _pos = this._io.pos();
                 this._io.seek(_io().size() - 1);
@@ -366,27 +393,26 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
                 this._io.seek(_pos);
             }
         }
-
-        public void _checkLast() {
-        }
         private Integer content;
         private InstanceIoUserEarlier _root;
         private KaitaiStruct.ReadWrite _parent;
         public Integer content() { return content; }
-        public void setContent(Integer _v) { content = _v; }
+        public void setContent(Integer _v) { _dirty = true; content = _v; }
         public InstanceIoUserEarlier _root() { return _root; }
-        public void set_root(InstanceIoUserEarlier _v) { _root = _v; }
+        public void set_root(InstanceIoUserEarlier _v) { _dirty = true; _root = _v; }
         public KaitaiStruct.ReadWrite _parent() { return _parent; }
-        public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+        public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     }
     private Integer aMid;
-    private boolean _writeAMid = false;
-    private boolean _toWriteAMid = true;
+    private boolean _shouldWriteAMid = false;
+    private boolean _enabledAMid = true;
     public Integer aMid() {
-        if (_writeAMid)
+        if (_shouldWriteAMid)
             _writeAMid();
         if (this.aMid != null)
             return this.aMid;
+        if (!_enabledAMid)
+            return null;
         KaitaiStream io = intoA().inst()._io();
         long _pos = io.pos();
         io.seek(1);
@@ -394,28 +420,27 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
         io.seek(_pos);
         return this.aMid;
     }
-    public void setAMid(int _v) { aMid = _v; }
-    public void setAMid_ToWrite(boolean _v) { _toWriteAMid = _v; }
+    public void setAMid(int _v) { _dirty = true; aMid = _v; }
+    public void setAMid_Enabled(boolean _v) { _dirty = true; _enabledAMid = _v; }
 
-    public void _writeAMid() {
-        _writeAMid = false;
+    private void _writeAMid() {
+        _shouldWriteAMid = false;
         KaitaiStream io = intoA().inst()._io();
         long _pos = io.pos();
         io.seek(1);
         io.writeU2le(this.aMid);
         io.seek(_pos);
     }
-
-    public void _checkAMid() {
-    }
     private Integer bMid;
-    private boolean _writeBMid = false;
-    private boolean _toWriteBMid = true;
+    private boolean _shouldWriteBMid = false;
+    private boolean _enabledBMid = true;
     public Integer bMid() {
-        if (_writeBMid)
+        if (_shouldWriteBMid)
             _writeBMid();
         if (this.bMid != null)
             return this.bMid;
+        if (!_enabledBMid)
+            return null;
         KaitaiStream io = intoB().inst()._io();
         long _pos = io.pos();
         io.seek(1);
@@ -423,19 +448,16 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
         io.seek(_pos);
         return this.bMid;
     }
-    public void setBMid(int _v) { bMid = _v; }
-    public void setBMid_ToWrite(boolean _v) { _toWriteBMid = _v; }
+    public void setBMid(int _v) { _dirty = true; bMid = _v; }
+    public void setBMid_Enabled(boolean _v) { _dirty = true; _enabledBMid = _v; }
 
-    public void _writeBMid() {
-        _writeBMid = false;
+    private void _writeBMid() {
+        _shouldWriteBMid = false;
         KaitaiStream io = intoB().inst()._io();
         long _pos = io.pos();
         io.seek(1);
         io.writeU2le(this.bMid);
         io.seek(_pos);
-    }
-
-    public void _checkBMid() {
     }
     private Slot sizedA;
     private Slot sizedB;
@@ -448,23 +470,23 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
     private byte[] _raw_sizedA;
     private byte[] _raw_sizedB;
     public Slot sizedA() { return sizedA; }
-    public void setSizedA(Slot _v) { sizedA = _v; }
+    public void setSizedA(Slot _v) { _dirty = true; sizedA = _v; }
     public Slot sizedB() { return sizedB; }
-    public void setSizedB(Slot _v) { sizedB = _v; }
+    public void setSizedB(Slot _v) { _dirty = true; sizedB = _v; }
     public Foo intoB() { return intoB; }
-    public void setIntoB(Foo _v) { intoB = _v; }
+    public void setIntoB(Foo _v) { _dirty = true; intoB = _v; }
     public Foo intoASkipped() { return intoASkipped; }
-    public void setIntoASkipped(Foo _v) { intoASkipped = _v; }
+    public void setIntoASkipped(Foo _v) { _dirty = true; intoASkipped = _v; }
     public Foo intoA() { return intoA; }
-    public void setIntoA(Foo _v) { intoA = _v; }
+    public void setIntoA(Foo _v) { _dirty = true; intoA = _v; }
     public Baz lastAccessor() { return lastAccessor; }
-    public void setLastAccessor(Baz _v) { lastAccessor = _v; }
+    public void setLastAccessor(Baz _v) { _dirty = true; lastAccessor = _v; }
     public InstanceIoUserEarlier _root() { return _root; }
-    public void set_root(InstanceIoUserEarlier _v) { _root = _v; }
+    public void set_root(InstanceIoUserEarlier _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_sizedA() { return _raw_sizedA; }
-    public void set_raw_SizedA(byte[] _v) { _raw_sizedA = _v; }
+    public void set_raw_SizedA(byte[] _v) { _dirty = true; _raw_sizedA = _v; }
     public byte[] _raw_sizedB() { return _raw_sizedB; }
-    public void set_raw_SizedB(byte[] _v) { _raw_sizedB = _v; }
+    public void set_raw_SizedB(byte[] _v) { _dirty = true; _raw_sizedB = _v; }
 }

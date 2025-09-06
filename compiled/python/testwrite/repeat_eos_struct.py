@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class RepeatEosStruct(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(RepeatEosStruct, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -25,6 +25,7 @@ class RepeatEosStruct(ReadWriteKaitaiStruct):
                 self.chunks.append(_t_chunks)
             i += 1
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -48,7 +49,6 @@ class RepeatEosStruct(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         for i in range(len(self.chunks)):
             pass
             if self.chunks[i]._root != self._root:
@@ -56,16 +56,18 @@ class RepeatEosStruct(ReadWriteKaitaiStruct):
             if self.chunks[i]._parent != self:
                 raise kaitaistruct.ConsistencyError(u"chunks", self.chunks[i]._parent, self)
 
+        self._dirty = False
 
     class Chunk(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(RepeatEosStruct.Chunk, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.offset = self._io.read_u4le()
             self.len = self._io.read_u4le()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -79,7 +81,7 @@ class RepeatEosStruct(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
 

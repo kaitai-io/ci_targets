@@ -42,6 +42,7 @@ public class BufferedStruct extends KaitaiStruct.ReadWrite {
         this.block2 = new Block(_io__raw_block2, this, _root);
         this.block2._read();
         this.finisher = this._io.readU4le();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -50,6 +51,7 @@ public class BufferedStruct extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU4le(this.len1);
         final KaitaiStream _io__raw_block1 = new ByteBufferKaitaiStream(len1());
         this._io.addChildStream(_io__raw_block1);
@@ -98,6 +100,7 @@ public class BufferedStruct extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("block2", this.block2._root(), _root());
         if (!Objects.equals(this.block2._parent(), this))
             throw new ConsistencyError("block2", this.block2._parent(), this);
+        _dirty = false;
     }
     public static class Block extends KaitaiStruct.ReadWrite {
         public static Block fromFile(String fileName) throws IOException {
@@ -123,30 +126,33 @@ public class BufferedStruct extends KaitaiStruct.ReadWrite {
         public void _read() {
             this.number1 = this._io.readU4le();
             this.number2 = this._io.readU4le();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU4le(this.number1);
             this._io.writeU4le(this.number2);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private long number1;
         private long number2;
         private BufferedStruct _root;
         private BufferedStruct _parent;
         public long number1() { return number1; }
-        public void setNumber1(long _v) { number1 = _v; }
+        public void setNumber1(long _v) { _dirty = true; number1 = _v; }
         public long number2() { return number2; }
-        public void setNumber2(long _v) { number2 = _v; }
+        public void setNumber2(long _v) { _dirty = true; number2 = _v; }
         public BufferedStruct _root() { return _root; }
-        public void set_root(BufferedStruct _v) { _root = _v; }
+        public void set_root(BufferedStruct _v) { _dirty = true; _root = _v; }
         public BufferedStruct _parent() { return _parent; }
-        public void set_parent(BufferedStruct _v) { _parent = _v; }
+        public void set_parent(BufferedStruct _v) { _dirty = true; _parent = _v; }
     }
     private long len1;
     private Block block1;
@@ -158,21 +164,21 @@ public class BufferedStruct extends KaitaiStruct.ReadWrite {
     private byte[] _raw_block1;
     private byte[] _raw_block2;
     public long len1() { return len1; }
-    public void setLen1(long _v) { len1 = _v; }
+    public void setLen1(long _v) { _dirty = true; len1 = _v; }
     public Block block1() { return block1; }
-    public void setBlock1(Block _v) { block1 = _v; }
+    public void setBlock1(Block _v) { _dirty = true; block1 = _v; }
     public long len2() { return len2; }
-    public void setLen2(long _v) { len2 = _v; }
+    public void setLen2(long _v) { _dirty = true; len2 = _v; }
     public Block block2() { return block2; }
-    public void setBlock2(Block _v) { block2 = _v; }
+    public void setBlock2(Block _v) { _dirty = true; block2 = _v; }
     public long finisher() { return finisher; }
-    public void setFinisher(long _v) { finisher = _v; }
+    public void setFinisher(long _v) { _dirty = true; finisher = _v; }
     public BufferedStruct _root() { return _root; }
-    public void set_root(BufferedStruct _v) { _root = _v; }
+    public void set_root(BufferedStruct _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_block1() { return _raw_block1; }
-    public void set_raw_Block1(byte[] _v) { _raw_block1 = _v; }
+    public void set_raw_Block1(byte[] _v) { _dirty = true; _raw_block1 = _v; }
     public byte[] _raw_block2() { return _raw_block2; }
-    public void set_raw_Block2(byte[] _v) { _raw_block2 = _v; }
+    public void set_raw_Block2(byte[] _v) { _dirty = true; _raw_block2 = _v; }
 }

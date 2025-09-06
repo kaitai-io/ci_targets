@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class CastToImported(KaitaiStruct):
     def __init__(self, hw_param, _io, _parent=None, _root=None):
-        self._io = _io
+        super(CastToImported, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self.hw_param = hw_param

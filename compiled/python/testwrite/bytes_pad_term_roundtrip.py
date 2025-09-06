@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class BytesPadTermRoundtrip(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(BytesPadTermRoundtrip, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -19,6 +19,7 @@ class BytesPadTermRoundtrip(ReadWriteKaitaiStruct):
         self.str_term = KaitaiStream.bytes_terminate(KaitaiStream.bytes_strip_right(self._io.read_bytes(20), 43), 64, False)
         self.str_term_and_pad = KaitaiStream.bytes_terminate(KaitaiStream.bytes_strip_right(self._io.read_bytes(20), 43), 64, False)
         self.str_term_include = KaitaiStream.bytes_terminate(KaitaiStream.bytes_strip_right(self._io.read_bytes(20), 46), 64, True)
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -34,7 +35,6 @@ class BytesPadTermRoundtrip(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.str_pad) > 20:
             raise kaitaistruct.ConsistencyError(u"str_pad", len(self.str_pad), 20)
         if  ((len(self.str_pad) != 0) and (KaitaiStream.byte_array_index(self.str_pad, -1) == 64)) :
@@ -66,5 +66,6 @@ class BytesPadTermRoundtrip(ReadWriteKaitaiStruct):
             if  ((len(self.str_term_include) != 0) and (KaitaiStream.byte_array_index(self.str_term_include, -1) == 46)) :
                 raise kaitaistruct.ConsistencyError(u"str_term_include", KaitaiStream.byte_array_index(self.str_term_include, -1), 46)
 
+        self._dirty = False
 
 

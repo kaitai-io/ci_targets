@@ -35,6 +35,7 @@ public class EosExceptionSized extends KaitaiStruct.ReadWrite {
         KaitaiStream _io__raw_envelope = new ByteBufferKaitaiStream(this._raw_envelope);
         this.envelope = new Data(_io__raw_envelope, this, _root);
         this.envelope._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -42,6 +43,7 @@ public class EosExceptionSized extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         final KaitaiStream _io__raw_envelope = new ByteBufferKaitaiStream(6);
         this._io.addChildStream(_io__raw_envelope);
         {
@@ -66,6 +68,7 @@ public class EosExceptionSized extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("envelope", this.envelope._root(), _root());
         if (!Objects.equals(this.envelope._parent(), this))
             throw new ConsistencyError("envelope", this.envelope._parent(), this);
+        _dirty = false;
     }
     public static class Data extends KaitaiStruct.ReadWrite {
         public static Data fromFile(String fileName) throws IOException {
@@ -93,6 +96,7 @@ public class EosExceptionSized extends KaitaiStruct.ReadWrite {
             KaitaiStream _io__raw_buf = new ByteBufferKaitaiStream(this._raw_buf);
             this.buf = new Foo(_io__raw_buf, this, _root);
             this.buf._read();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
@@ -100,6 +104,7 @@ public class EosExceptionSized extends KaitaiStruct.ReadWrite {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             final KaitaiStream _io__raw_buf = new ByteBufferKaitaiStream(7);
             this._io.addChildStream(_io__raw_buf);
             {
@@ -124,19 +129,20 @@ public class EosExceptionSized extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("buf", this.buf._root(), _root());
             if (!Objects.equals(this.buf._parent(), this))
                 throw new ConsistencyError("buf", this.buf._parent(), this);
+            _dirty = false;
         }
         private Foo buf;
         private EosExceptionSized _root;
         private EosExceptionSized _parent;
         private byte[] _raw_buf;
         public Foo buf() { return buf; }
-        public void setBuf(Foo _v) { buf = _v; }
+        public void setBuf(Foo _v) { _dirty = true; buf = _v; }
         public EosExceptionSized _root() { return _root; }
-        public void set_root(EosExceptionSized _v) { _root = _v; }
+        public void set_root(EosExceptionSized _v) { _dirty = true; _root = _v; }
         public EosExceptionSized _parent() { return _parent; }
-        public void set_parent(EosExceptionSized _v) { _parent = _v; }
+        public void set_parent(EosExceptionSized _v) { _dirty = true; _parent = _v; }
         public byte[] _raw_buf() { return _raw_buf; }
-        public void set_raw_Buf(byte[] _v) { _raw_buf = _v; }
+        public void set_raw_Buf(byte[] _v) { _dirty = true; _raw_buf = _v; }
     }
     public static class Foo extends KaitaiStruct.ReadWrite {
         public static Foo fromFile(String fileName) throws IOException {
@@ -160,33 +166,36 @@ public class EosExceptionSized extends KaitaiStruct.ReadWrite {
             this._root = _root;
         }
         public void _read() {
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
         }
 
         public void _check() {
+            _dirty = false;
         }
         private EosExceptionSized _root;
         private EosExceptionSized.Data _parent;
         public EosExceptionSized _root() { return _root; }
-        public void set_root(EosExceptionSized _v) { _root = _v; }
+        public void set_root(EosExceptionSized _v) { _dirty = true; _root = _v; }
         public EosExceptionSized.Data _parent() { return _parent; }
-        public void set_parent(EosExceptionSized.Data _v) { _parent = _v; }
+        public void set_parent(EosExceptionSized.Data _v) { _dirty = true; _parent = _v; }
     }
     private Data envelope;
     private EosExceptionSized _root;
     private KaitaiStruct.ReadWrite _parent;
     private byte[] _raw_envelope;
     public Data envelope() { return envelope; }
-    public void setEnvelope(Data _v) { envelope = _v; }
+    public void setEnvelope(Data _v) { _dirty = true; envelope = _v; }
     public EosExceptionSized _root() { return _root; }
-    public void set_root(EosExceptionSized _v) { _root = _v; }
+    public void set_root(EosExceptionSized _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_envelope() { return _raw_envelope; }
-    public void set_raw_Envelope(byte[] _v) { _raw_envelope = _v; }
+    public void set_raw_Envelope(byte[] _v) { _dirty = true; _raw_envelope = _v; }
 }

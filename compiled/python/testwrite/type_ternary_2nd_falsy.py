@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class TypeTernary2ndFalsy(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(TypeTernary2ndFalsy, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -26,6 +26,7 @@ class TypeTernary2ndFalsy(ReadWriteKaitaiStruct):
         for i in range(0):
             self.int_array_empty.append(self._io.read_u1())
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -54,7 +55,6 @@ class TypeTernary2ndFalsy(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.ut._root != self._root:
             raise kaitaistruct.ConsistencyError(u"ut", self.ut._root, self._root)
         if self.ut._parent != self:
@@ -69,15 +69,17 @@ class TypeTernary2ndFalsy(ReadWriteKaitaiStruct):
         for i in range(len(self.int_array_empty)):
             pass
 
+        self._dirty = False
 
     class Foo(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(TypeTernary2ndFalsy.Foo, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.m = self._io.read_u1()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -90,7 +92,7 @@ class TypeTernary2ndFalsy(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     @property

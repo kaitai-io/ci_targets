@@ -35,12 +35,14 @@ public class TermStrz extends KaitaiStruct.ReadWrite {
         this.s1 = new String(this._io.readBytesTerm((byte) 124, false, true, true), StandardCharsets.UTF_8);
         this.s2 = new String(this._io.readBytesTerm((byte) 124, false, false, true), StandardCharsets.UTF_8);
         this.s3 = new String(this._io.readBytesTerm((byte) 64, true, true, true), StandardCharsets.UTF_8);
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytes((this.s1).getBytes(Charset.forName("UTF-8")));
         this._io.writeU1(124);
         this._io.writeBytes((this.s2).getBytes(Charset.forName("UTF-8")));
@@ -61,6 +63,7 @@ public class TermStrz extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("s3", (this.s3).getBytes(Charset.forName("UTF-8")).length, 0);
         if (KaitaiStream.byteArrayIndexOf((this.s3).getBytes(Charset.forName("UTF-8")), ((byte) 64)) != (this.s3).getBytes(Charset.forName("UTF-8")).length - 1)
             throw new ConsistencyError("s3", KaitaiStream.byteArrayIndexOf((this.s3).getBytes(Charset.forName("UTF-8")), ((byte) 64)), (this.s3).getBytes(Charset.forName("UTF-8")).length - 1);
+        _dirty = false;
     }
     private String s1;
     private String s2;
@@ -68,13 +71,13 @@ public class TermStrz extends KaitaiStruct.ReadWrite {
     private TermStrz _root;
     private KaitaiStruct.ReadWrite _parent;
     public String s1() { return s1; }
-    public void setS1(String _v) { s1 = _v; }
+    public void setS1(String _v) { _dirty = true; s1 = _v; }
     public String s2() { return s2; }
-    public void setS2(String _v) { s2 = _v; }
+    public void setS2(String _v) { _dirty = true; s2 = _v; }
     public String s3() { return s3; }
-    public void setS3(String _v) { s3 = _v; }
+    public void setS3(String _v) { _dirty = true; s3 = _v; }
     public TermStrz _root() { return _root; }
-    public void set_root(TermStrz _v) { _root = _v; }
+    public void set_root(TermStrz _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

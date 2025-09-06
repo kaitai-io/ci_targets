@@ -42,6 +42,7 @@ public class IfValues extends KaitaiStruct.ReadWrite {
                 this.codes.add(_t_codes);
             }
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -51,6 +52,7 @@ public class IfValues extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         for (int i = 0; i < this.codes.size(); i++) {
             this.codes.get(((Number) (i)).intValue())._write_Seq(this._io);
         }
@@ -65,6 +67,7 @@ public class IfValues extends KaitaiStruct.ReadWrite {
             if (!Objects.equals(this.codes.get(((Number) (i)).intValue())._parent(), this))
                 throw new ConsistencyError("codes", this.codes.get(((Number) (i)).intValue())._parent(), this);
         }
+        _dirty = false;
     }
     public static class Code extends KaitaiStruct.ReadWrite {
         public static Code fromFile(String fileName) throws IOException {
@@ -89,16 +92,19 @@ public class IfValues extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.opcode = this._io.readU1();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU1(this.opcode);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private Integer halfOpcode;
         public Integer halfOpcode() {
@@ -114,19 +120,19 @@ public class IfValues extends KaitaiStruct.ReadWrite {
         private IfValues _root;
         private IfValues _parent;
         public int opcode() { return opcode; }
-        public void setOpcode(int _v) { opcode = _v; }
+        public void setOpcode(int _v) { _dirty = true; opcode = _v; }
         public IfValues _root() { return _root; }
-        public void set_root(IfValues _v) { _root = _v; }
+        public void set_root(IfValues _v) { _dirty = true; _root = _v; }
         public IfValues _parent() { return _parent; }
-        public void set_parent(IfValues _v) { _parent = _v; }
+        public void set_parent(IfValues _v) { _dirty = true; _parent = _v; }
     }
     private List<Code> codes;
     private IfValues _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<Code> codes() { return codes; }
-    public void setCodes(List<Code> _v) { codes = _v; }
+    public void setCodes(List<Code> _v) { _dirty = true; codes = _v; }
     public IfValues _root() { return _root; }
-    public void set_root(IfValues _v) { _root = _v; }
+    public void set_root(IfValues _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

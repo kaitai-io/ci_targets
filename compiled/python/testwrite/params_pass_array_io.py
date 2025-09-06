@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ParamsPassArrayIo(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ParamsPassArrayIo, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -21,6 +21,7 @@ class ParamsPassArrayIo(ReadWriteKaitaiStruct):
         self.first._read()
         self.one = ParamsPassArrayIo.ParamType([self.first._io, self._root._io], self._io, self, self._root)
         self.one._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -42,12 +43,11 @@ class ParamsPassArrayIo(ReadWriteKaitaiStruct):
             parent.write_bytes(self._raw_first)
         _io__raw_first.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.first._write__seq(_io__raw_first)
-        self.one.arg_streams = [self.first._io, self._root._io]
+        object.__setattr__(self.one, 'arg_streams', [self.first._io, self._root._io])
         self.one._write__seq(self._io)
 
 
     def _check(self):
-        pass
         if self.first._root != self._root:
             raise kaitaistruct.ConsistencyError(u"first", self.first._root, self._root)
         if self.first._parent != self:
@@ -56,15 +56,17 @@ class ParamsPassArrayIo(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"one", self.one._root, self._root)
         if self.one._parent != self:
             raise kaitaistruct.ConsistencyError(u"one", self.one._parent, self)
+        self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ParamsPassArrayIo.Block, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.foo = self._io.read_u1()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -77,18 +79,19 @@ class ParamsPassArrayIo(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     class ParamType(ReadWriteKaitaiStruct):
         def __init__(self, arg_streams, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ParamsPassArrayIo.ParamType, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self.arg_streams = arg_streams
 
         def _read(self):
             self.buf = self._io.read_bytes(self.arg_streams[0].size())
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -103,7 +106,7 @@ class ParamsPassArrayIo(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
 

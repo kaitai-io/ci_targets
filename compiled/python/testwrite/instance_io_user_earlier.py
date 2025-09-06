@@ -10,13 +10,13 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(InstanceIoUserEarlier, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_a_mid = False
-        self.a_mid__to_write = True
+        self.a_mid__enabled = True
         self._should_write_b_mid = False
-        self.b_mid__to_write = True
+        self.b_mid__enabled = True
 
     def _read(self):
         self._raw_sized_a = self._io.read_bytes(6)
@@ -35,6 +35,7 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
         self.into_a._read()
         self.last_accessor = InstanceIoUserEarlier.Baz(self._io, self, self._root)
         self.last_accessor._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -46,13 +47,19 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
         self.into_a._fetch_instances()
         self.last_accessor._fetch_instances()
         _ = self.a_mid
+        if hasattr(self, '_m_a_mid'):
+            pass
+
         _ = self.b_mid
+        if hasattr(self, '_m_b_mid'):
+            pass
+
 
 
     def _write__seq(self, io=None):
         super(InstanceIoUserEarlier, self)._write__seq(io)
-        self._should_write_a_mid = self.a_mid__to_write
-        self._should_write_b_mid = self.b_mid__to_write
+        self._should_write_a_mid = self.a_mid__enabled
+        self._should_write_b_mid = self.b_mid__enabled
         _io__raw_sized_a = KaitaiStream(BytesIO(bytearray(6)))
         self._io.add_child_stream(_io__raw_sized_a)
         _pos2 = self._io.pos()
@@ -82,7 +89,6 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.sized_a._root != self._root:
             raise kaitaistruct.ConsistencyError(u"sized_a", self.sized_a._root, self._root)
         if self.sized_a._parent != self:
@@ -107,10 +113,17 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"last_accessor", self.last_accessor._root, self._root)
         if self.last_accessor._parent != self:
             raise kaitaistruct.ConsistencyError(u"last_accessor", self.last_accessor._parent, self)
+        if self.a_mid__enabled:
+            pass
+
+        if self.b_mid__enabled:
+            pass
+
+        self._dirty = False
 
     class Baz(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(InstanceIoUserEarlier.Baz, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -119,6 +132,7 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
                 pass
                 self.v = self._io.read_u1()
 
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -137,19 +151,19 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if self._parent.into_b.inst.last == 89:
                 pass
 
+            self._dirty = False
 
 
     class Foo(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(InstanceIoUserEarlier.Foo, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._should_write_inst = False
-            self.inst__to_write = True
+            self.inst__enabled = True
 
         def _read(self):
             self.indicator = self._io.read_u1()
@@ -157,6 +171,7 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
                 pass
                 self.bar = self._io.read_u1()
 
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -165,12 +180,15 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
                 pass
 
             _ = self.inst
-            self._m_inst._fetch_instances()
+            if hasattr(self, '_m_inst'):
+                pass
+                self._m_inst._fetch_instances()
+
 
 
         def _write__seq(self, io=None):
             super(InstanceIoUserEarlier.Foo, self)._write__seq(io)
-            self._should_write_inst = self.inst__to_write
+            self._should_write_inst = self.inst__enabled
             self._io.write_u1(self.indicator)
             if  ((self.inst._io.size() != 0) and (self.inst.content == 102)) :
                 pass
@@ -179,7 +197,14 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            if self.inst__enabled:
+                pass
+                if self._m_inst._root != self._root:
+                    raise kaitaistruct.ConsistencyError(u"inst", self._m_inst._root, self._root)
+                if self._m_inst._parent != self:
+                    raise kaitaistruct.ConsistencyError(u"inst", self._m_inst._parent, self)
+
+            self._dirty = False
 
         @property
         def inst(self):
@@ -187,6 +212,9 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
                 self._write_inst()
             if hasattr(self, '_m_inst'):
                 return self._m_inst
+
+            if not self.inst__enabled:
+                return None
 
             io = (self._parent.sized_b._io if self.indicator == 202 else self._parent.sized_a._io)
             _pos = io.pos()
@@ -200,6 +228,7 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
 
         @inst.setter
         def inst(self, v):
+            self._dirty = True
             self._m_inst = v
 
         def _write_inst(self):
@@ -221,27 +250,20 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
             io.seek(_pos)
 
 
-        def _check_inst(self):
-            pass
-            if self._m_inst._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"inst", self._m_inst._root, self._root)
-            if self._m_inst._parent != self:
-                raise kaitaistruct.ConsistencyError(u"inst", self._m_inst._parent, self)
-
-
     class Slot(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(InstanceIoUserEarlier.Slot, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._should_write_last = False
-            self.last__to_write = True
+            self.last__enabled = True
 
         def _read(self):
             if self._io.size() != 0:
                 pass
                 self.content = self._io.read_u1()
 
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -249,15 +271,15 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
             if self._io.size() != 0:
                 pass
 
-            if self._io.size() != 0:
+            _ = self.last
+            if hasattr(self, '_m_last'):
                 pass
-                _ = self.last
 
 
 
         def _write__seq(self, io=None):
             super(InstanceIoUserEarlier.Slot, self)._write__seq(io)
-            self._should_write_last = self.last__to_write
+            self._should_write_last = self.last__enabled
             if self._io.size() != 0:
                 pass
                 self._io.write_u1(self.content)
@@ -265,7 +287,10 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            if self.last__enabled:
+                pass
+
+            self._dirty = False
 
         @property
         def last(self):
@@ -273,6 +298,9 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
                 self._write_last()
             if hasattr(self, '_m_last'):
                 return self._m_last
+
+            if not self.last__enabled:
+                return None
 
             if self._io.size() != 0:
                 pass
@@ -285,6 +313,7 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
 
         @last.setter
         def last(self, v):
+            self._dirty = True
             self._m_last = v
 
         def _write_last(self):
@@ -298,16 +327,15 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
 
 
 
-        def _check_last(self):
-            pass
-
-
     @property
     def a_mid(self):
         if self._should_write_a_mid:
             self._write_a_mid()
         if hasattr(self, '_m_a_mid'):
             return self._m_a_mid
+
+        if not self.a_mid__enabled:
+            return None
 
         io = self.into_a.inst._io
         _pos = io.pos()
@@ -318,6 +346,7 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
 
     @a_mid.setter
     def a_mid(self, v):
+        self._dirty = True
         self._m_a_mid = v
 
     def _write_a_mid(self):
@@ -328,16 +357,15 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
         io.write_u2le(self._m_a_mid)
         io.seek(_pos)
 
-
-    def _check_a_mid(self):
-        pass
-
     @property
     def b_mid(self):
         if self._should_write_b_mid:
             self._write_b_mid()
         if hasattr(self, '_m_b_mid'):
             return self._m_b_mid
+
+        if not self.b_mid__enabled:
+            return None
 
         io = self.into_b.inst._io
         _pos = io.pos()
@@ -348,6 +376,7 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
 
     @b_mid.setter
     def b_mid(self, v):
+        self._dirty = True
         self._m_b_mid = v
 
     def _write_b_mid(self):
@@ -357,9 +386,5 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
         io.seek(1)
         io.write_u2le(self._m_b_mid)
         io.seek(_pos)
-
-
-    def _check_b_mid(self):
-        pass
 
 

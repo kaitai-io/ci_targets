@@ -11,7 +11,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class NestedTypesImport(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(NestedTypesImport, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -22,6 +22,7 @@ class NestedTypesImport(ReadWriteKaitaiStruct):
         self.a_c_d._read()
         self.b = nested_types3.NestedTypes3.SubtypeB(self._io)
         self.b._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -39,6 +40,6 @@ class NestedTypesImport(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
 

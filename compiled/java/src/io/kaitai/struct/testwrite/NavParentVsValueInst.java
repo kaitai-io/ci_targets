@@ -36,6 +36,7 @@ public class NavParentVsValueInst extends KaitaiStruct.ReadWrite {
         this.s1 = new String(this._io.readBytesTerm((byte) 124, false, true, true), StandardCharsets.UTF_8);
         this.child = new ChildObj(this._io, this, _root);
         this.child._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -43,6 +44,7 @@ public class NavParentVsValueInst extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytes((this.s1).getBytes(Charset.forName("UTF-8")));
         this._io.writeU1(124);
         this.child._write_Seq(this._io);
@@ -55,6 +57,7 @@ public class NavParentVsValueInst extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("child", this.child._root(), _root());
         if (!Objects.equals(this.child._parent(), this))
             throw new ConsistencyError("child", this.child._parent(), this);
+        _dirty = false;
     }
     public static class ChildObj extends KaitaiStruct.ReadWrite {
         public static ChildObj fromFile(String fileName) throws IOException {
@@ -78,15 +81,18 @@ public class NavParentVsValueInst extends KaitaiStruct.ReadWrite {
             this._root = _root;
         }
         public void _read() {
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
         }
 
         public void _check() {
+            _dirty = false;
         }
         private Boolean doSomething;
         public Boolean doSomething() {
@@ -99,20 +105,20 @@ public class NavParentVsValueInst extends KaitaiStruct.ReadWrite {
         private NavParentVsValueInst _root;
         private NavParentVsValueInst _parent;
         public NavParentVsValueInst _root() { return _root; }
-        public void set_root(NavParentVsValueInst _v) { _root = _v; }
+        public void set_root(NavParentVsValueInst _v) { _dirty = true; _root = _v; }
         public NavParentVsValueInst _parent() { return _parent; }
-        public void set_parent(NavParentVsValueInst _v) { _parent = _v; }
+        public void set_parent(NavParentVsValueInst _v) { _dirty = true; _parent = _v; }
     }
     private String s1;
     private ChildObj child;
     private NavParentVsValueInst _root;
     private KaitaiStruct.ReadWrite _parent;
     public String s1() { return s1; }
-    public void setS1(String _v) { s1 = _v; }
+    public void setS1(String _v) { _dirty = true; s1 = _v; }
     public ChildObj child() { return child; }
-    public void setChild(ChildObj _v) { child = _v; }
+    public void setChild(ChildObj _v) { _dirty = true; child = _v; }
     public NavParentVsValueInst _root() { return _root; }
-    public void set_root(NavParentVsValueInst _v) { _root = _v; }
+    public void set_root(NavParentVsValueInst _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

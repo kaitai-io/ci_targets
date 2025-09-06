@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class TermBytes2(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(TermBytes2, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -18,6 +18,7 @@ class TermBytes2(ReadWriteKaitaiStruct):
         self.s1 = self._io.read_bytes_term(124, False, True, True)
         self.s2 = self._io.read_bytes_term(124, True, True, True)
         self.s3 = self._io.read_bytes_term(64, False, False, True)
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -36,7 +37,6 @@ class TermBytes2(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if KaitaiStream.byte_array_index_of(self.s1, 124) != -1:
             raise kaitaistruct.ConsistencyError(u"s1", KaitaiStream.byte_array_index_of(self.s1, 124), -1)
         if len(self.s2) == 0:
@@ -45,5 +45,6 @@ class TermBytes2(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"s2", KaitaiStream.byte_array_index_of(self.s2, 124), len(self.s2) - 1)
         if KaitaiStream.byte_array_index_of(self.s3, 64) != -1:
             raise kaitaistruct.ConsistencyError(u"s3", KaitaiStream.byte_array_index_of(self.s3, 64), -1)
+        self._dirty = False
 
 

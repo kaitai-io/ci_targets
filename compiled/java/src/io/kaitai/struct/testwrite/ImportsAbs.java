@@ -33,6 +33,7 @@ public class ImportsAbs extends KaitaiStruct.ReadWrite {
         this.len = new VlqBase128Le(this._io);
         this.len._read();
         this.body = this._io.readBytes(len().value());
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -40,6 +41,7 @@ public class ImportsAbs extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this.len._write_Seq(this._io);
         this._io.writeBytes(this.body);
     }
@@ -47,17 +49,18 @@ public class ImportsAbs extends KaitaiStruct.ReadWrite {
     public void _check() {
         if (this.body.length != len().value())
             throw new ConsistencyError("body", this.body.length, len().value());
+        _dirty = false;
     }
     private VlqBase128Le len;
     private byte[] body;
     private ImportsAbs _root;
     private KaitaiStruct.ReadWrite _parent;
     public VlqBase128Le len() { return len; }
-    public void setLen(VlqBase128Le _v) { len = _v; }
+    public void setLen(VlqBase128Le _v) { _dirty = true; len = _v; }
     public byte[] body() { return body; }
-    public void setBody(byte[] _v) { body = _v; }
+    public void setBody(byte[] _v) { _dirty = true; body = _v; }
     public ImportsAbs _root() { return _root; }
-    public void set_root(ImportsAbs _v) { _root = _v; }
+    public void set_root(ImportsAbs _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

@@ -16,7 +16,7 @@ class ParamsEnum(ReadWriteKaitaiStruct):
         cat = 7
         chicken = 12
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ParamsEnum, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -24,6 +24,7 @@ class ParamsEnum(ReadWriteKaitaiStruct):
         self.one = KaitaiStream.resolve_enum(ParamsEnum.Animal, self._io.read_u1())
         self.invoke_with_param = ParamsEnum.WithParam(self.one, self._io, self, self._root)
         self.invoke_with_param._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -38,23 +39,24 @@ class ParamsEnum(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.invoke_with_param._root != self._root:
             raise kaitaistruct.ConsistencyError(u"invoke_with_param", self.invoke_with_param._root, self._root)
         if self.invoke_with_param._parent != self:
             raise kaitaistruct.ConsistencyError(u"invoke_with_param", self.invoke_with_param._parent, self)
         if self.invoke_with_param.enumerated_one != self.one:
             raise kaitaistruct.ConsistencyError(u"invoke_with_param", self.invoke_with_param.enumerated_one, self.one)
+        self._dirty = False
 
     class WithParam(ReadWriteKaitaiStruct):
         def __init__(self, enumerated_one, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ParamsEnum.WithParam, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self.enumerated_one = enumerated_one
 
         def _read(self):
             pass
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -66,7 +68,7 @@ class ParamsEnum(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
         @property
         def is_cat(self):

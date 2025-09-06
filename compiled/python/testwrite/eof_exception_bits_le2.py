@@ -12,7 +12,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 class EofExceptionBitsLe2(ReadWriteKaitaiStruct):
     SEQ_FIELDS = ["pre_bits", "fail_bits"]
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(EofExceptionBitsLe2, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._debug = collections.defaultdict(dict)
@@ -24,6 +24,7 @@ class EofExceptionBitsLe2(ReadWriteKaitaiStruct):
         self._debug['fail_bits']['start'] = self._io.pos()
         self.fail_bits = self._io.read_bits_int_le(17)
         self._debug['fail_bits']['end'] = self._io.pos()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -37,6 +38,6 @@ class EofExceptionBitsLe2(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
 

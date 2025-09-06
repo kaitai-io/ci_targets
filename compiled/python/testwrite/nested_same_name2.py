@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class NestedSameName2(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(NestedSameName2, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -20,6 +20,7 @@ class NestedSameName2(ReadWriteKaitaiStruct):
         self.main_data._read()
         self.dummy = NestedSameName2.DummyObj(self._io, self, self._root)
         self.dummy._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -36,7 +37,6 @@ class NestedSameName2(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.main_data._root != self._root:
             raise kaitaistruct.ConsistencyError(u"main_data", self.main_data._root, self._root)
         if self.main_data._parent != self:
@@ -45,10 +45,11 @@ class NestedSameName2(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"dummy", self.dummy._root, self._root)
         if self.dummy._parent != self:
             raise kaitaistruct.ConsistencyError(u"dummy", self.dummy._parent, self)
+        self._dirty = False
 
     class DummyObj(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(NestedSameName2.DummyObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -56,6 +57,7 @@ class NestedSameName2(ReadWriteKaitaiStruct):
             self.dummy_size = self._io.read_s4le()
             self.foo = NestedSameName2.DummyObj.FooObj(self._io, self, self._root)
             self.foo._read()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -70,20 +72,21 @@ class NestedSameName2(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if self.foo._root != self._root:
                 raise kaitaistruct.ConsistencyError(u"foo", self.foo._root, self._root)
             if self.foo._parent != self:
                 raise kaitaistruct.ConsistencyError(u"foo", self.foo._parent, self)
+            self._dirty = False
 
         class FooObj(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                self._io = _io
+                super(NestedSameName2.DummyObj.FooObj, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
             def _read(self):
                 self.data2 = self._io.read_bytes(self._parent.dummy_size * 2)
+                self._dirty = False
 
 
             def _fetch_instances(self):
@@ -96,15 +99,15 @@ class NestedSameName2(ReadWriteKaitaiStruct):
 
 
             def _check(self):
-                pass
                 if len(self.data2) != self._parent.dummy_size * 2:
                     raise kaitaistruct.ConsistencyError(u"data2", len(self.data2), self._parent.dummy_size * 2)
+                self._dirty = False
 
 
 
     class Main(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(NestedSameName2.Main, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -112,6 +115,7 @@ class NestedSameName2(ReadWriteKaitaiStruct):
             self.main_size = self._io.read_s4le()
             self.foo = NestedSameName2.Main.FooObj(self._io, self, self._root)
             self.foo._read()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -126,20 +130,21 @@ class NestedSameName2(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if self.foo._root != self._root:
                 raise kaitaistruct.ConsistencyError(u"foo", self.foo._root, self._root)
             if self.foo._parent != self:
                 raise kaitaistruct.ConsistencyError(u"foo", self.foo._parent, self)
+            self._dirty = False
 
         class FooObj(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                self._io = _io
+                super(NestedSameName2.Main.FooObj, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
             def _read(self):
                 self.data1 = self._io.read_bytes(self._parent.main_size * 2)
+                self._dirty = False
 
 
             def _fetch_instances(self):
@@ -152,9 +157,9 @@ class NestedSameName2(ReadWriteKaitaiStruct):
 
 
             def _check(self):
-                pass
                 if len(self.data1) != self._parent.main_size * 2:
                     raise kaitaistruct.ConsistencyError(u"data1", len(self.data1), self._parent.main_size * 2)
+                self._dirty = False
 
 
 

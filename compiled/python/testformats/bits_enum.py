@@ -17,7 +17,7 @@ class BitsEnum(KaitaiStruct):
         horse = 4
         platypus = 5
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(BitsEnum, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()

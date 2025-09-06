@@ -31,28 +31,31 @@ public class BitsSignedShiftB64Le extends KaitaiStruct.ReadWrite {
     public void _read() {
         this.a = this._io.readBitsIntLe(63);
         this.b = this._io.readBitsIntLe(9);
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBitsIntLe(63, this.a);
         this._io.writeBitsIntLe(9, this.b);
     }
 
     public void _check() {
+        _dirty = false;
     }
     private long a;
     private long b;
     private BitsSignedShiftB64Le _root;
     private KaitaiStruct.ReadWrite _parent;
     public long a() { return a; }
-    public void setA(long _v) { a = _v; }
+    public void setA(long _v) { _dirty = true; a = _v; }
     public long b() { return b; }
-    public void setB(long _v) { b = _v; }
+    public void setB(long _v) { _dirty = true; b = _v; }
     public BitsSignedShiftB64Le _root() { return _root; }
-    public void set_root(BitsSignedShiftB64Le _v) { _root = _v; }
+    public void set_root(BitsSignedShiftB64Le _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

@@ -11,7 +11,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class Imports0(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(Imports0, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -19,6 +19,7 @@ class Imports0(ReadWriteKaitaiStruct):
         self.two = self._io.read_u1()
         self.hw = hello_world.HelloWorld(self._io)
         self.hw._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -33,7 +34,7 @@ class Imports0(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
     @property
     def hw_one(self):

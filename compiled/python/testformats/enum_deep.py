@@ -11,7 +11,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class EnumDeep(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(EnumDeep, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -31,7 +31,7 @@ class EnumDeep(KaitaiStruct):
             cat = 7
             chicken = 12
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(EnumDeep.Container1, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -50,7 +50,7 @@ class EnumDeep(KaitaiStruct):
                 turtle = 7
                 hare = 12
             def __init__(self, _io, _parent=None, _root=None):
-                self._io = _io
+                super(EnumDeep.Container1.Container2, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
                 self._read()

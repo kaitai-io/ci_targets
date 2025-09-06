@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class NavRootRecursive(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(NavRootRecursive, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -21,6 +21,7 @@ class NavRootRecursive(ReadWriteKaitaiStruct):
             self.next = NavRootRecursive(self._io, self, self._root)
             self.next._read()
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -41,7 +42,6 @@ class NavRootRecursive(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.value == 255:
             pass
             if self.next._root != self._root:
@@ -49,6 +49,7 @@ class NavRootRecursive(ReadWriteKaitaiStruct):
             if self.next._parent != self:
                 raise kaitaistruct.ConsistencyError(u"next", self.next._parent, self)
 
+        self._dirty = False
 
     @property
     def root_value(self):

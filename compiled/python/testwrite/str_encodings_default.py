@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class StrEncodingsDefault(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(StrEncodingsDefault, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -19,6 +19,7 @@ class StrEncodingsDefault(ReadWriteKaitaiStruct):
         self.str1 = (self._io.read_bytes(self.len_of_1)).decode(u"UTF-8")
         self.rest = StrEncodingsDefault.Subtype(self._io, self, self._root)
         self.rest._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -34,17 +35,17 @@ class StrEncodingsDefault(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len((self.str1).encode(u"UTF-8")) != self.len_of_1:
             raise kaitaistruct.ConsistencyError(u"str1", len((self.str1).encode(u"UTF-8")), self.len_of_1)
         if self.rest._root != self._root:
             raise kaitaistruct.ConsistencyError(u"rest", self.rest._root, self._root)
         if self.rest._parent != self:
             raise kaitaistruct.ConsistencyError(u"rest", self.rest._parent, self)
+        self._dirty = False
 
     class Subtype(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(StrEncodingsDefault.Subtype, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -55,6 +56,7 @@ class StrEncodingsDefault(ReadWriteKaitaiStruct):
             self.str3 = (self._io.read_bytes(self.len_of_3)).decode(u"Shift_JIS")
             self.len_of_4 = self._io.read_u2le()
             self.str4 = (self._io.read_bytes(self.len_of_4)).decode(u"IBM437")
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -72,13 +74,13 @@ class StrEncodingsDefault(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if len((self.str2).encode(u"UTF-8")) != self.len_of_2:
                 raise kaitaistruct.ConsistencyError(u"str2", len((self.str2).encode(u"UTF-8")), self.len_of_2)
             if len((self.str3).encode(u"Shift_JIS")) != self.len_of_3:
                 raise kaitaistruct.ConsistencyError(u"str3", len((self.str3).encode(u"Shift_JIS")), self.len_of_3)
             if len((self.str4).encode(u"IBM437")) != self.len_of_4:
                 raise kaitaistruct.ConsistencyError(u"str4", len((self.str4).encode(u"IBM437")), self.len_of_4)
+            self._dirty = False
 
 
 

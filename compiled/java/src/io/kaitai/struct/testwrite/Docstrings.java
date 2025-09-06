@@ -34,18 +34,25 @@ public class Docstrings extends KaitaiStruct.ReadWrite {
     }
     public void _read() {
         this.one = this._io.readU1();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
         two();
+        if (this.two != null) {
+        }
     }
 
     public void _write_Seq() {
-        _writeTwo = _toWriteTwo;
+        _assertNotDirty();
+        _shouldWriteTwo = _enabledTwo;
         this._io.writeU1(this.one);
     }
 
     public void _check() {
+        if (_enabledTwo) {
+        }
+        _dirty = false;
     }
 
     /**
@@ -85,22 +92,25 @@ public class Docstrings extends KaitaiStruct.ReadWrite {
             this._root = _root;
         }
         public void _read() {
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
         }
 
         public void _check() {
+            _dirty = false;
         }
         private Docstrings _root;
         private KaitaiStruct.ReadWrite _parent;
         public Docstrings _root() { return _root; }
-        public void set_root(Docstrings _v) { _root = _v; }
+        public void set_root(Docstrings _v) { _dirty = true; _root = _v; }
         public KaitaiStruct.ReadWrite _parent() { return _parent; }
-        public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+        public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     }
     private Byte three;
 
@@ -115,35 +125,34 @@ public class Docstrings extends KaitaiStruct.ReadWrite {
     }
     public void _invalidateThree() { this.three = null; }
     private Integer two;
-    private boolean _writeTwo = false;
-    private boolean _toWriteTwo = true;
+    private boolean _shouldWriteTwo = false;
+    private boolean _enabledTwo = true;
 
     /**
      * Another description for parse instance "two"
      */
     public Integer two() {
-        if (_writeTwo)
+        if (_shouldWriteTwo)
             _writeTwo();
         if (this.two != null)
             return this.two;
+        if (!_enabledTwo)
+            return null;
         long _pos = this._io.pos();
         this._io.seek(0);
         this.two = this._io.readU1();
         this._io.seek(_pos);
         return this.two;
     }
-    public void setTwo(int _v) { two = _v; }
-    public void setTwo_ToWrite(boolean _v) { _toWriteTwo = _v; }
+    public void setTwo(int _v) { _dirty = true; two = _v; }
+    public void setTwo_Enabled(boolean _v) { _dirty = true; _enabledTwo = _v; }
 
-    public void _writeTwo() {
-        _writeTwo = false;
+    private void _writeTwo() {
+        _shouldWriteTwo = false;
         long _pos = this._io.pos();
         this._io.seek(0);
         this._io.writeU1(this.two);
         this._io.seek(_pos);
-    }
-
-    public void _checkTwo() {
     }
     private int one;
     private Docstrings _root;
@@ -153,9 +162,9 @@ public class Docstrings extends KaitaiStruct.ReadWrite {
      * A pretty verbose description for sequence attribute "one"
      */
     public int one() { return one; }
-    public void setOne(int _v) { one = _v; }
+    public void setOne(int _v) { _dirty = true; one = _v; }
     public Docstrings _root() { return _root; }
-    public void set_root(Docstrings _v) { _root = _v; }
+    public void set_root(Docstrings _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ExprArray(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ExprArray, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -27,6 +27,7 @@ class ExprArray(ReadWriteKaitaiStruct):
         for i in range(3):
             self.astr.append((self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8"))
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -60,7 +61,6 @@ class ExprArray(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.aint) != 4:
             raise kaitaistruct.ConsistencyError(u"aint", len(self.aint), 4)
         for i in range(len(self.aint)):
@@ -78,6 +78,7 @@ class ExprArray(ReadWriteKaitaiStruct):
             if KaitaiStream.byte_array_index_of((self.astr[i]).encode(u"UTF-8"), 0) != -1:
                 raise kaitaistruct.ConsistencyError(u"astr", KaitaiStream.byte_array_index_of((self.astr[i]).encode(u"UTF-8"), 0), -1)
 
+        self._dirty = False
 
     @property
     def afloat_first(self):

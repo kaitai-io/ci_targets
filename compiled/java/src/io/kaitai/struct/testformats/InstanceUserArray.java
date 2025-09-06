@@ -35,8 +35,8 @@ public class InstanceUserArray extends KaitaiStruct {
     }
 
     public void _fetchInstances() {
-        if (ofs() > 0) {
-            userEntries();
+        userEntries();
+        if (this.userEntries != null) {
             for (int i = 0; i < this.userEntries.size(); i++) {
                 this.userEntries.get(((Number) (i)).intValue())._fetchInstances();
             }

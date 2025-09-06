@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ProcessToUser(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ProcessToUser, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -20,6 +20,7 @@ class ProcessToUser(ReadWriteKaitaiStruct):
         _io__raw_buf1 = KaitaiStream(BytesIO(self._raw_buf1))
         self.buf1 = ProcessToUser.JustStr(_io__raw_buf1, self, self._root)
         self.buf1._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -45,20 +46,21 @@ class ProcessToUser(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.buf1._root != self._root:
             raise kaitaistruct.ConsistencyError(u"buf1", self.buf1._root, self._root)
         if self.buf1._parent != self:
             raise kaitaistruct.ConsistencyError(u"buf1", self.buf1._parent, self)
+        self._dirty = False
 
     class JustStr(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ProcessToUser.JustStr, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.str = (self._io.read_bytes_full()).decode(u"UTF-8")
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -73,7 +75,7 @@ class ProcessToUser(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
 

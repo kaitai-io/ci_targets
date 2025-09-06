@@ -44,6 +44,7 @@ public class ImportsParamsDefArrayUsertypeImported extends KaitaiStruct.ReadWrit
         }
         this.two = new ParamsDefArrayUsertypeImported(this._io, hws());
         this.two._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -54,6 +55,7 @@ public class ImportsParamsDefArrayUsertypeImported extends KaitaiStruct.ReadWrit
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         for (int i = 0; i < this.hws.size(); i++) {
             this.hws.get(((Number) (i)).intValue())._write_Seq(this._io);
         }
@@ -67,17 +69,18 @@ public class ImportsParamsDefArrayUsertypeImported extends KaitaiStruct.ReadWrit
         }
         if (!Objects.equals(this.two.hwsParam(), hws()))
             throw new ConsistencyError("two", this.two.hwsParam(), hws());
+        _dirty = false;
     }
     private List<HelloWorld> hws;
     private ParamsDefArrayUsertypeImported two;
     private ImportsParamsDefArrayUsertypeImported _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<HelloWorld> hws() { return hws; }
-    public void setHws(List<HelloWorld> _v) { hws = _v; }
+    public void setHws(List<HelloWorld> _v) { _dirty = true; hws = _v; }
     public ParamsDefArrayUsertypeImported two() { return two; }
-    public void setTwo(ParamsDefArrayUsertypeImported _v) { two = _v; }
+    public void setTwo(ParamsDefArrayUsertypeImported _v) { _dirty = true; two = _v; }
     public ImportsParamsDefArrayUsertypeImported _root() { return _root; }
-    public void set_root(ImportsParamsDefArrayUsertypeImported _v) { _root = _v; }
+    public void set_root(ImportsParamsDefArrayUsertypeImported _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

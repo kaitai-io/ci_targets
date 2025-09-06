@@ -68,6 +68,7 @@ public class Debug0 extends KaitaiStruct.ReadWrite {
         _attrStart.put("_unnamed2", this._io.pos());
         this._unnamed2 = this._io.readU1();
         _attrEnd.put("_unnamed2", this._io.pos());
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -76,6 +77,7 @@ public class Debug0 extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(this.one);
         for (int i = 0; i < this.arrayOfInts.size(); i++) {
             this._io.writeU1(this.arrayOfInts.get(((Number) (i)).intValue()));
@@ -88,6 +90,7 @@ public class Debug0 extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("array_of_ints", this.arrayOfInts.size(), 3);
         for (int i = 0; i < this.arrayOfInts.size(); i++) {
         }
+        _dirty = false;
     }
     private int one;
     private List<Integer> arrayOfInts;
@@ -95,13 +98,13 @@ public class Debug0 extends KaitaiStruct.ReadWrite {
     private Debug0 _root;
     private KaitaiStruct.ReadWrite _parent;
     public int one() { return one; }
-    public void setOne(int _v) { one = _v; }
+    public void setOne(int _v) { _dirty = true; one = _v; }
     public List<Integer> arrayOfInts() { return arrayOfInts; }
-    public void setArrayOfInts(List<Integer> _v) { arrayOfInts = _v; }
+    public void setArrayOfInts(List<Integer> _v) { _dirty = true; arrayOfInts = _v; }
     public int _unnamed2() { return _unnamed2; }
-    public void set_unnamed2(int _v) { _unnamed2 = _v; }
+    public void set_unnamed2(int _v) { _dirty = true; _unnamed2 = _v; }
     public Debug0 _root() { return _root; }
-    public void set_root(Debug0 _v) { _root = _v; }
+    public void set_root(Debug0 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

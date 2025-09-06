@@ -55,6 +55,7 @@ public class ProcessTermStruct extends KaitaiStruct.ReadWrite {
         KaitaiStream _io__raw_s3 = new ByteBufferKaitaiStream(this._raw_s3);
         this.s3 = new BytesWrapper(_io__raw_s3, this, _root);
         this.s3._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -64,6 +65,7 @@ public class ProcessTermStruct extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         final KaitaiStream _io__raw_s1 = new ByteBufferKaitaiStream(this.s1_InnerSize);
         this._io.addChildStream(_io__raw_s1);
         {
@@ -145,6 +147,7 @@ public class ProcessTermStruct extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("s3", this.s3._root(), _root());
         if (!Objects.equals(this.s3._parent(), this))
             throw new ConsistencyError("s3", this.s3._parent(), this);
+        _dirty = false;
     }
     public static class BytesWrapper extends KaitaiStruct.ReadWrite {
         public static BytesWrapper fromFile(String fileName) throws IOException {
@@ -169,28 +172,31 @@ public class ProcessTermStruct extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.value = this._io.readBytesFull();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytes(this.value);
             if (!(this._io.isEof()))
                 throw new ConsistencyError("value", this._io.size() - this._io.pos(), 0);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private byte[] value;
         private ProcessTermStruct _root;
         private ProcessTermStruct _parent;
         public byte[] value() { return value; }
-        public void setValue(byte[] _v) { value = _v; }
+        public void setValue(byte[] _v) { _dirty = true; value = _v; }
         public ProcessTermStruct _root() { return _root; }
-        public void set_root(ProcessTermStruct _v) { _root = _v; }
+        public void set_root(ProcessTermStruct _v) { _dirty = true; _root = _v; }
         public ProcessTermStruct _parent() { return _parent; }
-        public void set_parent(ProcessTermStruct _v) { _parent = _v; }
+        public void set_parent(ProcessTermStruct _v) { _dirty = true; _parent = _v; }
     }
     private BytesWrapper s1;
     private BytesWrapper s2;
@@ -210,37 +216,37 @@ public class ProcessTermStruct extends KaitaiStruct.ReadWrite {
     private int s3_OuterSize;
     private byte[] _raw__raw_s3;
     public BytesWrapper s1() { return s1; }
-    public void setS1(BytesWrapper _v) { s1 = _v; }
+    public void setS1(BytesWrapper _v) { _dirty = true; s1 = _v; }
     public BytesWrapper s2() { return s2; }
-    public void setS2(BytesWrapper _v) { s2 = _v; }
+    public void setS2(BytesWrapper _v) { _dirty = true; s2 = _v; }
     public BytesWrapper s3() { return s3; }
-    public void setS3(BytesWrapper _v) { s3 = _v; }
+    public void setS3(BytesWrapper _v) { _dirty = true; s3 = _v; }
     public ProcessTermStruct _root() { return _root; }
-    public void set_root(ProcessTermStruct _v) { _root = _v; }
+    public void set_root(ProcessTermStruct _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_s1() { return _raw_s1; }
-    public void set_raw_S1(byte[] _v) { _raw_s1 = _v; }
+    public void set_raw_S1(byte[] _v) { _dirty = true; _raw_s1 = _v; }
     public int s1_InnerSize() { return s1_InnerSize; }
-    public void setS1_InnerSize(int _v) { s1_InnerSize = _v; }
+    public void setS1_InnerSize(int _v) { _dirty = true; s1_InnerSize = _v; }
     public int s1_OuterSize() { return s1_OuterSize; }
-    public void setS1_OuterSize(int _v) { s1_OuterSize = _v; }
+    public void setS1_OuterSize(int _v) { _dirty = true; s1_OuterSize = _v; }
     public byte[] _raw__raw_s1() { return _raw__raw_s1; }
-    public void set_raw__raw_S1(byte[] _v) { _raw__raw_s1 = _v; }
+    public void set_raw__raw_S1(byte[] _v) { _dirty = true; _raw__raw_s1 = _v; }
     public byte[] _raw_s2() { return _raw_s2; }
-    public void set_raw_S2(byte[] _v) { _raw_s2 = _v; }
+    public void set_raw_S2(byte[] _v) { _dirty = true; _raw_s2 = _v; }
     public int s2_InnerSize() { return s2_InnerSize; }
-    public void setS2_InnerSize(int _v) { s2_InnerSize = _v; }
+    public void setS2_InnerSize(int _v) { _dirty = true; s2_InnerSize = _v; }
     public int s2_OuterSize() { return s2_OuterSize; }
-    public void setS2_OuterSize(int _v) { s2_OuterSize = _v; }
+    public void setS2_OuterSize(int _v) { _dirty = true; s2_OuterSize = _v; }
     public byte[] _raw__raw_s2() { return _raw__raw_s2; }
-    public void set_raw__raw_S2(byte[] _v) { _raw__raw_s2 = _v; }
+    public void set_raw__raw_S2(byte[] _v) { _dirty = true; _raw__raw_s2 = _v; }
     public byte[] _raw_s3() { return _raw_s3; }
-    public void set_raw_S3(byte[] _v) { _raw_s3 = _v; }
+    public void set_raw_S3(byte[] _v) { _dirty = true; _raw_s3 = _v; }
     public int s3_InnerSize() { return s3_InnerSize; }
-    public void setS3_InnerSize(int _v) { s3_InnerSize = _v; }
+    public void setS3_InnerSize(int _v) { _dirty = true; s3_InnerSize = _v; }
     public int s3_OuterSize() { return s3_OuterSize; }
-    public void setS3_OuterSize(int _v) { s3_OuterSize = _v; }
+    public void setS3_OuterSize(int _v) { _dirty = true; s3_OuterSize = _v; }
     public byte[] _raw__raw_s3() { return _raw__raw_s3; }
-    public void set_raw__raw_S3(byte[] _v) { _raw__raw_s3 = _v; }
+    public void set_raw__raw_S3(byte[] _v) { _dirty = true; _raw__raw_s3 = _v; }
 }

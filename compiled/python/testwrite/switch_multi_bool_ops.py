@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class SwitchMultiBoolOps(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(SwitchMultiBoolOps, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -25,6 +25,7 @@ class SwitchMultiBoolOps(ReadWriteKaitaiStruct):
                 self.opcodes.append(_t_opcodes)
             i += 1
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -48,7 +49,6 @@ class SwitchMultiBoolOps(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         for i in range(len(self.opcodes)):
             pass
             if self.opcodes[i]._root != self._root:
@@ -56,10 +56,11 @@ class SwitchMultiBoolOps(ReadWriteKaitaiStruct):
             if self.opcodes[i]._parent != self:
                 raise kaitaistruct.ConsistencyError(u"opcodes", self.opcodes[i]._parent, self)
 
+        self._dirty = False
 
     class Opcode(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(SwitchMultiBoolOps.Opcode, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -78,6 +79,7 @@ class SwitchMultiBoolOps(ReadWriteKaitaiStruct):
             elif _on == 8:
                 pass
                 self.body = self._io.read_u8le()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -112,7 +114,6 @@ class SwitchMultiBoolOps(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             _on = (self.code if  ((self.code > 0) and (self.code <= 8) and ((True if self.code != 10 else False)))  else 0)
             if _on == 1:
                 pass
@@ -122,6 +123,7 @@ class SwitchMultiBoolOps(ReadWriteKaitaiStruct):
                 pass
             elif _on == 8:
                 pass
+            self._dirty = False
 
 
 

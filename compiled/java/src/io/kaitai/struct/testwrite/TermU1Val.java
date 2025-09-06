@@ -34,12 +34,14 @@ public class TermU1Val extends KaitaiStruct.ReadWrite {
     public void _read() {
         this.foo = this._io.readBytesTerm((byte) 227, false, false, true);
         this.bar = new String(this._io.readBytesTerm((byte) 171, true, true, true), StandardCharsets.UTF_8);
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytes(this.foo);
         {
             long _pos = this._io.pos();
@@ -56,17 +58,18 @@ public class TermU1Val extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("bar", (this.bar).getBytes(Charset.forName("UTF-8")).length, 0);
         if (KaitaiStream.byteArrayIndexOf((this.bar).getBytes(Charset.forName("UTF-8")), ((byte) 171)) != (this.bar).getBytes(Charset.forName("UTF-8")).length - 1)
             throw new ConsistencyError("bar", KaitaiStream.byteArrayIndexOf((this.bar).getBytes(Charset.forName("UTF-8")), ((byte) 171)), (this.bar).getBytes(Charset.forName("UTF-8")).length - 1);
+        _dirty = false;
     }
     private byte[] foo;
     private String bar;
     private TermU1Val _root;
     private KaitaiStruct.ReadWrite _parent;
     public byte[] foo() { return foo; }
-    public void setFoo(byte[] _v) { foo = _v; }
+    public void setFoo(byte[] _v) { _dirty = true; foo = _v; }
     public String bar() { return bar; }
-    public void setBar(String _v) { bar = _v; }
+    public void setBar(String _v) { _dirty = true; bar = _v; }
     public TermU1Val _root() { return _root; }
-    public void set_root(TermU1Val _v) { _root = _v; }
+    public void set_root(TermU1Val _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

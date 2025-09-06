@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class InstanceIoUser(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(InstanceIoUser, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -36,7 +36,7 @@ class InstanceIoUser(KaitaiStruct):
 
     class Entry(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(InstanceIoUser.Entry, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -49,6 +49,9 @@ class InstanceIoUser(KaitaiStruct):
         def _fetch_instances(self):
             pass
             _ = self.name
+            if hasattr(self, '_m_name'):
+                pass
+
 
         @property
         def name(self):
@@ -65,7 +68,7 @@ class InstanceIoUser(KaitaiStruct):
 
     class StringsObj(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(InstanceIoUser.StringsObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()

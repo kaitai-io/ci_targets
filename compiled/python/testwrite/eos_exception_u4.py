@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class EosExceptionU4(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(EosExceptionU4, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -19,6 +19,7 @@ class EosExceptionU4(ReadWriteKaitaiStruct):
         _io__raw_envelope = KaitaiStream(BytesIO(self._raw_envelope))
         self.envelope = EosExceptionU4.Data(_io__raw_envelope, self, self._root)
         self.envelope._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -42,21 +43,22 @@ class EosExceptionU4(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.envelope._root != self._root:
             raise kaitaistruct.ConsistencyError(u"envelope", self.envelope._root, self._root)
         if self.envelope._parent != self:
             raise kaitaistruct.ConsistencyError(u"envelope", self.envelope._parent, self)
+        self._dirty = False
 
     class Data(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(EosExceptionU4.Data, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.prebuf = self._io.read_bytes(3)
             self.fail_int = self._io.read_u4le()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -70,9 +72,9 @@ class EosExceptionU4(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if len(self.prebuf) != 3:
                 raise kaitaistruct.ConsistencyError(u"prebuf", len(self.prebuf), 3)
+            self._dirty = False
 
 
 

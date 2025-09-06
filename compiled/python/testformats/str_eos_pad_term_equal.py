@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class StrEosPadTermEqual(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(StrEosPadTermEqual, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -39,7 +39,7 @@ class StrEosPadTermEqual(KaitaiStruct):
 
     class S1Type(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(StrEosPadTermEqual.S1Type, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -54,7 +54,7 @@ class StrEosPadTermEqual(KaitaiStruct):
 
     class S2Type(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(StrEosPadTermEqual.S2Type, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -69,7 +69,7 @@ class StrEosPadTermEqual(KaitaiStruct):
 
     class S3Type(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(StrEosPadTermEqual.S3Type, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -84,7 +84,7 @@ class StrEosPadTermEqual(KaitaiStruct):
 
     class S4Type(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(StrEosPadTermEqual.S4Type, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()

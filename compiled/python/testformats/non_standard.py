@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class NonStandard(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(NonStandard, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -34,6 +34,9 @@ class NonStandard(KaitaiStruct):
         elif _on == 43:
             pass
         _ = self.pi
+        if hasattr(self, '_m_pi'):
+            pass
+
 
     @property
     def pi(self):

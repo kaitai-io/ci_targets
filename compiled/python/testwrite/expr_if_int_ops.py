@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ExprIfIntOps(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ExprIfIntOps, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -26,6 +26,7 @@ class ExprIfIntOps(ReadWriteKaitaiStruct):
         for i in range(4):
             self.items.append(self._io.read_s1())
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -56,7 +57,6 @@ class ExprIfIntOps(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if True:
             pass
 
@@ -67,6 +67,7 @@ class ExprIfIntOps(ReadWriteKaitaiStruct):
         for i in range(len(self.items)):
             pass
 
+        self._dirty = False
 
     @property
     def bytes_sub_key(self):

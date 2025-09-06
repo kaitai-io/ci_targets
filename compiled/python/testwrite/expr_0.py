@@ -10,12 +10,13 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class Expr0(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(Expr0, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self.len_of_1 = self._io.read_u2le()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -28,7 +29,7 @@ class Expr0(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
     @property
     def must_be_abc123(self):

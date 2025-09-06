@@ -38,6 +38,7 @@ public class ProcessToUser extends KaitaiStruct.ReadWrite {
         KaitaiStream _io__raw_buf1 = new ByteBufferKaitaiStream(this._raw_buf1);
         this.buf1 = new JustStr(_io__raw_buf1, this, _root);
         this.buf1._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -45,6 +46,7 @@ public class ProcessToUser extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         final KaitaiStream _io__raw_buf1 = new ByteBufferKaitaiStream(5);
         this._io.addChildStream(_io__raw_buf1);
         {
@@ -71,6 +73,7 @@ public class ProcessToUser extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("buf1", this.buf1._root(), _root());
         if (!Objects.equals(this.buf1._parent(), this))
             throw new ConsistencyError("buf1", this.buf1._parent(), this);
+        _dirty = false;
     }
     public static class JustStr extends KaitaiStruct.ReadWrite {
         public static JustStr fromFile(String fileName) throws IOException {
@@ -95,28 +98,31 @@ public class ProcessToUser extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.str = new String(this._io.readBytesFull(), StandardCharsets.UTF_8);
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytes((this.str).getBytes(Charset.forName("UTF-8")));
             if (!(this._io.isEof()))
                 throw new ConsistencyError("str", this._io.size() - this._io.pos(), 0);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private String str;
         private ProcessToUser _root;
         private ProcessToUser _parent;
         public String str() { return str; }
-        public void setStr(String _v) { str = _v; }
+        public void setStr(String _v) { _dirty = true; str = _v; }
         public ProcessToUser _root() { return _root; }
-        public void set_root(ProcessToUser _v) { _root = _v; }
+        public void set_root(ProcessToUser _v) { _dirty = true; _root = _v; }
         public ProcessToUser _parent() { return _parent; }
-        public void set_parent(ProcessToUser _v) { _parent = _v; }
+        public void set_parent(ProcessToUser _v) { _dirty = true; _parent = _v; }
     }
     private JustStr buf1;
     private ProcessToUser _root;
@@ -124,13 +130,13 @@ public class ProcessToUser extends KaitaiStruct.ReadWrite {
     private byte[] _raw_buf1;
     private byte[] _raw__raw_buf1;
     public JustStr buf1() { return buf1; }
-    public void setBuf1(JustStr _v) { buf1 = _v; }
+    public void setBuf1(JustStr _v) { _dirty = true; buf1 = _v; }
     public ProcessToUser _root() { return _root; }
-    public void set_root(ProcessToUser _v) { _root = _v; }
+    public void set_root(ProcessToUser _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_buf1() { return _raw_buf1; }
-    public void set_raw_Buf1(byte[] _v) { _raw_buf1 = _v; }
+    public void set_raw_Buf1(byte[] _v) { _dirty = true; _raw_buf1 = _v; }
     public byte[] _raw__raw_buf1() { return _raw__raw_buf1; }
-    public void set_raw__raw_Buf1(byte[] _v) { _raw__raw_buf1 = _v; }
+    public void set_raw__raw_Buf1(byte[] _v) { _dirty = true; _raw__raw_buf1 = _v; }
 }

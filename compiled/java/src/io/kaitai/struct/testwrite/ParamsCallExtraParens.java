@@ -35,6 +35,7 @@ public class ParamsCallExtraParens extends KaitaiStruct.ReadWrite {
     public void _read() {
         this.buf1 = new MyStr1(this._io, this, _root, 5);
         this.buf1._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -42,6 +43,7 @@ public class ParamsCallExtraParens extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this.buf1._write_Seq(this._io);
     }
 
@@ -52,6 +54,7 @@ public class ParamsCallExtraParens extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("buf1", this.buf1._parent(), this);
         if (this.buf1.len() != 5)
             throw new ConsistencyError("buf1", this.buf1.len(), 5);
+        _dirty = false;
     }
     public static class MyStr1 extends KaitaiStruct.ReadWrite {
         public MyStr1(long len) {
@@ -74,39 +77,42 @@ public class ParamsCallExtraParens extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.body = new String(this._io.readBytes(len()), StandardCharsets.UTF_8);
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytes((this.body).getBytes(Charset.forName("UTF-8")));
         }
 
         public void _check() {
             if ((this.body).getBytes(Charset.forName("UTF-8")).length != len())
                 throw new ConsistencyError("body", (this.body).getBytes(Charset.forName("UTF-8")).length, len());
+            _dirty = false;
         }
         private String body;
         private long len;
         private ParamsCallExtraParens _root;
         private ParamsCallExtraParens _parent;
         public String body() { return body; }
-        public void setBody(String _v) { body = _v; }
+        public void setBody(String _v) { _dirty = true; body = _v; }
         public long len() { return len; }
-        public void setLen(long _v) { len = _v; }
+        public void setLen(long _v) { _dirty = true; len = _v; }
         public ParamsCallExtraParens _root() { return _root; }
-        public void set_root(ParamsCallExtraParens _v) { _root = _v; }
+        public void set_root(ParamsCallExtraParens _v) { _dirty = true; _root = _v; }
         public ParamsCallExtraParens _parent() { return _parent; }
-        public void set_parent(ParamsCallExtraParens _v) { _parent = _v; }
+        public void set_parent(ParamsCallExtraParens _v) { _dirty = true; _parent = _v; }
     }
     private MyStr1 buf1;
     private ParamsCallExtraParens _root;
     private KaitaiStruct.ReadWrite _parent;
     public MyStr1 buf1() { return buf1; }
-    public void setBuf1(MyStr1 _v) { buf1 = _v; }
+    public void setBuf1(MyStr1 _v) { _dirty = true; buf1 = _v; }
     public ParamsCallExtraParens _root() { return _root; }
-    public void set_root(ParamsCallExtraParens _v) { _root = _v; }
+    public void set_root(ParamsCallExtraParens _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

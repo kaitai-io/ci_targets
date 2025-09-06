@@ -12,7 +12,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 class DebugArrayUser(ReadWriteKaitaiStruct):
     SEQ_FIELDS = ["one_cat", "array_of_cats"]
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(DebugArrayUser, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._debug = collections.defaultdict(dict)
@@ -35,6 +35,7 @@ class DebugArrayUser(ReadWriteKaitaiStruct):
             self._debug['array_of_cats']['arr'][i]['end'] = self._io.pos()
 
         self._debug['array_of_cats']['end'] = self._io.pos()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -56,7 +57,6 @@ class DebugArrayUser(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.one_cat._root != self._root:
             raise kaitaistruct.ConsistencyError(u"one_cat", self.one_cat._root, self._root)
         if self.one_cat._parent != self:
@@ -70,11 +70,12 @@ class DebugArrayUser(ReadWriteKaitaiStruct):
             if self.array_of_cats[i]._parent != self:
                 raise kaitaistruct.ConsistencyError(u"array_of_cats", self.array_of_cats[i]._parent, self)
 
+        self._dirty = False
 
     class Cat(ReadWriteKaitaiStruct):
         SEQ_FIELDS = ["meow"]
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(DebugArrayUser.Cat, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._debug = collections.defaultdict(dict)
@@ -83,6 +84,7 @@ class DebugArrayUser(ReadWriteKaitaiStruct):
             self._debug['meow']['start'] = self._io.pos()
             self.meow = self._io.read_u1()
             self._debug['meow']['end'] = self._io.pos()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -95,7 +97,7 @@ class DebugArrayUser(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
 

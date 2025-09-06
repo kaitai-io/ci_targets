@@ -65,6 +65,7 @@ public class ProcessCoerceSwitch extends KaitaiStruct.ReadWrite {
             }
             }
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -93,6 +94,7 @@ public class ProcessCoerceSwitch extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(this.bufType);
         this._io.writeU1(this.flag);
         if (flag() == 0) {
@@ -189,6 +191,7 @@ public class ProcessCoerceSwitch extends KaitaiStruct.ReadWrite {
             }
             }
         }
+        _dirty = false;
     }
     public static class Foo extends KaitaiStruct.ReadWrite {
         public static Foo fromFile(String fileName) throws IOException {
@@ -213,28 +216,31 @@ public class ProcessCoerceSwitch extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.bar = this._io.readBytes(4);
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytes(this.bar);
         }
 
         public void _check() {
             if (this.bar.length != 4)
                 throw new ConsistencyError("bar", this.bar.length, 4);
+            _dirty = false;
         }
         private byte[] bar;
         private ProcessCoerceSwitch _root;
         private ProcessCoerceSwitch _parent;
         public byte[] bar() { return bar; }
-        public void setBar(byte[] _v) { bar = _v; }
+        public void setBar(byte[] _v) { _dirty = true; bar = _v; }
         public ProcessCoerceSwitch _root() { return _root; }
-        public void set_root(ProcessCoerceSwitch _v) { _root = _v; }
+        public void set_root(ProcessCoerceSwitch _v) { _dirty = true; _root = _v; }
         public ProcessCoerceSwitch _parent() { return _parent; }
-        public void set_parent(ProcessCoerceSwitch _v) { _parent = _v; }
+        public void set_parent(ProcessCoerceSwitch _v) { _dirty = true; _parent = _v; }
     }
     private Object buf;
     public Object buf() {
@@ -254,21 +260,21 @@ public class ProcessCoerceSwitch extends KaitaiStruct.ReadWrite {
     private byte[] _raw_bufProc;
     private byte[] _raw__raw_bufProc;
     public int bufType() { return bufType; }
-    public void setBufType(int _v) { bufType = _v; }
+    public void setBufType(int _v) { _dirty = true; bufType = _v; }
     public int flag() { return flag; }
-    public void setFlag(int _v) { flag = _v; }
+    public void setFlag(int _v) { _dirty = true; flag = _v; }
     public Object bufUnproc() { return bufUnproc; }
-    public void setBufUnproc(Object _v) { bufUnproc = _v; }
+    public void setBufUnproc(Object _v) { _dirty = true; bufUnproc = _v; }
     public Object bufProc() { return bufProc; }
-    public void setBufProc(Object _v) { bufProc = _v; }
+    public void setBufProc(Object _v) { _dirty = true; bufProc = _v; }
     public ProcessCoerceSwitch _root() { return _root; }
-    public void set_root(ProcessCoerceSwitch _v) { _root = _v; }
+    public void set_root(ProcessCoerceSwitch _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_bufUnproc() { return _raw_bufUnproc; }
-    public void set_raw_BufUnproc(byte[] _v) { _raw_bufUnproc = _v; }
+    public void set_raw_BufUnproc(byte[] _v) { _dirty = true; _raw_bufUnproc = _v; }
     public byte[] _raw_bufProc() { return _raw_bufProc; }
-    public void set_raw_BufProc(byte[] _v) { _raw_bufProc = _v; }
+    public void set_raw_BufProc(byte[] _v) { _dirty = true; _raw_bufProc = _v; }
     public byte[] _raw__raw_bufProc() { return _raw__raw_bufProc; }
-    public void set_raw__raw_BufProc(byte[] _v) { _raw__raw_bufProc = _v; }
+    public void set_raw__raw_BufProc(byte[] _v) { _dirty = true; _raw__raw_bufProc = _v; }
 }

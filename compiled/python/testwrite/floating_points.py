@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class FloatingPoints(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(FloatingPoints, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -20,6 +20,7 @@ class FloatingPoints(ReadWriteKaitaiStruct):
         self.single_value_be = self._io.read_f4be()
         self.double_value_be = self._io.read_f8be()
         self.approximate_value = self._io.read_f4le()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -36,7 +37,7 @@ class FloatingPoints(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
     @property
     def double_value_plus_float(self):

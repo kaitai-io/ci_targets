@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class IfValues(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(IfValues, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -23,6 +23,7 @@ class IfValues(ReadWriteKaitaiStruct):
             finally:
                 self.codes.append(_t_codes)
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -42,7 +43,6 @@ class IfValues(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.codes) != 3:
             raise kaitaistruct.ConsistencyError(u"codes", len(self.codes), 3)
         for i in range(len(self.codes)):
@@ -52,15 +52,17 @@ class IfValues(ReadWriteKaitaiStruct):
             if self.codes[i]._parent != self:
                 raise kaitaistruct.ConsistencyError(u"codes", self.codes[i]._parent, self)
 
+        self._dirty = False
 
     class Code(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(IfValues.Code, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.opcode = self._io.read_u1()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -73,7 +75,7 @@ class IfValues(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
         @property
         def half_opcode(self):

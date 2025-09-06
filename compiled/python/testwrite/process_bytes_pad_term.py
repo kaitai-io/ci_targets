@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ProcessBytesPadTerm(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ProcessBytesPadTerm, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -23,6 +23,7 @@ class ProcessBytesPadTerm(ReadWriteKaitaiStruct):
         self.str_term_and_pad = KaitaiStream.process_xor_one(self._raw_str_term_and_pad, 21)
         self._raw_str_term_include = KaitaiStream.bytes_terminate(self._io.read_bytes(20), 64, True)
         self.str_term_include = KaitaiStream.process_xor_one(self._raw_str_term_include, 21)
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -73,6 +74,6 @@ class ProcessBytesPadTerm(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
 

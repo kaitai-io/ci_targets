@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class SwitchCast(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(SwitchCast, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -33,7 +33,7 @@ class SwitchCast(KaitaiStruct):
 
     class Intval(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(SwitchCast.Intval, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -48,7 +48,7 @@ class SwitchCast(KaitaiStruct):
 
     class Opcode(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(SwitchCast.Opcode, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -77,7 +77,7 @@ class SwitchCast(KaitaiStruct):
 
     class Strval(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(SwitchCast.Strval, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()

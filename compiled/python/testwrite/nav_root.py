@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class NavRoot(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(NavRoot, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -19,6 +19,7 @@ class NavRoot(ReadWriteKaitaiStruct):
         self.header._read()
         self.index = NavRoot.IndexObj(self._io, self, self._root)
         self.index._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -34,7 +35,6 @@ class NavRoot(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.header._root != self._root:
             raise kaitaistruct.ConsistencyError(u"header", self.header._root, self._root)
         if self.header._parent != self:
@@ -43,15 +43,17 @@ class NavRoot(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"index", self.index._root, self._root)
         if self.index._parent != self:
             raise kaitaistruct.ConsistencyError(u"index", self.index._parent, self)
+        self._dirty = False
 
     class Entry(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(NavRoot.Entry, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.filename = (self._io.read_bytes(self._root.header.filename_len)).decode(u"UTF-8")
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -64,20 +66,21 @@ class NavRoot(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if len((self.filename).encode(u"UTF-8")) != self._root.header.filename_len:
                 raise kaitaistruct.ConsistencyError(u"filename", len((self.filename).encode(u"UTF-8")), self._root.header.filename_len)
+            self._dirty = False
 
 
     class HeaderObj(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(NavRoot.HeaderObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.qty_entries = self._io.read_u4le()
             self.filename_len = self._io.read_u4le()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -91,12 +94,12 @@ class NavRoot(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     class IndexObj(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(NavRoot.IndexObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -110,6 +113,7 @@ class NavRoot(ReadWriteKaitaiStruct):
                 finally:
                     self.entries.append(_t_entries)
 
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -130,7 +134,6 @@ class NavRoot(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if len(self.magic) != 4:
                 raise kaitaistruct.ConsistencyError(u"magic", len(self.magic), 4)
             if len(self.entries) != self._root.header.qty_entries:
@@ -142,6 +145,7 @@ class NavRoot(ReadWriteKaitaiStruct):
                 if self.entries[i]._parent != self:
                     raise kaitaistruct.ConsistencyError(u"entries", self.entries[i]._parent, self)
 
+            self._dirty = False
 
 
 

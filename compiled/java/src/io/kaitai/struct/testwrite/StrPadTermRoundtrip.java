@@ -36,12 +36,14 @@ public class StrPadTermRoundtrip extends KaitaiStruct.ReadWrite {
         this.strTerm = new String(KaitaiStream.bytesTerminate(KaitaiStream.bytesStripRight(this._io.readBytes(20), (byte) 43), (byte) 64, false), StandardCharsets.UTF_8);
         this.strTermAndPad = new String(KaitaiStream.bytesTerminate(KaitaiStream.bytesStripRight(this._io.readBytes(20), (byte) 43), (byte) 64, false), StandardCharsets.UTF_8);
         this.strTermInclude = new String(KaitaiStream.bytesTerminate(KaitaiStream.bytesStripRight(this._io.readBytes(20), (byte) 46), (byte) 64, true), StandardCharsets.UTF_8);
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytesLimit((this.strPad).getBytes(Charset.forName("UTF-8")), 20, (byte) 64, (byte) 64);
         this._io.writeBytesLimit((this.strTerm).getBytes(Charset.forName("UTF-8")), 20, (byte) 64, (byte) 43);
         this._io.writeBytesLimit((this.strTermAndPad).getBytes(Charset.forName("UTF-8")), 20, (byte) 64, (byte) 43);
@@ -77,6 +79,7 @@ public class StrPadTermRoundtrip extends KaitaiStruct.ReadWrite {
             if ( (((this.strTermInclude).getBytes(Charset.forName("UTF-8")).length != 0) && (((this.strTermInclude).getBytes(Charset.forName("UTF-8"))[((Number) ((this.strTermInclude).getBytes(Charset.forName("UTF-8")).length - 1)).intValue()] & 0xff) == 46)) )
                 throw new ConsistencyError("str_term_include", ((this.strTermInclude).getBytes(Charset.forName("UTF-8"))[((Number) ((this.strTermInclude).getBytes(Charset.forName("UTF-8")).length - 1)).intValue()] & 0xff), 46);
         }
+        _dirty = false;
     }
     private String strPad;
     private String strTerm;
@@ -85,15 +88,15 @@ public class StrPadTermRoundtrip extends KaitaiStruct.ReadWrite {
     private StrPadTermRoundtrip _root;
     private KaitaiStruct.ReadWrite _parent;
     public String strPad() { return strPad; }
-    public void setStrPad(String _v) { strPad = _v; }
+    public void setStrPad(String _v) { _dirty = true; strPad = _v; }
     public String strTerm() { return strTerm; }
-    public void setStrTerm(String _v) { strTerm = _v; }
+    public void setStrTerm(String _v) { _dirty = true; strTerm = _v; }
     public String strTermAndPad() { return strTermAndPad; }
-    public void setStrTermAndPad(String _v) { strTermAndPad = _v; }
+    public void setStrTermAndPad(String _v) { _dirty = true; strTermAndPad = _v; }
     public String strTermInclude() { return strTermInclude; }
-    public void setStrTermInclude(String _v) { strTermInclude = _v; }
+    public void setStrTermInclude(String _v) { _dirty = true; strTermInclude = _v; }
     public StrPadTermRoundtrip _root() { return _root; }
-    public void set_root(StrPadTermRoundtrip _v) { _root = _v; }
+    public void set_root(StrPadTermRoundtrip _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

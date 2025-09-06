@@ -53,6 +53,7 @@ public class SwitchIntegers2 extends KaitaiStruct.ReadWrite {
         if (len() > 3) {
             this.padding = this._io.readU1();
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -75,6 +76,7 @@ public class SwitchIntegers2 extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(this.code);
         switch (code()) {
         case 1: {
@@ -119,6 +121,7 @@ public class SwitchIntegers2 extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("ham", this.ham.length, len());
         if (len() > 3) {
         }
+        _dirty = false;
     }
     private String lenModStr;
     public String lenModStr() {
@@ -135,15 +138,15 @@ public class SwitchIntegers2 extends KaitaiStruct.ReadWrite {
     private SwitchIntegers2 _root;
     private KaitaiStruct.ReadWrite _parent;
     public int code() { return code; }
-    public void setCode(int _v) { code = _v; }
+    public void setCode(int _v) { _dirty = true; code = _v; }
     public Long len() { return len; }
-    public void setLen(Long _v) { len = _v; }
+    public void setLen(Long _v) { _dirty = true; len = _v; }
     public byte[] ham() { return ham; }
-    public void setHam(byte[] _v) { ham = _v; }
+    public void setHam(byte[] _v) { _dirty = true; ham = _v; }
     public Integer padding() { return padding; }
-    public void setPadding(Integer _v) { padding = _v; }
+    public void setPadding(Integer _v) { _dirty = true; padding = _v; }
     public SwitchIntegers2 _root() { return _root; }
-    public void set_root(SwitchIntegers2 _v) { _root = _v; }
+    public void set_root(SwitchIntegers2 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

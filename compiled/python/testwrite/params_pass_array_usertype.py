@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ParamsPassArrayUsertype(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ParamsPassArrayUsertype, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -25,6 +25,7 @@ class ParamsPassArrayUsertype(ReadWriteKaitaiStruct):
 
         self.pass_blocks = ParamsPassArrayUsertype.ParamType(self.blocks, self._io, self, self._root)
         self.pass_blocks._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -46,7 +47,6 @@ class ParamsPassArrayUsertype(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.blocks) != 2:
             raise kaitaistruct.ConsistencyError(u"blocks", len(self.blocks), 2)
         for i in range(len(self.blocks)):
@@ -62,15 +62,17 @@ class ParamsPassArrayUsertype(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"pass_blocks", self.pass_blocks._parent, self)
         if self.pass_blocks.bar != self.blocks:
             raise kaitaistruct.ConsistencyError(u"pass_blocks", self.pass_blocks.bar, self.blocks)
+        self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ParamsPassArrayUsertype.Block, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.foo = self._io.read_u1()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -83,12 +85,12 @@ class ParamsPassArrayUsertype(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     class ParamType(ReadWriteKaitaiStruct):
         def __init__(self, bar, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ParamsPassArrayUsertype.ParamType, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self.bar = bar
@@ -96,6 +98,7 @@ class ParamsPassArrayUsertype(ReadWriteKaitaiStruct):
         def _read(self):
             self.one = self._io.read_bytes(self.bar[0].foo)
             self.two = self._io.read_bytes(self.bar[1].foo)
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -109,11 +112,11 @@ class ParamsPassArrayUsertype(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if len(self.one) != self.bar[0].foo:
                 raise kaitaistruct.ConsistencyError(u"one", len(self.one), self.bar[0].foo)
             if len(self.two) != self.bar[1].foo:
                 raise kaitaistruct.ConsistencyError(u"two", len(self.two), self.bar[1].foo)
+            self._dirty = False
 
 
 

@@ -98,6 +98,7 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
         this.testType = new TestSubtype(this._io, this, _root);
         this.testType._read();
         _attrEnd.put("testType", this._io.pos());
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -107,6 +108,7 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(((Number) (this.one.id())).intValue());
         for (int i = 0; i < this.arrayOfInts.size(); i++) {
             this._io.writeU1(((Number) (this.arrayOfInts.get(((Number) (i)).intValue()).id())).intValue());
@@ -123,6 +125,7 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("test_type", this.testType._root(), _root());
         if (!Objects.equals(this.testType._parent(), this))
             throw new ConsistencyError("test_type", this.testType._parent(), this);
+        _dirty = false;
     }
     public static class TestSubtype extends KaitaiStruct.ReadWrite {
         public Map<String, Integer> _attrStart = new HashMap<String, Integer>();
@@ -186,17 +189,20 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
             _attrStart.put("field2", this._io.pos());
             this.field2 = this._io.readU1();
             _attrEnd.put("field2", this._io.pos());
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU1(((Number) (this.field1.id())).intValue());
             this._io.writeU1(this.field2);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private InnerEnum2 instanceField;
         public InnerEnum2 instanceField() {
@@ -211,13 +217,13 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
         private DebugEnumName _root;
         private DebugEnumName _parent;
         public InnerEnum1 field1() { return field1; }
-        public void setField1(InnerEnum1 _v) { field1 = _v; }
+        public void setField1(InnerEnum1 _v) { _dirty = true; field1 = _v; }
         public int field2() { return field2; }
-        public void setField2(int _v) { field2 = _v; }
+        public void setField2(int _v) { _dirty = true; field2 = _v; }
         public DebugEnumName _root() { return _root; }
-        public void set_root(DebugEnumName _v) { _root = _v; }
+        public void set_root(DebugEnumName _v) { _dirty = true; _root = _v; }
         public DebugEnumName _parent() { return _parent; }
-        public void set_parent(DebugEnumName _v) { _parent = _v; }
+        public void set_parent(DebugEnumName _v) { _dirty = true; _parent = _v; }
     }
     private TestEnum1 one;
     private List<TestEnum2> arrayOfInts;
@@ -225,13 +231,13 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
     private DebugEnumName _root;
     private KaitaiStruct.ReadWrite _parent;
     public TestEnum1 one() { return one; }
-    public void setOne(TestEnum1 _v) { one = _v; }
+    public void setOne(TestEnum1 _v) { _dirty = true; one = _v; }
     public List<TestEnum2> arrayOfInts() { return arrayOfInts; }
-    public void setArrayOfInts(List<TestEnum2> _v) { arrayOfInts = _v; }
+    public void setArrayOfInts(List<TestEnum2> _v) { _dirty = true; arrayOfInts = _v; }
     public TestSubtype testType() { return testType; }
-    public void setTestType(TestSubtype _v) { testType = _v; }
+    public void setTestType(TestSubtype _v) { _dirty = true; testType = _v; }
     public DebugEnumName _root() { return _root; }
-    public void set_root(DebugEnumName _v) { _root = _v; }
+    public void set_root(DebugEnumName _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

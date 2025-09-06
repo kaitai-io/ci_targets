@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class InstanceInSized(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(InstanceInSized, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -27,7 +27,7 @@ class InstanceInSized(KaitaiStruct):
 
     class Bar(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(InstanceInSized.Bar, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -39,6 +39,9 @@ class InstanceInSized(KaitaiStruct):
         def _fetch_instances(self):
             pass
             _ = self.inst
+            if hasattr(self, '_m_inst'):
+                pass
+
 
         @property
         def inst(self):
@@ -54,7 +57,7 @@ class InstanceInSized(KaitaiStruct):
 
     class Baz(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(InstanceInSized.Baz, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -66,6 +69,9 @@ class InstanceInSized(KaitaiStruct):
         def _fetch_instances(self):
             pass
             _ = self.inst
+            if hasattr(self, '_m_inst'):
+                pass
+
 
         @property
         def inst(self):
@@ -81,7 +87,7 @@ class InstanceInSized(KaitaiStruct):
 
     class Qux(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(InstanceInSized.Qux, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -99,7 +105,13 @@ class InstanceInSized(KaitaiStruct):
                 pass
 
             _ = self.inst_invoked
+            if hasattr(self, '_m_inst_invoked'):
+                pass
+
             _ = self.inst_unused_by_seq
+            if hasattr(self, '_m_inst_unused_by_seq'):
+                pass
+
 
         @property
         def inst_invoked(self):
@@ -126,7 +138,7 @@ class InstanceInSized(KaitaiStruct):
 
     class Wrapper(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(InstanceInSized.Wrapper, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -143,9 +155,15 @@ class InstanceInSized(KaitaiStruct):
             self.seq_sized._fetch_instances()
             self.seq_in_stream._fetch_instances()
             _ = self.inst_in_stream
-            self._m_inst_in_stream._fetch_instances()
+            if hasattr(self, '_m_inst_in_stream'):
+                pass
+                self._m_inst_in_stream._fetch_instances()
+
             _ = self.inst_sized
-            self._m_inst_sized._fetch_instances()
+            if hasattr(self, '_m_inst_sized'):
+                pass
+                self._m_inst_sized._fetch_instances()
+
 
         @property
         def inst_in_stream(self):

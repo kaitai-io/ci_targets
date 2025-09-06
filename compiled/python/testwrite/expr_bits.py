@@ -15,11 +15,11 @@ class ExprBits(ReadWriteKaitaiStruct):
         foo = 1
         bar = 2
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ExprBits, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_inst_pos = False
-        self.inst_pos__to_write = True
+        self.inst_pos__enabled = True
 
     def _read(self):
         self.enum_seq = KaitaiStream.resolve_enum(ExprBits.Items, self._io.read_bits_int_be(2))
@@ -35,6 +35,7 @@ class ExprBits(ReadWriteKaitaiStruct):
             self.switch_on_type = self._io.read_s1()
         self.switch_on_endian = ExprBits.EndianSwitch(self._io, self, self._root)
         self.switch_on_endian._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -47,11 +48,14 @@ class ExprBits(ReadWriteKaitaiStruct):
             pass
         self.switch_on_endian._fetch_instances()
         _ = self.inst_pos
+        if hasattr(self, '_m_inst_pos'):
+            pass
+
 
 
     def _write__seq(self, io=None):
         super(ExprBits, self)._write__seq(io)
-        self._should_write_inst_pos = self.inst_pos__to_write
+        self._should_write_inst_pos = self.inst_pos__enabled
         self._io.write_bits_int_be(2, int(self.enum_seq))
         self._io.write_bits_int_be(3, self.a)
         self._io.write_bytes(self.byte_size)
@@ -67,7 +71,6 @@ class ExprBits(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.byte_size) != self.a:
             raise kaitaistruct.ConsistencyError(u"byte_size", len(self.byte_size), self.a)
         if len(self.repeat_expr) != self.a:
@@ -82,10 +85,14 @@ class ExprBits(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"switch_on_endian", self.switch_on_endian._root, self._root)
         if self.switch_on_endian._parent != self:
             raise kaitaistruct.ConsistencyError(u"switch_on_endian", self.switch_on_endian._parent, self)
+        if self.inst_pos__enabled:
+            pass
+
+        self._dirty = False
 
     class EndianSwitch(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ExprBits.EndianSwitch, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -103,12 +110,15 @@ class ExprBits(ReadWriteKaitaiStruct):
                 self._read_le()
             elif self._is_le == False:
                 self._read_be()
+            self._dirty = False
 
         def _read_le(self):
             self.foo = self._io.read_s2le()
+            self._dirty = False
 
         def _read_be(self):
             self.foo = self._io.read_s2be()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -134,7 +144,7 @@ class ExprBits(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     @property
@@ -154,6 +164,9 @@ class ExprBits(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_inst_pos'):
             return self._m_inst_pos
 
+        if not self.inst_pos__enabled:
+            return None
+
         _pos = self._io.pos()
         self._io.seek(self.a)
         self._m_inst_pos = self._io.read_s1()
@@ -162,6 +175,7 @@ class ExprBits(ReadWriteKaitaiStruct):
 
     @inst_pos.setter
     def inst_pos(self, v):
+        self._dirty = True
         self._m_inst_pos = v
 
     def _write_inst_pos(self):
@@ -170,9 +184,5 @@ class ExprBits(ReadWriteKaitaiStruct):
         self._io.seek(self.a)
         self._io.write_s1(self._m_inst_pos)
         self._io.seek(_pos)
-
-
-    def _check_inst_pos(self):
-        pass
 
 

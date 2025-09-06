@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ValidFailExpr(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ValidFailExpr, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -23,6 +23,7 @@ class ValidFailExpr(ReadWriteKaitaiStruct):
         _ = self.bar
         if not  ((_ < -190) or (_ > -190)) :
             raise kaitaistruct.ValidationExprError(self.bar, self._io, u"/seq/1")
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -36,12 +37,12 @@ class ValidFailExpr(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         _ = self.foo
         if not _ == 1:
             raise kaitaistruct.ValidationExprError(self.foo, None, u"/seq/0")
         _ = self.bar
         if not  ((_ < -190) or (_ > -190)) :
             raise kaitaistruct.ValidationExprError(self.bar, None, u"/seq/1")
+        self._dirty = False
 
 

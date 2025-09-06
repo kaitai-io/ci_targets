@@ -34,6 +34,7 @@ public class ImportsCircularB extends KaitaiStruct.ReadWrite {
             this.backRef = new ImportsCircularA(this._io);
             this.backRef._read();
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -43,6 +44,7 @@ public class ImportsCircularB extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(this.initial);
         if (initial() == 65) {
             this.backRef._write_Seq(this._io);
@@ -52,17 +54,18 @@ public class ImportsCircularB extends KaitaiStruct.ReadWrite {
     public void _check() {
         if (initial() == 65) {
         }
+        _dirty = false;
     }
     private int initial;
     private ImportsCircularA backRef;
     private ImportsCircularB _root;
     private KaitaiStruct.ReadWrite _parent;
     public int initial() { return initial; }
-    public void setInitial(int _v) { initial = _v; }
+    public void setInitial(int _v) { _dirty = true; initial = _v; }
     public ImportsCircularA backRef() { return backRef; }
-    public void setBackRef(ImportsCircularA _v) { backRef = _v; }
+    public void setBackRef(ImportsCircularA _v) { _dirty = true; backRef = _v; }
     public ImportsCircularB _root() { return _root; }
-    public void set_root(ImportsCircularB _v) { _root = _v; }
+    public void set_root(ImportsCircularB _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

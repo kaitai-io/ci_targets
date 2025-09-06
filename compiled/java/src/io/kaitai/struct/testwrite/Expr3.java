@@ -34,12 +34,14 @@ public class Expr3 extends KaitaiStruct.ReadWrite {
     public void _read() {
         this.one = this._io.readU1();
         this.two = new String(this._io.readBytes(3), StandardCharsets.US_ASCII);
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(this.one);
         this._io.writeBytes((this.two).getBytes(Charset.forName("ASCII")));
     }
@@ -47,6 +49,7 @@ public class Expr3 extends KaitaiStruct.ReadWrite {
     public void _check() {
         if ((this.two).getBytes(Charset.forName("ASCII")).length != 3)
             throw new ConsistencyError("two", (this.two).getBytes(Charset.forName("ASCII")).length, 3);
+        _dirty = false;
     }
     private String four;
     public String four() {
@@ -133,11 +136,11 @@ public class Expr3 extends KaitaiStruct.ReadWrite {
     private Expr3 _root;
     private KaitaiStruct.ReadWrite _parent;
     public int one() { return one; }
-    public void setOne(int _v) { one = _v; }
+    public void setOne(int _v) { _dirty = true; one = _v; }
     public String two() { return two; }
-    public void setTwo(String _v) { two = _v; }
+    public void setTwo(String _v) { _dirty = true; two = _v; }
     public Expr3 _root() { return _root; }
-    public void set_root(Expr3 _v) { _root = _v; }
+    public void set_root(Expr3 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

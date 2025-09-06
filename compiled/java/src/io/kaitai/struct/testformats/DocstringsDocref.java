@@ -39,6 +39,8 @@ public class DocstringsDocref extends KaitaiStruct {
 
     public void _fetchInstances() {
         parseInst();
+        if (this.parseInst != null) {
+        }
     }
     private Boolean foo;
 

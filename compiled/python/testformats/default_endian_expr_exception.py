@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class DefaultEndianExprException(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(DefaultEndianExprException, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -33,7 +33,7 @@ class DefaultEndianExprException(KaitaiStruct):
 
     class Doc(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(DefaultEndianExprException.Doc, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -49,7 +49,7 @@ class DefaultEndianExprException(KaitaiStruct):
 
         class MainObj(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
-                self._io = _io
+                super(DefaultEndianExprException.Doc.MainObj, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
                 self._read()

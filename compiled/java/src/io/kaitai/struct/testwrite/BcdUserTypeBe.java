@@ -43,6 +43,7 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
         KaitaiStream _io__raw_leadingZeroLtr = new ByteBufferKaitaiStream(this._raw_leadingZeroLtr);
         this.leadingZeroLtr = new LeadingZeroLtrObj(_io__raw_leadingZeroLtr, this, _root);
         this.leadingZeroLtr._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -52,6 +53,7 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         final KaitaiStream _io__raw_ltr = new ByteBufferKaitaiStream(4);
         this._io.addChildStream(_io__raw_ltr);
         {
@@ -118,6 +120,7 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("leading_zero_ltr", this.leadingZeroLtr._root(), _root());
         if (!Objects.equals(this.leadingZeroLtr._parent(), this))
             throw new ConsistencyError("leading_zero_ltr", this.leadingZeroLtr._parent(), this);
+        _dirty = false;
     }
     public static class LeadingZeroLtrObj extends KaitaiStruct.ReadWrite {
         public static LeadingZeroLtrObj fromFile(String fileName) throws IOException {
@@ -145,12 +148,14 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             this.b2 = this._io.readU1();
             this.b3 = this._io.readU1();
             this.b4 = this._io.readU1();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU1(this.b1);
             this._io.writeU1(this.b2);
             this._io.writeU1(this.b3);
@@ -158,6 +163,7 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
         }
 
         public void _check() {
+            _dirty = false;
         }
         private Integer asInt;
         public Integer asInt() {
@@ -246,17 +252,17 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
         private BcdUserTypeBe _root;
         private BcdUserTypeBe _parent;
         public int b1() { return b1; }
-        public void setB1(int _v) { b1 = _v; }
+        public void setB1(int _v) { _dirty = true; b1 = _v; }
         public int b2() { return b2; }
-        public void setB2(int _v) { b2 = _v; }
+        public void setB2(int _v) { _dirty = true; b2 = _v; }
         public int b3() { return b3; }
-        public void setB3(int _v) { b3 = _v; }
+        public void setB3(int _v) { _dirty = true; b3 = _v; }
         public int b4() { return b4; }
-        public void setB4(int _v) { b4 = _v; }
+        public void setB4(int _v) { _dirty = true; b4 = _v; }
         public BcdUserTypeBe _root() { return _root; }
-        public void set_root(BcdUserTypeBe _v) { _root = _v; }
+        public void set_root(BcdUserTypeBe _v) { _dirty = true; _root = _v; }
         public BcdUserTypeBe _parent() { return _parent; }
-        public void set_parent(BcdUserTypeBe _v) { _parent = _v; }
+        public void set_parent(BcdUserTypeBe _v) { _dirty = true; _parent = _v; }
     }
     public static class LtrObj extends KaitaiStruct.ReadWrite {
         public static LtrObj fromFile(String fileName) throws IOException {
@@ -284,12 +290,14 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             this.b2 = this._io.readU1();
             this.b3 = this._io.readU1();
             this.b4 = this._io.readU1();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU1(this.b1);
             this._io.writeU1(this.b2);
             this._io.writeU1(this.b3);
@@ -297,6 +305,7 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
         }
 
         public void _check() {
+            _dirty = false;
         }
         private Integer asInt;
         public Integer asInt() {
@@ -385,17 +394,17 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
         private BcdUserTypeBe _root;
         private BcdUserTypeBe _parent;
         public int b1() { return b1; }
-        public void setB1(int _v) { b1 = _v; }
+        public void setB1(int _v) { _dirty = true; b1 = _v; }
         public int b2() { return b2; }
-        public void setB2(int _v) { b2 = _v; }
+        public void setB2(int _v) { _dirty = true; b2 = _v; }
         public int b3() { return b3; }
-        public void setB3(int _v) { b3 = _v; }
+        public void setB3(int _v) { _dirty = true; b3 = _v; }
         public int b4() { return b4; }
-        public void setB4(int _v) { b4 = _v; }
+        public void setB4(int _v) { _dirty = true; b4 = _v; }
         public BcdUserTypeBe _root() { return _root; }
-        public void set_root(BcdUserTypeBe _v) { _root = _v; }
+        public void set_root(BcdUserTypeBe _v) { _dirty = true; _root = _v; }
         public BcdUserTypeBe _parent() { return _parent; }
-        public void set_parent(BcdUserTypeBe _v) { _parent = _v; }
+        public void set_parent(BcdUserTypeBe _v) { _dirty = true; _parent = _v; }
     }
     public static class RtlObj extends KaitaiStruct.ReadWrite {
         public static RtlObj fromFile(String fileName) throws IOException {
@@ -423,12 +432,14 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             this.b2 = this._io.readU1();
             this.b3 = this._io.readU1();
             this.b4 = this._io.readU1();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU1(this.b1);
             this._io.writeU1(this.b2);
             this._io.writeU1(this.b3);
@@ -436,6 +447,7 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
         }
 
         public void _check() {
+            _dirty = false;
         }
         private Integer asInt;
         public Integer asInt() {
@@ -524,17 +536,17 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
         private BcdUserTypeBe _root;
         private BcdUserTypeBe _parent;
         public int b1() { return b1; }
-        public void setB1(int _v) { b1 = _v; }
+        public void setB1(int _v) { _dirty = true; b1 = _v; }
         public int b2() { return b2; }
-        public void setB2(int _v) { b2 = _v; }
+        public void setB2(int _v) { _dirty = true; b2 = _v; }
         public int b3() { return b3; }
-        public void setB3(int _v) { b3 = _v; }
+        public void setB3(int _v) { _dirty = true; b3 = _v; }
         public int b4() { return b4; }
-        public void setB4(int _v) { b4 = _v; }
+        public void setB4(int _v) { _dirty = true; b4 = _v; }
         public BcdUserTypeBe _root() { return _root; }
-        public void set_root(BcdUserTypeBe _v) { _root = _v; }
+        public void set_root(BcdUserTypeBe _v) { _dirty = true; _root = _v; }
         public BcdUserTypeBe _parent() { return _parent; }
-        public void set_parent(BcdUserTypeBe _v) { _parent = _v; }
+        public void set_parent(BcdUserTypeBe _v) { _dirty = true; _parent = _v; }
     }
     private LtrObj ltr;
     private RtlObj rtl;
@@ -545,19 +557,19 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
     private byte[] _raw_rtl;
     private byte[] _raw_leadingZeroLtr;
     public LtrObj ltr() { return ltr; }
-    public void setLtr(LtrObj _v) { ltr = _v; }
+    public void setLtr(LtrObj _v) { _dirty = true; ltr = _v; }
     public RtlObj rtl() { return rtl; }
-    public void setRtl(RtlObj _v) { rtl = _v; }
+    public void setRtl(RtlObj _v) { _dirty = true; rtl = _v; }
     public LeadingZeroLtrObj leadingZeroLtr() { return leadingZeroLtr; }
-    public void setLeadingZeroLtr(LeadingZeroLtrObj _v) { leadingZeroLtr = _v; }
+    public void setLeadingZeroLtr(LeadingZeroLtrObj _v) { _dirty = true; leadingZeroLtr = _v; }
     public BcdUserTypeBe _root() { return _root; }
-    public void set_root(BcdUserTypeBe _v) { _root = _v; }
+    public void set_root(BcdUserTypeBe _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_ltr() { return _raw_ltr; }
-    public void set_raw_Ltr(byte[] _v) { _raw_ltr = _v; }
+    public void set_raw_Ltr(byte[] _v) { _dirty = true; _raw_ltr = _v; }
     public byte[] _raw_rtl() { return _raw_rtl; }
-    public void set_raw_Rtl(byte[] _v) { _raw_rtl = _v; }
+    public void set_raw_Rtl(byte[] _v) { _dirty = true; _raw_rtl = _v; }
     public byte[] _raw_leadingZeroLtr() { return _raw_leadingZeroLtr; }
-    public void set_raw_LeadingZeroLtr(byte[] _v) { _raw_leadingZeroLtr = _v; }
+    public void set_raw_LeadingZeroLtr(byte[] _v) { _dirty = true; _raw_leadingZeroLtr = _v; }
 }

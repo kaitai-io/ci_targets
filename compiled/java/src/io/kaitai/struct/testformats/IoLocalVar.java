@@ -38,18 +38,20 @@ public class IoLocalVar extends KaitaiStruct {
         if (((IoLocalVar.Dummy) (messUp()))._io().pos() < 0) {
         }
         messUp();
-        switch (2) {
-        case 1: {
-            ((Dummy) (this.messUp))._fetchInstances();
-            break;
-        }
-        case 2: {
-            ((Dummy) (this.messUp))._fetchInstances();
-            break;
-        }
-        default: {
-            break;
-        }
+        if (this.messUp != null) {
+            switch (2) {
+            case 1: {
+                ((Dummy) (this.messUp))._fetchInstances();
+                break;
+            }
+            case 2: {
+                ((Dummy) (this.messUp))._fetchInstances();
+                break;
+            }
+            default: {
+                break;
+            }
+            }
         }
     }
     public static class Dummy extends KaitaiStruct {

@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ExprIoPos(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ExprIoPos, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -23,6 +23,7 @@ class ExprIoPos(ReadWriteKaitaiStruct):
         _io__raw_substream2 = KaitaiStream(BytesIO(self._raw_substream2))
         self.substream2 = ExprIoPos.AllPlusNumber(_io__raw_substream2, self, self._root)
         self.substream2._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -58,7 +59,6 @@ class ExprIoPos(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.substream1._root != self._root:
             raise kaitaistruct.ConsistencyError(u"substream1", self.substream1._root, self._root)
         if self.substream1._parent != self:
@@ -67,10 +67,11 @@ class ExprIoPos(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"substream2", self.substream2._root, self._root)
         if self.substream2._parent != self:
             raise kaitaistruct.ConsistencyError(u"substream2", self.substream2._parent, self)
+        self._dirty = False
 
     class AllPlusNumber(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ExprIoPos.AllPlusNumber, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -78,6 +79,7 @@ class ExprIoPos(ReadWriteKaitaiStruct):
             self.my_str = (self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8")
             self.body = self._io.read_bytes((self._io.size() - self._io.pos()) - 2)
             self.number = self._io.read_u2le()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -95,9 +97,9 @@ class ExprIoPos(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if KaitaiStream.byte_array_index_of((self.my_str).encode(u"UTF-8"), 0) != -1:
                 raise kaitaistruct.ConsistencyError(u"my_str", KaitaiStream.byte_array_index_of((self.my_str).encode(u"UTF-8"), 0), -1)
+            self._dirty = False
 
 
 

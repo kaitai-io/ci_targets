@@ -43,12 +43,14 @@ public class ValidFailExpr extends KaitaiStruct.ReadWrite {
                 throw new KaitaiStream.ValidationExprError(this.bar, this._io, "/seq/1");
             }
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(this.foo);
         this._io.writeS2le(this.bar);
     }
@@ -66,17 +68,18 @@ public class ValidFailExpr extends KaitaiStruct.ReadWrite {
                 throw new KaitaiStream.ValidationExprError(this.bar, null, "/seq/1");
             }
         }
+        _dirty = false;
     }
     private int foo;
     private short bar;
     private ValidFailExpr _root;
     private KaitaiStruct.ReadWrite _parent;
     public int foo() { return foo; }
-    public void setFoo(int _v) { foo = _v; }
+    public void setFoo(int _v) { _dirty = true; foo = _v; }
     public short bar() { return bar; }
-    public void setBar(short _v) { bar = _v; }
+    public void setBar(short _v) { _dirty = true; bar = _v; }
     public ValidFailExpr _root() { return _root; }
-    public void set_root(ValidFailExpr _v) { _root = _v; }
+    public void set_root(ValidFailExpr _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

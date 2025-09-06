@@ -10,30 +10,41 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class CastToTop(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(CastToTop, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_header = False
-        self.header__to_write = True
+        self.header__enabled = True
 
     def _read(self):
         self.code = self._io.read_u1()
+        self._dirty = False
 
 
     def _fetch_instances(self):
         pass
         _ = self.header
-        self._m_header._fetch_instances()
+        if hasattr(self, '_m_header'):
+            pass
+            self._m_header._fetch_instances()
+
 
 
     def _write__seq(self, io=None):
         super(CastToTop, self)._write__seq(io)
-        self._should_write_header = self.header__to_write
+        self._should_write_header = self.header__enabled
         self._io.write_u1(self.code)
 
 
     def _check(self):
-        pass
+        if self.header__enabled:
+            pass
+            if self._m_header._root != self._root:
+                raise kaitaistruct.ConsistencyError(u"header", self._m_header._root, self._root)
+            if self._m_header._parent != self:
+                raise kaitaistruct.ConsistencyError(u"header", self._m_header._parent, self)
+
+        self._dirty = False
 
     @property
     def header(self):
@@ -41,6 +52,9 @@ class CastToTop(ReadWriteKaitaiStruct):
             self._write_header()
         if hasattr(self, '_m_header'):
             return self._m_header
+
+        if not self.header__enabled:
+            return None
 
         _pos = self._io.pos()
         self._io.seek(1)
@@ -51,6 +65,7 @@ class CastToTop(ReadWriteKaitaiStruct):
 
     @header.setter
     def header(self, v):
+        self._dirty = True
         self._m_header = v
 
     def _write_header(self):
@@ -59,14 +74,6 @@ class CastToTop(ReadWriteKaitaiStruct):
         self._io.seek(1)
         self._m_header._write__seq(self._io)
         self._io.seek(_pos)
-
-
-    def _check_header(self):
-        pass
-        if self._m_header._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"header", self._m_header._root, self._root)
-        if self._m_header._parent != self:
-            raise kaitaistruct.ConsistencyError(u"header", self._m_header._parent, self)
 
     @property
     def header_casted(self):

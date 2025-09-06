@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class OptionalId(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(OptionalId, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -18,6 +18,7 @@ class OptionalId(ReadWriteKaitaiStruct):
         self._unnamed0 = self._io.read_u1()
         self._unnamed1 = self._io.read_u1()
         self._unnamed2 = self._io.read_bytes(5)
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -32,8 +33,8 @@ class OptionalId(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self._unnamed2) != 5:
             raise kaitaistruct.ConsistencyError(u"_unnamed2", len(self._unnamed2), 5)
+        self._dirty = False
 
 

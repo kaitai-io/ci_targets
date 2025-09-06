@@ -36,6 +36,7 @@ public class NavParentFalse extends KaitaiStruct.ReadWrite {
         this.elementA._read();
         this.elementB = new ParentB(this._io, this, _root);
         this.elementB._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -44,6 +45,7 @@ public class NavParentFalse extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(this.childSize);
         this.elementA._write_Seq(this._io);
         this.elementB._write_Seq(this._io);
@@ -58,6 +60,7 @@ public class NavParentFalse extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("element_b", this.elementB._root(), _root());
         if (!Objects.equals(this.elementB._parent(), this))
             throw new ConsistencyError("element_b", this.elementB._parent(), this);
+        _dirty = false;
     }
     public static class Child extends KaitaiStruct.ReadWrite {
         public static Child fromFile(String fileName) throws IOException {
@@ -85,6 +88,7 @@ public class NavParentFalse extends KaitaiStruct.ReadWrite {
             if (code() == 73) {
                 this.more = this._io.readBytes(_parent()._parent().childSize());
             }
+            _dirty = false;
         }
 
         public void _fetchInstances() {
@@ -93,6 +97,7 @@ public class NavParentFalse extends KaitaiStruct.ReadWrite {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU1(this.code);
             if (code() == 73) {
                 this._io.writeBytes(this.more);
@@ -104,19 +109,20 @@ public class NavParentFalse extends KaitaiStruct.ReadWrite {
                 if (this.more.length != _parent()._parent().childSize())
                     throw new ConsistencyError("more", this.more.length, _parent()._parent().childSize());
             }
+            _dirty = false;
         }
         private int code;
         private byte[] more;
         private NavParentFalse _root;
         private NavParentFalse.ParentA _parent;
         public int code() { return code; }
-        public void setCode(int _v) { code = _v; }
+        public void setCode(int _v) { _dirty = true; code = _v; }
         public byte[] more() { return more; }
-        public void setMore(byte[] _v) { more = _v; }
+        public void setMore(byte[] _v) { _dirty = true; more = _v; }
         public NavParentFalse _root() { return _root; }
-        public void set_root(NavParentFalse _v) { _root = _v; }
+        public void set_root(NavParentFalse _v) { _dirty = true; _root = _v; }
         public NavParentFalse.ParentA _parent() { return _parent; }
-        public void set_parent(NavParentFalse.ParentA _v) { _parent = _v; }
+        public void set_parent(NavParentFalse.ParentA _v) { _dirty = true; _parent = _v; }
     }
     public static class ParentA extends KaitaiStruct.ReadWrite {
         public static ParentA fromFile(String fileName) throws IOException {
@@ -144,6 +150,7 @@ public class NavParentFalse extends KaitaiStruct.ReadWrite {
             this.foo._read();
             this.bar = new ParentB(this._io, this, _root);
             this.bar._read();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
@@ -152,6 +159,7 @@ public class NavParentFalse extends KaitaiStruct.ReadWrite {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this.foo._write_Seq(this._io);
             this.bar._write_Seq(this._io);
         }
@@ -165,19 +173,20 @@ public class NavParentFalse extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("bar", this.bar._root(), _root());
             if (!Objects.equals(this.bar._parent(), this))
                 throw new ConsistencyError("bar", this.bar._parent(), this);
+            _dirty = false;
         }
         private Child foo;
         private ParentB bar;
         private NavParentFalse _root;
         private NavParentFalse _parent;
         public Child foo() { return foo; }
-        public void setFoo(Child _v) { foo = _v; }
+        public void setFoo(Child _v) { _dirty = true; foo = _v; }
         public ParentB bar() { return bar; }
-        public void setBar(ParentB _v) { bar = _v; }
+        public void setBar(ParentB _v) { _dirty = true; bar = _v; }
         public NavParentFalse _root() { return _root; }
-        public void set_root(NavParentFalse _v) { _root = _v; }
+        public void set_root(NavParentFalse _v) { _dirty = true; _root = _v; }
         public NavParentFalse _parent() { return _parent; }
-        public void set_parent(NavParentFalse _v) { _parent = _v; }
+        public void set_parent(NavParentFalse _v) { _dirty = true; _parent = _v; }
     }
     public static class ParentB extends KaitaiStruct.ReadWrite {
         public static ParentB fromFile(String fileName) throws IOException {
@@ -203,6 +212,7 @@ public class NavParentFalse extends KaitaiStruct.ReadWrite {
         public void _read() {
             this.foo = new Child(this._io, null, _root);
             this.foo._read();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
@@ -210,6 +220,7 @@ public class NavParentFalse extends KaitaiStruct.ReadWrite {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this.foo._write_Seq(this._io);
         }
 
@@ -218,16 +229,17 @@ public class NavParentFalse extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("foo", this.foo._root(), _root());
             if (!Objects.equals(this.foo._parent(), null))
                 throw new ConsistencyError("foo", this.foo._parent(), null);
+            _dirty = false;
         }
         private Child foo;
         private NavParentFalse _root;
         private KaitaiStruct.ReadWrite _parent;
         public Child foo() { return foo; }
-        public void setFoo(Child _v) { foo = _v; }
+        public void setFoo(Child _v) { _dirty = true; foo = _v; }
         public NavParentFalse _root() { return _root; }
-        public void set_root(NavParentFalse _v) { _root = _v; }
+        public void set_root(NavParentFalse _v) { _dirty = true; _root = _v; }
         public KaitaiStruct.ReadWrite _parent() { return _parent; }
-        public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+        public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     }
     private int childSize;
     private ParentA elementA;
@@ -235,13 +247,13 @@ public class NavParentFalse extends KaitaiStruct.ReadWrite {
     private NavParentFalse _root;
     private KaitaiStruct.ReadWrite _parent;
     public int childSize() { return childSize; }
-    public void setChildSize(int _v) { childSize = _v; }
+    public void setChildSize(int _v) { _dirty = true; childSize = _v; }
     public ParentA elementA() { return elementA; }
-    public void setElementA(ParentA _v) { elementA = _v; }
+    public void setElementA(ParentA _v) { _dirty = true; elementA = _v; }
     public ParentB elementB() { return elementB; }
-    public void setElementB(ParentB _v) { elementB = _v; }
+    public void setElementB(ParentB _v) { _dirty = true; elementB = _v; }
     public NavParentFalse _root() { return _root; }
-    public void set_root(NavParentFalse _v) { _root = _v; }
+    public void set_root(NavParentFalse _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

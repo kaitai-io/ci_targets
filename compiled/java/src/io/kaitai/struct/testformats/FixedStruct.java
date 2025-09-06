@@ -32,7 +32,9 @@ public class FixedStruct extends KaitaiStruct {
 
     public void _fetchInstances() {
         hdr();
-        this.hdr._fetchInstances();
+        if (this.hdr != null) {
+            this.hdr._fetchInstances();
+        }
     }
     public static class Header extends KaitaiStruct {
         public static Header fromFile(String fileName) throws IOException {

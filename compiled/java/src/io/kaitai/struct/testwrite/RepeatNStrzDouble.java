@@ -43,6 +43,7 @@ public class RepeatNStrzDouble extends KaitaiStruct.ReadWrite {
         for (int i = 0; i < qty() / 2; i++) {
             this.lines2.add(new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8));
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -53,6 +54,7 @@ public class RepeatNStrzDouble extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU4le(this.qty);
         for (int i = 0; i < this.lines1.size(); i++) {
             this._io.writeBytes((this.lines1.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")));
@@ -77,6 +79,7 @@ public class RepeatNStrzDouble extends KaitaiStruct.ReadWrite {
             if (KaitaiStream.byteArrayIndexOf((this.lines2.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)) != -1)
                 throw new ConsistencyError("lines2", KaitaiStream.byteArrayIndexOf((this.lines2.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)), -1);
         }
+        _dirty = false;
     }
     private long qty;
     private List<String> lines1;
@@ -84,13 +87,13 @@ public class RepeatNStrzDouble extends KaitaiStruct.ReadWrite {
     private RepeatNStrzDouble _root;
     private KaitaiStruct.ReadWrite _parent;
     public long qty() { return qty; }
-    public void setQty(long _v) { qty = _v; }
+    public void setQty(long _v) { _dirty = true; qty = _v; }
     public List<String> lines1() { return lines1; }
-    public void setLines1(List<String> _v) { lines1 = _v; }
+    public void setLines1(List<String> _v) { _dirty = true; lines1 = _v; }
     public List<String> lines2() { return lines2; }
-    public void setLines2(List<String> _v) { lines2 = _v; }
+    public void setLines2(List<String> _v) { _dirty = true; lines2 = _v; }
     public RepeatNStrzDouble _root() { return _root; }
-    public void set_root(RepeatNStrzDouble _v) { _root = _v; }
+    public void set_root(RepeatNStrzDouble _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

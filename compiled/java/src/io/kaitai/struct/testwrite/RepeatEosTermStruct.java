@@ -51,6 +51,7 @@ public class RepeatEosTermStruct extends KaitaiStruct.ReadWrite {
                 i++;
             }
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -60,6 +61,7 @@ public class RepeatEosTermStruct extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._raw_records = new ArrayList<byte[]>();
         for (int i = 0; i < this.records.size(); i++) {
             if (this._io.isEof())
@@ -96,6 +98,7 @@ public class RepeatEosTermStruct extends KaitaiStruct.ReadWrite {
             if (!Objects.equals(this.records.get(((Number) (i)).intValue())._parent(), this))
                 throw new ConsistencyError("records", this.records.get(((Number) (i)).intValue())._parent(), this);
         }
+        _dirty = false;
     }
     public static class BytesWrapper extends KaitaiStruct.ReadWrite {
         public static BytesWrapper fromFile(String fileName) throws IOException {
@@ -120,28 +123,31 @@ public class RepeatEosTermStruct extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.value = this._io.readBytesFull();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytes(this.value);
             if (!(this._io.isEof()))
                 throw new ConsistencyError("value", this._io.size() - this._io.pos(), 0);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private byte[] value;
         private RepeatEosTermStruct _root;
         private RepeatEosTermStruct _parent;
         public byte[] value() { return value; }
-        public void setValue(byte[] _v) { value = _v; }
+        public void setValue(byte[] _v) { _dirty = true; value = _v; }
         public RepeatEosTermStruct _root() { return _root; }
-        public void set_root(RepeatEosTermStruct _v) { _root = _v; }
+        public void set_root(RepeatEosTermStruct _v) { _dirty = true; _root = _v; }
         public RepeatEosTermStruct _parent() { return _parent; }
-        public void set_parent(RepeatEosTermStruct _v) { _parent = _v; }
+        public void set_parent(RepeatEosTermStruct _v) { _dirty = true; _parent = _v; }
     }
     private List<BytesWrapper> records;
     private RepeatEosTermStruct _root;
@@ -149,13 +155,13 @@ public class RepeatEosTermStruct extends KaitaiStruct.ReadWrite {
     private List<byte[]> _raw_records;
     private List<Integer> records_OuterSize;
     public List<BytesWrapper> records() { return records; }
-    public void setRecords(List<BytesWrapper> _v) { records = _v; }
+    public void setRecords(List<BytesWrapper> _v) { _dirty = true; records = _v; }
     public RepeatEosTermStruct _root() { return _root; }
-    public void set_root(RepeatEosTermStruct _v) { _root = _v; }
+    public void set_root(RepeatEosTermStruct _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public List<byte[]> _raw_records() { return _raw_records; }
-    public void set_raw_Records(List<byte[]> _v) { _raw_records = _v; }
+    public void set_raw_Records(List<byte[]> _v) { _dirty = true; _raw_records = _v; }
     public List<Integer> records_OuterSize() { return records_OuterSize; }
-    public void setRecords_OuterSize(List<Integer> _v) { records_OuterSize = _v; }
+    public void setRecords_OuterSize(List<Integer> _v) { _dirty = true; records_OuterSize = _v; }
 }

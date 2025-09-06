@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class Integers(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(Integers, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -56,6 +56,7 @@ class Integers(ReadWriteKaitaiStruct):
         self.sint16be = self._io.read_s2be()
         self.sint32be = self._io.read_s4be()
         self.sint64be = self._io.read_s8be()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -94,7 +95,6 @@ class Integers(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.magic1) != 6:
             raise kaitaistruct.ConsistencyError(u"magic1", len(self.magic1), 6)
         if not self.magic1 == b"\x50\x41\x43\x4B\x2D\x31":
@@ -123,5 +123,6 @@ class Integers(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"magic_sint_be", len(self.magic_sint_be), 9)
         if not self.magic_sint_be == b"\x50\x41\x43\x4B\x2D\x53\x2D\x42\x45":
             raise kaitaistruct.ValidationNotEqualError(b"\x50\x41\x43\x4B\x2D\x53\x2D\x42\x45", self.magic_sint_be, None, u"/seq/23")
+        self._dirty = False
 
 

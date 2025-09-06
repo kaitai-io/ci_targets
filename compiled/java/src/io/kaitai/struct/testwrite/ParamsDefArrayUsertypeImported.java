@@ -28,15 +28,18 @@ public class ParamsDefArrayUsertypeImported extends KaitaiStruct.ReadWrite {
         this.hwsParam = hwsParam;
     }
     public void _read() {
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
     }
 
     public void _check() {
+        _dirty = false;
     }
     private Integer hw0One;
     public Integer hw0One() {
@@ -58,9 +61,9 @@ public class ParamsDefArrayUsertypeImported extends KaitaiStruct.ReadWrite {
     private ParamsDefArrayUsertypeImported _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<HelloWorld> hwsParam() { return hwsParam; }
-    public void setHwsParam(List<HelloWorld> _v) { hwsParam = _v; }
+    public void setHwsParam(List<HelloWorld> _v) { _dirty = true; hwsParam = _v; }
     public ParamsDefArrayUsertypeImported _root() { return _root; }
-    public void set_root(ParamsDefArrayUsertypeImported _v) { _root = _v; }
+    public void set_root(ParamsDefArrayUsertypeImported _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

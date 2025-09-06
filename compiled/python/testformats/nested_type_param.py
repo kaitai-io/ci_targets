@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class NestedTypeParam(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(NestedTypeParam, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -25,7 +25,7 @@ class NestedTypeParam(KaitaiStruct):
 
     class Nested(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(NestedTypeParam.Nested, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -39,7 +39,7 @@ class NestedTypeParam(KaitaiStruct):
 
         class MyType(KaitaiStruct):
             def __init__(self, my_len, _io, _parent=None, _root=None):
-                self._io = _io
+                super(NestedTypeParam.Nested.MyType, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
                 self.my_len = my_len

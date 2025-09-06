@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class RepeatUntilS4(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(RepeatUntilS4, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -24,6 +24,7 @@ class RepeatUntilS4(ReadWriteKaitaiStruct):
                 break
             i += 1
         self.afterall = (self._io.read_bytes_term(0, False, True, True)).decode(u"ASCII")
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -44,7 +45,6 @@ class RepeatUntilS4(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.entries) == 0:
             raise kaitaistruct.ConsistencyError(u"entries", len(self.entries), 0)
         for i in range(len(self.entries)):
@@ -55,5 +55,6 @@ class RepeatUntilS4(ReadWriteKaitaiStruct):
 
         if KaitaiStream.byte_array_index_of((self.afterall).encode(u"ASCII"), 0) != -1:
             raise kaitaistruct.ConsistencyError(u"afterall", KaitaiStream.byte_array_index_of((self.afterall).encode(u"ASCII"), 0), -1)
+        self._dirty = False
 
 

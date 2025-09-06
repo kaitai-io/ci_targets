@@ -32,12 +32,14 @@ public class ZlibWithHeader78 extends KaitaiStruct.ReadWrite {
     public void _read() {
         this._raw_data = this._io.readBytesFull();
         this.data = KaitaiStream.processZlib(this._raw_data);
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._raw_data = KaitaiStream.unprocessZlib(this.data);
         this._io.writeBytes(this._raw_data);
         if (!(this._io.isEof()))
@@ -45,17 +47,18 @@ public class ZlibWithHeader78 extends KaitaiStruct.ReadWrite {
     }
 
     public void _check() {
+        _dirty = false;
     }
     private byte[] data;
     private ZlibWithHeader78 _root;
     private KaitaiStruct.ReadWrite _parent;
     private byte[] _raw_data;
     public byte[] data() { return data; }
-    public void setData(byte[] _v) { data = _v; }
+    public void setData(byte[] _v) { _dirty = true; data = _v; }
     public ZlibWithHeader78 _root() { return _root; }
-    public void set_root(ZlibWithHeader78 _v) { _root = _v; }
+    public void set_root(ZlibWithHeader78 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_data() { return _raw_data; }
-    public void set_raw_Data(byte[] _v) { _raw_data = _v; }
+    public void set_raw_Data(byte[] _v) { _dirty = true; _raw_data = _v; }
 }

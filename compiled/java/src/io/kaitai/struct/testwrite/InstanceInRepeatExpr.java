@@ -42,6 +42,7 @@ public class InstanceInRepeatExpr extends KaitaiStruct.ReadWrite {
                 this.chunks.add(_t_chunks);
             }
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -49,10 +50,13 @@ public class InstanceInRepeatExpr extends KaitaiStruct.ReadWrite {
             this.chunks.get(((Number) (i)).intValue())._fetchInstances();
         }
         numChunks();
+        if (this.numChunks != null) {
+        }
     }
 
     public void _write_Seq() {
-        _writeNumChunks = _toWriteNumChunks;
+        _assertNotDirty();
+        _shouldWriteNumChunks = _enabledNumChunks;
         if (this.chunks.size() != numChunks())
             throw new ConsistencyError("chunks", this.chunks.size(), numChunks());
         for (int i = 0; i < this.chunks.size(); i++) {
@@ -67,6 +71,9 @@ public class InstanceInRepeatExpr extends KaitaiStruct.ReadWrite {
             if (!Objects.equals(this.chunks.get(((Number) (i)).intValue())._parent(), this))
                 throw new ConsistencyError("chunks", this.chunks.get(((Number) (i)).intValue())._parent(), this);
         }
+        if (_enabledNumChunks) {
+        }
+        _dirty = false;
     }
     public static class Chunk extends KaitaiStruct.ReadWrite {
         public static Chunk fromFile(String fileName) throws IOException {
@@ -92,65 +99,67 @@ public class InstanceInRepeatExpr extends KaitaiStruct.ReadWrite {
         public void _read() {
             this.offset = this._io.readU4le();
             this.len = this._io.readU4le();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU4le(this.offset);
             this._io.writeU4le(this.len);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private long offset;
         private long len;
         private InstanceInRepeatExpr _root;
         private InstanceInRepeatExpr _parent;
         public long offset() { return offset; }
-        public void setOffset(long _v) { offset = _v; }
+        public void setOffset(long _v) { _dirty = true; offset = _v; }
         public long len() { return len; }
-        public void setLen(long _v) { len = _v; }
+        public void setLen(long _v) { _dirty = true; len = _v; }
         public InstanceInRepeatExpr _root() { return _root; }
-        public void set_root(InstanceInRepeatExpr _v) { _root = _v; }
+        public void set_root(InstanceInRepeatExpr _v) { _dirty = true; _root = _v; }
         public InstanceInRepeatExpr _parent() { return _parent; }
-        public void set_parent(InstanceInRepeatExpr _v) { _parent = _v; }
+        public void set_parent(InstanceInRepeatExpr _v) { _dirty = true; _parent = _v; }
     }
     private Long numChunks;
-    private boolean _writeNumChunks = false;
-    private boolean _toWriteNumChunks = true;
+    private boolean _shouldWriteNumChunks = false;
+    private boolean _enabledNumChunks = true;
     public Long numChunks() {
-        if (_writeNumChunks)
+        if (_shouldWriteNumChunks)
             _writeNumChunks();
         if (this.numChunks != null)
             return this.numChunks;
+        if (!_enabledNumChunks)
+            return null;
         long _pos = this._io.pos();
         this._io.seek(_io().pos() + 16);
         this.numChunks = this._io.readU4le();
         this._io.seek(_pos);
         return this.numChunks;
     }
-    public void setNumChunks(long _v) { numChunks = _v; }
-    public void setNumChunks_ToWrite(boolean _v) { _toWriteNumChunks = _v; }
+    public void setNumChunks(long _v) { _dirty = true; numChunks = _v; }
+    public void setNumChunks_Enabled(boolean _v) { _dirty = true; _enabledNumChunks = _v; }
 
-    public void _writeNumChunks() {
-        _writeNumChunks = false;
+    private void _writeNumChunks() {
+        _shouldWriteNumChunks = false;
         long _pos = this._io.pos();
         this._io.seek(_io().pos() + 16);
         this._io.writeU4le(this.numChunks);
         this._io.seek(_pos);
     }
-
-    public void _checkNumChunks() {
-    }
     private List<Chunk> chunks;
     private InstanceInRepeatExpr _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<Chunk> chunks() { return chunks; }
-    public void setChunks(List<Chunk> _v) { chunks = _v; }
+    public void setChunks(List<Chunk> _v) { _dirty = true; chunks = _v; }
     public InstanceInRepeatExpr _root() { return _root; }
-    public void set_root(InstanceInRepeatExpr _v) { _root = _v; }
+    public void set_root(InstanceInRepeatExpr _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

@@ -124,7 +124,9 @@ public class MultipleUse extends KaitaiStruct {
 
         public void _fetchInstances() {
             secondUse();
-            this.secondUse._fetchInstances();
+            if (this.secondUse != null) {
+                this.secondUse._fetchInstances();
+            }
         }
         private Multi secondUse;
         public Multi secondUse() {

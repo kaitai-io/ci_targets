@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class BitsUnalignedB32Le(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(BitsUnalignedB32Le, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -18,6 +18,7 @@ class BitsUnalignedB32Le(ReadWriteKaitaiStruct):
         self.a = self._io.read_bits_int_le(1) != 0
         self.b = self._io.read_bits_int_le(32)
         self.c = self._io.read_bits_int_le(7)
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -32,6 +33,6 @@ class BitsUnalignedB32Le(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
 

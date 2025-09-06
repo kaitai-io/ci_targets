@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class RepeatEosBytesPad(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(RepeatEosBytesPad, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -21,6 +21,7 @@ class RepeatEosBytesPad(ReadWriteKaitaiStruct):
             self.records.append(KaitaiStream.bytes_strip_right(self._io.read_bytes(5), 170))
             i += 1
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -43,7 +44,6 @@ class RepeatEosBytesPad(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         for i in range(len(self.records)):
             pass
             if len(self.records[i]) > 5:
@@ -51,5 +51,6 @@ class RepeatEosBytesPad(ReadWriteKaitaiStruct):
             if  ((len(self.records[i]) != 0) and (KaitaiStream.byte_array_index(self.records[i], -1) == 170)) :
                 raise kaitaistruct.ConsistencyError(u"records", KaitaiStream.byte_array_index(self.records[i], -1), 170)
 
+        self._dirty = False
 
 

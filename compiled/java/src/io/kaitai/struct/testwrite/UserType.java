@@ -33,6 +33,7 @@ public class UserType extends KaitaiStruct.ReadWrite {
     public void _read() {
         this.one = new Header(this._io, this, _root);
         this.one._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -40,6 +41,7 @@ public class UserType extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this.one._write_Seq(this._io);
     }
 
@@ -48,6 +50,7 @@ public class UserType extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("one", this.one._root(), _root());
         if (!Objects.equals(this.one._parent(), this))
             throw new ConsistencyError("one", this.one._parent(), this);
+        _dirty = false;
     }
     public static class Header extends KaitaiStruct.ReadWrite {
         public static Header fromFile(String fileName) throws IOException {
@@ -73,38 +76,41 @@ public class UserType extends KaitaiStruct.ReadWrite {
         public void _read() {
             this.width = this._io.readU4le();
             this.height = this._io.readU4le();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU4le(this.width);
             this._io.writeU4le(this.height);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private long width;
         private long height;
         private UserType _root;
         private UserType _parent;
         public long width() { return width; }
-        public void setWidth(long _v) { width = _v; }
+        public void setWidth(long _v) { _dirty = true; width = _v; }
         public long height() { return height; }
-        public void setHeight(long _v) { height = _v; }
+        public void setHeight(long _v) { _dirty = true; height = _v; }
         public UserType _root() { return _root; }
-        public void set_root(UserType _v) { _root = _v; }
+        public void set_root(UserType _v) { _dirty = true; _root = _v; }
         public UserType _parent() { return _parent; }
-        public void set_parent(UserType _v) { _parent = _v; }
+        public void set_parent(UserType _v) { _dirty = true; _parent = _v; }
     }
     private Header one;
     private UserType _root;
     private KaitaiStruct.ReadWrite _parent;
     public Header one() { return one; }
-    public void setOne(Header _v) { one = _v; }
+    public void setOne(Header _v) { _dirty = true; one = _v; }
     public UserType _root() { return _root; }
-    public void set_root(UserType _v) { _root = _v; }
+    public void set_root(UserType _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class TermStrz(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(TermStrz, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -18,6 +18,7 @@ class TermStrz(ReadWriteKaitaiStruct):
         self.s1 = (self._io.read_bytes_term(124, False, True, True)).decode(u"UTF-8")
         self.s2 = (self._io.read_bytes_term(124, False, False, True)).decode(u"UTF-8")
         self.s3 = (self._io.read_bytes_term(64, True, True, True)).decode(u"UTF-8")
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -36,7 +37,6 @@ class TermStrz(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if KaitaiStream.byte_array_index_of((self.s1).encode(u"UTF-8"), 124) != -1:
             raise kaitaistruct.ConsistencyError(u"s1", KaitaiStream.byte_array_index_of((self.s1).encode(u"UTF-8"), 124), -1)
         if KaitaiStream.byte_array_index_of((self.s2).encode(u"UTF-8"), 124) != -1:
@@ -45,5 +45,6 @@ class TermStrz(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"s3", len((self.s3).encode(u"UTF-8")), 0)
         if KaitaiStream.byte_array_index_of((self.s3).encode(u"UTF-8"), 64) != len((self.s3).encode(u"UTF-8")) - 1:
             raise kaitaistruct.ConsistencyError(u"s3", KaitaiStream.byte_array_index_of((self.s3).encode(u"UTF-8"), 64), len((self.s3).encode(u"UTF-8")) - 1)
+        self._dirty = False
 
 

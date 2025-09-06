@@ -47,6 +47,7 @@ public class ProcessRepeatUsertype extends KaitaiStruct.ReadWrite {
                 this.blocks.add(_t_blocks);
             }
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -56,6 +57,7 @@ public class ProcessRepeatUsertype extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._raw_blocks = new ArrayList<byte[]>();
         this._raw__raw_blocks = new ArrayList<byte[]>();
         for (int i = 0; i < this.blocks.size(); i++) {
@@ -91,6 +93,7 @@ public class ProcessRepeatUsertype extends KaitaiStruct.ReadWrite {
             if (!Objects.equals(this.blocks.get(((Number) (i)).intValue())._parent(), this))
                 throw new ConsistencyError("blocks", this.blocks.get(((Number) (i)).intValue())._parent(), this);
         }
+        _dirty = false;
     }
     public static class Block extends KaitaiStruct.ReadWrite {
         public static Block fromFile(String fileName) throws IOException {
@@ -116,30 +119,33 @@ public class ProcessRepeatUsertype extends KaitaiStruct.ReadWrite {
         public void _read() {
             this.a = this._io.readS4le();
             this.b = this._io.readS1();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeS4le(this.a);
             this._io.writeS1(this.b);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private int a;
         private byte b;
         private ProcessRepeatUsertype _root;
         private ProcessRepeatUsertype _parent;
         public int a() { return a; }
-        public void setA(int _v) { a = _v; }
+        public void setA(int _v) { _dirty = true; a = _v; }
         public byte b() { return b; }
-        public void setB(byte _v) { b = _v; }
+        public void setB(byte _v) { _dirty = true; b = _v; }
         public ProcessRepeatUsertype _root() { return _root; }
-        public void set_root(ProcessRepeatUsertype _v) { _root = _v; }
+        public void set_root(ProcessRepeatUsertype _v) { _dirty = true; _root = _v; }
         public ProcessRepeatUsertype _parent() { return _parent; }
-        public void set_parent(ProcessRepeatUsertype _v) { _parent = _v; }
+        public void set_parent(ProcessRepeatUsertype _v) { _dirty = true; _parent = _v; }
     }
     private List<Block> blocks;
     private ProcessRepeatUsertype _root;
@@ -147,13 +153,13 @@ public class ProcessRepeatUsertype extends KaitaiStruct.ReadWrite {
     private List<byte[]> _raw_blocks;
     private List<byte[]> _raw__raw_blocks;
     public List<Block> blocks() { return blocks; }
-    public void setBlocks(List<Block> _v) { blocks = _v; }
+    public void setBlocks(List<Block> _v) { _dirty = true; blocks = _v; }
     public ProcessRepeatUsertype _root() { return _root; }
-    public void set_root(ProcessRepeatUsertype _v) { _root = _v; }
+    public void set_root(ProcessRepeatUsertype _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public List<byte[]> _raw_blocks() { return _raw_blocks; }
-    public void set_raw_Blocks(List<byte[]> _v) { _raw_blocks = _v; }
+    public void set_raw_Blocks(List<byte[]> _v) { _dirty = true; _raw_blocks = _v; }
     public List<byte[]> _raw__raw_blocks() { return _raw__raw_blocks; }
-    public void set_raw__raw_Blocks(List<byte[]> _v) { _raw__raw_blocks = _v; }
+    public void set_raw__raw_Blocks(List<byte[]> _v) { _dirty = true; _raw__raw_blocks = _v; }
 }

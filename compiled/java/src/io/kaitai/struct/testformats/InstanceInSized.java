@@ -59,6 +59,8 @@ public class InstanceInSized extends KaitaiStruct {
 
         public void _fetchInstances() {
             inst();
+            if (this.inst != null) {
+            }
         }
         private byte[] inst;
         public byte[] inst() {
@@ -102,6 +104,8 @@ public class InstanceInSized extends KaitaiStruct {
 
         public void _fetchInstances() {
             inst();
+            if (this.inst != null) {
+            }
         }
         private byte[] inst;
         public byte[] inst() {
@@ -149,7 +153,11 @@ public class InstanceInSized extends KaitaiStruct {
             if (instInvoked() > 0) {
             }
             instInvoked();
+            if (this.instInvoked != null) {
+            }
             instUnusedBySeq();
+            if (this.instUnusedBySeq != null) {
+            }
         }
         private Integer instInvoked;
         public Integer instInvoked() {
@@ -207,9 +215,13 @@ public class InstanceInSized extends KaitaiStruct {
             this.seqSized._fetchInstances();
             this.seqInStream._fetchInstances();
             instInStream();
-            this.instInStream._fetchInstances();
+            if (this.instInStream != null) {
+                this.instInStream._fetchInstances();
+            }
             instSized();
-            this.instSized._fetchInstances();
+            if (this.instSized != null) {
+                this.instSized._fetchInstances();
+            }
         }
         private Baz instInStream;
         public Baz instInStream() {

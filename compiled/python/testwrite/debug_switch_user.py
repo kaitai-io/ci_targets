@@ -12,7 +12,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 class DebugSwitchUser(ReadWriteKaitaiStruct):
     SEQ_FIELDS = ["code", "data"]
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(DebugSwitchUser, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._debug = collections.defaultdict(dict)
@@ -32,6 +32,7 @@ class DebugSwitchUser(ReadWriteKaitaiStruct):
             self.data = DebugSwitchUser.Two(self._io, self, self._root)
             self.data._read()
         self._debug['data']['end'] = self._io.pos()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -58,7 +59,6 @@ class DebugSwitchUser(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         _on = self.code
         if _on == 1:
             pass
@@ -72,11 +72,12 @@ class DebugSwitchUser(ReadWriteKaitaiStruct):
                 raise kaitaistruct.ConsistencyError(u"data", self.data._root, self._root)
             if self.data._parent != self:
                 raise kaitaistruct.ConsistencyError(u"data", self.data._parent, self)
+        self._dirty = False
 
     class One(ReadWriteKaitaiStruct):
         SEQ_FIELDS = ["val"]
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(DebugSwitchUser.One, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._debug = collections.defaultdict(dict)
@@ -85,6 +86,7 @@ class DebugSwitchUser(ReadWriteKaitaiStruct):
             self._debug['val']['start'] = self._io.pos()
             self.val = self._io.read_s2le()
             self._debug['val']['end'] = self._io.pos()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -97,13 +99,13 @@ class DebugSwitchUser(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     class Two(ReadWriteKaitaiStruct):
         SEQ_FIELDS = ["val"]
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(DebugSwitchUser.Two, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._debug = collections.defaultdict(dict)
@@ -112,6 +114,7 @@ class DebugSwitchUser(ReadWriteKaitaiStruct):
             self._debug['val']['start'] = self._io.pos()
             self.val = self._io.read_u2le()
             self._debug['val']['end'] = self._io.pos()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -124,7 +127,7 @@ class DebugSwitchUser(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
 

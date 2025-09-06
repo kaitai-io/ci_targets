@@ -28,26 +28,29 @@ public class ParamsDefEnumImported extends KaitaiStruct.ReadWrite {
         this.pet2Param = pet2Param;
     }
     public void _read() {
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
     }
 
     public void _check() {
+        _dirty = false;
     }
     private Enum0.Animal pet1Param;
     private EnumDeep.Container1.Container2.Animal pet2Param;
     private ParamsDefEnumImported _root;
     private KaitaiStruct.ReadWrite _parent;
     public Enum0.Animal pet1Param() { return pet1Param; }
-    public void setPet1Param(Enum0.Animal _v) { pet1Param = _v; }
+    public void setPet1Param(Enum0.Animal _v) { _dirty = true; pet1Param = _v; }
     public EnumDeep.Container1.Container2.Animal pet2Param() { return pet2Param; }
-    public void setPet2Param(EnumDeep.Container1.Container2.Animal _v) { pet2Param = _v; }
+    public void setPet2Param(EnumDeep.Container1.Container2.Animal _v) { _dirty = true; pet2Param = _v; }
     public ParamsDefEnumImported _root() { return _root; }
-    public void set_root(ParamsDefEnumImported _v) { _root = _v; }
+    public void set_root(ParamsDefEnumImported _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

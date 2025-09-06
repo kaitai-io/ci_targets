@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class InstanceIoUser(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(InstanceIoUser, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -28,6 +28,7 @@ class InstanceIoUser(ReadWriteKaitaiStruct):
         _io__raw_strings = KaitaiStream(BytesIO(self._raw_strings))
         self.strings = InstanceIoUser.StringsObj(_io__raw_strings, self, self._root)
         self.strings._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -60,7 +61,6 @@ class InstanceIoUser(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.entries) != self.qty_entries:
             raise kaitaistruct.ConsistencyError(u"entries", len(self.entries), self.qty_entries)
         for i in range(len(self.entries)):
@@ -74,34 +74,44 @@ class InstanceIoUser(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"strings", self.strings._root, self._root)
         if self.strings._parent != self:
             raise kaitaistruct.ConsistencyError(u"strings", self.strings._parent, self)
+        self._dirty = False
 
     class Entry(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(InstanceIoUser.Entry, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._should_write_name = False
-            self.name__to_write = True
+            self.name__enabled = True
 
         def _read(self):
             self.name_ofs = self._io.read_u4le()
             self.value = self._io.read_u4le()
+            self._dirty = False
 
 
         def _fetch_instances(self):
             pass
             _ = self.name
+            if hasattr(self, '_m_name'):
+                pass
+
 
 
         def _write__seq(self, io=None):
             super(InstanceIoUser.Entry, self)._write__seq(io)
-            self._should_write_name = self.name__to_write
+            self._should_write_name = self.name__enabled
             self._io.write_u4le(self.name_ofs)
             self._io.write_u4le(self.value)
 
 
         def _check(self):
-            pass
+            if self.name__enabled:
+                pass
+                if KaitaiStream.byte_array_index_of((self._m_name).encode(u"UTF-8"), 0) != -1:
+                    raise kaitaistruct.ConsistencyError(u"name", KaitaiStream.byte_array_index_of((self._m_name).encode(u"UTF-8"), 0), -1)
+
+            self._dirty = False
 
         @property
         def name(self):
@@ -109,6 +119,9 @@ class InstanceIoUser(ReadWriteKaitaiStruct):
                 self._write_name()
             if hasattr(self, '_m_name'):
                 return self._m_name
+
+            if not self.name__enabled:
+                return None
 
             io = self._root.strings._io
             _pos = io.pos()
@@ -119,6 +132,7 @@ class InstanceIoUser(ReadWriteKaitaiStruct):
 
         @name.setter
         def name(self, v):
+            self._dirty = True
             self._m_name = v
 
         def _write_name(self):
@@ -131,15 +145,9 @@ class InstanceIoUser(ReadWriteKaitaiStruct):
             io.seek(_pos)
 
 
-        def _check_name(self):
-            pass
-            if KaitaiStream.byte_array_index_of((self._m_name).encode(u"UTF-8"), 0) != -1:
-                raise kaitaistruct.ConsistencyError(u"name", KaitaiStream.byte_array_index_of((self._m_name).encode(u"UTF-8"), 0), -1)
-
-
     class StringsObj(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(InstanceIoUser.StringsObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -150,6 +158,7 @@ class InstanceIoUser(ReadWriteKaitaiStruct):
                 self.str.append((self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8"))
                 i += 1
 
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -173,12 +182,12 @@ class InstanceIoUser(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             for i in range(len(self.str)):
                 pass
                 if KaitaiStream.byte_array_index_of((self.str[i]).encode(u"UTF-8"), 0) != -1:
                     raise kaitaistruct.ConsistencyError(u"str", KaitaiStream.byte_array_index_of((self.str[i]).encode(u"UTF-8"), 0), -1)
 
+            self._dirty = False
 
 
 

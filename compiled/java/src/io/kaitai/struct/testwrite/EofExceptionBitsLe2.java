@@ -44,28 +44,31 @@ public class EofExceptionBitsLe2 extends KaitaiStruct.ReadWrite {
         _attrStart.put("failBits", this._io.pos());
         this.failBits = this._io.readBitsIntLe(17);
         _attrEnd.put("failBits", this._io.pos());
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBitsIntLe(8, this.preBits);
         this._io.writeBitsIntLe(17, this.failBits);
     }
 
     public void _check() {
+        _dirty = false;
     }
     private long preBits;
     private long failBits;
     private EofExceptionBitsLe2 _root;
     private KaitaiStruct.ReadWrite _parent;
     public long preBits() { return preBits; }
-    public void setPreBits(long _v) { preBits = _v; }
+    public void setPreBits(long _v) { _dirty = true; preBits = _v; }
     public long failBits() { return failBits; }
-    public void setFailBits(long _v) { failBits = _v; }
+    public void setFailBits(long _v) { _dirty = true; failBits = _v; }
     public EofExceptionBitsLe2 _root() { return _root; }
-    public void set_root(EofExceptionBitsLe2 _v) { _root = _v; }
+    public void set_root(EofExceptionBitsLe2 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

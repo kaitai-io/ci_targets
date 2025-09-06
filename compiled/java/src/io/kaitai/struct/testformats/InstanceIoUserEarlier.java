@@ -45,7 +45,11 @@ public class InstanceIoUserEarlier extends KaitaiStruct {
         this.intoA._fetchInstances();
         this.lastAccessor._fetchInstances();
         aMid();
+        if (this.aMid != null) {
+        }
         bMid();
+        if (this.bMid != null) {
+        }
     }
     public static class Baz extends KaitaiStruct {
         public static Baz fromFile(String fileName) throws IOException {
@@ -113,7 +117,9 @@ public class InstanceIoUserEarlier extends KaitaiStruct {
             if ( ((inst()._io().size() != 0) && (inst().content() == 102)) ) {
             }
             inst();
-            this.inst._fetchInstances();
+            if (this.inst != null) {
+                this.inst._fetchInstances();
+            }
         }
         private Slot inst;
         public Slot inst() {
@@ -164,8 +170,8 @@ public class InstanceIoUserEarlier extends KaitaiStruct {
         public void _fetchInstances() {
             if (_io().size() != 0) {
             }
-            if (_io().size() != 0) {
-                last();
+            last();
+            if (this.last != null) {
             }
         }
         private Integer last;

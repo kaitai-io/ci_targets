@@ -55,6 +55,7 @@ public class IndexToParamUntil extends KaitaiStruct.ReadWrite {
                 i++;
             } while (!(_io().isEof()));
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -66,6 +67,7 @@ public class IndexToParamUntil extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU4le(this.qty);
         for (int i = 0; i < this.sizes.size(); i++) {
             this._io.writeU4le(this.sizes.get(((Number) (i)).intValue()));
@@ -95,6 +97,7 @@ public class IndexToParamUntil extends KaitaiStruct.ReadWrite {
             if (this.blocks.get(((Number) (i)).intValue()).idx() != i)
                 throw new ConsistencyError("blocks", this.blocks.get(((Number) (i)).intValue()).idx(), i);
         }
+        _dirty = false;
     }
     public static class Block extends KaitaiStruct.ReadWrite {
         public Block(int idx) {
@@ -117,31 +120,34 @@ public class IndexToParamUntil extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.buf = new String(this._io.readBytes(_root().sizes().get(((Number) (idx())).intValue())), StandardCharsets.US_ASCII);
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytes((this.buf).getBytes(Charset.forName("ASCII")));
         }
 
         public void _check() {
             if ((this.buf).getBytes(Charset.forName("ASCII")).length != _root().sizes().get(((Number) (idx())).intValue()))
                 throw new ConsistencyError("buf", (this.buf).getBytes(Charset.forName("ASCII")).length, _root().sizes().get(((Number) (idx())).intValue()));
+            _dirty = false;
         }
         private String buf;
         private int idx;
         private IndexToParamUntil _root;
         private IndexToParamUntil _parent;
         public String buf() { return buf; }
-        public void setBuf(String _v) { buf = _v; }
+        public void setBuf(String _v) { _dirty = true; buf = _v; }
         public int idx() { return idx; }
-        public void setIdx(int _v) { idx = _v; }
+        public void setIdx(int _v) { _dirty = true; idx = _v; }
         public IndexToParamUntil _root() { return _root; }
-        public void set_root(IndexToParamUntil _v) { _root = _v; }
+        public void set_root(IndexToParamUntil _v) { _dirty = true; _root = _v; }
         public IndexToParamUntil _parent() { return _parent; }
-        public void set_parent(IndexToParamUntil _v) { _parent = _v; }
+        public void set_parent(IndexToParamUntil _v) { _dirty = true; _parent = _v; }
     }
     private long qty;
     private List<Long> sizes;
@@ -149,13 +155,13 @@ public class IndexToParamUntil extends KaitaiStruct.ReadWrite {
     private IndexToParamUntil _root;
     private KaitaiStruct.ReadWrite _parent;
     public long qty() { return qty; }
-    public void setQty(long _v) { qty = _v; }
+    public void setQty(long _v) { _dirty = true; qty = _v; }
     public List<Long> sizes() { return sizes; }
-    public void setSizes(List<Long> _v) { sizes = _v; }
+    public void setSizes(List<Long> _v) { _dirty = true; sizes = _v; }
     public List<Block> blocks() { return blocks; }
-    public void setBlocks(List<Block> _v) { blocks = _v; }
+    public void setBlocks(List<Block> _v) { _dirty = true; blocks = _v; }
     public IndexToParamUntil _root() { return _root; }
-    public void set_root(IndexToParamUntil _v) { _root = _v; }
+    public void set_root(IndexToParamUntil _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

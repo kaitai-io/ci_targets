@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class PositionAbs(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(PositionAbs, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -22,11 +22,14 @@ class PositionAbs(KaitaiStruct):
     def _fetch_instances(self):
         pass
         _ = self.index
-        self._m_index._fetch_instances()
+        if hasattr(self, '_m_index'):
+            pass
+            self._m_index._fetch_instances()
+
 
     class IndexObj(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(PositionAbs.IndexObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()

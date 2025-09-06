@@ -32,12 +32,14 @@ public class EofExceptionU4 extends KaitaiStruct.ReadWrite {
     public void _read() {
         this.prebuf = this._io.readBytes(9);
         this.failInt = this._io.readU4le();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytes(this.prebuf);
         this._io.writeU4le(this.failInt);
     }
@@ -45,17 +47,18 @@ public class EofExceptionU4 extends KaitaiStruct.ReadWrite {
     public void _check() {
         if (this.prebuf.length != 9)
             throw new ConsistencyError("prebuf", this.prebuf.length, 9);
+        _dirty = false;
     }
     private byte[] prebuf;
     private long failInt;
     private EofExceptionU4 _root;
     private KaitaiStruct.ReadWrite _parent;
     public byte[] prebuf() { return prebuf; }
-    public void setPrebuf(byte[] _v) { prebuf = _v; }
+    public void setPrebuf(byte[] _v) { _dirty = true; prebuf = _v; }
     public long failInt() { return failInt; }
-    public void setFailInt(long _v) { failInt = _v; }
+    public void setFailInt(long _v) { _dirty = true; failInt = _v; }
     public EofExceptionU4 _root() { return _root; }
-    public void set_root(EofExceptionU4 _v) { _root = _v; }
+    public void set_root(EofExceptionU4 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

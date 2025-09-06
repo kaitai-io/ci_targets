@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class RepeatUntilComplex(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(RepeatUntilComplex, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -58,7 +58,7 @@ class RepeatUntilComplex(KaitaiStruct):
 
     class TypeU1(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(RepeatUntilComplex.TypeU1, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -80,7 +80,7 @@ class RepeatUntilComplex(KaitaiStruct):
 
     class TypeU2(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(RepeatUntilComplex.TypeU2, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()

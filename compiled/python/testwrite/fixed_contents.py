@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class FixedContents(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(FixedContents, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -21,6 +21,7 @@ class FixedContents(ReadWriteKaitaiStruct):
         self.high_bit_8 = self._io.read_bytes(2)
         if not self.high_bit_8 == b"\xFF\xFF":
             raise kaitaistruct.ValidationNotEqualError(b"\xFF\xFF", self.high_bit_8, self._io, u"/seq/1")
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -34,7 +35,6 @@ class FixedContents(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.normal) != 6:
             raise kaitaistruct.ConsistencyError(u"normal", len(self.normal), 6)
         if not self.normal == b"\x50\x41\x43\x4B\x2D\x31":
@@ -43,5 +43,6 @@ class FixedContents(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"high_bit_8", len(self.high_bit_8), 2)
         if not self.high_bit_8 == b"\xFF\xFF":
             raise kaitaistruct.ValidationNotEqualError(b"\xFF\xFF", self.high_bit_8, None, u"/seq/1")
+        self._dirty = False
 
 

@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class StrEncodingsEscapingToS(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(StrEncodingsEscapingToS, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -23,6 +23,7 @@ class StrEncodingsEscapingToS(ReadWriteKaitaiStruct):
         self.str3_raw = self._io.read_bytes(self.len_of_3)
         self.len_of_4 = self._io.read_u2le()
         self.str4_raw = self._io.read_bytes(self.len_of_4)
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -42,7 +43,6 @@ class StrEncodingsEscapingToS(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.str1_raw) != self.len_of_1:
             raise kaitaistruct.ConsistencyError(u"str1_raw", len(self.str1_raw), self.len_of_1)
         if len(self.str2_raw) != self.len_of_2:
@@ -51,6 +51,7 @@ class StrEncodingsEscapingToS(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"str3_raw", len(self.str3_raw), self.len_of_3)
         if len(self.str4_raw) != self.len_of_4:
             raise kaitaistruct.ConsistencyError(u"str4_raw", len(self.str4_raw), self.len_of_4)
+        self._dirty = False
 
     @property
     def str1(self):

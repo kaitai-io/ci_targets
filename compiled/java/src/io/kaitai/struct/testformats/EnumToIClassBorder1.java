@@ -51,7 +51,9 @@ public class EnumToIClassBorder1 extends KaitaiStruct {
 
     public void _fetchInstances() {
         checker();
-        this.checker._fetchInstances();
+        if (this.checker != null) {
+            this.checker._fetchInstances();
+        }
     }
     private EnumToIClassBorder2 checker;
     public EnumToIClassBorder2 checker() {

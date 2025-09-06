@@ -10,13 +10,14 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class NavParentFalse2(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(NavParentFalse2, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self.parentless = NavParentFalse2.Child(self._io, None, self._root)
         self.parentless._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -30,20 +31,21 @@ class NavParentFalse2(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.parentless._root != self._root:
             raise kaitaistruct.ConsistencyError(u"parentless", self.parentless._root, self._root)
         if self.parentless._parent != None:
             raise kaitaistruct.ConsistencyError(u"parentless", self.parentless._parent, None)
+        self._dirty = False
 
     class Child(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(NavParentFalse2.Child, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.foo = self._io.read_u1()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -56,7 +58,7 @@ class NavParentFalse2(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
 

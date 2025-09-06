@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class IoLocalVar(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(IoLocalVar, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -30,19 +30,22 @@ class IoLocalVar(KaitaiStruct):
             pass
 
         _ = self.mess_up
-        _on = 2
-        if _on == 1:
+        if hasattr(self, '_m_mess_up'):
             pass
-            self._m_mess_up._fetch_instances()
-        elif _on == 2:
-            pass
-            self._m_mess_up._fetch_instances()
-        else:
-            pass
+            _on = 2
+            if _on == 1:
+                pass
+                self._m_mess_up._fetch_instances()
+            elif _on == 2:
+                pass
+                self._m_mess_up._fetch_instances()
+            else:
+                pass
+
 
     class Dummy(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(IoLocalVar.Dummy, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()

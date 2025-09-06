@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class IfStruct(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(IfStruct, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -29,7 +29,7 @@ class IfStruct(KaitaiStruct):
 
     class ArgStr(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(IfStruct.ArgStr, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -45,7 +45,7 @@ class IfStruct(KaitaiStruct):
 
     class ArgTuple(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(IfStruct.ArgTuple, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -61,7 +61,7 @@ class IfStruct(KaitaiStruct):
 
     class Operation(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(IfStruct.Operation, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()

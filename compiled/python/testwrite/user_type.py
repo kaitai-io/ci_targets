@@ -10,13 +10,14 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class UserType(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(UserType, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self.one = UserType.Header(self._io, self, self._root)
         self.one._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -30,21 +31,22 @@ class UserType(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.one._root != self._root:
             raise kaitaistruct.ConsistencyError(u"one", self.one._root, self._root)
         if self.one._parent != self:
             raise kaitaistruct.ConsistencyError(u"one", self.one._parent, self)
+        self._dirty = False
 
     class Header(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(UserType.Header, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.width = self._io.read_u4le()
             self.height = self._io.read_u4le()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -58,7 +60,7 @@ class UserType(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
 

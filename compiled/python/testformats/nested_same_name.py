@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class NestedSameName(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(NestedSameName, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -27,7 +27,7 @@ class NestedSameName(KaitaiStruct):
 
     class DummyObj(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(NestedSameName.DummyObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -41,7 +41,7 @@ class NestedSameName(KaitaiStruct):
 
         class Foo(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
-                self._io = _io
+                super(NestedSameName.DummyObj.Foo, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
                 self._read()
@@ -57,7 +57,7 @@ class NestedSameName(KaitaiStruct):
 
     class Main(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(NestedSameName.Main, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -73,7 +73,7 @@ class NestedSameName(KaitaiStruct):
 
         class FooObj(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
-                self._io = _io
+                super(NestedSameName.Main.FooObj, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
                 self._read()

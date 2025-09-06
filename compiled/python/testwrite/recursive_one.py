@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class RecursiveOne(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(RecursiveOne, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -33,6 +33,7 @@ class RecursiveOne(ReadWriteKaitaiStruct):
             pass
             self.next = RecursiveOne.Fini(self._io, self, self._root)
             self.next._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -71,7 +72,6 @@ class RecursiveOne(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         _on = self.one & 3
         if _on == 0:
             pass
@@ -97,15 +97,17 @@ class RecursiveOne(ReadWriteKaitaiStruct):
                 raise kaitaistruct.ConsistencyError(u"next", self.next._root, self._root)
             if self.next._parent != self:
                 raise kaitaistruct.ConsistencyError(u"next", self.next._parent, self)
+        self._dirty = False
 
     class Fini(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(RecursiveOne.Fini, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.finisher = self._io.read_u2le()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -118,7 +120,7 @@ class RecursiveOne(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
 

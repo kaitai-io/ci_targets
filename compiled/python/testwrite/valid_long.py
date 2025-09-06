@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ValidLong(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ValidLong, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -48,6 +48,7 @@ class ValidLong(ReadWriteKaitaiStruct):
         self.sint64 = self._io.read_s8le()
         if not self.sint64 == -1:
             raise kaitaistruct.ValidationNotEqualError(-1, self.sint64, self._io, u"/seq/10")
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -70,7 +71,6 @@ class ValidLong(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.magic1) != 6:
             raise kaitaistruct.ConsistencyError(u"magic1", len(self.magic1), 6)
         if not self.magic1 == b"\x50\x41\x43\x4B\x2D\x31":
@@ -99,5 +99,6 @@ class ValidLong(ReadWriteKaitaiStruct):
             raise kaitaistruct.ValidationNotEqualError(-1, self.sint32, None, u"/seq/9")
         if not self.sint64 == -1:
             raise kaitaistruct.ValidationNotEqualError(-1, self.sint64, None, u"/seq/10")
+        self._dirty = False
 
 

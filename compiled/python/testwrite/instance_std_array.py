@@ -10,36 +10,50 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class InstanceStdArray(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(InstanceStdArray, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_entries = False
-        self.entries__to_write = True
+        self.entries__enabled = True
 
     def _read(self):
         self.ofs = self._io.read_u4le()
         self.entry_size = self._io.read_u4le()
         self.qty_entries = self._io.read_u4le()
+        self._dirty = False
 
 
     def _fetch_instances(self):
         pass
         _ = self.entries
-        for i in range(len(self._m_entries)):
+        if hasattr(self, '_m_entries'):
             pass
+            for i in range(len(self._m_entries)):
+                pass
+
 
 
 
     def _write__seq(self, io=None):
         super(InstanceStdArray, self)._write__seq(io)
-        self._should_write_entries = self.entries__to_write
+        self._should_write_entries = self.entries__enabled
         self._io.write_u4le(self.ofs)
         self._io.write_u4le(self.entry_size)
         self._io.write_u4le(self.qty_entries)
 
 
     def _check(self):
-        pass
+        if self.entries__enabled:
+            pass
+            if len(self._m_entries) != self.qty_entries:
+                raise kaitaistruct.ConsistencyError(u"entries", len(self._m_entries), self.qty_entries)
+            for i in range(len(self._m_entries)):
+                pass
+                if len(self._m_entries[i]) != self.entry_size:
+                    raise kaitaistruct.ConsistencyError(u"entries", len(self._m_entries[i]), self.entry_size)
+
+
+        self._dirty = False
 
     @property
     def entries(self):
@@ -47,6 +61,9 @@ class InstanceStdArray(ReadWriteKaitaiStruct):
             self._write_entries()
         if hasattr(self, '_m_entries'):
             return self._m_entries
+
+        if not self.entries__enabled:
+            return None
 
         _pos = self._io.pos()
         self._io.seek(self.ofs)
@@ -59,6 +76,7 @@ class InstanceStdArray(ReadWriteKaitaiStruct):
 
     @entries.setter
     def entries(self, v):
+        self._dirty = True
         self._m_entries = v
 
     def _write_entries(self):
@@ -70,16 +88,5 @@ class InstanceStdArray(ReadWriteKaitaiStruct):
             self._io.write_bytes(self._m_entries[i])
 
         self._io.seek(_pos)
-
-
-    def _check_entries(self):
-        pass
-        if len(self._m_entries) != self.qty_entries:
-            raise kaitaistruct.ConsistencyError(u"entries", len(self._m_entries), self.qty_entries)
-        for i in range(len(self._m_entries)):
-            pass
-            if len(self._m_entries[i]) != self.entry_size:
-                raise kaitaistruct.ConsistencyError(u"entries", len(self._m_entries[i]), self.entry_size)
-
 
 

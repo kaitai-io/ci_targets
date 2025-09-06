@@ -51,18 +51,21 @@ public class BitsEnum extends KaitaiStruct.ReadWrite {
         this.one = Animal.byId(this._io.readBitsIntBe(4));
         this.two = Animal.byId(this._io.readBitsIntBe(8));
         this.three = Animal.byId(this._io.readBitsIntBe(1));
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBitsIntBe(4, ((Number) (this.one.id())).longValue());
         this._io.writeBitsIntBe(8, ((Number) (this.two.id())).longValue());
         this._io.writeBitsIntBe(1, ((Number) (this.three.id())).longValue());
     }
 
     public void _check() {
+        _dirty = false;
     }
     private Animal one;
     private Animal two;
@@ -70,13 +73,13 @@ public class BitsEnum extends KaitaiStruct.ReadWrite {
     private BitsEnum _root;
     private KaitaiStruct.ReadWrite _parent;
     public Animal one() { return one; }
-    public void setOne(Animal _v) { one = _v; }
+    public void setOne(Animal _v) { _dirty = true; one = _v; }
     public Animal two() { return two; }
-    public void setTwo(Animal _v) { two = _v; }
+    public void setTwo(Animal _v) { _dirty = true; two = _v; }
     public Animal three() { return three; }
-    public void setThree(Animal _v) { three = _v; }
+    public void setThree(Animal _v) { _dirty = true; three = _v; }
     public BitsEnum _root() { return _root; }
-    public void set_root(BitsEnum _v) { _root = _v; }
+    public void set_root(BitsEnum _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

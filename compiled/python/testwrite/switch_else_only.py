@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class SwitchElseOnly(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(SwitchElseOnly, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -20,6 +20,7 @@ class SwitchElseOnly(ReadWriteKaitaiStruct):
         self.indicator = self._io.read_bytes(4)
         self.ut = SwitchElseOnly.Data(self._io, self, self._root)
         self.ut._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -36,22 +37,23 @@ class SwitchElseOnly(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.indicator) != 4:
             raise kaitaistruct.ConsistencyError(u"indicator", len(self.indicator), 4)
         if self.ut._root != self._root:
             raise kaitaistruct.ConsistencyError(u"ut", self.ut._root, self._root)
         if self.ut._parent != self:
             raise kaitaistruct.ConsistencyError(u"ut", self.ut._parent, self)
+        self._dirty = False
 
     class Data(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(SwitchElseOnly.Data, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.value = self._io.read_bytes(4)
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -64,9 +66,9 @@ class SwitchElseOnly(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if len(self.value) != 4:
                 raise kaitaistruct.ConsistencyError(u"value", len(self.value), 4)
+            self._dirty = False
 
 
 

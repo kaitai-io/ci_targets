@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class NestedSameName(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(NestedSameName, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -19,6 +19,7 @@ class NestedSameName(ReadWriteKaitaiStruct):
         self.main_data._read()
         self.dummy = NestedSameName.DummyObj(self._io, self, self._root)
         self.dummy._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -34,7 +35,6 @@ class NestedSameName(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.main_data._root != self._root:
             raise kaitaistruct.ConsistencyError(u"main_data", self.main_data._root, self._root)
         if self.main_data._parent != self:
@@ -43,15 +43,17 @@ class NestedSameName(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"dummy", self.dummy._root, self._root)
         if self.dummy._parent != self:
             raise kaitaistruct.ConsistencyError(u"dummy", self.dummy._parent, self)
+        self._dirty = False
 
     class DummyObj(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(NestedSameName.DummyObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             pass
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -63,16 +65,17 @@ class NestedSameName(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
         class Foo(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                self._io = _io
+                super(NestedSameName.DummyObj.Foo, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
             def _read(self):
                 pass
+                self._dirty = False
 
 
             def _fetch_instances(self):
@@ -84,13 +87,13 @@ class NestedSameName(ReadWriteKaitaiStruct):
 
 
             def _check(self):
-                pass
+                self._dirty = False
 
 
 
     class Main(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(NestedSameName.Main, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -98,6 +101,7 @@ class NestedSameName(ReadWriteKaitaiStruct):
             self.main_size = self._io.read_s4le()
             self.foo = NestedSameName.Main.FooObj(self._io, self, self._root)
             self.foo._read()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -112,20 +116,21 @@ class NestedSameName(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if self.foo._root != self._root:
                 raise kaitaistruct.ConsistencyError(u"foo", self.foo._root, self._root)
             if self.foo._parent != self:
                 raise kaitaistruct.ConsistencyError(u"foo", self.foo._parent, self)
+            self._dirty = False
 
         class FooObj(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                self._io = _io
+                super(NestedSameName.Main.FooObj, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
             def _read(self):
                 self.data = self._io.read_bytes(self._parent.main_size * 2)
+                self._dirty = False
 
 
             def _fetch_instances(self):
@@ -138,9 +143,9 @@ class NestedSameName(ReadWriteKaitaiStruct):
 
 
             def _check(self):
-                pass
                 if len(self.data) != self._parent.main_size * 2:
                     raise kaitaistruct.ConsistencyError(u"data", len(self.data), self._parent.main_size * 2)
+                self._dirty = False
 
 
 

@@ -72,6 +72,8 @@ public class InstanceIoUser extends KaitaiStruct {
 
         public void _fetchInstances() {
             name();
+            if (this.name != null) {
+            }
         }
         private String name;
         public String name() {

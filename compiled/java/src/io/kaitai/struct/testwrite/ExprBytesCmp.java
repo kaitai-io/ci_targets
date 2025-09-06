@@ -33,12 +33,14 @@ public class ExprBytesCmp extends KaitaiStruct.ReadWrite {
     public void _read() {
         this.one = this._io.readBytes(1);
         this.two = this._io.readBytes(3);
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytes(this.one);
         this._io.writeBytes(this.two);
     }
@@ -48,6 +50,7 @@ public class ExprBytesCmp extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("one", this.one.length, 1);
         if (this.two.length != 3)
             throw new ConsistencyError("two", this.two.length, 3);
+        _dirty = false;
     }
     private byte[] ack;
     public byte[] ack() {
@@ -142,11 +145,11 @@ public class ExprBytesCmp extends KaitaiStruct.ReadWrite {
     private ExprBytesCmp _root;
     private KaitaiStruct.ReadWrite _parent;
     public byte[] one() { return one; }
-    public void setOne(byte[] _v) { one = _v; }
+    public void setOne(byte[] _v) { _dirty = true; one = _v; }
     public byte[] two() { return two; }
-    public void setTwo(byte[] _v) { two = _v; }
+    public void setTwo(byte[] _v) { _dirty = true; two = _v; }
     public ExprBytesCmp _root() { return _root; }
-    public void set_root(ExprBytesCmp _v) { _root = _v; }
+    public void set_root(ExprBytesCmp _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

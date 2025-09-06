@@ -16,7 +16,7 @@ class ParamsEnum(KaitaiStruct):
         cat = 7
         chicken = 12
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(ParamsEnum, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -32,7 +32,7 @@ class ParamsEnum(KaitaiStruct):
 
     class WithParam(KaitaiStruct):
         def __init__(self, enumerated_one, _io, _parent=None, _root=None):
-            self._io = _io
+            super(ParamsEnum.WithParam, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self.enumerated_one = enumerated_one

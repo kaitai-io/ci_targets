@@ -40,6 +40,7 @@ public class ExprIoTernary extends KaitaiStruct.ReadWrite {
         KaitaiStream _io__raw_obj2 = new ByteBufferKaitaiStream(this._raw_obj2);
         this.obj2 = new Two(_io__raw_obj2, this, _root);
         this.obj2._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -48,6 +49,7 @@ public class ExprIoTernary extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(this.flag);
         final KaitaiStream _io__raw_obj1 = new ByteBufferKaitaiStream(4);
         this._io.addChildStream(_io__raw_obj1);
@@ -94,6 +96,7 @@ public class ExprIoTernary extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("obj2", this.obj2._root(), _root());
         if (!Objects.equals(this.obj2._parent(), this))
             throw new ConsistencyError("obj2", this.obj2._parent(), this);
+        _dirty = false;
     }
     public static class One extends KaitaiStruct.ReadWrite {
         public static One fromFile(String fileName) throws IOException {
@@ -118,26 +121,29 @@ public class ExprIoTernary extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.one = this._io.readU1();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU1(this.one);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private int one;
         private ExprIoTernary _root;
         private ExprIoTernary _parent;
         public int one() { return one; }
-        public void setOne(int _v) { one = _v; }
+        public void setOne(int _v) { _dirty = true; one = _v; }
         public ExprIoTernary _root() { return _root; }
-        public void set_root(ExprIoTernary _v) { _root = _v; }
+        public void set_root(ExprIoTernary _v) { _dirty = true; _root = _v; }
         public ExprIoTernary _parent() { return _parent; }
-        public void set_parent(ExprIoTernary _v) { _parent = _v; }
+        public void set_parent(ExprIoTernary _v) { _dirty = true; _parent = _v; }
     }
     public static class Two extends KaitaiStruct.ReadWrite {
         public static Two fromFile(String fileName) throws IOException {
@@ -162,26 +168,29 @@ public class ExprIoTernary extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.two = this._io.readU1();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU1(this.two);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private int two;
         private ExprIoTernary _root;
         private ExprIoTernary _parent;
         public int two() { return two; }
-        public void setTwo(int _v) { two = _v; }
+        public void setTwo(int _v) { _dirty = true; two = _v; }
         public ExprIoTernary _root() { return _root; }
-        public void set_root(ExprIoTernary _v) { _root = _v; }
+        public void set_root(ExprIoTernary _v) { _dirty = true; _root = _v; }
         public ExprIoTernary _parent() { return _parent; }
-        public void set_parent(ExprIoTernary _v) { _parent = _v; }
+        public void set_parent(ExprIoTernary _v) { _dirty = true; _parent = _v; }
     }
     private KaitaiStream oneOrTwoIo;
     public KaitaiStream oneOrTwoIo() {
@@ -231,17 +240,17 @@ public class ExprIoTernary extends KaitaiStruct.ReadWrite {
     private byte[] _raw_obj1;
     private byte[] _raw_obj2;
     public int flag() { return flag; }
-    public void setFlag(int _v) { flag = _v; }
+    public void setFlag(int _v) { _dirty = true; flag = _v; }
     public One obj1() { return obj1; }
-    public void setObj1(One _v) { obj1 = _v; }
+    public void setObj1(One _v) { _dirty = true; obj1 = _v; }
     public Two obj2() { return obj2; }
-    public void setObj2(Two _v) { obj2 = _v; }
+    public void setObj2(Two _v) { _dirty = true; obj2 = _v; }
     public ExprIoTernary _root() { return _root; }
-    public void set_root(ExprIoTernary _v) { _root = _v; }
+    public void set_root(ExprIoTernary _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_obj1() { return _raw_obj1; }
-    public void set_raw_Obj1(byte[] _v) { _raw_obj1 = _v; }
+    public void set_raw_Obj1(byte[] _v) { _dirty = true; _raw_obj1 = _v; }
     public byte[] _raw_obj2() { return _raw_obj2; }
-    public void set_raw_Obj2(byte[] _v) { _raw_obj2 = _v; }
+    public void set_raw_Obj2(byte[] _v) { _dirty = true; _raw_obj2 = _v; }
 }

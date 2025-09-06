@@ -48,28 +48,31 @@ public class EnumInvalid extends KaitaiStruct.ReadWrite {
     public void _read() {
         this.pet1 = Animal.byId(this._io.readU1());
         this.pet2 = Animal.byId(this._io.readU1());
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(((Number) (this.pet1.id())).intValue());
         this._io.writeU1(((Number) (this.pet2.id())).intValue());
     }
 
     public void _check() {
+        _dirty = false;
     }
     private Animal pet1;
     private Animal pet2;
     private EnumInvalid _root;
     private KaitaiStruct.ReadWrite _parent;
     public Animal pet1() { return pet1; }
-    public void setPet1(Animal _v) { pet1 = _v; }
+    public void setPet1(Animal _v) { _dirty = true; pet1 = _v; }
     public Animal pet2() { return pet2; }
-    public void setPet2(Animal _v) { pet2 = _v; }
+    public void setPet2(Animal _v) { _dirty = true; pet2 = _v; }
     public EnumInvalid _root() { return _root; }
-    public void set_root(EnumInvalid _v) { _root = _v; }
+    public void set_root(EnumInvalid _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

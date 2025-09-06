@@ -52,6 +52,7 @@ public class ParamsEnum extends KaitaiStruct.ReadWrite {
         this.one = Animal.byId(this._io.readU1());
         this.invokeWithParam = new WithParam(this._io, this, _root, one());
         this.invokeWithParam._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -59,6 +60,7 @@ public class ParamsEnum extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(((Number) (this.one.id())).intValue());
         this.invokeWithParam._write_Seq(this._io);
     }
@@ -70,6 +72,7 @@ public class ParamsEnum extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("invoke_with_param", this.invokeWithParam._parent(), this);
         if (this.invokeWithParam.enumeratedOne() != one())
             throw new ConsistencyError("invoke_with_param", this.invokeWithParam.enumeratedOne(), one());
+        _dirty = false;
     }
     public static class WithParam extends KaitaiStruct.ReadWrite {
         public WithParam(Animal enumeratedOne) {
@@ -91,15 +94,18 @@ public class ParamsEnum extends KaitaiStruct.ReadWrite {
             this.enumeratedOne = enumeratedOne;
         }
         public void _read() {
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
         }
 
         public void _check() {
+            _dirty = false;
         }
         private Boolean isCat;
         public Boolean isCat() {
@@ -113,22 +119,22 @@ public class ParamsEnum extends KaitaiStruct.ReadWrite {
         private ParamsEnum _root;
         private ParamsEnum _parent;
         public Animal enumeratedOne() { return enumeratedOne; }
-        public void setEnumeratedOne(Animal _v) { enumeratedOne = _v; }
+        public void setEnumeratedOne(Animal _v) { _dirty = true; enumeratedOne = _v; }
         public ParamsEnum _root() { return _root; }
-        public void set_root(ParamsEnum _v) { _root = _v; }
+        public void set_root(ParamsEnum _v) { _dirty = true; _root = _v; }
         public ParamsEnum _parent() { return _parent; }
-        public void set_parent(ParamsEnum _v) { _parent = _v; }
+        public void set_parent(ParamsEnum _v) { _dirty = true; _parent = _v; }
     }
     private Animal one;
     private WithParam invokeWithParam;
     private ParamsEnum _root;
     private KaitaiStruct.ReadWrite _parent;
     public Animal one() { return one; }
-    public void setOne(Animal _v) { one = _v; }
+    public void setOne(Animal _v) { _dirty = true; one = _v; }
     public WithParam invokeWithParam() { return invokeWithParam; }
-    public void setInvokeWithParam(WithParam _v) { invokeWithParam = _v; }
+    public void setInvokeWithParam(WithParam _v) { _dirty = true; invokeWithParam = _v; }
     public ParamsEnum _root() { return _root; }
-    public void set_root(ParamsEnum _v) { _root = _v; }
+    public void set_root(ParamsEnum _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

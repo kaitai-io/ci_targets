@@ -30,7 +30,7 @@ class VlqBase128Le(ReadWriteKaitaiStruct):
     This particular implementation supports serialized values to up 8 bytes long.
     """
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(VlqBase128Le, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -47,6 +47,7 @@ class VlqBase128Le(ReadWriteKaitaiStruct):
             if (not (_.has_next)):
                 break
             i += 1
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -66,7 +67,6 @@ class VlqBase128Le(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.groups) == 0:
             raise kaitaistruct.ConsistencyError(u"groups", len(self.groups), 0)
         for i in range(len(self.groups)):
@@ -79,18 +79,20 @@ class VlqBase128Le(ReadWriteKaitaiStruct):
             if (not (_.has_next)) != (i == len(self.groups) - 1):
                 raise kaitaistruct.ConsistencyError(u"groups", (not (_.has_next)), i == len(self.groups) - 1)
 
+        self._dirty = False
 
     class Group(ReadWriteKaitaiStruct):
         """One byte group, clearly divided into 7-bit "value" chunk and 1-bit "continuation" flag.
         """
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(VlqBase128Le.Group, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.has_next = self._io.read_bits_int_be(1) != 0
             self.value = self._io.read_bits_int_be(7)
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -104,7 +106,7 @@ class VlqBase128Le(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     @property

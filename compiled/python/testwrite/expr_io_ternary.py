@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ExprIoTernary(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ExprIoTernary, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -24,6 +24,7 @@ class ExprIoTernary(ReadWriteKaitaiStruct):
         _io__raw_obj2 = KaitaiStream(BytesIO(self._raw_obj2))
         self.obj2 = ExprIoTernary.Two(_io__raw_obj2, self, self._root)
         self.obj2._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -60,7 +61,6 @@ class ExprIoTernary(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.obj1._root != self._root:
             raise kaitaistruct.ConsistencyError(u"obj1", self.obj1._root, self._root)
         if self.obj1._parent != self:
@@ -69,15 +69,17 @@ class ExprIoTernary(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"obj2", self.obj2._root, self._root)
         if self.obj2._parent != self:
             raise kaitaistruct.ConsistencyError(u"obj2", self.obj2._parent, self)
+        self._dirty = False
 
     class One(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ExprIoTernary.One, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.one = self._io.read_u1()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -90,17 +92,18 @@ class ExprIoTernary(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     class Two(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ExprIoTernary.Two, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.two = self._io.read_u1()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -113,7 +116,7 @@ class ExprIoTernary(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     @property

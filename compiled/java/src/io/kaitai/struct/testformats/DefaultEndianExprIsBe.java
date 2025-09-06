@@ -124,8 +124,12 @@ public class DefaultEndianExprIsBe extends KaitaiStruct {
 
             public void _fetchInstances() {
                 instInt();
+                if (this.instInt != null) {
+                }
                 instSub();
-                this.instSub._fetchInstances();
+                if (this.instSub != null) {
+                    this.instSub._fetchInstances();
+                }
             }
             public static class SubMainObj extends KaitaiStruct {
                 private Boolean _is_le;

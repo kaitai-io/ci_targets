@@ -12,7 +12,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 class DebugArrayUserCurrentExcluded(ReadWriteKaitaiStruct):
     SEQ_FIELDS = ["array_of_cats"]
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(DebugArrayUserCurrentExcluded, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._debug = collections.defaultdict(dict)
@@ -31,6 +31,7 @@ class DebugArrayUserCurrentExcluded(ReadWriteKaitaiStruct):
             self._debug['array_of_cats']['arr'][i]['end'] = self._io.pos()
 
         self._debug['array_of_cats']['end'] = self._io.pos()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -50,7 +51,6 @@ class DebugArrayUserCurrentExcluded(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.array_of_cats) != 3:
             raise kaitaistruct.ConsistencyError(u"array_of_cats", len(self.array_of_cats), 3)
         for i in range(len(self.array_of_cats)):
@@ -60,11 +60,12 @@ class DebugArrayUserCurrentExcluded(ReadWriteKaitaiStruct):
             if self.array_of_cats[i]._parent != self:
                 raise kaitaistruct.ConsistencyError(u"array_of_cats", self.array_of_cats[i]._parent, self)
 
+        self._dirty = False
 
     class Cat(ReadWriteKaitaiStruct):
         SEQ_FIELDS = ["meow"]
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(DebugArrayUserCurrentExcluded.Cat, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._debug = collections.defaultdict(dict)
@@ -73,6 +74,7 @@ class DebugArrayUserCurrentExcluded(ReadWriteKaitaiStruct):
             self._debug['meow']['start'] = self._io.pos()
             self.meow = self._io.read_bytes(3 - len(self._parent.array_of_cats))
             self._debug['meow']['end'] = self._io.pos()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -85,9 +87,9 @@ class DebugArrayUserCurrentExcluded(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if len(self.meow) != 3 - len(self._parent.array_of_cats):
                 raise kaitaistruct.ConsistencyError(u"meow", len(self.meow), 3 - len(self._parent.array_of_cats))
+            self._dirty = False
 
 
 

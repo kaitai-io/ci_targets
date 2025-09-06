@@ -50,6 +50,8 @@ public class NonStandard extends KaitaiStruct {
         }
         }
         pi();
+        if (this.pi != null) {
+        }
     }
     private Integer pi;
     public Integer pi() {

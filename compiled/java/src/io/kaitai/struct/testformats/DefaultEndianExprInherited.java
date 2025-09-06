@@ -184,6 +184,8 @@ public class DefaultEndianExprInherited extends KaitaiStruct {
 
                     public void _fetchInstances() {
                         someInst();
+                        if (this.someInst != null) {
+                        }
                     }
                     private Long someInst;
                     public Long someInst() {

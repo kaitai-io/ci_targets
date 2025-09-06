@@ -36,6 +36,7 @@ public class NavParentOverride extends KaitaiStruct.ReadWrite {
         this.child1._read();
         this.mediator2 = new Mediator(this._io, this, _root);
         this.mediator2._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -44,6 +45,7 @@ public class NavParentOverride extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(this.childSize);
         this.child1._write_Seq(this._io);
         this.mediator2._write_Seq(this._io);
@@ -58,6 +60,7 @@ public class NavParentOverride extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("mediator_2", this.mediator2._root(), _root());
         if (!Objects.equals(this.mediator2._parent(), this))
             throw new ConsistencyError("mediator_2", this.mediator2._parent(), this);
+        _dirty = false;
     }
     public static class Child extends KaitaiStruct.ReadWrite {
         public static Child fromFile(String fileName) throws IOException {
@@ -82,28 +85,31 @@ public class NavParentOverride extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.data = this._io.readBytes(_parent().childSize());
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytes(this.data);
         }
 
         public void _check() {
             if (this.data.length != _parent().childSize())
                 throw new ConsistencyError("data", this.data.length, _parent().childSize());
+            _dirty = false;
         }
         private byte[] data;
         private NavParentOverride _root;
         private NavParentOverride _parent;
         public byte[] data() { return data; }
-        public void setData(byte[] _v) { data = _v; }
+        public void setData(byte[] _v) { _dirty = true; data = _v; }
         public NavParentOverride _root() { return _root; }
-        public void set_root(NavParentOverride _v) { _root = _v; }
+        public void set_root(NavParentOverride _v) { _dirty = true; _root = _v; }
         public NavParentOverride _parent() { return _parent; }
-        public void set_parent(NavParentOverride _v) { _parent = _v; }
+        public void set_parent(NavParentOverride _v) { _dirty = true; _parent = _v; }
     }
     public static class Mediator extends KaitaiStruct.ReadWrite {
         public static Mediator fromFile(String fileName) throws IOException {
@@ -129,6 +135,7 @@ public class NavParentOverride extends KaitaiStruct.ReadWrite {
         public void _read() {
             this.child2 = new Child(this._io, _parent(), _root);
             this.child2._read();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
@@ -136,6 +143,7 @@ public class NavParentOverride extends KaitaiStruct.ReadWrite {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this.child2._write_Seq(this._io);
         }
 
@@ -144,16 +152,17 @@ public class NavParentOverride extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("child_2", this.child2._root(), _root());
             if (!Objects.equals(this.child2._parent(), _parent()))
                 throw new ConsistencyError("child_2", this.child2._parent(), _parent());
+            _dirty = false;
         }
         private Child child2;
         private NavParentOverride _root;
         private NavParentOverride _parent;
         public Child child2() { return child2; }
-        public void setChild2(Child _v) { child2 = _v; }
+        public void setChild2(Child _v) { _dirty = true; child2 = _v; }
         public NavParentOverride _root() { return _root; }
-        public void set_root(NavParentOverride _v) { _root = _v; }
+        public void set_root(NavParentOverride _v) { _dirty = true; _root = _v; }
         public NavParentOverride _parent() { return _parent; }
-        public void set_parent(NavParentOverride _v) { _parent = _v; }
+        public void set_parent(NavParentOverride _v) { _dirty = true; _parent = _v; }
     }
     private int childSize;
     private Child child1;
@@ -161,13 +170,13 @@ public class NavParentOverride extends KaitaiStruct.ReadWrite {
     private NavParentOverride _root;
     private KaitaiStruct.ReadWrite _parent;
     public int childSize() { return childSize; }
-    public void setChildSize(int _v) { childSize = _v; }
+    public void setChildSize(int _v) { _dirty = true; childSize = _v; }
     public Child child1() { return child1; }
-    public void setChild1(Child _v) { child1 = _v; }
+    public void setChild1(Child _v) { _dirty = true; child1 = _v; }
     public Mediator mediator2() { return mediator2; }
-    public void setMediator2(Mediator _v) { mediator2 = _v; }
+    public void setMediator2(Mediator _v) { _dirty = true; mediator2 = _v; }
     public NavParentOverride _root() { return _root; }
-    public void set_root(NavParentOverride _v) { _root = _v; }
+    public void set_root(NavParentOverride _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

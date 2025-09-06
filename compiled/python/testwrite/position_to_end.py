@@ -10,39 +10,51 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class PositionToEnd(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(PositionToEnd, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_index = False
-        self.index__to_write = True
+        self.index__enabled = True
 
     def _read(self):
         pass
+        self._dirty = False
 
 
     def _fetch_instances(self):
         pass
         _ = self.index
-        self._m_index._fetch_instances()
+        if hasattr(self, '_m_index'):
+            pass
+            self._m_index._fetch_instances()
+
 
 
     def _write__seq(self, io=None):
         super(PositionToEnd, self)._write__seq(io)
-        self._should_write_index = self.index__to_write
+        self._should_write_index = self.index__enabled
 
 
     def _check(self):
-        pass
+        if self.index__enabled:
+            pass
+            if self._m_index._root != self._root:
+                raise kaitaistruct.ConsistencyError(u"index", self._m_index._root, self._root)
+            if self._m_index._parent != self:
+                raise kaitaistruct.ConsistencyError(u"index", self._m_index._parent, self)
+
+        self._dirty = False
 
     class IndexObj(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(PositionToEnd.IndexObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.foo = self._io.read_u4le()
             self.bar = self._io.read_u4le()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -56,7 +68,7 @@ class PositionToEnd(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     @property
@@ -65,6 +77,9 @@ class PositionToEnd(ReadWriteKaitaiStruct):
             self._write_index()
         if hasattr(self, '_m_index'):
             return self._m_index
+
+        if not self.index__enabled:
+            return None
 
         _pos = self._io.pos()
         self._io.seek(self._io.size() - 8)
@@ -75,6 +90,7 @@ class PositionToEnd(ReadWriteKaitaiStruct):
 
     @index.setter
     def index(self, v):
+        self._dirty = True
         self._m_index = v
 
     def _write_index(self):
@@ -83,13 +99,5 @@ class PositionToEnd(ReadWriteKaitaiStruct):
         self._io.seek(self._io.size() - 8)
         self._m_index._write__seq(self._io)
         self._io.seek(_pos)
-
-
-    def _check_index(self):
-        pass
-        if self._m_index._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"index", self._m_index._root, self._root)
-        if self._m_index._parent != self:
-            raise kaitaistruct.ConsistencyError(u"index", self._m_index._parent, self)
 
 

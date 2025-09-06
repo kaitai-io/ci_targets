@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class BytesEosPadTerm(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(BytesEosPadTerm, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -39,7 +39,7 @@ class BytesEosPadTerm(KaitaiStruct):
 
     class StrPadType(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(BytesEosPadTerm.StrPadType, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -54,7 +54,7 @@ class BytesEosPadTerm(KaitaiStruct):
 
     class StrTermAndPadType(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(BytesEosPadTerm.StrTermAndPadType, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -69,7 +69,7 @@ class BytesEosPadTerm(KaitaiStruct):
 
     class StrTermIncludeType(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(BytesEosPadTerm.StrTermIncludeType, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -84,7 +84,7 @@ class BytesEosPadTerm(KaitaiStruct):
 
     class StrTermType(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(BytesEosPadTerm.StrTermType, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()

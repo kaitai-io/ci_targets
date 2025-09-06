@@ -45,6 +45,7 @@ public class RepeatUntilS4 extends KaitaiStruct.ReadWrite {
             } while (!(_it == -1));
         }
         this.afterall = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.US_ASCII);
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -53,6 +54,7 @@ public class RepeatUntilS4 extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         for (int i = 0; i < this.entries.size(); i++) {
             this._io.writeS4le(this.entries.get(((Number) (i)).intValue()));
         }
@@ -72,17 +74,18 @@ public class RepeatUntilS4 extends KaitaiStruct.ReadWrite {
         }
         if (KaitaiStream.byteArrayIndexOf((this.afterall).getBytes(Charset.forName("ASCII")), ((byte) 0)) != -1)
             throw new ConsistencyError("afterall", KaitaiStream.byteArrayIndexOf((this.afterall).getBytes(Charset.forName("ASCII")), ((byte) 0)), -1);
+        _dirty = false;
     }
     private List<Integer> entries;
     private String afterall;
     private RepeatUntilS4 _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<Integer> entries() { return entries; }
-    public void setEntries(List<Integer> _v) { entries = _v; }
+    public void setEntries(List<Integer> _v) { _dirty = true; entries = _v; }
     public String afterall() { return afterall; }
-    public void setAfterall(String _v) { afterall = _v; }
+    public void setAfterall(String _v) { _dirty = true; afterall = _v; }
     public RepeatUntilS4 _root() { return _root; }
-    public void set_root(RepeatUntilS4 _v) { _root = _v; }
+    public void set_root(RepeatUntilS4 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

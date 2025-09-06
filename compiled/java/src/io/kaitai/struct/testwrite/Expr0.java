@@ -30,16 +30,19 @@ public class Expr0 extends KaitaiStruct.ReadWrite {
     }
     public void _read() {
         this.lenOf1 = this._io.readU2le();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU2le(this.lenOf1);
     }
 
     public void _check() {
+        _dirty = false;
     }
     private String mustBeAbc123;
     public String mustBeAbc123() {
@@ -61,9 +64,9 @@ public class Expr0 extends KaitaiStruct.ReadWrite {
     private Expr0 _root;
     private KaitaiStruct.ReadWrite _parent;
     public int lenOf1() { return lenOf1; }
-    public void setLenOf1(int _v) { lenOf1 = _v; }
+    public void setLenOf1(int _v) { _dirty = true; lenOf1 = _v; }
     public Expr0 _root() { return _root; }
-    public void set_root(Expr0 _v) { _root = _v; }
+    public void set_root(Expr0 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

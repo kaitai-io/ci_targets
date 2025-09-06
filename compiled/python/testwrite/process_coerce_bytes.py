@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ProcessCoerceBytes(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ProcessCoerceBytes, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -23,6 +23,7 @@ class ProcessCoerceBytes(ReadWriteKaitaiStruct):
             finally:
                 self.records.append(_t_records)
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -42,7 +43,6 @@ class ProcessCoerceBytes(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.records) != 2:
             raise kaitaistruct.ConsistencyError(u"records", len(self.records), 2)
         for i in range(len(self.records)):
@@ -52,10 +52,11 @@ class ProcessCoerceBytes(ReadWriteKaitaiStruct):
             if self.records[i]._parent != self:
                 raise kaitaistruct.ConsistencyError(u"records", self.records[i]._parent, self)
 
+        self._dirty = False
 
     class Record(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ProcessCoerceBytes.Record, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -70,6 +71,7 @@ class ProcessCoerceBytes(ReadWriteKaitaiStruct):
                 self._raw_buf_proc = self._io.read_bytes(4)
                 self.buf_proc = KaitaiStream.process_xor_one(self._raw_buf_proc, 170)
 
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -99,7 +101,6 @@ class ProcessCoerceBytes(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if self.flag == 0:
                 pass
                 if len(self.buf_unproc) != 4:
@@ -108,6 +109,7 @@ class ProcessCoerceBytes(ReadWriteKaitaiStruct):
             if self.flag != 0:
                 pass
 
+            self._dirty = False
 
         @property
         def buf(self):

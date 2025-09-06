@@ -31,28 +31,31 @@ public class EnumImportSeq extends KaitaiStruct.ReadWrite {
     public void _read() {
         this.pet1 = Enum0.Animal.byId(this._io.readU4le());
         this.pet2 = EnumDeep.Container1.Container2.Animal.byId(this._io.readU4le());
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU4le(((Number) (this.pet1.id())).longValue());
         this._io.writeU4le(((Number) (this.pet2.id())).longValue());
     }
 
     public void _check() {
+        _dirty = false;
     }
     private Enum0.Animal pet1;
     private EnumDeep.Container1.Container2.Animal pet2;
     private EnumImportSeq _root;
     private KaitaiStruct.ReadWrite _parent;
     public Enum0.Animal pet1() { return pet1; }
-    public void setPet1(Enum0.Animal _v) { pet1 = _v; }
+    public void setPet1(Enum0.Animal _v) { _dirty = true; pet1 = _v; }
     public EnumDeep.Container1.Container2.Animal pet2() { return pet2; }
-    public void setPet2(EnumDeep.Container1.Container2.Animal _v) { pet2 = _v; }
+    public void setPet2(EnumDeep.Container1.Container2.Animal _v) { _dirty = true; pet2 = _v; }
     public EnumImportSeq _root() { return _root; }
-    public void set_root(EnumImportSeq _v) { _root = _v; }
+    public void set_root(EnumImportSeq _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

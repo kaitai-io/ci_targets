@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class IndexToParamEos(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(IndexToParamEos, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -30,6 +30,7 @@ class IndexToParamEos(ReadWriteKaitaiStruct):
                 self.blocks.append(_t_blocks)
             i += 1
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -61,7 +62,6 @@ class IndexToParamEos(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.sizes) != self.qty:
             raise kaitaistruct.ConsistencyError(u"sizes", len(self.sizes), self.qty)
         for i in range(len(self.sizes)):
@@ -76,16 +76,18 @@ class IndexToParamEos(ReadWriteKaitaiStruct):
             if self.blocks[i].idx != i:
                 raise kaitaistruct.ConsistencyError(u"blocks", self.blocks[i].idx, i)
 
+        self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):
         def __init__(self, idx, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(IndexToParamEos.Block, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self.idx = idx
 
         def _read(self):
             self.buf = (self._io.read_bytes(self._root.sizes[self.idx])).decode(u"ASCII")
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -98,9 +100,9 @@ class IndexToParamEos(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if len((self.buf).encode(u"ASCII")) != self._root.sizes[self.idx]:
                 raise kaitaistruct.ConsistencyError(u"buf", len((self.buf).encode(u"ASCII")), self._root.sizes[self.idx])
+            self._dirty = False
 
 
 

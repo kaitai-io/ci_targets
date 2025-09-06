@@ -33,12 +33,14 @@ public class CombineBytes extends KaitaiStruct.ReadWrite {
         this.bytesTerm = this._io.readBytesTerm((byte) 124, false, true, true);
         this.bytesLimit = this._io.readBytes(4);
         this.bytesEos = this._io.readBytesFull();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytes(this.bytesTerm);
         this._io.writeU1(124);
         this._io.writeBytes(this.bytesLimit);
@@ -52,6 +54,7 @@ public class CombineBytes extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("bytes_term", KaitaiStream.byteArrayIndexOf(this.bytesTerm, ((byte) 124)), -1);
         if (this.bytesLimit.length != 4)
             throw new ConsistencyError("bytes_limit", this.bytesLimit.length, 4);
+        _dirty = false;
     }
     private byte[] bytesCalc;
     public byte[] bytesCalc() {
@@ -115,13 +118,13 @@ public class CombineBytes extends KaitaiStruct.ReadWrite {
     private CombineBytes _root;
     private KaitaiStruct.ReadWrite _parent;
     public byte[] bytesTerm() { return bytesTerm; }
-    public void setBytesTerm(byte[] _v) { bytesTerm = _v; }
+    public void setBytesTerm(byte[] _v) { _dirty = true; bytesTerm = _v; }
     public byte[] bytesLimit() { return bytesLimit; }
-    public void setBytesLimit(byte[] _v) { bytesLimit = _v; }
+    public void setBytesLimit(byte[] _v) { _dirty = true; bytesLimit = _v; }
     public byte[] bytesEos() { return bytesEos; }
-    public void setBytesEos(byte[] _v) { bytesEos = _v; }
+    public void setBytesEos(byte[] _v) { _dirty = true; bytesEos = _v; }
     public CombineBytes _root() { return _root; }
-    public void set_root(CombineBytes _v) { _root = _v; }
+    public void set_root(CombineBytes _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

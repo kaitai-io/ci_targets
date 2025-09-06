@@ -46,6 +46,7 @@ public class ValidSwitch extends KaitaiStruct.ReadWrite {
         if (!(this.b == 17217)) {
             throw new KaitaiStream.ValidationNotEqualError(17217, this.b, this._io, "/seq/1");
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -60,6 +61,7 @@ public class ValidSwitch extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeU1(this.a);
         switch (a()) {
         case 80: {
@@ -88,17 +90,18 @@ public class ValidSwitch extends KaitaiStruct.ReadWrite {
         if (!(this.b == 17217)) {
             throw new KaitaiStream.ValidationNotEqualError(17217, this.b, null, "/seq/1");
         }
+        _dirty = false;
     }
     private int a;
     private int b;
     private ValidSwitch _root;
     private KaitaiStruct.ReadWrite _parent;
     public int a() { return a; }
-    public void setA(int _v) { a = _v; }
+    public void setA(int _v) { _dirty = true; a = _v; }
     public int b() { return b; }
-    public void setB(int _v) { b = _v; }
+    public void setB(int _v) { _dirty = true; b = _v; }
     public ValidSwitch _root() { return _root; }
-    public void set_root(ValidSwitch _v) { _root = _v; }
+    public void set_root(ValidSwitch _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

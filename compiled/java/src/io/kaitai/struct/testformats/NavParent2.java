@@ -70,11 +70,13 @@ public class NavParent2 extends KaitaiStruct {
 
         public void _fetchInstances() {
             tagContent();
-            switch (name()) {
-            case "RAHC": {
-                this.tagContent._fetchInstances();
-                break;
-            }
+            if (this.tagContent != null) {
+                switch (name()) {
+                case "RAHC": {
+                    this.tagContent._fetchInstances();
+                    break;
+                }
+                }
             }
         }
         public static class TagChar extends KaitaiStruct {

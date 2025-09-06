@@ -11,13 +11,14 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ParamsDefUsertypeImported(ReadWriteKaitaiStruct):
     def __init__(self, hw_param, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ParamsDefUsertypeImported, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self.hw_param = hw_param
 
     def _read(self):
         pass
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -29,7 +30,7 @@ class ParamsDefUsertypeImported(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
+        self._dirty = False
 
     @property
     def hw_one(self):

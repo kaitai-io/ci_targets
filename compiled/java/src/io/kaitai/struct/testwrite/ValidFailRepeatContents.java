@@ -44,6 +44,7 @@ public class ValidFailRepeatContents extends KaitaiStruct.ReadWrite {
                 i++;
             }
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -52,6 +53,7 @@ public class ValidFailRepeatContents extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         for (int i = 0; i < this.foo.size(); i++) {
             if (this._io.isEof())
                 throw new ConsistencyError("foo", this._io.size() - this._io.pos(), 0);
@@ -69,14 +71,15 @@ public class ValidFailRepeatContents extends KaitaiStruct.ReadWrite {
                 throw new KaitaiStream.ValidationNotEqualError(new byte[] { 18, 52, 86, 120 }, this.foo.get(((Number) (i)).intValue()), null, "/seq/0");
             }
         }
+        _dirty = false;
     }
     private List<byte[]> foo;
     private ValidFailRepeatContents _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<byte[]> foo() { return foo; }
-    public void setFoo(List<byte[]> _v) { foo = _v; }
+    public void setFoo(List<byte[]> _v) { _dirty = true; foo = _v; }
     public ValidFailRepeatContents _root() { return _root; }
-    public void set_root(ValidFailRepeatContents _v) { _root = _v; }
+    public void set_root(ValidFailRepeatContents _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ProcessRepeatUsertypeDynargXor(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ProcessRepeatUsertypeDynargXor, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -30,6 +30,7 @@ class ProcessRepeatUsertypeDynargXor(ReadWriteKaitaiStruct):
 
         self.blocks_b = ProcessRepeatUsertypeDynargXor.BlocksBWrapper(self._io, self, self._root)
         self.blocks_b._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -65,7 +66,6 @@ class ProcessRepeatUsertypeDynargXor(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.blocks) != 2:
             raise kaitaistruct.ConsistencyError(u"blocks", len(self.blocks), 2)
         for i in range(len(self.blocks)):
@@ -79,15 +79,17 @@ class ProcessRepeatUsertypeDynargXor(ReadWriteKaitaiStruct):
             raise kaitaistruct.ConsistencyError(u"blocks_b", self.blocks_b._root, self._root)
         if self.blocks_b._parent != self:
             raise kaitaistruct.ConsistencyError(u"blocks_b", self.blocks_b._parent, self)
+        self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ProcessRepeatUsertypeDynargXor.Block, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.a = self._io.read_u4le()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -100,38 +102,51 @@ class ProcessRepeatUsertypeDynargXor(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
     class BlocksBWrapper(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ProcessRepeatUsertypeDynargXor.BlocksBWrapper, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._should_write_blocks_0_b = False
-            self.blocks_0_b__to_write = True
+            self.blocks_0_b__enabled = True
             self._should_write_blocks_1_b = False
-            self.blocks_1_b__to_write = True
+            self.blocks_1_b__enabled = True
 
         def _read(self):
             self.dummy = self._io.read_u1()
+            self._dirty = False
 
 
         def _fetch_instances(self):
             pass
             _ = self.blocks_0_b
+            if hasattr(self, '_m_blocks_0_b'):
+                pass
+
             _ = self.blocks_1_b
+            if hasattr(self, '_m_blocks_1_b'):
+                pass
+
 
 
         def _write__seq(self, io=None):
             super(ProcessRepeatUsertypeDynargXor.BlocksBWrapper, self)._write__seq(io)
-            self._should_write_blocks_0_b = self.blocks_0_b__to_write
-            self._should_write_blocks_1_b = self.blocks_1_b__to_write
+            self._should_write_blocks_0_b = self.blocks_0_b__enabled
+            self._should_write_blocks_1_b = self.blocks_1_b__enabled
             self._io.write_u1(self.dummy)
 
 
         def _check(self):
-            pass
+            if self.blocks_0_b__enabled:
+                pass
+
+            if self.blocks_1_b__enabled:
+                pass
+
+            self._dirty = False
 
         @property
         def blocks_0_b(self):
@@ -139,6 +154,9 @@ class ProcessRepeatUsertypeDynargXor(ReadWriteKaitaiStruct):
                 self._write_blocks_0_b()
             if hasattr(self, '_m_blocks_0_b'):
                 return self._m_blocks_0_b
+
+            if not self.blocks_0_b__enabled:
+                return None
 
             io = self._parent.blocks[0]._io
             _pos = io.pos()
@@ -149,6 +167,7 @@ class ProcessRepeatUsertypeDynargXor(ReadWriteKaitaiStruct):
 
         @blocks_0_b.setter
         def blocks_0_b(self, v):
+            self._dirty = True
             self._m_blocks_0_b = v
 
         def _write_blocks_0_b(self):
@@ -159,16 +178,15 @@ class ProcessRepeatUsertypeDynargXor(ReadWriteKaitaiStruct):
             io.write_u1(self._m_blocks_0_b)
             io.seek(_pos)
 
-
-        def _check_blocks_0_b(self):
-            pass
-
         @property
         def blocks_1_b(self):
             if self._should_write_blocks_1_b:
                 self._write_blocks_1_b()
             if hasattr(self, '_m_blocks_1_b'):
                 return self._m_blocks_1_b
+
+            if not self.blocks_1_b__enabled:
+                return None
 
             io = self._parent.blocks[1]._io
             _pos = io.pos()
@@ -179,6 +197,7 @@ class ProcessRepeatUsertypeDynargXor(ReadWriteKaitaiStruct):
 
         @blocks_1_b.setter
         def blocks_1_b(self, v):
+            self._dirty = True
             self._m_blocks_1_b = v
 
         def _write_blocks_1_b(self):
@@ -188,10 +207,6 @@ class ProcessRepeatUsertypeDynargXor(ReadWriteKaitaiStruct):
             io.seek(4)
             io.write_u1(self._m_blocks_1_b)
             io.seek(_pos)
-
-
-        def _check_blocks_1_b(self):
-            pass
 
 
 

@@ -12,7 +12,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ImportsParamsDefArrayUsertypeImported(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ImportsParamsDefArrayUsertypeImported, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -27,6 +27,7 @@ class ImportsParamsDefArrayUsertypeImported(ReadWriteKaitaiStruct):
 
         self.two = params_def_array_usertype_imported.ParamsDefArrayUsertypeImported(self.hws, self._io)
         self.two._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -48,7 +49,6 @@ class ImportsParamsDefArrayUsertypeImported(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.hws) != 2:
             raise kaitaistruct.ConsistencyError(u"hws", len(self.hws), 2)
         for i in range(len(self.hws)):
@@ -56,5 +56,6 @@ class ImportsParamsDefArrayUsertypeImported(ReadWriteKaitaiStruct):
 
         if self.two.hws_param != self.hws:
             raise kaitaistruct.ConsistencyError(u"two", self.two.hws_param, self.hws)
+        self._dirty = False
 
 

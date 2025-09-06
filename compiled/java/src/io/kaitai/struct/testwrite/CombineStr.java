@@ -35,12 +35,14 @@ public class CombineStr extends KaitaiStruct.ReadWrite {
         this.strTerm = new String(this._io.readBytesTerm((byte) 124, false, true, true), StandardCharsets.US_ASCII);
         this.strLimit = new String(this._io.readBytes(4), StandardCharsets.US_ASCII);
         this.strEos = new String(this._io.readBytesFull(), StandardCharsets.US_ASCII);
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBytes((this.strTerm).getBytes(Charset.forName("ASCII")));
         this._io.writeU1(124);
         this._io.writeBytes((this.strLimit).getBytes(Charset.forName("ASCII")));
@@ -54,6 +56,7 @@ public class CombineStr extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("str_term", KaitaiStream.byteArrayIndexOf((this.strTerm).getBytes(Charset.forName("ASCII")), ((byte) 124)), -1);
         if ((this.strLimit).getBytes(Charset.forName("ASCII")).length != 4)
             throw new ConsistencyError("str_limit", (this.strLimit).getBytes(Charset.forName("ASCII")).length, 4);
+        _dirty = false;
     }
     private byte[] calcBytes;
     public byte[] calcBytes() {
@@ -165,13 +168,13 @@ public class CombineStr extends KaitaiStruct.ReadWrite {
     private CombineStr _root;
     private KaitaiStruct.ReadWrite _parent;
     public String strTerm() { return strTerm; }
-    public void setStrTerm(String _v) { strTerm = _v; }
+    public void setStrTerm(String _v) { _dirty = true; strTerm = _v; }
     public String strLimit() { return strLimit; }
-    public void setStrLimit(String _v) { strLimit = _v; }
+    public void setStrLimit(String _v) { _dirty = true; strLimit = _v; }
     public String strEos() { return strEos; }
-    public void setStrEos(String _v) { strEos = _v; }
+    public void setStrEos(String _v) { _dirty = true; strEos = _v; }
     public CombineStr _root() { return _root; }
-    public void set_root(CombineStr _v) { _root = _v; }
+    public void set_root(CombineStr _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

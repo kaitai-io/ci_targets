@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ProcessCoerceSwitch(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ProcessCoerceSwitch, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -45,6 +45,7 @@ class ProcessCoerceSwitch(ReadWriteKaitaiStruct):
                 self._raw_buf_proc = self._io.read_bytes(4)
                 self.buf_proc = KaitaiStream.process_xor_one(self._raw_buf_proc, 170)
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -121,7 +122,6 @@ class ProcessCoerceSwitch(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.flag == 0:
             pass
             _on = self.buf_type
@@ -148,15 +148,17 @@ class ProcessCoerceSwitch(ReadWriteKaitaiStruct):
             else:
                 pass
 
+        self._dirty = False
 
     class Foo(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(ProcessCoerceSwitch.Foo, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.bar = self._io.read_bytes(4)
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -169,9 +171,9 @@ class ProcessCoerceSwitch(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if len(self.bar) != 4:
                 raise kaitaistruct.ConsistencyError(u"bar", len(self.bar), 4)
+            self._dirty = False
 
 
     @property

@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class SwitchManualIntSizeEos(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(SwitchManualIntSizeEos, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -33,7 +33,7 @@ class SwitchManualIntSizeEos(KaitaiStruct):
 
     class Chunk(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(SwitchManualIntSizeEos.Chunk, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -53,7 +53,7 @@ class SwitchManualIntSizeEos(KaitaiStruct):
 
     class ChunkBody(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(SwitchManualIntSizeEos.ChunkBody, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -89,7 +89,7 @@ class SwitchManualIntSizeEos(KaitaiStruct):
 
         class ChunkDir(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
-                self._io = _io
+                super(SwitchManualIntSizeEos.ChunkBody.ChunkDir, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
                 self._read()
@@ -112,7 +112,7 @@ class SwitchManualIntSizeEos(KaitaiStruct):
 
         class ChunkMeta(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
-                self._io = _io
+                super(SwitchManualIntSizeEos.ChunkBody.ChunkMeta, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
                 self._read()

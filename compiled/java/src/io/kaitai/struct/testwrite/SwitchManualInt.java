@@ -48,6 +48,7 @@ public class SwitchManualInt extends KaitaiStruct.ReadWrite {
                 i++;
             }
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -57,6 +58,7 @@ public class SwitchManualInt extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         for (int i = 0; i < this.opcodes.size(); i++) {
             if (this._io.isEof())
                 throw new ConsistencyError("opcodes", this._io.size() - this._io.pos(), 0);
@@ -73,6 +75,7 @@ public class SwitchManualInt extends KaitaiStruct.ReadWrite {
             if (!Objects.equals(this.opcodes.get(((Number) (i)).intValue())._parent(), this))
                 throw new ConsistencyError("opcodes", this.opcodes.get(((Number) (i)).intValue())._parent(), this);
         }
+        _dirty = false;
     }
     public static class Opcode extends KaitaiStruct.ReadWrite {
         public static Opcode fromFile(String fileName) throws IOException {
@@ -109,6 +112,7 @@ public class SwitchManualInt extends KaitaiStruct.ReadWrite {
                 break;
             }
             }
+            _dirty = false;
         }
 
         public void _fetchInstances() {
@@ -125,6 +129,7 @@ public class SwitchManualInt extends KaitaiStruct.ReadWrite {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeU1(this.code);
             switch (code()) {
             case 73: {
@@ -155,6 +160,7 @@ public class SwitchManualInt extends KaitaiStruct.ReadWrite {
                 break;
             }
             }
+            _dirty = false;
         }
         public static class Intval extends KaitaiStruct.ReadWrite {
             public static Intval fromFile(String fileName) throws IOException {
@@ -179,26 +185,29 @@ public class SwitchManualInt extends KaitaiStruct.ReadWrite {
             }
             public void _read() {
                 this.value = this._io.readU1();
+                _dirty = false;
             }
 
             public void _fetchInstances() {
             }
 
             public void _write_Seq() {
+                _assertNotDirty();
                 this._io.writeU1(this.value);
             }
 
             public void _check() {
+                _dirty = false;
             }
             private int value;
             private SwitchManualInt _root;
             private SwitchManualInt.Opcode _parent;
             public int value() { return value; }
-            public void setValue(int _v) { value = _v; }
+            public void setValue(int _v) { _dirty = true; value = _v; }
             public SwitchManualInt _root() { return _root; }
-            public void set_root(SwitchManualInt _v) { _root = _v; }
+            public void set_root(SwitchManualInt _v) { _dirty = true; _root = _v; }
             public SwitchManualInt.Opcode _parent() { return _parent; }
-            public void set_parent(SwitchManualInt.Opcode _v) { _parent = _v; }
+            public void set_parent(SwitchManualInt.Opcode _v) { _dirty = true; _parent = _v; }
         }
         public static class Strval extends KaitaiStruct.ReadWrite {
             public static Strval fromFile(String fileName) throws IOException {
@@ -223,12 +232,14 @@ public class SwitchManualInt extends KaitaiStruct.ReadWrite {
             }
             public void _read() {
                 this.value = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.US_ASCII);
+                _dirty = false;
             }
 
             public void _fetchInstances() {
             }
 
             public void _write_Seq() {
+                _assertNotDirty();
                 this._io.writeBytes((this.value).getBytes(Charset.forName("ASCII")));
                 this._io.writeU1(0);
             }
@@ -236,37 +247,38 @@ public class SwitchManualInt extends KaitaiStruct.ReadWrite {
             public void _check() {
                 if (KaitaiStream.byteArrayIndexOf((this.value).getBytes(Charset.forName("ASCII")), ((byte) 0)) != -1)
                     throw new ConsistencyError("value", KaitaiStream.byteArrayIndexOf((this.value).getBytes(Charset.forName("ASCII")), ((byte) 0)), -1);
+                _dirty = false;
             }
             private String value;
             private SwitchManualInt _root;
             private SwitchManualInt.Opcode _parent;
             public String value() { return value; }
-            public void setValue(String _v) { value = _v; }
+            public void setValue(String _v) { _dirty = true; value = _v; }
             public SwitchManualInt _root() { return _root; }
-            public void set_root(SwitchManualInt _v) { _root = _v; }
+            public void set_root(SwitchManualInt _v) { _dirty = true; _root = _v; }
             public SwitchManualInt.Opcode _parent() { return _parent; }
-            public void set_parent(SwitchManualInt.Opcode _v) { _parent = _v; }
+            public void set_parent(SwitchManualInt.Opcode _v) { _dirty = true; _parent = _v; }
         }
         private int code;
         private KaitaiStruct.ReadWrite body;
         private SwitchManualInt _root;
         private SwitchManualInt _parent;
         public int code() { return code; }
-        public void setCode(int _v) { code = _v; }
+        public void setCode(int _v) { _dirty = true; code = _v; }
         public KaitaiStruct.ReadWrite body() { return body; }
-        public void setBody(KaitaiStruct.ReadWrite _v) { body = _v; }
+        public void setBody(KaitaiStruct.ReadWrite _v) { _dirty = true; body = _v; }
         public SwitchManualInt _root() { return _root; }
-        public void set_root(SwitchManualInt _v) { _root = _v; }
+        public void set_root(SwitchManualInt _v) { _dirty = true; _root = _v; }
         public SwitchManualInt _parent() { return _parent; }
-        public void set_parent(SwitchManualInt _v) { _parent = _v; }
+        public void set_parent(SwitchManualInt _v) { _dirty = true; _parent = _v; }
     }
     private List<Opcode> opcodes;
     private SwitchManualInt _root;
     private KaitaiStruct.ReadWrite _parent;
     public List<Opcode> opcodes() { return opcodes; }
-    public void setOpcodes(List<Opcode> _v) { opcodes = _v; }
+    public void setOpcodes(List<Opcode> _v) { _dirty = true; opcodes = _v; }
     public SwitchManualInt _root() { return _root; }
-    public void set_root(SwitchManualInt _v) { _root = _v; }
+    public void set_root(SwitchManualInt _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class FloatToI(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(FloatToI, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -25,6 +25,7 @@ class FloatToI(ReadWriteKaitaiStruct):
             pass
             self.double_value_if = self._io.read_f8be()
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -52,13 +53,13 @@ class FloatToI(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if True:
             pass
 
         if True:
             pass
 
+        self._dirty = False
 
     @property
     def calc_float1(self):

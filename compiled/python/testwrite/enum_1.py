@@ -11,13 +11,14 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class Enum1(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(Enum1, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self.main = Enum1.MainObj(self._io, self, self._root)
         self.main._read()
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -31,11 +32,11 @@ class Enum1(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if self.main._root != self._root:
             raise kaitaistruct.ConsistencyError(u"main", self.main._root, self._root)
         if self.main._parent != self:
             raise kaitaistruct.ConsistencyError(u"main", self.main._parent, self)
+        self._dirty = False
 
     class MainObj(ReadWriteKaitaiStruct):
 
@@ -44,13 +45,14 @@ class Enum1(ReadWriteKaitaiStruct):
             cat = 7
             chicken = 12
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(Enum1.MainObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.submain = Enum1.MainObj.SubmainObj(self._io, self, self._root)
             self.submain._read()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -64,21 +66,22 @@ class Enum1(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if self.submain._root != self._root:
                 raise kaitaistruct.ConsistencyError(u"submain", self.submain._root, self._root)
             if self.submain._parent != self:
                 raise kaitaistruct.ConsistencyError(u"submain", self.submain._parent, self)
+            self._dirty = False
 
         class SubmainObj(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                self._io = _io
+                super(Enum1.MainObj.SubmainObj, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
             def _read(self):
                 self.pet_1 = KaitaiStream.resolve_enum(Enum1.MainObj.Animal, self._io.read_u4le())
                 self.pet_2 = KaitaiStream.resolve_enum(Enum1.MainObj.Animal, self._io.read_u4le())
+                self._dirty = False
 
 
             def _fetch_instances(self):
@@ -92,7 +95,7 @@ class Enum1(ReadWriteKaitaiStruct):
 
 
             def _check(self):
-                pass
+                self._dirty = False
 
 
 

@@ -11,7 +11,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ImportsAbs(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ImportsAbs, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -19,6 +19,7 @@ class ImportsAbs(ReadWriteKaitaiStruct):
         self.len = vlq_base128_le.VlqBase128Le(self._io)
         self.len._read()
         self.body = self._io.read_bytes(self.len.value)
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -33,8 +34,8 @@ class ImportsAbs(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.body) != self.len.value:
             raise kaitaistruct.ConsistencyError(u"body", len(self.body), self.len.value)
+        self._dirty = False
 
 

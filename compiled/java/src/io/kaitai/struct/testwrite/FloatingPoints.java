@@ -34,12 +34,14 @@ public class FloatingPoints extends KaitaiStruct.ReadWrite {
         this.singleValueBe = this._io.readF4be();
         this.doubleValueBe = this._io.readF8be();
         this.approximateValue = this._io.readF4le();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeF4le(this.singleValue);
         this._io.writeF8le(this.doubleValue);
         this._io.writeF4be(this.singleValueBe);
@@ -48,6 +50,7 @@ public class FloatingPoints extends KaitaiStruct.ReadWrite {
     }
 
     public void _check() {
+        _dirty = false;
     }
     private Double doubleValuePlusFloat;
     public Double doubleValuePlusFloat() {
@@ -81,17 +84,17 @@ public class FloatingPoints extends KaitaiStruct.ReadWrite {
     private FloatingPoints _root;
     private KaitaiStruct.ReadWrite _parent;
     public float singleValue() { return singleValue; }
-    public void setSingleValue(float _v) { singleValue = _v; }
+    public void setSingleValue(float _v) { _dirty = true; singleValue = _v; }
     public double doubleValue() { return doubleValue; }
-    public void setDoubleValue(double _v) { doubleValue = _v; }
+    public void setDoubleValue(double _v) { _dirty = true; doubleValue = _v; }
     public float singleValueBe() { return singleValueBe; }
-    public void setSingleValueBe(float _v) { singleValueBe = _v; }
+    public void setSingleValueBe(float _v) { _dirty = true; singleValueBe = _v; }
     public double doubleValueBe() { return doubleValueBe; }
-    public void setDoubleValueBe(double _v) { doubleValueBe = _v; }
+    public void setDoubleValueBe(double _v) { _dirty = true; doubleValueBe = _v; }
     public float approximateValue() { return approximateValue; }
-    public void setApproximateValue(float _v) { approximateValue = _v; }
+    public void setApproximateValue(float _v) { _dirty = true; approximateValue = _v; }
     public FloatingPoints _root() { return _root; }
-    public void set_root(FloatingPoints _v) { _root = _v; }
+    public void set_root(FloatingPoints _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

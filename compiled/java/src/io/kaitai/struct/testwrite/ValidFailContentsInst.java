@@ -34,16 +34,20 @@ public class ValidFailContentsInst extends KaitaiStruct.ReadWrite {
         if (foo().length == 0) {
             this.a = this._io.readBytes(0);
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
         if (foo().length == 0) {
         }
         foo();
+        if (this.foo != null) {
+        }
     }
 
     public void _write_Seq() {
-        _writeFoo = _toWriteFoo;
+        _assertNotDirty();
+        _shouldWriteFoo = _enabledFoo;
         if (foo().length == 0) {
             if (this.a.length != 0)
                 throw new ConsistencyError("a", this.a.length, 0);
@@ -52,15 +56,25 @@ public class ValidFailContentsInst extends KaitaiStruct.ReadWrite {
     }
 
     public void _check() {
+        if (_enabledFoo) {
+            if (this.foo.length != 2)
+                throw new ConsistencyError("foo", this.foo.length, 2);
+            if (!(Arrays.equals(this.foo, new byte[] { 81, 65 }))) {
+                throw new KaitaiStream.ValidationNotEqualError(new byte[] { 81, 65 }, this.foo, null, "/instances/foo");
+            }
+        }
+        _dirty = false;
     }
     private byte[] foo;
-    private boolean _writeFoo = false;
-    private boolean _toWriteFoo = true;
+    private boolean _shouldWriteFoo = false;
+    private boolean _enabledFoo = true;
     public byte[] foo() {
-        if (_writeFoo)
+        if (_shouldWriteFoo)
             _writeFoo();
         if (this.foo != null)
             return this.foo;
+        if (!_enabledFoo)
+            return null;
         long _pos = this._io.pos();
         this._io.seek(0);
         this.foo = this._io.readBytes(2);
@@ -70,31 +84,23 @@ public class ValidFailContentsInst extends KaitaiStruct.ReadWrite {
         this._io.seek(_pos);
         return this.foo;
     }
-    public void setFoo(byte[] _v) { foo = _v; }
-    public void setFoo_ToWrite(boolean _v) { _toWriteFoo = _v; }
+    public void setFoo(byte[] _v) { _dirty = true; foo = _v; }
+    public void setFoo_Enabled(boolean _v) { _dirty = true; _enabledFoo = _v; }
 
-    public void _writeFoo() {
-        _writeFoo = false;
+    private void _writeFoo() {
+        _shouldWriteFoo = false;
         long _pos = this._io.pos();
         this._io.seek(0);
         this._io.writeBytes(this.foo);
         this._io.seek(_pos);
     }
-
-    public void _checkFoo() {
-        if (this.foo.length != 2)
-            throw new ConsistencyError("foo", this.foo.length, 2);
-        if (!(Arrays.equals(this.foo, new byte[] { 81, 65 }))) {
-            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 81, 65 }, this.foo, null, "/instances/foo");
-        }
-    }
     private byte[] a;
     private ValidFailContentsInst _root;
     private KaitaiStruct.ReadWrite _parent;
     public byte[] a() { return a; }
-    public void setA(byte[] _v) { a = _v; }
+    public void setA(byte[] _v) { _dirty = true; a = _v; }
     public ValidFailContentsInst _root() { return _root; }
-    public void set_root(ValidFailContentsInst _v) { _root = _v; }
+    public void set_root(ValidFailContentsInst _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

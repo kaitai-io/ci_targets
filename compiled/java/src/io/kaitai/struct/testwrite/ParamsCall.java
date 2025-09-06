@@ -37,6 +37,7 @@ public class ParamsCall extends KaitaiStruct.ReadWrite {
         this.buf1._read();
         this.buf2 = new MyStr2(this._io, this, _root, 2 + 3, true);
         this.buf2._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -45,6 +46,7 @@ public class ParamsCall extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this.buf1._write_Seq(this._io);
         this.buf2._write_Seq(this._io);
     }
@@ -64,6 +66,7 @@ public class ParamsCall extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("buf2", this.buf2.len(), 2 + 3);
         if (this.buf2.hasTrailer() != true)
             throw new ConsistencyError("buf2", this.buf2.hasTrailer(), true);
+        _dirty = false;
     }
     public static class MyStr1 extends KaitaiStruct.ReadWrite {
         public MyStr1(long len) {
@@ -86,31 +89,34 @@ public class ParamsCall extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.body = new String(this._io.readBytes(len()), StandardCharsets.UTF_8);
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytes((this.body).getBytes(Charset.forName("UTF-8")));
         }
 
         public void _check() {
             if ((this.body).getBytes(Charset.forName("UTF-8")).length != len())
                 throw new ConsistencyError("body", (this.body).getBytes(Charset.forName("UTF-8")).length, len());
+            _dirty = false;
         }
         private String body;
         private long len;
         private ParamsCall _root;
         private ParamsCall _parent;
         public String body() { return body; }
-        public void setBody(String _v) { body = _v; }
+        public void setBody(String _v) { _dirty = true; body = _v; }
         public long len() { return len; }
-        public void setLen(long _v) { len = _v; }
+        public void setLen(long _v) { _dirty = true; len = _v; }
         public ParamsCall _root() { return _root; }
-        public void set_root(ParamsCall _v) { _root = _v; }
+        public void set_root(ParamsCall _v) { _dirty = true; _root = _v; }
         public ParamsCall _parent() { return _parent; }
-        public void set_parent(ParamsCall _v) { _parent = _v; }
+        public void set_parent(ParamsCall _v) { _dirty = true; _parent = _v; }
     }
     public static class MyStr2 extends KaitaiStruct.ReadWrite {
         public MyStr2(long len, boolean hasTrailer) {
@@ -137,6 +143,7 @@ public class ParamsCall extends KaitaiStruct.ReadWrite {
             if (hasTrailer()) {
                 this.trailer = this._io.readU1();
             }
+            _dirty = false;
         }
 
         public void _fetchInstances() {
@@ -145,6 +152,7 @@ public class ParamsCall extends KaitaiStruct.ReadWrite {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytes((this.body).getBytes(Charset.forName("UTF-8")));
             if (hasTrailer()) {
                 this._io.writeU1(this.trailer);
@@ -156,6 +164,7 @@ public class ParamsCall extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("body", (this.body).getBytes(Charset.forName("UTF-8")).length, len());
             if (hasTrailer()) {
             }
+            _dirty = false;
         }
         private String body;
         private Integer trailer;
@@ -164,28 +173,28 @@ public class ParamsCall extends KaitaiStruct.ReadWrite {
         private ParamsCall _root;
         private ParamsCall _parent;
         public String body() { return body; }
-        public void setBody(String _v) { body = _v; }
+        public void setBody(String _v) { _dirty = true; body = _v; }
         public Integer trailer() { return trailer; }
-        public void setTrailer(Integer _v) { trailer = _v; }
+        public void setTrailer(Integer _v) { _dirty = true; trailer = _v; }
         public long len() { return len; }
-        public void setLen(long _v) { len = _v; }
+        public void setLen(long _v) { _dirty = true; len = _v; }
         public boolean hasTrailer() { return hasTrailer; }
-        public void setHasTrailer(boolean _v) { hasTrailer = _v; }
+        public void setHasTrailer(boolean _v) { _dirty = true; hasTrailer = _v; }
         public ParamsCall _root() { return _root; }
-        public void set_root(ParamsCall _v) { _root = _v; }
+        public void set_root(ParamsCall _v) { _dirty = true; _root = _v; }
         public ParamsCall _parent() { return _parent; }
-        public void set_parent(ParamsCall _v) { _parent = _v; }
+        public void set_parent(ParamsCall _v) { _dirty = true; _parent = _v; }
     }
     private MyStr1 buf1;
     private MyStr2 buf2;
     private ParamsCall _root;
     private KaitaiStruct.ReadWrite _parent;
     public MyStr1 buf1() { return buf1; }
-    public void setBuf1(MyStr1 _v) { buf1 = _v; }
+    public void setBuf1(MyStr1 _v) { _dirty = true; buf1 = _v; }
     public MyStr2 buf2() { return buf2; }
-    public void setBuf2(MyStr2 _v) { buf2 = _v; }
+    public void setBuf2(MyStr2 _v) { _dirty = true; buf2 = _v; }
     public ParamsCall _root() { return _root; }
-    public void set_root(ParamsCall _v) { _root = _v; }
+    public void set_root(ParamsCall _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

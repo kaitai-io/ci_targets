@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class RepeatNStrz(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(RepeatNStrz, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -20,6 +20,7 @@ class RepeatNStrz(ReadWriteKaitaiStruct):
         for i in range(self.qty):
             self.lines.append((self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8"))
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -40,7 +41,6 @@ class RepeatNStrz(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.lines) != self.qty:
             raise kaitaistruct.ConsistencyError(u"lines", len(self.lines), self.qty)
         for i in range(len(self.lines)):
@@ -48,5 +48,6 @@ class RepeatNStrz(ReadWriteKaitaiStruct):
             if KaitaiStream.byte_array_index_of((self.lines[i]).encode(u"UTF-8"), 0) != -1:
                 raise kaitaistruct.ConsistencyError(u"lines", KaitaiStream.byte_array_index_of((self.lines[i]).encode(u"UTF-8"), 0), -1)
 
+        self._dirty = False
 
 

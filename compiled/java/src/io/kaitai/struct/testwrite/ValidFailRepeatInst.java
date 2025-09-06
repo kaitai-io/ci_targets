@@ -35,18 +35,22 @@ public class ValidFailRepeatInst extends KaitaiStruct.ReadWrite {
         if (inst().size() == 0) {
             this.a = this._io.readBytes(0);
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
         if (inst().size() == 0) {
         }
         inst();
-        for (int i = 0; i < this.inst.size(); i++) {
+        if (this.inst != null) {
+            for (int i = 0; i < this.inst.size(); i++) {
+            }
         }
     }
 
     public void _write_Seq() {
-        _writeInst = _toWriteInst;
+        _assertNotDirty();
+        _shouldWriteInst = _enabledInst;
         if (inst().size() == 0) {
             if (this.a.length != 0)
                 throw new ConsistencyError("a", this.a.length, 0);
@@ -55,15 +59,25 @@ public class ValidFailRepeatInst extends KaitaiStruct.ReadWrite {
     }
 
     public void _check() {
+        if (_enabledInst) {
+            for (int i = 0; i < this.inst.size(); i++) {
+                if (!(this.inst.get(((Number) (i)).intValue()) == 305419896)) {
+                    throw new KaitaiStream.ValidationNotEqualError(305419896, this.inst.get(((Number) (i)).intValue()), null, "/instances/inst");
+                }
+            }
+        }
+        _dirty = false;
     }
     private List<Long> inst;
-    private boolean _writeInst = false;
-    private boolean _toWriteInst = true;
+    private boolean _shouldWriteInst = false;
+    private boolean _enabledInst = true;
     public List<Long> inst() {
-        if (_writeInst)
+        if (_shouldWriteInst)
             _writeInst();
         if (this.inst != null)
             return this.inst;
+        if (!_enabledInst)
+            return null;
         long _pos = this._io.pos();
         this._io.seek(0);
         this.inst = new ArrayList<Long>();
@@ -80,11 +94,11 @@ public class ValidFailRepeatInst extends KaitaiStruct.ReadWrite {
         this._io.seek(_pos);
         return this.inst;
     }
-    public void setInst(List<Long> _v) { inst = _v; }
-    public void setInst_ToWrite(boolean _v) { _toWriteInst = _v; }
+    public void setInst(List<Long> _v) { _dirty = true; inst = _v; }
+    public void setInst_Enabled(boolean _v) { _dirty = true; _enabledInst = _v; }
 
-    public void _writeInst() {
-        _writeInst = false;
+    private void _writeInst() {
+        _shouldWriteInst = false;
         long _pos = this._io.pos();
         this._io.seek(0);
         for (int i = 0; i < this.inst.size(); i++) {
@@ -96,21 +110,13 @@ public class ValidFailRepeatInst extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("inst", this._io.size() - this._io.pos(), 0);
         this._io.seek(_pos);
     }
-
-    public void _checkInst() {
-        for (int i = 0; i < this.inst.size(); i++) {
-            if (!(this.inst.get(((Number) (i)).intValue()) == 305419896)) {
-                throw new KaitaiStream.ValidationNotEqualError(305419896, this.inst.get(((Number) (i)).intValue()), null, "/instances/inst");
-            }
-        }
-    }
     private byte[] a;
     private ValidFailRepeatInst _root;
     private KaitaiStruct.ReadWrite _parent;
     public byte[] a() { return a; }
-    public void setA(byte[] _v) { a = _v; }
+    public void setA(byte[] _v) { _dirty = true; a = _v; }
     public ValidFailRepeatInst _root() { return _root; }
-    public void set_root(ValidFailRepeatInst _v) { _root = _v; }
+    public void set_root(ValidFailRepeatInst _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

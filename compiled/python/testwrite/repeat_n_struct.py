@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class RepeatNStruct(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(RepeatNStruct, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -24,6 +24,7 @@ class RepeatNStruct(ReadWriteKaitaiStruct):
             finally:
                 self.chunks.append(_t_chunks)
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -44,7 +45,6 @@ class RepeatNStruct(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.chunks) != self.qty:
             raise kaitaistruct.ConsistencyError(u"chunks", len(self.chunks), self.qty)
         for i in range(len(self.chunks)):
@@ -54,16 +54,18 @@ class RepeatNStruct(ReadWriteKaitaiStruct):
             if self.chunks[i]._parent != self:
                 raise kaitaistruct.ConsistencyError(u"chunks", self.chunks[i]._parent, self)
 
+        self._dirty = False
 
     class Chunk(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(RepeatNStruct.Chunk, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.offset = self._io.read_u4le()
             self.len = self._io.read_u4le()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -77,7 +79,7 @@ class RepeatNStruct(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
+            self._dirty = False
 
 
 

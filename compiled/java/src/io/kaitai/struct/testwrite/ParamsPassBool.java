@@ -45,6 +45,7 @@ public class ParamsPassBool extends KaitaiStruct.ReadWrite {
         this.instB1._read();
         this.instBool = new ParamTypeBool(this._io, this, _root, vFalse());
         this.instBool._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -57,6 +58,7 @@ public class ParamsPassBool extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBitsIntBe(1, (this.sFalse ? 1 : 0));
         this._io.writeBitsIntBe(1, (this.sTrue ? 1 : 0));
         this.seqB1._write_Seq(this._io);
@@ -104,6 +106,7 @@ public class ParamsPassBool extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("inst_bool", this.instBool._parent(), this);
         if (this.instBool.arg() != vFalse())
             throw new ConsistencyError("inst_bool", this.instBool.arg(), vFalse());
+        _dirty = false;
     }
     public static class ParamTypeB1 extends KaitaiStruct.ReadWrite {
         public ParamTypeB1(boolean arg) {
@@ -126,31 +129,34 @@ public class ParamsPassBool extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.foo = this._io.readBytes((arg() ? 1 : 2));
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytes(this.foo);
         }
 
         public void _check() {
             if (this.foo.length != (arg() ? 1 : 2))
                 throw new ConsistencyError("foo", this.foo.length, (arg() ? 1 : 2));
+            _dirty = false;
         }
         private byte[] foo;
         private boolean arg;
         private ParamsPassBool _root;
         private ParamsPassBool _parent;
         public byte[] foo() { return foo; }
-        public void setFoo(byte[] _v) { foo = _v; }
+        public void setFoo(byte[] _v) { _dirty = true; foo = _v; }
         public boolean arg() { return arg; }
-        public void setArg(boolean _v) { arg = _v; }
+        public void setArg(boolean _v) { _dirty = true; arg = _v; }
         public ParamsPassBool _root() { return _root; }
-        public void set_root(ParamsPassBool _v) { _root = _v; }
+        public void set_root(ParamsPassBool _v) { _dirty = true; _root = _v; }
         public ParamsPassBool _parent() { return _parent; }
-        public void set_parent(ParamsPassBool _v) { _parent = _v; }
+        public void set_parent(ParamsPassBool _v) { _dirty = true; _parent = _v; }
     }
     public static class ParamTypeBool extends KaitaiStruct.ReadWrite {
         public ParamTypeBool(boolean arg) {
@@ -173,31 +179,34 @@ public class ParamsPassBool extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.foo = this._io.readBytes((arg() ? 1 : 2));
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeBytes(this.foo);
         }
 
         public void _check() {
             if (this.foo.length != (arg() ? 1 : 2))
                 throw new ConsistencyError("foo", this.foo.length, (arg() ? 1 : 2));
+            _dirty = false;
         }
         private byte[] foo;
         private boolean arg;
         private ParamsPassBool _root;
         private ParamsPassBool _parent;
         public byte[] foo() { return foo; }
-        public void setFoo(byte[] _v) { foo = _v; }
+        public void setFoo(byte[] _v) { _dirty = true; foo = _v; }
         public boolean arg() { return arg; }
-        public void setArg(boolean _v) { arg = _v; }
+        public void setArg(boolean _v) { _dirty = true; arg = _v; }
         public ParamsPassBool _root() { return _root; }
-        public void set_root(ParamsPassBool _v) { _root = _v; }
+        public void set_root(ParamsPassBool _v) { _dirty = true; _root = _v; }
         public ParamsPassBool _parent() { return _parent; }
-        public void set_parent(ParamsPassBool _v) { _parent = _v; }
+        public void set_parent(ParamsPassBool _v) { _dirty = true; _parent = _v; }
     }
     private Boolean vFalse;
     public Boolean vFalse() {
@@ -226,23 +235,23 @@ public class ParamsPassBool extends KaitaiStruct.ReadWrite {
     private ParamsPassBool _root;
     private KaitaiStruct.ReadWrite _parent;
     public boolean sFalse() { return sFalse; }
-    public void setSFalse(boolean _v) { sFalse = _v; }
+    public void setSFalse(boolean _v) { _dirty = true; sFalse = _v; }
     public boolean sTrue() { return sTrue; }
-    public void setSTrue(boolean _v) { sTrue = _v; }
+    public void setSTrue(boolean _v) { _dirty = true; sTrue = _v; }
     public ParamTypeB1 seqB1() { return seqB1; }
-    public void setSeqB1(ParamTypeB1 _v) { seqB1 = _v; }
+    public void setSeqB1(ParamTypeB1 _v) { _dirty = true; seqB1 = _v; }
     public ParamTypeBool seqBool() { return seqBool; }
-    public void setSeqBool(ParamTypeBool _v) { seqBool = _v; }
+    public void setSeqBool(ParamTypeBool _v) { _dirty = true; seqBool = _v; }
     public ParamTypeB1 literalB1() { return literalB1; }
-    public void setLiteralB1(ParamTypeB1 _v) { literalB1 = _v; }
+    public void setLiteralB1(ParamTypeB1 _v) { _dirty = true; literalB1 = _v; }
     public ParamTypeBool literalBool() { return literalBool; }
-    public void setLiteralBool(ParamTypeBool _v) { literalBool = _v; }
+    public void setLiteralBool(ParamTypeBool _v) { _dirty = true; literalBool = _v; }
     public ParamTypeB1 instB1() { return instB1; }
-    public void setInstB1(ParamTypeB1 _v) { instB1 = _v; }
+    public void setInstB1(ParamTypeB1 _v) { _dirty = true; instB1 = _v; }
     public ParamTypeBool instBool() { return instBool; }
-    public void setInstBool(ParamTypeBool _v) { instBool = _v; }
+    public void setInstBool(ParamTypeBool _v) { _dirty = true; instBool = _v; }
     public ParamsPassBool _root() { return _root; }
-    public void set_root(ParamsPassBool _v) { _root = _v; }
+    public void set_root(ParamsPassBool _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

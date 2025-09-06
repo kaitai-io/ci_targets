@@ -31,6 +31,7 @@ public class OpaqueExternalType extends KaitaiStruct.ReadWrite {
     public void _read() {
         this.hw = new HelloWorld(this._io);
         this.hw._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -38,18 +39,20 @@ public class OpaqueExternalType extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this.hw._write_Seq(this._io);
     }
 
     public void _check() {
+        _dirty = false;
     }
     private HelloWorld hw;
     private OpaqueExternalType _root;
     private KaitaiStruct.ReadWrite _parent;
     public HelloWorld hw() { return hw; }
-    public void setHw(HelloWorld _v) { hw = _v; }
+    public void setHw(HelloWorld _v) { _dirty = true; hw = _v; }
     public OpaqueExternalType _root() { return _root; }
-    public void set_root(OpaqueExternalType _v) { _root = _v; }
+    public void set_root(OpaqueExternalType _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

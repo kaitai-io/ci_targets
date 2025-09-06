@@ -39,6 +39,7 @@ public class ExprIoPosBits extends KaitaiStruct.ReadWrite {
         if (_io().pos() == 2) {
             this.qux = this._io.readBitsIntBe(7);
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -51,6 +52,7 @@ public class ExprIoPosBits extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeBitsIntBe(3, this.foo);
         if (_io().pos() == 1) {
             this._io.writeBitsIntBe(5, this.bar);
@@ -64,6 +66,7 @@ public class ExprIoPosBits extends KaitaiStruct.ReadWrite {
     }
 
     public void _check() {
+        _dirty = false;
     }
     private long foo;
     private Long bar;
@@ -72,15 +75,15 @@ public class ExprIoPosBits extends KaitaiStruct.ReadWrite {
     private ExprIoPosBits _root;
     private KaitaiStruct.ReadWrite _parent;
     public long foo() { return foo; }
-    public void setFoo(long _v) { foo = _v; }
+    public void setFoo(long _v) { _dirty = true; foo = _v; }
     public Long bar() { return bar; }
-    public void setBar(Long _v) { bar = _v; }
+    public void setBar(Long _v) { _dirty = true; bar = _v; }
     public Boolean baz() { return baz; }
-    public void setBaz(Boolean _v) { baz = _v; }
+    public void setBaz(Boolean _v) { _dirty = true; baz = _v; }
     public Long qux() { return qux; }
-    public void setQux(Long _v) { qux = _v; }
+    public void setQux(Long _v) { _dirty = true; qux = _v; }
     public ExprIoPosBits _root() { return _root; }
-    public void set_root(ExprIoPosBits _v) { _root = _v; }
+    public void set_root(ExprIoPosBits _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

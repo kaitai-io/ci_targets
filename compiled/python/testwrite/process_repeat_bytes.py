@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ProcessRepeatBytes(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ProcessRepeatBytes, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -21,6 +21,7 @@ class ProcessRepeatBytes(ReadWriteKaitaiStruct):
             self._raw_bufs.append(self._io.read_bytes(5))
             self.bufs.append(KaitaiStream.process_xor_one(self._raw_bufs[i], 158))
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -43,11 +44,11 @@ class ProcessRepeatBytes(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.bufs) != 2:
             raise kaitaistruct.ConsistencyError(u"bufs", len(self.bufs), 2)
         for i in range(len(self.bufs)):
             pass
 
+        self._dirty = False
 
 

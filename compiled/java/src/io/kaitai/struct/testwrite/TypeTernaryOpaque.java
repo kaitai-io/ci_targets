@@ -43,6 +43,7 @@ public class TypeTernaryOpaque extends KaitaiStruct.ReadWrite {
             this.difWithHack = new HelloWorld(_io__raw_difWithHack);
             this.difWithHack._read();
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -55,6 +56,7 @@ public class TypeTernaryOpaque extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         if (!(isHack())) {
             final KaitaiStream _io__raw_difWoHack = new ByteBufferKaitaiStream(1);
             this._io.addChildStream(_io__raw_difWoHack);
@@ -102,6 +104,7 @@ public class TypeTernaryOpaque extends KaitaiStruct.ReadWrite {
         }
         if (isHack()) {
         }
+        _dirty = false;
     }
     private HelloWorld dif;
     public HelloWorld dif() {
@@ -127,17 +130,17 @@ public class TypeTernaryOpaque extends KaitaiStruct.ReadWrite {
     private byte[] _raw_difWithHack;
     private byte[] _raw__raw_difWithHack;
     public HelloWorld difWoHack() { return difWoHack; }
-    public void setDifWoHack(HelloWorld _v) { difWoHack = _v; }
+    public void setDifWoHack(HelloWorld _v) { _dirty = true; difWoHack = _v; }
     public HelloWorld difWithHack() { return difWithHack; }
-    public void setDifWithHack(HelloWorld _v) { difWithHack = _v; }
+    public void setDifWithHack(HelloWorld _v) { _dirty = true; difWithHack = _v; }
     public TypeTernaryOpaque _root() { return _root; }
-    public void set_root(TypeTernaryOpaque _v) { _root = _v; }
+    public void set_root(TypeTernaryOpaque _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_difWoHack() { return _raw_difWoHack; }
-    public void set_raw_DifWoHack(byte[] _v) { _raw_difWoHack = _v; }
+    public void set_raw_DifWoHack(byte[] _v) { _dirty = true; _raw_difWoHack = _v; }
     public byte[] _raw_difWithHack() { return _raw_difWithHack; }
-    public void set_raw_DifWithHack(byte[] _v) { _raw_difWithHack = _v; }
+    public void set_raw_DifWithHack(byte[] _v) { _dirty = true; _raw_difWithHack = _v; }
     public byte[] _raw__raw_difWithHack() { return _raw__raw_difWithHack; }
-    public void set_raw__raw_DifWithHack(byte[] _v) { _raw__raw_difWithHack = _v; }
+    public void set_raw__raw_DifWithHack(byte[] _v) { _dirty = true; _raw__raw_difWithHack = _v; }
 }

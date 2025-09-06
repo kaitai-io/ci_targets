@@ -40,6 +40,7 @@ public class NonStandard extends KaitaiStruct.ReadWrite {
             break;
         }
         }
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -52,10 +53,13 @@ public class NonStandard extends KaitaiStruct.ReadWrite {
         }
         }
         pi();
+        if (this.pi != null) {
+        }
     }
 
     public void _write_Seq() {
-        _writePi = _toWritePi;
+        _assertNotDirty();
+        _shouldWritePi = _enabledPi;
         this._io.writeU1(this.foo);
         switch (foo()) {
         case 42: {
@@ -78,33 +82,35 @@ public class NonStandard extends KaitaiStruct.ReadWrite {
             break;
         }
         }
+        if (_enabledPi) {
+        }
+        _dirty = false;
     }
     private Integer pi;
-    private boolean _writePi = false;
-    private boolean _toWritePi = true;
+    private boolean _shouldWritePi = false;
+    private boolean _enabledPi = true;
     public Integer pi() {
-        if (_writePi)
+        if (_shouldWritePi)
             _writePi();
         if (this.pi != null)
             return this.pi;
+        if (!_enabledPi)
+            return null;
         long _pos = this._io.pos();
         this._io.seek(0);
         this.pi = this._io.readU1();
         this._io.seek(_pos);
         return this.pi;
     }
-    public void setPi(int _v) { pi = _v; }
-    public void setPi_ToWrite(boolean _v) { _toWritePi = _v; }
+    public void setPi(int _v) { _dirty = true; pi = _v; }
+    public void setPi_Enabled(boolean _v) { _dirty = true; _enabledPi = _v; }
 
-    public void _writePi() {
-        _writePi = false;
+    private void _writePi() {
+        _shouldWritePi = false;
         long _pos = this._io.pos();
         this._io.seek(0);
         this._io.writeU1(this.pi);
         this._io.seek(_pos);
-    }
-
-    public void _checkPi() {
     }
     private Integer vi;
     public Integer vi() {
@@ -119,11 +125,11 @@ public class NonStandard extends KaitaiStruct.ReadWrite {
     private NonStandard _root;
     private KaitaiStruct.ReadWrite _parent;
     public int foo() { return foo; }
-    public void setFoo(int _v) { foo = _v; }
+    public void setFoo(int _v) { _dirty = true; foo = _v; }
     public Long bar() { return bar; }
-    public void setBar(Long _v) { bar = _v; }
+    public void setBar(Long _v) { _dirty = true; bar = _v; }
     public NonStandard _root() { return _root; }
-    public void set_root(NonStandard _v) { _root = _v; }
+    public void set_root(NonStandard _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

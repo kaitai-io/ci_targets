@@ -35,6 +35,7 @@ public class NestedTypes2 extends KaitaiStruct.ReadWrite {
         this.one._read();
         this.two = new SubtypeB(this._io, this, _root);
         this.two._read();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
@@ -43,6 +44,7 @@ public class NestedTypes2 extends KaitaiStruct.ReadWrite {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this.one._write_Seq(this._io);
         this.two._write_Seq(this._io);
     }
@@ -56,6 +58,7 @@ public class NestedTypes2 extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("two", this.two._root(), _root());
         if (!Objects.equals(this.two._parent(), this))
             throw new ConsistencyError("two", this.two._parent(), this);
+        _dirty = false;
     }
     public static class SubtypeA extends KaitaiStruct.ReadWrite {
         public static SubtypeA fromFile(String fileName) throws IOException {
@@ -85,6 +88,7 @@ public class NestedTypes2 extends KaitaiStruct.ReadWrite {
             this.typedHere1._read();
             this.typedHere2 = new SubtypeCc(this._io, this, _root);
             this.typedHere2._read();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
@@ -94,6 +98,7 @@ public class NestedTypes2 extends KaitaiStruct.ReadWrite {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this.typedAtRoot._write_Seq(this._io);
             this.typedHere1._write_Seq(this._io);
             this.typedHere2._write_Seq(this._io);
@@ -112,6 +117,7 @@ public class NestedTypes2 extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("typed_here2", this.typedHere2._root(), _root());
             if (!Objects.equals(this.typedHere2._parent(), this))
                 throw new ConsistencyError("typed_here2", this.typedHere2._parent(), this);
+            _dirty = false;
         }
         public static class SubtypeC extends KaitaiStruct.ReadWrite {
             public static SubtypeC fromFile(String fileName) throws IOException {
@@ -142,6 +148,7 @@ public class NestedTypes2 extends KaitaiStruct.ReadWrite {
                 this.typedParent._read();
                 this.typedRoot = new SubtypeB(this._io, this, _root);
                 this.typedRoot._read();
+                _dirty = false;
             }
 
             public void _fetchInstances() {
@@ -151,6 +158,7 @@ public class NestedTypes2 extends KaitaiStruct.ReadWrite {
             }
 
             public void _write_Seq() {
+                _assertNotDirty();
                 this._io.writeS1(this.valueC);
                 this.typedHere._write_Seq(this._io);
                 this.typedParent._write_Seq(this._io);
@@ -170,6 +178,7 @@ public class NestedTypes2 extends KaitaiStruct.ReadWrite {
                     throw new ConsistencyError("typed_root", this.typedRoot._root(), _root());
                 if (!Objects.equals(this.typedRoot._parent(), this))
                     throw new ConsistencyError("typed_root", this.typedRoot._parent(), this);
+                _dirty = false;
             }
             public static class SubtypeD extends KaitaiStruct.ReadWrite {
                 public static SubtypeD fromFile(String fileName) throws IOException {
@@ -194,26 +203,29 @@ public class NestedTypes2 extends KaitaiStruct.ReadWrite {
                 }
                 public void _read() {
                     this.valueD = this._io.readS1();
+                    _dirty = false;
                 }
 
                 public void _fetchInstances() {
                 }
 
                 public void _write_Seq() {
+                    _assertNotDirty();
                     this._io.writeS1(this.valueD);
                 }
 
                 public void _check() {
+                    _dirty = false;
                 }
                 private byte valueD;
                 private NestedTypes2 _root;
                 private NestedTypes2.SubtypeA.SubtypeC _parent;
                 public byte valueD() { return valueD; }
-                public void setValueD(byte _v) { valueD = _v; }
+                public void setValueD(byte _v) { _dirty = true; valueD = _v; }
                 public NestedTypes2 _root() { return _root; }
-                public void set_root(NestedTypes2 _v) { _root = _v; }
+                public void set_root(NestedTypes2 _v) { _dirty = true; _root = _v; }
                 public NestedTypes2.SubtypeA.SubtypeC _parent() { return _parent; }
-                public void set_parent(NestedTypes2.SubtypeA.SubtypeC _v) { _parent = _v; }
+                public void set_parent(NestedTypes2.SubtypeA.SubtypeC _v) { _dirty = true; _parent = _v; }
             }
             private byte valueC;
             private SubtypeD typedHere;
@@ -222,17 +234,17 @@ public class NestedTypes2 extends KaitaiStruct.ReadWrite {
             private NestedTypes2 _root;
             private NestedTypes2.SubtypeA _parent;
             public byte valueC() { return valueC; }
-            public void setValueC(byte _v) { valueC = _v; }
+            public void setValueC(byte _v) { _dirty = true; valueC = _v; }
             public SubtypeD typedHere() { return typedHere; }
-            public void setTypedHere(SubtypeD _v) { typedHere = _v; }
+            public void setTypedHere(SubtypeD _v) { _dirty = true; typedHere = _v; }
             public SubtypeCc typedParent() { return typedParent; }
-            public void setTypedParent(SubtypeCc _v) { typedParent = _v; }
+            public void setTypedParent(SubtypeCc _v) { _dirty = true; typedParent = _v; }
             public SubtypeB typedRoot() { return typedRoot; }
-            public void setTypedRoot(SubtypeB _v) { typedRoot = _v; }
+            public void setTypedRoot(SubtypeB _v) { _dirty = true; typedRoot = _v; }
             public NestedTypes2 _root() { return _root; }
-            public void set_root(NestedTypes2 _v) { _root = _v; }
+            public void set_root(NestedTypes2 _v) { _dirty = true; _root = _v; }
             public NestedTypes2.SubtypeA _parent() { return _parent; }
-            public void set_parent(NestedTypes2.SubtypeA _v) { _parent = _v; }
+            public void set_parent(NestedTypes2.SubtypeA _v) { _dirty = true; _parent = _v; }
         }
         public static class SubtypeCc extends KaitaiStruct.ReadWrite {
             public static SubtypeCc fromFile(String fileName) throws IOException {
@@ -257,26 +269,29 @@ public class NestedTypes2 extends KaitaiStruct.ReadWrite {
             }
             public void _read() {
                 this.valueCc = this._io.readS1();
+                _dirty = false;
             }
 
             public void _fetchInstances() {
             }
 
             public void _write_Seq() {
+                _assertNotDirty();
                 this._io.writeS1(this.valueCc);
             }
 
             public void _check() {
+                _dirty = false;
             }
             private byte valueCc;
             private NestedTypes2 _root;
             private KaitaiStruct.ReadWrite _parent;
             public byte valueCc() { return valueCc; }
-            public void setValueCc(byte _v) { valueCc = _v; }
+            public void setValueCc(byte _v) { _dirty = true; valueCc = _v; }
             public NestedTypes2 _root() { return _root; }
-            public void set_root(NestedTypes2 _v) { _root = _v; }
+            public void set_root(NestedTypes2 _v) { _dirty = true; _root = _v; }
             public KaitaiStruct.ReadWrite _parent() { return _parent; }
-            public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+            public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
         }
         private SubtypeB typedAtRoot;
         private SubtypeC typedHere1;
@@ -284,15 +299,15 @@ public class NestedTypes2 extends KaitaiStruct.ReadWrite {
         private NestedTypes2 _root;
         private NestedTypes2 _parent;
         public SubtypeB typedAtRoot() { return typedAtRoot; }
-        public void setTypedAtRoot(SubtypeB _v) { typedAtRoot = _v; }
+        public void setTypedAtRoot(SubtypeB _v) { _dirty = true; typedAtRoot = _v; }
         public SubtypeC typedHere1() { return typedHere1; }
-        public void setTypedHere1(SubtypeC _v) { typedHere1 = _v; }
+        public void setTypedHere1(SubtypeC _v) { _dirty = true; typedHere1 = _v; }
         public SubtypeCc typedHere2() { return typedHere2; }
-        public void setTypedHere2(SubtypeCc _v) { typedHere2 = _v; }
+        public void setTypedHere2(SubtypeCc _v) { _dirty = true; typedHere2 = _v; }
         public NestedTypes2 _root() { return _root; }
-        public void set_root(NestedTypes2 _v) { _root = _v; }
+        public void set_root(NestedTypes2 _v) { _dirty = true; _root = _v; }
         public NestedTypes2 _parent() { return _parent; }
-        public void set_parent(NestedTypes2 _v) { _parent = _v; }
+        public void set_parent(NestedTypes2 _v) { _dirty = true; _parent = _v; }
     }
     public static class SubtypeB extends KaitaiStruct.ReadWrite {
         public static SubtypeB fromFile(String fileName) throws IOException {
@@ -317,37 +332,40 @@ public class NestedTypes2 extends KaitaiStruct.ReadWrite {
         }
         public void _read() {
             this.valueB = this._io.readS1();
+            _dirty = false;
         }
 
         public void _fetchInstances() {
         }
 
         public void _write_Seq() {
+            _assertNotDirty();
             this._io.writeS1(this.valueB);
         }
 
         public void _check() {
+            _dirty = false;
         }
         private byte valueB;
         private NestedTypes2 _root;
         private KaitaiStruct.ReadWrite _parent;
         public byte valueB() { return valueB; }
-        public void setValueB(byte _v) { valueB = _v; }
+        public void setValueB(byte _v) { _dirty = true; valueB = _v; }
         public NestedTypes2 _root() { return _root; }
-        public void set_root(NestedTypes2 _v) { _root = _v; }
+        public void set_root(NestedTypes2 _v) { _dirty = true; _root = _v; }
         public KaitaiStruct.ReadWrite _parent() { return _parent; }
-        public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+        public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     }
     private SubtypeA one;
     private SubtypeB two;
     private NestedTypes2 _root;
     private KaitaiStruct.ReadWrite _parent;
     public SubtypeA one() { return one; }
-    public void setOne(SubtypeA _v) { one = _v; }
+    public void setOne(SubtypeA _v) { _dirty = true; one = _v; }
     public SubtypeB two() { return two; }
-    public void setTwo(SubtypeB _v) { two = _v; }
+    public void setTwo(SubtypeB _v) { _dirty = true; two = _v; }
     public NestedTypes2 _root() { return _root; }
-    public void set_root(NestedTypes2 _v) { _root = _v; }
+    public void set_root(NestedTypes2 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class DefaultEndianExprIsLe(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(DefaultEndianExprIsLe, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -25,6 +25,7 @@ class DefaultEndianExprIsLe(ReadWriteKaitaiStruct):
                 self.docs.append(_t_docs)
             i += 1
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -48,7 +49,6 @@ class DefaultEndianExprIsLe(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         for i in range(len(self.docs)):
             pass
             if self.docs[i]._root != self._root:
@@ -56,10 +56,11 @@ class DefaultEndianExprIsLe(ReadWriteKaitaiStruct):
             if self.docs[i]._parent != self:
                 raise kaitaistruct.ConsistencyError(u"docs", self.docs[i]._parent, self)
 
+        self._dirty = False
 
     class Doc(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            self._io = _io
+            super(DefaultEndianExprIsLe.Doc, self).__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -67,6 +68,7 @@ class DefaultEndianExprIsLe(ReadWriteKaitaiStruct):
             self.indicator = self._io.read_bytes(2)
             self.main = DefaultEndianExprIsLe.Doc.MainObj(self._io, self, self._root)
             self.main._read()
+            self._dirty = False
 
 
         def _fetch_instances(self):
@@ -81,17 +83,17 @@ class DefaultEndianExprIsLe(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            pass
             if len(self.indicator) != 2:
                 raise kaitaistruct.ConsistencyError(u"indicator", len(self.indicator), 2)
             if self.main._root != self._root:
                 raise kaitaistruct.ConsistencyError(u"main", self.main._root, self._root)
             if self.main._parent != self:
                 raise kaitaistruct.ConsistencyError(u"main", self.main._parent, self)
+            self._dirty = False
 
         class MainObj(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                self._io = _io
+                super(DefaultEndianExprIsLe.Doc.MainObj, self).__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
@@ -109,16 +111,19 @@ class DefaultEndianExprIsLe(ReadWriteKaitaiStruct):
                     self._read_le()
                 elif self._is_le == False:
                     self._read_be()
+                self._dirty = False
 
             def _read_le(self):
                 self.some_int = self._io.read_u4le()
                 self.some_int_be = self._io.read_u2be()
                 self.some_int_le = self._io.read_u2le()
+                self._dirty = False
 
             def _read_be(self):
                 self.some_int = self._io.read_u4be()
                 self.some_int_be = self._io.read_u2be()
                 self.some_int_le = self._io.read_u2le()
+                self._dirty = False
 
 
             def _fetch_instances(self):
@@ -148,7 +153,7 @@ class DefaultEndianExprIsLe(ReadWriteKaitaiStruct):
 
 
             def _check(self):
-                pass
+                self._dirty = False
 
 
 

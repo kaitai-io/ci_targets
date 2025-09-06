@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ExprIfIntEq(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        self._io = _io
+        super(ExprIfIntEq, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -21,6 +21,7 @@ class ExprIfIntEq(ReadWriteKaitaiStruct):
             pass
             self.seq_if = self._io.read_s2le()
 
+        self._dirty = False
 
 
     def _fetch_instances(self):
@@ -41,12 +42,12 @@ class ExprIfIntEq(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        pass
         if len(self.skip) != 2:
             raise kaitaistruct.ConsistencyError(u"skip", len(self.skip), 2)
         if True:
             pass
 
+        self._dirty = False
 
     @property
     def calc(self):

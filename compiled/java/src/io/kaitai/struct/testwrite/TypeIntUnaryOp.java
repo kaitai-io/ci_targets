@@ -31,17 +31,20 @@ public class TypeIntUnaryOp extends KaitaiStruct.ReadWrite {
     public void _read() {
         this.valueS2 = this._io.readS2le();
         this.valueS8 = this._io.readS8le();
+        _dirty = false;
     }
 
     public void _fetchInstances() {
     }
 
     public void _write_Seq() {
+        _assertNotDirty();
         this._io.writeS2le(this.valueS2);
         this._io.writeS8le(this.valueS8);
     }
 
     public void _check() {
+        _dirty = false;
     }
     private Integer unaryS2;
     public Integer unaryS2() {
@@ -64,11 +67,11 @@ public class TypeIntUnaryOp extends KaitaiStruct.ReadWrite {
     private TypeIntUnaryOp _root;
     private KaitaiStruct.ReadWrite _parent;
     public short valueS2() { return valueS2; }
-    public void setValueS2(short _v) { valueS2 = _v; }
+    public void setValueS2(short _v) { _dirty = true; valueS2 = _v; }
     public long valueS8() { return valueS8; }
-    public void setValueS8(long _v) { valueS8 = _v; }
+    public void setValueS8(long _v) { _dirty = true; valueS8 = _v; }
     public TypeIntUnaryOp _root() { return _root; }
-    public void set_root(TypeIntUnaryOp _v) { _root = _v; }
+    public void set_root(TypeIntUnaryOp _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
-    public void set_parent(KaitaiStruct.ReadWrite _v) { _parent = _v; }
+    public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
 }

@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class ProcessRepeatUsertypeDynargRotate(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(ProcessRepeatUsertypeDynargRotate, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -51,7 +51,7 @@ class ProcessRepeatUsertypeDynargRotate(KaitaiStruct):
 
     class Block(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(ProcessRepeatUsertypeDynargRotate.Block, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -66,7 +66,7 @@ class ProcessRepeatUsertypeDynargRotate(KaitaiStruct):
 
     class BlocksBWrapper(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(ProcessRepeatUsertypeDynargRotate.BlocksBWrapper, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -78,10 +78,25 @@ class ProcessRepeatUsertypeDynargRotate(KaitaiStruct):
         def _fetch_instances(self):
             pass
             _ = self.blocks_rol_0_b
+            if hasattr(self, '_m_blocks_rol_0_b'):
+                pass
+
             _ = self.blocks_rol_1_b
+            if hasattr(self, '_m_blocks_rol_1_b'):
+                pass
+
             _ = self.blocks_ror_0_b
+            if hasattr(self, '_m_blocks_ror_0_b'):
+                pass
+
             _ = self.blocks_ror_1_b
+            if hasattr(self, '_m_blocks_ror_1_b'):
+                pass
+
             _ = self.blocks_ror_2_b
+            if hasattr(self, '_m_blocks_ror_2_b'):
+                pass
+
 
         @property
         def blocks_rol_0_b(self):

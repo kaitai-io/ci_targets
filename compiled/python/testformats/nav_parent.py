@@ -10,7 +10,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
 
 class NavParent(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        self._io = _io
+        super(NavParent, self).__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -27,7 +27,7 @@ class NavParent(KaitaiStruct):
 
     class Entry(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(NavParent.Entry, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -42,7 +42,7 @@ class NavParent(KaitaiStruct):
 
     class HeaderObj(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(NavParent.HeaderObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -58,7 +58,7 @@ class NavParent(KaitaiStruct):
 
     class IndexObj(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
+            super(NavParent.IndexObj, self).__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
