@@ -58,19 +58,19 @@ public class ParamsPassArrayStruct extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.one._root(), _root()))
-            throw new ConsistencyError("one", this.one._root(), _root());
+            throw new ConsistencyError("one", _root(), this.one._root());
         if (!Objects.equals(this.one._parent(), this))
-            throw new ConsistencyError("one", this.one._parent(), this);
+            throw new ConsistencyError("one", this, this.one._parent());
         if (!Objects.equals(this.two._root(), _root()))
-            throw new ConsistencyError("two", this.two._root(), _root());
+            throw new ConsistencyError("two", _root(), this.two._root());
         if (!Objects.equals(this.two._parent(), this))
-            throw new ConsistencyError("two", this.two._parent(), this);
+            throw new ConsistencyError("two", this, this.two._parent());
         if (!Objects.equals(this.passStructs._root(), _root()))
-            throw new ConsistencyError("pass_structs", this.passStructs._root(), _root());
+            throw new ConsistencyError("pass_structs", _root(), this.passStructs._root());
         if (!Objects.equals(this.passStructs._parent(), this))
-            throw new ConsistencyError("pass_structs", this.passStructs._parent(), this);
+            throw new ConsistencyError("pass_structs", this, this.passStructs._parent());
         if (!Objects.equals(this.passStructs.structs(), oneTwo()))
-            throw new ConsistencyError("pass_structs", this.passStructs.structs(), oneTwo());
+            throw new ConsistencyError("pass_structs", oneTwo(), this.passStructs.structs());
         _dirty = false;
     }
     public static class Bar extends KaitaiStruct.ReadWrite {

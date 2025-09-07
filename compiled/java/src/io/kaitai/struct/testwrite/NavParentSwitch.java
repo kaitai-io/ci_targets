@@ -66,9 +66,9 @@ public class NavParentSwitch extends KaitaiStruct.ReadWrite {
         switch (category()) {
         case 1: {
             if (!Objects.equals(this.content._root(), _root()))
-                throw new ConsistencyError("content", this.content._root(), _root());
+                throw new ConsistencyError("content", _root(), this.content._root());
             if (!Objects.equals(this.content._parent(), this))
-                throw new ConsistencyError("content", this.content._parent(), this);
+                throw new ConsistencyError("content", this, this.content._parent());
             break;
         }
         }
@@ -114,9 +114,9 @@ public class NavParentSwitch extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (!Objects.equals(this.subelement._root(), _root()))
-                throw new ConsistencyError("subelement", this.subelement._root(), _root());
+                throw new ConsistencyError("subelement", _root(), this.subelement._root());
             if (!Objects.equals(this.subelement._parent(), this))
-                throw new ConsistencyError("subelement", this.subelement._parent(), this);
+                throw new ConsistencyError("subelement", this, this.subelement._parent());
             _dirty = false;
         }
         private int foo;

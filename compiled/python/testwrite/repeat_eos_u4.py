@@ -36,11 +36,11 @@ class RepeatEosU4(ReadWriteKaitaiStruct):
         for i in range(len(self.numbers)):
             pass
             if self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"numbers", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"numbers", 0, self._io.size() - self._io.pos())
             self._io.write_u4le(self.numbers[i])
 
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"numbers", self._io.size() - self._io.pos(), 0)
+            raise kaitaistruct.ConsistencyError(u"numbers", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):

@@ -51,15 +51,15 @@ public class ParamsPassUsertype extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.first._root(), _root()))
-            throw new ConsistencyError("first", this.first._root(), _root());
+            throw new ConsistencyError("first", _root(), this.first._root());
         if (!Objects.equals(this.first._parent(), this))
-            throw new ConsistencyError("first", this.first._parent(), this);
+            throw new ConsistencyError("first", this, this.first._parent());
         if (!Objects.equals(this.one._root(), _root()))
-            throw new ConsistencyError("one", this.one._root(), _root());
+            throw new ConsistencyError("one", _root(), this.one._root());
         if (!Objects.equals(this.one._parent(), this))
-            throw new ConsistencyError("one", this.one._parent(), this);
+            throw new ConsistencyError("one", this, this.one._parent());
         if (!Objects.equals(this.one.foo(), first()))
-            throw new ConsistencyError("one", this.one.foo(), first());
+            throw new ConsistencyError("one", first(), this.one.foo());
         _dirty = false;
     }
     public static class Block extends KaitaiStruct.ReadWrite {
@@ -143,7 +143,7 @@ public class ParamsPassUsertype extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (this.buf.length != foo().foo())
-                throw new ConsistencyError("buf", this.buf.length, foo().foo());
+                throw new ConsistencyError("buf", foo().foo(), this.buf.length);
             _dirty = false;
         }
         private byte[] buf;

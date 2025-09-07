@@ -50,32 +50,32 @@ public class BytesPadTermEqual extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.s1.length > 20)
-            throw new ConsistencyError("s1", this.s1.length, 20);
+            throw new ConsistencyError("s1", 20, this.s1.length);
         if (KaitaiStream.byteArrayIndexOf(this.s1, ((byte) 64)) != -1)
-            throw new ConsistencyError("s1", KaitaiStream.byteArrayIndexOf(this.s1, ((byte) 64)), -1);
+            throw new ConsistencyError("s1", -1, KaitaiStream.byteArrayIndexOf(this.s1, ((byte) 64)));
         if (this.s2.length > 20)
-            throw new ConsistencyError("s2", this.s2.length, 20);
+            throw new ConsistencyError("s2", 20, this.s2.length);
         if ( ((KaitaiStream.byteArrayIndexOf(this.s2, ((byte) 64)) != -1) && (KaitaiStream.byteArrayIndexOf(this.s2, ((byte) 64)) != this.s2.length - 1)) )
-            throw new ConsistencyError("s2", KaitaiStream.byteArrayIndexOf(this.s2, ((byte) 64)), this.s2.length - 1);
+            throw new ConsistencyError("s2", this.s2.length - 1, KaitaiStream.byteArrayIndexOf(this.s2, ((byte) 64)));
         if (KaitaiStream.byteArrayIndexOf(this.s2, ((byte) 64)) == -1) {
             if ( ((this.s2.length != 0) && ((this.s2[((Number) (this.s2.length - 1)).intValue()] & 0xff) == 43)) )
-                throw new ConsistencyError("s2", (this.s2[((Number) (this.s2.length - 1)).intValue()] & 0xff), 43);
+                throw new ConsistencyError("s2", 43, (this.s2[((Number) (this.s2.length - 1)).intValue()] & 0xff));
         }
         if (this.s3.length > 20)
-            throw new ConsistencyError("s3", this.s3.length, 20);
+            throw new ConsistencyError("s3", 20, this.s3.length);
         if (KaitaiStream.byteArrayIndexOf(this.s3, ((byte) 43)) != -1)
-            throw new ConsistencyError("s3", KaitaiStream.byteArrayIndexOf(this.s3, ((byte) 43)), -1);
+            throw new ConsistencyError("s3", -1, KaitaiStream.byteArrayIndexOf(this.s3, ((byte) 43)));
         if (this.s4.length > 20)
-            throw new ConsistencyError("s4", this.s4.length, 20);
+            throw new ConsistencyError("s4", 20, this.s4.length);
         if (this.s4.length < 20) {
             if (this.s4.length == 0)
-                throw new ConsistencyError("s4", this.s4.length, 0);
+                throw new ConsistencyError("s4", 0, this.s4.length);
             if (KaitaiStream.byteArrayIndexOf(this.s4, ((byte) 46)) != this.s4.length - 1)
-                throw new ConsistencyError("s4", KaitaiStream.byteArrayIndexOf(this.s4, ((byte) 46)), this.s4.length - 1);
+                throw new ConsistencyError("s4", this.s4.length - 1, KaitaiStream.byteArrayIndexOf(this.s4, ((byte) 46)));
         }
         if (this.s4.length == 20) {
             if ( ((KaitaiStream.byteArrayIndexOf(this.s4, ((byte) 46)) != -1) && (KaitaiStream.byteArrayIndexOf(this.s4, ((byte) 46)) != this.s4.length - 1)) )
-                throw new ConsistencyError("s4", KaitaiStream.byteArrayIndexOf(this.s4, ((byte) 46)), this.s4.length - 1);
+                throw new ConsistencyError("s4", this.s4.length - 1, KaitaiStream.byteArrayIndexOf(this.s4, ((byte) 46)));
         }
         _dirty = false;
     }

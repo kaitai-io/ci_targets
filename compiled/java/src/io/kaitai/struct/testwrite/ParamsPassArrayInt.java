@@ -63,21 +63,21 @@ public class ParamsPassArrayInt extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.ints.size() != 3)
-            throw new ConsistencyError("ints", this.ints.size(), 3);
+            throw new ConsistencyError("ints", 3, this.ints.size());
         for (int i = 0; i < this.ints.size(); i++) {
         }
         if (!Objects.equals(this.passInts._root(), _root()))
-            throw new ConsistencyError("pass_ints", this.passInts._root(), _root());
+            throw new ConsistencyError("pass_ints", _root(), this.passInts._root());
         if (!Objects.equals(this.passInts._parent(), this))
-            throw new ConsistencyError("pass_ints", this.passInts._parent(), this);
+            throw new ConsistencyError("pass_ints", this, this.passInts._parent());
         if (!Objects.equals(this.passInts.nums(), ints()))
-            throw new ConsistencyError("pass_ints", this.passInts.nums(), ints());
+            throw new ConsistencyError("pass_ints", ints(), this.passInts.nums());
         if (!Objects.equals(this.passIntsCalc._root(), _root()))
-            throw new ConsistencyError("pass_ints_calc", this.passIntsCalc._root(), _root());
+            throw new ConsistencyError("pass_ints_calc", _root(), this.passIntsCalc._root());
         if (!Objects.equals(this.passIntsCalc._parent(), this))
-            throw new ConsistencyError("pass_ints_calc", this.passIntsCalc._parent(), this);
+            throw new ConsistencyError("pass_ints_calc", this, this.passIntsCalc._parent());
         if (!Objects.equals(this.passIntsCalc.nums(), intsCalc()))
-            throw new ConsistencyError("pass_ints_calc", this.passIntsCalc.nums(), intsCalc());
+            throw new ConsistencyError("pass_ints_calc", intsCalc(), this.passIntsCalc.nums());
         _dirty = false;
     }
     public static class WantsInts extends KaitaiStruct.ReadWrite {

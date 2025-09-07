@@ -49,13 +49,13 @@ class InstanceUserArray(ReadWriteKaitaiStruct):
             if self.ofs > 0:
                 pass
                 if len(self._m_user_entries) != self.qty_entries:
-                    raise kaitaistruct.ConsistencyError(u"user_entries", len(self._m_user_entries), self.qty_entries)
+                    raise kaitaistruct.ConsistencyError(u"user_entries", self.qty_entries, len(self._m_user_entries))
                 for i in range(len(self._m_user_entries)):
                     pass
                     if self._m_user_entries[i]._root != self._root:
-                        raise kaitaistruct.ConsistencyError(u"user_entries", self._m_user_entries[i]._root, self._root)
+                        raise kaitaistruct.ConsistencyError(u"user_entries", self._root, self._m_user_entries[i]._root)
                     if self._m_user_entries[i]._parent != self:
-                        raise kaitaistruct.ConsistencyError(u"user_entries", self._m_user_entries[i]._parent, self)
+                        raise kaitaistruct.ConsistencyError(u"user_entries", self, self._m_user_entries[i]._parent)
 
 
 
@@ -137,7 +137,7 @@ class InstanceUserArray(ReadWriteKaitaiStruct):
                 def handler(parent, _io__raw__m_user_entries=_io__raw__m_user_entries, i=i):
                     self._raw__m_user_entries.append(_io__raw__m_user_entries.to_byte_array())
                     if len(self._raw__m_user_entries[i]) != self.entry_size:
-                        raise kaitaistruct.ConsistencyError(u"raw(user_entries)", len(self._raw__m_user_entries[i]), self.entry_size)
+                        raise kaitaistruct.ConsistencyError(u"raw(user_entries)", self.entry_size, len(self._raw__m_user_entries[i]))
                     parent.write_bytes(self._raw__m_user_entries[i])
                 _io__raw__m_user_entries.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
                 self._m_user_entries[i]._write__seq(_io__raw__m_user_entries)

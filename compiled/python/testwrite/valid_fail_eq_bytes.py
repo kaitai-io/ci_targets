@@ -32,7 +32,7 @@ class ValidFailEqBytes(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.foo) != 2:
-            raise kaitaistruct.ConsistencyError(u"foo", len(self.foo), 2)
+            raise kaitaistruct.ConsistencyError(u"foo", 2, len(self.foo))
         if not self.foo == b"\x51\x41":
             raise kaitaistruct.ValidationNotEqualError(b"\x51\x41", self.foo, None, u"/seq/0")
         self._dirty = False

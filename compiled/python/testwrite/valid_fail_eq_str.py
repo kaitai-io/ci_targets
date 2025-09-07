@@ -32,7 +32,7 @@ class ValidFailEqStr(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len((self.foo).encode(u"ASCII")) != 4:
-            raise kaitaistruct.ConsistencyError(u"foo", len((self.foo).encode(u"ASCII")), 4)
+            raise kaitaistruct.ConsistencyError(u"foo", 4, len((self.foo).encode(u"ASCII")))
         if not self.foo == u"BACK":
             raise kaitaistruct.ValidationNotEqualError(u"BACK", self.foo, None, u"/seq/0")
         self._dirty = False

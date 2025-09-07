@@ -67,7 +67,7 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_sized_a=_io__raw_sized_a):
             self._raw_sized_a = _io__raw_sized_a.to_byte_array()
             if len(self._raw_sized_a) != 6:
-                raise kaitaistruct.ConsistencyError(u"raw(sized_a)", len(self._raw_sized_a), 6)
+                raise kaitaistruct.ConsistencyError(u"raw(sized_a)", 6, len(self._raw_sized_a))
             parent.write_bytes(self._raw_sized_a)
         _io__raw_sized_a.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.sized_a._write__seq(_io__raw_sized_a)
@@ -78,7 +78,7 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_sized_b=_io__raw_sized_b):
             self._raw_sized_b = _io__raw_sized_b.to_byte_array()
             if len(self._raw_sized_b) != 6:
-                raise kaitaistruct.ConsistencyError(u"raw(sized_b)", len(self._raw_sized_b), 6)
+                raise kaitaistruct.ConsistencyError(u"raw(sized_b)", 6, len(self._raw_sized_b))
             parent.write_bytes(self._raw_sized_b)
         _io__raw_sized_b.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.sized_b._write__seq(_io__raw_sized_b)
@@ -90,29 +90,29 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.sized_a._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"sized_a", self.sized_a._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"sized_a", self._root, self.sized_a._root)
         if self.sized_a._parent != self:
-            raise kaitaistruct.ConsistencyError(u"sized_a", self.sized_a._parent, self)
+            raise kaitaistruct.ConsistencyError(u"sized_a", self, self.sized_a._parent)
         if self.sized_b._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"sized_b", self.sized_b._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"sized_b", self._root, self.sized_b._root)
         if self.sized_b._parent != self:
-            raise kaitaistruct.ConsistencyError(u"sized_b", self.sized_b._parent, self)
+            raise kaitaistruct.ConsistencyError(u"sized_b", self, self.sized_b._parent)
         if self.into_b._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"into_b", self.into_b._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"into_b", self._root, self.into_b._root)
         if self.into_b._parent != self:
-            raise kaitaistruct.ConsistencyError(u"into_b", self.into_b._parent, self)
+            raise kaitaistruct.ConsistencyError(u"into_b", self, self.into_b._parent)
         if self.into_a_skipped._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"into_a_skipped", self.into_a_skipped._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"into_a_skipped", self._root, self.into_a_skipped._root)
         if self.into_a_skipped._parent != self:
-            raise kaitaistruct.ConsistencyError(u"into_a_skipped", self.into_a_skipped._parent, self)
+            raise kaitaistruct.ConsistencyError(u"into_a_skipped", self, self.into_a_skipped._parent)
         if self.into_a._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"into_a", self.into_a._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"into_a", self._root, self.into_a._root)
         if self.into_a._parent != self:
-            raise kaitaistruct.ConsistencyError(u"into_a", self.into_a._parent, self)
+            raise kaitaistruct.ConsistencyError(u"into_a", self, self.into_a._parent)
         if self.last_accessor._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"last_accessor", self.last_accessor._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"last_accessor", self._root, self.last_accessor._root)
         if self.last_accessor._parent != self:
-            raise kaitaistruct.ConsistencyError(u"last_accessor", self.last_accessor._parent, self)
+            raise kaitaistruct.ConsistencyError(u"last_accessor", self, self.last_accessor._parent)
         if self.a_mid__enabled:
             pass
 
@@ -200,9 +200,9 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
             if self.inst__enabled:
                 pass
                 if self._m_inst._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"inst", self._m_inst._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"inst", self._root, self._m_inst._root)
                 if self._m_inst._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"inst", self._m_inst._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"inst", self, self._m_inst._parent)
 
             self._dirty = False
 
@@ -243,7 +243,7 @@ class InstanceIoUserEarlier(ReadWriteKaitaiStruct):
             def handler(parent, _io__raw__m_inst=_io__raw__m_inst):
                 self._raw__m_inst = _io__raw__m_inst.to_byte_array()
                 if len(self._raw__m_inst) != (4 if self._io.pos() != 14 else 0):
-                    raise kaitaistruct.ConsistencyError(u"raw(inst)", len(self._raw__m_inst), (4 if self._io.pos() != 14 else 0))
+                    raise kaitaistruct.ConsistencyError(u"raw(inst)", (4 if self._io.pos() != 14 else 0), len(self._raw__m_inst))
                 parent.write_bytes(self._raw__m_inst)
             _io__raw__m_inst.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self._m_inst._write__seq(_io__raw__m_inst)

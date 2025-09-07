@@ -48,14 +48,14 @@ public class CombineStr extends KaitaiStruct.ReadWrite {
         this._io.writeBytes((this.strLimit).getBytes(Charset.forName("ASCII")));
         this._io.writeBytes((this.strEos).getBytes(Charset.forName("ASCII")));
         if (!(this._io.isEof()))
-            throw new ConsistencyError("str_eos", this._io.size() - this._io.pos(), 0);
+            throw new ConsistencyError("str_eos", 0, this._io.size() - this._io.pos());
     }
 
     public void _check() {
         if (KaitaiStream.byteArrayIndexOf((this.strTerm).getBytes(Charset.forName("ASCII")), ((byte) 124)) != -1)
-            throw new ConsistencyError("str_term", KaitaiStream.byteArrayIndexOf((this.strTerm).getBytes(Charset.forName("ASCII")), ((byte) 124)), -1);
+            throw new ConsistencyError("str_term", -1, KaitaiStream.byteArrayIndexOf((this.strTerm).getBytes(Charset.forName("ASCII")), ((byte) 124)));
         if ((this.strLimit).getBytes(Charset.forName("ASCII")).length != 4)
-            throw new ConsistencyError("str_limit", (this.strLimit).getBytes(Charset.forName("ASCII")).length, 4);
+            throw new ConsistencyError("str_limit", 4, (this.strLimit).getBytes(Charset.forName("ASCII")).length);
         _dirty = false;
     }
     private byte[] calcBytes;

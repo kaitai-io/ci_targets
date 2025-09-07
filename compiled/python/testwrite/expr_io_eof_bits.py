@@ -78,7 +78,7 @@ class ExprIoEofBits(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.align) != 0:
-            raise kaitaistruct.ConsistencyError(u"align", len(self.align), 0)
+            raise kaitaistruct.ConsistencyError(u"align", 0, len(self.align))
         self._dirty = False
 
 

@@ -48,7 +48,7 @@ public class StrLiteralsLatin1 extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if ((this.parsed).getBytes(Charset.forName("UTF-8")).length != lenParsed())
-            throw new ConsistencyError("parsed", (this.parsed).getBytes(Charset.forName("UTF-8")).length, lenParsed());
+            throw new ConsistencyError("parsed", lenParsed(), (this.parsed).getBytes(Charset.forName("UTF-8")).length);
         _dirty = false;
     }
     private Boolean parsedEqLiteral;

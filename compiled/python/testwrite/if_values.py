@@ -44,13 +44,13 @@ class IfValues(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.codes) != 3:
-            raise kaitaistruct.ConsistencyError(u"codes", len(self.codes), 3)
+            raise kaitaistruct.ConsistencyError(u"codes", 3, len(self.codes))
         for i in range(len(self.codes)):
             pass
             if self.codes[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"codes", self.codes[i]._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"codes", self._root, self.codes[i]._root)
             if self.codes[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"codes", self.codes[i]._parent, self)
+                raise kaitaistruct.ConsistencyError(u"codes", self, self.codes[i]._parent)
 
         self._dirty = False
 

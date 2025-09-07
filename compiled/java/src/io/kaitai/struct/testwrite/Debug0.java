@@ -87,7 +87,7 @@ public class Debug0 extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.arrayOfInts.size() != 3)
-            throw new ConsistencyError("array_of_ints", this.arrayOfInts.size(), 3);
+            throw new ConsistencyError("array_of_ints", 3, this.arrayOfInts.size());
         for (int i = 0; i < this.arrayOfInts.size(); i++) {
         }
         _dirty = false;

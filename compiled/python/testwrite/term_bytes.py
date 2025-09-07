@@ -38,13 +38,13 @@ class TermBytes(ReadWriteKaitaiStruct):
 
     def _check(self):
         if KaitaiStream.byte_array_index_of(self.s1, 124) != -1:
-            raise kaitaistruct.ConsistencyError(u"s1", KaitaiStream.byte_array_index_of(self.s1, 124), -1)
+            raise kaitaistruct.ConsistencyError(u"s1", -1, KaitaiStream.byte_array_index_of(self.s1, 124))
         if KaitaiStream.byte_array_index_of(self.s2, 124) != -1:
-            raise kaitaistruct.ConsistencyError(u"s2", KaitaiStream.byte_array_index_of(self.s2, 124), -1)
+            raise kaitaistruct.ConsistencyError(u"s2", -1, KaitaiStream.byte_array_index_of(self.s2, 124))
         if len(self.s3) == 0:
-            raise kaitaistruct.ConsistencyError(u"s3", len(self.s3), 0)
+            raise kaitaistruct.ConsistencyError(u"s3", 0, len(self.s3))
         if KaitaiStream.byte_array_index_of(self.s3, 64) != len(self.s3) - 1:
-            raise kaitaistruct.ConsistencyError(u"s3", KaitaiStream.byte_array_index_of(self.s3, 64), len(self.s3) - 1)
+            raise kaitaistruct.ConsistencyError(u"s3", len(self.s3) - 1, KaitaiStream.byte_array_index_of(self.s3, 64))
         self._dirty = False
 
 

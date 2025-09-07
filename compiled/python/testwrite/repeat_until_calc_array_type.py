@@ -55,7 +55,7 @@ class RepeatUntilCalcArrayType(ReadWriteKaitaiStruct):
                 _buf = _io__raw_records.to_byte_array()
                 self._raw_records.append(_buf)
                 if len(self._raw_records[i]) != 5:
-                    raise kaitaistruct.ConsistencyError(u"raw(records)", len(self._raw_records[i]), 5)
+                    raise kaitaistruct.ConsistencyError(u"raw(records)", 5, len(self._raw_records[i]))
                 parent.write_bytes(self._raw_records[i])
             _io__raw_records.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self.records[i]._write__seq(_io__raw_records)
@@ -64,16 +64,16 @@ class RepeatUntilCalcArrayType(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.records) == 0:
-            raise kaitaistruct.ConsistencyError(u"records", len(self.records), 0)
+            raise kaitaistruct.ConsistencyError(u"records", 0, len(self.records))
         for i in range(len(self.records)):
             pass
             if self.records[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"records", self.records[i]._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"records", self._root, self.records[i]._root)
             if self.records[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"records", self.records[i]._parent, self)
+                raise kaitaistruct.ConsistencyError(u"records", self, self.records[i]._parent)
             _ = self.records[i]
             if (_.marker == 170) != (i == len(self.records) - 1):
-                raise kaitaistruct.ConsistencyError(u"records", _.marker == 170, i == len(self.records) - 1)
+                raise kaitaistruct.ConsistencyError(u"records", i == len(self.records) - 1, _.marker == 170)
 
         self._dirty = False
 

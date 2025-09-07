@@ -60,12 +60,12 @@ public class IfValues extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.codes.size() != 3)
-            throw new ConsistencyError("codes", this.codes.size(), 3);
+            throw new ConsistencyError("codes", 3, this.codes.size());
         for (int i = 0; i < this.codes.size(); i++) {
             if (!Objects.equals(this.codes.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("codes", this.codes.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("codes", _root(), this.codes.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.codes.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("codes", this.codes.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("codes", this, this.codes.get(((Number) (i)).intValue())._parent());
         }
         _dirty = false;
     }

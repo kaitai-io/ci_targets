@@ -83,36 +83,36 @@ class RepeatUntilComplex(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.first) == 0:
-            raise kaitaistruct.ConsistencyError(u"first", len(self.first), 0)
+            raise kaitaistruct.ConsistencyError(u"first", 0, len(self.first))
         for i in range(len(self.first)):
             pass
             if self.first[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"first", self.first[i]._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"first", self._root, self.first[i]._root)
             if self.first[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"first", self.first[i]._parent, self)
+                raise kaitaistruct.ConsistencyError(u"first", self, self.first[i]._parent)
             _ = self.first[i]
             if (_.count == 0) != (i == len(self.first) - 1):
-                raise kaitaistruct.ConsistencyError(u"first", _.count == 0, i == len(self.first) - 1)
+                raise kaitaistruct.ConsistencyError(u"first", i == len(self.first) - 1, _.count == 0)
 
         if len(self.second) == 0:
-            raise kaitaistruct.ConsistencyError(u"second", len(self.second), 0)
+            raise kaitaistruct.ConsistencyError(u"second", 0, len(self.second))
         for i in range(len(self.second)):
             pass
             if self.second[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"second", self.second[i]._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"second", self._root, self.second[i]._root)
             if self.second[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"second", self.second[i]._parent, self)
+                raise kaitaistruct.ConsistencyError(u"second", self, self.second[i]._parent)
             _ = self.second[i]
             if (_.count == 0) != (i == len(self.second) - 1):
-                raise kaitaistruct.ConsistencyError(u"second", _.count == 0, i == len(self.second) - 1)
+                raise kaitaistruct.ConsistencyError(u"second", i == len(self.second) - 1, _.count == 0)
 
         if len(self.third) == 0:
-            raise kaitaistruct.ConsistencyError(u"third", len(self.third), 0)
+            raise kaitaistruct.ConsistencyError(u"third", 0, len(self.third))
         for i in range(len(self.third)):
             pass
             _ = self.third[i]
             if (_ == 0) != (i == len(self.third) - 1):
-                raise kaitaistruct.ConsistencyError(u"third", _ == 0, i == len(self.third) - 1)
+                raise kaitaistruct.ConsistencyError(u"third", i == len(self.third) - 1, _ == 0)
 
         self._dirty = False
 
@@ -149,7 +149,7 @@ class RepeatUntilComplex(ReadWriteKaitaiStruct):
 
         def _check(self):
             if len(self.values) != self.count:
-                raise kaitaistruct.ConsistencyError(u"values", len(self.values), self.count)
+                raise kaitaistruct.ConsistencyError(u"values", self.count, len(self.values))
             for i in range(len(self.values)):
                 pass
 
@@ -189,7 +189,7 @@ class RepeatUntilComplex(ReadWriteKaitaiStruct):
 
         def _check(self):
             if len(self.values) != self.count:
-                raise kaitaistruct.ConsistencyError(u"values", len(self.values), self.count)
+                raise kaitaistruct.ConsistencyError(u"values", self.count, len(self.values))
             for i in range(len(self.values)):
                 pass
 

@@ -49,7 +49,7 @@ public class ValidFailEqStr extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if ((this.foo).getBytes(Charset.forName("ASCII")).length != 4)
-            throw new ConsistencyError("foo", (this.foo).getBytes(Charset.forName("ASCII")).length, 4);
+            throw new ConsistencyError("foo", 4, (this.foo).getBytes(Charset.forName("ASCII")).length);
         if (!(this.foo.equals("BACK"))) {
             throw new KaitaiStream.ValidationNotEqualError("BACK", this.foo, null, "/seq/0");
         }

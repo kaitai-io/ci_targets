@@ -48,7 +48,7 @@ public class ExprFstring0 extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if ((this.seqStr).getBytes(Charset.forName("ASCII")).length != 5)
-            throw new ConsistencyError("seq_str", (this.seqStr).getBytes(Charset.forName("ASCII")).length, 5);
+            throw new ConsistencyError("seq_str", 5, (this.seqStr).getBytes(Charset.forName("ASCII")).length);
         _dirty = false;
     }
     private String empty;

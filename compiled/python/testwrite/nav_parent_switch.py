@@ -46,9 +46,9 @@ class NavParentSwitch(ReadWriteKaitaiStruct):
         if _on == 1:
             pass
             if self.content._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"content", self.content._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"content", self._root, self.content._root)
             if self.content._parent != self:
-                raise kaitaistruct.ConsistencyError(u"content", self.content._parent, self)
+                raise kaitaistruct.ConsistencyError(u"content", self, self.content._parent)
         self._dirty = False
 
     class Element1(ReadWriteKaitaiStruct):
@@ -77,9 +77,9 @@ class NavParentSwitch(ReadWriteKaitaiStruct):
 
         def _check(self):
             if self.subelement._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"subelement", self.subelement._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"subelement", self._root, self.subelement._root)
             if self.subelement._parent != self:
-                raise kaitaistruct.ConsistencyError(u"subelement", self.subelement._parent, self)
+                raise kaitaistruct.ConsistencyError(u"subelement", self, self.subelement._parent)
             self._dirty = False
 
 

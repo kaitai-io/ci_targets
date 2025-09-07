@@ -60,12 +60,12 @@ public class ProcessCoerceBytes extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.records.size() != 2)
-            throw new ConsistencyError("records", this.records.size(), 2);
+            throw new ConsistencyError("records", 2, this.records.size());
         for (int i = 0; i < this.records.size(); i++) {
             if (!Objects.equals(this.records.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("records", this.records.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("records", _root(), this.records.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.records.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("records", this.records.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("records", this, this.records.get(((Number) (i)).intValue())._parent());
         }
         _dirty = false;
     }
@@ -118,7 +118,7 @@ public class ProcessCoerceBytes extends KaitaiStruct.ReadWrite {
             if (flag() != 0) {
                 this._raw_bufProc = KaitaiStream.processXor(this.bufProc, ((Number) (170)).byteValue());
                 if (this._raw_bufProc.length != 4)
-                    throw new ConsistencyError("buf_proc", this._raw_bufProc.length, 4);
+                    throw new ConsistencyError("buf_proc", 4, this._raw_bufProc.length);
                 this._io.writeBytes(this._raw_bufProc);
             }
         }
@@ -126,7 +126,7 @@ public class ProcessCoerceBytes extends KaitaiStruct.ReadWrite {
         public void _check() {
             if (flag() == 0) {
                 if (this.bufUnproc.length != 4)
-                    throw new ConsistencyError("buf_unproc", this.bufUnproc.length, 4);
+                    throw new ConsistencyError("buf_unproc", 4, this.bufUnproc.length);
             }
             if (flag() != 0) {
             }

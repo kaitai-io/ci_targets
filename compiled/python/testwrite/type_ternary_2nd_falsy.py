@@ -56,16 +56,16 @@ class TypeTernary2ndFalsy(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.ut._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"ut", self.ut._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"ut", self._root, self.ut._root)
         if self.ut._parent != self:
-            raise kaitaistruct.ConsistencyError(u"ut", self.ut._parent, self)
+            raise kaitaistruct.ConsistencyError(u"ut", self, self.ut._parent)
         if len(self.int_array) != 2:
-            raise kaitaistruct.ConsistencyError(u"int_array", len(self.int_array), 2)
+            raise kaitaistruct.ConsistencyError(u"int_array", 2, len(self.int_array))
         for i in range(len(self.int_array)):
             pass
 
         if len(self.int_array_empty) != 0:
-            raise kaitaistruct.ConsistencyError(u"int_array_empty", len(self.int_array_empty), 0)
+            raise kaitaistruct.ConsistencyError(u"int_array_empty", 0, len(self.int_array_empty))
         for i in range(len(self.int_array_empty)):
             pass
 

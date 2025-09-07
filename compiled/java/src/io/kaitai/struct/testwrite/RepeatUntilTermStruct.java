@@ -130,7 +130,7 @@ public class RepeatUntilTermStruct extends KaitaiStruct.ReadWrite {
                         byte[] _buf = _io__raw_records1.toByteArray();
                         _this._raw_records1.add(_buf);
                         if (KaitaiStream.byteArrayIndexOf(_this._raw_records1.get(((Number) (_i)).intValue()), ((byte) 170)) != -1)
-                            throw new ConsistencyError("raw(records1)", KaitaiStream.byteArrayIndexOf(_this._raw_records1.get(((Number) (_i)).intValue()), ((byte) 170)), -1);
+                            throw new ConsistencyError("raw(records1)", -1, KaitaiStream.byteArrayIndexOf(_this._raw_records1.get(((Number) (_i)).intValue()), ((byte) 170)));
                         parent.writeBytes(_this._raw_records1.get(((Number) (_i)).intValue()));
                         parent.writeU1(170);
                     }
@@ -153,9 +153,9 @@ public class RepeatUntilTermStruct extends KaitaiStruct.ReadWrite {
                         byte[] _buf = _io__raw_records2.toByteArray();
                         _this._raw_records2.add(_buf);
                         if (_this._raw_records2.get(((Number) (_i)).intValue()).length == 0)
-                            throw new ConsistencyError("raw(records2)", _this._raw_records2.get(((Number) (_i)).intValue()).length, 0);
+                            throw new ConsistencyError("raw(records2)", 0, _this._raw_records2.get(((Number) (_i)).intValue()).length);
                         if (KaitaiStream.byteArrayIndexOf(_this._raw_records2.get(((Number) (_i)).intValue()), ((byte) 170)) != _this._raw_records2.get(((Number) (_i)).intValue()).length - 1)
-                            throw new ConsistencyError("raw(records2)", KaitaiStream.byteArrayIndexOf(_this._raw_records2.get(((Number) (_i)).intValue()), ((byte) 170)), _this._raw_records2.get(((Number) (_i)).intValue()).length - 1);
+                            throw new ConsistencyError("raw(records2)", _this._raw_records2.get(((Number) (_i)).intValue()).length - 1, KaitaiStream.byteArrayIndexOf(_this._raw_records2.get(((Number) (_i)).intValue()), ((byte) 170)));
                         parent.writeBytes(_this._raw_records2.get(((Number) (_i)).intValue()));
                     }
                 });
@@ -177,7 +177,7 @@ public class RepeatUntilTermStruct extends KaitaiStruct.ReadWrite {
                         byte[] _buf = _io__raw_records3.toByteArray();
                         _this._raw_records3.add(_buf);
                         if (KaitaiStream.byteArrayIndexOf(_this._raw_records3.get(((Number) (_i)).intValue()), ((byte) 85)) != -1)
-                            throw new ConsistencyError("raw(records3)", KaitaiStream.byteArrayIndexOf(_this._raw_records3.get(((Number) (_i)).intValue()), ((byte) 85)), -1);
+                            throw new ConsistencyError("raw(records3)", -1, KaitaiStream.byteArrayIndexOf(_this._raw_records3.get(((Number) (_i)).intValue()), ((byte) 85)));
                         parent.writeBytes(_this._raw_records3.get(((Number) (_i)).intValue()));
                         {
                             long _pos = parent.pos();
@@ -193,42 +193,42 @@ public class RepeatUntilTermStruct extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.records1.size() == 0)
-            throw new ConsistencyError("records1", this.records1.size(), 0);
+            throw new ConsistencyError("records1", 0, this.records1.size());
         for (int i = 0; i < this.records1.size(); i++) {
             if (!Objects.equals(this.records1.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("records1", this.records1.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("records1", _root(), this.records1.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.records1.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("records1", this.records1.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("records1", this, this.records1.get(((Number) (i)).intValue())._parent());
             {
                 BytesWrapper _it = this.records1.get(((Number) (i)).intValue());
                 if ((_it.value().length == 0) != (i == this.records1.size() - 1))
-                    throw new ConsistencyError("records1", _it.value().length == 0, i == this.records1.size() - 1);
+                    throw new ConsistencyError("records1", i == this.records1.size() - 1, _it.value().length == 0);
             }
         }
         if (this.records2.size() == 0)
-            throw new ConsistencyError("records2", this.records2.size(), 0);
+            throw new ConsistencyError("records2", 0, this.records2.size());
         for (int i = 0; i < this.records2.size(); i++) {
             if (!Objects.equals(this.records2.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("records2", this.records2.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("records2", _root(), this.records2.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.records2.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("records2", this.records2.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("records2", this, this.records2.get(((Number) (i)).intValue())._parent());
             {
                 BytesWrapper _it = this.records2.get(((Number) (i)).intValue());
                 if (!Arrays.equals(_it.value(), new byte[] { -86 }) != (i == this.records2.size() - 1))
-                    throw new ConsistencyError("records2", !Arrays.equals(_it.value(), new byte[] { -86 }), i == this.records2.size() - 1);
+                    throw new ConsistencyError("records2", i == this.records2.size() - 1, !Arrays.equals(_it.value(), new byte[] { -86 }));
             }
         }
         if (this.records3.size() == 0)
-            throw new ConsistencyError("records3", this.records3.size(), 0);
+            throw new ConsistencyError("records3", 0, this.records3.size());
         for (int i = 0; i < this.records3.size(); i++) {
             if (!Objects.equals(this.records3.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("records3", this.records3.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("records3", _root(), this.records3.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.records3.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("records3", this.records3.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("records3", this, this.records3.get(((Number) (i)).intValue())._parent());
             {
                 BytesWrapper _it = this.records3.get(((Number) (i)).intValue());
                 if (Arrays.equals(_it.value(), records1().get(records1().size() - 1).value()) != (i == this.records3.size() - 1))
-                    throw new ConsistencyError("records3", Arrays.equals(_it.value(), records1().get(records1().size() - 1).value()), i == this.records3.size() - 1);
+                    throw new ConsistencyError("records3", i == this.records3.size() - 1, Arrays.equals(_it.value(), records1().get(records1().size() - 1).value()));
             }
         }
         _dirty = false;
@@ -266,7 +266,7 @@ public class RepeatUntilTermStruct extends KaitaiStruct.ReadWrite {
             _assertNotDirty();
             this._io.writeBytes(this.value);
             if (!(this._io.isEof()))
-                throw new ConsistencyError("value", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("value", 0, this._io.size() - this._io.pos());
         }
 
         public void _check() {

@@ -37,7 +37,7 @@ class ExprSizeofValueSized(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_block1=_io__raw_block1):
             self._raw_block1 = _io__raw_block1.to_byte_array()
             if len(self._raw_block1) != 12:
-                raise kaitaistruct.ConsistencyError(u"raw(block1)", len(self._raw_block1), 12)
+                raise kaitaistruct.ConsistencyError(u"raw(block1)", 12, len(self._raw_block1))
             parent.write_bytes(self._raw_block1)
         _io__raw_block1.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.block1._write__seq(_io__raw_block1)
@@ -46,9 +46,9 @@ class ExprSizeofValueSized(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.block1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"block1", self.block1._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"block1", self._root, self.block1._root)
         if self.block1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"block1", self.block1._parent, self)
+            raise kaitaistruct.ConsistencyError(u"block1", self, self.block1._parent)
         self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):
@@ -77,7 +77,7 @@ class ExprSizeofValueSized(ReadWriteKaitaiStruct):
 
         def _check(self):
             if len(self.c) != 2:
-                raise kaitaistruct.ConsistencyError(u"c", len(self.c), 2)
+                raise kaitaistruct.ConsistencyError(u"c", 2, len(self.c))
             self._dirty = False
 
 

@@ -78,7 +78,7 @@ public class ProcessRepeatUsertypeDynargXor extends KaitaiStruct.ReadWrite {
                         _this._raw_blocks.add(_io__raw_blocks.toByteArray());
                         _this._raw__raw_blocks.add(KaitaiStream.processXor(_this._raw_blocks.get(((Number) (_i)).intValue()), ((Number) (_processXorArg)).byteValue()));
                         if (_this._raw__raw_blocks.get(((Number) (_i)).intValue()).length != 5)
-                            throw new ConsistencyError("raw(blocks)", _this._raw__raw_blocks.get(((Number) (_i)).intValue()).length, 5);
+                            throw new ConsistencyError("raw(blocks)", 5, _this._raw__raw_blocks.get(((Number) (_i)).intValue()).length);
                         parent.writeBytes(_this._raw__raw_blocks.get(((Number) (_i)).intValue()));
                     }
                 });
@@ -90,17 +90,17 @@ public class ProcessRepeatUsertypeDynargXor extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.blocks.size() != 2)
-            throw new ConsistencyError("blocks", this.blocks.size(), 2);
+            throw new ConsistencyError("blocks", 2, this.blocks.size());
         for (int i = 0; i < this.blocks.size(); i++) {
             if (!Objects.equals(this.blocks.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("blocks", this.blocks.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("blocks", _root(), this.blocks.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.blocks.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("blocks", this.blocks.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("blocks", this, this.blocks.get(((Number) (i)).intValue())._parent());
         }
         if (!Objects.equals(this.blocksB._root(), _root()))
-            throw new ConsistencyError("blocks_b", this.blocksB._root(), _root());
+            throw new ConsistencyError("blocks_b", _root(), this.blocksB._root());
         if (!Objects.equals(this.blocksB._parent(), this))
-            throw new ConsistencyError("blocks_b", this.blocksB._parent(), this);
+            throw new ConsistencyError("blocks_b", this, this.blocksB._parent());
         _dirty = false;
     }
     public static class Block extends KaitaiStruct.ReadWrite {

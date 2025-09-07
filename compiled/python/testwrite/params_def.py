@@ -43,7 +43,7 @@ class ParamsDef(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len((self.buf).encode(u"UTF-8")) != self.len:
-            raise kaitaistruct.ConsistencyError(u"buf", len((self.buf).encode(u"UTF-8")), self.len)
+            raise kaitaistruct.ConsistencyError(u"buf", self.len, len((self.buf).encode(u"UTF-8")))
         if self.has_trailer:
             pass
 

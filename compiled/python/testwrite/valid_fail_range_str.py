@@ -34,7 +34,7 @@ class ValidFailRangeStr(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len((self.foo).encode(u"ASCII")) != 2:
-            raise kaitaistruct.ConsistencyError(u"foo", len((self.foo).encode(u"ASCII")), 2)
+            raise kaitaistruct.ConsistencyError(u"foo", 2, len((self.foo).encode(u"ASCII")))
         if not self.foo >= u"P":
             raise kaitaistruct.ValidationLessThanError(u"P", self.foo, None, u"/seq/0")
         if not self.foo <= u"P1":

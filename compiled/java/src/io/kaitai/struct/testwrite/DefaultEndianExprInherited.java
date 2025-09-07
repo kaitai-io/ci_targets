@@ -60,19 +60,19 @@ public class DefaultEndianExprInherited extends KaitaiStruct.ReadWrite {
         _assertNotDirty();
         for (int i = 0; i < this.docs.size(); i++) {
             if (this._io.isEof())
-                throw new ConsistencyError("docs", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("docs", 0, this._io.size() - this._io.pos());
             this.docs.get(((Number) (i)).intValue())._write_Seq(this._io);
         }
         if (!(this._io.isEof()))
-            throw new ConsistencyError("docs", this._io.size() - this._io.pos(), 0);
+            throw new ConsistencyError("docs", 0, this._io.size() - this._io.pos());
     }
 
     public void _check() {
         for (int i = 0; i < this.docs.size(); i++) {
             if (!Objects.equals(this.docs.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("docs", this.docs.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("docs", _root(), this.docs.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.docs.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("docs", this.docs.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("docs", this, this.docs.get(((Number) (i)).intValue())._parent());
         }
         _dirty = false;
     }
@@ -116,11 +116,11 @@ public class DefaultEndianExprInherited extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (this.indicator.length != 2)
-                throw new ConsistencyError("indicator", this.indicator.length, 2);
+                throw new ConsistencyError("indicator", 2, this.indicator.length);
             if (!Objects.equals(this.main._root(), _root()))
-                throw new ConsistencyError("main", this.main._root(), _root());
+                throw new ConsistencyError("main", _root(), this.main._root());
             if (!Objects.equals(this.main._parent(), this))
-                throw new ConsistencyError("main", this.main._parent(), this);
+                throw new ConsistencyError("main", this, this.main._parent());
             _dirty = false;
         }
         public static class MainObj extends KaitaiStruct.ReadWrite {
@@ -202,9 +202,9 @@ public class DefaultEndianExprInherited extends KaitaiStruct.ReadWrite {
 
             public void _check() {
                 if (!Objects.equals(this.insides._root(), _root()))
-                    throw new ConsistencyError("insides", this.insides._root(), _root());
+                    throw new ConsistencyError("insides", _root(), this.insides._root());
                 if (!Objects.equals(this.insides._parent(), this))
-                    throw new ConsistencyError("insides", this.insides._parent(), this);
+                    throw new ConsistencyError("insides", this, this.insides._parent());
                 _dirty = false;
             }
             public static class SubObj extends KaitaiStruct.ReadWrite {
@@ -268,9 +268,9 @@ public class DefaultEndianExprInherited extends KaitaiStruct.ReadWrite {
 
                 public void _check() {
                     if (!Objects.equals(this.more._root(), _root()))
-                        throw new ConsistencyError("more", this.more._root(), _root());
+                        throw new ConsistencyError("more", _root(), this.more._root());
                     if (!Objects.equals(this.more._parent(), this))
-                        throw new ConsistencyError("more", this.more._parent(), this);
+                        throw new ConsistencyError("more", this, this.more._parent());
                     _dirty = false;
                 }
                 public static class SubsubObj extends KaitaiStruct.ReadWrite {

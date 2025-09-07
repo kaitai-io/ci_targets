@@ -56,7 +56,7 @@ class ExprSizeofType0(ReadWriteKaitaiStruct):
 
         def _check(self):
             if len(self.c) != 2:
-                raise kaitaistruct.ConsistencyError(u"c", len(self.c), 2)
+                raise kaitaistruct.ConsistencyError(u"c", 2, len(self.c))
             self._dirty = False
 
 

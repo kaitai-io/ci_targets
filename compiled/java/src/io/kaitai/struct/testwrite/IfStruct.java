@@ -57,17 +57,17 @@ public class IfStruct extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.op1._root(), _root()))
-            throw new ConsistencyError("op1", this.op1._root(), _root());
+            throw new ConsistencyError("op1", _root(), this.op1._root());
         if (!Objects.equals(this.op1._parent(), this))
-            throw new ConsistencyError("op1", this.op1._parent(), this);
+            throw new ConsistencyError("op1", this, this.op1._parent());
         if (!Objects.equals(this.op2._root(), _root()))
-            throw new ConsistencyError("op2", this.op2._root(), _root());
+            throw new ConsistencyError("op2", _root(), this.op2._root());
         if (!Objects.equals(this.op2._parent(), this))
-            throw new ConsistencyError("op2", this.op2._parent(), this);
+            throw new ConsistencyError("op2", this, this.op2._parent());
         if (!Objects.equals(this.op3._root(), _root()))
-            throw new ConsistencyError("op3", this.op3._root(), _root());
+            throw new ConsistencyError("op3", _root(), this.op3._root());
         if (!Objects.equals(this.op3._parent(), this))
-            throw new ConsistencyError("op3", this.op3._parent(), this);
+            throw new ConsistencyError("op3", this, this.op3._parent());
         _dirty = false;
     }
     public static class ArgStr extends KaitaiStruct.ReadWrite {
@@ -108,7 +108,7 @@ public class IfStruct extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if ((this.str).getBytes(Charset.forName("UTF-8")).length != len())
-                throw new ConsistencyError("str", (this.str).getBytes(Charset.forName("UTF-8")).length, len());
+                throw new ConsistencyError("str", len(), (this.str).getBytes(Charset.forName("UTF-8")).length);
             _dirty = false;
         }
         private int len;
@@ -233,15 +233,15 @@ public class IfStruct extends KaitaiStruct.ReadWrite {
         public void _check() {
             if (opcode() == 84) {
                 if (!Objects.equals(this.argTuple._root(), _root()))
-                    throw new ConsistencyError("arg_tuple", this.argTuple._root(), _root());
+                    throw new ConsistencyError("arg_tuple", _root(), this.argTuple._root());
                 if (!Objects.equals(this.argTuple._parent(), this))
-                    throw new ConsistencyError("arg_tuple", this.argTuple._parent(), this);
+                    throw new ConsistencyError("arg_tuple", this, this.argTuple._parent());
             }
             if (opcode() == 83) {
                 if (!Objects.equals(this.argStr._root(), _root()))
-                    throw new ConsistencyError("arg_str", this.argStr._root(), _root());
+                    throw new ConsistencyError("arg_str", _root(), this.argStr._root());
                 if (!Objects.equals(this.argStr._parent(), this))
-                    throw new ConsistencyError("arg_str", this.argStr._parent(), this);
+                    throw new ConsistencyError("arg_str", this, this.argStr._parent());
             }
             _dirty = false;
         }

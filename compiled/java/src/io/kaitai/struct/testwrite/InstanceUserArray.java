@@ -60,12 +60,12 @@ public class InstanceUserArray extends KaitaiStruct.ReadWrite {
         if (_enabledUserEntries) {
             if (ofs() > 0) {
                 if (this.userEntries.size() != qtyEntries())
-                    throw new ConsistencyError("user_entries", this.userEntries.size(), qtyEntries());
+                    throw new ConsistencyError("user_entries", qtyEntries(), this.userEntries.size());
                 for (int i = 0; i < this.userEntries.size(); i++) {
                     if (!Objects.equals(this.userEntries.get(((Number) (i)).intValue())._root(), _root()))
-                        throw new ConsistencyError("user_entries", this.userEntries.get(((Number) (i)).intValue())._root(), _root());
+                        throw new ConsistencyError("user_entries", _root(), this.userEntries.get(((Number) (i)).intValue())._root());
                     if (!Objects.equals(this.userEntries.get(((Number) (i)).intValue())._parent(), this))
-                        throw new ConsistencyError("user_entries", this.userEntries.get(((Number) (i)).intValue())._parent(), this);
+                        throw new ConsistencyError("user_entries", this, this.userEntries.get(((Number) (i)).intValue())._parent());
                 }
             }
         }
@@ -174,7 +174,7 @@ public class InstanceUserArray extends KaitaiStruct.ReadWrite {
                         protected void write(KaitaiStream parent) {
                             _this._raw_userEntries.add(_io__raw_userEntries.toByteArray());
                             if (_this._raw_userEntries.get(((Number) (_i)).intValue()).length != entrySize())
-                                throw new ConsistencyError("raw(user_entries)", _this._raw_userEntries.get(((Number) (_i)).intValue()).length, entrySize());
+                                throw new ConsistencyError("raw(user_entries)", entrySize(), _this._raw_userEntries.get(((Number) (_i)).intValue()).length);
                             parent.writeBytes(_this._raw_userEntries.get(((Number) (_i)).intValue()));
                         }
                     });

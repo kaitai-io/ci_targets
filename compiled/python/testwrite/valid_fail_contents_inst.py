@@ -41,7 +41,7 @@ class ValidFailContentsInst(ReadWriteKaitaiStruct):
         if len(self.foo) == 0:
             pass
             if len(self.a) != 0:
-                raise kaitaistruct.ConsistencyError(u"a", len(self.a), 0)
+                raise kaitaistruct.ConsistencyError(u"a", 0, len(self.a))
             self._io.write_bytes(self.a)
 
 
@@ -50,7 +50,7 @@ class ValidFailContentsInst(ReadWriteKaitaiStruct):
         if self.foo__enabled:
             pass
             if len(self._m_foo) != 2:
-                raise kaitaistruct.ConsistencyError(u"foo", len(self._m_foo), 2)
+                raise kaitaistruct.ConsistencyError(u"foo", 2, len(self._m_foo))
             if not self._m_foo == b"\x51\x41":
                 raise kaitaistruct.ValidationNotEqualError(b"\x51\x41", self._m_foo, None, u"/instances/foo")
 

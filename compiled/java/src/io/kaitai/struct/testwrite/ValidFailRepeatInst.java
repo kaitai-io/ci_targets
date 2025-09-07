@@ -53,7 +53,7 @@ public class ValidFailRepeatInst extends KaitaiStruct.ReadWrite {
         _shouldWriteInst = _enabledInst;
         if (inst().size() == 0) {
             if (this.a.length != 0)
-                throw new ConsistencyError("a", this.a.length, 0);
+                throw new ConsistencyError("a", 0, this.a.length);
             this._io.writeBytes(this.a);
         }
     }
@@ -103,11 +103,11 @@ public class ValidFailRepeatInst extends KaitaiStruct.ReadWrite {
         this._io.seek(0);
         for (int i = 0; i < this.inst.size(); i++) {
             if (this._io.isEof())
-                throw new ConsistencyError("inst", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("inst", 0, this._io.size() - this._io.pos());
             this._io.writeU4be(this.inst.get(((Number) (i)).intValue()));
         }
         if (!(this._io.isEof()))
-            throw new ConsistencyError("inst", this._io.size() - this._io.pos(), 0);
+            throw new ConsistencyError("inst", 0, this._io.size() - this._io.pos());
         this._io.seek(_pos);
     }
     private byte[] a;

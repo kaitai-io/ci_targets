@@ -77,7 +77,7 @@ public class InstanceIoUser extends KaitaiStruct.ReadWrite {
                     _this._raw_strings = _io__raw_strings.toByteArray();
                     parent.writeBytes(_this._raw_strings);
                     if (!(parent.isEof()))
-                        throw new ConsistencyError("raw(strings)", parent.size() - parent.pos(), 0);
+                        throw new ConsistencyError("raw(strings)", 0, parent.size() - parent.pos());
                 }
             });
         }
@@ -86,17 +86,17 @@ public class InstanceIoUser extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.entries.size() != qtyEntries())
-            throw new ConsistencyError("entries", this.entries.size(), qtyEntries());
+            throw new ConsistencyError("entries", qtyEntries(), this.entries.size());
         for (int i = 0; i < this.entries.size(); i++) {
             if (!Objects.equals(this.entries.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("entries", this.entries.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("entries", _root(), this.entries.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.entries.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("entries", this.entries.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("entries", this, this.entries.get(((Number) (i)).intValue())._parent());
         }
         if (!Objects.equals(this.strings._root(), _root()))
-            throw new ConsistencyError("strings", this.strings._root(), _root());
+            throw new ConsistencyError("strings", _root(), this.strings._root());
         if (!Objects.equals(this.strings._parent(), this))
-            throw new ConsistencyError("strings", this.strings._parent(), this);
+            throw new ConsistencyError("strings", this, this.strings._parent());
         _dirty = false;
     }
     public static class Entry extends KaitaiStruct.ReadWrite {
@@ -142,7 +142,7 @@ public class InstanceIoUser extends KaitaiStruct.ReadWrite {
         public void _check() {
             if (_enabledName) {
                 if (KaitaiStream.byteArrayIndexOf((this.name).getBytes(Charset.forName("UTF-8")), ((byte) 0)) != -1)
-                    throw new ConsistencyError("name", KaitaiStream.byteArrayIndexOf((this.name).getBytes(Charset.forName("UTF-8")), ((byte) 0)), -1);
+                    throw new ConsistencyError("name", -1, KaitaiStream.byteArrayIndexOf((this.name).getBytes(Charset.forName("UTF-8")), ((byte) 0)));
             }
             _dirty = false;
         }
@@ -230,18 +230,18 @@ public class InstanceIoUser extends KaitaiStruct.ReadWrite {
             _assertNotDirty();
             for (int i = 0; i < this.str.size(); i++) {
                 if (this._io.isEof())
-                    throw new ConsistencyError("str", this._io.size() - this._io.pos(), 0);
+                    throw new ConsistencyError("str", 0, this._io.size() - this._io.pos());
                 this._io.writeBytes((this.str.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")));
                 this._io.writeU1(0);
             }
             if (!(this._io.isEof()))
-                throw new ConsistencyError("str", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("str", 0, this._io.size() - this._io.pos());
         }
 
         public void _check() {
             for (int i = 0; i < this.str.size(); i++) {
                 if (KaitaiStream.byteArrayIndexOf((this.str.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)) != -1)
-                    throw new ConsistencyError("str", KaitaiStream.byteArrayIndexOf((this.str.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)), -1);
+                    throw new ConsistencyError("str", -1, KaitaiStream.byteArrayIndexOf((this.str.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)));
             }
             _dirty = false;
         }

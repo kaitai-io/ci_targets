@@ -46,7 +46,7 @@ public class BitsByteAlignedEofBe extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.prebuf.length != 8)
-            throw new ConsistencyError("prebuf", this.prebuf.length, 8);
+            throw new ConsistencyError("prebuf", 8, this.prebuf.length);
         _dirty = false;
     }
     private byte[] prebuf;

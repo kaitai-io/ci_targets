@@ -53,13 +53,13 @@ public class NavParentOverride extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.child1._root(), _root()))
-            throw new ConsistencyError("child_1", this.child1._root(), _root());
+            throw new ConsistencyError("child_1", _root(), this.child1._root());
         if (!Objects.equals(this.child1._parent(), this))
-            throw new ConsistencyError("child_1", this.child1._parent(), this);
+            throw new ConsistencyError("child_1", this, this.child1._parent());
         if (!Objects.equals(this.mediator2._root(), _root()))
-            throw new ConsistencyError("mediator_2", this.mediator2._root(), _root());
+            throw new ConsistencyError("mediator_2", _root(), this.mediator2._root());
         if (!Objects.equals(this.mediator2._parent(), this))
-            throw new ConsistencyError("mediator_2", this.mediator2._parent(), this);
+            throw new ConsistencyError("mediator_2", this, this.mediator2._parent());
         _dirty = false;
     }
     public static class Child extends KaitaiStruct.ReadWrite {
@@ -98,7 +98,7 @@ public class NavParentOverride extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (this.data.length != _parent().childSize())
-                throw new ConsistencyError("data", this.data.length, _parent().childSize());
+                throw new ConsistencyError("data", _parent().childSize(), this.data.length);
             _dirty = false;
         }
         private byte[] data;
@@ -149,9 +149,9 @@ public class NavParentOverride extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (!Objects.equals(this.child2._root(), _root()))
-                throw new ConsistencyError("child_2", this.child2._root(), _root());
+                throw new ConsistencyError("child_2", _root(), this.child2._root());
             if (!Objects.equals(this.child2._parent(), _parent()))
-                throw new ConsistencyError("child_2", this.child2._parent(), _parent());
+                throw new ConsistencyError("child_2", _parent(), this.child2._parent());
             _dirty = false;
         }
         private Child child2;

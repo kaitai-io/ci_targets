@@ -51,18 +51,18 @@ public class ProcessCustom extends KaitaiStruct.ReadWrite {
         MyCustomFx _process_buf1 = new MyCustomFx(7, true, new byte[] { 32, 48, 64 });
         this._raw_buf1 = _process_buf1.encode(this.buf1);
         if (this._raw_buf1.length != 5)
-            throw new ConsistencyError("buf1", this._raw_buf1.length, 5);
+            throw new ConsistencyError("buf1", 5, this._raw_buf1.length);
         this._io.writeBytes(this._raw_buf1);
         nested.deeply.CustomFx _process_buf2 = new nested.deeply.CustomFx(7);
         this._raw_buf2 = _process_buf2.encode(this.buf2);
         if (this._raw_buf2.length != 5)
-            throw new ConsistencyError("buf2", this._raw_buf2.length, 5);
+            throw new ConsistencyError("buf2", 5, this._raw_buf2.length);
         this._io.writeBytes(this._raw_buf2);
         this._io.writeU1(this.key);
         MyCustomFx _process_buf3 = new MyCustomFx(key(), false, new byte[] { 0 });
         this._raw_buf3 = _process_buf3.encode(this.buf3);
         if (this._raw_buf3.length != 5)
-            throw new ConsistencyError("buf3", this._raw_buf3.length, 5);
+            throw new ConsistencyError("buf3", 5, this._raw_buf3.length);
         this._io.writeBytes(this._raw_buf3);
     }
 

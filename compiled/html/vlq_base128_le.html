@@ -33,11 +33,21 @@ This particular encoding is specified and used in:
   <https://lucene.apache.org/core/3_5_0/fileformats.html#VInt>
 * Apache Avro uses this as a basis for integer encoding, adding ZigZag on
   top of it for signed ints
-  <https://avro.apache.org/docs/current/spec.html#binary_encode_primitive>
+  <https://avro.apache.org/docs/1.12.0/specification/#primitive-types-1>
 
 More information on this encoding is available at <https://en.wikipedia.org/wiki/LEB128>
 
-This particular implementation supports serialized values to up 8 bytes long.
+This particular implementation supports integer values up to 64 bits (i.e. the
+maximum unsigned value supported is `2**64 - 1`), which implies that serialized
+values can be up to 10 bytes in length.
+
+If the most significant 10th byte (`groups[9]`) is present, its `has_next`
+must be `false` (otherwise we would have 11 or more bytes, which is not
+supported) and its `value` can be only `0` or `1` (because a 9-byte VLQ can
+represent `9 * 7 = 63` bits already, so the 10th byte can only add 1 bit,
+since only integers up to 64 bits are supported). These restrictions are
+enforced by this implementation. They were inspired by the Protoscope tool,
+see <https://github.com/protocolbuffers/protoscope/blob/8e7a6aafa2c9958527b1e0747e66e1bfff045819/writer.go#L644-L648>.
 </p>
 <table class="table">
 <tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
@@ -50,9 +60,9 @@ This particular implementation supports serialized values to up 8 bytes long.
 </tr>
 </table>
 value instance: ValueInstanceSpec(InstanceIdentifier(len),List(instances, len),Attribute(Name(identifier(groups)),identifier(size)),None,Some(CalcIntType),DocSpec(None,List()))
-value instance: ValueInstanceSpec(InstanceIdentifier(sign_bit),List(instances, sign_bit),CastToType(BinOp(CastToType(IntNum(1),typeId(false,List(u8),false)),LShift,BinOp(BinOp(IntNum(7),Mult,Name(identifier(len))),Sub,IntNum(1))),typeId(false,List(u8),false)),None,Some(IntMultiType(false,Width8,None)),DocSpec(None,List()))
-value instance: ValueInstanceSpec(InstanceIdentifier(value),List(instances, value),CastToType(BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(0)),identifier(value)),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(2)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(1)),identifier(value)),LShift,IntNum(7)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(3)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(2)),identifier(value)),LShift,IntNum(14)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(4)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(3)),identifier(value)),LShift,IntNum(21)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(5)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(4)),identifier(value)),LShift,IntNum(28)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(6)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(5)),identifier(value)),LShift,IntNum(35)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(7)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(6)),identifier(value)),LShift,IntNum(42)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(8)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(7)),identifier(value)),LShift,IntNum(49)),IntNum(0))),typeId(false,List(u8),false)),None,Some(IntMultiType(false,Width8,None)),DocSpec(Some(Resulting unsigned value as normal integer),List()))
-value instance: ValueInstanceSpec(InstanceIdentifier(value_signed),List(instances, value_signed),CastToType(BinOp(CastToType(BinOp(Name(identifier(value)),BitXor,Name(identifier(sign_bit))),typeId(false,List(s8),false)),Sub,CastToType(Name(identifier(sign_bit)),typeId(false,List(s8),false))),typeId(false,List(s8),false)),None,Some(IntMultiType(true,Width8,None)),DocSpec(None,List(UrlRef(https://graphics.stanford.edu/~seander/bithacks.html#VariableSignExtend,Source))))
+value instance: ValueInstanceSpec(InstanceIdentifier(sign_bit),List(instances, sign_bit),CastToType(IfExp(Compare(Name(identifier(len)),Eq,IntNum(10)),IntNum(9223372036854775808),BinOp(Attribute(Attribute(Name(identifier(groups)),identifier(last)),identifier(multiplier)),Mult,IntNum(64))),typeId(false,List(u8),false)),None,Some(IntMultiType(false,Width8,None)),DocSpec(None,List()))
+value instance: ValueInstanceSpec(InstanceIdentifier(value),List(instances, value),Attribute(Attribute(Name(identifier(groups)),identifier(last)),identifier(interm_value)),None,Some(IntMultiType(false,Width8,None)),DocSpec(Some(Resulting unsigned value as normal integer),List()))
+value instance: ValueInstanceSpec(InstanceIdentifier(value_signed),List(instances, value_signed),IfExp(BoolOp(And,List(Compare(Name(identifier(sign_bit)),Gt,IntNum(0)), Compare(Name(identifier(value)),GtE,Name(identifier(sign_bit))))),UnaryOp(Minus,CastToType(BinOp(Name(identifier(sign_bit)),Sub,BinOp(Name(identifier(value)),Sub,Name(identifier(sign_bit)))),typeId(false,List(s8),false))),CastToType(Name(identifier(value)),typeId(false,List(s8),false))),None,Some(IntMultiType(true,Width8,None)),DocSpec(None,List()))
 <a name='type-vlq_base128_le-group'></a>
 <h2>Type: Group</h2>
 
@@ -65,16 +75,27 @@ value instance: ValueInstanceSpec(InstanceIdentifier(value_signed),List(instance
 <td>...</td>
 <td>has_next</td>
 <td>b1be→bool</td>
-<td>If true, then we have more bytes to read</td>
+<td>If `true`, then we have more bytes to read.
+
+Since this implementation only supports serialized values up to 10
+bytes, this must be `false` in the 10th group (`groups[9]`).
+</td>
 </tr>
 <tr>
 <td>0:1</td>
 <td>...</td>
 <td>value</td>
 <td>b7be</td>
-<td>The 7-bit (base128) numeric value chunk of this group</td>
+<td>The 7-bit (base128) numeric value chunk of this group
+
+Since this implementation only supports integer values up to 64 bits,
+the `value` in the 10th group (`groups[9]`) can only be `0` or `1`
+(otherwise the width of the represented value would be 65 bits or
+more, which is not supported).
+</td>
 </tr>
 </table>
+value instance: ValueInstanceSpec(InstanceIdentifier(interm_value),List(types, group, instances, interm_value),CastToType(BinOp(Name(identifier(prev_interm_value)),Add,BinOp(Name(identifier(value)),Mult,Name(identifier(multiplier)))),typeId(false,List(u8),false)),None,Some(IntMultiType(false,Width8,None)),DocSpec(None,List()))
 
   </div>
     <!-- Optional JavaScript -->

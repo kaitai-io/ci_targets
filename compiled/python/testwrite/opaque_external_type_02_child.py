@@ -40,13 +40,13 @@ class OpaqueExternalType02Child(ReadWriteKaitaiStruct):
 
     def _check(self):
         if KaitaiStream.byte_array_index_of((self.s1).encode(u"UTF-8"), 124) != -1:
-            raise kaitaistruct.ConsistencyError(u"s1", KaitaiStream.byte_array_index_of((self.s1).encode(u"UTF-8"), 124), -1)
+            raise kaitaistruct.ConsistencyError(u"s1", -1, KaitaiStream.byte_array_index_of((self.s1).encode(u"UTF-8"), 124))
         if KaitaiStream.byte_array_index_of((self.s2).encode(u"UTF-8"), 124) != -1:
-            raise kaitaistruct.ConsistencyError(u"s2", KaitaiStream.byte_array_index_of((self.s2).encode(u"UTF-8"), 124), -1)
+            raise kaitaistruct.ConsistencyError(u"s2", -1, KaitaiStream.byte_array_index_of((self.s2).encode(u"UTF-8"), 124))
         if self.s3._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"s3", self.s3._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"s3", self._root, self.s3._root)
         if self.s3._parent != self:
-            raise kaitaistruct.ConsistencyError(u"s3", self.s3._parent, self)
+            raise kaitaistruct.ConsistencyError(u"s3", self, self.s3._parent)
         self._dirty = False
 
     class OpaqueExternalType02ChildChild(ReadWriteKaitaiStruct):
@@ -82,9 +82,9 @@ class OpaqueExternalType02Child(ReadWriteKaitaiStruct):
             if self._root.some_method:
                 pass
                 if len((self.s3).encode(u"UTF-8")) == 0:
-                    raise kaitaistruct.ConsistencyError(u"s3", len((self.s3).encode(u"UTF-8")), 0)
+                    raise kaitaistruct.ConsistencyError(u"s3", 0, len((self.s3).encode(u"UTF-8")))
                 if KaitaiStream.byte_array_index_of((self.s3).encode(u"UTF-8"), 64) != len((self.s3).encode(u"UTF-8")) - 1:
-                    raise kaitaistruct.ConsistencyError(u"s3", KaitaiStream.byte_array_index_of((self.s3).encode(u"UTF-8"), 64), len((self.s3).encode(u"UTF-8")) - 1)
+                    raise kaitaistruct.ConsistencyError(u"s3", len((self.s3).encode(u"UTF-8")) - 1, KaitaiStream.byte_array_index_of((self.s3).encode(u"UTF-8"), 64))
 
             self._dirty = False
 

@@ -61,14 +61,14 @@ public class InstanceInRepeatUntil extends KaitaiStruct.ReadWrite {
             {
                 short _it = this.entries.get(((Number) (i)).intValue());
                 if ((_it == untilVal()) != (i == this.entries.size() - 1))
-                    throw new ConsistencyError("entries", _it == untilVal(), i == this.entries.size() - 1);
+                    throw new ConsistencyError("entries", i == this.entries.size() - 1, _it == untilVal());
             }
         }
     }
 
     public void _check() {
         if (this.entries.size() == 0)
-            throw new ConsistencyError("entries", this.entries.size(), 0);
+            throw new ConsistencyError("entries", 0, this.entries.size());
         for (int i = 0; i < this.entries.size(); i++) {
         }
         if (_enabledUntilVal) {

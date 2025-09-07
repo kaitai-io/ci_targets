@@ -50,9 +50,9 @@ public class ImportsParamsDefEnumImported extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.two.pet1Param() != one().pet1())
-            throw new ConsistencyError("two", this.two.pet1Param(), one().pet1());
+            throw new ConsistencyError("two", one().pet1(), this.two.pet1Param());
         if (this.two.pet2Param() != one().pet2())
-            throw new ConsistencyError("two", this.two.pet2Param(), one().pet2());
+            throw new ConsistencyError("two", one().pet2(), this.two.pet2Param());
         _dirty = false;
     }
     private EnumImportSeq one;

@@ -49,11 +49,11 @@ public class ParamsCallExtraParens extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.buf1._root(), _root()))
-            throw new ConsistencyError("buf1", this.buf1._root(), _root());
+            throw new ConsistencyError("buf1", _root(), this.buf1._root());
         if (!Objects.equals(this.buf1._parent(), this))
-            throw new ConsistencyError("buf1", this.buf1._parent(), this);
+            throw new ConsistencyError("buf1", this, this.buf1._parent());
         if (this.buf1.len() != 5)
-            throw new ConsistencyError("buf1", this.buf1.len(), 5);
+            throw new ConsistencyError("buf1", 5, this.buf1.len());
         _dirty = false;
     }
     public static class MyStr1 extends KaitaiStruct.ReadWrite {
@@ -90,7 +90,7 @@ public class ParamsCallExtraParens extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if ((this.body).getBytes(Charset.forName("UTF-8")).length != len())
-                throw new ConsistencyError("body", (this.body).getBytes(Charset.forName("UTF-8")).length, len());
+                throw new ConsistencyError("body", len(), (this.body).getBytes(Charset.forName("UTF-8")).length);
             _dirty = false;
         }
         private String body;

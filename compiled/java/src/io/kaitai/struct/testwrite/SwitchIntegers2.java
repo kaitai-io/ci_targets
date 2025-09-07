@@ -118,7 +118,7 @@ public class SwitchIntegers2 extends KaitaiStruct.ReadWrite {
         }
         }
         if (this.ham.length != len())
-            throw new ConsistencyError("ham", this.ham.length, len());
+            throw new ConsistencyError("ham", len(), this.ham.length);
         if (len() > 3) {
         }
         _dirty = false;

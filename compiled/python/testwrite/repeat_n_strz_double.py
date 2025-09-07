@@ -54,18 +54,18 @@ class RepeatNStrzDouble(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.lines1) != self.qty // 2:
-            raise kaitaistruct.ConsistencyError(u"lines1", len(self.lines1), self.qty // 2)
+            raise kaitaistruct.ConsistencyError(u"lines1", self.qty // 2, len(self.lines1))
         for i in range(len(self.lines1)):
             pass
             if KaitaiStream.byte_array_index_of((self.lines1[i]).encode(u"UTF-8"), 0) != -1:
-                raise kaitaistruct.ConsistencyError(u"lines1", KaitaiStream.byte_array_index_of((self.lines1[i]).encode(u"UTF-8"), 0), -1)
+                raise kaitaistruct.ConsistencyError(u"lines1", -1, KaitaiStream.byte_array_index_of((self.lines1[i]).encode(u"UTF-8"), 0))
 
         if len(self.lines2) != self.qty // 2:
-            raise kaitaistruct.ConsistencyError(u"lines2", len(self.lines2), self.qty // 2)
+            raise kaitaistruct.ConsistencyError(u"lines2", self.qty // 2, len(self.lines2))
         for i in range(len(self.lines2)):
             pass
             if KaitaiStream.byte_array_index_of((self.lines2[i]).encode(u"UTF-8"), 0) != -1:
-                raise kaitaistruct.ConsistencyError(u"lines2", KaitaiStream.byte_array_index_of((self.lines2[i]).encode(u"UTF-8"), 0), -1)
+                raise kaitaistruct.ConsistencyError(u"lines2", -1, KaitaiStream.byte_array_index_of((self.lines2[i]).encode(u"UTF-8"), 0))
 
         self._dirty = False
 

@@ -34,7 +34,7 @@ class OptionalId(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self._unnamed2) != 5:
-            raise kaitaistruct.ConsistencyError(u"_unnamed2", len(self._unnamed2), 5)
+            raise kaitaistruct.ConsistencyError(u"_unnamed2", 5, len(self._unnamed2))
         self._dirty = False
 
 

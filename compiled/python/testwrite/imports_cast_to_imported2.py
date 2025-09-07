@@ -38,7 +38,7 @@ class ImportsCastToImported2(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.two.hw_param != self.hw:
-            raise kaitaistruct.ConsistencyError(u"two", self.two.hw_param, self.hw)
+            raise kaitaistruct.ConsistencyError(u"two", self.hw, self.two.hw_param)
         self._dirty = False
 
 

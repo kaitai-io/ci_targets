@@ -48,13 +48,13 @@ class NavParent2(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.tags) != self.num_tags:
-            raise kaitaistruct.ConsistencyError(u"tags", len(self.tags), self.num_tags)
+            raise kaitaistruct.ConsistencyError(u"tags", self.num_tags, len(self.tags))
         for i in range(len(self.tags)):
             pass
             if self.tags[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"tags", self.tags[i]._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"tags", self._root, self.tags[i]._root)
             if self.tags[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"tags", self.tags[i]._parent, self)
+                raise kaitaistruct.ConsistencyError(u"tags", self, self.tags[i]._parent)
 
         self._dirty = False
 
@@ -95,16 +95,16 @@ class NavParent2(ReadWriteKaitaiStruct):
 
         def _check(self):
             if len((self.name).encode(u"ASCII")) != 4:
-                raise kaitaistruct.ConsistencyError(u"name", len((self.name).encode(u"ASCII")), 4)
+                raise kaitaistruct.ConsistencyError(u"name", 4, len((self.name).encode(u"ASCII")))
             if self.tag_content__enabled:
                 pass
                 _on = self.name
                 if _on == u"RAHC":
                     pass
                     if self._m_tag_content._root != self._root:
-                        raise kaitaistruct.ConsistencyError(u"tag_content", self._m_tag_content._root, self._root)
+                        raise kaitaistruct.ConsistencyError(u"tag_content", self._root, self._m_tag_content._root)
                     if self._m_tag_content._parent != self:
-                        raise kaitaistruct.ConsistencyError(u"tag_content", self._m_tag_content._parent, self)
+                        raise kaitaistruct.ConsistencyError(u"tag_content", self, self._m_tag_content._parent)
 
             self._dirty = False
 
@@ -130,7 +130,7 @@ class NavParent2(ReadWriteKaitaiStruct):
 
             def _check(self):
                 if len((self.content).encode(u"ASCII")) != self._parent.num_items:
-                    raise kaitaistruct.ConsistencyError(u"content", len((self.content).encode(u"ASCII")), self._parent.num_items)
+                    raise kaitaistruct.ConsistencyError(u"content", self._parent.num_items, len((self.content).encode(u"ASCII")))
                 self._dirty = False
 
 

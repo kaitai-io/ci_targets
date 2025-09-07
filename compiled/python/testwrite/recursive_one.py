@@ -76,27 +76,27 @@ class RecursiveOne(ReadWriteKaitaiStruct):
         if _on == 0:
             pass
             if self.next._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"next", self.next._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"next", self._root, self.next._root)
             if self.next._parent != self:
-                raise kaitaistruct.ConsistencyError(u"next", self.next._parent, self)
+                raise kaitaistruct.ConsistencyError(u"next", self, self.next._parent)
         elif _on == 1:
             pass
             if self.next._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"next", self.next._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"next", self._root, self.next._root)
             if self.next._parent != self:
-                raise kaitaistruct.ConsistencyError(u"next", self.next._parent, self)
+                raise kaitaistruct.ConsistencyError(u"next", self, self.next._parent)
         elif _on == 2:
             pass
             if self.next._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"next", self.next._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"next", self._root, self.next._root)
             if self.next._parent != self:
-                raise kaitaistruct.ConsistencyError(u"next", self.next._parent, self)
+                raise kaitaistruct.ConsistencyError(u"next", self, self.next._parent)
         elif _on == 3:
             pass
             if self.next._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"next", self.next._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"next", self._root, self.next._root)
             if self.next._parent != self:
-                raise kaitaistruct.ConsistencyError(u"next", self.next._parent, self)
+                raise kaitaistruct.ConsistencyError(u"next", self, self.next._parent)
         self._dirty = False
 
     class Fini(ReadWriteKaitaiStruct):

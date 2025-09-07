@@ -64,14 +64,14 @@ class DebugEnumName(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.array_of_ints) != 1:
-            raise kaitaistruct.ConsistencyError(u"array_of_ints", len(self.array_of_ints), 1)
+            raise kaitaistruct.ConsistencyError(u"array_of_ints", 1, len(self.array_of_ints))
         for i in range(len(self.array_of_ints)):
             pass
 
         if self.test_type._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"test_type", self.test_type._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"test_type", self._root, self.test_type._root)
         if self.test_type._parent != self:
-            raise kaitaistruct.ConsistencyError(u"test_type", self.test_type._parent, self)
+            raise kaitaistruct.ConsistencyError(u"test_type", self, self.test_type._parent)
         self._dirty = False
 
     class TestSubtype(ReadWriteKaitaiStruct):

@@ -46,14 +46,14 @@ public class CombineBytes extends KaitaiStruct.ReadWrite {
         this._io.writeBytes(this.bytesLimit);
         this._io.writeBytes(this.bytesEos);
         if (!(this._io.isEof()))
-            throw new ConsistencyError("bytes_eos", this._io.size() - this._io.pos(), 0);
+            throw new ConsistencyError("bytes_eos", 0, this._io.size() - this._io.pos());
     }
 
     public void _check() {
         if (KaitaiStream.byteArrayIndexOf(this.bytesTerm, ((byte) 124)) != -1)
-            throw new ConsistencyError("bytes_term", KaitaiStream.byteArrayIndexOf(this.bytesTerm, ((byte) 124)), -1);
+            throw new ConsistencyError("bytes_term", -1, KaitaiStream.byteArrayIndexOf(this.bytesTerm, ((byte) 124)));
         if (this.bytesLimit.length != 4)
-            throw new ConsistencyError("bytes_limit", this.bytesLimit.length, 4);
+            throw new ConsistencyError("bytes_limit", 4, this.bytesLimit.length);
         _dirty = false;
     }
     private byte[] bytesCalc;

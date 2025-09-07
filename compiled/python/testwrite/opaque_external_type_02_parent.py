@@ -33,9 +33,9 @@ class OpaqueExternalType02Parent(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.parent._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"parent", self.parent._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"parent", self._root, self.parent._root)
         if self.parent._parent != self:
-            raise kaitaistruct.ConsistencyError(u"parent", self.parent._parent, self)
+            raise kaitaistruct.ConsistencyError(u"parent", self, self.parent._parent)
         self._dirty = False
 
     class ParentObj(ReadWriteKaitaiStruct):

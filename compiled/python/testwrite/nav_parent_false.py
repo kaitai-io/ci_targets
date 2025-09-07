@@ -38,13 +38,13 @@ class NavParentFalse(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.element_a._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"element_a", self.element_a._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"element_a", self._root, self.element_a._root)
         if self.element_a._parent != self:
-            raise kaitaistruct.ConsistencyError(u"element_a", self.element_a._parent, self)
+            raise kaitaistruct.ConsistencyError(u"element_a", self, self.element_a._parent)
         if self.element_b._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"element_b", self.element_b._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"element_b", self._root, self.element_b._root)
         if self.element_b._parent != self:
-            raise kaitaistruct.ConsistencyError(u"element_b", self.element_b._parent, self)
+            raise kaitaistruct.ConsistencyError(u"element_b", self, self.element_b._parent)
         self._dirty = False
 
     class Child(ReadWriteKaitaiStruct):
@@ -82,7 +82,7 @@ class NavParentFalse(ReadWriteKaitaiStruct):
             if self.code == 73:
                 pass
                 if len(self.more) != self._parent._parent.child_size:
-                    raise kaitaistruct.ConsistencyError(u"more", len(self.more), self._parent._parent.child_size)
+                    raise kaitaistruct.ConsistencyError(u"more", self._parent._parent.child_size, len(self.more))
 
             self._dirty = False
 
@@ -115,13 +115,13 @@ class NavParentFalse(ReadWriteKaitaiStruct):
 
         def _check(self):
             if self.foo._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"foo", self.foo._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"foo", self._root, self.foo._root)
             if self.foo._parent != self:
-                raise kaitaistruct.ConsistencyError(u"foo", self.foo._parent, self)
+                raise kaitaistruct.ConsistencyError(u"foo", self, self.foo._parent)
             if self.bar._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"bar", self.bar._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"bar", self._root, self.bar._root)
             if self.bar._parent != self:
-                raise kaitaistruct.ConsistencyError(u"bar", self.bar._parent, self)
+                raise kaitaistruct.ConsistencyError(u"bar", self, self.bar._parent)
             self._dirty = False
 
 
@@ -149,9 +149,9 @@ class NavParentFalse(ReadWriteKaitaiStruct):
 
         def _check(self):
             if self.foo._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"foo", self.foo._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"foo", self._root, self.foo._root)
             if self.foo._parent != None:
-                raise kaitaistruct.ConsistencyError(u"foo", self.foo._parent, None)
+                raise kaitaistruct.ConsistencyError(u"foo", None, self.foo._parent)
             self._dirty = False
 
 

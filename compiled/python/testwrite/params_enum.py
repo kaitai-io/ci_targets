@@ -40,11 +40,11 @@ class ParamsEnum(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.invoke_with_param._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"invoke_with_param", self.invoke_with_param._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"invoke_with_param", self._root, self.invoke_with_param._root)
         if self.invoke_with_param._parent != self:
-            raise kaitaistruct.ConsistencyError(u"invoke_with_param", self.invoke_with_param._parent, self)
+            raise kaitaistruct.ConsistencyError(u"invoke_with_param", self, self.invoke_with_param._parent)
         if self.invoke_with_param.enumerated_one != self.one:
-            raise kaitaistruct.ConsistencyError(u"invoke_with_param", self.invoke_with_param.enumerated_one, self.one)
+            raise kaitaistruct.ConsistencyError(u"invoke_with_param", self.one, self.invoke_with_param.enumerated_one)
         self._dirty = False
 
     class WithParam(ReadWriteKaitaiStruct):

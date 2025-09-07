@@ -47,9 +47,9 @@ public class UserType extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.one._root(), _root()))
-            throw new ConsistencyError("one", this.one._root(), _root());
+            throw new ConsistencyError("one", _root(), this.one._root());
         if (!Objects.equals(this.one._parent(), this))
-            throw new ConsistencyError("one", this.one._parent(), this);
+            throw new ConsistencyError("one", this, this.one._parent());
         _dirty = false;
     }
     public static class Header extends KaitaiStruct.ReadWrite {

@@ -50,7 +50,7 @@ public class ValidFailRangeBytes extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.foo.length != 2)
-            throw new ConsistencyError("foo", this.foo.length, 2);
+            throw new ConsistencyError("foo", 2, this.foo.length);
         if (!((KaitaiStream.byteArrayCompare(this.foo, new byte[] { 80 }) >= 0))) {
             throw new KaitaiStream.ValidationLessThanError(new byte[] { 80 }, this.foo, null, "/seq/0");
         }

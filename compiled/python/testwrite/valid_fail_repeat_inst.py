@@ -44,7 +44,7 @@ class ValidFailRepeatInst(ReadWriteKaitaiStruct):
         if len(self.inst) == 0:
             pass
             if len(self.a) != 0:
-                raise kaitaistruct.ConsistencyError(u"a", len(self.a), 0)
+                raise kaitaistruct.ConsistencyError(u"a", 0, len(self.a))
             self._io.write_bytes(self.a)
 
 
@@ -95,11 +95,11 @@ class ValidFailRepeatInst(ReadWriteKaitaiStruct):
         for i in range(len(self._m_inst)):
             pass
             if self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"inst", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"inst", 0, self._io.size() - self._io.pos())
             self._io.write_u4be(self._m_inst[i])
 
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"inst", self._io.size() - self._io.pos(), 0)
+            raise kaitaistruct.ConsistencyError(u"inst", 0, self._io.size() - self._io.pos())
         self._io.seek(_pos)
 
 

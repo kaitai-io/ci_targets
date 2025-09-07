@@ -62,21 +62,21 @@ class ExprArray(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.aint) != 4:
-            raise kaitaistruct.ConsistencyError(u"aint", len(self.aint), 4)
+            raise kaitaistruct.ConsistencyError(u"aint", 4, len(self.aint))
         for i in range(len(self.aint)):
             pass
 
         if len(self.afloat) != 3:
-            raise kaitaistruct.ConsistencyError(u"afloat", len(self.afloat), 3)
+            raise kaitaistruct.ConsistencyError(u"afloat", 3, len(self.afloat))
         for i in range(len(self.afloat)):
             pass
 
         if len(self.astr) != 3:
-            raise kaitaistruct.ConsistencyError(u"astr", len(self.astr), 3)
+            raise kaitaistruct.ConsistencyError(u"astr", 3, len(self.astr))
         for i in range(len(self.astr)):
             pass
             if KaitaiStream.byte_array_index_of((self.astr[i]).encode(u"UTF-8"), 0) != -1:
-                raise kaitaistruct.ConsistencyError(u"astr", KaitaiStream.byte_array_index_of((self.astr[i]).encode(u"UTF-8"), 0), -1)
+                raise kaitaistruct.ConsistencyError(u"astr", -1, KaitaiStream.byte_array_index_of((self.astr[i]).encode(u"UTF-8"), 0))
 
         self._dirty = False
 

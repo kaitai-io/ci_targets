@@ -65,7 +65,7 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_ltr = _io__raw_ltr.toByteArray();
                     if (_this._raw_ltr.length != 4)
-                        throw new ConsistencyError("raw(ltr)", _this._raw_ltr.length, 4);
+                        throw new ConsistencyError("raw(ltr)", 4, _this._raw_ltr.length);
                     parent.writeBytes(_this._raw_ltr);
                 }
             });
@@ -82,7 +82,7 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_rtl = _io__raw_rtl.toByteArray();
                     if (_this._raw_rtl.length != 4)
-                        throw new ConsistencyError("raw(rtl)", _this._raw_rtl.length, 4);
+                        throw new ConsistencyError("raw(rtl)", 4, _this._raw_rtl.length);
                     parent.writeBytes(_this._raw_rtl);
                 }
             });
@@ -99,7 +99,7 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_leadingZeroLtr = _io__raw_leadingZeroLtr.toByteArray();
                     if (_this._raw_leadingZeroLtr.length != 4)
-                        throw new ConsistencyError("raw(leading_zero_ltr)", _this._raw_leadingZeroLtr.length, 4);
+                        throw new ConsistencyError("raw(leading_zero_ltr)", 4, _this._raw_leadingZeroLtr.length);
                     parent.writeBytes(_this._raw_leadingZeroLtr);
                 }
             });
@@ -109,17 +109,17 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.ltr._root(), _root()))
-            throw new ConsistencyError("ltr", this.ltr._root(), _root());
+            throw new ConsistencyError("ltr", _root(), this.ltr._root());
         if (!Objects.equals(this.ltr._parent(), this))
-            throw new ConsistencyError("ltr", this.ltr._parent(), this);
+            throw new ConsistencyError("ltr", this, this.ltr._parent());
         if (!Objects.equals(this.rtl._root(), _root()))
-            throw new ConsistencyError("rtl", this.rtl._root(), _root());
+            throw new ConsistencyError("rtl", _root(), this.rtl._root());
         if (!Objects.equals(this.rtl._parent(), this))
-            throw new ConsistencyError("rtl", this.rtl._parent(), this);
+            throw new ConsistencyError("rtl", this, this.rtl._parent());
         if (!Objects.equals(this.leadingZeroLtr._root(), _root()))
-            throw new ConsistencyError("leading_zero_ltr", this.leadingZeroLtr._root(), _root());
+            throw new ConsistencyError("leading_zero_ltr", _root(), this.leadingZeroLtr._root());
         if (!Objects.equals(this.leadingZeroLtr._parent(), this))
-            throw new ConsistencyError("leading_zero_ltr", this.leadingZeroLtr._parent(), this);
+            throw new ConsistencyError("leading_zero_ltr", this, this.leadingZeroLtr._parent());
         _dirty = false;
     }
     public static class LeadingZeroLtrObj extends KaitaiStruct.ReadWrite {

@@ -71,7 +71,7 @@ public class EnumToIClassBorder1 extends KaitaiStruct.ReadWrite {
     public void _check() {
         if (_enabledChecker) {
             if (!Objects.equals(this.checker.parent(), _root()))
-                throw new ConsistencyError("checker", this.checker.parent(), _root());
+                throw new ConsistencyError("checker", _root(), this.checker.parent());
         }
         _dirty = false;
     }

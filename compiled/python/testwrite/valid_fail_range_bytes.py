@@ -34,7 +34,7 @@ class ValidFailRangeBytes(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.foo) != 2:
-            raise kaitaistruct.ConsistencyError(u"foo", len(self.foo), 2)
+            raise kaitaistruct.ConsistencyError(u"foo", 2, len(self.foo))
         if not self.foo >= b"\x50":
             raise kaitaistruct.ValidationLessThanError(b"\x50", self.foo, None, u"/seq/0")
         if not self.foo <= b"\x50\x31":

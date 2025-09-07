@@ -68,16 +68,16 @@ public class RepeatNStrzDouble extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.lines1.size() != qty() / 2)
-            throw new ConsistencyError("lines1", this.lines1.size(), qty() / 2);
+            throw new ConsistencyError("lines1", qty() / 2, this.lines1.size());
         for (int i = 0; i < this.lines1.size(); i++) {
             if (KaitaiStream.byteArrayIndexOf((this.lines1.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)) != -1)
-                throw new ConsistencyError("lines1", KaitaiStream.byteArrayIndexOf((this.lines1.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)), -1);
+                throw new ConsistencyError("lines1", -1, KaitaiStream.byteArrayIndexOf((this.lines1.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)));
         }
         if (this.lines2.size() != qty() / 2)
-            throw new ConsistencyError("lines2", this.lines2.size(), qty() / 2);
+            throw new ConsistencyError("lines2", qty() / 2, this.lines2.size());
         for (int i = 0; i < this.lines2.size(); i++) {
             if (KaitaiStream.byteArrayIndexOf((this.lines2.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)) != -1)
-                throw new ConsistencyError("lines2", KaitaiStream.byteArrayIndexOf((this.lines2.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)), -1);
+                throw new ConsistencyError("lines2", -1, KaitaiStream.byteArrayIndexOf((this.lines2.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)));
         }
         _dirty = false;
     }

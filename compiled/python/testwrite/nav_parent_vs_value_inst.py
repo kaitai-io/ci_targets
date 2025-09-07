@@ -35,11 +35,11 @@ class NavParentVsValueInst(ReadWriteKaitaiStruct):
 
     def _check(self):
         if KaitaiStream.byte_array_index_of((self.s1).encode(u"UTF-8"), 124) != -1:
-            raise kaitaistruct.ConsistencyError(u"s1", KaitaiStream.byte_array_index_of((self.s1).encode(u"UTF-8"), 124), -1)
+            raise kaitaistruct.ConsistencyError(u"s1", -1, KaitaiStream.byte_array_index_of((self.s1).encode(u"UTF-8"), 124))
         if self.child._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"child", self.child._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"child", self._root, self.child._root)
         if self.child._parent != self:
-            raise kaitaistruct.ConsistencyError(u"child", self.child._parent, self)
+            raise kaitaistruct.ConsistencyError(u"child", self, self.child._parent)
         self._dirty = False
 
     class ChildObj(ReadWriteKaitaiStruct):

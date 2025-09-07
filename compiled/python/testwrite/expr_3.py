@@ -32,7 +32,7 @@ class Expr3(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len((self.two).encode(u"ASCII")) != 3:
-            raise kaitaistruct.ConsistencyError(u"two", len((self.two).encode(u"ASCII")), 3)
+            raise kaitaistruct.ConsistencyError(u"two", 3, len((self.two).encode(u"ASCII")))
         self._dirty = False
 
     @property

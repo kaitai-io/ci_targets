@@ -38,14 +38,14 @@ class ProcessRepeatBytes(ReadWriteKaitaiStruct):
             pass
             self._raw_bufs.append(KaitaiStream.process_xor_one(self.bufs[i], 158))
             if len(self._raw_bufs[i]) != 5:
-                raise kaitaistruct.ConsistencyError(u"bufs", len(self._raw_bufs[i]), 5)
+                raise kaitaistruct.ConsistencyError(u"bufs", 5, len(self._raw_bufs[i]))
             self._io.write_bytes(self._raw_bufs[i])
 
 
 
     def _check(self):
         if len(self.bufs) != 2:
-            raise kaitaistruct.ConsistencyError(u"bufs", len(self.bufs), 2)
+            raise kaitaistruct.ConsistencyError(u"bufs", 2, len(self.bufs))
         for i in range(len(self.bufs)):
             pass
 

@@ -53,12 +53,12 @@ public class RepeatNBytesPad extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.records.size() != 3)
-            throw new ConsistencyError("records", this.records.size(), 3);
+            throw new ConsistencyError("records", 3, this.records.size());
         for (int i = 0; i < this.records.size(); i++) {
             if (this.records.get(((Number) (i)).intValue()).length > 5)
-                throw new ConsistencyError("records", this.records.get(((Number) (i)).intValue()).length, 5);
+                throw new ConsistencyError("records", 5, this.records.get(((Number) (i)).intValue()).length);
             if ( ((this.records.get(((Number) (i)).intValue()).length != 0) && ((this.records.get(((Number) (i)).intValue())[((Number) (this.records.get(((Number) (i)).intValue()).length - 1)).intValue()] & 0xff) == 170)) )
-                throw new ConsistencyError("records", (this.records.get(((Number) (i)).intValue())[((Number) (this.records.get(((Number) (i)).intValue()).length - 1)).intValue()] & 0xff), 170);
+                throw new ConsistencyError("records", 170, (this.records.get(((Number) (i)).intValue())[((Number) (this.records.get(((Number) (i)).intValue()).length - 1)).intValue()] & 0xff));
         }
         _dirty = false;
     }

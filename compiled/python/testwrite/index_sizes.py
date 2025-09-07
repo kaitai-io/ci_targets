@@ -52,16 +52,16 @@ class IndexSizes(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.sizes) != self.qty:
-            raise kaitaistruct.ConsistencyError(u"sizes", len(self.sizes), self.qty)
+            raise kaitaistruct.ConsistencyError(u"sizes", self.qty, len(self.sizes))
         for i in range(len(self.sizes)):
             pass
 
         if len(self.bufs) != self.qty:
-            raise kaitaistruct.ConsistencyError(u"bufs", len(self.bufs), self.qty)
+            raise kaitaistruct.ConsistencyError(u"bufs", self.qty, len(self.bufs))
         for i in range(len(self.bufs)):
             pass
             if len((self.bufs[i]).encode(u"ASCII")) != self.sizes[i]:
-                raise kaitaistruct.ConsistencyError(u"bufs", len((self.bufs[i]).encode(u"ASCII")), self.sizes[i])
+                raise kaitaistruct.ConsistencyError(u"bufs", self.sizes[i], len((self.bufs[i]).encode(u"ASCII")))
 
         self._dirty = False
 

@@ -72,22 +72,22 @@ public class ValidEqStrEncodings extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if ((this.str1).getBytes(Charset.forName("ASCII")).length != lenOf1())
-            throw new ConsistencyError("str1", (this.str1).getBytes(Charset.forName("ASCII")).length, lenOf1());
+            throw new ConsistencyError("str1", lenOf1(), (this.str1).getBytes(Charset.forName("ASCII")).length);
         if (!(this.str1.equals("Some ASCII"))) {
             throw new KaitaiStream.ValidationNotEqualError("Some ASCII", this.str1, null, "/seq/1");
         }
         if ((this.str2).getBytes(Charset.forName("UTF-8")).length != lenOf2())
-            throw new ConsistencyError("str2", (this.str2).getBytes(Charset.forName("UTF-8")).length, lenOf2());
+            throw new ConsistencyError("str2", lenOf2(), (this.str2).getBytes(Charset.forName("UTF-8")).length);
         if (!(this.str2.equals("\u3053\u3093\u306b\u3061\u306f"))) {
             throw new KaitaiStream.ValidationNotEqualError("\u3053\u3093\u306b\u3061\u306f", this.str2, null, "/seq/3");
         }
         if ((this.str3).getBytes(Charset.forName("Shift_JIS")).length != lenOf3())
-            throw new ConsistencyError("str3", (this.str3).getBytes(Charset.forName("Shift_JIS")).length, lenOf3());
+            throw new ConsistencyError("str3", lenOf3(), (this.str3).getBytes(Charset.forName("Shift_JIS")).length);
         if (!(this.str3.equals("\u3053\u3093\u306b\u3061\u306f"))) {
             throw new KaitaiStream.ValidationNotEqualError("\u3053\u3093\u306b\u3061\u306f", this.str3, null, "/seq/5");
         }
         if ((this.str4).getBytes(Charset.forName("IBM437")).length != lenOf4())
-            throw new ConsistencyError("str4", (this.str4).getBytes(Charset.forName("IBM437")).length, lenOf4());
+            throw new ConsistencyError("str4", lenOf4(), (this.str4).getBytes(Charset.forName("IBM437")).length);
         if (!(this.str4.equals("\u2591\u2592\u2593"))) {
             throw new KaitaiStream.ValidationNotEqualError("\u2591\u2592\u2593", this.str4, null, "/seq/7");
         }

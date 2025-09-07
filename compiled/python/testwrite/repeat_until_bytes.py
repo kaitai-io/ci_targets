@@ -43,14 +43,14 @@ class RepeatUntilBytes(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.records) == 0:
-            raise kaitaistruct.ConsistencyError(u"records", len(self.records), 0)
+            raise kaitaistruct.ConsistencyError(u"records", 0, len(self.records))
         for i in range(len(self.records)):
             pass
             if len(self.records[i]) != 5:
-                raise kaitaistruct.ConsistencyError(u"records", len(self.records[i]), 5)
+                raise kaitaistruct.ConsistencyError(u"records", 5, len(self.records[i]))
             _ = self.records[i]
             if (KaitaiStream.byte_array_index(_, 0) == 170) != (i == len(self.records) - 1):
-                raise kaitaistruct.ConsistencyError(u"records", KaitaiStream.byte_array_index(_, 0) == 170, i == len(self.records) - 1)
+                raise kaitaistruct.ConsistencyError(u"records", i == len(self.records) - 1, KaitaiStream.byte_array_index(_, 0) == 170)
 
         self._dirty = False
 

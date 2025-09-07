@@ -50,9 +50,9 @@ public class FixedStruct extends KaitaiStruct.ReadWrite {
     public void _check() {
         if (_enabledHdr) {
             if (!Objects.equals(this.hdr._root(), _root()))
-                throw new ConsistencyError("hdr", this.hdr._root(), _root());
+                throw new ConsistencyError("hdr", _root(), this.hdr._root());
             if (!Objects.equals(this.hdr._parent(), this))
-                throw new ConsistencyError("hdr", this.hdr._parent(), this);
+                throw new ConsistencyError("hdr", this, this.hdr._parent());
         }
         _dirty = false;
     }
@@ -165,37 +165,37 @@ public class FixedStruct extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (this.magic1.length != 6)
-                throw new ConsistencyError("magic1", this.magic1.length, 6);
+                throw new ConsistencyError("magic1", 6, this.magic1.length);
             if (!(Arrays.equals(this.magic1, new byte[] { 80, 65, 67, 75, 45, 49 }))) {
                 throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 49 }, this.magic1, null, "/types/header/seq/0");
             }
             if (this.magicUint.length != 10)
-                throw new ConsistencyError("magic_uint", this.magicUint.length, 10);
+                throw new ConsistencyError("magic_uint", 10, this.magicUint.length);
             if (!(Arrays.equals(this.magicUint, new byte[] { 80, 65, 67, 75, 45, 85, 45, 68, 69, 70 }))) {
                 throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 85, 45, 68, 69, 70 }, this.magicUint, null, "/types/header/seq/3");
             }
             if (this.magicSint.length != 10)
-                throw new ConsistencyError("magic_sint", this.magicSint.length, 10);
+                throw new ConsistencyError("magic_sint", 10, this.magicSint.length);
             if (!(Arrays.equals(this.magicSint, new byte[] { 80, 65, 67, 75, 45, 83, 45, 68, 69, 70 }))) {
                 throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 83, 45, 68, 69, 70 }, this.magicSint, null, "/types/header/seq/7");
             }
             if (this.magicUintLe.length != 9)
-                throw new ConsistencyError("magic_uint_le", this.magicUintLe.length, 9);
+                throw new ConsistencyError("magic_uint_le", 9, this.magicUintLe.length);
             if (!(Arrays.equals(this.magicUintLe, new byte[] { 80, 65, 67, 75, 45, 85, 45, 76, 69 }))) {
                 throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 85, 45, 76, 69 }, this.magicUintLe, null, "/types/header/seq/11");
             }
             if (this.magicSintLe.length != 9)
-                throw new ConsistencyError("magic_sint_le", this.magicSintLe.length, 9);
+                throw new ConsistencyError("magic_sint_le", 9, this.magicSintLe.length);
             if (!(Arrays.equals(this.magicSintLe, new byte[] { 80, 65, 67, 75, 45, 83, 45, 76, 69 }))) {
                 throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 83, 45, 76, 69 }, this.magicSintLe, null, "/types/header/seq/15");
             }
             if (this.magicUintBe.length != 9)
-                throw new ConsistencyError("magic_uint_be", this.magicUintBe.length, 9);
+                throw new ConsistencyError("magic_uint_be", 9, this.magicUintBe.length);
             if (!(Arrays.equals(this.magicUintBe, new byte[] { 80, 65, 67, 75, 45, 85, 45, 66, 69 }))) {
                 throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 85, 45, 66, 69 }, this.magicUintBe, null, "/types/header/seq/19");
             }
             if (this.magicSintBe.length != 9)
-                throw new ConsistencyError("magic_sint_be", this.magicSintBe.length, 9);
+                throw new ConsistencyError("magic_sint_be", 9, this.magicSintBe.length);
             if (!(Arrays.equals(this.magicSintBe, new byte[] { 80, 65, 67, 75, 45, 83, 45, 66, 69 }))) {
                 throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 83, 45, 66, 69 }, this.magicSintBe, null, "/types/header/seq/23");
             }

@@ -32,14 +32,14 @@ class CombineStr(ReadWriteKaitaiStruct):
         self._io.write_bytes((self.str_limit).encode(u"ASCII"))
         self._io.write_bytes((self.str_eos).encode(u"ASCII"))
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"str_eos", self._io.size() - self._io.pos(), 0)
+            raise kaitaistruct.ConsistencyError(u"str_eos", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):
         if KaitaiStream.byte_array_index_of((self.str_term).encode(u"ASCII"), 124) != -1:
-            raise kaitaistruct.ConsistencyError(u"str_term", KaitaiStream.byte_array_index_of((self.str_term).encode(u"ASCII"), 124), -1)
+            raise kaitaistruct.ConsistencyError(u"str_term", -1, KaitaiStream.byte_array_index_of((self.str_term).encode(u"ASCII"), 124))
         if len((self.str_limit).encode(u"ASCII")) != 4:
-            raise kaitaistruct.ConsistencyError(u"str_limit", len((self.str_limit).encode(u"ASCII")), 4)
+            raise kaitaistruct.ConsistencyError(u"str_limit", 4, len((self.str_limit).encode(u"ASCII")))
         self._dirty = False
 
     @property

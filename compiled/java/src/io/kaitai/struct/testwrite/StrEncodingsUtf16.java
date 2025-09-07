@@ -65,7 +65,7 @@ public class StrEncodingsUtf16 extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_beBomRemoved = _io__raw_beBomRemoved.toByteArray();
                     if (_this._raw_beBomRemoved.length != lenBe())
-                        throw new ConsistencyError("raw(be_bom_removed)", _this._raw_beBomRemoved.length, lenBe());
+                        throw new ConsistencyError("raw(be_bom_removed)", lenBe(), _this._raw_beBomRemoved.length);
                     parent.writeBytes(_this._raw_beBomRemoved);
                 }
             });
@@ -83,7 +83,7 @@ public class StrEncodingsUtf16 extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_leBomRemoved = _io__raw_leBomRemoved.toByteArray();
                     if (_this._raw_leBomRemoved.length != lenLe())
-                        throw new ConsistencyError("raw(le_bom_removed)", _this._raw_leBomRemoved.length, lenLe());
+                        throw new ConsistencyError("raw(le_bom_removed)", lenLe(), _this._raw_leBomRemoved.length);
                     parent.writeBytes(_this._raw_leBomRemoved);
                 }
             });
@@ -93,13 +93,13 @@ public class StrEncodingsUtf16 extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.beBomRemoved._root(), _root()))
-            throw new ConsistencyError("be_bom_removed", this.beBomRemoved._root(), _root());
+            throw new ConsistencyError("be_bom_removed", _root(), this.beBomRemoved._root());
         if (!Objects.equals(this.beBomRemoved._parent(), this))
-            throw new ConsistencyError("be_bom_removed", this.beBomRemoved._parent(), this);
+            throw new ConsistencyError("be_bom_removed", this, this.beBomRemoved._parent());
         if (!Objects.equals(this.leBomRemoved._root(), _root()))
-            throw new ConsistencyError("le_bom_removed", this.leBomRemoved._root(), _root());
+            throw new ConsistencyError("le_bom_removed", _root(), this.leBomRemoved._root());
         if (!Objects.equals(this.leBomRemoved._parent(), this))
-            throw new ConsistencyError("le_bom_removed", this.leBomRemoved._parent(), this);
+            throw new ConsistencyError("le_bom_removed", this, this.leBomRemoved._parent());
         _dirty = false;
     }
     public static class StrBeBomRemoved extends KaitaiStruct.ReadWrite {
@@ -137,7 +137,7 @@ public class StrEncodingsUtf16 extends KaitaiStruct.ReadWrite {
             this._io.writeU2be(this.bom);
             this._io.writeBytes((this.str).getBytes(Charset.forName("UTF-16BE")));
             if (!(this._io.isEof()))
-                throw new ConsistencyError("str", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("str", 0, this._io.size() - this._io.pos());
         }
 
         public void _check() {
@@ -191,7 +191,7 @@ public class StrEncodingsUtf16 extends KaitaiStruct.ReadWrite {
             this._io.writeU2le(this.bom);
             this._io.writeBytes((this.str).getBytes(Charset.forName("UTF-16LE")));
             if (!(this._io.isEof()))
-                throw new ConsistencyError("str", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("str", 0, this._io.size() - this._io.pos());
         }
 
         public void _check() {

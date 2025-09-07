@@ -64,19 +64,19 @@ public class ParamsPassArrayUsertype extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.blocks.size() != 2)
-            throw new ConsistencyError("blocks", this.blocks.size(), 2);
+            throw new ConsistencyError("blocks", 2, this.blocks.size());
         for (int i = 0; i < this.blocks.size(); i++) {
             if (!Objects.equals(this.blocks.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("blocks", this.blocks.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("blocks", _root(), this.blocks.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.blocks.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("blocks", this.blocks.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("blocks", this, this.blocks.get(((Number) (i)).intValue())._parent());
         }
         if (!Objects.equals(this.passBlocks._root(), _root()))
-            throw new ConsistencyError("pass_blocks", this.passBlocks._root(), _root());
+            throw new ConsistencyError("pass_blocks", _root(), this.passBlocks._root());
         if (!Objects.equals(this.passBlocks._parent(), this))
-            throw new ConsistencyError("pass_blocks", this.passBlocks._parent(), this);
+            throw new ConsistencyError("pass_blocks", this, this.passBlocks._parent());
         if (!Objects.equals(this.passBlocks.bar(), blocks()))
-            throw new ConsistencyError("pass_blocks", this.passBlocks.bar(), blocks());
+            throw new ConsistencyError("pass_blocks", blocks(), this.passBlocks.bar());
         _dirty = false;
     }
     public static class Block extends KaitaiStruct.ReadWrite {
@@ -162,9 +162,9 @@ public class ParamsPassArrayUsertype extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (this.one.length != bar().get(((int) 0)).foo())
-                throw new ConsistencyError("one", this.one.length, bar().get(((int) 0)).foo());
+                throw new ConsistencyError("one", bar().get(((int) 0)).foo(), this.one.length);
             if (this.two.length != bar().get(((int) 1)).foo())
-                throw new ConsistencyError("two", this.two.length, bar().get(((int) 1)).foo());
+                throw new ConsistencyError("two", bar().get(((int) 1)).foo(), this.two.length);
             _dirty = false;
         }
         private byte[] one;

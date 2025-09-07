@@ -44,7 +44,7 @@ public class ExprBytesOps extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.one.length != 3)
-            throw new ConsistencyError("one", this.one.length, 3);
+            throw new ConsistencyError("one", 3, this.one.length);
         _dirty = false;
     }
     private Integer oneFirst;

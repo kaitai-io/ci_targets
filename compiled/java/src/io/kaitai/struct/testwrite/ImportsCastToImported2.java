@@ -51,7 +51,7 @@ public class ImportsCastToImported2 extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.two.hwParam(), hw()))
-            throw new ConsistencyError("two", this.two.hwParam(), hw());
+            throw new ConsistencyError("two", hw(), this.two.hwParam());
         _dirty = false;
     }
     private HelloWorld hw;

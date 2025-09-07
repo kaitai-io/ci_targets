@@ -61,7 +61,7 @@ public class ZlibSurrounded extends KaitaiStruct.ReadWrite {
                     _this._raw_zlib = _io__raw_zlib.toByteArray();
                     _this._raw__raw_zlib = KaitaiStream.unprocessZlib(_this._raw_zlib);
                     if (_this._raw__raw_zlib.length != 12)
-                        throw new ConsistencyError("raw(zlib)", _this._raw__raw_zlib.length, 12);
+                        throw new ConsistencyError("raw(zlib)", 12, _this._raw__raw_zlib.length);
                     parent.writeBytes(_this._raw__raw_zlib);
                 }
             });
@@ -72,13 +72,13 @@ public class ZlibSurrounded extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.pre.length != 4)
-            throw new ConsistencyError("pre", this.pre.length, 4);
+            throw new ConsistencyError("pre", 4, this.pre.length);
         if (!Objects.equals(this.zlib._root(), _root()))
-            throw new ConsistencyError("zlib", this.zlib._root(), _root());
+            throw new ConsistencyError("zlib", _root(), this.zlib._root());
         if (!Objects.equals(this.zlib._parent(), this))
-            throw new ConsistencyError("zlib", this.zlib._parent(), this);
+            throw new ConsistencyError("zlib", this, this.zlib._parent());
         if (this.post.length != 4)
-            throw new ConsistencyError("post", this.post.length, 4);
+            throw new ConsistencyError("post", 4, this.post.length);
         _dirty = false;
     }
     public static class Inflated extends KaitaiStruct.ReadWrite {

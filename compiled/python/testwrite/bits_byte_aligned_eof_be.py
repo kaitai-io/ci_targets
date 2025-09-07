@@ -32,7 +32,7 @@ class BitsByteAlignedEofBe(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.prebuf) != 8:
-            raise kaitaistruct.ConsistencyError(u"prebuf", len(self.prebuf), 8)
+            raise kaitaistruct.ConsistencyError(u"prebuf", 8, len(self.prebuf))
         self._dirty = False
 
 

@@ -66,7 +66,7 @@ public class TypeTernary extends KaitaiStruct.ReadWrite {
                     protected void write(KaitaiStream parent) {
                         _this._raw_difWoHack = _io__raw_difWoHack.toByteArray();
                         if (_this._raw_difWoHack.length != 1)
-                            throw new ConsistencyError("raw(dif_wo_hack)", _this._raw_difWoHack.length, 1);
+                            throw new ConsistencyError("raw(dif_wo_hack)", 1, _this._raw_difWoHack.length);
                         parent.writeBytes(_this._raw_difWoHack);
                     }
                 });
@@ -86,7 +86,7 @@ public class TypeTernary extends KaitaiStruct.ReadWrite {
                     _this._raw_difWithHack = _io__raw_difWithHack.toByteArray();
                     _this._raw__raw_difWithHack = KaitaiStream.processXor(_this._raw_difWithHack, ((Number) (_processXorArg)).byteValue());
                     if (_this._raw__raw_difWithHack.length != 1)
-                        throw new ConsistencyError("raw(dif_with_hack)", _this._raw__raw_difWithHack.length, 1);
+                        throw new ConsistencyError("raw(dif_with_hack)", 1, _this._raw__raw_difWithHack.length);
                     parent.writeBytes(_this._raw__raw_difWithHack);
                 }
             });
@@ -97,14 +97,14 @@ public class TypeTernary extends KaitaiStruct.ReadWrite {
     public void _check() {
         if (!(isHack())) {
             if (!Objects.equals(this.difWoHack._root(), _root()))
-                throw new ConsistencyError("dif_wo_hack", this.difWoHack._root(), _root());
+                throw new ConsistencyError("dif_wo_hack", _root(), this.difWoHack._root());
             if (!Objects.equals(this.difWoHack._parent(), this))
-                throw new ConsistencyError("dif_wo_hack", this.difWoHack._parent(), this);
+                throw new ConsistencyError("dif_wo_hack", this, this.difWoHack._parent());
         }
         if (!Objects.equals(this.difWithHack._root(), _root()))
-            throw new ConsistencyError("dif_with_hack", this.difWithHack._root(), _root());
+            throw new ConsistencyError("dif_with_hack", _root(), this.difWithHack._root());
         if (!Objects.equals(this.difWithHack._parent(), this))
-            throw new ConsistencyError("dif_with_hack", this.difWithHack._parent(), this);
+            throw new ConsistencyError("dif_with_hack", this, this.difWithHack._parent());
         _dirty = false;
     }
     public static class Dummy extends KaitaiStruct.ReadWrite {

@@ -60,11 +60,11 @@ class ExprSizeofType1(ReadWriteKaitaiStruct):
 
         def _check(self):
             if len(self.c) != 2:
-                raise kaitaistruct.ConsistencyError(u"c", len(self.c), 2)
+                raise kaitaistruct.ConsistencyError(u"c", 2, len(self.c))
             if self.d._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"d", self.d._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"d", self._root, self.d._root)
             if self.d._parent != self:
-                raise kaitaistruct.ConsistencyError(u"d", self.d._parent, self)
+                raise kaitaistruct.ConsistencyError(u"d", self, self.d._parent)
             self._dirty = False
 
         class Subblock(ReadWriteKaitaiStruct):
@@ -89,7 +89,7 @@ class ExprSizeofType1(ReadWriteKaitaiStruct):
 
             def _check(self):
                 if len(self.a) != 4:
-                    raise kaitaistruct.ConsistencyError(u"a", len(self.a), 4)
+                    raise kaitaistruct.ConsistencyError(u"a", 4, len(self.a))
                 self._dirty = False
 
 

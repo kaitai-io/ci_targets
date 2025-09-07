@@ -48,38 +48,38 @@ public class ProcessBytesPadTerm extends KaitaiStruct.ReadWrite {
         _assertNotDirty();
         this._raw_strPad = KaitaiStream.processXor(this.strPad, ((Number) (21)).byteValue());
         if (this._raw_strPad.length > 20)
-            throw new ConsistencyError("str_pad", this._raw_strPad.length, 20);
+            throw new ConsistencyError("str_pad", 20, this._raw_strPad.length);
         if ( ((this._raw_strPad.length != 0) && ((this._raw_strPad[((Number) (this._raw_strPad.length - 1)).intValue()] & 0xff) == 64)) )
-            throw new ConsistencyError("str_pad", (this._raw_strPad[((Number) (this._raw_strPad.length - 1)).intValue()] & 0xff), 64);
+            throw new ConsistencyError("str_pad", 64, (this._raw_strPad[((Number) (this._raw_strPad.length - 1)).intValue()] & 0xff));
         this._io.writeBytesLimit(this._raw_strPad, 20, (byte) 64, (byte) 64);
         this._raw_strTerm = KaitaiStream.processXor(this.strTerm, ((Number) (21)).byteValue());
         if (this._raw_strTerm.length > 20)
-            throw new ConsistencyError("str_term", this._raw_strTerm.length, 20);
+            throw new ConsistencyError("str_term", 20, this._raw_strTerm.length);
         if (KaitaiStream.byteArrayIndexOf(this._raw_strTerm, ((byte) 64)) != -1)
-            throw new ConsistencyError("str_term", KaitaiStream.byteArrayIndexOf(this._raw_strTerm, ((byte) 64)), -1);
+            throw new ConsistencyError("str_term", -1, KaitaiStream.byteArrayIndexOf(this._raw_strTerm, ((byte) 64)));
         this._io.writeBytesLimit(this._raw_strTerm, 20, (byte) 64, (byte) 0);
         this._raw_strTermAndPad = KaitaiStream.processXor(this.strTermAndPad, ((Number) (21)).byteValue());
         if (this._raw_strTermAndPad.length > 20)
-            throw new ConsistencyError("str_term_and_pad", this._raw_strTermAndPad.length, 20);
+            throw new ConsistencyError("str_term_and_pad", 20, this._raw_strTermAndPad.length);
         if (KaitaiStream.byteArrayIndexOf(this._raw_strTermAndPad, ((byte) 64)) != -1)
-            throw new ConsistencyError("str_term_and_pad", KaitaiStream.byteArrayIndexOf(this._raw_strTermAndPad, ((byte) 64)), -1);
+            throw new ConsistencyError("str_term_and_pad", -1, KaitaiStream.byteArrayIndexOf(this._raw_strTermAndPad, ((byte) 64)));
         if (this._raw_strTermAndPad.length == 20) {
             if ( ((this._raw_strTermAndPad.length != 0) && ((this._raw_strTermAndPad[((Number) (this._raw_strTermAndPad.length - 1)).intValue()] & 0xff) == 43)) )
-                throw new ConsistencyError("str_term_and_pad", (this._raw_strTermAndPad[((Number) (this._raw_strTermAndPad.length - 1)).intValue()] & 0xff), 43);
+                throw new ConsistencyError("str_term_and_pad", 43, (this._raw_strTermAndPad[((Number) (this._raw_strTermAndPad.length - 1)).intValue()] & 0xff));
         }
         this._io.writeBytesLimit(this._raw_strTermAndPad, 20, (byte) 64, (byte) 43);
         this._raw_strTermInclude = KaitaiStream.processXor(this.strTermInclude, ((Number) (21)).byteValue());
         if (this._raw_strTermInclude.length > 20)
-            throw new ConsistencyError("str_term_include", this._raw_strTermInclude.length, 20);
+            throw new ConsistencyError("str_term_include", 20, this._raw_strTermInclude.length);
         if (this._raw_strTermInclude.length < 20) {
             if (this._raw_strTermInclude.length == 0)
-                throw new ConsistencyError("str_term_include", this._raw_strTermInclude.length, 0);
+                throw new ConsistencyError("str_term_include", 0, this._raw_strTermInclude.length);
             if (KaitaiStream.byteArrayIndexOf(this._raw_strTermInclude, ((byte) 64)) != this._raw_strTermInclude.length - 1)
-                throw new ConsistencyError("str_term_include", KaitaiStream.byteArrayIndexOf(this._raw_strTermInclude, ((byte) 64)), this._raw_strTermInclude.length - 1);
+                throw new ConsistencyError("str_term_include", this._raw_strTermInclude.length - 1, KaitaiStream.byteArrayIndexOf(this._raw_strTermInclude, ((byte) 64)));
         }
         if (this._raw_strTermInclude.length == 20) {
             if ( ((KaitaiStream.byteArrayIndexOf(this._raw_strTermInclude, ((byte) 64)) != -1) && (KaitaiStream.byteArrayIndexOf(this._raw_strTermInclude, ((byte) 64)) != this._raw_strTermInclude.length - 1)) )
-                throw new ConsistencyError("str_term_include", KaitaiStream.byteArrayIndexOf(this._raw_strTermInclude, ((byte) 64)), this._raw_strTermInclude.length - 1);
+                throw new ConsistencyError("str_term_include", this._raw_strTermInclude.length - 1, KaitaiStream.byteArrayIndexOf(this._raw_strTermInclude, ((byte) 64)));
         }
         this._io.writeBytesLimit(this._raw_strTermInclude, 20, (byte) 0, (byte) 0);
     }

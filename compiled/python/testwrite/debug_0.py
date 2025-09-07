@@ -55,7 +55,7 @@ class Debug0(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.array_of_ints) != 3:
-            raise kaitaistruct.ConsistencyError(u"array_of_ints", len(self.array_of_ints), 3)
+            raise kaitaistruct.ConsistencyError(u"array_of_ints", 3, len(self.array_of_ints))
         for i in range(len(self.array_of_ints)):
             pass
 

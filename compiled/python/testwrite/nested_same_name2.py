@@ -38,13 +38,13 @@ class NestedSameName2(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.main_data._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"main_data", self.main_data._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"main_data", self._root, self.main_data._root)
         if self.main_data._parent != self:
-            raise kaitaistruct.ConsistencyError(u"main_data", self.main_data._parent, self)
+            raise kaitaistruct.ConsistencyError(u"main_data", self, self.main_data._parent)
         if self.dummy._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"dummy", self.dummy._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"dummy", self._root, self.dummy._root)
         if self.dummy._parent != self:
-            raise kaitaistruct.ConsistencyError(u"dummy", self.dummy._parent, self)
+            raise kaitaistruct.ConsistencyError(u"dummy", self, self.dummy._parent)
         self._dirty = False
 
     class DummyObj(ReadWriteKaitaiStruct):
@@ -73,9 +73,9 @@ class NestedSameName2(ReadWriteKaitaiStruct):
 
         def _check(self):
             if self.foo._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"foo", self.foo._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"foo", self._root, self.foo._root)
             if self.foo._parent != self:
-                raise kaitaistruct.ConsistencyError(u"foo", self.foo._parent, self)
+                raise kaitaistruct.ConsistencyError(u"foo", self, self.foo._parent)
             self._dirty = False
 
         class FooObj(ReadWriteKaitaiStruct):
@@ -100,7 +100,7 @@ class NestedSameName2(ReadWriteKaitaiStruct):
 
             def _check(self):
                 if len(self.data2) != self._parent.dummy_size * 2:
-                    raise kaitaistruct.ConsistencyError(u"data2", len(self.data2), self._parent.dummy_size * 2)
+                    raise kaitaistruct.ConsistencyError(u"data2", self._parent.dummy_size * 2, len(self.data2))
                 self._dirty = False
 
 
@@ -131,9 +131,9 @@ class NestedSameName2(ReadWriteKaitaiStruct):
 
         def _check(self):
             if self.foo._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"foo", self.foo._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"foo", self._root, self.foo._root)
             if self.foo._parent != self:
-                raise kaitaistruct.ConsistencyError(u"foo", self.foo._parent, self)
+                raise kaitaistruct.ConsistencyError(u"foo", self, self.foo._parent)
             self._dirty = False
 
         class FooObj(ReadWriteKaitaiStruct):
@@ -158,7 +158,7 @@ class NestedSameName2(ReadWriteKaitaiStruct):
 
             def _check(self):
                 if len(self.data1) != self._parent.main_size * 2:
-                    raise kaitaistruct.ConsistencyError(u"data1", len(self.data1), self._parent.main_size * 2)
+                    raise kaitaistruct.ConsistencyError(u"data1", self._parent.main_size * 2, len(self.data1))
                 self._dirty = False
 
 

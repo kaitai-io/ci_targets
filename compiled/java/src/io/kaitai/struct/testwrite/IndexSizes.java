@@ -66,14 +66,14 @@ public class IndexSizes extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.sizes.size() != qty())
-            throw new ConsistencyError("sizes", this.sizes.size(), qty());
+            throw new ConsistencyError("sizes", qty(), this.sizes.size());
         for (int i = 0; i < this.sizes.size(); i++) {
         }
         if (this.bufs.size() != qty())
-            throw new ConsistencyError("bufs", this.bufs.size(), qty());
+            throw new ConsistencyError("bufs", qty(), this.bufs.size());
         for (int i = 0; i < this.bufs.size(); i++) {
             if ((this.bufs.get(((Number) (i)).intValue())).getBytes(Charset.forName("ASCII")).length != sizes().get(((Number) (i)).intValue()))
-                throw new ConsistencyError("bufs", (this.bufs.get(((Number) (i)).intValue())).getBytes(Charset.forName("ASCII")).length, sizes().get(((Number) (i)).intValue()));
+                throw new ConsistencyError("bufs", sizes().get(((Number) (i)).intValue()), (this.bufs.get(((Number) (i)).intValue())).getBytes(Charset.forName("ASCII")).length);
         }
         _dirty = false;
     }

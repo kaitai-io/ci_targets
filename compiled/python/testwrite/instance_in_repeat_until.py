@@ -47,13 +47,13 @@ class InstanceInRepeatUntil(ReadWriteKaitaiStruct):
             self._io.write_s2le(self.entries[i])
             _ = self.entries[i]
             if (_ == self.until_val) != (i == len(self.entries) - 1):
-                raise kaitaistruct.ConsistencyError(u"entries", _ == self.until_val, i == len(self.entries) - 1)
+                raise kaitaistruct.ConsistencyError(u"entries", i == len(self.entries) - 1, _ == self.until_val)
 
 
 
     def _check(self):
         if len(self.entries) == 0:
-            raise kaitaistruct.ConsistencyError(u"entries", len(self.entries), 0)
+            raise kaitaistruct.ConsistencyError(u"entries", 0, len(self.entries))
         for i in range(len(self.entries)):
             pass
 

@@ -59,19 +59,19 @@ public class RepeatEosStruct extends KaitaiStruct.ReadWrite {
         _assertNotDirty();
         for (int i = 0; i < this.chunks.size(); i++) {
             if (this._io.isEof())
-                throw new ConsistencyError("chunks", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("chunks", 0, this._io.size() - this._io.pos());
             this.chunks.get(((Number) (i)).intValue())._write_Seq(this._io);
         }
         if (!(this._io.isEof()))
-            throw new ConsistencyError("chunks", this._io.size() - this._io.pos(), 0);
+            throw new ConsistencyError("chunks", 0, this._io.size() - this._io.pos());
     }
 
     public void _check() {
         for (int i = 0; i < this.chunks.size(); i++) {
             if (!Objects.equals(this.chunks.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("chunks", this.chunks.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("chunks", _root(), this.chunks.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.chunks.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("chunks", this.chunks.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("chunks", this, this.chunks.get(((Number) (i)).intValue())._parent());
         }
         _dirty = false;
     }

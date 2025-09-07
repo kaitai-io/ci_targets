@@ -53,13 +53,13 @@ public class NavParentFalse extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.elementA._root(), _root()))
-            throw new ConsistencyError("element_a", this.elementA._root(), _root());
+            throw new ConsistencyError("element_a", _root(), this.elementA._root());
         if (!Objects.equals(this.elementA._parent(), this))
-            throw new ConsistencyError("element_a", this.elementA._parent(), this);
+            throw new ConsistencyError("element_a", this, this.elementA._parent());
         if (!Objects.equals(this.elementB._root(), _root()))
-            throw new ConsistencyError("element_b", this.elementB._root(), _root());
+            throw new ConsistencyError("element_b", _root(), this.elementB._root());
         if (!Objects.equals(this.elementB._parent(), this))
-            throw new ConsistencyError("element_b", this.elementB._parent(), this);
+            throw new ConsistencyError("element_b", this, this.elementB._parent());
         _dirty = false;
     }
     public static class Child extends KaitaiStruct.ReadWrite {
@@ -107,7 +107,7 @@ public class NavParentFalse extends KaitaiStruct.ReadWrite {
         public void _check() {
             if (code() == 73) {
                 if (this.more.length != _parent()._parent().childSize())
-                    throw new ConsistencyError("more", this.more.length, _parent()._parent().childSize());
+                    throw new ConsistencyError("more", _parent()._parent().childSize(), this.more.length);
             }
             _dirty = false;
         }
@@ -166,13 +166,13 @@ public class NavParentFalse extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (!Objects.equals(this.foo._root(), _root()))
-                throw new ConsistencyError("foo", this.foo._root(), _root());
+                throw new ConsistencyError("foo", _root(), this.foo._root());
             if (!Objects.equals(this.foo._parent(), this))
-                throw new ConsistencyError("foo", this.foo._parent(), this);
+                throw new ConsistencyError("foo", this, this.foo._parent());
             if (!Objects.equals(this.bar._root(), _root()))
-                throw new ConsistencyError("bar", this.bar._root(), _root());
+                throw new ConsistencyError("bar", _root(), this.bar._root());
             if (!Objects.equals(this.bar._parent(), this))
-                throw new ConsistencyError("bar", this.bar._parent(), this);
+                throw new ConsistencyError("bar", this, this.bar._parent());
             _dirty = false;
         }
         private Child foo;
@@ -226,9 +226,9 @@ public class NavParentFalse extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (!Objects.equals(this.foo._root(), _root()))
-                throw new ConsistencyError("foo", this.foo._root(), _root());
+                throw new ConsistencyError("foo", _root(), this.foo._root());
             if (!Objects.equals(this.foo._parent(), null))
-                throw new ConsistencyError("foo", this.foo._parent(), null);
+                throw new ConsistencyError("foo", null, this.foo._parent());
             _dirty = false;
         }
         private Child foo;

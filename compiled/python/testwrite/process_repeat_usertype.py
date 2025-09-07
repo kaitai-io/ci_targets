@@ -54,7 +54,7 @@ class ProcessRepeatUsertype(ReadWriteKaitaiStruct):
                 self._raw_blocks.append(_io__raw_blocks.to_byte_array())
                 self._raw__raw_blocks.append(KaitaiStream.process_xor_one(self._raw_blocks[i], _process_val))
                 if len(self._raw__raw_blocks[i]) != 5:
-                    raise kaitaistruct.ConsistencyError(u"raw(blocks)", len(self._raw__raw_blocks[i]), 5)
+                    raise kaitaistruct.ConsistencyError(u"raw(blocks)", 5, len(self._raw__raw_blocks[i]))
                 parent.write_bytes(self._raw__raw_blocks[i])
             _io__raw_blocks.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self.blocks[i]._write__seq(_io__raw_blocks)
@@ -63,13 +63,13 @@ class ProcessRepeatUsertype(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.blocks) != 2:
-            raise kaitaistruct.ConsistencyError(u"blocks", len(self.blocks), 2)
+            raise kaitaistruct.ConsistencyError(u"blocks", 2, len(self.blocks))
         for i in range(len(self.blocks)):
             pass
             if self.blocks[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"blocks", self.blocks[i]._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"blocks", self._root, self.blocks[i]._root)
             if self.blocks[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"blocks", self.blocks[i]._parent, self)
+                raise kaitaistruct.ConsistencyError(u"blocks", self, self.blocks[i]._parent)
 
         self._dirty = False
 

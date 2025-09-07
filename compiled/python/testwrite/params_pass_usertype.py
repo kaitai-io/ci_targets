@@ -36,15 +36,15 @@ class ParamsPassUsertype(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.first._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"first", self.first._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"first", self._root, self.first._root)
         if self.first._parent != self:
-            raise kaitaistruct.ConsistencyError(u"first", self.first._parent, self)
+            raise kaitaistruct.ConsistencyError(u"first", self, self.first._parent)
         if self.one._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"one", self.one._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"one", self._root, self.one._root)
         if self.one._parent != self:
-            raise kaitaistruct.ConsistencyError(u"one", self.one._parent, self)
+            raise kaitaistruct.ConsistencyError(u"one", self, self.one._parent)
         if self.one.foo != self.first:
-            raise kaitaistruct.ConsistencyError(u"one", self.one.foo, self.first)
+            raise kaitaistruct.ConsistencyError(u"one", self.first, self.one.foo)
         self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):
@@ -94,7 +94,7 @@ class ParamsPassUsertype(ReadWriteKaitaiStruct):
 
         def _check(self):
             if len(self.buf) != self.foo.foo:
-                raise kaitaistruct.ConsistencyError(u"buf", len(self.buf), self.foo.foo)
+                raise kaitaistruct.ConsistencyError(u"buf", self.foo.foo, len(self.buf))
             self._dirty = False
 
 

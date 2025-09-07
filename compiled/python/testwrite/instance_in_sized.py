@@ -36,7 +36,7 @@ class InstanceInSized(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_cont=_io__raw_cont):
             self._raw_cont = _io__raw_cont.to_byte_array()
             if len(self._raw_cont) != 16:
-                raise kaitaistruct.ConsistencyError(u"raw(cont)", len(self._raw_cont), 16)
+                raise kaitaistruct.ConsistencyError(u"raw(cont)", 16, len(self._raw_cont))
             parent.write_bytes(self._raw_cont)
         _io__raw_cont.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.cont._write__seq(_io__raw_cont)
@@ -44,9 +44,9 @@ class InstanceInSized(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.cont._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"cont", self.cont._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"cont", self._root, self.cont._root)
         if self.cont._parent != self:
-            raise kaitaistruct.ConsistencyError(u"cont", self.cont._parent, self)
+            raise kaitaistruct.ConsistencyError(u"cont", self, self.cont._parent)
         self._dirty = False
 
     class Bar(ReadWriteKaitaiStruct):
@@ -80,7 +80,7 @@ class InstanceInSized(ReadWriteKaitaiStruct):
             if self.inst__enabled:
                 pass
                 if len(self._m_inst) != 3:
-                    raise kaitaistruct.ConsistencyError(u"inst", len(self._m_inst), 3)
+                    raise kaitaistruct.ConsistencyError(u"inst", 3, len(self._m_inst))
 
             self._dirty = False
 
@@ -144,7 +144,7 @@ class InstanceInSized(ReadWriteKaitaiStruct):
             if self.inst__enabled:
                 pass
                 if len(self._m_inst) != 3:
-                    raise kaitaistruct.ConsistencyError(u"inst", len(self._m_inst), 3)
+                    raise kaitaistruct.ConsistencyError(u"inst", 3, len(self._m_inst))
 
             self._dirty = False
 
@@ -227,7 +227,7 @@ class InstanceInSized(ReadWriteKaitaiStruct):
             if self.inst_unused_by_seq__enabled:
                 pass
                 if len(self._m_inst_unused_by_seq) != 2:
-                    raise kaitaistruct.ConsistencyError(u"inst_unused_by_seq", len(self._m_inst_unused_by_seq), 2)
+                    raise kaitaistruct.ConsistencyError(u"inst_unused_by_seq", 2, len(self._m_inst_unused_by_seq))
 
             self._dirty = False
 
@@ -335,7 +335,7 @@ class InstanceInSized(ReadWriteKaitaiStruct):
             def handler(parent, _io__raw_seq_sized=_io__raw_seq_sized):
                 self._raw_seq_sized = _io__raw_seq_sized.to_byte_array()
                 if len(self._raw_seq_sized) != 4:
-                    raise kaitaistruct.ConsistencyError(u"raw(seq_sized)", len(self._raw_seq_sized), 4)
+                    raise kaitaistruct.ConsistencyError(u"raw(seq_sized)", 4, len(self._raw_seq_sized))
                 parent.write_bytes(self._raw_seq_sized)
             _io__raw_seq_sized.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self.seq_sized._write__seq(_io__raw_seq_sized)
@@ -344,26 +344,26 @@ class InstanceInSized(ReadWriteKaitaiStruct):
 
         def _check(self):
             if self.seq_sized._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"seq_sized", self.seq_sized._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"seq_sized", self._root, self.seq_sized._root)
             if self.seq_sized._parent != self:
-                raise kaitaistruct.ConsistencyError(u"seq_sized", self.seq_sized._parent, self)
+                raise kaitaistruct.ConsistencyError(u"seq_sized", self, self.seq_sized._parent)
             if self.seq_in_stream._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"seq_in_stream", self.seq_in_stream._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"seq_in_stream", self._root, self.seq_in_stream._root)
             if self.seq_in_stream._parent != self:
-                raise kaitaistruct.ConsistencyError(u"seq_in_stream", self.seq_in_stream._parent, self)
+                raise kaitaistruct.ConsistencyError(u"seq_in_stream", self, self.seq_in_stream._parent)
             if self.inst_in_stream__enabled:
                 pass
                 if self._m_inst_in_stream._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"inst_in_stream", self._m_inst_in_stream._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"inst_in_stream", self._root, self._m_inst_in_stream._root)
                 if self._m_inst_in_stream._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"inst_in_stream", self._m_inst_in_stream._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"inst_in_stream", self, self._m_inst_in_stream._parent)
 
             if self.inst_sized__enabled:
                 pass
                 if self._m_inst_sized._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"inst_sized", self._m_inst_sized._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"inst_sized", self._root, self._m_inst_sized._root)
                 if self._m_inst_sized._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"inst_sized", self._m_inst_sized._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"inst_sized", self, self._m_inst_sized._parent)
 
             self._dirty = False
 
@@ -431,7 +431,7 @@ class InstanceInSized(ReadWriteKaitaiStruct):
             def handler(parent, _io__raw__m_inst_sized=_io__raw__m_inst_sized):
                 self._raw__m_inst_sized = _io__raw__m_inst_sized.to_byte_array()
                 if len(self._raw__m_inst_sized) != 4:
-                    raise kaitaistruct.ConsistencyError(u"raw(inst_sized)", len(self._raw__m_inst_sized), 4)
+                    raise kaitaistruct.ConsistencyError(u"raw(inst_sized)", 4, len(self._raw__m_inst_sized))
                 parent.write_bytes(self._raw__m_inst_sized)
             _io__raw__m_inst_sized.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self._m_inst_sized._write__seq(_io__raw__m_inst_sized)

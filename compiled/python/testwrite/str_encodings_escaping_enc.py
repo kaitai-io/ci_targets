@@ -56,7 +56,7 @@ class StrEncodingsEscapingEnc(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_str1=_io__raw_str1):
             self._raw_str1 = _io__raw_str1.to_byte_array()
             if len(self._raw_str1) != self.len_of_1:
-                raise kaitaistruct.ConsistencyError(u"raw(str1)", len(self._raw_str1), self.len_of_1)
+                raise kaitaistruct.ConsistencyError(u"raw(str1)", self.len_of_1, len(self._raw_str1))
             parent.write_bytes(self._raw_str1)
         _io__raw_str1.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.str1._write__seq(_io__raw_str1)
@@ -68,7 +68,7 @@ class StrEncodingsEscapingEnc(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_str2=_io__raw_str2):
             self._raw_str2 = _io__raw_str2.to_byte_array()
             if len(self._raw_str2) != self.len_of_2:
-                raise kaitaistruct.ConsistencyError(u"raw(str2)", len(self._raw_str2), self.len_of_2)
+                raise kaitaistruct.ConsistencyError(u"raw(str2)", self.len_of_2, len(self._raw_str2))
             parent.write_bytes(self._raw_str2)
         _io__raw_str2.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.str2._write__seq(_io__raw_str2)
@@ -80,7 +80,7 @@ class StrEncodingsEscapingEnc(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_str3=_io__raw_str3):
             self._raw_str3 = _io__raw_str3.to_byte_array()
             if len(self._raw_str3) != self.len_of_3:
-                raise kaitaistruct.ConsistencyError(u"raw(str3)", len(self._raw_str3), self.len_of_3)
+                raise kaitaistruct.ConsistencyError(u"raw(str3)", self.len_of_3, len(self._raw_str3))
             parent.write_bytes(self._raw_str3)
         _io__raw_str3.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.str3._write__seq(_io__raw_str3)
@@ -92,7 +92,7 @@ class StrEncodingsEscapingEnc(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_str4=_io__raw_str4):
             self._raw_str4 = _io__raw_str4.to_byte_array()
             if len(self._raw_str4) != self.len_of_4:
-                raise kaitaistruct.ConsistencyError(u"raw(str4)", len(self._raw_str4), self.len_of_4)
+                raise kaitaistruct.ConsistencyError(u"raw(str4)", self.len_of_4, len(self._raw_str4))
             parent.write_bytes(self._raw_str4)
         _io__raw_str4.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.str4._write__seq(_io__raw_str4)
@@ -100,21 +100,21 @@ class StrEncodingsEscapingEnc(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.str1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"str1", self.str1._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"str1", self._root, self.str1._root)
         if self.str1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"str1", self.str1._parent, self)
+            raise kaitaistruct.ConsistencyError(u"str1", self, self.str1._parent)
         if self.str2._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"str2", self.str2._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"str2", self._root, self.str2._root)
         if self.str2._parent != self:
-            raise kaitaistruct.ConsistencyError(u"str2", self.str2._parent, self)
+            raise kaitaistruct.ConsistencyError(u"str2", self, self.str2._parent)
         if self.str3._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"str3", self.str3._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"str3", self._root, self.str3._root)
         if self.str3._parent != self:
-            raise kaitaistruct.ConsistencyError(u"str3", self.str3._parent, self)
+            raise kaitaistruct.ConsistencyError(u"str3", self, self.str3._parent)
         if self.str4._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"str4", self.str4._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"str4", self._root, self.str4._root)
         if self.str4._parent != self:
-            raise kaitaistruct.ConsistencyError(u"str4", self.str4._parent, self)
+            raise kaitaistruct.ConsistencyError(u"str4", self, self.str4._parent)
         self._dirty = False
 
     class Str1Wrapper(ReadWriteKaitaiStruct):
@@ -176,7 +176,7 @@ class StrEncodingsEscapingEnc(ReadWriteKaitaiStruct):
             self._io.seek(0)
             self._io.write_bytes((self._m_v).encode(u"ASCII\\\\x"))
             if not self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"v", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"v", 0, self._io.size() - self._io.pos())
             self._io.seek(_pos)
 
 
@@ -239,7 +239,7 @@ class StrEncodingsEscapingEnc(ReadWriteKaitaiStruct):
             self._io.seek(0)
             self._io.write_bytes((self._m_v).encode(u"UTF-8\\'x"))
             if not self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"v", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"v", 0, self._io.size() - self._io.pos())
             self._io.seek(_pos)
 
 
@@ -302,7 +302,7 @@ class StrEncodingsEscapingEnc(ReadWriteKaitaiStruct):
             self._io.seek(0)
             self._io.write_bytes((self._m_v).encode(u"SJIS\\\"x"))
             if not self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"v", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"v", 0, self._io.size() - self._io.pos())
             self._io.seek(_pos)
 
 
@@ -365,7 +365,7 @@ class StrEncodingsEscapingEnc(ReadWriteKaitaiStruct):
             self._io.seek(0)
             self._io.write_bytes((self._m_v).encode(u"IBM437\\nx"))
             if not self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"v", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"v", 0, self._io.size() - self._io.pos())
             self._io.seek(_pos)
 
 

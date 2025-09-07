@@ -51,9 +51,9 @@ public class CastToTop extends KaitaiStruct.ReadWrite {
     public void _check() {
         if (_enabledHeader) {
             if (!Objects.equals(this.header._root(), _root()))
-                throw new ConsistencyError("header", this.header._root(), _root());
+                throw new ConsistencyError("header", _root(), this.header._root());
             if (!Objects.equals(this.header._parent(), this))
-                throw new ConsistencyError("header", this.header._parent(), this);
+                throw new ConsistencyError("header", this, this.header._parent());
         }
         _dirty = false;
     }

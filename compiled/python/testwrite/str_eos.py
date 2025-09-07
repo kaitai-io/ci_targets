@@ -27,7 +27,7 @@ class StrEos(ReadWriteKaitaiStruct):
         super(StrEos, self)._write__seq(io)
         self._io.write_bytes((self.str).encode(u"UTF-8"))
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"str", self._io.size() - self._io.pos(), 0)
+            raise kaitaistruct.ConsistencyError(u"str", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):

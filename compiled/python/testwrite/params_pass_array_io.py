@@ -39,7 +39,7 @@ class ParamsPassArrayIo(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_first=_io__raw_first):
             self._raw_first = _io__raw_first.to_byte_array()
             if len(self._raw_first) != 1:
-                raise kaitaistruct.ConsistencyError(u"raw(first)", len(self._raw_first), 1)
+                raise kaitaistruct.ConsistencyError(u"raw(first)", 1, len(self._raw_first))
             parent.write_bytes(self._raw_first)
         _io__raw_first.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.first._write__seq(_io__raw_first)
@@ -49,13 +49,13 @@ class ParamsPassArrayIo(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.first._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"first", self.first._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"first", self._root, self.first._root)
         if self.first._parent != self:
-            raise kaitaistruct.ConsistencyError(u"first", self.first._parent, self)
+            raise kaitaistruct.ConsistencyError(u"first", self, self.first._parent)
         if self.one._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"one", self.one._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"one", self._root, self.one._root)
         if self.one._parent != self:
-            raise kaitaistruct.ConsistencyError(u"one", self.one._parent, self)
+            raise kaitaistruct.ConsistencyError(u"one", self, self.one._parent)
         self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):
@@ -101,7 +101,7 @@ class ParamsPassArrayIo(ReadWriteKaitaiStruct):
         def _write__seq(self, io=None):
             super(ParamsPassArrayIo.ParamType, self)._write__seq(io)
             if len(self.buf) != self.arg_streams[0].size():
-                raise kaitaistruct.ConsistencyError(u"buf", len(self.buf), self.arg_streams[0].size())
+                raise kaitaistruct.ConsistencyError(u"buf", self.arg_streams[0].size(), len(self.buf))
             self._io.write_bytes(self.buf)
 
 

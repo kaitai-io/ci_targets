@@ -54,7 +54,7 @@ public class ExprIfIntEq extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.skip.length != 2)
-            throw new ConsistencyError("skip", this.skip.length, 2);
+            throw new ConsistencyError("skip", 2, this.skip.length);
         if (true) {
         }
         _dirty = false;

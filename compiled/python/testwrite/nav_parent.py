@@ -36,13 +36,13 @@ class NavParent(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.header._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"header", self.header._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"header", self._root, self.header._root)
         if self.header._parent != self:
-            raise kaitaistruct.ConsistencyError(u"header", self.header._parent, self)
+            raise kaitaistruct.ConsistencyError(u"header", self, self.header._parent)
         if self.index._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"index", self.index._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"index", self._root, self.index._root)
         if self.index._parent != self:
-            raise kaitaistruct.ConsistencyError(u"index", self.index._parent, self)
+            raise kaitaistruct.ConsistencyError(u"index", self, self.index._parent)
         self._dirty = False
 
     class Entry(ReadWriteKaitaiStruct):
@@ -67,7 +67,7 @@ class NavParent(ReadWriteKaitaiStruct):
 
         def _check(self):
             if len((self.filename).encode(u"UTF-8")) != self._parent._parent.header.filename_len:
-                raise kaitaistruct.ConsistencyError(u"filename", len((self.filename).encode(u"UTF-8")), self._parent._parent.header.filename_len)
+                raise kaitaistruct.ConsistencyError(u"filename", self._parent._parent.header.filename_len, len((self.filename).encode(u"UTF-8")))
             self._dirty = False
 
 
@@ -135,15 +135,15 @@ class NavParent(ReadWriteKaitaiStruct):
 
         def _check(self):
             if len(self.magic) != 4:
-                raise kaitaistruct.ConsistencyError(u"magic", len(self.magic), 4)
+                raise kaitaistruct.ConsistencyError(u"magic", 4, len(self.magic))
             if len(self.entries) != self._parent.header.qty_entries:
-                raise kaitaistruct.ConsistencyError(u"entries", len(self.entries), self._parent.header.qty_entries)
+                raise kaitaistruct.ConsistencyError(u"entries", self._parent.header.qty_entries, len(self.entries))
             for i in range(len(self.entries)):
                 pass
                 if self.entries[i]._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"entries", self.entries[i]._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"entries", self._root, self.entries[i]._root)
                 if self.entries[i]._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"entries", self.entries[i]._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"entries", self, self.entries[i]._parent)
 
             self._dirty = False
 

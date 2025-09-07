@@ -89,7 +89,7 @@ public class ExprIoEofBits extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.align.length != 0)
-            throw new ConsistencyError("align", this.align.length, 0);
+            throw new ConsistencyError("align", 0, this.align.length);
         _dirty = false;
     }
     private long foo;

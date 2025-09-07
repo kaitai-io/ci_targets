@@ -78,7 +78,7 @@ public class RepeatUntilSized extends KaitaiStruct.ReadWrite {
                         byte[] _buf = _io__raw_records.toByteArray();
                         _this._raw_records.add(_buf);
                         if (_this._raw_records.get(((Number) (_i)).intValue()).length != 5)
-                            throw new ConsistencyError("raw(records)", _this._raw_records.get(((Number) (_i)).intValue()).length, 5);
+                            throw new ConsistencyError("raw(records)", 5, _this._raw_records.get(((Number) (_i)).intValue()).length);
                         parent.writeBytes(_this._raw_records.get(((Number) (_i)).intValue()));
                     }
                 });
@@ -89,16 +89,16 @@ public class RepeatUntilSized extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.records.size() == 0)
-            throw new ConsistencyError("records", this.records.size(), 0);
+            throw new ConsistencyError("records", 0, this.records.size());
         for (int i = 0; i < this.records.size(); i++) {
             if (!Objects.equals(this.records.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("records", this.records.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("records", _root(), this.records.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.records.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("records", this.records.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("records", this, this.records.get(((Number) (i)).intValue())._parent());
             {
                 Record _it = this.records.get(((Number) (i)).intValue());
                 if ((_it.marker() == 170) != (i == this.records.size() - 1))
-                    throw new ConsistencyError("records", _it.marker() == 170, i == this.records.size() - 1);
+                    throw new ConsistencyError("records", i == this.records.size() - 1, _it.marker() == 170);
             }
         }
         _dirty = false;

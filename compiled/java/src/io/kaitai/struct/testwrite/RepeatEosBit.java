@@ -52,11 +52,11 @@ public class RepeatEosBit extends KaitaiStruct.ReadWrite {
         _assertNotDirty();
         for (int i = 0; i < this.nibbles.size(); i++) {
             if (this._io.isEof())
-                throw new ConsistencyError("nibbles", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("nibbles", 0, this._io.size() - this._io.pos());
             this._io.writeBitsIntBe(4, this.nibbles.get(((Number) (i)).intValue()));
         }
         if (!(this._io.isEof()))
-            throw new ConsistencyError("nibbles", this._io.size() - this._io.pos(), 0);
+            throw new ConsistencyError("nibbles", 0, this._io.size() - this._io.pos());
     }
 
     public void _check() {

@@ -40,17 +40,17 @@ class IfStruct(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.op1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"op1", self.op1._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"op1", self._root, self.op1._root)
         if self.op1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"op1", self.op1._parent, self)
+            raise kaitaistruct.ConsistencyError(u"op1", self, self.op1._parent)
         if self.op2._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"op2", self.op2._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"op2", self._root, self.op2._root)
         if self.op2._parent != self:
-            raise kaitaistruct.ConsistencyError(u"op2", self.op2._parent, self)
+            raise kaitaistruct.ConsistencyError(u"op2", self, self.op2._parent)
         if self.op3._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"op3", self.op3._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"op3", self._root, self.op3._root)
         if self.op3._parent != self:
-            raise kaitaistruct.ConsistencyError(u"op3", self.op3._parent, self)
+            raise kaitaistruct.ConsistencyError(u"op3", self, self.op3._parent)
         self._dirty = False
 
     class ArgStr(ReadWriteKaitaiStruct):
@@ -77,7 +77,7 @@ class IfStruct(ReadWriteKaitaiStruct):
 
         def _check(self):
             if len((self.str).encode(u"UTF-8")) != self.len:
-                raise kaitaistruct.ConsistencyError(u"str", len((self.str).encode(u"UTF-8")), self.len)
+                raise kaitaistruct.ConsistencyError(u"str", self.len, len((self.str).encode(u"UTF-8")))
             self._dirty = False
 
 
@@ -157,16 +157,16 @@ class IfStruct(ReadWriteKaitaiStruct):
             if self.opcode == 84:
                 pass
                 if self.arg_tuple._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"arg_tuple", self.arg_tuple._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"arg_tuple", self._root, self.arg_tuple._root)
                 if self.arg_tuple._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"arg_tuple", self.arg_tuple._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"arg_tuple", self, self.arg_tuple._parent)
 
             if self.opcode == 83:
                 pass
                 if self.arg_str._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"arg_str", self.arg_str._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"arg_str", self._root, self.arg_str._root)
                 if self.arg_str._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"arg_str", self.arg_str._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"arg_str", self, self.arg_str._parent)
 
             self._dirty = False
 

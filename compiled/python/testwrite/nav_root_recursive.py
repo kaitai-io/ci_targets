@@ -45,9 +45,9 @@ class NavRootRecursive(ReadWriteKaitaiStruct):
         if self.value == 255:
             pass
             if self.next._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"next", self.next._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"next", self._root, self.next._root)
             if self.next._parent != self:
-                raise kaitaistruct.ConsistencyError(u"next", self.next._parent, self)
+                raise kaitaistruct.ConsistencyError(u"next", self, self.next._parent)
 
         self._dirty = False
 

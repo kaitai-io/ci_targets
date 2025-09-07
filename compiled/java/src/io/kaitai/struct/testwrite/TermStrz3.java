@@ -61,11 +61,11 @@ public class TermStrz3 extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (KaitaiStream.byteArrayIndexOf((this.s1).getBytes(Charset.forName("UTF-8")), ((byte) 124)) != -1)
-            throw new ConsistencyError("s1", KaitaiStream.byteArrayIndexOf((this.s1).getBytes(Charset.forName("UTF-8")), ((byte) 124)), -1);
+            throw new ConsistencyError("s1", -1, KaitaiStream.byteArrayIndexOf((this.s1).getBytes(Charset.forName("UTF-8")), ((byte) 124)));
         if (KaitaiStream.byteArrayIndexOf((this.s2).getBytes(Charset.forName("UTF-8")), ((byte) 64)) != -1)
-            throw new ConsistencyError("s2", KaitaiStream.byteArrayIndexOf((this.s2).getBytes(Charset.forName("UTF-8")), ((byte) 64)), -1);
+            throw new ConsistencyError("s2", -1, KaitaiStream.byteArrayIndexOf((this.s2).getBytes(Charset.forName("UTF-8")), ((byte) 64)));
         if (KaitaiStream.byteArrayIndexOf((this.s3).getBytes(Charset.forName("UTF-8")), ((byte) 64)) != -1)
-            throw new ConsistencyError("s3", KaitaiStream.byteArrayIndexOf((this.s3).getBytes(Charset.forName("UTF-8")), ((byte) 64)), -1);
+            throw new ConsistencyError("s3", -1, KaitaiStream.byteArrayIndexOf((this.s3).getBytes(Charset.forName("UTF-8")), ((byte) 64)));
         _dirty = false;
     }
     private String s1;

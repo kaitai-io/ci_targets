@@ -55,7 +55,7 @@ public class EosExceptionSized extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_envelope = _io__raw_envelope.toByteArray();
                     if (_this._raw_envelope.length != 6)
-                        throw new ConsistencyError("raw(envelope)", _this._raw_envelope.length, 6);
+                        throw new ConsistencyError("raw(envelope)", 6, _this._raw_envelope.length);
                     parent.writeBytes(_this._raw_envelope);
                 }
             });
@@ -65,9 +65,9 @@ public class EosExceptionSized extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.envelope._root(), _root()))
-            throw new ConsistencyError("envelope", this.envelope._root(), _root());
+            throw new ConsistencyError("envelope", _root(), this.envelope._root());
         if (!Objects.equals(this.envelope._parent(), this))
-            throw new ConsistencyError("envelope", this.envelope._parent(), this);
+            throw new ConsistencyError("envelope", this, this.envelope._parent());
         _dirty = false;
     }
     public static class Data extends KaitaiStruct.ReadWrite {
@@ -116,7 +116,7 @@ public class EosExceptionSized extends KaitaiStruct.ReadWrite {
                     protected void write(KaitaiStream parent) {
                         _this._raw_buf = _io__raw_buf.toByteArray();
                         if (_this._raw_buf.length != 7)
-                            throw new ConsistencyError("raw(buf)", _this._raw_buf.length, 7);
+                            throw new ConsistencyError("raw(buf)", 7, _this._raw_buf.length);
                         parent.writeBytes(_this._raw_buf);
                     }
                 });
@@ -126,9 +126,9 @@ public class EosExceptionSized extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (!Objects.equals(this.buf._root(), _root()))
-                throw new ConsistencyError("buf", this.buf._root(), _root());
+                throw new ConsistencyError("buf", _root(), this.buf._root());
             if (!Objects.equals(this.buf._parent(), this))
-                throw new ConsistencyError("buf", this.buf._parent(), this);
+                throw new ConsistencyError("buf", this, this.buf._parent());
             _dirty = false;
         }
         private Foo buf;

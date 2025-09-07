@@ -56,17 +56,17 @@ public class ValidFailRepeatContents extends KaitaiStruct.ReadWrite {
         _assertNotDirty();
         for (int i = 0; i < this.foo.size(); i++) {
             if (this._io.isEof())
-                throw new ConsistencyError("foo", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("foo", 0, this._io.size() - this._io.pos());
             this._io.writeBytes(this.foo.get(((Number) (i)).intValue()));
         }
         if (!(this._io.isEof()))
-            throw new ConsistencyError("foo", this._io.size() - this._io.pos(), 0);
+            throw new ConsistencyError("foo", 0, this._io.size() - this._io.pos());
     }
 
     public void _check() {
         for (int i = 0; i < this.foo.size(); i++) {
             if (this.foo.get(((Number) (i)).intValue()).length != 4)
-                throw new ConsistencyError("foo", this.foo.get(((Number) (i)).intValue()).length, 4);
+                throw new ConsistencyError("foo", 4, this.foo.get(((Number) (i)).intValue()).length);
             if (!(Arrays.equals(this.foo.get(((Number) (i)).intValue()), new byte[] { 18, 52, 86, 120 }))) {
                 throw new KaitaiStream.ValidationNotEqualError(new byte[] { 18, 52, 86, 120 }, this.foo.get(((Number) (i)).intValue()), null, "/seq/0");
             }

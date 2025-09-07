@@ -44,7 +44,7 @@ public class ProcessCustomNoArgs extends KaitaiStruct.ReadWrite {
         CustomFxNoArgs _process_buf = new CustomFxNoArgs();
         this._raw_buf = _process_buf.encode(this.buf);
         if (this._raw_buf.length != 5)
-            throw new ConsistencyError("buf", this._raw_buf.length, 5);
+            throw new ConsistencyError("buf", 5, this._raw_buf.length);
         this._io.writeBytes(this._raw_buf);
     }
 

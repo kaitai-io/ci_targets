@@ -50,7 +50,7 @@ public class ValidFailContentsInst extends KaitaiStruct.ReadWrite {
         _shouldWriteFoo = _enabledFoo;
         if (foo().length == 0) {
             if (this.a.length != 0)
-                throw new ConsistencyError("a", this.a.length, 0);
+                throw new ConsistencyError("a", 0, this.a.length);
             this._io.writeBytes(this.a);
         }
     }
@@ -58,7 +58,7 @@ public class ValidFailContentsInst extends KaitaiStruct.ReadWrite {
     public void _check() {
         if (_enabledFoo) {
             if (this.foo.length != 2)
-                throw new ConsistencyError("foo", this.foo.length, 2);
+                throw new ConsistencyError("foo", 2, this.foo.length);
             if (!(Arrays.equals(this.foo, new byte[] { 81, 65 }))) {
                 throw new KaitaiStream.ValidationNotEqualError(new byte[] { 81, 65 }, this.foo, null, "/instances/foo");
             }

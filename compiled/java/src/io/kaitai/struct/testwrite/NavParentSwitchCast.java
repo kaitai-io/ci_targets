@@ -47,9 +47,9 @@ public class NavParentSwitchCast extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.main._root(), _root()))
-            throw new ConsistencyError("main", this.main._root(), _root());
+            throw new ConsistencyError("main", _root(), this.main._root());
         if (!Objects.equals(this.main._parent(), this))
-            throw new ConsistencyError("main", this.main._parent(), this);
+            throw new ConsistencyError("main", this, this.main._parent());
         _dirty = false;
     }
     public static class Foo extends KaitaiStruct.ReadWrite {
@@ -132,7 +132,7 @@ public class NavParentSwitchCast extends KaitaiStruct.ReadWrite {
                         protected void write(KaitaiStream parent) {
                             _this._raw_buf = _io__raw_buf.toByteArray();
                             if (((byte[]) (_this._raw_buf)).length != 4)
-                                throw new ConsistencyError("raw(buf)", ((byte[]) (_this._raw_buf)).length, 4);
+                                throw new ConsistencyError("raw(buf)", 4, ((byte[]) (_this._raw_buf)).length);
                             parent.writeBytes(((byte[]) (((byte[]) (_this._raw_buf)))));
                         }
                     });
@@ -152,7 +152,7 @@ public class NavParentSwitchCast extends KaitaiStruct.ReadWrite {
                         protected void write(KaitaiStream parent) {
                             _this._raw_buf = _io__raw_buf.toByteArray();
                             if (((byte[]) (_this._raw_buf)).length != 4)
-                                throw new ConsistencyError("raw(buf)", ((byte[]) (_this._raw_buf)).length, 4);
+                                throw new ConsistencyError("raw(buf)", 4, ((byte[]) (_this._raw_buf)).length);
                             parent.writeBytes(((byte[]) (((byte[]) (_this._raw_buf)))));
                         }
                     });
@@ -171,21 +171,21 @@ public class NavParentSwitchCast extends KaitaiStruct.ReadWrite {
             switch (bufType()) {
             case 0: {
                 if (!Objects.equals(((NavParentSwitchCast.Foo.Zero) (this.buf))._root(), _root()))
-                    throw new ConsistencyError("buf", ((NavParentSwitchCast.Foo.Zero) (this.buf))._root(), _root());
+                    throw new ConsistencyError("buf", _root(), ((NavParentSwitchCast.Foo.Zero) (this.buf))._root());
                 if (!Objects.equals(((NavParentSwitchCast.Foo.Zero) (this.buf))._parent(), this))
-                    throw new ConsistencyError("buf", ((NavParentSwitchCast.Foo.Zero) (this.buf))._parent(), this);
+                    throw new ConsistencyError("buf", this, ((NavParentSwitchCast.Foo.Zero) (this.buf))._parent());
                 break;
             }
             case 1: {
                 if (!Objects.equals(((NavParentSwitchCast.Foo.One) (this.buf))._root(), _root()))
-                    throw new ConsistencyError("buf", ((NavParentSwitchCast.Foo.One) (this.buf))._root(), _root());
+                    throw new ConsistencyError("buf", _root(), ((NavParentSwitchCast.Foo.One) (this.buf))._root());
                 if (!Objects.equals(((NavParentSwitchCast.Foo.One) (this.buf))._parent(), this))
-                    throw new ConsistencyError("buf", ((NavParentSwitchCast.Foo.One) (this.buf))._parent(), this);
+                    throw new ConsistencyError("buf", this, ((NavParentSwitchCast.Foo.One) (this.buf))._parent());
                 break;
             }
             default: {
                 if (((byte[]) (this.buf)).length != 4)
-                    throw new ConsistencyError("buf", ((byte[]) (this.buf)).length, 4);
+                    throw new ConsistencyError("buf", 4, ((byte[]) (this.buf)).length);
                 break;
             }
             }
@@ -279,9 +279,9 @@ public class NavParentSwitchCast extends KaitaiStruct.ReadWrite {
 
             public void _check() {
                 if (!Objects.equals(this.branch._root(), _root()))
-                    throw new ConsistencyError("branch", this.branch._root(), _root());
+                    throw new ConsistencyError("branch", _root(), this.branch._root());
                 if (!Objects.equals(this.branch._parent(), this))
-                    throw new ConsistencyError("branch", this.branch._parent(), this);
+                    throw new ConsistencyError("branch", this, this.branch._parent());
                 _dirty = false;
             }
             private Common branch;
@@ -332,9 +332,9 @@ public class NavParentSwitchCast extends KaitaiStruct.ReadWrite {
 
             public void _check() {
                 if (!Objects.equals(this.branch._root(), _root()))
-                    throw new ConsistencyError("branch", this.branch._root(), _root());
+                    throw new ConsistencyError("branch", _root(), this.branch._root());
                 if (!Objects.equals(this.branch._parent(), this))
-                    throw new ConsistencyError("branch", this.branch._parent(), this);
+                    throw new ConsistencyError("branch", this, this.branch._parent());
                 _dirty = false;
             }
             private Common branch;

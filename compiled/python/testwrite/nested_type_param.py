@@ -32,11 +32,11 @@ class NestedTypeParam(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.main_seq._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"main_seq", self.main_seq._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"main_seq", self._root, self.main_seq._root)
         if self.main_seq._parent != self:
-            raise kaitaistruct.ConsistencyError(u"main_seq", self.main_seq._parent, self)
+            raise kaitaistruct.ConsistencyError(u"main_seq", self, self.main_seq._parent)
         if self.main_seq.my_len != 5:
-            raise kaitaistruct.ConsistencyError(u"main_seq", self.main_seq.my_len, 5)
+            raise kaitaistruct.ConsistencyError(u"main_seq", 5, self.main_seq.my_len)
         self._dirty = False
 
     class Nested(ReadWriteKaitaiStruct):
@@ -84,7 +84,7 @@ class NestedTypeParam(ReadWriteKaitaiStruct):
 
             def _check(self):
                 if len((self.body).encode(u"ASCII")) != self.my_len:
-                    raise kaitaistruct.ConsistencyError(u"body", len((self.body).encode(u"ASCII")), self.my_len)
+                    raise kaitaistruct.ConsistencyError(u"body", self.my_len, len((self.body).encode(u"ASCII")))
                 self._dirty = False
 
 

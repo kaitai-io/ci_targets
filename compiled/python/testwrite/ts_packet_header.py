@@ -55,7 +55,7 @@ class TsPacketHeader(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.ts_packet_remain) != 184:
-            raise kaitaistruct.ConsistencyError(u"ts_packet_remain", len(self.ts_packet_remain), 184)
+            raise kaitaistruct.ConsistencyError(u"ts_packet_remain", 184, len(self.ts_packet_remain))
         self._dirty = False
 
 

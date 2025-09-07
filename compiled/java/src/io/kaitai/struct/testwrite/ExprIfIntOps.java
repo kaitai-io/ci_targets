@@ -60,7 +60,7 @@ public class ExprIfIntOps extends KaitaiStruct.ReadWrite {
         this._io.writeBytes(this.skip);
         this._raw_bytes = KaitaiStream.processXor(this.bytes, ((Number) (key())).byteValue());
         if (this._raw_bytes.length != 8)
-            throw new ConsistencyError("bytes", this._raw_bytes.length, 8);
+            throw new ConsistencyError("bytes", 8, this._raw_bytes.length);
         this._io.writeBytes(this._raw_bytes);
         for (int i = 0; i < this.items.size(); i++) {
             this._io.writeS1(this.items.get(((Number) (i)).intValue()));
@@ -71,9 +71,9 @@ public class ExprIfIntOps extends KaitaiStruct.ReadWrite {
         if (true) {
         }
         if (this.skip.length != 8)
-            throw new ConsistencyError("skip", this.skip.length, 8);
+            throw new ConsistencyError("skip", 8, this.skip.length);
         if (this.items.size() != 4)
-            throw new ConsistencyError("items", this.items.size(), 4);
+            throw new ConsistencyError("items", 4, this.items.size());
         for (int i = 0; i < this.items.size(); i++) {
         }
         _dirty = false;

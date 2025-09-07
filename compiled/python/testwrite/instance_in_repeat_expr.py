@@ -44,7 +44,7 @@ class InstanceInRepeatExpr(ReadWriteKaitaiStruct):
         super(InstanceInRepeatExpr, self)._write__seq(io)
         self._should_write_num_chunks = self.num_chunks__enabled
         if len(self.chunks) != self.num_chunks:
-            raise kaitaistruct.ConsistencyError(u"chunks", len(self.chunks), self.num_chunks)
+            raise kaitaistruct.ConsistencyError(u"chunks", self.num_chunks, len(self.chunks))
         for i in range(len(self.chunks)):
             pass
             self.chunks[i]._write__seq(self._io)
@@ -55,9 +55,9 @@ class InstanceInRepeatExpr(ReadWriteKaitaiStruct):
         for i in range(len(self.chunks)):
             pass
             if self.chunks[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"chunks", self.chunks[i]._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"chunks", self._root, self.chunks[i]._root)
             if self.chunks[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"chunks", self.chunks[i]._parent, self)
+                raise kaitaistruct.ConsistencyError(u"chunks", self, self.chunks[i]._parent)
 
         if self.num_chunks__enabled:
             pass

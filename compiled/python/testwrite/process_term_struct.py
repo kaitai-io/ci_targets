@@ -62,7 +62,7 @@ class ProcessTermStruct(ReadWriteKaitaiStruct):
             self._raw_s1 = _io__raw_s1.to_byte_array()
             self._raw__raw_s1 = _process_val.encode(self._raw_s1)
             if KaitaiStream.byte_array_index_of(self._raw__raw_s1, 124) != -1:
-                raise kaitaistruct.ConsistencyError(u"raw(s1)", KaitaiStream.byte_array_index_of(self._raw__raw_s1, 124), -1)
+                raise kaitaistruct.ConsistencyError(u"raw(s1)", -1, KaitaiStream.byte_array_index_of(self._raw__raw_s1, 124))
             parent.write_bytes(self._raw__raw_s1)
             parent.write_u1(124)
         _io__raw_s1.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
@@ -76,7 +76,7 @@ class ProcessTermStruct(ReadWriteKaitaiStruct):
             self._raw_s2 = _io__raw_s2.to_byte_array()
             self._raw__raw_s2 = _process_val.encode(self._raw_s2)
             if KaitaiStream.byte_array_index_of(self._raw__raw_s2, 124) != -1:
-                raise kaitaistruct.ConsistencyError(u"raw(s2)", KaitaiStream.byte_array_index_of(self._raw__raw_s2, 124), -1)
+                raise kaitaistruct.ConsistencyError(u"raw(s2)", -1, KaitaiStream.byte_array_index_of(self._raw__raw_s2, 124))
             parent.write_bytes(self._raw__raw_s2)
             _pos = parent.pos()
             parent.write_u1(124)
@@ -92,9 +92,9 @@ class ProcessTermStruct(ReadWriteKaitaiStruct):
             self._raw_s3 = _io__raw_s3.to_byte_array()
             self._raw__raw_s3 = _process_val.encode(self._raw_s3)
             if len(self._raw__raw_s3) == 0:
-                raise kaitaistruct.ConsistencyError(u"raw(s3)", len(self._raw__raw_s3), 0)
+                raise kaitaistruct.ConsistencyError(u"raw(s3)", 0, len(self._raw__raw_s3))
             if KaitaiStream.byte_array_index_of(self._raw__raw_s3, 64) != len(self._raw__raw_s3) - 1:
-                raise kaitaistruct.ConsistencyError(u"raw(s3)", KaitaiStream.byte_array_index_of(self._raw__raw_s3, 64), len(self._raw__raw_s3) - 1)
+                raise kaitaistruct.ConsistencyError(u"raw(s3)", len(self._raw__raw_s3) - 1, KaitaiStream.byte_array_index_of(self._raw__raw_s3, 64))
             parent.write_bytes(self._raw__raw_s3)
         _io__raw_s3.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.s3._write__seq(_io__raw_s3)
@@ -102,17 +102,17 @@ class ProcessTermStruct(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.s1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"s1", self.s1._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"s1", self._root, self.s1._root)
         if self.s1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"s1", self.s1._parent, self)
+            raise kaitaistruct.ConsistencyError(u"s1", self, self.s1._parent)
         if self.s2._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"s2", self.s2._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"s2", self._root, self.s2._root)
         if self.s2._parent != self:
-            raise kaitaistruct.ConsistencyError(u"s2", self.s2._parent, self)
+            raise kaitaistruct.ConsistencyError(u"s2", self, self.s2._parent)
         if self.s3._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"s3", self.s3._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"s3", self._root, self.s3._root)
         if self.s3._parent != self:
-            raise kaitaistruct.ConsistencyError(u"s3", self.s3._parent, self)
+            raise kaitaistruct.ConsistencyError(u"s3", self, self.s3._parent)
         self._dirty = False
 
     class BytesWrapper(ReadWriteKaitaiStruct):
@@ -134,7 +134,7 @@ class ProcessTermStruct(ReadWriteKaitaiStruct):
             super(ProcessTermStruct.BytesWrapper, self)._write__seq(io)
             self._io.write_bytes(self.value)
             if not self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"value", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"value", 0, self._io.size() - self._io.pos())
 
 
         def _check(self):

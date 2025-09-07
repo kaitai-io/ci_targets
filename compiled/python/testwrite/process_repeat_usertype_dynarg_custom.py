@@ -61,7 +61,7 @@ class ProcessRepeatUsertypeDynargCustom(ReadWriteKaitaiStruct):
                 self._raw_blocks.append(_io__raw_blocks.to_byte_array())
                 self._raw__raw_blocks.append(_process_val.encode(self._raw_blocks[i]))
                 if len(self._raw__raw_blocks[i]) != 5:
-                    raise kaitaistruct.ConsistencyError(u"raw(blocks)", len(self._raw__raw_blocks[i]), 5)
+                    raise kaitaistruct.ConsistencyError(u"raw(blocks)", 5, len(self._raw__raw_blocks[i]))
                 parent.write_bytes(self._raw__raw_blocks[i])
             _io__raw_blocks.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self.blocks[i]._write__seq(_io__raw_blocks)
@@ -71,18 +71,18 @@ class ProcessRepeatUsertypeDynargCustom(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.blocks) != 2:
-            raise kaitaistruct.ConsistencyError(u"blocks", len(self.blocks), 2)
+            raise kaitaistruct.ConsistencyError(u"blocks", 2, len(self.blocks))
         for i in range(len(self.blocks)):
             pass
             if self.blocks[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"blocks", self.blocks[i]._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"blocks", self._root, self.blocks[i]._root)
             if self.blocks[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"blocks", self.blocks[i]._parent, self)
+                raise kaitaistruct.ConsistencyError(u"blocks", self, self.blocks[i]._parent)
 
         if self.blocks_b._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"blocks_b", self.blocks_b._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"blocks_b", self._root, self.blocks_b._root)
         if self.blocks_b._parent != self:
-            raise kaitaistruct.ConsistencyError(u"blocks_b", self.blocks_b._parent, self)
+            raise kaitaistruct.ConsistencyError(u"blocks_b", self, self.blocks_b._parent)
         self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):

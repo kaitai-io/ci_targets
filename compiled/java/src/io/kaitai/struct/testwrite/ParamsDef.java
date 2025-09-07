@@ -53,7 +53,7 @@ public class ParamsDef extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if ((this.buf).getBytes(Charset.forName("UTF-8")).length != len())
-            throw new ConsistencyError("buf", (this.buf).getBytes(Charset.forName("UTF-8")).length, len());
+            throw new ConsistencyError("buf", len(), (this.buf).getBytes(Charset.forName("UTF-8")).length);
         if (hasTrailer()) {
         }
         _dirty = false;

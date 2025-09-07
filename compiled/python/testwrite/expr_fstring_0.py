@@ -32,7 +32,7 @@ class ExprFstring0(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len((self.seq_str).encode(u"ASCII")) != 5:
-            raise kaitaistruct.ConsistencyError(u"seq_str", len((self.seq_str).encode(u"ASCII")), 5)
+            raise kaitaistruct.ConsistencyError(u"seq_str", 5, len((self.seq_str).encode(u"ASCII")))
         self._dirty = False
 
     @property

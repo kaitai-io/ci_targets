@@ -47,7 +47,7 @@ class RepeatEosTermStruct(ReadWriteKaitaiStruct):
         for i in range(len(self.records)):
             pass
             if self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"records", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"records", 0, self._io.size() - self._io.pos())
             _io__raw_records = KaitaiStream(BytesIO(bytearray(self.records__outer_size[i])))
             self._io.add_child_stream(_io__raw_records)
             _pos2 = self._io.pos()
@@ -55,24 +55,24 @@ class RepeatEosTermStruct(ReadWriteKaitaiStruct):
             def handler(parent, _io__raw_records=_io__raw_records, i=i):
                 self._raw_records.append(_io__raw_records.to_byte_array())
                 if len(self._raw_records[i]) == 0:
-                    raise kaitaistruct.ConsistencyError(u"raw(records)", len(self._raw_records[i]), 0)
+                    raise kaitaistruct.ConsistencyError(u"raw(records)", 0, len(self._raw_records[i]))
                 if KaitaiStream.byte_array_index_of(self._raw_records[i], 178) != len(self._raw_records[i]) - 1:
-                    raise kaitaistruct.ConsistencyError(u"raw(records)", KaitaiStream.byte_array_index_of(self._raw_records[i], 178), len(self._raw_records[i]) - 1)
+                    raise kaitaistruct.ConsistencyError(u"raw(records)", len(self._raw_records[i]) - 1, KaitaiStream.byte_array_index_of(self._raw_records[i], 178))
                 parent.write_bytes(self._raw_records[i])
             _io__raw_records.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self.records[i]._write__seq(_io__raw_records)
 
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"records", self._io.size() - self._io.pos(), 0)
+            raise kaitaistruct.ConsistencyError(u"records", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):
         for i in range(len(self.records)):
             pass
             if self.records[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"records", self.records[i]._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"records", self._root, self.records[i]._root)
             if self.records[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"records", self.records[i]._parent, self)
+                raise kaitaistruct.ConsistencyError(u"records", self, self.records[i]._parent)
 
         self._dirty = False
 
@@ -95,7 +95,7 @@ class RepeatEosTermStruct(ReadWriteKaitaiStruct):
             super(RepeatEosTermStruct.BytesWrapper, self)._write__seq(io)
             self._io.write_bytes(self.value)
             if not self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"value", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"value", 0, self._io.size() - self._io.pos())
 
 
         def _check(self):

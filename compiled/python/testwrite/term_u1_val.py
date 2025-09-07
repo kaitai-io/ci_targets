@@ -35,11 +35,11 @@ class TermU1Val(ReadWriteKaitaiStruct):
 
     def _check(self):
         if KaitaiStream.byte_array_index_of(self.foo, 227) != -1:
-            raise kaitaistruct.ConsistencyError(u"foo", KaitaiStream.byte_array_index_of(self.foo, 227), -1)
+            raise kaitaistruct.ConsistencyError(u"foo", -1, KaitaiStream.byte_array_index_of(self.foo, 227))
         if len((self.bar).encode(u"UTF-8")) == 0:
-            raise kaitaistruct.ConsistencyError(u"bar", len((self.bar).encode(u"UTF-8")), 0)
+            raise kaitaistruct.ConsistencyError(u"bar", 0, len((self.bar).encode(u"UTF-8")))
         if KaitaiStream.byte_array_index_of((self.bar).encode(u"UTF-8"), 171) != len((self.bar).encode(u"UTF-8")) - 1:
-            raise kaitaistruct.ConsistencyError(u"bar", KaitaiStream.byte_array_index_of((self.bar).encode(u"UTF-8"), 171), len((self.bar).encode(u"UTF-8")) - 1)
+            raise kaitaistruct.ConsistencyError(u"bar", len((self.bar).encode(u"UTF-8")) - 1, KaitaiStream.byte_array_index_of((self.bar).encode(u"UTF-8"), 171))
         self._dirty = False
 
 

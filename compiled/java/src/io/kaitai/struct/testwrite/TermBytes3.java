@@ -59,11 +59,11 @@ public class TermBytes3 extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (KaitaiStream.byteArrayIndexOf(this.s1, ((byte) 124)) != -1)
-            throw new ConsistencyError("s1", KaitaiStream.byteArrayIndexOf(this.s1, ((byte) 124)), -1);
+            throw new ConsistencyError("s1", -1, KaitaiStream.byteArrayIndexOf(this.s1, ((byte) 124)));
         if (KaitaiStream.byteArrayIndexOf(this.s2, ((byte) 64)) != -1)
-            throw new ConsistencyError("s2", KaitaiStream.byteArrayIndexOf(this.s2, ((byte) 64)), -1);
+            throw new ConsistencyError("s2", -1, KaitaiStream.byteArrayIndexOf(this.s2, ((byte) 64)));
         if (KaitaiStream.byteArrayIndexOf(this.s3, ((byte) 64)) != -1)
-            throw new ConsistencyError("s3", KaitaiStream.byteArrayIndexOf(this.s3, ((byte) 64)), -1);
+            throw new ConsistencyError("s3", -1, KaitaiStream.byteArrayIndexOf(this.s3, ((byte) 64)));
         _dirty = false;
     }
     private byte[] s1;

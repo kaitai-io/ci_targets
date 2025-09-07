@@ -32,9 +32,9 @@ class DefaultEndianMod(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.main._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"main", self.main._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"main", self._root, self.main._root)
         if self.main._parent != self:
-            raise kaitaistruct.ConsistencyError(u"main", self.main._parent, self)
+            raise kaitaistruct.ConsistencyError(u"main", self, self.main._parent)
         self._dirty = False
 
     class MainObj(ReadWriteKaitaiStruct):
@@ -67,13 +67,13 @@ class DefaultEndianMod(ReadWriteKaitaiStruct):
 
         def _check(self):
             if self.nest._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"nest", self.nest._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"nest", self._root, self.nest._root)
             if self.nest._parent != self:
-                raise kaitaistruct.ConsistencyError(u"nest", self.nest._parent, self)
+                raise kaitaistruct.ConsistencyError(u"nest", self, self.nest._parent)
             if self.nest_be._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"nest_be", self.nest_be._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"nest_be", self._root, self.nest_be._root)
             if self.nest_be._parent != self:
-                raise kaitaistruct.ConsistencyError(u"nest_be", self.nest_be._parent, self)
+                raise kaitaistruct.ConsistencyError(u"nest_be", self, self.nest_be._parent)
             self._dirty = False
 
         class Subnest(ReadWriteKaitaiStruct):

@@ -32,7 +32,7 @@ class StrLiteralsLatin1(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len((self.parsed).encode(u"UTF-8")) != self.len_parsed:
-            raise kaitaistruct.ConsistencyError(u"parsed", len((self.parsed).encode(u"UTF-8")), self.len_parsed)
+            raise kaitaistruct.ConsistencyError(u"parsed", self.len_parsed, len((self.parsed).encode(u"UTF-8")))
         self._dirty = False
 
     @property

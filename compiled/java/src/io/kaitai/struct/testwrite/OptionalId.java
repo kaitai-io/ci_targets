@@ -48,7 +48,7 @@ public class OptionalId extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this._unnamed2.length != 5)
-            throw new ConsistencyError("_unnamed2", this._unnamed2.length, 5);
+            throw new ConsistencyError("_unnamed2", 5, this._unnamed2.length);
         _dirty = false;
     }
     private int _unnamed0;

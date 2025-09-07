@@ -55,13 +55,13 @@ public class NavParent extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.header._root(), _root()))
-            throw new ConsistencyError("header", this.header._root(), _root());
+            throw new ConsistencyError("header", _root(), this.header._root());
         if (!Objects.equals(this.header._parent(), this))
-            throw new ConsistencyError("header", this.header._parent(), this);
+            throw new ConsistencyError("header", this, this.header._parent());
         if (!Objects.equals(this.index._root(), _root()))
-            throw new ConsistencyError("index", this.index._root(), _root());
+            throw new ConsistencyError("index", _root(), this.index._root());
         if (!Objects.equals(this.index._parent(), this))
-            throw new ConsistencyError("index", this.index._parent(), this);
+            throw new ConsistencyError("index", this, this.index._parent());
         _dirty = false;
     }
     public static class Entry extends KaitaiStruct.ReadWrite {
@@ -100,7 +100,7 @@ public class NavParent extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if ((this.filename).getBytes(Charset.forName("UTF-8")).length != _parent()._parent().header().filenameLen())
-                throw new ConsistencyError("filename", (this.filename).getBytes(Charset.forName("UTF-8")).length, _parent()._parent().header().filenameLen());
+                throw new ConsistencyError("filename", _parent()._parent().header().filenameLen(), (this.filename).getBytes(Charset.forName("UTF-8")).length);
             _dirty = false;
         }
         private String filename;
@@ -216,14 +216,14 @@ public class NavParent extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (this.magic.length != 4)
-                throw new ConsistencyError("magic", this.magic.length, 4);
+                throw new ConsistencyError("magic", 4, this.magic.length);
             if (this.entries.size() != _parent().header().qtyEntries())
-                throw new ConsistencyError("entries", this.entries.size(), _parent().header().qtyEntries());
+                throw new ConsistencyError("entries", _parent().header().qtyEntries(), this.entries.size());
             for (int i = 0; i < this.entries.size(); i++) {
                 if (!Objects.equals(this.entries.get(((Number) (i)).intValue())._root(), _root()))
-                    throw new ConsistencyError("entries", this.entries.get(((Number) (i)).intValue())._root(), _root());
+                    throw new ConsistencyError("entries", _root(), this.entries.get(((Number) (i)).intValue())._root());
                 if (!Objects.equals(this.entries.get(((Number) (i)).intValue())._parent(), this))
-                    throw new ConsistencyError("entries", this.entries.get(((Number) (i)).intValue())._parent(), this);
+                    throw new ConsistencyError("entries", this, this.entries.get(((Number) (i)).intValue())._parent());
             }
             _dirty = false;
         }

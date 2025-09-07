@@ -72,26 +72,26 @@ public class IoLocalVar extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.skip.length != 20)
-            throw new ConsistencyError("skip", this.skip.length, 20);
+            throw new ConsistencyError("skip", 20, this.skip.length);
         if (_enabledMessUp) {
             switch (2) {
             case 1: {
                 if (!Objects.equals(((IoLocalVar.Dummy) (this.messUp))._root(), _root()))
-                    throw new ConsistencyError("mess_up", ((IoLocalVar.Dummy) (this.messUp))._root(), _root());
+                    throw new ConsistencyError("mess_up", _root(), ((IoLocalVar.Dummy) (this.messUp))._root());
                 if (!Objects.equals(((IoLocalVar.Dummy) (this.messUp))._parent(), this))
-                    throw new ConsistencyError("mess_up", ((IoLocalVar.Dummy) (this.messUp))._parent(), this);
+                    throw new ConsistencyError("mess_up", this, ((IoLocalVar.Dummy) (this.messUp))._parent());
                 break;
             }
             case 2: {
                 if (!Objects.equals(((IoLocalVar.Dummy) (this.messUp))._root(), _root()))
-                    throw new ConsistencyError("mess_up", ((IoLocalVar.Dummy) (this.messUp))._root(), _root());
+                    throw new ConsistencyError("mess_up", _root(), ((IoLocalVar.Dummy) (this.messUp))._root());
                 if (!Objects.equals(((IoLocalVar.Dummy) (this.messUp))._parent(), this))
-                    throw new ConsistencyError("mess_up", ((IoLocalVar.Dummy) (this.messUp))._parent(), this);
+                    throw new ConsistencyError("mess_up", this, ((IoLocalVar.Dummy) (this.messUp))._parent());
                 break;
             }
             default: {
                 if (((byte[]) (this.messUp)).length != 2)
-                    throw new ConsistencyError("mess_up", ((byte[]) (this.messUp)).length, 2);
+                    throw new ConsistencyError("mess_up", 2, ((byte[]) (this.messUp)).length);
                 break;
             }
             }
@@ -197,7 +197,7 @@ public class IoLocalVar extends KaitaiStruct.ReadWrite {
                     protected void write(KaitaiStream parent) {
                         _this._raw_messUp = _io__raw_messUp.toByteArray();
                         if (((byte[]) (_this._raw_messUp)).length != 2)
-                            throw new ConsistencyError("raw(mess_up)", ((byte[]) (_this._raw_messUp)).length, 2);
+                            throw new ConsistencyError("raw(mess_up)", 2, ((byte[]) (_this._raw_messUp)).length);
                         parent.writeBytes(((byte[]) (((byte[]) (_this._raw_messUp)))));
                     }
                 });
@@ -217,7 +217,7 @@ public class IoLocalVar extends KaitaiStruct.ReadWrite {
                     protected void write(KaitaiStream parent) {
                         _this._raw_messUp = _io__raw_messUp.toByteArray();
                         if (((byte[]) (_this._raw_messUp)).length != 2)
-                            throw new ConsistencyError("raw(mess_up)", ((byte[]) (_this._raw_messUp)).length, 2);
+                            throw new ConsistencyError("raw(mess_up)", 2, ((byte[]) (_this._raw_messUp)).length);
                         parent.writeBytes(((byte[]) (((byte[]) (_this._raw_messUp)))));
                     }
                 });

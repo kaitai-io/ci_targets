@@ -36,13 +36,13 @@ class Expr2(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.str1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"str1", self.str1._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"str1", self._root, self.str1._root)
         if self.str1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"str1", self.str1._parent, self)
+            raise kaitaistruct.ConsistencyError(u"str1", self, self.str1._parent)
         if self.str2._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"str2", self.str2._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"str2", self._root, self.str2._root)
         if self.str2._parent != self:
-            raise kaitaistruct.ConsistencyError(u"str2", self.str2._parent, self)
+            raise kaitaistruct.ConsistencyError(u"str2", self, self.str2._parent)
         self._dirty = False
 
     class ModStr(ReadWriteKaitaiStruct):
@@ -92,7 +92,7 @@ class Expr2(ReadWriteKaitaiStruct):
             def handler(parent, _io__raw_rest=_io__raw_rest):
                 self._raw_rest = _io__raw_rest.to_byte_array()
                 if len(self._raw_rest) != 3:
-                    raise kaitaistruct.ConsistencyError(u"raw(rest)", len(self._raw_rest), 3)
+                    raise kaitaistruct.ConsistencyError(u"raw(rest)", 3, len(self._raw_rest))
                 parent.write_bytes(self._raw_rest)
             _io__raw_rest.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self.rest._write__seq(_io__raw_rest)
@@ -100,22 +100,22 @@ class Expr2(ReadWriteKaitaiStruct):
 
         def _check(self):
             if len((self.str).encode(u"UTF-8")) != self.len_mod:
-                raise kaitaistruct.ConsistencyError(u"str", len((self.str).encode(u"UTF-8")), self.len_mod)
+                raise kaitaistruct.ConsistencyError(u"str", self.len_mod, len((self.str).encode(u"UTF-8")))
             if self.rest._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"rest", self.rest._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"rest", self._root, self.rest._root)
             if self.rest._parent != self:
-                raise kaitaistruct.ConsistencyError(u"rest", self.rest._parent, self)
+                raise kaitaistruct.ConsistencyError(u"rest", self, self.rest._parent)
             if self.char5__enabled:
                 pass
                 if len((self._m_char5).encode(u"ASCII")) != 1:
-                    raise kaitaistruct.ConsistencyError(u"char5", len((self._m_char5).encode(u"ASCII")), 1)
+                    raise kaitaistruct.ConsistencyError(u"char5", 1, len((self._m_char5).encode(u"ASCII")))
 
             if self.tuple5__enabled:
                 pass
                 if self._m_tuple5._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"tuple5", self._m_tuple5._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"tuple5", self._root, self._m_tuple5._root)
                 if self._m_tuple5._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"tuple5", self._m_tuple5._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"tuple5", self, self._m_tuple5._parent)
 
             self._dirty = False
 

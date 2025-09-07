@@ -43,7 +43,7 @@ class ExprIoTernary(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_obj1=_io__raw_obj1):
             self._raw_obj1 = _io__raw_obj1.to_byte_array()
             if len(self._raw_obj1) != 4:
-                raise kaitaistruct.ConsistencyError(u"raw(obj1)", len(self._raw_obj1), 4)
+                raise kaitaistruct.ConsistencyError(u"raw(obj1)", 4, len(self._raw_obj1))
             parent.write_bytes(self._raw_obj1)
         _io__raw_obj1.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.obj1._write__seq(_io__raw_obj1)
@@ -54,7 +54,7 @@ class ExprIoTernary(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_obj2=_io__raw_obj2):
             self._raw_obj2 = _io__raw_obj2.to_byte_array()
             if len(self._raw_obj2) != 8:
-                raise kaitaistruct.ConsistencyError(u"raw(obj2)", len(self._raw_obj2), 8)
+                raise kaitaistruct.ConsistencyError(u"raw(obj2)", 8, len(self._raw_obj2))
             parent.write_bytes(self._raw_obj2)
         _io__raw_obj2.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.obj2._write__seq(_io__raw_obj2)
@@ -62,13 +62,13 @@ class ExprIoTernary(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.obj1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"obj1", self.obj1._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"obj1", self._root, self.obj1._root)
         if self.obj1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"obj1", self.obj1._parent, self)
+            raise kaitaistruct.ConsistencyError(u"obj1", self, self.obj1._parent)
         if self.obj2._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"obj2", self.obj2._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"obj2", self._root, self.obj2._root)
         if self.obj2._parent != self:
-            raise kaitaistruct.ConsistencyError(u"obj2", self.obj2._parent, self)
+            raise kaitaistruct.ConsistencyError(u"obj2", self, self.obj2._parent)
         self._dirty = False
 
     class One(ReadWriteKaitaiStruct):

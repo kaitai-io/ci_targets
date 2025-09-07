@@ -55,17 +55,17 @@ public class NestedTypes3 extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.aCc._root(), _root()))
-            throw new ConsistencyError("a_cc", this.aCc._root(), _root());
+            throw new ConsistencyError("a_cc", _root(), this.aCc._root());
         if (!Objects.equals(this.aCc._parent(), this))
-            throw new ConsistencyError("a_cc", this.aCc._parent(), this);
+            throw new ConsistencyError("a_cc", this, this.aCc._parent());
         if (!Objects.equals(this.aCD._root(), _root()))
-            throw new ConsistencyError("a_c_d", this.aCD._root(), _root());
+            throw new ConsistencyError("a_c_d", _root(), this.aCD._root());
         if (!Objects.equals(this.aCD._parent(), this))
-            throw new ConsistencyError("a_c_d", this.aCD._parent(), this);
+            throw new ConsistencyError("a_c_d", this, this.aCD._parent());
         if (!Objects.equals(this.b._root(), _root()))
-            throw new ConsistencyError("b", this.b._root(), _root());
+            throw new ConsistencyError("b", _root(), this.b._root());
         if (!Objects.equals(this.b._parent(), this))
-            throw new ConsistencyError("b", this.b._parent(), this);
+            throw new ConsistencyError("b", this, this.b._parent());
         _dirty = false;
     }
     public static class SubtypeA extends KaitaiStruct.ReadWrite {
@@ -290,13 +290,13 @@ public class NestedTypes3 extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (!Objects.equals(this.aCc._root(), _root()))
-                throw new ConsistencyError("a_cc", this.aCc._root(), _root());
+                throw new ConsistencyError("a_cc", _root(), this.aCc._root());
             if (!Objects.equals(this.aCc._parent(), this))
-                throw new ConsistencyError("a_cc", this.aCc._parent(), this);
+                throw new ConsistencyError("a_cc", this, this.aCc._parent());
             if (!Objects.equals(this.aCD._root(), _root()))
-                throw new ConsistencyError("a_c_d", this.aCD._root(), _root());
+                throw new ConsistencyError("a_c_d", _root(), this.aCD._root());
             if (!Objects.equals(this.aCD._parent(), this))
-                throw new ConsistencyError("a_c_d", this.aCD._parent(), this);
+                throw new ConsistencyError("a_c_d", this, this.aCD._parent());
             _dirty = false;
         }
         private byte valueB;

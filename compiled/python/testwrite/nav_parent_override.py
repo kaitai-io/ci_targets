@@ -38,13 +38,13 @@ class NavParentOverride(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.child_1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"child_1", self.child_1._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"child_1", self._root, self.child_1._root)
         if self.child_1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"child_1", self.child_1._parent, self)
+            raise kaitaistruct.ConsistencyError(u"child_1", self, self.child_1._parent)
         if self.mediator_2._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"mediator_2", self.mediator_2._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"mediator_2", self._root, self.mediator_2._root)
         if self.mediator_2._parent != self:
-            raise kaitaistruct.ConsistencyError(u"mediator_2", self.mediator_2._parent, self)
+            raise kaitaistruct.ConsistencyError(u"mediator_2", self, self.mediator_2._parent)
         self._dirty = False
 
     class Child(ReadWriteKaitaiStruct):
@@ -69,7 +69,7 @@ class NavParentOverride(ReadWriteKaitaiStruct):
 
         def _check(self):
             if len(self.data) != self._parent.child_size:
-                raise kaitaistruct.ConsistencyError(u"data", len(self.data), self._parent.child_size)
+                raise kaitaistruct.ConsistencyError(u"data", self._parent.child_size, len(self.data))
             self._dirty = False
 
 
@@ -97,9 +97,9 @@ class NavParentOverride(ReadWriteKaitaiStruct):
 
         def _check(self):
             if self.child_2._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"child_2", self.child_2._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"child_2", self._root, self.child_2._root)
             if self.child_2._parent != self._parent:
-                raise kaitaistruct.ConsistencyError(u"child_2", self.child_2._parent, self._parent)
+                raise kaitaistruct.ConsistencyError(u"child_2", self._parent, self.child_2._parent)
             self._dirty = False
 
 

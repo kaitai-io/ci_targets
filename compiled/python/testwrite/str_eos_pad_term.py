@@ -51,7 +51,7 @@ class StrEosPadTerm(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_str_pad=_io__raw_str_pad):
             self._raw_str_pad = _io__raw_str_pad.to_byte_array()
             if len(self._raw_str_pad) != 20:
-                raise kaitaistruct.ConsistencyError(u"raw(str_pad)", len(self._raw_str_pad), 20)
+                raise kaitaistruct.ConsistencyError(u"raw(str_pad)", 20, len(self._raw_str_pad))
             parent.write_bytes(self._raw_str_pad)
         _io__raw_str_pad.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.str_pad._write__seq(_io__raw_str_pad)
@@ -62,7 +62,7 @@ class StrEosPadTerm(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_str_term=_io__raw_str_term):
             self._raw_str_term = _io__raw_str_term.to_byte_array()
             if len(self._raw_str_term) != 20:
-                raise kaitaistruct.ConsistencyError(u"raw(str_term)", len(self._raw_str_term), 20)
+                raise kaitaistruct.ConsistencyError(u"raw(str_term)", 20, len(self._raw_str_term))
             parent.write_bytes(self._raw_str_term)
         _io__raw_str_term.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.str_term._write__seq(_io__raw_str_term)
@@ -73,7 +73,7 @@ class StrEosPadTerm(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_str_term_and_pad=_io__raw_str_term_and_pad):
             self._raw_str_term_and_pad = _io__raw_str_term_and_pad.to_byte_array()
             if len(self._raw_str_term_and_pad) != 20:
-                raise kaitaistruct.ConsistencyError(u"raw(str_term_and_pad)", len(self._raw_str_term_and_pad), 20)
+                raise kaitaistruct.ConsistencyError(u"raw(str_term_and_pad)", 20, len(self._raw_str_term_and_pad))
             parent.write_bytes(self._raw_str_term_and_pad)
         _io__raw_str_term_and_pad.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.str_term_and_pad._write__seq(_io__raw_str_term_and_pad)
@@ -84,7 +84,7 @@ class StrEosPadTerm(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_str_term_include=_io__raw_str_term_include):
             self._raw_str_term_include = _io__raw_str_term_include.to_byte_array()
             if len(self._raw_str_term_include) != 20:
-                raise kaitaistruct.ConsistencyError(u"raw(str_term_include)", len(self._raw_str_term_include), 20)
+                raise kaitaistruct.ConsistencyError(u"raw(str_term_include)", 20, len(self._raw_str_term_include))
             parent.write_bytes(self._raw_str_term_include)
         _io__raw_str_term_include.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.str_term_include._write__seq(_io__raw_str_term_include)
@@ -92,21 +92,21 @@ class StrEosPadTerm(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.str_pad._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"str_pad", self.str_pad._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"str_pad", self._root, self.str_pad._root)
         if self.str_pad._parent != self:
-            raise kaitaistruct.ConsistencyError(u"str_pad", self.str_pad._parent, self)
+            raise kaitaistruct.ConsistencyError(u"str_pad", self, self.str_pad._parent)
         if self.str_term._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"str_term", self.str_term._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"str_term", self._root, self.str_term._root)
         if self.str_term._parent != self:
-            raise kaitaistruct.ConsistencyError(u"str_term", self.str_term._parent, self)
+            raise kaitaistruct.ConsistencyError(u"str_term", self, self.str_term._parent)
         if self.str_term_and_pad._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"str_term_and_pad", self.str_term_and_pad._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"str_term_and_pad", self._root, self.str_term_and_pad._root)
         if self.str_term_and_pad._parent != self:
-            raise kaitaistruct.ConsistencyError(u"str_term_and_pad", self.str_term_and_pad._parent, self)
+            raise kaitaistruct.ConsistencyError(u"str_term_and_pad", self, self.str_term_and_pad._parent)
         if self.str_term_include._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"str_term_include", self.str_term_include._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"str_term_include", self._root, self.str_term_include._root)
         if self.str_term_include._parent != self:
-            raise kaitaistruct.ConsistencyError(u"str_term_include", self.str_term_include._parent, self)
+            raise kaitaistruct.ConsistencyError(u"str_term_include", self, self.str_term_include._parent)
         self._dirty = False
 
     class StrPadType(ReadWriteKaitaiStruct):
@@ -128,7 +128,7 @@ class StrEosPadTerm(ReadWriteKaitaiStruct):
             super(StrEosPadTerm.StrPadType, self)._write__seq(io)
             self._io.write_bytes_limit((self.value).encode(u"UTF-8"), self._io.size() - self._io.pos(), 64, 64)
             if not self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"value", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"value", 0, self._io.size() - self._io.pos())
 
 
         def _check(self):
@@ -154,7 +154,7 @@ class StrEosPadTerm(ReadWriteKaitaiStruct):
             super(StrEosPadTerm.StrTermAndPadType, self)._write__seq(io)
             self._io.write_bytes_limit((self.value).encode(u"UTF-8"), self._io.size() - self._io.pos(), 64, 43)
             if not self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"value", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"value", 0, self._io.size() - self._io.pos())
 
 
         def _check(self):
@@ -180,7 +180,7 @@ class StrEosPadTerm(ReadWriteKaitaiStruct):
             super(StrEosPadTerm.StrTermIncludeType, self)._write__seq(io)
             self._io.write_bytes_limit((self.value).encode(u"UTF-8"), self._io.size() - self._io.pos(), 0, 0)
             if not self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"value", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"value", 0, self._io.size() - self._io.pos())
 
 
         def _check(self):
@@ -206,7 +206,7 @@ class StrEosPadTerm(ReadWriteKaitaiStruct):
             super(StrEosPadTerm.StrTermType, self)._write__seq(io)
             self._io.write_bytes_limit((self.value).encode(u"UTF-8"), self._io.size() - self._io.pos(), 64, 0)
             if not self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"value", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"value", 0, self._io.size() - self._io.pos())
 
 
         def _check(self):

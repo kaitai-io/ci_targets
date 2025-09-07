@@ -61,19 +61,19 @@ public class SwitchManualStr extends KaitaiStruct.ReadWrite {
         _assertNotDirty();
         for (int i = 0; i < this.opcodes.size(); i++) {
             if (this._io.isEof())
-                throw new ConsistencyError("opcodes", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("opcodes", 0, this._io.size() - this._io.pos());
             this.opcodes.get(((Number) (i)).intValue())._write_Seq(this._io);
         }
         if (!(this._io.isEof()))
-            throw new ConsistencyError("opcodes", this._io.size() - this._io.pos(), 0);
+            throw new ConsistencyError("opcodes", 0, this._io.size() - this._io.pos());
     }
 
     public void _check() {
         for (int i = 0; i < this.opcodes.size(); i++) {
             if (!Objects.equals(this.opcodes.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("opcodes", this.opcodes.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("opcodes", _root(), this.opcodes.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.opcodes.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("opcodes", this.opcodes.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("opcodes", this, this.opcodes.get(((Number) (i)).intValue())._parent());
         }
         _dirty = false;
     }
@@ -145,20 +145,20 @@ public class SwitchManualStr extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if ((this.code).getBytes(Charset.forName("ASCII")).length != 1)
-                throw new ConsistencyError("code", (this.code).getBytes(Charset.forName("ASCII")).length, 1);
+                throw new ConsistencyError("code", 1, (this.code).getBytes(Charset.forName("ASCII")).length);
             switch (code()) {
             case "I": {
                 if (!Objects.equals(((SwitchManualStr.Opcode.Intval) (this.body))._root(), _root()))
-                    throw new ConsistencyError("body", ((SwitchManualStr.Opcode.Intval) (this.body))._root(), _root());
+                    throw new ConsistencyError("body", _root(), ((SwitchManualStr.Opcode.Intval) (this.body))._root());
                 if (!Objects.equals(((SwitchManualStr.Opcode.Intval) (this.body))._parent(), this))
-                    throw new ConsistencyError("body", ((SwitchManualStr.Opcode.Intval) (this.body))._parent(), this);
+                    throw new ConsistencyError("body", this, ((SwitchManualStr.Opcode.Intval) (this.body))._parent());
                 break;
             }
             case "S": {
                 if (!Objects.equals(((SwitchManualStr.Opcode.Strval) (this.body))._root(), _root()))
-                    throw new ConsistencyError("body", ((SwitchManualStr.Opcode.Strval) (this.body))._root(), _root());
+                    throw new ConsistencyError("body", _root(), ((SwitchManualStr.Opcode.Strval) (this.body))._root());
                 if (!Objects.equals(((SwitchManualStr.Opcode.Strval) (this.body))._parent(), this))
-                    throw new ConsistencyError("body", ((SwitchManualStr.Opcode.Strval) (this.body))._parent(), this);
+                    throw new ConsistencyError("body", this, ((SwitchManualStr.Opcode.Strval) (this.body))._parent());
                 break;
             }
             }
@@ -248,7 +248,7 @@ public class SwitchManualStr extends KaitaiStruct.ReadWrite {
 
             public void _check() {
                 if (KaitaiStream.byteArrayIndexOf((this.value).getBytes(Charset.forName("ASCII")), ((byte) 0)) != -1)
-                    throw new ConsistencyError("value", KaitaiStream.byteArrayIndexOf((this.value).getBytes(Charset.forName("ASCII")), ((byte) 0)), -1);
+                    throw new ConsistencyError("value", -1, KaitaiStream.byteArrayIndexOf((this.value).getBytes(Charset.forName("ASCII")), ((byte) 0)));
                 _dirty = false;
             }
             private String value;

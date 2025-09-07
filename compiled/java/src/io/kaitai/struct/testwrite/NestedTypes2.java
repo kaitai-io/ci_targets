@@ -51,13 +51,13 @@ public class NestedTypes2 extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.one._root(), _root()))
-            throw new ConsistencyError("one", this.one._root(), _root());
+            throw new ConsistencyError("one", _root(), this.one._root());
         if (!Objects.equals(this.one._parent(), this))
-            throw new ConsistencyError("one", this.one._parent(), this);
+            throw new ConsistencyError("one", this, this.one._parent());
         if (!Objects.equals(this.two._root(), _root()))
-            throw new ConsistencyError("two", this.two._root(), _root());
+            throw new ConsistencyError("two", _root(), this.two._root());
         if (!Objects.equals(this.two._parent(), this))
-            throw new ConsistencyError("two", this.two._parent(), this);
+            throw new ConsistencyError("two", this, this.two._parent());
         _dirty = false;
     }
     public static class SubtypeA extends KaitaiStruct.ReadWrite {
@@ -106,17 +106,17 @@ public class NestedTypes2 extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (!Objects.equals(this.typedAtRoot._root(), _root()))
-                throw new ConsistencyError("typed_at_root", this.typedAtRoot._root(), _root());
+                throw new ConsistencyError("typed_at_root", _root(), this.typedAtRoot._root());
             if (!Objects.equals(this.typedAtRoot._parent(), this))
-                throw new ConsistencyError("typed_at_root", this.typedAtRoot._parent(), this);
+                throw new ConsistencyError("typed_at_root", this, this.typedAtRoot._parent());
             if (!Objects.equals(this.typedHere1._root(), _root()))
-                throw new ConsistencyError("typed_here1", this.typedHere1._root(), _root());
+                throw new ConsistencyError("typed_here1", _root(), this.typedHere1._root());
             if (!Objects.equals(this.typedHere1._parent(), this))
-                throw new ConsistencyError("typed_here1", this.typedHere1._parent(), this);
+                throw new ConsistencyError("typed_here1", this, this.typedHere1._parent());
             if (!Objects.equals(this.typedHere2._root(), _root()))
-                throw new ConsistencyError("typed_here2", this.typedHere2._root(), _root());
+                throw new ConsistencyError("typed_here2", _root(), this.typedHere2._root());
             if (!Objects.equals(this.typedHere2._parent(), this))
-                throw new ConsistencyError("typed_here2", this.typedHere2._parent(), this);
+                throw new ConsistencyError("typed_here2", this, this.typedHere2._parent());
             _dirty = false;
         }
         public static class SubtypeC extends KaitaiStruct.ReadWrite {
@@ -167,17 +167,17 @@ public class NestedTypes2 extends KaitaiStruct.ReadWrite {
 
             public void _check() {
                 if (!Objects.equals(this.typedHere._root(), _root()))
-                    throw new ConsistencyError("typed_here", this.typedHere._root(), _root());
+                    throw new ConsistencyError("typed_here", _root(), this.typedHere._root());
                 if (!Objects.equals(this.typedHere._parent(), this))
-                    throw new ConsistencyError("typed_here", this.typedHere._parent(), this);
+                    throw new ConsistencyError("typed_here", this, this.typedHere._parent());
                 if (!Objects.equals(this.typedParent._root(), _root()))
-                    throw new ConsistencyError("typed_parent", this.typedParent._root(), _root());
+                    throw new ConsistencyError("typed_parent", _root(), this.typedParent._root());
                 if (!Objects.equals(this.typedParent._parent(), this))
-                    throw new ConsistencyError("typed_parent", this.typedParent._parent(), this);
+                    throw new ConsistencyError("typed_parent", this, this.typedParent._parent());
                 if (!Objects.equals(this.typedRoot._root(), _root()))
-                    throw new ConsistencyError("typed_root", this.typedRoot._root(), _root());
+                    throw new ConsistencyError("typed_root", _root(), this.typedRoot._root());
                 if (!Objects.equals(this.typedRoot._parent(), this))
-                    throw new ConsistencyError("typed_root", this.typedRoot._parent(), this);
+                    throw new ConsistencyError("typed_root", this, this.typedRoot._parent());
                 _dirty = false;
             }
             public static class SubtypeD extends KaitaiStruct.ReadWrite {

@@ -39,18 +39,18 @@ class ValidFailRepeatExpr(ReadWriteKaitaiStruct):
         for i in range(len(self.foo)):
             pass
             if self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"foo", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"foo", 0, self._io.size() - self._io.pos())
             self._io.write_bytes(self.foo[i])
 
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"foo", self._io.size() - self._io.pos(), 0)
+            raise kaitaistruct.ConsistencyError(u"foo", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):
         for i in range(len(self.foo)):
             pass
             if len(self.foo[i]) != 4:
-                raise kaitaistruct.ConsistencyError(u"foo", len(self.foo[i]), 4)
+                raise kaitaistruct.ConsistencyError(u"foo", 4, len(self.foo[i]))
             _ = self.foo[i]
             if not _ != b"\x00\x12\x34\x56":
                 raise kaitaistruct.ValidationExprError(self.foo[i], None, u"/seq/0")

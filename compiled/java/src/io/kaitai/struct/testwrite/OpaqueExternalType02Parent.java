@@ -47,9 +47,9 @@ public class OpaqueExternalType02Parent extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.parent._root(), _root()))
-            throw new ConsistencyError("parent", this.parent._root(), _root());
+            throw new ConsistencyError("parent", _root(), this.parent._root());
         if (!Objects.equals(this.parent._parent(), this))
-            throw new ConsistencyError("parent", this.parent._parent(), this);
+            throw new ConsistencyError("parent", this, this.parent._parent());
         _dirty = false;
     }
     public static class ParentObj extends KaitaiStruct.ReadWrite {

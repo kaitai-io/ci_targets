@@ -46,13 +46,13 @@ class RepeatNStruct(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.chunks) != self.qty:
-            raise kaitaistruct.ConsistencyError(u"chunks", len(self.chunks), self.qty)
+            raise kaitaistruct.ConsistencyError(u"chunks", self.qty, len(self.chunks))
         for i in range(len(self.chunks)):
             pass
             if self.chunks[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"chunks", self.chunks[i]._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"chunks", self._root, self.chunks[i]._root)
             if self.chunks[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"chunks", self.chunks[i]._parent, self)
+                raise kaitaistruct.ConsistencyError(u"chunks", self, self.chunks[i]._parent)
 
         self._dirty = False
 

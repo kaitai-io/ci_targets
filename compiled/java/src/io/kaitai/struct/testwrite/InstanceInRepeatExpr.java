@@ -58,7 +58,7 @@ public class InstanceInRepeatExpr extends KaitaiStruct.ReadWrite {
         _assertNotDirty();
         _shouldWriteNumChunks = _enabledNumChunks;
         if (this.chunks.size() != numChunks())
-            throw new ConsistencyError("chunks", this.chunks.size(), numChunks());
+            throw new ConsistencyError("chunks", numChunks(), this.chunks.size());
         for (int i = 0; i < this.chunks.size(); i++) {
             this.chunks.get(((Number) (i)).intValue())._write_Seq(this._io);
         }
@@ -67,9 +67,9 @@ public class InstanceInRepeatExpr extends KaitaiStruct.ReadWrite {
     public void _check() {
         for (int i = 0; i < this.chunks.size(); i++) {
             if (!Objects.equals(this.chunks.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("chunks", this.chunks.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("chunks", _root(), this.chunks.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.chunks.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("chunks", this.chunks.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("chunks", this, this.chunks.get(((Number) (i)).intValue())._parent());
         }
         if (_enabledNumChunks) {
         }

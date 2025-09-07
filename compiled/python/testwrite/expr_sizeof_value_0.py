@@ -34,9 +34,9 @@ class ExprSizeofValue0(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.block1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"block1", self.block1._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"block1", self._root, self.block1._root)
         if self.block1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"block1", self.block1._parent, self)
+            raise kaitaistruct.ConsistencyError(u"block1", self, self.block1._parent)
         self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):
@@ -65,7 +65,7 @@ class ExprSizeofValue0(ReadWriteKaitaiStruct):
 
         def _check(self):
             if len(self.c) != 2:
-                raise kaitaistruct.ConsistencyError(u"c", len(self.c), 2)
+                raise kaitaistruct.ConsistencyError(u"c", 2, len(self.c))
             self._dirty = False
 
 

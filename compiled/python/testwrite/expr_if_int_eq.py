@@ -43,7 +43,7 @@ class ExprIfIntEq(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.skip) != 2:
-            raise kaitaistruct.ConsistencyError(u"skip", len(self.skip), 2)
+            raise kaitaistruct.ConsistencyError(u"skip", 2, len(self.skip))
         if True:
             pass
 

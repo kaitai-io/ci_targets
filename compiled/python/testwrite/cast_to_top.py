@@ -40,9 +40,9 @@ class CastToTop(ReadWriteKaitaiStruct):
         if self.header__enabled:
             pass
             if self._m_header._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"header", self._m_header._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"header", self._root, self._m_header._root)
             if self._m_header._parent != self:
-                raise kaitaistruct.ConsistencyError(u"header", self._m_header._parent, self)
+                raise kaitaistruct.ConsistencyError(u"header", self, self._m_header._parent)
 
         self._dirty = False
 

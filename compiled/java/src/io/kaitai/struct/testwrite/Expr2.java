@@ -53,13 +53,13 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.str1._root(), _root()))
-            throw new ConsistencyError("str1", this.str1._root(), _root());
+            throw new ConsistencyError("str1", _root(), this.str1._root());
         if (!Objects.equals(this.str1._parent(), this))
-            throw new ConsistencyError("str1", this.str1._parent(), this);
+            throw new ConsistencyError("str1", this, this.str1._parent());
         if (!Objects.equals(this.str2._root(), _root()))
-            throw new ConsistencyError("str2", this.str2._root(), _root());
+            throw new ConsistencyError("str2", _root(), this.str2._root());
         if (!Objects.equals(this.str2._parent(), this))
-            throw new ConsistencyError("str2", this.str2._parent(), this);
+            throw new ConsistencyError("str2", this, this.str2._parent());
         _dirty = false;
     }
     public static class ModStr extends KaitaiStruct.ReadWrite {
@@ -121,7 +121,7 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
                     protected void write(KaitaiStream parent) {
                         _this._raw_rest = _io__raw_rest.toByteArray();
                         if (_this._raw_rest.length != 3)
-                            throw new ConsistencyError("raw(rest)", _this._raw_rest.length, 3);
+                            throw new ConsistencyError("raw(rest)", 3, _this._raw_rest.length);
                         parent.writeBytes(_this._raw_rest);
                     }
                 });
@@ -131,20 +131,20 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if ((this.str).getBytes(Charset.forName("UTF-8")).length != lenMod())
-                throw new ConsistencyError("str", (this.str).getBytes(Charset.forName("UTF-8")).length, lenMod());
+                throw new ConsistencyError("str", lenMod(), (this.str).getBytes(Charset.forName("UTF-8")).length);
             if (!Objects.equals(this.rest._root(), _root()))
-                throw new ConsistencyError("rest", this.rest._root(), _root());
+                throw new ConsistencyError("rest", _root(), this.rest._root());
             if (!Objects.equals(this.rest._parent(), this))
-                throw new ConsistencyError("rest", this.rest._parent(), this);
+                throw new ConsistencyError("rest", this, this.rest._parent());
             if (_enabledChar5) {
                 if ((this.char5).getBytes(Charset.forName("ASCII")).length != 1)
-                    throw new ConsistencyError("char5", (this.char5).getBytes(Charset.forName("ASCII")).length, 1);
+                    throw new ConsistencyError("char5", 1, (this.char5).getBytes(Charset.forName("ASCII")).length);
             }
             if (_enabledTuple5) {
                 if (!Objects.equals(this.tuple5._root(), _root()))
-                    throw new ConsistencyError("tuple5", this.tuple5._root(), _root());
+                    throw new ConsistencyError("tuple5", _root(), this.tuple5._root());
                 if (!Objects.equals(this.tuple5._parent(), this))
-                    throw new ConsistencyError("tuple5", this.tuple5._parent(), this);
+                    throw new ConsistencyError("tuple5", this, this.tuple5._parent());
             }
             _dirty = false;
         }

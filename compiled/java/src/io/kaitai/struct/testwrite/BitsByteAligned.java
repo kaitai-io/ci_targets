@@ -60,7 +60,7 @@ public class BitsByteAligned extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.byte3.length != 1)
-            throw new ConsistencyError("byte_3", this.byte3.length, 1);
+            throw new ConsistencyError("byte_3", 1, this.byte3.length);
         _dirty = false;
     }
     private long one;

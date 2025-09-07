@@ -47,9 +47,9 @@ public class ExprBytesCmp extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.one.length != 1)
-            throw new ConsistencyError("one", this.one.length, 1);
+            throw new ConsistencyError("one", 1, this.one.length);
         if (this.two.length != 3)
-            throw new ConsistencyError("two", this.two.length, 3);
+            throw new ConsistencyError("two", 3, this.two.length);
         _dirty = false;
     }
     private byte[] ack;

@@ -86,12 +86,12 @@ public class DebugArrayUserCurrentExcluded extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.arrayOfCats.size() != 3)
-            throw new ConsistencyError("array_of_cats", this.arrayOfCats.size(), 3);
+            throw new ConsistencyError("array_of_cats", 3, this.arrayOfCats.size());
         for (int i = 0; i < this.arrayOfCats.size(); i++) {
             if (!Objects.equals(this.arrayOfCats.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("array_of_cats", this.arrayOfCats.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("array_of_cats", _root(), this.arrayOfCats.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.arrayOfCats.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("array_of_cats", this.arrayOfCats.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("array_of_cats", this, this.arrayOfCats.get(((Number) (i)).intValue())._parent());
         }
         _dirty = false;
     }
@@ -139,7 +139,7 @@ public class DebugArrayUserCurrentExcluded extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (this.meow.length != 3 - _parent().arrayOfCats().size())
-                throw new ConsistencyError("meow", this.meow.length, 3 - _parent().arrayOfCats().size());
+                throw new ConsistencyError("meow", 3 - _parent().arrayOfCats().size(), this.meow.length);
             _dirty = false;
         }
         private byte[] meow;

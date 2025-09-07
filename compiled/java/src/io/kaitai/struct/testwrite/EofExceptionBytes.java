@@ -44,7 +44,7 @@ public class EofExceptionBytes extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.buf.length != 13)
-            throw new ConsistencyError("buf", this.buf.length, 13);
+            throw new ConsistencyError("buf", 13, this.buf.length);
         _dirty = false;
     }
     private byte[] buf;

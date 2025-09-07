@@ -46,7 +46,7 @@ class BitsByteAligned(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.byte_3) != 1:
-            raise kaitaistruct.ConsistencyError(u"byte_3", len(self.byte_3), 1)
+            raise kaitaistruct.ConsistencyError(u"byte_3", 1, len(self.byte_3))
         self._dirty = False
 
 

@@ -46,11 +46,11 @@ class InstanceStdArray(ReadWriteKaitaiStruct):
         if self.entries__enabled:
             pass
             if len(self._m_entries) != self.qty_entries:
-                raise kaitaistruct.ConsistencyError(u"entries", len(self._m_entries), self.qty_entries)
+                raise kaitaistruct.ConsistencyError(u"entries", self.qty_entries, len(self._m_entries))
             for i in range(len(self._m_entries)):
                 pass
                 if len(self._m_entries[i]) != self.entry_size:
-                    raise kaitaistruct.ConsistencyError(u"entries", len(self._m_entries[i]), self.entry_size)
+                    raise kaitaistruct.ConsistencyError(u"entries", self.entry_size, len(self._m_entries[i]))
 
 
         self._dirty = False

@@ -69,15 +69,15 @@ public class TypeTernary2ndFalsy extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.ut._root(), _root()))
-            throw new ConsistencyError("ut", this.ut._root(), _root());
+            throw new ConsistencyError("ut", _root(), this.ut._root());
         if (!Objects.equals(this.ut._parent(), this))
-            throw new ConsistencyError("ut", this.ut._parent(), this);
+            throw new ConsistencyError("ut", this, this.ut._parent());
         if (this.intArray.size() != 2)
-            throw new ConsistencyError("int_array", this.intArray.size(), 2);
+            throw new ConsistencyError("int_array", 2, this.intArray.size());
         for (int i = 0; i < this.intArray.size(); i++) {
         }
         if (this.intArrayEmpty.size() != 0)
-            throw new ConsistencyError("int_array_empty", this.intArrayEmpty.size(), 0);
+            throw new ConsistencyError("int_array_empty", 0, this.intArrayEmpty.size());
         for (int i = 0; i < this.intArrayEmpty.size(); i++) {
         }
         _dirty = false;

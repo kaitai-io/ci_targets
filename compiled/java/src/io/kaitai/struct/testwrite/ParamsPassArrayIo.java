@@ -61,7 +61,7 @@ public class ParamsPassArrayIo extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_first = _io__raw_first.toByteArray();
                     if (_this._raw_first.length != 1)
-                        throw new ConsistencyError("raw(first)", _this._raw_first.length, 1);
+                        throw new ConsistencyError("raw(first)", 1, _this._raw_first.length);
                     parent.writeBytes(_this._raw_first);
                 }
             });
@@ -73,13 +73,13 @@ public class ParamsPassArrayIo extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.first._root(), _root()))
-            throw new ConsistencyError("first", this.first._root(), _root());
+            throw new ConsistencyError("first", _root(), this.first._root());
         if (!Objects.equals(this.first._parent(), this))
-            throw new ConsistencyError("first", this.first._parent(), this);
+            throw new ConsistencyError("first", this, this.first._parent());
         if (!Objects.equals(this.one._root(), _root()))
-            throw new ConsistencyError("one", this.one._root(), _root());
+            throw new ConsistencyError("one", _root(), this.one._root());
         if (!Objects.equals(this.one._parent(), this))
-            throw new ConsistencyError("one", this.one._parent(), this);
+            throw new ConsistencyError("one", this, this.one._parent());
         _dirty = false;
     }
     public static class Block extends KaitaiStruct.ReadWrite {
@@ -159,7 +159,7 @@ public class ParamsPassArrayIo extends KaitaiStruct.ReadWrite {
         public void _write_Seq() {
             _assertNotDirty();
             if (this.buf.length != argStreams().get(((int) 0)).size())
-                throw new ConsistencyError("buf", this.buf.length, argStreams().get(((int) 0)).size());
+                throw new ConsistencyError("buf", argStreams().get(((int) 0)).size(), this.buf.length);
             this._io.writeBytes(this.buf);
         }
 

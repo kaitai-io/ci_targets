@@ -40,19 +40,19 @@ class ParamsPassArrayStruct(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.one._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"one", self.one._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"one", self._root, self.one._root)
         if self.one._parent != self:
-            raise kaitaistruct.ConsistencyError(u"one", self.one._parent, self)
+            raise kaitaistruct.ConsistencyError(u"one", self, self.one._parent)
         if self.two._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"two", self.two._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"two", self._root, self.two._root)
         if self.two._parent != self:
-            raise kaitaistruct.ConsistencyError(u"two", self.two._parent, self)
+            raise kaitaistruct.ConsistencyError(u"two", self, self.two._parent)
         if self.pass_structs._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"pass_structs", self.pass_structs._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"pass_structs", self._root, self.pass_structs._root)
         if self.pass_structs._parent != self:
-            raise kaitaistruct.ConsistencyError(u"pass_structs", self.pass_structs._parent, self)
+            raise kaitaistruct.ConsistencyError(u"pass_structs", self, self.pass_structs._parent)
         if self.pass_structs.structs != self.one_two:
-            raise kaitaistruct.ConsistencyError(u"pass_structs", self.pass_structs.structs, self.one_two)
+            raise kaitaistruct.ConsistencyError(u"pass_structs", self.one_two, self.pass_structs.structs)
         self._dirty = False
 
     class Bar(ReadWriteKaitaiStruct):

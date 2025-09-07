@@ -42,20 +42,20 @@ class SwitchManualEnumInvalid(ReadWriteKaitaiStruct):
         for i in range(len(self.opcodes)):
             pass
             if self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"opcodes", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"opcodes", 0, self._io.size() - self._io.pos())
             self.opcodes[i]._write__seq(self._io)
 
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"opcodes", self._io.size() - self._io.pos(), 0)
+            raise kaitaistruct.ConsistencyError(u"opcodes", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):
         for i in range(len(self.opcodes)):
             pass
             if self.opcodes[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"opcodes", self.opcodes[i]._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"opcodes", self._root, self.opcodes[i]._root)
             if self.opcodes[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"opcodes", self.opcodes[i]._parent, self)
+                raise kaitaistruct.ConsistencyError(u"opcodes", self, self.opcodes[i]._parent)
 
         self._dirty = False
 
@@ -111,15 +111,15 @@ class SwitchManualEnumInvalid(ReadWriteKaitaiStruct):
             if _on == SwitchManualEnumInvalid.Opcode.CodeEnum.intval:
                 pass
                 if self.body._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"body", self.body._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"body", self._root, self.body._root)
                 if self.body._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"body", self.body._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"body", self, self.body._parent)
             elif _on == SwitchManualEnumInvalid.Opcode.CodeEnum.strval:
                 pass
                 if self.body._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"body", self.body._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"body", self._root, self.body._root)
                 if self.body._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"body", self.body._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"body", self, self.body._parent)
             self._dirty = False
 
         class Intval(ReadWriteKaitaiStruct):
@@ -169,7 +169,7 @@ class SwitchManualEnumInvalid(ReadWriteKaitaiStruct):
 
             def _check(self):
                 if KaitaiStream.byte_array_index_of((self.value).encode(u"ASCII"), 0) != -1:
-                    raise kaitaistruct.ConsistencyError(u"value", KaitaiStream.byte_array_index_of((self.value).encode(u"ASCII"), 0), -1)
+                    raise kaitaistruct.ConsistencyError(u"value", -1, KaitaiStream.byte_array_index_of((self.value).encode(u"ASCII"), 0))
                 self._dirty = False
 
 

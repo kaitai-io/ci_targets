@@ -41,7 +41,7 @@ class ValidOptionalId(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self._unnamed0) != 6:
-            raise kaitaistruct.ConsistencyError(u"_unnamed0", len(self._unnamed0), 6)
+            raise kaitaistruct.ConsistencyError(u"_unnamed0", 6, len(self._unnamed0))
         if not self._unnamed0 == b"\x50\x41\x43\x4B\x2D\x31":
             raise kaitaistruct.ValidationNotEqualError(b"\x50\x41\x43\x4B\x2D\x31", self._unnamed0, None, u"/seq/0")
         if not self._unnamed1 == 255:

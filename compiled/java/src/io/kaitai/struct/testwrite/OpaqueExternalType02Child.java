@@ -59,13 +59,13 @@ public class OpaqueExternalType02Child extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (KaitaiStream.byteArrayIndexOf((this.s1).getBytes(Charset.forName("UTF-8")), ((byte) 124)) != -1)
-            throw new ConsistencyError("s1", KaitaiStream.byteArrayIndexOf((this.s1).getBytes(Charset.forName("UTF-8")), ((byte) 124)), -1);
+            throw new ConsistencyError("s1", -1, KaitaiStream.byteArrayIndexOf((this.s1).getBytes(Charset.forName("UTF-8")), ((byte) 124)));
         if (KaitaiStream.byteArrayIndexOf((this.s2).getBytes(Charset.forName("UTF-8")), ((byte) 124)) != -1)
-            throw new ConsistencyError("s2", KaitaiStream.byteArrayIndexOf((this.s2).getBytes(Charset.forName("UTF-8")), ((byte) 124)), -1);
+            throw new ConsistencyError("s2", -1, KaitaiStream.byteArrayIndexOf((this.s2).getBytes(Charset.forName("UTF-8")), ((byte) 124)));
         if (!Objects.equals(this.s3._root(), _root()))
-            throw new ConsistencyError("s3", this.s3._root(), _root());
+            throw new ConsistencyError("s3", _root(), this.s3._root());
         if (!Objects.equals(this.s3._parent(), this))
-            throw new ConsistencyError("s3", this.s3._parent(), this);
+            throw new ConsistencyError("s3", this, this.s3._parent());
         _dirty = false;
     }
     public static class OpaqueExternalType02ChildChild extends KaitaiStruct.ReadWrite {
@@ -111,9 +111,9 @@ public class OpaqueExternalType02Child extends KaitaiStruct.ReadWrite {
         public void _check() {
             if (_root().someMethod()) {
                 if ((this.s3).getBytes(Charset.forName("UTF-8")).length == 0)
-                    throw new ConsistencyError("s3", (this.s3).getBytes(Charset.forName("UTF-8")).length, 0);
+                    throw new ConsistencyError("s3", 0, (this.s3).getBytes(Charset.forName("UTF-8")).length);
                 if (KaitaiStream.byteArrayIndexOf((this.s3).getBytes(Charset.forName("UTF-8")), ((byte) 64)) != (this.s3).getBytes(Charset.forName("UTF-8")).length - 1)
-                    throw new ConsistencyError("s3", KaitaiStream.byteArrayIndexOf((this.s3).getBytes(Charset.forName("UTF-8")), ((byte) 64)), (this.s3).getBytes(Charset.forName("UTF-8")).length - 1);
+                    throw new ConsistencyError("s3", (this.s3).getBytes(Charset.forName("UTF-8")).length - 1, KaitaiStream.byteArrayIndexOf((this.s3).getBytes(Charset.forName("UTF-8")), ((byte) 64)));
             }
             _dirty = false;
         }

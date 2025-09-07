@@ -35,7 +35,7 @@ class ImportsAbs(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.body) != self.len.value:
-            raise kaitaistruct.ConsistencyError(u"body", len(self.body), self.len.value)
+            raise kaitaistruct.ConsistencyError(u"body", self.len.value, len(self.body))
         self._dirty = False
 
 

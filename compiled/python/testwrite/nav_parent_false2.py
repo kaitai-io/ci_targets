@@ -32,9 +32,9 @@ class NavParentFalse2(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.parentless._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"parentless", self.parentless._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"parentless", self._root, self.parentless._root)
         if self.parentless._parent != None:
-            raise kaitaistruct.ConsistencyError(u"parentless", self.parentless._parent, None)
+            raise kaitaistruct.ConsistencyError(u"parentless", None, self.parentless._parent)
         self._dirty = False
 
     class Child(ReadWriteKaitaiStruct):

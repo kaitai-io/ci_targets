@@ -43,7 +43,7 @@ public class ZlibWithHeader78 extends KaitaiStruct.ReadWrite {
         this._raw_data = KaitaiStream.unprocessZlib(this.data);
         this._io.writeBytes(this._raw_data);
         if (!(this._io.isEof()))
-            throw new ConsistencyError("data", this._io.size() - this._io.pos(), 0);
+            throw new ConsistencyError("data", 0, this._io.size() - this._io.pos());
     }
 
     public void _check() {

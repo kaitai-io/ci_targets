@@ -52,32 +52,32 @@ public class StrPadTermEqual extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if ((this.s1).getBytes(Charset.forName("UTF-8")).length > 20)
-            throw new ConsistencyError("s1", (this.s1).getBytes(Charset.forName("UTF-8")).length, 20);
+            throw new ConsistencyError("s1", 20, (this.s1).getBytes(Charset.forName("UTF-8")).length);
         if (KaitaiStream.byteArrayIndexOf((this.s1).getBytes(Charset.forName("UTF-8")), ((byte) 64)) != -1)
-            throw new ConsistencyError("s1", KaitaiStream.byteArrayIndexOf((this.s1).getBytes(Charset.forName("UTF-8")), ((byte) 64)), -1);
+            throw new ConsistencyError("s1", -1, KaitaiStream.byteArrayIndexOf((this.s1).getBytes(Charset.forName("UTF-8")), ((byte) 64)));
         if ((this.s2).getBytes(Charset.forName("UTF-8")).length > 20)
-            throw new ConsistencyError("s2", (this.s2).getBytes(Charset.forName("UTF-8")).length, 20);
+            throw new ConsistencyError("s2", 20, (this.s2).getBytes(Charset.forName("UTF-8")).length);
         if ( ((KaitaiStream.byteArrayIndexOf((this.s2).getBytes(Charset.forName("UTF-8")), ((byte) 64)) != -1) && (KaitaiStream.byteArrayIndexOf((this.s2).getBytes(Charset.forName("UTF-8")), ((byte) 64)) != (this.s2).getBytes(Charset.forName("UTF-8")).length - 1)) )
-            throw new ConsistencyError("s2", KaitaiStream.byteArrayIndexOf((this.s2).getBytes(Charset.forName("UTF-8")), ((byte) 64)), (this.s2).getBytes(Charset.forName("UTF-8")).length - 1);
+            throw new ConsistencyError("s2", (this.s2).getBytes(Charset.forName("UTF-8")).length - 1, KaitaiStream.byteArrayIndexOf((this.s2).getBytes(Charset.forName("UTF-8")), ((byte) 64)));
         if (KaitaiStream.byteArrayIndexOf((this.s2).getBytes(Charset.forName("UTF-8")), ((byte) 64)) == -1) {
             if ( (((this.s2).getBytes(Charset.forName("UTF-8")).length != 0) && (((this.s2).getBytes(Charset.forName("UTF-8"))[((Number) ((this.s2).getBytes(Charset.forName("UTF-8")).length - 1)).intValue()] & 0xff) == 43)) )
-                throw new ConsistencyError("s2", ((this.s2).getBytes(Charset.forName("UTF-8"))[((Number) ((this.s2).getBytes(Charset.forName("UTF-8")).length - 1)).intValue()] & 0xff), 43);
+                throw new ConsistencyError("s2", 43, ((this.s2).getBytes(Charset.forName("UTF-8"))[((Number) ((this.s2).getBytes(Charset.forName("UTF-8")).length - 1)).intValue()] & 0xff));
         }
         if ((this.s3).getBytes(Charset.forName("UTF-8")).length > 20)
-            throw new ConsistencyError("s3", (this.s3).getBytes(Charset.forName("UTF-8")).length, 20);
+            throw new ConsistencyError("s3", 20, (this.s3).getBytes(Charset.forName("UTF-8")).length);
         if (KaitaiStream.byteArrayIndexOf((this.s3).getBytes(Charset.forName("UTF-8")), ((byte) 43)) != -1)
-            throw new ConsistencyError("s3", KaitaiStream.byteArrayIndexOf((this.s3).getBytes(Charset.forName("UTF-8")), ((byte) 43)), -1);
+            throw new ConsistencyError("s3", -1, KaitaiStream.byteArrayIndexOf((this.s3).getBytes(Charset.forName("UTF-8")), ((byte) 43)));
         if ((this.s4).getBytes(Charset.forName("UTF-8")).length > 20)
-            throw new ConsistencyError("s4", (this.s4).getBytes(Charset.forName("UTF-8")).length, 20);
+            throw new ConsistencyError("s4", 20, (this.s4).getBytes(Charset.forName("UTF-8")).length);
         if ((this.s4).getBytes(Charset.forName("UTF-8")).length < 20) {
             if ((this.s4).getBytes(Charset.forName("UTF-8")).length == 0)
-                throw new ConsistencyError("s4", (this.s4).getBytes(Charset.forName("UTF-8")).length, 0);
+                throw new ConsistencyError("s4", 0, (this.s4).getBytes(Charset.forName("UTF-8")).length);
             if (KaitaiStream.byteArrayIndexOf((this.s4).getBytes(Charset.forName("UTF-8")), ((byte) 46)) != (this.s4).getBytes(Charset.forName("UTF-8")).length - 1)
-                throw new ConsistencyError("s4", KaitaiStream.byteArrayIndexOf((this.s4).getBytes(Charset.forName("UTF-8")), ((byte) 46)), (this.s4).getBytes(Charset.forName("UTF-8")).length - 1);
+                throw new ConsistencyError("s4", (this.s4).getBytes(Charset.forName("UTF-8")).length - 1, KaitaiStream.byteArrayIndexOf((this.s4).getBytes(Charset.forName("UTF-8")), ((byte) 46)));
         }
         if ((this.s4).getBytes(Charset.forName("UTF-8")).length == 20) {
             if ( ((KaitaiStream.byteArrayIndexOf((this.s4).getBytes(Charset.forName("UTF-8")), ((byte) 46)) != -1) && (KaitaiStream.byteArrayIndexOf((this.s4).getBytes(Charset.forName("UTF-8")), ((byte) 46)) != (this.s4).getBytes(Charset.forName("UTF-8")).length - 1)) )
-                throw new ConsistencyError("s4", KaitaiStream.byteArrayIndexOf((this.s4).getBytes(Charset.forName("UTF-8")), ((byte) 46)), (this.s4).getBytes(Charset.forName("UTF-8")).length - 1);
+                throw new ConsistencyError("s4", (this.s4).getBytes(Charset.forName("UTF-8")).length - 1, KaitaiStream.byteArrayIndexOf((this.s4).getBytes(Charset.forName("UTF-8")), ((byte) 46)));
         }
         _dirty = false;
     }

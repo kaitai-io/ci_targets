@@ -47,9 +47,9 @@ public class NavParentFalse2 extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.parentless._root(), _root()))
-            throw new ConsistencyError("parentless", this.parentless._root(), _root());
+            throw new ConsistencyError("parentless", _root(), this.parentless._root());
         if (!Objects.equals(this.parentless._parent(), null))
-            throw new ConsistencyError("parentless", this.parentless._parent(), null);
+            throw new ConsistencyError("parentless", null, this.parentless._parent());
         _dirty = false;
     }
     public static class Child extends KaitaiStruct.ReadWrite {

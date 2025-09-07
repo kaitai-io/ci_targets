@@ -96,31 +96,31 @@ class Integers(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.magic1) != 6:
-            raise kaitaistruct.ConsistencyError(u"magic1", len(self.magic1), 6)
+            raise kaitaistruct.ConsistencyError(u"magic1", 6, len(self.magic1))
         if not self.magic1 == b"\x50\x41\x43\x4B\x2D\x31":
             raise kaitaistruct.ValidationNotEqualError(b"\x50\x41\x43\x4B\x2D\x31", self.magic1, None, u"/seq/0")
         if len(self.magic_uint) != 10:
-            raise kaitaistruct.ConsistencyError(u"magic_uint", len(self.magic_uint), 10)
+            raise kaitaistruct.ConsistencyError(u"magic_uint", 10, len(self.magic_uint))
         if not self.magic_uint == b"\x50\x41\x43\x4B\x2D\x55\x2D\x44\x45\x46":
             raise kaitaistruct.ValidationNotEqualError(b"\x50\x41\x43\x4B\x2D\x55\x2D\x44\x45\x46", self.magic_uint, None, u"/seq/3")
         if len(self.magic_sint) != 10:
-            raise kaitaistruct.ConsistencyError(u"magic_sint", len(self.magic_sint), 10)
+            raise kaitaistruct.ConsistencyError(u"magic_sint", 10, len(self.magic_sint))
         if not self.magic_sint == b"\x50\x41\x43\x4B\x2D\x53\x2D\x44\x45\x46":
             raise kaitaistruct.ValidationNotEqualError(b"\x50\x41\x43\x4B\x2D\x53\x2D\x44\x45\x46", self.magic_sint, None, u"/seq/7")
         if len(self.magic_uint_le) != 9:
-            raise kaitaistruct.ConsistencyError(u"magic_uint_le", len(self.magic_uint_le), 9)
+            raise kaitaistruct.ConsistencyError(u"magic_uint_le", 9, len(self.magic_uint_le))
         if not self.magic_uint_le == b"\x50\x41\x43\x4B\x2D\x55\x2D\x4C\x45":
             raise kaitaistruct.ValidationNotEqualError(b"\x50\x41\x43\x4B\x2D\x55\x2D\x4C\x45", self.magic_uint_le, None, u"/seq/11")
         if len(self.magic_sint_le) != 9:
-            raise kaitaistruct.ConsistencyError(u"magic_sint_le", len(self.magic_sint_le), 9)
+            raise kaitaistruct.ConsistencyError(u"magic_sint_le", 9, len(self.magic_sint_le))
         if not self.magic_sint_le == b"\x50\x41\x43\x4B\x2D\x53\x2D\x4C\x45":
             raise kaitaistruct.ValidationNotEqualError(b"\x50\x41\x43\x4B\x2D\x53\x2D\x4C\x45", self.magic_sint_le, None, u"/seq/15")
         if len(self.magic_uint_be) != 9:
-            raise kaitaistruct.ConsistencyError(u"magic_uint_be", len(self.magic_uint_be), 9)
+            raise kaitaistruct.ConsistencyError(u"magic_uint_be", 9, len(self.magic_uint_be))
         if not self.magic_uint_be == b"\x50\x41\x43\x4B\x2D\x55\x2D\x42\x45":
             raise kaitaistruct.ValidationNotEqualError(b"\x50\x41\x43\x4B\x2D\x55\x2D\x42\x45", self.magic_uint_be, None, u"/seq/19")
         if len(self.magic_sint_be) != 9:
-            raise kaitaistruct.ConsistencyError(u"magic_sint_be", len(self.magic_sint_be), 9)
+            raise kaitaistruct.ConsistencyError(u"magic_sint_be", 9, len(self.magic_sint_be))
         if not self.magic_sint_be == b"\x50\x41\x43\x4B\x2D\x53\x2D\x42\x45":
             raise kaitaistruct.ValidationNotEqualError(b"\x50\x41\x43\x4B\x2D\x53\x2D\x42\x45", self.magic_sint_be, None, u"/seq/23")
         self._dirty = False

@@ -80,7 +80,7 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_sizedA = _io__raw_sizedA.toByteArray();
                     if (_this._raw_sizedA.length != 6)
-                        throw new ConsistencyError("raw(sized_a)", _this._raw_sizedA.length, 6);
+                        throw new ConsistencyError("raw(sized_a)", 6, _this._raw_sizedA.length);
                     parent.writeBytes(_this._raw_sizedA);
                 }
             });
@@ -97,7 +97,7 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_sizedB = _io__raw_sizedB.toByteArray();
                     if (_this._raw_sizedB.length != 6)
-                        throw new ConsistencyError("raw(sized_b)", _this._raw_sizedB.length, 6);
+                        throw new ConsistencyError("raw(sized_b)", 6, _this._raw_sizedB.length);
                     parent.writeBytes(_this._raw_sizedB);
                 }
             });
@@ -111,29 +111,29 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.sizedA._root(), _root()))
-            throw new ConsistencyError("sized_a", this.sizedA._root(), _root());
+            throw new ConsistencyError("sized_a", _root(), this.sizedA._root());
         if (!Objects.equals(this.sizedA._parent(), this))
-            throw new ConsistencyError("sized_a", this.sizedA._parent(), this);
+            throw new ConsistencyError("sized_a", this, this.sizedA._parent());
         if (!Objects.equals(this.sizedB._root(), _root()))
-            throw new ConsistencyError("sized_b", this.sizedB._root(), _root());
+            throw new ConsistencyError("sized_b", _root(), this.sizedB._root());
         if (!Objects.equals(this.sizedB._parent(), this))
-            throw new ConsistencyError("sized_b", this.sizedB._parent(), this);
+            throw new ConsistencyError("sized_b", this, this.sizedB._parent());
         if (!Objects.equals(this.intoB._root(), _root()))
-            throw new ConsistencyError("into_b", this.intoB._root(), _root());
+            throw new ConsistencyError("into_b", _root(), this.intoB._root());
         if (!Objects.equals(this.intoB._parent(), this))
-            throw new ConsistencyError("into_b", this.intoB._parent(), this);
+            throw new ConsistencyError("into_b", this, this.intoB._parent());
         if (!Objects.equals(this.intoASkipped._root(), _root()))
-            throw new ConsistencyError("into_a_skipped", this.intoASkipped._root(), _root());
+            throw new ConsistencyError("into_a_skipped", _root(), this.intoASkipped._root());
         if (!Objects.equals(this.intoASkipped._parent(), this))
-            throw new ConsistencyError("into_a_skipped", this.intoASkipped._parent(), this);
+            throw new ConsistencyError("into_a_skipped", this, this.intoASkipped._parent());
         if (!Objects.equals(this.intoA._root(), _root()))
-            throw new ConsistencyError("into_a", this.intoA._root(), _root());
+            throw new ConsistencyError("into_a", _root(), this.intoA._root());
         if (!Objects.equals(this.intoA._parent(), this))
-            throw new ConsistencyError("into_a", this.intoA._parent(), this);
+            throw new ConsistencyError("into_a", this, this.intoA._parent());
         if (!Objects.equals(this.lastAccessor._root(), _root()))
-            throw new ConsistencyError("last_accessor", this.lastAccessor._root(), _root());
+            throw new ConsistencyError("last_accessor", _root(), this.lastAccessor._root());
         if (!Objects.equals(this.lastAccessor._parent(), this))
-            throw new ConsistencyError("last_accessor", this.lastAccessor._parent(), this);
+            throw new ConsistencyError("last_accessor", this, this.lastAccessor._parent());
         if (_enabledAMid) {
         }
         if (_enabledBMid) {
@@ -245,9 +245,9 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
         public void _check() {
             if (_enabledInst) {
                 if (!Objects.equals(this.inst._root(), _root()))
-                    throw new ConsistencyError("inst", this.inst._root(), _root());
+                    throw new ConsistencyError("inst", _root(), this.inst._root());
                 if (!Objects.equals(this.inst._parent(), this))
-                    throw new ConsistencyError("inst", this.inst._parent(), this);
+                    throw new ConsistencyError("inst", this, this.inst._parent());
             }
             _dirty = false;
         }
@@ -290,7 +290,7 @@ public class InstanceIoUserEarlier extends KaitaiStruct.ReadWrite {
                     protected void write(KaitaiStream parent) {
                         _this._raw_inst = _io__raw_inst.toByteArray();
                         if (_this._raw_inst.length != (_io().pos() != 14 ? 4 : 0))
-                            throw new ConsistencyError("raw(inst)", _this._raw_inst.length, (_io().pos() != 14 ? 4 : 0));
+                            throw new ConsistencyError("raw(inst)", (_io().pos() != 14 ? 4 : 0), _this._raw_inst.length);
                         parent.writeBytes(_this._raw_inst);
                     }
                 });

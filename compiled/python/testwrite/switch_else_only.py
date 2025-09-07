@@ -38,11 +38,11 @@ class SwitchElseOnly(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.indicator) != 4:
-            raise kaitaistruct.ConsistencyError(u"indicator", len(self.indicator), 4)
+            raise kaitaistruct.ConsistencyError(u"indicator", 4, len(self.indicator))
         if self.ut._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"ut", self.ut._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"ut", self._root, self.ut._root)
         if self.ut._parent != self:
-            raise kaitaistruct.ConsistencyError(u"ut", self.ut._parent, self)
+            raise kaitaistruct.ConsistencyError(u"ut", self, self.ut._parent)
         self._dirty = False
 
     class Data(ReadWriteKaitaiStruct):
@@ -67,7 +67,7 @@ class SwitchElseOnly(ReadWriteKaitaiStruct):
 
         def _check(self):
             if len(self.value) != 4:
-                raise kaitaistruct.ConsistencyError(u"value", len(self.value), 4)
+                raise kaitaistruct.ConsistencyError(u"value", 4, len(self.value))
             self._dirty = False
 
 

@@ -30,7 +30,7 @@ class ExprBytesOps(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.one) != 3:
-            raise kaitaistruct.ConsistencyError(u"one", len(self.one), 3)
+            raise kaitaistruct.ConsistencyError(u"one", 3, len(self.one))
         self._dirty = False
 
     @property

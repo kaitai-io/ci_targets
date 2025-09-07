@@ -96,38 +96,38 @@ public class RepeatUntilTermBytes extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.records1.size() == 0)
-            throw new ConsistencyError("records1", this.records1.size(), 0);
+            throw new ConsistencyError("records1", 0, this.records1.size());
         for (int i = 0; i < this.records1.size(); i++) {
             if (KaitaiStream.byteArrayIndexOf(this.records1.get(((Number) (i)).intValue()), ((byte) 170)) != -1)
-                throw new ConsistencyError("records1", KaitaiStream.byteArrayIndexOf(this.records1.get(((Number) (i)).intValue()), ((byte) 170)), -1);
+                throw new ConsistencyError("records1", -1, KaitaiStream.byteArrayIndexOf(this.records1.get(((Number) (i)).intValue()), ((byte) 170)));
             {
                 byte[] _it = this.records1.get(((Number) (i)).intValue());
                 if ((_it.length == 0) != (i == this.records1.size() - 1))
-                    throw new ConsistencyError("records1", _it.length == 0, i == this.records1.size() - 1);
+                    throw new ConsistencyError("records1", i == this.records1.size() - 1, _it.length == 0);
             }
         }
         if (this.records2.size() == 0)
-            throw new ConsistencyError("records2", this.records2.size(), 0);
+            throw new ConsistencyError("records2", 0, this.records2.size());
         for (int i = 0; i < this.records2.size(); i++) {
             if (this.records2.get(((Number) (i)).intValue()).length == 0)
-                throw new ConsistencyError("records2", this.records2.get(((Number) (i)).intValue()).length, 0);
+                throw new ConsistencyError("records2", 0, this.records2.get(((Number) (i)).intValue()).length);
             if (KaitaiStream.byteArrayIndexOf(this.records2.get(((Number) (i)).intValue()), ((byte) 170)) != this.records2.get(((Number) (i)).intValue()).length - 1)
-                throw new ConsistencyError("records2", KaitaiStream.byteArrayIndexOf(this.records2.get(((Number) (i)).intValue()), ((byte) 170)), this.records2.get(((Number) (i)).intValue()).length - 1);
+                throw new ConsistencyError("records2", this.records2.get(((Number) (i)).intValue()).length - 1, KaitaiStream.byteArrayIndexOf(this.records2.get(((Number) (i)).intValue()), ((byte) 170)));
             {
                 byte[] _it = this.records2.get(((Number) (i)).intValue());
                 if (!Arrays.equals(_it, new byte[] { -86 }) != (i == this.records2.size() - 1))
-                    throw new ConsistencyError("records2", !Arrays.equals(_it, new byte[] { -86 }), i == this.records2.size() - 1);
+                    throw new ConsistencyError("records2", i == this.records2.size() - 1, !Arrays.equals(_it, new byte[] { -86 }));
             }
         }
         if (this.records3.size() == 0)
-            throw new ConsistencyError("records3", this.records3.size(), 0);
+            throw new ConsistencyError("records3", 0, this.records3.size());
         for (int i = 0; i < this.records3.size(); i++) {
             if (KaitaiStream.byteArrayIndexOf(this.records3.get(((Number) (i)).intValue()), ((byte) 85)) != -1)
-                throw new ConsistencyError("records3", KaitaiStream.byteArrayIndexOf(this.records3.get(((Number) (i)).intValue()), ((byte) 85)), -1);
+                throw new ConsistencyError("records3", -1, KaitaiStream.byteArrayIndexOf(this.records3.get(((Number) (i)).intValue()), ((byte) 85)));
             {
                 byte[] _it = this.records3.get(((Number) (i)).intValue());
                 if (Arrays.equals(_it, records1().get(records1().size() - 1)) != (i == this.records3.size() - 1))
-                    throw new ConsistencyError("records3", Arrays.equals(_it, records1().get(records1().size() - 1)), i == this.records3.size() - 1);
+                    throw new ConsistencyError("records3", i == this.records3.size() - 1, Arrays.equals(_it, records1().get(records1().size() - 1)));
             }
         }
         _dirty = false;

@@ -52,11 +52,11 @@ public class NavParentVsValueInst extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (KaitaiStream.byteArrayIndexOf((this.s1).getBytes(Charset.forName("UTF-8")), ((byte) 124)) != -1)
-            throw new ConsistencyError("s1", KaitaiStream.byteArrayIndexOf((this.s1).getBytes(Charset.forName("UTF-8")), ((byte) 124)), -1);
+            throw new ConsistencyError("s1", -1, KaitaiStream.byteArrayIndexOf((this.s1).getBytes(Charset.forName("UTF-8")), ((byte) 124)));
         if (!Objects.equals(this.child._root(), _root()))
-            throw new ConsistencyError("child", this.child._root(), _root());
+            throw new ConsistencyError("child", _root(), this.child._root());
         if (!Objects.equals(this.child._parent(), this))
-            throw new ConsistencyError("child", this.child._parent(), this);
+            throw new ConsistencyError("child", this, this.child._parent());
         _dirty = false;
     }
     public static class ChildObj extends KaitaiStruct.ReadWrite {

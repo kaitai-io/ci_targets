@@ -72,7 +72,7 @@ class ValidLong(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.magic1) != 6:
-            raise kaitaistruct.ConsistencyError(u"magic1", len(self.magic1), 6)
+            raise kaitaistruct.ConsistencyError(u"magic1", 6, len(self.magic1))
         if not self.magic1 == b"\x50\x41\x43\x4B\x2D\x31":
             raise kaitaistruct.ValidationNotEqualError(b"\x50\x41\x43\x4B\x2D\x31", self.magic1, None, u"/seq/0")
         if not self.uint8 == 255:
@@ -80,7 +80,7 @@ class ValidLong(ReadWriteKaitaiStruct):
         if not self.sint8 == -1:
             raise kaitaistruct.ValidationNotEqualError(-1, self.sint8, None, u"/seq/2")
         if len((self.magic_uint).encode(u"UTF-8")) != 10:
-            raise kaitaistruct.ConsistencyError(u"magic_uint", len((self.magic_uint).encode(u"UTF-8")), 10)
+            raise kaitaistruct.ConsistencyError(u"magic_uint", 10, len((self.magic_uint).encode(u"UTF-8")))
         if not self.magic_uint == u"PACK-U-DEF":
             raise kaitaistruct.ValidationNotEqualError(u"PACK-U-DEF", self.magic_uint, None, u"/seq/3")
         if not self.uint16 == 65535:
@@ -90,7 +90,7 @@ class ValidLong(ReadWriteKaitaiStruct):
         if not self.uint64 == 18446744073709551615:
             raise kaitaistruct.ValidationNotEqualError(18446744073709551615, self.uint64, None, u"/seq/6")
         if len((self.magic_sint).encode(u"UTF-8")) != 10:
-            raise kaitaistruct.ConsistencyError(u"magic_sint", len((self.magic_sint).encode(u"UTF-8")), 10)
+            raise kaitaistruct.ConsistencyError(u"magic_sint", 10, len((self.magic_sint).encode(u"UTF-8")))
         if not self.magic_sint == u"PACK-S-DEF":
             raise kaitaistruct.ValidationNotEqualError(u"PACK-S-DEF", self.magic_sint, None, u"/seq/7")
         if not self.sint16 == -1:

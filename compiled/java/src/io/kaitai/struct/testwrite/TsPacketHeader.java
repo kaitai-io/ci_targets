@@ -83,7 +83,7 @@ public class TsPacketHeader extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.tsPacketRemain.length != 184)
-            throw new ConsistencyError("ts_packet_remain", this.tsPacketRemain.length, 184);
+            throw new ConsistencyError("ts_packet_remain", 184, this.tsPacketRemain.length);
         _dirty = false;
     }
     private int syncByte;

@@ -108,7 +108,7 @@ public class SwitchRepeatExprInvalid extends KaitaiStruct.ReadWrite {
                         protected void write(KaitaiStream parent) {
                             _this._raw_body.add(_io__raw_body.toByteArray());
                             if (((byte[]) (_this._raw_body.get(((Number) (_i)).intValue()))).length != size())
-                                throw new ConsistencyError("raw(body)", ((byte[]) (_this._raw_body.get(((Number) (_i)).intValue()))).length, size());
+                                throw new ConsistencyError("raw(body)", size(), ((byte[]) (_this._raw_body.get(((Number) (_i)).intValue()))).length);
                             parent.writeBytes(((byte[]) (((byte[]) (_this._raw_body.get(((Number) (_i)).intValue()))))));
                         }
                     });
@@ -129,7 +129,7 @@ public class SwitchRepeatExprInvalid extends KaitaiStruct.ReadWrite {
                         protected void write(KaitaiStream parent) {
                             _this._raw_body.add(_io__raw_body.toByteArray());
                             if (((byte[]) (_this._raw_body.get(((Number) (_i)).intValue()))).length != size())
-                                throw new ConsistencyError("raw(body)", ((byte[]) (_this._raw_body.get(((Number) (_i)).intValue()))).length, size());
+                                throw new ConsistencyError("raw(body)", size(), ((byte[]) (_this._raw_body.get(((Number) (_i)).intValue()))).length);
                             parent.writeBytes(((byte[]) (((byte[]) (_this._raw_body.get(((Number) (_i)).intValue()))))));
                         }
                     });
@@ -147,26 +147,26 @@ public class SwitchRepeatExprInvalid extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.body.size() != 1)
-            throw new ConsistencyError("body", this.body.size(), 1);
+            throw new ConsistencyError("body", 1, this.body.size());
         for (int i = 0; i < this.body.size(); i++) {
             switch (code()) {
             case 255: {
                 if (!Objects.equals(((SwitchRepeatExprInvalid.One) (this.body.get(((Number) (i)).intValue())))._root(), _root()))
-                    throw new ConsistencyError("body", ((SwitchRepeatExprInvalid.One) (this.body.get(((Number) (i)).intValue())))._root(), _root());
+                    throw new ConsistencyError("body", _root(), ((SwitchRepeatExprInvalid.One) (this.body.get(((Number) (i)).intValue())))._root());
                 if (!Objects.equals(((SwitchRepeatExprInvalid.One) (this.body.get(((Number) (i)).intValue())))._parent(), this))
-                    throw new ConsistencyError("body", ((SwitchRepeatExprInvalid.One) (this.body.get(((Number) (i)).intValue())))._parent(), this);
+                    throw new ConsistencyError("body", this, ((SwitchRepeatExprInvalid.One) (this.body.get(((Number) (i)).intValue())))._parent());
                 break;
             }
             case 34: {
                 if (!Objects.equals(((SwitchRepeatExprInvalid.Two) (this.body.get(((Number) (i)).intValue())))._root(), _root()))
-                    throw new ConsistencyError("body", ((SwitchRepeatExprInvalid.Two) (this.body.get(((Number) (i)).intValue())))._root(), _root());
+                    throw new ConsistencyError("body", _root(), ((SwitchRepeatExprInvalid.Two) (this.body.get(((Number) (i)).intValue())))._root());
                 if (!Objects.equals(((SwitchRepeatExprInvalid.Two) (this.body.get(((Number) (i)).intValue())))._parent(), this))
-                    throw new ConsistencyError("body", ((SwitchRepeatExprInvalid.Two) (this.body.get(((Number) (i)).intValue())))._parent(), this);
+                    throw new ConsistencyError("body", this, ((SwitchRepeatExprInvalid.Two) (this.body.get(((Number) (i)).intValue())))._parent());
                 break;
             }
             default: {
                 if (((byte[]) (this.body.get(((Number) (i)).intValue()))).length != size())
-                    throw new ConsistencyError("body", ((byte[]) (this.body.get(((Number) (i)).intValue()))).length, size());
+                    throw new ConsistencyError("body", size(), ((byte[]) (this.body.get(((Number) (i)).intValue()))).length);
                 break;
             }
             }
@@ -206,7 +206,7 @@ public class SwitchRepeatExprInvalid extends KaitaiStruct.ReadWrite {
             _assertNotDirty();
             this._io.writeBytes(this.first);
             if (!(this._io.isEof()))
-                throw new ConsistencyError("first", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("first", 0, this._io.size() - this._io.pos());
         }
 
         public void _check() {
@@ -255,7 +255,7 @@ public class SwitchRepeatExprInvalid extends KaitaiStruct.ReadWrite {
             _assertNotDirty();
             this._io.writeBytes(this.second);
             if (!(this._io.isEof()))
-                throw new ConsistencyError("second", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("second", 0, this._io.size() - this._io.pos());
         }
 
         public void _check() {

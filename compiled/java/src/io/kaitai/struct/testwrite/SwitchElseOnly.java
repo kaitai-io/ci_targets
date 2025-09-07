@@ -53,11 +53,11 @@ public class SwitchElseOnly extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.indicator.length != 4)
-            throw new ConsistencyError("indicator", this.indicator.length, 4);
+            throw new ConsistencyError("indicator", 4, this.indicator.length);
         if (!Objects.equals(this.ut._root(), _root()))
-            throw new ConsistencyError("ut", this.ut._root(), _root());
+            throw new ConsistencyError("ut", _root(), this.ut._root());
         if (!Objects.equals(this.ut._parent(), this))
-            throw new ConsistencyError("ut", this.ut._parent(), this);
+            throw new ConsistencyError("ut", this, this.ut._parent());
         _dirty = false;
     }
     public static class Data extends KaitaiStruct.ReadWrite {
@@ -96,7 +96,7 @@ public class SwitchElseOnly extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (this.value.length != 4)
-                throw new ConsistencyError("value", this.value.length, 4);
+                throw new ConsistencyError("value", 4, this.value.length);
             _dirty = false;
         }
         private byte[] value;

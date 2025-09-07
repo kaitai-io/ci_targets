@@ -69,7 +69,7 @@ public class TermStruct2 extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_s1 = _io__raw_s1.toByteArray();
                     if (KaitaiStream.byteArrayIndexOf(_this._raw_s1, ((byte) 124)) != -1)
-                        throw new ConsistencyError("raw(s1)", KaitaiStream.byteArrayIndexOf(_this._raw_s1, ((byte) 124)), -1);
+                        throw new ConsistencyError("raw(s1)", -1, KaitaiStream.byteArrayIndexOf(_this._raw_s1, ((byte) 124)));
                     parent.writeBytes(_this._raw_s1);
                     parent.writeU1(124);
                 }
@@ -87,9 +87,9 @@ public class TermStruct2 extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_s2 = _io__raw_s2.toByteArray();
                     if (_this._raw_s2.length == 0)
-                        throw new ConsistencyError("raw(s2)", _this._raw_s2.length, 0);
+                        throw new ConsistencyError("raw(s2)", 0, _this._raw_s2.length);
                     if (KaitaiStream.byteArrayIndexOf(_this._raw_s2, ((byte) 124)) != _this._raw_s2.length - 1)
-                        throw new ConsistencyError("raw(s2)", KaitaiStream.byteArrayIndexOf(_this._raw_s2, ((byte) 124)), _this._raw_s2.length - 1);
+                        throw new ConsistencyError("raw(s2)", _this._raw_s2.length - 1, KaitaiStream.byteArrayIndexOf(_this._raw_s2, ((byte) 124)));
                     parent.writeBytes(_this._raw_s2);
                 }
             });
@@ -106,7 +106,7 @@ public class TermStruct2 extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_s3 = _io__raw_s3.toByteArray();
                     if (KaitaiStream.byteArrayIndexOf(_this._raw_s3, ((byte) 64)) != -1)
-                        throw new ConsistencyError("raw(s3)", KaitaiStream.byteArrayIndexOf(_this._raw_s3, ((byte) 64)), -1);
+                        throw new ConsistencyError("raw(s3)", -1, KaitaiStream.byteArrayIndexOf(_this._raw_s3, ((byte) 64)));
                     parent.writeBytes(_this._raw_s3);
                     {
                         long _pos = parent.pos();
@@ -121,17 +121,17 @@ public class TermStruct2 extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.s1._root(), _root()))
-            throw new ConsistencyError("s1", this.s1._root(), _root());
+            throw new ConsistencyError("s1", _root(), this.s1._root());
         if (!Objects.equals(this.s1._parent(), this))
-            throw new ConsistencyError("s1", this.s1._parent(), this);
+            throw new ConsistencyError("s1", this, this.s1._parent());
         if (!Objects.equals(this.s2._root(), _root()))
-            throw new ConsistencyError("s2", this.s2._root(), _root());
+            throw new ConsistencyError("s2", _root(), this.s2._root());
         if (!Objects.equals(this.s2._parent(), this))
-            throw new ConsistencyError("s2", this.s2._parent(), this);
+            throw new ConsistencyError("s2", this, this.s2._parent());
         if (!Objects.equals(this.s3._root(), _root()))
-            throw new ConsistencyError("s3", this.s3._root(), _root());
+            throw new ConsistencyError("s3", _root(), this.s3._root());
         if (!Objects.equals(this.s3._parent(), this))
-            throw new ConsistencyError("s3", this.s3._parent(), this);
+            throw new ConsistencyError("s3", this, this.s3._parent());
         _dirty = false;
     }
     public static class BytesWrapper extends KaitaiStruct.ReadWrite {
@@ -167,7 +167,7 @@ public class TermStruct2 extends KaitaiStruct.ReadWrite {
             _assertNotDirty();
             this._io.writeBytes(this.value);
             if (!(this._io.isEof()))
-                throw new ConsistencyError("value", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("value", 0, this._io.size() - this._io.pos());
         }
 
         public void _check() {

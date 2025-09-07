@@ -52,14 +52,14 @@ public class ProcessRepeatBytes extends KaitaiStruct.ReadWrite {
         for (int i = 0; i < this.bufs.size(); i++) {
             this._raw_bufs.add(KaitaiStream.processXor(this.bufs.get(((Number) (i)).intValue()), ((Number) (158)).byteValue()));
             if (this._raw_bufs.get(((Number) (i)).intValue()).length != 5)
-                throw new ConsistencyError("bufs", this._raw_bufs.get(((Number) (i)).intValue()).length, 5);
+                throw new ConsistencyError("bufs", 5, this._raw_bufs.get(((Number) (i)).intValue()).length);
             this._io.writeBytes(this._raw_bufs.get(((Number) (i)).intValue()));
         }
     }
 
     public void _check() {
         if (this.bufs.size() != 2)
-            throw new ConsistencyError("bufs", this.bufs.size(), 2);
+            throw new ConsistencyError("bufs", 2, this.bufs.size());
         for (int i = 0; i < this.bufs.size(); i++) {
         }
         _dirty = false;

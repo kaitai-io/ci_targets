@@ -52,7 +52,7 @@ public class ValidFailRangeStr extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if ((this.foo).getBytes(Charset.forName("ASCII")).length != 2)
-            throw new ConsistencyError("foo", (this.foo).getBytes(Charset.forName("ASCII")).length, 2);
+            throw new ConsistencyError("foo", 2, (this.foo).getBytes(Charset.forName("ASCII")).length);
         if (!((this.foo.compareTo("P") >= 0))) {
             throw new KaitaiStream.ValidationLessThanError("P", this.foo, null, "/seq/0");
         }

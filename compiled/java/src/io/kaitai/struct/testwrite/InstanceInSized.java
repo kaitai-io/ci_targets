@@ -55,7 +55,7 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_cont = _io__raw_cont.toByteArray();
                     if (_this._raw_cont.length != 16)
-                        throw new ConsistencyError("raw(cont)", _this._raw_cont.length, 16);
+                        throw new ConsistencyError("raw(cont)", 16, _this._raw_cont.length);
                     parent.writeBytes(_this._raw_cont);
                 }
             });
@@ -65,9 +65,9 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.cont._root(), _root()))
-            throw new ConsistencyError("cont", this.cont._root(), _root());
+            throw new ConsistencyError("cont", _root(), this.cont._root());
         if (!Objects.equals(this.cont._parent(), this))
-            throw new ConsistencyError("cont", this.cont._parent(), this);
+            throw new ConsistencyError("cont", this, this.cont._parent());
         _dirty = false;
     }
     public static class Bar extends KaitaiStruct.ReadWrite {
@@ -111,7 +111,7 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
         public void _check() {
             if (_enabledInst) {
                 if (this.inst.length != 3)
-                    throw new ConsistencyError("inst", this.inst.length, 3);
+                    throw new ConsistencyError("inst", 3, this.inst.length);
             }
             _dirty = false;
         }
@@ -192,7 +192,7 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
         public void _check() {
             if (_enabledInst) {
                 if (this.inst.length != 3)
-                    throw new ConsistencyError("inst", this.inst.length, 3);
+                    throw new ConsistencyError("inst", 3, this.inst.length);
             }
             _dirty = false;
         }
@@ -285,7 +285,7 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
             }
             if (_enabledInstUnusedBySeq) {
                 if (this.instUnusedBySeq.length != 2)
-                    throw new ConsistencyError("inst_unused_by_seq", this.instUnusedBySeq.length, 2);
+                    throw new ConsistencyError("inst_unused_by_seq", 2, this.instUnusedBySeq.length);
             }
             _dirty = false;
         }
@@ -410,7 +410,7 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
                     protected void write(KaitaiStream parent) {
                         _this._raw_seqSized = _io__raw_seqSized.toByteArray();
                         if (_this._raw_seqSized.length != 4)
-                            throw new ConsistencyError("raw(seq_sized)", _this._raw_seqSized.length, 4);
+                            throw new ConsistencyError("raw(seq_sized)", 4, _this._raw_seqSized.length);
                         parent.writeBytes(_this._raw_seqSized);
                     }
                 });
@@ -421,24 +421,24 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (!Objects.equals(this.seqSized._root(), _root()))
-                throw new ConsistencyError("seq_sized", this.seqSized._root(), _root());
+                throw new ConsistencyError("seq_sized", _root(), this.seqSized._root());
             if (!Objects.equals(this.seqSized._parent(), this))
-                throw new ConsistencyError("seq_sized", this.seqSized._parent(), this);
+                throw new ConsistencyError("seq_sized", this, this.seqSized._parent());
             if (!Objects.equals(this.seqInStream._root(), _root()))
-                throw new ConsistencyError("seq_in_stream", this.seqInStream._root(), _root());
+                throw new ConsistencyError("seq_in_stream", _root(), this.seqInStream._root());
             if (!Objects.equals(this.seqInStream._parent(), this))
-                throw new ConsistencyError("seq_in_stream", this.seqInStream._parent(), this);
+                throw new ConsistencyError("seq_in_stream", this, this.seqInStream._parent());
             if (_enabledInstInStream) {
                 if (!Objects.equals(this.instInStream._root(), _root()))
-                    throw new ConsistencyError("inst_in_stream", this.instInStream._root(), _root());
+                    throw new ConsistencyError("inst_in_stream", _root(), this.instInStream._root());
                 if (!Objects.equals(this.instInStream._parent(), this))
-                    throw new ConsistencyError("inst_in_stream", this.instInStream._parent(), this);
+                    throw new ConsistencyError("inst_in_stream", this, this.instInStream._parent());
             }
             if (_enabledInstSized) {
                 if (!Objects.equals(this.instSized._root(), _root()))
-                    throw new ConsistencyError("inst_sized", this.instSized._root(), _root());
+                    throw new ConsistencyError("inst_sized", _root(), this.instSized._root());
                 if (!Objects.equals(this.instSized._parent(), this))
-                    throw new ConsistencyError("inst_sized", this.instSized._parent(), this);
+                    throw new ConsistencyError("inst_sized", this, this.instSized._parent());
             }
             _dirty = false;
         }
@@ -506,7 +506,7 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
                     protected void write(KaitaiStream parent) {
                         _this._raw_instSized = _io__raw_instSized.toByteArray();
                         if (_this._raw_instSized.length != 4)
-                            throw new ConsistencyError("raw(inst_sized)", _this._raw_instSized.length, 4);
+                            throw new ConsistencyError("raw(inst_sized)", 4, _this._raw_instSized.length);
                         parent.writeBytes(_this._raw_instSized);
                     }
                 });

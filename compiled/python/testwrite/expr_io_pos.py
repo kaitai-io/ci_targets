@@ -41,7 +41,7 @@ class ExprIoPos(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_substream1=_io__raw_substream1):
             self._raw_substream1 = _io__raw_substream1.to_byte_array()
             if len(self._raw_substream1) != 16:
-                raise kaitaistruct.ConsistencyError(u"raw(substream1)", len(self._raw_substream1), 16)
+                raise kaitaistruct.ConsistencyError(u"raw(substream1)", 16, len(self._raw_substream1))
             parent.write_bytes(self._raw_substream1)
         _io__raw_substream1.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.substream1._write__seq(_io__raw_substream1)
@@ -52,7 +52,7 @@ class ExprIoPos(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_substream2=_io__raw_substream2):
             self._raw_substream2 = _io__raw_substream2.to_byte_array()
             if len(self._raw_substream2) != 14:
-                raise kaitaistruct.ConsistencyError(u"raw(substream2)", len(self._raw_substream2), 14)
+                raise kaitaistruct.ConsistencyError(u"raw(substream2)", 14, len(self._raw_substream2))
             parent.write_bytes(self._raw_substream2)
         _io__raw_substream2.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.substream2._write__seq(_io__raw_substream2)
@@ -60,13 +60,13 @@ class ExprIoPos(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.substream1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"substream1", self.substream1._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"substream1", self._root, self.substream1._root)
         if self.substream1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"substream1", self.substream1._parent, self)
+            raise kaitaistruct.ConsistencyError(u"substream1", self, self.substream1._parent)
         if self.substream2._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"substream2", self.substream2._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"substream2", self._root, self.substream2._root)
         if self.substream2._parent != self:
-            raise kaitaistruct.ConsistencyError(u"substream2", self.substream2._parent, self)
+            raise kaitaistruct.ConsistencyError(u"substream2", self, self.substream2._parent)
         self._dirty = False
 
     class AllPlusNumber(ReadWriteKaitaiStruct):
@@ -91,14 +91,14 @@ class ExprIoPos(ReadWriteKaitaiStruct):
             self._io.write_bytes((self.my_str).encode(u"UTF-8"))
             self._io.write_u1(0)
             if len(self.body) != (self._io.size() - self._io.pos()) - 2:
-                raise kaitaistruct.ConsistencyError(u"body", len(self.body), (self._io.size() - self._io.pos()) - 2)
+                raise kaitaistruct.ConsistencyError(u"body", (self._io.size() - self._io.pos()) - 2, len(self.body))
             self._io.write_bytes(self.body)
             self._io.write_u2le(self.number)
 
 
         def _check(self):
             if KaitaiStream.byte_array_index_of((self.my_str).encode(u"UTF-8"), 0) != -1:
-                raise kaitaistruct.ConsistencyError(u"my_str", KaitaiStream.byte_array_index_of((self.my_str).encode(u"UTF-8"), 0), -1)
+                raise kaitaistruct.ConsistencyError(u"my_str", -1, KaitaiStream.byte_array_index_of((self.my_str).encode(u"UTF-8"), 0))
             self._dirty = False
 
 

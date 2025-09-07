@@ -31,12 +31,12 @@ class ProcessXor4Value(ReadWriteKaitaiStruct):
         self._raw_buf = KaitaiStream.process_xor_many(self.buf, self.key)
         self._io.write_bytes(self._raw_buf)
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"buf", self._io.size() - self._io.pos(), 0)
+            raise kaitaistruct.ConsistencyError(u"buf", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):
         if len(self.key) != 4:
-            raise kaitaistruct.ConsistencyError(u"key", len(self.key), 4)
+            raise kaitaistruct.ConsistencyError(u"key", 4, len(self.key))
         self._dirty = False
 
 

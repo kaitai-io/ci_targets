@@ -51,13 +51,13 @@ public class NestedSameName extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.mainData._root(), _root()))
-            throw new ConsistencyError("main_data", this.mainData._root(), _root());
+            throw new ConsistencyError("main_data", _root(), this.mainData._root());
         if (!Objects.equals(this.mainData._parent(), this))
-            throw new ConsistencyError("main_data", this.mainData._parent(), this);
+            throw new ConsistencyError("main_data", this, this.mainData._parent());
         if (!Objects.equals(this.dummy._root(), _root()))
-            throw new ConsistencyError("dummy", this.dummy._root(), _root());
+            throw new ConsistencyError("dummy", _root(), this.dummy._root());
         if (!Objects.equals(this.dummy._parent(), this))
-            throw new ConsistencyError("dummy", this.dummy._parent(), this);
+            throw new ConsistencyError("dummy", this, this.dummy._parent());
         _dirty = false;
     }
     public static class DummyObj extends KaitaiStruct.ReadWrite {
@@ -184,9 +184,9 @@ public class NestedSameName extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (!Objects.equals(this.foo._root(), _root()))
-                throw new ConsistencyError("foo", this.foo._root(), _root());
+                throw new ConsistencyError("foo", _root(), this.foo._root());
             if (!Objects.equals(this.foo._parent(), this))
-                throw new ConsistencyError("foo", this.foo._parent(), this);
+                throw new ConsistencyError("foo", this, this.foo._parent());
             _dirty = false;
         }
         public static class FooObj extends KaitaiStruct.ReadWrite {
@@ -225,7 +225,7 @@ public class NestedSameName extends KaitaiStruct.ReadWrite {
 
             public void _check() {
                 if (this.data.length != _parent().mainSize() * 2)
-                    throw new ConsistencyError("data", this.data.length, _parent().mainSize() * 2);
+                    throw new ConsistencyError("data", _parent().mainSize() * 2, this.data.length);
                 _dirty = false;
             }
             private byte[] data;

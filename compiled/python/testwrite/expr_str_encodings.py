@@ -44,13 +44,13 @@ class ExprStrEncodings(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len((self.str1).encode(u"ASCII")) != self.len_of_1:
-            raise kaitaistruct.ConsistencyError(u"str1", len((self.str1).encode(u"ASCII")), self.len_of_1)
+            raise kaitaistruct.ConsistencyError(u"str1", self.len_of_1, len((self.str1).encode(u"ASCII")))
         if len((self.str2).encode(u"UTF-8")) != self.len_of_2:
-            raise kaitaistruct.ConsistencyError(u"str2", len((self.str2).encode(u"UTF-8")), self.len_of_2)
+            raise kaitaistruct.ConsistencyError(u"str2", self.len_of_2, len((self.str2).encode(u"UTF-8")))
         if len((self.str3).encode(u"Shift_JIS")) != self.len_of_3:
-            raise kaitaistruct.ConsistencyError(u"str3", len((self.str3).encode(u"Shift_JIS")), self.len_of_3)
+            raise kaitaistruct.ConsistencyError(u"str3", self.len_of_3, len((self.str3).encode(u"Shift_JIS")))
         if len((self.str4).encode(u"IBM437")) != self.len_of_4:
-            raise kaitaistruct.ConsistencyError(u"str4", len((self.str4).encode(u"IBM437")), self.len_of_4)
+            raise kaitaistruct.ConsistencyError(u"str4", self.len_of_4, len((self.str4).encode(u"IBM437")))
         self._dirty = False
 
     @property

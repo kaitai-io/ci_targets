@@ -44,13 +44,13 @@ class ProcessCoerceUsertype1(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.records) != 2:
-            raise kaitaistruct.ConsistencyError(u"records", len(self.records), 2)
+            raise kaitaistruct.ConsistencyError(u"records", 2, len(self.records))
         for i in range(len(self.records)):
             pass
             if self.records[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"records", self.records[i]._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"records", self._root, self.records[i]._root)
             if self.records[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"records", self.records[i]._parent, self)
+                raise kaitaistruct.ConsistencyError(u"records", self, self.records[i]._parent)
 
         self._dirty = False
 
@@ -128,7 +128,7 @@ class ProcessCoerceUsertype1(ReadWriteKaitaiStruct):
                 def handler(parent, _io__raw_buf_unproc=_io__raw_buf_unproc):
                     self._raw_buf_unproc = _io__raw_buf_unproc.to_byte_array()
                     if len(self._raw_buf_unproc) != 4:
-                        raise kaitaistruct.ConsistencyError(u"raw(buf_unproc)", len(self._raw_buf_unproc), 4)
+                        raise kaitaistruct.ConsistencyError(u"raw(buf_unproc)", 4, len(self._raw_buf_unproc))
                     parent.write_bytes(self._raw_buf_unproc)
                 _io__raw_buf_unproc.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
                 self.buf_unproc._write__seq(_io__raw_buf_unproc)
@@ -144,7 +144,7 @@ class ProcessCoerceUsertype1(ReadWriteKaitaiStruct):
                     self._raw_buf_proc = _io__raw_buf_proc.to_byte_array()
                     self._raw__raw_buf_proc = KaitaiStream.process_xor_one(self._raw_buf_proc, _process_val)
                     if len(self._raw__raw_buf_proc) != 4:
-                        raise kaitaistruct.ConsistencyError(u"raw(buf_proc)", len(self._raw__raw_buf_proc), 4)
+                        raise kaitaistruct.ConsistencyError(u"raw(buf_proc)", 4, len(self._raw__raw_buf_proc))
                     parent.write_bytes(self._raw__raw_buf_proc)
                 _io__raw_buf_proc.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
                 self.buf_proc._write__seq(_io__raw_buf_proc)
@@ -155,16 +155,16 @@ class ProcessCoerceUsertype1(ReadWriteKaitaiStruct):
             if self.flag == 0:
                 pass
                 if self.buf_unproc._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"buf_unproc", self.buf_unproc._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"buf_unproc", self._root, self.buf_unproc._root)
                 if self.buf_unproc._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"buf_unproc", self.buf_unproc._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"buf_unproc", self, self.buf_unproc._parent)
 
             if self.flag != 0:
                 pass
                 if self.buf_proc._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"buf_proc", self.buf_proc._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"buf_proc", self._root, self.buf_proc._root)
                 if self.buf_proc._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"buf_proc", self.buf_proc._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"buf_proc", self, self.buf_proc._parent)
 
             self._dirty = False
 

@@ -59,13 +59,13 @@ public class StrEncodingsEscapingToS extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.str1Raw.length != lenOf1())
-            throw new ConsistencyError("str1_raw", this.str1Raw.length, lenOf1());
+            throw new ConsistencyError("str1_raw", lenOf1(), this.str1Raw.length);
         if (this.str2Raw.length != lenOf2())
-            throw new ConsistencyError("str2_raw", this.str2Raw.length, lenOf2());
+            throw new ConsistencyError("str2_raw", lenOf2(), this.str2Raw.length);
         if (this.str3Raw.length != lenOf3())
-            throw new ConsistencyError("str3_raw", this.str3Raw.length, lenOf3());
+            throw new ConsistencyError("str3_raw", lenOf3(), this.str3Raw.length);
         if (this.str4Raw.length != lenOf4())
-            throw new ConsistencyError("str4_raw", this.str4Raw.length, lenOf4());
+            throw new ConsistencyError("str4_raw", lenOf4(), this.str4Raw.length);
         _dirty = false;
     }
     private String str1;

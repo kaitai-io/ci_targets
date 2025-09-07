@@ -38,13 +38,13 @@ class TermStrz2(ReadWriteKaitaiStruct):
 
     def _check(self):
         if KaitaiStream.byte_array_index_of((self.s1).encode(u"UTF-8"), 124) != -1:
-            raise kaitaistruct.ConsistencyError(u"s1", KaitaiStream.byte_array_index_of((self.s1).encode(u"UTF-8"), 124), -1)
+            raise kaitaistruct.ConsistencyError(u"s1", -1, KaitaiStream.byte_array_index_of((self.s1).encode(u"UTF-8"), 124))
         if len((self.s2).encode(u"UTF-8")) == 0:
-            raise kaitaistruct.ConsistencyError(u"s2", len((self.s2).encode(u"UTF-8")), 0)
+            raise kaitaistruct.ConsistencyError(u"s2", 0, len((self.s2).encode(u"UTF-8")))
         if KaitaiStream.byte_array_index_of((self.s2).encode(u"UTF-8"), 124) != len((self.s2).encode(u"UTF-8")) - 1:
-            raise kaitaistruct.ConsistencyError(u"s2", KaitaiStream.byte_array_index_of((self.s2).encode(u"UTF-8"), 124), len((self.s2).encode(u"UTF-8")) - 1)
+            raise kaitaistruct.ConsistencyError(u"s2", len((self.s2).encode(u"UTF-8")) - 1, KaitaiStream.byte_array_index_of((self.s2).encode(u"UTF-8"), 124))
         if KaitaiStream.byte_array_index_of((self.s3).encode(u"UTF-8"), 64) != -1:
-            raise kaitaistruct.ConsistencyError(u"s3", KaitaiStream.byte_array_index_of((self.s3).encode(u"UTF-8"), 64), -1)
+            raise kaitaistruct.ConsistencyError(u"s3", -1, KaitaiStream.byte_array_index_of((self.s3).encode(u"UTF-8"), 64))
         self._dirty = False
 
 

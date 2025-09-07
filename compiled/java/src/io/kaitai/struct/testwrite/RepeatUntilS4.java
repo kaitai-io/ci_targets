@@ -64,16 +64,16 @@ public class RepeatUntilS4 extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.entries.size() == 0)
-            throw new ConsistencyError("entries", this.entries.size(), 0);
+            throw new ConsistencyError("entries", 0, this.entries.size());
         for (int i = 0; i < this.entries.size(); i++) {
             {
                 int _it = this.entries.get(((Number) (i)).intValue());
                 if ((_it == -1) != (i == this.entries.size() - 1))
-                    throw new ConsistencyError("entries", _it == -1, i == this.entries.size() - 1);
+                    throw new ConsistencyError("entries", i == this.entries.size() - 1, _it == -1);
             }
         }
         if (KaitaiStream.byteArrayIndexOf((this.afterall).getBytes(Charset.forName("ASCII")), ((byte) 0)) != -1)
-            throw new ConsistencyError("afterall", KaitaiStream.byteArrayIndexOf((this.afterall).getBytes(Charset.forName("ASCII")), ((byte) 0)), -1);
+            throw new ConsistencyError("afterall", -1, KaitaiStream.byteArrayIndexOf((this.afterall).getBytes(Charset.forName("ASCII")), ((byte) 0)));
         _dirty = false;
     }
     private List<Integer> entries;

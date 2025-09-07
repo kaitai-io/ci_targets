@@ -61,7 +61,7 @@ public class ValidOptionalId extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this._unnamed0.length != 6)
-            throw new ConsistencyError("_unnamed0", this._unnamed0.length, 6);
+            throw new ConsistencyError("_unnamed0", 6, this._unnamed0.length);
         if (!(Arrays.equals(this._unnamed0, new byte[] { 80, 65, 67, 75, 45, 49 }))) {
             throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 49 }, this._unnamed0, null, "/seq/0");
         }

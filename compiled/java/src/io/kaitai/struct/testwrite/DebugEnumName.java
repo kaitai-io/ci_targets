@@ -118,13 +118,13 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.arrayOfInts.size() != 1)
-            throw new ConsistencyError("array_of_ints", this.arrayOfInts.size(), 1);
+            throw new ConsistencyError("array_of_ints", 1, this.arrayOfInts.size());
         for (int i = 0; i < this.arrayOfInts.size(); i++) {
         }
         if (!Objects.equals(this.testType._root(), _root()))
-            throw new ConsistencyError("test_type", this.testType._root(), _root());
+            throw new ConsistencyError("test_type", _root(), this.testType._root());
         if (!Objects.equals(this.testType._parent(), this))
-            throw new ConsistencyError("test_type", this.testType._parent(), this);
+            throw new ConsistencyError("test_type", this, this.testType._parent());
         _dirty = false;
     }
     public static class TestSubtype extends KaitaiStruct.ReadWrite {

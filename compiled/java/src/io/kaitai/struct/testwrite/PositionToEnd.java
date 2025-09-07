@@ -49,9 +49,9 @@ public class PositionToEnd extends KaitaiStruct.ReadWrite {
     public void _check() {
         if (_enabledIndex) {
             if (!Objects.equals(this.index._root(), _root()))
-                throw new ConsistencyError("index", this.index._root(), _root());
+                throw new ConsistencyError("index", _root(), this.index._root());
             if (!Objects.equals(this.index._parent(), this))
-                throw new ConsistencyError("index", this.index._parent(), this);
+                throw new ConsistencyError("index", this, this.index._parent());
         }
         _dirty = false;
     }

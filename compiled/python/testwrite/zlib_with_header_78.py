@@ -30,7 +30,7 @@ class ZlibWithHeader78(ReadWriteKaitaiStruct):
         self._raw_data = zlib.compress(self.data)
         self._io.write_bytes(self._raw_data)
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"data", self._io.size() - self._io.pos(), 0)
+            raise kaitaistruct.ConsistencyError(u"data", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):

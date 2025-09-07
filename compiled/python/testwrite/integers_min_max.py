@@ -44,21 +44,21 @@ class IntegersMinMax(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.unsigned_min._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"unsigned_min", self.unsigned_min._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"unsigned_min", self._root, self.unsigned_min._root)
         if self.unsigned_min._parent != self:
-            raise kaitaistruct.ConsistencyError(u"unsigned_min", self.unsigned_min._parent, self)
+            raise kaitaistruct.ConsistencyError(u"unsigned_min", self, self.unsigned_min._parent)
         if self.unsigned_max._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"unsigned_max", self.unsigned_max._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"unsigned_max", self._root, self.unsigned_max._root)
         if self.unsigned_max._parent != self:
-            raise kaitaistruct.ConsistencyError(u"unsigned_max", self.unsigned_max._parent, self)
+            raise kaitaistruct.ConsistencyError(u"unsigned_max", self, self.unsigned_max._parent)
         if self.signed_min._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"signed_min", self.signed_min._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"signed_min", self._root, self.signed_min._root)
         if self.signed_min._parent != self:
-            raise kaitaistruct.ConsistencyError(u"signed_min", self.signed_min._parent, self)
+            raise kaitaistruct.ConsistencyError(u"signed_min", self, self.signed_min._parent)
         if self.signed_max._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"signed_max", self.signed_max._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"signed_max", self._root, self.signed_max._root)
         if self.signed_max._parent != self:
-            raise kaitaistruct.ConsistencyError(u"signed_max", self.signed_max._parent, self)
+            raise kaitaistruct.ConsistencyError(u"signed_max", self, self.signed_max._parent)
         self._dirty = False
 
     class Signed(ReadWriteKaitaiStruct):

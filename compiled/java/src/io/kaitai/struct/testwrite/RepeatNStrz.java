@@ -58,10 +58,10 @@ public class RepeatNStrz extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.lines.size() != qty())
-            throw new ConsistencyError("lines", this.lines.size(), qty());
+            throw new ConsistencyError("lines", qty(), this.lines.size());
         for (int i = 0; i < this.lines.size(); i++) {
             if (KaitaiStream.byteArrayIndexOf((this.lines.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)) != -1)
-                throw new ConsistencyError("lines", KaitaiStream.byteArrayIndexOf((this.lines.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)), -1);
+                throw new ConsistencyError("lines", -1, KaitaiStream.byteArrayIndexOf((this.lines.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)));
         }
         _dirty = false;
     }

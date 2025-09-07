@@ -111,7 +111,7 @@ public class ProcessCoerceSwitch extends KaitaiStruct.ReadWrite {
                         protected void write(KaitaiStream parent) {
                             _this._raw_bufUnproc = _io__raw_bufUnproc.toByteArray();
                             if (((byte[]) (_this._raw_bufUnproc)).length != 4)
-                                throw new ConsistencyError("raw(buf_unproc)", ((byte[]) (_this._raw_bufUnproc)).length, 4);
+                                throw new ConsistencyError("raw(buf_unproc)", 4, ((byte[]) (_this._raw_bufUnproc)).length);
                             parent.writeBytes(((byte[]) (((byte[]) (_this._raw_bufUnproc)))));
                         }
                     });
@@ -141,7 +141,7 @@ public class ProcessCoerceSwitch extends KaitaiStruct.ReadWrite {
                             _this._raw_bufProc = _io__raw_bufProc.toByteArray();
                             _this._raw__raw_bufProc = KaitaiStream.processXor(((byte[]) (_this._raw_bufProc)), ((Number) (_processXorArg)).byteValue());
                             if (((byte[]) (_this._raw__raw_bufProc)).length != 4)
-                                throw new ConsistencyError("raw(buf_proc)", ((byte[]) (_this._raw__raw_bufProc)).length, 4);
+                                throw new ConsistencyError("raw(buf_proc)", 4, ((byte[]) (_this._raw__raw_bufProc)).length);
                             parent.writeBytes(((byte[]) (((byte[]) (_this._raw__raw_bufProc)))));
                         }
                     });
@@ -152,7 +152,7 @@ public class ProcessCoerceSwitch extends KaitaiStruct.ReadWrite {
             default: {
                 this._raw_bufProc = KaitaiStream.processXor(((byte[]) (this.bufProc)), ((Number) (170)).byteValue());
                 if (((byte[]) (this._raw_bufProc)).length != 4)
-                    throw new ConsistencyError("buf_proc", ((byte[]) (this._raw_bufProc)).length, 4);
+                    throw new ConsistencyError("buf_proc", 4, ((byte[]) (this._raw_bufProc)).length);
                 this._io.writeBytes(((byte[]) (((byte[]) (this._raw_bufProc)))));
                 break;
             }
@@ -165,14 +165,14 @@ public class ProcessCoerceSwitch extends KaitaiStruct.ReadWrite {
             switch (bufType()) {
             case 0: {
                 if (!Objects.equals(((ProcessCoerceSwitch.Foo) (this.bufUnproc))._root(), _root()))
-                    throw new ConsistencyError("buf_unproc", ((ProcessCoerceSwitch.Foo) (this.bufUnproc))._root(), _root());
+                    throw new ConsistencyError("buf_unproc", _root(), ((ProcessCoerceSwitch.Foo) (this.bufUnproc))._root());
                 if (!Objects.equals(((ProcessCoerceSwitch.Foo) (this.bufUnproc))._parent(), this))
-                    throw new ConsistencyError("buf_unproc", ((ProcessCoerceSwitch.Foo) (this.bufUnproc))._parent(), this);
+                    throw new ConsistencyError("buf_unproc", this, ((ProcessCoerceSwitch.Foo) (this.bufUnproc))._parent());
                 break;
             }
             default: {
                 if (((byte[]) (this.bufUnproc)).length != 4)
-                    throw new ConsistencyError("buf_unproc", ((byte[]) (this.bufUnproc)).length, 4);
+                    throw new ConsistencyError("buf_unproc", 4, ((byte[]) (this.bufUnproc)).length);
                 break;
             }
             }
@@ -181,9 +181,9 @@ public class ProcessCoerceSwitch extends KaitaiStruct.ReadWrite {
             switch (bufType()) {
             case 0: {
                 if (!Objects.equals(((ProcessCoerceSwitch.Foo) (this.bufProc))._root(), _root()))
-                    throw new ConsistencyError("buf_proc", ((ProcessCoerceSwitch.Foo) (this.bufProc))._root(), _root());
+                    throw new ConsistencyError("buf_proc", _root(), ((ProcessCoerceSwitch.Foo) (this.bufProc))._root());
                 if (!Objects.equals(((ProcessCoerceSwitch.Foo) (this.bufProc))._parent(), this))
-                    throw new ConsistencyError("buf_proc", ((ProcessCoerceSwitch.Foo) (this.bufProc))._parent(), this);
+                    throw new ConsistencyError("buf_proc", this, ((ProcessCoerceSwitch.Foo) (this.bufProc))._parent());
                 break;
             }
             default: {
@@ -229,7 +229,7 @@ public class ProcessCoerceSwitch extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (this.bar.length != 4)
-                throw new ConsistencyError("bar", this.bar.length, 4);
+                throw new ConsistencyError("bar", 4, this.bar.length);
             _dirty = false;
         }
         private byte[] bar;

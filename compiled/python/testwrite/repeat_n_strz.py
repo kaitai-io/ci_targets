@@ -42,11 +42,11 @@ class RepeatNStrz(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.lines) != self.qty:
-            raise kaitaistruct.ConsistencyError(u"lines", len(self.lines), self.qty)
+            raise kaitaistruct.ConsistencyError(u"lines", self.qty, len(self.lines))
         for i in range(len(self.lines)):
             pass
             if KaitaiStream.byte_array_index_of((self.lines[i]).encode(u"UTF-8"), 0) != -1:
-                raise kaitaistruct.ConsistencyError(u"lines", KaitaiStream.byte_array_index_of((self.lines[i]).encode(u"UTF-8"), 0), -1)
+                raise kaitaistruct.ConsistencyError(u"lines", -1, KaitaiStream.byte_array_index_of((self.lines[i]).encode(u"UTF-8"), 0))
 
         self._dirty = False
 

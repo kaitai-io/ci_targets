@@ -46,7 +46,7 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if ((this.one).getBytes(Charset.forName("ASCII")).length != 5)
-            throw new ConsistencyError("one", (this.one).getBytes(Charset.forName("ASCII")).length, 5);
+            throw new ConsistencyError("one", 5, (this.one).getBytes(Charset.forName("ASCII")).length);
         _dirty = false;
     }
     private Integer oneLen;

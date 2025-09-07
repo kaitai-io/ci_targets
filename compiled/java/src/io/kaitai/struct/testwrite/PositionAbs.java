@@ -53,9 +53,9 @@ public class PositionAbs extends KaitaiStruct.ReadWrite {
     public void _check() {
         if (_enabledIndex) {
             if (!Objects.equals(this.index._root(), _root()))
-                throw new ConsistencyError("index", this.index._root(), _root());
+                throw new ConsistencyError("index", _root(), this.index._root());
             if (!Objects.equals(this.index._parent(), this))
-                throw new ConsistencyError("index", this.index._parent(), this);
+                throw new ConsistencyError("index", this, this.index._parent());
         }
         _dirty = false;
     }
@@ -96,7 +96,7 @@ public class PositionAbs extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (KaitaiStream.byteArrayIndexOf((this.entry).getBytes(Charset.forName("UTF-8")), ((byte) 0)) != -1)
-                throw new ConsistencyError("entry", KaitaiStream.byteArrayIndexOf((this.entry).getBytes(Charset.forName("UTF-8")), ((byte) 0)), -1);
+                throw new ConsistencyError("entry", -1, KaitaiStream.byteArrayIndexOf((this.entry).getBytes(Charset.forName("UTF-8")), ((byte) 0)));
             _dirty = false;
         }
         private String entry;

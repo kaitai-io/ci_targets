@@ -57,10 +57,10 @@ public class InstanceStdArray extends KaitaiStruct.ReadWrite {
     public void _check() {
         if (_enabledEntries) {
             if (this.entries.size() != qtyEntries())
-                throw new ConsistencyError("entries", this.entries.size(), qtyEntries());
+                throw new ConsistencyError("entries", qtyEntries(), this.entries.size());
             for (int i = 0; i < this.entries.size(); i++) {
                 if (this.entries.get(((Number) (i)).intValue()).length != entrySize())
-                    throw new ConsistencyError("entries", this.entries.get(((Number) (i)).intValue()).length, entrySize());
+                    throw new ConsistencyError("entries", entrySize(), this.entries.get(((Number) (i)).intValue()).length);
             }
         }
         _dirty = false;

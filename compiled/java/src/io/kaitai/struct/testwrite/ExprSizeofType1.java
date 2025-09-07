@@ -88,11 +88,11 @@ public class ExprSizeofType1 extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (this.c.length != 2)
-                throw new ConsistencyError("c", this.c.length, 2);
+                throw new ConsistencyError("c", 2, this.c.length);
             if (!Objects.equals(this.d._root(), _root()))
-                throw new ConsistencyError("d", this.d._root(), _root());
+                throw new ConsistencyError("d", _root(), this.d._root());
             if (!Objects.equals(this.d._parent(), this))
-                throw new ConsistencyError("d", this.d._parent(), this);
+                throw new ConsistencyError("d", this, this.d._parent());
             _dirty = false;
         }
         public static class Subblock extends KaitaiStruct.ReadWrite {
@@ -131,7 +131,7 @@ public class ExprSizeofType1 extends KaitaiStruct.ReadWrite {
 
             public void _check() {
                 if (this.a.length != 4)
-                    throw new ConsistencyError("a", this.a.length, 4);
+                    throw new ConsistencyError("a", 4, this.a.length);
                 _dirty = false;
             }
             private byte[] a;

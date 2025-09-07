@@ -56,7 +56,7 @@ public class ExprSizeofValueSized extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_block1 = _io__raw_block1.toByteArray();
                     if (_this._raw_block1.length != 12)
-                        throw new ConsistencyError("raw(block1)", _this._raw_block1.length, 12);
+                        throw new ConsistencyError("raw(block1)", 12, _this._raw_block1.length);
                     parent.writeBytes(_this._raw_block1);
                 }
             });
@@ -67,9 +67,9 @@ public class ExprSizeofValueSized extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.block1._root(), _root()))
-            throw new ConsistencyError("block1", this.block1._root(), _root());
+            throw new ConsistencyError("block1", _root(), this.block1._root());
         if (!Objects.equals(this.block1._parent(), this))
-            throw new ConsistencyError("block1", this.block1._parent(), this);
+            throw new ConsistencyError("block1", this, this.block1._parent());
         _dirty = false;
     }
     public static class Block extends KaitaiStruct.ReadWrite {
@@ -112,7 +112,7 @@ public class ExprSizeofValueSized extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (this.c.length != 2)
-                throw new ConsistencyError("c", this.c.length, 2);
+                throw new ConsistencyError("c", 2, this.c.length);
             _dirty = false;
         }
         private int a;

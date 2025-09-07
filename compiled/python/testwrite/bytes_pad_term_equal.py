@@ -36,35 +36,35 @@ class BytesPadTermEqual(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.s1) > 20:
-            raise kaitaistruct.ConsistencyError(u"s1", len(self.s1), 20)
+            raise kaitaistruct.ConsistencyError(u"s1", 20, len(self.s1))
         if KaitaiStream.byte_array_index_of(self.s1, 64) != -1:
-            raise kaitaistruct.ConsistencyError(u"s1", KaitaiStream.byte_array_index_of(self.s1, 64), -1)
+            raise kaitaistruct.ConsistencyError(u"s1", -1, KaitaiStream.byte_array_index_of(self.s1, 64))
         if len(self.s2) > 20:
-            raise kaitaistruct.ConsistencyError(u"s2", len(self.s2), 20)
+            raise kaitaistruct.ConsistencyError(u"s2", 20, len(self.s2))
         if  ((KaitaiStream.byte_array_index_of(self.s2, 64) != -1) and (KaitaiStream.byte_array_index_of(self.s2, 64) != len(self.s2) - 1)) :
-            raise kaitaistruct.ConsistencyError(u"s2", KaitaiStream.byte_array_index_of(self.s2, 64), len(self.s2) - 1)
+            raise kaitaistruct.ConsistencyError(u"s2", len(self.s2) - 1, KaitaiStream.byte_array_index_of(self.s2, 64))
         if KaitaiStream.byte_array_index_of(self.s2, 64) == -1:
             pass
             if  ((len(self.s2) != 0) and (KaitaiStream.byte_array_index(self.s2, -1) == 43)) :
-                raise kaitaistruct.ConsistencyError(u"s2", KaitaiStream.byte_array_index(self.s2, -1), 43)
+                raise kaitaistruct.ConsistencyError(u"s2", 43, KaitaiStream.byte_array_index(self.s2, -1))
 
         if len(self.s3) > 20:
-            raise kaitaistruct.ConsistencyError(u"s3", len(self.s3), 20)
+            raise kaitaistruct.ConsistencyError(u"s3", 20, len(self.s3))
         if KaitaiStream.byte_array_index_of(self.s3, 43) != -1:
-            raise kaitaistruct.ConsistencyError(u"s3", KaitaiStream.byte_array_index_of(self.s3, 43), -1)
+            raise kaitaistruct.ConsistencyError(u"s3", -1, KaitaiStream.byte_array_index_of(self.s3, 43))
         if len(self.s4) > 20:
-            raise kaitaistruct.ConsistencyError(u"s4", len(self.s4), 20)
+            raise kaitaistruct.ConsistencyError(u"s4", 20, len(self.s4))
         if len(self.s4) < 20:
             pass
             if len(self.s4) == 0:
-                raise kaitaistruct.ConsistencyError(u"s4", len(self.s4), 0)
+                raise kaitaistruct.ConsistencyError(u"s4", 0, len(self.s4))
             if KaitaiStream.byte_array_index_of(self.s4, 46) != len(self.s4) - 1:
-                raise kaitaistruct.ConsistencyError(u"s4", KaitaiStream.byte_array_index_of(self.s4, 46), len(self.s4) - 1)
+                raise kaitaistruct.ConsistencyError(u"s4", len(self.s4) - 1, KaitaiStream.byte_array_index_of(self.s4, 46))
 
         if len(self.s4) == 20:
             pass
             if  ((KaitaiStream.byte_array_index_of(self.s4, 46) != -1) and (KaitaiStream.byte_array_index_of(self.s4, 46) != len(self.s4) - 1)) :
-                raise kaitaistruct.ConsistencyError(u"s4", KaitaiStream.byte_array_index_of(self.s4, 46), len(self.s4) - 1)
+                raise kaitaistruct.ConsistencyError(u"s4", len(self.s4) - 1, KaitaiStream.byte_array_index_of(self.s4, 46))
 
         self._dirty = False
 

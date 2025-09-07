@@ -49,9 +49,9 @@ public class Enum1 extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.main._root(), _root()))
-            throw new ConsistencyError("main", this.main._root(), _root());
+            throw new ConsistencyError("main", _root(), this.main._root());
         if (!Objects.equals(this.main._parent(), this))
-            throw new ConsistencyError("main", this.main._parent(), this);
+            throw new ConsistencyError("main", this, this.main._parent());
         _dirty = false;
     }
     public static class MainObj extends KaitaiStruct.ReadWrite {
@@ -108,9 +108,9 @@ public class Enum1 extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (!Objects.equals(this.submain._root(), _root()))
-                throw new ConsistencyError("submain", this.submain._root(), _root());
+                throw new ConsistencyError("submain", _root(), this.submain._root());
             if (!Objects.equals(this.submain._parent(), this))
-                throw new ConsistencyError("submain", this.submain._parent(), this);
+                throw new ConsistencyError("submain", this, this.submain._parent());
             _dirty = false;
         }
         public static class SubmainObj extends KaitaiStruct.ReadWrite {

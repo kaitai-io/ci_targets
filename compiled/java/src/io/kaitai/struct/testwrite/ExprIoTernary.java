@@ -62,7 +62,7 @@ public class ExprIoTernary extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_obj1 = _io__raw_obj1.toByteArray();
                     if (_this._raw_obj1.length != 4)
-                        throw new ConsistencyError("raw(obj1)", _this._raw_obj1.length, 4);
+                        throw new ConsistencyError("raw(obj1)", 4, _this._raw_obj1.length);
                     parent.writeBytes(_this._raw_obj1);
                 }
             });
@@ -79,7 +79,7 @@ public class ExprIoTernary extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_obj2 = _io__raw_obj2.toByteArray();
                     if (_this._raw_obj2.length != 8)
-                        throw new ConsistencyError("raw(obj2)", _this._raw_obj2.length, 8);
+                        throw new ConsistencyError("raw(obj2)", 8, _this._raw_obj2.length);
                     parent.writeBytes(_this._raw_obj2);
                 }
             });
@@ -89,13 +89,13 @@ public class ExprIoTernary extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.obj1._root(), _root()))
-            throw new ConsistencyError("obj1", this.obj1._root(), _root());
+            throw new ConsistencyError("obj1", _root(), this.obj1._root());
         if (!Objects.equals(this.obj1._parent(), this))
-            throw new ConsistencyError("obj1", this.obj1._parent(), this);
+            throw new ConsistencyError("obj1", this, this.obj1._parent());
         if (!Objects.equals(this.obj2._root(), _root()))
-            throw new ConsistencyError("obj2", this.obj2._root(), _root());
+            throw new ConsistencyError("obj2", _root(), this.obj2._root());
         if (!Objects.equals(this.obj2._parent(), this))
-            throw new ConsistencyError("obj2", this.obj2._parent(), this);
+            throw new ConsistencyError("obj2", this, this.obj2._parent());
         _dirty = false;
     }
     public static class One extends KaitaiStruct.ReadWrite {

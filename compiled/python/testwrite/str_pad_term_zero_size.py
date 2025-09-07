@@ -36,35 +36,35 @@ class StrPadTermZeroSize(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len((self.str_pad).encode(u"UTF-8")) > 0:
-            raise kaitaistruct.ConsistencyError(u"str_pad", len((self.str_pad).encode(u"UTF-8")), 0)
+            raise kaitaistruct.ConsistencyError(u"str_pad", 0, len((self.str_pad).encode(u"UTF-8")))
         if  ((len((self.str_pad).encode(u"UTF-8")) != 0) and (KaitaiStream.byte_array_index((self.str_pad).encode(u"UTF-8"), -1) == 64)) :
-            raise kaitaistruct.ConsistencyError(u"str_pad", KaitaiStream.byte_array_index((self.str_pad).encode(u"UTF-8"), -1), 64)
+            raise kaitaistruct.ConsistencyError(u"str_pad", 64, KaitaiStream.byte_array_index((self.str_pad).encode(u"UTF-8"), -1))
         if len((self.str_term).encode(u"UTF-8")) > 0:
-            raise kaitaistruct.ConsistencyError(u"str_term", len((self.str_term).encode(u"UTF-8")), 0)
+            raise kaitaistruct.ConsistencyError(u"str_term", 0, len((self.str_term).encode(u"UTF-8")))
         if KaitaiStream.byte_array_index_of((self.str_term).encode(u"UTF-8"), 64) != -1:
-            raise kaitaistruct.ConsistencyError(u"str_term", KaitaiStream.byte_array_index_of((self.str_term).encode(u"UTF-8"), 64), -1)
+            raise kaitaistruct.ConsistencyError(u"str_term", -1, KaitaiStream.byte_array_index_of((self.str_term).encode(u"UTF-8"), 64))
         if len((self.str_term_and_pad).encode(u"UTF-8")) > 0:
-            raise kaitaistruct.ConsistencyError(u"str_term_and_pad", len((self.str_term_and_pad).encode(u"UTF-8")), 0)
+            raise kaitaistruct.ConsistencyError(u"str_term_and_pad", 0, len((self.str_term_and_pad).encode(u"UTF-8")))
         if KaitaiStream.byte_array_index_of((self.str_term_and_pad).encode(u"UTF-8"), 64) != -1:
-            raise kaitaistruct.ConsistencyError(u"str_term_and_pad", KaitaiStream.byte_array_index_of((self.str_term_and_pad).encode(u"UTF-8"), 64), -1)
+            raise kaitaistruct.ConsistencyError(u"str_term_and_pad", -1, KaitaiStream.byte_array_index_of((self.str_term_and_pad).encode(u"UTF-8"), 64))
         if len((self.str_term_and_pad).encode(u"UTF-8")) == 0:
             pass
             if  ((len((self.str_term_and_pad).encode(u"UTF-8")) != 0) and (KaitaiStream.byte_array_index((self.str_term_and_pad).encode(u"UTF-8"), -1) == 43)) :
-                raise kaitaistruct.ConsistencyError(u"str_term_and_pad", KaitaiStream.byte_array_index((self.str_term_and_pad).encode(u"UTF-8"), -1), 43)
+                raise kaitaistruct.ConsistencyError(u"str_term_and_pad", 43, KaitaiStream.byte_array_index((self.str_term_and_pad).encode(u"UTF-8"), -1))
 
         if len((self.str_term_include).encode(u"UTF-8")) > 0:
-            raise kaitaistruct.ConsistencyError(u"str_term_include", len((self.str_term_include).encode(u"UTF-8")), 0)
+            raise kaitaistruct.ConsistencyError(u"str_term_include", 0, len((self.str_term_include).encode(u"UTF-8")))
         if len((self.str_term_include).encode(u"UTF-8")) < 0:
             pass
             if len((self.str_term_include).encode(u"UTF-8")) == 0:
-                raise kaitaistruct.ConsistencyError(u"str_term_include", len((self.str_term_include).encode(u"UTF-8")), 0)
+                raise kaitaistruct.ConsistencyError(u"str_term_include", 0, len((self.str_term_include).encode(u"UTF-8")))
             if KaitaiStream.byte_array_index_of((self.str_term_include).encode(u"UTF-8"), 64) != len((self.str_term_include).encode(u"UTF-8")) - 1:
-                raise kaitaistruct.ConsistencyError(u"str_term_include", KaitaiStream.byte_array_index_of((self.str_term_include).encode(u"UTF-8"), 64), len((self.str_term_include).encode(u"UTF-8")) - 1)
+                raise kaitaistruct.ConsistencyError(u"str_term_include", len((self.str_term_include).encode(u"UTF-8")) - 1, KaitaiStream.byte_array_index_of((self.str_term_include).encode(u"UTF-8"), 64))
 
         if len((self.str_term_include).encode(u"UTF-8")) == 0:
             pass
             if  ((KaitaiStream.byte_array_index_of((self.str_term_include).encode(u"UTF-8"), 64) != -1) and (KaitaiStream.byte_array_index_of((self.str_term_include).encode(u"UTF-8"), 64) != len((self.str_term_include).encode(u"UTF-8")) - 1)) :
-                raise kaitaistruct.ConsistencyError(u"str_term_include", KaitaiStream.byte_array_index_of((self.str_term_include).encode(u"UTF-8"), 64), len((self.str_term_include).encode(u"UTF-8")) - 1)
+                raise kaitaistruct.ConsistencyError(u"str_term_include", len((self.str_term_include).encode(u"UTF-8")) - 1, KaitaiStream.byte_array_index_of((self.str_term_include).encode(u"UTF-8"), 64))
 
         self._dirty = False
 

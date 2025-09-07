@@ -77,36 +77,36 @@ class RepeatUntilTermBytes(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.records1) == 0:
-            raise kaitaistruct.ConsistencyError(u"records1", len(self.records1), 0)
+            raise kaitaistruct.ConsistencyError(u"records1", 0, len(self.records1))
         for i in range(len(self.records1)):
             pass
             if KaitaiStream.byte_array_index_of(self.records1[i], 170) != -1:
-                raise kaitaistruct.ConsistencyError(u"records1", KaitaiStream.byte_array_index_of(self.records1[i], 170), -1)
+                raise kaitaistruct.ConsistencyError(u"records1", -1, KaitaiStream.byte_array_index_of(self.records1[i], 170))
             _ = self.records1[i]
             if (len(_) == 0) != (i == len(self.records1) - 1):
-                raise kaitaistruct.ConsistencyError(u"records1", len(_) == 0, i == len(self.records1) - 1)
+                raise kaitaistruct.ConsistencyError(u"records1", i == len(self.records1) - 1, len(_) == 0)
 
         if len(self.records2) == 0:
-            raise kaitaistruct.ConsistencyError(u"records2", len(self.records2), 0)
+            raise kaitaistruct.ConsistencyError(u"records2", 0, len(self.records2))
         for i in range(len(self.records2)):
             pass
             if len(self.records2[i]) == 0:
-                raise kaitaistruct.ConsistencyError(u"records2", len(self.records2[i]), 0)
+                raise kaitaistruct.ConsistencyError(u"records2", 0, len(self.records2[i]))
             if KaitaiStream.byte_array_index_of(self.records2[i], 170) != len(self.records2[i]) - 1:
-                raise kaitaistruct.ConsistencyError(u"records2", KaitaiStream.byte_array_index_of(self.records2[i], 170), len(self.records2[i]) - 1)
+                raise kaitaistruct.ConsistencyError(u"records2", len(self.records2[i]) - 1, KaitaiStream.byte_array_index_of(self.records2[i], 170))
             _ = self.records2[i]
             if (_ != b"\xAA") != (i == len(self.records2) - 1):
-                raise kaitaistruct.ConsistencyError(u"records2", _ != b"\xAA", i == len(self.records2) - 1)
+                raise kaitaistruct.ConsistencyError(u"records2", i == len(self.records2) - 1, _ != b"\xAA")
 
         if len(self.records3) == 0:
-            raise kaitaistruct.ConsistencyError(u"records3", len(self.records3), 0)
+            raise kaitaistruct.ConsistencyError(u"records3", 0, len(self.records3))
         for i in range(len(self.records3)):
             pass
             if KaitaiStream.byte_array_index_of(self.records3[i], 85) != -1:
-                raise kaitaistruct.ConsistencyError(u"records3", KaitaiStream.byte_array_index_of(self.records3[i], 85), -1)
+                raise kaitaistruct.ConsistencyError(u"records3", -1, KaitaiStream.byte_array_index_of(self.records3[i], 85))
             _ = self.records3[i]
             if (_ == self.records1[-1]) != (i == len(self.records3) - 1):
-                raise kaitaistruct.ConsistencyError(u"records3", _ == self.records1[-1], i == len(self.records3) - 1)
+                raise kaitaistruct.ConsistencyError(u"records3", i == len(self.records3) - 1, _ == self.records1[-1])
 
         self._dirty = False
 

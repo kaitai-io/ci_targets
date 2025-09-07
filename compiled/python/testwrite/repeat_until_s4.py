@@ -46,15 +46,15 @@ class RepeatUntilS4(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.entries) == 0:
-            raise kaitaistruct.ConsistencyError(u"entries", len(self.entries), 0)
+            raise kaitaistruct.ConsistencyError(u"entries", 0, len(self.entries))
         for i in range(len(self.entries)):
             pass
             _ = self.entries[i]
             if (_ == -1) != (i == len(self.entries) - 1):
-                raise kaitaistruct.ConsistencyError(u"entries", _ == -1, i == len(self.entries) - 1)
+                raise kaitaistruct.ConsistencyError(u"entries", i == len(self.entries) - 1, _ == -1)
 
         if KaitaiStream.byte_array_index_of((self.afterall).encode(u"ASCII"), 0) != -1:
-            raise kaitaistruct.ConsistencyError(u"afterall", KaitaiStream.byte_array_index_of((self.afterall).encode(u"ASCII"), 0), -1)
+            raise kaitaistruct.ConsistencyError(u"afterall", -1, KaitaiStream.byte_array_index_of((self.afterall).encode(u"ASCII"), 0))
         self._dirty = False
 
 

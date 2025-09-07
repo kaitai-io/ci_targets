@@ -83,7 +83,7 @@ public class ExprSizeofType0 extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (this.c.length != 2)
-                throw new ConsistencyError("c", this.c.length, 2);
+                throw new ConsistencyError("c", 2, this.c.length);
             _dirty = false;
         }
         private int a;

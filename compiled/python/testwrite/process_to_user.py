@@ -39,7 +39,7 @@ class ProcessToUser(ReadWriteKaitaiStruct):
             self._raw_buf1 = _io__raw_buf1.to_byte_array()
             self._raw__raw_buf1 = KaitaiStream.process_rotate_left(self._raw_buf1, 8 - (_process_val), 1)
             if len(self._raw__raw_buf1) != 5:
-                raise kaitaistruct.ConsistencyError(u"raw(buf1)", len(self._raw__raw_buf1), 5)
+                raise kaitaistruct.ConsistencyError(u"raw(buf1)", 5, len(self._raw__raw_buf1))
             parent.write_bytes(self._raw__raw_buf1)
         _io__raw_buf1.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.buf1._write__seq(_io__raw_buf1)
@@ -47,9 +47,9 @@ class ProcessToUser(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.buf1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"buf1", self.buf1._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"buf1", self._root, self.buf1._root)
         if self.buf1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"buf1", self.buf1._parent, self)
+            raise kaitaistruct.ConsistencyError(u"buf1", self, self.buf1._parent)
         self._dirty = False
 
     class JustStr(ReadWriteKaitaiStruct):
@@ -71,7 +71,7 @@ class ProcessToUser(ReadWriteKaitaiStruct):
             super(ProcessToUser.JustStr, self)._write__seq(io)
             self._io.write_bytes((self.str).encode(u"UTF-8"))
             if not self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"str", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"str", 0, self._io.size() - self._io.pos())
 
 
         def _check(self):

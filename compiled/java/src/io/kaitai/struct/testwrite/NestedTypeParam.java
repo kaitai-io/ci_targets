@@ -49,11 +49,11 @@ public class NestedTypeParam extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.mainSeq._root(), _root()))
-            throw new ConsistencyError("main_seq", this.mainSeq._root(), _root());
+            throw new ConsistencyError("main_seq", _root(), this.mainSeq._root());
         if (!Objects.equals(this.mainSeq._parent(), this))
-            throw new ConsistencyError("main_seq", this.mainSeq._parent(), this);
+            throw new ConsistencyError("main_seq", this, this.mainSeq._parent());
         if (this.mainSeq.myLen() != 5)
-            throw new ConsistencyError("main_seq", this.mainSeq.myLen(), 5);
+            throw new ConsistencyError("main_seq", 5, this.mainSeq.myLen());
         _dirty = false;
     }
     public static class Nested extends KaitaiStruct.ReadWrite {
@@ -125,7 +125,7 @@ public class NestedTypeParam extends KaitaiStruct.ReadWrite {
 
             public void _check() {
                 if ((this.body).getBytes(Charset.forName("ASCII")).length != myLen())
-                    throw new ConsistencyError("body", (this.body).getBytes(Charset.forName("ASCII")).length, myLen());
+                    throw new ConsistencyError("body", myLen(), (this.body).getBytes(Charset.forName("ASCII")).length);
                 _dirty = false;
             }
             private String body;

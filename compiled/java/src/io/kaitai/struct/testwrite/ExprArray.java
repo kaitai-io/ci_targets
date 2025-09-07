@@ -75,18 +75,18 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.aint.size() != 4)
-            throw new ConsistencyError("aint", this.aint.size(), 4);
+            throw new ConsistencyError("aint", 4, this.aint.size());
         for (int i = 0; i < this.aint.size(); i++) {
         }
         if (this.afloat.size() != 3)
-            throw new ConsistencyError("afloat", this.afloat.size(), 3);
+            throw new ConsistencyError("afloat", 3, this.afloat.size());
         for (int i = 0; i < this.afloat.size(); i++) {
         }
         if (this.astr.size() != 3)
-            throw new ConsistencyError("astr", this.astr.size(), 3);
+            throw new ConsistencyError("astr", 3, this.astr.size());
         for (int i = 0; i < this.astr.size(); i++) {
             if (KaitaiStream.byteArrayIndexOf((this.astr.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)) != -1)
-                throw new ConsistencyError("astr", KaitaiStream.byteArrayIndexOf((this.astr.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)), -1);
+                throw new ConsistencyError("astr", -1, KaitaiStream.byteArrayIndexOf((this.astr.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")), ((byte) 0)));
         }
         _dirty = false;
     }

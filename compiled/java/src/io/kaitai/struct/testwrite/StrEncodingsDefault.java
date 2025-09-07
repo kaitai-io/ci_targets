@@ -53,11 +53,11 @@ public class StrEncodingsDefault extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if ((this.str1).getBytes(Charset.forName("UTF-8")).length != lenOf1())
-            throw new ConsistencyError("str1", (this.str1).getBytes(Charset.forName("UTF-8")).length, lenOf1());
+            throw new ConsistencyError("str1", lenOf1(), (this.str1).getBytes(Charset.forName("UTF-8")).length);
         if (!Objects.equals(this.rest._root(), _root()))
-            throw new ConsistencyError("rest", this.rest._root(), _root());
+            throw new ConsistencyError("rest", _root(), this.rest._root());
         if (!Objects.equals(this.rest._parent(), this))
-            throw new ConsistencyError("rest", this.rest._parent(), this);
+            throw new ConsistencyError("rest", this, this.rest._parent());
         _dirty = false;
     }
     public static class Subtype extends KaitaiStruct.ReadWrite {
@@ -106,11 +106,11 @@ public class StrEncodingsDefault extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if ((this.str2).getBytes(Charset.forName("UTF-8")).length != lenOf2())
-                throw new ConsistencyError("str2", (this.str2).getBytes(Charset.forName("UTF-8")).length, lenOf2());
+                throw new ConsistencyError("str2", lenOf2(), (this.str2).getBytes(Charset.forName("UTF-8")).length);
             if ((this.str3).getBytes(Charset.forName("Shift_JIS")).length != lenOf3())
-                throw new ConsistencyError("str3", (this.str3).getBytes(Charset.forName("Shift_JIS")).length, lenOf3());
+                throw new ConsistencyError("str3", lenOf3(), (this.str3).getBytes(Charset.forName("Shift_JIS")).length);
             if ((this.str4).getBytes(Charset.forName("IBM437")).length != lenOf4())
-                throw new ConsistencyError("str4", (this.str4).getBytes(Charset.forName("IBM437")).length, lenOf4());
+                throw new ConsistencyError("str4", lenOf4(), (this.str4).getBytes(Charset.forName("IBM437")).length);
             _dirty = false;
         }
         private int lenOf2;

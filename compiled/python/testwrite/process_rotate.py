@@ -33,16 +33,16 @@ class ProcessRotate(ReadWriteKaitaiStruct):
         super(ProcessRotate, self)._write__seq(io)
         self._raw_buf1 = KaitaiStream.process_rotate_left(self.buf1, 8 - (3), 1)
         if len(self._raw_buf1) != 5:
-            raise kaitaistruct.ConsistencyError(u"buf1", len(self._raw_buf1), 5)
+            raise kaitaistruct.ConsistencyError(u"buf1", 5, len(self._raw_buf1))
         self._io.write_bytes(self._raw_buf1)
         self._raw_buf2 = KaitaiStream.process_rotate_left(self.buf2, 3, 1)
         if len(self._raw_buf2) != 5:
-            raise kaitaistruct.ConsistencyError(u"buf2", len(self._raw_buf2), 5)
+            raise kaitaistruct.ConsistencyError(u"buf2", 5, len(self._raw_buf2))
         self._io.write_bytes(self._raw_buf2)
         self._io.write_u1(self.key)
         self._raw_buf3 = KaitaiStream.process_rotate_left(self.buf3, 8 - (self.key), 1)
         if len(self._raw_buf3) != 5:
-            raise kaitaistruct.ConsistencyError(u"buf3", len(self._raw_buf3), 5)
+            raise kaitaistruct.ConsistencyError(u"buf3", 5, len(self._raw_buf3))
         self._io.write_bytes(self._raw_buf3)
 
 

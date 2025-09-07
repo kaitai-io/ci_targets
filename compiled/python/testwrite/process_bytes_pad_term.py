@@ -34,41 +34,41 @@ class ProcessBytesPadTerm(ReadWriteKaitaiStruct):
         super(ProcessBytesPadTerm, self)._write__seq(io)
         self._raw_str_pad = KaitaiStream.process_xor_one(self.str_pad, 21)
         if len(self._raw_str_pad) > 20:
-            raise kaitaistruct.ConsistencyError(u"str_pad", len(self._raw_str_pad), 20)
+            raise kaitaistruct.ConsistencyError(u"str_pad", 20, len(self._raw_str_pad))
         if  ((len(self._raw_str_pad) != 0) and (KaitaiStream.byte_array_index(self._raw_str_pad, -1) == 64)) :
-            raise kaitaistruct.ConsistencyError(u"str_pad", KaitaiStream.byte_array_index(self._raw_str_pad, -1), 64)
+            raise kaitaistruct.ConsistencyError(u"str_pad", 64, KaitaiStream.byte_array_index(self._raw_str_pad, -1))
         self._io.write_bytes_limit(self._raw_str_pad, 20, 64, 64)
         self._raw_str_term = KaitaiStream.process_xor_one(self.str_term, 21)
         if len(self._raw_str_term) > 20:
-            raise kaitaistruct.ConsistencyError(u"str_term", len(self._raw_str_term), 20)
+            raise kaitaistruct.ConsistencyError(u"str_term", 20, len(self._raw_str_term))
         if KaitaiStream.byte_array_index_of(self._raw_str_term, 64) != -1:
-            raise kaitaistruct.ConsistencyError(u"str_term", KaitaiStream.byte_array_index_of(self._raw_str_term, 64), -1)
+            raise kaitaistruct.ConsistencyError(u"str_term", -1, KaitaiStream.byte_array_index_of(self._raw_str_term, 64))
         self._io.write_bytes_limit(self._raw_str_term, 20, 64, 0)
         self._raw_str_term_and_pad = KaitaiStream.process_xor_one(self.str_term_and_pad, 21)
         if len(self._raw_str_term_and_pad) > 20:
-            raise kaitaistruct.ConsistencyError(u"str_term_and_pad", len(self._raw_str_term_and_pad), 20)
+            raise kaitaistruct.ConsistencyError(u"str_term_and_pad", 20, len(self._raw_str_term_and_pad))
         if KaitaiStream.byte_array_index_of(self._raw_str_term_and_pad, 64) != -1:
-            raise kaitaistruct.ConsistencyError(u"str_term_and_pad", KaitaiStream.byte_array_index_of(self._raw_str_term_and_pad, 64), -1)
+            raise kaitaistruct.ConsistencyError(u"str_term_and_pad", -1, KaitaiStream.byte_array_index_of(self._raw_str_term_and_pad, 64))
         if len(self._raw_str_term_and_pad) == 20:
             pass
             if  ((len(self._raw_str_term_and_pad) != 0) and (KaitaiStream.byte_array_index(self._raw_str_term_and_pad, -1) == 43)) :
-                raise kaitaistruct.ConsistencyError(u"str_term_and_pad", KaitaiStream.byte_array_index(self._raw_str_term_and_pad, -1), 43)
+                raise kaitaistruct.ConsistencyError(u"str_term_and_pad", 43, KaitaiStream.byte_array_index(self._raw_str_term_and_pad, -1))
 
         self._io.write_bytes_limit(self._raw_str_term_and_pad, 20, 64, 43)
         self._raw_str_term_include = KaitaiStream.process_xor_one(self.str_term_include, 21)
         if len(self._raw_str_term_include) > 20:
-            raise kaitaistruct.ConsistencyError(u"str_term_include", len(self._raw_str_term_include), 20)
+            raise kaitaistruct.ConsistencyError(u"str_term_include", 20, len(self._raw_str_term_include))
         if len(self._raw_str_term_include) < 20:
             pass
             if len(self._raw_str_term_include) == 0:
-                raise kaitaistruct.ConsistencyError(u"str_term_include", len(self._raw_str_term_include), 0)
+                raise kaitaistruct.ConsistencyError(u"str_term_include", 0, len(self._raw_str_term_include))
             if KaitaiStream.byte_array_index_of(self._raw_str_term_include, 64) != len(self._raw_str_term_include) - 1:
-                raise kaitaistruct.ConsistencyError(u"str_term_include", KaitaiStream.byte_array_index_of(self._raw_str_term_include, 64), len(self._raw_str_term_include) - 1)
+                raise kaitaistruct.ConsistencyError(u"str_term_include", len(self._raw_str_term_include) - 1, KaitaiStream.byte_array_index_of(self._raw_str_term_include, 64))
 
         if len(self._raw_str_term_include) == 20:
             pass
             if  ((KaitaiStream.byte_array_index_of(self._raw_str_term_include, 64) != -1) and (KaitaiStream.byte_array_index_of(self._raw_str_term_include, 64) != len(self._raw_str_term_include) - 1)) :
-                raise kaitaistruct.ConsistencyError(u"str_term_include", KaitaiStream.byte_array_index_of(self._raw_str_term_include, 64), len(self._raw_str_term_include) - 1)
+                raise kaitaistruct.ConsistencyError(u"str_term_include", len(self._raw_str_term_include) - 1, KaitaiStream.byte_array_index_of(self._raw_str_term_include, 64))
 
         self._io.write_bytes_limit(self._raw_str_term_include, 20, 0, 0)
 

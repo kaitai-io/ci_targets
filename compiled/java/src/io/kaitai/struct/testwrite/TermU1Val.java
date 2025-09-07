@@ -53,11 +53,11 @@ public class TermU1Val extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (KaitaiStream.byteArrayIndexOf(this.foo, ((byte) 227)) != -1)
-            throw new ConsistencyError("foo", KaitaiStream.byteArrayIndexOf(this.foo, ((byte) 227)), -1);
+            throw new ConsistencyError("foo", -1, KaitaiStream.byteArrayIndexOf(this.foo, ((byte) 227)));
         if ((this.bar).getBytes(Charset.forName("UTF-8")).length == 0)
-            throw new ConsistencyError("bar", (this.bar).getBytes(Charset.forName("UTF-8")).length, 0);
+            throw new ConsistencyError("bar", 0, (this.bar).getBytes(Charset.forName("UTF-8")).length);
         if (KaitaiStream.byteArrayIndexOf((this.bar).getBytes(Charset.forName("UTF-8")), ((byte) 171)) != (this.bar).getBytes(Charset.forName("UTF-8")).length - 1)
-            throw new ConsistencyError("bar", KaitaiStream.byteArrayIndexOf((this.bar).getBytes(Charset.forName("UTF-8")), ((byte) 171)), (this.bar).getBytes(Charset.forName("UTF-8")).length - 1);
+            throw new ConsistencyError("bar", (this.bar).getBytes(Charset.forName("UTF-8")).length - 1, KaitaiStream.byteArrayIndexOf((this.bar).getBytes(Charset.forName("UTF-8")), ((byte) 171)));
         _dirty = false;
     }
     private byte[] foo;

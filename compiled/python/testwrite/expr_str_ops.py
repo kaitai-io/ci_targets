@@ -30,7 +30,7 @@ class ExprStrOps(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len((self.one).encode(u"ASCII")) != 5:
-            raise kaitaistruct.ConsistencyError(u"one", len((self.one).encode(u"ASCII")), 5)
+            raise kaitaistruct.ConsistencyError(u"one", 5, len((self.one).encode(u"ASCII")))
         self._dirty = False
 
     @property

@@ -48,7 +48,7 @@ public class ValidFailContents extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.foo.length != 2)
-            throw new ConsistencyError("foo", this.foo.length, 2);
+            throw new ConsistencyError("foo", 2, this.foo.length);
         if (!(Arrays.equals(this.foo, new byte[] { 81, 65 }))) {
             throw new KaitaiStream.ValidationNotEqualError(new byte[] { 81, 65 }, this.foo, null, "/seq/0");
         }

@@ -32,14 +32,14 @@ class CombineBytes(ReadWriteKaitaiStruct):
         self._io.write_bytes(self.bytes_limit)
         self._io.write_bytes(self.bytes_eos)
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"bytes_eos", self._io.size() - self._io.pos(), 0)
+            raise kaitaistruct.ConsistencyError(u"bytes_eos", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):
         if KaitaiStream.byte_array_index_of(self.bytes_term, 124) != -1:
-            raise kaitaistruct.ConsistencyError(u"bytes_term", KaitaiStream.byte_array_index_of(self.bytes_term, 124), -1)
+            raise kaitaistruct.ConsistencyError(u"bytes_term", -1, KaitaiStream.byte_array_index_of(self.bytes_term, 124))
         if len(self.bytes_limit) != 4:
-            raise kaitaistruct.ConsistencyError(u"bytes_limit", len(self.bytes_limit), 4)
+            raise kaitaistruct.ConsistencyError(u"bytes_limit", 4, len(self.bytes_limit))
         self._dirty = False
 
     @property

@@ -36,11 +36,11 @@ class RepeatEosBit(ReadWriteKaitaiStruct):
         for i in range(len(self.nibbles)):
             pass
             if self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"nibbles", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"nibbles", 0, self._io.size() - self._io.pos())
             self._io.write_bits_int_be(4, self.nibbles[i])
 
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"nibbles", self._io.size() - self._io.pos(), 0)
+            raise kaitaistruct.ConsistencyError(u"nibbles", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):

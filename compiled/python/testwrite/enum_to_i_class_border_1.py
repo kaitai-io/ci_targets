@@ -49,7 +49,7 @@ class EnumToIClassBorder1(ReadWriteKaitaiStruct):
         if self.checker__enabled:
             pass
             if self._m_checker.parent != self._root:
-                raise kaitaistruct.ConsistencyError(u"checker", self._m_checker.parent, self._root)
+                raise kaitaistruct.ConsistencyError(u"checker", self._root, self._m_checker.parent)
 
         self._dirty = False
 

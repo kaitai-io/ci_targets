@@ -48,7 +48,7 @@ public class Expr1 extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if ((this.str1).getBytes(Charset.forName("ASCII")).length != lenOf1Mod())
-            throw new ConsistencyError("str1", (this.str1).getBytes(Charset.forName("ASCII")).length, lenOf1Mod());
+            throw new ConsistencyError("str1", lenOf1Mod(), (this.str1).getBytes(Charset.forName("ASCII")).length);
         _dirty = false;
     }
     private Integer lenOf1Mod;

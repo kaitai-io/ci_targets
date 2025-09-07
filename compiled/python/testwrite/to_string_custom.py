@@ -34,9 +34,9 @@ class ToStringCustom(ReadWriteKaitaiStruct):
 
     def _check(self):
         if KaitaiStream.byte_array_index_of((self.s1).encode(u"UTF-8"), 124) != -1:
-            raise kaitaistruct.ConsistencyError(u"s1", KaitaiStream.byte_array_index_of((self.s1).encode(u"UTF-8"), 124), -1)
+            raise kaitaistruct.ConsistencyError(u"s1", -1, KaitaiStream.byte_array_index_of((self.s1).encode(u"UTF-8"), 124))
         if KaitaiStream.byte_array_index_of((self.s2).encode(u"UTF-8"), 124) != -1:
-            raise kaitaistruct.ConsistencyError(u"s2", KaitaiStream.byte_array_index_of((self.s2).encode(u"UTF-8"), 124), -1)
+            raise kaitaistruct.ConsistencyError(u"s2", -1, KaitaiStream.byte_array_index_of((self.s2).encode(u"UTF-8"), 124))
         self._dirty = False
 
 

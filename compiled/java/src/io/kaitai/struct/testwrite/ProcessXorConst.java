@@ -45,7 +45,7 @@ public class ProcessXorConst extends KaitaiStruct.ReadWrite {
         this._raw_buf = KaitaiStream.processXor(this.buf, ((Number) (255)).byteValue());
         this._io.writeBytes(this._raw_buf);
         if (!(this._io.isEof()))
-            throw new ConsistencyError("buf", this._io.size() - this._io.pos(), 0);
+            throw new ConsistencyError("buf", 0, this._io.size() - this._io.pos());
     }
 
     public void _check() {

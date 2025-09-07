@@ -74,7 +74,7 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
                 self._raw_blocks_rol.append(_io__raw_blocks_rol.to_byte_array())
                 self._raw__raw_blocks_rol.append(KaitaiStream.process_rotate_left(self._raw_blocks_rol[i], 8 - (_process_val), 1))
                 if len(self._raw__raw_blocks_rol[i]) != 3:
-                    raise kaitaistruct.ConsistencyError(u"raw(blocks_rol)", len(self._raw__raw_blocks_rol[i]), 3)
+                    raise kaitaistruct.ConsistencyError(u"raw(blocks_rol)", 3, len(self._raw__raw_blocks_rol[i]))
                 parent.write_bytes(self._raw__raw_blocks_rol[i])
             _io__raw_blocks_rol.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self.blocks_rol[i]._write__seq(_io__raw_blocks_rol)
@@ -92,7 +92,7 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
                 self._raw_blocks_ror.append(_io__raw_blocks_ror.to_byte_array())
                 self._raw__raw_blocks_ror.append(KaitaiStream.process_rotate_left(self._raw_blocks_ror[i], _process_val, 1))
                 if len(self._raw__raw_blocks_ror[i]) != 3:
-                    raise kaitaistruct.ConsistencyError(u"raw(blocks_ror)", len(self._raw__raw_blocks_ror[i]), 3)
+                    raise kaitaistruct.ConsistencyError(u"raw(blocks_ror)", 3, len(self._raw__raw_blocks_ror[i]))
                 parent.write_bytes(self._raw__raw_blocks_ror[i])
             _io__raw_blocks_ror.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self.blocks_ror[i]._write__seq(_io__raw_blocks_ror)
@@ -102,27 +102,27 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.blocks_rol) != 2:
-            raise kaitaistruct.ConsistencyError(u"blocks_rol", len(self.blocks_rol), 2)
+            raise kaitaistruct.ConsistencyError(u"blocks_rol", 2, len(self.blocks_rol))
         for i in range(len(self.blocks_rol)):
             pass
             if self.blocks_rol[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"blocks_rol", self.blocks_rol[i]._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"blocks_rol", self._root, self.blocks_rol[i]._root)
             if self.blocks_rol[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"blocks_rol", self.blocks_rol[i]._parent, self)
+                raise kaitaistruct.ConsistencyError(u"blocks_rol", self, self.blocks_rol[i]._parent)
 
         if len(self.blocks_ror) != 3:
-            raise kaitaistruct.ConsistencyError(u"blocks_ror", len(self.blocks_ror), 3)
+            raise kaitaistruct.ConsistencyError(u"blocks_ror", 3, len(self.blocks_ror))
         for i in range(len(self.blocks_ror)):
             pass
             if self.blocks_ror[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"blocks_ror", self.blocks_ror[i]._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"blocks_ror", self._root, self.blocks_ror[i]._root)
             if self.blocks_ror[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"blocks_ror", self.blocks_ror[i]._parent, self)
+                raise kaitaistruct.ConsistencyError(u"blocks_ror", self, self.blocks_ror[i]._parent)
 
         if self.blocks_b._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"blocks_b", self.blocks_b._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"blocks_b", self._root, self.blocks_b._root)
         if self.blocks_b._parent != self:
-            raise kaitaistruct.ConsistencyError(u"blocks_b", self.blocks_b._parent, self)
+            raise kaitaistruct.ConsistencyError(u"blocks_b", self, self.blocks_b._parent)
         self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):

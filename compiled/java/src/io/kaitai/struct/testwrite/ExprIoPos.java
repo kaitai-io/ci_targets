@@ -62,7 +62,7 @@ public class ExprIoPos extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_substream1 = _io__raw_substream1.toByteArray();
                     if (_this._raw_substream1.length != 16)
-                        throw new ConsistencyError("raw(substream1)", _this._raw_substream1.length, 16);
+                        throw new ConsistencyError("raw(substream1)", 16, _this._raw_substream1.length);
                     parent.writeBytes(_this._raw_substream1);
                 }
             });
@@ -79,7 +79,7 @@ public class ExprIoPos extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_substream2 = _io__raw_substream2.toByteArray();
                     if (_this._raw_substream2.length != 14)
-                        throw new ConsistencyError("raw(substream2)", _this._raw_substream2.length, 14);
+                        throw new ConsistencyError("raw(substream2)", 14, _this._raw_substream2.length);
                     parent.writeBytes(_this._raw_substream2);
                 }
             });
@@ -89,13 +89,13 @@ public class ExprIoPos extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.substream1._root(), _root()))
-            throw new ConsistencyError("substream1", this.substream1._root(), _root());
+            throw new ConsistencyError("substream1", _root(), this.substream1._root());
         if (!Objects.equals(this.substream1._parent(), this))
-            throw new ConsistencyError("substream1", this.substream1._parent(), this);
+            throw new ConsistencyError("substream1", this, this.substream1._parent());
         if (!Objects.equals(this.substream2._root(), _root()))
-            throw new ConsistencyError("substream2", this.substream2._root(), _root());
+            throw new ConsistencyError("substream2", _root(), this.substream2._root());
         if (!Objects.equals(this.substream2._parent(), this))
-            throw new ConsistencyError("substream2", this.substream2._parent(), this);
+            throw new ConsistencyError("substream2", this, this.substream2._parent());
         _dirty = false;
     }
     public static class AllPlusNumber extends KaitaiStruct.ReadWrite {
@@ -134,14 +134,14 @@ public class ExprIoPos extends KaitaiStruct.ReadWrite {
             this._io.writeBytes((this.myStr).getBytes(Charset.forName("UTF-8")));
             this._io.writeU1(0);
             if (this.body.length != (_io().size() - _io().pos()) - 2)
-                throw new ConsistencyError("body", this.body.length, (_io().size() - _io().pos()) - 2);
+                throw new ConsistencyError("body", (_io().size() - _io().pos()) - 2, this.body.length);
             this._io.writeBytes(this.body);
             this._io.writeU2le(this.number);
         }
 
         public void _check() {
             if (KaitaiStream.byteArrayIndexOf((this.myStr).getBytes(Charset.forName("UTF-8")), ((byte) 0)) != -1)
-                throw new ConsistencyError("my_str", KaitaiStream.byteArrayIndexOf((this.myStr).getBytes(Charset.forName("UTF-8")), ((byte) 0)), -1);
+                throw new ConsistencyError("my_str", -1, KaitaiStream.byteArrayIndexOf((this.myStr).getBytes(Charset.forName("UTF-8")), ((byte) 0)));
             _dirty = false;
         }
         private String myStr;

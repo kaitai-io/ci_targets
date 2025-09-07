@@ -31,7 +31,7 @@ class ProcessCustomNoArgs(ReadWriteKaitaiStruct):
         _process_buf = CustomFxNoArgs()
         self._raw_buf = _process_buf.encode(self.buf)
         if len(self._raw_buf) != 5:
-            raise kaitaistruct.ConsistencyError(u"buf", len(self._raw_buf), 5)
+            raise kaitaistruct.ConsistencyError(u"buf", 5, len(self._raw_buf))
         self._io.write_bytes(self._raw_buf)
 
 

@@ -36,20 +36,20 @@ class RepeatEosBytesPad(ReadWriteKaitaiStruct):
         for i in range(len(self.records)):
             pass
             if self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"records", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"records", 0, self._io.size() - self._io.pos())
             self._io.write_bytes_limit(self.records[i], 5, 170, 170)
 
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"records", self._io.size() - self._io.pos(), 0)
+            raise kaitaistruct.ConsistencyError(u"records", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):
         for i in range(len(self.records)):
             pass
             if len(self.records[i]) > 5:
-                raise kaitaistruct.ConsistencyError(u"records", len(self.records[i]), 5)
+                raise kaitaistruct.ConsistencyError(u"records", 5, len(self.records[i]))
             if  ((len(self.records[i]) != 0) and (KaitaiStream.byte_array_index(self.records[i], -1) == 170)) :
-                raise kaitaistruct.ConsistencyError(u"records", KaitaiStream.byte_array_index(self.records[i], -1), 170)
+                raise kaitaistruct.ConsistencyError(u"records", 170, KaitaiStream.byte_array_index(self.records[i], -1))
 
         self._dirty = False
 

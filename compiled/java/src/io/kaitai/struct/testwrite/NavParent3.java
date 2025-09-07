@@ -59,12 +59,12 @@ public class NavParent3 extends KaitaiStruct.ReadWrite {
     public void _check() {
         if (_enabledTags) {
             if (this.tags.size() != numTags())
-                throw new ConsistencyError("tags", this.tags.size(), numTags());
+                throw new ConsistencyError("tags", numTags(), this.tags.size());
             for (int i = 0; i < this.tags.size(); i++) {
                 if (!Objects.equals(this.tags.get(((Number) (i)).intValue())._root(), _root()))
-                    throw new ConsistencyError("tags", this.tags.get(((Number) (i)).intValue())._root(), _root());
+                    throw new ConsistencyError("tags", _root(), this.tags.get(((Number) (i)).intValue())._root());
                 if (!Objects.equals(this.tags.get(((Number) (i)).intValue())._parent(), this))
-                    throw new ConsistencyError("tags", this.tags.get(((Number) (i)).intValue())._parent(), this);
+                    throw new ConsistencyError("tags", this, this.tags.get(((Number) (i)).intValue())._parent());
             }
         }
         _dirty = false;
@@ -119,14 +119,14 @@ public class NavParent3 extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if ((this.name).getBytes(Charset.forName("ASCII")).length != 4)
-                throw new ConsistencyError("name", (this.name).getBytes(Charset.forName("ASCII")).length, 4);
+                throw new ConsistencyError("name", 4, (this.name).getBytes(Charset.forName("ASCII")).length);
             if (_enabledTagContent) {
                 switch (name()) {
                 case "RAHC": {
                     if (!Objects.equals(this.tagContent._root(), _root()))
-                        throw new ConsistencyError("tag_content", this.tagContent._root(), _root());
+                        throw new ConsistencyError("tag_content", _root(), this.tagContent._root());
                     if (!Objects.equals(this.tagContent._parent(), this))
-                        throw new ConsistencyError("tag_content", this.tagContent._parent(), this);
+                        throw new ConsistencyError("tag_content", this, this.tagContent._parent());
                     break;
                 }
                 }
@@ -169,7 +169,7 @@ public class NavParent3 extends KaitaiStruct.ReadWrite {
 
             public void _check() {
                 if ((this.content).getBytes(Charset.forName("ASCII")).length != _parent().numItems())
-                    throw new ConsistencyError("content", (this.content).getBytes(Charset.forName("ASCII")).length, _parent().numItems());
+                    throw new ConsistencyError("content", _parent().numItems(), (this.content).getBytes(Charset.forName("ASCII")).length);
                 _dirty = false;
             }
             private String content;

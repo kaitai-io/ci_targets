@@ -16,15 +16,15 @@ digraph {
 		</TABLE>>];
 		vlq_base128_le__inst__sign_bit [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>sign_bit</TD><TD>(1 &lt;&lt; 7 * len - 1)</TD></TR>
+			<TR><TD>sign_bit</TD><TD>(len == 10 ? 9223372036854775808 : groups.last.multiplier * 64)</TD></TR>
 		</TABLE>>];
 		vlq_base128_le__inst__value [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>value</TD><TD>(((((((groups[0].value + (len &gt;= 2 ? groups[1].value &lt;&lt; 7 : 0)) + (len &gt;= 3 ? groups[2].value &lt;&lt; 14 : 0)) + (len &gt;= 4 ? groups[3].value &lt;&lt; 21 : 0)) + (len &gt;= 5 ? groups[4].value &lt;&lt; 28 : 0)) + (len &gt;= 6 ? groups[5].value &lt;&lt; 35 : 0)) + (len &gt;= 7 ? groups[6].value &lt;&lt; 42 : 0)) + (len &gt;= 8 ? groups[7].value &lt;&lt; 49 : 0))</TD></TR>
+			<TR><TD>value</TD><TD>groups.last.interm_value</TD></TR>
 		</TABLE>>];
 		vlq_base128_le__inst__value_signed [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>value_signed</TD><TD>((value ^ sign_bit) - sign_bit)</TD></TR>
+			<TR><TD>value_signed</TD><TD>( ((sign_bit &gt; 0) &amp;&amp; (value &gt;= sign_bit))  ? -((sign_bit - (value - sign_bit))) : value)</TD></TR>
 		</TABLE>>];
 		subgraph cluster__group {
 			label="VlqBase128Le::Group";
@@ -33,7 +33,13 @@ digraph {
 			group__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 				<TR><TD PORT="has_next_pos">0</TD><TD PORT="has_next_size">1b</TD><TD>b1be→bool</TD><TD PORT="has_next_type">has_next</TD></TR>
+				<TR><TD COLSPAN="4" PORT="has_next__valid">must be equal to (idx == 9 ? false : has_next)</TD></TR>
 				<TR><TD PORT="value_pos">0:1</TD><TD PORT="value_size">7b</TD><TD>b7be</TD><TD PORT="value_type">value</TD></TR>
+				<TR><TD COLSPAN="4" PORT="value__valid">must be at most (idx == 9 ? 1 : 127)</TD></TR>
+			</TABLE>>];
+			group__inst__interm_value [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+				<TR><TD>interm_value</TD><TD>(prev_interm_value + value * multiplier)</TD></TR>
 			</TABLE>>];
 		}
 	}
@@ -41,8 +47,14 @@ digraph {
 	group__seq:has_next_type -> vlq_base128_le__seq:groups__repeat [color="#404040"];
 	vlq_base128_le__seq:groups_type -> vlq_base128_le__inst__len [color="#404040"];
 	vlq_base128_le__inst__len:len_type -> vlq_base128_le__inst__sign_bit [color="#404040"];
-	group__seq:value_type -> vlq_base128_le__inst__value [color="#404040"];
-	vlq_base128_le__inst__len:len_type -> vlq_base128_le__inst__value [color="#404040"];
-	vlq_base128_le__inst__value:value_type -> vlq_base128_le__inst__value_signed [color="#404040"];
+	group__params:multiplier_type -> vlq_base128_le__inst__sign_bit [color="#404040"];
+	group__inst__interm_value:interm_value_type -> vlq_base128_le__inst__value [color="#404040"];
 	vlq_base128_le__inst__sign_bit:sign_bit_type -> vlq_base128_le__inst__value_signed [color="#404040"];
+	vlq_base128_le__inst__value:value_type -> vlq_base128_le__inst__value_signed [color="#404040"];
+	group__params:idx_type -> group__seq:has_next__valid [color="#404040"];
+	group__seq:has_next_type -> group__seq:has_next__valid [color="#404040"];
+	group__params:idx_type -> group__seq:value__valid [color="#404040"];
+	group__params:prev_interm_value_type -> group__inst__interm_value [color="#404040"];
+	group__seq:value_type -> group__inst__interm_value [color="#404040"];
+	group__params:multiplier_type -> group__inst__interm_value [color="#404040"];
 }

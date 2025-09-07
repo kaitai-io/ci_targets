@@ -105,30 +105,30 @@ public class RecursiveOne extends KaitaiStruct.ReadWrite {
         switch (one() & 3) {
         case 0: {
             if (!Objects.equals(((RecursiveOne) (this.next))._root(), _root()))
-                throw new ConsistencyError("next", ((RecursiveOne) (this.next))._root(), _root());
+                throw new ConsistencyError("next", _root(), ((RecursiveOne) (this.next))._root());
             if (!Objects.equals(((RecursiveOne) (this.next))._parent(), this))
-                throw new ConsistencyError("next", ((RecursiveOne) (this.next))._parent(), this);
+                throw new ConsistencyError("next", this, ((RecursiveOne) (this.next))._parent());
             break;
         }
         case 1: {
             if (!Objects.equals(((RecursiveOne) (this.next))._root(), _root()))
-                throw new ConsistencyError("next", ((RecursiveOne) (this.next))._root(), _root());
+                throw new ConsistencyError("next", _root(), ((RecursiveOne) (this.next))._root());
             if (!Objects.equals(((RecursiveOne) (this.next))._parent(), this))
-                throw new ConsistencyError("next", ((RecursiveOne) (this.next))._parent(), this);
+                throw new ConsistencyError("next", this, ((RecursiveOne) (this.next))._parent());
             break;
         }
         case 2: {
             if (!Objects.equals(((RecursiveOne) (this.next))._root(), _root()))
-                throw new ConsistencyError("next", ((RecursiveOne) (this.next))._root(), _root());
+                throw new ConsistencyError("next", _root(), ((RecursiveOne) (this.next))._root());
             if (!Objects.equals(((RecursiveOne) (this.next))._parent(), this))
-                throw new ConsistencyError("next", ((RecursiveOne) (this.next))._parent(), this);
+                throw new ConsistencyError("next", this, ((RecursiveOne) (this.next))._parent());
             break;
         }
         case 3: {
             if (!Objects.equals(((RecursiveOne.Fini) (this.next))._root(), _root()))
-                throw new ConsistencyError("next", ((RecursiveOne.Fini) (this.next))._root(), _root());
+                throw new ConsistencyError("next", _root(), ((RecursiveOne.Fini) (this.next))._root());
             if (!Objects.equals(((RecursiveOne.Fini) (this.next))._parent(), this))
-                throw new ConsistencyError("next", ((RecursiveOne.Fini) (this.next))._parent(), this);
+                throw new ConsistencyError("next", this, ((RecursiveOne.Fini) (this.next))._parent());
             break;
         }
         }

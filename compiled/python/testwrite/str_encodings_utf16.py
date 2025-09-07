@@ -44,7 +44,7 @@ class StrEncodingsUtf16(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_be_bom_removed=_io__raw_be_bom_removed):
             self._raw_be_bom_removed = _io__raw_be_bom_removed.to_byte_array()
             if len(self._raw_be_bom_removed) != self.len_be:
-                raise kaitaistruct.ConsistencyError(u"raw(be_bom_removed)", len(self._raw_be_bom_removed), self.len_be)
+                raise kaitaistruct.ConsistencyError(u"raw(be_bom_removed)", self.len_be, len(self._raw_be_bom_removed))
             parent.write_bytes(self._raw_be_bom_removed)
         _io__raw_be_bom_removed.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.be_bom_removed._write__seq(_io__raw_be_bom_removed)
@@ -56,7 +56,7 @@ class StrEncodingsUtf16(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_le_bom_removed=_io__raw_le_bom_removed):
             self._raw_le_bom_removed = _io__raw_le_bom_removed.to_byte_array()
             if len(self._raw_le_bom_removed) != self.len_le:
-                raise kaitaistruct.ConsistencyError(u"raw(le_bom_removed)", len(self._raw_le_bom_removed), self.len_le)
+                raise kaitaistruct.ConsistencyError(u"raw(le_bom_removed)", self.len_le, len(self._raw_le_bom_removed))
             parent.write_bytes(self._raw_le_bom_removed)
         _io__raw_le_bom_removed.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.le_bom_removed._write__seq(_io__raw_le_bom_removed)
@@ -64,13 +64,13 @@ class StrEncodingsUtf16(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.be_bom_removed._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"be_bom_removed", self.be_bom_removed._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"be_bom_removed", self._root, self.be_bom_removed._root)
         if self.be_bom_removed._parent != self:
-            raise kaitaistruct.ConsistencyError(u"be_bom_removed", self.be_bom_removed._parent, self)
+            raise kaitaistruct.ConsistencyError(u"be_bom_removed", self, self.be_bom_removed._parent)
         if self.le_bom_removed._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"le_bom_removed", self.le_bom_removed._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"le_bom_removed", self._root, self.le_bom_removed._root)
         if self.le_bom_removed._parent != self:
-            raise kaitaistruct.ConsistencyError(u"le_bom_removed", self.le_bom_removed._parent, self)
+            raise kaitaistruct.ConsistencyError(u"le_bom_removed", self, self.le_bom_removed._parent)
         self._dirty = False
 
     class StrBeBomRemoved(ReadWriteKaitaiStruct):
@@ -94,7 +94,7 @@ class StrEncodingsUtf16(ReadWriteKaitaiStruct):
             self._io.write_u2be(self.bom)
             self._io.write_bytes((self.str).encode(u"UTF-16BE"))
             if not self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"str", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"str", 0, self._io.size() - self._io.pos())
 
 
         def _check(self):
@@ -122,7 +122,7 @@ class StrEncodingsUtf16(ReadWriteKaitaiStruct):
             self._io.write_u2le(self.bom)
             self._io.write_bytes((self.str).encode(u"UTF-16LE"))
             if not self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"str", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"str", 0, self._io.size() - self._io.pos())
 
 
         def _check(self):

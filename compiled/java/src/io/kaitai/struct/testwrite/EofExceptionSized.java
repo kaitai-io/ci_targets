@@ -55,7 +55,7 @@ public class EofExceptionSized extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_buf = _io__raw_buf.toByteArray();
                     if (_this._raw_buf.length != 13)
-                        throw new ConsistencyError("raw(buf)", _this._raw_buf.length, 13);
+                        throw new ConsistencyError("raw(buf)", 13, _this._raw_buf.length);
                     parent.writeBytes(_this._raw_buf);
                 }
             });
@@ -65,9 +65,9 @@ public class EofExceptionSized extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.buf._root(), _root()))
-            throw new ConsistencyError("buf", this.buf._root(), _root());
+            throw new ConsistencyError("buf", _root(), this.buf._root());
         if (!Objects.equals(this.buf._parent(), this))
-            throw new ConsistencyError("buf", this.buf._parent(), this);
+            throw new ConsistencyError("buf", this, this.buf._parent());
         _dirty = false;
     }
     public static class Foo extends KaitaiStruct.ReadWrite {

@@ -72,9 +72,9 @@ class ExprBits(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.byte_size) != self.a:
-            raise kaitaistruct.ConsistencyError(u"byte_size", len(self.byte_size), self.a)
+            raise kaitaistruct.ConsistencyError(u"byte_size", self.a, len(self.byte_size))
         if len(self.repeat_expr) != self.a:
-            raise kaitaistruct.ConsistencyError(u"repeat_expr", len(self.repeat_expr), self.a)
+            raise kaitaistruct.ConsistencyError(u"repeat_expr", self.a, len(self.repeat_expr))
         for i in range(len(self.repeat_expr)):
             pass
 
@@ -82,9 +82,9 @@ class ExprBits(ReadWriteKaitaiStruct):
         if _on == 2:
             pass
         if self.switch_on_endian._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"switch_on_endian", self.switch_on_endian._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"switch_on_endian", self._root, self.switch_on_endian._root)
         if self.switch_on_endian._parent != self:
-            raise kaitaistruct.ConsistencyError(u"switch_on_endian", self.switch_on_endian._parent, self)
+            raise kaitaistruct.ConsistencyError(u"switch_on_endian", self, self.switch_on_endian._parent)
         if self.inst_pos__enabled:
             pass
 

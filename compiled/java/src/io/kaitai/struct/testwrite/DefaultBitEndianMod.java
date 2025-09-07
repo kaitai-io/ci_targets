@@ -47,9 +47,9 @@ public class DefaultBitEndianMod extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.main._root(), _root()))
-            throw new ConsistencyError("main", this.main._root(), _root());
+            throw new ConsistencyError("main", _root(), this.main._root());
         if (!Objects.equals(this.main._parent(), this))
-            throw new ConsistencyError("main", this.main._parent(), this);
+            throw new ConsistencyError("main", this, this.main._parent());
         _dirty = false;
     }
     public static class MainObj extends KaitaiStruct.ReadWrite {
@@ -98,13 +98,13 @@ public class DefaultBitEndianMod extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (!Objects.equals(this.nest._root(), _root()))
-                throw new ConsistencyError("nest", this.nest._root(), _root());
+                throw new ConsistencyError("nest", _root(), this.nest._root());
             if (!Objects.equals(this.nest._parent(), this))
-                throw new ConsistencyError("nest", this.nest._parent(), this);
+                throw new ConsistencyError("nest", this, this.nest._parent());
             if (!Objects.equals(this.nestBe._root(), _root()))
-                throw new ConsistencyError("nest_be", this.nestBe._root(), _root());
+                throw new ConsistencyError("nest_be", _root(), this.nestBe._root());
             if (!Objects.equals(this.nestBe._parent(), this))
-                throw new ConsistencyError("nest_be", this.nestBe._parent(), this);
+                throw new ConsistencyError("nest_be", this, this.nestBe._parent());
             _dirty = false;
         }
         public static class Subnest extends KaitaiStruct.ReadWrite {

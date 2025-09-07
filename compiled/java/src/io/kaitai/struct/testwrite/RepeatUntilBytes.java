@@ -59,14 +59,14 @@ public class RepeatUntilBytes extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.records.size() == 0)
-            throw new ConsistencyError("records", this.records.size(), 0);
+            throw new ConsistencyError("records", 0, this.records.size());
         for (int i = 0; i < this.records.size(); i++) {
             if (this.records.get(((Number) (i)).intValue()).length != 5)
-                throw new ConsistencyError("records", this.records.get(((Number) (i)).intValue()).length, 5);
+                throw new ConsistencyError("records", 5, this.records.get(((Number) (i)).intValue()).length);
             {
                 byte[] _it = this.records.get(((Number) (i)).intValue());
                 if (((_it[((int) 0)] & 0xff) == 170) != (i == this.records.size() - 1))
-                    throw new ConsistencyError("records", (_it[((int) 0)] & 0xff) == 170, i == this.records.size() - 1);
+                    throw new ConsistencyError("records", i == this.records.size() - 1, (_it[((int) 0)] & 0xff) == 170);
             }
         }
         _dirty = false;

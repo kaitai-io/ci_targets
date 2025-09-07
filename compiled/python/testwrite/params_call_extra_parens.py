@@ -32,11 +32,11 @@ class ParamsCallExtraParens(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.buf1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"buf1", self.buf1._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"buf1", self._root, self.buf1._root)
         if self.buf1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"buf1", self.buf1._parent, self)
+            raise kaitaistruct.ConsistencyError(u"buf1", self, self.buf1._parent)
         if self.buf1.len != 5:
-            raise kaitaistruct.ConsistencyError(u"buf1", self.buf1.len, 5)
+            raise kaitaistruct.ConsistencyError(u"buf1", 5, self.buf1.len)
         self._dirty = False
 
     class MyStr1(ReadWriteKaitaiStruct):
@@ -62,7 +62,7 @@ class ParamsCallExtraParens(ReadWriteKaitaiStruct):
 
         def _check(self):
             if len((self.body).encode(u"UTF-8")) != self.len:
-                raise kaitaistruct.ConsistencyError(u"body", len((self.body).encode(u"UTF-8")), self.len)
+                raise kaitaistruct.ConsistencyError(u"body", self.len, len((self.body).encode(u"UTF-8")))
             self._dirty = False
 
 

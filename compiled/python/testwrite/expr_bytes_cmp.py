@@ -32,9 +32,9 @@ class ExprBytesCmp(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.one) != 1:
-            raise kaitaistruct.ConsistencyError(u"one", len(self.one), 1)
+            raise kaitaistruct.ConsistencyError(u"one", 1, len(self.one))
         if len(self.two) != 3:
-            raise kaitaistruct.ConsistencyError(u"two", len(self.two), 3)
+            raise kaitaistruct.ConsistencyError(u"two", 3, len(self.two))
         self._dirty = False
 
     @property

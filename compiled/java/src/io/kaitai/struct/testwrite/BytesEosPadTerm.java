@@ -70,7 +70,7 @@ public class BytesEosPadTerm extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_strPad = _io__raw_strPad.toByteArray();
                     if (_this._raw_strPad.length != 20)
-                        throw new ConsistencyError("raw(str_pad)", _this._raw_strPad.length, 20);
+                        throw new ConsistencyError("raw(str_pad)", 20, _this._raw_strPad.length);
                     parent.writeBytes(_this._raw_strPad);
                 }
             });
@@ -87,7 +87,7 @@ public class BytesEosPadTerm extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_strTerm = _io__raw_strTerm.toByteArray();
                     if (_this._raw_strTerm.length != 20)
-                        throw new ConsistencyError("raw(str_term)", _this._raw_strTerm.length, 20);
+                        throw new ConsistencyError("raw(str_term)", 20, _this._raw_strTerm.length);
                     parent.writeBytes(_this._raw_strTerm);
                 }
             });
@@ -104,7 +104,7 @@ public class BytesEosPadTerm extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_strTermAndPad = _io__raw_strTermAndPad.toByteArray();
                     if (_this._raw_strTermAndPad.length != 20)
-                        throw new ConsistencyError("raw(str_term_and_pad)", _this._raw_strTermAndPad.length, 20);
+                        throw new ConsistencyError("raw(str_term_and_pad)", 20, _this._raw_strTermAndPad.length);
                     parent.writeBytes(_this._raw_strTermAndPad);
                 }
             });
@@ -121,7 +121,7 @@ public class BytesEosPadTerm extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_strTermInclude = _io__raw_strTermInclude.toByteArray();
                     if (_this._raw_strTermInclude.length != 20)
-                        throw new ConsistencyError("raw(str_term_include)", _this._raw_strTermInclude.length, 20);
+                        throw new ConsistencyError("raw(str_term_include)", 20, _this._raw_strTermInclude.length);
                     parent.writeBytes(_this._raw_strTermInclude);
                 }
             });
@@ -131,21 +131,21 @@ public class BytesEosPadTerm extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.strPad._root(), _root()))
-            throw new ConsistencyError("str_pad", this.strPad._root(), _root());
+            throw new ConsistencyError("str_pad", _root(), this.strPad._root());
         if (!Objects.equals(this.strPad._parent(), this))
-            throw new ConsistencyError("str_pad", this.strPad._parent(), this);
+            throw new ConsistencyError("str_pad", this, this.strPad._parent());
         if (!Objects.equals(this.strTerm._root(), _root()))
-            throw new ConsistencyError("str_term", this.strTerm._root(), _root());
+            throw new ConsistencyError("str_term", _root(), this.strTerm._root());
         if (!Objects.equals(this.strTerm._parent(), this))
-            throw new ConsistencyError("str_term", this.strTerm._parent(), this);
+            throw new ConsistencyError("str_term", this, this.strTerm._parent());
         if (!Objects.equals(this.strTermAndPad._root(), _root()))
-            throw new ConsistencyError("str_term_and_pad", this.strTermAndPad._root(), _root());
+            throw new ConsistencyError("str_term_and_pad", _root(), this.strTermAndPad._root());
         if (!Objects.equals(this.strTermAndPad._parent(), this))
-            throw new ConsistencyError("str_term_and_pad", this.strTermAndPad._parent(), this);
+            throw new ConsistencyError("str_term_and_pad", this, this.strTermAndPad._parent());
         if (!Objects.equals(this.strTermInclude._root(), _root()))
-            throw new ConsistencyError("str_term_include", this.strTermInclude._root(), _root());
+            throw new ConsistencyError("str_term_include", _root(), this.strTermInclude._root());
         if (!Objects.equals(this.strTermInclude._parent(), this))
-            throw new ConsistencyError("str_term_include", this.strTermInclude._parent(), this);
+            throw new ConsistencyError("str_term_include", this, this.strTermInclude._parent());
         _dirty = false;
     }
     public static class StrPadType extends KaitaiStruct.ReadWrite {
@@ -181,7 +181,7 @@ public class BytesEosPadTerm extends KaitaiStruct.ReadWrite {
             _assertNotDirty();
             this._io.writeBytesLimit(this.value, this._io.size() - this._io.pos(), (byte) 64, (byte) 64);
             if (!(this._io.isEof()))
-                throw new ConsistencyError("value", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("value", 0, this._io.size() - this._io.pos());
         }
 
         public void _check() {
@@ -230,7 +230,7 @@ public class BytesEosPadTerm extends KaitaiStruct.ReadWrite {
             _assertNotDirty();
             this._io.writeBytesLimit(this.value, this._io.size() - this._io.pos(), (byte) 64, (byte) 43);
             if (!(this._io.isEof()))
-                throw new ConsistencyError("value", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("value", 0, this._io.size() - this._io.pos());
         }
 
         public void _check() {
@@ -279,7 +279,7 @@ public class BytesEosPadTerm extends KaitaiStruct.ReadWrite {
             _assertNotDirty();
             this._io.writeBytesLimit(this.value, this._io.size() - this._io.pos(), (byte) 0, (byte) 0);
             if (!(this._io.isEof()))
-                throw new ConsistencyError("value", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("value", 0, this._io.size() - this._io.pos());
         }
 
         public void _check() {
@@ -328,7 +328,7 @@ public class BytesEosPadTerm extends KaitaiStruct.ReadWrite {
             _assertNotDirty();
             this._io.writeBytesLimit(this.value, this._io.size() - this._io.pos(), (byte) 64, (byte) 0);
             if (!(this._io.isEof()))
-                throw new ConsistencyError("value", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("value", 0, this._io.size() - this._io.pos());
         }
 
         public void _check() {

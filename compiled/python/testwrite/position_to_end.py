@@ -39,9 +39,9 @@ class PositionToEnd(ReadWriteKaitaiStruct):
         if self.index__enabled:
             pass
             if self._m_index._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"index", self._m_index._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"index", self._root, self._m_index._root)
             if self._m_index._parent != self:
-                raise kaitaistruct.ConsistencyError(u"index", self._m_index._parent, self)
+                raise kaitaistruct.ConsistencyError(u"index", self, self._m_index._parent)
 
         self._dirty = False
 

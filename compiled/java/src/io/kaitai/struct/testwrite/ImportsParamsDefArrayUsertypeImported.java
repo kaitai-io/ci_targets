@@ -64,11 +64,11 @@ public class ImportsParamsDefArrayUsertypeImported extends KaitaiStruct.ReadWrit
 
     public void _check() {
         if (this.hws.size() != 2)
-            throw new ConsistencyError("hws", this.hws.size(), 2);
+            throw new ConsistencyError("hws", 2, this.hws.size());
         for (int i = 0; i < this.hws.size(); i++) {
         }
         if (!Objects.equals(this.two.hwsParam(), hws()))
-            throw new ConsistencyError("two", this.two.hwsParam(), hws());
+            throw new ConsistencyError("two", hws(), this.two.hwsParam());
         _dirty = false;
     }
     private List<HelloWorld> hws;

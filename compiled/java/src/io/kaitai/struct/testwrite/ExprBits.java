@@ -102,9 +102,9 @@ public class ExprBits extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.byteSize.length != a())
-            throw new ConsistencyError("byte_size", this.byteSize.length, a());
+            throw new ConsistencyError("byte_size", a(), this.byteSize.length);
         if (this.repeatExpr.size() != a())
-            throw new ConsistencyError("repeat_expr", this.repeatExpr.size(), a());
+            throw new ConsistencyError("repeat_expr", a(), this.repeatExpr.size());
         for (int i = 0; i < this.repeatExpr.size(); i++) {
         }
         switch (a()) {
@@ -113,9 +113,9 @@ public class ExprBits extends KaitaiStruct.ReadWrite {
         }
         }
         if (!Objects.equals(this.switchOnEndian._root(), _root()))
-            throw new ConsistencyError("switch_on_endian", this.switchOnEndian._root(), _root());
+            throw new ConsistencyError("switch_on_endian", _root(), this.switchOnEndian._root());
         if (!Objects.equals(this.switchOnEndian._parent(), this))
-            throw new ConsistencyError("switch_on_endian", this.switchOnEndian._parent(), this);
+            throw new ConsistencyError("switch_on_endian", this, this.switchOnEndian._parent());
         if (_enabledInstPos) {
         }
         _dirty = false;

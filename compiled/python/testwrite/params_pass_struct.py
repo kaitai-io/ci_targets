@@ -36,15 +36,15 @@ class ParamsPassStruct(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.first._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"first", self.first._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"first", self._root, self.first._root)
         if self.first._parent != self:
-            raise kaitaistruct.ConsistencyError(u"first", self.first._parent, self)
+            raise kaitaistruct.ConsistencyError(u"first", self, self.first._parent)
         if self.one._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"one", self.one._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"one", self._root, self.one._root)
         if self.one._parent != self:
-            raise kaitaistruct.ConsistencyError(u"one", self.one._parent, self)
+            raise kaitaistruct.ConsistencyError(u"one", self, self.one._parent)
         if self.one.foo != self.first:
-            raise kaitaistruct.ConsistencyError(u"one", self.one.foo, self.first)
+            raise kaitaistruct.ConsistencyError(u"one", self.first, self.one.foo)
         self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):
@@ -96,11 +96,11 @@ class ParamsPassStruct(ReadWriteKaitaiStruct):
 
         def _check(self):
             if self.bar._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"bar", self.bar._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"bar", self._root, self.bar._root)
             if self.bar._parent != self:
-                raise kaitaistruct.ConsistencyError(u"bar", self.bar._parent, self)
+                raise kaitaistruct.ConsistencyError(u"bar", self, self.bar._parent)
             if self.bar.foo != self.foo:
-                raise kaitaistruct.ConsistencyError(u"bar", self.bar.foo, self.foo)
+                raise kaitaistruct.ConsistencyError(u"bar", self.foo, self.bar.foo)
             self._dirty = False
 
         class Baz(ReadWriteKaitaiStruct):

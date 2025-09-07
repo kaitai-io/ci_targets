@@ -102,38 +102,38 @@ public class RepeatUntilComplex extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.first.size() == 0)
-            throw new ConsistencyError("first", this.first.size(), 0);
+            throw new ConsistencyError("first", 0, this.first.size());
         for (int i = 0; i < this.first.size(); i++) {
             if (!Objects.equals(this.first.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("first", this.first.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("first", _root(), this.first.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.first.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("first", this.first.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("first", this, this.first.get(((Number) (i)).intValue())._parent());
             {
                 TypeU1 _it = this.first.get(((Number) (i)).intValue());
                 if ((_it.count() == 0) != (i == this.first.size() - 1))
-                    throw new ConsistencyError("first", _it.count() == 0, i == this.first.size() - 1);
+                    throw new ConsistencyError("first", i == this.first.size() - 1, _it.count() == 0);
             }
         }
         if (this.second.size() == 0)
-            throw new ConsistencyError("second", this.second.size(), 0);
+            throw new ConsistencyError("second", 0, this.second.size());
         for (int i = 0; i < this.second.size(); i++) {
             if (!Objects.equals(this.second.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("second", this.second.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("second", _root(), this.second.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.second.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("second", this.second.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("second", this, this.second.get(((Number) (i)).intValue())._parent());
             {
                 TypeU2 _it = this.second.get(((Number) (i)).intValue());
                 if ((_it.count() == 0) != (i == this.second.size() - 1))
-                    throw new ConsistencyError("second", _it.count() == 0, i == this.second.size() - 1);
+                    throw new ConsistencyError("second", i == this.second.size() - 1, _it.count() == 0);
             }
         }
         if (this.third.size() == 0)
-            throw new ConsistencyError("third", this.third.size(), 0);
+            throw new ConsistencyError("third", 0, this.third.size());
         for (int i = 0; i < this.third.size(); i++) {
             {
                 int _it = this.third.get(((Number) (i)).intValue());
                 if ((_it == 0) != (i == this.third.size() - 1))
-                    throw new ConsistencyError("third", _it == 0, i == this.third.size() - 1);
+                    throw new ConsistencyError("third", i == this.third.size() - 1, _it == 0);
             }
         }
         _dirty = false;
@@ -183,7 +183,7 @@ public class RepeatUntilComplex extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (this.values.size() != count())
-                throw new ConsistencyError("values", this.values.size(), count());
+                throw new ConsistencyError("values", count(), this.values.size());
             for (int i = 0; i < this.values.size(); i++) {
             }
             _dirty = false;
@@ -246,7 +246,7 @@ public class RepeatUntilComplex extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (this.values.size() != count())
-                throw new ConsistencyError("values", this.values.size(), count());
+                throw new ConsistencyError("values", count(), this.values.size());
             for (int i = 0; i < this.values.size(); i++) {
             }
             _dirty = false;

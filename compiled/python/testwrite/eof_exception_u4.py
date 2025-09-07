@@ -32,7 +32,7 @@ class EofExceptionU4(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.prebuf) != 9:
-            raise kaitaistruct.ConsistencyError(u"prebuf", len(self.prebuf), 9)
+            raise kaitaistruct.ConsistencyError(u"prebuf", 9, len(self.prebuf))
         self._dirty = False
 
 

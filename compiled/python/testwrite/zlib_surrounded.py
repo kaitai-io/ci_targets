@@ -43,7 +43,7 @@ class ZlibSurrounded(ReadWriteKaitaiStruct):
             self._raw_zlib = _io__raw_zlib.to_byte_array()
             self._raw__raw_zlib = zlib.compress(self._raw_zlib)
             if len(self._raw__raw_zlib) != 12:
-                raise kaitaistruct.ConsistencyError(u"raw(zlib)", len(self._raw__raw_zlib), 12)
+                raise kaitaistruct.ConsistencyError(u"raw(zlib)", 12, len(self._raw__raw_zlib))
             parent.write_bytes(self._raw__raw_zlib)
         _io__raw_zlib.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.zlib._write__seq(_io__raw_zlib)
@@ -52,13 +52,13 @@ class ZlibSurrounded(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.pre) != 4:
-            raise kaitaistruct.ConsistencyError(u"pre", len(self.pre), 4)
+            raise kaitaistruct.ConsistencyError(u"pre", 4, len(self.pre))
         if self.zlib._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"zlib", self.zlib._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"zlib", self._root, self.zlib._root)
         if self.zlib._parent != self:
-            raise kaitaistruct.ConsistencyError(u"zlib", self.zlib._parent, self)
+            raise kaitaistruct.ConsistencyError(u"zlib", self, self.zlib._parent)
         if len(self.post) != 4:
-            raise kaitaistruct.ConsistencyError(u"post", len(self.post), 4)
+            raise kaitaistruct.ConsistencyError(u"post", 4, len(self.post))
         self._dirty = False
 
     class Inflated(ReadWriteKaitaiStruct):

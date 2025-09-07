@@ -48,7 +48,7 @@ public class Expr3 extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if ((this.two).getBytes(Charset.forName("ASCII")).length != 3)
-            throw new ConsistencyError("two", (this.two).getBytes(Charset.forName("ASCII")).length, 3);
+            throw new ConsistencyError("two", 3, (this.two).getBytes(Charset.forName("ASCII")).length);
         _dirty = false;
     }
     private String four;

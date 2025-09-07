@@ -63,15 +63,15 @@ class DebugSwitchUser(ReadWriteKaitaiStruct):
         if _on == 1:
             pass
             if self.data._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"data", self.data._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"data", self._root, self.data._root)
             if self.data._parent != self:
-                raise kaitaistruct.ConsistencyError(u"data", self.data._parent, self)
+                raise kaitaistruct.ConsistencyError(u"data", self, self.data._parent)
         elif _on == 2:
             pass
             if self.data._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"data", self.data._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"data", self._root, self.data._root)
             if self.data._parent != self:
-                raise kaitaistruct.ConsistencyError(u"data", self.data._parent, self)
+                raise kaitaistruct.ConsistencyError(u"data", self, self.data._parent)
         self._dirty = False
 
     class One(ReadWriteKaitaiStruct):

@@ -47,16 +47,16 @@ public class ProcessRotate extends KaitaiStruct.ReadWrite {
         _assertNotDirty();
         this._raw_buf1 = KaitaiStream.processRotateLeft(this.buf1, 8 - (3), 1);
         if (this._raw_buf1.length != 5)
-            throw new ConsistencyError("buf1", this._raw_buf1.length, 5);
+            throw new ConsistencyError("buf1", 5, this._raw_buf1.length);
         this._io.writeBytes(this._raw_buf1);
         this._raw_buf2 = KaitaiStream.processRotateLeft(this.buf2, 3, 1);
         if (this._raw_buf2.length != 5)
-            throw new ConsistencyError("buf2", this._raw_buf2.length, 5);
+            throw new ConsistencyError("buf2", 5, this._raw_buf2.length);
         this._io.writeBytes(this._raw_buf2);
         this._io.writeU1(this.key);
         this._raw_buf3 = KaitaiStream.processRotateLeft(this.buf3, 8 - (key()), 1);
         if (this._raw_buf3.length != 5)
-            throw new ConsistencyError("buf3", this._raw_buf3.length, 5);
+            throw new ConsistencyError("buf3", 5, this._raw_buf3.length);
         this._io.writeBytes(this._raw_buf3);
     }
 

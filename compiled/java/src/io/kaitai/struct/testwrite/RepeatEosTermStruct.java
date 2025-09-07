@@ -65,7 +65,7 @@ public class RepeatEosTermStruct extends KaitaiStruct.ReadWrite {
         this._raw_records = new ArrayList<byte[]>();
         for (int i = 0; i < this.records.size(); i++) {
             if (this._io.isEof())
-                throw new ConsistencyError("records", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("records", 0, this._io.size() - this._io.pos());
             final KaitaiStream _io__raw_records = new ByteBufferKaitaiStream(this.records_OuterSize.get(((Number) (i)).intValue()));
             this._io.addChildStream(_io__raw_records);
             {
@@ -78,9 +78,9 @@ public class RepeatEosTermStruct extends KaitaiStruct.ReadWrite {
                     protected void write(KaitaiStream parent) {
                         _this._raw_records.add(_io__raw_records.toByteArray());
                         if (_this._raw_records.get(((Number) (_i)).intValue()).length == 0)
-                            throw new ConsistencyError("raw(records)", _this._raw_records.get(((Number) (_i)).intValue()).length, 0);
+                            throw new ConsistencyError("raw(records)", 0, _this._raw_records.get(((Number) (_i)).intValue()).length);
                         if (KaitaiStream.byteArrayIndexOf(_this._raw_records.get(((Number) (_i)).intValue()), ((byte) 178)) != _this._raw_records.get(((Number) (_i)).intValue()).length - 1)
-                            throw new ConsistencyError("raw(records)", KaitaiStream.byteArrayIndexOf(_this._raw_records.get(((Number) (_i)).intValue()), ((byte) 178)), _this._raw_records.get(((Number) (_i)).intValue()).length - 1);
+                            throw new ConsistencyError("raw(records)", _this._raw_records.get(((Number) (_i)).intValue()).length - 1, KaitaiStream.byteArrayIndexOf(_this._raw_records.get(((Number) (_i)).intValue()), ((byte) 178)));
                         parent.writeBytes(_this._raw_records.get(((Number) (_i)).intValue()));
                     }
                 });
@@ -88,15 +88,15 @@ public class RepeatEosTermStruct extends KaitaiStruct.ReadWrite {
             this.records.get(((Number) (i)).intValue())._write_Seq(_io__raw_records);
         }
         if (!(this._io.isEof()))
-            throw new ConsistencyError("records", this._io.size() - this._io.pos(), 0);
+            throw new ConsistencyError("records", 0, this._io.size() - this._io.pos());
     }
 
     public void _check() {
         for (int i = 0; i < this.records.size(); i++) {
             if (!Objects.equals(this.records.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("records", this.records.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("records", _root(), this.records.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.records.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("records", this.records.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("records", this, this.records.get(((Number) (i)).intValue())._parent());
         }
         _dirty = false;
     }
@@ -133,7 +133,7 @@ public class RepeatEosTermStruct extends KaitaiStruct.ReadWrite {
             _assertNotDirty();
             this._io.writeBytes(this.value);
             if (!(this._io.isEof()))
-                throw new ConsistencyError("value", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("value", 0, this._io.size() - this._io.pos());
         }
 
         public void _check() {

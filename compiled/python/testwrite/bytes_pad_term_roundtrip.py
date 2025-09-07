@@ -36,35 +36,35 @@ class BytesPadTermRoundtrip(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.str_pad) > 20:
-            raise kaitaistruct.ConsistencyError(u"str_pad", len(self.str_pad), 20)
+            raise kaitaistruct.ConsistencyError(u"str_pad", 20, len(self.str_pad))
         if  ((len(self.str_pad) != 0) and (KaitaiStream.byte_array_index(self.str_pad, -1) == 64)) :
-            raise kaitaistruct.ConsistencyError(u"str_pad", KaitaiStream.byte_array_index(self.str_pad, -1), 64)
+            raise kaitaistruct.ConsistencyError(u"str_pad", 64, KaitaiStream.byte_array_index(self.str_pad, -1))
         if len(self.str_term) > 20:
-            raise kaitaistruct.ConsistencyError(u"str_term", len(self.str_term), 20)
+            raise kaitaistruct.ConsistencyError(u"str_term", 20, len(self.str_term))
         if KaitaiStream.byte_array_index_of(self.str_term, 64) != -1:
-            raise kaitaistruct.ConsistencyError(u"str_term", KaitaiStream.byte_array_index_of(self.str_term, 64), -1)
+            raise kaitaistruct.ConsistencyError(u"str_term", -1, KaitaiStream.byte_array_index_of(self.str_term, 64))
         if len(self.str_term) == 20:
             pass
             if  ((len(self.str_term) != 0) and (KaitaiStream.byte_array_index(self.str_term, -1) == 43)) :
-                raise kaitaistruct.ConsistencyError(u"str_term", KaitaiStream.byte_array_index(self.str_term, -1), 43)
+                raise kaitaistruct.ConsistencyError(u"str_term", 43, KaitaiStream.byte_array_index(self.str_term, -1))
 
         if len(self.str_term_and_pad) > 20:
-            raise kaitaistruct.ConsistencyError(u"str_term_and_pad", len(self.str_term_and_pad), 20)
+            raise kaitaistruct.ConsistencyError(u"str_term_and_pad", 20, len(self.str_term_and_pad))
         if KaitaiStream.byte_array_index_of(self.str_term_and_pad, 64) != -1:
-            raise kaitaistruct.ConsistencyError(u"str_term_and_pad", KaitaiStream.byte_array_index_of(self.str_term_and_pad, 64), -1)
+            raise kaitaistruct.ConsistencyError(u"str_term_and_pad", -1, KaitaiStream.byte_array_index_of(self.str_term_and_pad, 64))
         if len(self.str_term_and_pad) == 20:
             pass
             if  ((len(self.str_term_and_pad) != 0) and (KaitaiStream.byte_array_index(self.str_term_and_pad, -1) == 43)) :
-                raise kaitaistruct.ConsistencyError(u"str_term_and_pad", KaitaiStream.byte_array_index(self.str_term_and_pad, -1), 43)
+                raise kaitaistruct.ConsistencyError(u"str_term_and_pad", 43, KaitaiStream.byte_array_index(self.str_term_and_pad, -1))
 
         if len(self.str_term_include) > 20:
-            raise kaitaistruct.ConsistencyError(u"str_term_include", len(self.str_term_include), 20)
+            raise kaitaistruct.ConsistencyError(u"str_term_include", 20, len(self.str_term_include))
         if  ((KaitaiStream.byte_array_index_of(self.str_term_include, 64) != -1) and (KaitaiStream.byte_array_index_of(self.str_term_include, 64) != len(self.str_term_include) - 1)) :
-            raise kaitaistruct.ConsistencyError(u"str_term_include", KaitaiStream.byte_array_index_of(self.str_term_include, 64), len(self.str_term_include) - 1)
+            raise kaitaistruct.ConsistencyError(u"str_term_include", len(self.str_term_include) - 1, KaitaiStream.byte_array_index_of(self.str_term_include, 64))
         if KaitaiStream.byte_array_index_of(self.str_term_include, 64) == -1:
             pass
             if  ((len(self.str_term_include) != 0) and (KaitaiStream.byte_array_index(self.str_term_include, -1) == 46)) :
-                raise kaitaistruct.ConsistencyError(u"str_term_include", KaitaiStream.byte_array_index(self.str_term_include, -1), 46)
+                raise kaitaistruct.ConsistencyError(u"str_term_include", 46, KaitaiStream.byte_array_index(self.str_term_include, -1))
 
         self._dirty = False
 

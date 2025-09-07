@@ -56,9 +56,9 @@ public class NavParentRecursive extends KaitaiStruct.ReadWrite {
     public void _check() {
         if (value() == 255) {
             if (!Objects.equals(this.next._root(), _root()))
-                throw new ConsistencyError("next", this.next._root(), _root());
+                throw new ConsistencyError("next", _root(), this.next._root());
             if (!Objects.equals(this.next._parent(), this))
-                throw new ConsistencyError("next", this.next._parent(), this);
+                throw new ConsistencyError("next", this, this.next._parent());
         }
         _dirty = false;
     }

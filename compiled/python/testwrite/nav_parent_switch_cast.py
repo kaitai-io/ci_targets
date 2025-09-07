@@ -32,9 +32,9 @@ class NavParentSwitchCast(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.main._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"main", self.main._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"main", self._root, self.main._root)
         if self.main._parent != self:
-            raise kaitaistruct.ConsistencyError(u"main", self.main._parent, self)
+            raise kaitaistruct.ConsistencyError(u"main", self, self.main._parent)
         self._dirty = False
 
     class Foo(ReadWriteKaitaiStruct):
@@ -92,7 +92,7 @@ class NavParentSwitchCast(ReadWriteKaitaiStruct):
                 def handler(parent, _io__raw_buf=_io__raw_buf):
                     self._raw_buf = _io__raw_buf.to_byte_array()
                     if len(self._raw_buf) != 4:
-                        raise kaitaistruct.ConsistencyError(u"raw(buf)", len(self._raw_buf), 4)
+                        raise kaitaistruct.ConsistencyError(u"raw(buf)", 4, len(self._raw_buf))
                     parent.write_bytes(self._raw_buf)
                 _io__raw_buf.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
                 self.buf._write__seq(_io__raw_buf)
@@ -105,7 +105,7 @@ class NavParentSwitchCast(ReadWriteKaitaiStruct):
                 def handler(parent, _io__raw_buf=_io__raw_buf):
                     self._raw_buf = _io__raw_buf.to_byte_array()
                     if len(self._raw_buf) != 4:
-                        raise kaitaistruct.ConsistencyError(u"raw(buf)", len(self._raw_buf), 4)
+                        raise kaitaistruct.ConsistencyError(u"raw(buf)", 4, len(self._raw_buf))
                     parent.write_bytes(self._raw_buf)
                 _io__raw_buf.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
                 self.buf._write__seq(_io__raw_buf)
@@ -119,19 +119,19 @@ class NavParentSwitchCast(ReadWriteKaitaiStruct):
             if _on == 0:
                 pass
                 if self.buf._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"buf", self.buf._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"buf", self._root, self.buf._root)
                 if self.buf._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"buf", self.buf._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"buf", self, self.buf._parent)
             elif _on == 1:
                 pass
                 if self.buf._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"buf", self.buf._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"buf", self._root, self.buf._root)
                 if self.buf._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"buf", self.buf._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"buf", self, self.buf._parent)
             else:
                 pass
                 if len(self.buf) != 4:
-                    raise kaitaistruct.ConsistencyError(u"buf", len(self.buf), 4)
+                    raise kaitaistruct.ConsistencyError(u"buf", 4, len(self.buf))
             self._dirty = False
 
         class Common(ReadWriteKaitaiStruct):
@@ -191,9 +191,9 @@ class NavParentSwitchCast(ReadWriteKaitaiStruct):
 
             def _check(self):
                 if self.branch._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"branch", self.branch._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"branch", self._root, self.branch._root)
                 if self.branch._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"branch", self.branch._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"branch", self, self.branch._parent)
                 self._dirty = False
 
 
@@ -221,9 +221,9 @@ class NavParentSwitchCast(ReadWriteKaitaiStruct):
 
             def _check(self):
                 if self.branch._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"branch", self.branch._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"branch", self._root, self.branch._root)
                 if self.branch._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"branch", self.branch._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"branch", self, self.branch._parent)
                 self._dirty = False
 
 

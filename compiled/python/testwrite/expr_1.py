@@ -32,7 +32,7 @@ class Expr1(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len((self.str1).encode(u"ASCII")) != self.len_of_1_mod:
-            raise kaitaistruct.ConsistencyError(u"str1", len((self.str1).encode(u"ASCII")), self.len_of_1_mod)
+            raise kaitaistruct.ConsistencyError(u"str1", self.len_of_1_mod, len((self.str1).encode(u"ASCII")))
         self._dirty = False
 
     @property

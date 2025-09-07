@@ -87,7 +87,7 @@ class SwitchIntegers2(ReadWriteKaitaiStruct):
         elif _on == 8:
             pass
         if len(self.ham) != self.len:
-            raise kaitaistruct.ConsistencyError(u"ham", len(self.ham), self.len)
+            raise kaitaistruct.ConsistencyError(u"ham", self.len, len(self.ham))
         if self.len > 3:
             pass
 

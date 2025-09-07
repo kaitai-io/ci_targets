@@ -59,21 +59,21 @@ public class IntegersMinMax extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.unsignedMin._root(), _root()))
-            throw new ConsistencyError("unsigned_min", this.unsignedMin._root(), _root());
+            throw new ConsistencyError("unsigned_min", _root(), this.unsignedMin._root());
         if (!Objects.equals(this.unsignedMin._parent(), this))
-            throw new ConsistencyError("unsigned_min", this.unsignedMin._parent(), this);
+            throw new ConsistencyError("unsigned_min", this, this.unsignedMin._parent());
         if (!Objects.equals(this.unsignedMax._root(), _root()))
-            throw new ConsistencyError("unsigned_max", this.unsignedMax._root(), _root());
+            throw new ConsistencyError("unsigned_max", _root(), this.unsignedMax._root());
         if (!Objects.equals(this.unsignedMax._parent(), this))
-            throw new ConsistencyError("unsigned_max", this.unsignedMax._parent(), this);
+            throw new ConsistencyError("unsigned_max", this, this.unsignedMax._parent());
         if (!Objects.equals(this.signedMin._root(), _root()))
-            throw new ConsistencyError("signed_min", this.signedMin._root(), _root());
+            throw new ConsistencyError("signed_min", _root(), this.signedMin._root());
         if (!Objects.equals(this.signedMin._parent(), this))
-            throw new ConsistencyError("signed_min", this.signedMin._parent(), this);
+            throw new ConsistencyError("signed_min", this, this.signedMin._parent());
         if (!Objects.equals(this.signedMax._root(), _root()))
-            throw new ConsistencyError("signed_max", this.signedMax._root(), _root());
+            throw new ConsistencyError("signed_max", _root(), this.signedMax._root());
         if (!Objects.equals(this.signedMax._parent(), this))
-            throw new ConsistencyError("signed_max", this.signedMax._parent(), this);
+            throw new ConsistencyError("signed_max", this, this.signedMax._parent());
         _dirty = false;
     }
     public static class Signed extends KaitaiStruct.ReadWrite {

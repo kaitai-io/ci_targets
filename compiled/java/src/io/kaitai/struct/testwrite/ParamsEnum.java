@@ -67,11 +67,11 @@ public class ParamsEnum extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.invokeWithParam._root(), _root()))
-            throw new ConsistencyError("invoke_with_param", this.invokeWithParam._root(), _root());
+            throw new ConsistencyError("invoke_with_param", _root(), this.invokeWithParam._root());
         if (!Objects.equals(this.invokeWithParam._parent(), this))
-            throw new ConsistencyError("invoke_with_param", this.invokeWithParam._parent(), this);
+            throw new ConsistencyError("invoke_with_param", this, this.invokeWithParam._parent());
         if (this.invokeWithParam.enumeratedOne() != one())
-            throw new ConsistencyError("invoke_with_param", this.invokeWithParam.enumeratedOne(), one());
+            throw new ConsistencyError("invoke_with_param", one(), this.invokeWithParam.enumeratedOne());
         _dirty = false;
     }
     public static class WithParam extends KaitaiStruct.ReadWrite {

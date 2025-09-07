@@ -40,7 +40,7 @@ class PositionInSeq(ReadWriteKaitaiStruct):
         super(PositionInSeq, self)._write__seq(io)
         self._should_write_header = self.header__enabled
         if len(self.numbers) != self.header.qty_numbers:
-            raise kaitaistruct.ConsistencyError(u"numbers", len(self.numbers), self.header.qty_numbers)
+            raise kaitaistruct.ConsistencyError(u"numbers", self.header.qty_numbers, len(self.numbers))
         for i in range(len(self.numbers)):
             pass
             self._io.write_u1(self.numbers[i])
@@ -54,9 +54,9 @@ class PositionInSeq(ReadWriteKaitaiStruct):
         if self.header__enabled:
             pass
             if self._m_header._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"header", self._m_header._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"header", self._root, self._m_header._root)
             if self._m_header._parent != self:
-                raise kaitaistruct.ConsistencyError(u"header", self._m_header._parent, self)
+                raise kaitaistruct.ConsistencyError(u"header", self, self._m_header._parent)
 
         self._dirty = False
 

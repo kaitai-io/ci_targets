@@ -54,27 +54,27 @@ class IndexToParamEos(ReadWriteKaitaiStruct):
         for i in range(len(self.blocks)):
             pass
             if self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"blocks", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"blocks", 0, self._io.size() - self._io.pos())
             self.blocks[i]._write__seq(self._io)
 
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"blocks", self._io.size() - self._io.pos(), 0)
+            raise kaitaistruct.ConsistencyError(u"blocks", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):
         if len(self.sizes) != self.qty:
-            raise kaitaistruct.ConsistencyError(u"sizes", len(self.sizes), self.qty)
+            raise kaitaistruct.ConsistencyError(u"sizes", self.qty, len(self.sizes))
         for i in range(len(self.sizes)):
             pass
 
         for i in range(len(self.blocks)):
             pass
             if self.blocks[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"blocks", self.blocks[i]._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"blocks", self._root, self.blocks[i]._root)
             if self.blocks[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"blocks", self.blocks[i]._parent, self)
+                raise kaitaistruct.ConsistencyError(u"blocks", self, self.blocks[i]._parent)
             if self.blocks[i].idx != i:
-                raise kaitaistruct.ConsistencyError(u"blocks", self.blocks[i].idx, i)
+                raise kaitaistruct.ConsistencyError(u"blocks", i, self.blocks[i].idx)
 
         self._dirty = False
 
@@ -101,7 +101,7 @@ class IndexToParamEos(ReadWriteKaitaiStruct):
 
         def _check(self):
             if len((self.buf).encode(u"ASCII")) != self._root.sizes[self.idx]:
-                raise kaitaistruct.ConsistencyError(u"buf", len((self.buf).encode(u"ASCII")), self._root.sizes[self.idx])
+                raise kaitaistruct.ConsistencyError(u"buf", self._root.sizes[self.idx], len((self.buf).encode(u"ASCII")))
             self._dirty = False
 
 

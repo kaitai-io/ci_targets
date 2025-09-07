@@ -36,11 +36,11 @@ class FixedContents(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.normal) != 6:
-            raise kaitaistruct.ConsistencyError(u"normal", len(self.normal), 6)
+            raise kaitaistruct.ConsistencyError(u"normal", 6, len(self.normal))
         if not self.normal == b"\x50\x41\x43\x4B\x2D\x31":
             raise kaitaistruct.ValidationNotEqualError(b"\x50\x41\x43\x4B\x2D\x31", self.normal, None, u"/seq/0")
         if len(self.high_bit_8) != 2:
-            raise kaitaistruct.ConsistencyError(u"high_bit_8", len(self.high_bit_8), 2)
+            raise kaitaistruct.ConsistencyError(u"high_bit_8", 2, len(self.high_bit_8))
         if not self.high_bit_8 == b"\xFF\xFF":
             raise kaitaistruct.ValidationNotEqualError(b"\xFF\xFF", self.high_bit_8, None, u"/seq/1")
         self._dirty = False

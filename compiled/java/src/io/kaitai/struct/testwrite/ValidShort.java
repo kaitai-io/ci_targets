@@ -100,7 +100,7 @@ public class ValidShort extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.magic1.length != 6)
-            throw new ConsistencyError("magic1", this.magic1.length, 6);
+            throw new ConsistencyError("magic1", 6, this.magic1.length);
         if (!(Arrays.equals(this.magic1, new byte[] { 80, 65, 67, 75, 45, 49 }))) {
             throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 49 }, this.magic1, null, "/seq/0");
         }
@@ -111,7 +111,7 @@ public class ValidShort extends KaitaiStruct.ReadWrite {
             throw new KaitaiStream.ValidationNotEqualError(-1, this.sint8, null, "/seq/2");
         }
         if ((this.magicUint).getBytes(Charset.forName("UTF-8")).length != 10)
-            throw new ConsistencyError("magic_uint", (this.magicUint).getBytes(Charset.forName("UTF-8")).length, 10);
+            throw new ConsistencyError("magic_uint", 10, (this.magicUint).getBytes(Charset.forName("UTF-8")).length);
         if (!(this.magicUint.equals("PACK-U-DEF"))) {
             throw new KaitaiStream.ValidationNotEqualError("PACK-U-DEF", this.magicUint, null, "/seq/3");
         }
@@ -125,7 +125,7 @@ public class ValidShort extends KaitaiStruct.ReadWrite {
             throw new KaitaiStream.ValidationNotEqualError(0xffffffffffffffffL, this.uint64, null, "/seq/6");
         }
         if ((this.magicSint).getBytes(Charset.forName("UTF-8")).length != 10)
-            throw new ConsistencyError("magic_sint", (this.magicSint).getBytes(Charset.forName("UTF-8")).length, 10);
+            throw new ConsistencyError("magic_sint", 10, (this.magicSint).getBytes(Charset.forName("UTF-8")).length);
         if (!(this.magicSint.equals("PACK-S-DEF"))) {
             throw new KaitaiStream.ValidationNotEqualError("PACK-S-DEF", this.magicSint, null, "/seq/7");
         }

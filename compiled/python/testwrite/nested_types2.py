@@ -36,13 +36,13 @@ class NestedTypes2(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.one._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"one", self.one._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"one", self._root, self.one._root)
         if self.one._parent != self:
-            raise kaitaistruct.ConsistencyError(u"one", self.one._parent, self)
+            raise kaitaistruct.ConsistencyError(u"one", self, self.one._parent)
         if self.two._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"two", self.two._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"two", self._root, self.two._root)
         if self.two._parent != self:
-            raise kaitaistruct.ConsistencyError(u"two", self.two._parent, self)
+            raise kaitaistruct.ConsistencyError(u"two", self, self.two._parent)
         self._dirty = False
 
     class SubtypeA(ReadWriteKaitaiStruct):
@@ -77,17 +77,17 @@ class NestedTypes2(ReadWriteKaitaiStruct):
 
         def _check(self):
             if self.typed_at_root._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"typed_at_root", self.typed_at_root._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"typed_at_root", self._root, self.typed_at_root._root)
             if self.typed_at_root._parent != self:
-                raise kaitaistruct.ConsistencyError(u"typed_at_root", self.typed_at_root._parent, self)
+                raise kaitaistruct.ConsistencyError(u"typed_at_root", self, self.typed_at_root._parent)
             if self.typed_here1._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"typed_here1", self.typed_here1._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"typed_here1", self._root, self.typed_here1._root)
             if self.typed_here1._parent != self:
-                raise kaitaistruct.ConsistencyError(u"typed_here1", self.typed_here1._parent, self)
+                raise kaitaistruct.ConsistencyError(u"typed_here1", self, self.typed_here1._parent)
             if self.typed_here2._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"typed_here2", self.typed_here2._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"typed_here2", self._root, self.typed_here2._root)
             if self.typed_here2._parent != self:
-                raise kaitaistruct.ConsistencyError(u"typed_here2", self.typed_here2._parent, self)
+                raise kaitaistruct.ConsistencyError(u"typed_here2", self, self.typed_here2._parent)
             self._dirty = False
 
         class SubtypeC(ReadWriteKaitaiStruct):
@@ -124,17 +124,17 @@ class NestedTypes2(ReadWriteKaitaiStruct):
 
             def _check(self):
                 if self.typed_here._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"typed_here", self.typed_here._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"typed_here", self._root, self.typed_here._root)
                 if self.typed_here._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"typed_here", self.typed_here._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"typed_here", self, self.typed_here._parent)
                 if self.typed_parent._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"typed_parent", self.typed_parent._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"typed_parent", self._root, self.typed_parent._root)
                 if self.typed_parent._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"typed_parent", self.typed_parent._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"typed_parent", self, self.typed_parent._parent)
                 if self.typed_root._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"typed_root", self.typed_root._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"typed_root", self._root, self.typed_root._root)
                 if self.typed_root._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"typed_root", self.typed_root._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"typed_root", self, self.typed_root._parent)
                 self._dirty = False
 
             class SubtypeD(ReadWriteKaitaiStruct):

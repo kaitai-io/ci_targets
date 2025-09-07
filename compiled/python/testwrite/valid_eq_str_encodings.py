@@ -52,19 +52,19 @@ class ValidEqStrEncodings(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len((self.str1).encode(u"ASCII")) != self.len_of_1:
-            raise kaitaistruct.ConsistencyError(u"str1", len((self.str1).encode(u"ASCII")), self.len_of_1)
+            raise kaitaistruct.ConsistencyError(u"str1", self.len_of_1, len((self.str1).encode(u"ASCII")))
         if not self.str1 == u"Some ASCII":
             raise kaitaistruct.ValidationNotEqualError(u"Some ASCII", self.str1, None, u"/seq/1")
         if len((self.str2).encode(u"UTF-8")) != self.len_of_2:
-            raise kaitaistruct.ConsistencyError(u"str2", len((self.str2).encode(u"UTF-8")), self.len_of_2)
+            raise kaitaistruct.ConsistencyError(u"str2", self.len_of_2, len((self.str2).encode(u"UTF-8")))
         if not self.str2 == u"\u3053\u3093\u306b\u3061\u306f":
             raise kaitaistruct.ValidationNotEqualError(u"\u3053\u3093\u306b\u3061\u306f", self.str2, None, u"/seq/3")
         if len((self.str3).encode(u"Shift_JIS")) != self.len_of_3:
-            raise kaitaistruct.ConsistencyError(u"str3", len((self.str3).encode(u"Shift_JIS")), self.len_of_3)
+            raise kaitaistruct.ConsistencyError(u"str3", self.len_of_3, len((self.str3).encode(u"Shift_JIS")))
         if not self.str3 == u"\u3053\u3093\u306b\u3061\u306f":
             raise kaitaistruct.ValidationNotEqualError(u"\u3053\u3093\u306b\u3061\u306f", self.str3, None, u"/seq/5")
         if len((self.str4).encode(u"IBM437")) != self.len_of_4:
-            raise kaitaistruct.ConsistencyError(u"str4", len((self.str4).encode(u"IBM437")), self.len_of_4)
+            raise kaitaistruct.ConsistencyError(u"str4", self.len_of_4, len((self.str4).encode(u"IBM437")))
         if not self.str4 == u"\u2591\u2592\u2593":
             raise kaitaistruct.ValidationNotEqualError(u"\u2591\u2592\u2593", self.str4, None, u"/seq/7")
         self._dirty = False

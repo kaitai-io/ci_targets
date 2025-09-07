@@ -40,9 +40,9 @@ class PositionAbs(ReadWriteKaitaiStruct):
         if self.index__enabled:
             pass
             if self._m_index._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"index", self._m_index._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"index", self._root, self._m_index._root)
             if self._m_index._parent != self:
-                raise kaitaistruct.ConsistencyError(u"index", self._m_index._parent, self)
+                raise kaitaistruct.ConsistencyError(u"index", self, self._m_index._parent)
 
         self._dirty = False
 
@@ -69,7 +69,7 @@ class PositionAbs(ReadWriteKaitaiStruct):
 
         def _check(self):
             if KaitaiStream.byte_array_index_of((self.entry).encode(u"UTF-8"), 0) != -1:
-                raise kaitaistruct.ConsistencyError(u"entry", KaitaiStream.byte_array_index_of((self.entry).encode(u"UTF-8"), 0), -1)
+                raise kaitaistruct.ConsistencyError(u"entry", -1, KaitaiStream.byte_array_index_of((self.entry).encode(u"UTF-8"), 0))
             self._dirty = False
 
 

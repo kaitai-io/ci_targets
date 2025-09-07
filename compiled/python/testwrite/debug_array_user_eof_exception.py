@@ -58,17 +58,17 @@ class DebugArrayUserEofException(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.one_cat._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"one_cat", self.one_cat._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"one_cat", self._root, self.one_cat._root)
         if self.one_cat._parent != self:
-            raise kaitaistruct.ConsistencyError(u"one_cat", self.one_cat._parent, self)
+            raise kaitaistruct.ConsistencyError(u"one_cat", self, self.one_cat._parent)
         if len(self.array_of_cats) != 3:
-            raise kaitaistruct.ConsistencyError(u"array_of_cats", len(self.array_of_cats), 3)
+            raise kaitaistruct.ConsistencyError(u"array_of_cats", 3, len(self.array_of_cats))
         for i in range(len(self.array_of_cats)):
             pass
             if self.array_of_cats[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"array_of_cats", self.array_of_cats[i]._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"array_of_cats", self._root, self.array_of_cats[i]._root)
             if self.array_of_cats[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"array_of_cats", self.array_of_cats[i]._parent, self)
+                raise kaitaistruct.ConsistencyError(u"array_of_cats", self, self.array_of_cats[i]._parent)
 
         self._dirty = False
 

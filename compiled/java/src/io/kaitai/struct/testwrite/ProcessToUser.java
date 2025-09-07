@@ -60,7 +60,7 @@ public class ProcessToUser extends KaitaiStruct.ReadWrite {
                     _this._raw_buf1 = _io__raw_buf1.toByteArray();
                     _this._raw__raw_buf1 = KaitaiStream.processRotateLeft(_this._raw_buf1, 8 - (_processRotateArg), 1);
                     if (_this._raw__raw_buf1.length != 5)
-                        throw new ConsistencyError("raw(buf1)", _this._raw__raw_buf1.length, 5);
+                        throw new ConsistencyError("raw(buf1)", 5, _this._raw__raw_buf1.length);
                     parent.writeBytes(_this._raw__raw_buf1);
                 }
             });
@@ -70,9 +70,9 @@ public class ProcessToUser extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.buf1._root(), _root()))
-            throw new ConsistencyError("buf1", this.buf1._root(), _root());
+            throw new ConsistencyError("buf1", _root(), this.buf1._root());
         if (!Objects.equals(this.buf1._parent(), this))
-            throw new ConsistencyError("buf1", this.buf1._parent(), this);
+            throw new ConsistencyError("buf1", this, this.buf1._parent());
         _dirty = false;
     }
     public static class JustStr extends KaitaiStruct.ReadWrite {
@@ -108,7 +108,7 @@ public class ProcessToUser extends KaitaiStruct.ReadWrite {
             _assertNotDirty();
             this._io.writeBytes((this.str).getBytes(Charset.forName("UTF-8")));
             if (!(this._io.isEof()))
-                throw new ConsistencyError("str", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("str", 0, this._io.size() - this._io.pos());
         }
 
         public void _check() {

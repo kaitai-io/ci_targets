@@ -48,7 +48,7 @@ public class ImportsAbs extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.body.length != len().value())
-            throw new ConsistencyError("body", this.body.length, len().value());
+            throw new ConsistencyError("body", len().value(), this.body.length);
         _dirty = false;
     }
     private VlqBase128Le len;

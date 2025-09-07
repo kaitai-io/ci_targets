@@ -36,13 +36,13 @@ class MultipleUse(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.t1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"t1", self.t1._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"t1", self._root, self.t1._root)
         if self.t1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"t1", self.t1._parent, self)
+            raise kaitaistruct.ConsistencyError(u"t1", self, self.t1._parent)
         if self.t2._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"t2", self.t2._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"t2", self._root, self.t2._root)
         if self.t2._parent != self:
-            raise kaitaistruct.ConsistencyError(u"t2", self.t2._parent, self)
+            raise kaitaistruct.ConsistencyError(u"t2", self, self.t2._parent)
         self._dirty = False
 
     class Multi(ReadWriteKaitaiStruct):
@@ -93,9 +93,9 @@ class MultipleUse(ReadWriteKaitaiStruct):
 
         def _check(self):
             if self.first_use._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"first_use", self.first_use._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"first_use", self._root, self.first_use._root)
             if self.first_use._parent != self:
-                raise kaitaistruct.ConsistencyError(u"first_use", self.first_use._parent, self)
+                raise kaitaistruct.ConsistencyError(u"first_use", self, self.first_use._parent)
             self._dirty = False
 
 
@@ -130,9 +130,9 @@ class MultipleUse(ReadWriteKaitaiStruct):
             if self.second_use__enabled:
                 pass
                 if self._m_second_use._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"second_use", self._m_second_use._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"second_use", self._root, self._m_second_use._root)
                 if self._m_second_use._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"second_use", self._m_second_use._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"second_use", self, self._m_second_use._parent)
 
             self._dirty = False
 

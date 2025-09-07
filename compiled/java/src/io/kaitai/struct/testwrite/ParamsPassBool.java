@@ -71,41 +71,41 @@ public class ParamsPassBool extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.seqB1._root(), _root()))
-            throw new ConsistencyError("seq_b1", this.seqB1._root(), _root());
+            throw new ConsistencyError("seq_b1", _root(), this.seqB1._root());
         if (!Objects.equals(this.seqB1._parent(), this))
-            throw new ConsistencyError("seq_b1", this.seqB1._parent(), this);
+            throw new ConsistencyError("seq_b1", this, this.seqB1._parent());
         if (this.seqB1.arg() != sTrue())
-            throw new ConsistencyError("seq_b1", this.seqB1.arg(), sTrue());
+            throw new ConsistencyError("seq_b1", sTrue(), this.seqB1.arg());
         if (!Objects.equals(this.seqBool._root(), _root()))
-            throw new ConsistencyError("seq_bool", this.seqBool._root(), _root());
+            throw new ConsistencyError("seq_bool", _root(), this.seqBool._root());
         if (!Objects.equals(this.seqBool._parent(), this))
-            throw new ConsistencyError("seq_bool", this.seqBool._parent(), this);
+            throw new ConsistencyError("seq_bool", this, this.seqBool._parent());
         if (this.seqBool.arg() != sFalse())
-            throw new ConsistencyError("seq_bool", this.seqBool.arg(), sFalse());
+            throw new ConsistencyError("seq_bool", sFalse(), this.seqBool.arg());
         if (!Objects.equals(this.literalB1._root(), _root()))
-            throw new ConsistencyError("literal_b1", this.literalB1._root(), _root());
+            throw new ConsistencyError("literal_b1", _root(), this.literalB1._root());
         if (!Objects.equals(this.literalB1._parent(), this))
-            throw new ConsistencyError("literal_b1", this.literalB1._parent(), this);
+            throw new ConsistencyError("literal_b1", this, this.literalB1._parent());
         if (this.literalB1.arg() != false)
-            throw new ConsistencyError("literal_b1", this.literalB1.arg(), false);
+            throw new ConsistencyError("literal_b1", false, this.literalB1.arg());
         if (!Objects.equals(this.literalBool._root(), _root()))
-            throw new ConsistencyError("literal_bool", this.literalBool._root(), _root());
+            throw new ConsistencyError("literal_bool", _root(), this.literalBool._root());
         if (!Objects.equals(this.literalBool._parent(), this))
-            throw new ConsistencyError("literal_bool", this.literalBool._parent(), this);
+            throw new ConsistencyError("literal_bool", this, this.literalBool._parent());
         if (this.literalBool.arg() != true)
-            throw new ConsistencyError("literal_bool", this.literalBool.arg(), true);
+            throw new ConsistencyError("literal_bool", true, this.literalBool.arg());
         if (!Objects.equals(this.instB1._root(), _root()))
-            throw new ConsistencyError("inst_b1", this.instB1._root(), _root());
+            throw new ConsistencyError("inst_b1", _root(), this.instB1._root());
         if (!Objects.equals(this.instB1._parent(), this))
-            throw new ConsistencyError("inst_b1", this.instB1._parent(), this);
+            throw new ConsistencyError("inst_b1", this, this.instB1._parent());
         if (this.instB1.arg() != vTrue())
-            throw new ConsistencyError("inst_b1", this.instB1.arg(), vTrue());
+            throw new ConsistencyError("inst_b1", vTrue(), this.instB1.arg());
         if (!Objects.equals(this.instBool._root(), _root()))
-            throw new ConsistencyError("inst_bool", this.instBool._root(), _root());
+            throw new ConsistencyError("inst_bool", _root(), this.instBool._root());
         if (!Objects.equals(this.instBool._parent(), this))
-            throw new ConsistencyError("inst_bool", this.instBool._parent(), this);
+            throw new ConsistencyError("inst_bool", this, this.instBool._parent());
         if (this.instBool.arg() != vFalse())
-            throw new ConsistencyError("inst_bool", this.instBool.arg(), vFalse());
+            throw new ConsistencyError("inst_bool", vFalse(), this.instBool.arg());
         _dirty = false;
     }
     public static class ParamTypeB1 extends KaitaiStruct.ReadWrite {
@@ -142,7 +142,7 @@ public class ParamsPassBool extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (this.foo.length != (arg() ? 1 : 2))
-                throw new ConsistencyError("foo", this.foo.length, (arg() ? 1 : 2));
+                throw new ConsistencyError("foo", (arg() ? 1 : 2), this.foo.length);
             _dirty = false;
         }
         private byte[] foo;
@@ -192,7 +192,7 @@ public class ParamsPassBool extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (this.foo.length != (arg() ? 1 : 2))
-                throw new ConsistencyError("foo", this.foo.length, (arg() ? 1 : 2));
+                throw new ConsistencyError("foo", (arg() ? 1 : 2), this.foo.length);
             _dirty = false;
         }
         private byte[] foo;

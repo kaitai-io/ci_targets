@@ -32,9 +32,9 @@ class UserType(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.one._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"one", self.one._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"one", self._root, self.one._root)
         if self.one._parent != self:
-            raise kaitaistruct.ConsistencyError(u"one", self.one._parent, self)
+            raise kaitaistruct.ConsistencyError(u"one", self, self.one._parent)
         self._dirty = False
 
     class Header(ReadWriteKaitaiStruct):

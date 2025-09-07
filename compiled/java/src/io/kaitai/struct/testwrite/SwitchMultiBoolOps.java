@@ -59,19 +59,19 @@ public class SwitchMultiBoolOps extends KaitaiStruct.ReadWrite {
         _assertNotDirty();
         for (int i = 0; i < this.opcodes.size(); i++) {
             if (this._io.isEof())
-                throw new ConsistencyError("opcodes", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("opcodes", 0, this._io.size() - this._io.pos());
             this.opcodes.get(((Number) (i)).intValue())._write_Seq(this._io);
         }
         if (!(this._io.isEof()))
-            throw new ConsistencyError("opcodes", this._io.size() - this._io.pos(), 0);
+            throw new ConsistencyError("opcodes", 0, this._io.size() - this._io.pos());
     }
 
     public void _check() {
         for (int i = 0; i < this.opcodes.size(); i++) {
             if (!Objects.equals(this.opcodes.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("opcodes", this.opcodes.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("opcodes", _root(), this.opcodes.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.opcodes.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("opcodes", this.opcodes.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("opcodes", this, this.opcodes.get(((Number) (i)).intValue())._parent());
         }
         _dirty = false;
     }

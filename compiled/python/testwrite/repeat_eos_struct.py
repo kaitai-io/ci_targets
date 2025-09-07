@@ -41,20 +41,20 @@ class RepeatEosStruct(ReadWriteKaitaiStruct):
         for i in range(len(self.chunks)):
             pass
             if self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"chunks", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"chunks", 0, self._io.size() - self._io.pos())
             self.chunks[i]._write__seq(self._io)
 
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"chunks", self._io.size() - self._io.pos(), 0)
+            raise kaitaistruct.ConsistencyError(u"chunks", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):
         for i in range(len(self.chunks)):
             pass
             if self.chunks[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"chunks", self.chunks[i]._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"chunks", self._root, self.chunks[i]._root)
             if self.chunks[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"chunks", self.chunks[i]._parent, self)
+                raise kaitaistruct.ConsistencyError(u"chunks", self, self.chunks[i]._parent)
 
         self._dirty = False
 

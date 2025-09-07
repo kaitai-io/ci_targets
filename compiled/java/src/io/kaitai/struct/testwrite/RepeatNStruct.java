@@ -62,12 +62,12 @@ public class RepeatNStruct extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.chunks.size() != qty())
-            throw new ConsistencyError("chunks", this.chunks.size(), qty());
+            throw new ConsistencyError("chunks", qty(), this.chunks.size());
         for (int i = 0; i < this.chunks.size(); i++) {
             if (!Objects.equals(this.chunks.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("chunks", this.chunks.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("chunks", _root(), this.chunks.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.chunks.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("chunks", this.chunks.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("chunks", this, this.chunks.get(((Number) (i)).intValue())._parent());
         }
         _dirty = false;
     }

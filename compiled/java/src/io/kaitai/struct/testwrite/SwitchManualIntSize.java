@@ -61,19 +61,19 @@ public class SwitchManualIntSize extends KaitaiStruct.ReadWrite {
         _assertNotDirty();
         for (int i = 0; i < this.chunks.size(); i++) {
             if (this._io.isEof())
-                throw new ConsistencyError("chunks", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("chunks", 0, this._io.size() - this._io.pos());
             this.chunks.get(((Number) (i)).intValue())._write_Seq(this._io);
         }
         if (!(this._io.isEof()))
-            throw new ConsistencyError("chunks", this._io.size() - this._io.pos(), 0);
+            throw new ConsistencyError("chunks", 0, this._io.size() - this._io.pos());
     }
 
     public void _check() {
         for (int i = 0; i < this.chunks.size(); i++) {
             if (!Objects.equals(this.chunks.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("chunks", this.chunks.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("chunks", _root(), this.chunks.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.chunks.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("chunks", this.chunks.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("chunks", this, this.chunks.get(((Number) (i)).intValue())._parent());
         }
         _dirty = false;
     }
@@ -157,7 +157,7 @@ public class SwitchManualIntSize extends KaitaiStruct.ReadWrite {
                         protected void write(KaitaiStream parent) {
                             _this._raw_body = _io__raw_body.toByteArray();
                             if (((byte[]) (_this._raw_body)).length != size())
-                                throw new ConsistencyError("raw(body)", ((byte[]) (_this._raw_body)).length, size());
+                                throw new ConsistencyError("raw(body)", size(), ((byte[]) (_this._raw_body)).length);
                             parent.writeBytes(((byte[]) (((byte[]) (_this._raw_body)))));
                         }
                     });
@@ -177,7 +177,7 @@ public class SwitchManualIntSize extends KaitaiStruct.ReadWrite {
                         protected void write(KaitaiStream parent) {
                             _this._raw_body = _io__raw_body.toByteArray();
                             if (((byte[]) (_this._raw_body)).length != size())
-                                throw new ConsistencyError("raw(body)", ((byte[]) (_this._raw_body)).length, size());
+                                throw new ConsistencyError("raw(body)", size(), ((byte[]) (_this._raw_body)).length);
                             parent.writeBytes(((byte[]) (((byte[]) (_this._raw_body)))));
                         }
                     });
@@ -196,21 +196,21 @@ public class SwitchManualIntSize extends KaitaiStruct.ReadWrite {
             switch (code()) {
             case 17: {
                 if (!Objects.equals(((SwitchManualIntSize.Chunk.ChunkMeta) (this.body))._root(), _root()))
-                    throw new ConsistencyError("body", ((SwitchManualIntSize.Chunk.ChunkMeta) (this.body))._root(), _root());
+                    throw new ConsistencyError("body", _root(), ((SwitchManualIntSize.Chunk.ChunkMeta) (this.body))._root());
                 if (!Objects.equals(((SwitchManualIntSize.Chunk.ChunkMeta) (this.body))._parent(), this))
-                    throw new ConsistencyError("body", ((SwitchManualIntSize.Chunk.ChunkMeta) (this.body))._parent(), this);
+                    throw new ConsistencyError("body", this, ((SwitchManualIntSize.Chunk.ChunkMeta) (this.body))._parent());
                 break;
             }
             case 34: {
                 if (!Objects.equals(((SwitchManualIntSize.Chunk.ChunkDir) (this.body))._root(), _root()))
-                    throw new ConsistencyError("body", ((SwitchManualIntSize.Chunk.ChunkDir) (this.body))._root(), _root());
+                    throw new ConsistencyError("body", _root(), ((SwitchManualIntSize.Chunk.ChunkDir) (this.body))._root());
                 if (!Objects.equals(((SwitchManualIntSize.Chunk.ChunkDir) (this.body))._parent(), this))
-                    throw new ConsistencyError("body", ((SwitchManualIntSize.Chunk.ChunkDir) (this.body))._parent(), this);
+                    throw new ConsistencyError("body", this, ((SwitchManualIntSize.Chunk.ChunkDir) (this.body))._parent());
                 break;
             }
             default: {
                 if (((byte[]) (this.body)).length != size())
-                    throw new ConsistencyError("body", ((byte[]) (this.body)).length, size());
+                    throw new ConsistencyError("body", size(), ((byte[]) (this.body)).length);
                 break;
             }
             }
@@ -258,17 +258,17 @@ public class SwitchManualIntSize extends KaitaiStruct.ReadWrite {
                 _assertNotDirty();
                 for (int i = 0; i < this.entries.size(); i++) {
                     if (this._io.isEof())
-                        throw new ConsistencyError("entries", this._io.size() - this._io.pos(), 0);
+                        throw new ConsistencyError("entries", 0, this._io.size() - this._io.pos());
                     this._io.writeBytes((this.entries.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")));
                 }
                 if (!(this._io.isEof()))
-                    throw new ConsistencyError("entries", this._io.size() - this._io.pos(), 0);
+                    throw new ConsistencyError("entries", 0, this._io.size() - this._io.pos());
             }
 
             public void _check() {
                 for (int i = 0; i < this.entries.size(); i++) {
                     if ((this.entries.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")).length != 4)
-                        throw new ConsistencyError("entries", (this.entries.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")).length, 4);
+                        throw new ConsistencyError("entries", 4, (this.entries.get(((Number) (i)).intValue())).getBytes(Charset.forName("UTF-8")).length);
                 }
                 _dirty = false;
             }
@@ -322,9 +322,9 @@ public class SwitchManualIntSize extends KaitaiStruct.ReadWrite {
 
             public void _check() {
                 if (KaitaiStream.byteArrayIndexOf((this.title).getBytes(Charset.forName("UTF-8")), ((byte) 0)) != -1)
-                    throw new ConsistencyError("title", KaitaiStream.byteArrayIndexOf((this.title).getBytes(Charset.forName("UTF-8")), ((byte) 0)), -1);
+                    throw new ConsistencyError("title", -1, KaitaiStream.byteArrayIndexOf((this.title).getBytes(Charset.forName("UTF-8")), ((byte) 0)));
                 if (KaitaiStream.byteArrayIndexOf((this.author).getBytes(Charset.forName("UTF-8")), ((byte) 0)) != -1)
-                    throw new ConsistencyError("author", KaitaiStream.byteArrayIndexOf((this.author).getBytes(Charset.forName("UTF-8")), ((byte) 0)), -1);
+                    throw new ConsistencyError("author", -1, KaitaiStream.byteArrayIndexOf((this.author).getBytes(Charset.forName("UTF-8")), ((byte) 0)));
                 _dirty = false;
             }
             private String title;

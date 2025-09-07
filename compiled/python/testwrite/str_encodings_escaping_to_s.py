@@ -44,13 +44,13 @@ class StrEncodingsEscapingToS(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.str1_raw) != self.len_of_1:
-            raise kaitaistruct.ConsistencyError(u"str1_raw", len(self.str1_raw), self.len_of_1)
+            raise kaitaistruct.ConsistencyError(u"str1_raw", self.len_of_1, len(self.str1_raw))
         if len(self.str2_raw) != self.len_of_2:
-            raise kaitaistruct.ConsistencyError(u"str2_raw", len(self.str2_raw), self.len_of_2)
+            raise kaitaistruct.ConsistencyError(u"str2_raw", self.len_of_2, len(self.str2_raw))
         if len(self.str3_raw) != self.len_of_3:
-            raise kaitaistruct.ConsistencyError(u"str3_raw", len(self.str3_raw), self.len_of_3)
+            raise kaitaistruct.ConsistencyError(u"str3_raw", self.len_of_3, len(self.str3_raw))
         if len(self.str4_raw) != self.len_of_4:
-            raise kaitaistruct.ConsistencyError(u"str4_raw", len(self.str4_raw), self.len_of_4)
+            raise kaitaistruct.ConsistencyError(u"str4_raw", self.len_of_4, len(self.str4_raw))
         self._dirty = False
 
     @property

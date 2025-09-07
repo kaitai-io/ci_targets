@@ -65,23 +65,23 @@ public class ParamsPassArrayStr extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.strArray.size() != 3)
-            throw new ConsistencyError("str_array", this.strArray.size(), 3);
+            throw new ConsistencyError("str_array", 3, this.strArray.size());
         for (int i = 0; i < this.strArray.size(); i++) {
             if ((this.strArray.get(((Number) (i)).intValue())).getBytes(Charset.forName("ASCII")).length != 2)
-                throw new ConsistencyError("str_array", (this.strArray.get(((Number) (i)).intValue())).getBytes(Charset.forName("ASCII")).length, 2);
+                throw new ConsistencyError("str_array", 2, (this.strArray.get(((Number) (i)).intValue())).getBytes(Charset.forName("ASCII")).length);
         }
         if (!Objects.equals(this.passStrArray._root(), _root()))
-            throw new ConsistencyError("pass_str_array", this.passStrArray._root(), _root());
+            throw new ConsistencyError("pass_str_array", _root(), this.passStrArray._root());
         if (!Objects.equals(this.passStrArray._parent(), this))
-            throw new ConsistencyError("pass_str_array", this.passStrArray._parent(), this);
+            throw new ConsistencyError("pass_str_array", this, this.passStrArray._parent());
         if (!Objects.equals(this.passStrArray.strs(), strArray()))
-            throw new ConsistencyError("pass_str_array", this.passStrArray.strs(), strArray());
+            throw new ConsistencyError("pass_str_array", strArray(), this.passStrArray.strs());
         if (!Objects.equals(this.passStrArrayCalc._root(), _root()))
-            throw new ConsistencyError("pass_str_array_calc", this.passStrArrayCalc._root(), _root());
+            throw new ConsistencyError("pass_str_array_calc", _root(), this.passStrArrayCalc._root());
         if (!Objects.equals(this.passStrArrayCalc._parent(), this))
-            throw new ConsistencyError("pass_str_array_calc", this.passStrArrayCalc._parent(), this);
+            throw new ConsistencyError("pass_str_array_calc", this, this.passStrArrayCalc._parent());
         if (!Objects.equals(this.passStrArrayCalc.strs(), strArrayCalc()))
-            throw new ConsistencyError("pass_str_array_calc", this.passStrArrayCalc.strs(), strArrayCalc());
+            throw new ConsistencyError("pass_str_array_calc", strArrayCalc(), this.passStrArrayCalc.strs());
         _dirty = false;
     }
     public static class WantsStrs extends KaitaiStruct.ReadWrite {

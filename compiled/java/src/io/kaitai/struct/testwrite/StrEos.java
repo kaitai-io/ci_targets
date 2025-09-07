@@ -43,7 +43,7 @@ public class StrEos extends KaitaiStruct.ReadWrite {
         _assertNotDirty();
         this._io.writeBytes((this.str).getBytes(Charset.forName("UTF-8")));
         if (!(this._io.isEof()))
-            throw new ConsistencyError("str", this._io.size() - this._io.pos(), 0);
+            throw new ConsistencyError("str", 0, this._io.size() - this._io.pos());
     }
 
     public void _check() {

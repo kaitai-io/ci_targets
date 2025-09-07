@@ -36,7 +36,7 @@ class EosExceptionSized(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_envelope=_io__raw_envelope):
             self._raw_envelope = _io__raw_envelope.to_byte_array()
             if len(self._raw_envelope) != 6:
-                raise kaitaistruct.ConsistencyError(u"raw(envelope)", len(self._raw_envelope), 6)
+                raise kaitaistruct.ConsistencyError(u"raw(envelope)", 6, len(self._raw_envelope))
             parent.write_bytes(self._raw_envelope)
         _io__raw_envelope.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.envelope._write__seq(_io__raw_envelope)
@@ -44,9 +44,9 @@ class EosExceptionSized(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.envelope._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"envelope", self.envelope._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"envelope", self._root, self.envelope._root)
         if self.envelope._parent != self:
-            raise kaitaistruct.ConsistencyError(u"envelope", self.envelope._parent, self)
+            raise kaitaistruct.ConsistencyError(u"envelope", self, self.envelope._parent)
         self._dirty = False
 
     class Data(ReadWriteKaitaiStruct):
@@ -77,7 +77,7 @@ class EosExceptionSized(ReadWriteKaitaiStruct):
             def handler(parent, _io__raw_buf=_io__raw_buf):
                 self._raw_buf = _io__raw_buf.to_byte_array()
                 if len(self._raw_buf) != 7:
-                    raise kaitaistruct.ConsistencyError(u"raw(buf)", len(self._raw_buf), 7)
+                    raise kaitaistruct.ConsistencyError(u"raw(buf)", 7, len(self._raw_buf))
                 parent.write_bytes(self._raw_buf)
             _io__raw_buf.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self.buf._write__seq(_io__raw_buf)
@@ -85,9 +85,9 @@ class EosExceptionSized(ReadWriteKaitaiStruct):
 
         def _check(self):
             if self.buf._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"buf", self.buf._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"buf", self._root, self.buf._root)
             if self.buf._parent != self:
-                raise kaitaistruct.ConsistencyError(u"buf", self.buf._parent, self)
+                raise kaitaistruct.ConsistencyError(u"buf", self, self.buf._parent)
             self._dirty = False
 
 

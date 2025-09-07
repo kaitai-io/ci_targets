@@ -52,19 +52,19 @@ public class RepeatEosTermBytes extends KaitaiStruct.ReadWrite {
         _assertNotDirty();
         for (int i = 0; i < this.records.size(); i++) {
             if (this._io.isEof())
-                throw new ConsistencyError("records", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("records", 0, this._io.size() - this._io.pos());
             this._io.writeBytes(this.records.get(((Number) (i)).intValue()));
         }
         if (!(this._io.isEof()))
-            throw new ConsistencyError("records", this._io.size() - this._io.pos(), 0);
+            throw new ConsistencyError("records", 0, this._io.size() - this._io.pos());
     }
 
     public void _check() {
         for (int i = 0; i < this.records.size(); i++) {
             if (this.records.get(((Number) (i)).intValue()).length == 0)
-                throw new ConsistencyError("records", this.records.get(((Number) (i)).intValue()).length, 0);
+                throw new ConsistencyError("records", 0, this.records.get(((Number) (i)).intValue()).length);
             if (KaitaiStream.byteArrayIndexOf(this.records.get(((Number) (i)).intValue()), ((byte) 178)) != this.records.get(((Number) (i)).intValue()).length - 1)
-                throw new ConsistencyError("records", KaitaiStream.byteArrayIndexOf(this.records.get(((Number) (i)).intValue()), ((byte) 178)), this.records.get(((Number) (i)).intValue()).length - 1);
+                throw new ConsistencyError("records", this.records.get(((Number) (i)).intValue()).length - 1, KaitaiStream.byteArrayIndexOf(this.records.get(((Number) (i)).intValue()), ((byte) 178)));
         }
         _dirty = false;
     }

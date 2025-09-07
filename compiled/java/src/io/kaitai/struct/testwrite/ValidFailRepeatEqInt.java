@@ -55,11 +55,11 @@ public class ValidFailRepeatEqInt extends KaitaiStruct.ReadWrite {
         _assertNotDirty();
         for (int i = 0; i < this.foo.size(); i++) {
             if (this._io.isEof())
-                throw new ConsistencyError("foo", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("foo", 0, this._io.size() - this._io.pos());
             this._io.writeU4be(this.foo.get(((Number) (i)).intValue()));
         }
         if (!(this._io.isEof()))
-            throw new ConsistencyError("foo", this._io.size() - this._io.pos(), 0);
+            throw new ConsistencyError("foo", 0, this._io.size() - this._io.pos());
     }
 
     public void _check() {

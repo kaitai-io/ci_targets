@@ -60,13 +60,13 @@ public class StrEncodings extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if ((this.str1).getBytes(Charset.forName("ASCII")).length != lenOf1())
-            throw new ConsistencyError("str1", (this.str1).getBytes(Charset.forName("ASCII")).length, lenOf1());
+            throw new ConsistencyError("str1", lenOf1(), (this.str1).getBytes(Charset.forName("ASCII")).length);
         if ((this.str2).getBytes(Charset.forName("UTF-8")).length != lenOf2())
-            throw new ConsistencyError("str2", (this.str2).getBytes(Charset.forName("UTF-8")).length, lenOf2());
+            throw new ConsistencyError("str2", lenOf2(), (this.str2).getBytes(Charset.forName("UTF-8")).length);
         if ((this.str3).getBytes(Charset.forName("Shift_JIS")).length != lenOf3())
-            throw new ConsistencyError("str3", (this.str3).getBytes(Charset.forName("Shift_JIS")).length, lenOf3());
+            throw new ConsistencyError("str3", lenOf3(), (this.str3).getBytes(Charset.forName("Shift_JIS")).length);
         if ((this.str4).getBytes(Charset.forName("IBM437")).length != lenOf4())
-            throw new ConsistencyError("str4", (this.str4).getBytes(Charset.forName("IBM437")).length, lenOf4());
+            throw new ConsistencyError("str4", lenOf4(), (this.str4).getBytes(Charset.forName("IBM437")).length);
         _dirty = false;
     }
     private int lenOf1;

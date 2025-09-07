@@ -41,20 +41,20 @@ class DefaultEndianExprIsLe(ReadWriteKaitaiStruct):
         for i in range(len(self.docs)):
             pass
             if self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"docs", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"docs", 0, self._io.size() - self._io.pos())
             self.docs[i]._write__seq(self._io)
 
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"docs", self._io.size() - self._io.pos(), 0)
+            raise kaitaistruct.ConsistencyError(u"docs", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):
         for i in range(len(self.docs)):
             pass
             if self.docs[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"docs", self.docs[i]._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"docs", self._root, self.docs[i]._root)
             if self.docs[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"docs", self.docs[i]._parent, self)
+                raise kaitaistruct.ConsistencyError(u"docs", self, self.docs[i]._parent)
 
         self._dirty = False
 
@@ -84,11 +84,11 @@ class DefaultEndianExprIsLe(ReadWriteKaitaiStruct):
 
         def _check(self):
             if len(self.indicator) != 2:
-                raise kaitaistruct.ConsistencyError(u"indicator", len(self.indicator), 2)
+                raise kaitaistruct.ConsistencyError(u"indicator", 2, len(self.indicator))
             if self.main._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"main", self.main._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"main", self._root, self.main._root)
             if self.main._parent != self:
-                raise kaitaistruct.ConsistencyError(u"main", self.main._parent, self)
+                raise kaitaistruct.ConsistencyError(u"main", self, self.main._parent)
             self._dirty = False
 
         class MainObj(ReadWriteKaitaiStruct):

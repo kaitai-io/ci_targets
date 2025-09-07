@@ -50,7 +50,7 @@ class TypeTernary(ReadWriteKaitaiStruct):
             def handler(parent, _io__raw_dif_wo_hack=_io__raw_dif_wo_hack):
                 self._raw_dif_wo_hack = _io__raw_dif_wo_hack.to_byte_array()
                 if len(self._raw_dif_wo_hack) != 1:
-                    raise kaitaistruct.ConsistencyError(u"raw(dif_wo_hack)", len(self._raw_dif_wo_hack), 1)
+                    raise kaitaistruct.ConsistencyError(u"raw(dif_wo_hack)", 1, len(self._raw_dif_wo_hack))
                 parent.write_bytes(self._raw_dif_wo_hack)
             _io__raw_dif_wo_hack.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self.dif_wo_hack._write__seq(_io__raw_dif_wo_hack)
@@ -64,7 +64,7 @@ class TypeTernary(ReadWriteKaitaiStruct):
             self._raw_dif_with_hack = _io__raw_dif_with_hack.to_byte_array()
             self._raw__raw_dif_with_hack = KaitaiStream.process_xor_one(self._raw_dif_with_hack, _process_val)
             if len(self._raw__raw_dif_with_hack) != 1:
-                raise kaitaistruct.ConsistencyError(u"raw(dif_with_hack)", len(self._raw__raw_dif_with_hack), 1)
+                raise kaitaistruct.ConsistencyError(u"raw(dif_with_hack)", 1, len(self._raw__raw_dif_with_hack))
             parent.write_bytes(self._raw__raw_dif_with_hack)
         _io__raw_dif_with_hack.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.dif_with_hack._write__seq(_io__raw_dif_with_hack)
@@ -74,14 +74,14 @@ class TypeTernary(ReadWriteKaitaiStruct):
         if (not (self.is_hack)):
             pass
             if self.dif_wo_hack._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"dif_wo_hack", self.dif_wo_hack._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"dif_wo_hack", self._root, self.dif_wo_hack._root)
             if self.dif_wo_hack._parent != self:
-                raise kaitaistruct.ConsistencyError(u"dif_wo_hack", self.dif_wo_hack._parent, self)
+                raise kaitaistruct.ConsistencyError(u"dif_wo_hack", self, self.dif_wo_hack._parent)
 
         if self.dif_with_hack._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"dif_with_hack", self.dif_with_hack._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"dif_with_hack", self._root, self.dif_with_hack._root)
         if self.dif_with_hack._parent != self:
-            raise kaitaistruct.ConsistencyError(u"dif_with_hack", self.dif_with_hack._parent, self)
+            raise kaitaistruct.ConsistencyError(u"dif_with_hack", self, self.dif_with_hack._parent)
         self._dirty = False
 
     class Dummy(ReadWriteKaitaiStruct):

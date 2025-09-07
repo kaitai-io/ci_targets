@@ -38,9 +38,9 @@ class ImportsParamsDefEnumImported(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.two.pet_1_param != self.one.pet_1:
-            raise kaitaistruct.ConsistencyError(u"two", self.two.pet_1_param, self.one.pet_1)
+            raise kaitaistruct.ConsistencyError(u"two", self.one.pet_1, self.two.pet_1_param)
         if self.two.pet_2_param != self.one.pet_2:
-            raise kaitaistruct.ConsistencyError(u"two", self.two.pet_2_param, self.one.pet_2)
+            raise kaitaistruct.ConsistencyError(u"two", self.one.pet_2, self.two.pet_2_param)
         self._dirty = False
 
 

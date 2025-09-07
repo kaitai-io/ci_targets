@@ -53,12 +53,12 @@ public class FixedContents extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.normal.length != 6)
-            throw new ConsistencyError("normal", this.normal.length, 6);
+            throw new ConsistencyError("normal", 6, this.normal.length);
         if (!(Arrays.equals(this.normal, new byte[] { 80, 65, 67, 75, 45, 49 }))) {
             throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 49 }, this.normal, null, "/seq/0");
         }
         if (this.highBit8.length != 2)
-            throw new ConsistencyError("high_bit_8", this.highBit8.length, 2);
+            throw new ConsistencyError("high_bit_8", 2, this.highBit8.length);
         if (!(Arrays.equals(this.highBit8, new byte[] { -1, -1 }))) {
             throw new KaitaiStream.ValidationNotEqualError(new byte[] { -1, -1 }, this.highBit8, null, "/seq/1");
         }

@@ -73,18 +73,18 @@ public class IndexToParamExpr extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (this.sizes.size() != qty())
-            throw new ConsistencyError("sizes", this.sizes.size(), qty());
+            throw new ConsistencyError("sizes", qty(), this.sizes.size());
         for (int i = 0; i < this.sizes.size(); i++) {
         }
         if (this.blocks.size() != qty())
-            throw new ConsistencyError("blocks", this.blocks.size(), qty());
+            throw new ConsistencyError("blocks", qty(), this.blocks.size());
         for (int i = 0; i < this.blocks.size(); i++) {
             if (!Objects.equals(this.blocks.get(((Number) (i)).intValue())._root(), _root()))
-                throw new ConsistencyError("blocks", this.blocks.get(((Number) (i)).intValue())._root(), _root());
+                throw new ConsistencyError("blocks", _root(), this.blocks.get(((Number) (i)).intValue())._root());
             if (!Objects.equals(this.blocks.get(((Number) (i)).intValue())._parent(), this))
-                throw new ConsistencyError("blocks", this.blocks.get(((Number) (i)).intValue())._parent(), this);
+                throw new ConsistencyError("blocks", this, this.blocks.get(((Number) (i)).intValue())._parent());
             if (this.blocks.get(((Number) (i)).intValue()).idx() != i)
-                throw new ConsistencyError("blocks", this.blocks.get(((Number) (i)).intValue()).idx(), i);
+                throw new ConsistencyError("blocks", i, this.blocks.get(((Number) (i)).intValue()).idx());
         }
         _dirty = false;
     }
@@ -122,7 +122,7 @@ public class IndexToParamExpr extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if ((this.buf).getBytes(Charset.forName("ASCII")).length != _root().sizes().get(((Number) (idx())).intValue()))
-                throw new ConsistencyError("buf", (this.buf).getBytes(Charset.forName("ASCII")).length, _root().sizes().get(((Number) (idx())).intValue()));
+                throw new ConsistencyError("buf", _root().sizes().get(((Number) (idx())).intValue()), (this.buf).getBytes(Charset.forName("ASCII")).length);
             _dirty = false;
         }
         private String buf;

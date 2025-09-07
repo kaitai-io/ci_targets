@@ -48,7 +48,7 @@ class ExprIfIntOps(ReadWriteKaitaiStruct):
         self._io.write_bytes(self.skip)
         self._raw_bytes = KaitaiStream.process_xor_one(self.bytes, self.key)
         if len(self._raw_bytes) != 8:
-            raise kaitaistruct.ConsistencyError(u"bytes", len(self._raw_bytes), 8)
+            raise kaitaistruct.ConsistencyError(u"bytes", 8, len(self._raw_bytes))
         self._io.write_bytes(self._raw_bytes)
         for i in range(len(self.items)):
             pass
@@ -61,9 +61,9 @@ class ExprIfIntOps(ReadWriteKaitaiStruct):
             pass
 
         if len(self.skip) != 8:
-            raise kaitaistruct.ConsistencyError(u"skip", len(self.skip), 8)
+            raise kaitaistruct.ConsistencyError(u"skip", 8, len(self.skip))
         if len(self.items) != 4:
-            raise kaitaistruct.ConsistencyError(u"items", len(self.items), 4)
+            raise kaitaistruct.ConsistencyError(u"items", 4, len(self.items))
         for i in range(len(self.items)):
             pass
 

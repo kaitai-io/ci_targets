@@ -30,7 +30,7 @@ class EofExceptionBytes(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.buf) != 13:
-            raise kaitaistruct.ConsistencyError(u"buf", len(self.buf), 13)
+            raise kaitaistruct.ConsistencyError(u"buf", 13, len(self.buf))
         self._dirty = False
 
 

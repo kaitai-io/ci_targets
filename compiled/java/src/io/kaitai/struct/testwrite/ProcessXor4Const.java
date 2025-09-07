@@ -45,12 +45,12 @@ public class ProcessXor4Const extends KaitaiStruct.ReadWrite {
         this._raw_buf = KaitaiStream.processXor(this.buf, new byte[] { -20, -69, -93, 20 });
         this._io.writeBytes(this._raw_buf);
         if (!(this._io.isEof()))
-            throw new ConsistencyError("buf", this._io.size() - this._io.pos(), 0);
+            throw new ConsistencyError("buf", 0, this._io.size() - this._io.pos());
     }
 
     public void _check() {
         if (this.key.length != 4)
-            throw new ConsistencyError("key", this.key.length, 4);
+            throw new ConsistencyError("key", 4, this.key.length);
         _dirty = false;
     }
     private byte[] key;

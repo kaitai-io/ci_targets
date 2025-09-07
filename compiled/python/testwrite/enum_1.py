@@ -33,9 +33,9 @@ class Enum1(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.main._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"main", self.main._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"main", self._root, self.main._root)
         if self.main._parent != self:
-            raise kaitaistruct.ConsistencyError(u"main", self.main._parent, self)
+            raise kaitaistruct.ConsistencyError(u"main", self, self.main._parent)
         self._dirty = False
 
     class MainObj(ReadWriteKaitaiStruct):
@@ -67,9 +67,9 @@ class Enum1(ReadWriteKaitaiStruct):
 
         def _check(self):
             if self.submain._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"submain", self.submain._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"submain", self._root, self.submain._root)
             if self.submain._parent != self:
-                raise kaitaistruct.ConsistencyError(u"submain", self.submain._parent, self)
+                raise kaitaistruct.ConsistencyError(u"submain", self, self.submain._parent)
             self._dirty = False
 
         class SubmainObj(ReadWriteKaitaiStruct):

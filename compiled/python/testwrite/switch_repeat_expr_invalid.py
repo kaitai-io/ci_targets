@@ -79,7 +79,7 @@ class SwitchRepeatExprInvalid(ReadWriteKaitaiStruct):
                 def handler(parent, _io__raw_body=_io__raw_body, i=i):
                     self._raw_body.append(_io__raw_body.to_byte_array())
                     if len(self._raw_body[i]) != self.size:
-                        raise kaitaistruct.ConsistencyError(u"raw(body)", len(self._raw_body[i]), self.size)
+                        raise kaitaistruct.ConsistencyError(u"raw(body)", self.size, len(self._raw_body[i]))
                     parent.write_bytes(self._raw_body[i])
                 _io__raw_body.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
                 self.body[i]._write__seq(_io__raw_body)
@@ -92,7 +92,7 @@ class SwitchRepeatExprInvalid(ReadWriteKaitaiStruct):
                 def handler(parent, _io__raw_body=_io__raw_body, i=i):
                     self._raw_body.append(_io__raw_body.to_byte_array())
                     if len(self._raw_body[i]) != self.size:
-                        raise kaitaistruct.ConsistencyError(u"raw(body)", len(self._raw_body[i]), self.size)
+                        raise kaitaistruct.ConsistencyError(u"raw(body)", self.size, len(self._raw_body[i]))
                     parent.write_bytes(self._raw_body[i])
                 _io__raw_body.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
                 self.body[i]._write__seq(_io__raw_body)
@@ -104,26 +104,26 @@ class SwitchRepeatExprInvalid(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.body) != 1:
-            raise kaitaistruct.ConsistencyError(u"body", len(self.body), 1)
+            raise kaitaistruct.ConsistencyError(u"body", 1, len(self.body))
         for i in range(len(self.body)):
             pass
             _on = self.code
             if _on == 255:
                 pass
                 if self.body[i]._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"body", self.body[i]._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"body", self._root, self.body[i]._root)
                 if self.body[i]._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"body", self.body[i]._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"body", self, self.body[i]._parent)
             elif _on == 34:
                 pass
                 if self.body[i]._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"body", self.body[i]._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"body", self._root, self.body[i]._root)
                 if self.body[i]._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"body", self.body[i]._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"body", self, self.body[i]._parent)
             else:
                 pass
                 if len(self.body[i]) != self.size:
-                    raise kaitaistruct.ConsistencyError(u"body", len(self.body[i]), self.size)
+                    raise kaitaistruct.ConsistencyError(u"body", self.size, len(self.body[i]))
 
         self._dirty = False
 
@@ -146,7 +146,7 @@ class SwitchRepeatExprInvalid(ReadWriteKaitaiStruct):
             super(SwitchRepeatExprInvalid.One, self)._write__seq(io)
             self._io.write_bytes(self.first)
             if not self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"first", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"first", 0, self._io.size() - self._io.pos())
 
 
         def _check(self):
@@ -172,7 +172,7 @@ class SwitchRepeatExprInvalid(ReadWriteKaitaiStruct):
             super(SwitchRepeatExprInvalid.Two, self)._write__seq(io)
             self._io.write_bytes(self.second)
             if not self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"second", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"second", 0, self._io.size() - self._io.pos())
 
 
         def _check(self):

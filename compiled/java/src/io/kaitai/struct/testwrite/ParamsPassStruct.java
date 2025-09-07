@@ -51,15 +51,15 @@ public class ParamsPassStruct extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.first._root(), _root()))
-            throw new ConsistencyError("first", this.first._root(), _root());
+            throw new ConsistencyError("first", _root(), this.first._root());
         if (!Objects.equals(this.first._parent(), this))
-            throw new ConsistencyError("first", this.first._parent(), this);
+            throw new ConsistencyError("first", this, this.first._parent());
         if (!Objects.equals(this.one._root(), _root()))
-            throw new ConsistencyError("one", this.one._root(), _root());
+            throw new ConsistencyError("one", _root(), this.one._root());
         if (!Objects.equals(this.one._parent(), this))
-            throw new ConsistencyError("one", this.one._parent(), this);
+            throw new ConsistencyError("one", this, this.one._parent());
         if (!Objects.equals(this.one.foo(), first()))
-            throw new ConsistencyError("one", this.one.foo(), first());
+            throw new ConsistencyError("one", first(), this.one.foo());
         _dirty = false;
     }
     public static class Block extends KaitaiStruct.ReadWrite {
@@ -145,11 +145,11 @@ public class ParamsPassStruct extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (!Objects.equals(this.bar._root(), _root()))
-                throw new ConsistencyError("bar", this.bar._root(), _root());
+                throw new ConsistencyError("bar", _root(), this.bar._root());
             if (!Objects.equals(this.bar._parent(), this))
-                throw new ConsistencyError("bar", this.bar._parent(), this);
+                throw new ConsistencyError("bar", this, this.bar._parent());
             if (!Objects.equals(this.bar.foo(), foo()))
-                throw new ConsistencyError("bar", this.bar.foo(), foo());
+                throw new ConsistencyError("bar", foo(), this.bar.foo());
             _dirty = false;
         }
         public static class Baz extends KaitaiStruct.ReadWrite {

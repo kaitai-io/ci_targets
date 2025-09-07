@@ -47,24 +47,24 @@ class ParamsPassArrayStr(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.str_array) != 3:
-            raise kaitaistruct.ConsistencyError(u"str_array", len(self.str_array), 3)
+            raise kaitaistruct.ConsistencyError(u"str_array", 3, len(self.str_array))
         for i in range(len(self.str_array)):
             pass
             if len((self.str_array[i]).encode(u"ASCII")) != 2:
-                raise kaitaistruct.ConsistencyError(u"str_array", len((self.str_array[i]).encode(u"ASCII")), 2)
+                raise kaitaistruct.ConsistencyError(u"str_array", 2, len((self.str_array[i]).encode(u"ASCII")))
 
         if self.pass_str_array._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"pass_str_array", self.pass_str_array._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"pass_str_array", self._root, self.pass_str_array._root)
         if self.pass_str_array._parent != self:
-            raise kaitaistruct.ConsistencyError(u"pass_str_array", self.pass_str_array._parent, self)
+            raise kaitaistruct.ConsistencyError(u"pass_str_array", self, self.pass_str_array._parent)
         if self.pass_str_array.strs != self.str_array:
-            raise kaitaistruct.ConsistencyError(u"pass_str_array", self.pass_str_array.strs, self.str_array)
+            raise kaitaistruct.ConsistencyError(u"pass_str_array", self.str_array, self.pass_str_array.strs)
         if self.pass_str_array_calc._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"pass_str_array_calc", self.pass_str_array_calc._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"pass_str_array_calc", self._root, self.pass_str_array_calc._root)
         if self.pass_str_array_calc._parent != self:
-            raise kaitaistruct.ConsistencyError(u"pass_str_array_calc", self.pass_str_array_calc._parent, self)
+            raise kaitaistruct.ConsistencyError(u"pass_str_array_calc", self, self.pass_str_array_calc._parent)
         if self.pass_str_array_calc.strs != self.str_array_calc:
-            raise kaitaistruct.ConsistencyError(u"pass_str_array_calc", self.pass_str_array_calc.strs, self.str_array_calc)
+            raise kaitaistruct.ConsistencyError(u"pass_str_array_calc", self.str_array_calc, self.pass_str_array_calc.strs)
         self._dirty = False
 
     class WantsStrs(ReadWriteKaitaiStruct):

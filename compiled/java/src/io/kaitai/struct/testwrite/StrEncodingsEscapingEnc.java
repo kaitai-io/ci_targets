@@ -76,7 +76,7 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_str1 = _io__raw_str1.toByteArray();
                     if (_this._raw_str1.length != lenOf1())
-                        throw new ConsistencyError("raw(str1)", _this._raw_str1.length, lenOf1());
+                        throw new ConsistencyError("raw(str1)", lenOf1(), _this._raw_str1.length);
                     parent.writeBytes(_this._raw_str1);
                 }
             });
@@ -94,7 +94,7 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_str2 = _io__raw_str2.toByteArray();
                     if (_this._raw_str2.length != lenOf2())
-                        throw new ConsistencyError("raw(str2)", _this._raw_str2.length, lenOf2());
+                        throw new ConsistencyError("raw(str2)", lenOf2(), _this._raw_str2.length);
                     parent.writeBytes(_this._raw_str2);
                 }
             });
@@ -112,7 +112,7 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_str3 = _io__raw_str3.toByteArray();
                     if (_this._raw_str3.length != lenOf3())
-                        throw new ConsistencyError("raw(str3)", _this._raw_str3.length, lenOf3());
+                        throw new ConsistencyError("raw(str3)", lenOf3(), _this._raw_str3.length);
                     parent.writeBytes(_this._raw_str3);
                 }
             });
@@ -130,7 +130,7 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct.ReadWrite {
                 protected void write(KaitaiStream parent) {
                     _this._raw_str4 = _io__raw_str4.toByteArray();
                     if (_this._raw_str4.length != lenOf4())
-                        throw new ConsistencyError("raw(str4)", _this._raw_str4.length, lenOf4());
+                        throw new ConsistencyError("raw(str4)", lenOf4(), _this._raw_str4.length);
                     parent.writeBytes(_this._raw_str4);
                 }
             });
@@ -140,21 +140,21 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.str1._root(), _root()))
-            throw new ConsistencyError("str1", this.str1._root(), _root());
+            throw new ConsistencyError("str1", _root(), this.str1._root());
         if (!Objects.equals(this.str1._parent(), this))
-            throw new ConsistencyError("str1", this.str1._parent(), this);
+            throw new ConsistencyError("str1", this, this.str1._parent());
         if (!Objects.equals(this.str2._root(), _root()))
-            throw new ConsistencyError("str2", this.str2._root(), _root());
+            throw new ConsistencyError("str2", _root(), this.str2._root());
         if (!Objects.equals(this.str2._parent(), this))
-            throw new ConsistencyError("str2", this.str2._parent(), this);
+            throw new ConsistencyError("str2", this, this.str2._parent());
         if (!Objects.equals(this.str3._root(), _root()))
-            throw new ConsistencyError("str3", this.str3._root(), _root());
+            throw new ConsistencyError("str3", _root(), this.str3._root());
         if (!Objects.equals(this.str3._parent(), this))
-            throw new ConsistencyError("str3", this.str3._parent(), this);
+            throw new ConsistencyError("str3", this, this.str3._parent());
         if (!Objects.equals(this.str4._root(), _root()))
-            throw new ConsistencyError("str4", this.str4._root(), _root());
+            throw new ConsistencyError("str4", _root(), this.str4._root());
         if (!Objects.equals(this.str4._parent(), this))
-            throw new ConsistencyError("str4", this.str4._parent(), this);
+            throw new ConsistencyError("str4", this, this.str4._parent());
         _dirty = false;
     }
     public static class Str1Wrapper extends KaitaiStruct.ReadWrite {
@@ -223,7 +223,7 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct.ReadWrite {
             this._io.seek(0);
             this._io.writeBytes((this.v).getBytes(Charset.forName("ASCII\\\\x")));
             if (!(this._io.isEof()))
-                throw new ConsistencyError("v", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("v", 0, this._io.size() - this._io.pos());
             this._io.seek(_pos);
         }
         private StrEncodingsEscapingEnc _root;
@@ -299,7 +299,7 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct.ReadWrite {
             this._io.seek(0);
             this._io.writeBytes((this.v).getBytes(Charset.forName("UTF-8\\'x")));
             if (!(this._io.isEof()))
-                throw new ConsistencyError("v", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("v", 0, this._io.size() - this._io.pos());
             this._io.seek(_pos);
         }
         private StrEncodingsEscapingEnc _root;
@@ -375,7 +375,7 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct.ReadWrite {
             this._io.seek(0);
             this._io.writeBytes((this.v).getBytes(Charset.forName("SJIS\\\"x")));
             if (!(this._io.isEof()))
-                throw new ConsistencyError("v", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("v", 0, this._io.size() - this._io.pos());
             this._io.seek(_pos);
         }
         private StrEncodingsEscapingEnc _root;
@@ -451,7 +451,7 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct.ReadWrite {
             this._io.seek(0);
             this._io.writeBytes((this.v).getBytes(Charset.forName("IBM437\\nx")));
             if (!(this._io.isEof()))
-                throw new ConsistencyError("v", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("v", 0, this._io.size() - this._io.pos());
             this._io.seek(_pos);
         }
         private StrEncodingsEscapingEnc _root;

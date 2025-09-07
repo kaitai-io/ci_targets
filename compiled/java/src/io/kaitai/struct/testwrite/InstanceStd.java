@@ -49,7 +49,7 @@ public class InstanceStd extends KaitaiStruct.ReadWrite {
     public void _check() {
         if (_enabledHeader) {
             if ((this.header).getBytes(Charset.forName("ASCII")).length != 5)
-                throw new ConsistencyError("header", (this.header).getBytes(Charset.forName("ASCII")).length, 5);
+                throw new ConsistencyError("header", 5, (this.header).getBytes(Charset.forName("ASCII")).length);
         }
         _dirty = false;
     }

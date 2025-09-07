@@ -92,16 +92,16 @@ public class DebugSwitchUser extends KaitaiStruct.ReadWrite {
         switch (code()) {
         case 1: {
             if (!Objects.equals(((DebugSwitchUser.One) (this.data))._root(), _root()))
-                throw new ConsistencyError("data", ((DebugSwitchUser.One) (this.data))._root(), _root());
+                throw new ConsistencyError("data", _root(), ((DebugSwitchUser.One) (this.data))._root());
             if (!Objects.equals(((DebugSwitchUser.One) (this.data))._parent(), this))
-                throw new ConsistencyError("data", ((DebugSwitchUser.One) (this.data))._parent(), this);
+                throw new ConsistencyError("data", this, ((DebugSwitchUser.One) (this.data))._parent());
             break;
         }
         case 2: {
             if (!Objects.equals(((DebugSwitchUser.Two) (this.data))._root(), _root()))
-                throw new ConsistencyError("data", ((DebugSwitchUser.Two) (this.data))._root(), _root());
+                throw new ConsistencyError("data", _root(), ((DebugSwitchUser.Two) (this.data))._root());
             if (!Objects.equals(((DebugSwitchUser.Two) (this.data))._parent(), this))
-                throw new ConsistencyError("data", ((DebugSwitchUser.Two) (this.data))._parent(), this);
+                throw new ConsistencyError("data", this, ((DebugSwitchUser.Two) (this.data))._parent());
             break;
         }
         }

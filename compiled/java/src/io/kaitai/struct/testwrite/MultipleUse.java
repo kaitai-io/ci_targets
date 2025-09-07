@@ -51,13 +51,13 @@ public class MultipleUse extends KaitaiStruct.ReadWrite {
 
     public void _check() {
         if (!Objects.equals(this.t1._root(), _root()))
-            throw new ConsistencyError("t1", this.t1._root(), _root());
+            throw new ConsistencyError("t1", _root(), this.t1._root());
         if (!Objects.equals(this.t1._parent(), this))
-            throw new ConsistencyError("t1", this.t1._parent(), this);
+            throw new ConsistencyError("t1", this, this.t1._parent());
         if (!Objects.equals(this.t2._root(), _root()))
-            throw new ConsistencyError("t2", this.t2._root(), _root());
+            throw new ConsistencyError("t2", _root(), this.t2._root());
         if (!Objects.equals(this.t2._parent(), this))
-            throw new ConsistencyError("t2", this.t2._parent(), this);
+            throw new ConsistencyError("t2", this, this.t2._parent());
         _dirty = false;
     }
     public static class Multi extends KaitaiStruct.ReadWrite {
@@ -145,9 +145,9 @@ public class MultipleUse extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             if (!Objects.equals(this.firstUse._root(), _root()))
-                throw new ConsistencyError("first_use", this.firstUse._root(), _root());
+                throw new ConsistencyError("first_use", _root(), this.firstUse._root());
             if (!Objects.equals(this.firstUse._parent(), this))
-                throw new ConsistencyError("first_use", this.firstUse._parent(), this);
+                throw new ConsistencyError("first_use", this, this.firstUse._parent());
             _dirty = false;
         }
         private Multi firstUse;
@@ -200,9 +200,9 @@ public class MultipleUse extends KaitaiStruct.ReadWrite {
         public void _check() {
             if (_enabledSecondUse) {
                 if (!Objects.equals(this.secondUse._root(), _root()))
-                    throw new ConsistencyError("second_use", this.secondUse._root(), _root());
+                    throw new ConsistencyError("second_use", _root(), this.secondUse._root());
                 if (!Objects.equals(this.secondUse._parent(), this))
-                    throw new ConsistencyError("second_use", this.secondUse._parent(), this);
+                    throw new ConsistencyError("second_use", this, this.secondUse._parent());
             }
             _dirty = false;
         }

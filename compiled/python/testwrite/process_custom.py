@@ -39,18 +39,18 @@ class ProcessCustom(ReadWriteKaitaiStruct):
         _process_buf1 = MyCustomFx(7, True, b"\x20\x30\x40")
         self._raw_buf1 = _process_buf1.encode(self.buf1)
         if len(self._raw_buf1) != 5:
-            raise kaitaistruct.ConsistencyError(u"buf1", len(self._raw_buf1), 5)
+            raise kaitaistruct.ConsistencyError(u"buf1", 5, len(self._raw_buf1))
         self._io.write_bytes(self._raw_buf1)
         _process_buf2 = nested.deeply.CustomFx(7)
         self._raw_buf2 = _process_buf2.encode(self.buf2)
         if len(self._raw_buf2) != 5:
-            raise kaitaistruct.ConsistencyError(u"buf2", len(self._raw_buf2), 5)
+            raise kaitaistruct.ConsistencyError(u"buf2", 5, len(self._raw_buf2))
         self._io.write_bytes(self._raw_buf2)
         self._io.write_u1(self.key)
         _process_buf3 = MyCustomFx(self.key, False, b"\x00")
         self._raw_buf3 = _process_buf3.encode(self.buf3)
         if len(self._raw_buf3) != 5:
-            raise kaitaistruct.ConsistencyError(u"buf3", len(self._raw_buf3), 5)
+            raise kaitaistruct.ConsistencyError(u"buf3", 5, len(self._raw_buf3))
         self._io.write_bytes(self._raw_buf3)
 
 

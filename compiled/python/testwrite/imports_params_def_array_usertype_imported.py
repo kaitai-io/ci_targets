@@ -50,12 +50,12 @@ class ImportsParamsDefArrayUsertypeImported(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.hws) != 2:
-            raise kaitaistruct.ConsistencyError(u"hws", len(self.hws), 2)
+            raise kaitaistruct.ConsistencyError(u"hws", 2, len(self.hws))
         for i in range(len(self.hws)):
             pass
 
         if self.two.hws_param != self.hws:
-            raise kaitaistruct.ConsistencyError(u"two", self.two.hws_param, self.hws)
+            raise kaitaistruct.ConsistencyError(u"two", self.hws, self.two.hws_param)
         self._dirty = False
 
 

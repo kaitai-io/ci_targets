@@ -41,20 +41,20 @@ class SwitchManualIntSizeEos(ReadWriteKaitaiStruct):
         for i in range(len(self.chunks)):
             pass
             if self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"chunks", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"chunks", 0, self._io.size() - self._io.pos())
             self.chunks[i]._write__seq(self._io)
 
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"chunks", self._io.size() - self._io.pos(), 0)
+            raise kaitaistruct.ConsistencyError(u"chunks", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):
         for i in range(len(self.chunks)):
             pass
             if self.chunks[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"chunks", self.chunks[i]._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"chunks", self._root, self.chunks[i]._root)
             if self.chunks[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"chunks", self.chunks[i]._parent, self)
+                raise kaitaistruct.ConsistencyError(u"chunks", self, self.chunks[i]._parent)
 
         self._dirty = False
 
@@ -90,7 +90,7 @@ class SwitchManualIntSizeEos(ReadWriteKaitaiStruct):
             def handler(parent, _io__raw_body=_io__raw_body):
                 self._raw_body = _io__raw_body.to_byte_array()
                 if len(self._raw_body) != self.size:
-                    raise kaitaistruct.ConsistencyError(u"raw(body)", len(self._raw_body), self.size)
+                    raise kaitaistruct.ConsistencyError(u"raw(body)", self.size, len(self._raw_body))
                 parent.write_bytes(self._raw_body)
             _io__raw_body.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self.body._write__seq(_io__raw_body)
@@ -98,9 +98,9 @@ class SwitchManualIntSizeEos(ReadWriteKaitaiStruct):
 
         def _check(self):
             if self.body._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"body", self.body._root, self._root)
+                raise kaitaistruct.ConsistencyError(u"body", self._root, self.body._root)
             if self.body._parent != self:
-                raise kaitaistruct.ConsistencyError(u"body", self.body._parent, self)
+                raise kaitaistruct.ConsistencyError(u"body", self, self.body._parent)
             self._dirty = False
 
 
@@ -156,7 +156,7 @@ class SwitchManualIntSizeEos(ReadWriteKaitaiStruct):
                     self._raw_body = _io__raw_body.to_byte_array()
                     parent.write_bytes(self._raw_body)
                     if not parent.is_eof():
-                        raise kaitaistruct.ConsistencyError(u"raw(body)", parent.size() - parent.pos(), 0)
+                        raise kaitaistruct.ConsistencyError(u"raw(body)", 0, parent.size() - parent.pos())
                 _io__raw_body.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
                 self.body._write__seq(_io__raw_body)
             elif _on == 34:
@@ -169,14 +169,14 @@ class SwitchManualIntSizeEos(ReadWriteKaitaiStruct):
                     self._raw_body = _io__raw_body.to_byte_array()
                     parent.write_bytes(self._raw_body)
                     if not parent.is_eof():
-                        raise kaitaistruct.ConsistencyError(u"raw(body)", parent.size() - parent.pos(), 0)
+                        raise kaitaistruct.ConsistencyError(u"raw(body)", 0, parent.size() - parent.pos())
                 _io__raw_body.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
                 self.body._write__seq(_io__raw_body)
             else:
                 pass
                 self._io.write_bytes(self.body)
                 if not self._io.is_eof():
-                    raise kaitaistruct.ConsistencyError(u"body", self._io.size() - self._io.pos(), 0)
+                    raise kaitaistruct.ConsistencyError(u"body", 0, self._io.size() - self._io.pos())
 
 
         def _check(self):
@@ -184,15 +184,15 @@ class SwitchManualIntSizeEos(ReadWriteKaitaiStruct):
             if _on == 17:
                 pass
                 if self.body._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"body", self.body._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"body", self._root, self.body._root)
                 if self.body._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"body", self.body._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"body", self, self.body._parent)
             elif _on == 34:
                 pass
                 if self.body._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"body", self.body._root, self._root)
+                    raise kaitaistruct.ConsistencyError(u"body", self._root, self.body._root)
                 if self.body._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"body", self.body._parent, self)
+                    raise kaitaistruct.ConsistencyError(u"body", self, self.body._parent)
             else:
                 pass
             self._dirty = False
@@ -225,18 +225,18 @@ class SwitchManualIntSizeEos(ReadWriteKaitaiStruct):
                 for i in range(len(self.entries)):
                     pass
                     if self._io.is_eof():
-                        raise kaitaistruct.ConsistencyError(u"entries", self._io.size() - self._io.pos(), 0)
+                        raise kaitaistruct.ConsistencyError(u"entries", 0, self._io.size() - self._io.pos())
                     self._io.write_bytes((self.entries[i]).encode(u"UTF-8"))
 
                 if not self._io.is_eof():
-                    raise kaitaistruct.ConsistencyError(u"entries", self._io.size() - self._io.pos(), 0)
+                    raise kaitaistruct.ConsistencyError(u"entries", 0, self._io.size() - self._io.pos())
 
 
             def _check(self):
                 for i in range(len(self.entries)):
                     pass
                     if len((self.entries[i]).encode(u"UTF-8")) != 4:
-                        raise kaitaistruct.ConsistencyError(u"entries", len((self.entries[i]).encode(u"UTF-8")), 4)
+                        raise kaitaistruct.ConsistencyError(u"entries", 4, len((self.entries[i]).encode(u"UTF-8")))
 
                 self._dirty = False
 
@@ -267,9 +267,9 @@ class SwitchManualIntSizeEos(ReadWriteKaitaiStruct):
 
             def _check(self):
                 if KaitaiStream.byte_array_index_of((self.title).encode(u"UTF-8"), 0) != -1:
-                    raise kaitaistruct.ConsistencyError(u"title", KaitaiStream.byte_array_index_of((self.title).encode(u"UTF-8"), 0), -1)
+                    raise kaitaistruct.ConsistencyError(u"title", -1, KaitaiStream.byte_array_index_of((self.title).encode(u"UTF-8"), 0))
                 if KaitaiStream.byte_array_index_of((self.author).encode(u"UTF-8"), 0) != -1:
-                    raise kaitaistruct.ConsistencyError(u"author", KaitaiStream.byte_array_index_of((self.author).encode(u"UTF-8"), 0), -1)
+                    raise kaitaistruct.ConsistencyError(u"author", -1, KaitaiStream.byte_array_index_of((self.author).encode(u"UTF-8"), 0))
                 self._dirty = False
 
 

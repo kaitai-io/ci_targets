@@ -41,7 +41,7 @@ class ExprIoEof(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_substream1=_io__raw_substream1):
             self._raw_substream1 = _io__raw_substream1.to_byte_array()
             if len(self._raw_substream1) != 4:
-                raise kaitaistruct.ConsistencyError(u"raw(substream1)", len(self._raw_substream1), 4)
+                raise kaitaistruct.ConsistencyError(u"raw(substream1)", 4, len(self._raw_substream1))
             parent.write_bytes(self._raw_substream1)
         _io__raw_substream1.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.substream1._write__seq(_io__raw_substream1)
@@ -52,7 +52,7 @@ class ExprIoEof(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_substream2=_io__raw_substream2):
             self._raw_substream2 = _io__raw_substream2.to_byte_array()
             if len(self._raw_substream2) != 8:
-                raise kaitaistruct.ConsistencyError(u"raw(substream2)", len(self._raw_substream2), 8)
+                raise kaitaistruct.ConsistencyError(u"raw(substream2)", 8, len(self._raw_substream2))
             parent.write_bytes(self._raw_substream2)
         _io__raw_substream2.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.substream2._write__seq(_io__raw_substream2)
@@ -60,13 +60,13 @@ class ExprIoEof(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.substream1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"substream1", self.substream1._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"substream1", self._root, self.substream1._root)
         if self.substream1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"substream1", self.substream1._parent, self)
+            raise kaitaistruct.ConsistencyError(u"substream1", self, self.substream1._parent)
         if self.substream2._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"substream2", self.substream2._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"substream2", self._root, self.substream2._root)
         if self.substream2._parent != self:
-            raise kaitaistruct.ConsistencyError(u"substream2", self.substream2._parent, self)
+            raise kaitaistruct.ConsistencyError(u"substream2", self, self.substream2._parent)
         self._dirty = False
 
     class OneOrTwo(ReadWriteKaitaiStruct):

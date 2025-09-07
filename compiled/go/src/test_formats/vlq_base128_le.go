@@ -20,11 +20,21 @@ import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
  *   <https://lucene.apache.org/core/3_5_0/fileformats.html#VInt>
  * * Apache Avro uses this as a basis for integer encoding, adding ZigZag on
  *   top of it for signed ints
- *   <https://avro.apache.org/docs/current/spec.html#binary_encode_primitive>
+ *   <https://avro.apache.org/docs/1.12.0/specification/#primitive-types-1>
  * 
  * More information on this encoding is available at <https://en.wikipedia.org/wiki/LEB128>
  * 
- * This particular implementation supports serialized values to up 8 bytes long.
+ * This particular implementation supports integer values up to 64 bits (i.e. the
+ * maximum unsigned value supported is `2**64 - 1`), which implies that serialized
+ * values can be up to 10 bytes in length.
+ * 
+ * If the most significant 10th byte (`groups[9]`) is present, its `has_next`
+ * must be `false` (otherwise we would have 11 or more bytes, which is not
+ * supported) and its `value` can be only `0` or `1` (because a 9-byte VLQ can
+ * represent `9 * 7 = 63` bits already, so the 10th byte can only add 1 bit,
+ * since only integers up to 64 bits are supported). These restrictions are
+ * enforced by this implementation. They were inspired by the Protoscope tool,
+ * see <https://github.com/protocolbuffers/protoscope/blob/8e7a6aafa2c9958527b1e0747e66e1bfff045819/writer.go#L644-L648>.
  */
 type VlqBase128Le struct {
 	Groups []*VlqBase128Le_Group
@@ -55,12 +65,34 @@ func (this *VlqBase128Le) Read(io *kaitai.Stream, parent kaitai.Struct, root *Vl
 	this._root = root
 
 	for i := 1;; i++ {
-		tmp1 := NewVlqBase128Le_Group()
-		err = tmp1.Read(this._io, this, this._root)
+		var tmp1 uint64;
+		if (i != 0) {
+			tmp2, err := this.Groups[i - 1].IntermValue()
+			if err != nil {
+				return err
+			}
+			tmp1 = tmp2
+		} else {
+			tmp1 = 0
+		}
+		var tmp3 int;
+		if (i != 0) {
+			var tmp4 int;
+			if (i == 9) {
+				tmp4 = uint64(9223372036854775808)
+			} else {
+				tmp4 = this.Groups[i - 1].Multiplier * 128
+			}
+			tmp3 = tmp4
+		} else {
+			tmp3 = 1
+		}
+		tmp5 := NewVlqBase128Le_Group(i, tmp1, tmp3)
+		err = tmp5.Read(this._io, this, this._root)
 		if err != nil {
 			return err
 		}
-		_it := tmp1
+		_it := tmp5
 		this.Groups = append(this.Groups, _it)
 		if !(_it.HasNext) {
 			break
@@ -81,11 +113,18 @@ func (this *VlqBase128Le) SignBit() (v uint64, err error) {
 		return this.signBit, nil
 	}
 	this._f_signBit = true
-	tmp2, err := this.Len()
+	var tmp6 int;
+	tmp7, err := this.Len()
 	if err != nil {
 		return 0, err
 	}
-	this.signBit = uint64(uint64(uint64(1) << (7 * tmp2 - 1)))
+	if (tmp7 == 10) {
+		tmp6 = uint64(9223372036854775808)
+	} else {
+		tmp8 := this.Groups
+		tmp6 = tmp8[len(tmp8) - 1].Multiplier * 64
+	}
+	this.signBit = uint64(uint64(tmp6))
 	return this.signBit, nil
 }
 
@@ -97,101 +136,54 @@ func (this *VlqBase128Le) Value() (v uint64, err error) {
 		return this.value, nil
 	}
 	this._f_value = true
-	var tmp3 int;
-	tmp4, err := this.Len()
+	tmp9 := this.Groups
+	tmp10, err := tmp9[len(tmp9) - 1].IntermValue()
 	if err != nil {
 		return 0, err
 	}
-	if (tmp4 >= 2) {
-		tmp3 = this.Groups[1].Value << 7
-	} else {
-		tmp3 = 0
-	}
-	var tmp5 int;
-	tmp6, err := this.Len()
-	if err != nil {
-		return 0, err
-	}
-	if (tmp6 >= 3) {
-		tmp5 = this.Groups[2].Value << 14
-	} else {
-		tmp5 = 0
-	}
-	var tmp7 int;
-	tmp8, err := this.Len()
-	if err != nil {
-		return 0, err
-	}
-	if (tmp8 >= 4) {
-		tmp7 = this.Groups[3].Value << 21
-	} else {
-		tmp7 = 0
-	}
-	var tmp9 int;
-	tmp10, err := this.Len()
-	if err != nil {
-		return 0, err
-	}
-	if (tmp10 >= 5) {
-		tmp9 = this.Groups[4].Value << 28
-	} else {
-		tmp9 = 0
-	}
-	var tmp11 int;
-	tmp12, err := this.Len()
-	if err != nil {
-		return 0, err
-	}
-	if (tmp12 >= 6) {
-		tmp11 = this.Groups[5].Value << 35
-	} else {
-		tmp11 = 0
-	}
-	var tmp13 int;
-	tmp14, err := this.Len()
-	if err != nil {
-		return 0, err
-	}
-	if (tmp14 >= 7) {
-		tmp13 = this.Groups[6].Value << 42
-	} else {
-		tmp13 = 0
-	}
-	var tmp15 int;
-	tmp16, err := this.Len()
-	if err != nil {
-		return 0, err
-	}
-	if (tmp16 >= 8) {
-		tmp15 = this.Groups[7].Value << 49
-	} else {
-		tmp15 = 0
-	}
-	this.value = uint64(uint64(((((((this.Groups[0].Value + tmp3) + tmp5) + tmp7) + tmp9) + tmp11) + tmp13) + tmp15))
+	this.value = uint64(tmp10)
 	return this.value, nil
 }
-
-/**
- * @see <a href="https://graphics.stanford.edu/~seander/bithacks.html#VariableSignExtend">Source</a>
- */
 func (this *VlqBase128Le) ValueSigned() (v int64, err error) {
 	if (this._f_valueSigned) {
 		return this.valueSigned, nil
 	}
 	this._f_valueSigned = true
-	tmp17, err := this.Value()
+	var tmp11 int64;
+	tmp12, err := this.SignBit()
 	if err != nil {
 		return 0, err
 	}
-	tmp18, err := this.SignBit()
+	tmp13, err := this.Value()
 	if err != nil {
 		return 0, err
 	}
-	tmp19, err := this.SignBit()
+	tmp14, err := this.SignBit()
 	if err != nil {
 		return 0, err
 	}
-	this.valueSigned = int64(int64(int64(tmp17 ^ tmp18) - int64(tmp19)))
+	if ( ((tmp12 > 0) && (tmp13 >= tmp14)) ) {
+		tmp15, err := this.SignBit()
+		if err != nil {
+			return 0, err
+		}
+		tmp16, err := this.Value()
+		if err != nil {
+			return 0, err
+		}
+		tmp17, err := this.SignBit()
+		if err != nil {
+			return 0, err
+		}
+		tmp11 = -(int64(tmp15 - (tmp16 - tmp17)))
+	} else {
+		tmp18, err := this.Value()
+		if err != nil {
+			return 0, err
+		}
+		tmp11 = int64(tmp18)
+	}
+	this.valueSigned = int64(tmp11)
 	return this.valueSigned, nil
 }
 
@@ -201,12 +193,20 @@ func (this *VlqBase128Le) ValueSigned() (v int64, err error) {
 type VlqBase128Le_Group struct {
 	HasNext bool
 	Value uint64
+	Idx int32
+	PrevIntermValue uint64
+	Multiplier uint64
 	_io *kaitai.Stream
 	_root *VlqBase128Le
 	_parent *VlqBase128Le
+	_f_intermValue bool
+	intermValue uint64
 }
-func NewVlqBase128Le_Group() *VlqBase128Le_Group {
+func NewVlqBase128Le_Group(idx int32, prevIntermValue uint64, multiplier uint64) *VlqBase128Le_Group {
 	return &VlqBase128Le_Group{
+		Idx: idx,
+		PrevIntermValue: prevIntermValue,
+		Multiplier: multiplier,
 	}
 }
 
@@ -219,23 +219,69 @@ func (this *VlqBase128Le_Group) Read(io *kaitai.Stream, parent *VlqBase128Le, ro
 	this._parent = parent
 	this._root = root
 
-	tmp20, err := this._io.ReadBitsIntBe(1)
+	tmp19, err := this._io.ReadBitsIntBe(1)
 	if err != nil {
 		return err
 	}
-	this.HasNext = tmp20 != 0
-	tmp21, err := this._io.ReadBitsIntBe(7)
+	this.HasNext = tmp19 != 0
+	var tmp20 bool;
+	if (this.Idx == 9) {
+		tmp20 = false
+	} else {
+		tmp20 = this.HasNext
+	}
+	var tmp21 bool;
+	if (this.Idx == 9) {
+		tmp21 = false
+	} else {
+		tmp21 = this.HasNext
+	}
+	if !(this.HasNext == tmp20) {
+		return kaitai.NewValidationNotEqualError(tmp21, this.HasNext, this._io, "/types/group/seq/0")
+	}
+	tmp22, err := this._io.ReadBitsIntBe(7)
 	if err != nil {
 		return err
 	}
-	this.Value = tmp21
+	this.Value = tmp22
+	var tmp23 int8;
+	if (this.Idx == 9) {
+		tmp23 = 1
+	} else {
+		tmp23 = 127
+	}
+	var tmp24 int8;
+	if (this.Idx == 9) {
+		tmp24 = 1
+	} else {
+		tmp24 = 127
+	}
+	if !(this.Value <= uint64(tmp23)) {
+		return kaitai.NewValidationGreaterThanError(uint64(tmp24), this.Value, this._io, "/types/group/seq/1")
+	}
 	return err
+}
+func (this *VlqBase128Le_Group) IntermValue() (v uint64, err error) {
+	if (this._f_intermValue) {
+		return this.intermValue, nil
+	}
+	this._f_intermValue = true
+	this.intermValue = uint64(uint64(this.PrevIntermValue + this.Value * this.Multiplier))
+	return this.intermValue, nil
 }
 
 /**
- * If true, then we have more bytes to read
+ * If `true`, then we have more bytes to read.
+ * 
+ * Since this implementation only supports serialized values up to 10
+ * bytes, this must be `false` in the 10th group (`groups[9]`).
  */
 
 /**
  * The 7-bit (base128) numeric value chunk of this group
+ * 
+ * Since this implementation only supports integer values up to 64 bits,
+ * the `value` in the 10th group (`groups[9]`) can only be `0` or `1`
+ * (otherwise the width of the represented value would be 65 bits or
+ * more, which is not supported).
  */

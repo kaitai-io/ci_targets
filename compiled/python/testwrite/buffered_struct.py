@@ -45,7 +45,7 @@ class BufferedStruct(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_block1=_io__raw_block1):
             self._raw_block1 = _io__raw_block1.to_byte_array()
             if len(self._raw_block1) != self.len1:
-                raise kaitaistruct.ConsistencyError(u"raw(block1)", len(self._raw_block1), self.len1)
+                raise kaitaistruct.ConsistencyError(u"raw(block1)", self.len1, len(self._raw_block1))
             parent.write_bytes(self._raw_block1)
         _io__raw_block1.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.block1._write__seq(_io__raw_block1)
@@ -57,7 +57,7 @@ class BufferedStruct(ReadWriteKaitaiStruct):
         def handler(parent, _io__raw_block2=_io__raw_block2):
             self._raw_block2 = _io__raw_block2.to_byte_array()
             if len(self._raw_block2) != self.len2:
-                raise kaitaistruct.ConsistencyError(u"raw(block2)", len(self._raw_block2), self.len2)
+                raise kaitaistruct.ConsistencyError(u"raw(block2)", self.len2, len(self._raw_block2))
             parent.write_bytes(self._raw_block2)
         _io__raw_block2.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.block2._write__seq(_io__raw_block2)
@@ -66,13 +66,13 @@ class BufferedStruct(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.block1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"block1", self.block1._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"block1", self._root, self.block1._root)
         if self.block1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"block1", self.block1._parent, self)
+            raise kaitaistruct.ConsistencyError(u"block1", self, self.block1._parent)
         if self.block2._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"block2", self.block2._root, self._root)
+            raise kaitaistruct.ConsistencyError(u"block2", self._root, self.block2._root)
         if self.block2._parent != self:
-            raise kaitaistruct.ConsistencyError(u"block2", self.block2._parent, self)
+            raise kaitaistruct.ConsistencyError(u"block2", self, self.block2._parent)
         self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):

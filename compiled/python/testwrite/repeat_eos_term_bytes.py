@@ -36,20 +36,20 @@ class RepeatEosTermBytes(ReadWriteKaitaiStruct):
         for i in range(len(self.records)):
             pass
             if self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"records", self._io.size() - self._io.pos(), 0)
+                raise kaitaistruct.ConsistencyError(u"records", 0, self._io.size() - self._io.pos())
             self._io.write_bytes(self.records[i])
 
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"records", self._io.size() - self._io.pos(), 0)
+            raise kaitaistruct.ConsistencyError(u"records", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):
         for i in range(len(self.records)):
             pass
             if len(self.records[i]) == 0:
-                raise kaitaistruct.ConsistencyError(u"records", len(self.records[i]), 0)
+                raise kaitaistruct.ConsistencyError(u"records", 0, len(self.records[i]))
             if KaitaiStream.byte_array_index_of(self.records[i], 178) != len(self.records[i]) - 1:
-                raise kaitaistruct.ConsistencyError(u"records", KaitaiStream.byte_array_index_of(self.records[i], 178), len(self.records[i]) - 1)
+                raise kaitaistruct.ConsistencyError(u"records", len(self.records[i]) - 1, KaitaiStream.byte_array_index_of(self.records[i], 178))
 
         self._dirty = False
 

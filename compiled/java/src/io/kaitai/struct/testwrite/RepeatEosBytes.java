@@ -52,17 +52,17 @@ public class RepeatEosBytes extends KaitaiStruct.ReadWrite {
         _assertNotDirty();
         for (int i = 0; i < this.records.size(); i++) {
             if (this._io.isEof())
-                throw new ConsistencyError("records", this._io.size() - this._io.pos(), 0);
+                throw new ConsistencyError("records", 0, this._io.size() - this._io.pos());
             this._io.writeBytes(this.records.get(((Number) (i)).intValue()));
         }
         if (!(this._io.isEof()))
-            throw new ConsistencyError("records", this._io.size() - this._io.pos(), 0);
+            throw new ConsistencyError("records", 0, this._io.size() - this._io.pos());
     }
 
     public void _check() {
         for (int i = 0; i < this.records.size(); i++) {
             if (this.records.get(((Number) (i)).intValue()).length != 5)
-                throw new ConsistencyError("records", this.records.get(((Number) (i)).intValue()).length, 5);
+                throw new ConsistencyError("records", 5, this.records.get(((Number) (i)).intValue()).length);
         }
         _dirty = false;
     }

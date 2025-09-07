@@ -38,7 +38,7 @@ class InstanceStd(ReadWriteKaitaiStruct):
         if self.header__enabled:
             pass
             if len((self._m_header).encode(u"ASCII")) != 5:
-                raise kaitaistruct.ConsistencyError(u"header", len((self._m_header).encode(u"ASCII")), 5)
+                raise kaitaistruct.ConsistencyError(u"header", 5, len((self._m_header).encode(u"ASCII")))
 
         self._dirty = False
 
