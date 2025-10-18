@@ -242,6 +242,8 @@ jobs:
             implementation: '3.4'
           - target: rust
             implementation: '1.89'
+          - target: zig
+            implementation: '0.15.2'
     env:
       TARGET: ${{matrix.tsv.target}}
       SUBTARGET: ${{matrix.tsv.subtarget}}
