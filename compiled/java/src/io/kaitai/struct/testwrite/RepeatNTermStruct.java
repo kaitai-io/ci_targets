@@ -232,27 +232,16 @@ public class RepeatNTermStruct extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private byte[] value;
-        private RepeatNTermStruct _root;
-        private RepeatNTermStruct _parent;
         public byte[] value() { return value; }
         public void setValue(byte[] _v) { _dirty = true; value = _v; }
         public RepeatNTermStruct _root() { return _root; }
         public void set_root(RepeatNTermStruct _v) { _dirty = true; _root = _v; }
         public RepeatNTermStruct _parent() { return _parent; }
         public void set_parent(RepeatNTermStruct _v) { _dirty = true; _parent = _v; }
+        private byte[] value;
+        private RepeatNTermStruct _root;
+        private RepeatNTermStruct _parent;
     }
-    private List<BytesWrapper> records1;
-    private List<BytesWrapper> records2;
-    private List<BytesWrapper> records3;
-    private RepeatNTermStruct _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private List<byte[]> _raw_records1;
-    private List<Integer> records1_OuterSize;
-    private List<byte[]> _raw_records2;
-    private List<Integer> records2_OuterSize;
-    private List<byte[]> _raw_records3;
-    private List<Integer> records3_OuterSize;
     public List<BytesWrapper> records1() { return records1; }
     public void setRecords1(List<BytesWrapper> _v) { _dirty = true; records1 = _v; }
     public List<BytesWrapper> records2() { return records2; }
@@ -275,4 +264,15 @@ public class RepeatNTermStruct extends KaitaiStruct.ReadWrite {
     public void set_raw_Records3(List<byte[]> _v) { _dirty = true; _raw_records3 = _v; }
     public List<Integer> records3_OuterSize() { return records3_OuterSize; }
     public void setRecords3_OuterSize(List<Integer> _v) { _dirty = true; records3_OuterSize = _v; }
+    private List<BytesWrapper> records1;
+    private List<BytesWrapper> records2;
+    private List<BytesWrapper> records3;
+    private RepeatNTermStruct _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private List<byte[]> _raw_records1;
+    private List<Integer> records1_OuterSize;
+    private List<byte[]> _raw_records2;
+    private List<Integer> records2_OuterSize;
+    private List<byte[]> _raw_records3;
+    private List<Integer> records3_OuterSize;
 }

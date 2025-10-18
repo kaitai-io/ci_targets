@@ -69,16 +69,15 @@ public class InstanceInRepeatExpr extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private long offset;
-        private long len;
-        private InstanceInRepeatExpr _root;
-        private InstanceInRepeatExpr _parent;
         public long offset() { return offset; }
         public long len() { return len; }
         public InstanceInRepeatExpr _root() { return _root; }
         public InstanceInRepeatExpr _parent() { return _parent; }
+        private long offset;
+        private long len;
+        private InstanceInRepeatExpr _root;
+        private InstanceInRepeatExpr _parent;
     }
-    private Long numChunks;
     public Long numChunks() {
         if (this.numChunks != null)
             return this.numChunks;
@@ -88,10 +87,11 @@ public class InstanceInRepeatExpr extends KaitaiStruct {
         this._io.seek(_pos);
         return this.numChunks;
     }
-    private List<Chunk> chunks;
-    private InstanceInRepeatExpr _root;
-    private KaitaiStruct _parent;
     public List<Chunk> chunks() { return chunks; }
     public InstanceInRepeatExpr _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Long numChunks;
+    private List<Chunk> chunks;
+    private InstanceInRepeatExpr _root;
+    private KaitaiStruct _parent;
 }

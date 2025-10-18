@@ -91,10 +91,6 @@ public class UserType extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private long width;
-        private long height;
-        private UserType _root;
-        private UserType _parent;
         public long width() { return width; }
         public void setWidth(long _v) { _dirty = true; width = _v; }
         public long height() { return height; }
@@ -103,14 +99,18 @@ public class UserType extends KaitaiStruct.ReadWrite {
         public void set_root(UserType _v) { _dirty = true; _root = _v; }
         public UserType _parent() { return _parent; }
         public void set_parent(UserType _v) { _dirty = true; _parent = _v; }
+        private long width;
+        private long height;
+        private UserType _root;
+        private UserType _parent;
     }
-    private Header one;
-    private UserType _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Header one() { return one; }
     public void setOne(Header _v) { _dirty = true; one = _v; }
     public UserType _root() { return _root; }
     public void set_root(UserType _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Header one;
+    private UserType _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

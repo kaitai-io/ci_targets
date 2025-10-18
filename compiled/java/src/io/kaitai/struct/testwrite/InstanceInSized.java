@@ -115,9 +115,6 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private byte[] inst;
-        private boolean _shouldWriteInst = false;
-        private boolean _enabledInst = true;
         public byte[] inst() {
             if (_shouldWriteInst)
                 _writeInst();
@@ -141,15 +138,18 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
             this._io.writeBytes(this.inst);
             this._io.seek(_pos);
         }
-        private int seqF;
-        private InstanceInSized _root;
-        private InstanceInSized.Wrapper _parent;
         public int seqF() { return seqF; }
         public void setSeqF(int _v) { _dirty = true; seqF = _v; }
         public InstanceInSized _root() { return _root; }
         public void set_root(InstanceInSized _v) { _dirty = true; _root = _v; }
         public InstanceInSized.Wrapper _parent() { return _parent; }
         public void set_parent(InstanceInSized.Wrapper _v) { _dirty = true; _parent = _v; }
+        private byte[] inst;
+        private boolean _shouldWriteInst = false;
+        private boolean _enabledInst = true;
+        private int seqF;
+        private InstanceInSized _root;
+        private InstanceInSized.Wrapper _parent;
     }
     public static class Baz extends KaitaiStruct.ReadWrite {
         public static Baz fromFile(String fileName) throws IOException {
@@ -196,9 +196,6 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private byte[] inst;
-        private boolean _shouldWriteInst = false;
-        private boolean _enabledInst = true;
         public byte[] inst() {
             if (_shouldWriteInst)
                 _writeInst();
@@ -222,15 +219,18 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
             this._io.writeBytes(this.inst);
             this._io.seek(_pos);
         }
-        private int seqF;
-        private InstanceInSized _root;
-        private InstanceInSized.Wrapper _parent;
         public int seqF() { return seqF; }
         public void setSeqF(int _v) { _dirty = true; seqF = _v; }
         public InstanceInSized _root() { return _root; }
         public void set_root(InstanceInSized _v) { _dirty = true; _root = _v; }
         public InstanceInSized.Wrapper _parent() { return _parent; }
         public void set_parent(InstanceInSized.Wrapper _v) { _dirty = true; _parent = _v; }
+        private byte[] inst;
+        private boolean _shouldWriteInst = false;
+        private boolean _enabledInst = true;
+        private int seqF;
+        private InstanceInSized _root;
+        private InstanceInSized.Wrapper _parent;
     }
     public static class Qux extends KaitaiStruct.ReadWrite {
         public static Qux fromFile(String fileName) throws IOException {
@@ -289,9 +289,6 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private Integer instInvoked;
-        private boolean _shouldWriteInstInvoked = false;
-        private boolean _enabledInstInvoked = true;
         public Integer instInvoked() {
             if (_shouldWriteInstInvoked)
                 _writeInstInvoked();
@@ -315,9 +312,6 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
             this._io.writeU1(this.instInvoked);
             this._io.seek(_pos);
         }
-        private byte[] instUnusedBySeq;
-        private boolean _shouldWriteInstUnusedBySeq = false;
-        private boolean _enabledInstUnusedBySeq = true;
         public byte[] instUnusedBySeq() {
             if (_shouldWriteInstUnusedBySeq)
                 _writeInstUnusedBySeq();
@@ -341,15 +335,21 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
             this._io.writeBytes(this.instUnusedBySeq);
             this._io.seek(_pos);
         }
-        private Integer seqF;
-        private InstanceInSized _root;
-        private InstanceInSized.Wrapper _parent;
         public Integer seqF() { return seqF; }
         public void setSeqF(Integer _v) { _dirty = true; seqF = _v; }
         public InstanceInSized _root() { return _root; }
         public void set_root(InstanceInSized _v) { _dirty = true; _root = _v; }
         public InstanceInSized.Wrapper _parent() { return _parent; }
         public void set_parent(InstanceInSized.Wrapper _v) { _dirty = true; _parent = _v; }
+        private Integer instInvoked;
+        private boolean _shouldWriteInstInvoked = false;
+        private boolean _enabledInstInvoked = true;
+        private byte[] instUnusedBySeq;
+        private boolean _shouldWriteInstUnusedBySeq = false;
+        private boolean _enabledInstUnusedBySeq = true;
+        private Integer seqF;
+        private InstanceInSized _root;
+        private InstanceInSized.Wrapper _parent;
     }
     public static class Wrapper extends KaitaiStruct.ReadWrite {
         public static Wrapper fromFile(String fileName) throws IOException {
@@ -442,9 +442,6 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private Baz instInStream;
-        private boolean _shouldWriteInstInStream = false;
-        private boolean _enabledInstInStream = true;
         public Baz instInStream() {
             if (_shouldWriteInstInStream)
                 _writeInstInStream();
@@ -469,9 +466,6 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
             this.instInStream._write_Seq(this._io);
             this._io.seek(_pos);
         }
-        private Qux instSized;
-        private boolean _shouldWriteInstSized = false;
-        private boolean _enabledInstSized = true;
         public Qux instSized() {
             if (_shouldWriteInstSized)
                 _writeInstSized();
@@ -514,12 +508,6 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
             this.instSized._write_Seq(_io__raw_instSized);
             this._io.seek(_pos);
         }
-        private Qux seqSized;
-        private Bar seqInStream;
-        private InstanceInSized _root;
-        private InstanceInSized _parent;
-        private byte[] _raw_seqSized;
-        private byte[] _raw_instSized;
         public Qux seqSized() { return seqSized; }
         public void setSeqSized(Qux _v) { _dirty = true; seqSized = _v; }
         public Bar seqInStream() { return seqInStream; }
@@ -532,11 +520,19 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
         public void set_raw_SeqSized(byte[] _v) { _dirty = true; _raw_seqSized = _v; }
         public byte[] _raw_instSized() { return _raw_instSized; }
         public void set_raw_InstSized(byte[] _v) { _dirty = true; _raw_instSized = _v; }
+        private Baz instInStream;
+        private boolean _shouldWriteInstInStream = false;
+        private boolean _enabledInstInStream = true;
+        private Qux instSized;
+        private boolean _shouldWriteInstSized = false;
+        private boolean _enabledInstSized = true;
+        private Qux seqSized;
+        private Bar seqInStream;
+        private InstanceInSized _root;
+        private InstanceInSized _parent;
+        private byte[] _raw_seqSized;
+        private byte[] _raw_instSized;
     }
-    private Wrapper cont;
-    private InstanceInSized _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_cont;
     public Wrapper cont() { return cont; }
     public void setCont(Wrapper _v) { _dirty = true; cont = _v; }
     public InstanceInSized _root() { return _root; }
@@ -545,4 +541,8 @@ public class InstanceInSized extends KaitaiStruct.ReadWrite {
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_cont() { return _raw_cont; }
     public void set_raw_Cont(byte[] _v) { _dirty = true; _raw_cont = _v; }
+    private Wrapper cont;
+    private InstanceInSized _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_cont;
 }

@@ -24,95 +24,49 @@ private:
 
 public:
     ~expr_bytes_cmp_t();
-
-private:
-    bool f_ack;
-    std::string m_ack;
-
-public:
     std::string ack();
-
-private:
-    bool f_ack2;
-    std::string m_ack2;
-
-public:
     std::string ack2();
-
-private:
-    bool f_hi_val;
-    std::string m_hi_val;
-
-public:
     std::string hi_val();
-
-private:
-    bool f_is_eq;
-    bool m_is_eq;
-
-public:
     bool is_eq();
-
-private:
-    bool f_is_ge;
-    bool m_is_ge;
-
-public:
     bool is_ge();
-
-private:
-    bool f_is_gt;
-    bool m_is_gt;
-
-public:
     bool is_gt();
-
-private:
-    bool f_is_gt2;
-    bool m_is_gt2;
-
-public:
     bool is_gt2();
-
-private:
-    bool f_is_le;
-    bool m_is_le;
-
-public:
     bool is_le();
-
-private:
-    bool f_is_lt;
-    bool m_is_lt;
-
-public:
     bool is_lt();
-
-private:
-    bool f_is_lt2;
-    bool m_is_lt2;
-
-public:
     bool is_lt2();
-
-private:
-    bool f_is_ne;
-    bool m_is_ne;
-
-public:
     bool is_ne();
-
-private:
-    std::string m_one;
-    std::string m_two;
-    expr_bytes_cmp_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     std::string one() const { return m_one; }
     std::string two() const { return m_two; }
     expr_bytes_cmp_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_ack;
+    std::string m_ack;
+    bool f_ack2;
+    std::string m_ack2;
+    bool f_hi_val;
+    std::string m_hi_val;
+    bool f_is_eq;
+    bool m_is_eq;
+    bool f_is_ge;
+    bool m_is_ge;
+    bool f_is_gt;
+    bool m_is_gt;
+    bool f_is_gt2;
+    bool m_is_gt2;
+    bool f_is_le;
+    bool m_is_le;
+    bool f_is_lt;
+    bool m_is_lt;
+    bool f_is_lt2;
+    bool m_is_lt2;
+    bool f_is_ne;
+    bool m_is_ne;
+    std::string m_one;
+    std::string m_two;
+    expr_bytes_cmp_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // EXPR_BYTES_CMP_H_

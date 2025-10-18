@@ -56,10 +56,6 @@ public class ImportsCircularB extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private int initial;
-    private ImportsCircularA backRef;
-    private ImportsCircularB _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int initial() { return initial; }
     public void setInitial(int _v) { _dirty = true; initial = _v; }
     public ImportsCircularA backRef() { return backRef; }
@@ -68,4 +64,8 @@ public class ImportsCircularB extends KaitaiStruct.ReadWrite {
     public void set_root(ImportsCircularB _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private int initial;
+    private ImportsCircularA backRef;
+    private ImportsCircularB _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

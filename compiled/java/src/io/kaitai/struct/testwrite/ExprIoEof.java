@@ -141,7 +141,6 @@ public class ExprIoEof extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private Boolean reflectEof;
         public Boolean reflectEof() {
             if (this.reflectEof != null)
                 return this.reflectEof;
@@ -149,10 +148,6 @@ public class ExprIoEof extends KaitaiStruct.ReadWrite {
             return this.reflectEof;
         }
         public void _invalidateReflectEof() { this.reflectEof = null; }
-        private long one;
-        private Long two;
-        private ExprIoEof _root;
-        private ExprIoEof _parent;
         public long one() { return one; }
         public void setOne(long _v) { _dirty = true; one = _v; }
         public Long two() { return two; }
@@ -161,13 +156,12 @@ public class ExprIoEof extends KaitaiStruct.ReadWrite {
         public void set_root(ExprIoEof _v) { _dirty = true; _root = _v; }
         public ExprIoEof _parent() { return _parent; }
         public void set_parent(ExprIoEof _v) { _dirty = true; _parent = _v; }
+        private Boolean reflectEof;
+        private long one;
+        private Long two;
+        private ExprIoEof _root;
+        private ExprIoEof _parent;
     }
-    private OneOrTwo substream1;
-    private OneOrTwo substream2;
-    private ExprIoEof _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_substream1;
-    private byte[] _raw_substream2;
     public OneOrTwo substream1() { return substream1; }
     public void setSubstream1(OneOrTwo _v) { _dirty = true; substream1 = _v; }
     public OneOrTwo substream2() { return substream2; }
@@ -180,4 +174,10 @@ public class ExprIoEof extends KaitaiStruct.ReadWrite {
     public void set_raw_Substream1(byte[] _v) { _dirty = true; _raw_substream1 = _v; }
     public byte[] _raw_substream2() { return _raw_substream2; }
     public void set_raw_Substream2(byte[] _v) { _dirty = true; _raw_substream2 = _v; }
+    private OneOrTwo substream1;
+    private OneOrTwo substream2;
+    private ExprIoEof _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_substream1;
+    private byte[] _raw_substream2;
 }

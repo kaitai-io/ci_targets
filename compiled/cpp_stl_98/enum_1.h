@@ -66,40 +66,38 @@ public:
 
         public:
             ~submain_obj_t();
+            animal_t pet_1() const { return m_pet_1; }
+            animal_t pet_2() const { return m_pet_2; }
+            enum_1_t* _root() const { return m__root; }
+            enum_1_t::main_obj_t* _parent() const { return m__parent; }
 
         private:
             animal_t m_pet_1;
             animal_t m_pet_2;
             enum_1_t* m__root;
             enum_1_t::main_obj_t* m__parent;
-
-        public:
-            animal_t pet_1() const { return m_pet_1; }
-            animal_t pet_2() const { return m_pet_2; }
-            enum_1_t* _root() const { return m__root; }
-            enum_1_t::main_obj_t* _parent() const { return m__parent; }
         };
-
-    private:
-        submain_obj_t* m_submain;
-        enum_1_t* m__root;
-        enum_1_t* m__parent;
 
     public:
         submain_obj_t* submain() const { return m_submain; }
         enum_1_t* _root() const { return m__root; }
         enum_1_t* _parent() const { return m__parent; }
-    };
 
-private:
-    main_obj_t* m_main;
-    enum_1_t* m__root;
-    kaitai::kstruct* m__parent;
+    private:
+        submain_obj_t* m_submain;
+        enum_1_t* m__root;
+        enum_1_t* m__parent;
+    };
 
 public:
     main_obj_t* main() const { return m_main; }
     enum_1_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    main_obj_t* m_main;
+    enum_1_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // ENUM_1_H_

@@ -26,13 +26,13 @@ namespace Kaitai
                 _lines.Add(System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true)));
             }
         }
-        private uint _qty;
-        private List<string> _lines;
-        private RepeatNStrz m_root;
-        private KaitaiStruct m_parent;
         public uint Qty { get { return _qty; } }
         public List<string> Lines { get { return _lines; } }
         public RepeatNStrz M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private uint _qty;
+        private List<string> _lines;
+        private RepeatNStrz m_root;
+        private KaitaiStruct m_parent;
     }
 }

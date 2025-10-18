@@ -54,11 +54,6 @@ public class NestedTypesImport extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private NestedTypes3.SubtypeA.SubtypeCc aCc;
-    private NestedTypes3.SubtypeA.SubtypeC.SubtypeD aCD;
-    private NestedTypes3.SubtypeB b;
-    private NestedTypesImport _root;
-    private KaitaiStruct.ReadWrite _parent;
     public NestedTypes3.SubtypeA.SubtypeCc aCc() { return aCc; }
     public void setACc(NestedTypes3.SubtypeA.SubtypeCc _v) { _dirty = true; aCc = _v; }
     public NestedTypes3.SubtypeA.SubtypeC.SubtypeD aCD() { return aCD; }
@@ -69,4 +64,9 @@ public class NestedTypesImport extends KaitaiStruct.ReadWrite {
     public void set_root(NestedTypesImport _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private NestedTypes3.SubtypeA.SubtypeCc aCc;
+    private NestedTypes3.SubtypeA.SubtypeC.SubtypeD aCD;
+    private NestedTypes3.SubtypeB b;
+    private NestedTypesImport _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

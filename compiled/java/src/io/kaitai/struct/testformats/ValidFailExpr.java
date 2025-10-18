@@ -45,12 +45,12 @@ public class ValidFailExpr extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private int foo;
-    private short bar;
-    private ValidFailExpr _root;
-    private KaitaiStruct _parent;
     public int foo() { return foo; }
     public short bar() { return bar; }
     public ValidFailExpr _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private int foo;
+    private short bar;
+    private ValidFailExpr _root;
+    private KaitaiStruct _parent;
 }

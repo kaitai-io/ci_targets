@@ -21,10 +21,10 @@ namespace Kaitai\Struct\Tests {
                 $i++;
             } while (!($_->marker() == 170));
         }
-        protected $_m_records;
-        protected $_m__raw_records;
         public function records() { return $this->_m_records; }
         public function _raw_records() { return $this->_m__raw_records; }
+        protected $_m_records;
+        protected $_m__raw_records;
     }
 }
 
@@ -39,9 +39,9 @@ namespace Kaitai\Struct\Tests\RepeatUntilSized {
             $this->_m_marker = $this->_io->readU1();
             $this->_m_body = $this->_io->readU4le();
         }
-        protected $_m_marker;
-        protected $_m_body;
         public function marker() { return $this->_m_marker; }
         public function body() { return $this->_m_body; }
+        protected $_m_marker;
+        protected $_m_body;
     }
 }

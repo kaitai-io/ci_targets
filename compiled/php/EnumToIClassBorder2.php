@@ -11,14 +11,14 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
         }
-        protected $_m_isDog;
         public function isDog() {
             if ($this->_m_isDog !== null)
                 return $this->_m_isDog;
             $this->_m_isDog = $this->parent()->someDog() == 4;
             return $this->_m_isDog;
         }
-        protected $_m_parent;
         public function parent() { return $this->_m_parent; }
+        protected $_m_isDog;
+        protected $_m_parent;
     }
 }

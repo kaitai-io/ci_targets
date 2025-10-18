@@ -24,6 +24,12 @@ private:
 
 public:
     ~expr_io_pos_bits_t();
+    uint64_t foo() const { return m_foo; }
+    uint64_t bar() const { return m_bar; }
+    bool baz() const { return m_baz; }
+    uint64_t qux() const { return m_qux; }
+    expr_io_pos_bits_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint64_t m_foo;
@@ -50,14 +56,6 @@ public:
 private:
     expr_io_pos_bits_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint64_t foo() const { return m_foo; }
-    uint64_t bar() const { return m_bar; }
-    bool baz() const { return m_baz; }
-    uint64_t qux() const { return m_qux; }
-    expr_io_pos_bits_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // EXPR_IO_POS_BITS_H_

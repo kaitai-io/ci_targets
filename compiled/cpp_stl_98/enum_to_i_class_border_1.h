@@ -39,32 +39,22 @@ private:
 
 public:
     ~enum_to_i_class_border_1_t();
-
-private:
-    bool f_checker;
-    enum_to_i_class_border_2_t* m_checker;
-
-public:
     enum_to_i_class_border_2_t* checker();
-
-private:
-    bool f_some_dog;
-    animal_t m_some_dog;
-
-public:
     animal_t some_dog();
-
-private:
-    animal_t m_pet_1;
-    animal_t m_pet_2;
-    enum_to_i_class_border_1_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     animal_t pet_1() const { return m_pet_1; }
     animal_t pet_2() const { return m_pet_2; }
     enum_to_i_class_border_1_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_checker;
+    enum_to_i_class_border_2_t* m_checker;
+    bool f_some_dog;
+    animal_t m_some_dog;
+    animal_t m_pet_1;
+    animal_t m_pet_2;
+    enum_to_i_class_border_1_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // ENUM_TO_I_CLASS_BORDER_1_H_

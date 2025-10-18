@@ -39,18 +39,16 @@ public:
 
     public:
         ~element_1_t();
+        uint8_t foo() const { return m_foo; }
+        subelement_1_t* subelement() const { return m_subelement; }
+        nav_parent_switch_t* _root() const { return m__root; }
+        nav_parent_switch_t* _parent() const { return m__parent; }
 
     private:
         uint8_t m_foo;
         subelement_1_t* m_subelement;
         nav_parent_switch_t* m__root;
         nav_parent_switch_t* m__parent;
-
-    public:
-        uint8_t foo() const { return m_foo; }
-        subelement_1_t* subelement() const { return m_subelement; }
-        nav_parent_switch_t* _root() const { return m__root; }
-        nav_parent_switch_t* _parent() const { return m__parent; }
     };
 
     class subelement_1_t : public kaitai::kstruct {
@@ -65,6 +63,9 @@ public:
 
     public:
         ~subelement_1_t();
+        uint8_t bar() const { return m_bar; }
+        nav_parent_switch_t* _root() const { return m__root; }
+        nav_parent_switch_t::element_1_t* _parent() const { return m__parent; }
 
     private:
         uint8_t m_bar;
@@ -76,12 +77,13 @@ public:
     private:
         nav_parent_switch_t* m__root;
         nav_parent_switch_t::element_1_t* m__parent;
-
-    public:
-        uint8_t bar() const { return m_bar; }
-        nav_parent_switch_t* _root() const { return m__root; }
-        nav_parent_switch_t::element_1_t* _parent() const { return m__parent; }
     };
+
+public:
+    uint8_t category() const { return m_category; }
+    element_1_t* content() const { return m_content; }
+    nav_parent_switch_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint8_t m_category;
@@ -94,12 +96,6 @@ public:
 private:
     nav_parent_switch_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint8_t category() const { return m_category; }
-    element_1_t* content() const { return m_content; }
-    nav_parent_switch_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // NAV_PARENT_SWITCH_H_

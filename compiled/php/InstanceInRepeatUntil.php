@@ -17,7 +17,6 @@ namespace Kaitai\Struct\Tests {
                 $i++;
             } while (!($_ == $this->untilVal()));
         }
-        protected $_m_untilVal;
         public function untilVal() {
             if ($this->_m_untilVal !== null)
                 return $this->_m_untilVal;
@@ -27,7 +26,8 @@ namespace Kaitai\Struct\Tests {
             $this->_io->seek($_pos);
             return $this->_m_untilVal;
         }
-        protected $_m_entries;
         public function entries() { return $this->_m_entries; }
+        protected $_m_untilVal;
+        protected $_m_entries;
     }
 }

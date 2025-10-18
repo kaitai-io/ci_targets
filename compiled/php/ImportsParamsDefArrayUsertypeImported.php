@@ -16,9 +16,9 @@ namespace Kaitai\Struct\Tests {
             }
             $this->_m_two = new \Kaitai\Struct\Tests\ParamsDefArrayUsertypeImported($this->hws(), $this->_io);
         }
-        protected $_m_hws;
-        protected $_m_two;
         public function hws() { return $this->_m_hws; }
         public function two() { return $this->_m_two; }
+        protected $_m_hws;
+        protected $_m_two;
     }
 }

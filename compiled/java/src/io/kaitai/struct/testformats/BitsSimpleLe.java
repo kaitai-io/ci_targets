@@ -44,7 +44,6 @@ public class BitsSimpleLe extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Byte testIfB1;
     public Byte testIfB1() {
         if (this.testIfB1 != null)
             return this.testIfB1;
@@ -53,21 +52,6 @@ public class BitsSimpleLe extends KaitaiStruct {
         }
         return this.testIfB1;
     }
-    private long byte1;
-    private long byte2;
-    private boolean bitsA;
-    private long bitsB;
-    private long bitsC;
-    private long largeBits1;
-    private long spacer;
-    private long largeBits2;
-    private short normalS2;
-    private long byte8910;
-    private long byte11To14;
-    private long byte15To19;
-    private long byte20To27;
-    private BitsSimpleLe _root;
-    private KaitaiStruct _parent;
     public long byte1() { return byte1; }
     public long byte2() { return byte2; }
     public boolean bitsA() { return bitsA; }
@@ -83,4 +67,20 @@ public class BitsSimpleLe extends KaitaiStruct {
     public long byte20To27() { return byte20To27; }
     public BitsSimpleLe _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Byte testIfB1;
+    private long byte1;
+    private long byte2;
+    private boolean bitsA;
+    private long bitsB;
+    private long bitsC;
+    private long largeBits1;
+    private long spacer;
+    private long largeBits2;
+    private short normalS2;
+    private long byte8910;
+    private long byte11To14;
+    private long byte15To19;
+    private long byte20To27;
+    private BitsSimpleLe _root;
+    private KaitaiStruct _parent;
 }

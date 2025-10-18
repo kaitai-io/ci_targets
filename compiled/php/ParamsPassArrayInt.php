@@ -17,19 +17,19 @@ namespace Kaitai\Struct\Tests {
             $this->_m_passInts = new \Kaitai\Struct\Tests\ParamsPassArrayInt\WantsInts($this->ints(), $this->_io, $this, $this->_root);
             $this->_m_passIntsCalc = new \Kaitai\Struct\Tests\ParamsPassArrayInt\WantsInts($this->intsCalc(), $this->_io, $this, $this->_root);
         }
-        protected $_m_intsCalc;
         public function intsCalc() {
             if ($this->_m_intsCalc !== null)
                 return $this->_m_intsCalc;
             $this->_m_intsCalc = [27643, 7];
             return $this->_m_intsCalc;
         }
-        protected $_m_ints;
-        protected $_m_passInts;
-        protected $_m_passIntsCalc;
         public function ints() { return $this->_m_ints; }
         public function passInts() { return $this->_m_passInts; }
         public function passIntsCalc() { return $this->_m_passIntsCalc; }
+        protected $_m_intsCalc;
+        protected $_m_ints;
+        protected $_m_passInts;
+        protected $_m_passIntsCalc;
     }
 }
 
@@ -43,7 +43,7 @@ namespace Kaitai\Struct\Tests\ParamsPassArrayInt {
 
         private function _read() {
         }
-        protected $_m_nums;
         public function nums() { return $this->_m_nums; }
+        protected $_m_nums;
     }
 }

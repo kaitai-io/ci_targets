@@ -20,9 +20,9 @@ namespace Kaitai\Struct\Tests {
                 throw new \Kaitai\Struct\Error\ValidationExprError($this->_m_bar, $this->_io, "/seq/1");
             }
         }
-        protected $_m_foo;
-        protected $_m_bar;
         public function foo() { return $this->_m_foo; }
         public function bar() { return $this->_m_bar; }
+        protected $_m_foo;
+        protected $_m_bar;
     }
 }

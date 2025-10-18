@@ -82,9 +82,6 @@ public class IntegersDoubleOverflow extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private Long unsignedSafeMaxBe;
-    private boolean _shouldWriteUnsignedSafeMaxBe = false;
-    private boolean _enabledUnsignedSafeMaxBe = true;
     public Long unsignedSafeMaxBe() {
         if (_shouldWriteUnsignedSafeMaxBe)
             _writeUnsignedSafeMaxBe();
@@ -108,9 +105,6 @@ public class IntegersDoubleOverflow extends KaitaiStruct.ReadWrite {
         this._io.writeU8be(this.unsignedSafeMaxBe);
         this._io.seek(_pos);
     }
-    private Long unsignedSafeMaxLe;
-    private boolean _shouldWriteUnsignedSafeMaxLe = false;
-    private boolean _enabledUnsignedSafeMaxLe = true;
     public Long unsignedSafeMaxLe() {
         if (_shouldWriteUnsignedSafeMaxLe)
             _writeUnsignedSafeMaxLe();
@@ -134,9 +128,6 @@ public class IntegersDoubleOverflow extends KaitaiStruct.ReadWrite {
         this._io.writeU8le(this.unsignedSafeMaxLe);
         this._io.seek(_pos);
     }
-    private Long unsignedUnsafePosBe;
-    private boolean _shouldWriteUnsignedUnsafePosBe = false;
-    private boolean _enabledUnsignedUnsafePosBe = true;
     public Long unsignedUnsafePosBe() {
         if (_shouldWriteUnsignedUnsafePosBe)
             _writeUnsignedUnsafePosBe();
@@ -160,9 +151,6 @@ public class IntegersDoubleOverflow extends KaitaiStruct.ReadWrite {
         this._io.writeU8be(this.unsignedUnsafePosBe);
         this._io.seek(_pos);
     }
-    private Long unsignedUnsafePosLe;
-    private boolean _shouldWriteUnsignedUnsafePosLe = false;
-    private boolean _enabledUnsignedUnsafePosLe = true;
     public Long unsignedUnsafePosLe() {
         if (_shouldWriteUnsignedUnsafePosLe)
             _writeUnsignedUnsafePosLe();
@@ -186,16 +174,6 @@ public class IntegersDoubleOverflow extends KaitaiStruct.ReadWrite {
         this._io.writeU8le(this.unsignedUnsafePosLe);
         this._io.seek(_pos);
     }
-    private long signedSafeMinBe;
-    private long signedSafeMinLe;
-    private long signedSafeMaxBe;
-    private long signedSafeMaxLe;
-    private long signedUnsafeNegBe;
-    private long signedUnsafeNegLe;
-    private long signedUnsafePosBe;
-    private long signedUnsafePosLe;
-    private IntegersDoubleOverflow _root;
-    private KaitaiStruct.ReadWrite _parent;
     public long signedSafeMinBe() { return signedSafeMinBe; }
     public void setSignedSafeMinBe(long _v) { _dirty = true; signedSafeMinBe = _v; }
     public long signedSafeMinLe() { return signedSafeMinLe; }
@@ -216,4 +194,26 @@ public class IntegersDoubleOverflow extends KaitaiStruct.ReadWrite {
     public void set_root(IntegersDoubleOverflow _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Long unsignedSafeMaxBe;
+    private boolean _shouldWriteUnsignedSafeMaxBe = false;
+    private boolean _enabledUnsignedSafeMaxBe = true;
+    private Long unsignedSafeMaxLe;
+    private boolean _shouldWriteUnsignedSafeMaxLe = false;
+    private boolean _enabledUnsignedSafeMaxLe = true;
+    private Long unsignedUnsafePosBe;
+    private boolean _shouldWriteUnsignedUnsafePosBe = false;
+    private boolean _enabledUnsignedUnsafePosBe = true;
+    private Long unsignedUnsafePosLe;
+    private boolean _shouldWriteUnsignedUnsafePosLe = false;
+    private boolean _enabledUnsignedUnsafePosLe = true;
+    private long signedSafeMinBe;
+    private long signedSafeMinLe;
+    private long signedSafeMaxBe;
+    private long signedSafeMaxLe;
+    private long signedUnsafeNegBe;
+    private long signedUnsafeNegLe;
+    private long signedUnsafePosBe;
+    private long signedUnsafePosLe;
+    private IntegersDoubleOverflow _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

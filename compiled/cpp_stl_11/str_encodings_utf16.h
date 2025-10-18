@@ -39,18 +39,16 @@ public:
 
     public:
         ~str_be_bom_removed_t();
+        uint16_t bom() const { return m_bom; }
+        std::string str() const { return m_str; }
+        str_encodings_utf16_t* _root() const { return m__root; }
+        str_encodings_utf16_t* _parent() const { return m__parent; }
 
     private:
         uint16_t m_bom;
         std::string m_str;
         str_encodings_utf16_t* m__root;
         str_encodings_utf16_t* m__parent;
-
-    public:
-        uint16_t bom() const { return m_bom; }
-        std::string str() const { return m_str; }
-        str_encodings_utf16_t* _root() const { return m__root; }
-        str_encodings_utf16_t* _parent() const { return m__parent; }
     };
 
     class str_le_bom_removed_t : public kaitai::kstruct {
@@ -65,31 +63,17 @@ public:
 
     public:
         ~str_le_bom_removed_t();
+        uint16_t bom() const { return m_bom; }
+        std::string str() const { return m_str; }
+        str_encodings_utf16_t* _root() const { return m__root; }
+        str_encodings_utf16_t* _parent() const { return m__parent; }
 
     private:
         uint16_t m_bom;
         std::string m_str;
         str_encodings_utf16_t* m__root;
         str_encodings_utf16_t* m__parent;
-
-    public:
-        uint16_t bom() const { return m_bom; }
-        std::string str() const { return m_str; }
-        str_encodings_utf16_t* _root() const { return m__root; }
-        str_encodings_utf16_t* _parent() const { return m__parent; }
     };
-
-private:
-    uint32_t m_len_be;
-    std::unique_ptr<str_be_bom_removed_t> m_be_bom_removed;
-    uint32_t m_len_le;
-    std::unique_ptr<str_le_bom_removed_t> m_le_bom_removed;
-    str_encodings_utf16_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::string m__raw_be_bom_removed;
-    std::unique_ptr<kaitai::kstream> m__io__raw_be_bom_removed;
-    std::string m__raw_le_bom_removed;
-    std::unique_ptr<kaitai::kstream> m__io__raw_le_bom_removed;
 
 public:
     uint32_t len_be() const { return m_len_be; }
@@ -102,4 +86,16 @@ public:
     kaitai::kstream* _io__raw_be_bom_removed() const { return m__io__raw_be_bom_removed.get(); }
     std::string _raw_le_bom_removed() const { return m__raw_le_bom_removed; }
     kaitai::kstream* _io__raw_le_bom_removed() const { return m__io__raw_le_bom_removed.get(); }
+
+private:
+    uint32_t m_len_be;
+    std::unique_ptr<str_be_bom_removed_t> m_be_bom_removed;
+    uint32_t m_len_le;
+    std::unique_ptr<str_le_bom_removed_t> m_le_bom_removed;
+    str_encodings_utf16_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::string m__raw_be_bom_removed;
+    std::unique_ptr<kaitai::kstream> m__io__raw_be_bom_removed;
+    std::string m__raw_le_bom_removed;
+    std::unique_ptr<kaitai::kstream> m__io__raw_le_bom_removed;
 };

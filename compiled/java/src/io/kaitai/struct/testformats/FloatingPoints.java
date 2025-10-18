@@ -36,34 +36,24 @@ public class FloatingPoints extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Double doubleValuePlusFloat;
     public Double doubleValuePlusFloat() {
         if (this.doubleValuePlusFloat != null)
             return this.doubleValuePlusFloat;
         this.doubleValuePlusFloat = ((Number) (doubleValue() + 0.05)).doubleValue();
         return this.doubleValuePlusFloat;
     }
-    private Double singleValuePlusFloat;
     public Double singleValuePlusFloat() {
         if (this.singleValuePlusFloat != null)
             return this.singleValuePlusFloat;
         this.singleValuePlusFloat = ((Number) (singleValue() + 0.5)).doubleValue();
         return this.singleValuePlusFloat;
     }
-    private Double singleValuePlusInt;
     public Double singleValuePlusInt() {
         if (this.singleValuePlusInt != null)
             return this.singleValuePlusInt;
         this.singleValuePlusInt = ((Number) (singleValue() + 1)).doubleValue();
         return this.singleValuePlusInt;
     }
-    private float singleValue;
-    private double doubleValue;
-    private float singleValueBe;
-    private double doubleValueBe;
-    private float approximateValue;
-    private FloatingPoints _root;
-    private KaitaiStruct _parent;
     public float singleValue() { return singleValue; }
     public double doubleValue() { return doubleValue; }
     public float singleValueBe() { return singleValueBe; }
@@ -71,4 +61,14 @@ public class FloatingPoints extends KaitaiStruct {
     public float approximateValue() { return approximateValue; }
     public FloatingPoints _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Double doubleValuePlusFloat;
+    private Double singleValuePlusFloat;
+    private Double singleValuePlusInt;
+    private float singleValue;
+    private double doubleValue;
+    private float singleValueBe;
+    private double doubleValueBe;
+    private float approximateValue;
+    private FloatingPoints _root;
+    private KaitaiStruct _parent;
 }

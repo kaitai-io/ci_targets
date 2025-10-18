@@ -24,6 +24,11 @@ private:
 
 public:
     ~term_strz_t();
+    std::string s1() const { return m_s1; }
+    std::string s2() const { return m_s2; }
+    std::string s3() const { return m_s3; }
+    term_strz_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::string m_s1;
@@ -31,13 +36,6 @@ private:
     std::string m_s3;
     term_strz_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::string s1() const { return m_s1; }
-    std::string s2() const { return m_s2; }
-    std::string s3() const { return m_s3; }
-    term_strz_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // TERM_STRZ_H_

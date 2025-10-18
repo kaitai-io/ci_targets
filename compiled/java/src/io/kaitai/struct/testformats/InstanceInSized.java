@@ -62,7 +62,6 @@ public class InstanceInSized extends KaitaiStruct {
             if (this.inst != null) {
             }
         }
-        private byte[] inst;
         public byte[] inst() {
             if (this.inst != null)
                 return this.inst;
@@ -72,12 +71,13 @@ public class InstanceInSized extends KaitaiStruct {
             this._io.seek(_pos);
             return this.inst;
         }
-        private int seqF;
-        private InstanceInSized _root;
-        private InstanceInSized.Wrapper _parent;
         public int seqF() { return seqF; }
         public InstanceInSized _root() { return _root; }
         public InstanceInSized.Wrapper _parent() { return _parent; }
+        private byte[] inst;
+        private int seqF;
+        private InstanceInSized _root;
+        private InstanceInSized.Wrapper _parent;
     }
     public static class Baz extends KaitaiStruct {
         public static Baz fromFile(String fileName) throws IOException {
@@ -107,7 +107,6 @@ public class InstanceInSized extends KaitaiStruct {
             if (this.inst != null) {
             }
         }
-        private byte[] inst;
         public byte[] inst() {
             if (this.inst != null)
                 return this.inst;
@@ -117,12 +116,13 @@ public class InstanceInSized extends KaitaiStruct {
             this._io.seek(_pos);
             return this.inst;
         }
-        private int seqF;
-        private InstanceInSized _root;
-        private InstanceInSized.Wrapper _parent;
         public int seqF() { return seqF; }
         public InstanceInSized _root() { return _root; }
         public InstanceInSized.Wrapper _parent() { return _parent; }
+        private byte[] inst;
+        private int seqF;
+        private InstanceInSized _root;
+        private InstanceInSized.Wrapper _parent;
     }
     public static class Qux extends KaitaiStruct {
         public static Qux fromFile(String fileName) throws IOException {
@@ -159,7 +159,6 @@ public class InstanceInSized extends KaitaiStruct {
             if (this.instUnusedBySeq != null) {
             }
         }
-        private Integer instInvoked;
         public Integer instInvoked() {
             if (this.instInvoked != null)
                 return this.instInvoked;
@@ -169,7 +168,6 @@ public class InstanceInSized extends KaitaiStruct {
             this._io.seek(_pos);
             return this.instInvoked;
         }
-        private byte[] instUnusedBySeq;
         public byte[] instUnusedBySeq() {
             if (this.instUnusedBySeq != null)
                 return this.instUnusedBySeq;
@@ -179,12 +177,14 @@ public class InstanceInSized extends KaitaiStruct {
             this._io.seek(_pos);
             return this.instUnusedBySeq;
         }
-        private Integer seqF;
-        private InstanceInSized _root;
-        private InstanceInSized.Wrapper _parent;
         public Integer seqF() { return seqF; }
         public InstanceInSized _root() { return _root; }
         public InstanceInSized.Wrapper _parent() { return _parent; }
+        private Integer instInvoked;
+        private byte[] instUnusedBySeq;
+        private Integer seqF;
+        private InstanceInSized _root;
+        private InstanceInSized.Wrapper _parent;
     }
     public static class Wrapper extends KaitaiStruct {
         public static Wrapper fromFile(String fileName) throws IOException {
@@ -223,7 +223,6 @@ public class InstanceInSized extends KaitaiStruct {
                 this.instSized._fetchInstances();
             }
         }
-        private Baz instInStream;
         public Baz instInStream() {
             if (this.instInStream != null)
                 return this.instInStream;
@@ -233,7 +232,6 @@ public class InstanceInSized extends KaitaiStruct {
             this._io.seek(_pos);
             return this.instInStream;
         }
-        private Qux instSized;
         public Qux instSized() {
             if (this.instSized != null)
                 return this.instSized;
@@ -244,19 +242,21 @@ public class InstanceInSized extends KaitaiStruct {
             this._io.seek(_pos);
             return this.instSized;
         }
-        private Qux seqSized;
-        private Bar seqInStream;
-        private InstanceInSized _root;
-        private InstanceInSized _parent;
         public Qux seqSized() { return seqSized; }
         public Bar seqInStream() { return seqInStream; }
         public InstanceInSized _root() { return _root; }
         public InstanceInSized _parent() { return _parent; }
+        private Baz instInStream;
+        private Qux instSized;
+        private Qux seqSized;
+        private Bar seqInStream;
+        private InstanceInSized _root;
+        private InstanceInSized _parent;
     }
-    private Wrapper cont;
-    private InstanceInSized _root;
-    private KaitaiStruct _parent;
     public Wrapper cont() { return cont; }
     public InstanceInSized _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Wrapper cont;
+    private InstanceInSized _root;
+    private KaitaiStruct _parent;
 }

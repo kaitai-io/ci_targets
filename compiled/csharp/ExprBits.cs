@@ -88,15 +88,13 @@ namespace Kaitai
             {
                 _foo = m_io.ReadS2be();
             }
-            private short _foo;
-            private ExprBits m_root;
-            private ExprBits m_parent;
             public short Foo { get { return _foo; } }
             public ExprBits M_Root { get { return m_root; } }
             public ExprBits M_Parent { get { return m_parent; } }
+            private short _foo;
+            private ExprBits m_root;
+            private ExprBits m_parent;
         }
-        private bool f_enumInst;
-        private Items _enumInst;
         public Items EnumInst
         {
             get
@@ -108,8 +106,6 @@ namespace Kaitai
                 return _enumInst;
             }
         }
-        private bool f_instPos;
-        private sbyte _instPos;
         public sbyte InstPos
         {
             get
@@ -124,14 +120,6 @@ namespace Kaitai
                 return _instPos;
             }
         }
-        private Items _enumSeq;
-        private ulong _a;
-        private byte[] _byteSize;
-        private List<sbyte> _repeatExpr;
-        private sbyte _switchOnType;
-        private EndianSwitch _switchOnEndian;
-        private ExprBits m_root;
-        private KaitaiStruct m_parent;
         public Items EnumSeq { get { return _enumSeq; } }
         public ulong A { get { return _a; } }
         public byte[] ByteSize { get { return _byteSize; } }
@@ -140,5 +128,17 @@ namespace Kaitai
         public EndianSwitch SwitchOnEndian { get { return _switchOnEndian; } }
         public ExprBits M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_enumInst;
+        private Items _enumInst;
+        private bool f_instPos;
+        private sbyte _instPos;
+        private Items _enumSeq;
+        private ulong _a;
+        private byte[] _byteSize;
+        private List<sbyte> _repeatExpr;
+        private sbyte _switchOnType;
+        private EndianSwitch _switchOnEndian;
+        private ExprBits m_root;
+        private KaitaiStruct m_parent;
     }
 }

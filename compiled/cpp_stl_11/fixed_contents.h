@@ -24,16 +24,14 @@ private:
 
 public:
     ~fixed_contents_t();
+    std::string normal() const { return m_normal; }
+    std::string high_bit_8() const { return m_high_bit_8; }
+    fixed_contents_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::string m_normal;
     std::string m_high_bit_8;
     fixed_contents_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::string normal() const { return m_normal; }
-    std::string high_bit_8() const { return m_high_bit_8; }
-    fixed_contents_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

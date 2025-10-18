@@ -142,15 +142,15 @@ public class DefaultEndianMod extends KaitaiStruct.ReadWrite {
             public void _check() {
                 _dirty = false;
             }
-            private int two;
-            private DefaultEndianMod _root;
-            private DefaultEndianMod.MainObj _parent;
             public int two() { return two; }
             public void setTwo(int _v) { _dirty = true; two = _v; }
             public DefaultEndianMod _root() { return _root; }
             public void set_root(DefaultEndianMod _v) { _dirty = true; _root = _v; }
             public DefaultEndianMod.MainObj _parent() { return _parent; }
             public void set_parent(DefaultEndianMod.MainObj _v) { _dirty = true; _parent = _v; }
+            private int two;
+            private DefaultEndianMod _root;
+            private DefaultEndianMod.MainObj _parent;
         }
         public static class SubnestBe extends KaitaiStruct.ReadWrite {
             public static SubnestBe fromFile(String fileName) throws IOException {
@@ -189,21 +189,16 @@ public class DefaultEndianMod extends KaitaiStruct.ReadWrite {
             public void _check() {
                 _dirty = false;
             }
-            private int two;
-            private DefaultEndianMod _root;
-            private DefaultEndianMod.MainObj _parent;
             public int two() { return two; }
             public void setTwo(int _v) { _dirty = true; two = _v; }
             public DefaultEndianMod _root() { return _root; }
             public void set_root(DefaultEndianMod _v) { _dirty = true; _root = _v; }
             public DefaultEndianMod.MainObj _parent() { return _parent; }
             public void set_parent(DefaultEndianMod.MainObj _v) { _dirty = true; _parent = _v; }
+            private int two;
+            private DefaultEndianMod _root;
+            private DefaultEndianMod.MainObj _parent;
         }
-        private int one;
-        private Subnest nest;
-        private SubnestBe nestBe;
-        private DefaultEndianMod _root;
-        private DefaultEndianMod _parent;
         public int one() { return one; }
         public void setOne(int _v) { _dirty = true; one = _v; }
         public Subnest nest() { return nest; }
@@ -214,14 +209,19 @@ public class DefaultEndianMod extends KaitaiStruct.ReadWrite {
         public void set_root(DefaultEndianMod _v) { _dirty = true; _root = _v; }
         public DefaultEndianMod _parent() { return _parent; }
         public void set_parent(DefaultEndianMod _v) { _dirty = true; _parent = _v; }
+        private int one;
+        private Subnest nest;
+        private SubnestBe nestBe;
+        private DefaultEndianMod _root;
+        private DefaultEndianMod _parent;
     }
-    private MainObj main;
-    private DefaultEndianMod _root;
-    private KaitaiStruct.ReadWrite _parent;
     public MainObj main() { return main; }
     public void setMain(MainObj _v) { _dirty = true; main = _v; }
     public DefaultEndianMod _root() { return _root; }
     public void set_root(DefaultEndianMod _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private MainObj main;
+    private DefaultEndianMod _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

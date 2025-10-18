@@ -40,16 +40,14 @@ public:
 
     public:
         ~block_t();
+        uint8_t foo() const { return m_foo; }
+        params_pass_array_usertype_t* _root() const { return m__root; }
+        params_pass_array_usertype_t* _parent() const { return m__parent; }
 
     private:
         uint8_t m_foo;
         params_pass_array_usertype_t* m__root;
         params_pass_array_usertype_t* m__parent;
-
-    public:
-        uint8_t foo() const { return m_foo; }
-        params_pass_array_usertype_t* _root() const { return m__root; }
-        params_pass_array_usertype_t* _parent() const { return m__parent; }
     };
 
     class param_type_t : public kaitai::kstruct {
@@ -64,6 +62,11 @@ public:
 
     public:
         ~param_type_t();
+        std::string one() const { return m_one; }
+        std::string two() const { return m_two; }
+        std::vector<block_t*>* bar() const { return m_bar; }
+        params_pass_array_usertype_t* _root() const { return m__root; }
+        params_pass_array_usertype_t* _parent() const { return m__parent; }
 
     private:
         std::string m_one;
@@ -71,26 +74,19 @@ public:
         std::vector<block_t*>* m_bar;
         params_pass_array_usertype_t* m__root;
         params_pass_array_usertype_t* m__parent;
-
-    public:
-        std::string one() const { return m_one; }
-        std::string two() const { return m_two; }
-        std::vector<block_t*>* bar() const { return m_bar; }
-        params_pass_array_usertype_t* _root() const { return m__root; }
-        params_pass_array_usertype_t* _parent() const { return m__parent; }
     };
-
-private:
-    std::vector<block_t*>* m_blocks;
-    param_type_t* m_pass_blocks;
-    params_pass_array_usertype_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     std::vector<block_t*>* blocks() const { return m_blocks; }
     param_type_t* pass_blocks() const { return m_pass_blocks; }
     params_pass_array_usertype_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    std::vector<block_t*>* m_blocks;
+    param_type_t* m_pass_blocks;
+    params_pass_array_usertype_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // PARAMS_PASS_ARRAY_USERTYPE_H_

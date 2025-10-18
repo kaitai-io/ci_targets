@@ -30,22 +30,10 @@ private:
 public:
     ~docstrings_docref_t();
 
-private:
-    bool f_foo;
-    bool m_foo;
-
-public:
-
     /**
      * \sa Doc ref for instance, a plain one
      */
     bool foo();
-
-private:
-    bool f_parse_inst;
-    uint8_t m_parse_inst;
-
-public:
 
     /**
      * \sa Now this is a really
@@ -53,15 +41,6 @@ public:
      * spans multiple lines.
      */
     uint8_t parse_inst();
-
-private:
-    uint8_t m_one;
-    uint8_t m_two;
-    uint8_t m_three;
-    docstrings_docref_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
 
     /**
      * \sa Plain text description of doc ref, page 42
@@ -80,4 +59,15 @@ public:
     uint8_t three() const { return m_three; }
     docstrings_docref_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_foo;
+    bool m_foo;
+    bool f_parse_inst;
+    uint8_t m_parse_inst;
+    uint8_t m_one;
+    uint8_t m_two;
+    uint8_t m_three;
+    docstrings_docref_t* m__root;
+    kaitai::kstruct* m__parent;
 };

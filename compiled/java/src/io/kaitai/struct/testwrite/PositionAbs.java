@@ -99,19 +99,16 @@ public class PositionAbs extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("entry", -1, KaitaiStream.byteArrayIndexOf((this.entry).getBytes(Charset.forName("UTF-8")), ((byte) 0)));
             _dirty = false;
         }
-        private String entry;
-        private PositionAbs _root;
-        private PositionAbs _parent;
         public String entry() { return entry; }
         public void setEntry(String _v) { _dirty = true; entry = _v; }
         public PositionAbs _root() { return _root; }
         public void set_root(PositionAbs _v) { _dirty = true; _root = _v; }
         public PositionAbs _parent() { return _parent; }
         public void set_parent(PositionAbs _v) { _dirty = true; _parent = _v; }
+        private String entry;
+        private PositionAbs _root;
+        private PositionAbs _parent;
     }
-    private IndexObj index;
-    private boolean _shouldWriteIndex = false;
-    private boolean _enabledIndex = true;
     public IndexObj index() {
         if (_shouldWriteIndex)
             _writeIndex();
@@ -136,13 +133,16 @@ public class PositionAbs extends KaitaiStruct.ReadWrite {
         this.index._write_Seq(this._io);
         this._io.seek(_pos);
     }
-    private long indexOffset;
-    private PositionAbs _root;
-    private KaitaiStruct.ReadWrite _parent;
     public long indexOffset() { return indexOffset; }
     public void setIndexOffset(long _v) { _dirty = true; indexOffset = _v; }
     public PositionAbs _root() { return _root; }
     public void set_root(PositionAbs _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private IndexObj index;
+    private boolean _shouldWriteIndex = false;
+    private boolean _enabledIndex = true;
+    private long indexOffset;
+    private PositionAbs _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

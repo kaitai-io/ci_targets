@@ -176,10 +176,6 @@ public class SwitchMultiBoolOps extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private int code;
-        private Long body;
-        private SwitchMultiBoolOps _root;
-        private SwitchMultiBoolOps _parent;
         public int code() { return code; }
         public void setCode(int _v) { _dirty = true; code = _v; }
         public Long body() { return body; }
@@ -188,14 +184,18 @@ public class SwitchMultiBoolOps extends KaitaiStruct.ReadWrite {
         public void set_root(SwitchMultiBoolOps _v) { _dirty = true; _root = _v; }
         public SwitchMultiBoolOps _parent() { return _parent; }
         public void set_parent(SwitchMultiBoolOps _v) { _dirty = true; _parent = _v; }
+        private int code;
+        private Long body;
+        private SwitchMultiBoolOps _root;
+        private SwitchMultiBoolOps _parent;
     }
-    private List<Opcode> opcodes;
-    private SwitchMultiBoolOps _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Opcode> opcodes() { return opcodes; }
     public void setOpcodes(List<Opcode> _v) { _dirty = true; opcodes = _v; }
     public SwitchMultiBoolOps _root() { return _root; }
     public void set_root(SwitchMultiBoolOps _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Opcode> opcodes;
+    private SwitchMultiBoolOps _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

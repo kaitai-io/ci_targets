@@ -221,15 +221,15 @@ public class SwitchManualStrElse extends KaitaiStruct.ReadWrite {
             public void _check() {
                 _dirty = false;
             }
-            private int value;
-            private SwitchManualStrElse _root;
-            private SwitchManualStrElse.Opcode _parent;
             public int value() { return value; }
             public void setValue(int _v) { _dirty = true; value = _v; }
             public SwitchManualStrElse _root() { return _root; }
             public void set_root(SwitchManualStrElse _v) { _dirty = true; _root = _v; }
             public SwitchManualStrElse.Opcode _parent() { return _parent; }
             public void set_parent(SwitchManualStrElse.Opcode _v) { _dirty = true; _parent = _v; }
+            private int value;
+            private SwitchManualStrElse _root;
+            private SwitchManualStrElse.Opcode _parent;
         }
         public static class Noneval extends KaitaiStruct.ReadWrite {
             public static Noneval fromFile(String fileName) throws IOException {
@@ -268,15 +268,15 @@ public class SwitchManualStrElse extends KaitaiStruct.ReadWrite {
             public void _check() {
                 _dirty = false;
             }
-            private long filler;
-            private SwitchManualStrElse _root;
-            private SwitchManualStrElse.Opcode _parent;
             public long filler() { return filler; }
             public void setFiller(long _v) { _dirty = true; filler = _v; }
             public SwitchManualStrElse _root() { return _root; }
             public void set_root(SwitchManualStrElse _v) { _dirty = true; _root = _v; }
             public SwitchManualStrElse.Opcode _parent() { return _parent; }
             public void set_parent(SwitchManualStrElse.Opcode _v) { _dirty = true; _parent = _v; }
+            private long filler;
+            private SwitchManualStrElse _root;
+            private SwitchManualStrElse.Opcode _parent;
         }
         public static class Strval extends KaitaiStruct.ReadWrite {
             public static Strval fromFile(String fileName) throws IOException {
@@ -318,20 +318,16 @@ public class SwitchManualStrElse extends KaitaiStruct.ReadWrite {
                     throw new ConsistencyError("value", -1, KaitaiStream.byteArrayIndexOf((this.value).getBytes(Charset.forName("ASCII")), ((byte) 0)));
                 _dirty = false;
             }
-            private String value;
-            private SwitchManualStrElse _root;
-            private SwitchManualStrElse.Opcode _parent;
             public String value() { return value; }
             public void setValue(String _v) { _dirty = true; value = _v; }
             public SwitchManualStrElse _root() { return _root; }
             public void set_root(SwitchManualStrElse _v) { _dirty = true; _root = _v; }
             public SwitchManualStrElse.Opcode _parent() { return _parent; }
             public void set_parent(SwitchManualStrElse.Opcode _v) { _dirty = true; _parent = _v; }
+            private String value;
+            private SwitchManualStrElse _root;
+            private SwitchManualStrElse.Opcode _parent;
         }
-        private String code;
-        private KaitaiStruct.ReadWrite body;
-        private SwitchManualStrElse _root;
-        private SwitchManualStrElse _parent;
         public String code() { return code; }
         public void setCode(String _v) { _dirty = true; code = _v; }
         public KaitaiStruct.ReadWrite body() { return body; }
@@ -340,14 +336,18 @@ public class SwitchManualStrElse extends KaitaiStruct.ReadWrite {
         public void set_root(SwitchManualStrElse _v) { _dirty = true; _root = _v; }
         public SwitchManualStrElse _parent() { return _parent; }
         public void set_parent(SwitchManualStrElse _v) { _dirty = true; _parent = _v; }
+        private String code;
+        private KaitaiStruct.ReadWrite body;
+        private SwitchManualStrElse _root;
+        private SwitchManualStrElse _parent;
     }
-    private List<Opcode> opcodes;
-    private SwitchManualStrElse _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Opcode> opcodes() { return opcodes; }
     public void setOpcodes(List<Opcode> _v) { _dirty = true; opcodes = _v; }
     public SwitchManualStrElse _root() { return _root; }
     public void set_root(SwitchManualStrElse _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Opcode> opcodes;
+    private SwitchManualStrElse _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

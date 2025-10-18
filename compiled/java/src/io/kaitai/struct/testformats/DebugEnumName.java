@@ -163,30 +163,30 @@ public class DebugEnumName extends KaitaiStruct.ReadOnly {
 
         public void _fetchInstances() {
         }
-        private InnerEnum2 instanceField;
         public InnerEnum2 instanceField() {
             if (this.instanceField != null)
                 return this.instanceField;
             this.instanceField = InnerEnum2.byId(field2() & 15);
             return this.instanceField;
         }
-        private InnerEnum1 field1;
-        private int field2;
-        private DebugEnumName _root;
-        private DebugEnumName _parent;
         public InnerEnum1 field1() { return field1; }
         public int field2() { return field2; }
         public DebugEnumName _root() { return _root; }
         public DebugEnumName _parent() { return _parent; }
+        private InnerEnum2 instanceField;
+        private InnerEnum1 field1;
+        private int field2;
+        private DebugEnumName _root;
+        private DebugEnumName _parent;
     }
-    private TestEnum1 one;
-    private List<TestEnum2> arrayOfInts;
-    private TestSubtype testType;
-    private DebugEnumName _root;
-    private KaitaiStruct.ReadOnly _parent;
     public TestEnum1 one() { return one; }
     public List<TestEnum2> arrayOfInts() { return arrayOfInts; }
     public TestSubtype testType() { return testType; }
     public DebugEnumName _root() { return _root; }
     public KaitaiStruct.ReadOnly _parent() { return _parent; }
+    private TestEnum1 one;
+    private List<TestEnum2> arrayOfInts;
+    private TestSubtype testType;
+    private DebugEnumName _root;
+    private KaitaiStruct.ReadOnly _parent;
 }

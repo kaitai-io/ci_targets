@@ -58,12 +58,12 @@ namespace Kaitai
             {
                 _a = m_io.ReadU2le();
             }
-            private ushort _a;
-            private ProcessRepeatUsertypeDynargRotate m_root;
-            private ProcessRepeatUsertypeDynargRotate m_parent;
             public ushort A { get { return _a; } }
             public ProcessRepeatUsertypeDynargRotate M_Root { get { return m_root; } }
             public ProcessRepeatUsertypeDynargRotate M_Parent { get { return m_parent; } }
+            private ushort _a;
+            private ProcessRepeatUsertypeDynargRotate m_root;
+            private ProcessRepeatUsertypeDynargRotate m_parent;
         }
         public partial class BlocksBWrapper : KaitaiStruct
         {
@@ -87,8 +87,6 @@ namespace Kaitai
             {
                 _dummy = m_io.ReadU1();
             }
-            private bool f_blocksRol0B;
-            private byte _blocksRol0B;
             public byte BlocksRol0B
             {
                 get
@@ -104,8 +102,6 @@ namespace Kaitai
                     return _blocksRol0B;
                 }
             }
-            private bool f_blocksRol1B;
-            private byte _blocksRol1B;
             public byte BlocksRol1B
             {
                 get
@@ -121,8 +117,6 @@ namespace Kaitai
                     return _blocksRol1B;
                 }
             }
-            private bool f_blocksRor0B;
-            private byte _blocksRor0B;
             public byte BlocksRor0B
             {
                 get
@@ -138,8 +132,6 @@ namespace Kaitai
                     return _blocksRor0B;
                 }
             }
-            private bool f_blocksRor1B;
-            private byte _blocksRor1B;
             public byte BlocksRor1B
             {
                 get
@@ -155,8 +147,6 @@ namespace Kaitai
                     return _blocksRor1B;
                 }
             }
-            private bool f_blocksRor2B;
-            private byte _blocksRor2B;
             public byte BlocksRor2B
             {
                 get
@@ -172,22 +162,23 @@ namespace Kaitai
                     return _blocksRor2B;
                 }
             }
-            private byte _dummy;
-            private ProcessRepeatUsertypeDynargRotate m_root;
-            private ProcessRepeatUsertypeDynargRotate m_parent;
             public byte Dummy { get { return _dummy; } }
             public ProcessRepeatUsertypeDynargRotate M_Root { get { return m_root; } }
             public ProcessRepeatUsertypeDynargRotate M_Parent { get { return m_parent; } }
+            private bool f_blocksRol0B;
+            private byte _blocksRol0B;
+            private bool f_blocksRol1B;
+            private byte _blocksRol1B;
+            private bool f_blocksRor0B;
+            private byte _blocksRor0B;
+            private bool f_blocksRor1B;
+            private byte _blocksRor1B;
+            private bool f_blocksRor2B;
+            private byte _blocksRor2B;
+            private byte _dummy;
+            private ProcessRepeatUsertypeDynargRotate m_root;
+            private ProcessRepeatUsertypeDynargRotate m_parent;
         }
-        private List<Block> _blocksRol;
-        private List<Block> _blocksRor;
-        private BlocksBWrapper _blocksB;
-        private ProcessRepeatUsertypeDynargRotate m_root;
-        private KaitaiStruct m_parent;
-        private List<byte[]> __raw_blocksRol;
-        private List<byte[]> __raw__raw_blocksRol;
-        private List<byte[]> __raw_blocksRor;
-        private List<byte[]> __raw__raw_blocksRor;
         public List<Block> BlocksRol { get { return _blocksRol; } }
         public List<Block> BlocksRor { get { return _blocksRor; } }
         public BlocksBWrapper BlocksB { get { return _blocksB; } }
@@ -197,5 +188,14 @@ namespace Kaitai
         public List<byte[]> M_RawM_RawBlocksRol { get { return __raw__raw_blocksRol; } }
         public List<byte[]> M_RawBlocksRor { get { return __raw_blocksRor; } }
         public List<byte[]> M_RawM_RawBlocksRor { get { return __raw__raw_blocksRor; } }
+        private List<Block> _blocksRol;
+        private List<Block> _blocksRor;
+        private BlocksBWrapper _blocksB;
+        private ProcessRepeatUsertypeDynargRotate m_root;
+        private KaitaiStruct m_parent;
+        private List<byte[]> __raw_blocksRol;
+        private List<byte[]> __raw__raw_blocksRol;
+        private List<byte[]> __raw_blocksRor;
+        private List<byte[]> __raw__raw_blocksRor;
     }
 }

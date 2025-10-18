@@ -24,44 +24,26 @@ private:
 
 public:
     ~expr_mod_t();
-
-private:
-    bool f_mod_neg_const;
-    int32_t m_mod_neg_const;
-
-public:
     int32_t mod_neg_const();
-
-private:
-    bool f_mod_neg_seq;
-    int32_t m_mod_neg_seq;
-
-public:
     int32_t mod_neg_seq();
-
-private:
-    bool f_mod_pos_const;
-    int32_t m_mod_pos_const;
-
-public:
     int32_t mod_pos_const();
-
-private:
-    bool f_mod_pos_seq;
-    int32_t m_mod_pos_seq;
-
-public:
     int32_t mod_pos_seq();
-
-private:
-    uint32_t m_int_u;
-    int32_t m_int_s;
-    expr_mod_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     uint32_t int_u() const { return m_int_u; }
     int32_t int_s() const { return m_int_s; }
     expr_mod_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_mod_neg_const;
+    int32_t m_mod_neg_const;
+    bool f_mod_neg_seq;
+    int32_t m_mod_neg_seq;
+    bool f_mod_pos_const;
+    int32_t m_mod_pos_const;
+    bool f_mod_pos_seq;
+    int32_t m_mod_pos_seq;
+    uint32_t m_int_u;
+    int32_t m_int_s;
+    expr_mod_t* m__root;
+    kaitai::kstruct* m__parent;
 };

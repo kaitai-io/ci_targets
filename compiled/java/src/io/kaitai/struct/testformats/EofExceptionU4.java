@@ -33,12 +33,12 @@ public class EofExceptionU4 extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private byte[] prebuf;
-    private long failInt;
-    private EofExceptionU4 _root;
-    private KaitaiStruct _parent;
     public byte[] prebuf() { return prebuf; }
     public long failInt() { return failInt; }
     public EofExceptionU4 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private byte[] prebuf;
+    private long failInt;
+    private EofExceptionU4 _root;
+    private KaitaiStruct _parent;
 }

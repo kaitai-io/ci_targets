@@ -119,10 +119,6 @@ public class NavParentSwitch extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("subelement", this, this.subelement._parent());
             _dirty = false;
         }
-        private int foo;
-        private Subelement1 subelement;
-        private NavParentSwitch _root;
-        private NavParentSwitch _parent;
         public int foo() { return foo; }
         public void setFoo(int _v) { _dirty = true; foo = _v; }
         public Subelement1 subelement() { return subelement; }
@@ -131,6 +127,10 @@ public class NavParentSwitch extends KaitaiStruct.ReadWrite {
         public void set_root(NavParentSwitch _v) { _dirty = true; _root = _v; }
         public NavParentSwitch _parent() { return _parent; }
         public void set_parent(NavParentSwitch _v) { _dirty = true; _parent = _v; }
+        private int foo;
+        private Subelement1 subelement;
+        private NavParentSwitch _root;
+        private NavParentSwitch _parent;
     }
     public static class Subelement1 extends KaitaiStruct.ReadWrite {
         public static Subelement1 fromFile(String fileName) throws IOException {
@@ -177,20 +177,16 @@ public class NavParentSwitch extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private Integer bar;
-        private NavParentSwitch _root;
-        private NavParentSwitch.Element1 _parent;
         public Integer bar() { return bar; }
         public void setBar(Integer _v) { _dirty = true; bar = _v; }
         public NavParentSwitch _root() { return _root; }
         public void set_root(NavParentSwitch _v) { _dirty = true; _root = _v; }
         public NavParentSwitch.Element1 _parent() { return _parent; }
         public void set_parent(NavParentSwitch.Element1 _v) { _dirty = true; _parent = _v; }
+        private Integer bar;
+        private NavParentSwitch _root;
+        private NavParentSwitch.Element1 _parent;
     }
-    private int category;
-    private Element1 content;
-    private NavParentSwitch _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int category() { return category; }
     public void setCategory(int _v) { _dirty = true; category = _v; }
     public Element1 content() { return content; }
@@ -199,4 +195,8 @@ public class NavParentSwitch extends KaitaiStruct.ReadWrite {
     public void set_root(NavParentSwitch _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private int category;
+    private Element1 content;
+    private NavParentSwitch _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

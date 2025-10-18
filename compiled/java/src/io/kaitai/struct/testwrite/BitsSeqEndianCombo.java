@@ -58,16 +58,6 @@ public class BitsSeqEndianCombo extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private long be1;
-    private long be2;
-    private long le3;
-    private long be4;
-    private long le5;
-    private long le6;
-    private long le7;
-    private boolean be8;
-    private BitsSeqEndianCombo _root;
-    private KaitaiStruct.ReadWrite _parent;
     public long be1() { return be1; }
     public void setBe1(long _v) { _dirty = true; be1 = _v; }
     public long be2() { return be2; }
@@ -88,4 +78,14 @@ public class BitsSeqEndianCombo extends KaitaiStruct.ReadWrite {
     public void set_root(BitsSeqEndianCombo _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private long be1;
+    private long be2;
+    private long le3;
+    private long be4;
+    private long le5;
+    private long le6;
+    private long le7;
+    private boolean be8;
+    private BitsSeqEndianCombo _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

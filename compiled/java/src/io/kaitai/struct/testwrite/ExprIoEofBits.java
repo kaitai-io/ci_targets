@@ -92,13 +92,6 @@ public class ExprIoEofBits extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("align", 0, this.align.length);
         _dirty = false;
     }
-    private long foo;
-    private Long bar;
-    private Long baz;
-    private byte[] align;
-    private Long qux;
-    private ExprIoEofBits _root;
-    private KaitaiStruct.ReadWrite _parent;
     public long foo() { return foo; }
     public void setFoo(long _v) { _dirty = true; foo = _v; }
     public Long bar() { return bar; }
@@ -113,4 +106,11 @@ public class ExprIoEofBits extends KaitaiStruct.ReadWrite {
     public void set_root(ExprIoEofBits _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private long foo;
+    private Long bar;
+    private Long baz;
+    private byte[] align;
+    private Long qux;
+    private ExprIoEofBits _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

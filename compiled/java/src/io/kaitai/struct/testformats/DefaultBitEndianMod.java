@@ -88,12 +88,12 @@ public class DefaultBitEndianMod extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private long two;
-            private DefaultBitEndianMod _root;
-            private DefaultBitEndianMod.MainObj _parent;
             public long two() { return two; }
             public DefaultBitEndianMod _root() { return _root; }
             public DefaultBitEndianMod.MainObj _parent() { return _parent; }
+            private long two;
+            private DefaultBitEndianMod _root;
+            private DefaultBitEndianMod.MainObj _parent;
         }
         public static class SubnestBe extends KaitaiStruct {
             public static SubnestBe fromFile(String fileName) throws IOException {
@@ -120,30 +120,30 @@ public class DefaultBitEndianMod extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private long two;
-            private DefaultBitEndianMod _root;
-            private DefaultBitEndianMod.MainObj _parent;
             public long two() { return two; }
             public DefaultBitEndianMod _root() { return _root; }
             public DefaultBitEndianMod.MainObj _parent() { return _parent; }
+            private long two;
+            private DefaultBitEndianMod _root;
+            private DefaultBitEndianMod.MainObj _parent;
         }
-        private long one;
-        private long two;
-        private Subnest nest;
-        private SubnestBe nestBe;
-        private DefaultBitEndianMod _root;
-        private DefaultBitEndianMod _parent;
         public long one() { return one; }
         public long two() { return two; }
         public Subnest nest() { return nest; }
         public SubnestBe nestBe() { return nestBe; }
         public DefaultBitEndianMod _root() { return _root; }
         public DefaultBitEndianMod _parent() { return _parent; }
+        private long one;
+        private long two;
+        private Subnest nest;
+        private SubnestBe nestBe;
+        private DefaultBitEndianMod _root;
+        private DefaultBitEndianMod _parent;
     }
-    private MainObj main;
-    private DefaultBitEndianMod _root;
-    private KaitaiStruct _parent;
     public MainObj main() { return main; }
     public DefaultBitEndianMod _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private MainObj main;
+    private DefaultBitEndianMod _root;
+    private KaitaiStruct _parent;
 }

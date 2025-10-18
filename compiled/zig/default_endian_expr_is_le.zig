@@ -1,0 +1,114 @@
+// This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+
+const std = @import("std");
+const kaitai_struct = @import("kaitai_struct");
+
+pub const DefaultEndianExprIsLe = struct {
+    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*DefaultEndianExprIsLe) !*DefaultEndianExprIsLe {
+        const self = try _arena.allocator().create(DefaultEndianExprIsLe);
+        self.* = .{
+            ._arena = _arena,
+            ._io = _io,
+            ._parent = _parent,
+            ._root = _root orelse self,
+        };
+        try self._read();
+        return self;
+    }
+    fn _allocator(self: *const DefaultEndianExprIsLe) std.mem.Allocator {
+        return self._arena.allocator();
+    }
+    fn _read(self: *DefaultEndianExprIsLe) !void {
+        self.docs = try self._allocator().create(std.ArrayList(*Doc));
+        self.docs.* = .empty;
+        {
+            var i: usize = 0;
+            while (!try self._io.isEof()) : (i += 1) {
+                try self.docs.append(self._allocator(), try Doc.create(self._arena, self._io, self, self._root));
+            }
+        }
+    }
+    pub const Doc = struct {
+        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*DefaultEndianExprIsLe, _root: ?*DefaultEndianExprIsLe) !*Doc {
+            const self = try _arena.allocator().create(Doc);
+            self.* = .{
+                ._arena = _arena,
+                ._io = _io,
+                ._parent = _parent,
+                ._root = _root,
+            };
+            try self._read();
+            return self;
+        }
+        fn _allocator(self: *const Doc) std.mem.Allocator {
+            return self._arena.allocator();
+        }
+        fn _read(self: *Doc) !void {
+            self.indicator = try self._io.readBytes(self._allocator(), 2);
+            self.main = try MainObj.create(self._arena, self._io, self, self._root);
+        }
+        pub const MainObj = struct {
+            pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*DefaultEndianExprIsLe.Doc, _root: ?*DefaultEndianExprIsLe) !*MainObj {
+                const self = try _arena.allocator().create(MainObj);
+                self.* = .{
+                    ._arena = _arena,
+                    ._io = _io,
+                    ._parent = _parent,
+                    ._root = _root,
+                };
+                try self._read();
+                return self;
+            }
+            fn _allocator(self: *const MainObj) std.mem.Allocator {
+                return self._arena.allocator();
+            }
+            fn _read(self: *MainObj) !void {
+                {
+                    const _on = self._parent.?.indicator;
+                    if (std.mem.eql(u8, _on, &[_]u8{ 73, 73 })) {
+                        self._is_le = true;
+                    }
+                    else {
+                        self._is_le = false;
+                    }
+                }
+                if (self._is_le == true) {
+                    try self._readLE();
+                } else if (self._is_le == false) {
+                    try self._readBE();
+                } else {
+                    return error.UndecidedEndiannessError;
+                }
+            }
+            fn _readLE(self: *MainObj) !void {
+                self.some_int = try self._io.readU4le();
+                self.some_int_be = try self._io.readU2be();
+                self.some_int_le = try self._io.readU2le();
+            }
+            fn _readBE(self: *MainObj) !void {
+                self.some_int = try self._io.readU4be();
+                self.some_int_be = try self._io.readU2be();
+                self.some_int_le = try self._io.readU2le();
+            }
+            some_int: u32 = undefined,
+            some_int_be: u16 = undefined,
+            some_int_le: u16 = undefined,
+            _root: ?*DefaultEndianExprIsLe,
+            _parent: ?*DefaultEndianExprIsLe.Doc,
+            _arena: *std.heap.ArenaAllocator,
+            _io: *kaitai_struct.KaitaiStream,
+            _is_le: ?bool = null,
+        };
+        indicator: []u8 = undefined,
+        main: *MainObj = undefined,
+        _root: ?*DefaultEndianExprIsLe,
+        _parent: ?*DefaultEndianExprIsLe,
+        _arena: *std.heap.ArenaAllocator,
+        _io: *kaitai_struct.KaitaiStream,
+    };
+    docs: *std.ArrayList(*Doc) = undefined,
+    _root: ?*DefaultEndianExprIsLe,
+    _parent: ?*anyopaque,
+    _arena: *std.heap.ArenaAllocator,
+    _io: *kaitai_struct.KaitaiStream,
+};

@@ -39,31 +39,29 @@ public:
 
     public:
         ~chunk_t();
+        uint32_t offset() const { return m_offset; }
+        uint32_t len() const { return m_len; }
+        repeat_n_struct_t* _root() const { return m__root; }
+        repeat_n_struct_t* _parent() const { return m__parent; }
 
     private:
         uint32_t m_offset;
         uint32_t m_len;
         repeat_n_struct_t* m__root;
         repeat_n_struct_t* m__parent;
-
-    public:
-        uint32_t offset() const { return m_offset; }
-        uint32_t len() const { return m_len; }
-        repeat_n_struct_t* _root() const { return m__root; }
-        repeat_n_struct_t* _parent() const { return m__parent; }
     };
-
-private:
-    uint32_t m_qty;
-    std::vector<chunk_t*>* m_chunks;
-    repeat_n_struct_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     uint32_t qty() const { return m_qty; }
     std::vector<chunk_t*>* chunks() const { return m_chunks; }
     repeat_n_struct_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    uint32_t m_qty;
+    std::vector<chunk_t*>* m_chunks;
+    repeat_n_struct_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // REPEAT_N_STRUCT_H_

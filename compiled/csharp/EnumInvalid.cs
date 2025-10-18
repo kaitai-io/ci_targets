@@ -28,13 +28,13 @@ namespace Kaitai
             _pet1 = ((Animal) m_io.ReadU1());
             _pet2 = ((Animal) m_io.ReadU1());
         }
-        private Animal _pet1;
-        private Animal _pet2;
-        private EnumInvalid m_root;
-        private KaitaiStruct m_parent;
         public Animal Pet1 { get { return _pet1; } }
         public Animal Pet2 { get { return _pet2; } }
         public EnumInvalid M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Animal _pet1;
+        private Animal _pet2;
+        private EnumInvalid m_root;
+        private KaitaiStruct m_parent;
     }
 }

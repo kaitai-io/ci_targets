@@ -31,15 +31,15 @@ namespace Kaitai
                 _bufs.Add(System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(Sizes[i])));
             }
         }
-        private uint _qty;
-        private List<uint> _sizes;
-        private List<string> _bufs;
-        private IndexSizes m_root;
-        private KaitaiStruct m_parent;
         public uint Qty { get { return _qty; } }
         public List<uint> Sizes { get { return _sizes; } }
         public List<string> Bufs { get { return _bufs; } }
         public IndexSizes M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private uint _qty;
+        private List<uint> _sizes;
+        private List<string> _bufs;
+        private IndexSizes m_root;
+        private KaitaiStruct m_parent;
     }
 }

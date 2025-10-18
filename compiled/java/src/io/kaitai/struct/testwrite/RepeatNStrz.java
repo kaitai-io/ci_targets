@@ -65,10 +65,6 @@ public class RepeatNStrz extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private long qty;
-    private List<String> lines;
-    private RepeatNStrz _root;
-    private KaitaiStruct.ReadWrite _parent;
     public long qty() { return qty; }
     public void setQty(long _v) { _dirty = true; qty = _v; }
     public List<String> lines() { return lines; }
@@ -77,4 +73,8 @@ public class RepeatNStrz extends KaitaiStruct.ReadWrite {
     public void set_root(RepeatNStrz _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private long qty;
+    private List<String> lines;
+    private RepeatNStrz _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

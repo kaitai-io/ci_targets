@@ -13,11 +13,11 @@ namespace Kaitai\Struct\Tests {
             $this->_m_strTermInclude = \Kaitai\Struct\Stream::bytesToStr(\Kaitai\Struct\Stream::bytesTerminateMulti($this->_io->readBytes(10), "\x00\x00", true), "UTF-16LE");
             $this->_m_strTermAndPad = \Kaitai\Struct\Stream::bytesToStr(\Kaitai\Struct\Stream::bytesTerminateMulti(\Kaitai\Struct\Stream::bytesStripRight($this->_io->readBytes(9), 43), "\x00\x00", false), "UTF-16LE");
         }
-        protected $_m_strTerm;
-        protected $_m_strTermInclude;
-        protected $_m_strTermAndPad;
         public function strTerm() { return $this->_m_strTerm; }
         public function strTermInclude() { return $this->_m_strTermInclude; }
         public function strTermAndPad() { return $this->_m_strTermAndPad; }
+        protected $_m_strTerm;
+        protected $_m_strTermInclude;
+        protected $_m_strTermAndPad;
     }
 }

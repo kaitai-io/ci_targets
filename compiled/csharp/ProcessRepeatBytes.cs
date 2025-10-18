@@ -27,13 +27,13 @@ namespace Kaitai
                 _bufs.Add(m_io.ProcessXor(__raw_bufs[__raw_bufs.Count - 1], 158));
             }
         }
-        private List<byte[]> _bufs;
-        private ProcessRepeatBytes m_root;
-        private KaitaiStruct m_parent;
-        private List<byte[]> __raw_bufs;
         public List<byte[]> Bufs { get { return _bufs; } }
         public ProcessRepeatBytes M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public List<byte[]> M_RawBufs { get { return __raw_bufs; } }
+        private List<byte[]> _bufs;
+        private ProcessRepeatBytes m_root;
+        private KaitaiStruct m_parent;
+        private List<byte[]> __raw_bufs;
     }
 }

@@ -117,17 +117,16 @@ public class ParamsPassArrayStr extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private List<String> strs;
-        private ParamsPassArrayStr _root;
-        private ParamsPassArrayStr _parent;
         public List<String> strs() { return strs; }
         public void setStrs(List<String> _v) { _dirty = true; strs = _v; }
         public ParamsPassArrayStr _root() { return _root; }
         public void set_root(ParamsPassArrayStr _v) { _dirty = true; _root = _v; }
         public ParamsPassArrayStr _parent() { return _parent; }
         public void set_parent(ParamsPassArrayStr _v) { _dirty = true; _parent = _v; }
+        private List<String> strs;
+        private ParamsPassArrayStr _root;
+        private ParamsPassArrayStr _parent;
     }
-    private List<String> strArrayCalc;
     public List<String> strArrayCalc() {
         if (this.strArrayCalc != null)
             return this.strArrayCalc;
@@ -135,11 +134,6 @@ public class ParamsPassArrayStr extends KaitaiStruct.ReadWrite {
         return this.strArrayCalc;
     }
     public void _invalidateStrArrayCalc() { this.strArrayCalc = null; }
-    private List<String> strArray;
-    private WantsStrs passStrArray;
-    private WantsStrs passStrArrayCalc;
-    private ParamsPassArrayStr _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<String> strArray() { return strArray; }
     public void setStrArray(List<String> _v) { _dirty = true; strArray = _v; }
     public WantsStrs passStrArray() { return passStrArray; }
@@ -150,4 +144,10 @@ public class ParamsPassArrayStr extends KaitaiStruct.ReadWrite {
     public void set_root(ParamsPassArrayStr _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<String> strArrayCalc;
+    private List<String> strArray;
+    private WantsStrs passStrArray;
+    private WantsStrs passStrArrayCalc;
+    private ParamsPassArrayStr _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

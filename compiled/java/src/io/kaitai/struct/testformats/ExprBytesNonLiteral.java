@@ -33,19 +33,19 @@ public class ExprBytesNonLiteral extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private byte[] calcBytes;
     public byte[] calcBytes() {
         if (this.calcBytes != null)
             return this.calcBytes;
         this.calcBytes = new byte[] { one(), two() };
         return this.calcBytes;
     }
-    private int one;
-    private int two;
-    private ExprBytesNonLiteral _root;
-    private KaitaiStruct _parent;
     public int one() { return one; }
     public int two() { return two; }
     public ExprBytesNonLiteral _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private byte[] calcBytes;
+    private int one;
+    private int two;
+    private ExprBytesNonLiteral _root;
+    private KaitaiStruct _parent;
 }

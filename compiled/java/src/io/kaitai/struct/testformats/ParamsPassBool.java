@@ -68,14 +68,14 @@ public class ParamsPassBool extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] foo;
-        private boolean arg;
-        private ParamsPassBool _root;
-        private ParamsPassBool _parent;
         public byte[] foo() { return foo; }
         public boolean arg() { return arg; }
         public ParamsPassBool _root() { return _root; }
         public ParamsPassBool _parent() { return _parent; }
+        private byte[] foo;
+        private boolean arg;
+        private ParamsPassBool _root;
+        private ParamsPassBool _parent;
     }
     public static class ParamTypeBool extends KaitaiStruct {
 
@@ -100,39 +100,27 @@ public class ParamsPassBool extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] foo;
-        private boolean arg;
-        private ParamsPassBool _root;
-        private ParamsPassBool _parent;
         public byte[] foo() { return foo; }
         public boolean arg() { return arg; }
         public ParamsPassBool _root() { return _root; }
         public ParamsPassBool _parent() { return _parent; }
+        private byte[] foo;
+        private boolean arg;
+        private ParamsPassBool _root;
+        private ParamsPassBool _parent;
     }
-    private Boolean vFalse;
     public Boolean vFalse() {
         if (this.vFalse != null)
             return this.vFalse;
         this.vFalse = false;
         return this.vFalse;
     }
-    private Boolean vTrue;
     public Boolean vTrue() {
         if (this.vTrue != null)
             return this.vTrue;
         this.vTrue = true;
         return this.vTrue;
     }
-    private boolean sFalse;
-    private boolean sTrue;
-    private ParamTypeB1 seqB1;
-    private ParamTypeBool seqBool;
-    private ParamTypeB1 literalB1;
-    private ParamTypeBool literalBool;
-    private ParamTypeB1 instB1;
-    private ParamTypeBool instBool;
-    private ParamsPassBool _root;
-    private KaitaiStruct _parent;
     public boolean sFalse() { return sFalse; }
     public boolean sTrue() { return sTrue; }
     public ParamTypeB1 seqB1() { return seqB1; }
@@ -143,4 +131,16 @@ public class ParamsPassBool extends KaitaiStruct {
     public ParamTypeBool instBool() { return instBool; }
     public ParamsPassBool _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Boolean vFalse;
+    private Boolean vTrue;
+    private boolean sFalse;
+    private boolean sTrue;
+    private ParamTypeB1 seqB1;
+    private ParamTypeBool seqBool;
+    private ParamTypeB1 literalB1;
+    private ParamTypeBool literalBool;
+    private ParamTypeB1 instB1;
+    private ParamTypeBool instBool;
+    private ParamsPassBool _root;
+    private KaitaiStruct _parent;
 }

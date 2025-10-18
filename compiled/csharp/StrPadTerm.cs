@@ -24,17 +24,17 @@ namespace Kaitai
             _strTermAndPad = System.Text.Encoding.GetEncoding("UTF-8").GetString(KaitaiStream.BytesTerminate(KaitaiStream.BytesStripRight(m_io.ReadBytes(20), 43), 64, false));
             _strTermInclude = System.Text.Encoding.GetEncoding("UTF-8").GetString(KaitaiStream.BytesTerminate(m_io.ReadBytes(20), 64, true));
         }
-        private string _strPad;
-        private string _strTerm;
-        private string _strTermAndPad;
-        private string _strTermInclude;
-        private StrPadTerm m_root;
-        private KaitaiStruct m_parent;
         public string StrPad { get { return _strPad; } }
         public string StrTerm { get { return _strTerm; } }
         public string StrTermAndPad { get { return _strTermAndPad; } }
         public string StrTermInclude { get { return _strTermInclude; } }
         public StrPadTerm M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private string _strPad;
+        private string _strTerm;
+        private string _strTermAndPad;
+        private string _strTermInclude;
+        private StrPadTerm m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -26,18 +26,16 @@ private:
 
 public:
     ~imports_params_def_usertype_imported_t();
+    hello_world_t* hw() const { return m_hw; }
+    params_def_usertype_imported_t* two() const { return m_two; }
+    imports_params_def_usertype_imported_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     hello_world_t* m_hw;
     params_def_usertype_imported_t* m_two;
     imports_params_def_usertype_imported_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    hello_world_t* hw() const { return m_hw; }
-    params_def_usertype_imported_t* two() const { return m_two; }
-    imports_params_def_usertype_imported_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // IMPORTS_PARAMS_DEF_USERTYPE_IMPORTED_H_

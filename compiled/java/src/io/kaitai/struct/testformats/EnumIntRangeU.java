@@ -50,12 +50,12 @@ public class EnumIntRangeU extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Constants f1;
-    private Constants f2;
-    private EnumIntRangeU _root;
-    private KaitaiStruct _parent;
     public Constants f1() { return f1; }
     public Constants f2() { return f2; }
     public EnumIntRangeU _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Constants f1;
+    private Constants f2;
+    private EnumIntRangeU _root;
+    private KaitaiStruct _parent;
 }

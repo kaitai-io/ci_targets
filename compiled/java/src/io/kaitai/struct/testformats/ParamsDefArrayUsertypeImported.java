@@ -30,24 +30,24 @@ public class ParamsDefArrayUsertypeImported extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Integer hw0One;
     public Integer hw0One() {
         if (this.hw0One != null)
             return this.hw0One;
         this.hw0One = ((Number) (hwsParam().get(((int) 0)).one())).intValue();
         return this.hw0One;
     }
-    private Integer hw1One;
     public Integer hw1One() {
         if (this.hw1One != null)
             return this.hw1One;
         this.hw1One = ((Number) (hwsParam().get(((int) 1)).one())).intValue();
         return this.hw1One;
     }
-    private List<HelloWorld> hwsParam;
-    private ParamsDefArrayUsertypeImported _root;
-    private KaitaiStruct _parent;
     public List<HelloWorld> hwsParam() { return hwsParam; }
     public ParamsDefArrayUsertypeImported _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Integer hw0One;
+    private Integer hw1One;
+    private List<HelloWorld> hwsParam;
+    private ParamsDefArrayUsertypeImported _root;
+    private KaitaiStruct _parent;
 }

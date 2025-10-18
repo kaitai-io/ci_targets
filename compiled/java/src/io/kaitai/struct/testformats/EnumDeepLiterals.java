@@ -115,36 +115,36 @@ public class EnumDeepLiterals extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private EnumDeepLiterals _root;
-            private KaitaiStruct _parent;
             public EnumDeepLiterals _root() { return _root; }
             public KaitaiStruct _parent() { return _parent; }
+            private EnumDeepLiterals _root;
+            private KaitaiStruct _parent;
         }
-        private EnumDeepLiterals _root;
-        private KaitaiStruct _parent;
         public EnumDeepLiterals _root() { return _root; }
         public KaitaiStruct _parent() { return _parent; }
+        private EnumDeepLiterals _root;
+        private KaitaiStruct _parent;
     }
-    private Boolean isPet1Ok;
     public Boolean isPet1Ok() {
         if (this.isPet1Ok != null)
             return this.isPet1Ok;
         this.isPet1Ok = pet1() == Container1.Animal.CAT;
         return this.isPet1Ok;
     }
-    private Boolean isPet2Ok;
     public Boolean isPet2Ok() {
         if (this.isPet2Ok != null)
             return this.isPet2Ok;
         this.isPet2Ok = pet2() == Container1.Container2.Animal.HARE;
         return this.isPet2Ok;
     }
-    private Container1.Animal pet1;
-    private Container1.Container2.Animal pet2;
-    private EnumDeepLiterals _root;
-    private KaitaiStruct _parent;
     public Container1.Animal pet1() { return pet1; }
     public Container1.Container2.Animal pet2() { return pet2; }
     public EnumDeepLiterals _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Boolean isPet1Ok;
+    private Boolean isPet2Ok;
+    private Container1.Animal pet1;
+    private Container1.Container2.Animal pet2;
+    private EnumDeepLiterals _root;
+    private KaitaiStruct _parent;
 }

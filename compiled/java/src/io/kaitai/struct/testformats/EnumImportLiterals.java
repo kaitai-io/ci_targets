@@ -31,29 +31,29 @@ public class EnumImportLiterals extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Boolean pet1Eq;
     public Boolean pet1Eq() {
         if (this.pet1Eq != null)
             return this.pet1Eq;
         this.pet1Eq = (true ? Enum0.Animal.CHICKEN : Enum0.Animal.DOG) == Enum0.Animal.CHICKEN;
         return this.pet1Eq;
     }
-    private Integer pet1ToI;
     public Integer pet1ToI() {
         if (this.pet1ToI != null)
             return this.pet1ToI;
         this.pet1ToI = ((Number) (Enum0.Animal.CAT.id())).intValue();
         return this.pet1ToI;
     }
-    private EnumDeep.Container1.Container2.Animal pet2;
     public EnumDeep.Container1.Container2.Animal pet2() {
         if (this.pet2 != null)
             return this.pet2;
         this.pet2 = EnumDeep.Container1.Container2.Animal.HARE;
         return this.pet2;
     }
-    private EnumImportLiterals _root;
-    private KaitaiStruct _parent;
     public EnumImportLiterals _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Boolean pet1Eq;
+    private Integer pet1ToI;
+    private EnumDeep.Container1.Container2.Animal pet2;
+    private EnumImportLiterals _root;
+    private KaitaiStruct _parent;
 }

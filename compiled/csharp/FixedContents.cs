@@ -30,13 +30,13 @@ namespace Kaitai
                 throw new ValidationNotEqualError(new byte[] { 255, 255 }, _highBit8, m_io, "/seq/1");
             }
         }
-        private byte[] _normal;
-        private byte[] _highBit8;
-        private FixedContents m_root;
-        private KaitaiStruct m_parent;
         public byte[] Normal { get { return _normal; } }
         public byte[] HighBit8 { get { return _highBit8; } }
         public FixedContents M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte[] _normal;
+        private byte[] _highBit8;
+        private FixedContents m_root;
+        private KaitaiStruct m_parent;
     }
 }

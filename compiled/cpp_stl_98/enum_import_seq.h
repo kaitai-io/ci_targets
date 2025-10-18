@@ -26,18 +26,16 @@ private:
 
 public:
     ~enum_import_seq_t();
+    enum_0_t::animal_t pet_1() const { return m_pet_1; }
+    enum_deep_t::container1_t::container2_t::animal_t pet_2() const { return m_pet_2; }
+    enum_import_seq_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     enum_0_t::animal_t m_pet_1;
     enum_deep_t::container1_t::container2_t::animal_t m_pet_2;
     enum_import_seq_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    enum_0_t::animal_t pet_1() const { return m_pet_1; }
-    enum_deep_t::container1_t::container2_t::animal_t pet_2() const { return m_pet_2; }
-    enum_import_seq_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // ENUM_IMPORT_SEQ_H_

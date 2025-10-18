@@ -25,23 +25,17 @@ private:
 
 public:
     ~params_def_usertype_imported_t();
+    uint8_t hw_one();
+    hello_world_t* hw_param() const { return m_hw_param; }
+    params_def_usertype_imported_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_hw_one;
     uint8_t m_hw_one;
-
-public:
-    uint8_t hw_one();
-
-private:
     hello_world_t* m_hw_param;
     params_def_usertype_imported_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    hello_world_t* hw_param() const { return m_hw_param; }
-    params_def_usertype_imported_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // PARAMS_DEF_USERTYPE_IMPORTED_H_

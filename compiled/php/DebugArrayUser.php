@@ -21,10 +21,10 @@ namespace Kaitai\Struct\Tests {
                 }
             }
         }
-        protected $_m_oneCat;
-        protected $_m_arrayOfCats;
         public function oneCat() { return $this->_m_oneCat; }
         public function arrayOfCats() { return $this->_m_arrayOfCats; }
+        protected $_m_oneCat;
+        protected $_m_arrayOfCats;
     }
 }
 
@@ -37,7 +37,7 @@ namespace Kaitai\Struct\Tests\DebugArrayUser {
         public function _read() {
             $this->_m_meow = $this->_io->readU1();
         }
-        protected $_m_meow;
         public function meow() { return $this->_m_meow; }
+        protected $_m_meow;
     }
 }

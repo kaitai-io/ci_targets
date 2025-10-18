@@ -60,10 +60,6 @@ public class TermU1Val extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("bar", (this.bar).getBytes(Charset.forName("UTF-8")).length - 1, KaitaiStream.byteArrayIndexOf((this.bar).getBytes(Charset.forName("UTF-8")), ((byte) 171)));
         _dirty = false;
     }
-    private byte[] foo;
-    private String bar;
-    private TermU1Val _root;
-    private KaitaiStruct.ReadWrite _parent;
     public byte[] foo() { return foo; }
     public void setFoo(byte[] _v) { _dirty = true; foo = _v; }
     public String bar() { return bar; }
@@ -72,4 +68,8 @@ public class TermU1Val extends KaitaiStruct.ReadWrite {
     public void set_root(TermU1Val _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private byte[] foo;
+    private String bar;
+    private TermU1Val _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

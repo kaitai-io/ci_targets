@@ -28,11 +28,11 @@ namespace Kaitai
                 }
             }
         }
-        private List<ulong> _nibbles;
-        private RepeatEosBit m_root;
-        private KaitaiStruct m_parent;
         public List<ulong> Nibbles { get { return _nibbles; } }
         public RepeatEosBit M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<ulong> _nibbles;
+        private RepeatEosBit m_root;
+        private KaitaiStruct m_parent;
     }
 }

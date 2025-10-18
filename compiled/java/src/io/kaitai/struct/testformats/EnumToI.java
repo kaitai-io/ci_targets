@@ -51,54 +51,54 @@ public class EnumToI extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Boolean oneLtTwo;
     public Boolean oneLtTwo() {
         if (this.oneLtTwo != null)
             return this.oneLtTwo;
         this.oneLtTwo = pet1().id() < pet2().id();
         return this.oneLtTwo;
     }
-    private Boolean pet1EqInt;
     public Boolean pet1EqInt() {
         if (this.pet1EqInt != null)
             return this.pet1EqInt;
         this.pet1EqInt = pet1().id() == 7;
         return this.pet1EqInt;
     }
-    private Integer pet1I;
     public Integer pet1I() {
         if (this.pet1I != null)
             return this.pet1I;
         this.pet1I = ((Number) (pet1().id())).intValue();
         return this.pet1I;
     }
-    private String pet1IToS;
     public String pet1IToS() {
         if (this.pet1IToS != null)
             return this.pet1IToS;
         this.pet1IToS = Long.toString(pet1().id());
         return this.pet1IToS;
     }
-    private Integer pet1Mod;
     public Integer pet1Mod() {
         if (this.pet1Mod != null)
             return this.pet1Mod;
         this.pet1Mod = ((Number) (pet1().id() + 32768)).intValue();
         return this.pet1Mod;
     }
-    private Boolean pet2EqInt;
     public Boolean pet2EqInt() {
         if (this.pet2EqInt != null)
             return this.pet2EqInt;
         this.pet2EqInt = pet2().id() == 5;
         return this.pet2EqInt;
     }
-    private Animal pet1;
-    private Animal pet2;
-    private EnumToI _root;
-    private KaitaiStruct _parent;
     public Animal pet1() { return pet1; }
     public Animal pet2() { return pet2; }
     public EnumToI _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Boolean oneLtTwo;
+    private Boolean pet1EqInt;
+    private Integer pet1I;
+    private String pet1IToS;
+    private Integer pet1Mod;
+    private Boolean pet2EqInt;
+    private Animal pet1;
+    private Animal pet2;
+    private EnumToI _root;
+    private KaitaiStruct _parent;
 }

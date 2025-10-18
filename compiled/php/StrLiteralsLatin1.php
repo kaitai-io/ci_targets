@@ -12,16 +12,16 @@ namespace Kaitai\Struct\Tests {
             $this->_m_lenParsed = $this->_io->readU2le();
             $this->_m_parsed = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->lenParsed()), "UTF-8");
         }
-        protected $_m_parsedEqLiteral;
         public function parsedEqLiteral() {
             if ($this->_m_parsedEqLiteral !== null)
                 return $this->_m_parsedEqLiteral;
             $this->_m_parsedEqLiteral = $this->parsed() == "\243";
             return $this->_m_parsedEqLiteral;
         }
-        protected $_m_lenParsed;
-        protected $_m_parsed;
         public function lenParsed() { return $this->_m_lenParsed; }
         public function parsed() { return $this->_m_parsed; }
+        protected $_m_parsedEqLiteral;
+        protected $_m_lenParsed;
+        protected $_m_parsed;
     }
 }

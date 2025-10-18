@@ -20,7 +20,6 @@ namespace Kaitai\Struct\Tests {
             $this->_m_intoA = new \Kaitai\Struct\Tests\InstanceIoUserEarlier\Foo($this->_io, $this, $this->_root);
             $this->_m_lastAccessor = new \Kaitai\Struct\Tests\InstanceIoUserEarlier\Baz($this->_io, $this, $this->_root);
         }
-        protected $_m_aMid;
         public function aMid() {
             if ($this->_m_aMid !== null)
                 return $this->_m_aMid;
@@ -31,7 +30,6 @@ namespace Kaitai\Struct\Tests {
             $io->seek($_pos);
             return $this->_m_aMid;
         }
-        protected $_m_bMid;
         public function bMid() {
             if ($this->_m_bMid !== null)
                 return $this->_m_bMid;
@@ -42,14 +40,6 @@ namespace Kaitai\Struct\Tests {
             $io->seek($_pos);
             return $this->_m_bMid;
         }
-        protected $_m_sizedA;
-        protected $_m_sizedB;
-        protected $_m_intoB;
-        protected $_m_intoASkipped;
-        protected $_m_intoA;
-        protected $_m_lastAccessor;
-        protected $_m__raw_sizedA;
-        protected $_m__raw_sizedB;
         public function sizedA() { return $this->_m_sizedA; }
         public function sizedB() { return $this->_m_sizedB; }
         public function intoB() { return $this->_m_intoB; }
@@ -58,6 +48,16 @@ namespace Kaitai\Struct\Tests {
         public function lastAccessor() { return $this->_m_lastAccessor; }
         public function _raw_sizedA() { return $this->_m__raw_sizedA; }
         public function _raw_sizedB() { return $this->_m__raw_sizedB; }
+        protected $_m_aMid;
+        protected $_m_bMid;
+        protected $_m_sizedA;
+        protected $_m_sizedB;
+        protected $_m_intoB;
+        protected $_m_intoASkipped;
+        protected $_m_intoA;
+        protected $_m_lastAccessor;
+        protected $_m__raw_sizedA;
+        protected $_m__raw_sizedB;
     }
 }
 
@@ -73,8 +73,8 @@ namespace Kaitai\Struct\Tests\InstanceIoUserEarlier {
                 $this->_m_v = $this->_io->readU1();
             }
         }
-        protected $_m_v;
         public function v() { return $this->_m_v; }
+        protected $_m_v;
     }
 }
 
@@ -91,7 +91,6 @@ namespace Kaitai\Struct\Tests\InstanceIoUserEarlier {
                 $this->_m_bar = $this->_io->readU1();
             }
         }
-        protected $_m_inst;
         public function inst() {
             if ($this->_m_inst !== null)
                 return $this->_m_inst;
@@ -104,12 +103,13 @@ namespace Kaitai\Struct\Tests\InstanceIoUserEarlier {
             $io->seek($_pos);
             return $this->_m_inst;
         }
-        protected $_m_indicator;
-        protected $_m_bar;
-        protected $_m__raw_inst;
         public function indicator() { return $this->_m_indicator; }
         public function bar() { return $this->_m_bar; }
         public function _raw_inst() { return $this->_m__raw_inst; }
+        protected $_m_inst;
+        protected $_m_indicator;
+        protected $_m_bar;
+        protected $_m__raw_inst;
     }
 }
 
@@ -125,7 +125,6 @@ namespace Kaitai\Struct\Tests\InstanceIoUserEarlier {
                 $this->_m_content = $this->_io->readU1();
             }
         }
-        protected $_m_last;
         public function last() {
             if ($this->_m_last !== null)
                 return $this->_m_last;
@@ -137,7 +136,8 @@ namespace Kaitai\Struct\Tests\InstanceIoUserEarlier {
             }
             return $this->_m_last;
         }
-        protected $_m_content;
         public function content() { return $this->_m_content; }
+        protected $_m_last;
+        protected $_m_content;
     }
 }

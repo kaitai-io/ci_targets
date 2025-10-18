@@ -33,8 +33,6 @@ namespace Kaitai
             _one = m_io.ReadBytes(1);
             _two = m_io.ReadBytes(3);
         }
-        private bool f_ack;
-        private byte[] _ack;
         public byte[] Ack
         {
             get
@@ -46,8 +44,6 @@ namespace Kaitai
                 return _ack;
             }
         }
-        private bool f_ack2;
-        private byte[] _ack2;
         public byte[] Ack2
         {
             get
@@ -59,8 +55,6 @@ namespace Kaitai
                 return _ack2;
             }
         }
-        private bool f_hiVal;
-        private byte[] _hiVal;
         public byte[] HiVal
         {
             get
@@ -72,8 +66,6 @@ namespace Kaitai
                 return _hiVal;
             }
         }
-        private bool f_isEq;
-        private bool _isEq;
         public bool IsEq
         {
             get
@@ -85,8 +77,6 @@ namespace Kaitai
                 return _isEq;
             }
         }
-        private bool f_isGe;
-        private bool _isGe;
         public bool IsGe
         {
             get
@@ -98,8 +88,6 @@ namespace Kaitai
                 return _isGe;
             }
         }
-        private bool f_isGt;
-        private bool _isGt;
         public bool IsGt
         {
             get
@@ -111,8 +99,6 @@ namespace Kaitai
                 return _isGt;
             }
         }
-        private bool f_isGt2;
-        private bool _isGt2;
         public bool IsGt2
         {
             get
@@ -124,8 +110,6 @@ namespace Kaitai
                 return _isGt2;
             }
         }
-        private bool f_isLe;
-        private bool _isLe;
         public bool IsLe
         {
             get
@@ -137,8 +121,6 @@ namespace Kaitai
                 return _isLe;
             }
         }
-        private bool f_isLt;
-        private bool _isLt;
         public bool IsLt
         {
             get
@@ -150,8 +132,6 @@ namespace Kaitai
                 return _isLt;
             }
         }
-        private bool f_isLt2;
-        private bool _isLt2;
         public bool IsLt2
         {
             get
@@ -163,8 +143,6 @@ namespace Kaitai
                 return _isLt2;
             }
         }
-        private bool f_isNe;
-        private bool _isNe;
         public bool IsNe
         {
             get
@@ -176,13 +154,35 @@ namespace Kaitai
                 return _isNe;
             }
         }
-        private byte[] _one;
-        private byte[] _two;
-        private ExprBytesCmp m_root;
-        private KaitaiStruct m_parent;
         public byte[] One { get { return _one; } }
         public byte[] Two { get { return _two; } }
         public ExprBytesCmp M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_ack;
+        private byte[] _ack;
+        private bool f_ack2;
+        private byte[] _ack2;
+        private bool f_hiVal;
+        private byte[] _hiVal;
+        private bool f_isEq;
+        private bool _isEq;
+        private bool f_isGe;
+        private bool _isGe;
+        private bool f_isGt;
+        private bool _isGt;
+        private bool f_isGt2;
+        private bool _isGt2;
+        private bool f_isLe;
+        private bool _isLe;
+        private bool f_isLt;
+        private bool _isLt;
+        private bool f_isLt2;
+        private bool _isLt2;
+        private bool f_isNe;
+        private bool _isNe;
+        private byte[] _one;
+        private byte[] _two;
+        private ExprBytesCmp m_root;
+        private KaitaiStruct m_parent;
     }
 }

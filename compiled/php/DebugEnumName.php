@@ -17,12 +17,12 @@ namespace Kaitai\Struct\Tests {
             $this->_m_testType = new \Kaitai\Struct\Tests\DebugEnumName\TestSubtype($this->_io, $this, $this->_root);
             $this->_m_testType->_read();
         }
-        protected $_m_one;
-        protected $_m_arrayOfInts;
-        protected $_m_testType;
         public function one() { return $this->_m_one; }
         public function arrayOfInts() { return $this->_m_arrayOfInts; }
         public function testType() { return $this->_m_testType; }
+        protected $_m_one;
+        protected $_m_arrayOfInts;
+        protected $_m_testType;
     }
 }
 
@@ -36,17 +36,17 @@ namespace Kaitai\Struct\Tests\DebugEnumName {
             $this->_m_field1 = $this->_io->readU1();
             $this->_m_field2 = $this->_io->readU1();
         }
-        protected $_m_instanceField;
         public function instanceField() {
             if ($this->_m_instanceField !== null)
                 return $this->_m_instanceField;
             $this->_m_instanceField = $this->field2() & 15;
             return $this->_m_instanceField;
         }
-        protected $_m_field1;
-        protected $_m_field2;
         public function field1() { return $this->_m_field1; }
         public function field2() { return $this->_m_field2; }
+        protected $_m_instanceField;
+        protected $_m_field1;
+        protected $_m_field2;
     }
 }
 

@@ -67,21 +67,21 @@ public class RepeatNStruct extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private long offset;
-        private long len;
-        private RepeatNStruct _root;
-        private RepeatNStruct _parent;
         public long offset() { return offset; }
         public long len() { return len; }
         public RepeatNStruct _root() { return _root; }
         public RepeatNStruct _parent() { return _parent; }
+        private long offset;
+        private long len;
+        private RepeatNStruct _root;
+        private RepeatNStruct _parent;
     }
-    private long qty;
-    private List<Chunk> chunks;
-    private RepeatNStruct _root;
-    private KaitaiStruct _parent;
     public long qty() { return qty; }
     public List<Chunk> chunks() { return chunks; }
     public RepeatNStruct _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private long qty;
+    private List<Chunk> chunks;
+    private RepeatNStruct _root;
+    private KaitaiStruct _parent;
 }

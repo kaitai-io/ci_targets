@@ -31,13 +31,6 @@ namespace Kaitai
                 _qux = m_io.ReadBitsIntBe(16);
             }
         }
-        private ulong _foo;
-        private ulong? _bar;
-        private ulong? _baz;
-        private byte[] _align;
-        private ulong? _qux;
-        private ExprIoEofBits m_root;
-        private KaitaiStruct m_parent;
         public ulong Foo { get { return _foo; } }
         public ulong? Bar { get { return _bar; } }
         public ulong? Baz { get { return _baz; } }
@@ -45,5 +38,12 @@ namespace Kaitai
         public ulong? Qux { get { return _qux; } }
         public ExprIoEofBits M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private ulong _foo;
+        private ulong? _bar;
+        private ulong? _baz;
+        private byte[] _align;
+        private ulong? _qux;
+        private ExprIoEofBits m_root;
+        private KaitaiStruct m_parent;
     }
 }

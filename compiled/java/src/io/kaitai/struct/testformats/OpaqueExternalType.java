@@ -33,10 +33,10 @@ public class OpaqueExternalType extends KaitaiStruct {
     public void _fetchInstances() {
         this.hw._fetchInstances();
     }
-    private HelloWorld hw;
-    private OpaqueExternalType _root;
-    private KaitaiStruct _parent;
     public HelloWorld hw() { return hw; }
     public OpaqueExternalType _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private HelloWorld hw;
+    private OpaqueExternalType _root;
+    private KaitaiStruct _parent;
 }

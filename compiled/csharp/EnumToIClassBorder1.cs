@@ -31,8 +31,6 @@ namespace Kaitai
             _pet1 = ((Animal) m_io.ReadU4le());
             _pet2 = ((Animal) m_io.ReadU4le());
         }
-        private bool f_checker;
-        private EnumToIClassBorder2 _checker;
         public EnumToIClassBorder2 Checker
         {
             get
@@ -47,8 +45,6 @@ namespace Kaitai
                 return _checker;
             }
         }
-        private bool f_someDog;
-        private Animal _someDog;
         public Animal SomeDog
         {
             get
@@ -60,13 +56,17 @@ namespace Kaitai
                 return _someDog;
             }
         }
-        private Animal _pet1;
-        private Animal _pet2;
-        private EnumToIClassBorder1 m_root;
-        private KaitaiStruct m_parent;
         public Animal Pet1 { get { return _pet1; } }
         public Animal Pet2 { get { return _pet2; } }
         public EnumToIClassBorder1 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_checker;
+        private EnumToIClassBorder2 _checker;
+        private bool f_someDog;
+        private Animal _someDog;
+        private Animal _pet1;
+        private Animal _pet2;
+        private EnumToIClassBorder1 m_root;
+        private KaitaiStruct m_parent;
     }
 }

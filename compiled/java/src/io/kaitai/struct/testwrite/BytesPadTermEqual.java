@@ -79,12 +79,6 @@ public class BytesPadTermEqual extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private byte[] s1;
-    private byte[] s2;
-    private byte[] s3;
-    private byte[] s4;
-    private BytesPadTermEqual _root;
-    private KaitaiStruct.ReadWrite _parent;
     public byte[] s1() { return s1; }
     public void setS1(byte[] _v) { _dirty = true; s1 = _v; }
     public byte[] s2() { return s2; }
@@ -97,4 +91,10 @@ public class BytesPadTermEqual extends KaitaiStruct.ReadWrite {
     public void set_root(BytesPadTermEqual _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private byte[] s1;
+    private byte[] s2;
+    private byte[] s3;
+    private byte[] s4;
+    private BytesPadTermEqual _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

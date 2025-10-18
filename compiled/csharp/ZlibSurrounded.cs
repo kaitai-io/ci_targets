@@ -43,20 +43,13 @@ namespace Kaitai
             {
                 _num = m_io.ReadS4le();
             }
-            private int _num;
-            private ZlibSurrounded m_root;
-            private ZlibSurrounded m_parent;
             public int Num { get { return _num; } }
             public ZlibSurrounded M_Root { get { return m_root; } }
             public ZlibSurrounded M_Parent { get { return m_parent; } }
+            private int _num;
+            private ZlibSurrounded m_root;
+            private ZlibSurrounded m_parent;
         }
-        private byte[] _pre;
-        private Inflated _zlib;
-        private byte[] _post;
-        private ZlibSurrounded m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_zlib;
-        private byte[] __raw__raw_zlib;
         public byte[] Pre { get { return _pre; } }
         public Inflated Zlib { get { return _zlib; } }
         public byte[] Post { get { return _post; } }
@@ -64,5 +57,12 @@ namespace Kaitai
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawZlib { get { return __raw_zlib; } }
         public byte[] M_RawM_RawZlib { get { return __raw__raw_zlib; } }
+        private byte[] _pre;
+        private Inflated _zlib;
+        private byte[] _post;
+        private ZlibSurrounded m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_zlib;
+        private byte[] __raw__raw_zlib;
     }
 }

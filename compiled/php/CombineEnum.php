@@ -12,17 +12,17 @@ namespace Kaitai\Struct\Tests {
             $this->_m_enumU4 = $this->_io->readU4le();
             $this->_m_enumU2 = $this->_io->readU2le();
         }
-        protected $_m_enumU4U2;
         public function enumU4U2() {
             if ($this->_m_enumU4U2 !== null)
                 return $this->_m_enumU4U2;
             $this->_m_enumU4U2 = (false ? $this->enumU4() : $this->enumU2());
             return $this->_m_enumU4U2;
         }
-        protected $_m_enumU4;
-        protected $_m_enumU2;
         public function enumU4() { return $this->_m_enumU4; }
         public function enumU2() { return $this->_m_enumU2; }
+        protected $_m_enumU4U2;
+        protected $_m_enumU4;
+        protected $_m_enumU2;
     }
 }
 

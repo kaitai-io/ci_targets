@@ -25,6 +25,10 @@ private:
 
 public:
     ~imports_circular_b_t();
+    uint8_t initial() const { return m_initial; }
+    imports_circular_a_t* back_ref() const { return m_back_ref.get(); }
+    imports_circular_b_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint8_t m_initial;
@@ -37,10 +41,4 @@ public:
 private:
     imports_circular_b_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint8_t initial() const { return m_initial; }
-    imports_circular_a_t* back_ref() const { return m_back_ref.get(); }
-    imports_circular_b_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

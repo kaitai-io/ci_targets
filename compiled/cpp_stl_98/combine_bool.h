@@ -24,30 +24,20 @@ private:
 
 public:
     ~combine_bool_t();
+    bool bool_calc();
+    bool bool_calc_bit();
+    bool bool_bit() const { return m_bool_bit; }
+    combine_bool_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_bool_calc;
     bool m_bool_calc;
-
-public:
-    bool bool_calc();
-
-private:
     bool f_bool_calc_bit;
     bool m_bool_calc_bit;
-
-public:
-    bool bool_calc_bit();
-
-private:
     bool m_bool_bit;
     combine_bool_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    bool bool_bit() const { return m_bool_bit; }
-    combine_bool_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // COMBINE_BOOL_H_

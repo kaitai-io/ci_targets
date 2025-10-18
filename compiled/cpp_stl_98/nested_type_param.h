@@ -52,38 +52,36 @@ public:
 
         public:
             ~my_type_t();
+            std::string body() const { return m_body; }
+            uint32_t my_len() const { return m_my_len; }
+            nested_type_param_t* _root() const { return m__root; }
+            nested_type_param_t* _parent() const { return m__parent; }
 
         private:
             std::string m_body;
             uint32_t m_my_len;
             nested_type_param_t* m__root;
             nested_type_param_t* m__parent;
-
-        public:
-            std::string body() const { return m_body; }
-            uint32_t my_len() const { return m_my_len; }
-            nested_type_param_t* _root() const { return m__root; }
-            nested_type_param_t* _parent() const { return m__parent; }
         };
-
-    private:
-        nested_type_param_t* m__root;
-        kaitai::kstruct* m__parent;
 
     public:
         nested_type_param_t* _root() const { return m__root; }
         kaitai::kstruct* _parent() const { return m__parent; }
-    };
 
-private:
-    nested_t::my_type_t* m_main_seq;
-    nested_type_param_t* m__root;
-    kaitai::kstruct* m__parent;
+    private:
+        nested_type_param_t* m__root;
+        kaitai::kstruct* m__parent;
+    };
 
 public:
     nested_t::my_type_t* main_seq() const { return m_main_seq; }
     nested_type_param_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    nested_t::my_type_t* m_main_seq;
+    nested_type_param_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // NESTED_TYPE_PARAM_H_

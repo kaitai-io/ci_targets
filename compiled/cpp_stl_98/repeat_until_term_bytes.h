@@ -25,6 +25,11 @@ private:
 
 public:
     ~repeat_until_term_bytes_t();
+    std::vector<std::string>* records1() const { return m_records1; }
+    std::vector<std::string>* records2() const { return m_records2; }
+    std::vector<std::string>* records3() const { return m_records3; }
+    repeat_until_term_bytes_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::vector<std::string>* m_records1;
@@ -32,13 +37,6 @@ private:
     std::vector<std::string>* m_records3;
     repeat_until_term_bytes_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::vector<std::string>* records1() const { return m_records1; }
-    std::vector<std::string>* records2() const { return m_records2; }
-    std::vector<std::string>* records3() const { return m_records3; }
-    repeat_until_term_bytes_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // REPEAT_UNTIL_TERM_BYTES_H_

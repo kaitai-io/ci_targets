@@ -77,23 +77,23 @@ public class IndexToParamUntil extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private String buf;
-        private int idx;
-        private IndexToParamUntil _root;
-        private IndexToParamUntil _parent;
         public String buf() { return buf; }
         public int idx() { return idx; }
         public IndexToParamUntil _root() { return _root; }
         public IndexToParamUntil _parent() { return _parent; }
+        private String buf;
+        private int idx;
+        private IndexToParamUntil _root;
+        private IndexToParamUntil _parent;
     }
-    private long qty;
-    private List<Long> sizes;
-    private List<Block> blocks;
-    private IndexToParamUntil _root;
-    private KaitaiStruct _parent;
     public long qty() { return qty; }
     public List<Long> sizes() { return sizes; }
     public List<Block> blocks() { return blocks; }
     public IndexToParamUntil _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private long qty;
+    private List<Long> sizes;
+    private List<Block> blocks;
+    private IndexToParamUntil _root;
+    private KaitaiStruct _parent;
 }

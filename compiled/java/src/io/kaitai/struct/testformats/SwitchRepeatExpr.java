@@ -94,12 +94,12 @@ public class SwitchRepeatExpr extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] first;
-        private SwitchRepeatExpr _root;
-        private SwitchRepeatExpr _parent;
         public byte[] first() { return first; }
         public SwitchRepeatExpr _root() { return _root; }
         public SwitchRepeatExpr _parent() { return _parent; }
+        private byte[] first;
+        private SwitchRepeatExpr _root;
+        private SwitchRepeatExpr _parent;
     }
     public static class Two extends KaitaiStruct {
         public static Two fromFile(String fileName) throws IOException {
@@ -126,21 +126,21 @@ public class SwitchRepeatExpr extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] second;
-        private SwitchRepeatExpr _root;
-        private SwitchRepeatExpr _parent;
         public byte[] second() { return second; }
         public SwitchRepeatExpr _root() { return _root; }
         public SwitchRepeatExpr _parent() { return _parent; }
+        private byte[] second;
+        private SwitchRepeatExpr _root;
+        private SwitchRepeatExpr _parent;
     }
-    private int code;
-    private long size;
-    private List<Object> body;
-    private SwitchRepeatExpr _root;
-    private KaitaiStruct _parent;
     public int code() { return code; }
     public long size() { return size; }
     public List<Object> body() { return body; }
     public SwitchRepeatExpr _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private int code;
+    private long size;
+    private List<Object> body;
+    private SwitchRepeatExpr _root;
+    private KaitaiStruct _parent;
 }

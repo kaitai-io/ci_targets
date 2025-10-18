@@ -70,19 +70,19 @@ public class RepeatEosStruct extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private long offset;
-        private long len;
-        private RepeatEosStruct _root;
-        private RepeatEosStruct _parent;
         public long offset() { return offset; }
         public long len() { return len; }
         public RepeatEosStruct _root() { return _root; }
         public RepeatEosStruct _parent() { return _parent; }
+        private long offset;
+        private long len;
+        private RepeatEosStruct _root;
+        private RepeatEosStruct _parent;
     }
-    private List<Chunk> chunks;
-    private RepeatEosStruct _root;
-    private KaitaiStruct _parent;
     public List<Chunk> chunks() { return chunks; }
     public RepeatEosStruct _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Chunk> chunks;
+    private RepeatEosStruct _root;
+    private KaitaiStruct _parent;
 }

@@ -44,17 +44,15 @@ namespace Kaitai
                 _offset = m_io.ReadU4le();
                 _len = m_io.ReadU4le();
             }
-            private uint _offset;
-            private uint _len;
-            private InstanceInRepeatExpr m_root;
-            private InstanceInRepeatExpr m_parent;
             public uint Offset { get { return _offset; } }
             public uint Len { get { return _len; } }
             public InstanceInRepeatExpr M_Root { get { return m_root; } }
             public InstanceInRepeatExpr M_Parent { get { return m_parent; } }
+            private uint _offset;
+            private uint _len;
+            private InstanceInRepeatExpr m_root;
+            private InstanceInRepeatExpr m_parent;
         }
-        private bool f_numChunks;
-        private uint _numChunks;
         public uint NumChunks
         {
             get
@@ -69,11 +67,13 @@ namespace Kaitai
                 return _numChunks;
             }
         }
-        private List<Chunk> _chunks;
-        private InstanceInRepeatExpr m_root;
-        private KaitaiStruct m_parent;
         public List<Chunk> Chunks { get { return _chunks; } }
         public InstanceInRepeatExpr M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_numChunks;
+        private uint _numChunks;
+        private List<Chunk> _chunks;
+        private InstanceInRepeatExpr m_root;
+        private KaitaiStruct m_parent;
     }
 }

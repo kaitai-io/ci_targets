@@ -16,8 +16,8 @@ namespace Kaitai\Struct\Tests {
                 $i++;
             }
         }
-        protected $_m_docs;
         public function docs() { return $this->_m_docs; }
+        protected $_m_docs;
     }
 }
 
@@ -32,10 +32,10 @@ namespace Kaitai\Struct\Tests\DefaultEndianExprException {
             $this->_m_indicator = $this->_io->readBytes(2);
             $this->_m_main = new \Kaitai\Struct\Tests\DefaultEndianExprException\Doc\MainObj($this->_io, $this, $this->_root);
         }
-        protected $_m_indicator;
-        protected $_m_main;
         public function indicator() { return $this->_m_indicator; }
         public function main() { return $this->_m_main; }
+        protected $_m_indicator;
+        protected $_m_main;
     }
 }
 
@@ -78,11 +78,11 @@ namespace Kaitai\Struct\Tests\DefaultEndianExprException\Doc {
             $this->_m_someIntBe = $this->_io->readU2be();
             $this->_m_someIntLe = $this->_io->readU2le();
         }
-        protected $_m_someInt;
-        protected $_m_someIntBe;
-        protected $_m_someIntLe;
         public function someInt() { return $this->_m_someInt; }
         public function someIntBe() { return $this->_m_someIntBe; }
         public function someIntLe() { return $this->_m_someIntLe; }
+        protected $_m_someInt;
+        protected $_m_someIntBe;
+        protected $_m_someIntLe;
     }
 }

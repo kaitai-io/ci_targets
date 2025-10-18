@@ -65,9 +65,6 @@ public class InstanceStdArray extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private List<byte[]> entries;
-    private boolean _shouldWriteEntries = false;
-    private boolean _enabledEntries = true;
     public List<byte[]> entries() {
         if (_shouldWriteEntries)
             _writeEntries();
@@ -96,11 +93,6 @@ public class InstanceStdArray extends KaitaiStruct.ReadWrite {
         }
         this._io.seek(_pos);
     }
-    private long ofs;
-    private long entrySize;
-    private long qtyEntries;
-    private InstanceStdArray _root;
-    private KaitaiStruct.ReadWrite _parent;
     public long ofs() { return ofs; }
     public void setOfs(long _v) { _dirty = true; ofs = _v; }
     public long entrySize() { return entrySize; }
@@ -111,4 +103,12 @@ public class InstanceStdArray extends KaitaiStruct.ReadWrite {
     public void set_root(InstanceStdArray _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<byte[]> entries;
+    private boolean _shouldWriteEntries = false;
+    private boolean _enabledEntries = true;
+    private long ofs;
+    private long entrySize;
+    private long qtyEntries;
+    private InstanceStdArray _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

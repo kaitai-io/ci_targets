@@ -27,18 +27,16 @@ private:
 
 public:
     ~imports_params_def_array_usertype_imported_t();
+    std::vector<hello_world_t*>* hws() const { return m_hws; }
+    params_def_array_usertype_imported_t* two() const { return m_two; }
+    imports_params_def_array_usertype_imported_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::vector<hello_world_t*>* m_hws;
     params_def_array_usertype_imported_t* m_two;
     imports_params_def_array_usertype_imported_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::vector<hello_world_t*>* hws() const { return m_hws; }
-    params_def_array_usertype_imported_t* two() const { return m_two; }
-    imports_params_def_array_usertype_imported_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // IMPORTS_PARAMS_DEF_ARRAY_USERTYPE_IMPORTED_H_

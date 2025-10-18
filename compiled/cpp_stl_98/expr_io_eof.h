@@ -38,15 +38,15 @@ public:
 
     public:
         ~one_or_two_t();
+        bool reflect_eof();
+        uint32_t one() const { return m_one; }
+        uint32_t two() const { return m_two; }
+        expr_io_eof_t* _root() const { return m__root; }
+        expr_io_eof_t* _parent() const { return m__parent; }
 
     private:
         bool f_reflect_eof;
         bool m_reflect_eof;
-
-    public:
-        bool reflect_eof();
-
-    private:
         uint32_t m_one;
         uint32_t m_two;
         bool n_two;
@@ -57,23 +57,7 @@ public:
     private:
         expr_io_eof_t* m__root;
         expr_io_eof_t* m__parent;
-
-    public:
-        uint32_t one() const { return m_one; }
-        uint32_t two() const { return m_two; }
-        expr_io_eof_t* _root() const { return m__root; }
-        expr_io_eof_t* _parent() const { return m__parent; }
     };
-
-private:
-    one_or_two_t* m_substream1;
-    one_or_two_t* m_substream2;
-    expr_io_eof_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::string m__raw_substream1;
-    kaitai::kstream* m__io__raw_substream1;
-    std::string m__raw_substream2;
-    kaitai::kstream* m__io__raw_substream2;
 
 public:
     one_or_two_t* substream1() const { return m_substream1; }
@@ -84,6 +68,16 @@ public:
     kaitai::kstream* _io__raw_substream1() const { return m__io__raw_substream1; }
     std::string _raw_substream2() const { return m__raw_substream2; }
     kaitai::kstream* _io__raw_substream2() const { return m__io__raw_substream2; }
+
+private:
+    one_or_two_t* m_substream1;
+    one_or_two_t* m_substream2;
+    expr_io_eof_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::string m__raw_substream1;
+    kaitai::kstream* m__io__raw_substream1;
+    std::string m__raw_substream2;
+    kaitai::kstream* m__io__raw_substream2;
 };
 
 #endif  // EXPR_IO_EOF_H_

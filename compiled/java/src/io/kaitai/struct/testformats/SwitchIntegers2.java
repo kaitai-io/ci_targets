@@ -70,23 +70,23 @@ public class SwitchIntegers2 extends KaitaiStruct {
         if (len() > 3) {
         }
     }
-    private String lenModStr;
     public String lenModStr() {
         if (this.lenModStr != null)
             return this.lenModStr;
         this.lenModStr = Long.toString(len() * 2 - 1);
         return this.lenModStr;
     }
-    private int code;
-    private Long len;
-    private byte[] ham;
-    private Integer padding;
-    private SwitchIntegers2 _root;
-    private KaitaiStruct _parent;
     public int code() { return code; }
     public Long len() { return len; }
     public byte[] ham() { return ham; }
     public Integer padding() { return padding; }
     public SwitchIntegers2 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private String lenModStr;
+    private int code;
+    private Long len;
+    private byte[] ham;
+    private Integer padding;
+    private SwitchIntegers2 _root;
+    private KaitaiStruct _parent;
 }

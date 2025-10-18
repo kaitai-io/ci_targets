@@ -42,10 +42,10 @@ public class MetaXref extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private MetaXref _root;
-    private KaitaiStruct.ReadWrite _parent;
     public MetaXref _root() { return _root; }
     public void set_root(MetaXref _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private MetaXref _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

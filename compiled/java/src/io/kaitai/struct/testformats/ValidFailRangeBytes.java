@@ -38,10 +38,10 @@ public class ValidFailRangeBytes extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private byte[] foo;
-    private ValidFailRangeBytes _root;
-    private KaitaiStruct _parent;
     public byte[] foo() { return foo; }
     public ValidFailRangeBytes _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private byte[] foo;
+    private ValidFailRangeBytes _root;
+    private KaitaiStruct _parent;
 }

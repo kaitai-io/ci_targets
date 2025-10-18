@@ -198,15 +198,15 @@ public class SwitchBytearray extends KaitaiStruct.ReadWrite {
             public void _check() {
                 _dirty = false;
             }
-            private int value;
-            private SwitchBytearray _root;
-            private SwitchBytearray.Opcode _parent;
             public int value() { return value; }
             public void setValue(int _v) { _dirty = true; value = _v; }
             public SwitchBytearray _root() { return _root; }
             public void set_root(SwitchBytearray _v) { _dirty = true; _root = _v; }
             public SwitchBytearray.Opcode _parent() { return _parent; }
             public void set_parent(SwitchBytearray.Opcode _v) { _dirty = true; _parent = _v; }
+            private int value;
+            private SwitchBytearray _root;
+            private SwitchBytearray.Opcode _parent;
         }
         public static class Strval extends KaitaiStruct.ReadWrite {
             public static Strval fromFile(String fileName) throws IOException {
@@ -248,20 +248,16 @@ public class SwitchBytearray extends KaitaiStruct.ReadWrite {
                     throw new ConsistencyError("value", -1, KaitaiStream.byteArrayIndexOf((this.value).getBytes(Charset.forName("ASCII")), ((byte) 0)));
                 _dirty = false;
             }
-            private String value;
-            private SwitchBytearray _root;
-            private SwitchBytearray.Opcode _parent;
             public String value() { return value; }
             public void setValue(String _v) { _dirty = true; value = _v; }
             public SwitchBytearray _root() { return _root; }
             public void set_root(SwitchBytearray _v) { _dirty = true; _root = _v; }
             public SwitchBytearray.Opcode _parent() { return _parent; }
             public void set_parent(SwitchBytearray.Opcode _v) { _dirty = true; _parent = _v; }
+            private String value;
+            private SwitchBytearray _root;
+            private SwitchBytearray.Opcode _parent;
         }
-        private byte[] code;
-        private KaitaiStruct.ReadWrite body;
-        private SwitchBytearray _root;
-        private SwitchBytearray _parent;
         public byte[] code() { return code; }
         public void setCode(byte[] _v) { _dirty = true; code = _v; }
         public KaitaiStruct.ReadWrite body() { return body; }
@@ -270,14 +266,18 @@ public class SwitchBytearray extends KaitaiStruct.ReadWrite {
         public void set_root(SwitchBytearray _v) { _dirty = true; _root = _v; }
         public SwitchBytearray _parent() { return _parent; }
         public void set_parent(SwitchBytearray _v) { _dirty = true; _parent = _v; }
+        private byte[] code;
+        private KaitaiStruct.ReadWrite body;
+        private SwitchBytearray _root;
+        private SwitchBytearray _parent;
     }
-    private List<Opcode> opcodes;
-    private SwitchBytearray _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Opcode> opcodes() { return opcodes; }
     public void setOpcodes(List<Opcode> _v) { _dirty = true; opcodes = _v; }
     public SwitchBytearray _root() { return _root; }
     public void set_root(SwitchBytearray _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Opcode> opcodes;
+    private SwitchBytearray _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

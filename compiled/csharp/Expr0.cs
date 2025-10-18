@@ -23,8 +23,6 @@ namespace Kaitai
         {
             _lenOf1 = m_io.ReadU2le();
         }
-        private bool f_mustBeAbc123;
-        private string _mustBeAbc123;
         public string MustBeAbc123
         {
             get
@@ -36,8 +34,6 @@ namespace Kaitai
                 return _mustBeAbc123;
             }
         }
-        private bool f_mustBeF7;
-        private int _mustBeF7;
         public int MustBeF7
         {
             get
@@ -49,11 +45,15 @@ namespace Kaitai
                 return _mustBeF7;
             }
         }
-        private ushort _lenOf1;
-        private Expr0 m_root;
-        private KaitaiStruct m_parent;
         public ushort LenOf1 { get { return _lenOf1; } }
         public Expr0 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_mustBeAbc123;
+        private string _mustBeAbc123;
+        private bool f_mustBeF7;
+        private int _mustBeF7;
+        private ushort _lenOf1;
+        private Expr0 m_root;
+        private KaitaiStruct m_parent;
     }
 }

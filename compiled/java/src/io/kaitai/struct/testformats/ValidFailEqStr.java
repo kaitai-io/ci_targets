@@ -36,10 +36,10 @@ public class ValidFailEqStr extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private String foo;
-    private ValidFailEqStr _root;
-    private KaitaiStruct _parent;
     public String foo() { return foo; }
     public ValidFailEqStr _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private String foo;
+    private ValidFailEqStr _root;
+    private KaitaiStruct _parent;
 }

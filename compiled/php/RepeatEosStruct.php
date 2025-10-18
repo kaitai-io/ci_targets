@@ -16,8 +16,8 @@ namespace Kaitai\Struct\Tests {
                 $i++;
             }
         }
-        protected $_m_chunks;
         public function chunks() { return $this->_m_chunks; }
+        protected $_m_chunks;
     }
 }
 
@@ -32,9 +32,9 @@ namespace Kaitai\Struct\Tests\RepeatEosStruct {
             $this->_m_offset = $this->_io->readU4le();
             $this->_m_len = $this->_io->readU4le();
         }
-        protected $_m_offset;
-        protected $_m_len;
         public function offset() { return $this->_m_offset; }
         public function len() { return $this->_m_len; }
+        protected $_m_offset;
+        protected $_m_len;
     }
 }

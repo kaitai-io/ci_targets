@@ -13,7 +13,6 @@ namespace Kaitai\Struct\Tests {
             $this->_m_entrySize = $this->_io->readU4le();
             $this->_m_qtyEntries = $this->_io->readU4le();
         }
-        protected $_m_entries;
         public function entries() {
             if ($this->_m_entries !== null)
                 return $this->_m_entries;
@@ -27,11 +26,12 @@ namespace Kaitai\Struct\Tests {
             $this->_io->seek($_pos);
             return $this->_m_entries;
         }
-        protected $_m_ofs;
-        protected $_m_entrySize;
-        protected $_m_qtyEntries;
         public function ofs() { return $this->_m_ofs; }
         public function entrySize() { return $this->_m_entrySize; }
         public function qtyEntries() { return $this->_m_qtyEntries; }
+        protected $_m_entries;
+        protected $_m_ofs;
+        protected $_m_entrySize;
+        protected $_m_qtyEntries;
     }
 }

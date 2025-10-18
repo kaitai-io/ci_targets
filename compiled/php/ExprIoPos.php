@@ -16,14 +16,14 @@ namespace Kaitai\Struct\Tests {
             $_io__raw_substream2 = new \Kaitai\Struct\Stream($this->_m__raw_substream2);
             $this->_m_substream2 = new \Kaitai\Struct\Tests\ExprIoPos\AllPlusNumber($_io__raw_substream2, $this, $this->_root);
         }
-        protected $_m_substream1;
-        protected $_m_substream2;
-        protected $_m__raw_substream1;
-        protected $_m__raw_substream2;
         public function substream1() { return $this->_m_substream1; }
         public function substream2() { return $this->_m_substream2; }
         public function _raw_substream1() { return $this->_m__raw_substream1; }
         public function _raw_substream2() { return $this->_m__raw_substream2; }
+        protected $_m_substream1;
+        protected $_m_substream2;
+        protected $_m__raw_substream1;
+        protected $_m__raw_substream2;
     }
 }
 
@@ -39,11 +39,11 @@ namespace Kaitai\Struct\Tests\ExprIoPos {
             $this->_m_body = $this->_io->readBytes(($this->_io()->size() - $this->_io()->pos()) - 2);
             $this->_m_number = $this->_io->readU2le();
         }
-        protected $_m_myStr;
-        protected $_m_body;
-        protected $_m_number;
         public function myStr() { return $this->_m_myStr; }
         public function body() { return $this->_m_body; }
         public function number() { return $this->_m_number; }
+        protected $_m_myStr;
+        protected $_m_body;
+        protected $_m_number;
     }
 }

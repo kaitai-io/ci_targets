@@ -40,16 +40,14 @@ public:
 
     public:
         ~one_t();
+        std::string first() const { return m_first; }
+        switch_repeat_expr_t* _root() const { return m__root; }
+        switch_repeat_expr_t* _parent() const { return m__parent; }
 
     private:
         std::string m_first;
         switch_repeat_expr_t* m__root;
         switch_repeat_expr_t* m__parent;
-
-    public:
-        std::string first() const { return m_first; }
-        switch_repeat_expr_t* _root() const { return m__root; }
-        switch_repeat_expr_t* _parent() const { return m__parent; }
     };
 
     class two_t : public kaitai::kstruct {
@@ -64,26 +62,15 @@ public:
 
     public:
         ~two_t();
+        std::string second() const { return m_second; }
+        switch_repeat_expr_t* _root() const { return m__root; }
+        switch_repeat_expr_t* _parent() const { return m__parent; }
 
     private:
         std::string m_second;
         switch_repeat_expr_t* m__root;
         switch_repeat_expr_t* m__parent;
-
-    public:
-        std::string second() const { return m_second; }
-        switch_repeat_expr_t* _root() const { return m__root; }
-        switch_repeat_expr_t* _parent() const { return m__parent; }
     };
-
-private:
-    uint8_t m_code;
-    uint32_t m_size;
-    std::vector<kaitai::kstruct*>* m_body;
-    switch_repeat_expr_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::vector<std::string>* m__raw_body;
-    std::vector<kaitai::kstream*>* m__io__raw_body;
 
 public:
     uint8_t code() const { return m_code; }
@@ -93,6 +80,15 @@ public:
     kaitai::kstruct* _parent() const { return m__parent; }
     std::vector<std::string>* _raw_body() const { return m__raw_body; }
     std::vector<kaitai::kstream*>* _io__raw_body() const { return m__io__raw_body; }
+
+private:
+    uint8_t m_code;
+    uint32_t m_size;
+    std::vector<kaitai::kstruct*>* m_body;
+    switch_repeat_expr_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::vector<std::string>* m__raw_body;
+    std::vector<kaitai::kstream*>* m__io__raw_body;
 };
 
 #endif  // SWITCH_REPEAT_EXPR_H_

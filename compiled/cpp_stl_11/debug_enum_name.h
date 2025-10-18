@@ -80,33 +80,20 @@ public:
 
     public:
         ~test_subtype_t();
-
-    private:
-        bool f_instance_field;
-        inner_enum2_t m_instance_field;
-
-    public:
         inner_enum2_t instance_field();
-
-    private:
-        inner_enum1_t m_field1;
-        uint8_t m_field2;
-        debug_enum_name_t* m__root;
-        debug_enum_name_t* m__parent;
-
-    public:
         inner_enum1_t field1() const { return m_field1; }
         uint8_t field2() const { return m_field2; }
         debug_enum_name_t* _root() const { return m__root; }
         debug_enum_name_t* _parent() const { return m__parent; }
-    };
 
-private:
-    test_enum1_t m_one;
-    std::unique_ptr<std::vector<test_enum2_t>> m_array_of_ints;
-    std::unique_ptr<test_subtype_t> m_test_type;
-    debug_enum_name_t* m__root;
-    kaitai::kstruct* m__parent;
+    private:
+        bool f_instance_field;
+        inner_enum2_t m_instance_field;
+        inner_enum1_t m_field1;
+        uint8_t m_field2;
+        debug_enum_name_t* m__root;
+        debug_enum_name_t* m__parent;
+    };
 
 public:
     test_enum1_t one() const { return m_one; }
@@ -114,4 +101,11 @@ public:
     test_subtype_t* test_type() const { return m_test_type.get(); }
     debug_enum_name_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    test_enum1_t m_one;
+    std::unique_ptr<std::vector<test_enum2_t>> m_array_of_ints;
+    std::unique_ptr<test_subtype_t> m_test_type;
+    debug_enum_name_t* m__root;
+    kaitai::kstruct* m__parent;
 };

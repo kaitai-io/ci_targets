@@ -11,8 +11,8 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_buf1 = new \Kaitai\Struct\Tests\ParamsCallExtraParens\MyStr1(5, $this->_io, $this, $this->_root);
         }
-        protected $_m_buf1;
         public function buf1() { return $this->_m_buf1; }
+        protected $_m_buf1;
     }
 }
 
@@ -27,9 +27,9 @@ namespace Kaitai\Struct\Tests\ParamsCallExtraParens {
         private function _read() {
             $this->_m_body = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->len()), "UTF-8");
         }
-        protected $_m_body;
-        protected $_m_len;
         public function body() { return $this->_m_body; }
         public function len() { return $this->_m_len; }
+        protected $_m_body;
+        protected $_m_len;
     }
 }

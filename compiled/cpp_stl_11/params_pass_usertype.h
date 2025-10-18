@@ -39,16 +39,14 @@ public:
 
     public:
         ~block_t();
+        uint8_t foo() const { return m_foo; }
+        params_pass_usertype_t* _root() const { return m__root; }
+        params_pass_usertype_t* _parent() const { return m__parent; }
 
     private:
         uint8_t m_foo;
         params_pass_usertype_t* m__root;
         params_pass_usertype_t* m__parent;
-
-    public:
-        uint8_t foo() const { return m_foo; }
-        params_pass_usertype_t* _root() const { return m__root; }
-        params_pass_usertype_t* _parent() const { return m__parent; }
     };
 
     class param_type_t : public kaitai::kstruct {
@@ -63,29 +61,27 @@ public:
 
     public:
         ~param_type_t();
+        std::string buf() const { return m_buf; }
+        block_t* foo() const { return m_foo; }
+        params_pass_usertype_t* _root() const { return m__root; }
+        params_pass_usertype_t* _parent() const { return m__parent; }
 
     private:
         std::string m_buf;
         block_t* m_foo;
         params_pass_usertype_t* m__root;
         params_pass_usertype_t* m__parent;
-
-    public:
-        std::string buf() const { return m_buf; }
-        block_t* foo() const { return m_foo; }
-        params_pass_usertype_t* _root() const { return m__root; }
-        params_pass_usertype_t* _parent() const { return m__parent; }
     };
-
-private:
-    std::unique_ptr<block_t> m_first;
-    std::unique_ptr<param_type_t> m_one;
-    params_pass_usertype_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     block_t* first() const { return m_first.get(); }
     param_type_t* one() const { return m_one.get(); }
     params_pass_usertype_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    std::unique_ptr<block_t> m_first;
+    std::unique_ptr<param_type_t> m_one;
+    params_pass_usertype_t* m__root;
+    kaitai::kstruct* m__parent;
 };

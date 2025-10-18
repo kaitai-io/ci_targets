@@ -23,8 +23,6 @@ namespace Kaitai
         private void _read()
         {
         }
-        private bool f_pet1Eq;
-        private bool _pet1Eq;
         public bool Pet1Eq
         {
             get
@@ -36,8 +34,6 @@ namespace Kaitai
                 return _pet1Eq;
             }
         }
-        private bool f_pet1ToI;
-        private int _pet1ToI;
         public int Pet1ToI
         {
             get
@@ -49,8 +45,6 @@ namespace Kaitai
                 return _pet1ToI;
             }
         }
-        private bool f_pet2;
-        private EnumDeep.Container1.Container2.Animal _pet2;
         public EnumDeep.Container1.Container2.Animal Pet2
         {
             get
@@ -62,9 +56,15 @@ namespace Kaitai
                 return _pet2;
             }
         }
-        private EnumImportLiterals m_root;
-        private KaitaiStruct m_parent;
         public EnumImportLiterals M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_pet1Eq;
+        private bool _pet1Eq;
+        private bool f_pet1ToI;
+        private int _pet1ToI;
+        private bool f_pet2;
+        private EnumDeep.Container1.Container2.Animal _pet2;
+        private EnumImportLiterals m_root;
+        private KaitaiStruct m_parent;
     }
 }

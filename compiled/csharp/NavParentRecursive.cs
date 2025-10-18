@@ -25,8 +25,6 @@ namespace Kaitai
                 _next = new NavParentRecursive(m_io, this, m_root);
             }
         }
-        private bool f_parentValue;
-        private byte? _parentValue;
         public byte? ParentValue
         {
             get
@@ -40,13 +38,15 @@ namespace Kaitai
                 return _parentValue;
             }
         }
-        private byte _value;
-        private NavParentRecursive _next;
-        private NavParentRecursive m_root;
-        private KaitaiStruct m_parent;
         public byte Value { get { return _value; } }
         public NavParentRecursive Next { get { return _next; } }
         public NavParentRecursive M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_parentValue;
+        private byte? _parentValue;
+        private byte _value;
+        private NavParentRecursive _next;
+        private NavParentRecursive m_root;
+        private KaitaiStruct m_parent;
     }
 }

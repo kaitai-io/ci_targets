@@ -33,8 +33,6 @@ namespace Kaitai
             }
             }
         }
-        private bool f_pi;
-        private byte _pi;
         public byte Pi
         {
             get
@@ -49,8 +47,6 @@ namespace Kaitai
                 return _pi;
             }
         }
-        private bool f_vi;
-        private byte _vi;
         public byte Vi
         {
             get
@@ -62,13 +58,17 @@ namespace Kaitai
                 return _vi;
             }
         }
-        private byte _foo;
-        private uint _bar;
-        private NonStandard m_root;
-        private KaitaiStruct m_parent;
         public byte Foo { get { return _foo; } }
         public uint Bar { get { return _bar; } }
         public NonStandard M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_pi;
+        private byte _pi;
+        private bool f_vi;
+        private byte _vi;
+        private byte _foo;
+        private uint _bar;
+        private NonStandard m_root;
+        private KaitaiStruct m_parent;
     }
 }

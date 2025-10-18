@@ -11,8 +11,8 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_parent = new \Kaitai\Struct\Tests\OpaqueExternalType02Parent\ParentObj($this->_io, $this, $this->_root);
         }
-        protected $_m_parent;
         public function parent() { return $this->_m_parent; }
+        protected $_m_parent;
     }
 }
 
@@ -26,7 +26,7 @@ namespace Kaitai\Struct\Tests\OpaqueExternalType02Parent {
         private function _read() {
             $this->_m_child = new \Kaitai\Struct\Tests\OpaqueExternalType02Child($this->_io);
         }
-        protected $_m_child;
         public function child() { return $this->_m_child; }
+        protected $_m_child;
     }
 }

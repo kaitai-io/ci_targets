@@ -75,24 +75,7 @@ public:
 
     public:
         ~group_t();
-
-    private:
-        bool f_interm_value;
-        uint64_t m_interm_value;
-
-    public:
         uint64_t interm_value();
-
-    private:
-        bool m_has_next;
-        uint64_t m_value;
-        int32_t m_idx;
-        uint64_t m_prev_interm_value;
-        uint64_t m_multiplier;
-        vlq_base128_le_t* m__root;
-        vlq_base128_le_t* m__parent;
-
-    public:
 
         /**
          * If `true`, then we have more bytes to read.
@@ -116,47 +99,42 @@ public:
         uint64_t multiplier() const { return m_multiplier; }
         vlq_base128_le_t* _root() const { return m__root; }
         vlq_base128_le_t* _parent() const { return m__parent; }
-    };
 
-private:
-    bool f_len;
-    int32_t m_len;
+    private:
+        bool f_interm_value;
+        uint64_t m_interm_value;
+        bool m_has_next;
+        uint64_t m_value;
+        int32_t m_idx;
+        uint64_t m_prev_interm_value;
+        uint64_t m_multiplier;
+        vlq_base128_le_t* m__root;
+        vlq_base128_le_t* m__parent;
+    };
 
 public:
     int32_t len();
-
-private:
-    bool f_sign_bit;
-    uint64_t m_sign_bit;
-
-public:
     uint64_t sign_bit();
-
-private:
-    bool f_value;
-    uint64_t m_value;
-
-public:
 
     /**
      * Resulting unsigned value as normal integer
      */
     uint64_t value();
-
-private:
-    bool f_value_signed;
-    int64_t m_value_signed;
-
-public:
     int64_t value_signed();
-
-private:
-    std::unique_ptr<std::vector<std::unique_ptr<group_t>>> m_groups;
-    vlq_base128_le_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     std::vector<std::unique_ptr<group_t>>* groups() const { return m_groups.get(); }
     vlq_base128_le_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_len;
+    int32_t m_len;
+    bool f_sign_bit;
+    uint64_t m_sign_bit;
+    bool f_value;
+    uint64_t m_value;
+    bool f_value_signed;
+    int64_t m_value_signed;
+    std::unique_ptr<std::vector<std::unique_ptr<group_t>>> m_groups;
+    vlq_base128_le_t* m__root;
+    kaitai::kstruct* m__parent;
 };

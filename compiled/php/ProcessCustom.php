@@ -20,13 +20,6 @@ namespace Kaitai\Struct\Tests {
             $_process = new MyCustomFx($this->key(), false, "\x00");
             $this->_m_buf3 = $_process->decode($this->_m__raw_buf3);
         }
-        protected $_m_buf1;
-        protected $_m_buf2;
-        protected $_m_key;
-        protected $_m_buf3;
-        protected $_m__raw_buf1;
-        protected $_m__raw_buf2;
-        protected $_m__raw_buf3;
         public function buf1() { return $this->_m_buf1; }
         public function buf2() { return $this->_m_buf2; }
         public function key() { return $this->_m_key; }
@@ -34,5 +27,12 @@ namespace Kaitai\Struct\Tests {
         public function _raw_buf1() { return $this->_m__raw_buf1; }
         public function _raw_buf2() { return $this->_m__raw_buf2; }
         public function _raw_buf3() { return $this->_m__raw_buf3; }
+        protected $_m_buf1;
+        protected $_m_buf2;
+        protected $_m_key;
+        protected $_m_buf3;
+        protected $_m__raw_buf1;
+        protected $_m__raw_buf2;
+        protected $_m__raw_buf3;
     }
 }

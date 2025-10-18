@@ -68,7 +68,6 @@ public class StrEncodingsEscapingToS extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("str4_raw", lenOf4(), this.str4Raw.length);
         _dirty = false;
     }
-    private String str1;
     public String str1() {
         if (this.str1 != null)
             return this.str1;
@@ -76,7 +75,6 @@ public class StrEncodingsEscapingToS extends KaitaiStruct.ReadWrite {
         return this.str1;
     }
     public void _invalidateStr1() { this.str1 = null; }
-    private String str2;
     public String str2() {
         if (this.str2 != null)
             return this.str2;
@@ -84,7 +82,6 @@ public class StrEncodingsEscapingToS extends KaitaiStruct.ReadWrite {
         return this.str2;
     }
     public void _invalidateStr2() { this.str2 = null; }
-    private String str3;
     public String str3() {
         if (this.str3 != null)
             return this.str3;
@@ -92,7 +89,6 @@ public class StrEncodingsEscapingToS extends KaitaiStruct.ReadWrite {
         return this.str3;
     }
     public void _invalidateStr3() { this.str3 = null; }
-    private String str4;
     public String str4() {
         if (this.str4 != null)
             return this.str4;
@@ -100,16 +96,6 @@ public class StrEncodingsEscapingToS extends KaitaiStruct.ReadWrite {
         return this.str4;
     }
     public void _invalidateStr4() { this.str4 = null; }
-    private int lenOf1;
-    private byte[] str1Raw;
-    private int lenOf2;
-    private byte[] str2Raw;
-    private int lenOf3;
-    private byte[] str3Raw;
-    private int lenOf4;
-    private byte[] str4Raw;
-    private StrEncodingsEscapingToS _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int lenOf1() { return lenOf1; }
     public void setLenOf1(int _v) { _dirty = true; lenOf1 = _v; }
     public byte[] str1Raw() { return str1Raw; }
@@ -130,4 +116,18 @@ public class StrEncodingsEscapingToS extends KaitaiStruct.ReadWrite {
     public void set_root(StrEncodingsEscapingToS _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private String str1;
+    private String str2;
+    private String str3;
+    private String str4;
+    private int lenOf1;
+    private byte[] str1Raw;
+    private int lenOf2;
+    private byte[] str2Raw;
+    private int lenOf3;
+    private byte[] str3Raw;
+    private int lenOf4;
+    private byte[] str4Raw;
+    private StrEncodingsEscapingToS _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

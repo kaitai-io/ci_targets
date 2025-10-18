@@ -22,13 +22,13 @@ namespace Kaitai
             _len = new VlqBase128Le(m_io);
             _body = m_io.ReadBytes(Len.Value);
         }
-        private VlqBase128Le _len;
-        private byte[] _body;
-        private ImportsAbs m_root;
-        private KaitaiStruct m_parent;
         public VlqBase128Le Len { get { return _len; } }
         public byte[] Body { get { return _body; } }
         public ImportsAbs M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private VlqBase128Le _len;
+        private byte[] _body;
+        private ImportsAbs m_root;
+        private KaitaiStruct m_parent;
     }
 }

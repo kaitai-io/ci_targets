@@ -82,8 +82,6 @@ namespace Kaitai
                 private void _read()
                 {
                 }
-                private bool f_value;
-                private sbyte _value;
                 public sbyte Value
                 {
                     get
@@ -95,10 +93,12 @@ namespace Kaitai
                         return _value;
                     }
                 }
-                private SwitchManualEnumInvalidElse m_root;
-                private SwitchManualEnumInvalidElse.Opcode m_parent;
                 public SwitchManualEnumInvalidElse M_Root { get { return m_root; } }
                 public SwitchManualEnumInvalidElse.Opcode M_Parent { get { return m_parent; } }
+                private bool f_value;
+                private sbyte _value;
+                private SwitchManualEnumInvalidElse m_root;
+                private SwitchManualEnumInvalidElse.Opcode m_parent;
             }
             public partial class Intval : KaitaiStruct
             {
@@ -117,12 +117,12 @@ namespace Kaitai
                 {
                     _value = m_io.ReadU1();
                 }
-                private byte _value;
-                private SwitchManualEnumInvalidElse m_root;
-                private SwitchManualEnumInvalidElse.Opcode m_parent;
                 public byte Value { get { return _value; } }
                 public SwitchManualEnumInvalidElse M_Root { get { return m_root; } }
                 public SwitchManualEnumInvalidElse.Opcode M_Parent { get { return m_parent; } }
+                private byte _value;
+                private SwitchManualEnumInvalidElse m_root;
+                private SwitchManualEnumInvalidElse.Opcode m_parent;
             }
             public partial class Strval : KaitaiStruct
             {
@@ -141,27 +141,27 @@ namespace Kaitai
                 {
                     _value = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytesTerm(0, false, true, true));
                 }
-                private string _value;
-                private SwitchManualEnumInvalidElse m_root;
-                private SwitchManualEnumInvalidElse.Opcode m_parent;
                 public string Value { get { return _value; } }
                 public SwitchManualEnumInvalidElse M_Root { get { return m_root; } }
                 public SwitchManualEnumInvalidElse.Opcode M_Parent { get { return m_parent; } }
+                private string _value;
+                private SwitchManualEnumInvalidElse m_root;
+                private SwitchManualEnumInvalidElse.Opcode m_parent;
             }
-            private CodeEnum _code;
-            private KaitaiStruct _body;
-            private SwitchManualEnumInvalidElse m_root;
-            private SwitchManualEnumInvalidElse m_parent;
             public CodeEnum Code { get { return _code; } }
             public KaitaiStruct Body { get { return _body; } }
             public SwitchManualEnumInvalidElse M_Root { get { return m_root; } }
             public SwitchManualEnumInvalidElse M_Parent { get { return m_parent; } }
+            private CodeEnum _code;
+            private KaitaiStruct _body;
+            private SwitchManualEnumInvalidElse m_root;
+            private SwitchManualEnumInvalidElse m_parent;
         }
-        private List<Opcode> _opcodes;
-        private SwitchManualEnumInvalidElse m_root;
-        private KaitaiStruct m_parent;
         public List<Opcode> Opcodes { get { return _opcodes; } }
         public SwitchManualEnumInvalidElse M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<Opcode> _opcodes;
+        private SwitchManualEnumInvalidElse m_root;
+        private KaitaiStruct m_parent;
     }
 }

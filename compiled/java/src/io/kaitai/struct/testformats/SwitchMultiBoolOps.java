@@ -101,19 +101,19 @@ public class SwitchMultiBoolOps extends KaitaiStruct {
             }
             }
         }
-        private int code;
-        private Long body;
-        private SwitchMultiBoolOps _root;
-        private SwitchMultiBoolOps _parent;
         public int code() { return code; }
         public Long body() { return body; }
         public SwitchMultiBoolOps _root() { return _root; }
         public SwitchMultiBoolOps _parent() { return _parent; }
+        private int code;
+        private Long body;
+        private SwitchMultiBoolOps _root;
+        private SwitchMultiBoolOps _parent;
     }
-    private List<Opcode> opcodes;
-    private SwitchMultiBoolOps _root;
-    private KaitaiStruct _parent;
     public List<Opcode> opcodes() { return opcodes; }
     public SwitchMultiBoolOps _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Opcode> opcodes;
+    private SwitchMultiBoolOps _root;
+    private KaitaiStruct _parent;
 }

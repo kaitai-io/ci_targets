@@ -60,15 +60,13 @@ namespace Kaitai
             {
                 _m = m_io.ReadU1();
             }
-            private byte _m;
-            private TypeTernary2ndFalsy m_root;
-            private TypeTernary2ndFalsy m_parent;
             public byte M { get { return _m; } }
             public TypeTernary2ndFalsy M_Root { get { return m_root; } }
             public TypeTernary2ndFalsy M_Parent { get { return m_parent; } }
+            private byte _m;
+            private TypeTernary2ndFalsy m_root;
+            private TypeTernary2ndFalsy m_parent;
         }
-        private bool f_nullUt;
-        private Foo _nullUt;
         public Foo NullUt
         {
             get
@@ -82,8 +80,6 @@ namespace Kaitai
                 return _nullUt;
             }
         }
-        private bool f_t;
-        private bool _t;
         public bool T
         {
             get
@@ -95,8 +91,6 @@ namespace Kaitai
                 return _t;
             }
         }
-        private bool f_vFalse;
-        private bool _vFalse;
         public bool VFalse
         {
             get
@@ -108,8 +102,6 @@ namespace Kaitai
                 return _vFalse;
             }
         }
-        private bool f_vFloatNegZero;
-        private double _vFloatNegZero;
         public double VFloatNegZero
         {
             get
@@ -121,8 +113,6 @@ namespace Kaitai
                 return _vFloatNegZero;
             }
         }
-        private bool f_vFloatZero;
-        private double _vFloatZero;
         public double VFloatZero
         {
             get
@@ -134,8 +124,6 @@ namespace Kaitai
                 return _vFloatZero;
             }
         }
-        private bool f_vIntArrayEmpty;
-        private List<byte> _vIntArrayEmpty;
         public List<byte> VIntArrayEmpty
         {
             get
@@ -147,8 +135,6 @@ namespace Kaitai
                 return _vIntArrayEmpty;
             }
         }
-        private bool f_vIntNegZero;
-        private int _vIntNegZero;
         public int VIntNegZero
         {
             get
@@ -160,8 +146,6 @@ namespace Kaitai
                 return _vIntNegZero;
             }
         }
-        private bool f_vIntZero;
-        private sbyte _vIntZero;
         public sbyte VIntZero
         {
             get
@@ -173,8 +157,6 @@ namespace Kaitai
                 return _vIntZero;
             }
         }
-        private bool f_vNullUt;
-        private Foo _vNullUt;
         public Foo VNullUt
         {
             get
@@ -186,8 +168,6 @@ namespace Kaitai
                 return _vNullUt;
             }
         }
-        private bool f_vStrEmpty;
-        private string _vStrEmpty;
         public string VStrEmpty
         {
             get
@@ -199,8 +179,6 @@ namespace Kaitai
                 return _vStrEmpty;
             }
         }
-        private bool f_vStrWZero;
-        private string _vStrWZero;
         public string VStrWZero
         {
             get
@@ -212,17 +190,39 @@ namespace Kaitai
                 return _vStrWZero;
             }
         }
-        private byte _intTruthy;
-        private Foo _ut;
-        private List<byte> _intArray;
-        private List<byte> _intArrayEmpty;
-        private TypeTernary2ndFalsy m_root;
-        private KaitaiStruct m_parent;
         public byte IntTruthy { get { return _intTruthy; } }
         public Foo Ut { get { return _ut; } }
         public List<byte> IntArray { get { return _intArray; } }
         public List<byte> IntArrayEmpty { get { return _intArrayEmpty; } }
         public TypeTernary2ndFalsy M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_nullUt;
+        private Foo _nullUt;
+        private bool f_t;
+        private bool _t;
+        private bool f_vFalse;
+        private bool _vFalse;
+        private bool f_vFloatNegZero;
+        private double _vFloatNegZero;
+        private bool f_vFloatZero;
+        private double _vFloatZero;
+        private bool f_vIntArrayEmpty;
+        private List<byte> _vIntArrayEmpty;
+        private bool f_vIntNegZero;
+        private int _vIntNegZero;
+        private bool f_vIntZero;
+        private sbyte _vIntZero;
+        private bool f_vNullUt;
+        private Foo _vNullUt;
+        private bool f_vStrEmpty;
+        private string _vStrEmpty;
+        private bool f_vStrWZero;
+        private string _vStrWZero;
+        private byte _intTruthy;
+        private Foo _ut;
+        private List<byte> _intArray;
+        private List<byte> _intArrayEmpty;
+        private TypeTernary2ndFalsy m_root;
+        private KaitaiStruct m_parent;
     }
 }

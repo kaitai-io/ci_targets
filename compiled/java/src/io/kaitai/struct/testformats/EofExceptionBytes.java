@@ -32,10 +32,10 @@ public class EofExceptionBytes extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private byte[] buf;
-    private EofExceptionBytes _root;
-    private KaitaiStruct _parent;
     public byte[] buf() { return buf; }
     public EofExceptionBytes _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private byte[] buf;
+    private EofExceptionBytes _root;
+    private KaitaiStruct _parent;
 }

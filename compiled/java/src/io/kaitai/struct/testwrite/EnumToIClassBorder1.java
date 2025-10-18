@@ -75,9 +75,6 @@ public class EnumToIClassBorder1 extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private EnumToIClassBorder2 checker;
-    private boolean _shouldWriteChecker = false;
-    private boolean _enabledChecker = true;
     public EnumToIClassBorder2 checker() {
         if (_shouldWriteChecker)
             _writeChecker();
@@ -102,7 +99,6 @@ public class EnumToIClassBorder1 extends KaitaiStruct.ReadWrite {
         this.checker._write_Seq(this._io);
         this._io.seek(_pos);
     }
-    private Animal someDog;
     public Animal someDog() {
         if (this.someDog != null)
             return this.someDog;
@@ -110,10 +106,6 @@ public class EnumToIClassBorder1 extends KaitaiStruct.ReadWrite {
         return this.someDog;
     }
     public void _invalidateSomeDog() { this.someDog = null; }
-    private Animal pet1;
-    private Animal pet2;
-    private EnumToIClassBorder1 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Animal pet1() { return pet1; }
     public void setPet1(Animal _v) { _dirty = true; pet1 = _v; }
     public Animal pet2() { return pet2; }
@@ -122,4 +114,12 @@ public class EnumToIClassBorder1 extends KaitaiStruct.ReadWrite {
     public void set_root(EnumToIClassBorder1 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private EnumToIClassBorder2 checker;
+    private boolean _shouldWriteChecker = false;
+    private boolean _enabledChecker = true;
+    private Animal someDog;
+    private Animal pet1;
+    private Animal pet2;
+    private EnumToIClassBorder1 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

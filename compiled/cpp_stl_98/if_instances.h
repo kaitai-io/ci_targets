@@ -24,6 +24,9 @@ private:
 
 public:
     ~if_instances_t();
+    uint8_t never_happens();
+    if_instances_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_never_happens;
@@ -34,17 +37,8 @@ public:
     bool _is_null_never_happens() { never_happens(); return n_never_happens; };
 
 private:
-
-public:
-    uint8_t never_happens();
-
-private:
     if_instances_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    if_instances_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // IF_INSTANCES_H_

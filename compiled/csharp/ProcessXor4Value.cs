@@ -23,15 +23,15 @@ namespace Kaitai
             __raw_buf = m_io.ReadBytesFull();
             _buf = m_io.ProcessXor(__raw_buf, Key);
         }
-        private byte[] _key;
-        private byte[] _buf;
-        private ProcessXor4Value m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_buf;
         public byte[] Key { get { return _key; } }
         public byte[] Buf { get { return _buf; } }
         public ProcessXor4Value M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawBuf { get { return __raw_buf; } }
+        private byte[] _key;
+        private byte[] _buf;
+        private ProcessXor4Value m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_buf;
     }
 }

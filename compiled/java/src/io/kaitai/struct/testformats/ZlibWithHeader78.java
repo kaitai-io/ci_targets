@@ -33,12 +33,12 @@ public class ZlibWithHeader78 extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private byte[] data;
-    private ZlibWithHeader78 _root;
-    private KaitaiStruct _parent;
-    private byte[] _raw_data;
     public byte[] data() { return data; }
     public ZlibWithHeader78 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
     public byte[] _raw_data() { return _raw_data; }
+    private byte[] data;
+    private ZlibWithHeader78 _root;
+    private KaitaiStruct _parent;
+    private byte[] _raw_data;
 }

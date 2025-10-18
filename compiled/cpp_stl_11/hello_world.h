@@ -24,14 +24,12 @@ private:
 
 public:
     ~hello_world_t();
+    uint8_t one() const { return m_one; }
+    hello_world_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint8_t m_one;
     hello_world_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint8_t one() const { return m_one; }
-    hello_world_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

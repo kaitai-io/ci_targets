@@ -41,12 +41,12 @@ public class RepeatNStrz extends KaitaiStruct {
         for (int i = 0; i < this.lines.size(); i++) {
         }
     }
-    private long qty;
-    private List<String> lines;
-    private RepeatNStrz _root;
-    private KaitaiStruct _parent;
     public long qty() { return qty; }
     public List<String> lines() { return lines; }
     public RepeatNStrz _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private long qty;
+    private List<String> lines;
+    private RepeatNStrz _root;
+    private KaitaiStruct _parent;
 }

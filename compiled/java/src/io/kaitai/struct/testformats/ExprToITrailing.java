@@ -31,29 +31,29 @@ public class ExprToITrailing extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Integer toIGarbage;
     public Integer toIGarbage() {
         if (this.toIGarbage != null)
             return this.toIGarbage;
         this.toIGarbage = ((Number) (Long.parseLong("123_.^", 10))).intValue();
         return this.toIGarbage;
     }
-    private Integer toIR10;
     public Integer toIR10() {
         if (this.toIR10 != null)
             return this.toIR10;
         this.toIR10 = ((Number) (Long.parseLong("9173abc", 10))).intValue();
         return this.toIR10;
     }
-    private Integer toIR16;
     public Integer toIR16() {
         if (this.toIR16 != null)
             return this.toIR16;
         this.toIR16 = ((Number) (Long.parseLong("9173abc", 16))).intValue();
         return this.toIR16;
     }
-    private ExprToITrailing _root;
-    private KaitaiStruct _parent;
     public ExprToITrailing _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Integer toIGarbage;
+    private Integer toIR10;
+    private Integer toIR16;
+    private ExprToITrailing _root;
+    private KaitaiStruct _parent;
 }

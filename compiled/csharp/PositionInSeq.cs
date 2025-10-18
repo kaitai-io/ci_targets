@@ -43,15 +43,13 @@ namespace Kaitai
             {
                 _qtyNumbers = m_io.ReadU4le();
             }
-            private uint _qtyNumbers;
-            private PositionInSeq m_root;
-            private PositionInSeq m_parent;
             public uint QtyNumbers { get { return _qtyNumbers; } }
             public PositionInSeq M_Root { get { return m_root; } }
             public PositionInSeq M_Parent { get { return m_parent; } }
+            private uint _qtyNumbers;
+            private PositionInSeq m_root;
+            private PositionInSeq m_parent;
         }
-        private bool f_header;
-        private HeaderObj _header;
         public HeaderObj Header
         {
             get
@@ -66,11 +64,13 @@ namespace Kaitai
                 return _header;
             }
         }
-        private List<byte> _numbers;
-        private PositionInSeq m_root;
-        private KaitaiStruct m_parent;
         public List<byte> Numbers { get { return _numbers; } }
         public PositionInSeq M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_header;
+        private HeaderObj _header;
+        private List<byte> _numbers;
+        private PositionInSeq m_root;
+        private KaitaiStruct m_parent;
     }
 }

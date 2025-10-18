@@ -59,24 +59,24 @@ public class NavParentVsValueInst extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private Boolean doSomething;
         public Boolean doSomething() {
             if (this.doSomething != null)
                 return this.doSomething;
             this.doSomething = (_parent().s1().equals("foo") ? true : false);
             return this.doSomething;
         }
-        private NavParentVsValueInst _root;
-        private NavParentVsValueInst _parent;
         public NavParentVsValueInst _root() { return _root; }
         public NavParentVsValueInst _parent() { return _parent; }
+        private Boolean doSomething;
+        private NavParentVsValueInst _root;
+        private NavParentVsValueInst _parent;
     }
-    private String s1;
-    private ChildObj child;
-    private NavParentVsValueInst _root;
-    private KaitaiStruct _parent;
     public String s1() { return s1; }
     public ChildObj child() { return child; }
     public NavParentVsValueInst _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private String s1;
+    private ChildObj child;
+    private NavParentVsValueInst _root;
+    private KaitaiStruct _parent;
 }

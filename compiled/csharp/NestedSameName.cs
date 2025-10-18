@@ -54,15 +54,15 @@ namespace Kaitai
                 private void _read()
                 {
                 }
-                private NestedSameName m_root;
-                private KaitaiStruct m_parent;
                 public NestedSameName M_Root { get { return m_root; } }
                 public KaitaiStruct M_Parent { get { return m_parent; } }
+                private NestedSameName m_root;
+                private KaitaiStruct m_parent;
             }
-            private NestedSameName m_root;
-            private NestedSameName m_parent;
             public NestedSameName M_Root { get { return m_root; } }
             public NestedSameName M_Parent { get { return m_parent; } }
+            private NestedSameName m_root;
+            private NestedSameName m_parent;
         }
         public partial class Main : KaitaiStruct
         {
@@ -99,29 +99,29 @@ namespace Kaitai
                 {
                     _data = m_io.ReadBytes(M_Parent.MainSize * 2);
                 }
-                private byte[] _data;
-                private NestedSameName m_root;
-                private NestedSameName.Main m_parent;
                 public byte[] Data { get { return _data; } }
                 public NestedSameName M_Root { get { return m_root; } }
                 public NestedSameName.Main M_Parent { get { return m_parent; } }
+                private byte[] _data;
+                private NestedSameName m_root;
+                private NestedSameName.Main m_parent;
             }
-            private int _mainSize;
-            private FooObj _foo;
-            private NestedSameName m_root;
-            private NestedSameName m_parent;
             public int MainSize { get { return _mainSize; } }
             public FooObj Foo { get { return _foo; } }
             public NestedSameName M_Root { get { return m_root; } }
             public NestedSameName M_Parent { get { return m_parent; } }
+            private int _mainSize;
+            private FooObj _foo;
+            private NestedSameName m_root;
+            private NestedSameName m_parent;
         }
-        private Main _mainData;
-        private DummyObj _dummy;
-        private NestedSameName m_root;
-        private KaitaiStruct m_parent;
         public Main MainData { get { return _mainData; } }
         public DummyObj Dummy { get { return _dummy; } }
         public NestedSameName M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Main _mainData;
+        private DummyObj _dummy;
+        private NestedSameName m_root;
+        private KaitaiStruct m_parent;
     }
 }

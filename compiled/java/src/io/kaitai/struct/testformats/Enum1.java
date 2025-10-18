@@ -103,26 +103,26 @@ public class Enum1 extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private Animal pet1;
-            private Animal pet2;
-            private Enum1 _root;
-            private Enum1.MainObj _parent;
             public Animal pet1() { return pet1; }
             public Animal pet2() { return pet2; }
             public Enum1 _root() { return _root; }
             public Enum1.MainObj _parent() { return _parent; }
+            private Animal pet1;
+            private Animal pet2;
+            private Enum1 _root;
+            private Enum1.MainObj _parent;
         }
-        private SubmainObj submain;
-        private Enum1 _root;
-        private Enum1 _parent;
         public SubmainObj submain() { return submain; }
         public Enum1 _root() { return _root; }
         public Enum1 _parent() { return _parent; }
+        private SubmainObj submain;
+        private Enum1 _root;
+        private Enum1 _parent;
     }
-    private MainObj main;
-    private Enum1 _root;
-    private KaitaiStruct _parent;
     public MainObj main() { return main; }
     public Enum1 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private MainObj main;
+    private Enum1 _root;
+    private KaitaiStruct _parent;
 }

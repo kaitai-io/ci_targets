@@ -12,9 +12,9 @@ namespace Kaitai\Struct\Tests {
             $this->_m_len = new \Kaitai\Struct\Tests\VlqBase128Le($this->_io);
             $this->_m_body = $this->_io->readBytes($this->len()->value());
         }
-        protected $_m_len;
-        protected $_m_body;
         public function len() { return $this->_m_len; }
         public function body() { return $this->_m_body; }
+        protected $_m_len;
+        protected $_m_body;
     }
 }

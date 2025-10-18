@@ -24,40 +24,22 @@ private:
 
 public:
     ~yaml_ints_t();
+    int32_t test_u4_dec();
+    int32_t test_u4_hex();
+    int32_t test_u8_dec();
+    int32_t test_u8_hex();
+    yaml_ints_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_test_u4_dec;
     int32_t m_test_u4_dec;
-
-public:
-    int32_t test_u4_dec();
-
-private:
     bool f_test_u4_hex;
     int32_t m_test_u4_hex;
-
-public:
-    int32_t test_u4_hex();
-
-private:
     bool f_test_u8_dec;
     int32_t m_test_u8_dec;
-
-public:
-    int32_t test_u8_dec();
-
-private:
     bool f_test_u8_hex;
     int32_t m_test_u8_hex;
-
-public:
-    int32_t test_u8_hex();
-
-private:
     yaml_ints_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    yaml_ints_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

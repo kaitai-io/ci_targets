@@ -39,15 +39,17 @@ public:
 
     public:
         ~record_t();
+        std::string buf();
+        uint8_t flag() const { return m_flag; }
+        std::string buf_unproc() const { return m_buf_unproc; }
+        std::string buf_proc() const { return m_buf_proc; }
+        process_coerce_bytes_t* _root() const { return m__root; }
+        process_coerce_bytes_t* _parent() const { return m__parent; }
+        std::string _raw_buf_proc() const { return m__raw_buf_proc; }
 
     private:
         bool f_buf;
         std::string m_buf;
-
-    public:
-        std::string buf();
-
-    private:
         uint8_t m_flag;
         std::string m_buf_unproc;
         bool n_buf_unproc;
@@ -72,25 +74,17 @@ public:
         bool _is_null__raw_buf_proc() { _raw_buf_proc(); return n__raw_buf_proc; };
 
     private:
-
-    public:
-        uint8_t flag() const { return m_flag; }
-        std::string buf_unproc() const { return m_buf_unproc; }
-        std::string buf_proc() const { return m_buf_proc; }
-        process_coerce_bytes_t* _root() const { return m__root; }
-        process_coerce_bytes_t* _parent() const { return m__parent; }
-        std::string _raw_buf_proc() const { return m__raw_buf_proc; }
     };
-
-private:
-    std::vector<record_t*>* m_records;
-    process_coerce_bytes_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     std::vector<record_t*>* records() const { return m_records; }
     process_coerce_bytes_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    std::vector<record_t*>* m_records;
+    process_coerce_bytes_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // PROCESS_COERCE_BYTES_H_

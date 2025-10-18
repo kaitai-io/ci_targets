@@ -50,25 +50,25 @@ namespace Kaitai
                 {
                     _body = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(MyLen));
                 }
-                private string _body;
-                private uint _myLen;
-                private NestedTypeParam m_root;
-                private NestedTypeParam m_parent;
                 public string Body { get { return _body; } }
                 public uint MyLen { get { return _myLen; } }
                 public NestedTypeParam M_Root { get { return m_root; } }
                 public NestedTypeParam M_Parent { get { return m_parent; } }
+                private string _body;
+                private uint _myLen;
+                private NestedTypeParam m_root;
+                private NestedTypeParam m_parent;
             }
-            private NestedTypeParam m_root;
-            private KaitaiStruct m_parent;
             public NestedTypeParam M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
+            private NestedTypeParam m_root;
+            private KaitaiStruct m_parent;
         }
-        private Nested.MyType _mainSeq;
-        private NestedTypeParam m_root;
-        private KaitaiStruct m_parent;
         public Nested.MyType MainSeq { get { return _mainSeq; } }
         public NestedTypeParam M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Nested.MyType _mainSeq;
+        private NestedTypeParam m_root;
+        private KaitaiStruct m_parent;
     }
 }

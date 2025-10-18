@@ -75,19 +75,6 @@ namespace Kaitai
                 throw new ValidationNotEqualError(-1, _sint64, m_io, "/seq/10");
             }
         }
-        private byte[] _magic1;
-        private byte _uint8;
-        private sbyte _sint8;
-        private string _magicUint;
-        private ushort _uint16;
-        private uint _uint32;
-        private ulong _uint64;
-        private string _magicSint;
-        private short _sint16;
-        private int _sint32;
-        private long _sint64;
-        private ValidShort m_root;
-        private KaitaiStruct m_parent;
         public byte[] Magic1 { get { return _magic1; } }
         public byte Uint8 { get { return _uint8; } }
         public sbyte Sint8 { get { return _sint8; } }
@@ -101,5 +88,18 @@ namespace Kaitai
         public long Sint64 { get { return _sint64; } }
         public ValidShort M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte[] _magic1;
+        private byte _uint8;
+        private sbyte _sint8;
+        private string _magicUint;
+        private ushort _uint16;
+        private uint _uint32;
+        private ulong _uint64;
+        private string _magicSint;
+        private short _sint16;
+        private int _sint32;
+        private long _sint64;
+        private ValidShort m_root;
+        private KaitaiStruct m_parent;
     }
 }

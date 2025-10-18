@@ -35,12 +35,12 @@ public class ImportsParamsDefUsertypeImported extends KaitaiStruct {
         this.hw._fetchInstances();
         this.two._fetchInstances();
     }
-    private HelloWorld hw;
-    private ParamsDefUsertypeImported two;
-    private ImportsParamsDefUsertypeImported _root;
-    private KaitaiStruct _parent;
     public HelloWorld hw() { return hw; }
     public ParamsDefUsertypeImported two() { return two; }
     public ImportsParamsDefUsertypeImported _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private HelloWorld hw;
+    private ParamsDefUsertypeImported two;
+    private ImportsParamsDefUsertypeImported _root;
+    private KaitaiStruct _parent;
 }

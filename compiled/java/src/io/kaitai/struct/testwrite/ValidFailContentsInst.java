@@ -65,9 +65,6 @@ public class ValidFailContentsInst extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private byte[] foo;
-    private boolean _shouldWriteFoo = false;
-    private boolean _enabledFoo = true;
     public byte[] foo() {
         if (_shouldWriteFoo)
             _writeFoo();
@@ -94,13 +91,16 @@ public class ValidFailContentsInst extends KaitaiStruct.ReadWrite {
         this._io.writeBytes(this.foo);
         this._io.seek(_pos);
     }
-    private byte[] a;
-    private ValidFailContentsInst _root;
-    private KaitaiStruct.ReadWrite _parent;
     public byte[] a() { return a; }
     public void setA(byte[] _v) { _dirty = true; a = _v; }
     public ValidFailContentsInst _root() { return _root; }
     public void set_root(ValidFailContentsInst _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private byte[] foo;
+    private boolean _shouldWriteFoo = false;
+    private boolean _enabledFoo = true;
+    private byte[] a;
+    private ValidFailContentsInst _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

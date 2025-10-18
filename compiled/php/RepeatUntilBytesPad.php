@@ -17,7 +17,7 @@ namespace Kaitai\Struct\Tests {
                 $i++;
             } while (!(strlen($_) == 5));
         }
-        protected $_m_records;
         public function records() { return $this->_m_records; }
+        protected $_m_records;
     }
 }

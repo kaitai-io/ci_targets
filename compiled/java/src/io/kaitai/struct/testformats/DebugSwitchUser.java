@@ -98,12 +98,12 @@ public class DebugSwitchUser extends KaitaiStruct.ReadOnly {
 
         public void _fetchInstances() {
         }
-        private short val;
-        private DebugSwitchUser _root;
-        private DebugSwitchUser _parent;
         public short val() { return val; }
         public DebugSwitchUser _root() { return _root; }
         public DebugSwitchUser _parent() { return _parent; }
+        private short val;
+        private DebugSwitchUser _root;
+        private DebugSwitchUser _parent;
     }
     public static class Two extends KaitaiStruct.ReadOnly {
         public Map<String, Integer> _attrStart = new HashMap<String, Integer>();
@@ -137,19 +137,19 @@ public class DebugSwitchUser extends KaitaiStruct.ReadOnly {
 
         public void _fetchInstances() {
         }
-        private int val;
-        private DebugSwitchUser _root;
-        private DebugSwitchUser _parent;
         public int val() { return val; }
         public DebugSwitchUser _root() { return _root; }
         public DebugSwitchUser _parent() { return _parent; }
+        private int val;
+        private DebugSwitchUser _root;
+        private DebugSwitchUser _parent;
     }
-    private int code;
-    private KaitaiStruct.ReadOnly data;
-    private DebugSwitchUser _root;
-    private KaitaiStruct.ReadOnly _parent;
     public int code() { return code; }
     public KaitaiStruct.ReadOnly data() { return data; }
     public DebugSwitchUser _root() { return _root; }
     public KaitaiStruct.ReadOnly _parent() { return _parent; }
+    private int code;
+    private KaitaiStruct.ReadOnly data;
+    private DebugSwitchUser _root;
+    private KaitaiStruct.ReadOnly _parent;
 }

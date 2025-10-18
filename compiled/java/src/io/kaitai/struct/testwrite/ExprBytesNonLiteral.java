@@ -46,7 +46,6 @@ public class ExprBytesNonLiteral extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private byte[] calcBytes;
     public byte[] calcBytes() {
         if (this.calcBytes != null)
             return this.calcBytes;
@@ -54,10 +53,6 @@ public class ExprBytesNonLiteral extends KaitaiStruct.ReadWrite {
         return this.calcBytes;
     }
     public void _invalidateCalcBytes() { this.calcBytes = null; }
-    private int one;
-    private int two;
-    private ExprBytesNonLiteral _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int one() { return one; }
     public void setOne(int _v) { _dirty = true; one = _v; }
     public int two() { return two; }
@@ -66,4 +61,9 @@ public class ExprBytesNonLiteral extends KaitaiStruct.ReadWrite {
     public void set_root(ExprBytesNonLiteral _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private byte[] calcBytes;
+    private int one;
+    private int two;
+    private ExprBytesNonLiteral _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

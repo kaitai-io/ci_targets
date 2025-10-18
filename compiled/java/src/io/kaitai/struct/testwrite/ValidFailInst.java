@@ -59,9 +59,6 @@ public class ValidFailInst extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private Integer inst;
-    private boolean _shouldWriteInst = false;
-    private boolean _enabledInst = true;
     public Integer inst() {
         if (_shouldWriteInst)
             _writeInst();
@@ -88,13 +85,16 @@ public class ValidFailInst extends KaitaiStruct.ReadWrite {
         this._io.writeU1(this.inst);
         this._io.seek(_pos);
     }
-    private Integer a;
-    private ValidFailInst _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Integer a() { return a; }
     public void setA(Integer _v) { _dirty = true; a = _v; }
     public ValidFailInst _root() { return _root; }
     public void set_root(ValidFailInst _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer inst;
+    private boolean _shouldWriteInst = false;
+    private boolean _enabledInst = true;
+    private Integer a;
+    private ValidFailInst _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

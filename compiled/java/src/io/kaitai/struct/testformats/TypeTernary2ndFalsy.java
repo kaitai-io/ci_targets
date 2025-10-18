@@ -73,14 +73,13 @@ public class TypeTernary2ndFalsy extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int m;
-        private TypeTernary2ndFalsy _root;
-        private TypeTernary2ndFalsy _parent;
         public int m() { return m; }
         public TypeTernary2ndFalsy _root() { return _root; }
         public TypeTernary2ndFalsy _parent() { return _parent; }
+        private int m;
+        private TypeTernary2ndFalsy _root;
+        private TypeTernary2ndFalsy _parent;
     }
-    private Foo nullUt;
     public Foo nullUt() {
         if (this.nullUt != null)
             return this.nullUt;
@@ -89,86 +88,87 @@ public class TypeTernary2ndFalsy extends KaitaiStruct {
         }
         return this.nullUt;
     }
-    private Boolean t;
     public Boolean t() {
         if (this.t != null)
             return this.t;
         this.t = true;
         return this.t;
     }
-    private Boolean vFalse;
     public Boolean vFalse() {
         if (this.vFalse != null)
             return this.vFalse;
         this.vFalse = (t() ? false : true);
         return this.vFalse;
     }
-    private Double vFloatNegZero;
     public Double vFloatNegZero() {
         if (this.vFloatNegZero != null)
             return this.vFloatNegZero;
         this.vFloatNegZero = ((Number) ((t() ? -0.0 : -2.72))).doubleValue();
         return this.vFloatNegZero;
     }
-    private Double vFloatZero;
     public Double vFloatZero() {
         if (this.vFloatZero != null)
             return this.vFloatZero;
         this.vFloatZero = ((Number) ((t() ? 0.0 : 3.14))).doubleValue();
         return this.vFloatZero;
     }
-    private List<Integer> vIntArrayEmpty;
     public List<Integer> vIntArrayEmpty() {
         if (this.vIntArrayEmpty != null)
             return this.vIntArrayEmpty;
         this.vIntArrayEmpty = (t() ? intArrayEmpty() : intArray());
         return this.vIntArrayEmpty;
     }
-    private Integer vIntNegZero;
     public Integer vIntNegZero() {
         if (this.vIntNegZero != null)
             return this.vIntNegZero;
         this.vIntNegZero = ((Number) ((t() ? 0 : -20))).intValue();
         return this.vIntNegZero;
     }
-    private Byte vIntZero;
     public Byte vIntZero() {
         if (this.vIntZero != null)
             return this.vIntZero;
         this.vIntZero = ((Number) ((t() ? 0 : 10))).byteValue();
         return this.vIntZero;
     }
-    private Foo vNullUt;
     public Foo vNullUt() {
         if (this.vNullUt != null)
             return this.vNullUt;
         this.vNullUt = (t() ? nullUt() : ut());
         return this.vNullUt;
     }
-    private String vStrEmpty;
     public String vStrEmpty() {
         if (this.vStrEmpty != null)
             return this.vStrEmpty;
         this.vStrEmpty = (t() ? "" : "kaitai");
         return this.vStrEmpty;
     }
-    private String vStrWZero;
     public String vStrWZero() {
         if (this.vStrWZero != null)
             return this.vStrWZero;
         this.vStrWZero = (t() ? "0" : "30");
         return this.vStrWZero;
     }
-    private int intTruthy;
-    private Foo ut;
-    private List<Integer> intArray;
-    private List<Integer> intArrayEmpty;
-    private TypeTernary2ndFalsy _root;
-    private KaitaiStruct _parent;
     public int intTruthy() { return intTruthy; }
     public Foo ut() { return ut; }
     public List<Integer> intArray() { return intArray; }
     public List<Integer> intArrayEmpty() { return intArrayEmpty; }
     public TypeTernary2ndFalsy _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Foo nullUt;
+    private Boolean t;
+    private Boolean vFalse;
+    private Double vFloatNegZero;
+    private Double vFloatZero;
+    private List<Integer> vIntArrayEmpty;
+    private Integer vIntNegZero;
+    private Byte vIntZero;
+    private Foo vNullUt;
+    private String vStrEmpty;
+    private String vStrWZero;
+    private int intTruthy;
+    private Foo ut;
+    private List<Integer> intArray;
+    private List<Integer> intArrayEmpty;
+    private TypeTernary2ndFalsy _root;
+    private KaitaiStruct _parent;
 }

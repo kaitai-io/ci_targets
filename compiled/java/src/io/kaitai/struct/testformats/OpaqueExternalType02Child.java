@@ -65,28 +65,28 @@ public class OpaqueExternalType02Child extends KaitaiStruct {
             if (_root().someMethod()) {
             }
         }
-        private String s3;
-        private OpaqueExternalType02Child _root;
-        private OpaqueExternalType02Child _parent;
         public String s3() { return s3; }
         public OpaqueExternalType02Child _root() { return _root; }
         public OpaqueExternalType02Child _parent() { return _parent; }
+        private String s3;
+        private OpaqueExternalType02Child _root;
+        private OpaqueExternalType02Child _parent;
     }
-    private Boolean someMethod;
     public Boolean someMethod() {
         if (this.someMethod != null)
             return this.someMethod;
         this.someMethod = true;
         return this.someMethod;
     }
-    private String s1;
-    private String s2;
-    private OpaqueExternalType02ChildChild s3;
-    private OpaqueExternalType02Child _root;
-    private KaitaiStruct _parent;
     public String s1() { return s1; }
     public String s2() { return s2; }
     public OpaqueExternalType02ChildChild s3() { return s3; }
     public OpaqueExternalType02Child _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Boolean someMethod;
+    private String s1;
+    private String s2;
+    private OpaqueExternalType02ChildChild s3;
+    private OpaqueExternalType02Child _root;
+    private KaitaiStruct _parent;
 }

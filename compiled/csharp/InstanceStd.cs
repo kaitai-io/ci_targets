@@ -21,8 +21,6 @@ namespace Kaitai
         private void _read()
         {
         }
-        private bool f_header;
-        private string _header;
         public string Header
         {
             get
@@ -37,9 +35,11 @@ namespace Kaitai
                 return _header;
             }
         }
-        private InstanceStd m_root;
-        private KaitaiStruct m_parent;
         public InstanceStd M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_header;
+        private string _header;
+        private InstanceStd m_root;
+        private KaitaiStruct m_parent;
     }
 }

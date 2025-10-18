@@ -38,19 +38,19 @@ public class NavRootRecursive extends KaitaiStruct {
             this.next._fetchInstances();
         }
     }
-    private Integer rootValue;
     public Integer rootValue() {
         if (this.rootValue != null)
             return this.rootValue;
         this.rootValue = ((Number) (_root().value())).intValue();
         return this.rootValue;
     }
-    private int value;
-    private NavRootRecursive next;
-    private NavRootRecursive _root;
-    private KaitaiStruct _parent;
     public int value() { return value; }
     public NavRootRecursive next() { return next; }
     public NavRootRecursive _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Integer rootValue;
+    private int value;
+    private NavRootRecursive next;
+    private NavRootRecursive _root;
+    private KaitaiStruct _parent;
 }

@@ -25,14 +25,12 @@ private:
 
 public:
     ~valid_fail_repeat_expr_t();
+    std::vector<std::string>* foo() const { return m_foo.get(); }
+    valid_fail_repeat_expr_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::unique_ptr<std::vector<std::string>> m_foo;
     valid_fail_repeat_expr_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::vector<std::string>* foo() const { return m_foo.get(); }
-    valid_fail_repeat_expr_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

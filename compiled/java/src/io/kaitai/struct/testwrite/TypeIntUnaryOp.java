@@ -46,7 +46,6 @@ public class TypeIntUnaryOp extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private Integer unaryS2;
     public Integer unaryS2() {
         if (this.unaryS2 != null)
             return this.unaryS2;
@@ -54,7 +53,6 @@ public class TypeIntUnaryOp extends KaitaiStruct.ReadWrite {
         return this.unaryS2;
     }
     public void _invalidateUnaryS2() { this.unaryS2 = null; }
-    private Long unaryS8;
     public Long unaryS8() {
         if (this.unaryS8 != null)
             return this.unaryS8;
@@ -62,10 +60,6 @@ public class TypeIntUnaryOp extends KaitaiStruct.ReadWrite {
         return this.unaryS8;
     }
     public void _invalidateUnaryS8() { this.unaryS8 = null; }
-    private short valueS2;
-    private long valueS8;
-    private TypeIntUnaryOp _root;
-    private KaitaiStruct.ReadWrite _parent;
     public short valueS2() { return valueS2; }
     public void setValueS2(short _v) { _dirty = true; valueS2 = _v; }
     public long valueS8() { return valueS8; }
@@ -74,4 +68,10 @@ public class TypeIntUnaryOp extends KaitaiStruct.ReadWrite {
     public void set_root(TypeIntUnaryOp _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer unaryS2;
+    private Long unaryS8;
+    private short valueS2;
+    private long valueS8;
+    private TypeIntUnaryOp _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

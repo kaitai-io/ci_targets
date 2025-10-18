@@ -43,12 +43,12 @@ namespace Kaitai
             {
                 _foo = m_io.ReadU1();
             }
-            private byte _foo;
-            private ParamsPassArrayUsertype m_root;
-            private ParamsPassArrayUsertype m_parent;
             public byte Foo { get { return _foo; } }
             public ParamsPassArrayUsertype M_Root { get { return m_root; } }
             public ParamsPassArrayUsertype M_Parent { get { return m_parent; } }
+            private byte _foo;
+            private ParamsPassArrayUsertype m_root;
+            private ParamsPassArrayUsertype m_parent;
         }
         public partial class ParamType : KaitaiStruct
         {
@@ -64,24 +64,24 @@ namespace Kaitai
                 _one = m_io.ReadBytes(Bar[0].Foo);
                 _two = m_io.ReadBytes(Bar[1].Foo);
             }
-            private byte[] _one;
-            private byte[] _two;
-            private List<Block> _bar;
-            private ParamsPassArrayUsertype m_root;
-            private ParamsPassArrayUsertype m_parent;
             public byte[] One { get { return _one; } }
             public byte[] Two { get { return _two; } }
             public List<Block> Bar { get { return _bar; } }
             public ParamsPassArrayUsertype M_Root { get { return m_root; } }
             public ParamsPassArrayUsertype M_Parent { get { return m_parent; } }
+            private byte[] _one;
+            private byte[] _two;
+            private List<Block> _bar;
+            private ParamsPassArrayUsertype m_root;
+            private ParamsPassArrayUsertype m_parent;
         }
-        private List<Block> _blocks;
-        private ParamType _passBlocks;
-        private ParamsPassArrayUsertype m_root;
-        private KaitaiStruct m_parent;
         public List<Block> Blocks { get { return _blocks; } }
         public ParamType PassBlocks { get { return _passBlocks; } }
         public ParamsPassArrayUsertype M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<Block> _blocks;
+        private ParamType _passBlocks;
+        private ParamsPassArrayUsertype m_root;
+        private KaitaiStruct m_parent;
     }
 }

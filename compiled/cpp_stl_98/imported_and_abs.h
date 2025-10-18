@@ -25,18 +25,16 @@ private:
 
 public:
     ~imported_and_abs_t();
+    uint8_t one() const { return m_one; }
+    imported_root_t* two() const { return m_two; }
+    imported_and_abs_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint8_t m_one;
     imported_root_t* m_two;
     imported_and_abs_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint8_t one() const { return m_one; }
-    imported_root_t* two() const { return m_two; }
-    imported_and_abs_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // IMPORTED_AND_ABS_H_

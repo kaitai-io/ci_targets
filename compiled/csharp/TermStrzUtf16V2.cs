@@ -23,15 +23,15 @@ namespace Kaitai
             _s2 = System.Text.Encoding.GetEncoding("UTF-16LE").GetString(m_io.ReadBytesTermMulti(new byte[] { 0, 0 }, true, true, true));
             _s3 = System.Text.Encoding.GetEncoding("UTF-16LE").GetString(m_io.ReadBytesTermMulti(new byte[] { 0, 0 }, false, false, true));
         }
-        private string _s1;
-        private string _s2;
-        private string _s3;
-        private TermStrzUtf16V2 m_root;
-        private KaitaiStruct m_parent;
         public string S1 { get { return _s1; } }
         public string S2 { get { return _s2; } }
         public string S3 { get { return _s3; } }
         public TermStrzUtf16V2 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private string _s1;
+        private string _s2;
+        private string _s3;
+        private TermStrzUtf16V2 m_root;
+        private KaitaiStruct m_parent;
     }
 }

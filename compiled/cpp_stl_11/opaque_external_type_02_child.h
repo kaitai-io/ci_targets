@@ -38,6 +38,9 @@ public:
 
     public:
         ~opaque_external_type_02_child_child_t();
+        std::string s3() const { return m_s3; }
+        opaque_external_type_02_child_t* _root() const { return m__root; }
+        opaque_external_type_02_child_t* _parent() const { return m__parent; }
 
     private:
         std::string m_s3;
@@ -49,31 +52,22 @@ public:
     private:
         opaque_external_type_02_child_t* m__root;
         opaque_external_type_02_child_t* m__parent;
-
-    public:
-        std::string s3() const { return m_s3; }
-        opaque_external_type_02_child_t* _root() const { return m__root; }
-        opaque_external_type_02_child_t* _parent() const { return m__parent; }
     };
-
-private:
-    bool f_some_method;
-    bool m_some_method;
 
 public:
     bool some_method();
-
-private:
-    std::string m_s1;
-    std::string m_s2;
-    std::unique_ptr<opaque_external_type_02_child_child_t> m_s3;
-    opaque_external_type_02_child_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     std::string s1() const { return m_s1; }
     std::string s2() const { return m_s2; }
     opaque_external_type_02_child_child_t* s3() const { return m_s3.get(); }
     opaque_external_type_02_child_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_some_method;
+    bool m_some_method;
+    std::string m_s1;
+    std::string m_s2;
+    std::unique_ptr<opaque_external_type_02_child_child_t> m_s3;
+    opaque_external_type_02_child_t* m__root;
+    kaitai::kstruct* m__parent;
 };

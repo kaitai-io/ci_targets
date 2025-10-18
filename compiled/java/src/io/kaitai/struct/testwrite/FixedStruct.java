@@ -201,35 +201,6 @@ public class FixedStruct extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private byte[] magic1;
-        private int uint8;
-        private byte sint8;
-        private byte[] magicUint;
-        private int uint16;
-        private long uint32;
-        private long uint64;
-        private byte[] magicSint;
-        private short sint16;
-        private int sint32;
-        private long sint64;
-        private byte[] magicUintLe;
-        private int uint16le;
-        private long uint32le;
-        private long uint64le;
-        private byte[] magicSintLe;
-        private short sint16le;
-        private int sint32le;
-        private long sint64le;
-        private byte[] magicUintBe;
-        private int uint16be;
-        private long uint32be;
-        private long uint64be;
-        private byte[] magicSintBe;
-        private short sint16be;
-        private int sint32be;
-        private long sint64be;
-        private FixedStruct _root;
-        private FixedStruct _parent;
         public byte[] magic1() { return magic1; }
         public void setMagic1(byte[] _v) { _dirty = true; magic1 = _v; }
         public int uint8() { return uint8; }
@@ -288,10 +259,36 @@ public class FixedStruct extends KaitaiStruct.ReadWrite {
         public void set_root(FixedStruct _v) { _dirty = true; _root = _v; }
         public FixedStruct _parent() { return _parent; }
         public void set_parent(FixedStruct _v) { _dirty = true; _parent = _v; }
+        private byte[] magic1;
+        private int uint8;
+        private byte sint8;
+        private byte[] magicUint;
+        private int uint16;
+        private long uint32;
+        private long uint64;
+        private byte[] magicSint;
+        private short sint16;
+        private int sint32;
+        private long sint64;
+        private byte[] magicUintLe;
+        private int uint16le;
+        private long uint32le;
+        private long uint64le;
+        private byte[] magicSintLe;
+        private short sint16le;
+        private int sint32le;
+        private long sint64le;
+        private byte[] magicUintBe;
+        private int uint16be;
+        private long uint32be;
+        private long uint64be;
+        private byte[] magicSintBe;
+        private short sint16be;
+        private int sint32be;
+        private long sint64be;
+        private FixedStruct _root;
+        private FixedStruct _parent;
     }
-    private Header hdr;
-    private boolean _shouldWriteHdr = false;
-    private boolean _enabledHdr = true;
     public Header hdr() {
         if (_shouldWriteHdr)
             _writeHdr();
@@ -316,10 +313,13 @@ public class FixedStruct extends KaitaiStruct.ReadWrite {
         this.hdr._write_Seq(this._io);
         this._io.seek(_pos);
     }
-    private FixedStruct _root;
-    private KaitaiStruct.ReadWrite _parent;
     public FixedStruct _root() { return _root; }
     public void set_root(FixedStruct _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Header hdr;
+    private boolean _shouldWriteHdr = false;
+    private boolean _enabledHdr = true;
+    private FixedStruct _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

@@ -38,6 +38,11 @@ private:
 
 public:
     ~bits_enum_t();
+    animal_t one() const { return m_one; }
+    animal_t two() const { return m_two; }
+    animal_t three() const { return m_three; }
+    bits_enum_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     animal_t m_one;
@@ -45,11 +50,4 @@ private:
     animal_t m_three;
     bits_enum_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    animal_t one() const { return m_one; }
-    animal_t two() const { return m_two; }
-    animal_t three() const { return m_three; }
-    bits_enum_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

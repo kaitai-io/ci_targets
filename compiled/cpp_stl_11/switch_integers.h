@@ -39,6 +39,10 @@ public:
 
     public:
         ~opcode_t();
+        uint8_t code() const { return m_code; }
+        uint64_t body() const { return m_body; }
+        switch_integers_t* _root() const { return m__root; }
+        switch_integers_t* _parent() const { return m__parent; }
 
     private:
         uint8_t m_code;
@@ -51,21 +55,15 @@ public:
     private:
         switch_integers_t* m__root;
         switch_integers_t* m__parent;
-
-    public:
-        uint8_t code() const { return m_code; }
-        uint64_t body() const { return m_body; }
-        switch_integers_t* _root() const { return m__root; }
-        switch_integers_t* _parent() const { return m__parent; }
     };
-
-private:
-    std::unique_ptr<std::vector<std::unique_ptr<opcode_t>>> m_opcodes;
-    switch_integers_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     std::vector<std::unique_ptr<opcode_t>>* opcodes() const { return m_opcodes.get(); }
     switch_integers_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    std::unique_ptr<std::vector<std::unique_ptr<opcode_t>>> m_opcodes;
+    switch_integers_t* m__root;
+    kaitai::kstruct* m__parent;
 };

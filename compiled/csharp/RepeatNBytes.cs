@@ -25,11 +25,11 @@ namespace Kaitai
                 _records.Add(m_io.ReadBytes(5));
             }
         }
-        private List<byte[]> _records;
-        private RepeatNBytes m_root;
-        private KaitaiStruct m_parent;
         public List<byte[]> Records { get { return _records; } }
         public RepeatNBytes M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<byte[]> _records;
+        private RepeatNBytes m_root;
+        private KaitaiStruct m_parent;
     }
 }

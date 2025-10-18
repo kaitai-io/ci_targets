@@ -12,9 +12,9 @@ namespace Kaitai\Struct\Tests {
             $this->_m_prebuf = $this->_io->readBytes(8);
             $this->_m_bits = $this->_io->readBitsIntLe(31);
         }
-        protected $_m_prebuf;
-        protected $_m_bits;
         public function prebuf() { return $this->_m_prebuf; }
         public function bits() { return $this->_m_bits; }
+        protected $_m_prebuf;
+        protected $_m_bits;
     }
 }

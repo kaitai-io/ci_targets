@@ -78,7 +78,6 @@ public class ExprIfIntOps extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private Integer bytesSubKey;
     public Integer bytesSubKey() {
         if (this.bytesSubKey != null)
             return this.bytesSubKey;
@@ -86,7 +85,6 @@ public class ExprIfIntOps extends KaitaiStruct.ReadWrite {
         return this.bytesSubKey;
     }
     public void _invalidateBytesSubKey() { this.bytesSubKey = null; }
-    private Byte itemsSubKey;
     public Byte itemsSubKey() {
         if (this.itemsSubKey != null)
             return this.itemsSubKey;
@@ -94,13 +92,6 @@ public class ExprIfIntOps extends KaitaiStruct.ReadWrite {
         return this.itemsSubKey;
     }
     public void _invalidateItemsSubKey() { this.itemsSubKey = null; }
-    private Long key;
-    private byte[] skip;
-    private byte[] bytes;
-    private List<Byte> items;
-    private ExprIfIntOps _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_bytes;
     public Long key() { return key; }
     public void setKey(Long _v) { _dirty = true; key = _v; }
     public byte[] skip() { return skip; }
@@ -115,4 +106,13 @@ public class ExprIfIntOps extends KaitaiStruct.ReadWrite {
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_bytes() { return _raw_bytes; }
     public void set_raw_Bytes(byte[] _v) { _dirty = true; _raw_bytes = _v; }
+    private Integer bytesSubKey;
+    private Byte itemsSubKey;
+    private Long key;
+    private byte[] skip;
+    private byte[] bytes;
+    private List<Byte> items;
+    private ExprIfIntOps _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_bytes;
 }

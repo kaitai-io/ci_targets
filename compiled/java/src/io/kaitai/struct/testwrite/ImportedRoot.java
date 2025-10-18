@@ -44,13 +44,13 @@ public class ImportedRoot extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private int one;
-    private ImportedRoot _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int one() { return one; }
     public void setOne(int _v) { _dirty = true; one = _v; }
     public ImportedRoot _root() { return _root; }
     public void set_root(ImportedRoot _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private int one;
+    private ImportedRoot _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

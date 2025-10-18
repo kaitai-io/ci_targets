@@ -67,11 +67,6 @@ public class BitsEnum extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private Animal one;
-    private Animal two;
-    private Animal three;
-    private BitsEnum _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Animal one() { return one; }
     public void setOne(Animal _v) { _dirty = true; one = _v; }
     public Animal two() { return two; }
@@ -82,4 +77,9 @@ public class BitsEnum extends KaitaiStruct.ReadWrite {
     public void set_root(BitsEnum _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Animal one;
+    private Animal two;
+    private Animal three;
+    private BitsEnum _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

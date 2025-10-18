@@ -24,21 +24,15 @@ private:
 
 public:
     ~instance_std_t();
+    std::string header();
+    instance_std_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_header;
     std::string m_header;
-
-public:
-    std::string header();
-
-private:
     instance_std_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    instance_std_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // INSTANCE_STD_H_

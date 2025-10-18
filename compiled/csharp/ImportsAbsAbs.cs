@@ -22,13 +22,13 @@ namespace Kaitai
             _one = m_io.ReadU1();
             _two = new ImportedAndAbs(m_io);
         }
-        private byte _one;
-        private ImportedAndAbs _two;
-        private ImportsAbsAbs m_root;
-        private KaitaiStruct m_parent;
         public byte One { get { return _one; } }
         public ImportedAndAbs Two { get { return _two; } }
         public ImportsAbsAbs M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte _one;
+        private ImportedAndAbs _two;
+        private ImportsAbsAbs m_root;
+        private KaitaiStruct m_parent;
     }
 }

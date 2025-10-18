@@ -37,16 +37,14 @@ private:
 
 public:
     ~valid_fail_in_enum_t();
+    animal_t foo() const { return m_foo; }
+    valid_fail_in_enum_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     animal_t m_foo;
     valid_fail_in_enum_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    animal_t foo() const { return m_foo; }
-    valid_fail_in_enum_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // VALID_FAIL_IN_ENUM_H_

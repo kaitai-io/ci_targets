@@ -59,19 +59,19 @@ public class UserType extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private long width;
-        private long height;
-        private UserType _root;
-        private UserType _parent;
         public long width() { return width; }
         public long height() { return height; }
         public UserType _root() { return _root; }
         public UserType _parent() { return _parent; }
+        private long width;
+        private long height;
+        private UserType _root;
+        private UserType _parent;
     }
-    private Header one;
-    private UserType _root;
-    private KaitaiStruct _parent;
     public Header one() { return one; }
     public UserType _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Header one;
+    private UserType _root;
+    private KaitaiStruct _parent;
 }

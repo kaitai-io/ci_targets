@@ -46,10 +46,10 @@ public class ValidFailRepeatEqInt extends KaitaiStruct {
         for (int i = 0; i < this.foo.size(); i++) {
         }
     }
-    private List<Long> foo;
-    private ValidFailRepeatEqInt _root;
-    private KaitaiStruct _parent;
     public List<Long> foo() { return foo; }
     public ValidFailRepeatEqInt _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Long> foo;
+    private ValidFailRepeatEqInt _root;
+    private KaitaiStruct _parent;
 }

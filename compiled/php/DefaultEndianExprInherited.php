@@ -16,8 +16,8 @@ namespace Kaitai\Struct\Tests {
                 $i++;
             }
         }
-        protected $_m_docs;
         public function docs() { return $this->_m_docs; }
+        protected $_m_docs;
     }
 }
 
@@ -32,10 +32,10 @@ namespace Kaitai\Struct\Tests\DefaultEndianExprInherited {
             $this->_m_indicator = $this->_io->readBytes(2);
             $this->_m_main = new \Kaitai\Struct\Tests\DefaultEndianExprInherited\Doc\MainObj($this->_io, $this, $this->_root);
         }
-        protected $_m_indicator;
-        protected $_m_main;
         public function indicator() { return $this->_m_indicator; }
         public function main() { return $this->_m_main; }
+        protected $_m_indicator;
+        protected $_m_main;
     }
 }
 
@@ -74,8 +74,8 @@ namespace Kaitai\Struct\Tests\DefaultEndianExprInherited\Doc {
         private function _readBE() {
             $this->_m_insides = new \Kaitai\Struct\Tests\DefaultEndianExprInherited\Doc\MainObj\SubObj($this->_io, $this, $this->_root, $this->_m__is_le);
         }
-        protected $_m_insides;
         public function insides() { return $this->_m_insides; }
+        protected $_m_insides;
     }
 }
 
@@ -109,10 +109,10 @@ namespace Kaitai\Struct\Tests\DefaultEndianExprInherited\Doc\MainObj {
             $this->_m_someInt = $this->_io->readU4be();
             $this->_m_more = new \Kaitai\Struct\Tests\DefaultEndianExprInherited\Doc\MainObj\SubObj\SubsubObj($this->_io, $this, $this->_root, $this->_m__is_le);
         }
-        protected $_m_someInt;
-        protected $_m_more;
         public function someInt() { return $this->_m_someInt; }
         public function more() { return $this->_m_more; }
+        protected $_m_someInt;
+        protected $_m_more;
     }
 }
 
@@ -146,7 +146,6 @@ namespace Kaitai\Struct\Tests\DefaultEndianExprInherited\Doc\MainObj\SubObj {
             $this->_m_someInt1 = $this->_io->readU2be();
             $this->_m_someInt2 = $this->_io->readU2be();
         }
-        protected $_m_someInst;
         public function someInst() {
             if ($this->_m_someInst !== null)
                 return $this->_m_someInst;
@@ -160,9 +159,10 @@ namespace Kaitai\Struct\Tests\DefaultEndianExprInherited\Doc\MainObj\SubObj {
             $this->_io->seek($_pos);
             return $this->_m_someInst;
         }
-        protected $_m_someInt1;
-        protected $_m_someInt2;
         public function someInt1() { return $this->_m_someInt1; }
         public function someInt2() { return $this->_m_someInt2; }
+        protected $_m_someInst;
+        protected $_m_someInt1;
+        protected $_m_someInt2;
     }
 }

@@ -21,29 +21,29 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_items[] = $this->_io->readS1();
             }
         }
-        protected $_m_bytesSubKey;
         public function bytesSubKey() {
             if ($this->_m_bytesSubKey !== null)
                 return $this->_m_bytesSubKey;
             $this->_m_bytesSubKey = ord($this->bytes()[$this->key()]);
             return $this->_m_bytesSubKey;
         }
-        protected $_m_itemsSubKey;
         public function itemsSubKey() {
             if ($this->_m_itemsSubKey !== null)
                 return $this->_m_itemsSubKey;
             $this->_m_itemsSubKey = $this->items()[$this->key()];
             return $this->_m_itemsSubKey;
         }
-        protected $_m_key;
-        protected $_m_skip;
-        protected $_m_bytes;
-        protected $_m_items;
-        protected $_m__raw_bytes;
         public function key() { return $this->_m_key; }
         public function skip() { return $this->_m_skip; }
         public function bytes() { return $this->_m_bytes; }
         public function items() { return $this->_m_items; }
         public function _raw_bytes() { return $this->_m__raw_bytes; }
+        protected $_m_bytesSubKey;
+        protected $_m_itemsSubKey;
+        protected $_m_key;
+        protected $_m_skip;
+        protected $_m_bytes;
+        protected $_m_items;
+        protected $_m__raw_bytes;
     }
 }

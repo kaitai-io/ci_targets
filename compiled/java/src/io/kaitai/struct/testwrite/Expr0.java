@@ -44,7 +44,6 @@ public class Expr0 extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private String mustBeAbc123;
     public String mustBeAbc123() {
         if (this.mustBeAbc123 != null)
             return this.mustBeAbc123;
@@ -52,7 +51,6 @@ public class Expr0 extends KaitaiStruct.ReadWrite {
         return this.mustBeAbc123;
     }
     public void _invalidateMustBeAbc123() { this.mustBeAbc123 = null; }
-    private Integer mustBeF7;
     public Integer mustBeF7() {
         if (this.mustBeF7 != null)
             return this.mustBeF7;
@@ -60,13 +58,15 @@ public class Expr0 extends KaitaiStruct.ReadWrite {
         return this.mustBeF7;
     }
     public void _invalidateMustBeF7() { this.mustBeF7 = null; }
-    private int lenOf1;
-    private Expr0 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int lenOf1() { return lenOf1; }
     public void setLenOf1(int _v) { _dirty = true; lenOf1 = _v; }
     public Expr0 _root() { return _root; }
     public void set_root(Expr0 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private String mustBeAbc123;
+    private Integer mustBeF7;
+    private int lenOf1;
+    private Expr0 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

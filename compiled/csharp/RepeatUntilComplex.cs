@@ -72,14 +72,14 @@ namespace Kaitai
                     _values.Add(m_io.ReadU1());
                 }
             }
-            private byte _count;
-            private List<byte> _values;
-            private RepeatUntilComplex m_root;
-            private RepeatUntilComplex m_parent;
             public byte Count { get { return _count; } }
             public List<byte> Values { get { return _values; } }
             public RepeatUntilComplex M_Root { get { return m_root; } }
             public RepeatUntilComplex M_Parent { get { return m_parent; } }
+            private byte _count;
+            private List<byte> _values;
+            private RepeatUntilComplex m_root;
+            private RepeatUntilComplex m_parent;
         }
         public partial class TypeU2 : KaitaiStruct
         {
@@ -103,24 +103,24 @@ namespace Kaitai
                     _values.Add(m_io.ReadU2le());
                 }
             }
-            private ushort _count;
-            private List<ushort> _values;
-            private RepeatUntilComplex m_root;
-            private RepeatUntilComplex m_parent;
             public ushort Count { get { return _count; } }
             public List<ushort> Values { get { return _values; } }
             public RepeatUntilComplex M_Root { get { return m_root; } }
             public RepeatUntilComplex M_Parent { get { return m_parent; } }
+            private ushort _count;
+            private List<ushort> _values;
+            private RepeatUntilComplex m_root;
+            private RepeatUntilComplex m_parent;
         }
-        private List<TypeU1> _first;
-        private List<TypeU2> _second;
-        private List<byte> _third;
-        private RepeatUntilComplex m_root;
-        private KaitaiStruct m_parent;
         public List<TypeU1> First { get { return _first; } }
         public List<TypeU2> Second { get { return _second; } }
         public List<byte> Third { get { return _third; } }
         public RepeatUntilComplex M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<TypeU1> _first;
+        private List<TypeU2> _second;
+        private List<byte> _third;
+        private RepeatUntilComplex m_root;
+        private KaitaiStruct m_parent;
     }
 }

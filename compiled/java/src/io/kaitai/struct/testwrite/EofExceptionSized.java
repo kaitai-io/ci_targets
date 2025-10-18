@@ -105,17 +105,13 @@ public class EofExceptionSized extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private EofExceptionSized _root;
-        private EofExceptionSized _parent;
         public EofExceptionSized _root() { return _root; }
         public void set_root(EofExceptionSized _v) { _dirty = true; _root = _v; }
         public EofExceptionSized _parent() { return _parent; }
         public void set_parent(EofExceptionSized _v) { _dirty = true; _parent = _v; }
+        private EofExceptionSized _root;
+        private EofExceptionSized _parent;
     }
-    private Foo buf;
-    private EofExceptionSized _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_buf;
     public Foo buf() { return buf; }
     public void setBuf(Foo _v) { _dirty = true; buf = _v; }
     public EofExceptionSized _root() { return _root; }
@@ -124,4 +120,8 @@ public class EofExceptionSized extends KaitaiStruct.ReadWrite {
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_buf() { return _raw_buf; }
     public void set_raw_Buf(byte[] _v) { _dirty = true; _raw_buf = _v; }
+    private Foo buf;
+    private EofExceptionSized _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_buf;
 }

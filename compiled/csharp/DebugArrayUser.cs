@@ -50,20 +50,20 @@ namespace Kaitai
             {
                 _meow = m_io.ReadU1();
             }
-            private byte _meow;
-            private DebugArrayUser m_root;
-            private DebugArrayUser m_parent;
             public byte Meow { get { return _meow; } }
             public DebugArrayUser M_Root { get { return m_root; } }
             public DebugArrayUser M_Parent { get { return m_parent; } }
+            private byte _meow;
+            private DebugArrayUser m_root;
+            private DebugArrayUser m_parent;
         }
-        private Cat _oneCat;
-        private List<Cat> _arrayOfCats;
-        private DebugArrayUser m_root;
-        private KaitaiStruct m_parent;
         public Cat OneCat { get { return _oneCat; } }
         public List<Cat> ArrayOfCats { get { return _arrayOfCats; } }
         public DebugArrayUser M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Cat _oneCat;
+        private List<Cat> _arrayOfCats;
+        private DebugArrayUser m_root;
+        private KaitaiStruct m_parent;
     }
 }

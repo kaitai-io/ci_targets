@@ -48,7 +48,6 @@ public class InstanceInRepeatUntil extends KaitaiStruct {
         if (this.untilVal != null) {
         }
     }
-    private Short untilVal;
     public Short untilVal() {
         if (this.untilVal != null)
             return this.untilVal;
@@ -58,10 +57,11 @@ public class InstanceInRepeatUntil extends KaitaiStruct {
         this._io.seek(_pos);
         return this.untilVal;
     }
-    private List<Short> entries;
-    private InstanceInRepeatUntil _root;
-    private KaitaiStruct _parent;
     public List<Short> entries() { return entries; }
     public InstanceInRepeatUntil _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Short untilVal;
+    private List<Short> entries;
+    private InstanceInRepeatUntil _root;
+    private KaitaiStruct _parent;
 }

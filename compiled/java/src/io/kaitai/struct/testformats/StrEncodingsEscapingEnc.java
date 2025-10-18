@@ -75,7 +75,6 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
             if (this.v != null) {
             }
         }
-        private String v;
         public String v() {
             if (this.v != null)
                 return this.v;
@@ -85,10 +84,11 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
             this._io.seek(_pos);
             return this.v;
         }
-        private StrEncodingsEscapingEnc _root;
-        private StrEncodingsEscapingEnc _parent;
         public StrEncodingsEscapingEnc _root() { return _root; }
         public StrEncodingsEscapingEnc _parent() { return _parent; }
+        private String v;
+        private StrEncodingsEscapingEnc _root;
+        private StrEncodingsEscapingEnc _parent;
     }
     public static class Str2Wrapper extends KaitaiStruct {
         public static Str2Wrapper fromFile(String fileName) throws IOException {
@@ -117,7 +117,6 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
             if (this.v != null) {
             }
         }
-        private String v;
         public String v() {
             if (this.v != null)
                 return this.v;
@@ -127,10 +126,11 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
             this._io.seek(_pos);
             return this.v;
         }
-        private StrEncodingsEscapingEnc _root;
-        private StrEncodingsEscapingEnc _parent;
         public StrEncodingsEscapingEnc _root() { return _root; }
         public StrEncodingsEscapingEnc _parent() { return _parent; }
+        private String v;
+        private StrEncodingsEscapingEnc _root;
+        private StrEncodingsEscapingEnc _parent;
     }
     public static class Str3Wrapper extends KaitaiStruct {
         public static Str3Wrapper fromFile(String fileName) throws IOException {
@@ -159,7 +159,6 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
             if (this.v != null) {
             }
         }
-        private String v;
         public String v() {
             if (this.v != null)
                 return this.v;
@@ -169,10 +168,11 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
             this._io.seek(_pos);
             return this.v;
         }
-        private StrEncodingsEscapingEnc _root;
-        private StrEncodingsEscapingEnc _parent;
         public StrEncodingsEscapingEnc _root() { return _root; }
         public StrEncodingsEscapingEnc _parent() { return _parent; }
+        private String v;
+        private StrEncodingsEscapingEnc _root;
+        private StrEncodingsEscapingEnc _parent;
     }
     public static class Str4Wrapper extends KaitaiStruct {
         public static Str4Wrapper fromFile(String fileName) throws IOException {
@@ -201,7 +201,6 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
             if (this.v != null) {
             }
         }
-        private String v;
         public String v() {
             if (this.v != null)
                 return this.v;
@@ -211,21 +210,12 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
             this._io.seek(_pos);
             return this.v;
         }
-        private StrEncodingsEscapingEnc _root;
-        private StrEncodingsEscapingEnc _parent;
         public StrEncodingsEscapingEnc _root() { return _root; }
         public StrEncodingsEscapingEnc _parent() { return _parent; }
+        private String v;
+        private StrEncodingsEscapingEnc _root;
+        private StrEncodingsEscapingEnc _parent;
     }
-    private int lenOf1;
-    private Str1Wrapper str1;
-    private int lenOf2;
-    private Str2Wrapper str2;
-    private int lenOf3;
-    private Str3Wrapper str3;
-    private int lenOf4;
-    private Str4Wrapper str4;
-    private StrEncodingsEscapingEnc _root;
-    private KaitaiStruct _parent;
     public int lenOf1() { return lenOf1; }
     public Str1Wrapper str1() { return str1; }
     public int lenOf2() { return lenOf2; }
@@ -236,4 +226,14 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
     public Str4Wrapper str4() { return str4; }
     public StrEncodingsEscapingEnc _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private int lenOf1;
+    private Str1Wrapper str1;
+    private int lenOf2;
+    private Str2Wrapper str2;
+    private int lenOf3;
+    private Str3Wrapper str3;
+    private int lenOf4;
+    private Str4Wrapper str4;
+    private StrEncodingsEscapingEnc _root;
+    private KaitaiStruct _parent;
 }

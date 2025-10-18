@@ -51,31 +51,31 @@ public class ExprEnum extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Animal constDog;
     public Animal constDog() {
         if (this.constDog != null)
             return this.constDog;
         this.constDog = Animal.byId(4);
         return this.constDog;
     }
-    private Animal derivedBoom;
     public Animal derivedBoom() {
         if (this.derivedBoom != null)
             return this.derivedBoom;
         this.derivedBoom = Animal.byId(one());
         return this.derivedBoom;
     }
-    private Animal derivedDog;
     public Animal derivedDog() {
         if (this.derivedDog != null)
             return this.derivedDog;
         this.derivedDog = Animal.byId(one() - 98);
         return this.derivedDog;
     }
-    private int one;
-    private ExprEnum _root;
-    private KaitaiStruct _parent;
     public int one() { return one; }
     public ExprEnum _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Animal constDog;
+    private Animal derivedBoom;
+    private Animal derivedDog;
+    private int one;
+    private ExprEnum _root;
+    private KaitaiStruct _parent;
 }

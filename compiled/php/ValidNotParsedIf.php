@@ -22,9 +22,9 @@ namespace Kaitai\Struct\Tests {
                 }
             }
         }
-        protected $_m_notParsed;
-        protected $_m_parsed;
         public function notParsed() { return $this->_m_notParsed; }
         public function parsed() { return $this->_m_parsed; }
+        protected $_m_notParsed;
+        protected $_m_parsed;
     }
 }

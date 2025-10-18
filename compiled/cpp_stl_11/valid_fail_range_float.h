@@ -24,14 +24,12 @@ private:
 
 public:
     ~valid_fail_range_float_t();
+    float foo() const { return m_foo; }
+    valid_fail_range_float_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     float m_foo;
     valid_fail_range_float_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    float foo() const { return m_foo; }
-    valid_fail_range_float_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -10,7 +10,6 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
         }
-        protected $_m_hdr;
         public function hdr() {
             if ($this->_m_hdr !== null)
                 return $this->_m_hdr;
@@ -20,6 +19,7 @@ namespace Kaitai\Struct\Tests {
             $this->_io->seek($_pos);
             return $this->_m_hdr;
         }
+        protected $_m_hdr;
     }
 }
 
@@ -80,33 +80,6 @@ namespace Kaitai\Struct\Tests\FixedStruct {
             $this->_m_sint32be = $this->_io->readS4be();
             $this->_m_sint64be = $this->_io->readS8be();
         }
-        protected $_m_magic1;
-        protected $_m_uint8;
-        protected $_m_sint8;
-        protected $_m_magicUint;
-        protected $_m_uint16;
-        protected $_m_uint32;
-        protected $_m_uint64;
-        protected $_m_magicSint;
-        protected $_m_sint16;
-        protected $_m_sint32;
-        protected $_m_sint64;
-        protected $_m_magicUintLe;
-        protected $_m_uint16le;
-        protected $_m_uint32le;
-        protected $_m_uint64le;
-        protected $_m_magicSintLe;
-        protected $_m_sint16le;
-        protected $_m_sint32le;
-        protected $_m_sint64le;
-        protected $_m_magicUintBe;
-        protected $_m_uint16be;
-        protected $_m_uint32be;
-        protected $_m_uint64be;
-        protected $_m_magicSintBe;
-        protected $_m_sint16be;
-        protected $_m_sint32be;
-        protected $_m_sint64be;
         public function magic1() { return $this->_m_magic1; }
         public function uint8() { return $this->_m_uint8; }
         public function sint8() { return $this->_m_sint8; }
@@ -134,5 +107,32 @@ namespace Kaitai\Struct\Tests\FixedStruct {
         public function sint16be() { return $this->_m_sint16be; }
         public function sint32be() { return $this->_m_sint32be; }
         public function sint64be() { return $this->_m_sint64be; }
+        protected $_m_magic1;
+        protected $_m_uint8;
+        protected $_m_sint8;
+        protected $_m_magicUint;
+        protected $_m_uint16;
+        protected $_m_uint32;
+        protected $_m_uint64;
+        protected $_m_magicSint;
+        protected $_m_sint16;
+        protected $_m_sint32;
+        protected $_m_sint64;
+        protected $_m_magicUintLe;
+        protected $_m_uint16le;
+        protected $_m_uint32le;
+        protected $_m_uint64le;
+        protected $_m_magicSintLe;
+        protected $_m_sint16le;
+        protected $_m_sint32le;
+        protected $_m_sint64le;
+        protected $_m_magicUintBe;
+        protected $_m_uint16be;
+        protected $_m_uint32be;
+        protected $_m_uint64be;
+        protected $_m_magicSintBe;
+        protected $_m_sint16be;
+        protected $_m_sint32be;
+        protected $_m_sint64be;
     }
 }

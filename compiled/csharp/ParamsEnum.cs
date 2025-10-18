@@ -42,8 +42,6 @@ namespace Kaitai
             private void _read()
             {
             }
-            private bool f_isCat;
-            private bool _isCat;
             public bool IsCat
             {
                 get
@@ -55,20 +53,22 @@ namespace Kaitai
                     return _isCat;
                 }
             }
-            private Animal _enumeratedOne;
-            private ParamsEnum m_root;
-            private ParamsEnum m_parent;
             public Animal EnumeratedOne { get { return _enumeratedOne; } }
             public ParamsEnum M_Root { get { return m_root; } }
             public ParamsEnum M_Parent { get { return m_parent; } }
+            private bool f_isCat;
+            private bool _isCat;
+            private Animal _enumeratedOne;
+            private ParamsEnum m_root;
+            private ParamsEnum m_parent;
         }
-        private Animal _one;
-        private WithParam _invokeWithParam;
-        private ParamsEnum m_root;
-        private KaitaiStruct m_parent;
         public Animal One { get { return _one; } }
         public WithParam InvokeWithParam { get { return _invokeWithParam; } }
         public ParamsEnum M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Animal _one;
+        private WithParam _invokeWithParam;
+        private ParamsEnum m_root;
+        private KaitaiStruct m_parent;
     }
 }

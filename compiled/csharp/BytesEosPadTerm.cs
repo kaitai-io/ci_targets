@@ -49,12 +49,12 @@ namespace Kaitai
             {
                 _value = KaitaiStream.BytesStripRight(m_io.ReadBytesFull(), 64);
             }
-            private byte[] _value;
-            private BytesEosPadTerm m_root;
-            private BytesEosPadTerm m_parent;
             public byte[] Value { get { return _value; } }
             public BytesEosPadTerm M_Root { get { return m_root; } }
             public BytesEosPadTerm M_Parent { get { return m_parent; } }
+            private byte[] _value;
+            private BytesEosPadTerm m_root;
+            private BytesEosPadTerm m_parent;
         }
         public partial class StrTermAndPadType : KaitaiStruct
         {
@@ -73,12 +73,12 @@ namespace Kaitai
             {
                 _value = KaitaiStream.BytesTerminate(KaitaiStream.BytesStripRight(m_io.ReadBytesFull(), 43), 64, false);
             }
-            private byte[] _value;
-            private BytesEosPadTerm m_root;
-            private BytesEosPadTerm m_parent;
             public byte[] Value { get { return _value; } }
             public BytesEosPadTerm M_Root { get { return m_root; } }
             public BytesEosPadTerm M_Parent { get { return m_parent; } }
+            private byte[] _value;
+            private BytesEosPadTerm m_root;
+            private BytesEosPadTerm m_parent;
         }
         public partial class StrTermIncludeType : KaitaiStruct
         {
@@ -97,12 +97,12 @@ namespace Kaitai
             {
                 _value = KaitaiStream.BytesTerminate(m_io.ReadBytesFull(), 64, true);
             }
-            private byte[] _value;
-            private BytesEosPadTerm m_root;
-            private BytesEosPadTerm m_parent;
             public byte[] Value { get { return _value; } }
             public BytesEosPadTerm M_Root { get { return m_root; } }
             public BytesEosPadTerm M_Parent { get { return m_parent; } }
+            private byte[] _value;
+            private BytesEosPadTerm m_root;
+            private BytesEosPadTerm m_parent;
         }
         public partial class StrTermType : KaitaiStruct
         {
@@ -121,23 +121,13 @@ namespace Kaitai
             {
                 _value = KaitaiStream.BytesTerminate(m_io.ReadBytesFull(), 64, false);
             }
-            private byte[] _value;
-            private BytesEosPadTerm m_root;
-            private BytesEosPadTerm m_parent;
             public byte[] Value { get { return _value; } }
             public BytesEosPadTerm M_Root { get { return m_root; } }
             public BytesEosPadTerm M_Parent { get { return m_parent; } }
+            private byte[] _value;
+            private BytesEosPadTerm m_root;
+            private BytesEosPadTerm m_parent;
         }
-        private StrPadType _strPad;
-        private StrTermType _strTerm;
-        private StrTermAndPadType _strTermAndPad;
-        private StrTermIncludeType _strTermInclude;
-        private BytesEosPadTerm m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_strPad;
-        private byte[] __raw_strTerm;
-        private byte[] __raw_strTermAndPad;
-        private byte[] __raw_strTermInclude;
         public StrPadType StrPad { get { return _strPad; } }
         public StrTermType StrTerm { get { return _strTerm; } }
         public StrTermAndPadType StrTermAndPad { get { return _strTermAndPad; } }
@@ -148,5 +138,15 @@ namespace Kaitai
         public byte[] M_RawStrTerm { get { return __raw_strTerm; } }
         public byte[] M_RawStrTermAndPad { get { return __raw_strTermAndPad; } }
         public byte[] M_RawStrTermInclude { get { return __raw_strTermInclude; } }
+        private StrPadType _strPad;
+        private StrTermType _strTerm;
+        private StrTermAndPadType _strTermAndPad;
+        private StrTermIncludeType _strTermInclude;
+        private BytesEosPadTerm m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_strPad;
+        private byte[] __raw_strTerm;
+        private byte[] __raw_strTermAndPad;
+        private byte[] __raw_strTermInclude;
     }
 }

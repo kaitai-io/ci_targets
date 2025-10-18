@@ -48,12 +48,12 @@ namespace Kaitai
             {
                 _val = m_io.ReadS2le();
             }
-            private short _val;
-            private DebugSwitchUser m_root;
-            private DebugSwitchUser m_parent;
             public short Val { get { return _val; } }
             public DebugSwitchUser M_Root { get { return m_root; } }
             public DebugSwitchUser M_Parent { get { return m_parent; } }
+            private short _val;
+            private DebugSwitchUser m_root;
+            private DebugSwitchUser m_parent;
         }
         public partial class Two : KaitaiStruct
         {
@@ -71,20 +71,20 @@ namespace Kaitai
             {
                 _val = m_io.ReadU2le();
             }
-            private ushort _val;
-            private DebugSwitchUser m_root;
-            private DebugSwitchUser m_parent;
             public ushort Val { get { return _val; } }
             public DebugSwitchUser M_Root { get { return m_root; } }
             public DebugSwitchUser M_Parent { get { return m_parent; } }
+            private ushort _val;
+            private DebugSwitchUser m_root;
+            private DebugSwitchUser m_parent;
         }
-        private byte _code;
-        private KaitaiStruct _data;
-        private DebugSwitchUser m_root;
-        private KaitaiStruct m_parent;
         public byte Code { get { return _code; } }
         public KaitaiStruct Data { get { return _data; } }
         public DebugSwitchUser M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte _code;
+        private KaitaiStruct _data;
+        private DebugSwitchUser m_root;
+        private KaitaiStruct m_parent;
     }
 }

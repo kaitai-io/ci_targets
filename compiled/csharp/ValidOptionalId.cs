@@ -38,15 +38,15 @@ namespace Kaitai
                 }
             }
         }
-        private byte[] __unnamed0;
-        private byte __unnamed1;
-        private sbyte __unnamed2;
-        private ValidOptionalId m_root;
-        private KaitaiStruct m_parent;
         public byte[] Unnamed_0 { get { return __unnamed0; } }
         public byte Unnamed_1 { get { return __unnamed1; } }
         public sbyte Unnamed_2 { get { return __unnamed2; } }
         public ValidOptionalId M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte[] __unnamed0;
+        private byte __unnamed1;
+        private sbyte __unnamed2;
+        private ValidOptionalId m_root;
+        private KaitaiStruct m_parent;
     }
 }

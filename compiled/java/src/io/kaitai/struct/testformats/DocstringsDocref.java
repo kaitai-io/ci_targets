@@ -42,7 +42,6 @@ public class DocstringsDocref extends KaitaiStruct {
         if (this.parseInst != null) {
         }
     }
-    private Boolean foo;
 
     /**
      * @see "Doc ref for instance, a plain one"
@@ -53,7 +52,6 @@ public class DocstringsDocref extends KaitaiStruct {
         this.foo = true;
         return this.foo;
     }
-    private Integer parseInst;
 
     /**
      * @see "Now this is a really
@@ -70,11 +68,6 @@ public class DocstringsDocref extends KaitaiStruct {
         this._io.seek(_pos);
         return this.parseInst;
     }
-    private int one;
-    private int two;
-    private int three;
-    private DocstringsDocref _root;
-    private KaitaiStruct _parent;
 
     /**
      * @see "Plain text description of doc ref, page 42"
@@ -93,4 +86,11 @@ public class DocstringsDocref extends KaitaiStruct {
     public int three() { return three; }
     public DocstringsDocref _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Boolean foo;
+    private Integer parseInst;
+    private int one;
+    private int two;
+    private int three;
+    private DocstringsDocref _root;
+    private KaitaiStruct _parent;
 }

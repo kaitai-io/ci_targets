@@ -34,18 +34,18 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_records3[] = new \Kaitai\Struct\Tests\RepeatNTermStruct\BytesWrapper($_io__raw_records3, $this, $this->_root);
             }
         }
-        protected $_m_records1;
-        protected $_m_records2;
-        protected $_m_records3;
-        protected $_m__raw_records1;
-        protected $_m__raw_records2;
-        protected $_m__raw_records3;
         public function records1() { return $this->_m_records1; }
         public function records2() { return $this->_m_records2; }
         public function records3() { return $this->_m_records3; }
         public function _raw_records1() { return $this->_m__raw_records1; }
         public function _raw_records2() { return $this->_m__raw_records2; }
         public function _raw_records3() { return $this->_m__raw_records3; }
+        protected $_m_records1;
+        protected $_m_records2;
+        protected $_m_records3;
+        protected $_m__raw_records1;
+        protected $_m__raw_records2;
+        protected $_m__raw_records3;
     }
 }
 
@@ -59,7 +59,7 @@ namespace Kaitai\Struct\Tests\RepeatNTermStruct {
         private function _read() {
             $this->_m_value = $this->_io->readBytesFull();
         }
-        protected $_m_value;
         public function value() { return $this->_m_value; }
+        protected $_m_value;
     }
 }

@@ -168,15 +168,15 @@ public class TermBytes4 extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("value", -1, KaitaiStream.byteArrayIndexOf(this.value, ((byte) 124)));
             _dirty = false;
         }
-        private byte[] value;
-        private TermBytes4 _root;
-        private TermBytes4 _parent;
         public byte[] value() { return value; }
         public void setValue(byte[] _v) { _dirty = true; value = _v; }
         public TermBytes4 _root() { return _root; }
         public void set_root(TermBytes4 _v) { _dirty = true; _root = _v; }
         public TermBytes4 _parent() { return _parent; }
         public void set_parent(TermBytes4 _v) { _dirty = true; _parent = _v; }
+        private byte[] value;
+        private TermBytes4 _root;
+        private TermBytes4 _parent;
     }
     public static class S2Type extends KaitaiStruct.ReadWrite {
         public static S2Type fromFile(String fileName) throws IOException {
@@ -222,15 +222,15 @@ public class TermBytes4 extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("value", -1, KaitaiStream.byteArrayIndexOf(this.value, ((byte) 124)));
             _dirty = false;
         }
-        private byte[] value;
-        private TermBytes4 _root;
-        private TermBytes4 _parent;
         public byte[] value() { return value; }
         public void setValue(byte[] _v) { _dirty = true; value = _v; }
         public TermBytes4 _root() { return _root; }
         public void set_root(TermBytes4 _v) { _dirty = true; _root = _v; }
         public TermBytes4 _parent() { return _parent; }
         public void set_parent(TermBytes4 _v) { _dirty = true; _parent = _v; }
+        private byte[] value;
+        private TermBytes4 _root;
+        private TermBytes4 _parent;
     }
     public static class S3Type extends KaitaiStruct.ReadWrite {
         public static S3Type fromFile(String fileName) throws IOException {
@@ -275,26 +275,16 @@ public class TermBytes4 extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("value", this.value.length - 1, KaitaiStream.byteArrayIndexOf(this.value, ((byte) 64)));
             _dirty = false;
         }
-        private byte[] value;
-        private TermBytes4 _root;
-        private TermBytes4 _parent;
         public byte[] value() { return value; }
         public void setValue(byte[] _v) { _dirty = true; value = _v; }
         public TermBytes4 _root() { return _root; }
         public void set_root(TermBytes4 _v) { _dirty = true; _root = _v; }
         public TermBytes4 _parent() { return _parent; }
         public void set_parent(TermBytes4 _v) { _dirty = true; _parent = _v; }
+        private byte[] value;
+        private TermBytes4 _root;
+        private TermBytes4 _parent;
     }
-    private S1Type s1;
-    private int skipTerm1;
-    private S2Type s2;
-    private int skipTerm2;
-    private S3Type s3;
-    private TermBytes4 _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_s1;
-    private byte[] _raw_s2;
-    private byte[] _raw_s3;
     public S1Type s1() { return s1; }
     public void setS1(S1Type _v) { _dirty = true; s1 = _v; }
     public int skipTerm1() { return skipTerm1; }
@@ -315,4 +305,14 @@ public class TermBytes4 extends KaitaiStruct.ReadWrite {
     public void set_raw_S2(byte[] _v) { _dirty = true; _raw_s2 = _v; }
     public byte[] _raw_s3() { return _raw_s3; }
     public void set_raw_S3(byte[] _v) { _dirty = true; _raw_s3 = _v; }
+    private S1Type s1;
+    private int skipTerm1;
+    private S2Type s2;
+    private int skipTerm2;
+    private S3Type s3;
+    private TermBytes4 _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_s1;
+    private byte[] _raw_s2;
+    private byte[] _raw_s3;
 }

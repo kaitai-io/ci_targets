@@ -101,19 +101,19 @@ public class SwitchIntegers extends KaitaiStruct {
             }
             }
         }
-        private int code;
-        private Long body;
-        private SwitchIntegers _root;
-        private SwitchIntegers _parent;
         public int code() { return code; }
         public Long body() { return body; }
         public SwitchIntegers _root() { return _root; }
         public SwitchIntegers _parent() { return _parent; }
+        private int code;
+        private Long body;
+        private SwitchIntegers _root;
+        private SwitchIntegers _parent;
     }
-    private List<Opcode> opcodes;
-    private SwitchIntegers _root;
-    private KaitaiStruct _parent;
     public List<Opcode> opcodes() { return opcodes; }
     public SwitchIntegers _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Opcode> opcodes;
+    private SwitchIntegers _root;
+    private KaitaiStruct _parent;
 }

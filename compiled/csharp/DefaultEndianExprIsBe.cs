@@ -131,15 +131,13 @@ namespace Kaitai
                     {
                         _foo = m_io.ReadU4be();
                     }
-                    private uint _foo;
-                    private DefaultEndianExprIsBe m_root;
-                    private DefaultEndianExprIsBe.Doc.MainObj m_parent;
                     public uint Foo { get { return _foo; } }
                     public DefaultEndianExprIsBe M_Root { get { return m_root; } }
                     public DefaultEndianExprIsBe.Doc.MainObj M_Parent { get { return m_parent; } }
+                    private uint _foo;
+                    private DefaultEndianExprIsBe m_root;
+                    private DefaultEndianExprIsBe.Doc.MainObj m_parent;
                 }
-                private bool f_instInt;
-                private uint _instInt;
                 public uint InstInt
                 {
                     get
@@ -158,8 +156,6 @@ namespace Kaitai
                         return _instInt;
                     }
                 }
-                private bool f_instSub;
-                private SubMainObj _instSub;
                 public SubMainObj InstSub
                 {
                     get
@@ -178,31 +174,35 @@ namespace Kaitai
                         return _instSub;
                     }
                 }
-                private uint _someInt;
-                private ushort _someIntBe;
-                private ushort _someIntLe;
-                private DefaultEndianExprIsBe m_root;
-                private DefaultEndianExprIsBe.Doc m_parent;
                 public uint SomeInt { get { return _someInt; } }
                 public ushort SomeIntBe { get { return _someIntBe; } }
                 public ushort SomeIntLe { get { return _someIntLe; } }
                 public DefaultEndianExprIsBe M_Root { get { return m_root; } }
                 public DefaultEndianExprIsBe.Doc M_Parent { get { return m_parent; } }
+                private bool f_instInt;
+                private uint _instInt;
+                private bool f_instSub;
+                private SubMainObj _instSub;
+                private uint _someInt;
+                private ushort _someIntBe;
+                private ushort _someIntLe;
+                private DefaultEndianExprIsBe m_root;
+                private DefaultEndianExprIsBe.Doc m_parent;
             }
-            private byte[] _indicator;
-            private MainObj _main;
-            private DefaultEndianExprIsBe m_root;
-            private DefaultEndianExprIsBe m_parent;
             public byte[] Indicator { get { return _indicator; } }
             public MainObj Main { get { return _main; } }
             public DefaultEndianExprIsBe M_Root { get { return m_root; } }
             public DefaultEndianExprIsBe M_Parent { get { return m_parent; } }
+            private byte[] _indicator;
+            private MainObj _main;
+            private DefaultEndianExprIsBe m_root;
+            private DefaultEndianExprIsBe m_parent;
         }
-        private List<Doc> _docs;
-        private DefaultEndianExprIsBe m_root;
-        private KaitaiStruct m_parent;
         public List<Doc> Docs { get { return _docs; } }
         public DefaultEndianExprIsBe M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<Doc> _docs;
+        private DefaultEndianExprIsBe m_root;
+        private KaitaiStruct m_parent;
     }
 }

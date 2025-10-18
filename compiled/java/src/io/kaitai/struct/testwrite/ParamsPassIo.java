@@ -116,15 +116,15 @@ public class ParamsPassIo extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int foo;
-        private ParamsPassIo _root;
-        private ParamsPassIo _parent;
         public int foo() { return foo; }
         public void setFoo(int _v) { _dirty = true; foo = _v; }
         public ParamsPassIo _root() { return _root; }
         public void set_root(ParamsPassIo _v) { _dirty = true; _root = _v; }
         public ParamsPassIo _parent() { return _parent; }
         public void set_parent(ParamsPassIo _v) { _dirty = true; _parent = _v; }
+        private int foo;
+        private ParamsPassIo _root;
+        private ParamsPassIo _parent;
     }
     public static class ParamType extends KaitaiStruct.ReadWrite {
         public ParamType(KaitaiStream argStream) {
@@ -163,10 +163,6 @@ public class ParamsPassIo extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private byte[] buf;
-        private KaitaiStream argStream;
-        private ParamsPassIo _root;
-        private ParamsPassIo _parent;
         public byte[] buf() { return buf; }
         public void setBuf(byte[] _v) { _dirty = true; buf = _v; }
         public KaitaiStream argStream() { return argStream; }
@@ -175,12 +171,11 @@ public class ParamsPassIo extends KaitaiStruct.ReadWrite {
         public void set_root(ParamsPassIo _v) { _dirty = true; _root = _v; }
         public ParamsPassIo _parent() { return _parent; }
         public void set_parent(ParamsPassIo _v) { _dirty = true; _parent = _v; }
+        private byte[] buf;
+        private KaitaiStream argStream;
+        private ParamsPassIo _root;
+        private ParamsPassIo _parent;
     }
-    private Block first;
-    private ParamType one;
-    private ParamsPassIo _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_first;
     public Block first() { return first; }
     public void setFirst(Block _v) { _dirty = true; first = _v; }
     public ParamType one() { return one; }
@@ -191,4 +186,9 @@ public class ParamsPassIo extends KaitaiStruct.ReadWrite {
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_first() { return _raw_first; }
     public void set_raw_First(byte[] _v) { _dirty = true; _raw_first = _v; }
+    private Block first;
+    private ParamType one;
+    private ParamsPassIo _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_first;
 }

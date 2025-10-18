@@ -24,36 +24,33 @@ private:
 
 public:
     ~expr_if_int_eq_t();
+    int32_t calc();
+    bool calc_eq_calc_if();
+    bool calc_eq_lit();
+    bool calc_eq_seq_if();
+    int32_t calc_if();
+    bool calc_if_eq_lit();
+    bool calc_if_eq_seq_if();
+    bool seq_eq_calc();
+    bool seq_eq_calc_if();
+    bool seq_eq_lit();
+    bool seq_eq_seq_if();
+    bool seq_if_eq_lit();
+    std::string skip() const { return m_skip; }
+    int16_t seq() const { return m_seq; }
+    int16_t seq_if() const { return m_seq_if; }
+    expr_if_int_eq_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_calc;
     int32_t m_calc;
-
-public:
-    int32_t calc();
-
-private:
     bool f_calc_eq_calc_if;
     bool m_calc_eq_calc_if;
-
-public:
-    bool calc_eq_calc_if();
-
-private:
     bool f_calc_eq_lit;
     bool m_calc_eq_lit;
-
-public:
-    bool calc_eq_lit();
-
-private:
     bool f_calc_eq_seq_if;
     bool m_calc_eq_seq_if;
-
-public:
-    bool calc_eq_seq_if();
-
-private:
     bool f_calc_if;
     int32_t m_calc_if;
     bool n_calc_if;
@@ -62,60 +59,20 @@ public:
     bool _is_null_calc_if() { calc_if(); return n_calc_if; };
 
 private:
-
-public:
-    int32_t calc_if();
-
-private:
     bool f_calc_if_eq_lit;
     bool m_calc_if_eq_lit;
-
-public:
-    bool calc_if_eq_lit();
-
-private:
     bool f_calc_if_eq_seq_if;
     bool m_calc_if_eq_seq_if;
-
-public:
-    bool calc_if_eq_seq_if();
-
-private:
     bool f_seq_eq_calc;
     bool m_seq_eq_calc;
-
-public:
-    bool seq_eq_calc();
-
-private:
     bool f_seq_eq_calc_if;
     bool m_seq_eq_calc_if;
-
-public:
-    bool seq_eq_calc_if();
-
-private:
     bool f_seq_eq_lit;
     bool m_seq_eq_lit;
-
-public:
-    bool seq_eq_lit();
-
-private:
     bool f_seq_eq_seq_if;
     bool m_seq_eq_seq_if;
-
-public:
-    bool seq_eq_seq_if();
-
-private:
     bool f_seq_if_eq_lit;
     bool m_seq_if_eq_lit;
-
-public:
-    bool seq_if_eq_lit();
-
-private:
     std::string m_skip;
     int16_t m_seq;
     int16_t m_seq_if;
@@ -127,11 +84,4 @@ public:
 private:
     expr_if_int_eq_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::string skip() const { return m_skip; }
-    int16_t seq() const { return m_seq; }
-    int16_t seq_if() const { return m_seq_if; }
-    expr_if_int_eq_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

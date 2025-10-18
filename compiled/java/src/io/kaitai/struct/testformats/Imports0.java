@@ -34,19 +34,19 @@ public class Imports0 extends KaitaiStruct {
     public void _fetchInstances() {
         this.hw._fetchInstances();
     }
-    private Integer hwOne;
     public Integer hwOne() {
         if (this.hwOne != null)
             return this.hwOne;
         this.hwOne = ((Number) (hw().one())).intValue();
         return this.hwOne;
     }
-    private int two;
-    private HelloWorld hw;
-    private Imports0 _root;
-    private KaitaiStruct _parent;
     public int two() { return two; }
     public HelloWorld hw() { return hw; }
     public Imports0 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Integer hwOne;
+    private int two;
+    private HelloWorld hw;
+    private Imports0 _root;
+    private KaitaiStruct _parent;
 }

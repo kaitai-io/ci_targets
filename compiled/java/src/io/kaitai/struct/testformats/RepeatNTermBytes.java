@@ -51,14 +51,14 @@ public class RepeatNTermBytes extends KaitaiStruct {
         for (int i = 0; i < this.records3.size(); i++) {
         }
     }
-    private List<byte[]> records1;
-    private List<byte[]> records2;
-    private List<byte[]> records3;
-    private RepeatNTermBytes _root;
-    private KaitaiStruct _parent;
     public List<byte[]> records1() { return records1; }
     public List<byte[]> records2() { return records2; }
     public List<byte[]> records3() { return records3; }
     public RepeatNTermBytes _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<byte[]> records1;
+    private List<byte[]> records2;
+    private List<byte[]> records3;
+    private RepeatNTermBytes _root;
+    private KaitaiStruct _parent;
 }

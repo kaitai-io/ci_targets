@@ -31,13 +31,13 @@ namespace Kaitai
             }
             _afterall = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytesTerm(0, false, true, true));
         }
-        private List<int> _entries;
-        private string _afterall;
-        private RepeatUntilS4 m_root;
-        private KaitaiStruct m_parent;
         public List<int> Entries { get { return _entries; } }
         public string Afterall { get { return _afterall; } }
         public RepeatUntilS4 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<int> _entries;
+        private string _afterall;
+        private RepeatUntilS4 m_root;
+        private KaitaiStruct m_parent;
     }
 }

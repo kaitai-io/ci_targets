@@ -107,7 +107,6 @@ public class ParamsEnum extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private Boolean isCat;
         public Boolean isCat() {
             if (this.isCat != null)
                 return this.isCat;
@@ -115,20 +114,17 @@ public class ParamsEnum extends KaitaiStruct.ReadWrite {
             return this.isCat;
         }
         public void _invalidateIsCat() { this.isCat = null; }
-        private Animal enumeratedOne;
-        private ParamsEnum _root;
-        private ParamsEnum _parent;
         public Animal enumeratedOne() { return enumeratedOne; }
         public void setEnumeratedOne(Animal _v) { _dirty = true; enumeratedOne = _v; }
         public ParamsEnum _root() { return _root; }
         public void set_root(ParamsEnum _v) { _dirty = true; _root = _v; }
         public ParamsEnum _parent() { return _parent; }
         public void set_parent(ParamsEnum _v) { _dirty = true; _parent = _v; }
+        private Boolean isCat;
+        private Animal enumeratedOne;
+        private ParamsEnum _root;
+        private ParamsEnum _parent;
     }
-    private Animal one;
-    private WithParam invokeWithParam;
-    private ParamsEnum _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Animal one() { return one; }
     public void setOne(Animal _v) { _dirty = true; one = _v; }
     public WithParam invokeWithParam() { return invokeWithParam; }
@@ -137,4 +133,8 @@ public class ParamsEnum extends KaitaiStruct.ReadWrite {
     public void set_root(ParamsEnum _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Animal one;
+    private WithParam invokeWithParam;
+    private ParamsEnum _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

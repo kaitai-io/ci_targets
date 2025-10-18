@@ -62,12 +62,12 @@ namespace Kaitai
             {
                 _first = m_io.ReadBytesFull();
             }
-            private byte[] _first;
-            private SwitchRepeatExpr m_root;
-            private SwitchRepeatExpr m_parent;
             public byte[] First { get { return _first; } }
             public SwitchRepeatExpr M_Root { get { return m_root; } }
             public SwitchRepeatExpr M_Parent { get { return m_parent; } }
+            private byte[] _first;
+            private SwitchRepeatExpr m_root;
+            private SwitchRepeatExpr m_parent;
         }
         public partial class Two : KaitaiStruct
         {
@@ -86,24 +86,24 @@ namespace Kaitai
             {
                 _second = m_io.ReadBytesFull();
             }
-            private byte[] _second;
-            private SwitchRepeatExpr m_root;
-            private SwitchRepeatExpr m_parent;
             public byte[] Second { get { return _second; } }
             public SwitchRepeatExpr M_Root { get { return m_root; } }
             public SwitchRepeatExpr M_Parent { get { return m_parent; } }
+            private byte[] _second;
+            private SwitchRepeatExpr m_root;
+            private SwitchRepeatExpr m_parent;
         }
-        private byte _code;
-        private uint _size;
-        private List<object> _body;
-        private SwitchRepeatExpr m_root;
-        private KaitaiStruct m_parent;
-        private List<byte[]> __raw_body;
         public byte Code { get { return _code; } }
         public uint Size { get { return _size; } }
         public List<object> Body { get { return _body; } }
         public SwitchRepeatExpr M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public List<byte[]> M_RawBody { get { return __raw_body; } }
+        private byte _code;
+        private uint _size;
+        private List<object> _body;
+        private SwitchRepeatExpr m_root;
+        private KaitaiStruct m_parent;
+        private List<byte[]> __raw_body;
     }
 }

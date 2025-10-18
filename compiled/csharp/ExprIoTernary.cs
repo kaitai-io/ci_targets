@@ -49,12 +49,12 @@ namespace Kaitai
             {
                 _one = m_io.ReadU1();
             }
-            private byte _one;
-            private ExprIoTernary m_root;
-            private ExprIoTernary m_parent;
             public byte One { get { return _one; } }
             public ExprIoTernary M_Root { get { return m_root; } }
             public ExprIoTernary M_Parent { get { return m_parent; } }
+            private byte _one;
+            private ExprIoTernary m_root;
+            private ExprIoTernary m_parent;
         }
         public partial class Two : KaitaiStruct
         {
@@ -73,15 +73,13 @@ namespace Kaitai
             {
                 _two = m_io.ReadU1();
             }
-            private byte _two;
-            private ExprIoTernary m_root;
-            private ExprIoTernary m_parent;
             public byte Two { get { return _two; } }
             public ExprIoTernary M_Root { get { return m_root; } }
             public ExprIoTernary M_Parent { get { return m_parent; } }
+            private byte _two;
+            private ExprIoTernary m_root;
+            private ExprIoTernary m_parent;
         }
-        private bool f_oneOrTwoIo;
-        private KaitaiStream _oneOrTwoIo;
         public KaitaiStream OneOrTwoIo
         {
             get
@@ -93,8 +91,6 @@ namespace Kaitai
                 return _oneOrTwoIo;
             }
         }
-        private bool f_oneOrTwoIoSize1;
-        private int _oneOrTwoIoSize1;
         public int OneOrTwoIoSize1
         {
             get
@@ -106,8 +102,6 @@ namespace Kaitai
                 return _oneOrTwoIoSize1;
             }
         }
-        private bool f_oneOrTwoIoSize2;
-        private int _oneOrTwoIoSize2;
         public int OneOrTwoIoSize2
         {
             get
@@ -119,8 +113,6 @@ namespace Kaitai
                 return _oneOrTwoIoSize2;
             }
         }
-        private bool f_oneOrTwoIoSizeAdd3;
-        private int _oneOrTwoIoSizeAdd3;
         public int OneOrTwoIoSizeAdd3
         {
             get
@@ -132,8 +124,6 @@ namespace Kaitai
                 return _oneOrTwoIoSizeAdd3;
             }
         }
-        private bool f_oneOrTwoObj;
-        private KaitaiStruct _oneOrTwoObj;
         public KaitaiStruct OneOrTwoObj
         {
             get
@@ -145,13 +135,6 @@ namespace Kaitai
                 return _oneOrTwoObj;
             }
         }
-        private byte _flag;
-        private One _obj1;
-        private Two _obj2;
-        private ExprIoTernary m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_obj1;
-        private byte[] __raw_obj2;
         public byte Flag { get { return _flag; } }
         public One Obj1 { get { return _obj1; } }
         public Two Obj2 { get { return _obj2; } }
@@ -159,5 +142,22 @@ namespace Kaitai
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawObj1 { get { return __raw_obj1; } }
         public byte[] M_RawObj2 { get { return __raw_obj2; } }
+        private bool f_oneOrTwoIo;
+        private KaitaiStream _oneOrTwoIo;
+        private bool f_oneOrTwoIoSize1;
+        private int _oneOrTwoIoSize1;
+        private bool f_oneOrTwoIoSize2;
+        private int _oneOrTwoIoSize2;
+        private bool f_oneOrTwoIoSizeAdd3;
+        private int _oneOrTwoIoSizeAdd3;
+        private bool f_oneOrTwoObj;
+        private KaitaiStruct _oneOrTwoObj;
+        private byte _flag;
+        private One _obj1;
+        private Two _obj2;
+        private ExprIoTernary m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_obj1;
+        private byte[] __raw_obj2;
     }
 }

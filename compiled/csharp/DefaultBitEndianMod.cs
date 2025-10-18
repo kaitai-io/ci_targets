@@ -59,12 +59,12 @@ namespace Kaitai
                 {
                     _two = m_io.ReadBitsIntLe(16);
                 }
-                private ulong _two;
-                private DefaultBitEndianMod m_root;
-                private DefaultBitEndianMod.MainObj m_parent;
                 public ulong Two { get { return _two; } }
                 public DefaultBitEndianMod M_Root { get { return m_root; } }
                 public DefaultBitEndianMod.MainObj M_Parent { get { return m_parent; } }
+                private ulong _two;
+                private DefaultBitEndianMod m_root;
+                private DefaultBitEndianMod.MainObj m_parent;
             }
             public partial class SubnestBe : KaitaiStruct
             {
@@ -83,31 +83,31 @@ namespace Kaitai
                 {
                     _two = m_io.ReadBitsIntBe(16);
                 }
-                private ulong _two;
-                private DefaultBitEndianMod m_root;
-                private DefaultBitEndianMod.MainObj m_parent;
                 public ulong Two { get { return _two; } }
                 public DefaultBitEndianMod M_Root { get { return m_root; } }
                 public DefaultBitEndianMod.MainObj M_Parent { get { return m_parent; } }
+                private ulong _two;
+                private DefaultBitEndianMod m_root;
+                private DefaultBitEndianMod.MainObj m_parent;
             }
-            private ulong _one;
-            private ulong _two;
-            private Subnest _nest;
-            private SubnestBe _nestBe;
-            private DefaultBitEndianMod m_root;
-            private DefaultBitEndianMod m_parent;
             public ulong One { get { return _one; } }
             public ulong Two { get { return _two; } }
             public Subnest Nest { get { return _nest; } }
             public SubnestBe NestBe { get { return _nestBe; } }
             public DefaultBitEndianMod M_Root { get { return m_root; } }
             public DefaultBitEndianMod M_Parent { get { return m_parent; } }
+            private ulong _one;
+            private ulong _two;
+            private Subnest _nest;
+            private SubnestBe _nestBe;
+            private DefaultBitEndianMod m_root;
+            private DefaultBitEndianMod m_parent;
         }
-        private MainObj _main;
-        private DefaultBitEndianMod m_root;
-        private KaitaiStruct m_parent;
         public MainObj Main { get { return _main; } }
         public DefaultBitEndianMod M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private MainObj _main;
+        private DefaultBitEndianMod m_root;
+        private KaitaiStruct m_parent;
     }
 }

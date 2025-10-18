@@ -70,15 +70,13 @@ namespace Kaitai
             {
                 _bar = m_io.ReadBytes(4);
             }
-            private byte[] _bar;
-            private ProcessCoerceSwitch m_root;
-            private ProcessCoerceSwitch m_parent;
             public byte[] Bar { get { return _bar; } }
             public ProcessCoerceSwitch M_Root { get { return m_root; } }
             public ProcessCoerceSwitch M_Parent { get { return m_parent; } }
+            private byte[] _bar;
+            private ProcessCoerceSwitch m_root;
+            private ProcessCoerceSwitch m_parent;
         }
-        private bool f_buf;
-        private object _buf;
         public object Buf
         {
             get
@@ -90,15 +88,6 @@ namespace Kaitai
                 return _buf;
             }
         }
-        private byte _bufType;
-        private byte _flag;
-        private object _bufUnproc;
-        private object _bufProc;
-        private ProcessCoerceSwitch m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_bufUnproc;
-        private byte[] __raw_bufProc;
-        private byte[] __raw__raw_bufProc;
         public byte BufType { get { return _bufType; } }
         public byte Flag { get { return _flag; } }
         public object BufUnproc { get { return _bufUnproc; } }
@@ -108,5 +97,16 @@ namespace Kaitai
         public byte[] M_RawBufUnproc { get { return __raw_bufUnproc; } }
         public byte[] M_RawBufProc { get { return __raw_bufProc; } }
         public byte[] M_RawM_RawBufProc { get { return __raw__raw_bufProc; } }
+        private bool f_buf;
+        private object _buf;
+        private byte _bufType;
+        private byte _flag;
+        private object _bufUnproc;
+        private object _bufProc;
+        private ProcessCoerceSwitch m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_bufUnproc;
+        private byte[] __raw_bufProc;
+        private byte[] __raw__raw_bufProc;
     }
 }

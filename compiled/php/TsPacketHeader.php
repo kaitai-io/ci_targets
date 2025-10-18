@@ -24,15 +24,6 @@ namespace Kaitai\Struct\Tests {
             $this->_io->alignToByte();
             $this->_m_tsPacketRemain = $this->_io->readBytes(184);
         }
-        protected $_m_syncByte;
-        protected $_m_transportErrorIndicator;
-        protected $_m_payloadUnitStartIndicator;
-        protected $_m_transportPriority;
-        protected $_m_pid;
-        protected $_m_transportScramblingControl;
-        protected $_m_adaptationFieldControl;
-        protected $_m_continuityCounter;
-        protected $_m_tsPacketRemain;
         public function syncByte() { return $this->_m_syncByte; }
         public function transportErrorIndicator() { return $this->_m_transportErrorIndicator; }
         public function payloadUnitStartIndicator() { return $this->_m_payloadUnitStartIndicator; }
@@ -42,6 +33,15 @@ namespace Kaitai\Struct\Tests {
         public function adaptationFieldControl() { return $this->_m_adaptationFieldControl; }
         public function continuityCounter() { return $this->_m_continuityCounter; }
         public function tsPacketRemain() { return $this->_m_tsPacketRemain; }
+        protected $_m_syncByte;
+        protected $_m_transportErrorIndicator;
+        protected $_m_payloadUnitStartIndicator;
+        protected $_m_transportPriority;
+        protected $_m_pid;
+        protected $_m_transportScramblingControl;
+        protected $_m_adaptationFieldControl;
+        protected $_m_continuityCounter;
+        protected $_m_tsPacketRemain;
     }
 }
 

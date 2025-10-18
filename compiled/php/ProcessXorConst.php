@@ -13,11 +13,11 @@ namespace Kaitai\Struct\Tests {
             $this->_m__raw_buf = $this->_io->readBytesFull();
             $this->_m_buf = \Kaitai\Struct\Stream::processXorOne($this->_m__raw_buf, 255);
         }
-        protected $_m_key;
-        protected $_m_buf;
-        protected $_m__raw_buf;
         public function key() { return $this->_m_key; }
         public function buf() { return $this->_m_buf; }
         public function _raw_buf() { return $this->_m__raw_buf; }
+        protected $_m_key;
+        protected $_m_buf;
+        protected $_m__raw_buf;
     }
 }

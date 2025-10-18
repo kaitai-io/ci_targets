@@ -74,26 +74,26 @@ public class ParamsEnum extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private Boolean isCat;
         public Boolean isCat() {
             if (this.isCat != null)
                 return this.isCat;
             this.isCat = enumeratedOne() == ParamsEnum.Animal.CAT;
             return this.isCat;
         }
-        private Animal enumeratedOne;
-        private ParamsEnum _root;
-        private ParamsEnum _parent;
         public Animal enumeratedOne() { return enumeratedOne; }
         public ParamsEnum _root() { return _root; }
         public ParamsEnum _parent() { return _parent; }
+        private Boolean isCat;
+        private Animal enumeratedOne;
+        private ParamsEnum _root;
+        private ParamsEnum _parent;
     }
-    private Animal one;
-    private WithParam invokeWithParam;
-    private ParamsEnum _root;
-    private KaitaiStruct _parent;
     public Animal one() { return one; }
     public WithParam invokeWithParam() { return invokeWithParam; }
     public ParamsEnum _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Animal one;
+    private WithParam invokeWithParam;
+    private ParamsEnum _root;
+    private KaitaiStruct _parent;
 }

@@ -49,15 +49,13 @@ namespace Kaitai
             {
                 _value = m_io.ReadU1();
             }
-            private byte _value;
-            private TypeTernary m_root;
-            private TypeTernary m_parent;
             public byte Value { get { return _value; } }
             public TypeTernary M_Root { get { return m_root; } }
             public TypeTernary M_Parent { get { return m_parent; } }
+            private byte _value;
+            private TypeTernary m_root;
+            private TypeTernary m_parent;
         }
-        private bool f_dif;
-        private Dummy _dif;
         public Dummy Dif
         {
             get
@@ -69,8 +67,6 @@ namespace Kaitai
                 return _dif;
             }
         }
-        private bool f_difValue;
-        private byte _difValue;
         public byte DifValue
         {
             get
@@ -82,8 +78,6 @@ namespace Kaitai
                 return _difValue;
             }
         }
-        private bool f_isHack;
-        private bool _isHack;
         public bool IsHack
         {
             get
@@ -95,13 +89,6 @@ namespace Kaitai
                 return _isHack;
             }
         }
-        private Dummy _difWoHack;
-        private Dummy _difWithHack;
-        private TypeTernary m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_difWoHack;
-        private byte[] __raw_difWithHack;
-        private byte[] __raw__raw_difWithHack;
         public Dummy DifWoHack { get { return _difWoHack; } }
         public Dummy DifWithHack { get { return _difWithHack; } }
         public TypeTernary M_Root { get { return m_root; } }
@@ -109,5 +96,18 @@ namespace Kaitai
         public byte[] M_RawDifWoHack { get { return __raw_difWoHack; } }
         public byte[] M_RawDifWithHack { get { return __raw_difWithHack; } }
         public byte[] M_RawM_RawDifWithHack { get { return __raw__raw_difWithHack; } }
+        private bool f_dif;
+        private Dummy _dif;
+        private bool f_difValue;
+        private byte _difValue;
+        private bool f_isHack;
+        private bool _isHack;
+        private Dummy _difWoHack;
+        private Dummy _difWithHack;
+        private TypeTernary m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_difWoHack;
+        private byte[] __raw_difWithHack;
+        private byte[] __raw__raw_difWithHack;
     }
 }

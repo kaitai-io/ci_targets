@@ -30,12 +30,12 @@ public class ParamsDefEnumImported extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Enum0.Animal pet1Param;
-    private EnumDeep.Container1.Container2.Animal pet2Param;
-    private ParamsDefEnumImported _root;
-    private KaitaiStruct _parent;
     public Enum0.Animal pet1Param() { return pet1Param; }
     public EnumDeep.Container1.Container2.Animal pet2Param() { return pet2Param; }
     public ParamsDefEnumImported _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Enum0.Animal pet1Param;
+    private EnumDeep.Container1.Container2.Animal pet2Param;
+    private ParamsDefEnumImported _root;
+    private KaitaiStruct _parent;
 }

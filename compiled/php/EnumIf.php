@@ -13,12 +13,12 @@ namespace Kaitai\Struct\Tests {
             $this->_m_op2 = new \Kaitai\Struct\Tests\EnumIf\Operation($this->_io, $this, $this->_root);
             $this->_m_op3 = new \Kaitai\Struct\Tests\EnumIf\Operation($this->_io, $this, $this->_root);
         }
-        protected $_m_op1;
-        protected $_m_op2;
-        protected $_m_op3;
         public function op1() { return $this->_m_op1; }
         public function op2() { return $this->_m_op2; }
         public function op3() { return $this->_m_op3; }
+        protected $_m_op1;
+        protected $_m_op2;
+        protected $_m_op3;
     }
 }
 
@@ -33,10 +33,10 @@ namespace Kaitai\Struct\Tests\EnumIf {
             $this->_m_len = $this->_io->readU1();
             $this->_m_str = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->len()), "UTF-8");
         }
-        protected $_m_len;
-        protected $_m_str;
         public function len() { return $this->_m_len; }
         public function str() { return $this->_m_str; }
+        protected $_m_len;
+        protected $_m_str;
     }
 }
 
@@ -51,10 +51,10 @@ namespace Kaitai\Struct\Tests\EnumIf {
             $this->_m_num1 = $this->_io->readU1();
             $this->_m_num2 = $this->_io->readU1();
         }
-        protected $_m_num1;
-        protected $_m_num2;
         public function num1() { return $this->_m_num1; }
         public function num2() { return $this->_m_num2; }
+        protected $_m_num1;
+        protected $_m_num2;
     }
 }
 
@@ -74,12 +74,12 @@ namespace Kaitai\Struct\Tests\EnumIf {
                 $this->_m_argStr = new \Kaitai\Struct\Tests\EnumIf\ArgStr($this->_io, $this, $this->_root);
             }
         }
-        protected $_m_opcode;
-        protected $_m_argTuple;
-        protected $_m_argStr;
         public function opcode() { return $this->_m_opcode; }
         public function argTuple() { return $this->_m_argTuple; }
         public function argStr() { return $this->_m_argStr; }
+        protected $_m_opcode;
+        protected $_m_argTuple;
+        protected $_m_argStr;
     }
 }
 

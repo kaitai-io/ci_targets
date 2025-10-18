@@ -141,10 +141,6 @@ public class BufferedStruct extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private long number1;
-        private long number2;
-        private BufferedStruct _root;
-        private BufferedStruct _parent;
         public long number1() { return number1; }
         public void setNumber1(long _v) { _dirty = true; number1 = _v; }
         public long number2() { return number2; }
@@ -153,16 +149,11 @@ public class BufferedStruct extends KaitaiStruct.ReadWrite {
         public void set_root(BufferedStruct _v) { _dirty = true; _root = _v; }
         public BufferedStruct _parent() { return _parent; }
         public void set_parent(BufferedStruct _v) { _dirty = true; _parent = _v; }
+        private long number1;
+        private long number2;
+        private BufferedStruct _root;
+        private BufferedStruct _parent;
     }
-    private long len1;
-    private Block block1;
-    private long len2;
-    private Block block2;
-    private long finisher;
-    private BufferedStruct _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_block1;
-    private byte[] _raw_block2;
     public long len1() { return len1; }
     public void setLen1(long _v) { _dirty = true; len1 = _v; }
     public Block block1() { return block1; }
@@ -181,4 +172,13 @@ public class BufferedStruct extends KaitaiStruct.ReadWrite {
     public void set_raw_Block1(byte[] _v) { _dirty = true; _raw_block1 = _v; }
     public byte[] _raw_block2() { return _raw_block2; }
     public void set_raw_Block2(byte[] _v) { _dirty = true; _raw_block2 = _v; }
+    private long len1;
+    private Block block1;
+    private long len2;
+    private Block block2;
+    private long finisher;
+    private BufferedStruct _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_block1;
+    private byte[] _raw_block2;
 }

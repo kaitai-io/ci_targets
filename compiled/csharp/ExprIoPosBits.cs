@@ -30,17 +30,17 @@ namespace Kaitai
                 _qux = m_io.ReadBitsIntBe(7);
             }
         }
-        private ulong _foo;
-        private ulong? _bar;
-        private bool? _baz;
-        private ulong? _qux;
-        private ExprIoPosBits m_root;
-        private KaitaiStruct m_parent;
         public ulong Foo { get { return _foo; } }
         public ulong? Bar { get { return _bar; } }
         public bool? Baz { get { return _baz; } }
         public ulong? Qux { get { return _qux; } }
         public ExprIoPosBits M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private ulong _foo;
+        private ulong? _bar;
+        private bool? _baz;
+        private ulong? _qux;
+        private ExprIoPosBits m_root;
+        private KaitaiStruct m_parent;
     }
 }

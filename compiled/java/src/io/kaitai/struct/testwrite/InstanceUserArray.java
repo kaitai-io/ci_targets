@@ -110,10 +110,6 @@ public class InstanceUserArray extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int word1;
-        private int word2;
-        private InstanceUserArray _root;
-        private InstanceUserArray _parent;
         public int word1() { return word1; }
         public void setWord1(int _v) { _dirty = true; word1 = _v; }
         public int word2() { return word2; }
@@ -122,10 +118,11 @@ public class InstanceUserArray extends KaitaiStruct.ReadWrite {
         public void set_root(InstanceUserArray _v) { _dirty = true; _root = _v; }
         public InstanceUserArray _parent() { return _parent; }
         public void set_parent(InstanceUserArray _v) { _dirty = true; _parent = _v; }
+        private int word1;
+        private int word2;
+        private InstanceUserArray _root;
+        private InstanceUserArray _parent;
     }
-    private List<Entry> userEntries;
-    private boolean _shouldWriteUserEntries = false;
-    private boolean _enabledUserEntries = true;
     public List<Entry> userEntries() {
         if (_shouldWriteUserEntries)
             _writeUserEntries();
@@ -184,12 +181,6 @@ public class InstanceUserArray extends KaitaiStruct.ReadWrite {
             this._io.seek(_pos);
         }
     }
-    private long ofs;
-    private long entrySize;
-    private long qtyEntries;
-    private InstanceUserArray _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private List<byte[]> _raw_userEntries;
     public long ofs() { return ofs; }
     public void setOfs(long _v) { _dirty = true; ofs = _v; }
     public long entrySize() { return entrySize; }
@@ -202,4 +193,13 @@ public class InstanceUserArray extends KaitaiStruct.ReadWrite {
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public List<byte[]> _raw_userEntries() { return _raw_userEntries; }
     public void set_raw_UserEntries(List<byte[]> _v) { _dirty = true; _raw_userEntries = _v; }
+    private List<Entry> userEntries;
+    private boolean _shouldWriteUserEntries = false;
+    private boolean _enabledUserEntries = true;
+    private long ofs;
+    private long entrySize;
+    private long qtyEntries;
+    private InstanceUserArray _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private List<byte[]> _raw_userEntries;
 }

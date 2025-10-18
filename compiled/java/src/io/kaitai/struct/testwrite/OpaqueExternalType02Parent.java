@@ -91,23 +91,23 @@ public class OpaqueExternalType02Parent extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private OpaqueExternalType02Child child;
-        private OpaqueExternalType02Parent _root;
-        private OpaqueExternalType02Parent _parent;
         public OpaqueExternalType02Child child() { return child; }
         public void setChild(OpaqueExternalType02Child _v) { _dirty = true; child = _v; }
         public OpaqueExternalType02Parent _root() { return _root; }
         public void set_root(OpaqueExternalType02Parent _v) { _dirty = true; _root = _v; }
         public OpaqueExternalType02Parent _parent() { return _parent; }
         public void set_parent(OpaqueExternalType02Parent _v) { _dirty = true; _parent = _v; }
+        private OpaqueExternalType02Child child;
+        private OpaqueExternalType02Parent _root;
+        private OpaqueExternalType02Parent _parent;
     }
-    private ParentObj parent;
-    private OpaqueExternalType02Parent _root;
-    private KaitaiStruct.ReadWrite _parent;
     public ParentObj parent() { return parent; }
     public void setParent(ParentObj _v) { _dirty = true; parent = _v; }
     public OpaqueExternalType02Parent _root() { return _root; }
     public void set_root(OpaqueExternalType02Parent _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private ParentObj parent;
+    private OpaqueExternalType02Parent _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

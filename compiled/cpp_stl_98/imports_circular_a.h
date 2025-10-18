@@ -25,18 +25,16 @@ private:
 
 public:
     ~imports_circular_a_t();
+    uint8_t code() const { return m_code; }
+    imports_circular_b_t* two() const { return m_two; }
+    imports_circular_a_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint8_t m_code;
     imports_circular_b_t* m_two;
     imports_circular_a_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint8_t code() const { return m_code; }
-    imports_circular_b_t* two() const { return m_two; }
-    imports_circular_a_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // IMPORTS_CIRCULAR_A_H_

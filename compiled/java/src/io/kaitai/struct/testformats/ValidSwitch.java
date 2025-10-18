@@ -56,12 +56,12 @@ public class ValidSwitch extends KaitaiStruct {
         }
         }
     }
-    private int a;
-    private int b;
-    private ValidSwitch _root;
-    private KaitaiStruct _parent;
     public int a() { return a; }
     public int b() { return b; }
     public ValidSwitch _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private int a;
+    private int b;
+    private ValidSwitch _root;
+    private KaitaiStruct _parent;
 }

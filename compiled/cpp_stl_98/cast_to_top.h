@@ -24,30 +24,20 @@ private:
 
 public:
     ~cast_to_top_t();
+    cast_to_top_t* header();
+    cast_to_top_t* header_casted();
+    uint8_t code() const { return m_code; }
+    cast_to_top_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_header;
     cast_to_top_t* m_header;
-
-public:
-    cast_to_top_t* header();
-
-private:
     bool f_header_casted;
     cast_to_top_t* m_header_casted;
-
-public:
-    cast_to_top_t* header_casted();
-
-private:
     uint8_t m_code;
     cast_to_top_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint8_t code() const { return m_code; }
-    cast_to_top_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // CAST_TO_TOP_H_

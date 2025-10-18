@@ -187,7 +187,6 @@ public class DefaultEndianExprInherited extends KaitaiStruct {
                         if (this.someInst != null) {
                         }
                     }
-                    private Long someInst;
                     public Long someInst() {
                         if (this.someInst != null)
                             return this.someInst;
@@ -201,44 +200,45 @@ public class DefaultEndianExprInherited extends KaitaiStruct {
                         this._io.seek(_pos);
                         return this.someInst;
                     }
-                    private int someInt1;
-                    private int someInt2;
-                    private DefaultEndianExprInherited _root;
-                    private DefaultEndianExprInherited.Doc.MainObj.SubObj _parent;
                     public int someInt1() { return someInt1; }
                     public int someInt2() { return someInt2; }
                     public DefaultEndianExprInherited _root() { return _root; }
                     public DefaultEndianExprInherited.Doc.MainObj.SubObj _parent() { return _parent; }
+                    private Long someInst;
+                    private int someInt1;
+                    private int someInt2;
+                    private DefaultEndianExprInherited _root;
+                    private DefaultEndianExprInherited.Doc.MainObj.SubObj _parent;
                 }
-                private long someInt;
-                private SubsubObj more;
-                private DefaultEndianExprInherited _root;
-                private DefaultEndianExprInherited.Doc.MainObj _parent;
                 public long someInt() { return someInt; }
                 public SubsubObj more() { return more; }
                 public DefaultEndianExprInherited _root() { return _root; }
                 public DefaultEndianExprInherited.Doc.MainObj _parent() { return _parent; }
+                private long someInt;
+                private SubsubObj more;
+                private DefaultEndianExprInherited _root;
+                private DefaultEndianExprInherited.Doc.MainObj _parent;
             }
-            private SubObj insides;
-            private DefaultEndianExprInherited _root;
-            private DefaultEndianExprInherited.Doc _parent;
             public SubObj insides() { return insides; }
             public DefaultEndianExprInherited _root() { return _root; }
             public DefaultEndianExprInherited.Doc _parent() { return _parent; }
+            private SubObj insides;
+            private DefaultEndianExprInherited _root;
+            private DefaultEndianExprInherited.Doc _parent;
         }
-        private byte[] indicator;
-        private MainObj main;
-        private DefaultEndianExprInherited _root;
-        private DefaultEndianExprInherited _parent;
         public byte[] indicator() { return indicator; }
         public MainObj main() { return main; }
         public DefaultEndianExprInherited _root() { return _root; }
         public DefaultEndianExprInherited _parent() { return _parent; }
+        private byte[] indicator;
+        private MainObj main;
+        private DefaultEndianExprInherited _root;
+        private DefaultEndianExprInherited _parent;
     }
-    private List<Doc> docs;
-    private DefaultEndianExprInherited _root;
-    private KaitaiStruct _parent;
     public List<Doc> docs() { return docs; }
     public DefaultEndianExprInherited _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Doc> docs;
+    private DefaultEndianExprInherited _root;
+    private KaitaiStruct _parent;
 }

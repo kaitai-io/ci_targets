@@ -29,8 +29,6 @@ namespace Kaitai
             _seqStr = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(5));
             _seqInt = m_io.ReadU1();
         }
-        private bool f_empty;
-        private string _empty;
         public string Empty
         {
             get
@@ -42,8 +40,6 @@ namespace Kaitai
                 return _empty;
             }
         }
-        private bool f_headAndInt;
-        private string _headAndInt;
         public string HeadAndInt
         {
             get
@@ -55,8 +51,6 @@ namespace Kaitai
                 return _headAndInt;
             }
         }
-        private bool f_headAndIntLiteral;
-        private string _headAndIntLiteral;
         public string HeadAndIntLiteral
         {
             get
@@ -68,8 +62,6 @@ namespace Kaitai
                 return _headAndIntLiteral;
             }
         }
-        private bool f_headAndStr;
-        private string _headAndStr;
         public string HeadAndStr
         {
             get
@@ -81,8 +73,6 @@ namespace Kaitai
                 return _headAndStr;
             }
         }
-        private bool f_headAndStrLiteral;
-        private string _headAndStrLiteral;
         public string HeadAndStrLiteral
         {
             get
@@ -94,8 +84,6 @@ namespace Kaitai
                 return _headAndStrLiteral;
             }
         }
-        private bool f_literal;
-        private string _literal;
         public string Literal
         {
             get
@@ -107,8 +95,6 @@ namespace Kaitai
                 return _literal;
             }
         }
-        private bool f_literalWithEscapes;
-        private string _literalWithEscapes;
         public string LiteralWithEscapes
         {
             get
@@ -120,13 +106,27 @@ namespace Kaitai
                 return _literalWithEscapes;
             }
         }
-        private string _seqStr;
-        private byte _seqInt;
-        private ExprFstring0 m_root;
-        private KaitaiStruct m_parent;
         public string SeqStr { get { return _seqStr; } }
         public byte SeqInt { get { return _seqInt; } }
         public ExprFstring0 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_empty;
+        private string _empty;
+        private bool f_headAndInt;
+        private string _headAndInt;
+        private bool f_headAndIntLiteral;
+        private string _headAndIntLiteral;
+        private bool f_headAndStr;
+        private string _headAndStr;
+        private bool f_headAndStrLiteral;
+        private string _headAndStrLiteral;
+        private bool f_literal;
+        private string _literal;
+        private bool f_literalWithEscapes;
+        private string _literalWithEscapes;
+        private string _seqStr;
+        private byte _seqInt;
+        private ExprFstring0 m_root;
+        private KaitaiStruct m_parent;
     }
 }

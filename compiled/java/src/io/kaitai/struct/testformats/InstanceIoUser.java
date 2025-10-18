@@ -75,7 +75,6 @@ public class InstanceIoUser extends KaitaiStruct {
             if (this.name != null) {
             }
         }
-        private String name;
         public String name() {
             if (this.name != null)
                 return this.name;
@@ -86,14 +85,15 @@ public class InstanceIoUser extends KaitaiStruct {
             io.seek(_pos);
             return this.name;
         }
-        private long nameOfs;
-        private long value;
-        private InstanceIoUser _root;
-        private InstanceIoUser _parent;
         public long nameOfs() { return nameOfs; }
         public long value() { return value; }
         public InstanceIoUser _root() { return _root; }
         public InstanceIoUser _parent() { return _parent; }
+        private String name;
+        private long nameOfs;
+        private long value;
+        private InstanceIoUser _root;
+        private InstanceIoUser _parent;
     }
     public static class StringsObj extends KaitaiStruct {
         public static StringsObj fromFile(String fileName) throws IOException {
@@ -129,23 +129,23 @@ public class InstanceIoUser extends KaitaiStruct {
             for (int i = 0; i < this.str.size(); i++) {
             }
         }
-        private List<String> str;
-        private InstanceIoUser _root;
-        private InstanceIoUser _parent;
         public List<String> str() { return str; }
         public InstanceIoUser _root() { return _root; }
         public InstanceIoUser _parent() { return _parent; }
+        private List<String> str;
+        private InstanceIoUser _root;
+        private InstanceIoUser _parent;
     }
-    private long qtyEntries;
-    private List<Entry> entries;
-    private StringsObj strings;
-    private InstanceIoUser _root;
-    private KaitaiStruct _parent;
-    private byte[] _raw_strings;
     public long qtyEntries() { return qtyEntries; }
     public List<Entry> entries() { return entries; }
     public StringsObj strings() { return strings; }
     public InstanceIoUser _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
     public byte[] _raw_strings() { return _raw_strings; }
+    private long qtyEntries;
+    private List<Entry> entries;
+    private StringsObj strings;
+    private InstanceIoUser _root;
+    private KaitaiStruct _parent;
+    private byte[] _raw_strings;
 }

@@ -65,11 +65,6 @@ public class TermStrz extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("s3", (this.s3).getBytes(Charset.forName("UTF-8")).length - 1, KaitaiStream.byteArrayIndexOf((this.s3).getBytes(Charset.forName("UTF-8")), ((byte) 64)));
         _dirty = false;
     }
-    private String s1;
-    private String s2;
-    private String s3;
-    private TermStrz _root;
-    private KaitaiStruct.ReadWrite _parent;
     public String s1() { return s1; }
     public void setS1(String _v) { _dirty = true; s1 = _v; }
     public String s2() { return s2; }
@@ -80,4 +75,9 @@ public class TermStrz extends KaitaiStruct.ReadWrite {
     public void set_root(TermStrz _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private String s1;
+    private String s2;
+    private String s3;
+    private TermStrz _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

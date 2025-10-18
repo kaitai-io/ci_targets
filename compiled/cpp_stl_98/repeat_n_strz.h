@@ -25,18 +25,16 @@ private:
 
 public:
     ~repeat_n_strz_t();
+    uint32_t qty() const { return m_qty; }
+    std::vector<std::string>* lines() const { return m_lines; }
+    repeat_n_strz_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint32_t m_qty;
     std::vector<std::string>* m_lines;
     repeat_n_strz_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint32_t qty() const { return m_qty; }
-    std::vector<std::string>* lines() const { return m_lines; }
-    repeat_n_strz_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // REPEAT_N_STRZ_H_

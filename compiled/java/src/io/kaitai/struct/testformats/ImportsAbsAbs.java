@@ -34,12 +34,12 @@ public class ImportsAbsAbs extends KaitaiStruct {
     public void _fetchInstances() {
         this.two._fetchInstances();
     }
-    private int one;
-    private ImportedAndAbs two;
-    private ImportsAbsAbs _root;
-    private KaitaiStruct _parent;
     public int one() { return one; }
     public ImportedAndAbs two() { return two; }
     public ImportsAbsAbs _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private int one;
+    private ImportedAndAbs two;
+    private ImportsAbsAbs _root;
+    private KaitaiStruct _parent;
 }

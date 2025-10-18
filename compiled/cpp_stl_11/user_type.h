@@ -38,27 +38,25 @@ public:
 
     public:
         ~header_t();
+        uint32_t width() const { return m_width; }
+        uint32_t height() const { return m_height; }
+        user_type_t* _root() const { return m__root; }
+        user_type_t* _parent() const { return m__parent; }
 
     private:
         uint32_t m_width;
         uint32_t m_height;
         user_type_t* m__root;
         user_type_t* m__parent;
-
-    public:
-        uint32_t width() const { return m_width; }
-        uint32_t height() const { return m_height; }
-        user_type_t* _root() const { return m__root; }
-        user_type_t* _parent() const { return m__parent; }
     };
-
-private:
-    std::unique_ptr<header_t> m_one;
-    user_type_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     header_t* one() const { return m_one.get(); }
     user_type_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    std::unique_ptr<header_t> m_one;
+    user_type_t* m__root;
+    kaitai::kstruct* m__parent;
 };

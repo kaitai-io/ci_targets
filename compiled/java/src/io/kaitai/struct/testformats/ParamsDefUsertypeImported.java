@@ -29,17 +29,17 @@ public class ParamsDefUsertypeImported extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Integer hwOne;
     public Integer hwOne() {
         if (this.hwOne != null)
             return this.hwOne;
         this.hwOne = ((Number) (hwParam().one())).intValue();
         return this.hwOne;
     }
-    private HelloWorld hwParam;
-    private ParamsDefUsertypeImported _root;
-    private KaitaiStruct _parent;
     public HelloWorld hwParam() { return hwParam; }
     public ParamsDefUsertypeImported _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Integer hwOne;
+    private HelloWorld hwParam;
+    private ParamsDefUsertypeImported _root;
+    private KaitaiStruct _parent;
 }

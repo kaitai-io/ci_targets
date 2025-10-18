@@ -11,8 +11,8 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_main = new \Kaitai\Struct\Tests\NavParentSwitchCast\Foo($this->_io, $this, $this->_root);
         }
-        protected $_m_main;
         public function main() { return $this->_m_main; }
+        protected $_m_main;
     }
 }
 
@@ -42,14 +42,14 @@ namespace Kaitai\Struct\Tests\NavParentSwitchCast {
                     break;
             }
         }
-        protected $_m_bufType;
-        protected $_m_flag;
-        protected $_m_buf;
-        protected $_m__raw_buf;
         public function bufType() { return $this->_m_bufType; }
         public function flag() { return $this->_m_flag; }
         public function buf() { return $this->_m_buf; }
         public function _raw_buf() { return $this->_m__raw_buf; }
+        protected $_m_bufType;
+        protected $_m_flag;
+        protected $_m_buf;
+        protected $_m__raw_buf;
     }
 }
 
@@ -62,13 +62,13 @@ namespace Kaitai\Struct\Tests\NavParentSwitchCast\Foo {
 
         private function _read() {
         }
-        protected $_m_flag;
         public function flag() {
             if ($this->_m_flag !== null)
                 return $this->_m_flag;
             $this->_m_flag = $this->_parent()->_parent()->flag();
             return $this->_m_flag;
         }
+        protected $_m_flag;
     }
 }
 
@@ -82,8 +82,8 @@ namespace Kaitai\Struct\Tests\NavParentSwitchCast\Foo {
         private function _read() {
             $this->_m_branch = new \Kaitai\Struct\Tests\NavParentSwitchCast\Foo\Common($this->_io, $this, $this->_root);
         }
-        protected $_m_branch;
         public function branch() { return $this->_m_branch; }
+        protected $_m_branch;
     }
 }
 
@@ -97,7 +97,7 @@ namespace Kaitai\Struct\Tests\NavParentSwitchCast\Foo {
         private function _read() {
             $this->_m_branch = new \Kaitai\Struct\Tests\NavParentSwitchCast\Foo\Common($this->_io, $this, $this->_root);
         }
-        protected $_m_branch;
         public function branch() { return $this->_m_branch; }
+        protected $_m_branch;
     }
 }

@@ -40,92 +40,50 @@ public:
 
     public:
         ~leading_zero_ltr_obj_t();
-
-    private:
-        bool f_as_int;
-        int32_t m_as_int;
-
-    public:
         int32_t as_int();
-
-    private:
-        bool f_as_str;
-        std::string m_as_str;
-
-    public:
         std::string as_str();
-
-    private:
-        bool f_digit1;
-        int32_t m_digit1;
-
-    public:
         int32_t digit1();
-
-    private:
-        bool f_digit2;
-        int32_t m_digit2;
-
-    public:
         int32_t digit2();
-
-    private:
-        bool f_digit3;
-        int32_t m_digit3;
-
-    public:
         int32_t digit3();
-
-    private:
-        bool f_digit4;
-        int32_t m_digit4;
-
-    public:
         int32_t digit4();
-
-    private:
-        bool f_digit5;
-        int32_t m_digit5;
-
-    public:
         int32_t digit5();
-
-    private:
-        bool f_digit6;
-        int32_t m_digit6;
-
-    public:
         int32_t digit6();
-
-    private:
-        bool f_digit7;
-        int32_t m_digit7;
-
-    public:
         int32_t digit7();
-
-    private:
-        bool f_digit8;
-        int32_t m_digit8;
-
-    public:
         int32_t digit8();
-
-    private:
-        uint8_t m_b1;
-        uint8_t m_b2;
-        uint8_t m_b3;
-        uint8_t m_b4;
-        bcd_user_type_be_t* m__root;
-        bcd_user_type_be_t* m__parent;
-
-    public:
         uint8_t b1() const { return m_b1; }
         uint8_t b2() const { return m_b2; }
         uint8_t b3() const { return m_b3; }
         uint8_t b4() const { return m_b4; }
         bcd_user_type_be_t* _root() const { return m__root; }
         bcd_user_type_be_t* _parent() const { return m__parent; }
+
+    private:
+        bool f_as_int;
+        int32_t m_as_int;
+        bool f_as_str;
+        std::string m_as_str;
+        bool f_digit1;
+        int32_t m_digit1;
+        bool f_digit2;
+        int32_t m_digit2;
+        bool f_digit3;
+        int32_t m_digit3;
+        bool f_digit4;
+        int32_t m_digit4;
+        bool f_digit5;
+        int32_t m_digit5;
+        bool f_digit6;
+        int32_t m_digit6;
+        bool f_digit7;
+        int32_t m_digit7;
+        bool f_digit8;
+        int32_t m_digit8;
+        uint8_t m_b1;
+        uint8_t m_b2;
+        uint8_t m_b3;
+        uint8_t m_b4;
+        bcd_user_type_be_t* m__root;
+        bcd_user_type_be_t* m__parent;
     };
 
     class ltr_obj_t : public kaitai::kstruct {
@@ -140,92 +98,50 @@ public:
 
     public:
         ~ltr_obj_t();
-
-    private:
-        bool f_as_int;
-        int32_t m_as_int;
-
-    public:
         int32_t as_int();
-
-    private:
-        bool f_as_str;
-        std::string m_as_str;
-
-    public:
         std::string as_str();
-
-    private:
-        bool f_digit1;
-        int32_t m_digit1;
-
-    public:
         int32_t digit1();
-
-    private:
-        bool f_digit2;
-        int32_t m_digit2;
-
-    public:
         int32_t digit2();
-
-    private:
-        bool f_digit3;
-        int32_t m_digit3;
-
-    public:
         int32_t digit3();
-
-    private:
-        bool f_digit4;
-        int32_t m_digit4;
-
-    public:
         int32_t digit4();
-
-    private:
-        bool f_digit5;
-        int32_t m_digit5;
-
-    public:
         int32_t digit5();
-
-    private:
-        bool f_digit6;
-        int32_t m_digit6;
-
-    public:
         int32_t digit6();
-
-    private:
-        bool f_digit7;
-        int32_t m_digit7;
-
-    public:
         int32_t digit7();
-
-    private:
-        bool f_digit8;
-        int32_t m_digit8;
-
-    public:
         int32_t digit8();
-
-    private:
-        uint8_t m_b1;
-        uint8_t m_b2;
-        uint8_t m_b3;
-        uint8_t m_b4;
-        bcd_user_type_be_t* m__root;
-        bcd_user_type_be_t* m__parent;
-
-    public:
         uint8_t b1() const { return m_b1; }
         uint8_t b2() const { return m_b2; }
         uint8_t b3() const { return m_b3; }
         uint8_t b4() const { return m_b4; }
         bcd_user_type_be_t* _root() const { return m__root; }
         bcd_user_type_be_t* _parent() const { return m__parent; }
+
+    private:
+        bool f_as_int;
+        int32_t m_as_int;
+        bool f_as_str;
+        std::string m_as_str;
+        bool f_digit1;
+        int32_t m_digit1;
+        bool f_digit2;
+        int32_t m_digit2;
+        bool f_digit3;
+        int32_t m_digit3;
+        bool f_digit4;
+        int32_t m_digit4;
+        bool f_digit5;
+        int32_t m_digit5;
+        bool f_digit6;
+        int32_t m_digit6;
+        bool f_digit7;
+        int32_t m_digit7;
+        bool f_digit8;
+        int32_t m_digit8;
+        uint8_t m_b1;
+        uint8_t m_b2;
+        uint8_t m_b3;
+        uint8_t m_b4;
+        bcd_user_type_be_t* m__root;
+        bcd_user_type_be_t* m__parent;
     };
 
     class rtl_obj_t : public kaitai::kstruct {
@@ -240,106 +156,51 @@ public:
 
     public:
         ~rtl_obj_t();
-
-    private:
-        bool f_as_int;
-        int32_t m_as_int;
-
-    public:
         int32_t as_int();
-
-    private:
-        bool f_as_str;
-        std::string m_as_str;
-
-    public:
         std::string as_str();
-
-    private:
-        bool f_digit1;
-        int32_t m_digit1;
-
-    public:
         int32_t digit1();
-
-    private:
-        bool f_digit2;
-        int32_t m_digit2;
-
-    public:
         int32_t digit2();
-
-    private:
-        bool f_digit3;
-        int32_t m_digit3;
-
-    public:
         int32_t digit3();
-
-    private:
-        bool f_digit4;
-        int32_t m_digit4;
-
-    public:
         int32_t digit4();
-
-    private:
-        bool f_digit5;
-        int32_t m_digit5;
-
-    public:
         int32_t digit5();
-
-    private:
-        bool f_digit6;
-        int32_t m_digit6;
-
-    public:
         int32_t digit6();
-
-    private:
-        bool f_digit7;
-        int32_t m_digit7;
-
-    public:
         int32_t digit7();
-
-    private:
-        bool f_digit8;
-        int32_t m_digit8;
-
-    public:
         int32_t digit8();
-
-    private:
-        uint8_t m_b1;
-        uint8_t m_b2;
-        uint8_t m_b3;
-        uint8_t m_b4;
-        bcd_user_type_be_t* m__root;
-        bcd_user_type_be_t* m__parent;
-
-    public:
         uint8_t b1() const { return m_b1; }
         uint8_t b2() const { return m_b2; }
         uint8_t b3() const { return m_b3; }
         uint8_t b4() const { return m_b4; }
         bcd_user_type_be_t* _root() const { return m__root; }
         bcd_user_type_be_t* _parent() const { return m__parent; }
-    };
 
-private:
-    std::unique_ptr<ltr_obj_t> m_ltr;
-    std::unique_ptr<rtl_obj_t> m_rtl;
-    std::unique_ptr<leading_zero_ltr_obj_t> m_leading_zero_ltr;
-    bcd_user_type_be_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::string m__raw_ltr;
-    std::unique_ptr<kaitai::kstream> m__io__raw_ltr;
-    std::string m__raw_rtl;
-    std::unique_ptr<kaitai::kstream> m__io__raw_rtl;
-    std::string m__raw_leading_zero_ltr;
-    std::unique_ptr<kaitai::kstream> m__io__raw_leading_zero_ltr;
+    private:
+        bool f_as_int;
+        int32_t m_as_int;
+        bool f_as_str;
+        std::string m_as_str;
+        bool f_digit1;
+        int32_t m_digit1;
+        bool f_digit2;
+        int32_t m_digit2;
+        bool f_digit3;
+        int32_t m_digit3;
+        bool f_digit4;
+        int32_t m_digit4;
+        bool f_digit5;
+        int32_t m_digit5;
+        bool f_digit6;
+        int32_t m_digit6;
+        bool f_digit7;
+        int32_t m_digit7;
+        bool f_digit8;
+        int32_t m_digit8;
+        uint8_t m_b1;
+        uint8_t m_b2;
+        uint8_t m_b3;
+        uint8_t m_b4;
+        bcd_user_type_be_t* m__root;
+        bcd_user_type_be_t* m__parent;
+    };
 
 public:
     ltr_obj_t* ltr() const { return m_ltr.get(); }
@@ -353,4 +214,17 @@ public:
     kaitai::kstream* _io__raw_rtl() const { return m__io__raw_rtl.get(); }
     std::string _raw_leading_zero_ltr() const { return m__raw_leading_zero_ltr; }
     kaitai::kstream* _io__raw_leading_zero_ltr() const { return m__io__raw_leading_zero_ltr.get(); }
+
+private:
+    std::unique_ptr<ltr_obj_t> m_ltr;
+    std::unique_ptr<rtl_obj_t> m_rtl;
+    std::unique_ptr<leading_zero_ltr_obj_t> m_leading_zero_ltr;
+    bcd_user_type_be_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::string m__raw_ltr;
+    std::unique_ptr<kaitai::kstream> m__io__raw_ltr;
+    std::string m__raw_rtl;
+    std::unique_ptr<kaitai::kstream> m__io__raw_rtl;
+    std::string m__raw_leading_zero_ltr;
+    std::unique_ptr<kaitai::kstream> m__io__raw_leading_zero_ltr;
 };

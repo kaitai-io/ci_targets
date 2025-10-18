@@ -43,10 +43,10 @@ public class RepeatEosBit extends KaitaiStruct {
         for (int i = 0; i < this.nibbles.size(); i++) {
         }
     }
-    private List<Long> nibbles;
-    private RepeatEosBit _root;
-    private KaitaiStruct _parent;
     public List<Long> nibbles() { return nibbles; }
     public RepeatEosBit _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Long> nibbles;
+    private RepeatEosBit _root;
+    private KaitaiStruct _parent;
 }

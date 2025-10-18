@@ -11,7 +11,7 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_str = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesFull(), "UTF-8");
         }
-        protected $_m_str;
         public function str() { return $this->_m_str; }
+        protected $_m_str;
     }
 }

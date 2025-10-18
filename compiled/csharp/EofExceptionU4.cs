@@ -22,13 +22,13 @@ namespace Kaitai
             _prebuf = m_io.ReadBytes(9);
             _failInt = m_io.ReadU4le();
         }
-        private byte[] _prebuf;
-        private uint _failInt;
-        private EofExceptionU4 m_root;
-        private KaitaiStruct m_parent;
         public byte[] Prebuf { get { return _prebuf; } }
         public uint FailInt { get { return _failInt; } }
         public EofExceptionU4 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte[] _prebuf;
+        private uint _failInt;
+        private EofExceptionU4 m_root;
+        private KaitaiStruct m_parent;
     }
 }

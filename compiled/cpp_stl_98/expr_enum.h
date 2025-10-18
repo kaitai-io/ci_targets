@@ -39,37 +39,23 @@ private:
 
 public:
     ~expr_enum_t();
+    animal_t const_dog();
+    animal_t derived_boom();
+    animal_t derived_dog();
+    uint8_t one() const { return m_one; }
+    expr_enum_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_const_dog;
     animal_t m_const_dog;
-
-public:
-    animal_t const_dog();
-
-private:
     bool f_derived_boom;
     animal_t m_derived_boom;
-
-public:
-    animal_t derived_boom();
-
-private:
     bool f_derived_dog;
     animal_t m_derived_dog;
-
-public:
-    animal_t derived_dog();
-
-private:
     uint8_t m_one;
     expr_enum_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint8_t one() const { return m_one; }
-    expr_enum_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // EXPR_ENUM_H_

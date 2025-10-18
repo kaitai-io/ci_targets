@@ -68,13 +68,13 @@ public class RepeatEosTermBytes extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private List<byte[]> records;
-    private RepeatEosTermBytes _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<byte[]> records() { return records; }
     public void setRecords(List<byte[]> _v) { _dirty = true; records = _v; }
     public RepeatEosTermBytes _root() { return _root; }
     public void set_root(RepeatEosTermBytes _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<byte[]> records;
+    private RepeatEosTermBytes _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

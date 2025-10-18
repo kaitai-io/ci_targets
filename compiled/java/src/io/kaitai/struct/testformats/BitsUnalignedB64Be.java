@@ -34,14 +34,14 @@ public class BitsUnalignedB64Be extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private boolean a;
-    private long b;
-    private long c;
-    private BitsUnalignedB64Be _root;
-    private KaitaiStruct _parent;
     public boolean a() { return a; }
     public long b() { return b; }
     public long c() { return c; }
     public BitsUnalignedB64Be _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private boolean a;
+    private long b;
+    private long c;
+    private BitsUnalignedB64Be _root;
+    private KaitaiStruct _parent;
 }

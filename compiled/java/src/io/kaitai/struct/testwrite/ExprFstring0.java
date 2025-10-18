@@ -51,7 +51,6 @@ public class ExprFstring0 extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("seq_str", 5, (this.seqStr).getBytes(Charset.forName("ASCII")).length);
         _dirty = false;
     }
-    private String empty;
     public String empty() {
         if (this.empty != null)
             return this.empty;
@@ -59,7 +58,6 @@ public class ExprFstring0 extends KaitaiStruct.ReadWrite {
         return this.empty;
     }
     public void _invalidateEmpty() { this.empty = null; }
-    private String headAndInt;
     public String headAndInt() {
         if (this.headAndInt != null)
             return this.headAndInt;
@@ -67,7 +65,6 @@ public class ExprFstring0 extends KaitaiStruct.ReadWrite {
         return this.headAndInt;
     }
     public void _invalidateHeadAndInt() { this.headAndInt = null; }
-    private String headAndIntLiteral;
     public String headAndIntLiteral() {
         if (this.headAndIntLiteral != null)
             return this.headAndIntLiteral;
@@ -75,7 +72,6 @@ public class ExprFstring0 extends KaitaiStruct.ReadWrite {
         return this.headAndIntLiteral;
     }
     public void _invalidateHeadAndIntLiteral() { this.headAndIntLiteral = null; }
-    private String headAndStr;
     public String headAndStr() {
         if (this.headAndStr != null)
             return this.headAndStr;
@@ -83,7 +79,6 @@ public class ExprFstring0 extends KaitaiStruct.ReadWrite {
         return this.headAndStr;
     }
     public void _invalidateHeadAndStr() { this.headAndStr = null; }
-    private String headAndStrLiteral;
     public String headAndStrLiteral() {
         if (this.headAndStrLiteral != null)
             return this.headAndStrLiteral;
@@ -91,7 +86,6 @@ public class ExprFstring0 extends KaitaiStruct.ReadWrite {
         return this.headAndStrLiteral;
     }
     public void _invalidateHeadAndStrLiteral() { this.headAndStrLiteral = null; }
-    private String literal;
     public String literal() {
         if (this.literal != null)
             return this.literal;
@@ -99,7 +93,6 @@ public class ExprFstring0 extends KaitaiStruct.ReadWrite {
         return this.literal;
     }
     public void _invalidateLiteral() { this.literal = null; }
-    private String literalWithEscapes;
     public String literalWithEscapes() {
         if (this.literalWithEscapes != null)
             return this.literalWithEscapes;
@@ -107,10 +100,6 @@ public class ExprFstring0 extends KaitaiStruct.ReadWrite {
         return this.literalWithEscapes;
     }
     public void _invalidateLiteralWithEscapes() { this.literalWithEscapes = null; }
-    private String seqStr;
-    private int seqInt;
-    private ExprFstring0 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public String seqStr() { return seqStr; }
     public void setSeqStr(String _v) { _dirty = true; seqStr = _v; }
     public int seqInt() { return seqInt; }
@@ -119,4 +108,15 @@ public class ExprFstring0 extends KaitaiStruct.ReadWrite {
     public void set_root(ExprFstring0 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private String empty;
+    private String headAndInt;
+    private String headAndIntLiteral;
+    private String headAndStr;
+    private String headAndStrLiteral;
+    private String literal;
+    private String literalWithEscapes;
+    private String seqStr;
+    private int seqInt;
+    private ExprFstring0 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

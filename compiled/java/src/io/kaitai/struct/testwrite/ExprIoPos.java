@@ -144,11 +144,6 @@ public class ExprIoPos extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("my_str", -1, KaitaiStream.byteArrayIndexOf((this.myStr).getBytes(Charset.forName("UTF-8")), ((byte) 0)));
             _dirty = false;
         }
-        private String myStr;
-        private byte[] body;
-        private int number;
-        private ExprIoPos _root;
-        private ExprIoPos _parent;
         public String myStr() { return myStr; }
         public void setMyStr(String _v) { _dirty = true; myStr = _v; }
         public byte[] body() { return body; }
@@ -159,13 +154,12 @@ public class ExprIoPos extends KaitaiStruct.ReadWrite {
         public void set_root(ExprIoPos _v) { _dirty = true; _root = _v; }
         public ExprIoPos _parent() { return _parent; }
         public void set_parent(ExprIoPos _v) { _dirty = true; _parent = _v; }
+        private String myStr;
+        private byte[] body;
+        private int number;
+        private ExprIoPos _root;
+        private ExprIoPos _parent;
     }
-    private AllPlusNumber substream1;
-    private AllPlusNumber substream2;
-    private ExprIoPos _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_substream1;
-    private byte[] _raw_substream2;
     public AllPlusNumber substream1() { return substream1; }
     public void setSubstream1(AllPlusNumber _v) { _dirty = true; substream1 = _v; }
     public AllPlusNumber substream2() { return substream2; }
@@ -178,4 +172,10 @@ public class ExprIoPos extends KaitaiStruct.ReadWrite {
     public void set_raw_Substream1(byte[] _v) { _dirty = true; _raw_substream1 = _v; }
     public byte[] _raw_substream2() { return _raw_substream2; }
     public void set_raw_Substream2(byte[] _v) { _dirty = true; _raw_substream2 = _v; }
+    private AllPlusNumber substream1;
+    private AllPlusNumber substream2;
+    private ExprIoPos _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_substream1;
+    private byte[] _raw_substream2;
 }

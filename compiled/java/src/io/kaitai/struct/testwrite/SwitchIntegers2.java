@@ -123,7 +123,6 @@ public class SwitchIntegers2 extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private String lenModStr;
     public String lenModStr() {
         if (this.lenModStr != null)
             return this.lenModStr;
@@ -131,12 +130,6 @@ public class SwitchIntegers2 extends KaitaiStruct.ReadWrite {
         return this.lenModStr;
     }
     public void _invalidateLenModStr() { this.lenModStr = null; }
-    private int code;
-    private Long len;
-    private byte[] ham;
-    private Integer padding;
-    private SwitchIntegers2 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int code() { return code; }
     public void setCode(int _v) { _dirty = true; code = _v; }
     public Long len() { return len; }
@@ -149,4 +142,11 @@ public class SwitchIntegers2 extends KaitaiStruct.ReadWrite {
     public void set_root(SwitchIntegers2 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private String lenModStr;
+    private int code;
+    private Long len;
+    private byte[] ham;
+    private Integer padding;
+    private SwitchIntegers2 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

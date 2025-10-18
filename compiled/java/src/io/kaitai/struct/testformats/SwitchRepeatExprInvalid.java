@@ -94,12 +94,12 @@ public class SwitchRepeatExprInvalid extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] first;
-        private SwitchRepeatExprInvalid _root;
-        private SwitchRepeatExprInvalid _parent;
         public byte[] first() { return first; }
         public SwitchRepeatExprInvalid _root() { return _root; }
         public SwitchRepeatExprInvalid _parent() { return _parent; }
+        private byte[] first;
+        private SwitchRepeatExprInvalid _root;
+        private SwitchRepeatExprInvalid _parent;
     }
     public static class Two extends KaitaiStruct {
         public static Two fromFile(String fileName) throws IOException {
@@ -126,21 +126,21 @@ public class SwitchRepeatExprInvalid extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] second;
-        private SwitchRepeatExprInvalid _root;
-        private SwitchRepeatExprInvalid _parent;
         public byte[] second() { return second; }
         public SwitchRepeatExprInvalid _root() { return _root; }
         public SwitchRepeatExprInvalid _parent() { return _parent; }
+        private byte[] second;
+        private SwitchRepeatExprInvalid _root;
+        private SwitchRepeatExprInvalid _parent;
     }
-    private int code;
-    private long size;
-    private List<Object> body;
-    private SwitchRepeatExprInvalid _root;
-    private KaitaiStruct _parent;
     public int code() { return code; }
     public long size() { return size; }
     public List<Object> body() { return body; }
     public SwitchRepeatExprInvalid _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private int code;
+    private long size;
+    private List<Object> body;
+    private SwitchRepeatExprInvalid _root;
+    private KaitaiStruct _parent;
 }

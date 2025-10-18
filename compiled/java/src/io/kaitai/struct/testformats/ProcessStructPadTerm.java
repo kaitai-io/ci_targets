@@ -76,27 +76,13 @@ public class ProcessStructPadTerm extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] value;
-        private ProcessStructPadTerm _root;
-        private ProcessStructPadTerm _parent;
         public byte[] value() { return value; }
         public ProcessStructPadTerm _root() { return _root; }
         public ProcessStructPadTerm _parent() { return _parent; }
+        private byte[] value;
+        private ProcessStructPadTerm _root;
+        private ProcessStructPadTerm _parent;
     }
-    private BytesWrapper strPad;
-    private BytesWrapper strTerm;
-    private BytesWrapper strTermAndPad;
-    private BytesWrapper strTermInclude;
-    private ProcessStructPadTerm _root;
-    private KaitaiStruct _parent;
-    private byte[] _raw_strPad;
-    private byte[] _raw__raw_strPad;
-    private byte[] _raw_strTerm;
-    private byte[] _raw__raw_strTerm;
-    private byte[] _raw_strTermAndPad;
-    private byte[] _raw__raw_strTermAndPad;
-    private byte[] _raw_strTermInclude;
-    private byte[] _raw__raw_strTermInclude;
     public BytesWrapper strPad() { return strPad; }
     public BytesWrapper strTerm() { return strTerm; }
     public BytesWrapper strTermAndPad() { return strTermAndPad; }
@@ -111,4 +97,18 @@ public class ProcessStructPadTerm extends KaitaiStruct {
     public byte[] _raw__raw_strTermAndPad() { return _raw__raw_strTermAndPad; }
     public byte[] _raw_strTermInclude() { return _raw_strTermInclude; }
     public byte[] _raw__raw_strTermInclude() { return _raw__raw_strTermInclude; }
+    private BytesWrapper strPad;
+    private BytesWrapper strTerm;
+    private BytesWrapper strTermAndPad;
+    private BytesWrapper strTermInclude;
+    private ProcessStructPadTerm _root;
+    private KaitaiStruct _parent;
+    private byte[] _raw_strPad;
+    private byte[] _raw__raw_strPad;
+    private byte[] _raw_strTerm;
+    private byte[] _raw__raw_strTerm;
+    private byte[] _raw_strTermAndPad;
+    private byte[] _raw__raw_strTermAndPad;
+    private byte[] _raw_strTermInclude;
+    private byte[] _raw__raw_strTermInclude;
 }

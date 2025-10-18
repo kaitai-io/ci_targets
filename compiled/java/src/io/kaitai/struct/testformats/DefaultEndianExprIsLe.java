@@ -124,30 +124,30 @@ public class DefaultEndianExprIsLe extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private long someInt;
-            private int someIntBe;
-            private int someIntLe;
-            private DefaultEndianExprIsLe _root;
-            private DefaultEndianExprIsLe.Doc _parent;
             public long someInt() { return someInt; }
             public int someIntBe() { return someIntBe; }
             public int someIntLe() { return someIntLe; }
             public DefaultEndianExprIsLe _root() { return _root; }
             public DefaultEndianExprIsLe.Doc _parent() { return _parent; }
+            private long someInt;
+            private int someIntBe;
+            private int someIntLe;
+            private DefaultEndianExprIsLe _root;
+            private DefaultEndianExprIsLe.Doc _parent;
         }
-        private byte[] indicator;
-        private MainObj main;
-        private DefaultEndianExprIsLe _root;
-        private DefaultEndianExprIsLe _parent;
         public byte[] indicator() { return indicator; }
         public MainObj main() { return main; }
         public DefaultEndianExprIsLe _root() { return _root; }
         public DefaultEndianExprIsLe _parent() { return _parent; }
+        private byte[] indicator;
+        private MainObj main;
+        private DefaultEndianExprIsLe _root;
+        private DefaultEndianExprIsLe _parent;
     }
-    private List<Doc> docs;
-    private DefaultEndianExprIsLe _root;
-    private KaitaiStruct _parent;
     public List<Doc> docs() { return docs; }
     public DefaultEndianExprIsLe _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Doc> docs;
+    private DefaultEndianExprIsLe _root;
+    private KaitaiStruct _parent;
 }

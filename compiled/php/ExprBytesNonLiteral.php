@@ -12,16 +12,16 @@ namespace Kaitai\Struct\Tests {
             $this->_m_one = $this->_io->readU1();
             $this->_m_two = $this->_io->readU1();
         }
-        protected $_m_calcBytes;
         public function calcBytes() {
             if ($this->_m_calcBytes !== null)
                 return $this->_m_calcBytes;
             $this->_m_calcBytes = pack('C*', $this->one(), $this->two());
             return $this->_m_calcBytes;
         }
-        protected $_m_one;
-        protected $_m_two;
         public function one() { return $this->_m_one; }
         public function two() { return $this->_m_two; }
+        protected $_m_calcBytes;
+        protected $_m_one;
+        protected $_m_two;
     }
 }

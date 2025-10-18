@@ -42,8 +42,6 @@ namespace Kaitai
                 _doubleValueIf = m_io.ReadF8be();
             }
         }
-        private bool f_calcFloat1;
-        private double _calcFloat1;
         public double CalcFloat1
         {
             get
@@ -55,8 +53,6 @@ namespace Kaitai
                 return _calcFloat1;
             }
         }
-        private bool f_calcFloat2;
-        private double _calcFloat2;
         public double CalcFloat2
         {
             get
@@ -68,8 +64,6 @@ namespace Kaitai
                 return _calcFloat2;
             }
         }
-        private bool f_calcFloat3;
-        private double _calcFloat3;
         public double CalcFloat3
         {
             get
@@ -81,8 +75,6 @@ namespace Kaitai
                 return _calcFloat3;
             }
         }
-        private bool f_calcFloat4;
-        private double _calcFloat4;
         public double CalcFloat4
         {
             get
@@ -94,8 +86,6 @@ namespace Kaitai
                 return _calcFloat4;
             }
         }
-        private bool f_calcIf;
-        private double _calcIf;
         public double CalcIf
         {
             get
@@ -107,8 +97,6 @@ namespace Kaitai
                 return _calcIf;
             }
         }
-        private bool f_calcIfI;
-        private int _calcIfI;
         public int CalcIfI
         {
             get
@@ -120,8 +108,6 @@ namespace Kaitai
                 return _calcIfI;
             }
         }
-        private bool f_doubleI;
-        private int _doubleI;
         public int DoubleI
         {
             get
@@ -133,8 +119,6 @@ namespace Kaitai
                 return _doubleI;
             }
         }
-        private bool f_doubleIfI;
-        private int _doubleIfI;
         public int DoubleIfI
         {
             get
@@ -146,8 +130,6 @@ namespace Kaitai
                 return _doubleIfI;
             }
         }
-        private bool f_float1I;
-        private int _float1I;
         public int Float1I
         {
             get
@@ -159,8 +141,6 @@ namespace Kaitai
                 return _float1I;
             }
         }
-        private bool f_float2I;
-        private int _float2I;
         public int Float2I
         {
             get
@@ -172,8 +152,6 @@ namespace Kaitai
                 return _float2I;
             }
         }
-        private bool f_float3I;
-        private int _float3I;
         public int Float3I
         {
             get
@@ -185,8 +163,6 @@ namespace Kaitai
                 return _float3I;
             }
         }
-        private bool f_float4I;
-        private int _float4I;
         public int Float4I
         {
             get
@@ -198,8 +174,6 @@ namespace Kaitai
                 return _float4I;
             }
         }
-        private bool f_singleI;
-        private int _singleI;
         public int SingleI
         {
             get
@@ -211,8 +185,6 @@ namespace Kaitai
                 return _singleI;
             }
         }
-        private bool f_singleIfI;
-        private int _singleIfI;
         public int SingleIfI
         {
             get
@@ -224,17 +196,45 @@ namespace Kaitai
                 return _singleIfI;
             }
         }
-        private float _singleValue;
-        private double _doubleValue;
-        private float? _singleValueIf;
-        private double? _doubleValueIf;
-        private FloatToI m_root;
-        private KaitaiStruct m_parent;
         public float SingleValue { get { return _singleValue; } }
         public double DoubleValue { get { return _doubleValue; } }
         public float? SingleValueIf { get { return _singleValueIf; } }
         public double? DoubleValueIf { get { return _doubleValueIf; } }
         public FloatToI M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_calcFloat1;
+        private double _calcFloat1;
+        private bool f_calcFloat2;
+        private double _calcFloat2;
+        private bool f_calcFloat3;
+        private double _calcFloat3;
+        private bool f_calcFloat4;
+        private double _calcFloat4;
+        private bool f_calcIf;
+        private double _calcIf;
+        private bool f_calcIfI;
+        private int _calcIfI;
+        private bool f_doubleI;
+        private int _doubleI;
+        private bool f_doubleIfI;
+        private int _doubleIfI;
+        private bool f_float1I;
+        private int _float1I;
+        private bool f_float2I;
+        private int _float2I;
+        private bool f_float3I;
+        private int _float3I;
+        private bool f_float4I;
+        private int _float4I;
+        private bool f_singleI;
+        private int _singleI;
+        private bool f_singleIfI;
+        private int _singleIfI;
+        private float _singleValue;
+        private double _doubleValue;
+        private float? _singleValueIf;
+        private double? _doubleValueIf;
+        private FloatToI m_root;
+        private KaitaiStruct m_parent;
     }
 }

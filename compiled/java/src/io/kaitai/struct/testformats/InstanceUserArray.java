@@ -68,16 +68,15 @@ public class InstanceUserArray extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int word1;
-        private int word2;
-        private InstanceUserArray _root;
-        private InstanceUserArray _parent;
         public int word1() { return word1; }
         public int word2() { return word2; }
         public InstanceUserArray _root() { return _root; }
         public InstanceUserArray _parent() { return _parent; }
+        private int word1;
+        private int word2;
+        private InstanceUserArray _root;
+        private InstanceUserArray _parent;
     }
-    private List<Entry> userEntries;
     public List<Entry> userEntries() {
         if (this.userEntries != null)
             return this.userEntries;
@@ -93,14 +92,15 @@ public class InstanceUserArray extends KaitaiStruct {
         }
         return this.userEntries;
     }
-    private long ofs;
-    private long entrySize;
-    private long qtyEntries;
-    private InstanceUserArray _root;
-    private KaitaiStruct _parent;
     public long ofs() { return ofs; }
     public long entrySize() { return entrySize; }
     public long qtyEntries() { return qtyEntries; }
     public InstanceUserArray _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Entry> userEntries;
+    private long ofs;
+    private long entrySize;
+    private long qtyEntries;
+    private InstanceUserArray _root;
+    private KaitaiStruct _parent;
 }

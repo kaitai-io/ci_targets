@@ -61,12 +61,12 @@ public class EosExceptionSized extends KaitaiStruct {
         public void _fetchInstances() {
             this.buf._fetchInstances();
         }
-        private Foo buf;
-        private EosExceptionSized _root;
-        private EosExceptionSized _parent;
         public Foo buf() { return buf; }
         public EosExceptionSized _root() { return _root; }
         public EosExceptionSized _parent() { return _parent; }
+        private Foo buf;
+        private EosExceptionSized _root;
+        private EosExceptionSized _parent;
     }
     public static class Foo extends KaitaiStruct {
         public static Foo fromFile(String fileName) throws IOException {
@@ -92,15 +92,15 @@ public class EosExceptionSized extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private EosExceptionSized _root;
-        private EosExceptionSized.Data _parent;
         public EosExceptionSized _root() { return _root; }
         public EosExceptionSized.Data _parent() { return _parent; }
+        private EosExceptionSized _root;
+        private EosExceptionSized.Data _parent;
     }
-    private Data envelope;
-    private EosExceptionSized _root;
-    private KaitaiStruct _parent;
     public Data envelope() { return envelope; }
     public EosExceptionSized _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Data envelope;
+    private EosExceptionSized _root;
+    private KaitaiStruct _parent;
 }

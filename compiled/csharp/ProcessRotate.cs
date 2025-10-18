@@ -27,15 +27,6 @@ namespace Kaitai
             __raw_buf3 = m_io.ReadBytes(5);
             _buf3 = m_io.ProcessRotateLeft(__raw_buf3, Key, 1);
         }
-        private byte[] _buf1;
-        private byte[] _buf2;
-        private byte _key;
-        private byte[] _buf3;
-        private ProcessRotate m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_buf1;
-        private byte[] __raw_buf2;
-        private byte[] __raw_buf3;
         public byte[] Buf1 { get { return _buf1; } }
         public byte[] Buf2 { get { return _buf2; } }
         public byte Key { get { return _key; } }
@@ -45,5 +36,14 @@ namespace Kaitai
         public byte[] M_RawBuf1 { get { return __raw_buf1; } }
         public byte[] M_RawBuf2 { get { return __raw_buf2; } }
         public byte[] M_RawBuf3 { get { return __raw_buf3; } }
+        private byte[] _buf1;
+        private byte[] _buf2;
+        private byte _key;
+        private byte[] _buf3;
+        private ProcessRotate m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_buf1;
+        private byte[] __raw_buf2;
+        private byte[] __raw_buf3;
     }
 }

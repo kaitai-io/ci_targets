@@ -63,27 +63,27 @@ namespace Kaitai
                     _pet1 = ((Enum1.MainObj.Animal) m_io.ReadU4le());
                     _pet2 = ((Enum1.MainObj.Animal) m_io.ReadU4le());
                 }
-                private Animal _pet1;
-                private Animal _pet2;
-                private Enum1 m_root;
-                private Enum1.MainObj m_parent;
                 public Animal Pet1 { get { return _pet1; } }
                 public Animal Pet2 { get { return _pet2; } }
                 public Enum1 M_Root { get { return m_root; } }
                 public Enum1.MainObj M_Parent { get { return m_parent; } }
+                private Animal _pet1;
+                private Animal _pet2;
+                private Enum1 m_root;
+                private Enum1.MainObj m_parent;
             }
-            private SubmainObj _submain;
-            private Enum1 m_root;
-            private Enum1 m_parent;
             public SubmainObj Submain { get { return _submain; } }
             public Enum1 M_Root { get { return m_root; } }
             public Enum1 M_Parent { get { return m_parent; } }
+            private SubmainObj _submain;
+            private Enum1 m_root;
+            private Enum1 m_parent;
         }
-        private MainObj _main;
-        private Enum1 m_root;
-        private KaitaiStruct m_parent;
         public MainObj Main { get { return _main; } }
         public Enum1 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private MainObj _main;
+        private Enum1 m_root;
+        private KaitaiStruct m_parent;
     }
 }

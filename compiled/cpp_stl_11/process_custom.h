@@ -24,6 +24,15 @@ private:
 
 public:
     ~process_custom_t();
+    std::string buf1() const { return m_buf1; }
+    std::string buf2() const { return m_buf2; }
+    uint8_t key() const { return m_key; }
+    std::string buf3() const { return m_buf3; }
+    process_custom_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
+    std::string _raw_buf1() const { return m__raw_buf1; }
+    std::string _raw_buf2() const { return m__raw_buf2; }
+    std::string _raw_buf3() const { return m__raw_buf3; }
 
 private:
     std::string m_buf1;
@@ -35,15 +44,4 @@ private:
     std::string m__raw_buf1;
     std::string m__raw_buf2;
     std::string m__raw_buf3;
-
-public:
-    std::string buf1() const { return m_buf1; }
-    std::string buf2() const { return m_buf2; }
-    uint8_t key() const { return m_key; }
-    std::string buf3() const { return m_buf3; }
-    process_custom_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
-    std::string _raw_buf1() const { return m__raw_buf1; }
-    std::string _raw_buf2() const { return m__raw_buf2; }
-    std::string _raw_buf3() const { return m__raw_buf3; }
 };

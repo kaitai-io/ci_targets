@@ -10,13 +10,13 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
         }
-        protected $_m_sizeofBlock;
         public function sizeofBlock() {
             if ($this->_m_sizeofBlock !== null)
                 return $this->_m_sizeofBlock;
             $this->_m_sizeofBlock = 7;
             return $this->_m_sizeofBlock;
         }
+        protected $_m_sizeofBlock;
     }
 }
 
@@ -32,11 +32,11 @@ namespace Kaitai\Struct\Tests\ExprSizeofType0 {
             $this->_m_b = $this->_io->readU4le();
             $this->_m_c = $this->_io->readBytes(2);
         }
-        protected $_m_a;
-        protected $_m_b;
-        protected $_m_c;
         public function a() { return $this->_m_a; }
         public function b() { return $this->_m_b; }
         public function c() { return $this->_m_c; }
+        protected $_m_a;
+        protected $_m_b;
+        protected $_m_c;
     }
 }

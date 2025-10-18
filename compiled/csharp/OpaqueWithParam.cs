@@ -21,11 +21,11 @@ namespace Kaitai
         {
             _one = new ParamsDef(5, true, m_io);
         }
-        private ParamsDef _one;
-        private OpaqueWithParam m_root;
-        private KaitaiStruct m_parent;
         public ParamsDef One { get { return _one; } }
         public OpaqueWithParam M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private ParamsDef _one;
+        private OpaqueWithParam m_root;
+        private KaitaiStruct m_parent;
     }
 }

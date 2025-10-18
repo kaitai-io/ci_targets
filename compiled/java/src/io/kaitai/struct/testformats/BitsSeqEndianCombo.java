@@ -39,16 +39,6 @@ public class BitsSeqEndianCombo extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private long be1;
-    private long be2;
-    private long le3;
-    private long be4;
-    private long le5;
-    private long le6;
-    private long le7;
-    private boolean be8;
-    private BitsSeqEndianCombo _root;
-    private KaitaiStruct _parent;
     public long be1() { return be1; }
     public long be2() { return be2; }
     public long le3() { return le3; }
@@ -59,4 +49,14 @@ public class BitsSeqEndianCombo extends KaitaiStruct {
     public boolean be8() { return be8; }
     public BitsSeqEndianCombo _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private long be1;
+    private long be2;
+    private long le3;
+    private long be4;
+    private long le5;
+    private long le6;
+    private long le7;
+    private boolean be8;
+    private BitsSeqEndianCombo _root;
+    private KaitaiStruct _parent;
 }

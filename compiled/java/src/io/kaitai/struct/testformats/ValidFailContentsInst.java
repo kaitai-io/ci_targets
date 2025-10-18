@@ -40,7 +40,6 @@ public class ValidFailContentsInst extends KaitaiStruct {
         if (this.foo != null) {
         }
     }
-    private byte[] foo;
     public byte[] foo() {
         if (this.foo != null)
             return this.foo;
@@ -53,10 +52,11 @@ public class ValidFailContentsInst extends KaitaiStruct {
         this._io.seek(_pos);
         return this.foo;
     }
-    private byte[] a;
-    private ValidFailContentsInst _root;
-    private KaitaiStruct _parent;
     public byte[] a() { return a; }
     public ValidFailContentsInst _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private byte[] foo;
+    private byte[] a;
+    private ValidFailContentsInst _root;
+    private KaitaiStruct _parent;
 }

@@ -17,9 +17,9 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_bufs[] = \Kaitai\Struct\Stream::processXorOne(end($this->_m__raw_bufs), 158);
             }
         }
-        protected $_m_bufs;
-        protected $_m__raw_bufs;
         public function bufs() { return $this->_m_bufs; }
         public function _raw_bufs() { return $this->_m__raw_bufs; }
+        protected $_m_bufs;
+        protected $_m__raw_bufs;
     }
 }

@@ -38,27 +38,25 @@ public:
 
     public:
         ~my_str1_t();
+        std::string body() const { return m_body; }
+        uint32_t len() const { return m_len; }
+        params_call_extra_parens_t* _root() const { return m__root; }
+        params_call_extra_parens_t* _parent() const { return m__parent; }
 
     private:
         std::string m_body;
         uint32_t m_len;
         params_call_extra_parens_t* m__root;
         params_call_extra_parens_t* m__parent;
-
-    public:
-        std::string body() const { return m_body; }
-        uint32_t len() const { return m_len; }
-        params_call_extra_parens_t* _root() const { return m__root; }
-        params_call_extra_parens_t* _parent() const { return m__parent; }
     };
-
-private:
-    std::unique_ptr<my_str1_t> m_buf1;
-    params_call_extra_parens_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     my_str1_t* buf1() const { return m_buf1.get(); }
     params_call_extra_parens_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    std::unique_ptr<my_str1_t> m_buf1;
+    params_call_extra_parens_t* m__root;
+    kaitai::kstruct* m__parent;
 };

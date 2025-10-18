@@ -124,30 +124,30 @@ public class DefaultEndianExprException extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private long someInt;
-            private int someIntBe;
-            private int someIntLe;
-            private DefaultEndianExprException _root;
-            private DefaultEndianExprException.Doc _parent;
             public long someInt() { return someInt; }
             public int someIntBe() { return someIntBe; }
             public int someIntLe() { return someIntLe; }
             public DefaultEndianExprException _root() { return _root; }
             public DefaultEndianExprException.Doc _parent() { return _parent; }
+            private long someInt;
+            private int someIntBe;
+            private int someIntLe;
+            private DefaultEndianExprException _root;
+            private DefaultEndianExprException.Doc _parent;
         }
-        private byte[] indicator;
-        private MainObj main;
-        private DefaultEndianExprException _root;
-        private DefaultEndianExprException _parent;
         public byte[] indicator() { return indicator; }
         public MainObj main() { return main; }
         public DefaultEndianExprException _root() { return _root; }
         public DefaultEndianExprException _parent() { return _parent; }
+        private byte[] indicator;
+        private MainObj main;
+        private DefaultEndianExprException _root;
+        private DefaultEndianExprException _parent;
     }
-    private List<Doc> docs;
-    private DefaultEndianExprException _root;
-    private KaitaiStruct _parent;
     public List<Doc> docs() { return docs; }
     public DefaultEndianExprException _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Doc> docs;
+    private DefaultEndianExprException _root;
+    private KaitaiStruct _parent;
 }

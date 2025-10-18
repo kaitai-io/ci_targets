@@ -15,7 +15,6 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_one = $this->_io->readU1();
         }
-        protected $_m_three;
 
         /**
          * And yet another one for value instance "three"
@@ -26,7 +25,6 @@ namespace Kaitai\Struct\Tests {
             $this->_m_three = 66;
             return $this->_m_three;
         }
-        protected $_m_two;
 
         /**
          * Another description for parse instance "two"
@@ -40,12 +38,14 @@ namespace Kaitai\Struct\Tests {
             $this->_io->seek($_pos);
             return $this->_m_two;
         }
-        protected $_m_one;
 
         /**
          * A pretty verbose description for sequence attribute "one"
          */
         public function one() { return $this->_m_one; }
+        protected $_m_three;
+        protected $_m_two;
+        protected $_m_one;
     }
 }
 

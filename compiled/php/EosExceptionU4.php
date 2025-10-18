@@ -13,10 +13,10 @@ namespace Kaitai\Struct\Tests {
             $_io__raw_envelope = new \Kaitai\Struct\Stream($this->_m__raw_envelope);
             $this->_m_envelope = new \Kaitai\Struct\Tests\EosExceptionU4\Data($_io__raw_envelope, $this, $this->_root);
         }
-        protected $_m_envelope;
-        protected $_m__raw_envelope;
         public function envelope() { return $this->_m_envelope; }
         public function _raw_envelope() { return $this->_m__raw_envelope; }
+        protected $_m_envelope;
+        protected $_m__raw_envelope;
     }
 }
 
@@ -31,9 +31,9 @@ namespace Kaitai\Struct\Tests\EosExceptionU4 {
             $this->_m_prebuf = $this->_io->readBytes(3);
             $this->_m_failInt = $this->_io->readU4le();
         }
-        protected $_m_prebuf;
-        protected $_m_failInt;
         public function prebuf() { return $this->_m_prebuf; }
         public function failInt() { return $this->_m_failInt; }
+        protected $_m_prebuf;
+        protected $_m_failInt;
     }
 }

@@ -40,44 +40,30 @@ public class StrEncodingsEscapingToS extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private String str1;
     public String str1() {
         if (this.str1 != null)
             return this.str1;
         this.str1 = new String(str1Raw(), Charset.forName("ASCII\\\\x"));
         return this.str1;
     }
-    private String str2;
     public String str2() {
         if (this.str2 != null)
             return this.str2;
         this.str2 = new String(str2Raw(), Charset.forName("UTF-8\\'x"));
         return this.str2;
     }
-    private String str3;
     public String str3() {
         if (this.str3 != null)
             return this.str3;
         this.str3 = new String(str3Raw(), Charset.forName("SJIS\\\"x"));
         return this.str3;
     }
-    private String str4;
     public String str4() {
         if (this.str4 != null)
             return this.str4;
         this.str4 = new String(str4Raw(), Charset.forName("IBM437\\nx"));
         return this.str4;
     }
-    private int lenOf1;
-    private byte[] str1Raw;
-    private int lenOf2;
-    private byte[] str2Raw;
-    private int lenOf3;
-    private byte[] str3Raw;
-    private int lenOf4;
-    private byte[] str4Raw;
-    private StrEncodingsEscapingToS _root;
-    private KaitaiStruct _parent;
     public int lenOf1() { return lenOf1; }
     public byte[] str1Raw() { return str1Raw; }
     public int lenOf2() { return lenOf2; }
@@ -88,4 +74,18 @@ public class StrEncodingsEscapingToS extends KaitaiStruct {
     public byte[] str4Raw() { return str4Raw; }
     public StrEncodingsEscapingToS _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private String str1;
+    private String str2;
+    private String str3;
+    private String str4;
+    private int lenOf1;
+    private byte[] str1Raw;
+    private int lenOf2;
+    private byte[] str2Raw;
+    private int lenOf3;
+    private byte[] str3Raw;
+    private int lenOf4;
+    private byte[] str4Raw;
+    private StrEncodingsEscapingToS _root;
+    private KaitaiStruct _parent;
 }

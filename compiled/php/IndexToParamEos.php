@@ -22,12 +22,12 @@ namespace Kaitai\Struct\Tests {
                 $i++;
             }
         }
-        protected $_m_qty;
-        protected $_m_sizes;
-        protected $_m_blocks;
         public function qty() { return $this->_m_qty; }
         public function sizes() { return $this->_m_sizes; }
         public function blocks() { return $this->_m_blocks; }
+        protected $_m_qty;
+        protected $_m_sizes;
+        protected $_m_blocks;
     }
 }
 
@@ -42,9 +42,9 @@ namespace Kaitai\Struct\Tests\IndexToParamEos {
         private function _read() {
             $this->_m_buf = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->_root()->sizes()[$this->idx()]), "ASCII");
         }
-        protected $_m_buf;
-        protected $_m_idx;
         public function buf() { return $this->_m_buf; }
         public function idx() { return $this->_m_idx; }
+        protected $_m_buf;
+        protected $_m_idx;
     }
 }

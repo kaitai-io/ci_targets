@@ -102,17 +102,17 @@ public class DebugArrayUserCurrentExcluded extends KaitaiStruct.ReadOnly {
 
         public void _fetchInstances() {
         }
-        private byte[] meow;
-        private DebugArrayUserCurrentExcluded _root;
-        private DebugArrayUserCurrentExcluded _parent;
         public byte[] meow() { return meow; }
         public DebugArrayUserCurrentExcluded _root() { return _root; }
         public DebugArrayUserCurrentExcluded _parent() { return _parent; }
+        private byte[] meow;
+        private DebugArrayUserCurrentExcluded _root;
+        private DebugArrayUserCurrentExcluded _parent;
     }
-    private List<Cat> arrayOfCats;
-    private DebugArrayUserCurrentExcluded _root;
-    private KaitaiStruct.ReadOnly _parent;
     public List<Cat> arrayOfCats() { return arrayOfCats; }
     public DebugArrayUserCurrentExcluded _root() { return _root; }
     public KaitaiStruct.ReadOnly _parent() { return _parent; }
+    private List<Cat> arrayOfCats;
+    private DebugArrayUserCurrentExcluded _root;
+    private KaitaiStruct.ReadOnly _parent;
 }

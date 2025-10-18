@@ -38,10 +38,10 @@ public class ValidFailRangeFloat extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private float foo;
-    private ValidFailRangeFloat _root;
-    private KaitaiStruct _parent;
     public float foo() { return foo; }
     public ValidFailRangeFloat _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private float foo;
+    private ValidFailRangeFloat _root;
+    private KaitaiStruct _parent;
 }

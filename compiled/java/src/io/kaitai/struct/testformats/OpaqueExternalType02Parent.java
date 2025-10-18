@@ -59,17 +59,17 @@ public class OpaqueExternalType02Parent extends KaitaiStruct {
         public void _fetchInstances() {
             this.child._fetchInstances();
         }
-        private OpaqueExternalType02Child child;
-        private OpaqueExternalType02Parent _root;
-        private OpaqueExternalType02Parent _parent;
         public OpaqueExternalType02Child child() { return child; }
         public OpaqueExternalType02Parent _root() { return _root; }
         public OpaqueExternalType02Parent _parent() { return _parent; }
+        private OpaqueExternalType02Child child;
+        private OpaqueExternalType02Parent _root;
+        private OpaqueExternalType02Parent _parent;
     }
-    private ParentObj parent;
-    private OpaqueExternalType02Parent _root;
-    private KaitaiStruct _parent;
     public ParentObj parent() { return parent; }
     public OpaqueExternalType02Parent _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private ParentObj parent;
+    private OpaqueExternalType02Parent _root;
+    private KaitaiStruct _parent;
 }

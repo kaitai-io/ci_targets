@@ -53,8 +53,6 @@ namespace Kaitai
             private void _read()
             {
             }
-            private bool f_v;
-            private string _v;
             public string V
             {
                 get
@@ -69,10 +67,12 @@ namespace Kaitai
                     return _v;
                 }
             }
-            private StrEncodingsEscapingEnc m_root;
-            private StrEncodingsEscapingEnc m_parent;
             public StrEncodingsEscapingEnc M_Root { get { return m_root; } }
             public StrEncodingsEscapingEnc M_Parent { get { return m_parent; } }
+            private bool f_v;
+            private string _v;
+            private StrEncodingsEscapingEnc m_root;
+            private StrEncodingsEscapingEnc m_parent;
         }
         public partial class Str2Wrapper : KaitaiStruct
         {
@@ -91,8 +91,6 @@ namespace Kaitai
             private void _read()
             {
             }
-            private bool f_v;
-            private string _v;
             public string V
             {
                 get
@@ -107,10 +105,12 @@ namespace Kaitai
                     return _v;
                 }
             }
-            private StrEncodingsEscapingEnc m_root;
-            private StrEncodingsEscapingEnc m_parent;
             public StrEncodingsEscapingEnc M_Root { get { return m_root; } }
             public StrEncodingsEscapingEnc M_Parent { get { return m_parent; } }
+            private bool f_v;
+            private string _v;
+            private StrEncodingsEscapingEnc m_root;
+            private StrEncodingsEscapingEnc m_parent;
         }
         public partial class Str3Wrapper : KaitaiStruct
         {
@@ -129,8 +129,6 @@ namespace Kaitai
             private void _read()
             {
             }
-            private bool f_v;
-            private string _v;
             public string V
             {
                 get
@@ -145,10 +143,12 @@ namespace Kaitai
                     return _v;
                 }
             }
-            private StrEncodingsEscapingEnc m_root;
-            private StrEncodingsEscapingEnc m_parent;
             public StrEncodingsEscapingEnc M_Root { get { return m_root; } }
             public StrEncodingsEscapingEnc M_Parent { get { return m_parent; } }
+            private bool f_v;
+            private string _v;
+            private StrEncodingsEscapingEnc m_root;
+            private StrEncodingsEscapingEnc m_parent;
         }
         public partial class Str4Wrapper : KaitaiStruct
         {
@@ -167,8 +167,6 @@ namespace Kaitai
             private void _read()
             {
             }
-            private bool f_v;
-            private string _v;
             public string V
             {
                 get
@@ -183,25 +181,13 @@ namespace Kaitai
                     return _v;
                 }
             }
-            private StrEncodingsEscapingEnc m_root;
-            private StrEncodingsEscapingEnc m_parent;
             public StrEncodingsEscapingEnc M_Root { get { return m_root; } }
             public StrEncodingsEscapingEnc M_Parent { get { return m_parent; } }
+            private bool f_v;
+            private string _v;
+            private StrEncodingsEscapingEnc m_root;
+            private StrEncodingsEscapingEnc m_parent;
         }
-        private ushort _lenOf1;
-        private Str1Wrapper _str1;
-        private ushort _lenOf2;
-        private Str2Wrapper _str2;
-        private ushort _lenOf3;
-        private Str3Wrapper _str3;
-        private ushort _lenOf4;
-        private Str4Wrapper _str4;
-        private StrEncodingsEscapingEnc m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_str1;
-        private byte[] __raw_str2;
-        private byte[] __raw_str3;
-        private byte[] __raw_str4;
         public ushort LenOf1 { get { return _lenOf1; } }
         public Str1Wrapper Str1 { get { return _str1; } }
         public ushort LenOf2 { get { return _lenOf2; } }
@@ -216,5 +202,19 @@ namespace Kaitai
         public byte[] M_RawStr2 { get { return __raw_str2; } }
         public byte[] M_RawStr3 { get { return __raw_str3; } }
         public byte[] M_RawStr4 { get { return __raw_str4; } }
+        private ushort _lenOf1;
+        private Str1Wrapper _str1;
+        private ushort _lenOf2;
+        private Str2Wrapper _str2;
+        private ushort _lenOf3;
+        private Str3Wrapper _str3;
+        private ushort _lenOf4;
+        private Str4Wrapper _str4;
+        private StrEncodingsEscapingEnc m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_str1;
+        private byte[] __raw_str2;
+        private byte[] __raw_str3;
+        private byte[] __raw_str4;
     }
 }

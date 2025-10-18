@@ -42,10 +42,10 @@ public class MetaTags extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private MetaTags _root;
-    private KaitaiStruct.ReadWrite _parent;
     public MetaTags _root() { return _root; }
     public void set_root(MetaTags _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private MetaTags _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

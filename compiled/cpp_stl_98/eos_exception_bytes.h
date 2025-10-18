@@ -38,24 +38,15 @@ public:
 
     public:
         ~data_t();
+        std::string buf() const { return m_buf; }
+        eos_exception_bytes_t* _root() const { return m__root; }
+        eos_exception_bytes_t* _parent() const { return m__parent; }
 
     private:
         std::string m_buf;
         eos_exception_bytes_t* m__root;
         eos_exception_bytes_t* m__parent;
-
-    public:
-        std::string buf() const { return m_buf; }
-        eos_exception_bytes_t* _root() const { return m__root; }
-        eos_exception_bytes_t* _parent() const { return m__parent; }
     };
-
-private:
-    data_t* m_envelope;
-    eos_exception_bytes_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::string m__raw_envelope;
-    kaitai::kstream* m__io__raw_envelope;
 
 public:
     data_t* envelope() const { return m_envelope; }
@@ -63,6 +54,13 @@ public:
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_envelope() const { return m__raw_envelope; }
     kaitai::kstream* _io__raw_envelope() const { return m__io__raw_envelope; }
+
+private:
+    data_t* m_envelope;
+    eos_exception_bytes_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::string m__raw_envelope;
+    kaitai::kstream* m__io__raw_envelope;
 };
 
 #endif  // EOS_EXCEPTION_BYTES_H_

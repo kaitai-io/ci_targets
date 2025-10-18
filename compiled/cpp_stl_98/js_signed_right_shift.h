@@ -24,28 +24,18 @@ private:
 
 public:
     ~js_signed_right_shift_t();
+    int32_t should_be_40000000();
+    int32_t should_be_a00000();
+    js_signed_right_shift_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_should_be_40000000;
     int32_t m_should_be_40000000;
-
-public:
-    int32_t should_be_40000000();
-
-private:
     bool f_should_be_a00000;
     int32_t m_should_be_a00000;
-
-public:
-    int32_t should_be_a00000();
-
-private:
     js_signed_right_shift_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    js_signed_right_shift_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // JS_SIGNED_RIGHT_SHIFT_H_

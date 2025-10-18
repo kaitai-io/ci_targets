@@ -59,7 +59,6 @@ public class ExprIfIntEq extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private Integer calc;
     public Integer calc() {
         if (this.calc != null)
             return this.calc;
@@ -67,7 +66,6 @@ public class ExprIfIntEq extends KaitaiStruct.ReadWrite {
         return this.calc;
     }
     public void _invalidateCalc() { this.calc = null; }
-    private Boolean calcEqCalcIf;
     public Boolean calcEqCalcIf() {
         if (this.calcEqCalcIf != null)
             return this.calcEqCalcIf;
@@ -75,7 +73,6 @@ public class ExprIfIntEq extends KaitaiStruct.ReadWrite {
         return this.calcEqCalcIf;
     }
     public void _invalidateCalcEqCalcIf() { this.calcEqCalcIf = null; }
-    private Boolean calcEqLit;
     public Boolean calcEqLit() {
         if (this.calcEqLit != null)
             return this.calcEqLit;
@@ -83,7 +80,6 @@ public class ExprIfIntEq extends KaitaiStruct.ReadWrite {
         return this.calcEqLit;
     }
     public void _invalidateCalcEqLit() { this.calcEqLit = null; }
-    private Boolean calcEqSeqIf;
     public Boolean calcEqSeqIf() {
         if (this.calcEqSeqIf != null)
             return this.calcEqSeqIf;
@@ -91,7 +87,6 @@ public class ExprIfIntEq extends KaitaiStruct.ReadWrite {
         return this.calcEqSeqIf;
     }
     public void _invalidateCalcEqSeqIf() { this.calcEqSeqIf = null; }
-    private Integer calcIf;
     public Integer calcIf() {
         if (this.calcIf != null)
             return this.calcIf;
@@ -101,7 +96,6 @@ public class ExprIfIntEq extends KaitaiStruct.ReadWrite {
         return this.calcIf;
     }
     public void _invalidateCalcIf() { this.calcIf = null; }
-    private Boolean calcIfEqLit;
     public Boolean calcIfEqLit() {
         if (this.calcIfEqLit != null)
             return this.calcIfEqLit;
@@ -109,7 +103,6 @@ public class ExprIfIntEq extends KaitaiStruct.ReadWrite {
         return this.calcIfEqLit;
     }
     public void _invalidateCalcIfEqLit() { this.calcIfEqLit = null; }
-    private Boolean calcIfEqSeqIf;
     public Boolean calcIfEqSeqIf() {
         if (this.calcIfEqSeqIf != null)
             return this.calcIfEqSeqIf;
@@ -117,7 +110,6 @@ public class ExprIfIntEq extends KaitaiStruct.ReadWrite {
         return this.calcIfEqSeqIf;
     }
     public void _invalidateCalcIfEqSeqIf() { this.calcIfEqSeqIf = null; }
-    private Boolean seqEqCalc;
     public Boolean seqEqCalc() {
         if (this.seqEqCalc != null)
             return this.seqEqCalc;
@@ -125,7 +117,6 @@ public class ExprIfIntEq extends KaitaiStruct.ReadWrite {
         return this.seqEqCalc;
     }
     public void _invalidateSeqEqCalc() { this.seqEqCalc = null; }
-    private Boolean seqEqCalcIf;
     public Boolean seqEqCalcIf() {
         if (this.seqEqCalcIf != null)
             return this.seqEqCalcIf;
@@ -133,7 +124,6 @@ public class ExprIfIntEq extends KaitaiStruct.ReadWrite {
         return this.seqEqCalcIf;
     }
     public void _invalidateSeqEqCalcIf() { this.seqEqCalcIf = null; }
-    private Boolean seqEqLit;
     public Boolean seqEqLit() {
         if (this.seqEqLit != null)
             return this.seqEqLit;
@@ -141,7 +131,6 @@ public class ExprIfIntEq extends KaitaiStruct.ReadWrite {
         return this.seqEqLit;
     }
     public void _invalidateSeqEqLit() { this.seqEqLit = null; }
-    private Boolean seqEqSeqIf;
     public Boolean seqEqSeqIf() {
         if (this.seqEqSeqIf != null)
             return this.seqEqSeqIf;
@@ -149,7 +138,6 @@ public class ExprIfIntEq extends KaitaiStruct.ReadWrite {
         return this.seqEqSeqIf;
     }
     public void _invalidateSeqEqSeqIf() { this.seqEqSeqIf = null; }
-    private Boolean seqIfEqLit;
     public Boolean seqIfEqLit() {
         if (this.seqIfEqLit != null)
             return this.seqIfEqLit;
@@ -157,11 +145,6 @@ public class ExprIfIntEq extends KaitaiStruct.ReadWrite {
         return this.seqIfEqLit;
     }
     public void _invalidateSeqIfEqLit() { this.seqIfEqLit = null; }
-    private byte[] skip;
-    private short seq;
-    private Short seqIf;
-    private ExprIfIntEq _root;
-    private KaitaiStruct.ReadWrite _parent;
     public byte[] skip() { return skip; }
     public void setSkip(byte[] _v) { _dirty = true; skip = _v; }
     public short seq() { return seq; }
@@ -172,4 +155,21 @@ public class ExprIfIntEq extends KaitaiStruct.ReadWrite {
     public void set_root(ExprIfIntEq _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer calc;
+    private Boolean calcEqCalcIf;
+    private Boolean calcEqLit;
+    private Boolean calcEqSeqIf;
+    private Integer calcIf;
+    private Boolean calcIfEqLit;
+    private Boolean calcIfEqSeqIf;
+    private Boolean seqEqCalc;
+    private Boolean seqEqCalcIf;
+    private Boolean seqEqLit;
+    private Boolean seqEqSeqIf;
+    private Boolean seqIfEqLit;
+    private byte[] skip;
+    private short seq;
+    private Short seqIf;
+    private ExprIfIntEq _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

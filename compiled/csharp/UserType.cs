@@ -39,20 +39,20 @@ namespace Kaitai
                 _width = m_io.ReadU4le();
                 _height = m_io.ReadU4le();
             }
-            private uint _width;
-            private uint _height;
-            private UserType m_root;
-            private UserType m_parent;
             public uint Width { get { return _width; } }
             public uint Height { get { return _height; } }
             public UserType M_Root { get { return m_root; } }
             public UserType M_Parent { get { return m_parent; } }
+            private uint _width;
+            private uint _height;
+            private UserType m_root;
+            private UserType m_parent;
         }
-        private Header _one;
-        private UserType m_root;
-        private KaitaiStruct m_parent;
         public Header One { get { return _one; } }
         public UserType M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Header _one;
+        private UserType m_root;
+        private KaitaiStruct m_parent;
     }
 }

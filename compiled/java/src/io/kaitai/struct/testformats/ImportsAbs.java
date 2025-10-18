@@ -34,12 +34,12 @@ public class ImportsAbs extends KaitaiStruct {
     public void _fetchInstances() {
         this.len._fetchInstances();
     }
-    private VlqBase128Le len;
-    private byte[] body;
-    private ImportsAbs _root;
-    private KaitaiStruct _parent;
     public VlqBase128Le len() { return len; }
     public byte[] body() { return body; }
     public ImportsAbs _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private VlqBase128Le len;
+    private byte[] body;
+    private ImportsAbs _root;
+    private KaitaiStruct _parent;
 }

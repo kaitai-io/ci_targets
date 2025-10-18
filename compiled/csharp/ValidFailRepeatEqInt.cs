@@ -32,11 +32,11 @@ namespace Kaitai
                 }
             }
         }
-        private List<uint> _foo;
-        private ValidFailRepeatEqInt m_root;
-        private KaitaiStruct m_parent;
         public List<uint> Foo { get { return _foo; } }
         public ValidFailRepeatEqInt M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<uint> _foo;
+        private ValidFailRepeatEqInt m_root;
+        private KaitaiStruct m_parent;
     }
 }

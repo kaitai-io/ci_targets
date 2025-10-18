@@ -40,16 +40,14 @@ public:
 
     public:
         ~multi_t();
+        int32_t value() const { return m_value; }
+        multiple_use_t* _root() const { return m__root; }
+        kaitai::kstruct* _parent() const { return m__parent; }
 
     private:
         int32_t m_value;
         multiple_use_t* m__root;
         kaitai::kstruct* m__parent;
-
-    public:
-        int32_t value() const { return m_value; }
-        multiple_use_t* _root() const { return m__root; }
-        kaitai::kstruct* _parent() const { return m__parent; }
     };
 
     class type_1_t : public kaitai::kstruct {
@@ -64,16 +62,14 @@ public:
 
     public:
         ~type_1_t();
+        multi_t* first_use() const { return m_first_use; }
+        multiple_use_t* _root() const { return m__root; }
+        multiple_use_t* _parent() const { return m__parent; }
 
     private:
         multi_t* m_first_use;
         multiple_use_t* m__root;
         multiple_use_t* m__parent;
-
-    public:
-        multi_t* first_use() const { return m_first_use; }
-        multiple_use_t* _root() const { return m__root; }
-        multiple_use_t* _parent() const { return m__parent; }
     };
 
     class type_2_t : public kaitai::kstruct {
@@ -88,34 +84,28 @@ public:
 
     public:
         ~type_2_t();
+        multi_t* second_use();
+        multiple_use_t* _root() const { return m__root; }
+        multiple_use_t* _parent() const { return m__parent; }
 
     private:
         bool f_second_use;
         multi_t* m_second_use;
-
-    public:
-        multi_t* second_use();
-
-    private:
         multiple_use_t* m__root;
         multiple_use_t* m__parent;
-
-    public:
-        multiple_use_t* _root() const { return m__root; }
-        multiple_use_t* _parent() const { return m__parent; }
     };
-
-private:
-    type_1_t* m_t1;
-    type_2_t* m_t2;
-    multiple_use_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     type_1_t* t1() const { return m_t1; }
     type_2_t* t2() const { return m_t2; }
     multiple_use_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    type_1_t* m_t1;
+    type_2_t* m_t2;
+    multiple_use_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // MULTIPLE_USE_H_

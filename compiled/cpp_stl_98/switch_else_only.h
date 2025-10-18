@@ -38,25 +38,15 @@ public:
 
     public:
         ~data_t();
+        std::string value() const { return m_value; }
+        switch_else_only_t* _root() const { return m__root; }
+        switch_else_only_t* _parent() const { return m__parent; }
 
     private:
         std::string m_value;
         switch_else_only_t* m__root;
         switch_else_only_t* m__parent;
-
-    public:
-        std::string value() const { return m_value; }
-        switch_else_only_t* _root() const { return m__root; }
-        switch_else_only_t* _parent() const { return m__parent; }
     };
-
-private:
-    int8_t m_opcode;
-    int8_t m_prim_byte;
-    std::string m_indicator;
-    data_t* m_ut;
-    switch_else_only_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     int8_t opcode() const { return m_opcode; }
@@ -65,6 +55,14 @@ public:
     data_t* ut() const { return m_ut; }
     switch_else_only_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    int8_t m_opcode;
+    int8_t m_prim_byte;
+    std::string m_indicator;
+    data_t* m_ut;
+    switch_else_only_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // SWITCH_ELSE_ONLY_H_

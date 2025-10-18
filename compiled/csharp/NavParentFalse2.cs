@@ -38,18 +38,18 @@ namespace Kaitai
             {
                 _foo = m_io.ReadU1();
             }
-            private byte _foo;
-            private NavParentFalse2 m_root;
-            private KaitaiStruct m_parent;
             public byte Foo { get { return _foo; } }
             public NavParentFalse2 M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
+            private byte _foo;
+            private NavParentFalse2 m_root;
+            private KaitaiStruct m_parent;
         }
-        private Child _parentless;
-        private NavParentFalse2 m_root;
-        private KaitaiStruct m_parent;
         public Child Parentless { get { return _parentless; } }
         public NavParentFalse2 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Child _parentless;
+        private NavParentFalse2 m_root;
+        private KaitaiStruct m_parent;
     }
 }

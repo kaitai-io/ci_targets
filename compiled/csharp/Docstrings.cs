@@ -59,13 +59,11 @@ namespace Kaitai
             private void _read()
             {
             }
-            private Docstrings m_root;
-            private KaitaiStruct m_parent;
             public Docstrings M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
+            private Docstrings m_root;
+            private KaitaiStruct m_parent;
         }
-        private bool f_three;
-        private sbyte _three;
 
         /// <summary>
         /// And yet another one for value instance &quot;three&quot;
@@ -81,8 +79,6 @@ namespace Kaitai
                 return _three;
             }
         }
-        private bool f_two;
-        private byte _two;
 
         /// <summary>
         /// Another description for parse instance &quot;two&quot;
@@ -101,9 +97,6 @@ namespace Kaitai
                 return _two;
             }
         }
-        private byte _one;
-        private Docstrings m_root;
-        private KaitaiStruct m_parent;
 
         /// <summary>
         /// A pretty verbose description for sequence attribute &quot;one&quot;
@@ -111,5 +104,12 @@ namespace Kaitai
         public byte One { get { return _one; } }
         public Docstrings M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_three;
+        private sbyte _three;
+        private bool f_two;
+        private byte _two;
+        private byte _one;
+        private Docstrings m_root;
+        private KaitaiStruct m_parent;
     }
 }

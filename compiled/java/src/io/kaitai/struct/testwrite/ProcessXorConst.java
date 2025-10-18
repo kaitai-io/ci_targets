@@ -51,11 +51,6 @@ public class ProcessXorConst extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private int key;
-    private byte[] buf;
-    private ProcessXorConst _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_buf;
     public int key() { return key; }
     public void setKey(int _v) { _dirty = true; key = _v; }
     public byte[] buf() { return buf; }
@@ -66,4 +61,9 @@ public class ProcessXorConst extends KaitaiStruct.ReadWrite {
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_buf() { return _raw_buf; }
     public void set_raw_Buf(byte[] _v) { _dirty = true; _raw_buf = _v; }
+    private int key;
+    private byte[] buf;
+    private ProcessXorConst _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_buf;
 }

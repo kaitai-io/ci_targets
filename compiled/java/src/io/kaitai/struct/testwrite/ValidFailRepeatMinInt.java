@@ -70,13 +70,13 @@ public class ValidFailRepeatMinInt extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private List<Byte> foo;
-    private ValidFailRepeatMinInt _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Byte> foo() { return foo; }
     public void setFoo(List<Byte> _v) { _dirty = true; foo = _v; }
     public ValidFailRepeatMinInt _root() { return _root; }
     public void set_root(ValidFailRepeatMinInt _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Byte> foo;
+    private ValidFailRepeatMinInt _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

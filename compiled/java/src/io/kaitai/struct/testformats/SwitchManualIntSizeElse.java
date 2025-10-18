@@ -136,12 +136,12 @@ public class SwitchManualIntSizeElse extends KaitaiStruct {
                 for (int i = 0; i < this.entries.size(); i++) {
                 }
             }
-            private List<String> entries;
-            private SwitchManualIntSizeElse _root;
-            private SwitchManualIntSizeElse.Chunk _parent;
             public List<String> entries() { return entries; }
             public SwitchManualIntSizeElse _root() { return _root; }
             public SwitchManualIntSizeElse.Chunk _parent() { return _parent; }
+            private List<String> entries;
+            private SwitchManualIntSizeElse _root;
+            private SwitchManualIntSizeElse.Chunk _parent;
         }
         public static class ChunkMeta extends KaitaiStruct {
             public static ChunkMeta fromFile(String fileName) throws IOException {
@@ -169,14 +169,14 @@ public class SwitchManualIntSizeElse extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private String title;
-            private String author;
-            private SwitchManualIntSizeElse _root;
-            private SwitchManualIntSizeElse.Chunk _parent;
             public String title() { return title; }
             public String author() { return author; }
             public SwitchManualIntSizeElse _root() { return _root; }
             public SwitchManualIntSizeElse.Chunk _parent() { return _parent; }
+            private String title;
+            private String author;
+            private SwitchManualIntSizeElse _root;
+            private SwitchManualIntSizeElse.Chunk _parent;
         }
         public static class Dummy extends KaitaiStruct {
             public static Dummy fromFile(String fileName) throws IOException {
@@ -203,28 +203,28 @@ public class SwitchManualIntSizeElse extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private byte[] rest;
-            private SwitchManualIntSizeElse _root;
-            private SwitchManualIntSizeElse.Chunk _parent;
             public byte[] rest() { return rest; }
             public SwitchManualIntSizeElse _root() { return _root; }
             public SwitchManualIntSizeElse.Chunk _parent() { return _parent; }
+            private byte[] rest;
+            private SwitchManualIntSizeElse _root;
+            private SwitchManualIntSizeElse.Chunk _parent;
         }
-        private int code;
-        private long size;
-        private KaitaiStruct body;
-        private SwitchManualIntSizeElse _root;
-        private SwitchManualIntSizeElse _parent;
         public int code() { return code; }
         public long size() { return size; }
         public KaitaiStruct body() { return body; }
         public SwitchManualIntSizeElse _root() { return _root; }
         public SwitchManualIntSizeElse _parent() { return _parent; }
+        private int code;
+        private long size;
+        private KaitaiStruct body;
+        private SwitchManualIntSizeElse _root;
+        private SwitchManualIntSizeElse _parent;
     }
-    private List<Chunk> chunks;
-    private SwitchManualIntSizeElse _root;
-    private KaitaiStruct _parent;
     public List<Chunk> chunks() { return chunks; }
     public SwitchManualIntSizeElse _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Chunk> chunks;
+    private SwitchManualIntSizeElse _root;
+    private KaitaiStruct _parent;
 }

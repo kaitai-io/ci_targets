@@ -165,7 +165,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private Integer asInt;
         public Integer asInt() {
             if (this.asInt != null)
                 return this.asInt;
@@ -173,7 +172,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.asInt;
         }
         public void _invalidateAsInt() { this.asInt = null; }
-        private String asStr;
         public String asStr() {
             if (this.asStr != null)
                 return this.asStr;
@@ -181,7 +179,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.asStr;
         }
         public void _invalidateAsStr() { this.asStr = null; }
-        private Integer digit1;
         public Integer digit1() {
             if (this.digit1 != null)
                 return this.digit1;
@@ -189,7 +186,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit1;
         }
         public void _invalidateDigit1() { this.digit1 = null; }
-        private Integer digit2;
         public Integer digit2() {
             if (this.digit2 != null)
                 return this.digit2;
@@ -197,7 +193,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit2;
         }
         public void _invalidateDigit2() { this.digit2 = null; }
-        private Integer digit3;
         public Integer digit3() {
             if (this.digit3 != null)
                 return this.digit3;
@@ -205,7 +200,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit3;
         }
         public void _invalidateDigit3() { this.digit3 = null; }
-        private Integer digit4;
         public Integer digit4() {
             if (this.digit4 != null)
                 return this.digit4;
@@ -213,7 +207,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit4;
         }
         public void _invalidateDigit4() { this.digit4 = null; }
-        private Integer digit5;
         public Integer digit5() {
             if (this.digit5 != null)
                 return this.digit5;
@@ -221,7 +214,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit5;
         }
         public void _invalidateDigit5() { this.digit5 = null; }
-        private Integer digit6;
         public Integer digit6() {
             if (this.digit6 != null)
                 return this.digit6;
@@ -229,7 +221,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit6;
         }
         public void _invalidateDigit6() { this.digit6 = null; }
-        private Integer digit7;
         public Integer digit7() {
             if (this.digit7 != null)
                 return this.digit7;
@@ -237,7 +228,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit7;
         }
         public void _invalidateDigit7() { this.digit7 = null; }
-        private Integer digit8;
         public Integer digit8() {
             if (this.digit8 != null)
                 return this.digit8;
@@ -245,12 +235,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit8;
         }
         public void _invalidateDigit8() { this.digit8 = null; }
-        private int b1;
-        private int b2;
-        private int b3;
-        private int b4;
-        private BcdUserTypeBe _root;
-        private BcdUserTypeBe _parent;
         public int b1() { return b1; }
         public void setB1(int _v) { _dirty = true; b1 = _v; }
         public int b2() { return b2; }
@@ -263,6 +247,22 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
         public void set_root(BcdUserTypeBe _v) { _dirty = true; _root = _v; }
         public BcdUserTypeBe _parent() { return _parent; }
         public void set_parent(BcdUserTypeBe _v) { _dirty = true; _parent = _v; }
+        private Integer asInt;
+        private String asStr;
+        private Integer digit1;
+        private Integer digit2;
+        private Integer digit3;
+        private Integer digit4;
+        private Integer digit5;
+        private Integer digit6;
+        private Integer digit7;
+        private Integer digit8;
+        private int b1;
+        private int b2;
+        private int b3;
+        private int b4;
+        private BcdUserTypeBe _root;
+        private BcdUserTypeBe _parent;
     }
     public static class LtrObj extends KaitaiStruct.ReadWrite {
         public static LtrObj fromFile(String fileName) throws IOException {
@@ -307,7 +307,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private Integer asInt;
         public Integer asInt() {
             if (this.asInt != null)
                 return this.asInt;
@@ -315,7 +314,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.asInt;
         }
         public void _invalidateAsInt() { this.asInt = null; }
-        private String asStr;
         public String asStr() {
             if (this.asStr != null)
                 return this.asStr;
@@ -323,7 +321,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.asStr;
         }
         public void _invalidateAsStr() { this.asStr = null; }
-        private Integer digit1;
         public Integer digit1() {
             if (this.digit1 != null)
                 return this.digit1;
@@ -331,7 +328,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit1;
         }
         public void _invalidateDigit1() { this.digit1 = null; }
-        private Integer digit2;
         public Integer digit2() {
             if (this.digit2 != null)
                 return this.digit2;
@@ -339,7 +335,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit2;
         }
         public void _invalidateDigit2() { this.digit2 = null; }
-        private Integer digit3;
         public Integer digit3() {
             if (this.digit3 != null)
                 return this.digit3;
@@ -347,7 +342,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit3;
         }
         public void _invalidateDigit3() { this.digit3 = null; }
-        private Integer digit4;
         public Integer digit4() {
             if (this.digit4 != null)
                 return this.digit4;
@@ -355,7 +349,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit4;
         }
         public void _invalidateDigit4() { this.digit4 = null; }
-        private Integer digit5;
         public Integer digit5() {
             if (this.digit5 != null)
                 return this.digit5;
@@ -363,7 +356,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit5;
         }
         public void _invalidateDigit5() { this.digit5 = null; }
-        private Integer digit6;
         public Integer digit6() {
             if (this.digit6 != null)
                 return this.digit6;
@@ -371,7 +363,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit6;
         }
         public void _invalidateDigit6() { this.digit6 = null; }
-        private Integer digit7;
         public Integer digit7() {
             if (this.digit7 != null)
                 return this.digit7;
@@ -379,7 +370,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit7;
         }
         public void _invalidateDigit7() { this.digit7 = null; }
-        private Integer digit8;
         public Integer digit8() {
             if (this.digit8 != null)
                 return this.digit8;
@@ -387,12 +377,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit8;
         }
         public void _invalidateDigit8() { this.digit8 = null; }
-        private int b1;
-        private int b2;
-        private int b3;
-        private int b4;
-        private BcdUserTypeBe _root;
-        private BcdUserTypeBe _parent;
         public int b1() { return b1; }
         public void setB1(int _v) { _dirty = true; b1 = _v; }
         public int b2() { return b2; }
@@ -405,6 +389,22 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
         public void set_root(BcdUserTypeBe _v) { _dirty = true; _root = _v; }
         public BcdUserTypeBe _parent() { return _parent; }
         public void set_parent(BcdUserTypeBe _v) { _dirty = true; _parent = _v; }
+        private Integer asInt;
+        private String asStr;
+        private Integer digit1;
+        private Integer digit2;
+        private Integer digit3;
+        private Integer digit4;
+        private Integer digit5;
+        private Integer digit6;
+        private Integer digit7;
+        private Integer digit8;
+        private int b1;
+        private int b2;
+        private int b3;
+        private int b4;
+        private BcdUserTypeBe _root;
+        private BcdUserTypeBe _parent;
     }
     public static class RtlObj extends KaitaiStruct.ReadWrite {
         public static RtlObj fromFile(String fileName) throws IOException {
@@ -449,7 +449,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private Integer asInt;
         public Integer asInt() {
             if (this.asInt != null)
                 return this.asInt;
@@ -457,7 +456,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.asInt;
         }
         public void _invalidateAsInt() { this.asInt = null; }
-        private String asStr;
         public String asStr() {
             if (this.asStr != null)
                 return this.asStr;
@@ -465,7 +463,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.asStr;
         }
         public void _invalidateAsStr() { this.asStr = null; }
-        private Integer digit1;
         public Integer digit1() {
             if (this.digit1 != null)
                 return this.digit1;
@@ -473,7 +470,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit1;
         }
         public void _invalidateDigit1() { this.digit1 = null; }
-        private Integer digit2;
         public Integer digit2() {
             if (this.digit2 != null)
                 return this.digit2;
@@ -481,7 +477,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit2;
         }
         public void _invalidateDigit2() { this.digit2 = null; }
-        private Integer digit3;
         public Integer digit3() {
             if (this.digit3 != null)
                 return this.digit3;
@@ -489,7 +484,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit3;
         }
         public void _invalidateDigit3() { this.digit3 = null; }
-        private Integer digit4;
         public Integer digit4() {
             if (this.digit4 != null)
                 return this.digit4;
@@ -497,7 +491,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit4;
         }
         public void _invalidateDigit4() { this.digit4 = null; }
-        private Integer digit5;
         public Integer digit5() {
             if (this.digit5 != null)
                 return this.digit5;
@@ -505,7 +498,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit5;
         }
         public void _invalidateDigit5() { this.digit5 = null; }
-        private Integer digit6;
         public Integer digit6() {
             if (this.digit6 != null)
                 return this.digit6;
@@ -513,7 +505,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit6;
         }
         public void _invalidateDigit6() { this.digit6 = null; }
-        private Integer digit7;
         public Integer digit7() {
             if (this.digit7 != null)
                 return this.digit7;
@@ -521,7 +512,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit7;
         }
         public void _invalidateDigit7() { this.digit7 = null; }
-        private Integer digit8;
         public Integer digit8() {
             if (this.digit8 != null)
                 return this.digit8;
@@ -529,12 +519,6 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
             return this.digit8;
         }
         public void _invalidateDigit8() { this.digit8 = null; }
-        private int b1;
-        private int b2;
-        private int b3;
-        private int b4;
-        private BcdUserTypeBe _root;
-        private BcdUserTypeBe _parent;
         public int b1() { return b1; }
         public void setB1(int _v) { _dirty = true; b1 = _v; }
         public int b2() { return b2; }
@@ -547,15 +531,23 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
         public void set_root(BcdUserTypeBe _v) { _dirty = true; _root = _v; }
         public BcdUserTypeBe _parent() { return _parent; }
         public void set_parent(BcdUserTypeBe _v) { _dirty = true; _parent = _v; }
+        private Integer asInt;
+        private String asStr;
+        private Integer digit1;
+        private Integer digit2;
+        private Integer digit3;
+        private Integer digit4;
+        private Integer digit5;
+        private Integer digit6;
+        private Integer digit7;
+        private Integer digit8;
+        private int b1;
+        private int b2;
+        private int b3;
+        private int b4;
+        private BcdUserTypeBe _root;
+        private BcdUserTypeBe _parent;
     }
-    private LtrObj ltr;
-    private RtlObj rtl;
-    private LeadingZeroLtrObj leadingZeroLtr;
-    private BcdUserTypeBe _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_ltr;
-    private byte[] _raw_rtl;
-    private byte[] _raw_leadingZeroLtr;
     public LtrObj ltr() { return ltr; }
     public void setLtr(LtrObj _v) { _dirty = true; ltr = _v; }
     public RtlObj rtl() { return rtl; }
@@ -572,4 +564,12 @@ public class BcdUserTypeBe extends KaitaiStruct.ReadWrite {
     public void set_raw_Rtl(byte[] _v) { _dirty = true; _raw_rtl = _v; }
     public byte[] _raw_leadingZeroLtr() { return _raw_leadingZeroLtr; }
     public void set_raw_LeadingZeroLtr(byte[] _v) { _dirty = true; _raw_leadingZeroLtr = _v; }
+    private LtrObj ltr;
+    private RtlObj rtl;
+    private LeadingZeroLtrObj leadingZeroLtr;
+    private BcdUserTypeBe _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_ltr;
+    private byte[] _raw_rtl;
+    private byte[] _raw_leadingZeroLtr;
 }

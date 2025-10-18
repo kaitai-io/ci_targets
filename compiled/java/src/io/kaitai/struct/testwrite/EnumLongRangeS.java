@@ -78,15 +78,6 @@ public class EnumLongRangeS extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private Constants f1;
-    private Constants f2;
-    private Constants f3;
-    private Constants f4;
-    private Constants f5;
-    private Constants f6;
-    private Constants f7;
-    private EnumLongRangeS _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Constants f1() { return f1; }
     public void setF1(Constants _v) { _dirty = true; f1 = _v; }
     public Constants f2() { return f2; }
@@ -105,4 +96,13 @@ public class EnumLongRangeS extends KaitaiStruct.ReadWrite {
     public void set_root(EnumLongRangeS _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Constants f1;
+    private Constants f2;
+    private Constants f3;
+    private Constants f4;
+    private Constants f5;
+    private Constants f6;
+    private Constants f7;
+    private EnumLongRangeS _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

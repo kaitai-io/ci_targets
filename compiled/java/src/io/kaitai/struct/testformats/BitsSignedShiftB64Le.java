@@ -33,12 +33,12 @@ public class BitsSignedShiftB64Le extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private long a;
-    private long b;
-    private BitsSignedShiftB64Le _root;
-    private KaitaiStruct _parent;
     public long a() { return a; }
     public long b() { return b; }
     public BitsSignedShiftB64Le _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private long a;
+    private long b;
+    private BitsSignedShiftB64Le _root;
+    private KaitaiStruct _parent;
 }

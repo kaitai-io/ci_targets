@@ -29,17 +29,17 @@ public class CastToImported extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Integer hwOne;
     public Integer hwOne() {
         if (this.hwOne != null)
             return this.hwOne;
         this.hwOne = ((Number) (((HelloWorld) (hwParam())).one())).intValue();
         return this.hwOne;
     }
-    private KaitaiStruct hwParam;
-    private CastToImported _root;
-    private KaitaiStruct _parent;
     public KaitaiStruct hwParam() { return hwParam; }
     public CastToImported _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Integer hwOne;
+    private KaitaiStruct hwParam;
+    private CastToImported _root;
+    private KaitaiStruct _parent;
 }

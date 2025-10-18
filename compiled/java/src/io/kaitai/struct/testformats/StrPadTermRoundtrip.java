@@ -36,16 +36,16 @@ public class StrPadTermRoundtrip extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private String strPad;
-    private String strTerm;
-    private String strTermAndPad;
-    private String strTermInclude;
-    private StrPadTermRoundtrip _root;
-    private KaitaiStruct _parent;
     public String strPad() { return strPad; }
     public String strTerm() { return strTerm; }
     public String strTermAndPad() { return strTermAndPad; }
     public String strTermInclude() { return strTermInclude; }
     public StrPadTermRoundtrip _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private String strPad;
+    private String strTerm;
+    private String strTermAndPad;
+    private String strTermInclude;
+    private StrPadTermRoundtrip _root;
+    private KaitaiStruct _parent;
 }

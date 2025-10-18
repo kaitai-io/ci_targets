@@ -37,8 +37,6 @@ namespace Kaitai
                 _seqIf = m_io.ReadS2le();
             }
         }
-        private bool f_calc;
-        private int _calc;
         public int Calc
         {
             get
@@ -50,8 +48,6 @@ namespace Kaitai
                 return _calc;
             }
         }
-        private bool f_calcEqCalcIf;
-        private bool _calcEqCalcIf;
         public bool CalcEqCalcIf
         {
             get
@@ -63,8 +59,6 @@ namespace Kaitai
                 return _calcEqCalcIf;
             }
         }
-        private bool f_calcEqLit;
-        private bool _calcEqLit;
         public bool CalcEqLit
         {
             get
@@ -76,8 +70,6 @@ namespace Kaitai
                 return _calcEqLit;
             }
         }
-        private bool f_calcEqSeqIf;
-        private bool _calcEqSeqIf;
         public bool CalcEqSeqIf
         {
             get
@@ -89,8 +81,6 @@ namespace Kaitai
                 return _calcEqSeqIf;
             }
         }
-        private bool f_calcIf;
-        private int? _calcIf;
         public int? CalcIf
         {
             get
@@ -104,8 +94,6 @@ namespace Kaitai
                 return _calcIf;
             }
         }
-        private bool f_calcIfEqLit;
-        private bool _calcIfEqLit;
         public bool CalcIfEqLit
         {
             get
@@ -117,8 +105,6 @@ namespace Kaitai
                 return _calcIfEqLit;
             }
         }
-        private bool f_calcIfEqSeqIf;
-        private bool _calcIfEqSeqIf;
         public bool CalcIfEqSeqIf
         {
             get
@@ -130,8 +116,6 @@ namespace Kaitai
                 return _calcIfEqSeqIf;
             }
         }
-        private bool f_seqEqCalc;
-        private bool _seqEqCalc;
         public bool SeqEqCalc
         {
             get
@@ -143,8 +127,6 @@ namespace Kaitai
                 return _seqEqCalc;
             }
         }
-        private bool f_seqEqCalcIf;
-        private bool _seqEqCalcIf;
         public bool SeqEqCalcIf
         {
             get
@@ -156,8 +138,6 @@ namespace Kaitai
                 return _seqEqCalcIf;
             }
         }
-        private bool f_seqEqLit;
-        private bool _seqEqLit;
         public bool SeqEqLit
         {
             get
@@ -169,8 +149,6 @@ namespace Kaitai
                 return _seqEqLit;
             }
         }
-        private bool f_seqEqSeqIf;
-        private bool _seqEqSeqIf;
         public bool SeqEqSeqIf
         {
             get
@@ -182,8 +160,6 @@ namespace Kaitai
                 return _seqEqSeqIf;
             }
         }
-        private bool f_seqIfEqLit;
-        private bool _seqIfEqLit;
         public bool SeqIfEqLit
         {
             get
@@ -195,15 +171,39 @@ namespace Kaitai
                 return _seqIfEqLit;
             }
         }
-        private byte[] _skip;
-        private short _seq;
-        private short? _seqIf;
-        private ExprIfIntEq m_root;
-        private KaitaiStruct m_parent;
         public byte[] Skip { get { return _skip; } }
         public short Seq { get { return _seq; } }
         public short? SeqIf { get { return _seqIf; } }
         public ExprIfIntEq M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_calc;
+        private int _calc;
+        private bool f_calcEqCalcIf;
+        private bool _calcEqCalcIf;
+        private bool f_calcEqLit;
+        private bool _calcEqLit;
+        private bool f_calcEqSeqIf;
+        private bool _calcEqSeqIf;
+        private bool f_calcIf;
+        private int? _calcIf;
+        private bool f_calcIfEqLit;
+        private bool _calcIfEqLit;
+        private bool f_calcIfEqSeqIf;
+        private bool _calcIfEqSeqIf;
+        private bool f_seqEqCalc;
+        private bool _seqEqCalc;
+        private bool f_seqEqCalcIf;
+        private bool _seqEqCalcIf;
+        private bool f_seqEqLit;
+        private bool _seqEqLit;
+        private bool f_seqEqSeqIf;
+        private bool _seqEqSeqIf;
+        private bool f_seqIfEqLit;
+        private bool _seqIfEqLit;
+        private byte[] _skip;
+        private short _seq;
+        private short? _seqIf;
+        private ExprIfIntEq m_root;
+        private KaitaiStruct m_parent;
     }
 }

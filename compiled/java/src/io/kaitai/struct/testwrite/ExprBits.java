@@ -198,17 +198,16 @@ public class ExprBits extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private short foo;
-        private ExprBits _root;
-        private ExprBits _parent;
         public short foo() { return foo; }
         public void setFoo(short _v) { _dirty = true; foo = _v; }
         public ExprBits _root() { return _root; }
         public void set_root(ExprBits _v) { _dirty = true; _root = _v; }
         public ExprBits _parent() { return _parent; }
         public void set_parent(ExprBits _v) { _dirty = true; _parent = _v; }
+        private short foo;
+        private ExprBits _root;
+        private ExprBits _parent;
     }
-    private Items enumInst;
     public Items enumInst() {
         if (this.enumInst != null)
             return this.enumInst;
@@ -216,9 +215,6 @@ public class ExprBits extends KaitaiStruct.ReadWrite {
         return this.enumInst;
     }
     public void _invalidateEnumInst() { this.enumInst = null; }
-    private Byte instPos;
-    private boolean _shouldWriteInstPos = false;
-    private boolean _enabledInstPos = true;
     public Byte instPos() {
         if (_shouldWriteInstPos)
             _writeInstPos();
@@ -242,14 +238,6 @@ public class ExprBits extends KaitaiStruct.ReadWrite {
         this._io.writeS1(this.instPos);
         this._io.seek(_pos);
     }
-    private Items enumSeq;
-    private long a;
-    private byte[] byteSize;
-    private List<Byte> repeatExpr;
-    private Byte switchOnType;
-    private EndianSwitch switchOnEndian;
-    private ExprBits _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Items enumSeq() { return enumSeq; }
     public void setEnumSeq(Items _v) { _dirty = true; enumSeq = _v; }
     public long a() { return a; }
@@ -266,4 +254,16 @@ public class ExprBits extends KaitaiStruct.ReadWrite {
     public void set_root(ExprBits _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Items enumInst;
+    private Byte instPos;
+    private boolean _shouldWriteInstPos = false;
+    private boolean _enabledInstPos = true;
+    private Items enumSeq;
+    private long a;
+    private byte[] byteSize;
+    private List<Byte> repeatExpr;
+    private Byte switchOnType;
+    private EndianSwitch switchOnEndian;
+    private ExprBits _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

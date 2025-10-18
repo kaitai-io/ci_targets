@@ -13,10 +13,10 @@ namespace Kaitai\Struct\Tests {
             $_io__raw_envelope = new \Kaitai\Struct\Stream($this->_m__raw_envelope);
             $this->_m_envelope = new \Kaitai\Struct\Tests\EosExceptionBytes\Data($_io__raw_envelope, $this, $this->_root);
         }
-        protected $_m_envelope;
-        protected $_m__raw_envelope;
         public function envelope() { return $this->_m_envelope; }
         public function _raw_envelope() { return $this->_m__raw_envelope; }
+        protected $_m_envelope;
+        protected $_m__raw_envelope;
     }
 }
 
@@ -30,7 +30,7 @@ namespace Kaitai\Struct\Tests\EosExceptionBytes {
         private function _read() {
             $this->_m_buf = $this->_io->readBytes(7);
         }
-        protected $_m_buf;
         public function buf() { return $this->_m_buf; }
+        protected $_m_buf;
     }
 }

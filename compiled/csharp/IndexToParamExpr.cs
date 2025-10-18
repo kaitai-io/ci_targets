@@ -44,24 +44,24 @@ namespace Kaitai
             {
                 _buf = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(M_Root.Sizes[Idx]));
             }
-            private string _buf;
-            private int _idx;
-            private IndexToParamExpr m_root;
-            private IndexToParamExpr m_parent;
             public string Buf { get { return _buf; } }
             public int Idx { get { return _idx; } }
             public IndexToParamExpr M_Root { get { return m_root; } }
             public IndexToParamExpr M_Parent { get { return m_parent; } }
+            private string _buf;
+            private int _idx;
+            private IndexToParamExpr m_root;
+            private IndexToParamExpr m_parent;
         }
-        private uint _qty;
-        private List<uint> _sizes;
-        private List<Block> _blocks;
-        private IndexToParamExpr m_root;
-        private KaitaiStruct m_parent;
         public uint Qty { get { return _qty; } }
         public List<uint> Sizes { get { return _sizes; } }
         public List<Block> Blocks { get { return _blocks; } }
         public IndexToParamExpr M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private uint _qty;
+        private List<uint> _sizes;
+        private List<Block> _blocks;
+        private IndexToParamExpr m_root;
+        private KaitaiStruct m_parent;
     }
 }

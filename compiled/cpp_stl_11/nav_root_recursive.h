@@ -24,15 +24,15 @@ private:
 
 public:
     ~nav_root_recursive_t();
+    uint8_t root_value();
+    uint8_t value() const { return m_value; }
+    nav_root_recursive_t* next() const { return m_next.get(); }
+    nav_root_recursive_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_root_value;
     uint8_t m_root_value;
-
-public:
-    uint8_t root_value();
-
-private:
     uint8_t m_value;
     std::unique_ptr<nav_root_recursive_t> m_next;
     bool n_next;
@@ -43,10 +43,4 @@ public:
 private:
     nav_root_recursive_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint8_t value() const { return m_value; }
-    nav_root_recursive_t* next() const { return m_next.get(); }
-    nav_root_recursive_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

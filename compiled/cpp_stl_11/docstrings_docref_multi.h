@@ -31,12 +31,10 @@ private:
 
 public:
     ~docstrings_docref_multi_t();
+    docstrings_docref_multi_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     docstrings_docref_multi_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    docstrings_docref_multi_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

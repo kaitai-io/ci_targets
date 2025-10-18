@@ -12,9 +12,9 @@ namespace Kaitai\Struct\Tests {
             $this->_m_code = $this->_io->readU1();
             $this->_m_two = new \Kaitai\Struct\Tests\ImportsCircularB($this->_io);
         }
-        protected $_m_code;
-        protected $_m_two;
         public function code() { return $this->_m_code; }
         public function two() { return $this->_m_two; }
+        protected $_m_code;
+        protected $_m_two;
     }
 }

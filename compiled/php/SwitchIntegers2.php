@@ -29,20 +29,20 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_padding = $this->_io->readU1();
             }
         }
-        protected $_m_lenModStr;
         public function lenModStr() {
             if ($this->_m_lenModStr !== null)
                 return $this->_m_lenModStr;
             $this->_m_lenModStr = strval($this->len() * 2 - 1);
             return $this->_m_lenModStr;
         }
-        protected $_m_code;
-        protected $_m_len;
-        protected $_m_ham;
-        protected $_m_padding;
         public function code() { return $this->_m_code; }
         public function len() { return $this->_m_len; }
         public function ham() { return $this->_m_ham; }
         public function padding() { return $this->_m_padding; }
+        protected $_m_lenModStr;
+        protected $_m_code;
+        protected $_m_len;
+        protected $_m_ham;
+        protected $_m_padding;
     }
 }

@@ -11,8 +11,8 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_mainSeq = new \Kaitai\Struct\Tests\NestedTypeParam\Nested\MyType(5, $this->_io, $this, $this->_root);
         }
-        protected $_m_mainSeq;
         public function mainSeq() { return $this->_m_mainSeq; }
+        protected $_m_mainSeq;
     }
 }
 
@@ -39,9 +39,9 @@ namespace Kaitai\Struct\Tests\NestedTypeParam\Nested {
         private function _read() {
             $this->_m_body = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->myLen()), "ASCII");
         }
-        protected $_m_body;
-        protected $_m_myLen;
         public function body() { return $this->_m_body; }
         public function myLen() { return $this->_m_myLen; }
+        protected $_m_body;
+        protected $_m_myLen;
     }
 }

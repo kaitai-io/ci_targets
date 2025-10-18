@@ -48,8 +48,6 @@ namespace Kaitai
                 _nameOfs = m_io.ReadU4le();
                 _value = m_io.ReadU4le();
             }
-            private bool f_name;
-            private string _name;
             public string Name
             {
                 get
@@ -65,14 +63,16 @@ namespace Kaitai
                     return _name;
                 }
             }
-            private uint _nameOfs;
-            private uint _value;
-            private InstanceIoUser m_root;
-            private InstanceIoUser m_parent;
             public uint NameOfs { get { return _nameOfs; } }
             public uint Value { get { return _value; } }
             public InstanceIoUser M_Root { get { return m_root; } }
             public InstanceIoUser M_Parent { get { return m_parent; } }
+            private bool f_name;
+            private string _name;
+            private uint _nameOfs;
+            private uint _value;
+            private InstanceIoUser m_root;
+            private InstanceIoUser m_parent;
         }
         public partial class StringsObj : KaitaiStruct
         {
@@ -98,24 +98,24 @@ namespace Kaitai
                     }
                 }
             }
-            private List<string> _str;
-            private InstanceIoUser m_root;
-            private InstanceIoUser m_parent;
             public List<string> Str { get { return _str; } }
             public InstanceIoUser M_Root { get { return m_root; } }
             public InstanceIoUser M_Parent { get { return m_parent; } }
+            private List<string> _str;
+            private InstanceIoUser m_root;
+            private InstanceIoUser m_parent;
         }
-        private uint _qtyEntries;
-        private List<Entry> _entries;
-        private StringsObj _strings;
-        private InstanceIoUser m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_strings;
         public uint QtyEntries { get { return _qtyEntries; } }
         public List<Entry> Entries { get { return _entries; } }
         public StringsObj Strings { get { return _strings; } }
         public InstanceIoUser M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawStrings { get { return __raw_strings; } }
+        private uint _qtyEntries;
+        private List<Entry> _entries;
+        private StringsObj _strings;
+        private InstanceIoUser m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_strings;
     }
 }

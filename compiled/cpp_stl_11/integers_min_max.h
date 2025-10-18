@@ -39,6 +39,15 @@ public:
 
     public:
         ~signed_t();
+        int8_t s1() const { return m_s1; }
+        int16_t s2le() const { return m_s2le; }
+        int32_t s4le() const { return m_s4le; }
+        int64_t s8le() const { return m_s8le; }
+        int16_t s2be() const { return m_s2be; }
+        int32_t s4be() const { return m_s4be; }
+        int64_t s8be() const { return m_s8be; }
+        integers_min_max_t* _root() const { return m__root; }
+        integers_min_max_t* _parent() const { return m__parent; }
 
     private:
         int8_t m_s1;
@@ -50,17 +59,6 @@ public:
         int64_t m_s8be;
         integers_min_max_t* m__root;
         integers_min_max_t* m__parent;
-
-    public:
-        int8_t s1() const { return m_s1; }
-        int16_t s2le() const { return m_s2le; }
-        int32_t s4le() const { return m_s4le; }
-        int64_t s8le() const { return m_s8le; }
-        int16_t s2be() const { return m_s2be; }
-        int32_t s4be() const { return m_s4be; }
-        int64_t s8be() const { return m_s8be; }
-        integers_min_max_t* _root() const { return m__root; }
-        integers_min_max_t* _parent() const { return m__parent; }
     };
 
     class unsigned_t : public kaitai::kstruct {
@@ -75,6 +73,15 @@ public:
 
     public:
         ~unsigned_t();
+        uint8_t u1() const { return m_u1; }
+        uint16_t u2le() const { return m_u2le; }
+        uint32_t u4le() const { return m_u4le; }
+        uint64_t u8le() const { return m_u8le; }
+        uint16_t u2be() const { return m_u2be; }
+        uint32_t u4be() const { return m_u4be; }
+        uint64_t u8be() const { return m_u8be; }
+        integers_min_max_t* _root() const { return m__root; }
+        integers_min_max_t* _parent() const { return m__parent; }
 
     private:
         uint8_t m_u1;
@@ -86,26 +93,7 @@ public:
         uint64_t m_u8be;
         integers_min_max_t* m__root;
         integers_min_max_t* m__parent;
-
-    public:
-        uint8_t u1() const { return m_u1; }
-        uint16_t u2le() const { return m_u2le; }
-        uint32_t u4le() const { return m_u4le; }
-        uint64_t u8le() const { return m_u8le; }
-        uint16_t u2be() const { return m_u2be; }
-        uint32_t u4be() const { return m_u4be; }
-        uint64_t u8be() const { return m_u8be; }
-        integers_min_max_t* _root() const { return m__root; }
-        integers_min_max_t* _parent() const { return m__parent; }
     };
-
-private:
-    std::unique_ptr<unsigned_t> m_unsigned_min;
-    std::unique_ptr<unsigned_t> m_unsigned_max;
-    std::unique_ptr<signed_t> m_signed_min;
-    std::unique_ptr<signed_t> m_signed_max;
-    integers_min_max_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     unsigned_t* unsigned_min() const { return m_unsigned_min.get(); }
@@ -114,4 +102,12 @@ public:
     signed_t* signed_max() const { return m_signed_max.get(); }
     integers_min_max_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    std::unique_ptr<unsigned_t> m_unsigned_min;
+    std::unique_ptr<unsigned_t> m_unsigned_max;
+    std::unique_ptr<signed_t> m_signed_min;
+    std::unique_ptr<signed_t> m_signed_max;
+    integers_min_max_t* m__root;
+    kaitai::kstruct* m__parent;
 };

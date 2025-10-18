@@ -46,21 +46,13 @@ namespace Kaitai
             {
                 _value = m_io.ReadBytesFull();
             }
-            private byte[] _value;
-            private TermStruct3 m_root;
-            private TermStruct3 m_parent;
             public byte[] Value { get { return _value; } }
             public TermStruct3 M_Root { get { return m_root; } }
             public TermStruct3 M_Parent { get { return m_parent; } }
+            private byte[] _value;
+            private TermStruct3 m_root;
+            private TermStruct3 m_parent;
         }
-        private BytesWrapper _s1;
-        private BytesWrapper _s2;
-        private BytesWrapper _s3;
-        private TermStruct3 m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_s1;
-        private byte[] __raw_s2;
-        private byte[] __raw_s3;
         public BytesWrapper S1 { get { return _s1; } }
         public BytesWrapper S2 { get { return _s2; } }
         public BytesWrapper S3 { get { return _s3; } }
@@ -69,5 +61,13 @@ namespace Kaitai
         public byte[] M_RawS1 { get { return __raw_s1; } }
         public byte[] M_RawS2 { get { return __raw_s2; } }
         public byte[] M_RawS3 { get { return __raw_s3; } }
+        private BytesWrapper _s1;
+        private BytesWrapper _s2;
+        private BytesWrapper _s3;
+        private TermStruct3 m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_s1;
+        private byte[] __raw_s2;
+        private byte[] __raw_s3;
     }
 }

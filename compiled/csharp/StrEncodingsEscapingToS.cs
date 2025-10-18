@@ -32,8 +32,6 @@ namespace Kaitai
             _lenOf4 = m_io.ReadU2le();
             _str4Raw = m_io.ReadBytes(LenOf4);
         }
-        private bool f_str1;
-        private string _str1;
         public string Str1
         {
             get
@@ -45,8 +43,6 @@ namespace Kaitai
                 return _str1;
             }
         }
-        private bool f_str2;
-        private string _str2;
         public string Str2
         {
             get
@@ -58,8 +54,6 @@ namespace Kaitai
                 return _str2;
             }
         }
-        private bool f_str3;
-        private string _str3;
         public string Str3
         {
             get
@@ -71,8 +65,6 @@ namespace Kaitai
                 return _str3;
             }
         }
-        private bool f_str4;
-        private string _str4;
         public string Str4
         {
             get
@@ -84,16 +76,6 @@ namespace Kaitai
                 return _str4;
             }
         }
-        private ushort _lenOf1;
-        private byte[] _str1Raw;
-        private ushort _lenOf2;
-        private byte[] _str2Raw;
-        private ushort _lenOf3;
-        private byte[] _str3Raw;
-        private ushort _lenOf4;
-        private byte[] _str4Raw;
-        private StrEncodingsEscapingToS m_root;
-        private KaitaiStruct m_parent;
         public ushort LenOf1 { get { return _lenOf1; } }
         public byte[] Str1Raw { get { return _str1Raw; } }
         public ushort LenOf2 { get { return _lenOf2; } }
@@ -104,5 +86,23 @@ namespace Kaitai
         public byte[] Str4Raw { get { return _str4Raw; } }
         public StrEncodingsEscapingToS M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_str1;
+        private string _str1;
+        private bool f_str2;
+        private string _str2;
+        private bool f_str3;
+        private string _str3;
+        private bool f_str4;
+        private string _str4;
+        private ushort _lenOf1;
+        private byte[] _str1Raw;
+        private ushort _lenOf2;
+        private byte[] _str2Raw;
+        private ushort _lenOf3;
+        private byte[] _str3Raw;
+        private ushort _lenOf4;
+        private byte[] _str4Raw;
+        private StrEncodingsEscapingToS m_root;
+        private KaitaiStruct m_parent;
     }
 }

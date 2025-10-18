@@ -24,14 +24,12 @@ private:
 
 public:
     ~meta_xref_t();
+    meta_xref_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     meta_xref_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    meta_xref_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // META_XREF_H_

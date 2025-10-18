@@ -131,10 +131,6 @@ public class EosExceptionSized extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("buf", this, this.buf._parent());
             _dirty = false;
         }
-        private Foo buf;
-        private EosExceptionSized _root;
-        private EosExceptionSized _parent;
-        private byte[] _raw_buf;
         public Foo buf() { return buf; }
         public void setBuf(Foo _v) { _dirty = true; buf = _v; }
         public EosExceptionSized _root() { return _root; }
@@ -143,6 +139,10 @@ public class EosExceptionSized extends KaitaiStruct.ReadWrite {
         public void set_parent(EosExceptionSized _v) { _dirty = true; _parent = _v; }
         public byte[] _raw_buf() { return _raw_buf; }
         public void set_raw_Buf(byte[] _v) { _dirty = true; _raw_buf = _v; }
+        private Foo buf;
+        private EosExceptionSized _root;
+        private EosExceptionSized _parent;
+        private byte[] _raw_buf;
     }
     public static class Foo extends KaitaiStruct.ReadWrite {
         public static Foo fromFile(String fileName) throws IOException {
@@ -179,17 +179,13 @@ public class EosExceptionSized extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private EosExceptionSized _root;
-        private EosExceptionSized.Data _parent;
         public EosExceptionSized _root() { return _root; }
         public void set_root(EosExceptionSized _v) { _dirty = true; _root = _v; }
         public EosExceptionSized.Data _parent() { return _parent; }
         public void set_parent(EosExceptionSized.Data _v) { _dirty = true; _parent = _v; }
+        private EosExceptionSized _root;
+        private EosExceptionSized.Data _parent;
     }
-    private Data envelope;
-    private EosExceptionSized _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_envelope;
     public Data envelope() { return envelope; }
     public void setEnvelope(Data _v) { _dirty = true; envelope = _v; }
     public EosExceptionSized _root() { return _root; }
@@ -198,4 +194,8 @@ public class EosExceptionSized extends KaitaiStruct.ReadWrite {
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_envelope() { return _raw_envelope; }
     public void set_raw_Envelope(byte[] _v) { _dirty = true; _raw_envelope = _v; }
+    private Data envelope;
+    private EosExceptionSized _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_envelope;
 }

@@ -34,8 +34,6 @@ namespace Kaitai
         {
             _one = m_io.ReadBytes(3);
         }
-        private bool f_oneFirst;
-        private byte _oneFirst;
         public byte OneFirst
         {
             get
@@ -47,8 +45,6 @@ namespace Kaitai
                 return _oneFirst;
             }
         }
-        private bool f_oneLast;
-        private byte _oneLast;
         public byte OneLast
         {
             get
@@ -60,8 +56,6 @@ namespace Kaitai
                 return _oneLast;
             }
         }
-        private bool f_oneMax;
-        private byte _oneMax;
         public byte OneMax
         {
             get
@@ -73,8 +67,6 @@ namespace Kaitai
                 return _oneMax;
             }
         }
-        private bool f_oneMid;
-        private byte _oneMid;
         public byte OneMid
         {
             get
@@ -86,8 +78,6 @@ namespace Kaitai
                 return _oneMid;
             }
         }
-        private bool f_oneMin;
-        private byte _oneMin;
         public byte OneMin
         {
             get
@@ -99,8 +89,6 @@ namespace Kaitai
                 return _oneMin;
             }
         }
-        private bool f_oneSize;
-        private int _oneSize;
         public int OneSize
         {
             get
@@ -112,8 +100,6 @@ namespace Kaitai
                 return _oneSize;
             }
         }
-        private bool f_two;
-        private byte[] _two;
         public byte[] Two
         {
             get
@@ -125,8 +111,6 @@ namespace Kaitai
                 return _two;
             }
         }
-        private bool f_twoFirst;
-        private byte _twoFirst;
         public byte TwoFirst
         {
             get
@@ -138,8 +122,6 @@ namespace Kaitai
                 return _twoFirst;
             }
         }
-        private bool f_twoLast;
-        private byte _twoLast;
         public byte TwoLast
         {
             get
@@ -151,8 +133,6 @@ namespace Kaitai
                 return _twoLast;
             }
         }
-        private bool f_twoMax;
-        private byte _twoMax;
         public byte TwoMax
         {
             get
@@ -164,8 +144,6 @@ namespace Kaitai
                 return _twoMax;
             }
         }
-        private bool f_twoMid;
-        private byte _twoMid;
         public byte TwoMid
         {
             get
@@ -177,8 +155,6 @@ namespace Kaitai
                 return _twoMid;
             }
         }
-        private bool f_twoMin;
-        private byte _twoMin;
         public byte TwoMin
         {
             get
@@ -190,8 +166,6 @@ namespace Kaitai
                 return _twoMin;
             }
         }
-        private bool f_twoSize;
-        private int _twoSize;
         public int TwoSize
         {
             get
@@ -203,11 +177,37 @@ namespace Kaitai
                 return _twoSize;
             }
         }
-        private byte[] _one;
-        private ExprBytesOps m_root;
-        private KaitaiStruct m_parent;
         public byte[] One { get { return _one; } }
         public ExprBytesOps M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_oneFirst;
+        private byte _oneFirst;
+        private bool f_oneLast;
+        private byte _oneLast;
+        private bool f_oneMax;
+        private byte _oneMax;
+        private bool f_oneMid;
+        private byte _oneMid;
+        private bool f_oneMin;
+        private byte _oneMin;
+        private bool f_oneSize;
+        private int _oneSize;
+        private bool f_two;
+        private byte[] _two;
+        private bool f_twoFirst;
+        private byte _twoFirst;
+        private bool f_twoLast;
+        private byte _twoLast;
+        private bool f_twoMax;
+        private byte _twoMax;
+        private bool f_twoMid;
+        private byte _twoMid;
+        private bool f_twoMin;
+        private byte _twoMin;
+        private bool f_twoSize;
+        private int _twoSize;
+        private byte[] _one;
+        private ExprBytesOps m_root;
+        private KaitaiStruct m_parent;
     }
 }

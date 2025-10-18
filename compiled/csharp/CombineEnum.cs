@@ -29,8 +29,6 @@ namespace Kaitai
             _enumU4 = ((Animal) m_io.ReadU4le());
             _enumU2 = ((Animal) m_io.ReadU2le());
         }
-        private bool f_enumU4U2;
-        private Animal _enumU4U2;
         public Animal EnumU4U2
         {
             get
@@ -42,13 +40,15 @@ namespace Kaitai
                 return _enumU4U2;
             }
         }
-        private Animal _enumU4;
-        private Animal _enumU2;
-        private CombineEnum m_root;
-        private KaitaiStruct m_parent;
         public Animal EnumU4 { get { return _enumU4; } }
         public Animal EnumU2 { get { return _enumU2; } }
         public CombineEnum M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_enumU4U2;
+        private Animal _enumU4U2;
+        private Animal _enumU4;
+        private Animal _enumU2;
+        private CombineEnum m_root;
+        private KaitaiStruct m_parent;
     }
 }

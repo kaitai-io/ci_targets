@@ -48,20 +48,20 @@ namespace Kaitai
             {
                 _value = m_io.ReadBytesFull();
             }
-            private byte[] _value;
-            private RepeatEosTermStruct m_root;
-            private RepeatEosTermStruct m_parent;
             public byte[] Value { get { return _value; } }
             public RepeatEosTermStruct M_Root { get { return m_root; } }
             public RepeatEosTermStruct M_Parent { get { return m_parent; } }
+            private byte[] _value;
+            private RepeatEosTermStruct m_root;
+            private RepeatEosTermStruct m_parent;
         }
-        private List<BytesWrapper> _records;
-        private RepeatEosTermStruct m_root;
-        private KaitaiStruct m_parent;
-        private List<byte[]> __raw_records;
         public List<BytesWrapper> Records { get { return _records; } }
         public RepeatEosTermStruct M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public List<byte[]> M_RawRecords { get { return __raw_records; } }
+        private List<BytesWrapper> _records;
+        private RepeatEosTermStruct m_root;
+        private KaitaiStruct m_parent;
+        private List<byte[]> __raw_records;
     }
 }

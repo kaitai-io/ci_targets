@@ -24,18 +24,16 @@ private:
 
 public:
     ~bits_shift_by_b32_le_t();
+    uint64_t a() const { return m_a; }
+    uint64_t b() const { return m_b; }
+    bits_shift_by_b32_le_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint64_t m_a;
     uint64_t m_b;
     bits_shift_by_b32_le_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint64_t a() const { return m_a; }
-    uint64_t b() const { return m_b; }
-    bits_shift_by_b32_le_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // BITS_SHIFT_BY_B32_LE_H_

@@ -142,12 +142,12 @@ public class SwitchManualEnumInvalid extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private int value;
-            private SwitchManualEnumInvalid _root;
-            private SwitchManualEnumInvalid.Opcode _parent;
             public int value() { return value; }
             public SwitchManualEnumInvalid _root() { return _root; }
             public SwitchManualEnumInvalid.Opcode _parent() { return _parent; }
+            private int value;
+            private SwitchManualEnumInvalid _root;
+            private SwitchManualEnumInvalid.Opcode _parent;
         }
         public static class Strval extends KaitaiStruct {
             public static Strval fromFile(String fileName) throws IOException {
@@ -174,26 +174,26 @@ public class SwitchManualEnumInvalid extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private String value;
-            private SwitchManualEnumInvalid _root;
-            private SwitchManualEnumInvalid.Opcode _parent;
             public String value() { return value; }
             public SwitchManualEnumInvalid _root() { return _root; }
             public SwitchManualEnumInvalid.Opcode _parent() { return _parent; }
+            private String value;
+            private SwitchManualEnumInvalid _root;
+            private SwitchManualEnumInvalid.Opcode _parent;
         }
-        private CodeEnum code;
-        private KaitaiStruct body;
-        private SwitchManualEnumInvalid _root;
-        private SwitchManualEnumInvalid _parent;
         public CodeEnum code() { return code; }
         public KaitaiStruct body() { return body; }
         public SwitchManualEnumInvalid _root() { return _root; }
         public SwitchManualEnumInvalid _parent() { return _parent; }
+        private CodeEnum code;
+        private KaitaiStruct body;
+        private SwitchManualEnumInvalid _root;
+        private SwitchManualEnumInvalid _parent;
     }
-    private List<Opcode> opcodes;
-    private SwitchManualEnumInvalid _root;
-    private KaitaiStruct _parent;
     public List<Opcode> opcodes() { return opcodes; }
     public SwitchManualEnumInvalid _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Opcode> opcodes;
+    private SwitchManualEnumInvalid _root;
+    private KaitaiStruct _parent;
 }

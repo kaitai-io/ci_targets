@@ -53,16 +53,6 @@ public class ValidEqStrEncodings extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private int lenOf1;
-    private String str1;
-    private int lenOf2;
-    private String str2;
-    private int lenOf3;
-    private String str3;
-    private int lenOf4;
-    private String str4;
-    private ValidEqStrEncodings _root;
-    private KaitaiStruct _parent;
     public int lenOf1() { return lenOf1; }
     public String str1() { return str1; }
     public int lenOf2() { return lenOf2; }
@@ -73,4 +63,14 @@ public class ValidEqStrEncodings extends KaitaiStruct {
     public String str4() { return str4; }
     public ValidEqStrEncodings _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private int lenOf1;
+    private String str1;
+    private int lenOf2;
+    private String str2;
+    private int lenOf3;
+    private String str3;
+    private int lenOf4;
+    private String str4;
+    private ValidEqStrEncodings _root;
+    private KaitaiStruct _parent;
 }

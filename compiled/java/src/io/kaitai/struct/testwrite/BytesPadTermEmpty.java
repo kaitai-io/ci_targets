@@ -79,12 +79,6 @@ public class BytesPadTermEmpty extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private byte[] strPad;
-    private byte[] strTerm;
-    private byte[] strTermAndPad;
-    private byte[] strTermInclude;
-    private BytesPadTermEmpty _root;
-    private KaitaiStruct.ReadWrite _parent;
     public byte[] strPad() { return strPad; }
     public void setStrPad(byte[] _v) { _dirty = true; strPad = _v; }
     public byte[] strTerm() { return strTerm; }
@@ -97,4 +91,10 @@ public class BytesPadTermEmpty extends KaitaiStruct.ReadWrite {
     public void set_root(BytesPadTermEmpty _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private byte[] strPad;
+    private byte[] strTerm;
+    private byte[] strTermAndPad;
+    private byte[] strTermInclude;
+    private BytesPadTermEmpty _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

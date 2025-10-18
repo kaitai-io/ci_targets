@@ -45,10 +45,10 @@ public class RepeatUntilBytesPad extends KaitaiStruct {
         for (int i = 0; i < this.records.size(); i++) {
         }
     }
-    private List<byte[]> records;
-    private RepeatUntilBytesPad _root;
-    private KaitaiStruct _parent;
     public List<byte[]> records() { return records; }
     public RepeatUntilBytesPad _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<byte[]> records;
+    private RepeatUntilBytesPad _root;
+    private KaitaiStruct _parent;
 }

@@ -51,11 +51,6 @@ public class OptionalId extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("_unnamed2", 5, this._unnamed2.length);
         _dirty = false;
     }
-    private int _unnamed0;
-    private int _unnamed1;
-    private byte[] _unnamed2;
-    private OptionalId _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int _unnamed0() { return _unnamed0; }
     public void set_unnamed0(int _v) { _dirty = true; _unnamed0 = _v; }
     public int _unnamed1() { return _unnamed1; }
@@ -66,4 +61,9 @@ public class OptionalId extends KaitaiStruct.ReadWrite {
     public void set_root(OptionalId _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private int _unnamed0;
+    private int _unnamed1;
+    private byte[] _unnamed2;
+    private OptionalId _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

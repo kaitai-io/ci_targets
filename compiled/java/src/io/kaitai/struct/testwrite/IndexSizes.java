@@ -77,11 +77,6 @@ public class IndexSizes extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private long qty;
-    private List<Long> sizes;
-    private List<String> bufs;
-    private IndexSizes _root;
-    private KaitaiStruct.ReadWrite _parent;
     public long qty() { return qty; }
     public void setQty(long _v) { _dirty = true; qty = _v; }
     public List<Long> sizes() { return sizes; }
@@ -92,4 +87,9 @@ public class IndexSizes extends KaitaiStruct.ReadWrite {
     public void set_root(IndexSizes _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private long qty;
+    private List<Long> sizes;
+    private List<String> bufs;
+    private IndexSizes _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

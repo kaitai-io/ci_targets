@@ -32,17 +32,17 @@ namespace Kaitai
             _f3 = ((Constants) m_io.ReadU8be());
             _f4 = ((Constants) m_io.ReadU8be());
         }
-        private Constants _f1;
-        private Constants _f2;
-        private Constants _f3;
-        private Constants _f4;
-        private EnumLongRangeU m_root;
-        private KaitaiStruct m_parent;
         public Constants F1 { get { return _f1; } }
         public Constants F2 { get { return _f2; } }
         public Constants F3 { get { return _f3; } }
         public Constants F4 { get { return _f4; } }
         public EnumLongRangeU M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Constants _f1;
+        private Constants _f2;
+        private Constants _f3;
+        private Constants _f4;
+        private EnumLongRangeU m_root;
+        private KaitaiStruct m_parent;
     }
 }

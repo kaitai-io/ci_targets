@@ -103,15 +103,15 @@ public class NavRoot extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("filename", _root().header().filenameLen(), (this.filename).getBytes(Charset.forName("UTF-8")).length);
             _dirty = false;
         }
-        private String filename;
-        private NavRoot _root;
-        private NavRoot.IndexObj _parent;
         public String filename() { return filename; }
         public void setFilename(String _v) { _dirty = true; filename = _v; }
         public NavRoot _root() { return _root; }
         public void set_root(NavRoot _v) { _dirty = true; _root = _v; }
         public NavRoot.IndexObj _parent() { return _parent; }
         public void set_parent(NavRoot.IndexObj _v) { _dirty = true; _parent = _v; }
+        private String filename;
+        private NavRoot _root;
+        private NavRoot.IndexObj _parent;
     }
     public static class HeaderObj extends KaitaiStruct.ReadWrite {
         public static HeaderObj fromFile(String fileName) throws IOException {
@@ -152,10 +152,6 @@ public class NavRoot extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private long qtyEntries;
-        private long filenameLen;
-        private NavRoot _root;
-        private NavRoot _parent;
         public long qtyEntries() { return qtyEntries; }
         public void setQtyEntries(long _v) { _dirty = true; qtyEntries = _v; }
         public long filenameLen() { return filenameLen; }
@@ -164,6 +160,10 @@ public class NavRoot extends KaitaiStruct.ReadWrite {
         public void set_root(NavRoot _v) { _dirty = true; _root = _v; }
         public NavRoot _parent() { return _parent; }
         public void set_parent(NavRoot _v) { _dirty = true; _parent = _v; }
+        private long qtyEntries;
+        private long filenameLen;
+        private NavRoot _root;
+        private NavRoot _parent;
     }
     public static class IndexObj extends KaitaiStruct.ReadWrite {
         public static IndexObj fromFile(String fileName) throws IOException {
@@ -227,10 +227,6 @@ public class NavRoot extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private byte[] magic;
-        private List<Entry> entries;
-        private NavRoot _root;
-        private NavRoot _parent;
         public byte[] magic() { return magic; }
         public void setMagic(byte[] _v) { _dirty = true; magic = _v; }
         public List<Entry> entries() { return entries; }
@@ -239,11 +235,11 @@ public class NavRoot extends KaitaiStruct.ReadWrite {
         public void set_root(NavRoot _v) { _dirty = true; _root = _v; }
         public NavRoot _parent() { return _parent; }
         public void set_parent(NavRoot _v) { _dirty = true; _parent = _v; }
+        private byte[] magic;
+        private List<Entry> entries;
+        private NavRoot _root;
+        private NavRoot _parent;
     }
-    private HeaderObj header;
-    private IndexObj index;
-    private NavRoot _root;
-    private KaitaiStruct.ReadWrite _parent;
     public HeaderObj header() { return header; }
     public void setHeader(HeaderObj _v) { _dirty = true; header = _v; }
     public IndexObj index() { return index; }
@@ -252,4 +248,8 @@ public class NavRoot extends KaitaiStruct.ReadWrite {
     public void set_root(NavRoot _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private HeaderObj header;
+    private IndexObj index;
+    private NavRoot _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

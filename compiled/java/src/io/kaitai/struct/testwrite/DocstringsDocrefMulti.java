@@ -49,10 +49,10 @@ public class DocstringsDocrefMulti extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private DocstringsDocrefMulti _root;
-    private KaitaiStruct.ReadWrite _parent;
     public DocstringsDocrefMulti _root() { return _root; }
     public void set_root(DocstringsDocrefMulti _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private DocstringsDocrefMulti _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

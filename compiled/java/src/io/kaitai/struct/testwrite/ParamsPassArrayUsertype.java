@@ -116,15 +116,15 @@ public class ParamsPassArrayUsertype extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int foo;
-        private ParamsPassArrayUsertype _root;
-        private ParamsPassArrayUsertype _parent;
         public int foo() { return foo; }
         public void setFoo(int _v) { _dirty = true; foo = _v; }
         public ParamsPassArrayUsertype _root() { return _root; }
         public void set_root(ParamsPassArrayUsertype _v) { _dirty = true; _root = _v; }
         public ParamsPassArrayUsertype _parent() { return _parent; }
         public void set_parent(ParamsPassArrayUsertype _v) { _dirty = true; _parent = _v; }
+        private int foo;
+        private ParamsPassArrayUsertype _root;
+        private ParamsPassArrayUsertype _parent;
     }
     public static class ParamType extends KaitaiStruct.ReadWrite {
         public ParamType(List<Block> bar) {
@@ -167,11 +167,6 @@ public class ParamsPassArrayUsertype extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("two", bar().get(((int) 1)).foo(), this.two.length);
             _dirty = false;
         }
-        private byte[] one;
-        private byte[] two;
-        private List<Block> bar;
-        private ParamsPassArrayUsertype _root;
-        private ParamsPassArrayUsertype _parent;
         public byte[] one() { return one; }
         public void setOne(byte[] _v) { _dirty = true; one = _v; }
         public byte[] two() { return two; }
@@ -182,11 +177,12 @@ public class ParamsPassArrayUsertype extends KaitaiStruct.ReadWrite {
         public void set_root(ParamsPassArrayUsertype _v) { _dirty = true; _root = _v; }
         public ParamsPassArrayUsertype _parent() { return _parent; }
         public void set_parent(ParamsPassArrayUsertype _v) { _dirty = true; _parent = _v; }
+        private byte[] one;
+        private byte[] two;
+        private List<Block> bar;
+        private ParamsPassArrayUsertype _root;
+        private ParamsPassArrayUsertype _parent;
     }
-    private List<Block> blocks;
-    private ParamType passBlocks;
-    private ParamsPassArrayUsertype _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Block> blocks() { return blocks; }
     public void setBlocks(List<Block> _v) { _dirty = true; blocks = _v; }
     public ParamType passBlocks() { return passBlocks; }
@@ -195,4 +191,8 @@ public class ParamsPassArrayUsertype extends KaitaiStruct.ReadWrite {
     public void set_root(ParamsPassArrayUsertype _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Block> blocks;
+    private ParamType passBlocks;
+    private ParamsPassArrayUsertype _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

@@ -95,31 +95,31 @@ namespace Kaitai
                     _someIntBe = m_io.ReadU2be();
                     _someIntLe = m_io.ReadU2le();
                 }
-                private uint _someInt;
-                private ushort _someIntBe;
-                private ushort _someIntLe;
-                private DefaultEndianExprIsLe m_root;
-                private DefaultEndianExprIsLe.Doc m_parent;
                 public uint SomeInt { get { return _someInt; } }
                 public ushort SomeIntBe { get { return _someIntBe; } }
                 public ushort SomeIntLe { get { return _someIntLe; } }
                 public DefaultEndianExprIsLe M_Root { get { return m_root; } }
                 public DefaultEndianExprIsLe.Doc M_Parent { get { return m_parent; } }
+                private uint _someInt;
+                private ushort _someIntBe;
+                private ushort _someIntLe;
+                private DefaultEndianExprIsLe m_root;
+                private DefaultEndianExprIsLe.Doc m_parent;
             }
-            private byte[] _indicator;
-            private MainObj _main;
-            private DefaultEndianExprIsLe m_root;
-            private DefaultEndianExprIsLe m_parent;
             public byte[] Indicator { get { return _indicator; } }
             public MainObj Main { get { return _main; } }
             public DefaultEndianExprIsLe M_Root { get { return m_root; } }
             public DefaultEndianExprIsLe M_Parent { get { return m_parent; } }
+            private byte[] _indicator;
+            private MainObj _main;
+            private DefaultEndianExprIsLe m_root;
+            private DefaultEndianExprIsLe m_parent;
         }
-        private List<Doc> _docs;
-        private DefaultEndianExprIsLe m_root;
-        private KaitaiStruct m_parent;
         public List<Doc> Docs { get { return _docs; } }
         public DefaultEndianExprIsLe M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<Doc> _docs;
+        private DefaultEndianExprIsLe m_root;
+        private KaitaiStruct m_parent;
     }
 }

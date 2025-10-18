@@ -24,6 +24,11 @@ private:
 
 public:
     ~process_xor_value_t();
+    uint8_t key() const { return m_key; }
+    std::string buf() const { return m_buf; }
+    process_xor_value_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
+    std::string _raw_buf() const { return m__raw_buf; }
 
 private:
     uint8_t m_key;
@@ -31,13 +36,6 @@ private:
     process_xor_value_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_buf;
-
-public:
-    uint8_t key() const { return m_key; }
-    std::string buf() const { return m_buf; }
-    process_xor_value_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
-    std::string _raw_buf() const { return m__raw_buf; }
 };
 
 #endif  // PROCESS_XOR_VALUE_H_

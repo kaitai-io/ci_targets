@@ -71,23 +71,23 @@ public class IndexToParamExpr extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private String buf;
-        private int idx;
-        private IndexToParamExpr _root;
-        private IndexToParamExpr _parent;
         public String buf() { return buf; }
         public int idx() { return idx; }
         public IndexToParamExpr _root() { return _root; }
         public IndexToParamExpr _parent() { return _parent; }
+        private String buf;
+        private int idx;
+        private IndexToParamExpr _root;
+        private IndexToParamExpr _parent;
     }
-    private long qty;
-    private List<Long> sizes;
-    private List<Block> blocks;
-    private IndexToParamExpr _root;
-    private KaitaiStruct _parent;
     public long qty() { return qty; }
     public List<Long> sizes() { return sizes; }
     public List<Block> blocks() { return blocks; }
     public IndexToParamExpr _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private long qty;
+    private List<Long> sizes;
+    private List<Block> blocks;
+    private IndexToParamExpr _root;
+    private KaitaiStruct _parent;
 }

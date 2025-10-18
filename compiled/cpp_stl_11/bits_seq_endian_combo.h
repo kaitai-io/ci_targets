@@ -24,6 +24,16 @@ private:
 
 public:
     ~bits_seq_endian_combo_t();
+    uint64_t be1() const { return m_be1; }
+    uint64_t be2() const { return m_be2; }
+    uint64_t le3() const { return m_le3; }
+    uint64_t be4() const { return m_be4; }
+    uint64_t le5() const { return m_le5; }
+    uint64_t le6() const { return m_le6; }
+    uint64_t le7() const { return m_le7; }
+    bool be8() const { return m_be8; }
+    bits_seq_endian_combo_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint64_t m_be1;
@@ -36,16 +46,4 @@ private:
     bool m_be8;
     bits_seq_endian_combo_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint64_t be1() const { return m_be1; }
-    uint64_t be2() const { return m_be2; }
-    uint64_t le3() const { return m_le3; }
-    uint64_t be4() const { return m_be4; }
-    uint64_t le5() const { return m_le5; }
-    uint64_t le6() const { return m_le6; }
-    uint64_t le7() const { return m_le7; }
-    bool be8() const { return m_be8; }
-    bits_seq_endian_combo_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

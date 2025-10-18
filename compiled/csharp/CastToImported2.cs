@@ -17,8 +17,6 @@ namespace Kaitai
         private void _read()
         {
         }
-        private bool f_hw;
-        private HelloWorld _hw;
         public HelloWorld Hw
         {
             get
@@ -30,11 +28,13 @@ namespace Kaitai
                 return _hw;
             }
         }
-        private KaitaiStruct _hwParam;
-        private CastToImported2 m_root;
-        private KaitaiStruct m_parent;
         public KaitaiStruct HwParam { get { return _hwParam; } }
         public CastToImported2 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_hw;
+        private HelloWorld _hw;
+        private KaitaiStruct _hwParam;
+        private CastToImported2 m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -38,8 +38,8 @@ public class DocstringsDocrefMulti extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private DocstringsDocrefMulti _root;
-    private KaitaiStruct _parent;
     public DocstringsDocrefMulti _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private DocstringsDocrefMulti _root;
+    private KaitaiStruct _parent;
 }

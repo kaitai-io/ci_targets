@@ -12,10 +12,10 @@ namespace Kaitai\Struct\Tests {
             $this->_m_first = new \Kaitai\Struct\Tests\ParamsPassUsertype\Block($this->_io, $this, $this->_root);
             $this->_m_one = new \Kaitai\Struct\Tests\ParamsPassUsertype\ParamType($this->first(), $this->_io, $this, $this->_root);
         }
-        protected $_m_first;
-        protected $_m_one;
         public function first() { return $this->_m_first; }
         public function one() { return $this->_m_one; }
+        protected $_m_first;
+        protected $_m_one;
     }
 }
 
@@ -29,8 +29,8 @@ namespace Kaitai\Struct\Tests\ParamsPassUsertype {
         private function _read() {
             $this->_m_foo = $this->_io->readU1();
         }
-        protected $_m_foo;
         public function foo() { return $this->_m_foo; }
+        protected $_m_foo;
     }
 }
 
@@ -45,9 +45,9 @@ namespace Kaitai\Struct\Tests\ParamsPassUsertype {
         private function _read() {
             $this->_m_buf = $this->_io->readBytes($this->foo()->foo());
         }
-        protected $_m_buf;
-        protected $_m_foo;
         public function buf() { return $this->_m_buf; }
         public function foo() { return $this->_m_foo; }
+        protected $_m_buf;
+        protected $_m_foo;
     }
 }

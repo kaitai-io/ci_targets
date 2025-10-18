@@ -105,10 +105,6 @@ public class ParamsCall extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("body", len(), (this.body).getBytes(Charset.forName("UTF-8")).length);
             _dirty = false;
         }
-        private String body;
-        private long len;
-        private ParamsCall _root;
-        private ParamsCall _parent;
         public String body() { return body; }
         public void setBody(String _v) { _dirty = true; body = _v; }
         public long len() { return len; }
@@ -117,6 +113,10 @@ public class ParamsCall extends KaitaiStruct.ReadWrite {
         public void set_root(ParamsCall _v) { _dirty = true; _root = _v; }
         public ParamsCall _parent() { return _parent; }
         public void set_parent(ParamsCall _v) { _dirty = true; _parent = _v; }
+        private String body;
+        private long len;
+        private ParamsCall _root;
+        private ParamsCall _parent;
     }
     public static class MyStr2 extends KaitaiStruct.ReadWrite {
         public MyStr2(long len, boolean hasTrailer) {
@@ -166,12 +166,6 @@ public class ParamsCall extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private String body;
-        private Integer trailer;
-        private long len;
-        private boolean hasTrailer;
-        private ParamsCall _root;
-        private ParamsCall _parent;
         public String body() { return body; }
         public void setBody(String _v) { _dirty = true; body = _v; }
         public Integer trailer() { return trailer; }
@@ -184,11 +178,13 @@ public class ParamsCall extends KaitaiStruct.ReadWrite {
         public void set_root(ParamsCall _v) { _dirty = true; _root = _v; }
         public ParamsCall _parent() { return _parent; }
         public void set_parent(ParamsCall _v) { _dirty = true; _parent = _v; }
+        private String body;
+        private Integer trailer;
+        private long len;
+        private boolean hasTrailer;
+        private ParamsCall _root;
+        private ParamsCall _parent;
     }
-    private MyStr1 buf1;
-    private MyStr2 buf2;
-    private ParamsCall _root;
-    private KaitaiStruct.ReadWrite _parent;
     public MyStr1 buf1() { return buf1; }
     public void setBuf1(MyStr1 _v) { _dirty = true; buf1 = _v; }
     public MyStr2 buf2() { return buf2; }
@@ -197,4 +193,8 @@ public class ParamsCall extends KaitaiStruct.ReadWrite {
     public void set_root(ParamsCall _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private MyStr1 buf1;
+    private MyStr2 buf2;
+    private ParamsCall _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

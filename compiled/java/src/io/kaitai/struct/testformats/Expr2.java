@@ -72,7 +72,6 @@ public class Expr2 extends KaitaiStruct {
                 this.tuple5._fetchInstances();
             }
         }
-        private String char5;
         public String char5() {
             if (this.char5 != null)
                 return this.char5;
@@ -82,14 +81,12 @@ public class Expr2 extends KaitaiStruct {
             this._io.seek(_pos);
             return this.char5;
         }
-        private Integer lenMod;
         public Integer lenMod() {
             if (this.lenMod != null)
                 return this.lenMod;
             this.lenMod = ((Number) (lenOrig() - 3)).intValue();
             return this.lenMod;
         }
-        private Tuple tuple5;
         public Tuple tuple5() {
             if (this.tuple5 != null)
                 return this.tuple5;
@@ -99,16 +96,19 @@ public class Expr2 extends KaitaiStruct {
             this._io.seek(_pos);
             return this.tuple5;
         }
-        private int lenOrig;
-        private String str;
-        private Tuple rest;
-        private Expr2 _root;
-        private Expr2 _parent;
         public int lenOrig() { return lenOrig; }
         public String str() { return str; }
         public Tuple rest() { return rest; }
         public Expr2 _root() { return _root; }
         public Expr2 _parent() { return _parent; }
+        private String char5;
+        private Integer lenMod;
+        private Tuple tuple5;
+        private int lenOrig;
+        private String str;
+        private Tuple rest;
+        private Expr2 _root;
+        private Expr2 _parent;
     }
     public static class Tuple extends KaitaiStruct {
         public static Tuple fromFile(String fileName) throws IOException {
@@ -137,79 +137,79 @@ public class Expr2 extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private Integer avg;
         public Integer avg() {
             if (this.avg != null)
                 return this.avg;
             this.avg = ((Number) ((byte1() + byte2()) / 2)).intValue();
             return this.avg;
         }
-        private int byte0;
-        private int byte1;
-        private int byte2;
-        private Expr2 _root;
-        private Expr2.ModStr _parent;
         public int byte0() { return byte0; }
         public int byte1() { return byte1; }
         public int byte2() { return byte2; }
         public Expr2 _root() { return _root; }
         public Expr2.ModStr _parent() { return _parent; }
+        private Integer avg;
+        private int byte0;
+        private int byte1;
+        private int byte2;
+        private Expr2 _root;
+        private Expr2.ModStr _parent;
     }
-    private Integer str1Avg;
     public Integer str1Avg() {
         if (this.str1Avg != null)
             return this.str1Avg;
         this.str1Avg = ((Number) (str1().rest().avg())).intValue();
         return this.str1Avg;
     }
-    private Integer str1Byte1;
     public Integer str1Byte1() {
         if (this.str1Byte1 != null)
             return this.str1Byte1;
         this.str1Byte1 = ((Number) (str1().rest().byte1())).intValue();
         return this.str1Byte1;
     }
-    private String str1Char5;
     public String str1Char5() {
         if (this.str1Char5 != null)
             return this.str1Char5;
         this.str1Char5 = str1().char5();
         return this.str1Char5;
     }
-    private Integer str1Len;
     public Integer str1Len() {
         if (this.str1Len != null)
             return this.str1Len;
         this.str1Len = ((Number) (str1().str().length())).intValue();
         return this.str1Len;
     }
-    private Integer str1LenMod;
     public Integer str1LenMod() {
         if (this.str1LenMod != null)
             return this.str1LenMod;
         this.str1LenMod = ((Number) (str1().lenMod())).intValue();
         return this.str1LenMod;
     }
-    private Tuple str1Tuple5;
     public Tuple str1Tuple5() {
         if (this.str1Tuple5 != null)
             return this.str1Tuple5;
         this.str1Tuple5 = str1().tuple5();
         return this.str1Tuple5;
     }
-    private Tuple str2Tuple5;
     public Tuple str2Tuple5() {
         if (this.str2Tuple5 != null)
             return this.str2Tuple5;
         this.str2Tuple5 = str2().tuple5();
         return this.str2Tuple5;
     }
-    private ModStr str1;
-    private ModStr str2;
-    private Expr2 _root;
-    private KaitaiStruct _parent;
     public ModStr str1() { return str1; }
     public ModStr str2() { return str2; }
     public Expr2 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Integer str1Avg;
+    private Integer str1Byte1;
+    private String str1Char5;
+    private Integer str1Len;
+    private Integer str1LenMod;
+    private Tuple str1Tuple5;
+    private Tuple str2Tuple5;
+    private ModStr str1;
+    private ModStr str2;
+    private Expr2 _root;
+    private KaitaiStruct _parent;
 }

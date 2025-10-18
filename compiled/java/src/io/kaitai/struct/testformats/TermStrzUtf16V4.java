@@ -68,12 +68,12 @@ public class TermStrzUtf16V4 extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private String value;
-        private TermStrzUtf16V4 _root;
-        private TermStrzUtf16V4 _parent;
         public String value() { return value; }
         public TermStrzUtf16V4 _root() { return _root; }
         public TermStrzUtf16V4 _parent() { return _parent; }
+        private String value;
+        private TermStrzUtf16V4 _root;
+        private TermStrzUtf16V4 _parent;
     }
     public static class S2Type extends KaitaiStruct {
         public static S2Type fromFile(String fileName) throws IOException {
@@ -100,12 +100,12 @@ public class TermStrzUtf16V4 extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private String value;
-        private TermStrzUtf16V4 _root;
-        private TermStrzUtf16V4 _parent;
         public String value() { return value; }
         public TermStrzUtf16V4 _root() { return _root; }
         public TermStrzUtf16V4 _parent() { return _parent; }
+        private String value;
+        private TermStrzUtf16V4 _root;
+        private TermStrzUtf16V4 _parent;
     }
     public static class S3Type extends KaitaiStruct {
         public static S3Type fromFile(String fileName) throws IOException {
@@ -132,20 +132,13 @@ public class TermStrzUtf16V4 extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private String value;
-        private TermStrzUtf16V4 _root;
-        private TermStrzUtf16V4 _parent;
         public String value() { return value; }
         public TermStrzUtf16V4 _root() { return _root; }
         public TermStrzUtf16V4 _parent() { return _parent; }
+        private String value;
+        private TermStrzUtf16V4 _root;
+        private TermStrzUtf16V4 _parent;
     }
-    private S1Type s1;
-    private byte[] skipTerm1;
-    private S2Type s2;
-    private byte[] skipTerm2;
-    private S3Type s3;
-    private TermStrzUtf16V4 _root;
-    private KaitaiStruct _parent;
     public S1Type s1() { return s1; }
     public byte[] skipTerm1() { return skipTerm1; }
     public S2Type s2() { return s2; }
@@ -153,4 +146,11 @@ public class TermStrzUtf16V4 extends KaitaiStruct {
     public S3Type s3() { return s3; }
     public TermStrzUtf16V4 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private S1Type s1;
+    private byte[] skipTerm1;
+    private S2Type s2;
+    private byte[] skipTerm2;
+    private S3Type s3;
+    private TermStrzUtf16V4 _root;
+    private KaitaiStruct _parent;
 }

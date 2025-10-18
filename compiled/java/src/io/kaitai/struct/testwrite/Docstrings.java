@@ -105,14 +105,13 @@ public class Docstrings extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private Docstrings _root;
-        private KaitaiStruct.ReadWrite _parent;
         public Docstrings _root() { return _root; }
         public void set_root(Docstrings _v) { _dirty = true; _root = _v; }
         public KaitaiStruct.ReadWrite _parent() { return _parent; }
         public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+        private Docstrings _root;
+        private KaitaiStruct.ReadWrite _parent;
     }
-    private Byte three;
 
     /**
      * And yet another one for value instance "three"
@@ -124,9 +123,6 @@ public class Docstrings extends KaitaiStruct.ReadWrite {
         return this.three;
     }
     public void _invalidateThree() { this.three = null; }
-    private Integer two;
-    private boolean _shouldWriteTwo = false;
-    private boolean _enabledTwo = true;
 
     /**
      * Another description for parse instance "two"
@@ -154,9 +150,6 @@ public class Docstrings extends KaitaiStruct.ReadWrite {
         this._io.writeU1(this.two);
         this._io.seek(_pos);
     }
-    private int one;
-    private Docstrings _root;
-    private KaitaiStruct.ReadWrite _parent;
 
     /**
      * A pretty verbose description for sequence attribute "one"
@@ -167,4 +160,11 @@ public class Docstrings extends KaitaiStruct.ReadWrite {
     public void set_root(Docstrings _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Byte three;
+    private Integer two;
+    private boolean _shouldWriteTwo = false;
+    private boolean _enabledTwo = true;
+    private int one;
+    private Docstrings _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

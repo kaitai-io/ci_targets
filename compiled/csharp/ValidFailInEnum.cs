@@ -31,11 +31,11 @@ namespace Kaitai
                 throw new ValidationNotInEnumError(_foo, m_io, "/seq/0");
             }
         }
-        private Animal _foo;
-        private ValidFailInEnum m_root;
-        private KaitaiStruct m_parent;
         public Animal Foo { get { return _foo; } }
         public ValidFailInEnum M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Animal _foo;
+        private ValidFailInEnum m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -16,29 +16,29 @@ namespace Kaitai\Struct\Tests {
                 $i++;
             }
         }
-        protected $_m_errCast;
         public function errCast() {
             if ($this->_m_errCast !== null)
                 return $this->_m_errCast;
             $this->_m_errCast = $this->opcodes()[2]->body();
             return $this->_m_errCast;
         }
-        protected $_m_firstObj;
         public function firstObj() {
             if ($this->_m_firstObj !== null)
                 return $this->_m_firstObj;
             $this->_m_firstObj = $this->opcodes()[0]->body();
             return $this->_m_firstObj;
         }
-        protected $_m_secondVal;
         public function secondVal() {
             if ($this->_m_secondVal !== null)
                 return $this->_m_secondVal;
             $this->_m_secondVal = $this->opcodes()[1]->body()->value();
             return $this->_m_secondVal;
         }
-        protected $_m_opcodes;
         public function opcodes() { return $this->_m_opcodes; }
+        protected $_m_errCast;
+        protected $_m_firstObj;
+        protected $_m_secondVal;
+        protected $_m_opcodes;
     }
 }
 
@@ -52,8 +52,8 @@ namespace Kaitai\Struct\Tests\SwitchCast {
         private function _read() {
             $this->_m_value = $this->_io->readU1();
         }
-        protected $_m_value;
         public function value() { return $this->_m_value; }
+        protected $_m_value;
     }
 }
 
@@ -75,10 +75,10 @@ namespace Kaitai\Struct\Tests\SwitchCast {
                     break;
             }
         }
-        protected $_m_code;
-        protected $_m_body;
         public function code() { return $this->_m_code; }
         public function body() { return $this->_m_body; }
+        protected $_m_code;
+        protected $_m_body;
     }
 }
 
@@ -92,7 +92,7 @@ namespace Kaitai\Struct\Tests\SwitchCast {
         private function _read() {
             $this->_m_value = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "ASCII");
         }
-        protected $_m_value;
         public function value() { return $this->_m_value; }
+        protected $_m_value;
     }
 }

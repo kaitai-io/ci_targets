@@ -70,15 +70,6 @@ public class IntegersMinMax extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte s1;
-        private short s2le;
-        private int s4le;
-        private long s8le;
-        private short s2be;
-        private int s4be;
-        private long s8be;
-        private IntegersMinMax _root;
-        private IntegersMinMax _parent;
         public byte s1() { return s1; }
         public short s2le() { return s2le; }
         public int s4le() { return s4le; }
@@ -88,6 +79,15 @@ public class IntegersMinMax extends KaitaiStruct {
         public long s8be() { return s8be; }
         public IntegersMinMax _root() { return _root; }
         public IntegersMinMax _parent() { return _parent; }
+        private byte s1;
+        private short s2le;
+        private int s4le;
+        private long s8le;
+        private short s2be;
+        private int s4be;
+        private long s8be;
+        private IntegersMinMax _root;
+        private IntegersMinMax _parent;
     }
     public static class Unsigned extends KaitaiStruct {
         public static Unsigned fromFile(String fileName) throws IOException {
@@ -120,15 +120,6 @@ public class IntegersMinMax extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int u1;
-        private int u2le;
-        private long u4le;
-        private long u8le;
-        private int u2be;
-        private long u4be;
-        private long u8be;
-        private IntegersMinMax _root;
-        private IntegersMinMax _parent;
         public int u1() { return u1; }
         public int u2le() { return u2le; }
         public long u4le() { return u4le; }
@@ -138,17 +129,26 @@ public class IntegersMinMax extends KaitaiStruct {
         public long u8be() { return u8be; }
         public IntegersMinMax _root() { return _root; }
         public IntegersMinMax _parent() { return _parent; }
+        private int u1;
+        private int u2le;
+        private long u4le;
+        private long u8le;
+        private int u2be;
+        private long u4be;
+        private long u8be;
+        private IntegersMinMax _root;
+        private IntegersMinMax _parent;
     }
-    private Unsigned unsignedMin;
-    private Unsigned unsignedMax;
-    private Signed signedMin;
-    private Signed signedMax;
-    private IntegersMinMax _root;
-    private KaitaiStruct _parent;
     public Unsigned unsignedMin() { return unsignedMin; }
     public Unsigned unsignedMax() { return unsignedMax; }
     public Signed signedMin() { return signedMin; }
     public Signed signedMax() { return signedMax; }
     public IntegersMinMax _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Unsigned unsignedMin;
+    private Unsigned unsignedMax;
+    private Signed signedMin;
+    private Signed signedMax;
+    private IntegersMinMax _root;
+    private KaitaiStruct _parent;
 }

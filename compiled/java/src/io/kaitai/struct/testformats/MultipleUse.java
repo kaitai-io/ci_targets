@@ -60,12 +60,12 @@ public class MultipleUse extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int value;
-        private MultipleUse _root;
-        private KaitaiStruct _parent;
         public int value() { return value; }
         public MultipleUse _root() { return _root; }
         public KaitaiStruct _parent() { return _parent; }
+        private int value;
+        private MultipleUse _root;
+        private KaitaiStruct _parent;
     }
     public static class Type1 extends KaitaiStruct {
         public static Type1 fromFile(String fileName) throws IOException {
@@ -93,12 +93,12 @@ public class MultipleUse extends KaitaiStruct {
         public void _fetchInstances() {
             this.firstUse._fetchInstances();
         }
-        private Multi firstUse;
-        private MultipleUse _root;
-        private MultipleUse _parent;
         public Multi firstUse() { return firstUse; }
         public MultipleUse _root() { return _root; }
         public MultipleUse _parent() { return _parent; }
+        private Multi firstUse;
+        private MultipleUse _root;
+        private MultipleUse _parent;
     }
     public static class Type2 extends KaitaiStruct {
         public static Type2 fromFile(String fileName) throws IOException {
@@ -128,7 +128,6 @@ public class MultipleUse extends KaitaiStruct {
                 this.secondUse._fetchInstances();
             }
         }
-        private Multi secondUse;
         public Multi secondUse() {
             if (this.secondUse != null)
                 return this.secondUse;
@@ -138,17 +137,18 @@ public class MultipleUse extends KaitaiStruct {
             this._io.seek(_pos);
             return this.secondUse;
         }
-        private MultipleUse _root;
-        private MultipleUse _parent;
         public MultipleUse _root() { return _root; }
         public MultipleUse _parent() { return _parent; }
+        private Multi secondUse;
+        private MultipleUse _root;
+        private MultipleUse _parent;
     }
-    private Type1 t1;
-    private Type2 t2;
-    private MultipleUse _root;
-    private KaitaiStruct _parent;
     public Type1 t1() { return t1; }
     public Type2 t2() { return t2; }
     public MultipleUse _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Type1 t1;
+    private Type2 t2;
+    private MultipleUse _root;
+    private KaitaiStruct _parent;
 }

@@ -17,13 +17,6 @@ namespace Kaitai\Struct\Tests {
             $this->_m_f6 = $this->_io->readS8be();
             $this->_m_f7 = $this->_io->readS8be();
         }
-        protected $_m_f1;
-        protected $_m_f2;
-        protected $_m_f3;
-        protected $_m_f4;
-        protected $_m_f5;
-        protected $_m_f6;
-        protected $_m_f7;
         public function f1() { return $this->_m_f1; }
         public function f2() { return $this->_m_f2; }
         public function f3() { return $this->_m_f3; }
@@ -31,6 +24,13 @@ namespace Kaitai\Struct\Tests {
         public function f5() { return $this->_m_f5; }
         public function f6() { return $this->_m_f6; }
         public function f7() { return $this->_m_f7; }
+        protected $_m_f1;
+        protected $_m_f2;
+        protected $_m_f3;
+        protected $_m_f4;
+        protected $_m_f5;
+        protected $_m_f6;
+        protected $_m_f7;
     }
 }
 

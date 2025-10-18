@@ -65,8 +65,6 @@ namespace Kaitai
                 _field1 = ((InnerEnum1) m_io.ReadU1());
                 _field2 = m_io.ReadU1();
             }
-            private bool f_instanceField;
-            private InnerEnum2 _instanceField;
             public InnerEnum2 InstanceField
             {
                 get
@@ -78,24 +76,26 @@ namespace Kaitai
                     return _instanceField;
                 }
             }
-            private InnerEnum1 _field1;
-            private byte _field2;
-            private DebugEnumName m_root;
-            private DebugEnumName m_parent;
             public InnerEnum1 Field1 { get { return _field1; } }
             public byte Field2 { get { return _field2; } }
             public DebugEnumName M_Root { get { return m_root; } }
             public DebugEnumName M_Parent { get { return m_parent; } }
+            private bool f_instanceField;
+            private InnerEnum2 _instanceField;
+            private InnerEnum1 _field1;
+            private byte _field2;
+            private DebugEnumName m_root;
+            private DebugEnumName m_parent;
         }
-        private TestEnum1 _one;
-        private List<TestEnum2> _arrayOfInts;
-        private TestSubtype _testType;
-        private DebugEnumName m_root;
-        private KaitaiStruct m_parent;
         public TestEnum1 One { get { return _one; } }
         public List<TestEnum2> ArrayOfInts { get { return _arrayOfInts; } }
         public TestSubtype TestType { get { return _testType; } }
         public DebugEnumName M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private TestEnum1 _one;
+        private List<TestEnum2> _arrayOfInts;
+        private TestSubtype _testType;
+        private DebugEnumName m_root;
+        private KaitaiStruct m_parent;
     }
 }

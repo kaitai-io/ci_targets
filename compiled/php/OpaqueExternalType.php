@@ -11,7 +11,7 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_hw = new \Kaitai\Struct\Tests\HelloWorld($this->_io);
         }
-        protected $_m_hw;
         public function hw() { return $this->_m_hw; }
+        protected $_m_hw;
     }
 }

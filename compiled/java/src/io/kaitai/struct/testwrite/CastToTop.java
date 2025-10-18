@@ -57,9 +57,6 @@ public class CastToTop extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private CastToTop header;
-    private boolean _shouldWriteHeader = false;
-    private boolean _enabledHeader = true;
     public CastToTop header() {
         if (_shouldWriteHeader)
             _writeHeader();
@@ -84,7 +81,6 @@ public class CastToTop extends KaitaiStruct.ReadWrite {
         this.header._write_Seq(this._io);
         this._io.seek(_pos);
     }
-    private CastToTop headerCasted;
     public CastToTop headerCasted() {
         if (this.headerCasted != null)
             return this.headerCasted;
@@ -92,13 +88,17 @@ public class CastToTop extends KaitaiStruct.ReadWrite {
         return this.headerCasted;
     }
     public void _invalidateHeaderCasted() { this.headerCasted = null; }
-    private int code;
-    private CastToTop _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int code() { return code; }
     public void setCode(int _v) { _dirty = true; code = _v; }
     public CastToTop _root() { return _root; }
     public void set_root(CastToTop _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private CastToTop header;
+    private boolean _shouldWriteHeader = false;
+    private boolean _enabledHeader = true;
+    private CastToTop headerCasted;
+    private int code;
+    private CastToTop _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

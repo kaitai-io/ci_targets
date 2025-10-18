@@ -56,13 +56,13 @@ public class ValidFailRangeFloat extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private float foo;
-    private ValidFailRangeFloat _root;
-    private KaitaiStruct.ReadWrite _parent;
     public float foo() { return foo; }
     public void setFoo(float _v) { _dirty = true; foo = _v; }
     public ValidFailRangeFloat _root() { return _root; }
     public void set_root(ValidFailRangeFloat _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private float foo;
+    private ValidFailRangeFloat _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

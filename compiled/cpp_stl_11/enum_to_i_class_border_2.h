@@ -25,21 +25,15 @@ private:
 
 public:
     ~enum_to_i_class_border_2_t();
+    bool is_dog();
+    enum_to_i_class_border_1_t* parent() const { return m_parent; }
+    enum_to_i_class_border_2_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_is_dog;
     bool m_is_dog;
-
-public:
-    bool is_dog();
-
-private:
     enum_to_i_class_border_1_t* m_parent;
     enum_to_i_class_border_2_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    enum_to_i_class_border_1_t* parent() const { return m_parent; }
-    enum_to_i_class_border_2_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

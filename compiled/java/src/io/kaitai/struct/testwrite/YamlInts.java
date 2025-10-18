@@ -42,7 +42,6 @@ public class YamlInts extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private Integer testU4Dec;
     public Integer testU4Dec() {
         if (this.testU4Dec != null)
             return this.testU4Dec;
@@ -50,7 +49,6 @@ public class YamlInts extends KaitaiStruct.ReadWrite {
         return this.testU4Dec;
     }
     public void _invalidateTestU4Dec() { this.testU4Dec = null; }
-    private Integer testU4Hex;
     public Integer testU4Hex() {
         if (this.testU4Hex != null)
             return this.testU4Hex;
@@ -58,7 +56,6 @@ public class YamlInts extends KaitaiStruct.ReadWrite {
         return this.testU4Hex;
     }
     public void _invalidateTestU4Hex() { this.testU4Hex = null; }
-    private Integer testU8Dec;
     public Integer testU8Dec() {
         if (this.testU8Dec != null)
             return this.testU8Dec;
@@ -66,7 +63,6 @@ public class YamlInts extends KaitaiStruct.ReadWrite {
         return this.testU8Dec;
     }
     public void _invalidateTestU8Dec() { this.testU8Dec = null; }
-    private Integer testU8Hex;
     public Integer testU8Hex() {
         if (this.testU8Hex != null)
             return this.testU8Hex;
@@ -74,10 +70,14 @@ public class YamlInts extends KaitaiStruct.ReadWrite {
         return this.testU8Hex;
     }
     public void _invalidateTestU8Hex() { this.testU8Hex = null; }
-    private YamlInts _root;
-    private KaitaiStruct.ReadWrite _parent;
     public YamlInts _root() { return _root; }
     public void set_root(YamlInts _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer testU4Dec;
+    private Integer testU4Hex;
+    private Integer testU8Dec;
+    private Integer testU8Hex;
+    private YamlInts _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

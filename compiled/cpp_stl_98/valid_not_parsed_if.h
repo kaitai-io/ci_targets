@@ -24,6 +24,10 @@ private:
 
 public:
     ~valid_not_parsed_if_t();
+    uint8_t not_parsed() const { return m_not_parsed; }
+    uint8_t parsed() const { return m_parsed; }
+    valid_not_parsed_if_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint8_t m_not_parsed;
@@ -42,12 +46,6 @@ public:
 private:
     valid_not_parsed_if_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint8_t not_parsed() const { return m_not_parsed; }
-    uint8_t parsed() const { return m_parsed; }
-    valid_not_parsed_if_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // VALID_NOT_PARSED_IF_H_

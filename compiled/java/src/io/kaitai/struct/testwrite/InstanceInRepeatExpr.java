@@ -114,10 +114,6 @@ public class InstanceInRepeatExpr extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private long offset;
-        private long len;
-        private InstanceInRepeatExpr _root;
-        private InstanceInRepeatExpr _parent;
         public long offset() { return offset; }
         public void setOffset(long _v) { _dirty = true; offset = _v; }
         public long len() { return len; }
@@ -126,10 +122,11 @@ public class InstanceInRepeatExpr extends KaitaiStruct.ReadWrite {
         public void set_root(InstanceInRepeatExpr _v) { _dirty = true; _root = _v; }
         public InstanceInRepeatExpr _parent() { return _parent; }
         public void set_parent(InstanceInRepeatExpr _v) { _dirty = true; _parent = _v; }
+        private long offset;
+        private long len;
+        private InstanceInRepeatExpr _root;
+        private InstanceInRepeatExpr _parent;
     }
-    private Long numChunks;
-    private boolean _shouldWriteNumChunks = false;
-    private boolean _enabledNumChunks = true;
     public Long numChunks() {
         if (_shouldWriteNumChunks)
             _writeNumChunks();
@@ -153,13 +150,16 @@ public class InstanceInRepeatExpr extends KaitaiStruct.ReadWrite {
         this._io.writeU4le(this.numChunks);
         this._io.seek(_pos);
     }
-    private List<Chunk> chunks;
-    private InstanceInRepeatExpr _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Chunk> chunks() { return chunks; }
     public void setChunks(List<Chunk> _v) { _dirty = true; chunks = _v; }
     public InstanceInRepeatExpr _root() { return _root; }
     public void set_root(InstanceInRepeatExpr _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Long numChunks;
+    private boolean _shouldWriteNumChunks = false;
+    private boolean _enabledNumChunks = true;
+    private List<Chunk> chunks;
+    private InstanceInRepeatExpr _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

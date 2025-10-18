@@ -59,7 +59,6 @@ public class DocstringsDocref extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private Boolean foo;
 
     /**
      * @see "Doc ref for instance, a plain one"
@@ -71,9 +70,6 @@ public class DocstringsDocref extends KaitaiStruct.ReadWrite {
         return this.foo;
     }
     public void _invalidateFoo() { this.foo = null; }
-    private Integer parseInst;
-    private boolean _shouldWriteParseInst = false;
-    private boolean _enabledParseInst = true;
 
     /**
      * @see "Now this is a really
@@ -104,11 +100,6 @@ public class DocstringsDocref extends KaitaiStruct.ReadWrite {
         this._io.writeU1(this.parseInst);
         this._io.seek(_pos);
     }
-    private int one;
-    private int two;
-    private int three;
-    private DocstringsDocref _root;
-    private KaitaiStruct.ReadWrite _parent;
 
     /**
      * @see "Plain text description of doc ref, page 42"
@@ -132,4 +123,13 @@ public class DocstringsDocref extends KaitaiStruct.ReadWrite {
     public void set_root(DocstringsDocref _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Boolean foo;
+    private Integer parseInst;
+    private boolean _shouldWriteParseInst = false;
+    private boolean _enabledParseInst = true;
+    private int one;
+    private int two;
+    private int three;
+    private DocstringsDocref _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

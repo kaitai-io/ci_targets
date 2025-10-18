@@ -226,7 +226,6 @@ public class NavParentSwitchCast extends KaitaiStruct.ReadWrite {
             public void _check() {
                 _dirty = false;
             }
-            private Integer flag;
             public Integer flag() {
                 if (this.flag != null)
                     return this.flag;
@@ -234,12 +233,13 @@ public class NavParentSwitchCast extends KaitaiStruct.ReadWrite {
                 return this.flag;
             }
             public void _invalidateFlag() { this.flag = null; }
-            private NavParentSwitchCast _root;
-            private KaitaiStruct.ReadWrite _parent;
             public NavParentSwitchCast _root() { return _root; }
             public void set_root(NavParentSwitchCast _v) { _dirty = true; _root = _v; }
             public KaitaiStruct.ReadWrite _parent() { return _parent; }
             public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+            private Integer flag;
+            private NavParentSwitchCast _root;
+            private KaitaiStruct.ReadWrite _parent;
         }
         public static class One extends KaitaiStruct.ReadWrite {
             public static One fromFile(String fileName) throws IOException {
@@ -284,15 +284,15 @@ public class NavParentSwitchCast extends KaitaiStruct.ReadWrite {
                     throw new ConsistencyError("branch", this, this.branch._parent());
                 _dirty = false;
             }
-            private Common branch;
-            private NavParentSwitchCast _root;
-            private NavParentSwitchCast.Foo _parent;
             public Common branch() { return branch; }
             public void setBranch(Common _v) { _dirty = true; branch = _v; }
             public NavParentSwitchCast _root() { return _root; }
             public void set_root(NavParentSwitchCast _v) { _dirty = true; _root = _v; }
             public NavParentSwitchCast.Foo _parent() { return _parent; }
             public void set_parent(NavParentSwitchCast.Foo _v) { _dirty = true; _parent = _v; }
+            private Common branch;
+            private NavParentSwitchCast _root;
+            private NavParentSwitchCast.Foo _parent;
         }
         public static class Zero extends KaitaiStruct.ReadWrite {
             public static Zero fromFile(String fileName) throws IOException {
@@ -337,22 +337,16 @@ public class NavParentSwitchCast extends KaitaiStruct.ReadWrite {
                     throw new ConsistencyError("branch", this, this.branch._parent());
                 _dirty = false;
             }
-            private Common branch;
-            private NavParentSwitchCast _root;
-            private NavParentSwitchCast.Foo _parent;
             public Common branch() { return branch; }
             public void setBranch(Common _v) { _dirty = true; branch = _v; }
             public NavParentSwitchCast _root() { return _root; }
             public void set_root(NavParentSwitchCast _v) { _dirty = true; _root = _v; }
             public NavParentSwitchCast.Foo _parent() { return _parent; }
             public void set_parent(NavParentSwitchCast.Foo _v) { _dirty = true; _parent = _v; }
+            private Common branch;
+            private NavParentSwitchCast _root;
+            private NavParentSwitchCast.Foo _parent;
         }
-        private int bufType;
-        private int flag;
-        private Object buf;
-        private NavParentSwitchCast _root;
-        private NavParentSwitchCast _parent;
-        private byte[] _raw_buf;
         public int bufType() { return bufType; }
         public void setBufType(int _v) { _dirty = true; bufType = _v; }
         public int flag() { return flag; }
@@ -365,14 +359,20 @@ public class NavParentSwitchCast extends KaitaiStruct.ReadWrite {
         public void set_parent(NavParentSwitchCast _v) { _dirty = true; _parent = _v; }
         public byte[] _raw_buf() { return _raw_buf; }
         public void set_raw_Buf(byte[] _v) { _dirty = true; _raw_buf = _v; }
+        private int bufType;
+        private int flag;
+        private Object buf;
+        private NavParentSwitchCast _root;
+        private NavParentSwitchCast _parent;
+        private byte[] _raw_buf;
     }
-    private Foo main;
-    private NavParentSwitchCast _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Foo main() { return main; }
     public void setMain(Foo _v) { _dirty = true; main = _v; }
     public NavParentSwitchCast _root() { return _root; }
     public void set_root(NavParentSwitchCast _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Foo main;
+    private NavParentSwitchCast _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

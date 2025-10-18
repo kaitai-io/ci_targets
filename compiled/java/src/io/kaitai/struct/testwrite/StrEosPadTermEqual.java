@@ -189,15 +189,15 @@ public class StrEosPadTermEqual extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private String value;
-        private StrEosPadTermEqual _root;
-        private StrEosPadTermEqual _parent;
         public String value() { return value; }
         public void setValue(String _v) { _dirty = true; value = _v; }
         public StrEosPadTermEqual _root() { return _root; }
         public void set_root(StrEosPadTermEqual _v) { _dirty = true; _root = _v; }
         public StrEosPadTermEqual _parent() { return _parent; }
         public void set_parent(StrEosPadTermEqual _v) { _dirty = true; _parent = _v; }
+        private String value;
+        private StrEosPadTermEqual _root;
+        private StrEosPadTermEqual _parent;
     }
     public static class S2Type extends KaitaiStruct.ReadWrite {
         public static S2Type fromFile(String fileName) throws IOException {
@@ -238,15 +238,15 @@ public class StrEosPadTermEqual extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private String value;
-        private StrEosPadTermEqual _root;
-        private StrEosPadTermEqual _parent;
         public String value() { return value; }
         public void setValue(String _v) { _dirty = true; value = _v; }
         public StrEosPadTermEqual _root() { return _root; }
         public void set_root(StrEosPadTermEqual _v) { _dirty = true; _root = _v; }
         public StrEosPadTermEqual _parent() { return _parent; }
         public void set_parent(StrEosPadTermEqual _v) { _dirty = true; _parent = _v; }
+        private String value;
+        private StrEosPadTermEqual _root;
+        private StrEosPadTermEqual _parent;
     }
     public static class S3Type extends KaitaiStruct.ReadWrite {
         public static S3Type fromFile(String fileName) throws IOException {
@@ -287,15 +287,15 @@ public class StrEosPadTermEqual extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private String value;
-        private StrEosPadTermEqual _root;
-        private StrEosPadTermEqual _parent;
         public String value() { return value; }
         public void setValue(String _v) { _dirty = true; value = _v; }
         public StrEosPadTermEqual _root() { return _root; }
         public void set_root(StrEosPadTermEqual _v) { _dirty = true; _root = _v; }
         public StrEosPadTermEqual _parent() { return _parent; }
         public void set_parent(StrEosPadTermEqual _v) { _dirty = true; _parent = _v; }
+        private String value;
+        private StrEosPadTermEqual _root;
+        private StrEosPadTermEqual _parent;
     }
     public static class S4Type extends KaitaiStruct.ReadWrite {
         public static S4Type fromFile(String fileName) throws IOException {
@@ -336,26 +336,16 @@ public class StrEosPadTermEqual extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private String value;
-        private StrEosPadTermEqual _root;
-        private StrEosPadTermEqual _parent;
         public String value() { return value; }
         public void setValue(String _v) { _dirty = true; value = _v; }
         public StrEosPadTermEqual _root() { return _root; }
         public void set_root(StrEosPadTermEqual _v) { _dirty = true; _root = _v; }
         public StrEosPadTermEqual _parent() { return _parent; }
         public void set_parent(StrEosPadTermEqual _v) { _dirty = true; _parent = _v; }
+        private String value;
+        private StrEosPadTermEqual _root;
+        private StrEosPadTermEqual _parent;
     }
-    private S1Type s1;
-    private S2Type s2;
-    private S3Type s3;
-    private S4Type s4;
-    private StrEosPadTermEqual _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_s1;
-    private byte[] _raw_s2;
-    private byte[] _raw_s3;
-    private byte[] _raw_s4;
     public S1Type s1() { return s1; }
     public void setS1(S1Type _v) { _dirty = true; s1 = _v; }
     public S2Type s2() { return s2; }
@@ -376,4 +366,14 @@ public class StrEosPadTermEqual extends KaitaiStruct.ReadWrite {
     public void set_raw_S3(byte[] _v) { _dirty = true; _raw_s3 = _v; }
     public byte[] _raw_s4() { return _raw_s4; }
     public void set_raw_S4(byte[] _v) { _dirty = true; _raw_s4 = _v; }
+    private S1Type s1;
+    private S2Type s2;
+    private S3Type s3;
+    private S4Type s4;
+    private StrEosPadTermEqual _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_s1;
+    private byte[] _raw_s2;
+    private byte[] _raw_s3;
+    private byte[] _raw_s4;
 }

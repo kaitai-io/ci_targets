@@ -37,30 +37,20 @@ private:
 
 public:
     ~enum_of_value_inst_t();
-
-private:
-    bool f_pet_3;
-    animal_t m_pet_3;
-
-public:
     animal_t pet_3();
-
-private:
-    bool f_pet_4;
-    animal_t m_pet_4;
-
-public:
     animal_t pet_4();
-
-private:
-    animal_t m_pet_1;
-    animal_t m_pet_2;
-    enum_of_value_inst_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     animal_t pet_1() const { return m_pet_1; }
     animal_t pet_2() const { return m_pet_2; }
     enum_of_value_inst_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_pet_3;
+    animal_t m_pet_3;
+    bool f_pet_4;
+    animal_t m_pet_4;
+    animal_t m_pet_1;
+    animal_t m_pet_2;
+    enum_of_value_inst_t* m__root;
+    kaitai::kstruct* m__parent;
 };

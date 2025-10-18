@@ -39,18 +39,18 @@ namespace Kaitai
             private void _read()
             {
             }
-            private EofExceptionSized m_root;
-            private EofExceptionSized m_parent;
             public EofExceptionSized M_Root { get { return m_root; } }
             public EofExceptionSized M_Parent { get { return m_parent; } }
+            private EofExceptionSized m_root;
+            private EofExceptionSized m_parent;
         }
-        private Foo _buf;
-        private EofExceptionSized m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_buf;
         public Foo Buf { get { return _buf; } }
         public EofExceptionSized M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawBuf { get { return __raw_buf; } }
+        private Foo _buf;
+        private EofExceptionSized m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_buf;
     }
 }

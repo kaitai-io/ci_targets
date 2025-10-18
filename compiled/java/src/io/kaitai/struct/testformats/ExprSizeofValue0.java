@@ -61,58 +61,58 @@ public class ExprSizeofValue0 extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int a;
-        private long b;
-        private byte[] c;
-        private ExprSizeofValue0 _root;
-        private ExprSizeofValue0 _parent;
         public int a() { return a; }
         public long b() { return b; }
         public byte[] c() { return c; }
         public ExprSizeofValue0 _root() { return _root; }
         public ExprSizeofValue0 _parent() { return _parent; }
+        private int a;
+        private long b;
+        private byte[] c;
+        private ExprSizeofValue0 _root;
+        private ExprSizeofValue0 _parent;
     }
-    private Integer selfSizeof;
     public Integer selfSizeof() {
         if (this.selfSizeof != null)
             return this.selfSizeof;
         this.selfSizeof = ((Number) (9)).intValue();
         return this.selfSizeof;
     }
-    private Integer sizeofBlock;
     public Integer sizeofBlock() {
         if (this.sizeofBlock != null)
             return this.sizeofBlock;
         this.sizeofBlock = ((Number) (7)).intValue();
         return this.sizeofBlock;
     }
-    private Integer sizeofBlockA;
     public Integer sizeofBlockA() {
         if (this.sizeofBlockA != null)
             return this.sizeofBlockA;
         this.sizeofBlockA = ((Number) (1)).intValue();
         return this.sizeofBlockA;
     }
-    private Integer sizeofBlockB;
     public Integer sizeofBlockB() {
         if (this.sizeofBlockB != null)
             return this.sizeofBlockB;
         this.sizeofBlockB = ((Number) (4)).intValue();
         return this.sizeofBlockB;
     }
-    private Integer sizeofBlockC;
     public Integer sizeofBlockC() {
         if (this.sizeofBlockC != null)
             return this.sizeofBlockC;
         this.sizeofBlockC = ((Number) (2)).intValue();
         return this.sizeofBlockC;
     }
-    private Block block1;
-    private int more;
-    private ExprSizeofValue0 _root;
-    private KaitaiStruct _parent;
     public Block block1() { return block1; }
     public int more() { return more; }
     public ExprSizeofValue0 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Integer selfSizeof;
+    private Integer sizeofBlock;
+    private Integer sizeofBlockA;
+    private Integer sizeofBlockB;
+    private Integer sizeofBlockC;
+    private Block block1;
+    private int more;
+    private ExprSizeofValue0 _root;
+    private KaitaiStruct _parent;
 }

@@ -68,14 +68,13 @@ public class PositionInSeq extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private long qtyNumbers;
-        private PositionInSeq _root;
-        private PositionInSeq _parent;
         public long qtyNumbers() { return qtyNumbers; }
         public PositionInSeq _root() { return _root; }
         public PositionInSeq _parent() { return _parent; }
+        private long qtyNumbers;
+        private PositionInSeq _root;
+        private PositionInSeq _parent;
     }
-    private HeaderObj header;
     public HeaderObj header() {
         if (this.header != null)
             return this.header;
@@ -85,10 +84,11 @@ public class PositionInSeq extends KaitaiStruct {
         this._io.seek(_pos);
         return this.header;
     }
-    private List<Integer> numbers;
-    private PositionInSeq _root;
-    private KaitaiStruct _parent;
     public List<Integer> numbers() { return numbers; }
     public PositionInSeq _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private HeaderObj header;
+    private List<Integer> numbers;
+    private PositionInSeq _root;
+    private KaitaiStruct _parent;
 }

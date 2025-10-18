@@ -74,8 +74,6 @@ namespace Kaitai
                 private void _read()
                 {
                 }
-                private bool f_flag;
-                private byte _flag;
                 public byte Flag
                 {
                     get
@@ -87,10 +85,12 @@ namespace Kaitai
                         return _flag;
                     }
                 }
-                private NavParentSwitchCast m_root;
-                private KaitaiStruct m_parent;
                 public NavParentSwitchCast M_Root { get { return m_root; } }
                 public KaitaiStruct M_Parent { get { return m_parent; } }
+                private bool f_flag;
+                private byte _flag;
+                private NavParentSwitchCast m_root;
+                private KaitaiStruct m_parent;
             }
             public partial class One : KaitaiStruct
             {
@@ -109,12 +109,12 @@ namespace Kaitai
                 {
                     _branch = new Common(m_io, this, m_root);
                 }
-                private Common _branch;
-                private NavParentSwitchCast m_root;
-                private NavParentSwitchCast.Foo m_parent;
                 public Common Branch { get { return _branch; } }
                 public NavParentSwitchCast M_Root { get { return m_root; } }
                 public NavParentSwitchCast.Foo M_Parent { get { return m_parent; } }
+                private Common _branch;
+                private NavParentSwitchCast m_root;
+                private NavParentSwitchCast.Foo m_parent;
             }
             public partial class Zero : KaitaiStruct
             {
@@ -133,31 +133,31 @@ namespace Kaitai
                 {
                     _branch = new Common(m_io, this, m_root);
                 }
-                private Common _branch;
-                private NavParentSwitchCast m_root;
-                private NavParentSwitchCast.Foo m_parent;
                 public Common Branch { get { return _branch; } }
                 public NavParentSwitchCast M_Root { get { return m_root; } }
                 public NavParentSwitchCast.Foo M_Parent { get { return m_parent; } }
+                private Common _branch;
+                private NavParentSwitchCast m_root;
+                private NavParentSwitchCast.Foo m_parent;
             }
-            private byte _bufType;
-            private byte _flag;
-            private object _buf;
-            private NavParentSwitchCast m_root;
-            private NavParentSwitchCast m_parent;
-            private byte[] __raw_buf;
             public byte BufType { get { return _bufType; } }
             public byte Flag { get { return _flag; } }
             public object Buf { get { return _buf; } }
             public NavParentSwitchCast M_Root { get { return m_root; } }
             public NavParentSwitchCast M_Parent { get { return m_parent; } }
             public byte[] M_RawBuf { get { return __raw_buf; } }
+            private byte _bufType;
+            private byte _flag;
+            private object _buf;
+            private NavParentSwitchCast m_root;
+            private NavParentSwitchCast m_parent;
+            private byte[] __raw_buf;
         }
-        private Foo _main;
-        private NavParentSwitchCast m_root;
-        private KaitaiStruct m_parent;
         public Foo Main { get { return _main; } }
         public NavParentSwitchCast M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Foo _main;
+        private NavParentSwitchCast m_root;
+        private KaitaiStruct m_parent;
     }
 }

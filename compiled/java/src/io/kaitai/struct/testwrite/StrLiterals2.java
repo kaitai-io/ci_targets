@@ -42,7 +42,6 @@ public class StrLiterals2 extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private String atSign;
     public String atSign() {
         if (this.atSign != null)
             return this.atSign;
@@ -50,7 +49,6 @@ public class StrLiterals2 extends KaitaiStruct.ReadWrite {
         return this.atSign;
     }
     public void _invalidateAtSign() { this.atSign = null; }
-    private String dollar1;
     public String dollar1() {
         if (this.dollar1 != null)
             return this.dollar1;
@@ -58,7 +56,6 @@ public class StrLiterals2 extends KaitaiStruct.ReadWrite {
         return this.dollar1;
     }
     public void _invalidateDollar1() { this.dollar1 = null; }
-    private String dollar2;
     public String dollar2() {
         if (this.dollar2 != null)
             return this.dollar2;
@@ -66,7 +63,6 @@ public class StrLiterals2 extends KaitaiStruct.ReadWrite {
         return this.dollar2;
     }
     public void _invalidateDollar2() { this.dollar2 = null; }
-    private String hash;
     public String hash() {
         if (this.hash != null)
             return this.hash;
@@ -74,10 +70,14 @@ public class StrLiterals2 extends KaitaiStruct.ReadWrite {
         return this.hash;
     }
     public void _invalidateHash() { this.hash = null; }
-    private StrLiterals2 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public StrLiterals2 _root() { return _root; }
     public void set_root(StrLiterals2 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private String atSign;
+    private String dollar1;
+    private String dollar2;
+    private String hash;
+    private StrLiterals2 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

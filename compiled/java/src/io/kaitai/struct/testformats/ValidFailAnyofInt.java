@@ -35,10 +35,10 @@ public class ValidFailAnyofInt extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private int foo;
-    private ValidFailAnyofInt _root;
-    private KaitaiStruct _parent;
     public int foo() { return foo; }
     public ValidFailAnyofInt _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private int foo;
+    private ValidFailAnyofInt _root;
+    private KaitaiStruct _parent;
 }

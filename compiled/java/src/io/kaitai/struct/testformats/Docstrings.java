@@ -79,12 +79,11 @@ public class Docstrings extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private Docstrings _root;
-        private KaitaiStruct _parent;
         public Docstrings _root() { return _root; }
         public KaitaiStruct _parent() { return _parent; }
+        private Docstrings _root;
+        private KaitaiStruct _parent;
     }
-    private Byte three;
 
     /**
      * And yet another one for value instance "three"
@@ -95,7 +94,6 @@ public class Docstrings extends KaitaiStruct {
         this.three = ((byte) 66);
         return this.three;
     }
-    private Integer two;
 
     /**
      * Another description for parse instance "two"
@@ -109,9 +107,6 @@ public class Docstrings extends KaitaiStruct {
         this._io.seek(_pos);
         return this.two;
     }
-    private int one;
-    private Docstrings _root;
-    private KaitaiStruct _parent;
 
     /**
      * A pretty verbose description for sequence attribute "one"
@@ -119,4 +114,9 @@ public class Docstrings extends KaitaiStruct {
     public int one() { return one; }
     public Docstrings _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Byte three;
+    private Integer two;
+    private int one;
+    private Docstrings _root;
+    private KaitaiStruct _parent;
 }

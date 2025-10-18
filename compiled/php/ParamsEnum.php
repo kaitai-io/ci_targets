@@ -12,10 +12,10 @@ namespace Kaitai\Struct\Tests {
             $this->_m_one = $this->_io->readU1();
             $this->_m_invokeWithParam = new \Kaitai\Struct\Tests\ParamsEnum\WithParam($this->one(), $this->_io, $this, $this->_root);
         }
-        protected $_m_one;
-        protected $_m_invokeWithParam;
         public function one() { return $this->_m_one; }
         public function invokeWithParam() { return $this->_m_invokeWithParam; }
+        protected $_m_one;
+        protected $_m_invokeWithParam;
     }
 }
 
@@ -29,15 +29,15 @@ namespace Kaitai\Struct\Tests\ParamsEnum {
 
         private function _read() {
         }
-        protected $_m_isCat;
         public function isCat() {
             if ($this->_m_isCat !== null)
                 return $this->_m_isCat;
             $this->_m_isCat = $this->enumeratedOne() == \Kaitai\Struct\Tests\ParamsEnum\Animal::CAT;
             return $this->_m_isCat;
         }
-        protected $_m_enumeratedOne;
         public function enumeratedOne() { return $this->_m_enumeratedOne; }
+        protected $_m_isCat;
+        protected $_m_enumeratedOne;
     }
 }
 

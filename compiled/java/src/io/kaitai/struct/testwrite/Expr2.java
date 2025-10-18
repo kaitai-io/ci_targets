@@ -148,9 +148,6 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private String char5;
-        private boolean _shouldWriteChar5 = false;
-        private boolean _enabledChar5 = true;
         public String char5() {
             if (_shouldWriteChar5)
                 _writeChar5();
@@ -174,7 +171,6 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
             this._io.writeBytes((this.char5).getBytes(Charset.forName("ASCII")));
             this._io.seek(_pos);
         }
-        private Integer lenMod;
         public Integer lenMod() {
             if (this.lenMod != null)
                 return this.lenMod;
@@ -182,9 +178,6 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
             return this.lenMod;
         }
         public void _invalidateLenMod() { this.lenMod = null; }
-        private Tuple tuple5;
-        private boolean _shouldWriteTuple5 = false;
-        private boolean _enabledTuple5 = true;
         public Tuple tuple5() {
             if (_shouldWriteTuple5)
                 _writeTuple5();
@@ -209,12 +202,6 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
             this.tuple5._write_Seq(this._io);
             this._io.seek(_pos);
         }
-        private int lenOrig;
-        private String str;
-        private Tuple rest;
-        private Expr2 _root;
-        private Expr2 _parent;
-        private byte[] _raw_rest;
         public int lenOrig() { return lenOrig; }
         public void setLenOrig(int _v) { _dirty = true; lenOrig = _v; }
         public String str() { return str; }
@@ -227,6 +214,19 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
         public void set_parent(Expr2 _v) { _dirty = true; _parent = _v; }
         public byte[] _raw_rest() { return _raw_rest; }
         public void set_raw_Rest(byte[] _v) { _dirty = true; _raw_rest = _v; }
+        private String char5;
+        private boolean _shouldWriteChar5 = false;
+        private boolean _enabledChar5 = true;
+        private Integer lenMod;
+        private Tuple tuple5;
+        private boolean _shouldWriteTuple5 = false;
+        private boolean _enabledTuple5 = true;
+        private int lenOrig;
+        private String str;
+        private Tuple rest;
+        private Expr2 _root;
+        private Expr2 _parent;
+        private byte[] _raw_rest;
     }
     public static class Tuple extends KaitaiStruct.ReadWrite {
         public static Tuple fromFile(String fileName) throws IOException {
@@ -269,7 +269,6 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private Integer avg;
         public Integer avg() {
             if (this.avg != null)
                 return this.avg;
@@ -277,11 +276,6 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
             return this.avg;
         }
         public void _invalidateAvg() { this.avg = null; }
-        private int byte0;
-        private int byte1;
-        private int byte2;
-        private Expr2 _root;
-        private Expr2.ModStr _parent;
         public int byte0() { return byte0; }
         public void setByte0(int _v) { _dirty = true; byte0 = _v; }
         public int byte1() { return byte1; }
@@ -292,8 +286,13 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
         public void set_root(Expr2 _v) { _dirty = true; _root = _v; }
         public Expr2.ModStr _parent() { return _parent; }
         public void set_parent(Expr2.ModStr _v) { _dirty = true; _parent = _v; }
+        private Integer avg;
+        private int byte0;
+        private int byte1;
+        private int byte2;
+        private Expr2 _root;
+        private Expr2.ModStr _parent;
     }
-    private Integer str1Avg;
     public Integer str1Avg() {
         if (this.str1Avg != null)
             return this.str1Avg;
@@ -301,7 +300,6 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
         return this.str1Avg;
     }
     public void _invalidateStr1Avg() { this.str1Avg = null; }
-    private Integer str1Byte1;
     public Integer str1Byte1() {
         if (this.str1Byte1 != null)
             return this.str1Byte1;
@@ -309,7 +307,6 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
         return this.str1Byte1;
     }
     public void _invalidateStr1Byte1() { this.str1Byte1 = null; }
-    private String str1Char5;
     public String str1Char5() {
         if (this.str1Char5 != null)
             return this.str1Char5;
@@ -317,7 +314,6 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
         return this.str1Char5;
     }
     public void _invalidateStr1Char5() { this.str1Char5 = null; }
-    private Integer str1Len;
     public Integer str1Len() {
         if (this.str1Len != null)
             return this.str1Len;
@@ -325,7 +321,6 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
         return this.str1Len;
     }
     public void _invalidateStr1Len() { this.str1Len = null; }
-    private Integer str1LenMod;
     public Integer str1LenMod() {
         if (this.str1LenMod != null)
             return this.str1LenMod;
@@ -333,7 +328,6 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
         return this.str1LenMod;
     }
     public void _invalidateStr1LenMod() { this.str1LenMod = null; }
-    private Tuple str1Tuple5;
     public Tuple str1Tuple5() {
         if (this.str1Tuple5 != null)
             return this.str1Tuple5;
@@ -341,7 +335,6 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
         return this.str1Tuple5;
     }
     public void _invalidateStr1Tuple5() { this.str1Tuple5 = null; }
-    private Tuple str2Tuple5;
     public Tuple str2Tuple5() {
         if (this.str2Tuple5 != null)
             return this.str2Tuple5;
@@ -349,10 +342,6 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
         return this.str2Tuple5;
     }
     public void _invalidateStr2Tuple5() { this.str2Tuple5 = null; }
-    private ModStr str1;
-    private ModStr str2;
-    private Expr2 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public ModStr str1() { return str1; }
     public void setStr1(ModStr _v) { _dirty = true; str1 = _v; }
     public ModStr str2() { return str2; }
@@ -361,4 +350,15 @@ public class Expr2 extends KaitaiStruct.ReadWrite {
     public void set_root(Expr2 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer str1Avg;
+    private Integer str1Byte1;
+    private String str1Char5;
+    private Integer str1Len;
+    private Integer str1LenMod;
+    private Tuple str1Tuple5;
+    private Tuple str2Tuple5;
+    private ModStr str1;
+    private ModStr str2;
+    private Expr2 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

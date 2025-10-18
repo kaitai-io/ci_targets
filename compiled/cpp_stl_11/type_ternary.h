@@ -38,40 +38,37 @@ public:
 
     public:
         ~dummy_t();
+        uint8_t value() const { return m_value; }
+        type_ternary_t* _root() const { return m__root; }
+        type_ternary_t* _parent() const { return m__parent; }
 
     private:
         uint8_t m_value;
         type_ternary_t* m__root;
         type_ternary_t* m__parent;
-
-    public:
-        uint8_t value() const { return m_value; }
-        type_ternary_t* _root() const { return m__root; }
-        type_ternary_t* _parent() const { return m__parent; }
     };
+
+public:
+    dummy_t* dif();
+    uint8_t dif_value();
+    bool is_hack();
+    dummy_t* dif_wo_hack() const { return m_dif_wo_hack.get(); }
+    dummy_t* dif_with_hack() const { return m_dif_with_hack.get(); }
+    type_ternary_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
+    std::string _raw_dif_wo_hack() const { return m__raw_dif_wo_hack; }
+    kaitai::kstream* _io__raw_dif_wo_hack() const { return m__io__raw_dif_wo_hack.get(); }
+    std::string _raw_dif_with_hack() const { return m__raw_dif_with_hack; }
+    kaitai::kstream* _io__raw_dif_with_hack() const { return m__io__raw_dif_with_hack.get(); }
+    std::string _raw__raw_dif_with_hack() const { return m__raw__raw_dif_with_hack; }
 
 private:
     bool f_dif;
     dummy_t* m_dif;
-
-public:
-    dummy_t* dif();
-
-private:
     bool f_dif_value;
     uint8_t m_dif_value;
-
-public:
-    uint8_t dif_value();
-
-private:
     bool f_is_hack;
     bool m_is_hack;
-
-public:
-    bool is_hack();
-
-private:
     std::unique_ptr<dummy_t> m_dif_wo_hack;
     bool n_dif_wo_hack;
 
@@ -93,15 +90,4 @@ private:
     std::string m__raw_dif_with_hack;
     std::unique_ptr<kaitai::kstream> m__io__raw_dif_with_hack;
     std::string m__raw__raw_dif_with_hack;
-
-public:
-    dummy_t* dif_wo_hack() const { return m_dif_wo_hack.get(); }
-    dummy_t* dif_with_hack() const { return m_dif_with_hack.get(); }
-    type_ternary_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
-    std::string _raw_dif_wo_hack() const { return m__raw_dif_wo_hack; }
-    kaitai::kstream* _io__raw_dif_wo_hack() const { return m__io__raw_dif_wo_hack.get(); }
-    std::string _raw_dif_with_hack() const { return m__raw_dif_with_hack; }
-    kaitai::kstream* _io__raw_dif_with_hack() const { return m__io__raw_dif_with_hack.get(); }
-    std::string _raw__raw_dif_with_hack() const { return m__raw__raw_dif_with_hack; }
 };

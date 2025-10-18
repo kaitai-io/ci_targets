@@ -11,7 +11,6 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_code = $this->_io->readU1();
         }
-        protected $_m_header;
         public function header() {
             if ($this->_m_header !== null)
                 return $this->_m_header;
@@ -21,14 +20,15 @@ namespace Kaitai\Struct\Tests {
             $this->_io->seek($_pos);
             return $this->_m_header;
         }
-        protected $_m_headerCasted;
         public function headerCasted() {
             if ($this->_m_headerCasted !== null)
                 return $this->_m_headerCasted;
             $this->_m_headerCasted = $this->header();
             return $this->_m_headerCasted;
         }
-        protected $_m_code;
         public function code() { return $this->_m_code; }
+        protected $_m_header;
+        protected $_m_headerCasted;
+        protected $_m_code;
     }
 }

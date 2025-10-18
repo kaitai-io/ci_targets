@@ -39,15 +39,13 @@ namespace Kaitai
             {
                 _entry = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true));
             }
-            private string _entry;
-            private PositionAbs m_root;
-            private PositionAbs m_parent;
             public string Entry { get { return _entry; } }
             public PositionAbs M_Root { get { return m_root; } }
             public PositionAbs M_Parent { get { return m_parent; } }
+            private string _entry;
+            private PositionAbs m_root;
+            private PositionAbs m_parent;
         }
-        private bool f_index;
-        private IndexObj _index;
         public IndexObj Index
         {
             get
@@ -62,11 +60,13 @@ namespace Kaitai
                 return _index;
             }
         }
-        private uint _indexOffset;
-        private PositionAbs m_root;
-        private KaitaiStruct m_parent;
         public uint IndexOffset { get { return _indexOffset; } }
         public PositionAbs M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_index;
+        private IndexObj _index;
+        private uint _indexOffset;
+        private PositionAbs m_root;
+        private KaitaiStruct m_parent;
     }
 }

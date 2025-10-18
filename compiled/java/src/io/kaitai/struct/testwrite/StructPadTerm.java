@@ -211,30 +211,16 @@ public class StructPadTerm extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private byte[] value;
-        private StructPadTerm _root;
-        private StructPadTerm _parent;
         public byte[] value() { return value; }
         public void setValue(byte[] _v) { _dirty = true; value = _v; }
         public StructPadTerm _root() { return _root; }
         public void set_root(StructPadTerm _v) { _dirty = true; _root = _v; }
         public StructPadTerm _parent() { return _parent; }
         public void set_parent(StructPadTerm _v) { _dirty = true; _parent = _v; }
+        private byte[] value;
+        private StructPadTerm _root;
+        private StructPadTerm _parent;
     }
-    private BytesWrapper strPad;
-    private BytesWrapper strTerm;
-    private BytesWrapper strTermAndPad;
-    private BytesWrapper strTermInclude;
-    private StructPadTerm _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_strPad;
-    private int strPad_InnerSize;
-    private byte[] _raw_strTerm;
-    private int strTerm_InnerSize;
-    private byte[] _raw_strTermAndPad;
-    private int strTermAndPad_InnerSize;
-    private byte[] _raw_strTermInclude;
-    private int strTermInclude_InnerSize;
     public BytesWrapper strPad() { return strPad; }
     public void setStrPad(BytesWrapper _v) { _dirty = true; strPad = _v; }
     public BytesWrapper strTerm() { return strTerm; }
@@ -263,4 +249,18 @@ public class StructPadTerm extends KaitaiStruct.ReadWrite {
     public void set_raw_StrTermInclude(byte[] _v) { _dirty = true; _raw_strTermInclude = _v; }
     public int strTermInclude_InnerSize() { return strTermInclude_InnerSize; }
     public void setStrTermInclude_InnerSize(int _v) { _dirty = true; strTermInclude_InnerSize = _v; }
+    private BytesWrapper strPad;
+    private BytesWrapper strTerm;
+    private BytesWrapper strTermAndPad;
+    private BytesWrapper strTermInclude;
+    private StructPadTerm _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_strPad;
+    private int strPad_InnerSize;
+    private byte[] _raw_strTerm;
+    private int strTerm_InnerSize;
+    private byte[] _raw_strTermAndPad;
+    private int strTermAndPad_InnerSize;
+    private byte[] _raw_strTermInclude;
+    private int strTermInclude_InnerSize;
 }

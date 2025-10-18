@@ -39,10 +39,10 @@ public class RepeatNBytesPadTerm extends KaitaiStruct {
         for (int i = 0; i < this.records.size(); i++) {
         }
     }
-    private List<byte[]> records;
-    private RepeatNBytesPadTerm _root;
-    private KaitaiStruct _parent;
     public List<byte[]> records() { return records; }
     public RepeatNBytesPadTerm _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<byte[]> records;
+    private RepeatNBytesPadTerm _root;
+    private KaitaiStruct _parent;
 }

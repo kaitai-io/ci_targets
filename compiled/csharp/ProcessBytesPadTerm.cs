@@ -28,16 +28,6 @@ namespace Kaitai
             __raw_strTermInclude = KaitaiStream.BytesTerminate(m_io.ReadBytes(20), 64, true);
             _strTermInclude = m_io.ProcessXor(__raw_strTermInclude, 21);
         }
-        private byte[] _strPad;
-        private byte[] _strTerm;
-        private byte[] _strTermAndPad;
-        private byte[] _strTermInclude;
-        private ProcessBytesPadTerm m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_strPad;
-        private byte[] __raw_strTerm;
-        private byte[] __raw_strTermAndPad;
-        private byte[] __raw_strTermInclude;
         public byte[] StrPad { get { return _strPad; } }
         public byte[] StrTerm { get { return _strTerm; } }
         public byte[] StrTermAndPad { get { return _strTermAndPad; } }
@@ -48,5 +38,15 @@ namespace Kaitai
         public byte[] M_RawStrTerm { get { return __raw_strTerm; } }
         public byte[] M_RawStrTermAndPad { get { return __raw_strTermAndPad; } }
         public byte[] M_RawStrTermInclude { get { return __raw_strTermInclude; } }
+        private byte[] _strPad;
+        private byte[] _strTerm;
+        private byte[] _strTermAndPad;
+        private byte[] _strTermInclude;
+        private ProcessBytesPadTerm m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_strPad;
+        private byte[] __raw_strTerm;
+        private byte[] __raw_strTermAndPad;
+        private byte[] __raw_strTermInclude;
     }
 }

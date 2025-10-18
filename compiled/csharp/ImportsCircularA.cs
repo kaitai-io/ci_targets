@@ -22,13 +22,13 @@ namespace Kaitai
             _code = m_io.ReadU1();
             _two = new ImportsCircularB(m_io);
         }
-        private byte _code;
-        private ImportsCircularB _two;
-        private ImportsCircularA m_root;
-        private KaitaiStruct m_parent;
         public byte Code { get { return _code; } }
         public ImportsCircularB Two { get { return _two; } }
         public ImportsCircularA M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte _code;
+        private ImportsCircularB _two;
+        private ImportsCircularA m_root;
+        private KaitaiStruct m_parent;
     }
 }

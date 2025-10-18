@@ -60,12 +60,12 @@ public class ParamsPassStruct extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int foo;
-        private ParamsPassStruct _root;
-        private ParamsPassStruct _parent;
         public int foo() { return foo; }
         public ParamsPassStruct _root() { return _root; }
         public ParamsPassStruct _parent() { return _parent; }
+        private int foo;
+        private ParamsPassStruct _root;
+        private ParamsPassStruct _parent;
     }
     public static class StructType extends KaitaiStruct {
 
@@ -114,30 +114,30 @@ public class ParamsPassStruct extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private int qux;
-            private KaitaiStruct foo;
-            private ParamsPassStruct _root;
-            private ParamsPassStruct.StructType _parent;
             public int qux() { return qux; }
             public KaitaiStruct foo() { return foo; }
             public ParamsPassStruct _root() { return _root; }
             public ParamsPassStruct.StructType _parent() { return _parent; }
+            private int qux;
+            private KaitaiStruct foo;
+            private ParamsPassStruct _root;
+            private ParamsPassStruct.StructType _parent;
         }
-        private Baz bar;
-        private KaitaiStruct foo;
-        private ParamsPassStruct _root;
-        private ParamsPassStruct _parent;
         public Baz bar() { return bar; }
         public KaitaiStruct foo() { return foo; }
         public ParamsPassStruct _root() { return _root; }
         public ParamsPassStruct _parent() { return _parent; }
+        private Baz bar;
+        private KaitaiStruct foo;
+        private ParamsPassStruct _root;
+        private ParamsPassStruct _parent;
     }
-    private Block first;
-    private StructType one;
-    private ParamsPassStruct _root;
-    private KaitaiStruct _parent;
     public Block first() { return first; }
     public StructType one() { return one; }
     public ParamsPassStruct _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Block first;
+    private StructType one;
+    private ParamsPassStruct _root;
+    private KaitaiStruct _parent;
 }

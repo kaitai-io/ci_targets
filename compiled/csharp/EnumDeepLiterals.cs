@@ -70,18 +70,16 @@ namespace Kaitai
                 private void _read()
                 {
                 }
-                private EnumDeepLiterals m_root;
-                private KaitaiStruct m_parent;
                 public EnumDeepLiterals M_Root { get { return m_root; } }
                 public KaitaiStruct M_Parent { get { return m_parent; } }
+                private EnumDeepLiterals m_root;
+                private KaitaiStruct m_parent;
             }
-            private EnumDeepLiterals m_root;
-            private KaitaiStruct m_parent;
             public EnumDeepLiterals M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
+            private EnumDeepLiterals m_root;
+            private KaitaiStruct m_parent;
         }
-        private bool f_isPet1Ok;
-        private bool _isPet1Ok;
         public bool IsPet1Ok
         {
             get
@@ -93,8 +91,6 @@ namespace Kaitai
                 return _isPet1Ok;
             }
         }
-        private bool f_isPet2Ok;
-        private bool _isPet2Ok;
         public bool IsPet2Ok
         {
             get
@@ -106,13 +102,17 @@ namespace Kaitai
                 return _isPet2Ok;
             }
         }
-        private Container1.Animal _pet1;
-        private Container1.Container2.Animal _pet2;
-        private EnumDeepLiterals m_root;
-        private KaitaiStruct m_parent;
         public Container1.Animal Pet1 { get { return _pet1; } }
         public Container1.Container2.Animal Pet2 { get { return _pet2; } }
         public EnumDeepLiterals M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_isPet1Ok;
+        private bool _isPet1Ok;
+        private bool f_isPet2Ok;
+        private bool _isPet2Ok;
+        private Container1.Animal _pet1;
+        private Container1.Container2.Animal _pet2;
+        private EnumDeepLiterals m_root;
+        private KaitaiStruct m_parent;
     }
 }

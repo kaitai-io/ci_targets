@@ -63,12 +63,12 @@ public class NavParent extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private String filename;
-        private NavParent _root;
-        private NavParent.IndexObj _parent;
         public String filename() { return filename; }
         public NavParent _root() { return _root; }
         public NavParent.IndexObj _parent() { return _parent; }
+        private String filename;
+        private NavParent _root;
+        private NavParent.IndexObj _parent;
     }
     public static class HeaderObj extends KaitaiStruct {
         public static HeaderObj fromFile(String fileName) throws IOException {
@@ -96,14 +96,14 @@ public class NavParent extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private long qtyEntries;
-        private long filenameLen;
-        private NavParent _root;
-        private NavParent _parent;
         public long qtyEntries() { return qtyEntries; }
         public long filenameLen() { return filenameLen; }
         public NavParent _root() { return _root; }
         public NavParent _parent() { return _parent; }
+        private long qtyEntries;
+        private long filenameLen;
+        private NavParent _root;
+        private NavParent _parent;
     }
     public static class IndexObj extends KaitaiStruct {
         public static IndexObj fromFile(String fileName) throws IOException {
@@ -137,21 +137,21 @@ public class NavParent extends KaitaiStruct {
                 this.entries.get(((Number) (i)).intValue())._fetchInstances();
             }
         }
-        private byte[] magic;
-        private List<Entry> entries;
-        private NavParent _root;
-        private NavParent _parent;
         public byte[] magic() { return magic; }
         public List<Entry> entries() { return entries; }
         public NavParent _root() { return _root; }
         public NavParent _parent() { return _parent; }
+        private byte[] magic;
+        private List<Entry> entries;
+        private NavParent _root;
+        private NavParent _parent;
     }
-    private HeaderObj header;
-    private IndexObj index;
-    private NavParent _root;
-    private KaitaiStruct _parent;
     public HeaderObj header() { return header; }
     public IndexObj index() { return index; }
     public NavParent _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private HeaderObj header;
+    private IndexObj index;
+    private NavParent _root;
+    private KaitaiStruct _parent;
 }

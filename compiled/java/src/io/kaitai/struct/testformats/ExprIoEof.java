@@ -67,28 +67,28 @@ public class ExprIoEof extends KaitaiStruct {
             if (!(_io().isEof())) {
             }
         }
-        private Boolean reflectEof;
         public Boolean reflectEof() {
             if (this.reflectEof != null)
                 return this.reflectEof;
             this.reflectEof = _io().isEof();
             return this.reflectEof;
         }
-        private long one;
-        private Long two;
-        private ExprIoEof _root;
-        private ExprIoEof _parent;
         public long one() { return one; }
         public Long two() { return two; }
         public ExprIoEof _root() { return _root; }
         public ExprIoEof _parent() { return _parent; }
+        private Boolean reflectEof;
+        private long one;
+        private Long two;
+        private ExprIoEof _root;
+        private ExprIoEof _parent;
     }
-    private OneOrTwo substream1;
-    private OneOrTwo substream2;
-    private ExprIoEof _root;
-    private KaitaiStruct _parent;
     public OneOrTwo substream1() { return substream1; }
     public OneOrTwo substream2() { return substream2; }
     public ExprIoEof _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private OneOrTwo substream1;
+    private OneOrTwo substream2;
+    private ExprIoEof _root;
+    private KaitaiStruct _parent;
 }

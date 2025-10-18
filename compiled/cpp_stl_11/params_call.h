@@ -39,18 +39,16 @@ public:
 
     public:
         ~my_str1_t();
+        std::string body() const { return m_body; }
+        uint32_t len() const { return m_len; }
+        params_call_t* _root() const { return m__root; }
+        params_call_t* _parent() const { return m__parent; }
 
     private:
         std::string m_body;
         uint32_t m_len;
         params_call_t* m__root;
         params_call_t* m__parent;
-
-    public:
-        std::string body() const { return m_body; }
-        uint32_t len() const { return m_len; }
-        params_call_t* _root() const { return m__root; }
-        params_call_t* _parent() const { return m__parent; }
     };
 
     class my_str2_t : public kaitai::kstruct {
@@ -65,6 +63,12 @@ public:
 
     public:
         ~my_str2_t();
+        std::string body() const { return m_body; }
+        uint8_t trailer() const { return m_trailer; }
+        uint32_t len() const { return m_len; }
+        bool has_trailer() const { return m_has_trailer; }
+        params_call_t* _root() const { return m__root; }
+        params_call_t* _parent() const { return m__parent; }
 
     private:
         std::string m_body;
@@ -79,25 +83,17 @@ public:
         bool m_has_trailer;
         params_call_t* m__root;
         params_call_t* m__parent;
-
-    public:
-        std::string body() const { return m_body; }
-        uint8_t trailer() const { return m_trailer; }
-        uint32_t len() const { return m_len; }
-        bool has_trailer() const { return m_has_trailer; }
-        params_call_t* _root() const { return m__root; }
-        params_call_t* _parent() const { return m__parent; }
     };
-
-private:
-    std::unique_ptr<my_str1_t> m_buf1;
-    std::unique_ptr<my_str2_t> m_buf2;
-    params_call_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     my_str1_t* buf1() const { return m_buf1.get(); }
     my_str2_t* buf2() const { return m_buf2.get(); }
     params_call_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    std::unique_ptr<my_str1_t> m_buf1;
+    std::unique_ptr<my_str2_t> m_buf2;
+    params_call_t* m__root;
+    kaitai::kstruct* m__parent;
 };

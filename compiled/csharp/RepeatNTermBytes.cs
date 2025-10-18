@@ -35,15 +35,15 @@ namespace Kaitai
                 _records3.Add(m_io.ReadBytesTerm(85, false, false, true));
             }
         }
-        private List<byte[]> _records1;
-        private List<byte[]> _records2;
-        private List<byte[]> _records3;
-        private RepeatNTermBytes m_root;
-        private KaitaiStruct m_parent;
         public List<byte[]> Records1 { get { return _records1; } }
         public List<byte[]> Records2 { get { return _records2; } }
         public List<byte[]> Records3 { get { return _records3; } }
         public RepeatNTermBytes M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<byte[]> _records1;
+        private List<byte[]> _records2;
+        private List<byte[]> _records3;
+        private RepeatNTermBytes m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -14,7 +14,6 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_next = new \Kaitai\Struct\Tests\NavParentRecursive($this->_io, $this, $this->_root);
             }
         }
-        protected $_m_parentValue;
         public function parentValue() {
             if ($this->_m_parentValue !== null)
                 return $this->_m_parentValue;
@@ -23,9 +22,10 @@ namespace Kaitai\Struct\Tests {
             }
             return $this->_m_parentValue;
         }
-        protected $_m_value;
-        protected $_m_next;
         public function value() { return $this->_m_value; }
         public function next() { return $this->_m_next; }
+        protected $_m_parentValue;
+        protected $_m_value;
+        protected $_m_next;
     }
 }

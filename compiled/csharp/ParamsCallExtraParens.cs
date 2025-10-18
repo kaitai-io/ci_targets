@@ -34,20 +34,20 @@ namespace Kaitai
             {
                 _body = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(Len));
             }
-            private string _body;
-            private uint _len;
-            private ParamsCallExtraParens m_root;
-            private ParamsCallExtraParens m_parent;
             public string Body { get { return _body; } }
             public uint Len { get { return _len; } }
             public ParamsCallExtraParens M_Root { get { return m_root; } }
             public ParamsCallExtraParens M_Parent { get { return m_parent; } }
+            private string _body;
+            private uint _len;
+            private ParamsCallExtraParens m_root;
+            private ParamsCallExtraParens m_parent;
         }
-        private MyStr1 _buf1;
-        private ParamsCallExtraParens m_root;
-        private KaitaiStruct m_parent;
         public MyStr1 Buf1 { get { return _buf1; } }
         public ParamsCallExtraParens M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private MyStr1 _buf1;
+        private ParamsCallExtraParens m_root;
+        private KaitaiStruct m_parent;
     }
 }

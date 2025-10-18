@@ -21,11 +21,11 @@ namespace Kaitai
         {
             _one = m_io.ReadU1();
         }
-        private byte _one;
-        private HelloWorld m_root;
-        private KaitaiStruct m_parent;
         public byte One { get { return _one; } }
         public HelloWorld M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte _one;
+        private HelloWorld m_root;
+        private KaitaiStruct m_parent;
     }
 }

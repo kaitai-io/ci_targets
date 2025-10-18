@@ -165,15 +165,15 @@ public class TermStruct4 extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private byte[] value;
-        private TermStruct4 _root;
-        private KaitaiStruct.ReadWrite _parent;
         public byte[] value() { return value; }
         public void setValue(byte[] _v) { _dirty = true; value = _v; }
         public TermStruct4 _root() { return _root; }
         public void set_root(TermStruct4 _v) { _dirty = true; _root = _v; }
         public KaitaiStruct.ReadWrite _parent() { return _parent; }
         public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+        private byte[] value;
+        private TermStruct4 _root;
+        private KaitaiStruct.ReadWrite _parent;
     }
     public static class S1Type extends KaitaiStruct.ReadWrite {
         public static S1Type fromFile(String fileName) throws IOException {
@@ -243,11 +243,6 @@ public class TermStruct4 extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("value", this, this.value._parent());
             _dirty = false;
         }
-        private BytesWrapper value;
-        private TermStruct4 _root;
-        private TermStruct4 _parent;
-        private byte[] _raw_value;
-        private int value_OuterSize;
         public BytesWrapper value() { return value; }
         public void setValue(BytesWrapper _v) { _dirty = true; value = _v; }
         public TermStruct4 _root() { return _root; }
@@ -258,6 +253,11 @@ public class TermStruct4 extends KaitaiStruct.ReadWrite {
         public void set_raw_Value(byte[] _v) { _dirty = true; _raw_value = _v; }
         public int value_OuterSize() { return value_OuterSize; }
         public void setValue_OuterSize(int _v) { _dirty = true; value_OuterSize = _v; }
+        private BytesWrapper value;
+        private TermStruct4 _root;
+        private TermStruct4 _parent;
+        private byte[] _raw_value;
+        private int value_OuterSize;
     }
     public static class S2Type extends KaitaiStruct.ReadWrite {
         public static S2Type fromFile(String fileName) throws IOException {
@@ -326,11 +326,6 @@ public class TermStruct4 extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("value", this, this.value._parent());
             _dirty = false;
         }
-        private BytesWrapper value;
-        private TermStruct4 _root;
-        private TermStruct4 _parent;
-        private byte[] _raw_value;
-        private int value_OuterSize;
         public BytesWrapper value() { return value; }
         public void setValue(BytesWrapper _v) { _dirty = true; value = _v; }
         public TermStruct4 _root() { return _root; }
@@ -341,6 +336,11 @@ public class TermStruct4 extends KaitaiStruct.ReadWrite {
         public void set_raw_Value(byte[] _v) { _dirty = true; _raw_value = _v; }
         public int value_OuterSize() { return value_OuterSize; }
         public void setValue_OuterSize(int _v) { _dirty = true; value_OuterSize = _v; }
+        private BytesWrapper value;
+        private TermStruct4 _root;
+        private TermStruct4 _parent;
+        private byte[] _raw_value;
+        private int value_OuterSize;
     }
     public static class S3Type extends KaitaiStruct.ReadWrite {
         public static S3Type fromFile(String fileName) throws IOException {
@@ -408,11 +408,6 @@ public class TermStruct4 extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("value", this, this.value._parent());
             _dirty = false;
         }
-        private BytesWrapper value;
-        private TermStruct4 _root;
-        private TermStruct4 _parent;
-        private byte[] _raw_value;
-        private int value_OuterSize;
         public BytesWrapper value() { return value; }
         public void setValue(BytesWrapper _v) { _dirty = true; value = _v; }
         public TermStruct4 _root() { return _root; }
@@ -423,17 +418,12 @@ public class TermStruct4 extends KaitaiStruct.ReadWrite {
         public void set_raw_Value(byte[] _v) { _dirty = true; _raw_value = _v; }
         public int value_OuterSize() { return value_OuterSize; }
         public void setValue_OuterSize(int _v) { _dirty = true; value_OuterSize = _v; }
+        private BytesWrapper value;
+        private TermStruct4 _root;
+        private TermStruct4 _parent;
+        private byte[] _raw_value;
+        private int value_OuterSize;
     }
-    private S1Type s1;
-    private int skipTerm1;
-    private S2Type s2;
-    private int skipTerm2;
-    private S3Type s3;
-    private TermStruct4 _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_s1;
-    private byte[] _raw_s2;
-    private byte[] _raw_s3;
     public S1Type s1() { return s1; }
     public void setS1(S1Type _v) { _dirty = true; s1 = _v; }
     public int skipTerm1() { return skipTerm1; }
@@ -454,4 +444,14 @@ public class TermStruct4 extends KaitaiStruct.ReadWrite {
     public void set_raw_S2(byte[] _v) { _dirty = true; _raw_s2 = _v; }
     public byte[] _raw_s3() { return _raw_s3; }
     public void set_raw_S3(byte[] _v) { _dirty = true; _raw_s3 = _v; }
+    private S1Type s1;
+    private int skipTerm1;
+    private S2Type s2;
+    private int skipTerm2;
+    private S3Type s3;
+    private TermStruct4 _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_s1;
+    private byte[] _raw_s2;
+    private byte[] _raw_s3;
 }

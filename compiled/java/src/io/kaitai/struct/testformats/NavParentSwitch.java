@@ -71,14 +71,14 @@ public class NavParentSwitch extends KaitaiStruct {
         public void _fetchInstances() {
             this.subelement._fetchInstances();
         }
-        private int foo;
-        private Subelement1 subelement;
-        private NavParentSwitch _root;
-        private NavParentSwitch _parent;
         public int foo() { return foo; }
         public Subelement1 subelement() { return subelement; }
         public NavParentSwitch _root() { return _root; }
         public NavParentSwitch _parent() { return _parent; }
+        private int foo;
+        private Subelement1 subelement;
+        private NavParentSwitch _root;
+        private NavParentSwitch _parent;
     }
     public static class Subelement1 extends KaitaiStruct {
         public static Subelement1 fromFile(String fileName) throws IOException {
@@ -109,19 +109,19 @@ public class NavParentSwitch extends KaitaiStruct {
             if (_parent().foo() == 66) {
             }
         }
-        private Integer bar;
-        private NavParentSwitch _root;
-        private NavParentSwitch.Element1 _parent;
         public Integer bar() { return bar; }
         public NavParentSwitch _root() { return _root; }
         public NavParentSwitch.Element1 _parent() { return _parent; }
+        private Integer bar;
+        private NavParentSwitch _root;
+        private NavParentSwitch.Element1 _parent;
     }
-    private int category;
-    private Element1 content;
-    private NavParentSwitch _root;
-    private KaitaiStruct _parent;
     public int category() { return category; }
     public Element1 content() { return content; }
     public NavParentSwitch _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private int category;
+    private Element1 content;
+    private NavParentSwitch _root;
+    private KaitaiStruct _parent;
 }

@@ -107,19 +107,16 @@ public class PositionInSeq extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private long qtyNumbers;
-        private PositionInSeq _root;
-        private PositionInSeq _parent;
         public long qtyNumbers() { return qtyNumbers; }
         public void setQtyNumbers(long _v) { _dirty = true; qtyNumbers = _v; }
         public PositionInSeq _root() { return _root; }
         public void set_root(PositionInSeq _v) { _dirty = true; _root = _v; }
         public PositionInSeq _parent() { return _parent; }
         public void set_parent(PositionInSeq _v) { _dirty = true; _parent = _v; }
+        private long qtyNumbers;
+        private PositionInSeq _root;
+        private PositionInSeq _parent;
     }
-    private HeaderObj header;
-    private boolean _shouldWriteHeader = false;
-    private boolean _enabledHeader = true;
     public HeaderObj header() {
         if (_shouldWriteHeader)
             _writeHeader();
@@ -144,13 +141,16 @@ public class PositionInSeq extends KaitaiStruct.ReadWrite {
         this.header._write_Seq(this._io);
         this._io.seek(_pos);
     }
-    private List<Integer> numbers;
-    private PositionInSeq _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Integer> numbers() { return numbers; }
     public void setNumbers(List<Integer> _v) { _dirty = true; numbers = _v; }
     public PositionInSeq _root() { return _root; }
     public void set_root(PositionInSeq _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private HeaderObj header;
+    private boolean _shouldWriteHeader = false;
+    private boolean _enabledHeader = true;
+    private List<Integer> numbers;
+    private PositionInSeq _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

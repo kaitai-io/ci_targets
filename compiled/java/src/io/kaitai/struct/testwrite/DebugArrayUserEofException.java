@@ -154,10 +154,6 @@ public class DebugArrayUserEofException extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int meow;
-        private int chirp;
-        private DebugArrayUserEofException _root;
-        private DebugArrayUserEofException _parent;
         public int meow() { return meow; }
         public void setMeow(int _v) { _dirty = true; meow = _v; }
         public int chirp() { return chirp; }
@@ -166,11 +162,11 @@ public class DebugArrayUserEofException extends KaitaiStruct.ReadWrite {
         public void set_root(DebugArrayUserEofException _v) { _dirty = true; _root = _v; }
         public DebugArrayUserEofException _parent() { return _parent; }
         public void set_parent(DebugArrayUserEofException _v) { _dirty = true; _parent = _v; }
+        private int meow;
+        private int chirp;
+        private DebugArrayUserEofException _root;
+        private DebugArrayUserEofException _parent;
     }
-    private Cat oneCat;
-    private List<Cat> arrayOfCats;
-    private DebugArrayUserEofException _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Cat oneCat() { return oneCat; }
     public void setOneCat(Cat _v) { _dirty = true; oneCat = _v; }
     public List<Cat> arrayOfCats() { return arrayOfCats; }
@@ -179,4 +175,8 @@ public class DebugArrayUserEofException extends KaitaiStruct.ReadWrite {
     public void set_root(DebugArrayUserEofException _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Cat oneCat;
+    private List<Cat> arrayOfCats;
+    private DebugArrayUserEofException _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

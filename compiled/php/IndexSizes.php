@@ -21,11 +21,11 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_bufs[] = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->sizes()[$i]), "ASCII");
             }
         }
-        protected $_m_qty;
-        protected $_m_sizes;
-        protected $_m_bufs;
         public function qty() { return $this->_m_qty; }
         public function sizes() { return $this->_m_sizes; }
         public function bufs() { return $this->_m_bufs; }
+        protected $_m_qty;
+        protected $_m_sizes;
+        protected $_m_bufs;
     }
 }

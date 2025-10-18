@@ -32,11 +32,11 @@ namespace Kaitai
                 }
             }
         }
-        private List<sbyte> _foo;
-        private ValidFailRepeatMinInt m_root;
-        private KaitaiStruct m_parent;
         public List<sbyte> Foo { get { return _foo; } }
         public ValidFailRepeatMinInt M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<sbyte> _foo;
+        private ValidFailRepeatMinInt m_root;
+        private KaitaiStruct m_parent;
     }
 }

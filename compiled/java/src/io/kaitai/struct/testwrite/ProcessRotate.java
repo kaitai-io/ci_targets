@@ -63,15 +63,6 @@ public class ProcessRotate extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private byte[] buf1;
-    private byte[] buf2;
-    private int key;
-    private byte[] buf3;
-    private ProcessRotate _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_buf1;
-    private byte[] _raw_buf2;
-    private byte[] _raw_buf3;
     public byte[] buf1() { return buf1; }
     public void setBuf1(byte[] _v) { _dirty = true; buf1 = _v; }
     public byte[] buf2() { return buf2; }
@@ -90,4 +81,13 @@ public class ProcessRotate extends KaitaiStruct.ReadWrite {
     public void set_raw_Buf2(byte[] _v) { _dirty = true; _raw_buf2 = _v; }
     public byte[] _raw_buf3() { return _raw_buf3; }
     public void set_raw_Buf3(byte[] _v) { _dirty = true; _raw_buf3 = _v; }
+    private byte[] buf1;
+    private byte[] buf2;
+    private int key;
+    private byte[] buf3;
+    private ProcessRotate _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_buf1;
+    private byte[] _raw_buf2;
+    private byte[] _raw_buf3;
 }

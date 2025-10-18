@@ -54,16 +54,14 @@ public:
 
         public:
             ~chunk_dir_t();
+            std::vector<std::string>* entries() const { return m_entries.get(); }
+            switch_manual_int_size_t* _root() const { return m__root; }
+            switch_manual_int_size_t::chunk_t* _parent() const { return m__parent; }
 
         private:
             std::unique_ptr<std::vector<std::string>> m_entries;
             switch_manual_int_size_t* m__root;
             switch_manual_int_size_t::chunk_t* m__parent;
-
-        public:
-            std::vector<std::string>* entries() const { return m_entries.get(); }
-            switch_manual_int_size_t* _root() const { return m__root; }
-            switch_manual_int_size_t::chunk_t* _parent() const { return m__parent; }
         };
 
         class chunk_meta_t : public kaitai::kstruct {
@@ -78,19 +76,26 @@ public:
 
         public:
             ~chunk_meta_t();
+            std::string title() const { return m_title; }
+            std::string author() const { return m_author; }
+            switch_manual_int_size_t* _root() const { return m__root; }
+            switch_manual_int_size_t::chunk_t* _parent() const { return m__parent; }
 
         private:
             std::string m_title;
             std::string m_author;
             switch_manual_int_size_t* m__root;
             switch_manual_int_size_t::chunk_t* m__parent;
-
-        public:
-            std::string title() const { return m_title; }
-            std::string author() const { return m_author; }
-            switch_manual_int_size_t* _root() const { return m__root; }
-            switch_manual_int_size_t::chunk_t* _parent() const { return m__parent; }
         };
+
+    public:
+        uint8_t code() const { return m_code; }
+        uint32_t size() const { return m_size; }
+        kaitai::kstruct* body() const { return m_body.get(); }
+        switch_manual_int_size_t* _root() const { return m__root; }
+        switch_manual_int_size_t* _parent() const { return m__parent; }
+        std::string _raw_body() const { return m__raw_body; }
+        kaitai::kstream* _io__raw_body() const { return m__io__raw_body.get(); }
 
     private:
         uint8_t m_code;
@@ -106,24 +111,15 @@ public:
         switch_manual_int_size_t* m__parent;
         std::string m__raw_body;
         std::unique_ptr<kaitai::kstream> m__io__raw_body;
-
-    public:
-        uint8_t code() const { return m_code; }
-        uint32_t size() const { return m_size; }
-        kaitai::kstruct* body() const { return m_body.get(); }
-        switch_manual_int_size_t* _root() const { return m__root; }
-        switch_manual_int_size_t* _parent() const { return m__parent; }
-        std::string _raw_body() const { return m__raw_body; }
-        kaitai::kstream* _io__raw_body() const { return m__io__raw_body.get(); }
     };
-
-private:
-    std::unique_ptr<std::vector<std::unique_ptr<chunk_t>>> m_chunks;
-    switch_manual_int_size_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     std::vector<std::unique_ptr<chunk_t>>* chunks() const { return m_chunks.get(); }
     switch_manual_int_size_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    std::unique_ptr<std::vector<std::unique_ptr<chunk_t>>> m_chunks;
+    switch_manual_int_size_t* m__root;
+    kaitai::kstruct* m__parent;
 };

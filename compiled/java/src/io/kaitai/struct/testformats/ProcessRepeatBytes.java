@@ -41,12 +41,12 @@ public class ProcessRepeatBytes extends KaitaiStruct {
         for (int i = 0; i < this.bufs.size(); i++) {
         }
     }
-    private List<byte[]> bufs;
-    private ProcessRepeatBytes _root;
-    private KaitaiStruct _parent;
-    private List<byte[]> _raw_bufs;
     public List<byte[]> bufs() { return bufs; }
     public ProcessRepeatBytes _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
     public List<byte[]> _raw_bufs() { return _raw_bufs; }
+    private List<byte[]> bufs;
+    private ProcessRepeatBytes _root;
+    private KaitaiStruct _parent;
+    private List<byte[]> _raw_bufs;
 }

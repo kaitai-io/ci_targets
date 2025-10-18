@@ -14,9 +14,9 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_backRef = new \Kaitai\Struct\Tests\ImportsCircularA($this->_io);
             }
         }
-        protected $_m_initial;
-        protected $_m_backRef;
         public function initial() { return $this->_m_initial; }
         public function backRef() { return $this->_m_backRef; }
+        protected $_m_initial;
+        protected $_m_backRef;
     }
 }

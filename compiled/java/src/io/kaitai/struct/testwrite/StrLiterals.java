@@ -42,7 +42,6 @@ public class StrLiterals extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private String backslashes;
     public String backslashes() {
         if (this.backslashes != null)
             return this.backslashes;
@@ -50,7 +49,6 @@ public class StrLiterals extends KaitaiStruct.ReadWrite {
         return this.backslashes;
     }
     public void _invalidateBackslashes() { this.backslashes = null; }
-    private String complexStr;
     public String complexStr() {
         if (this.complexStr != null)
             return this.complexStr;
@@ -58,7 +56,6 @@ public class StrLiterals extends KaitaiStruct.ReadWrite {
         return this.complexStr;
     }
     public void _invalidateComplexStr() { this.complexStr = null; }
-    private String doubleQuotes;
     public String doubleQuotes() {
         if (this.doubleQuotes != null)
             return this.doubleQuotes;
@@ -66,7 +63,6 @@ public class StrLiterals extends KaitaiStruct.ReadWrite {
         return this.doubleQuotes;
     }
     public void _invalidateDoubleQuotes() { this.doubleQuotes = null; }
-    private String octalEatup;
     public String octalEatup() {
         if (this.octalEatup != null)
             return this.octalEatup;
@@ -74,7 +70,6 @@ public class StrLiterals extends KaitaiStruct.ReadWrite {
         return this.octalEatup;
     }
     public void _invalidateOctalEatup() { this.octalEatup = null; }
-    private String octalEatup2;
     public String octalEatup2() {
         if (this.octalEatup2 != null)
             return this.octalEatup2;
@@ -82,10 +77,15 @@ public class StrLiterals extends KaitaiStruct.ReadWrite {
         return this.octalEatup2;
     }
     public void _invalidateOctalEatup2() { this.octalEatup2 = null; }
-    private StrLiterals _root;
-    private KaitaiStruct.ReadWrite _parent;
     public StrLiterals _root() { return _root; }
     public void set_root(StrLiterals _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private String backslashes;
+    private String complexStr;
+    private String doubleQuotes;
+    private String octalEatup;
+    private String octalEatup2;
+    private StrLiterals _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

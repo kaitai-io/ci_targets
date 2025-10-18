@@ -70,12 +70,12 @@ public class SwitchCast extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int value;
-        private SwitchCast _root;
-        private SwitchCast.Opcode _parent;
         public int value() { return value; }
         public SwitchCast _root() { return _root; }
         public SwitchCast.Opcode _parent() { return _parent; }
+        private int value;
+        private SwitchCast _root;
+        private SwitchCast.Opcode _parent;
     }
     public static class Opcode extends KaitaiStruct {
         public static Opcode fromFile(String fileName) throws IOException {
@@ -122,14 +122,14 @@ public class SwitchCast extends KaitaiStruct {
             }
             }
         }
-        private int code;
-        private KaitaiStruct body;
-        private SwitchCast _root;
-        private SwitchCast _parent;
         public int code() { return code; }
         public KaitaiStruct body() { return body; }
         public SwitchCast _root() { return _root; }
         public SwitchCast _parent() { return _parent; }
+        private int code;
+        private KaitaiStruct body;
+        private SwitchCast _root;
+        private SwitchCast _parent;
     }
     public static class Strval extends KaitaiStruct {
         public static Strval fromFile(String fileName) throws IOException {
@@ -156,38 +156,38 @@ public class SwitchCast extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private String value;
-        private SwitchCast _root;
-        private SwitchCast.Opcode _parent;
         public String value() { return value; }
         public SwitchCast _root() { return _root; }
         public SwitchCast.Opcode _parent() { return _parent; }
+        private String value;
+        private SwitchCast _root;
+        private SwitchCast.Opcode _parent;
     }
-    private SwitchCast.Strval errCast;
     public SwitchCast.Strval errCast() {
         if (this.errCast != null)
             return this.errCast;
         this.errCast = ((SwitchCast.Strval) (opcodes().get(((int) 2)).body()));
         return this.errCast;
     }
-    private SwitchCast.Strval firstObj;
     public SwitchCast.Strval firstObj() {
         if (this.firstObj != null)
             return this.firstObj;
         this.firstObj = ((SwitchCast.Strval) (opcodes().get(((int) 0)).body()));
         return this.firstObj;
     }
-    private Integer secondVal;
     public Integer secondVal() {
         if (this.secondVal != null)
             return this.secondVal;
         this.secondVal = ((Number) (((SwitchCast.Intval) (opcodes().get(((int) 1)).body())).value())).intValue();
         return this.secondVal;
     }
-    private List<Opcode> opcodes;
-    private SwitchCast _root;
-    private KaitaiStruct _parent;
     public List<Opcode> opcodes() { return opcodes; }
     public SwitchCast _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private SwitchCast.Strval errCast;
+    private SwitchCast.Strval firstObj;
+    private Integer secondVal;
+    private List<Opcode> opcodes;
+    private SwitchCast _root;
+    private KaitaiStruct _parent;
 }

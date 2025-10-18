@@ -132,7 +132,6 @@ public class ProcessCoerceBytes extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private byte[] buf;
         public byte[] buf() {
             if (this.buf != null)
                 return this.buf;
@@ -140,12 +139,6 @@ public class ProcessCoerceBytes extends KaitaiStruct.ReadWrite {
             return this.buf;
         }
         public void _invalidateBuf() { this.buf = null; }
-        private int flag;
-        private byte[] bufUnproc;
-        private byte[] bufProc;
-        private ProcessCoerceBytes _root;
-        private ProcessCoerceBytes _parent;
-        private byte[] _raw_bufProc;
         public int flag() { return flag; }
         public void setFlag(int _v) { _dirty = true; flag = _v; }
         public byte[] bufUnproc() { return bufUnproc; }
@@ -158,14 +151,21 @@ public class ProcessCoerceBytes extends KaitaiStruct.ReadWrite {
         public void set_parent(ProcessCoerceBytes _v) { _dirty = true; _parent = _v; }
         public byte[] _raw_bufProc() { return _raw_bufProc; }
         public void set_raw_BufProc(byte[] _v) { _dirty = true; _raw_bufProc = _v; }
+        private byte[] buf;
+        private int flag;
+        private byte[] bufUnproc;
+        private byte[] bufProc;
+        private ProcessCoerceBytes _root;
+        private ProcessCoerceBytes _parent;
+        private byte[] _raw_bufProc;
     }
-    private List<Record> records;
-    private ProcessCoerceBytes _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Record> records() { return records; }
     public void setRecords(List<Record> _v) { _dirty = true; records = _v; }
     public ProcessCoerceBytes _root() { return _root; }
     public void set_root(ProcessCoerceBytes _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Record> records;
+    private ProcessCoerceBytes _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

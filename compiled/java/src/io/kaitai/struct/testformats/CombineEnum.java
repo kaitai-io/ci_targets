@@ -50,19 +50,19 @@ public class CombineEnum extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Animal enumU4U2;
     public Animal enumU4U2() {
         if (this.enumU4U2 != null)
             return this.enumU4U2;
         this.enumU4U2 = (false ? enumU4() : enumU2());
         return this.enumU4U2;
     }
-    private Animal enumU4;
-    private Animal enumU2;
-    private CombineEnum _root;
-    private KaitaiStruct _parent;
     public Animal enumU4() { return enumU4; }
     public Animal enumU2() { return enumU2; }
     public CombineEnum _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Animal enumU4U2;
+    private Animal enumU4;
+    private Animal enumU2;
+    private CombineEnum _root;
+    private KaitaiStruct _parent;
 }

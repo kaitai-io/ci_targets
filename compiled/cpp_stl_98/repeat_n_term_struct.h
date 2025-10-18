@@ -39,30 +39,15 @@ public:
 
     public:
         ~bytes_wrapper_t();
+        std::string value() const { return m_value; }
+        repeat_n_term_struct_t* _root() const { return m__root; }
+        repeat_n_term_struct_t* _parent() const { return m__parent; }
 
     private:
         std::string m_value;
         repeat_n_term_struct_t* m__root;
         repeat_n_term_struct_t* m__parent;
-
-    public:
-        std::string value() const { return m_value; }
-        repeat_n_term_struct_t* _root() const { return m__root; }
-        repeat_n_term_struct_t* _parent() const { return m__parent; }
     };
-
-private:
-    std::vector<bytes_wrapper_t*>* m_records1;
-    std::vector<bytes_wrapper_t*>* m_records2;
-    std::vector<bytes_wrapper_t*>* m_records3;
-    repeat_n_term_struct_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::vector<std::string>* m__raw_records1;
-    std::vector<kaitai::kstream*>* m__io__raw_records1;
-    std::vector<std::string>* m__raw_records2;
-    std::vector<kaitai::kstream*>* m__io__raw_records2;
-    std::vector<std::string>* m__raw_records3;
-    std::vector<kaitai::kstream*>* m__io__raw_records3;
 
 public:
     std::vector<bytes_wrapper_t*>* records1() const { return m_records1; }
@@ -76,6 +61,19 @@ public:
     std::vector<kaitai::kstream*>* _io__raw_records2() const { return m__io__raw_records2; }
     std::vector<std::string>* _raw_records3() const { return m__raw_records3; }
     std::vector<kaitai::kstream*>* _io__raw_records3() const { return m__io__raw_records3; }
+
+private:
+    std::vector<bytes_wrapper_t*>* m_records1;
+    std::vector<bytes_wrapper_t*>* m_records2;
+    std::vector<bytes_wrapper_t*>* m_records3;
+    repeat_n_term_struct_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::vector<std::string>* m__raw_records1;
+    std::vector<kaitai::kstream*>* m__io__raw_records1;
+    std::vector<std::string>* m__raw_records2;
+    std::vector<kaitai::kstream*>* m__io__raw_records2;
+    std::vector<std::string>* m__raw_records3;
+    std::vector<kaitai::kstream*>* m__io__raw_records3;
 };
 
 #endif  // REPEAT_N_TERM_STRUCT_H_

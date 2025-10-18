@@ -24,16 +24,14 @@ private:
 
 public:
     ~imported_2_t();
+    uint8_t one() const { return m_one; }
+    imported_2_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint8_t m_one;
     imported_2_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint8_t one() const { return m_one; }
-    imported_2_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // IMPORTED_2_H_

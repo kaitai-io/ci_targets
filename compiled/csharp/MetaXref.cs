@@ -20,9 +20,9 @@ namespace Kaitai
         private void _read()
         {
         }
-        private MetaXref m_root;
-        private KaitaiStruct m_parent;
         public MetaXref M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private MetaXref m_root;
+        private KaitaiStruct m_parent;
     }
 }

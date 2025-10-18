@@ -17,13 +17,13 @@ namespace Kaitai
         private void _read()
         {
         }
-        private Enum0.Animal _pet1Param;
-        private EnumDeep.Container1.Container2.Animal _pet2Param;
-        private ParamsDefEnumImported m_root;
-        private KaitaiStruct m_parent;
         public Enum0.Animal Pet1Param { get { return _pet1Param; } }
         public EnumDeep.Container1.Container2.Animal Pet2Param { get { return _pet2Param; } }
         public ParamsDefEnumImported M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Enum0.Animal _pet1Param;
+        private EnumDeep.Container1.Container2.Animal _pet2Param;
+        private ParamsDefEnumImported m_root;
+        private KaitaiStruct m_parent;
     }
 }

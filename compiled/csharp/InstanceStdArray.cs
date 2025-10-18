@@ -24,8 +24,6 @@ namespace Kaitai
             _entrySize = m_io.ReadU4le();
             _qtyEntries = m_io.ReadU4le();
         }
-        private bool f_entries;
-        private List<byte[]> _entries;
         public List<byte[]> Entries
         {
             get
@@ -44,15 +42,17 @@ namespace Kaitai
                 return _entries;
             }
         }
-        private uint _ofs;
-        private uint _entrySize;
-        private uint _qtyEntries;
-        private InstanceStdArray m_root;
-        private KaitaiStruct m_parent;
         public uint Ofs { get { return _ofs; } }
         public uint EntrySize { get { return _entrySize; } }
         public uint QtyEntries { get { return _qtyEntries; } }
         public InstanceStdArray M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_entries;
+        private List<byte[]> _entries;
+        private uint _ofs;
+        private uint _entrySize;
+        private uint _qtyEntries;
+        private InstanceStdArray m_root;
+        private KaitaiStruct m_parent;
     }
 }

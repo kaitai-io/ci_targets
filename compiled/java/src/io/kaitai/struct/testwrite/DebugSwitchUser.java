@@ -152,15 +152,15 @@ public class DebugSwitchUser extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private short val;
-        private DebugSwitchUser _root;
-        private DebugSwitchUser _parent;
         public short val() { return val; }
         public void setVal(short _v) { _dirty = true; val = _v; }
         public DebugSwitchUser _root() { return _root; }
         public void set_root(DebugSwitchUser _v) { _dirty = true; _root = _v; }
         public DebugSwitchUser _parent() { return _parent; }
         public void set_parent(DebugSwitchUser _v) { _dirty = true; _parent = _v; }
+        private short val;
+        private DebugSwitchUser _root;
+        private DebugSwitchUser _parent;
     }
     public static class Two extends KaitaiStruct.ReadWrite {
         public Map<String, Integer> _attrStart = new HashMap<String, Integer>();
@@ -207,20 +207,16 @@ public class DebugSwitchUser extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int val;
-        private DebugSwitchUser _root;
-        private DebugSwitchUser _parent;
         public int val() { return val; }
         public void setVal(int _v) { _dirty = true; val = _v; }
         public DebugSwitchUser _root() { return _root; }
         public void set_root(DebugSwitchUser _v) { _dirty = true; _root = _v; }
         public DebugSwitchUser _parent() { return _parent; }
         public void set_parent(DebugSwitchUser _v) { _dirty = true; _parent = _v; }
+        private int val;
+        private DebugSwitchUser _root;
+        private DebugSwitchUser _parent;
     }
-    private int code;
-    private KaitaiStruct.ReadWrite data;
-    private DebugSwitchUser _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int code() { return code; }
     public void setCode(int _v) { _dirty = true; code = _v; }
     public KaitaiStruct.ReadWrite data() { return data; }
@@ -229,4 +225,8 @@ public class DebugSwitchUser extends KaitaiStruct.ReadWrite {
     public void set_root(DebugSwitchUser _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private int code;
+    private KaitaiStruct.ReadWrite data;
+    private DebugSwitchUser _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

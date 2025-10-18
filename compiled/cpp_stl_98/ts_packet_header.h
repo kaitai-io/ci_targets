@@ -43,6 +43,17 @@ private:
 
 public:
     ~ts_packet_header_t();
+    uint8_t sync_byte() const { return m_sync_byte; }
+    bool transport_error_indicator() const { return m_transport_error_indicator; }
+    bool payload_unit_start_indicator() const { return m_payload_unit_start_indicator; }
+    bool transport_priority() const { return m_transport_priority; }
+    uint64_t pid() const { return m_pid; }
+    uint64_t transport_scrambling_control() const { return m_transport_scrambling_control; }
+    adaptation_field_control_enum_t adaptation_field_control() const { return m_adaptation_field_control; }
+    uint64_t continuity_counter() const { return m_continuity_counter; }
+    std::string ts_packet_remain() const { return m_ts_packet_remain; }
+    ts_packet_header_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint8_t m_sync_byte;
@@ -56,19 +67,6 @@ private:
     std::string m_ts_packet_remain;
     ts_packet_header_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint8_t sync_byte() const { return m_sync_byte; }
-    bool transport_error_indicator() const { return m_transport_error_indicator; }
-    bool payload_unit_start_indicator() const { return m_payload_unit_start_indicator; }
-    bool transport_priority() const { return m_transport_priority; }
-    uint64_t pid() const { return m_pid; }
-    uint64_t transport_scrambling_control() const { return m_transport_scrambling_control; }
-    adaptation_field_control_enum_t adaptation_field_control() const { return m_adaptation_field_control; }
-    uint64_t continuity_counter() const { return m_continuity_counter; }
-    std::string ts_packet_remain() const { return m_ts_packet_remain; }
-    ts_packet_header_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // TS_PACKET_HEADER_H_

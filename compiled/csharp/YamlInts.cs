@@ -24,8 +24,6 @@ namespace Kaitai
         private void _read()
         {
         }
-        private bool f_testU4Dec;
-        private int _testU4Dec;
         public int TestU4Dec
         {
             get
@@ -37,8 +35,6 @@ namespace Kaitai
                 return _testU4Dec;
             }
         }
-        private bool f_testU4Hex;
-        private int _testU4Hex;
         public int TestU4Hex
         {
             get
@@ -50,8 +46,6 @@ namespace Kaitai
                 return _testU4Hex;
             }
         }
-        private bool f_testU8Dec;
-        private int _testU8Dec;
         public int TestU8Dec
         {
             get
@@ -63,8 +57,6 @@ namespace Kaitai
                 return _testU8Dec;
             }
         }
-        private bool f_testU8Hex;
-        private int _testU8Hex;
         public int TestU8Hex
         {
             get
@@ -76,9 +68,17 @@ namespace Kaitai
                 return _testU8Hex;
             }
         }
-        private YamlInts m_root;
-        private KaitaiStruct m_parent;
         public YamlInts M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_testU4Dec;
+        private int _testU4Dec;
+        private bool f_testU4Hex;
+        private int _testU4Hex;
+        private bool f_testU8Dec;
+        private int _testU8Dec;
+        private bool f_testU8Hex;
+        private int _testU8Hex;
+        private YamlInts m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -94,10 +94,6 @@ public class PositionToEnd extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private long foo;
-        private long bar;
-        private PositionToEnd _root;
-        private PositionToEnd _parent;
         public long foo() { return foo; }
         public void setFoo(long _v) { _dirty = true; foo = _v; }
         public long bar() { return bar; }
@@ -106,10 +102,11 @@ public class PositionToEnd extends KaitaiStruct.ReadWrite {
         public void set_root(PositionToEnd _v) { _dirty = true; _root = _v; }
         public PositionToEnd _parent() { return _parent; }
         public void set_parent(PositionToEnd _v) { _dirty = true; _parent = _v; }
+        private long foo;
+        private long bar;
+        private PositionToEnd _root;
+        private PositionToEnd _parent;
     }
-    private IndexObj index;
-    private boolean _shouldWriteIndex = false;
-    private boolean _enabledIndex = true;
     public IndexObj index() {
         if (_shouldWriteIndex)
             _writeIndex();
@@ -134,10 +131,13 @@ public class PositionToEnd extends KaitaiStruct.ReadWrite {
         this.index._write_Seq(this._io);
         this._io.seek(_pos);
     }
-    private PositionToEnd _root;
-    private KaitaiStruct.ReadWrite _parent;
     public PositionToEnd _root() { return _root; }
     public void set_root(PositionToEnd _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private IndexObj index;
+    private boolean _shouldWriteIndex = false;
+    private boolean _enabledIndex = true;
+    private PositionToEnd _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

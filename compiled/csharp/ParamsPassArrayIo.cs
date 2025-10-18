@@ -41,12 +41,12 @@ namespace Kaitai
             {
                 _foo = m_io.ReadU1();
             }
-            private byte _foo;
-            private ParamsPassArrayIo m_root;
-            private ParamsPassArrayIo m_parent;
             public byte Foo { get { return _foo; } }
             public ParamsPassArrayIo M_Root { get { return m_root; } }
             public ParamsPassArrayIo M_Parent { get { return m_parent; } }
+            private byte _foo;
+            private ParamsPassArrayIo m_root;
+            private ParamsPassArrayIo m_parent;
         }
         public partial class ParamType : KaitaiStruct
         {
@@ -61,24 +61,24 @@ namespace Kaitai
             {
                 _buf = m_io.ReadBytes(ArgStreams[0].Size);
             }
-            private byte[] _buf;
-            private List<KaitaiStream> _argStreams;
-            private ParamsPassArrayIo m_root;
-            private ParamsPassArrayIo m_parent;
             public byte[] Buf { get { return _buf; } }
             public List<KaitaiStream> ArgStreams { get { return _argStreams; } }
             public ParamsPassArrayIo M_Root { get { return m_root; } }
             public ParamsPassArrayIo M_Parent { get { return m_parent; } }
+            private byte[] _buf;
+            private List<KaitaiStream> _argStreams;
+            private ParamsPassArrayIo m_root;
+            private ParamsPassArrayIo m_parent;
         }
-        private Block _first;
-        private ParamType _one;
-        private ParamsPassArrayIo m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_first;
         public Block First { get { return _first; } }
         public ParamType One { get { return _one; } }
         public ParamsPassArrayIo M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawFirst { get { return __raw_first; } }
+        private Block _first;
+        private ParamType _one;
+        private ParamsPassArrayIo m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_first;
     }
 }

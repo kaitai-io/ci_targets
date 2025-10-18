@@ -28,11 +28,11 @@ namespace Kaitai
                 }
             }
         }
-        private List<uint> _numbers;
-        private RepeatEosU4 m_root;
-        private KaitaiStruct m_parent;
         public List<uint> Numbers { get { return _numbers; } }
         public RepeatEosU4 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<uint> _numbers;
+        private RepeatEosU4 m_root;
+        private KaitaiStruct m_parent;
     }
 }

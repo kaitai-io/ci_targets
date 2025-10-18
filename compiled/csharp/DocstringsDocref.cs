@@ -32,8 +32,6 @@ namespace Kaitai
             _two = m_io.ReadU1();
             _three = m_io.ReadU1();
         }
-        private bool f_foo;
-        private bool _foo;
 
         /// <remarks>
         /// Reference: Doc ref for instance, a plain one
@@ -49,8 +47,6 @@ namespace Kaitai
                 return _foo;
             }
         }
-        private bool f_parseInst;
-        private byte _parseInst;
 
         /// <remarks>
         /// Reference: Now this is a really
@@ -71,11 +67,6 @@ namespace Kaitai
                 return _parseInst;
             }
         }
-        private byte _one;
-        private byte _two;
-        private byte _three;
-        private DocstringsDocref m_root;
-        private KaitaiStruct m_parent;
 
         /// <remarks>
         /// Reference: Plain text description of doc ref, page 42
@@ -96,5 +87,14 @@ namespace Kaitai
         public byte Three { get { return _three; } }
         public DocstringsDocref M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_foo;
+        private bool _foo;
+        private bool f_parseInst;
+        private byte _parseInst;
+        private byte _one;
+        private byte _two;
+        private byte _three;
+        private DocstringsDocref m_root;
+        private KaitaiStruct m_parent;
     }
 }

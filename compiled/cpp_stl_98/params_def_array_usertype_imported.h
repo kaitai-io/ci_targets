@@ -26,30 +26,20 @@ private:
 
 public:
     ~params_def_array_usertype_imported_t();
+    uint8_t hw0_one();
+    uint8_t hw1_one();
+    std::vector<hello_world_t*>* hws_param() const { return m_hws_param; }
+    params_def_array_usertype_imported_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_hw0_one;
     uint8_t m_hw0_one;
-
-public:
-    uint8_t hw0_one();
-
-private:
     bool f_hw1_one;
     uint8_t m_hw1_one;
-
-public:
-    uint8_t hw1_one();
-
-private:
     std::vector<hello_world_t*>* m_hws_param;
     params_def_array_usertype_imported_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::vector<hello_world_t*>* hws_param() const { return m_hws_param; }
-    params_def_array_usertype_imported_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // PARAMS_DEF_ARRAY_USERTYPE_IMPORTED_H_

@@ -13,9 +13,9 @@ namespace Kaitai\Struct\Tests {
             $_process = new CustomFxNoArgs();
             $this->_m_buf = $_process->decode($this->_m__raw_buf);
         }
-        protected $_m_buf;
-        protected $_m__raw_buf;
         public function buf() { return $this->_m_buf; }
         public function _raw_buf() { return $this->_m__raw_buf; }
+        protected $_m_buf;
+        protected $_m__raw_buf;
     }
 }

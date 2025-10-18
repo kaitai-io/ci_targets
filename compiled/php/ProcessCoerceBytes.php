@@ -15,8 +15,8 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_records[] = new \Kaitai\Struct\Tests\ProcessCoerceBytes\Record($this->_io, $this, $this->_root);
             }
         }
-        protected $_m_records;
         public function records() { return $this->_m_records; }
+        protected $_m_records;
     }
 }
 
@@ -37,20 +37,20 @@ namespace Kaitai\Struct\Tests\ProcessCoerceBytes {
                 $this->_m_bufProc = \Kaitai\Struct\Stream::processXorOne($this->_m__raw_bufProc, 170);
             }
         }
-        protected $_m_buf;
         public function buf() {
             if ($this->_m_buf !== null)
                 return $this->_m_buf;
             $this->_m_buf = ($this->flag() == 0 ? $this->bufUnproc() : $this->bufProc());
             return $this->_m_buf;
         }
-        protected $_m_flag;
-        protected $_m_bufUnproc;
-        protected $_m_bufProc;
-        protected $_m__raw_bufProc;
         public function flag() { return $this->_m_flag; }
         public function bufUnproc() { return $this->_m_bufUnproc; }
         public function bufProc() { return $this->_m_bufProc; }
         public function _raw_bufProc() { return $this->_m__raw_bufProc; }
+        protected $_m_buf;
+        protected $_m_flag;
+        protected $_m_bufUnproc;
+        protected $_m_bufProc;
+        protected $_m__raw_bufProc;
     }
 }

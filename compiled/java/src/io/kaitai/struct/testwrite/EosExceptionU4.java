@@ -111,10 +111,6 @@ public class EosExceptionU4 extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("prebuf", 3, this.prebuf.length);
             _dirty = false;
         }
-        private byte[] prebuf;
-        private long failInt;
-        private EosExceptionU4 _root;
-        private EosExceptionU4 _parent;
         public byte[] prebuf() { return prebuf; }
         public void setPrebuf(byte[] _v) { _dirty = true; prebuf = _v; }
         public long failInt() { return failInt; }
@@ -123,11 +119,11 @@ public class EosExceptionU4 extends KaitaiStruct.ReadWrite {
         public void set_root(EosExceptionU4 _v) { _dirty = true; _root = _v; }
         public EosExceptionU4 _parent() { return _parent; }
         public void set_parent(EosExceptionU4 _v) { _dirty = true; _parent = _v; }
+        private byte[] prebuf;
+        private long failInt;
+        private EosExceptionU4 _root;
+        private EosExceptionU4 _parent;
     }
-    private Data envelope;
-    private EosExceptionU4 _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_envelope;
     public Data envelope() { return envelope; }
     public void setEnvelope(Data _v) { _dirty = true; envelope = _v; }
     public EosExceptionU4 _root() { return _root; }
@@ -136,4 +132,8 @@ public class EosExceptionU4 extends KaitaiStruct.ReadWrite {
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_envelope() { return _raw_envelope; }
     public void set_raw_Envelope(byte[] _v) { _dirty = true; _raw_envelope = _v; }
+    private Data envelope;
+    private EosExceptionU4 _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_envelope;
 }

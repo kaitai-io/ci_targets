@@ -33,8 +33,6 @@ namespace Kaitai
                 _items.Add(m_io.ReadS1());
             }
         }
-        private bool f_bytesSubKey;
-        private byte _bytesSubKey;
         public byte BytesSubKey
         {
             get
@@ -46,8 +44,6 @@ namespace Kaitai
                 return _bytesSubKey;
             }
         }
-        private bool f_itemsSubKey;
-        private sbyte _itemsSubKey;
         public sbyte ItemsSubKey
         {
             get
@@ -59,13 +55,6 @@ namespace Kaitai
                 return _itemsSubKey;
             }
         }
-        private ulong? _key;
-        private byte[] _skip;
-        private byte[] _bytes;
-        private List<sbyte> _items;
-        private ExprIfIntOps m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_bytes;
         public ulong? Key { get { return _key; } }
         public byte[] Skip { get { return _skip; } }
         public byte[] Bytes { get { return _bytes; } }
@@ -73,5 +62,16 @@ namespace Kaitai
         public ExprIfIntOps M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawBytes { get { return __raw_bytes; } }
+        private bool f_bytesSubKey;
+        private byte _bytesSubKey;
+        private bool f_itemsSubKey;
+        private sbyte _itemsSubKey;
+        private ulong? _key;
+        private byte[] _skip;
+        private byte[] _bytes;
+        private List<sbyte> _items;
+        private ExprIfIntOps m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_bytes;
     }
 }

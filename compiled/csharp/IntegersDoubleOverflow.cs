@@ -32,8 +32,6 @@ namespace Kaitai
             _signedUnsafePosBe = m_io.ReadS8be();
             _signedUnsafePosLe = m_io.ReadS8le();
         }
-        private bool f_unsignedSafeMaxBe;
-        private ulong _unsignedSafeMaxBe;
         public ulong UnsignedSafeMaxBe
         {
             get
@@ -48,8 +46,6 @@ namespace Kaitai
                 return _unsignedSafeMaxBe;
             }
         }
-        private bool f_unsignedSafeMaxLe;
-        private ulong _unsignedSafeMaxLe;
         public ulong UnsignedSafeMaxLe
         {
             get
@@ -64,8 +60,6 @@ namespace Kaitai
                 return _unsignedSafeMaxLe;
             }
         }
-        private bool f_unsignedUnsafePosBe;
-        private ulong _unsignedUnsafePosBe;
         public ulong UnsignedUnsafePosBe
         {
             get
@@ -80,8 +74,6 @@ namespace Kaitai
                 return _unsignedUnsafePosBe;
             }
         }
-        private bool f_unsignedUnsafePosLe;
-        private ulong _unsignedUnsafePosLe;
         public ulong UnsignedUnsafePosLe
         {
             get
@@ -96,16 +88,6 @@ namespace Kaitai
                 return _unsignedUnsafePosLe;
             }
         }
-        private long _signedSafeMinBe;
-        private long _signedSafeMinLe;
-        private long _signedSafeMaxBe;
-        private long _signedSafeMaxLe;
-        private long _signedUnsafeNegBe;
-        private long _signedUnsafeNegLe;
-        private long _signedUnsafePosBe;
-        private long _signedUnsafePosLe;
-        private IntegersDoubleOverflow m_root;
-        private KaitaiStruct m_parent;
         public long SignedSafeMinBe { get { return _signedSafeMinBe; } }
         public long SignedSafeMinLe { get { return _signedSafeMinLe; } }
         public long SignedSafeMaxBe { get { return _signedSafeMaxBe; } }
@@ -116,5 +98,23 @@ namespace Kaitai
         public long SignedUnsafePosLe { get { return _signedUnsafePosLe; } }
         public IntegersDoubleOverflow M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_unsignedSafeMaxBe;
+        private ulong _unsignedSafeMaxBe;
+        private bool f_unsignedSafeMaxLe;
+        private ulong _unsignedSafeMaxLe;
+        private bool f_unsignedUnsafePosBe;
+        private ulong _unsignedUnsafePosBe;
+        private bool f_unsignedUnsafePosLe;
+        private ulong _unsignedUnsafePosLe;
+        private long _signedSafeMinBe;
+        private long _signedSafeMinLe;
+        private long _signedSafeMaxBe;
+        private long _signedSafeMaxLe;
+        private long _signedUnsafeNegBe;
+        private long _signedUnsafeNegLe;
+        private long _signedUnsafePosBe;
+        private long _signedUnsafePosLe;
+        private IntegersDoubleOverflow m_root;
+        private KaitaiStruct m_parent;
     }
 }

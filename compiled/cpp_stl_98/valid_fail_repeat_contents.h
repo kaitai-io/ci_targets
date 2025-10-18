@@ -25,16 +25,14 @@ private:
 
 public:
     ~valid_fail_repeat_contents_t();
+    std::vector<std::string>* foo() const { return m_foo; }
+    valid_fail_repeat_contents_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::vector<std::string>* m_foo;
     valid_fail_repeat_contents_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::vector<std::string>* foo() const { return m_foo; }
-    valid_fail_repeat_contents_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // VALID_FAIL_REPEAT_CONTENTS_H_

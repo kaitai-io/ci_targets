@@ -18,9 +18,9 @@ namespace Kaitai\Struct\Tests {
             } while (!($_ == -1));
             $this->_m_afterall = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "ASCII");
         }
-        protected $_m_entries;
-        protected $_m_afterall;
         public function entries() { return $this->_m_entries; }
         public function afterall() { return $this->_m_afterall; }
+        protected $_m_entries;
+        protected $_m_afterall;
     }
 }

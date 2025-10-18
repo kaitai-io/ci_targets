@@ -67,13 +67,13 @@ public class ValidFailInEnum extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private Animal foo;
-    private ValidFailInEnum _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Animal foo() { return foo; }
     public void setFoo(Animal _v) { _dirty = true; foo = _v; }
     public ValidFailInEnum _root() { return _root; }
     public void set_root(ValidFailInEnum _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Animal foo;
+    private ValidFailInEnum _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

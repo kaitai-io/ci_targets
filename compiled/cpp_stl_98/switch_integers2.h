@@ -24,15 +24,17 @@ private:
 
 public:
     ~switch_integers2_t();
+    std::string len_mod_str();
+    uint8_t code() const { return m_code; }
+    uint64_t len() const { return m_len; }
+    std::string ham() const { return m_ham; }
+    uint8_t padding() const { return m_padding; }
+    switch_integers2_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_len_mod_str;
     std::string m_len_mod_str;
-
-public:
-    std::string len_mod_str();
-
-private:
     uint8_t m_code;
     uint64_t m_len;
     bool n_len;
@@ -51,14 +53,6 @@ public:
 private:
     switch_integers2_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint8_t code() const { return m_code; }
-    uint64_t len() const { return m_len; }
-    std::string ham() const { return m_ham; }
-    uint8_t padding() const { return m_padding; }
-    switch_integers2_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // SWITCH_INTEGERS2_H_

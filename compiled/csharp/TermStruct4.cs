@@ -48,12 +48,12 @@ namespace Kaitai
             {
                 _value = m_io.ReadBytesFull();
             }
-            private byte[] _value;
-            private TermStruct4 m_root;
-            private KaitaiStruct m_parent;
             public byte[] Value { get { return _value; } }
             public TermStruct4 M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
+            private byte[] _value;
+            private TermStruct4 m_root;
+            private KaitaiStruct m_parent;
         }
         public partial class S1Type : KaitaiStruct
         {
@@ -74,14 +74,14 @@ namespace Kaitai
                 var io___raw_value = new KaitaiStream(__raw_value);
                 _value = new BytesWrapper(io___raw_value, this, m_root);
             }
-            private BytesWrapper _value;
-            private TermStruct4 m_root;
-            private TermStruct4 m_parent;
-            private byte[] __raw_value;
             public BytesWrapper Value { get { return _value; } }
             public TermStruct4 M_Root { get { return m_root; } }
             public TermStruct4 M_Parent { get { return m_parent; } }
             public byte[] M_RawValue { get { return __raw_value; } }
+            private BytesWrapper _value;
+            private TermStruct4 m_root;
+            private TermStruct4 m_parent;
+            private byte[] __raw_value;
         }
         public partial class S2Type : KaitaiStruct
         {
@@ -102,14 +102,14 @@ namespace Kaitai
                 var io___raw_value = new KaitaiStream(__raw_value);
                 _value = new BytesWrapper(io___raw_value, this, m_root);
             }
-            private BytesWrapper _value;
-            private TermStruct4 m_root;
-            private TermStruct4 m_parent;
-            private byte[] __raw_value;
             public BytesWrapper Value { get { return _value; } }
             public TermStruct4 M_Root { get { return m_root; } }
             public TermStruct4 M_Parent { get { return m_parent; } }
             public byte[] M_RawValue { get { return __raw_value; } }
+            private BytesWrapper _value;
+            private TermStruct4 m_root;
+            private TermStruct4 m_parent;
+            private byte[] __raw_value;
         }
         public partial class S3Type : KaitaiStruct
         {
@@ -130,25 +130,15 @@ namespace Kaitai
                 var io___raw_value = new KaitaiStream(__raw_value);
                 _value = new BytesWrapper(io___raw_value, this, m_root);
             }
-            private BytesWrapper _value;
-            private TermStruct4 m_root;
-            private TermStruct4 m_parent;
-            private byte[] __raw_value;
             public BytesWrapper Value { get { return _value; } }
             public TermStruct4 M_Root { get { return m_root; } }
             public TermStruct4 M_Parent { get { return m_parent; } }
             public byte[] M_RawValue { get { return __raw_value; } }
+            private BytesWrapper _value;
+            private TermStruct4 m_root;
+            private TermStruct4 m_parent;
+            private byte[] __raw_value;
         }
-        private S1Type _s1;
-        private byte _skipTerm1;
-        private S2Type _s2;
-        private byte _skipTerm2;
-        private S3Type _s3;
-        private TermStruct4 m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_s1;
-        private byte[] __raw_s2;
-        private byte[] __raw_s3;
         public S1Type S1 { get { return _s1; } }
         public byte SkipTerm1 { get { return _skipTerm1; } }
         public S2Type S2 { get { return _s2; } }
@@ -159,5 +149,15 @@ namespace Kaitai
         public byte[] M_RawS1 { get { return __raw_s1; } }
         public byte[] M_RawS2 { get { return __raw_s2; } }
         public byte[] M_RawS3 { get { return __raw_s3; } }
+        private S1Type _s1;
+        private byte _skipTerm1;
+        private S2Type _s2;
+        private byte _skipTerm2;
+        private S3Type _s3;
+        private TermStruct4 m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_s1;
+        private byte[] __raw_s2;
+        private byte[] __raw_s3;
     }
 }

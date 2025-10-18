@@ -42,8 +42,6 @@ namespace Kaitai
         private void _read()
         {
         }
-        private bool f_doubleArray;
-        private List<double> _doubleArray;
         public List<double> DoubleArray
         {
             get
@@ -55,8 +53,6 @@ namespace Kaitai
                 return _doubleArray;
             }
         }
-        private bool f_doubleArrayFirst;
-        private double _doubleArrayFirst;
         public double DoubleArrayFirst
         {
             get
@@ -68,8 +64,6 @@ namespace Kaitai
                 return _doubleArrayFirst;
             }
         }
-        private bool f_doubleArrayLast;
-        private double _doubleArrayLast;
         public double DoubleArrayLast
         {
             get
@@ -81,8 +75,6 @@ namespace Kaitai
                 return _doubleArrayLast;
             }
         }
-        private bool f_doubleArrayMax;
-        private double _doubleArrayMax;
         public double DoubleArrayMax
         {
             get
@@ -94,8 +86,6 @@ namespace Kaitai
                 return _doubleArrayMax;
             }
         }
-        private bool f_doubleArrayMid;
-        private double _doubleArrayMid;
         public double DoubleArrayMid
         {
             get
@@ -107,8 +97,6 @@ namespace Kaitai
                 return _doubleArrayMid;
             }
         }
-        private bool f_doubleArrayMin;
-        private double _doubleArrayMin;
         public double DoubleArrayMin
         {
             get
@@ -120,8 +108,6 @@ namespace Kaitai
                 return _doubleArrayMin;
             }
         }
-        private bool f_doubleArraySize;
-        private int _doubleArraySize;
         public int DoubleArraySize
         {
             get
@@ -133,8 +119,6 @@ namespace Kaitai
                 return _doubleArraySize;
             }
         }
-        private bool f_intArray;
-        private List<int> _intArray;
         public List<int> IntArray
         {
             get
@@ -146,8 +130,6 @@ namespace Kaitai
                 return _intArray;
             }
         }
-        private bool f_intArrayFirst;
-        private int _intArrayFirst;
         public int IntArrayFirst
         {
             get
@@ -159,8 +141,6 @@ namespace Kaitai
                 return _intArrayFirst;
             }
         }
-        private bool f_intArrayLast;
-        private int _intArrayLast;
         public int IntArrayLast
         {
             get
@@ -172,8 +152,6 @@ namespace Kaitai
                 return _intArrayLast;
             }
         }
-        private bool f_intArrayMax;
-        private int _intArrayMax;
         public int IntArrayMax
         {
             get
@@ -185,8 +163,6 @@ namespace Kaitai
                 return _intArrayMax;
             }
         }
-        private bool f_intArrayMid;
-        private int _intArrayMid;
         public int IntArrayMid
         {
             get
@@ -198,8 +174,6 @@ namespace Kaitai
                 return _intArrayMid;
             }
         }
-        private bool f_intArrayMin;
-        private int _intArrayMin;
         public int IntArrayMin
         {
             get
@@ -211,8 +185,6 @@ namespace Kaitai
                 return _intArrayMin;
             }
         }
-        private bool f_intArraySize;
-        private int _intArraySize;
         public int IntArraySize
         {
             get
@@ -224,8 +196,6 @@ namespace Kaitai
                 return _intArraySize;
             }
         }
-        private bool f_strArray;
-        private List<string> _strArray;
         public List<string> StrArray
         {
             get
@@ -237,8 +207,6 @@ namespace Kaitai
                 return _strArray;
             }
         }
-        private bool f_strArrayFirst;
-        private string _strArrayFirst;
         public string StrArrayFirst
         {
             get
@@ -250,8 +218,6 @@ namespace Kaitai
                 return _strArrayFirst;
             }
         }
-        private bool f_strArrayLast;
-        private string _strArrayLast;
         public string StrArrayLast
         {
             get
@@ -263,8 +229,6 @@ namespace Kaitai
                 return _strArrayLast;
             }
         }
-        private bool f_strArrayMax;
-        private string _strArrayMax;
         public string StrArrayMax
         {
             get
@@ -276,8 +240,6 @@ namespace Kaitai
                 return _strArrayMax;
             }
         }
-        private bool f_strArrayMid;
-        private string _strArrayMid;
         public string StrArrayMid
         {
             get
@@ -289,8 +251,6 @@ namespace Kaitai
                 return _strArrayMid;
             }
         }
-        private bool f_strArrayMin;
-        private string _strArrayMin;
         public string StrArrayMin
         {
             get
@@ -302,8 +262,6 @@ namespace Kaitai
                 return _strArrayMin;
             }
         }
-        private bool f_strArraySize;
-        private int _strArraySize;
         public int StrArraySize
         {
             get
@@ -315,9 +273,51 @@ namespace Kaitai
                 return _strArraySize;
             }
         }
-        private ExprCalcArrayOps m_root;
-        private KaitaiStruct m_parent;
         public ExprCalcArrayOps M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_doubleArray;
+        private List<double> _doubleArray;
+        private bool f_doubleArrayFirst;
+        private double _doubleArrayFirst;
+        private bool f_doubleArrayLast;
+        private double _doubleArrayLast;
+        private bool f_doubleArrayMax;
+        private double _doubleArrayMax;
+        private bool f_doubleArrayMid;
+        private double _doubleArrayMid;
+        private bool f_doubleArrayMin;
+        private double _doubleArrayMin;
+        private bool f_doubleArraySize;
+        private int _doubleArraySize;
+        private bool f_intArray;
+        private List<int> _intArray;
+        private bool f_intArrayFirst;
+        private int _intArrayFirst;
+        private bool f_intArrayLast;
+        private int _intArrayLast;
+        private bool f_intArrayMax;
+        private int _intArrayMax;
+        private bool f_intArrayMid;
+        private int _intArrayMid;
+        private bool f_intArrayMin;
+        private int _intArrayMin;
+        private bool f_intArraySize;
+        private int _intArraySize;
+        private bool f_strArray;
+        private List<string> _strArray;
+        private bool f_strArrayFirst;
+        private string _strArrayFirst;
+        private bool f_strArrayLast;
+        private string _strArrayLast;
+        private bool f_strArrayMax;
+        private string _strArrayMax;
+        private bool f_strArrayMid;
+        private string _strArrayMid;
+        private bool f_strArrayMin;
+        private string _strArrayMin;
+        private bool f_strArraySize;
+        private int _strArraySize;
+        private ExprCalcArrayOps m_root;
+        private KaitaiStruct m_parent;
     }
 }

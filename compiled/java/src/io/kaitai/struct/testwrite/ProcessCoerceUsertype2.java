@@ -106,15 +106,15 @@ public class ProcessCoerceUsertype2 extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private long value;
-        private ProcessCoerceUsertype2 _root;
-        private ProcessCoerceUsertype2.Record _parent;
         public long value() { return value; }
         public void setValue(long _v) { _dirty = true; value = _v; }
         public ProcessCoerceUsertype2 _root() { return _root; }
         public void set_root(ProcessCoerceUsertype2 _v) { _dirty = true; _root = _v; }
         public ProcessCoerceUsertype2.Record _parent() { return _parent; }
         public void set_parent(ProcessCoerceUsertype2.Record _v) { _dirty = true; _parent = _v; }
+        private long value;
+        private ProcessCoerceUsertype2 _root;
+        private ProcessCoerceUsertype2.Record _parent;
     }
     public static class Record extends KaitaiStruct.ReadWrite {
         public static Record fromFile(String fileName) throws IOException {
@@ -206,7 +206,6 @@ public class ProcessCoerceUsertype2 extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private Foo buf;
         public Foo buf() {
             if (this.buf != null)
                 return this.buf;
@@ -214,13 +213,6 @@ public class ProcessCoerceUsertype2 extends KaitaiStruct.ReadWrite {
             return this.buf;
         }
         public void _invalidateBuf() { this.buf = null; }
-        private int flag;
-        private Foo bufUnproc;
-        private Foo bufProc;
-        private ProcessCoerceUsertype2 _root;
-        private ProcessCoerceUsertype2 _parent;
-        private byte[] _raw_bufProc;
-        private byte[] _raw__raw_bufProc;
         public int flag() { return flag; }
         public void setFlag(int _v) { _dirty = true; flag = _v; }
         public Foo bufUnproc() { return bufUnproc; }
@@ -235,14 +227,22 @@ public class ProcessCoerceUsertype2 extends KaitaiStruct.ReadWrite {
         public void set_raw_BufProc(byte[] _v) { _dirty = true; _raw_bufProc = _v; }
         public byte[] _raw__raw_bufProc() { return _raw__raw_bufProc; }
         public void set_raw__raw_BufProc(byte[] _v) { _dirty = true; _raw__raw_bufProc = _v; }
+        private Foo buf;
+        private int flag;
+        private Foo bufUnproc;
+        private Foo bufProc;
+        private ProcessCoerceUsertype2 _root;
+        private ProcessCoerceUsertype2 _parent;
+        private byte[] _raw_bufProc;
+        private byte[] _raw__raw_bufProc;
     }
-    private List<Record> records;
-    private ProcessCoerceUsertype2 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Record> records() { return records; }
     public void setRecords(List<Record> _v) { _dirty = true; records = _v; }
     public ProcessCoerceUsertype2 _root() { return _root; }
     public void set_root(ProcessCoerceUsertype2 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Record> records;
+    private ProcessCoerceUsertype2 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

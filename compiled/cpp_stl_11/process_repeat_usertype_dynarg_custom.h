@@ -40,16 +40,14 @@ public:
 
     public:
         ~block_t();
+        uint32_t a() const { return m_a; }
+        process_repeat_usertype_dynarg_custom_t* _root() const { return m__root; }
+        process_repeat_usertype_dynarg_custom_t* _parent() const { return m__parent; }
 
     private:
         uint32_t m_a;
         process_repeat_usertype_dynarg_custom_t* m__root;
         process_repeat_usertype_dynarg_custom_t* m__parent;
-
-    public:
-        uint32_t a() const { return m_a; }
-        process_repeat_usertype_dynarg_custom_t* _root() const { return m__root; }
-        process_repeat_usertype_dynarg_custom_t* _parent() const { return m__parent; }
     };
 
     class blocks_b_wrapper_t : public kaitai::kstruct {
@@ -64,40 +62,21 @@ public:
 
     public:
         ~blocks_b_wrapper_t();
+        uint8_t blocks_0_b();
+        uint8_t blocks_1_b();
+        uint8_t dummy() const { return m_dummy; }
+        process_repeat_usertype_dynarg_custom_t* _root() const { return m__root; }
+        process_repeat_usertype_dynarg_custom_t* _parent() const { return m__parent; }
 
     private:
         bool f_blocks_0_b;
         uint8_t m_blocks_0_b;
-
-    public:
-        uint8_t blocks_0_b();
-
-    private:
         bool f_blocks_1_b;
         uint8_t m_blocks_1_b;
-
-    public:
-        uint8_t blocks_1_b();
-
-    private:
         uint8_t m_dummy;
         process_repeat_usertype_dynarg_custom_t* m__root;
         process_repeat_usertype_dynarg_custom_t* m__parent;
-
-    public:
-        uint8_t dummy() const { return m_dummy; }
-        process_repeat_usertype_dynarg_custom_t* _root() const { return m__root; }
-        process_repeat_usertype_dynarg_custom_t* _parent() const { return m__parent; }
     };
-
-private:
-    std::unique_ptr<std::vector<std::unique_ptr<block_t>>> m_blocks;
-    std::unique_ptr<blocks_b_wrapper_t> m_blocks_b;
-    process_repeat_usertype_dynarg_custom_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::unique_ptr<std::vector<std::string>> m__raw_blocks;
-    std::unique_ptr<std::vector<std::unique_ptr<kaitai::kstream>>> m__io__raw_blocks;
-    std::unique_ptr<std::vector<std::string>> m__raw__raw_blocks;
 
 public:
     std::vector<std::unique_ptr<block_t>>* blocks() const { return m_blocks.get(); }
@@ -107,4 +86,13 @@ public:
     std::vector<std::string>* _raw_blocks() const { return m__raw_blocks.get(); }
     std::vector<std::unique_ptr<kaitai::kstream>>* _io__raw_blocks() const { return m__io__raw_blocks.get(); }
     std::vector<std::string>* _raw__raw_blocks() const { return m__raw__raw_blocks.get(); }
+
+private:
+    std::unique_ptr<std::vector<std::unique_ptr<block_t>>> m_blocks;
+    std::unique_ptr<blocks_b_wrapper_t> m_blocks_b;
+    process_repeat_usertype_dynarg_custom_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::unique_ptr<std::vector<std::string>> m__raw_blocks;
+    std::unique_ptr<std::vector<std::unique_ptr<kaitai::kstream>>> m__io__raw_blocks;
+    std::unique_ptr<std::vector<std::string>> m__raw__raw_blocks;
 };

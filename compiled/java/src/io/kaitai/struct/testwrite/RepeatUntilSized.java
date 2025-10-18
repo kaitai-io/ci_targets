@@ -142,10 +142,6 @@ public class RepeatUntilSized extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int marker;
-        private long body;
-        private RepeatUntilSized _root;
-        private RepeatUntilSized _parent;
         public int marker() { return marker; }
         public void setMarker(int _v) { _dirty = true; marker = _v; }
         public long body() { return body; }
@@ -154,11 +150,11 @@ public class RepeatUntilSized extends KaitaiStruct.ReadWrite {
         public void set_root(RepeatUntilSized _v) { _dirty = true; _root = _v; }
         public RepeatUntilSized _parent() { return _parent; }
         public void set_parent(RepeatUntilSized _v) { _dirty = true; _parent = _v; }
+        private int marker;
+        private long body;
+        private RepeatUntilSized _root;
+        private RepeatUntilSized _parent;
     }
-    private List<Record> records;
-    private RepeatUntilSized _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private List<byte[]> _raw_records;
     public List<Record> records() { return records; }
     public void setRecords(List<Record> _v) { _dirty = true; records = _v; }
     public RepeatUntilSized _root() { return _root; }
@@ -167,4 +163,8 @@ public class RepeatUntilSized extends KaitaiStruct.ReadWrite {
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public List<byte[]> _raw_records() { return _raw_records; }
     public void set_raw_Records(List<byte[]> _v) { _dirty = true; _raw_records = _v; }
+    private List<Record> records;
+    private RepeatUntilSized _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private List<byte[]> _raw_records;
 }

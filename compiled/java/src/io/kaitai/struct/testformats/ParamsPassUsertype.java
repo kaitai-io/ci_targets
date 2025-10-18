@@ -60,12 +60,12 @@ public class ParamsPassUsertype extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int foo;
-        private ParamsPassUsertype _root;
-        private ParamsPassUsertype _parent;
         public int foo() { return foo; }
         public ParamsPassUsertype _root() { return _root; }
         public ParamsPassUsertype _parent() { return _parent; }
+        private int foo;
+        private ParamsPassUsertype _root;
+        private ParamsPassUsertype _parent;
     }
     public static class ParamType extends KaitaiStruct {
 
@@ -90,21 +90,21 @@ public class ParamsPassUsertype extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] buf;
-        private Block foo;
-        private ParamsPassUsertype _root;
-        private ParamsPassUsertype _parent;
         public byte[] buf() { return buf; }
         public Block foo() { return foo; }
         public ParamsPassUsertype _root() { return _root; }
         public ParamsPassUsertype _parent() { return _parent; }
+        private byte[] buf;
+        private Block foo;
+        private ParamsPassUsertype _root;
+        private ParamsPassUsertype _parent;
     }
-    private Block first;
-    private ParamType one;
-    private ParamsPassUsertype _root;
-    private KaitaiStruct _parent;
     public Block first() { return first; }
     public ParamType one() { return one; }
     public ParamsPassUsertype _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Block first;
+    private ParamType one;
+    private ParamsPassUsertype _root;
+    private KaitaiStruct _parent;
 }

@@ -41,12 +41,12 @@ namespace Kaitai
             {
                 _b = m_io.ReadU1();
             }
-            private byte _b;
-            private ParamsPassArrayStruct m_root;
-            private ParamsPassArrayStruct m_parent;
             public byte B { get { return _b; } }
             public ParamsPassArrayStruct M_Root { get { return m_root; } }
             public ParamsPassArrayStruct M_Parent { get { return m_parent; } }
+            private byte _b;
+            private ParamsPassArrayStruct m_root;
+            private ParamsPassArrayStruct m_parent;
         }
         public partial class Foo : KaitaiStruct
         {
@@ -65,12 +65,12 @@ namespace Kaitai
             {
                 _f = m_io.ReadU1();
             }
-            private byte _f;
-            private ParamsPassArrayStruct m_root;
-            private ParamsPassArrayStruct m_parent;
             public byte F { get { return _f; } }
             public ParamsPassArrayStruct M_Root { get { return m_root; } }
             public ParamsPassArrayStruct M_Parent { get { return m_parent; } }
+            private byte _f;
+            private ParamsPassArrayStruct m_root;
+            private ParamsPassArrayStruct m_parent;
         }
         public partial class StructType : KaitaiStruct
         {
@@ -84,15 +84,13 @@ namespace Kaitai
             private void _read()
             {
             }
-            private List<KaitaiStruct> _structs;
-            private ParamsPassArrayStruct m_root;
-            private ParamsPassArrayStruct m_parent;
             public List<KaitaiStruct> Structs { get { return _structs; } }
             public ParamsPassArrayStruct M_Root { get { return m_root; } }
             public ParamsPassArrayStruct M_Parent { get { return m_parent; } }
+            private List<KaitaiStruct> _structs;
+            private ParamsPassArrayStruct m_root;
+            private ParamsPassArrayStruct m_parent;
         }
-        private bool f_oneTwo;
-        private List<KaitaiStruct> _oneTwo;
         public List<KaitaiStruct> OneTwo
         {
             get
@@ -104,15 +102,17 @@ namespace Kaitai
                 return _oneTwo;
             }
         }
-        private Foo _one;
-        private Bar _two;
-        private StructType _passStructs;
-        private ParamsPassArrayStruct m_root;
-        private KaitaiStruct m_parent;
         public Foo One { get { return _one; } }
         public Bar Two { get { return _two; } }
         public StructType PassStructs { get { return _passStructs; } }
         public ParamsPassArrayStruct M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_oneTwo;
+        private List<KaitaiStruct> _oneTwo;
+        private Foo _one;
+        private Bar _two;
+        private StructType _passStructs;
+        private ParamsPassArrayStruct m_root;
+        private KaitaiStruct m_parent;
     }
 }

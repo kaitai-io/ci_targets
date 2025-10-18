@@ -61,23 +61,23 @@ public class SwitchElseOnly extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] value;
-        private SwitchElseOnly _root;
-        private SwitchElseOnly _parent;
         public byte[] value() { return value; }
         public SwitchElseOnly _root() { return _root; }
         public SwitchElseOnly _parent() { return _parent; }
+        private byte[] value;
+        private SwitchElseOnly _root;
+        private SwitchElseOnly _parent;
     }
-    private byte opcode;
-    private byte primByte;
-    private byte[] indicator;
-    private Data ut;
-    private SwitchElseOnly _root;
-    private KaitaiStruct _parent;
     public byte opcode() { return opcode; }
     public byte primByte() { return primByte; }
     public byte[] indicator() { return indicator; }
     public Data ut() { return ut; }
     public SwitchElseOnly _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private byte opcode;
+    private byte primByte;
+    private byte[] indicator;
+    private Data ut;
+    private SwitchElseOnly _root;
+    private KaitaiStruct _parent;
 }

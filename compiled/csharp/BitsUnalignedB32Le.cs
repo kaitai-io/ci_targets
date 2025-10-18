@@ -23,15 +23,15 @@ namespace Kaitai
             _b = m_io.ReadBitsIntLe(32);
             _c = m_io.ReadBitsIntLe(7);
         }
-        private bool _a;
-        private ulong _b;
-        private ulong _c;
-        private BitsUnalignedB32Le m_root;
-        private KaitaiStruct m_parent;
         public bool A { get { return _a; } }
         public ulong B { get { return _b; } }
         public ulong C { get { return _c; } }
         public BitsUnalignedB32Le M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool _a;
+        private ulong _b;
+        private ulong _c;
+        private BitsUnalignedB32Le m_root;
+        private KaitaiStruct m_parent;
     }
 }

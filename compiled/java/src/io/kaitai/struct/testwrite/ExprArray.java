@@ -90,7 +90,6 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private Double afloatFirst;
     public Double afloatFirst() {
         if (this.afloatFirst != null)
             return this.afloatFirst;
@@ -98,7 +97,6 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
         return this.afloatFirst;
     }
     public void _invalidateAfloatFirst() { this.afloatFirst = null; }
-    private Double afloatLast;
     public Double afloatLast() {
         if (this.afloatLast != null)
             return this.afloatLast;
@@ -106,7 +104,6 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
         return this.afloatLast;
     }
     public void _invalidateAfloatLast() { this.afloatLast = null; }
-    private Double afloatMax;
     public Double afloatMax() {
         if (this.afloatMax != null)
             return this.afloatMax;
@@ -114,7 +111,6 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
         return this.afloatMax;
     }
     public void _invalidateAfloatMax() { this.afloatMax = null; }
-    private Double afloatMin;
     public Double afloatMin() {
         if (this.afloatMin != null)
             return this.afloatMin;
@@ -122,7 +118,6 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
         return this.afloatMin;
     }
     public void _invalidateAfloatMin() { this.afloatMin = null; }
-    private Integer afloatSize;
     public Integer afloatSize() {
         if (this.afloatSize != null)
             return this.afloatSize;
@@ -130,7 +125,6 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
         return this.afloatSize;
     }
     public void _invalidateAfloatSize() { this.afloatSize = null; }
-    private Long aintFirst;
     public Long aintFirst() {
         if (this.aintFirst != null)
             return this.aintFirst;
@@ -138,7 +132,6 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
         return this.aintFirst;
     }
     public void _invalidateAintFirst() { this.aintFirst = null; }
-    private Long aintLast;
     public Long aintLast() {
         if (this.aintLast != null)
             return this.aintLast;
@@ -146,7 +139,6 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
         return this.aintLast;
     }
     public void _invalidateAintLast() { this.aintLast = null; }
-    private Long aintMax;
     public Long aintMax() {
         if (this.aintMax != null)
             return this.aintMax;
@@ -154,7 +146,6 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
         return this.aintMax;
     }
     public void _invalidateAintMax() { this.aintMax = null; }
-    private Long aintMin;
     public Long aintMin() {
         if (this.aintMin != null)
             return this.aintMin;
@@ -162,7 +153,6 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
         return this.aintMin;
     }
     public void _invalidateAintMin() { this.aintMin = null; }
-    private Integer aintSize;
     public Integer aintSize() {
         if (this.aintSize != null)
             return this.aintSize;
@@ -170,7 +160,6 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
         return this.aintSize;
     }
     public void _invalidateAintSize() { this.aintSize = null; }
-    private String astrFirst;
     public String astrFirst() {
         if (this.astrFirst != null)
             return this.astrFirst;
@@ -178,7 +167,6 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
         return this.astrFirst;
     }
     public void _invalidateAstrFirst() { this.astrFirst = null; }
-    private String astrLast;
     public String astrLast() {
         if (this.astrLast != null)
             return this.astrLast;
@@ -186,7 +174,6 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
         return this.astrLast;
     }
     public void _invalidateAstrLast() { this.astrLast = null; }
-    private String astrMax;
     public String astrMax() {
         if (this.astrMax != null)
             return this.astrMax;
@@ -194,7 +181,6 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
         return this.astrMax;
     }
     public void _invalidateAstrMax() { this.astrMax = null; }
-    private String astrMin;
     public String astrMin() {
         if (this.astrMin != null)
             return this.astrMin;
@@ -202,7 +188,6 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
         return this.astrMin;
     }
     public void _invalidateAstrMin() { this.astrMin = null; }
-    private Integer astrSize;
     public Integer astrSize() {
         if (this.astrSize != null)
             return this.astrSize;
@@ -210,11 +195,6 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
         return this.astrSize;
     }
     public void _invalidateAstrSize() { this.astrSize = null; }
-    private List<Long> aint;
-    private List<Double> afloat;
-    private List<String> astr;
-    private ExprArray _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Long> aint() { return aint; }
     public void setAint(List<Long> _v) { _dirty = true; aint = _v; }
     public List<Double> afloat() { return afloat; }
@@ -225,4 +205,24 @@ public class ExprArray extends KaitaiStruct.ReadWrite {
     public void set_root(ExprArray _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Double afloatFirst;
+    private Double afloatLast;
+    private Double afloatMax;
+    private Double afloatMin;
+    private Integer afloatSize;
+    private Long aintFirst;
+    private Long aintLast;
+    private Long aintMax;
+    private Long aintMin;
+    private Integer aintSize;
+    private String astrFirst;
+    private String astrLast;
+    private String astrMax;
+    private String astrMin;
+    private Integer astrSize;
+    private List<Long> aint;
+    private List<Double> afloat;
+    private List<String> astr;
+    private ExprArray _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

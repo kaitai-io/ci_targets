@@ -52,22 +52,22 @@ namespace Kaitai
                 _marker = m_io.ReadU1();
                 _body = m_io.ReadU4le();
             }
-            private byte _marker;
-            private uint _body;
-            private RepeatUntilSized m_root;
-            private RepeatUntilSized m_parent;
             public byte Marker { get { return _marker; } }
             public uint Body { get { return _body; } }
             public RepeatUntilSized M_Root { get { return m_root; } }
             public RepeatUntilSized M_Parent { get { return m_parent; } }
+            private byte _marker;
+            private uint _body;
+            private RepeatUntilSized m_root;
+            private RepeatUntilSized m_parent;
         }
-        private List<Record> _records;
-        private RepeatUntilSized m_root;
-        private KaitaiStruct m_parent;
-        private List<byte[]> __raw_records;
         public List<Record> Records { get { return _records; } }
         public RepeatUntilSized M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public List<byte[]> M_RawRecords { get { return __raw_records; } }
+        private List<Record> _records;
+        private RepeatUntilSized m_root;
+        private KaitaiStruct m_parent;
+        private List<byte[]> __raw_records;
     }
 }

@@ -25,9 +25,9 @@ namespace Kaitai\Struct\Tests {
                 throw new \Kaitai\Struct\Error\ValidationNotEqualError(17217, $this->_m_b, $this->_io, "/seq/1");
             }
         }
-        protected $_m_a;
-        protected $_m_b;
         public function a() { return $this->_m_a; }
         public function b() { return $this->_m_b; }
+        protected $_m_a;
+        protected $_m_b;
     }
 }

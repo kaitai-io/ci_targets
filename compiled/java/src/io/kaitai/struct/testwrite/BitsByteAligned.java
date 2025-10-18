@@ -63,17 +63,6 @@ public class BitsByteAligned extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("byte_3", 1, this.byte3.length);
         _dirty = false;
     }
-    private long one;
-    private int byte1;
-    private long two;
-    private boolean three;
-    private int byte2;
-    private long four;
-    private byte[] byte3;
-    private long fullByte;
-    private int byte4;
-    private BitsByteAligned _root;
-    private KaitaiStruct.ReadWrite _parent;
     public long one() { return one; }
     public void setOne(long _v) { _dirty = true; one = _v; }
     public int byte1() { return byte1; }
@@ -96,4 +85,15 @@ public class BitsByteAligned extends KaitaiStruct.ReadWrite {
     public void set_root(BitsByteAligned _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private long one;
+    private int byte1;
+    private long two;
+    private boolean three;
+    private int byte2;
+    private long four;
+    private byte[] byte3;
+    private long fullByte;
+    private int byte4;
+    private BitsByteAligned _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

@@ -66,7 +66,6 @@ public class FloatToI extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private Double calcFloat1;
     public Double calcFloat1() {
         if (this.calcFloat1 != null)
             return this.calcFloat1;
@@ -74,7 +73,6 @@ public class FloatToI extends KaitaiStruct.ReadWrite {
         return this.calcFloat1;
     }
     public void _invalidateCalcFloat1() { this.calcFloat1 = null; }
-    private Double calcFloat2;
     public Double calcFloat2() {
         if (this.calcFloat2 != null)
             return this.calcFloat2;
@@ -82,7 +80,6 @@ public class FloatToI extends KaitaiStruct.ReadWrite {
         return this.calcFloat2;
     }
     public void _invalidateCalcFloat2() { this.calcFloat2 = null; }
-    private Double calcFloat3;
     public Double calcFloat3() {
         if (this.calcFloat3 != null)
             return this.calcFloat3;
@@ -90,7 +87,6 @@ public class FloatToI extends KaitaiStruct.ReadWrite {
         return this.calcFloat3;
     }
     public void _invalidateCalcFloat3() { this.calcFloat3 = null; }
-    private Double calcFloat4;
     public Double calcFloat4() {
         if (this.calcFloat4 != null)
             return this.calcFloat4;
@@ -98,7 +94,6 @@ public class FloatToI extends KaitaiStruct.ReadWrite {
         return this.calcFloat4;
     }
     public void _invalidateCalcFloat4() { this.calcFloat4 = null; }
-    private Double calcIf;
     public Double calcIf() {
         if (this.calcIf != null)
             return this.calcIf;
@@ -106,7 +101,6 @@ public class FloatToI extends KaitaiStruct.ReadWrite {
         return this.calcIf;
     }
     public void _invalidateCalcIf() { this.calcIf = null; }
-    private Integer calcIfI;
     public Integer calcIfI() {
         if (this.calcIfI != null)
             return this.calcIfI;
@@ -114,7 +108,6 @@ public class FloatToI extends KaitaiStruct.ReadWrite {
         return this.calcIfI;
     }
     public void _invalidateCalcIfI() { this.calcIfI = null; }
-    private Integer doubleI;
     public Integer doubleI() {
         if (this.doubleI != null)
             return this.doubleI;
@@ -122,7 +115,6 @@ public class FloatToI extends KaitaiStruct.ReadWrite {
         return this.doubleI;
     }
     public void _invalidateDoubleI() { this.doubleI = null; }
-    private Integer doubleIfI;
     public Integer doubleIfI() {
         if (this.doubleIfI != null)
             return this.doubleIfI;
@@ -130,7 +122,6 @@ public class FloatToI extends KaitaiStruct.ReadWrite {
         return this.doubleIfI;
     }
     public void _invalidateDoubleIfI() { this.doubleIfI = null; }
-    private Integer float1I;
     public Integer float1I() {
         if (this.float1I != null)
             return this.float1I;
@@ -138,7 +129,6 @@ public class FloatToI extends KaitaiStruct.ReadWrite {
         return this.float1I;
     }
     public void _invalidateFloat1I() { this.float1I = null; }
-    private Integer float2I;
     public Integer float2I() {
         if (this.float2I != null)
             return this.float2I;
@@ -146,7 +136,6 @@ public class FloatToI extends KaitaiStruct.ReadWrite {
         return this.float2I;
     }
     public void _invalidateFloat2I() { this.float2I = null; }
-    private Integer float3I;
     public Integer float3I() {
         if (this.float3I != null)
             return this.float3I;
@@ -154,7 +143,6 @@ public class FloatToI extends KaitaiStruct.ReadWrite {
         return this.float3I;
     }
     public void _invalidateFloat3I() { this.float3I = null; }
-    private Integer float4I;
     public Integer float4I() {
         if (this.float4I != null)
             return this.float4I;
@@ -162,7 +150,6 @@ public class FloatToI extends KaitaiStruct.ReadWrite {
         return this.float4I;
     }
     public void _invalidateFloat4I() { this.float4I = null; }
-    private Integer singleI;
     public Integer singleI() {
         if (this.singleI != null)
             return this.singleI;
@@ -170,7 +157,6 @@ public class FloatToI extends KaitaiStruct.ReadWrite {
         return this.singleI;
     }
     public void _invalidateSingleI() { this.singleI = null; }
-    private Integer singleIfI;
     public Integer singleIfI() {
         if (this.singleIfI != null)
             return this.singleIfI;
@@ -178,12 +164,6 @@ public class FloatToI extends KaitaiStruct.ReadWrite {
         return this.singleIfI;
     }
     public void _invalidateSingleIfI() { this.singleIfI = null; }
-    private float singleValue;
-    private double doubleValue;
-    private Float singleValueIf;
-    private Double doubleValueIf;
-    private FloatToI _root;
-    private KaitaiStruct.ReadWrite _parent;
     public float singleValue() { return singleValue; }
     public void setSingleValue(float _v) { _dirty = true; singleValue = _v; }
     public double doubleValue() { return doubleValue; }
@@ -196,4 +176,24 @@ public class FloatToI extends KaitaiStruct.ReadWrite {
     public void set_root(FloatToI _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Double calcFloat1;
+    private Double calcFloat2;
+    private Double calcFloat3;
+    private Double calcFloat4;
+    private Double calcIf;
+    private Integer calcIfI;
+    private Integer doubleI;
+    private Integer doubleIfI;
+    private Integer float1I;
+    private Integer float2I;
+    private Integer float3I;
+    private Integer float4I;
+    private Integer singleI;
+    private Integer singleIfI;
+    private float singleValue;
+    private double doubleValue;
+    private Float singleValueIf;
+    private Double doubleValueIf;
+    private FloatToI _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

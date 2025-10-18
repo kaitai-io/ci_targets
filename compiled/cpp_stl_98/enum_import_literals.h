@@ -26,35 +26,21 @@ private:
 
 public:
     ~enum_import_literals_t();
+    bool pet_1_eq();
+    int32_t pet_1_to_i();
+    enum_deep_t::container1_t::container2_t::animal_t pet_2();
+    enum_import_literals_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_pet_1_eq;
     bool m_pet_1_eq;
-
-public:
-    bool pet_1_eq();
-
-private:
     bool f_pet_1_to_i;
     int32_t m_pet_1_to_i;
-
-public:
-    int32_t pet_1_to_i();
-
-private:
     bool f_pet_2;
     enum_deep_t::container1_t::container2_t::animal_t m_pet_2;
-
-public:
-    enum_deep_t::container1_t::container2_t::animal_t pet_2();
-
-private:
     enum_import_literals_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    enum_import_literals_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // ENUM_IMPORT_LITERALS_H_

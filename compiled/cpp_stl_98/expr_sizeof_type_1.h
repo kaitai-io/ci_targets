@@ -52,25 +52,15 @@ public:
 
         public:
             ~subblock_t();
+            std::string a() const { return m_a; }
+            expr_sizeof_type_1_t* _root() const { return m__root; }
+            expr_sizeof_type_1_t::block_t* _parent() const { return m__parent; }
 
         private:
             std::string m_a;
             expr_sizeof_type_1_t* m__root;
             expr_sizeof_type_1_t::block_t* m__parent;
-
-        public:
-            std::string a() const { return m_a; }
-            expr_sizeof_type_1_t* _root() const { return m__root; }
-            expr_sizeof_type_1_t::block_t* _parent() const { return m__parent; }
         };
-
-    private:
-        uint8_t m_a;
-        uint32_t m_b;
-        std::string m_c;
-        subblock_t* m_d;
-        expr_sizeof_type_1_t* m__root;
-        kaitai::kstruct* m__parent;
 
     public:
         uint8_t a() const { return m_a; }
@@ -79,29 +69,29 @@ public:
         subblock_t* d() const { return m_d; }
         expr_sizeof_type_1_t* _root() const { return m__root; }
         kaitai::kstruct* _parent() const { return m__parent; }
+
+    private:
+        uint8_t m_a;
+        uint32_t m_b;
+        std::string m_c;
+        subblock_t* m_d;
+        expr_sizeof_type_1_t* m__root;
+        kaitai::kstruct* m__parent;
     };
+
+public:
+    int32_t sizeof_block();
+    int32_t sizeof_subblock();
+    expr_sizeof_type_1_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_sizeof_block;
     int32_t m_sizeof_block;
-
-public:
-    int32_t sizeof_block();
-
-private:
     bool f_sizeof_subblock;
     int32_t m_sizeof_subblock;
-
-public:
-    int32_t sizeof_subblock();
-
-private:
     expr_sizeof_type_1_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    expr_sizeof_type_1_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // EXPR_SIZEOF_TYPE_1_H_

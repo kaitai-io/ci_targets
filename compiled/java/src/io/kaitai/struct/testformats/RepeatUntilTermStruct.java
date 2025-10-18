@@ -110,21 +110,13 @@ public class RepeatUntilTermStruct extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] value;
-        private RepeatUntilTermStruct _root;
-        private RepeatUntilTermStruct _parent;
         public byte[] value() { return value; }
         public RepeatUntilTermStruct _root() { return _root; }
         public RepeatUntilTermStruct _parent() { return _parent; }
+        private byte[] value;
+        private RepeatUntilTermStruct _root;
+        private RepeatUntilTermStruct _parent;
     }
-    private List<BytesWrapper> records1;
-    private List<BytesWrapper> records2;
-    private List<BytesWrapper> records3;
-    private RepeatUntilTermStruct _root;
-    private KaitaiStruct _parent;
-    private List<byte[]> _raw_records1;
-    private List<byte[]> _raw_records2;
-    private List<byte[]> _raw_records3;
     public List<BytesWrapper> records1() { return records1; }
     public List<BytesWrapper> records2() { return records2; }
     public List<BytesWrapper> records3() { return records3; }
@@ -133,4 +125,12 @@ public class RepeatUntilTermStruct extends KaitaiStruct {
     public List<byte[]> _raw_records1() { return _raw_records1; }
     public List<byte[]> _raw_records2() { return _raw_records2; }
     public List<byte[]> _raw_records3() { return _raw_records3; }
+    private List<BytesWrapper> records1;
+    private List<BytesWrapper> records2;
+    private List<BytesWrapper> records3;
+    private RepeatUntilTermStruct _root;
+    private KaitaiStruct _parent;
+    private List<byte[]> _raw_records1;
+    private List<byte[]> _raw_records2;
+    private List<byte[]> _raw_records3;
 }

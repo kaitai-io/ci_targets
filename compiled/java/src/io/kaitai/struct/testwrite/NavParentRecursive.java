@@ -62,7 +62,6 @@ public class NavParentRecursive extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private Integer parentValue;
     public Integer parentValue() {
         if (this.parentValue != null)
             return this.parentValue;
@@ -72,10 +71,6 @@ public class NavParentRecursive extends KaitaiStruct.ReadWrite {
         return this.parentValue;
     }
     public void _invalidateParentValue() { this.parentValue = null; }
-    private int value;
-    private NavParentRecursive next;
-    private NavParentRecursive _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int value() { return value; }
     public void setValue(int _v) { _dirty = true; value = _v; }
     public NavParentRecursive next() { return next; }
@@ -84,4 +79,9 @@ public class NavParentRecursive extends KaitaiStruct.ReadWrite {
     public void set_root(NavParentRecursive _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer parentValue;
+    private int value;
+    private NavParentRecursive next;
+    private NavParentRecursive _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

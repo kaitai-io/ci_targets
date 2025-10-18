@@ -24,14 +24,12 @@ private:
 
 public:
     ~valid_fail_contents_t();
+    std::string foo() const { return m_foo; }
+    valid_fail_contents_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::string m_foo;
     valid_fail_contents_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::string foo() const { return m_foo; }
-    valid_fail_contents_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

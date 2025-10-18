@@ -87,12 +87,12 @@ public class DefaultEndianMod extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private int two;
-            private DefaultEndianMod _root;
-            private DefaultEndianMod.MainObj _parent;
             public int two() { return two; }
             public DefaultEndianMod _root() { return _root; }
             public DefaultEndianMod.MainObj _parent() { return _parent; }
+            private int two;
+            private DefaultEndianMod _root;
+            private DefaultEndianMod.MainObj _parent;
         }
         public static class SubnestBe extends KaitaiStruct {
             public static SubnestBe fromFile(String fileName) throws IOException {
@@ -119,28 +119,28 @@ public class DefaultEndianMod extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private int two;
-            private DefaultEndianMod _root;
-            private DefaultEndianMod.MainObj _parent;
             public int two() { return two; }
             public DefaultEndianMod _root() { return _root; }
             public DefaultEndianMod.MainObj _parent() { return _parent; }
+            private int two;
+            private DefaultEndianMod _root;
+            private DefaultEndianMod.MainObj _parent;
         }
-        private int one;
-        private Subnest nest;
-        private SubnestBe nestBe;
-        private DefaultEndianMod _root;
-        private DefaultEndianMod _parent;
         public int one() { return one; }
         public Subnest nest() { return nest; }
         public SubnestBe nestBe() { return nestBe; }
         public DefaultEndianMod _root() { return _root; }
         public DefaultEndianMod _parent() { return _parent; }
+        private int one;
+        private Subnest nest;
+        private SubnestBe nestBe;
+        private DefaultEndianMod _root;
+        private DefaultEndianMod _parent;
     }
-    private MainObj main;
-    private DefaultEndianMod _root;
-    private KaitaiStruct _parent;
     public MainObj main() { return main; }
     public DefaultEndianMod _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private MainObj main;
+    private DefaultEndianMod _root;
+    private KaitaiStruct _parent;
 }

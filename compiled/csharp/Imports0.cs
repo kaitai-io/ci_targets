@@ -23,8 +23,6 @@ namespace Kaitai
             _two = m_io.ReadU1();
             _hw = new HelloWorld(m_io);
         }
-        private bool f_hwOne;
-        private byte _hwOne;
         public byte HwOne
         {
             get
@@ -36,13 +34,15 @@ namespace Kaitai
                 return _hwOne;
             }
         }
-        private byte _two;
-        private HelloWorld _hw;
-        private Imports0 m_root;
-        private KaitaiStruct m_parent;
         public byte Two { get { return _two; } }
         public HelloWorld Hw { get { return _hw; } }
         public Imports0 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_hwOne;
+        private byte _hwOne;
+        private byte _two;
+        private HelloWorld _hw;
+        private Imports0 m_root;
+        private KaitaiStruct m_parent;
     }
 }

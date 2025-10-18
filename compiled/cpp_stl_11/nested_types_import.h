@@ -25,6 +25,11 @@ private:
 
 public:
     ~nested_types_import_t();
+    nested_types3_t::subtype_a_t::subtype_cc_t* a_cc() const { return m_a_cc.get(); }
+    nested_types3_t::subtype_a_t::subtype_c_t::subtype_d_t* a_c_d() const { return m_a_c_d.get(); }
+    nested_types3_t::subtype_b_t* b() const { return m_b.get(); }
+    nested_types_import_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::unique_ptr<nested_types3_t::subtype_a_t::subtype_cc_t> m_a_cc;
@@ -32,11 +37,4 @@ private:
     std::unique_ptr<nested_types3_t::subtype_b_t> m_b;
     nested_types_import_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    nested_types3_t::subtype_a_t::subtype_cc_t* a_cc() const { return m_a_cc.get(); }
-    nested_types3_t::subtype_a_t::subtype_c_t::subtype_d_t* a_c_d() const { return m_a_c_d.get(); }
-    nested_types3_t::subtype_b_t* b() const { return m_b.get(); }
-    nested_types_import_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

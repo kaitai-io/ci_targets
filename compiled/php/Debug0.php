@@ -16,11 +16,11 @@ namespace Kaitai\Struct\Tests {
             }
             $this->_m__unnamed2 = $this->_io->readU1();
         }
-        protected $_m_one;
-        protected $_m_arrayOfInts;
-        protected $_m__unnamed2;
         public function one() { return $this->_m_one; }
         public function arrayOfInts() { return $this->_m_arrayOfInts; }
         public function _unnamed2() { return $this->_m__unnamed2; }
+        protected $_m_one;
+        protected $_m_arrayOfInts;
+        protected $_m__unnamed2;
     }
 }

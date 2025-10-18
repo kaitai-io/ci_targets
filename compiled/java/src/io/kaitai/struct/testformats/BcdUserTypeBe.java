@@ -68,88 +68,88 @@ public class BcdUserTypeBe extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private Integer asInt;
         public Integer asInt() {
             if (this.asInt != null)
                 return this.asInt;
             this.asInt = ((Number) (((((((digit8() * 1 + digit7() * 10) + digit6() * 100) + digit5() * 1000) + digit4() * 10000) + digit3() * 100000) + digit2() * 1000000) + digit1() * 10000000)).intValue();
             return this.asInt;
         }
-        private String asStr;
         public String asStr() {
             if (this.asStr != null)
                 return this.asStr;
             this.asStr = ((((((Long.toString(digit1()) + Long.toString(digit2())) + Long.toString(digit3())) + Long.toString(digit4())) + Long.toString(digit5())) + Long.toString(digit6())) + Long.toString(digit7())) + Long.toString(digit8());
             return this.asStr;
         }
-        private Integer digit1;
         public Integer digit1() {
             if (this.digit1 != null)
                 return this.digit1;
             this.digit1 = ((Number) ((b1() & 240) >> 4)).intValue();
             return this.digit1;
         }
-        private Integer digit2;
         public Integer digit2() {
             if (this.digit2 != null)
                 return this.digit2;
             this.digit2 = ((Number) (b1() & 15)).intValue();
             return this.digit2;
         }
-        private Integer digit3;
         public Integer digit3() {
             if (this.digit3 != null)
                 return this.digit3;
             this.digit3 = ((Number) ((b2() & 240) >> 4)).intValue();
             return this.digit3;
         }
-        private Integer digit4;
         public Integer digit4() {
             if (this.digit4 != null)
                 return this.digit4;
             this.digit4 = ((Number) (b2() & 15)).intValue();
             return this.digit4;
         }
-        private Integer digit5;
         public Integer digit5() {
             if (this.digit5 != null)
                 return this.digit5;
             this.digit5 = ((Number) ((b3() & 240) >> 4)).intValue();
             return this.digit5;
         }
-        private Integer digit6;
         public Integer digit6() {
             if (this.digit6 != null)
                 return this.digit6;
             this.digit6 = ((Number) (b3() & 15)).intValue();
             return this.digit6;
         }
-        private Integer digit7;
         public Integer digit7() {
             if (this.digit7 != null)
                 return this.digit7;
             this.digit7 = ((Number) ((b4() & 240) >> 4)).intValue();
             return this.digit7;
         }
-        private Integer digit8;
         public Integer digit8() {
             if (this.digit8 != null)
                 return this.digit8;
             this.digit8 = ((Number) (b4() & 15)).intValue();
             return this.digit8;
         }
-        private int b1;
-        private int b2;
-        private int b3;
-        private int b4;
-        private BcdUserTypeBe _root;
-        private BcdUserTypeBe _parent;
         public int b1() { return b1; }
         public int b2() { return b2; }
         public int b3() { return b3; }
         public int b4() { return b4; }
         public BcdUserTypeBe _root() { return _root; }
         public BcdUserTypeBe _parent() { return _parent; }
+        private Integer asInt;
+        private String asStr;
+        private Integer digit1;
+        private Integer digit2;
+        private Integer digit3;
+        private Integer digit4;
+        private Integer digit5;
+        private Integer digit6;
+        private Integer digit7;
+        private Integer digit8;
+        private int b1;
+        private int b2;
+        private int b3;
+        private int b4;
+        private BcdUserTypeBe _root;
+        private BcdUserTypeBe _parent;
     }
     public static class LtrObj extends KaitaiStruct {
         public static LtrObj fromFile(String fileName) throws IOException {
@@ -179,88 +179,88 @@ public class BcdUserTypeBe extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private Integer asInt;
         public Integer asInt() {
             if (this.asInt != null)
                 return this.asInt;
             this.asInt = ((Number) (((((((digit8() * 1 + digit7() * 10) + digit6() * 100) + digit5() * 1000) + digit4() * 10000) + digit3() * 100000) + digit2() * 1000000) + digit1() * 10000000)).intValue();
             return this.asInt;
         }
-        private String asStr;
         public String asStr() {
             if (this.asStr != null)
                 return this.asStr;
             this.asStr = ((((((Long.toString(digit1()) + Long.toString(digit2())) + Long.toString(digit3())) + Long.toString(digit4())) + Long.toString(digit5())) + Long.toString(digit6())) + Long.toString(digit7())) + Long.toString(digit8());
             return this.asStr;
         }
-        private Integer digit1;
         public Integer digit1() {
             if (this.digit1 != null)
                 return this.digit1;
             this.digit1 = ((Number) ((b1() & 240) >> 4)).intValue();
             return this.digit1;
         }
-        private Integer digit2;
         public Integer digit2() {
             if (this.digit2 != null)
                 return this.digit2;
             this.digit2 = ((Number) (b1() & 15)).intValue();
             return this.digit2;
         }
-        private Integer digit3;
         public Integer digit3() {
             if (this.digit3 != null)
                 return this.digit3;
             this.digit3 = ((Number) ((b2() & 240) >> 4)).intValue();
             return this.digit3;
         }
-        private Integer digit4;
         public Integer digit4() {
             if (this.digit4 != null)
                 return this.digit4;
             this.digit4 = ((Number) (b2() & 15)).intValue();
             return this.digit4;
         }
-        private Integer digit5;
         public Integer digit5() {
             if (this.digit5 != null)
                 return this.digit5;
             this.digit5 = ((Number) ((b3() & 240) >> 4)).intValue();
             return this.digit5;
         }
-        private Integer digit6;
         public Integer digit6() {
             if (this.digit6 != null)
                 return this.digit6;
             this.digit6 = ((Number) (b3() & 15)).intValue();
             return this.digit6;
         }
-        private Integer digit7;
         public Integer digit7() {
             if (this.digit7 != null)
                 return this.digit7;
             this.digit7 = ((Number) ((b4() & 240) >> 4)).intValue();
             return this.digit7;
         }
-        private Integer digit8;
         public Integer digit8() {
             if (this.digit8 != null)
                 return this.digit8;
             this.digit8 = ((Number) (b4() & 15)).intValue();
             return this.digit8;
         }
-        private int b1;
-        private int b2;
-        private int b3;
-        private int b4;
-        private BcdUserTypeBe _root;
-        private BcdUserTypeBe _parent;
         public int b1() { return b1; }
         public int b2() { return b2; }
         public int b3() { return b3; }
         public int b4() { return b4; }
         public BcdUserTypeBe _root() { return _root; }
         public BcdUserTypeBe _parent() { return _parent; }
+        private Integer asInt;
+        private String asStr;
+        private Integer digit1;
+        private Integer digit2;
+        private Integer digit3;
+        private Integer digit4;
+        private Integer digit5;
+        private Integer digit6;
+        private Integer digit7;
+        private Integer digit8;
+        private int b1;
+        private int b2;
+        private int b3;
+        private int b4;
+        private BcdUserTypeBe _root;
+        private BcdUserTypeBe _parent;
     }
     public static class RtlObj extends KaitaiStruct {
         public static RtlObj fromFile(String fileName) throws IOException {
@@ -290,97 +290,97 @@ public class BcdUserTypeBe extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private Integer asInt;
         public Integer asInt() {
             if (this.asInt != null)
                 return this.asInt;
             this.asInt = ((Number) (((((((digit1() * 1 + digit2() * 10) + digit3() * 100) + digit4() * 1000) + digit5() * 10000) + digit6() * 100000) + digit7() * 1000000) + digit8() * 10000000)).intValue();
             return this.asInt;
         }
-        private String asStr;
         public String asStr() {
             if (this.asStr != null)
                 return this.asStr;
             this.asStr = ((((((Long.toString(digit8()) + Long.toString(digit7())) + Long.toString(digit6())) + Long.toString(digit5())) + Long.toString(digit4())) + Long.toString(digit3())) + Long.toString(digit2())) + Long.toString(digit1());
             return this.asStr;
         }
-        private Integer digit1;
         public Integer digit1() {
             if (this.digit1 != null)
                 return this.digit1;
             this.digit1 = ((Number) ((b1() & 240) >> 4)).intValue();
             return this.digit1;
         }
-        private Integer digit2;
         public Integer digit2() {
             if (this.digit2 != null)
                 return this.digit2;
             this.digit2 = ((Number) (b1() & 15)).intValue();
             return this.digit2;
         }
-        private Integer digit3;
         public Integer digit3() {
             if (this.digit3 != null)
                 return this.digit3;
             this.digit3 = ((Number) ((b2() & 240) >> 4)).intValue();
             return this.digit3;
         }
-        private Integer digit4;
         public Integer digit4() {
             if (this.digit4 != null)
                 return this.digit4;
             this.digit4 = ((Number) (b2() & 15)).intValue();
             return this.digit4;
         }
-        private Integer digit5;
         public Integer digit5() {
             if (this.digit5 != null)
                 return this.digit5;
             this.digit5 = ((Number) ((b3() & 240) >> 4)).intValue();
             return this.digit5;
         }
-        private Integer digit6;
         public Integer digit6() {
             if (this.digit6 != null)
                 return this.digit6;
             this.digit6 = ((Number) (b3() & 15)).intValue();
             return this.digit6;
         }
-        private Integer digit7;
         public Integer digit7() {
             if (this.digit7 != null)
                 return this.digit7;
             this.digit7 = ((Number) ((b4() & 240) >> 4)).intValue();
             return this.digit7;
         }
-        private Integer digit8;
         public Integer digit8() {
             if (this.digit8 != null)
                 return this.digit8;
             this.digit8 = ((Number) (b4() & 15)).intValue();
             return this.digit8;
         }
-        private int b1;
-        private int b2;
-        private int b3;
-        private int b4;
-        private BcdUserTypeBe _root;
-        private BcdUserTypeBe _parent;
         public int b1() { return b1; }
         public int b2() { return b2; }
         public int b3() { return b3; }
         public int b4() { return b4; }
         public BcdUserTypeBe _root() { return _root; }
         public BcdUserTypeBe _parent() { return _parent; }
+        private Integer asInt;
+        private String asStr;
+        private Integer digit1;
+        private Integer digit2;
+        private Integer digit3;
+        private Integer digit4;
+        private Integer digit5;
+        private Integer digit6;
+        private Integer digit7;
+        private Integer digit8;
+        private int b1;
+        private int b2;
+        private int b3;
+        private int b4;
+        private BcdUserTypeBe _root;
+        private BcdUserTypeBe _parent;
     }
-    private LtrObj ltr;
-    private RtlObj rtl;
-    private LeadingZeroLtrObj leadingZeroLtr;
-    private BcdUserTypeBe _root;
-    private KaitaiStruct _parent;
     public LtrObj ltr() { return ltr; }
     public RtlObj rtl() { return rtl; }
     public LeadingZeroLtrObj leadingZeroLtr() { return leadingZeroLtr; }
     public BcdUserTypeBe _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private LtrObj ltr;
+    private RtlObj rtl;
+    private LeadingZeroLtrObj leadingZeroLtr;
+    private BcdUserTypeBe _root;
+    private KaitaiStruct _parent;
 }

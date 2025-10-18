@@ -31,8 +31,6 @@ namespace Kaitai
                 } while (!(M_ == UntilVal));
             }
         }
-        private bool f_untilVal;
-        private short _untilVal;
         public short UntilVal
         {
             get
@@ -47,11 +45,13 @@ namespace Kaitai
                 return _untilVal;
             }
         }
-        private List<short> _entries;
-        private InstanceInRepeatUntil m_root;
-        private KaitaiStruct m_parent;
         public List<short> Entries { get { return _entries; } }
         public InstanceInRepeatUntil M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_untilVal;
+        private short _untilVal;
+        private List<short> _entries;
+        private InstanceInRepeatUntil m_root;
+        private KaitaiStruct m_parent;
     }
 }

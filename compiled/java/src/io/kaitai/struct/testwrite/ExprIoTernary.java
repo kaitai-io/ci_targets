@@ -135,15 +135,15 @@ public class ExprIoTernary extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int one;
-        private ExprIoTernary _root;
-        private ExprIoTernary _parent;
         public int one() { return one; }
         public void setOne(int _v) { _dirty = true; one = _v; }
         public ExprIoTernary _root() { return _root; }
         public void set_root(ExprIoTernary _v) { _dirty = true; _root = _v; }
         public ExprIoTernary _parent() { return _parent; }
         public void set_parent(ExprIoTernary _v) { _dirty = true; _parent = _v; }
+        private int one;
+        private ExprIoTernary _root;
+        private ExprIoTernary _parent;
     }
     public static class Two extends KaitaiStruct.ReadWrite {
         public static Two fromFile(String fileName) throws IOException {
@@ -182,17 +182,16 @@ public class ExprIoTernary extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int two;
-        private ExprIoTernary _root;
-        private ExprIoTernary _parent;
         public int two() { return two; }
         public void setTwo(int _v) { _dirty = true; two = _v; }
         public ExprIoTernary _root() { return _root; }
         public void set_root(ExprIoTernary _v) { _dirty = true; _root = _v; }
         public ExprIoTernary _parent() { return _parent; }
         public void set_parent(ExprIoTernary _v) { _dirty = true; _parent = _v; }
+        private int two;
+        private ExprIoTernary _root;
+        private ExprIoTernary _parent;
     }
-    private KaitaiStream oneOrTwoIo;
     public KaitaiStream oneOrTwoIo() {
         if (this.oneOrTwoIo != null)
             return this.oneOrTwoIo;
@@ -200,7 +199,6 @@ public class ExprIoTernary extends KaitaiStruct.ReadWrite {
         return this.oneOrTwoIo;
     }
     public void _invalidateOneOrTwoIo() { this.oneOrTwoIo = null; }
-    private Integer oneOrTwoIoSize1;
     public Integer oneOrTwoIoSize1() {
         if (this.oneOrTwoIoSize1 != null)
             return this.oneOrTwoIoSize1;
@@ -208,7 +206,6 @@ public class ExprIoTernary extends KaitaiStruct.ReadWrite {
         return this.oneOrTwoIoSize1;
     }
     public void _invalidateOneOrTwoIoSize1() { this.oneOrTwoIoSize1 = null; }
-    private Integer oneOrTwoIoSize2;
     public Integer oneOrTwoIoSize2() {
         if (this.oneOrTwoIoSize2 != null)
             return this.oneOrTwoIoSize2;
@@ -216,7 +213,6 @@ public class ExprIoTernary extends KaitaiStruct.ReadWrite {
         return this.oneOrTwoIoSize2;
     }
     public void _invalidateOneOrTwoIoSize2() { this.oneOrTwoIoSize2 = null; }
-    private Integer oneOrTwoIoSizeAdd3;
     public Integer oneOrTwoIoSizeAdd3() {
         if (this.oneOrTwoIoSizeAdd3 != null)
             return this.oneOrTwoIoSizeAdd3;
@@ -224,7 +220,6 @@ public class ExprIoTernary extends KaitaiStruct.ReadWrite {
         return this.oneOrTwoIoSizeAdd3;
     }
     public void _invalidateOneOrTwoIoSizeAdd3() { this.oneOrTwoIoSizeAdd3 = null; }
-    private KaitaiStruct.ReadWrite oneOrTwoObj;
     public KaitaiStruct.ReadWrite oneOrTwoObj() {
         if (this.oneOrTwoObj != null)
             return this.oneOrTwoObj;
@@ -232,13 +227,6 @@ public class ExprIoTernary extends KaitaiStruct.ReadWrite {
         return this.oneOrTwoObj;
     }
     public void _invalidateOneOrTwoObj() { this.oneOrTwoObj = null; }
-    private int flag;
-    private One obj1;
-    private Two obj2;
-    private ExprIoTernary _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_obj1;
-    private byte[] _raw_obj2;
     public int flag() { return flag; }
     public void setFlag(int _v) { _dirty = true; flag = _v; }
     public One obj1() { return obj1; }
@@ -253,4 +241,16 @@ public class ExprIoTernary extends KaitaiStruct.ReadWrite {
     public void set_raw_Obj1(byte[] _v) { _dirty = true; _raw_obj1 = _v; }
     public byte[] _raw_obj2() { return _raw_obj2; }
     public void set_raw_Obj2(byte[] _v) { _dirty = true; _raw_obj2 = _v; }
+    private KaitaiStream oneOrTwoIo;
+    private Integer oneOrTwoIoSize1;
+    private Integer oneOrTwoIoSize2;
+    private Integer oneOrTwoIoSizeAdd3;
+    private KaitaiStruct.ReadWrite oneOrTwoObj;
+    private int flag;
+    private One obj1;
+    private Two obj2;
+    private ExprIoTernary _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_obj1;
+    private byte[] _raw_obj2;
 }

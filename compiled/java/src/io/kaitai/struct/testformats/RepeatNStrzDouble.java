@@ -47,14 +47,14 @@ public class RepeatNStrzDouble extends KaitaiStruct {
         for (int i = 0; i < this.lines2.size(); i++) {
         }
     }
-    private long qty;
-    private List<String> lines1;
-    private List<String> lines2;
-    private RepeatNStrzDouble _root;
-    private KaitaiStruct _parent;
     public long qty() { return qty; }
     public List<String> lines1() { return lines1; }
     public List<String> lines2() { return lines2; }
     public RepeatNStrzDouble _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private long qty;
+    private List<String> lines1;
+    private List<String> lines2;
+    private RepeatNStrzDouble _root;
+    private KaitaiStruct _parent;
 }

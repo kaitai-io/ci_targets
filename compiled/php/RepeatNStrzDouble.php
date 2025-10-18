@@ -21,11 +21,11 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_lines2[] = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "UTF-8");
             }
         }
-        protected $_m_qty;
-        protected $_m_lines1;
-        protected $_m_lines2;
         public function qty() { return $this->_m_qty; }
         public function lines1() { return $this->_m_lines1; }
         public function lines2() { return $this->_m_lines2; }
+        protected $_m_qty;
+        protected $_m_lines1;
+        protected $_m_lines2;
     }
 }

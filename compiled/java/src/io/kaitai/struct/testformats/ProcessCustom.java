@@ -41,15 +41,6 @@ public class ProcessCustom extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private byte[] buf1;
-    private byte[] buf2;
-    private int key;
-    private byte[] buf3;
-    private ProcessCustom _root;
-    private KaitaiStruct _parent;
-    private byte[] _raw_buf1;
-    private byte[] _raw_buf2;
-    private byte[] _raw_buf3;
     public byte[] buf1() { return buf1; }
     public byte[] buf2() { return buf2; }
     public int key() { return key; }
@@ -59,4 +50,13 @@ public class ProcessCustom extends KaitaiStruct {
     public byte[] _raw_buf1() { return _raw_buf1; }
     public byte[] _raw_buf2() { return _raw_buf2; }
     public byte[] _raw_buf3() { return _raw_buf3; }
+    private byte[] buf1;
+    private byte[] buf2;
+    private int key;
+    private byte[] buf3;
+    private ProcessCustom _root;
+    private KaitaiStruct _parent;
+    private byte[] _raw_buf1;
+    private byte[] _raw_buf2;
+    private byte[] _raw_buf3;
 }

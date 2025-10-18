@@ -109,28 +109,19 @@ public class ProcessCoerceSwitch extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] bar;
-        private ProcessCoerceSwitch _root;
-        private ProcessCoerceSwitch _parent;
         public byte[] bar() { return bar; }
         public ProcessCoerceSwitch _root() { return _root; }
         public ProcessCoerceSwitch _parent() { return _parent; }
+        private byte[] bar;
+        private ProcessCoerceSwitch _root;
+        private ProcessCoerceSwitch _parent;
     }
-    private Object buf;
     public Object buf() {
         if (this.buf != null)
             return this.buf;
         this.buf = (flag() == 0 ? bufUnproc() : bufProc());
         return this.buf;
     }
-    private int bufType;
-    private int flag;
-    private Object bufUnproc;
-    private Object bufProc;
-    private ProcessCoerceSwitch _root;
-    private KaitaiStruct _parent;
-    private byte[] _raw_bufProc;
-    private byte[] _raw__raw_bufProc;
     public int bufType() { return bufType; }
     public int flag() { return flag; }
     public Object bufUnproc() { return bufUnproc; }
@@ -139,4 +130,13 @@ public class ProcessCoerceSwitch extends KaitaiStruct {
     public KaitaiStruct _parent() { return _parent; }
     public byte[] _raw_bufProc() { return _raw_bufProc; }
     public byte[] _raw__raw_bufProc() { return _raw__raw_bufProc; }
+    private Object buf;
+    private int bufType;
+    private int flag;
+    private Object bufUnproc;
+    private Object bufProc;
+    private ProcessCoerceSwitch _root;
+    private KaitaiStruct _parent;
+    private byte[] _raw_bufProc;
+    private byte[] _raw__raw_bufProc;
 }

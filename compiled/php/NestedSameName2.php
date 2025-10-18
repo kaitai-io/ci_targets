@@ -13,12 +13,12 @@ namespace Kaitai\Struct\Tests {
             $this->_m_mainData = new \Kaitai\Struct\Tests\NestedSameName2\Main($this->_io, $this, $this->_root);
             $this->_m_dummy = new \Kaitai\Struct\Tests\NestedSameName2\DummyObj($this->_io, $this, $this->_root);
         }
-        protected $_m_version;
-        protected $_m_mainData;
-        protected $_m_dummy;
         public function version() { return $this->_m_version; }
         public function mainData() { return $this->_m_mainData; }
         public function dummy() { return $this->_m_dummy; }
+        protected $_m_version;
+        protected $_m_mainData;
+        protected $_m_dummy;
     }
 }
 
@@ -33,10 +33,10 @@ namespace Kaitai\Struct\Tests\NestedSameName2 {
             $this->_m_dummySize = $this->_io->readS4le();
             $this->_m_foo = new \Kaitai\Struct\Tests\NestedSameName2\DummyObj\FooObj($this->_io, $this, $this->_root);
         }
-        protected $_m_dummySize;
-        protected $_m_foo;
         public function dummySize() { return $this->_m_dummySize; }
         public function foo() { return $this->_m_foo; }
+        protected $_m_dummySize;
+        protected $_m_foo;
     }
 }
 
@@ -50,8 +50,8 @@ namespace Kaitai\Struct\Tests\NestedSameName2\DummyObj {
         private function _read() {
             $this->_m_data2 = $this->_io->readBytes($this->_parent()->dummySize() * 2);
         }
-        protected $_m_data2;
         public function data2() { return $this->_m_data2; }
+        protected $_m_data2;
     }
 }
 
@@ -66,10 +66,10 @@ namespace Kaitai\Struct\Tests\NestedSameName2 {
             $this->_m_mainSize = $this->_io->readS4le();
             $this->_m_foo = new \Kaitai\Struct\Tests\NestedSameName2\Main\FooObj($this->_io, $this, $this->_root);
         }
-        protected $_m_mainSize;
-        protected $_m_foo;
         public function mainSize() { return $this->_m_mainSize; }
         public function foo() { return $this->_m_foo; }
+        protected $_m_mainSize;
+        protected $_m_foo;
     }
 }
 
@@ -83,7 +83,7 @@ namespace Kaitai\Struct\Tests\NestedSameName2\Main {
         private function _read() {
             $this->_m_data1 = $this->_io->readBytes($this->_parent()->mainSize() * 2);
         }
-        protected $_m_data1;
         public function data1() { return $this->_m_data1; }
+        protected $_m_data1;
     }
 }

@@ -25,18 +25,16 @@ private:
 
 public:
     ~repeat_until_s4_t();
+    std::vector<int32_t>* entries() const { return m_entries; }
+    std::string afterall() const { return m_afterall; }
+    repeat_until_s4_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::vector<int32_t>* m_entries;
     std::string m_afterall;
     repeat_until_s4_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::vector<int32_t>* entries() const { return m_entries; }
-    std::string afterall() const { return m_afterall; }
-    repeat_until_s4_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // REPEAT_UNTIL_S4_H_

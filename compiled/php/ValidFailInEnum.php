@@ -14,8 +14,8 @@ namespace Kaitai\Struct\Tests {
                 throw new \Kaitai\Struct\Error\ValidationNotInEnumError($this->_m_foo, $this->_io, "/seq/0");
             }
         }
-        protected $_m_foo;
         public function foo() { return $this->_m_foo; }
+        protected $_m_foo;
     }
 }
 

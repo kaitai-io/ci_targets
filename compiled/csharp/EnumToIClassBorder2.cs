@@ -17,8 +17,6 @@ namespace Kaitai
         private void _read()
         {
         }
-        private bool f_isDog;
-        private bool _isDog;
         public bool IsDog
         {
             get
@@ -30,11 +28,13 @@ namespace Kaitai
                 return _isDog;
             }
         }
-        private EnumToIClassBorder1 _parent;
-        private EnumToIClassBorder2 m_root;
-        private KaitaiStruct m_parent;
         public EnumToIClassBorder1 Parent { get { return _parent; } }
         public EnumToIClassBorder2 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_isDog;
+        private bool _isDog;
+        private EnumToIClassBorder1 _parent;
+        private EnumToIClassBorder2 m_root;
+        private KaitaiStruct m_parent;
     }
 }

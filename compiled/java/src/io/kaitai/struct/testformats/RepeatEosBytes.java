@@ -43,10 +43,10 @@ public class RepeatEosBytes extends KaitaiStruct {
         for (int i = 0; i < this.records.size(); i++) {
         }
     }
-    private List<byte[]> records;
-    private RepeatEosBytes _root;
-    private KaitaiStruct _parent;
     public List<byte[]> records() { return records; }
     public RepeatEosBytes _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<byte[]> records;
+    private RepeatEosBytes _root;
+    private KaitaiStruct _parent;
 }

@@ -13,7 +13,6 @@ namespace Kaitai\Struct\Tests {
             $this->_m_entrySize = $this->_io->readU4le();
             $this->_m_qtyEntries = $this->_io->readU4le();
         }
-        protected $_m_userEntries;
         public function userEntries() {
             if ($this->_m_userEntries !== null)
                 return $this->_m_userEntries;
@@ -32,14 +31,15 @@ namespace Kaitai\Struct\Tests {
             }
             return $this->_m_userEntries;
         }
-        protected $_m_ofs;
-        protected $_m_entrySize;
-        protected $_m_qtyEntries;
-        protected $_m__raw_userEntries;
         public function ofs() { return $this->_m_ofs; }
         public function entrySize() { return $this->_m_entrySize; }
         public function qtyEntries() { return $this->_m_qtyEntries; }
         public function _raw_userEntries() { return $this->_m__raw_userEntries; }
+        protected $_m_userEntries;
+        protected $_m_ofs;
+        protected $_m_entrySize;
+        protected $_m_qtyEntries;
+        protected $_m__raw_userEntries;
     }
 }
 
@@ -54,9 +54,9 @@ namespace Kaitai\Struct\Tests\InstanceUserArray {
             $this->_m_word1 = $this->_io->readU2le();
             $this->_m_word2 = $this->_io->readU2le();
         }
-        protected $_m_word1;
-        protected $_m_word2;
         public function word1() { return $this->_m_word1; }
         public function word2() { return $this->_m_word2; }
+        protected $_m_word1;
+        protected $_m_word2;
     }
 }

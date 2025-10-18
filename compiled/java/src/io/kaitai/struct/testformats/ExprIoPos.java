@@ -65,23 +65,23 @@ public class ExprIoPos extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private String myStr;
-        private byte[] body;
-        private int number;
-        private ExprIoPos _root;
-        private ExprIoPos _parent;
         public String myStr() { return myStr; }
         public byte[] body() { return body; }
         public int number() { return number; }
         public ExprIoPos _root() { return _root; }
         public ExprIoPos _parent() { return _parent; }
+        private String myStr;
+        private byte[] body;
+        private int number;
+        private ExprIoPos _root;
+        private ExprIoPos _parent;
     }
-    private AllPlusNumber substream1;
-    private AllPlusNumber substream2;
-    private ExprIoPos _root;
-    private KaitaiStruct _parent;
     public AllPlusNumber substream1() { return substream1; }
     public AllPlusNumber substream2() { return substream2; }
     public ExprIoPos _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private AllPlusNumber substream1;
+    private AllPlusNumber substream2;
+    private ExprIoPos _root;
+    private KaitaiStruct _parent;
 }

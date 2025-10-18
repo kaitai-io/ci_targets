@@ -211,30 +211,16 @@ public class StructPadTermEqual extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private byte[] value;
-        private StructPadTermEqual _root;
-        private StructPadTermEqual _parent;
         public byte[] value() { return value; }
         public void setValue(byte[] _v) { _dirty = true; value = _v; }
         public StructPadTermEqual _root() { return _root; }
         public void set_root(StructPadTermEqual _v) { _dirty = true; _root = _v; }
         public StructPadTermEqual _parent() { return _parent; }
         public void set_parent(StructPadTermEqual _v) { _dirty = true; _parent = _v; }
+        private byte[] value;
+        private StructPadTermEqual _root;
+        private StructPadTermEqual _parent;
     }
-    private BytesWrapper s1;
-    private BytesWrapper s2;
-    private BytesWrapper s3;
-    private BytesWrapper s4;
-    private StructPadTermEqual _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_s1;
-    private int s1_InnerSize;
-    private byte[] _raw_s2;
-    private int s2_InnerSize;
-    private byte[] _raw_s3;
-    private int s3_InnerSize;
-    private byte[] _raw_s4;
-    private int s4_InnerSize;
     public BytesWrapper s1() { return s1; }
     public void setS1(BytesWrapper _v) { _dirty = true; s1 = _v; }
     public BytesWrapper s2() { return s2; }
@@ -263,4 +249,18 @@ public class StructPadTermEqual extends KaitaiStruct.ReadWrite {
     public void set_raw_S4(byte[] _v) { _dirty = true; _raw_s4 = _v; }
     public int s4_InnerSize() { return s4_InnerSize; }
     public void setS4_InnerSize(int _v) { _dirty = true; s4_InnerSize = _v; }
+    private BytesWrapper s1;
+    private BytesWrapper s2;
+    private BytesWrapper s3;
+    private BytesWrapper s4;
+    private StructPadTermEqual _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_s1;
+    private int s1_InnerSize;
+    private byte[] _raw_s2;
+    private int s2_InnerSize;
+    private byte[] _raw_s3;
+    private int s3_InnerSize;
+    private byte[] _raw_s4;
+    private int s4_InnerSize;
 }

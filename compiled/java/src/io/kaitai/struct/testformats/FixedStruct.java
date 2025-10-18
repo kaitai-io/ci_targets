@@ -108,35 +108,6 @@ public class FixedStruct extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] magic1;
-        private int uint8;
-        private byte sint8;
-        private byte[] magicUint;
-        private int uint16;
-        private long uint32;
-        private long uint64;
-        private byte[] magicSint;
-        private short sint16;
-        private int sint32;
-        private long sint64;
-        private byte[] magicUintLe;
-        private int uint16le;
-        private long uint32le;
-        private long uint64le;
-        private byte[] magicSintLe;
-        private short sint16le;
-        private int sint32le;
-        private long sint64le;
-        private byte[] magicUintBe;
-        private int uint16be;
-        private long uint32be;
-        private long uint64be;
-        private byte[] magicSintBe;
-        private short sint16be;
-        private int sint32be;
-        private long sint64be;
-        private FixedStruct _root;
-        private FixedStruct _parent;
         public byte[] magic1() { return magic1; }
         public int uint8() { return uint8; }
         public byte sint8() { return sint8; }
@@ -166,8 +137,36 @@ public class FixedStruct extends KaitaiStruct {
         public long sint64be() { return sint64be; }
         public FixedStruct _root() { return _root; }
         public FixedStruct _parent() { return _parent; }
+        private byte[] magic1;
+        private int uint8;
+        private byte sint8;
+        private byte[] magicUint;
+        private int uint16;
+        private long uint32;
+        private long uint64;
+        private byte[] magicSint;
+        private short sint16;
+        private int sint32;
+        private long sint64;
+        private byte[] magicUintLe;
+        private int uint16le;
+        private long uint32le;
+        private long uint64le;
+        private byte[] magicSintLe;
+        private short sint16le;
+        private int sint32le;
+        private long sint64le;
+        private byte[] magicUintBe;
+        private int uint16be;
+        private long uint32be;
+        private long uint64be;
+        private byte[] magicSintBe;
+        private short sint16be;
+        private int sint32be;
+        private long sint64be;
+        private FixedStruct _root;
+        private FixedStruct _parent;
     }
-    private Header hdr;
     public Header hdr() {
         if (this.hdr != null)
             return this.hdr;
@@ -177,8 +176,9 @@ public class FixedStruct extends KaitaiStruct {
         this._io.seek(_pos);
         return this.hdr;
     }
-    private FixedStruct _root;
-    private KaitaiStruct _parent;
     public FixedStruct _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Header hdr;
+    private FixedStruct _root;
+    private KaitaiStruct _parent;
 }

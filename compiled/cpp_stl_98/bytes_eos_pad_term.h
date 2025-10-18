@@ -41,16 +41,14 @@ public:
 
     public:
         ~str_pad_type_t();
+        std::string value() const { return m_value; }
+        bytes_eos_pad_term_t* _root() const { return m__root; }
+        bytes_eos_pad_term_t* _parent() const { return m__parent; }
 
     private:
         std::string m_value;
         bytes_eos_pad_term_t* m__root;
         bytes_eos_pad_term_t* m__parent;
-
-    public:
-        std::string value() const { return m_value; }
-        bytes_eos_pad_term_t* _root() const { return m__root; }
-        bytes_eos_pad_term_t* _parent() const { return m__parent; }
     };
 
     class str_term_and_pad_type_t : public kaitai::kstruct {
@@ -65,16 +63,14 @@ public:
 
     public:
         ~str_term_and_pad_type_t();
+        std::string value() const { return m_value; }
+        bytes_eos_pad_term_t* _root() const { return m__root; }
+        bytes_eos_pad_term_t* _parent() const { return m__parent; }
 
     private:
         std::string m_value;
         bytes_eos_pad_term_t* m__root;
         bytes_eos_pad_term_t* m__parent;
-
-    public:
-        std::string value() const { return m_value; }
-        bytes_eos_pad_term_t* _root() const { return m__root; }
-        bytes_eos_pad_term_t* _parent() const { return m__parent; }
     };
 
     class str_term_include_type_t : public kaitai::kstruct {
@@ -89,16 +85,14 @@ public:
 
     public:
         ~str_term_include_type_t();
+        std::string value() const { return m_value; }
+        bytes_eos_pad_term_t* _root() const { return m__root; }
+        bytes_eos_pad_term_t* _parent() const { return m__parent; }
 
     private:
         std::string m_value;
         bytes_eos_pad_term_t* m__root;
         bytes_eos_pad_term_t* m__parent;
-
-    public:
-        std::string value() const { return m_value; }
-        bytes_eos_pad_term_t* _root() const { return m__root; }
-        bytes_eos_pad_term_t* _parent() const { return m__parent; }
     };
 
     class str_term_type_t : public kaitai::kstruct {
@@ -113,33 +107,15 @@ public:
 
     public:
         ~str_term_type_t();
+        std::string value() const { return m_value; }
+        bytes_eos_pad_term_t* _root() const { return m__root; }
+        bytes_eos_pad_term_t* _parent() const { return m__parent; }
 
     private:
         std::string m_value;
         bytes_eos_pad_term_t* m__root;
         bytes_eos_pad_term_t* m__parent;
-
-    public:
-        std::string value() const { return m_value; }
-        bytes_eos_pad_term_t* _root() const { return m__root; }
-        bytes_eos_pad_term_t* _parent() const { return m__parent; }
     };
-
-private:
-    str_pad_type_t* m_str_pad;
-    str_term_type_t* m_str_term;
-    str_term_and_pad_type_t* m_str_term_and_pad;
-    str_term_include_type_t* m_str_term_include;
-    bytes_eos_pad_term_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::string m__raw_str_pad;
-    kaitai::kstream* m__io__raw_str_pad;
-    std::string m__raw_str_term;
-    kaitai::kstream* m__io__raw_str_term;
-    std::string m__raw_str_term_and_pad;
-    kaitai::kstream* m__io__raw_str_term_and_pad;
-    std::string m__raw_str_term_include;
-    kaitai::kstream* m__io__raw_str_term_include;
 
 public:
     str_pad_type_t* str_pad() const { return m_str_pad; }
@@ -156,6 +132,22 @@ public:
     kaitai::kstream* _io__raw_str_term_and_pad() const { return m__io__raw_str_term_and_pad; }
     std::string _raw_str_term_include() const { return m__raw_str_term_include; }
     kaitai::kstream* _io__raw_str_term_include() const { return m__io__raw_str_term_include; }
+
+private:
+    str_pad_type_t* m_str_pad;
+    str_term_type_t* m_str_term;
+    str_term_and_pad_type_t* m_str_term_and_pad;
+    str_term_include_type_t* m_str_term_include;
+    bytes_eos_pad_term_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::string m__raw_str_pad;
+    kaitai::kstream* m__io__raw_str_pad;
+    std::string m__raw_str_term;
+    kaitai::kstream* m__io__raw_str_term;
+    std::string m__raw_str_term_and_pad;
+    kaitai::kstream* m__io__raw_str_term_and_pad;
+    std::string m__raw_str_term_include;
+    kaitai::kstream* m__io__raw_str_term_include;
 };
 
 #endif  // BYTES_EOS_PAD_TERM_H_

@@ -66,13 +66,6 @@ public class ExprIoEofBits extends KaitaiStruct.ReadOnly {
         if (!(_io().isEof())) {
         }
     }
-    private long foo;
-    private Long bar;
-    private Long baz;
-    private byte[] align;
-    private Long qux;
-    private ExprIoEofBits _root;
-    private KaitaiStruct.ReadOnly _parent;
     public long foo() { return foo; }
     public Long bar() { return bar; }
     public Long baz() { return baz; }
@@ -80,4 +73,11 @@ public class ExprIoEofBits extends KaitaiStruct.ReadOnly {
     public Long qux() { return qux; }
     public ExprIoEofBits _root() { return _root; }
     public KaitaiStruct.ReadOnly _parent() { return _parent; }
+    private long foo;
+    private Long bar;
+    private Long baz;
+    private byte[] align;
+    private Long qux;
+    private ExprIoEofBits _root;
+    private KaitaiStruct.ReadOnly _parent;
 }

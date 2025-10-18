@@ -24,6 +24,13 @@ private:
 
 public:
     ~expr_io_eof_bits_t();
+    uint64_t foo() const { return m_foo; }
+    uint64_t bar() const { return m_bar; }
+    uint64_t baz() const { return m_baz; }
+    std::string align() const { return m_align; }
+    uint64_t qux() const { return m_qux; }
+    expr_io_eof_bits_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint64_t m_foo;
@@ -51,15 +58,6 @@ public:
 private:
     expr_io_eof_bits_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint64_t foo() const { return m_foo; }
-    uint64_t bar() const { return m_bar; }
-    uint64_t baz() const { return m_baz; }
-    std::string align() const { return m_align; }
-    uint64_t qux() const { return m_qux; }
-    expr_io_eof_bits_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // EXPR_IO_EOF_BITS_H_

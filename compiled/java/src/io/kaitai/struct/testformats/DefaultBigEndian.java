@@ -32,10 +32,10 @@ public class DefaultBigEndian extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private long one;
-    private DefaultBigEndian _root;
-    private KaitaiStruct _parent;
     public long one() { return one; }
     public DefaultBigEndian _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private long one;
+    private DefaultBigEndian _root;
+    private KaitaiStruct _parent;
 }

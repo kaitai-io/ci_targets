@@ -34,12 +34,12 @@ public class TermU1Val extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private byte[] foo;
-    private String bar;
-    private TermU1Val _root;
-    private KaitaiStruct _parent;
     public byte[] foo() { return foo; }
     public String bar() { return bar; }
     public TermU1Val _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private byte[] foo;
+    private String bar;
+    private TermU1Val _root;
+    private KaitaiStruct _parent;
 }

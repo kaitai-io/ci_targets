@@ -68,25 +68,15 @@ public:
 
             public:
                 ~subtype_d_t();
+                int8_t value_d() const { return m_value_d; }
+                nested_types2_t* _root() const { return m__root; }
+                nested_types2_t::subtype_a_t::subtype_c_t* _parent() const { return m__parent; }
 
             private:
                 int8_t m_value_d;
                 nested_types2_t* m__root;
                 nested_types2_t::subtype_a_t::subtype_c_t* m__parent;
-
-            public:
-                int8_t value_d() const { return m_value_d; }
-                nested_types2_t* _root() const { return m__root; }
-                nested_types2_t::subtype_a_t::subtype_c_t* _parent() const { return m__parent; }
             };
-
-        private:
-            int8_t m_value_c;
-            subtype_d_t* m_typed_here;
-            subtype_cc_t* m_typed_parent;
-            subtype_b_t* m_typed_root;
-            nested_types2_t* m__root;
-            nested_types2_t::subtype_a_t* m__parent;
 
         public:
             int8_t value_c() const { return m_value_c; }
@@ -95,6 +85,14 @@ public:
             subtype_b_t* typed_root() const { return m_typed_root; }
             nested_types2_t* _root() const { return m__root; }
             nested_types2_t::subtype_a_t* _parent() const { return m__parent; }
+
+        private:
+            int8_t m_value_c;
+            subtype_d_t* m_typed_here;
+            subtype_cc_t* m_typed_parent;
+            subtype_b_t* m_typed_root;
+            nested_types2_t* m__root;
+            nested_types2_t::subtype_a_t* m__parent;
         };
 
         class subtype_cc_t : public kaitai::kstruct {
@@ -109,24 +107,15 @@ public:
 
         public:
             ~subtype_cc_t();
+            int8_t value_cc() const { return m_value_cc; }
+            nested_types2_t* _root() const { return m__root; }
+            kaitai::kstruct* _parent() const { return m__parent; }
 
         private:
             int8_t m_value_cc;
             nested_types2_t* m__root;
             kaitai::kstruct* m__parent;
-
-        public:
-            int8_t value_cc() const { return m_value_cc; }
-            nested_types2_t* _root() const { return m__root; }
-            kaitai::kstruct* _parent() const { return m__parent; }
         };
-
-    private:
-        subtype_b_t* m_typed_at_root;
-        subtype_c_t* m_typed_here1;
-        subtype_cc_t* m_typed_here2;
-        nested_types2_t* m__root;
-        nested_types2_t* m__parent;
 
     public:
         subtype_b_t* typed_at_root() const { return m_typed_at_root; }
@@ -134,6 +123,13 @@ public:
         subtype_cc_t* typed_here2() const { return m_typed_here2; }
         nested_types2_t* _root() const { return m__root; }
         nested_types2_t* _parent() const { return m__parent; }
+
+    private:
+        subtype_b_t* m_typed_at_root;
+        subtype_c_t* m_typed_here1;
+        subtype_cc_t* m_typed_here2;
+        nested_types2_t* m__root;
+        nested_types2_t* m__parent;
     };
 
     class subtype_b_t : public kaitai::kstruct {
@@ -148,29 +144,27 @@ public:
 
     public:
         ~subtype_b_t();
+        int8_t value_b() const { return m_value_b; }
+        nested_types2_t* _root() const { return m__root; }
+        kaitai::kstruct* _parent() const { return m__parent; }
 
     private:
         int8_t m_value_b;
         nested_types2_t* m__root;
         kaitai::kstruct* m__parent;
-
-    public:
-        int8_t value_b() const { return m_value_b; }
-        nested_types2_t* _root() const { return m__root; }
-        kaitai::kstruct* _parent() const { return m__parent; }
     };
-
-private:
-    subtype_a_t* m_one;
-    subtype_b_t* m_two;
-    nested_types2_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     subtype_a_t* one() const { return m_one; }
     subtype_b_t* two() const { return m_two; }
     nested_types2_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    subtype_a_t* m_one;
+    subtype_b_t* m_two;
+    nested_types2_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // NESTED_TYPES2_H_

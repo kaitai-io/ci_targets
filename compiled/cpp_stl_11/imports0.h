@@ -25,23 +25,17 @@ private:
 
 public:
     ~imports0_t();
-
-private:
-    bool f_hw_one;
-    uint8_t m_hw_one;
-
-public:
     uint8_t hw_one();
-
-private:
-    uint8_t m_two;
-    std::unique_ptr<hello_world_t> m_hw;
-    imports0_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     uint8_t two() const { return m_two; }
     hello_world_t* hw() const { return m_hw.get(); }
     imports0_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_hw_one;
+    uint8_t m_hw_one;
+    uint8_t m_two;
+    std::unique_ptr<hello_world_t> m_hw;
+    imports0_t* m__root;
+    kaitai::kstruct* m__parent;
 };

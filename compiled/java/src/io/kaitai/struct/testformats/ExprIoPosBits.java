@@ -47,16 +47,16 @@ public class ExprIoPosBits extends KaitaiStruct {
         if (_io().pos() == 2) {
         }
     }
-    private long foo;
-    private Long bar;
-    private Boolean baz;
-    private Long qux;
-    private ExprIoPosBits _root;
-    private KaitaiStruct _parent;
     public long foo() { return foo; }
     public Long bar() { return bar; }
     public Boolean baz() { return baz; }
     public Long qux() { return qux; }
     public ExprIoPosBits _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private long foo;
+    private Long bar;
+    private Boolean baz;
+    private Long qux;
+    private ExprIoPosBits _root;
+    private KaitaiStruct _parent;
 }

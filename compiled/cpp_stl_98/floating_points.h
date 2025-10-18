@@ -24,38 +24,9 @@ private:
 
 public:
     ~floating_points_t();
-
-private:
-    bool f_double_value_plus_float;
-    double m_double_value_plus_float;
-
-public:
     double double_value_plus_float();
-
-private:
-    bool f_single_value_plus_float;
-    double m_single_value_plus_float;
-
-public:
     double single_value_plus_float();
-
-private:
-    bool f_single_value_plus_int;
-    double m_single_value_plus_int;
-
-public:
     double single_value_plus_int();
-
-private:
-    float m_single_value;
-    double m_double_value;
-    float m_single_value_be;
-    double m_double_value_be;
-    float m_approximate_value;
-    floating_points_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     float single_value() const { return m_single_value; }
     double double_value() const { return m_double_value; }
     float single_value_be() const { return m_single_value_be; }
@@ -63,6 +34,21 @@ public:
     float approximate_value() const { return m_approximate_value; }
     floating_points_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_double_value_plus_float;
+    double m_double_value_plus_float;
+    bool f_single_value_plus_float;
+    double m_single_value_plus_float;
+    bool f_single_value_plus_int;
+    double m_single_value_plus_int;
+    float m_single_value;
+    double m_double_value;
+    float m_single_value_be;
+    double m_double_value_be;
+    float m_approximate_value;
+    floating_points_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // FLOATING_POINTS_H_

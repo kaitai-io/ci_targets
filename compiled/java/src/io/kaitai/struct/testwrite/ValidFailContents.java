@@ -54,13 +54,13 @@ public class ValidFailContents extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private byte[] foo;
-    private ValidFailContents _root;
-    private KaitaiStruct.ReadWrite _parent;
     public byte[] foo() { return foo; }
     public void setFoo(byte[] _v) { _dirty = true; foo = _v; }
     public ValidFailContents _root() { return _root; }
     public void set_root(ValidFailContents _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private byte[] foo;
+    private ValidFailContents _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

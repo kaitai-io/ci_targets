@@ -22,13 +22,13 @@ namespace Kaitai
             _prebuf = m_io.ReadBytes(8);
             _bits = m_io.ReadBitsIntLe(31);
         }
-        private byte[] _prebuf;
-        private ulong _bits;
-        private BitsByteAlignedEofLe m_root;
-        private KaitaiStruct m_parent;
         public byte[] Prebuf { get { return _prebuf; } }
         public ulong Bits { get { return _bits; } }
         public BitsByteAlignedEofLe M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte[] _prebuf;
+        private ulong _bits;
+        private BitsByteAlignedEofLe m_root;
+        private KaitaiStruct m_parent;
     }
 }

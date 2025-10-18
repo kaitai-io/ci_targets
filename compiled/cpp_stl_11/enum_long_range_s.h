@@ -41,6 +41,15 @@ private:
 
 public:
     ~enum_long_range_s_t();
+    constants_t f1() const { return m_f1; }
+    constants_t f2() const { return m_f2; }
+    constants_t f3() const { return m_f3; }
+    constants_t f4() const { return m_f4; }
+    constants_t f5() const { return m_f5; }
+    constants_t f6() const { return m_f6; }
+    constants_t f7() const { return m_f7; }
+    enum_long_range_s_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     constants_t m_f1;
@@ -52,15 +61,4 @@ private:
     constants_t m_f7;
     enum_long_range_s_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    constants_t f1() const { return m_f1; }
-    constants_t f2() const { return m_f2; }
-    constants_t f3() const { return m_f3; }
-    constants_t f4() const { return m_f4; }
-    constants_t f5() const { return m_f5; }
-    constants_t f6() const { return m_f6; }
-    constants_t f7() const { return m_f7; }
-    enum_long_range_s_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -144,15 +144,15 @@ public class DefaultBitEndianMod extends KaitaiStruct.ReadWrite {
             public void _check() {
                 _dirty = false;
             }
-            private long two;
-            private DefaultBitEndianMod _root;
-            private DefaultBitEndianMod.MainObj _parent;
             public long two() { return two; }
             public void setTwo(long _v) { _dirty = true; two = _v; }
             public DefaultBitEndianMod _root() { return _root; }
             public void set_root(DefaultBitEndianMod _v) { _dirty = true; _root = _v; }
             public DefaultBitEndianMod.MainObj _parent() { return _parent; }
             public void set_parent(DefaultBitEndianMod.MainObj _v) { _dirty = true; _parent = _v; }
+            private long two;
+            private DefaultBitEndianMod _root;
+            private DefaultBitEndianMod.MainObj _parent;
         }
         public static class SubnestBe extends KaitaiStruct.ReadWrite {
             public static SubnestBe fromFile(String fileName) throws IOException {
@@ -191,22 +191,16 @@ public class DefaultBitEndianMod extends KaitaiStruct.ReadWrite {
             public void _check() {
                 _dirty = false;
             }
-            private long two;
-            private DefaultBitEndianMod _root;
-            private DefaultBitEndianMod.MainObj _parent;
             public long two() { return two; }
             public void setTwo(long _v) { _dirty = true; two = _v; }
             public DefaultBitEndianMod _root() { return _root; }
             public void set_root(DefaultBitEndianMod _v) { _dirty = true; _root = _v; }
             public DefaultBitEndianMod.MainObj _parent() { return _parent; }
             public void set_parent(DefaultBitEndianMod.MainObj _v) { _dirty = true; _parent = _v; }
+            private long two;
+            private DefaultBitEndianMod _root;
+            private DefaultBitEndianMod.MainObj _parent;
         }
-        private long one;
-        private long two;
-        private Subnest nest;
-        private SubnestBe nestBe;
-        private DefaultBitEndianMod _root;
-        private DefaultBitEndianMod _parent;
         public long one() { return one; }
         public void setOne(long _v) { _dirty = true; one = _v; }
         public long two() { return two; }
@@ -219,14 +213,20 @@ public class DefaultBitEndianMod extends KaitaiStruct.ReadWrite {
         public void set_root(DefaultBitEndianMod _v) { _dirty = true; _root = _v; }
         public DefaultBitEndianMod _parent() { return _parent; }
         public void set_parent(DefaultBitEndianMod _v) { _dirty = true; _parent = _v; }
+        private long one;
+        private long two;
+        private Subnest nest;
+        private SubnestBe nestBe;
+        private DefaultBitEndianMod _root;
+        private DefaultBitEndianMod _parent;
     }
-    private MainObj main;
-    private DefaultBitEndianMod _root;
-    private KaitaiStruct.ReadWrite _parent;
     public MainObj main() { return main; }
     public void setMain(MainObj _v) { _dirty = true; main = _v; }
     public DefaultBitEndianMod _root() { return _root; }
     public void set_root(DefaultBitEndianMod _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private MainObj main;
+    private DefaultBitEndianMod _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

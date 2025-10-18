@@ -46,10 +46,10 @@ public class ValidFailRepeatMaxInt extends KaitaiStruct {
         for (int i = 0; i < this.foo.size(); i++) {
         }
     }
-    private List<Integer> foo;
-    private ValidFailRepeatMaxInt _root;
-    private KaitaiStruct _parent;
     public List<Integer> foo() { return foo; }
     public ValidFailRepeatMaxInt _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Integer> foo;
+    private ValidFailRepeatMaxInt _root;
+    private KaitaiStruct _parent;
 }

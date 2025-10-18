@@ -67,16 +67,14 @@ public:
 
         public:
             ~intval_t();
+            uint8_t value() const { return m_value; }
+            switch_manual_enum_t* _root() const { return m__root; }
+            switch_manual_enum_t::opcode_t* _parent() const { return m__parent; }
 
         private:
             uint8_t m_value;
             switch_manual_enum_t* m__root;
             switch_manual_enum_t::opcode_t* m__parent;
-
-        public:
-            uint8_t value() const { return m_value; }
-            switch_manual_enum_t* _root() const { return m__root; }
-            switch_manual_enum_t::opcode_t* _parent() const { return m__parent; }
         };
 
         class strval_t : public kaitai::kstruct {
@@ -91,17 +89,21 @@ public:
 
         public:
             ~strval_t();
+            std::string value() const { return m_value; }
+            switch_manual_enum_t* _root() const { return m__root; }
+            switch_manual_enum_t::opcode_t* _parent() const { return m__parent; }
 
         private:
             std::string m_value;
             switch_manual_enum_t* m__root;
             switch_manual_enum_t::opcode_t* m__parent;
-
-        public:
-            std::string value() const { return m_value; }
-            switch_manual_enum_t* _root() const { return m__root; }
-            switch_manual_enum_t::opcode_t* _parent() const { return m__parent; }
         };
+
+    public:
+        code_enum_t code() const { return m_code; }
+        kaitai::kstruct* body() const { return m_body; }
+        switch_manual_enum_t* _root() const { return m__root; }
+        switch_manual_enum_t* _parent() const { return m__parent; }
 
     private:
         code_enum_t m_code;
@@ -114,23 +116,17 @@ public:
     private:
         switch_manual_enum_t* m__root;
         switch_manual_enum_t* m__parent;
-
-    public:
-        code_enum_t code() const { return m_code; }
-        kaitai::kstruct* body() const { return m_body; }
-        switch_manual_enum_t* _root() const { return m__root; }
-        switch_manual_enum_t* _parent() const { return m__parent; }
     };
-
-private:
-    std::vector<opcode_t*>* m_opcodes;
-    switch_manual_enum_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     std::vector<opcode_t*>* opcodes() const { return m_opcodes; }
     switch_manual_enum_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    std::vector<opcode_t*>* m_opcodes;
+    switch_manual_enum_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // SWITCH_MANUAL_ENUM_H_

@@ -24,6 +24,11 @@ private:
 
 public:
     ~str_pad_term_utf16_t();
+    std::string str_term() const { return m_str_term; }
+    std::string str_term_include() const { return m_str_term_include; }
+    std::string str_term_and_pad() const { return m_str_term_and_pad; }
+    str_pad_term_utf16_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::string m_str_term;
@@ -31,11 +36,4 @@ private:
     std::string m_str_term_and_pad;
     str_pad_term_utf16_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::string str_term() const { return m_str_term; }
-    std::string str_term_include() const { return m_str_term_include; }
-    std::string str_term_and_pad() const { return m_str_term_and_pad; }
-    str_pad_term_utf16_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -37,18 +37,16 @@ private:
 
 public:
     ~enum_negative_t();
+    constants_t f1() const { return m_f1; }
+    constants_t f2() const { return m_f2; }
+    enum_negative_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     constants_t m_f1;
     constants_t m_f2;
     enum_negative_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    constants_t f1() const { return m_f1; }
-    constants_t f2() const { return m_f2; }
-    enum_negative_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // ENUM_NEGATIVE_H_

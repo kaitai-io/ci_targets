@@ -36,16 +36,16 @@ public class TermStrzUtf16V3 extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private String s1;
-    private int term;
-    private String s2;
-    private String s3;
-    private TermStrzUtf16V3 _root;
-    private KaitaiStruct _parent;
     public String s1() { return s1; }
     public int term() { return term; }
     public String s2() { return s2; }
     public String s3() { return s3; }
     public TermStrzUtf16V3 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private String s1;
+    private int term;
+    private String s2;
+    private String s3;
+    private TermStrzUtf16V3 _root;
+    private KaitaiStruct _parent;
 }

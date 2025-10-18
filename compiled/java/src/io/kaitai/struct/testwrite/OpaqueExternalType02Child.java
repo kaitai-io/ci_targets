@@ -117,17 +117,16 @@ public class OpaqueExternalType02Child extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private String s3;
-        private OpaqueExternalType02Child _root;
-        private OpaqueExternalType02Child _parent;
         public String s3() { return s3; }
         public void setS3(String _v) { _dirty = true; s3 = _v; }
         public OpaqueExternalType02Child _root() { return _root; }
         public void set_root(OpaqueExternalType02Child _v) { _dirty = true; _root = _v; }
         public OpaqueExternalType02Child _parent() { return _parent; }
         public void set_parent(OpaqueExternalType02Child _v) { _dirty = true; _parent = _v; }
+        private String s3;
+        private OpaqueExternalType02Child _root;
+        private OpaqueExternalType02Child _parent;
     }
-    private Boolean someMethod;
     public Boolean someMethod() {
         if (this.someMethod != null)
             return this.someMethod;
@@ -135,11 +134,6 @@ public class OpaqueExternalType02Child extends KaitaiStruct.ReadWrite {
         return this.someMethod;
     }
     public void _invalidateSomeMethod() { this.someMethod = null; }
-    private String s1;
-    private String s2;
-    private OpaqueExternalType02ChildChild s3;
-    private OpaqueExternalType02Child _root;
-    private KaitaiStruct.ReadWrite _parent;
     public String s1() { return s1; }
     public void setS1(String _v) { _dirty = true; s1 = _v; }
     public String s2() { return s2; }
@@ -150,4 +144,10 @@ public class OpaqueExternalType02Child extends KaitaiStruct.ReadWrite {
     public void set_root(OpaqueExternalType02Child _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Boolean someMethod;
+    private String s1;
+    private String s2;
+    private OpaqueExternalType02ChildChild s3;
+    private OpaqueExternalType02Child _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

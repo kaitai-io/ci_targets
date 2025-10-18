@@ -38,32 +38,26 @@ public:
 
     public:
         ~child_obj_t();
+        bool do_something();
+        nav_parent_vs_value_inst_t* _root() const { return m__root; }
+        nav_parent_vs_value_inst_t* _parent() const { return m__parent; }
 
     private:
         bool f_do_something;
         bool m_do_something;
-
-    public:
-        bool do_something();
-
-    private:
         nav_parent_vs_value_inst_t* m__root;
         nav_parent_vs_value_inst_t* m__parent;
-
-    public:
-        nav_parent_vs_value_inst_t* _root() const { return m__root; }
-        nav_parent_vs_value_inst_t* _parent() const { return m__parent; }
     };
-
-private:
-    std::string m_s1;
-    std::unique_ptr<child_obj_t> m_child;
-    nav_parent_vs_value_inst_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     std::string s1() const { return m_s1; }
     child_obj_t* child() const { return m_child.get(); }
     nav_parent_vs_value_inst_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    std::string m_s1;
+    std::unique_ptr<child_obj_t> m_child;
+    nav_parent_vs_value_inst_t* m__root;
+    kaitai::kstruct* m__parent;
 };

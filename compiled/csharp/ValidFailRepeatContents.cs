@@ -32,11 +32,11 @@ namespace Kaitai
                 }
             }
         }
-        private List<byte[]> _foo;
-        private ValidFailRepeatContents m_root;
-        private KaitaiStruct m_parent;
         public List<byte[]> Foo { get { return _foo; } }
         public ValidFailRepeatContents M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<byte[]> _foo;
+        private ValidFailRepeatContents m_root;
+        private KaitaiStruct m_parent;
     }
 }

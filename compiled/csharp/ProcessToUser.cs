@@ -41,22 +41,22 @@ namespace Kaitai
             {
                 _str = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesFull());
             }
-            private string _str;
-            private ProcessToUser m_root;
-            private ProcessToUser m_parent;
             public string Str { get { return _str; } }
             public ProcessToUser M_Root { get { return m_root; } }
             public ProcessToUser M_Parent { get { return m_parent; } }
+            private string _str;
+            private ProcessToUser m_root;
+            private ProcessToUser m_parent;
         }
-        private JustStr _buf1;
-        private ProcessToUser m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_buf1;
-        private byte[] __raw__raw_buf1;
         public JustStr Buf1 { get { return _buf1; } }
         public ProcessToUser M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawBuf1 { get { return __raw_buf1; } }
         public byte[] M_RawM_RawBuf1 { get { return __raw__raw_buf1; } }
+        private JustStr _buf1;
+        private ProcessToUser m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_buf1;
+        private byte[] __raw__raw_buf1;
     }
 }

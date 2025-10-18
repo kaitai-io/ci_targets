@@ -38,6 +38,14 @@ public:
 
     public:
         ~subtype_t();
+        uint16_t len_of_2() const { return m_len_of_2; }
+        std::string str2() const { return m_str2; }
+        uint16_t len_of_3() const { return m_len_of_3; }
+        std::string str3() const { return m_str3; }
+        uint16_t len_of_4() const { return m_len_of_4; }
+        std::string str4() const { return m_str4; }
+        str_encodings_default_t* _root() const { return m__root; }
+        str_encodings_default_t* _parent() const { return m__parent; }
 
     private:
         uint16_t m_len_of_2;
@@ -48,24 +56,7 @@ public:
         std::string m_str4;
         str_encodings_default_t* m__root;
         str_encodings_default_t* m__parent;
-
-    public:
-        uint16_t len_of_2() const { return m_len_of_2; }
-        std::string str2() const { return m_str2; }
-        uint16_t len_of_3() const { return m_len_of_3; }
-        std::string str3() const { return m_str3; }
-        uint16_t len_of_4() const { return m_len_of_4; }
-        std::string str4() const { return m_str4; }
-        str_encodings_default_t* _root() const { return m__root; }
-        str_encodings_default_t* _parent() const { return m__parent; }
     };
-
-private:
-    uint16_t m_len_of_1;
-    std::string m_str1;
-    std::unique_ptr<subtype_t> m_rest;
-    str_encodings_default_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     uint16_t len_of_1() const { return m_len_of_1; }
@@ -73,4 +64,11 @@ public:
     subtype_t* rest() const { return m_rest.get(); }
     str_encodings_default_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    uint16_t m_len_of_1;
+    std::string m_str1;
+    std::unique_ptr<subtype_t> m_rest;
+    str_encodings_default_t* m__root;
+    kaitai::kstruct* m__parent;
 };

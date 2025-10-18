@@ -39,36 +39,30 @@ public:
 
     public:
         ~wants_strs_t();
+        std::vector<std::string>* strs() const { return m_strs; }
+        params_pass_array_str_t* _root() const { return m__root; }
+        params_pass_array_str_t* _parent() const { return m__parent; }
 
     private:
         std::vector<std::string>* m_strs;
         params_pass_array_str_t* m__root;
         params_pass_array_str_t* m__parent;
-
-    public:
-        std::vector<std::string>* strs() const { return m_strs; }
-        params_pass_array_str_t* _root() const { return m__root; }
-        params_pass_array_str_t* _parent() const { return m__parent; }
     };
-
-private:
-    bool f_str_array_calc;
-    std::unique_ptr<std::vector<std::string>> m_str_array_calc;
 
 public:
     std::vector<std::string>* str_array_calc();
-
-private:
-    std::unique_ptr<std::vector<std::string>> m_str_array;
-    std::unique_ptr<wants_strs_t> m_pass_str_array;
-    std::unique_ptr<wants_strs_t> m_pass_str_array_calc;
-    params_pass_array_str_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     std::vector<std::string>* str_array() const { return m_str_array.get(); }
     wants_strs_t* pass_str_array() const { return m_pass_str_array.get(); }
     wants_strs_t* pass_str_array_calc() const { return m_pass_str_array_calc.get(); }
     params_pass_array_str_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_str_array_calc;
+    std::unique_ptr<std::vector<std::string>> m_str_array_calc;
+    std::unique_ptr<std::vector<std::string>> m_str_array;
+    std::unique_ptr<wants_strs_t> m_pass_str_array;
+    std::unique_ptr<wants_strs_t> m_pass_str_array_calc;
+    params_pass_array_str_t* m__root;
+    kaitai::kstruct* m__parent;
 };

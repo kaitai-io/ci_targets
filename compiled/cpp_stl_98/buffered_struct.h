@@ -38,32 +38,17 @@ public:
 
     public:
         ~block_t();
+        uint32_t number1() const { return m_number1; }
+        uint32_t number2() const { return m_number2; }
+        buffered_struct_t* _root() const { return m__root; }
+        buffered_struct_t* _parent() const { return m__parent; }
 
     private:
         uint32_t m_number1;
         uint32_t m_number2;
         buffered_struct_t* m__root;
         buffered_struct_t* m__parent;
-
-    public:
-        uint32_t number1() const { return m_number1; }
-        uint32_t number2() const { return m_number2; }
-        buffered_struct_t* _root() const { return m__root; }
-        buffered_struct_t* _parent() const { return m__parent; }
     };
-
-private:
-    uint32_t m_len1;
-    block_t* m_block1;
-    uint32_t m_len2;
-    block_t* m_block2;
-    uint32_t m_finisher;
-    buffered_struct_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::string m__raw_block1;
-    kaitai::kstream* m__io__raw_block1;
-    std::string m__raw_block2;
-    kaitai::kstream* m__io__raw_block2;
 
 public:
     uint32_t len1() const { return m_len1; }
@@ -77,6 +62,19 @@ public:
     kaitai::kstream* _io__raw_block1() const { return m__io__raw_block1; }
     std::string _raw_block2() const { return m__raw_block2; }
     kaitai::kstream* _io__raw_block2() const { return m__io__raw_block2; }
+
+private:
+    uint32_t m_len1;
+    block_t* m_block1;
+    uint32_t m_len2;
+    block_t* m_block2;
+    uint32_t m_finisher;
+    buffered_struct_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::string m__raw_block1;
+    kaitai::kstream* m__io__raw_block1;
+    std::string m__raw_block2;
+    kaitai::kstream* m__io__raw_block2;
 };
 
 #endif  // BUFFERED_STRUCT_H_

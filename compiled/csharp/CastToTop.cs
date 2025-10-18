@@ -23,8 +23,6 @@ namespace Kaitai
         {
             _code = m_io.ReadU1();
         }
-        private bool f_header;
-        private CastToTop _header;
         public CastToTop Header
         {
             get
@@ -39,8 +37,6 @@ namespace Kaitai
                 return _header;
             }
         }
-        private bool f_headerCasted;
-        private CastToTop _headerCasted;
         public CastToTop HeaderCasted
         {
             get
@@ -52,11 +48,15 @@ namespace Kaitai
                 return _headerCasted;
             }
         }
-        private byte _code;
-        private CastToTop m_root;
-        private KaitaiStruct m_parent;
         public byte Code { get { return _code; } }
         public CastToTop M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_header;
+        private CastToTop _header;
+        private bool f_headerCasted;
+        private CastToTop _headerCasted;
+        private byte _code;
+        private CastToTop m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -72,23 +72,13 @@ public class StructPadTerm extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] value;
-        private StructPadTerm _root;
-        private StructPadTerm _parent;
         public byte[] value() { return value; }
         public StructPadTerm _root() { return _root; }
         public StructPadTerm _parent() { return _parent; }
+        private byte[] value;
+        private StructPadTerm _root;
+        private StructPadTerm _parent;
     }
-    private BytesWrapper strPad;
-    private BytesWrapper strTerm;
-    private BytesWrapper strTermAndPad;
-    private BytesWrapper strTermInclude;
-    private StructPadTerm _root;
-    private KaitaiStruct _parent;
-    private byte[] _raw_strPad;
-    private byte[] _raw_strTerm;
-    private byte[] _raw_strTermAndPad;
-    private byte[] _raw_strTermInclude;
     public BytesWrapper strPad() { return strPad; }
     public BytesWrapper strTerm() { return strTerm; }
     public BytesWrapper strTermAndPad() { return strTermAndPad; }
@@ -99,4 +89,14 @@ public class StructPadTerm extends KaitaiStruct {
     public byte[] _raw_strTerm() { return _raw_strTerm; }
     public byte[] _raw_strTermAndPad() { return _raw_strTermAndPad; }
     public byte[] _raw_strTermInclude() { return _raw_strTermInclude; }
+    private BytesWrapper strPad;
+    private BytesWrapper strTerm;
+    private BytesWrapper strTermAndPad;
+    private BytesWrapper strTermInclude;
+    private StructPadTerm _root;
+    private KaitaiStruct _parent;
+    private byte[] _raw_strPad;
+    private byte[] _raw_strTerm;
+    private byte[] _raw_strTermAndPad;
+    private byte[] _raw_strTermInclude;
 }

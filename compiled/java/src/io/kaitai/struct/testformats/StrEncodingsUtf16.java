@@ -66,14 +66,14 @@ public class StrEncodingsUtf16 extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int bom;
-        private String str;
-        private StrEncodingsUtf16 _root;
-        private StrEncodingsUtf16 _parent;
         public int bom() { return bom; }
         public String str() { return str; }
         public StrEncodingsUtf16 _root() { return _root; }
         public StrEncodingsUtf16 _parent() { return _parent; }
+        private int bom;
+        private String str;
+        private StrEncodingsUtf16 _root;
+        private StrEncodingsUtf16 _parent;
     }
     public static class StrLeBomRemoved extends KaitaiStruct {
         public static StrLeBomRemoved fromFile(String fileName) throws IOException {
@@ -101,25 +101,25 @@ public class StrEncodingsUtf16 extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int bom;
-        private String str;
-        private StrEncodingsUtf16 _root;
-        private StrEncodingsUtf16 _parent;
         public int bom() { return bom; }
         public String str() { return str; }
         public StrEncodingsUtf16 _root() { return _root; }
         public StrEncodingsUtf16 _parent() { return _parent; }
+        private int bom;
+        private String str;
+        private StrEncodingsUtf16 _root;
+        private StrEncodingsUtf16 _parent;
     }
-    private long lenBe;
-    private StrBeBomRemoved beBomRemoved;
-    private long lenLe;
-    private StrLeBomRemoved leBomRemoved;
-    private StrEncodingsUtf16 _root;
-    private KaitaiStruct _parent;
     public long lenBe() { return lenBe; }
     public StrBeBomRemoved beBomRemoved() { return beBomRemoved; }
     public long lenLe() { return lenLe; }
     public StrLeBomRemoved leBomRemoved() { return leBomRemoved; }
     public StrEncodingsUtf16 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private long lenBe;
+    private StrBeBomRemoved beBomRemoved;
+    private long lenLe;
+    private StrLeBomRemoved leBomRemoved;
+    private StrEncodingsUtf16 _root;
+    private KaitaiStruct _parent;
 }

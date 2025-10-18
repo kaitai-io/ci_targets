@@ -89,23 +89,23 @@ public class NavParentFalse2 extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int foo;
-        private NavParentFalse2 _root;
-        private KaitaiStruct.ReadWrite _parent;
         public int foo() { return foo; }
         public void setFoo(int _v) { _dirty = true; foo = _v; }
         public NavParentFalse2 _root() { return _root; }
         public void set_root(NavParentFalse2 _v) { _dirty = true; _root = _v; }
         public KaitaiStruct.ReadWrite _parent() { return _parent; }
         public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+        private int foo;
+        private NavParentFalse2 _root;
+        private KaitaiStruct.ReadWrite _parent;
     }
-    private Child parentless;
-    private NavParentFalse2 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Child parentless() { return parentless; }
     public void setParentless(Child _v) { _dirty = true; parentless = _v; }
     public NavParentFalse2 _root() { return _root; }
     public void set_root(NavParentFalse2 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Child parentless;
+    private NavParentFalse2 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

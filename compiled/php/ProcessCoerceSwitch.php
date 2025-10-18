@@ -38,20 +38,12 @@ namespace Kaitai\Struct\Tests {
                 }
             }
         }
-        protected $_m_buf;
         public function buf() {
             if ($this->_m_buf !== null)
                 return $this->_m_buf;
             $this->_m_buf = ($this->flag() == 0 ? $this->bufUnproc() : $this->bufProc());
             return $this->_m_buf;
         }
-        protected $_m_bufType;
-        protected $_m_flag;
-        protected $_m_bufUnproc;
-        protected $_m_bufProc;
-        protected $_m__raw_bufUnproc;
-        protected $_m__raw_bufProc;
-        protected $_m__raw__raw_bufProc;
         public function bufType() { return $this->_m_bufType; }
         public function flag() { return $this->_m_flag; }
         public function bufUnproc() { return $this->_m_bufUnproc; }
@@ -59,6 +51,14 @@ namespace Kaitai\Struct\Tests {
         public function _raw_bufUnproc() { return $this->_m__raw_bufUnproc; }
         public function _raw_bufProc() { return $this->_m__raw_bufProc; }
         public function _raw__raw_bufProc() { return $this->_m__raw__raw_bufProc; }
+        protected $_m_buf;
+        protected $_m_bufType;
+        protected $_m_flag;
+        protected $_m_bufUnproc;
+        protected $_m_bufProc;
+        protected $_m__raw_bufUnproc;
+        protected $_m__raw_bufProc;
+        protected $_m__raw__raw_bufProc;
     }
 }
 
@@ -72,7 +72,7 @@ namespace Kaitai\Struct\Tests\ProcessCoerceSwitch {
         private function _read() {
             $this->_m_bar = $this->_io->readBytes(4);
         }
-        protected $_m_bar;
         public function bar() { return $this->_m_bar; }
+        protected $_m_bar;
     }
 }

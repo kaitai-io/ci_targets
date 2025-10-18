@@ -57,19 +57,19 @@ public class ParamsCallExtraParens extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private String body;
-        private long len;
-        private ParamsCallExtraParens _root;
-        private ParamsCallExtraParens _parent;
         public String body() { return body; }
         public long len() { return len; }
         public ParamsCallExtraParens _root() { return _root; }
         public ParamsCallExtraParens _parent() { return _parent; }
+        private String body;
+        private long len;
+        private ParamsCallExtraParens _root;
+        private ParamsCallExtraParens _parent;
     }
-    private MyStr1 buf1;
-    private ParamsCallExtraParens _root;
-    private KaitaiStruct _parent;
     public MyStr1 buf1() { return buf1; }
     public ParamsCallExtraParens _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private MyStr1 buf1;
+    private ParamsCallExtraParens _root;
+    private KaitaiStruct _parent;
 }

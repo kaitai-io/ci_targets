@@ -22,13 +22,13 @@ namespace Kaitai
             _foo = m_io.ReadBytesTerm(227, false, false, true);
             _bar = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(171, true, true, true));
         }
-        private byte[] _foo;
-        private string _bar;
-        private TermU1Val m_root;
-        private KaitaiStruct m_parent;
         public byte[] Foo { get { return _foo; } }
         public string Bar { get { return _bar; } }
         public TermU1Val M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte[] _foo;
+        private string _bar;
+        private TermU1Val m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -21,17 +21,17 @@ namespace Kaitai
                 _trailer = m_io.ReadU1();
             }
         }
-        private string _buf;
-        private byte? _trailer;
-        private uint _len;
-        private bool _hasTrailer;
-        private ParamsDef m_root;
-        private KaitaiStruct m_parent;
         public string Buf { get { return _buf; } }
         public byte? Trailer { get { return _trailer; } }
         public uint Len { get { return _len; } }
         public bool HasTrailer { get { return _hasTrailer; } }
         public ParamsDef M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private string _buf;
+        private byte? _trailer;
+        private uint _len;
+        private bool _hasTrailer;
+        private ParamsDef m_root;
+        private KaitaiStruct m_parent;
     }
 }

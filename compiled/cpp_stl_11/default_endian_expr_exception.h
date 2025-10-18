@@ -60,6 +60,11 @@ public:
 
         public:
             ~main_obj_t();
+            uint32_t some_int() const { return m_some_int; }
+            uint16_t some_int_be() const { return m_some_int_be; }
+            uint16_t some_int_le() const { return m_some_int_le; }
+            default_endian_expr_exception_t* _root() const { return m__root; }
+            default_endian_expr_exception_t::doc_t* _parent() const { return m__parent; }
 
         private:
             uint32_t m_some_int;
@@ -67,35 +72,28 @@ public:
             uint16_t m_some_int_le;
             default_endian_expr_exception_t* m__root;
             default_endian_expr_exception_t::doc_t* m__parent;
-
-        public:
-            uint32_t some_int() const { return m_some_int; }
-            uint16_t some_int_be() const { return m_some_int_be; }
-            uint16_t some_int_le() const { return m_some_int_le; }
-            default_endian_expr_exception_t* _root() const { return m__root; }
-            default_endian_expr_exception_t::doc_t* _parent() const { return m__parent; }
         };
-
-    private:
-        std::string m_indicator;
-        std::unique_ptr<main_obj_t> m_main;
-        default_endian_expr_exception_t* m__root;
-        default_endian_expr_exception_t* m__parent;
 
     public:
         std::string indicator() const { return m_indicator; }
         main_obj_t* main() const { return m_main.get(); }
         default_endian_expr_exception_t* _root() const { return m__root; }
         default_endian_expr_exception_t* _parent() const { return m__parent; }
-    };
 
-private:
-    std::unique_ptr<std::vector<std::unique_ptr<doc_t>>> m_docs;
-    default_endian_expr_exception_t* m__root;
-    kaitai::kstruct* m__parent;
+    private:
+        std::string m_indicator;
+        std::unique_ptr<main_obj_t> m_main;
+        default_endian_expr_exception_t* m__root;
+        default_endian_expr_exception_t* m__parent;
+    };
 
 public:
     std::vector<std::unique_ptr<doc_t>>* docs() const { return m_docs.get(); }
     default_endian_expr_exception_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    std::unique_ptr<std::vector<std::unique_ptr<doc_t>>> m_docs;
+    default_endian_expr_exception_t* m__root;
+    kaitai::kstruct* m__parent;
 };

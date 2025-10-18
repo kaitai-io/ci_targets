@@ -178,19 +178,16 @@ public class NavParent2 extends KaitaiStruct.ReadWrite {
                     throw new ConsistencyError("content", _parent().numItems(), (this.content).getBytes(Charset.forName("ASCII")).length);
                 _dirty = false;
             }
-            private String content;
-            private NavParent2 _root;
-            private NavParent2.Tag _parent;
             public String content() { return content; }
             public void setContent(String _v) { _dirty = true; content = _v; }
             public NavParent2 _root() { return _root; }
             public void set_root(NavParent2 _v) { _dirty = true; _root = _v; }
             public NavParent2.Tag _parent() { return _parent; }
             public void set_parent(NavParent2.Tag _v) { _dirty = true; _parent = _v; }
+            private String content;
+            private NavParent2 _root;
+            private NavParent2.Tag _parent;
         }
-        private TagChar tagContent;
-        private boolean _shouldWriteTagContent = false;
-        private boolean _enabledTagContent = true;
         public TagChar tagContent() {
             if (_shouldWriteTagContent)
                 _writeTagContent();
@@ -227,11 +224,6 @@ public class NavParent2 extends KaitaiStruct.ReadWrite {
             }
             io.seek(_pos);
         }
-        private String name;
-        private long ofs;
-        private long numItems;
-        private NavParent2 _root;
-        private NavParent2 _parent;
         public String name() { return name; }
         public void setName(String _v) { _dirty = true; name = _v; }
         public long ofs() { return ofs; }
@@ -242,12 +234,15 @@ public class NavParent2 extends KaitaiStruct.ReadWrite {
         public void set_root(NavParent2 _v) { _dirty = true; _root = _v; }
         public NavParent2 _parent() { return _parent; }
         public void set_parent(NavParent2 _v) { _dirty = true; _parent = _v; }
+        private TagChar tagContent;
+        private boolean _shouldWriteTagContent = false;
+        private boolean _enabledTagContent = true;
+        private String name;
+        private long ofs;
+        private long numItems;
+        private NavParent2 _root;
+        private NavParent2 _parent;
     }
-    private long ofsTags;
-    private long numTags;
-    private List<Tag> tags;
-    private NavParent2 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public long ofsTags() { return ofsTags; }
     public void setOfsTags(long _v) { _dirty = true; ofsTags = _v; }
     public long numTags() { return numTags; }
@@ -258,4 +253,9 @@ public class NavParent2 extends KaitaiStruct.ReadWrite {
     public void set_root(NavParent2 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private long ofsTags;
+    private long numTags;
+    private List<Tag> tags;
+    private NavParent2 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

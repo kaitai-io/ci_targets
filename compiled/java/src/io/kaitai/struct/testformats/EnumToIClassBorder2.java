@@ -29,17 +29,17 @@ public class EnumToIClassBorder2 extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Boolean isDog;
     public Boolean isDog() {
         if (this.isDog != null)
             return this.isDog;
         this.isDog = parent().someDog().id() == 4;
         return this.isDog;
     }
-    private EnumToIClassBorder1 parent;
-    private EnumToIClassBorder2 _root;
-    private KaitaiStruct _parent;
     public EnumToIClassBorder1 parent() { return parent; }
     public EnumToIClassBorder2 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Boolean isDog;
+    private EnumToIClassBorder1 parent;
+    private EnumToIClassBorder2 _root;
+    private KaitaiStruct _parent;
 }

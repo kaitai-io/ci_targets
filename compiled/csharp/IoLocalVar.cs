@@ -42,13 +42,11 @@ namespace Kaitai
             private void _read()
             {
             }
-            private IoLocalVar m_root;
-            private IoLocalVar m_parent;
             public IoLocalVar M_Root { get { return m_root; } }
             public IoLocalVar M_Parent { get { return m_parent; } }
+            private IoLocalVar m_root;
+            private IoLocalVar m_parent;
         }
-        private bool f_messUp;
-        private object _messUp;
         public object MessUp
         {
             get
@@ -81,17 +79,19 @@ namespace Kaitai
                 return _messUp;
             }
         }
-        private byte[] _skip;
-        private byte? _alwaysNull;
-        private byte _followup;
-        private IoLocalVar m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_messUp;
         public byte[] Skip { get { return _skip; } }
         public byte? AlwaysNull { get { return _alwaysNull; } }
         public byte Followup { get { return _followup; } }
         public IoLocalVar M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawMessUp { get { return __raw_messUp; } }
+        private bool f_messUp;
+        private object _messUp;
+        private byte[] _skip;
+        private byte? _alwaysNull;
+        private byte _followup;
+        private IoLocalVar m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_messUp;
     }
 }

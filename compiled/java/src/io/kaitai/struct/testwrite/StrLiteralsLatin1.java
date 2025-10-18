@@ -51,7 +51,6 @@ public class StrLiteralsLatin1 extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("parsed", lenParsed(), (this.parsed).getBytes(Charset.forName("UTF-8")).length);
         _dirty = false;
     }
-    private Boolean parsedEqLiteral;
     public Boolean parsedEqLiteral() {
         if (this.parsedEqLiteral != null)
             return this.parsedEqLiteral;
@@ -59,10 +58,6 @@ public class StrLiteralsLatin1 extends KaitaiStruct.ReadWrite {
         return this.parsedEqLiteral;
     }
     public void _invalidateParsedEqLiteral() { this.parsedEqLiteral = null; }
-    private int lenParsed;
-    private String parsed;
-    private StrLiteralsLatin1 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int lenParsed() { return lenParsed; }
     public void setLenParsed(int _v) { _dirty = true; lenParsed = _v; }
     public String parsed() { return parsed; }
@@ -71,4 +66,9 @@ public class StrLiteralsLatin1 extends KaitaiStruct.ReadWrite {
     public void set_root(StrLiteralsLatin1 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Boolean parsedEqLiteral;
+    private int lenParsed;
+    private String parsed;
+    private StrLiteralsLatin1 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

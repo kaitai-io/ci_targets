@@ -64,7 +64,6 @@ public class EnumOfValueInst extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private Animal pet3;
     public Animal pet3() {
         if (this.pet3 != null)
             return this.pet3;
@@ -72,7 +71,6 @@ public class EnumOfValueInst extends KaitaiStruct.ReadWrite {
         return this.pet3;
     }
     public void _invalidatePet3() { this.pet3 = null; }
-    private Animal pet4;
     public Animal pet4() {
         if (this.pet4 != null)
             return this.pet4;
@@ -80,10 +78,6 @@ public class EnumOfValueInst extends KaitaiStruct.ReadWrite {
         return this.pet4;
     }
     public void _invalidatePet4() { this.pet4 = null; }
-    private Animal pet1;
-    private Animal pet2;
-    private EnumOfValueInst _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Animal pet1() { return pet1; }
     public void setPet1(Animal _v) { _dirty = true; pet1 = _v; }
     public Animal pet2() { return pet2; }
@@ -92,4 +86,10 @@ public class EnumOfValueInst extends KaitaiStruct.ReadWrite {
     public void set_root(EnumOfValueInst _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Animal pet3;
+    private Animal pet4;
+    private Animal pet1;
+    private Animal pet2;
+    private EnumOfValueInst _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

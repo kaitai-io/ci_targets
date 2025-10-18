@@ -39,12 +39,12 @@ namespace Kaitai
             {
                 _foo = m_io.ReadU1();
             }
-            private byte _foo;
-            private ParamsPassUsertype m_root;
-            private ParamsPassUsertype m_parent;
             public byte Foo { get { return _foo; } }
             public ParamsPassUsertype M_Root { get { return m_root; } }
             public ParamsPassUsertype M_Parent { get { return m_parent; } }
+            private byte _foo;
+            private ParamsPassUsertype m_root;
+            private ParamsPassUsertype m_parent;
         }
         public partial class ParamType : KaitaiStruct
         {
@@ -59,22 +59,22 @@ namespace Kaitai
             {
                 _buf = m_io.ReadBytes(Foo.Foo);
             }
-            private byte[] _buf;
-            private Block _foo;
-            private ParamsPassUsertype m_root;
-            private ParamsPassUsertype m_parent;
             public byte[] Buf { get { return _buf; } }
             public Block Foo { get { return _foo; } }
             public ParamsPassUsertype M_Root { get { return m_root; } }
             public ParamsPassUsertype M_Parent { get { return m_parent; } }
+            private byte[] _buf;
+            private Block _foo;
+            private ParamsPassUsertype m_root;
+            private ParamsPassUsertype m_parent;
         }
-        private Block _first;
-        private ParamType _one;
-        private ParamsPassUsertype m_root;
-        private KaitaiStruct m_parent;
         public Block First { get { return _first; } }
         public ParamType One { get { return _one; } }
         public ParamsPassUsertype M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Block _first;
+        private ParamType _one;
+        private ParamsPassUsertype m_root;
+        private KaitaiStruct m_parent;
     }
 }

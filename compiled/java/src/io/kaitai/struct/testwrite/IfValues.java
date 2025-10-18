@@ -106,7 +106,6 @@ public class IfValues extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private Integer halfOpcode;
         public Integer halfOpcode() {
             if (this.halfOpcode != null)
                 return this.halfOpcode;
@@ -116,23 +115,24 @@ public class IfValues extends KaitaiStruct.ReadWrite {
             return this.halfOpcode;
         }
         public void _invalidateHalfOpcode() { this.halfOpcode = null; }
-        private int opcode;
-        private IfValues _root;
-        private IfValues _parent;
         public int opcode() { return opcode; }
         public void setOpcode(int _v) { _dirty = true; opcode = _v; }
         public IfValues _root() { return _root; }
         public void set_root(IfValues _v) { _dirty = true; _root = _v; }
         public IfValues _parent() { return _parent; }
         public void set_parent(IfValues _v) { _dirty = true; _parent = _v; }
+        private Integer halfOpcode;
+        private int opcode;
+        private IfValues _root;
+        private IfValues _parent;
     }
-    private List<Code> codes;
-    private IfValues _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Code> codes() { return codes; }
     public void setCodes(List<Code> _v) { _dirty = true; codes = _v; }
     public IfValues _root() { return _root; }
     public void set_root(IfValues _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Code> codes;
+    private IfValues _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

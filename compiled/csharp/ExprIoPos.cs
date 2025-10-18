@@ -45,28 +45,28 @@ namespace Kaitai
                 _body = m_io.ReadBytes((M_Io.Size - M_Io.Pos) - 2);
                 _number = m_io.ReadU2le();
             }
-            private string _myStr;
-            private byte[] _body;
-            private ushort _number;
-            private ExprIoPos m_root;
-            private ExprIoPos m_parent;
             public string MyStr { get { return _myStr; } }
             public byte[] Body { get { return _body; } }
             public ushort Number { get { return _number; } }
             public ExprIoPos M_Root { get { return m_root; } }
             public ExprIoPos M_Parent { get { return m_parent; } }
+            private string _myStr;
+            private byte[] _body;
+            private ushort _number;
+            private ExprIoPos m_root;
+            private ExprIoPos m_parent;
         }
-        private AllPlusNumber _substream1;
-        private AllPlusNumber _substream2;
-        private ExprIoPos m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_substream1;
-        private byte[] __raw_substream2;
         public AllPlusNumber Substream1 { get { return _substream1; } }
         public AllPlusNumber Substream2 { get { return _substream2; } }
         public ExprIoPos M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawSubstream1 { get { return __raw_substream1; } }
         public byte[] M_RawSubstream2 { get { return __raw_substream2; } }
+        private AllPlusNumber _substream1;
+        private AllPlusNumber _substream2;
+        private ExprIoPos m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_substream1;
+        private byte[] __raw_substream2;
     }
 }

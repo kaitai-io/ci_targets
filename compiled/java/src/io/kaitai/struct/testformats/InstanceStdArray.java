@@ -41,7 +41,6 @@ public class InstanceStdArray extends KaitaiStruct {
             }
         }
     }
-    private List<byte[]> entries;
     public List<byte[]> entries() {
         if (this.entries != null)
             return this.entries;
@@ -54,14 +53,15 @@ public class InstanceStdArray extends KaitaiStruct {
         this._io.seek(_pos);
         return this.entries;
     }
-    private long ofs;
-    private long entrySize;
-    private long qtyEntries;
-    private InstanceStdArray _root;
-    private KaitaiStruct _parent;
     public long ofs() { return ofs; }
     public long entrySize() { return entrySize; }
     public long qtyEntries() { return qtyEntries; }
     public InstanceStdArray _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<byte[]> entries;
+    private long ofs;
+    private long entrySize;
+    private long qtyEntries;
+    private InstanceStdArray _root;
+    private KaitaiStruct _parent;
 }

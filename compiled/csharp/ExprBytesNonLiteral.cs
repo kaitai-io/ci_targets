@@ -23,8 +23,6 @@ namespace Kaitai
             _one = m_io.ReadU1();
             _two = m_io.ReadU1();
         }
-        private bool f_calcBytes;
-        private byte[] _calcBytes;
         public byte[] CalcBytes
         {
             get
@@ -36,13 +34,15 @@ namespace Kaitai
                 return _calcBytes;
             }
         }
-        private byte _one;
-        private byte _two;
-        private ExprBytesNonLiteral m_root;
-        private KaitaiStruct m_parent;
         public byte One { get { return _one; } }
         public byte Two { get { return _two; } }
         public ExprBytesNonLiteral M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_calcBytes;
+        private byte[] _calcBytes;
+        private byte _one;
+        private byte _two;
+        private ExprBytesNonLiteral m_root;
+        private KaitaiStruct m_parent;
     }
 }

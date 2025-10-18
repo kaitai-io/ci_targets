@@ -18,18 +18,18 @@ namespace Kaitai\Struct\Tests {
             $_io__raw_leBomRemoved = new \Kaitai\Struct\Stream($this->_m__raw_leBomRemoved);
             $this->_m_leBomRemoved = new \Kaitai\Struct\Tests\StrEncodingsUtf16\StrLeBomRemoved($_io__raw_leBomRemoved, $this, $this->_root);
         }
-        protected $_m_lenBe;
-        protected $_m_beBomRemoved;
-        protected $_m_lenLe;
-        protected $_m_leBomRemoved;
-        protected $_m__raw_beBomRemoved;
-        protected $_m__raw_leBomRemoved;
         public function lenBe() { return $this->_m_lenBe; }
         public function beBomRemoved() { return $this->_m_beBomRemoved; }
         public function lenLe() { return $this->_m_lenLe; }
         public function leBomRemoved() { return $this->_m_leBomRemoved; }
         public function _raw_beBomRemoved() { return $this->_m__raw_beBomRemoved; }
         public function _raw_leBomRemoved() { return $this->_m__raw_leBomRemoved; }
+        protected $_m_lenBe;
+        protected $_m_beBomRemoved;
+        protected $_m_lenLe;
+        protected $_m_leBomRemoved;
+        protected $_m__raw_beBomRemoved;
+        protected $_m__raw_leBomRemoved;
     }
 }
 
@@ -44,10 +44,10 @@ namespace Kaitai\Struct\Tests\StrEncodingsUtf16 {
             $this->_m_bom = $this->_io->readU2be();
             $this->_m_str = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesFull(), "UTF-16BE");
         }
-        protected $_m_bom;
-        protected $_m_str;
         public function bom() { return $this->_m_bom; }
         public function str() { return $this->_m_str; }
+        protected $_m_bom;
+        protected $_m_str;
     }
 }
 
@@ -62,9 +62,9 @@ namespace Kaitai\Struct\Tests\StrEncodingsUtf16 {
             $this->_m_bom = $this->_io->readU2le();
             $this->_m_str = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesFull(), "UTF-16LE");
         }
-        protected $_m_bom;
-        protected $_m_str;
         public function bom() { return $this->_m_bom; }
         public function str() { return $this->_m_str; }
+        protected $_m_bom;
+        protected $_m_str;
     }
 }

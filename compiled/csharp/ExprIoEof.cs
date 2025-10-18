@@ -47,8 +47,6 @@ namespace Kaitai
                     _two = m_io.ReadU4le();
                 }
             }
-            private bool f_reflectEof;
-            private bool _reflectEof;
             public bool ReflectEof
             {
                 get
@@ -60,26 +58,28 @@ namespace Kaitai
                     return _reflectEof;
                 }
             }
-            private uint _one;
-            private uint? _two;
-            private ExprIoEof m_root;
-            private ExprIoEof m_parent;
             public uint One { get { return _one; } }
             public uint? Two { get { return _two; } }
             public ExprIoEof M_Root { get { return m_root; } }
             public ExprIoEof M_Parent { get { return m_parent; } }
+            private bool f_reflectEof;
+            private bool _reflectEof;
+            private uint _one;
+            private uint? _two;
+            private ExprIoEof m_root;
+            private ExprIoEof m_parent;
         }
-        private OneOrTwo _substream1;
-        private OneOrTwo _substream2;
-        private ExprIoEof m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_substream1;
-        private byte[] __raw_substream2;
         public OneOrTwo Substream1 { get { return _substream1; } }
         public OneOrTwo Substream2 { get { return _substream2; } }
         public ExprIoEof M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawSubstream1 { get { return __raw_substream1; } }
         public byte[] M_RawSubstream2 { get { return __raw_substream2; } }
+        private OneOrTwo _substream1;
+        private OneOrTwo _substream2;
+        private ExprIoEof m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_substream1;
+        private byte[] __raw_substream2;
     }
 }

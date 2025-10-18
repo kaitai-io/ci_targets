@@ -15,7 +15,7 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_records[] = \Kaitai\Struct\Stream::bytesTerminate(\Kaitai\Struct\Stream::bytesStripRight($this->_io->readBytes(5), 170), 85, true);
             }
         }
-        protected $_m_records;
         public function records() { return $this->_m_records; }
+        protected $_m_records;
     }
 }

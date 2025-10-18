@@ -39,12 +39,12 @@ namespace Kaitai
             {
                 _foo = m_io.ReadU1();
             }
-            private byte _foo;
-            private ParamsPassStruct m_root;
-            private ParamsPassStruct m_parent;
             public byte Foo { get { return _foo; } }
             public ParamsPassStruct M_Root { get { return m_root; } }
             public ParamsPassStruct M_Parent { get { return m_parent; } }
+            private byte _foo;
+            private ParamsPassStruct m_root;
+            private ParamsPassStruct m_parent;
         }
         public partial class StructType : KaitaiStruct
         {
@@ -72,31 +72,31 @@ namespace Kaitai
                 {
                     _qux = m_io.ReadU1();
                 }
-                private byte _qux;
-                private KaitaiStruct _foo;
-                private ParamsPassStruct m_root;
-                private ParamsPassStruct.StructType m_parent;
                 public byte Qux { get { return _qux; } }
                 public KaitaiStruct Foo { get { return _foo; } }
                 public ParamsPassStruct M_Root { get { return m_root; } }
                 public ParamsPassStruct.StructType M_Parent { get { return m_parent; } }
+                private byte _qux;
+                private KaitaiStruct _foo;
+                private ParamsPassStruct m_root;
+                private ParamsPassStruct.StructType m_parent;
             }
-            private Baz _bar;
-            private KaitaiStruct _foo;
-            private ParamsPassStruct m_root;
-            private ParamsPassStruct m_parent;
             public Baz Bar { get { return _bar; } }
             public KaitaiStruct Foo { get { return _foo; } }
             public ParamsPassStruct M_Root { get { return m_root; } }
             public ParamsPassStruct M_Parent { get { return m_parent; } }
+            private Baz _bar;
+            private KaitaiStruct _foo;
+            private ParamsPassStruct m_root;
+            private ParamsPassStruct m_parent;
         }
-        private Block _first;
-        private StructType _one;
-        private ParamsPassStruct m_root;
-        private KaitaiStruct m_parent;
         public Block First { get { return _first; } }
         public StructType One { get { return _one; } }
         public ParamsPassStruct M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Block _first;
+        private StructType _one;
+        private ParamsPassStruct m_root;
+        private KaitaiStruct m_parent;
     }
 }

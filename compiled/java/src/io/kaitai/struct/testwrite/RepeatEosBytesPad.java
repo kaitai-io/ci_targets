@@ -68,13 +68,13 @@ public class RepeatEosBytesPad extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private List<byte[]> records;
-    private RepeatEosBytesPad _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<byte[]> records() { return records; }
     public void setRecords(List<byte[]> _v) { _dirty = true; records = _v; }
     public RepeatEosBytesPad _root() { return _root; }
     public void set_root(RepeatEosBytesPad _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<byte[]> records;
+    private RepeatEosBytesPad _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

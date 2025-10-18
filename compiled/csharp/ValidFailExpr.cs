@@ -36,13 +36,13 @@ namespace Kaitai
                 }
             }
         }
-        private byte _foo;
-        private short _bar;
-        private ValidFailExpr m_root;
-        private KaitaiStruct m_parent;
         public byte Foo { get { return _foo; } }
         public short Bar { get { return _bar; } }
         public ValidFailExpr M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte _foo;
+        private short _bar;
+        private ValidFailExpr m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -60,15 +60,6 @@ public class EnumLongRangeS extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Constants f1;
-    private Constants f2;
-    private Constants f3;
-    private Constants f4;
-    private Constants f5;
-    private Constants f6;
-    private Constants f7;
-    private EnumLongRangeS _root;
-    private KaitaiStruct _parent;
     public Constants f1() { return f1; }
     public Constants f2() { return f2; }
     public Constants f3() { return f3; }
@@ -78,4 +69,13 @@ public class EnumLongRangeS extends KaitaiStruct {
     public Constants f7() { return f7; }
     public EnumLongRangeS _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Constants f1;
+    private Constants f2;
+    private Constants f3;
+    private Constants f4;
+    private Constants f5;
+    private Constants f6;
+    private Constants f7;
+    private EnumLongRangeS _root;
+    private KaitaiStruct _parent;
 }

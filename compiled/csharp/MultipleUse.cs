@@ -39,12 +39,12 @@ namespace Kaitai
             {
                 _value = m_io.ReadS4le();
             }
-            private int _value;
-            private MultipleUse m_root;
-            private KaitaiStruct m_parent;
             public int Value { get { return _value; } }
             public MultipleUse M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
+            private int _value;
+            private MultipleUse m_root;
+            private KaitaiStruct m_parent;
         }
         public partial class Type1 : KaitaiStruct
         {
@@ -63,12 +63,12 @@ namespace Kaitai
             {
                 _firstUse = new Multi(m_io, this, m_root);
             }
-            private Multi _firstUse;
-            private MultipleUse m_root;
-            private MultipleUse m_parent;
             public Multi FirstUse { get { return _firstUse; } }
             public MultipleUse M_Root { get { return m_root; } }
             public MultipleUse M_Parent { get { return m_parent; } }
+            private Multi _firstUse;
+            private MultipleUse m_root;
+            private MultipleUse m_parent;
         }
         public partial class Type2 : KaitaiStruct
         {
@@ -87,8 +87,6 @@ namespace Kaitai
             private void _read()
             {
             }
-            private bool f_secondUse;
-            private Multi _secondUse;
             public Multi SecondUse
             {
                 get
@@ -103,18 +101,20 @@ namespace Kaitai
                     return _secondUse;
                 }
             }
-            private MultipleUse m_root;
-            private MultipleUse m_parent;
             public MultipleUse M_Root { get { return m_root; } }
             public MultipleUse M_Parent { get { return m_parent; } }
+            private bool f_secondUse;
+            private Multi _secondUse;
+            private MultipleUse m_root;
+            private MultipleUse m_parent;
         }
-        private Type1 _t1;
-        private Type2 _t2;
-        private MultipleUse m_root;
-        private KaitaiStruct m_parent;
         public Type1 T1 { get { return _t1; } }
         public Type2 T2 { get { return _t2; } }
         public MultipleUse M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Type1 _t1;
+        private Type2 _t2;
+        private MultipleUse m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -35,8 +35,6 @@ namespace Kaitai
         private void _read()
         {
         }
-        private bool f_boolAnd;
-        private int _boolAnd;
         public int BoolAnd
         {
             get
@@ -48,8 +46,6 @@ namespace Kaitai
                 return _boolAnd;
             }
         }
-        private bool f_boolEq;
-        private int _boolEq;
         public int BoolEq
         {
             get
@@ -61,8 +57,6 @@ namespace Kaitai
                 return _boolEq;
             }
         }
-        private bool f_boolOr;
-        private int _boolOr;
         public int BoolOr
         {
             get
@@ -74,8 +68,6 @@ namespace Kaitai
                 return _boolOr;
             }
         }
-        private bool f_f2pi;
-        private double _f2pi;
         public double F2pi
         {
             get
@@ -87,8 +79,6 @@ namespace Kaitai
                 return _f2pi;
             }
         }
-        private bool f_fE;
-        private double _fE;
         public double FE
         {
             get
@@ -100,8 +90,6 @@ namespace Kaitai
                 return _fE;
             }
         }
-        private bool f_fSumToInt;
-        private int _fSumToInt;
         public int FSumToInt
         {
             get
@@ -113,8 +101,6 @@ namespace Kaitai
                 return _fSumToInt;
             }
         }
-        private bool f_i42;
-        private sbyte _i42;
         public sbyte I42
         {
             get
@@ -126,8 +112,6 @@ namespace Kaitai
                 return _i42;
             }
         }
-        private bool f_iM13;
-        private int _iM13;
         public int IM13
         {
             get
@@ -139,8 +123,6 @@ namespace Kaitai
                 return _iM13;
             }
         }
-        private bool f_iSumToStr;
-        private string _iSumToStr;
         public string ISumToStr
         {
             get
@@ -152,8 +134,6 @@ namespace Kaitai
                 return _iSumToStr;
             }
         }
-        private bool f_str0To4;
-        private string _str0To4;
         public string Str0To4
         {
             get
@@ -165,8 +145,6 @@ namespace Kaitai
                 return _str0To4;
             }
         }
-        private bool f_str5To9;
-        private string _str5To9;
         public string Str5To9
         {
             get
@@ -178,8 +156,6 @@ namespace Kaitai
                 return _str5To9;
             }
         }
-        private bool f_strConcatLen;
-        private int _strConcatLen;
         public int StrConcatLen
         {
             get
@@ -191,8 +167,6 @@ namespace Kaitai
                 return _strConcatLen;
             }
         }
-        private bool f_strConcatRev;
-        private string _strConcatRev;
         public string StrConcatRev
         {
             get
@@ -204,8 +178,6 @@ namespace Kaitai
                 return _strConcatRev;
             }
         }
-        private bool f_strConcatSubstr2To7;
-        private string _strConcatSubstr2To7;
         public string StrConcatSubstr2To7
         {
             get
@@ -217,8 +189,6 @@ namespace Kaitai
                 return _strConcatSubstr2To7;
             }
         }
-        private bool f_strConcatToI;
-        private int _strConcatToI;
         public int StrConcatToI
         {
             get
@@ -230,9 +200,39 @@ namespace Kaitai
                 return _strConcatToI;
             }
         }
-        private ExprOpsParens m_root;
-        private KaitaiStruct m_parent;
         public ExprOpsParens M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_boolAnd;
+        private int _boolAnd;
+        private bool f_boolEq;
+        private int _boolEq;
+        private bool f_boolOr;
+        private int _boolOr;
+        private bool f_f2pi;
+        private double _f2pi;
+        private bool f_fE;
+        private double _fE;
+        private bool f_fSumToInt;
+        private int _fSumToInt;
+        private bool f_i42;
+        private sbyte _i42;
+        private bool f_iM13;
+        private int _iM13;
+        private bool f_iSumToStr;
+        private string _iSumToStr;
+        private bool f_str0To4;
+        private string _str0To4;
+        private bool f_str5To9;
+        private string _str5To9;
+        private bool f_strConcatLen;
+        private int _strConcatLen;
+        private bool f_strConcatRev;
+        private string _strConcatRev;
+        private bool f_strConcatSubstr2To7;
+        private string _strConcatSubstr2To7;
+        private bool f_strConcatToI;
+        private int _strConcatToI;
+        private ExprOpsParens m_root;
+        private KaitaiStruct m_parent;
     }
 }

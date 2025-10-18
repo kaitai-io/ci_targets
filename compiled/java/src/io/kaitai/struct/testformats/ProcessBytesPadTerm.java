@@ -39,16 +39,6 @@ public class ProcessBytesPadTerm extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private byte[] strPad;
-    private byte[] strTerm;
-    private byte[] strTermAndPad;
-    private byte[] strTermInclude;
-    private ProcessBytesPadTerm _root;
-    private KaitaiStruct _parent;
-    private byte[] _raw_strPad;
-    private byte[] _raw_strTerm;
-    private byte[] _raw_strTermAndPad;
-    private byte[] _raw_strTermInclude;
     public byte[] strPad() { return strPad; }
     public byte[] strTerm() { return strTerm; }
     public byte[] strTermAndPad() { return strTermAndPad; }
@@ -59,4 +49,14 @@ public class ProcessBytesPadTerm extends KaitaiStruct {
     public byte[] _raw_strTerm() { return _raw_strTerm; }
     public byte[] _raw_strTermAndPad() { return _raw_strTermAndPad; }
     public byte[] _raw_strTermInclude() { return _raw_strTermInclude; }
+    private byte[] strPad;
+    private byte[] strTerm;
+    private byte[] strTermAndPad;
+    private byte[] strTermInclude;
+    private ProcessBytesPadTerm _root;
+    private KaitaiStruct _parent;
+    private byte[] _raw_strPad;
+    private byte[] _raw_strTerm;
+    private byte[] _raw_strTermAndPad;
+    private byte[] _raw_strTermInclude;
 }

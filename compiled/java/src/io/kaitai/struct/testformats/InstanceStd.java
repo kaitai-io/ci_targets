@@ -35,7 +35,6 @@ public class InstanceStd extends KaitaiStruct {
         if (this.header != null) {
         }
     }
-    private String header;
     public String header() {
         if (this.header != null)
             return this.header;
@@ -45,8 +44,9 @@ public class InstanceStd extends KaitaiStruct {
         this._io.seek(_pos);
         return this.header;
     }
-    private InstanceStd _root;
-    private KaitaiStruct _parent;
     public InstanceStd _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private String header;
+    private InstanceStd _root;
+    private KaitaiStruct _parent;
 }

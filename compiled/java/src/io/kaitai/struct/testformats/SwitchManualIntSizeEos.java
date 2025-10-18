@@ -74,16 +74,16 @@ public class SwitchManualIntSizeEos extends KaitaiStruct {
         public void _fetchInstances() {
             this.body._fetchInstances();
         }
-        private int code;
-        private long size;
-        private ChunkBody body;
-        private SwitchManualIntSizeEos _root;
-        private SwitchManualIntSizeEos _parent;
         public int code() { return code; }
         public long size() { return size; }
         public ChunkBody body() { return body; }
         public SwitchManualIntSizeEos _root() { return _root; }
         public SwitchManualIntSizeEos _parent() { return _parent; }
+        private int code;
+        private long size;
+        private ChunkBody body;
+        private SwitchManualIntSizeEos _root;
+        private SwitchManualIntSizeEos _parent;
     }
     public static class ChunkBody extends KaitaiStruct {
         public static ChunkBody fromFile(String fileName) throws IOException {
@@ -174,12 +174,12 @@ public class SwitchManualIntSizeEos extends KaitaiStruct {
                 for (int i = 0; i < this.entries.size(); i++) {
                 }
             }
-            private List<String> entries;
-            private SwitchManualIntSizeEos _root;
-            private SwitchManualIntSizeEos.ChunkBody _parent;
             public List<String> entries() { return entries; }
             public SwitchManualIntSizeEos _root() { return _root; }
             public SwitchManualIntSizeEos.ChunkBody _parent() { return _parent; }
+            private List<String> entries;
+            private SwitchManualIntSizeEos _root;
+            private SwitchManualIntSizeEos.ChunkBody _parent;
         }
         public static class ChunkMeta extends KaitaiStruct {
             public static ChunkMeta fromFile(String fileName) throws IOException {
@@ -207,28 +207,28 @@ public class SwitchManualIntSizeEos extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private String title;
-            private String author;
-            private SwitchManualIntSizeEos _root;
-            private SwitchManualIntSizeEos.ChunkBody _parent;
             public String title() { return title; }
             public String author() { return author; }
             public SwitchManualIntSizeEos _root() { return _root; }
             public SwitchManualIntSizeEos.ChunkBody _parent() { return _parent; }
+            private String title;
+            private String author;
+            private SwitchManualIntSizeEos _root;
+            private SwitchManualIntSizeEos.ChunkBody _parent;
         }
-        private Object body;
-        private SwitchManualIntSizeEos _root;
-        private SwitchManualIntSizeEos.Chunk _parent;
-        private byte[] _raw_body;
         public Object body() { return body; }
         public SwitchManualIntSizeEos _root() { return _root; }
         public SwitchManualIntSizeEos.Chunk _parent() { return _parent; }
         public byte[] _raw_body() { return _raw_body; }
+        private Object body;
+        private SwitchManualIntSizeEos _root;
+        private SwitchManualIntSizeEos.Chunk _parent;
+        private byte[] _raw_body;
     }
-    private List<Chunk> chunks;
-    private SwitchManualIntSizeEos _root;
-    private KaitaiStruct _parent;
     public List<Chunk> chunks() { return chunks; }
     public SwitchManualIntSizeEos _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Chunk> chunks;
+    private SwitchManualIntSizeEos _root;
+    private KaitaiStruct _parent;
 }

@@ -188,33 +188,16 @@ public class ProcessTermStruct extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private byte[] value;
-        private ProcessTermStruct _root;
-        private ProcessTermStruct _parent;
         public byte[] value() { return value; }
         public void setValue(byte[] _v) { _dirty = true; value = _v; }
         public ProcessTermStruct _root() { return _root; }
         public void set_root(ProcessTermStruct _v) { _dirty = true; _root = _v; }
         public ProcessTermStruct _parent() { return _parent; }
         public void set_parent(ProcessTermStruct _v) { _dirty = true; _parent = _v; }
+        private byte[] value;
+        private ProcessTermStruct _root;
+        private ProcessTermStruct _parent;
     }
-    private BytesWrapper s1;
-    private BytesWrapper s2;
-    private BytesWrapper s3;
-    private ProcessTermStruct _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_s1;
-    private int s1_InnerSize;
-    private int s1_OuterSize;
-    private byte[] _raw__raw_s1;
-    private byte[] _raw_s2;
-    private int s2_InnerSize;
-    private int s2_OuterSize;
-    private byte[] _raw__raw_s2;
-    private byte[] _raw_s3;
-    private int s3_InnerSize;
-    private int s3_OuterSize;
-    private byte[] _raw__raw_s3;
     public BytesWrapper s1() { return s1; }
     public void setS1(BytesWrapper _v) { _dirty = true; s1 = _v; }
     public BytesWrapper s2() { return s2; }
@@ -249,4 +232,21 @@ public class ProcessTermStruct extends KaitaiStruct.ReadWrite {
     public void setS3_OuterSize(int _v) { _dirty = true; s3_OuterSize = _v; }
     public byte[] _raw__raw_s3() { return _raw__raw_s3; }
     public void set_raw__raw_S3(byte[] _v) { _dirty = true; _raw__raw_s3 = _v; }
+    private BytesWrapper s1;
+    private BytesWrapper s2;
+    private BytesWrapper s3;
+    private ProcessTermStruct _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_s1;
+    private int s1_InnerSize;
+    private int s1_OuterSize;
+    private byte[] _raw__raw_s1;
+    private byte[] _raw_s2;
+    private int s2_InnerSize;
+    private int s2_OuterSize;
+    private byte[] _raw__raw_s2;
+    private byte[] _raw_s3;
+    private int s3_InnerSize;
+    private int s3_OuterSize;
+    private byte[] _raw__raw_s3;
 }

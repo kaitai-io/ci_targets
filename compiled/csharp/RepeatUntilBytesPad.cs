@@ -30,11 +30,11 @@ namespace Kaitai
                 } while (!(M_.Length == 5));
             }
         }
-        private List<byte[]> _records;
-        private RepeatUntilBytesPad m_root;
-        private KaitaiStruct m_parent;
         public List<byte[]> Records { get { return _records; } }
         public RepeatUntilBytesPad M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<byte[]> _records;
+        private RepeatUntilBytesPad m_root;
+        private KaitaiStruct m_parent;
     }
 }

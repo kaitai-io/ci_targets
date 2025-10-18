@@ -11,8 +11,8 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_main = new \Kaitai\Struct\Tests\DefaultEndianMod\MainObj($this->_io, $this, $this->_root);
         }
-        protected $_m_main;
         public function main() { return $this->_m_main; }
+        protected $_m_main;
     }
 }
 
@@ -28,12 +28,12 @@ namespace Kaitai\Struct\Tests\DefaultEndianMod {
             $this->_m_nest = new \Kaitai\Struct\Tests\DefaultEndianMod\MainObj\Subnest($this->_io, $this, $this->_root);
             $this->_m_nestBe = new \Kaitai\Struct\Tests\DefaultEndianMod\MainObj\SubnestBe($this->_io, $this, $this->_root);
         }
-        protected $_m_one;
-        protected $_m_nest;
-        protected $_m_nestBe;
         public function one() { return $this->_m_one; }
         public function nest() { return $this->_m_nest; }
         public function nestBe() { return $this->_m_nestBe; }
+        protected $_m_one;
+        protected $_m_nest;
+        protected $_m_nestBe;
     }
 }
 
@@ -47,8 +47,8 @@ namespace Kaitai\Struct\Tests\DefaultEndianMod\MainObj {
         private function _read() {
             $this->_m_two = $this->_io->readS4le();
         }
-        protected $_m_two;
         public function two() { return $this->_m_two; }
+        protected $_m_two;
     }
 }
 
@@ -62,7 +62,7 @@ namespace Kaitai\Struct\Tests\DefaultEndianMod\MainObj {
         private function _read() {
             $this->_m_two = $this->_io->readS4be();
         }
-        protected $_m_two;
         public function two() { return $this->_m_two; }
+        protected $_m_two;
     }
 }

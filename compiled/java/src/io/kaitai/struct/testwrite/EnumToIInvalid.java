@@ -63,7 +63,6 @@ public class EnumToIInvalid extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private Boolean oneLtTwo;
     public Boolean oneLtTwo() {
         if (this.oneLtTwo != null)
             return this.oneLtTwo;
@@ -71,7 +70,6 @@ public class EnumToIInvalid extends KaitaiStruct.ReadWrite {
         return this.oneLtTwo;
     }
     public void _invalidateOneLtTwo() { this.oneLtTwo = null; }
-    private Boolean pet2EqIntF;
     public Boolean pet2EqIntF() {
         if (this.pet2EqIntF != null)
             return this.pet2EqIntF;
@@ -79,7 +77,6 @@ public class EnumToIInvalid extends KaitaiStruct.ReadWrite {
         return this.pet2EqIntF;
     }
     public void _invalidatePet2EqIntF() { this.pet2EqIntF = null; }
-    private Boolean pet2EqIntT;
     public Boolean pet2EqIntT() {
         if (this.pet2EqIntT != null)
             return this.pet2EqIntT;
@@ -87,7 +84,6 @@ public class EnumToIInvalid extends KaitaiStruct.ReadWrite {
         return this.pet2EqIntT;
     }
     public void _invalidatePet2EqIntT() { this.pet2EqIntT = null; }
-    private Integer pet2I;
     public Integer pet2I() {
         if (this.pet2I != null)
             return this.pet2I;
@@ -95,7 +91,6 @@ public class EnumToIInvalid extends KaitaiStruct.ReadWrite {
         return this.pet2I;
     }
     public void _invalidatePet2I() { this.pet2I = null; }
-    private String pet2IToS;
     public String pet2IToS() {
         if (this.pet2IToS != null)
             return this.pet2IToS;
@@ -103,7 +98,6 @@ public class EnumToIInvalid extends KaitaiStruct.ReadWrite {
         return this.pet2IToS;
     }
     public void _invalidatePet2IToS() { this.pet2IToS = null; }
-    private Integer pet2Mod;
     public Integer pet2Mod() {
         if (this.pet2Mod != null)
             return this.pet2Mod;
@@ -111,10 +105,6 @@ public class EnumToIInvalid extends KaitaiStruct.ReadWrite {
         return this.pet2Mod;
     }
     public void _invalidatePet2Mod() { this.pet2Mod = null; }
-    private Animal pet1;
-    private Animal pet2;
-    private EnumToIInvalid _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Animal pet1() { return pet1; }
     public void setPet1(Animal _v) { _dirty = true; pet1 = _v; }
     public Animal pet2() { return pet2; }
@@ -123,4 +113,14 @@ public class EnumToIInvalid extends KaitaiStruct.ReadWrite {
     public void set_root(EnumToIInvalid _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Boolean oneLtTwo;
+    private Boolean pet2EqIntF;
+    private Boolean pet2EqIntT;
+    private Integer pet2I;
+    private String pet2IToS;
+    private Integer pet2Mod;
+    private Animal pet1;
+    private Animal pet2;
+    private EnumToIInvalid _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

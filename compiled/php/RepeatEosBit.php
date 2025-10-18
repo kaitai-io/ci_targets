@@ -16,7 +16,7 @@ namespace Kaitai\Struct\Tests {
                 $i++;
             }
         }
-        protected $_m_nibbles;
         public function nibbles() { return $this->_m_nibbles; }
+        protected $_m_nibbles;
     }
 }

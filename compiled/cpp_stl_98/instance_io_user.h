@@ -40,25 +40,19 @@ public:
 
     public:
         ~entry_t();
-
-    private:
-        bool f_name;
-        std::string m_name;
-
-    public:
         std::string name();
-
-    private:
-        uint32_t m_name_ofs;
-        uint32_t m_value;
-        instance_io_user_t* m__root;
-        instance_io_user_t* m__parent;
-
-    public:
         uint32_t name_ofs() const { return m_name_ofs; }
         uint32_t value() const { return m_value; }
         instance_io_user_t* _root() const { return m__root; }
         instance_io_user_t* _parent() const { return m__parent; }
+
+    private:
+        bool f_name;
+        std::string m_name;
+        uint32_t m_name_ofs;
+        uint32_t m_value;
+        instance_io_user_t* m__root;
+        instance_io_user_t* m__parent;
     };
 
     class strings_obj_t : public kaitai::kstruct {
@@ -73,26 +67,15 @@ public:
 
     public:
         ~strings_obj_t();
+        std::vector<std::string>* str() const { return m_str; }
+        instance_io_user_t* _root() const { return m__root; }
+        instance_io_user_t* _parent() const { return m__parent; }
 
     private:
         std::vector<std::string>* m_str;
         instance_io_user_t* m__root;
         instance_io_user_t* m__parent;
-
-    public:
-        std::vector<std::string>* str() const { return m_str; }
-        instance_io_user_t* _root() const { return m__root; }
-        instance_io_user_t* _parent() const { return m__parent; }
     };
-
-private:
-    uint32_t m_qty_entries;
-    std::vector<entry_t*>* m_entries;
-    strings_obj_t* m_strings;
-    instance_io_user_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::string m__raw_strings;
-    kaitai::kstream* m__io__raw_strings;
 
 public:
     uint32_t qty_entries() const { return m_qty_entries; }
@@ -102,6 +85,15 @@ public:
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_strings() const { return m__raw_strings; }
     kaitai::kstream* _io__raw_strings() const { return m__io__raw_strings; }
+
+private:
+    uint32_t m_qty_entries;
+    std::vector<entry_t*>* m_entries;
+    strings_obj_t* m_strings;
+    instance_io_user_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::string m__raw_strings;
+    kaitai::kstream* m__io__raw_strings;
 };
 
 #endif  // INSTANCE_IO_USER_H_

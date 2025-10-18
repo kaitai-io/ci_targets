@@ -46,19 +46,17 @@ namespace Kaitai
                 _b = m_io.ReadU4le();
                 _c = m_io.ReadBytes(2);
             }
-            private byte _a;
-            private uint _b;
-            private byte[] _c;
-            private ExprSizeofValue0 m_root;
-            private ExprSizeofValue0 m_parent;
             public byte A { get { return _a; } }
             public uint B { get { return _b; } }
             public byte[] C { get { return _c; } }
             public ExprSizeofValue0 M_Root { get { return m_root; } }
             public ExprSizeofValue0 M_Parent { get { return m_parent; } }
+            private byte _a;
+            private uint _b;
+            private byte[] _c;
+            private ExprSizeofValue0 m_root;
+            private ExprSizeofValue0 m_parent;
         }
-        private bool f_selfSizeof;
-        private int _selfSizeof;
         public int SelfSizeof
         {
             get
@@ -70,8 +68,6 @@ namespace Kaitai
                 return _selfSizeof;
             }
         }
-        private bool f_sizeofBlock;
-        private int _sizeofBlock;
         public int SizeofBlock
         {
             get
@@ -83,8 +79,6 @@ namespace Kaitai
                 return _sizeofBlock;
             }
         }
-        private bool f_sizeofBlockA;
-        private int _sizeofBlockA;
         public int SizeofBlockA
         {
             get
@@ -96,8 +90,6 @@ namespace Kaitai
                 return _sizeofBlockA;
             }
         }
-        private bool f_sizeofBlockB;
-        private int _sizeofBlockB;
         public int SizeofBlockB
         {
             get
@@ -109,8 +101,6 @@ namespace Kaitai
                 return _sizeofBlockB;
             }
         }
-        private bool f_sizeofBlockC;
-        private int _sizeofBlockC;
         public int SizeofBlockC
         {
             get
@@ -122,13 +112,23 @@ namespace Kaitai
                 return _sizeofBlockC;
             }
         }
-        private Block _block1;
-        private ushort _more;
-        private ExprSizeofValue0 m_root;
-        private KaitaiStruct m_parent;
         public Block Block1 { get { return _block1; } }
         public ushort More { get { return _more; } }
         public ExprSizeofValue0 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_selfSizeof;
+        private int _selfSizeof;
+        private bool f_sizeofBlock;
+        private int _sizeofBlock;
+        private bool f_sizeofBlockA;
+        private int _sizeofBlockA;
+        private bool f_sizeofBlockB;
+        private int _sizeofBlockB;
+        private bool f_sizeofBlockC;
+        private int _sizeofBlockC;
+        private Block _block1;
+        private ushort _more;
+        private ExprSizeofValue0 m_root;
+        private KaitaiStruct m_parent;
     }
 }

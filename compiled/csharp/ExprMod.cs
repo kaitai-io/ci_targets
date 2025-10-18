@@ -26,8 +26,6 @@ namespace Kaitai
             _intU = m_io.ReadU4le();
             _intS = m_io.ReadS4le();
         }
-        private bool f_modNegConst;
-        private int _modNegConst;
         public int ModNegConst
         {
             get
@@ -39,8 +37,6 @@ namespace Kaitai
                 return _modNegConst;
             }
         }
-        private bool f_modNegSeq;
-        private int _modNegSeq;
         public int ModNegSeq
         {
             get
@@ -52,8 +48,6 @@ namespace Kaitai
                 return _modNegSeq;
             }
         }
-        private bool f_modPosConst;
-        private int _modPosConst;
         public int ModPosConst
         {
             get
@@ -65,8 +59,6 @@ namespace Kaitai
                 return _modPosConst;
             }
         }
-        private bool f_modPosSeq;
-        private int _modPosSeq;
         public int ModPosSeq
         {
             get
@@ -78,13 +70,21 @@ namespace Kaitai
                 return _modPosSeq;
             }
         }
-        private uint _intU;
-        private int _intS;
-        private ExprMod m_root;
-        private KaitaiStruct m_parent;
         public uint IntU { get { return _intU; } }
         public int IntS { get { return _intS; } }
         public ExprMod M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_modNegConst;
+        private int _modNegConst;
+        private bool f_modNegSeq;
+        private int _modNegSeq;
+        private bool f_modPosConst;
+        private int _modPosConst;
+        private bool f_modPosSeq;
+        private int _modPosSeq;
+        private uint _intU;
+        private int _intS;
+        private ExprMod m_root;
+        private KaitaiStruct m_parent;
     }
 }

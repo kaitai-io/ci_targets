@@ -40,16 +40,14 @@ public:
 
     public:
         ~foo_t();
+        uint32_t value() const { return m_value; }
+        process_coerce_usertype1_t* _root() const { return m__root; }
+        process_coerce_usertype1_t::record_t* _parent() const { return m__parent; }
 
     private:
         uint32_t m_value;
         process_coerce_usertype1_t* m__root;
         process_coerce_usertype1_t::record_t* m__parent;
-
-    public:
-        uint32_t value() const { return m_value; }
-        process_coerce_usertype1_t* _root() const { return m__root; }
-        process_coerce_usertype1_t::record_t* _parent() const { return m__parent; }
     };
 
     class record_t : public kaitai::kstruct {
@@ -64,15 +62,21 @@ public:
 
     public:
         ~record_t();
+        foo_t* buf();
+        uint8_t flag() const { return m_flag; }
+        foo_t* buf_unproc() const { return m_buf_unproc.get(); }
+        foo_t* buf_proc() const { return m_buf_proc.get(); }
+        process_coerce_usertype1_t* _root() const { return m__root; }
+        process_coerce_usertype1_t* _parent() const { return m__parent; }
+        std::string _raw_buf_unproc() const { return m__raw_buf_unproc; }
+        kaitai::kstream* _io__raw_buf_unproc() const { return m__io__raw_buf_unproc.get(); }
+        std::string _raw_buf_proc() const { return m__raw_buf_proc; }
+        kaitai::kstream* _io__raw_buf_proc() const { return m__io__raw_buf_proc.get(); }
+        std::string _raw__raw_buf_proc() const { return m__raw__raw_buf_proc; }
 
     private:
         bool f_buf;
         foo_t* m_buf;
-
-    public:
-        foo_t* buf();
-
-    private:
         uint8_t m_flag;
         std::unique_ptr<foo_t> m_buf_unproc;
         bool n_buf_unproc;
@@ -113,27 +117,15 @@ public:
         bool _is_null__raw__raw_buf_proc() { _raw__raw_buf_proc(); return n__raw__raw_buf_proc; };
 
     private:
-
-    public:
-        uint8_t flag() const { return m_flag; }
-        foo_t* buf_unproc() const { return m_buf_unproc.get(); }
-        foo_t* buf_proc() const { return m_buf_proc.get(); }
-        process_coerce_usertype1_t* _root() const { return m__root; }
-        process_coerce_usertype1_t* _parent() const { return m__parent; }
-        std::string _raw_buf_unproc() const { return m__raw_buf_unproc; }
-        kaitai::kstream* _io__raw_buf_unproc() const { return m__io__raw_buf_unproc.get(); }
-        std::string _raw_buf_proc() const { return m__raw_buf_proc; }
-        kaitai::kstream* _io__raw_buf_proc() const { return m__io__raw_buf_proc.get(); }
-        std::string _raw__raw_buf_proc() const { return m__raw__raw_buf_proc; }
     };
-
-private:
-    std::unique_ptr<std::vector<std::unique_ptr<record_t>>> m_records;
-    process_coerce_usertype1_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     std::vector<std::unique_ptr<record_t>>* records() const { return m_records.get(); }
     process_coerce_usertype1_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    std::unique_ptr<std::vector<std::unique_ptr<record_t>>> m_records;
+    process_coerce_usertype1_t* m__root;
+    kaitai::kstruct* m__parent;
 };

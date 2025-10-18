@@ -110,10 +110,6 @@ public class RepeatNStruct extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private long offset;
-        private long len;
-        private RepeatNStruct _root;
-        private RepeatNStruct _parent;
         public long offset() { return offset; }
         public void setOffset(long _v) { _dirty = true; offset = _v; }
         public long len() { return len; }
@@ -122,11 +118,11 @@ public class RepeatNStruct extends KaitaiStruct.ReadWrite {
         public void set_root(RepeatNStruct _v) { _dirty = true; _root = _v; }
         public RepeatNStruct _parent() { return _parent; }
         public void set_parent(RepeatNStruct _v) { _dirty = true; _parent = _v; }
+        private long offset;
+        private long len;
+        private RepeatNStruct _root;
+        private RepeatNStruct _parent;
     }
-    private long qty;
-    private List<Chunk> chunks;
-    private RepeatNStruct _root;
-    private KaitaiStruct.ReadWrite _parent;
     public long qty() { return qty; }
     public void setQty(long _v) { _dirty = true; qty = _v; }
     public List<Chunk> chunks() { return chunks; }
@@ -135,4 +131,8 @@ public class RepeatNStruct extends KaitaiStruct.ReadWrite {
     public void set_root(RepeatNStruct _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private long qty;
+    private List<Chunk> chunks;
+    private RepeatNStruct _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

@@ -140,15 +140,15 @@ public class ProcessRepeatUsertypeDynargXor extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private long a;
-        private ProcessRepeatUsertypeDynargXor _root;
-        private ProcessRepeatUsertypeDynargXor _parent;
         public long a() { return a; }
         public void setA(long _v) { _dirty = true; a = _v; }
         public ProcessRepeatUsertypeDynargXor _root() { return _root; }
         public void set_root(ProcessRepeatUsertypeDynargXor _v) { _dirty = true; _root = _v; }
         public ProcessRepeatUsertypeDynargXor _parent() { return _parent; }
         public void set_parent(ProcessRepeatUsertypeDynargXor _v) { _dirty = true; _parent = _v; }
+        private long a;
+        private ProcessRepeatUsertypeDynargXor _root;
+        private ProcessRepeatUsertypeDynargXor _parent;
     }
     public static class BlocksBWrapper extends KaitaiStruct.ReadWrite {
         public static BlocksBWrapper fromFile(String fileName) throws IOException {
@@ -199,9 +199,6 @@ public class ProcessRepeatUsertypeDynargXor extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private Integer blocks0B;
-        private boolean _shouldWriteBlocks0B = false;
-        private boolean _enabledBlocks0B = true;
         public Integer blocks0B() {
             if (_shouldWriteBlocks0B)
                 _writeBlocks0B();
@@ -227,9 +224,6 @@ public class ProcessRepeatUsertypeDynargXor extends KaitaiStruct.ReadWrite {
             io.writeU1(this.blocks0B);
             io.seek(_pos);
         }
-        private Integer blocks1B;
-        private boolean _shouldWriteBlocks1B = false;
-        private boolean _enabledBlocks1B = true;
         public Integer blocks1B() {
             if (_shouldWriteBlocks1B)
                 _writeBlocks1B();
@@ -255,22 +249,22 @@ public class ProcessRepeatUsertypeDynargXor extends KaitaiStruct.ReadWrite {
             io.writeU1(this.blocks1B);
             io.seek(_pos);
         }
-        private int dummy;
-        private ProcessRepeatUsertypeDynargXor _root;
-        private ProcessRepeatUsertypeDynargXor _parent;
         public int dummy() { return dummy; }
         public void setDummy(int _v) { _dirty = true; dummy = _v; }
         public ProcessRepeatUsertypeDynargXor _root() { return _root; }
         public void set_root(ProcessRepeatUsertypeDynargXor _v) { _dirty = true; _root = _v; }
         public ProcessRepeatUsertypeDynargXor _parent() { return _parent; }
         public void set_parent(ProcessRepeatUsertypeDynargXor _v) { _dirty = true; _parent = _v; }
+        private Integer blocks0B;
+        private boolean _shouldWriteBlocks0B = false;
+        private boolean _enabledBlocks0B = true;
+        private Integer blocks1B;
+        private boolean _shouldWriteBlocks1B = false;
+        private boolean _enabledBlocks1B = true;
+        private int dummy;
+        private ProcessRepeatUsertypeDynargXor _root;
+        private ProcessRepeatUsertypeDynargXor _parent;
     }
-    private List<Block> blocks;
-    private BlocksBWrapper blocksB;
-    private ProcessRepeatUsertypeDynargXor _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private List<byte[]> _raw_blocks;
-    private List<byte[]> _raw__raw_blocks;
     public List<Block> blocks() { return blocks; }
     public void setBlocks(List<Block> _v) { _dirty = true; blocks = _v; }
     public BlocksBWrapper blocksB() { return blocksB; }
@@ -283,4 +277,10 @@ public class ProcessRepeatUsertypeDynargXor extends KaitaiStruct.ReadWrite {
     public void set_raw_Blocks(List<byte[]> _v) { _dirty = true; _raw_blocks = _v; }
     public List<byte[]> _raw__raw_blocks() { return _raw__raw_blocks; }
     public void set_raw__raw_Blocks(List<byte[]> _v) { _dirty = true; _raw__raw_blocks = _v; }
+    private List<Block> blocks;
+    private BlocksBWrapper blocksB;
+    private ProcessRepeatUsertypeDynargXor _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private List<byte[]> _raw_blocks;
+    private List<byte[]> _raw__raw_blocks;
 }

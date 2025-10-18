@@ -102,14 +102,14 @@ public class RepeatUntilComplex extends KaitaiStruct {
             for (int i = 0; i < this.values.size(); i++) {
             }
         }
-        private int count;
-        private List<Integer> values;
-        private RepeatUntilComplex _root;
-        private RepeatUntilComplex _parent;
         public int count() { return count; }
         public List<Integer> values() { return values; }
         public RepeatUntilComplex _root() { return _root; }
         public RepeatUntilComplex _parent() { return _parent; }
+        private int count;
+        private List<Integer> values;
+        private RepeatUntilComplex _root;
+        private RepeatUntilComplex _parent;
     }
     public static class TypeU2 extends KaitaiStruct {
         public static TypeU2 fromFile(String fileName) throws IOException {
@@ -142,23 +142,23 @@ public class RepeatUntilComplex extends KaitaiStruct {
             for (int i = 0; i < this.values.size(); i++) {
             }
         }
-        private int count;
-        private List<Integer> values;
-        private RepeatUntilComplex _root;
-        private RepeatUntilComplex _parent;
         public int count() { return count; }
         public List<Integer> values() { return values; }
         public RepeatUntilComplex _root() { return _root; }
         public RepeatUntilComplex _parent() { return _parent; }
+        private int count;
+        private List<Integer> values;
+        private RepeatUntilComplex _root;
+        private RepeatUntilComplex _parent;
     }
-    private List<TypeU1> first;
-    private List<TypeU2> second;
-    private List<Integer> third;
-    private RepeatUntilComplex _root;
-    private KaitaiStruct _parent;
     public List<TypeU1> first() { return first; }
     public List<TypeU2> second() { return second; }
     public List<Integer> third() { return third; }
     public RepeatUntilComplex _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<TypeU1> first;
+    private List<TypeU2> second;
+    private List<Integer> third;
+    private RepeatUntilComplex _root;
+    private KaitaiStruct _parent;
 }

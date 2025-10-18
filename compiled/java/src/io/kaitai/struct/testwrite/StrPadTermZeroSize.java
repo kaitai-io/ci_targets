@@ -81,12 +81,6 @@ public class StrPadTermZeroSize extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private String strPad;
-    private String strTerm;
-    private String strTermAndPad;
-    private String strTermInclude;
-    private StrPadTermZeroSize _root;
-    private KaitaiStruct.ReadWrite _parent;
     public String strPad() { return strPad; }
     public void setStrPad(String _v) { _dirty = true; strPad = _v; }
     public String strTerm() { return strTerm; }
@@ -99,4 +93,10 @@ public class StrPadTermZeroSize extends KaitaiStruct.ReadWrite {
     public void set_root(StrPadTermZeroSize _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private String strPad;
+    private String strTerm;
+    private String strTermAndPad;
+    private String strTermInclude;
+    private StrPadTermZeroSize _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

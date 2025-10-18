@@ -20,10 +20,10 @@ namespace Kaitai\Struct\Tests {
                     break;
             }
         }
-        protected $_m_code;
-        protected $_m_data;
         public function code() { return $this->_m_code; }
         public function data() { return $this->_m_data; }
+        protected $_m_code;
+        protected $_m_data;
     }
 }
 
@@ -36,8 +36,8 @@ namespace Kaitai\Struct\Tests\DebugSwitchUser {
         public function _read() {
             $this->_m_val = $this->_io->readS2le();
         }
-        protected $_m_val;
         public function val() { return $this->_m_val; }
+        protected $_m_val;
     }
 }
 
@@ -50,7 +50,7 @@ namespace Kaitai\Struct\Tests\DebugSwitchUser {
         public function _read() {
             $this->_m_val = $this->_io->readU2le();
         }
-        protected $_m_val;
         public function val() { return $this->_m_val; }
+        protected $_m_val;
     }
 }

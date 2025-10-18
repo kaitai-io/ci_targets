@@ -30,15 +30,6 @@ namespace Kaitai
             MyCustomFx _process__raw_buf3 = new MyCustomFx(Key, false, new byte[] { 0 });
             _buf3 = _process__raw_buf3.Decode(__raw_buf3);
         }
-        private byte[] _buf1;
-        private byte[] _buf2;
-        private byte _key;
-        private byte[] _buf3;
-        private ProcessCustom m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_buf1;
-        private byte[] __raw_buf2;
-        private byte[] __raw_buf3;
         public byte[] Buf1 { get { return _buf1; } }
         public byte[] Buf2 { get { return _buf2; } }
         public byte Key { get { return _key; } }
@@ -48,5 +39,14 @@ namespace Kaitai
         public byte[] M_RawBuf1 { get { return __raw_buf1; } }
         public byte[] M_RawBuf2 { get { return __raw_buf2; } }
         public byte[] M_RawBuf3 { get { return __raw_buf3; } }
+        private byte[] _buf1;
+        private byte[] _buf2;
+        private byte _key;
+        private byte[] _buf3;
+        private ProcessCustom m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_buf1;
+        private byte[] __raw_buf2;
+        private byte[] __raw_buf3;
     }
 }

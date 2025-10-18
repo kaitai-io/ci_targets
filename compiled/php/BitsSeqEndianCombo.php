@@ -18,14 +18,6 @@ namespace Kaitai\Struct\Tests {
             $this->_m_le7 = $this->_io->readBitsIntLe(5);
             $this->_m_be8 = $this->_io->readBitsIntBe(1) != 0;
         }
-        protected $_m_be1;
-        protected $_m_be2;
-        protected $_m_le3;
-        protected $_m_be4;
-        protected $_m_le5;
-        protected $_m_le6;
-        protected $_m_le7;
-        protected $_m_be8;
         public function be1() { return $this->_m_be1; }
         public function be2() { return $this->_m_be2; }
         public function le3() { return $this->_m_le3; }
@@ -34,5 +26,13 @@ namespace Kaitai\Struct\Tests {
         public function le6() { return $this->_m_le6; }
         public function le7() { return $this->_m_le7; }
         public function be8() { return $this->_m_be8; }
+        protected $_m_be1;
+        protected $_m_be2;
+        protected $_m_le3;
+        protected $_m_be4;
+        protected $_m_le5;
+        protected $_m_le6;
+        protected $_m_le7;
+        protected $_m_be8;
     }
 }

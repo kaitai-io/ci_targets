@@ -24,6 +24,12 @@ private:
 
 public:
     ~term_strz_utf16_v1_t();
+    std::string s1() const { return m_s1; }
+    std::string s2() const { return m_s2; }
+    uint16_t term() const { return m_term; }
+    std::string s3() const { return m_s3; }
+    term_strz_utf16_v1_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::string m_s1;
@@ -32,14 +38,6 @@ private:
     std::string m_s3;
     term_strz_utf16_v1_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::string s1() const { return m_s1; }
-    std::string s2() const { return m_s2; }
-    uint16_t term() const { return m_term; }
-    std::string s3() const { return m_s3; }
-    term_strz_utf16_v1_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // TERM_STRZ_UTF16_V1_H_

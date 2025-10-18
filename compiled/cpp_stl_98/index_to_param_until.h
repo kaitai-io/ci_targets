@@ -39,26 +39,17 @@ public:
 
     public:
         ~block_t();
+        std::string buf() const { return m_buf; }
+        int32_t idx() const { return m_idx; }
+        index_to_param_until_t* _root() const { return m__root; }
+        index_to_param_until_t* _parent() const { return m__parent; }
 
     private:
         std::string m_buf;
         int32_t m_idx;
         index_to_param_until_t* m__root;
         index_to_param_until_t* m__parent;
-
-    public:
-        std::string buf() const { return m_buf; }
-        int32_t idx() const { return m_idx; }
-        index_to_param_until_t* _root() const { return m__root; }
-        index_to_param_until_t* _parent() const { return m__parent; }
     };
-
-private:
-    uint32_t m_qty;
-    std::vector<uint32_t>* m_sizes;
-    std::vector<block_t*>* m_blocks;
-    index_to_param_until_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     uint32_t qty() const { return m_qty; }
@@ -66,6 +57,13 @@ public:
     std::vector<block_t*>* blocks() const { return m_blocks; }
     index_to_param_until_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    uint32_t m_qty;
+    std::vector<uint32_t>* m_sizes;
+    std::vector<block_t*>* m_blocks;
+    index_to_param_until_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // INDEX_TO_PARAM_UNTIL_H_

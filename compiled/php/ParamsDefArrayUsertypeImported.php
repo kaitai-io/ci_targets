@@ -11,21 +11,21 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
         }
-        protected $_m_hw0One;
         public function hw0One() {
             if ($this->_m_hw0One !== null)
                 return $this->_m_hw0One;
             $this->_m_hw0One = $this->hwsParam()[0]->one();
             return $this->_m_hw0One;
         }
-        protected $_m_hw1One;
         public function hw1One() {
             if ($this->_m_hw1One !== null)
                 return $this->_m_hw1One;
             $this->_m_hw1One = $this->hwsParam()[1]->one();
             return $this->_m_hw1One;
         }
-        protected $_m_hwsParam;
         public function hwsParam() { return $this->_m_hwsParam; }
+        protected $_m_hw0One;
+        protected $_m_hw1One;
+        protected $_m_hwsParam;
     }
 }

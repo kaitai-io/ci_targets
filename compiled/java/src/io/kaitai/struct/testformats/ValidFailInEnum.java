@@ -52,10 +52,10 @@ public class ValidFailInEnum extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Animal foo;
-    private ValidFailInEnum _root;
-    private KaitaiStruct _parent;
     public Animal foo() { return foo; }
     public ValidFailInEnum _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Animal foo;
+    private ValidFailInEnum _root;
+    private KaitaiStruct _parent;
 }

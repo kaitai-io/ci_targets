@@ -25,16 +25,14 @@ private:
 
 public:
     ~repeat_eos_u4_t();
+    std::vector<uint32_t>* numbers() const { return m_numbers; }
+    repeat_eos_u4_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::vector<uint32_t>* m_numbers;
     repeat_eos_u4_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::vector<uint32_t>* numbers() const { return m_numbers; }
-    repeat_eos_u4_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // REPEAT_EOS_U4_H_

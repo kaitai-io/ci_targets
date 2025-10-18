@@ -41,12 +41,12 @@ namespace Kaitai
             {
                 _foo = m_io.ReadU1();
             }
-            private byte _foo;
-            private ParamsPassIo m_root;
-            private ParamsPassIo m_parent;
             public byte Foo { get { return _foo; } }
             public ParamsPassIo M_Root { get { return m_root; } }
             public ParamsPassIo M_Parent { get { return m_parent; } }
+            private byte _foo;
+            private ParamsPassIo m_root;
+            private ParamsPassIo m_parent;
         }
         public partial class ParamType : KaitaiStruct
         {
@@ -61,24 +61,24 @@ namespace Kaitai
             {
                 _buf = m_io.ReadBytes(ArgStream.Size);
             }
-            private byte[] _buf;
-            private KaitaiStream _argStream;
-            private ParamsPassIo m_root;
-            private ParamsPassIo m_parent;
             public byte[] Buf { get { return _buf; } }
             public KaitaiStream ArgStream { get { return _argStream; } }
             public ParamsPassIo M_Root { get { return m_root; } }
             public ParamsPassIo M_Parent { get { return m_parent; } }
+            private byte[] _buf;
+            private KaitaiStream _argStream;
+            private ParamsPassIo m_root;
+            private ParamsPassIo m_parent;
         }
-        private Block _first;
-        private ParamType _one;
-        private ParamsPassIo m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_first;
         public Block First { get { return _first; } }
         public ParamType One { get { return _one; } }
         public ParamsPassIo M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawFirst { get { return __raw_first; } }
+        private Block _first;
+        private ParamType _one;
+        private ParamsPassIo m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_first;
     }
 }

@@ -53,7 +53,6 @@ public class NonStandard extends KaitaiStruct {
         if (this.pi != null) {
         }
     }
-    private Integer pi;
     public Integer pi() {
         if (this.pi != null)
             return this.pi;
@@ -63,19 +62,20 @@ public class NonStandard extends KaitaiStruct {
         this._io.seek(_pos);
         return this.pi;
     }
-    private Integer vi;
     public Integer vi() {
         if (this.vi != null)
             return this.vi;
         this.vi = ((Number) (foo())).intValue();
         return this.vi;
     }
-    private int foo;
-    private Long bar;
-    private NonStandard _root;
-    private KaitaiStruct _parent;
     public int foo() { return foo; }
     public Long bar() { return bar; }
     public NonStandard _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Integer pi;
+    private Integer vi;
+    private int foo;
+    private Long bar;
+    private NonStandard _root;
+    private KaitaiStruct _parent;
 }

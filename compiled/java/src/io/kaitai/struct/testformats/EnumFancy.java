@@ -51,12 +51,12 @@ public class EnumFancy extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Animal pet1;
-    private Animal pet2;
-    private EnumFancy _root;
-    private KaitaiStruct _parent;
     public Animal pet1() { return pet1; }
     public Animal pet2() { return pet2; }
     public EnumFancy _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Animal pet1;
+    private Animal pet2;
+    private EnumFancy _root;
+    private KaitaiStruct _parent;
 }

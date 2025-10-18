@@ -16,8 +16,8 @@ namespace Kaitai\Struct\Tests {
                 $i++;
             }
         }
-        protected $_m_opcodes;
         public function opcodes() { return $this->_m_opcodes; }
+        protected $_m_opcodes;
     }
 }
 
@@ -45,9 +45,9 @@ namespace Kaitai\Struct\Tests\SwitchIntegers {
                     break;
             }
         }
-        protected $_m_code;
-        protected $_m_body;
         public function code() { return $this->_m_code; }
         public function body() { return $this->_m_body; }
+        protected $_m_code;
+        protected $_m_body;
     }
 }

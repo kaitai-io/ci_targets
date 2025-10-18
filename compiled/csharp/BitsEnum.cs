@@ -31,15 +31,15 @@ namespace Kaitai
             _two = ((Animal) m_io.ReadBitsIntBe(8));
             _three = ((Animal) m_io.ReadBitsIntBe(1));
         }
-        private Animal _one;
-        private Animal _two;
-        private Animal _three;
-        private BitsEnum m_root;
-        private KaitaiStruct m_parent;
         public Animal One { get { return _one; } }
         public Animal Two { get { return _two; } }
         public Animal Three { get { return _three; } }
         public BitsEnum M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Animal _one;
+        private Animal _two;
+        private Animal _three;
+        private BitsEnum m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -39,17 +39,15 @@ namespace Kaitai
                 _foo = m_io.ReadU4le();
                 _bar = m_io.ReadU4le();
             }
-            private uint _foo;
-            private uint _bar;
-            private PositionToEnd m_root;
-            private PositionToEnd m_parent;
             public uint Foo { get { return _foo; } }
             public uint Bar { get { return _bar; } }
             public PositionToEnd M_Root { get { return m_root; } }
             public PositionToEnd M_Parent { get { return m_parent; } }
+            private uint _foo;
+            private uint _bar;
+            private PositionToEnd m_root;
+            private PositionToEnd m_parent;
         }
-        private bool f_index;
-        private IndexObj _index;
         public IndexObj Index
         {
             get
@@ -64,9 +62,11 @@ namespace Kaitai
                 return _index;
             }
         }
-        private PositionToEnd m_root;
-        private KaitaiStruct m_parent;
         public PositionToEnd M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_index;
+        private IndexObj _index;
+        private PositionToEnd m_root;
+        private KaitaiStruct m_parent;
     }
 }

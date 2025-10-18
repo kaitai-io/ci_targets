@@ -49,23 +49,13 @@ namespace Kaitai
             {
                 _value = m_io.ReadBytesFull();
             }
-            private byte[] _value;
-            private StructPadTerm m_root;
-            private StructPadTerm m_parent;
             public byte[] Value { get { return _value; } }
             public StructPadTerm M_Root { get { return m_root; } }
             public StructPadTerm M_Parent { get { return m_parent; } }
+            private byte[] _value;
+            private StructPadTerm m_root;
+            private StructPadTerm m_parent;
         }
-        private BytesWrapper _strPad;
-        private BytesWrapper _strTerm;
-        private BytesWrapper _strTermAndPad;
-        private BytesWrapper _strTermInclude;
-        private StructPadTerm m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_strPad;
-        private byte[] __raw_strTerm;
-        private byte[] __raw_strTermAndPad;
-        private byte[] __raw_strTermInclude;
         public BytesWrapper StrPad { get { return _strPad; } }
         public BytesWrapper StrTerm { get { return _strTerm; } }
         public BytesWrapper StrTermAndPad { get { return _strTermAndPad; } }
@@ -76,5 +66,15 @@ namespace Kaitai
         public byte[] M_RawStrTerm { get { return __raw_strTerm; } }
         public byte[] M_RawStrTermAndPad { get { return __raw_strTermAndPad; } }
         public byte[] M_RawStrTermInclude { get { return __raw_strTermInclude; } }
+        private BytesWrapper _strPad;
+        private BytesWrapper _strTerm;
+        private BytesWrapper _strTermAndPad;
+        private BytesWrapper _strTermInclude;
+        private StructPadTerm m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_strPad;
+        private byte[] __raw_strTerm;
+        private byte[] __raw_strTermAndPad;
+        private byte[] __raw_strTermInclude;
     }
 }

@@ -33,9 +33,9 @@ namespace Kaitai
         private void _read()
         {
         }
-        private DocstringsDocrefMulti m_root;
-        private KaitaiStruct m_parent;
         public DocstringsDocrefMulti M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private DocstringsDocrefMulti m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -17,8 +17,6 @@ namespace Kaitai
         private void _read()
         {
         }
-        private bool f_hwOne;
-        private byte _hwOne;
         public byte HwOne
         {
             get
@@ -30,11 +28,13 @@ namespace Kaitai
                 return _hwOne;
             }
         }
-        private KaitaiStruct _hwParam;
-        private CastToImported m_root;
-        private KaitaiStruct m_parent;
         public KaitaiStruct HwParam { get { return _hwParam; } }
         public CastToImported M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_hwOne;
+        private byte _hwOne;
+        private KaitaiStruct _hwParam;
+        private CastToImported m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -23,15 +23,15 @@ namespace Kaitai
             _aCD = new NestedTypes3.SubtypeA.SubtypeC.SubtypeD(m_io);
             _b = new NestedTypes3.SubtypeB(m_io);
         }
-        private NestedTypes3.SubtypeA.SubtypeCc _aCc;
-        private NestedTypes3.SubtypeA.SubtypeC.SubtypeD _aCD;
-        private NestedTypes3.SubtypeB _b;
-        private NestedTypesImport m_root;
-        private KaitaiStruct m_parent;
         public NestedTypes3.SubtypeA.SubtypeCc ACc { get { return _aCc; } }
         public NestedTypes3.SubtypeA.SubtypeC.SubtypeD ACD { get { return _aCD; } }
         public NestedTypes3.SubtypeB B { get { return _b; } }
         public NestedTypesImport M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private NestedTypes3.SubtypeA.SubtypeCc _aCc;
+        private NestedTypes3.SubtypeA.SubtypeC.SubtypeD _aCD;
+        private NestedTypes3.SubtypeB _b;
+        private NestedTypesImport m_root;
+        private KaitaiStruct m_parent;
     }
 }

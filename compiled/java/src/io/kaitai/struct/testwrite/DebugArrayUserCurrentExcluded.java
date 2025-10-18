@@ -142,23 +142,23 @@ public class DebugArrayUserCurrentExcluded extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("meow", 3 - _parent().arrayOfCats().size(), this.meow.length);
             _dirty = false;
         }
-        private byte[] meow;
-        private DebugArrayUserCurrentExcluded _root;
-        private DebugArrayUserCurrentExcluded _parent;
         public byte[] meow() { return meow; }
         public void setMeow(byte[] _v) { _dirty = true; meow = _v; }
         public DebugArrayUserCurrentExcluded _root() { return _root; }
         public void set_root(DebugArrayUserCurrentExcluded _v) { _dirty = true; _root = _v; }
         public DebugArrayUserCurrentExcluded _parent() { return _parent; }
         public void set_parent(DebugArrayUserCurrentExcluded _v) { _dirty = true; _parent = _v; }
+        private byte[] meow;
+        private DebugArrayUserCurrentExcluded _root;
+        private DebugArrayUserCurrentExcluded _parent;
     }
-    private List<Cat> arrayOfCats;
-    private DebugArrayUserCurrentExcluded _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Cat> arrayOfCats() { return arrayOfCats; }
     public void setArrayOfCats(List<Cat> _v) { _dirty = true; arrayOfCats = _v; }
     public DebugArrayUserCurrentExcluded _root() { return _root; }
     public void set_root(DebugArrayUserCurrentExcluded _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Cat> arrayOfCats;
+    private DebugArrayUserCurrentExcluded _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

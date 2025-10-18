@@ -39,34 +39,28 @@ public:
 
     public:
         ~chunk_t();
+        uint32_t offset() const { return m_offset; }
+        uint32_t len() const { return m_len; }
+        instance_in_repeat_expr_t* _root() const { return m__root; }
+        instance_in_repeat_expr_t* _parent() const { return m__parent; }
 
     private:
         uint32_t m_offset;
         uint32_t m_len;
         instance_in_repeat_expr_t* m__root;
         instance_in_repeat_expr_t* m__parent;
-
-    public:
-        uint32_t offset() const { return m_offset; }
-        uint32_t len() const { return m_len; }
-        instance_in_repeat_expr_t* _root() const { return m__root; }
-        instance_in_repeat_expr_t* _parent() const { return m__parent; }
     };
+
+public:
+    uint32_t num_chunks();
+    std::vector<std::unique_ptr<chunk_t>>* chunks() const { return m_chunks.get(); }
+    instance_in_repeat_expr_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_num_chunks;
     uint32_t m_num_chunks;
-
-public:
-    uint32_t num_chunks();
-
-private:
     std::unique_ptr<std::vector<std::unique_ptr<chunk_t>>> m_chunks;
     instance_in_repeat_expr_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::vector<std::unique_ptr<chunk_t>>* chunks() const { return m_chunks.get(); }
-    instance_in_repeat_expr_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

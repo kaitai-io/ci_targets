@@ -38,15 +38,23 @@ public:
 
     public:
         ~dummy_t();
+        io_local_var_t* _root() const { return m__root; }
+        io_local_var_t* _parent() const { return m__parent; }
 
     private:
         io_local_var_t* m__root;
         io_local_var_t* m__parent;
-
-    public:
-        io_local_var_t* _root() const { return m__root; }
-        io_local_var_t* _parent() const { return m__parent; }
     };
+
+public:
+    dummy_t* mess_up();
+    std::string skip() const { return m_skip; }
+    uint8_t always_null() const { return m_always_null; }
+    uint8_t followup() const { return m_followup; }
+    io_local_var_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
+    std::string _raw_mess_up() const { return m__raw_mess_up; }
+    kaitai::kstream* _io__raw_mess_up() const { return m__io__raw_mess_up.get(); }
 
 private:
     bool f_mess_up;
@@ -55,11 +63,6 @@ private:
 
 public:
     bool _is_null_mess_up() { mess_up(); return n_mess_up; };
-
-private:
-
-public:
-    dummy_t* mess_up();
 
 private:
     std::string m_skip;
@@ -75,13 +78,4 @@ private:
     kaitai::kstruct* m__parent;
     std::string m__raw_mess_up;
     std::unique_ptr<kaitai::kstream> m__io__raw_mess_up;
-
-public:
-    std::string skip() const { return m_skip; }
-    uint8_t always_null() const { return m_always_null; }
-    uint8_t followup() const { return m_followup; }
-    io_local_var_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
-    std::string _raw_mess_up() const { return m__raw_mess_up; }
-    kaitai::kstream* _io__raw_mess_up() const { return m__io__raw_mess_up.get(); }
 };

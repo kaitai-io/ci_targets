@@ -28,13 +28,13 @@ namespace Kaitai
             _f1 = ((Constants) m_io.ReadU4be());
             _f2 = ((Constants) m_io.ReadU4be());
         }
-        private Constants _f1;
-        private Constants _f2;
-        private EnumIntRangeU m_root;
-        private KaitaiStruct m_parent;
         public Constants F1 { get { return _f1; } }
         public Constants F2 { get { return _f2; } }
         public EnumIntRangeU M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Constants _f1;
+        private Constants _f2;
+        private EnumIntRangeU m_root;
+        private KaitaiStruct m_parent;
     }
 }

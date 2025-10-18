@@ -128,10 +128,6 @@ public class EnumIf extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("str", len(), (this.str).getBytes(Charset.forName("UTF-8")).length);
             _dirty = false;
         }
-        private int len;
-        private String str;
-        private EnumIf _root;
-        private EnumIf.Operation _parent;
         public int len() { return len; }
         public void setLen(int _v) { _dirty = true; len = _v; }
         public String str() { return str; }
@@ -140,6 +136,10 @@ public class EnumIf extends KaitaiStruct.ReadWrite {
         public void set_root(EnumIf _v) { _dirty = true; _root = _v; }
         public EnumIf.Operation _parent() { return _parent; }
         public void set_parent(EnumIf.Operation _v) { _dirty = true; _parent = _v; }
+        private int len;
+        private String str;
+        private EnumIf _root;
+        private EnumIf.Operation _parent;
     }
     public static class ArgTuple extends KaitaiStruct.ReadWrite {
         public static ArgTuple fromFile(String fileName) throws IOException {
@@ -180,10 +180,6 @@ public class EnumIf extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int num1;
-        private int num2;
-        private EnumIf _root;
-        private EnumIf.Operation _parent;
         public int num1() { return num1; }
         public void setNum1(int _v) { _dirty = true; num1 = _v; }
         public int num2() { return num2; }
@@ -192,6 +188,10 @@ public class EnumIf extends KaitaiStruct.ReadWrite {
         public void set_root(EnumIf _v) { _dirty = true; _root = _v; }
         public EnumIf.Operation _parent() { return _parent; }
         public void set_parent(EnumIf.Operation _v) { _dirty = true; _parent = _v; }
+        private int num1;
+        private int num2;
+        private EnumIf _root;
+        private EnumIf.Operation _parent;
     }
     public static class Operation extends KaitaiStruct.ReadWrite {
         public static Operation fromFile(String fileName) throws IOException {
@@ -262,11 +262,6 @@ public class EnumIf extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private Opcodes opcode;
-        private ArgTuple argTuple;
-        private ArgStr argStr;
-        private EnumIf _root;
-        private EnumIf _parent;
         public Opcodes opcode() { return opcode; }
         public void setOpcode(Opcodes _v) { _dirty = true; opcode = _v; }
         public ArgTuple argTuple() { return argTuple; }
@@ -277,12 +272,12 @@ public class EnumIf extends KaitaiStruct.ReadWrite {
         public void set_root(EnumIf _v) { _dirty = true; _root = _v; }
         public EnumIf _parent() { return _parent; }
         public void set_parent(EnumIf _v) { _dirty = true; _parent = _v; }
+        private Opcodes opcode;
+        private ArgTuple argTuple;
+        private ArgStr argStr;
+        private EnumIf _root;
+        private EnumIf _parent;
     }
-    private Operation op1;
-    private Operation op2;
-    private Operation op3;
-    private EnumIf _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Operation op1() { return op1; }
     public void setOp1(Operation _v) { _dirty = true; op1 = _v; }
     public Operation op2() { return op2; }
@@ -293,4 +288,9 @@ public class EnumIf extends KaitaiStruct.ReadWrite {
     public void set_root(EnumIf _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Operation op1;
+    private Operation op2;
+    private Operation op3;
+    private EnumIf _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

@@ -24,8 +24,6 @@ namespace Kaitai
                 _a = m_io.ReadBytes(0);
             }
         }
-        private bool f_inst;
-        private List<uint> _inst;
         public List<uint> Inst
         {
             get
@@ -51,11 +49,13 @@ namespace Kaitai
                 return _inst;
             }
         }
-        private byte[] _a;
-        private ValidFailRepeatInst m_root;
-        private KaitaiStruct m_parent;
         public byte[] A { get { return _a; } }
         public ValidFailRepeatInst M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_inst;
+        private List<uint> _inst;
+        private byte[] _a;
+        private ValidFailRepeatInst m_root;
+        private KaitaiStruct m_parent;
     }
 }

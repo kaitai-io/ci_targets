@@ -53,119 +53,119 @@ public class ExprArray extends KaitaiStruct {
         for (int i = 0; i < this.astr.size(); i++) {
         }
     }
-    private Double afloatFirst;
     public Double afloatFirst() {
         if (this.afloatFirst != null)
             return this.afloatFirst;
         this.afloatFirst = ((Number) (afloat().get(0))).doubleValue();
         return this.afloatFirst;
     }
-    private Double afloatLast;
     public Double afloatLast() {
         if (this.afloatLast != null)
             return this.afloatLast;
         this.afloatLast = ((Number) (afloat().get(afloat().size() - 1))).doubleValue();
         return this.afloatLast;
     }
-    private Double afloatMax;
     public Double afloatMax() {
         if (this.afloatMax != null)
             return this.afloatMax;
         this.afloatMax = ((Number) (Collections.max(afloat()))).doubleValue();
         return this.afloatMax;
     }
-    private Double afloatMin;
     public Double afloatMin() {
         if (this.afloatMin != null)
             return this.afloatMin;
         this.afloatMin = ((Number) (Collections.min(afloat()))).doubleValue();
         return this.afloatMin;
     }
-    private Integer afloatSize;
     public Integer afloatSize() {
         if (this.afloatSize != null)
             return this.afloatSize;
         this.afloatSize = ((Number) (afloat().size())).intValue();
         return this.afloatSize;
     }
-    private Long aintFirst;
     public Long aintFirst() {
         if (this.aintFirst != null)
             return this.aintFirst;
         this.aintFirst = ((Number) (aint().get(0))).longValue();
         return this.aintFirst;
     }
-    private Long aintLast;
     public Long aintLast() {
         if (this.aintLast != null)
             return this.aintLast;
         this.aintLast = ((Number) (aint().get(aint().size() - 1))).longValue();
         return this.aintLast;
     }
-    private Long aintMax;
     public Long aintMax() {
         if (this.aintMax != null)
             return this.aintMax;
         this.aintMax = ((Number) (Collections.max(aint()))).longValue();
         return this.aintMax;
     }
-    private Long aintMin;
     public Long aintMin() {
         if (this.aintMin != null)
             return this.aintMin;
         this.aintMin = ((Number) (Collections.min(aint()))).longValue();
         return this.aintMin;
     }
-    private Integer aintSize;
     public Integer aintSize() {
         if (this.aintSize != null)
             return this.aintSize;
         this.aintSize = ((Number) (aint().size())).intValue();
         return this.aintSize;
     }
-    private String astrFirst;
     public String astrFirst() {
         if (this.astrFirst != null)
             return this.astrFirst;
         this.astrFirst = astr().get(0);
         return this.astrFirst;
     }
-    private String astrLast;
     public String astrLast() {
         if (this.astrLast != null)
             return this.astrLast;
         this.astrLast = astr().get(astr().size() - 1);
         return this.astrLast;
     }
-    private String astrMax;
     public String astrMax() {
         if (this.astrMax != null)
             return this.astrMax;
         this.astrMax = Collections.max(astr());
         return this.astrMax;
     }
-    private String astrMin;
     public String astrMin() {
         if (this.astrMin != null)
             return this.astrMin;
         this.astrMin = Collections.min(astr());
         return this.astrMin;
     }
-    private Integer astrSize;
     public Integer astrSize() {
         if (this.astrSize != null)
             return this.astrSize;
         this.astrSize = ((Number) (astr().size())).intValue();
         return this.astrSize;
     }
-    private List<Long> aint;
-    private List<Double> afloat;
-    private List<String> astr;
-    private ExprArray _root;
-    private KaitaiStruct _parent;
     public List<Long> aint() { return aint; }
     public List<Double> afloat() { return afloat; }
     public List<String> astr() { return astr; }
     public ExprArray _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Double afloatFirst;
+    private Double afloatLast;
+    private Double afloatMax;
+    private Double afloatMin;
+    private Integer afloatSize;
+    private Long aintFirst;
+    private Long aintLast;
+    private Long aintMax;
+    private Long aintMin;
+    private Integer aintSize;
+    private String astrFirst;
+    private String astrLast;
+    private String astrMax;
+    private String astrMin;
+    private Integer astrSize;
+    private List<Long> aint;
+    private List<Double> afloat;
+    private List<String> astr;
+    private ExprArray _root;
+    private KaitaiStruct _parent;
 }

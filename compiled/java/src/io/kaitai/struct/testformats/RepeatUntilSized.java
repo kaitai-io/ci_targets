@@ -73,19 +73,19 @@ public class RepeatUntilSized extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int marker;
-        private long body;
-        private RepeatUntilSized _root;
-        private RepeatUntilSized _parent;
         public int marker() { return marker; }
         public long body() { return body; }
         public RepeatUntilSized _root() { return _root; }
         public RepeatUntilSized _parent() { return _parent; }
+        private int marker;
+        private long body;
+        private RepeatUntilSized _root;
+        private RepeatUntilSized _parent;
     }
-    private List<Record> records;
-    private RepeatUntilSized _root;
-    private KaitaiStruct _parent;
     public List<Record> records() { return records; }
     public RepeatUntilSized _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Record> records;
+    private RepeatUntilSized _root;
+    private KaitaiStruct _parent;
 }

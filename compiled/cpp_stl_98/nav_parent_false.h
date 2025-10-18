@@ -40,6 +40,10 @@ public:
 
     public:
         ~child_t();
+        uint8_t code() const { return m_code; }
+        std::string more() const { return m_more; }
+        nav_parent_false_t* _root() const { return m__root; }
+        nav_parent_false_t::parent_a_t* _parent() const { return m__parent; }
 
     private:
         uint8_t m_code;
@@ -52,12 +56,6 @@ public:
     private:
         nav_parent_false_t* m__root;
         nav_parent_false_t::parent_a_t* m__parent;
-
-    public:
-        uint8_t code() const { return m_code; }
-        std::string more() const { return m_more; }
-        nav_parent_false_t* _root() const { return m__root; }
-        nav_parent_false_t::parent_a_t* _parent() const { return m__parent; }
     };
 
     class parent_a_t : public kaitai::kstruct {
@@ -72,18 +70,16 @@ public:
 
     public:
         ~parent_a_t();
+        child_t* foo() const { return m_foo; }
+        parent_b_t* bar() const { return m_bar; }
+        nav_parent_false_t* _root() const { return m__root; }
+        nav_parent_false_t* _parent() const { return m__parent; }
 
     private:
         child_t* m_foo;
         parent_b_t* m_bar;
         nav_parent_false_t* m__root;
         nav_parent_false_t* m__parent;
-
-    public:
-        child_t* foo() const { return m_foo; }
-        parent_b_t* bar() const { return m_bar; }
-        nav_parent_false_t* _root() const { return m__root; }
-        nav_parent_false_t* _parent() const { return m__parent; }
     };
 
     class parent_b_t : public kaitai::kstruct {
@@ -98,24 +94,15 @@ public:
 
     public:
         ~parent_b_t();
+        child_t* foo() const { return m_foo; }
+        nav_parent_false_t* _root() const { return m__root; }
+        kaitai::kstruct* _parent() const { return m__parent; }
 
     private:
         child_t* m_foo;
         nav_parent_false_t* m__root;
         kaitai::kstruct* m__parent;
-
-    public:
-        child_t* foo() const { return m_foo; }
-        nav_parent_false_t* _root() const { return m__root; }
-        kaitai::kstruct* _parent() const { return m__parent; }
     };
-
-private:
-    uint8_t m_child_size;
-    parent_a_t* m_element_a;
-    parent_b_t* m_element_b;
-    nav_parent_false_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     uint8_t child_size() const { return m_child_size; }
@@ -123,6 +110,13 @@ public:
     parent_b_t* element_b() const { return m_element_b; }
     nav_parent_false_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    uint8_t m_child_size;
+    parent_a_t* m_element_a;
+    parent_b_t* m_element_b;
+    nav_parent_false_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // NAV_PARENT_FALSE_H_

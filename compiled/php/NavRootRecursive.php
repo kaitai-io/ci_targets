@@ -14,16 +14,16 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_next = new \Kaitai\Struct\Tests\NavRootRecursive($this->_io, $this, $this->_root);
             }
         }
-        protected $_m_rootValue;
         public function rootValue() {
             if ($this->_m_rootValue !== null)
                 return $this->_m_rootValue;
             $this->_m_rootValue = $this->_root()->value();
             return $this->_m_rootValue;
         }
-        protected $_m_value;
-        protected $_m_next;
         public function value() { return $this->_m_value; }
         public function next() { return $this->_m_next; }
+        protected $_m_rootValue;
+        protected $_m_value;
+        protected $_m_next;
     }
 }

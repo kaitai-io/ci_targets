@@ -14,12 +14,12 @@ namespace Kaitai\Struct\Tests {
             $_io__raw_buf1 = new \Kaitai\Struct\Stream($this->_m__raw_buf1);
             $this->_m_buf1 = new \Kaitai\Struct\Tests\ProcessToUser\JustStr($_io__raw_buf1, $this, $this->_root);
         }
-        protected $_m_buf1;
-        protected $_m__raw_buf1;
-        protected $_m__raw__raw_buf1;
         public function buf1() { return $this->_m_buf1; }
         public function _raw_buf1() { return $this->_m__raw_buf1; }
         public function _raw__raw_buf1() { return $this->_m__raw__raw_buf1; }
+        protected $_m_buf1;
+        protected $_m__raw_buf1;
+        protected $_m__raw__raw_buf1;
     }
 }
 
@@ -33,7 +33,7 @@ namespace Kaitai\Struct\Tests\ProcessToUser {
         private function _read() {
             $this->_m_str = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesFull(), "UTF-8");
         }
-        protected $_m_str;
         public function str() { return $this->_m_str; }
+        protected $_m_str;
     }
 }

@@ -16,8 +16,8 @@ namespace Kaitai\Struct\Tests {
                 $i++;
             }
         }
-        protected $_m_opcodes;
         public function opcodes() { return $this->_m_opcodes; }
+        protected $_m_opcodes;
     }
 }
 
@@ -42,10 +42,10 @@ namespace Kaitai\Struct\Tests\SwitchManualEnumInvalidElse {
                     break;
             }
         }
-        protected $_m_code;
-        protected $_m_body;
         public function code() { return $this->_m_code; }
         public function body() { return $this->_m_body; }
+        protected $_m_code;
+        protected $_m_body;
     }
 }
 
@@ -58,13 +58,13 @@ namespace Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode {
 
         private function _read() {
         }
-        protected $_m_value;
         public function value() {
             if ($this->_m_value !== null)
                 return $this->_m_value;
             $this->_m_value = 123;
             return $this->_m_value;
         }
+        protected $_m_value;
     }
 }
 
@@ -78,8 +78,8 @@ namespace Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode {
         private function _read() {
             $this->_m_value = $this->_io->readU1();
         }
-        protected $_m_value;
         public function value() { return $this->_m_value; }
+        protected $_m_value;
     }
 }
 
@@ -93,8 +93,8 @@ namespace Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode {
         private function _read() {
             $this->_m_value = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "ASCII");
         }
-        protected $_m_value;
         public function value() { return $this->_m_value; }
+        protected $_m_value;
     }
 }
 

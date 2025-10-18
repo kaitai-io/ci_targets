@@ -10,7 +10,6 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
         }
-        protected $_m_header;
         public function header() {
             if ($this->_m_header !== null)
                 return $this->_m_header;
@@ -20,5 +19,6 @@ namespace Kaitai\Struct\Tests {
             $this->_io->seek($_pos);
             return $this->_m_header;
         }
+        protected $_m_header;
     }
 }

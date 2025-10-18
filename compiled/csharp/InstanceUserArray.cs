@@ -42,17 +42,15 @@ namespace Kaitai
                 _word1 = m_io.ReadU2le();
                 _word2 = m_io.ReadU2le();
             }
-            private ushort _word1;
-            private ushort _word2;
-            private InstanceUserArray m_root;
-            private InstanceUserArray m_parent;
             public ushort Word1 { get { return _word1; } }
             public ushort Word2 { get { return _word2; } }
             public InstanceUserArray M_Root { get { return m_root; } }
             public InstanceUserArray M_Parent { get { return m_parent; } }
+            private ushort _word1;
+            private ushort _word2;
+            private InstanceUserArray m_root;
+            private InstanceUserArray m_parent;
         }
-        private bool f_userEntries;
-        private List<Entry> _userEntries;
         public List<Entry> UserEntries
         {
             get
@@ -76,17 +74,19 @@ namespace Kaitai
                 return _userEntries;
             }
         }
-        private uint _ofs;
-        private uint _entrySize;
-        private uint _qtyEntries;
-        private InstanceUserArray m_root;
-        private KaitaiStruct m_parent;
-        private List<byte[]> __raw_userEntries;
         public uint Ofs { get { return _ofs; } }
         public uint EntrySize { get { return _entrySize; } }
         public uint QtyEntries { get { return _qtyEntries; } }
         public InstanceUserArray M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public List<byte[]> M_RawUserEntries { get { return __raw_userEntries; } }
+        private bool f_userEntries;
+        private List<Entry> _userEntries;
+        private uint _ofs;
+        private uint _entrySize;
+        private uint _qtyEntries;
+        private InstanceUserArray m_root;
+        private KaitaiStruct m_parent;
+        private List<byte[]> __raw_userEntries;
     }
 }

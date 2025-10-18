@@ -38,18 +38,18 @@ namespace Kaitai
             {
                 _child = new OpaqueExternalType02Child(m_io);
             }
-            private OpaqueExternalType02Child _child;
-            private OpaqueExternalType02Parent m_root;
-            private OpaqueExternalType02Parent m_parent;
             public OpaqueExternalType02Child Child { get { return _child; } }
             public OpaqueExternalType02Parent M_Root { get { return m_root; } }
             public OpaqueExternalType02Parent M_Parent { get { return m_parent; } }
+            private OpaqueExternalType02Child _child;
+            private OpaqueExternalType02Parent m_root;
+            private OpaqueExternalType02Parent m_parent;
         }
-        private ParentObj _parent;
-        private OpaqueExternalType02Parent m_root;
-        private KaitaiStruct m_parent;
         public ParentObj Parent { get { return _parent; } }
         public OpaqueExternalType02Parent M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private ParentObj _parent;
+        private OpaqueExternalType02Parent m_root;
+        private KaitaiStruct m_parent;
     }
 }

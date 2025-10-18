@@ -24,16 +24,14 @@ private:
 
 public:
     ~bits_byte_aligned_eof_be_t();
+    std::string prebuf() const { return m_prebuf; }
+    uint64_t bits() const { return m_bits; }
+    bits_byte_aligned_eof_be_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::string m_prebuf;
     uint64_t m_bits;
     bits_byte_aligned_eof_be_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::string prebuf() const { return m_prebuf; }
-    uint64_t bits() const { return m_bits; }
-    bits_byte_aligned_eof_be_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

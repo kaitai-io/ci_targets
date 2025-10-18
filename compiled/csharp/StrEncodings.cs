@@ -28,16 +28,6 @@ namespace Kaitai
             _lenOf4 = m_io.ReadU2le();
             _str4 = System.Text.Encoding.GetEncoding("IBM437").GetString(m_io.ReadBytes(LenOf4));
         }
-        private ushort _lenOf1;
-        private string _str1;
-        private ushort _lenOf2;
-        private string _str2;
-        private ushort _lenOf3;
-        private string _str3;
-        private ushort _lenOf4;
-        private string _str4;
-        private StrEncodings m_root;
-        private KaitaiStruct m_parent;
         public ushort LenOf1 { get { return _lenOf1; } }
         public string Str1 { get { return _str1; } }
         public ushort LenOf2 { get { return _lenOf2; } }
@@ -48,5 +38,15 @@ namespace Kaitai
         public string Str4 { get { return _str4; } }
         public StrEncodings M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private ushort _lenOf1;
+        private string _str1;
+        private ushort _lenOf2;
+        private string _str2;
+        private ushort _lenOf3;
+        private string _str3;
+        private ushort _lenOf4;
+        private string _str4;
+        private StrEncodings m_root;
+        private KaitaiStruct m_parent;
     }
 }

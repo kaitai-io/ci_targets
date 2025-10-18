@@ -176,10 +176,6 @@ public class SwitchIntegers extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private int code;
-        private Long body;
-        private SwitchIntegers _root;
-        private SwitchIntegers _parent;
         public int code() { return code; }
         public void setCode(int _v) { _dirty = true; code = _v; }
         public Long body() { return body; }
@@ -188,14 +184,18 @@ public class SwitchIntegers extends KaitaiStruct.ReadWrite {
         public void set_root(SwitchIntegers _v) { _dirty = true; _root = _v; }
         public SwitchIntegers _parent() { return _parent; }
         public void set_parent(SwitchIntegers _v) { _dirty = true; _parent = _v; }
+        private int code;
+        private Long body;
+        private SwitchIntegers _root;
+        private SwitchIntegers _parent;
     }
-    private List<Opcode> opcodes;
-    private SwitchIntegers _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Opcode> opcodes() { return opcodes; }
     public void setOpcodes(List<Opcode> _v) { _dirty = true; opcodes = _v; }
     public SwitchIntegers _root() { return _root; }
     public void set_root(SwitchIntegers _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Opcode> opcodes;
+    private SwitchIntegers _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

@@ -11,8 +11,8 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_one = new \Kaitai\Struct\Tests\UserType\Header($this->_io, $this, $this->_root);
         }
-        protected $_m_one;
         public function one() { return $this->_m_one; }
+        protected $_m_one;
     }
 }
 
@@ -27,9 +27,9 @@ namespace Kaitai\Struct\Tests\UserType {
             $this->_m_width = $this->_io->readU4le();
             $this->_m_height = $this->_io->readU4le();
         }
-        protected $_m_width;
-        protected $_m_height;
         public function width() { return $this->_m_width; }
         public function height() { return $this->_m_height; }
+        protected $_m_width;
+        protected $_m_height;
     }
 }

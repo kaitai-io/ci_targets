@@ -53,14 +53,14 @@ public class BitsEnum extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Animal one;
-    private Animal two;
-    private Animal three;
-    private BitsEnum _root;
-    private KaitaiStruct _parent;
     public Animal one() { return one; }
     public Animal two() { return two; }
     public Animal three() { return three; }
     public BitsEnum _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Animal one;
+    private Animal two;
+    private Animal three;
+    private BitsEnum _root;
+    private KaitaiStruct _parent;
 }

@@ -16,8 +16,8 @@ namespace Kaitai\Struct\Tests {
                 $i++;
             }
         }
-        protected $_m_docs;
         public function docs() { return $this->_m_docs; }
+        protected $_m_docs;
     }
 }
 
@@ -32,10 +32,10 @@ namespace Kaitai\Struct\Tests\DefaultEndianExprIsBe {
             $this->_m_indicator = $this->_io->readBytes(2);
             $this->_m_main = new \Kaitai\Struct\Tests\DefaultEndianExprIsBe\Doc\MainObj($this->_io, $this, $this->_root);
         }
-        protected $_m_indicator;
-        protected $_m_main;
         public function indicator() { return $this->_m_indicator; }
         public function main() { return $this->_m_main; }
+        protected $_m_indicator;
+        protected $_m_main;
     }
 }
 
@@ -78,7 +78,6 @@ namespace Kaitai\Struct\Tests\DefaultEndianExprIsBe\Doc {
             $this->_m_someIntBe = $this->_io->readU2be();
             $this->_m_someIntLe = $this->_io->readU2le();
         }
-        protected $_m_instInt;
         public function instInt() {
             if ($this->_m_instInt !== null)
                 return $this->_m_instInt;
@@ -92,7 +91,6 @@ namespace Kaitai\Struct\Tests\DefaultEndianExprIsBe\Doc {
             $this->_io->seek($_pos);
             return $this->_m_instInt;
         }
-        protected $_m_instSub;
         public function instSub() {
             if ($this->_m_instSub !== null)
                 return $this->_m_instSub;
@@ -106,12 +104,14 @@ namespace Kaitai\Struct\Tests\DefaultEndianExprIsBe\Doc {
             $this->_io->seek($_pos);
             return $this->_m_instSub;
         }
-        protected $_m_someInt;
-        protected $_m_someIntBe;
-        protected $_m_someIntLe;
         public function someInt() { return $this->_m_someInt; }
         public function someIntBe() { return $this->_m_someIntBe; }
         public function someIntLe() { return $this->_m_someIntLe; }
+        protected $_m_instInt;
+        protected $_m_instSub;
+        protected $_m_someInt;
+        protected $_m_someIntBe;
+        protected $_m_someIntLe;
     }
 }
 
@@ -143,7 +143,7 @@ namespace Kaitai\Struct\Tests\DefaultEndianExprIsBe\Doc\MainObj {
         private function _readBE() {
             $this->_m_foo = $this->_io->readU4be();
         }
-        protected $_m_foo;
         public function foo() { return $this->_m_foo; }
+        protected $_m_foo;
     }
 }

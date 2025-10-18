@@ -142,10 +142,6 @@ public class RepeatUntilCalcArrayType extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int marker;
-        private long body;
-        private RepeatUntilCalcArrayType _root;
-        private RepeatUntilCalcArrayType _parent;
         public int marker() { return marker; }
         public void setMarker(int _v) { _dirty = true; marker = _v; }
         public long body() { return body; }
@@ -154,8 +150,11 @@ public class RepeatUntilCalcArrayType extends KaitaiStruct.ReadWrite {
         public void set_root(RepeatUntilCalcArrayType _v) { _dirty = true; _root = _v; }
         public RepeatUntilCalcArrayType _parent() { return _parent; }
         public void set_parent(RepeatUntilCalcArrayType _v) { _dirty = true; _parent = _v; }
+        private int marker;
+        private long body;
+        private RepeatUntilCalcArrayType _root;
+        private RepeatUntilCalcArrayType _parent;
     }
-    private Record firstRec;
     public Record firstRec() {
         if (this.firstRec != null)
             return this.firstRec;
@@ -163,7 +162,6 @@ public class RepeatUntilCalcArrayType extends KaitaiStruct.ReadWrite {
         return this.firstRec;
     }
     public void _invalidateFirstRec() { this.firstRec = null; }
-    private List<Record> recsAccessor;
     public List<Record> recsAccessor() {
         if (this.recsAccessor != null)
             return this.recsAccessor;
@@ -171,10 +169,6 @@ public class RepeatUntilCalcArrayType extends KaitaiStruct.ReadWrite {
         return this.recsAccessor;
     }
     public void _invalidateRecsAccessor() { this.recsAccessor = null; }
-    private List<Record> records;
-    private RepeatUntilCalcArrayType _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private List<byte[]> _raw_records;
     public List<Record> records() { return records; }
     public void setRecords(List<Record> _v) { _dirty = true; records = _v; }
     public RepeatUntilCalcArrayType _root() { return _root; }
@@ -183,4 +177,10 @@ public class RepeatUntilCalcArrayType extends KaitaiStruct.ReadWrite {
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public List<byte[]> _raw_records() { return _raw_records; }
     public void set_raw_Records(List<byte[]> _v) { _dirty = true; _raw_records = _v; }
+    private Record firstRec;
+    private List<Record> recsAccessor;
+    private List<Record> records;
+    private RepeatUntilCalcArrayType _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private List<byte[]> _raw_records;
 }

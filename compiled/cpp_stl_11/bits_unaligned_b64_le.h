@@ -24,6 +24,11 @@ private:
 
 public:
     ~bits_unaligned_b64_le_t();
+    bool a() const { return m_a; }
+    uint64_t b() const { return m_b; }
+    uint64_t c() const { return m_c; }
+    bits_unaligned_b64_le_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool m_a;
@@ -31,11 +36,4 @@ private:
     uint64_t m_c;
     bits_unaligned_b64_le_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    bool a() const { return m_a; }
-    uint64_t b() const { return m_b; }
-    uint64_t c() const { return m_c; }
-    bits_unaligned_b64_le_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -59,14 +59,14 @@ public class ParamsCall extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private String body;
-        private long len;
-        private ParamsCall _root;
-        private ParamsCall _parent;
         public String body() { return body; }
         public long len() { return len; }
         public ParamsCall _root() { return _root; }
         public ParamsCall _parent() { return _parent; }
+        private String body;
+        private long len;
+        private ParamsCall _root;
+        private ParamsCall _parent;
     }
     public static class MyStr2 extends KaitaiStruct {
 
@@ -97,25 +97,25 @@ public class ParamsCall extends KaitaiStruct {
             if (hasTrailer()) {
             }
         }
-        private String body;
-        private Integer trailer;
-        private long len;
-        private boolean hasTrailer;
-        private ParamsCall _root;
-        private ParamsCall _parent;
         public String body() { return body; }
         public Integer trailer() { return trailer; }
         public long len() { return len; }
         public boolean hasTrailer() { return hasTrailer; }
         public ParamsCall _root() { return _root; }
         public ParamsCall _parent() { return _parent; }
+        private String body;
+        private Integer trailer;
+        private long len;
+        private boolean hasTrailer;
+        private ParamsCall _root;
+        private ParamsCall _parent;
     }
-    private MyStr1 buf1;
-    private MyStr2 buf2;
-    private ParamsCall _root;
-    private KaitaiStruct _parent;
     public MyStr1 buf1() { return buf1; }
     public MyStr2 buf2() { return buf2; }
     public ParamsCall _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private MyStr1 buf1;
+    private MyStr2 buf2;
+    private ParamsCall _root;
+    private KaitaiStruct _parent;
 }

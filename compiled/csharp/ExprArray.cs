@@ -51,8 +51,6 @@ namespace Kaitai
                 _astr.Add(System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true)));
             }
         }
-        private bool f_afloatFirst;
-        private double _afloatFirst;
         public double AfloatFirst
         {
             get
@@ -64,8 +62,6 @@ namespace Kaitai
                 return _afloatFirst;
             }
         }
-        private bool f_afloatLast;
-        private double _afloatLast;
         public double AfloatLast
         {
             get
@@ -77,8 +73,6 @@ namespace Kaitai
                 return _afloatLast;
             }
         }
-        private bool f_afloatMax;
-        private double _afloatMax;
         public double AfloatMax
         {
             get
@@ -90,8 +84,6 @@ namespace Kaitai
                 return _afloatMax;
             }
         }
-        private bool f_afloatMin;
-        private double _afloatMin;
         public double AfloatMin
         {
             get
@@ -103,8 +95,6 @@ namespace Kaitai
                 return _afloatMin;
             }
         }
-        private bool f_afloatSize;
-        private int _afloatSize;
         public int AfloatSize
         {
             get
@@ -116,8 +106,6 @@ namespace Kaitai
                 return _afloatSize;
             }
         }
-        private bool f_aintFirst;
-        private uint _aintFirst;
         public uint AintFirst
         {
             get
@@ -129,8 +117,6 @@ namespace Kaitai
                 return _aintFirst;
             }
         }
-        private bool f_aintLast;
-        private uint _aintLast;
         public uint AintLast
         {
             get
@@ -142,8 +128,6 @@ namespace Kaitai
                 return _aintLast;
             }
         }
-        private bool f_aintMax;
-        private uint _aintMax;
         public uint AintMax
         {
             get
@@ -155,8 +139,6 @@ namespace Kaitai
                 return _aintMax;
             }
         }
-        private bool f_aintMin;
-        private uint _aintMin;
         public uint AintMin
         {
             get
@@ -168,8 +150,6 @@ namespace Kaitai
                 return _aintMin;
             }
         }
-        private bool f_aintSize;
-        private int _aintSize;
         public int AintSize
         {
             get
@@ -181,8 +161,6 @@ namespace Kaitai
                 return _aintSize;
             }
         }
-        private bool f_astrFirst;
-        private string _astrFirst;
         public string AstrFirst
         {
             get
@@ -194,8 +172,6 @@ namespace Kaitai
                 return _astrFirst;
             }
         }
-        private bool f_astrLast;
-        private string _astrLast;
         public string AstrLast
         {
             get
@@ -207,8 +183,6 @@ namespace Kaitai
                 return _astrLast;
             }
         }
-        private bool f_astrMax;
-        private string _astrMax;
         public string AstrMax
         {
             get
@@ -220,8 +194,6 @@ namespace Kaitai
                 return _astrMax;
             }
         }
-        private bool f_astrMin;
-        private string _astrMin;
         public string AstrMin
         {
             get
@@ -233,8 +205,6 @@ namespace Kaitai
                 return _astrMin;
             }
         }
-        private bool f_astrSize;
-        private int _astrSize;
         public int AstrSize
         {
             get
@@ -246,15 +216,45 @@ namespace Kaitai
                 return _astrSize;
             }
         }
-        private List<uint> _aint;
-        private List<double> _afloat;
-        private List<string> _astr;
-        private ExprArray m_root;
-        private KaitaiStruct m_parent;
         public List<uint> Aint { get { return _aint; } }
         public List<double> Afloat { get { return _afloat; } }
         public List<string> Astr { get { return _astr; } }
         public ExprArray M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_afloatFirst;
+        private double _afloatFirst;
+        private bool f_afloatLast;
+        private double _afloatLast;
+        private bool f_afloatMax;
+        private double _afloatMax;
+        private bool f_afloatMin;
+        private double _afloatMin;
+        private bool f_afloatSize;
+        private int _afloatSize;
+        private bool f_aintFirst;
+        private uint _aintFirst;
+        private bool f_aintLast;
+        private uint _aintLast;
+        private bool f_aintMax;
+        private uint _aintMax;
+        private bool f_aintMin;
+        private uint _aintMin;
+        private bool f_aintSize;
+        private int _aintSize;
+        private bool f_astrFirst;
+        private string _astrFirst;
+        private bool f_astrLast;
+        private string _astrLast;
+        private bool f_astrMax;
+        private string _astrMax;
+        private bool f_astrMin;
+        private string _astrMin;
+        private bool f_astrSize;
+        private int _astrSize;
+        private List<uint> _aint;
+        private List<double> _afloat;
+        private List<string> _astr;
+        private ExprArray m_root;
+        private KaitaiStruct m_parent;
     }
 }

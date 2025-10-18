@@ -21,8 +21,6 @@ namespace Kaitai
         private void _read()
         {
         }
-        private bool f_neverHappens;
-        private byte? _neverHappens;
         public byte? NeverHappens
         {
             get
@@ -39,9 +37,11 @@ namespace Kaitai
                 return _neverHappens;
             }
         }
-        private IfInstances m_root;
-        private KaitaiStruct m_parent;
         public IfInstances M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_neverHappens;
+        private byte? _neverHappens;
+        private IfInstances m_root;
+        private KaitaiStruct m_parent;
     }
 }

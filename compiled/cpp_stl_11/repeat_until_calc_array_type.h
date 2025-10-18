@@ -39,45 +39,35 @@ public:
 
     public:
         ~record_t();
+        uint8_t marker() const { return m_marker; }
+        uint32_t body() const { return m_body; }
+        repeat_until_calc_array_type_t* _root() const { return m__root; }
+        repeat_until_calc_array_type_t* _parent() const { return m__parent; }
 
     private:
         uint8_t m_marker;
         uint32_t m_body;
         repeat_until_calc_array_type_t* m__root;
         repeat_until_calc_array_type_t* m__parent;
-
-    public:
-        uint8_t marker() const { return m_marker; }
-        uint32_t body() const { return m_body; }
-        repeat_until_calc_array_type_t* _root() const { return m__root; }
-        repeat_until_calc_array_type_t* _parent() const { return m__parent; }
     };
-
-private:
-    bool f_first_rec;
-    record_t* m_first_rec;
 
 public:
     record_t* first_rec();
-
-private:
-    bool f_recs_accessor;
-    std::vector<std::unique_ptr<record_t>>* m_recs_accessor;
-
-public:
     std::vector<std::unique_ptr<record_t>>* recs_accessor();
-
-private:
-    std::unique_ptr<std::vector<std::unique_ptr<record_t>>> m_records;
-    repeat_until_calc_array_type_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::unique_ptr<std::vector<std::string>> m__raw_records;
-    std::unique_ptr<std::vector<std::unique_ptr<kaitai::kstream>>> m__io__raw_records;
-
-public:
     std::vector<std::unique_ptr<record_t>>* records() const { return m_records.get(); }
     repeat_until_calc_array_type_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::vector<std::string>* _raw_records() const { return m__raw_records.get(); }
     std::vector<std::unique_ptr<kaitai::kstream>>* _io__raw_records() const { return m__io__raw_records.get(); }
+
+private:
+    bool f_first_rec;
+    record_t* m_first_rec;
+    bool f_recs_accessor;
+    std::vector<std::unique_ptr<record_t>>* m_recs_accessor;
+    std::unique_ptr<std::vector<std::unique_ptr<record_t>>> m_records;
+    repeat_until_calc_array_type_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::unique_ptr<std::vector<std::string>> m__raw_records;
+    std::unique_ptr<std::vector<std::unique_ptr<kaitai::kstream>>> m__io__raw_records;
 };

@@ -81,12 +81,6 @@ public class StrPadTermEqual extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private String s1;
-    private String s2;
-    private String s3;
-    private String s4;
-    private StrPadTermEqual _root;
-    private KaitaiStruct.ReadWrite _parent;
     public String s1() { return s1; }
     public void setS1(String _v) { _dirty = true; s1 = _v; }
     public String s2() { return s2; }
@@ -99,4 +93,10 @@ public class StrPadTermEqual extends KaitaiStruct.ReadWrite {
     public void set_root(StrPadTermEqual _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private String s1;
+    private String s2;
+    private String s3;
+    private String s4;
+    private StrPadTermEqual _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

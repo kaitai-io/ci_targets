@@ -64,13 +64,13 @@ public class RepeatEosBit extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private List<Long> nibbles;
-    private RepeatEosBit _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Long> nibbles() { return nibbles; }
     public void setNibbles(List<Long> _v) { _dirty = true; nibbles = _v; }
     public RepeatEosBit _root() { return _root; }
     public void set_root(RepeatEosBit _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Long> nibbles;
+    private RepeatEosBit _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

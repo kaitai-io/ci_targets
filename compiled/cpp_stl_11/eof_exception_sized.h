@@ -38,22 +38,13 @@ public:
 
     public:
         ~foo_t();
+        eof_exception_sized_t* _root() const { return m__root; }
+        eof_exception_sized_t* _parent() const { return m__parent; }
 
     private:
         eof_exception_sized_t* m__root;
         eof_exception_sized_t* m__parent;
-
-    public:
-        eof_exception_sized_t* _root() const { return m__root; }
-        eof_exception_sized_t* _parent() const { return m__parent; }
     };
-
-private:
-    std::unique_ptr<foo_t> m_buf;
-    eof_exception_sized_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::string m__raw_buf;
-    std::unique_ptr<kaitai::kstream> m__io__raw_buf;
 
 public:
     foo_t* buf() const { return m_buf.get(); }
@@ -61,4 +52,11 @@ public:
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_buf() const { return m__raw_buf; }
     kaitai::kstream* _io__raw_buf() const { return m__io__raw_buf.get(); }
+
+private:
+    std::unique_ptr<foo_t> m_buf;
+    eof_exception_sized_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::string m__raw_buf;
+    std::unique_ptr<kaitai::kstream> m__io__raw_buf;
 };

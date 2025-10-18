@@ -97,11 +97,6 @@ public class ExprSizeofValue0 extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("c", 2, this.c.length);
             _dirty = false;
         }
-        private int a;
-        private long b;
-        private byte[] c;
-        private ExprSizeofValue0 _root;
-        private ExprSizeofValue0 _parent;
         public int a() { return a; }
         public void setA(int _v) { _dirty = true; a = _v; }
         public long b() { return b; }
@@ -112,8 +107,12 @@ public class ExprSizeofValue0 extends KaitaiStruct.ReadWrite {
         public void set_root(ExprSizeofValue0 _v) { _dirty = true; _root = _v; }
         public ExprSizeofValue0 _parent() { return _parent; }
         public void set_parent(ExprSizeofValue0 _v) { _dirty = true; _parent = _v; }
+        private int a;
+        private long b;
+        private byte[] c;
+        private ExprSizeofValue0 _root;
+        private ExprSizeofValue0 _parent;
     }
-    private Integer selfSizeof;
     public Integer selfSizeof() {
         if (this.selfSizeof != null)
             return this.selfSizeof;
@@ -121,7 +120,6 @@ public class ExprSizeofValue0 extends KaitaiStruct.ReadWrite {
         return this.selfSizeof;
     }
     public void _invalidateSelfSizeof() { this.selfSizeof = null; }
-    private Integer sizeofBlock;
     public Integer sizeofBlock() {
         if (this.sizeofBlock != null)
             return this.sizeofBlock;
@@ -129,7 +127,6 @@ public class ExprSizeofValue0 extends KaitaiStruct.ReadWrite {
         return this.sizeofBlock;
     }
     public void _invalidateSizeofBlock() { this.sizeofBlock = null; }
-    private Integer sizeofBlockA;
     public Integer sizeofBlockA() {
         if (this.sizeofBlockA != null)
             return this.sizeofBlockA;
@@ -137,7 +134,6 @@ public class ExprSizeofValue0 extends KaitaiStruct.ReadWrite {
         return this.sizeofBlockA;
     }
     public void _invalidateSizeofBlockA() { this.sizeofBlockA = null; }
-    private Integer sizeofBlockB;
     public Integer sizeofBlockB() {
         if (this.sizeofBlockB != null)
             return this.sizeofBlockB;
@@ -145,7 +141,6 @@ public class ExprSizeofValue0 extends KaitaiStruct.ReadWrite {
         return this.sizeofBlockB;
     }
     public void _invalidateSizeofBlockB() { this.sizeofBlockB = null; }
-    private Integer sizeofBlockC;
     public Integer sizeofBlockC() {
         if (this.sizeofBlockC != null)
             return this.sizeofBlockC;
@@ -153,10 +148,6 @@ public class ExprSizeofValue0 extends KaitaiStruct.ReadWrite {
         return this.sizeofBlockC;
     }
     public void _invalidateSizeofBlockC() { this.sizeofBlockC = null; }
-    private Block block1;
-    private int more;
-    private ExprSizeofValue0 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Block block1() { return block1; }
     public void setBlock1(Block _v) { _dirty = true; block1 = _v; }
     public int more() { return more; }
@@ -165,4 +156,13 @@ public class ExprSizeofValue0 extends KaitaiStruct.ReadWrite {
     public void set_root(ExprSizeofValue0 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer selfSizeof;
+    private Integer sizeofBlock;
+    private Integer sizeofBlockA;
+    private Integer sizeofBlockB;
+    private Integer sizeofBlockC;
+    private Block block1;
+    private int more;
+    private ExprSizeofValue0 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

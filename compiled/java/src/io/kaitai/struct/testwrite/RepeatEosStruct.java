@@ -114,10 +114,6 @@ public class RepeatEosStruct extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private long offset;
-        private long len;
-        private RepeatEosStruct _root;
-        private RepeatEosStruct _parent;
         public long offset() { return offset; }
         public void setOffset(long _v) { _dirty = true; offset = _v; }
         public long len() { return len; }
@@ -126,14 +122,18 @@ public class RepeatEosStruct extends KaitaiStruct.ReadWrite {
         public void set_root(RepeatEosStruct _v) { _dirty = true; _root = _v; }
         public RepeatEosStruct _parent() { return _parent; }
         public void set_parent(RepeatEosStruct _v) { _dirty = true; _parent = _v; }
+        private long offset;
+        private long len;
+        private RepeatEosStruct _root;
+        private RepeatEosStruct _parent;
     }
-    private List<Chunk> chunks;
-    private RepeatEosStruct _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Chunk> chunks() { return chunks; }
     public void setChunks(List<Chunk> _v) { _dirty = true; chunks = _v; }
     public RepeatEosStruct _root() { return _root; }
     public void set_root(RepeatEosStruct _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Chunk> chunks;
+    private RepeatEosStruct _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

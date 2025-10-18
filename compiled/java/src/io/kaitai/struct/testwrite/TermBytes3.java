@@ -66,11 +66,6 @@ public class TermBytes3 extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("s3", -1, KaitaiStream.byteArrayIndexOf(this.s3, ((byte) 64)));
         _dirty = false;
     }
-    private byte[] s1;
-    private byte[] s2;
-    private byte[] s3;
-    private TermBytes3 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public byte[] s1() { return s1; }
     public void setS1(byte[] _v) { _dirty = true; s1 = _v; }
     public byte[] s2() { return s2; }
@@ -81,4 +76,9 @@ public class TermBytes3 extends KaitaiStruct.ReadWrite {
     public void set_root(TermBytes3 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private byte[] s1;
+    private byte[] s2;
+    private byte[] s3;
+    private TermBytes3 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

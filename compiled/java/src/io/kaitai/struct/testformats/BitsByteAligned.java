@@ -40,17 +40,6 @@ public class BitsByteAligned extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private long one;
-    private int byte1;
-    private long two;
-    private boolean three;
-    private int byte2;
-    private long four;
-    private byte[] byte3;
-    private long fullByte;
-    private int byte4;
-    private BitsByteAligned _root;
-    private KaitaiStruct _parent;
     public long one() { return one; }
     public int byte1() { return byte1; }
     public long two() { return two; }
@@ -62,4 +51,15 @@ public class BitsByteAligned extends KaitaiStruct {
     public int byte4() { return byte4; }
     public BitsByteAligned _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private long one;
+    private int byte1;
+    private long two;
+    private boolean three;
+    private int byte2;
+    private long four;
+    private byte[] byte3;
+    private long fullByte;
+    private int byte4;
+    private BitsByteAligned _root;
+    private KaitaiStruct _parent;
 }

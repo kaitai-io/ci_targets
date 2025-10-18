@@ -38,30 +38,15 @@ public:
 
     public:
         ~bytes_wrapper_t();
+        std::string value() const { return m_value; }
+        term_struct_t* _root() const { return m__root; }
+        term_struct_t* _parent() const { return m__parent; }
 
     private:
         std::string m_value;
         term_struct_t* m__root;
         term_struct_t* m__parent;
-
-    public:
-        std::string value() const { return m_value; }
-        term_struct_t* _root() const { return m__root; }
-        term_struct_t* _parent() const { return m__parent; }
     };
-
-private:
-    std::unique_ptr<bytes_wrapper_t> m_s1;
-    std::unique_ptr<bytes_wrapper_t> m_s2;
-    std::unique_ptr<bytes_wrapper_t> m_s3;
-    term_struct_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::string m__raw_s1;
-    std::unique_ptr<kaitai::kstream> m__io__raw_s1;
-    std::string m__raw_s2;
-    std::unique_ptr<kaitai::kstream> m__io__raw_s2;
-    std::string m__raw_s3;
-    std::unique_ptr<kaitai::kstream> m__io__raw_s3;
 
 public:
     bytes_wrapper_t* s1() const { return m_s1.get(); }
@@ -75,4 +60,17 @@ public:
     kaitai::kstream* _io__raw_s2() const { return m__io__raw_s2.get(); }
     std::string _raw_s3() const { return m__raw_s3; }
     kaitai::kstream* _io__raw_s3() const { return m__io__raw_s3.get(); }
+
+private:
+    std::unique_ptr<bytes_wrapper_t> m_s1;
+    std::unique_ptr<bytes_wrapper_t> m_s2;
+    std::unique_ptr<bytes_wrapper_t> m_s3;
+    term_struct_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::string m__raw_s1;
+    std::unique_ptr<kaitai::kstream> m__io__raw_s1;
+    std::string m__raw_s2;
+    std::unique_ptr<kaitai::kstream> m__io__raw_s2;
+    std::string m__raw_s3;
+    std::unique_ptr<kaitai::kstream> m__io__raw_s3;
 };

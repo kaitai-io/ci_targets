@@ -26,18 +26,16 @@ private:
 
 public:
     ~params_def_enum_imported_t();
+    enum_0_t::animal_t pet_1_param() const { return m_pet_1_param; }
+    enum_deep_t::container1_t::container2_t::animal_t pet_2_param() const { return m_pet_2_param; }
+    params_def_enum_imported_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     enum_0_t::animal_t m_pet_1_param;
     enum_deep_t::container1_t::container2_t::animal_t m_pet_2_param;
     params_def_enum_imported_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    enum_0_t::animal_t pet_1_param() const { return m_pet_1_param; }
-    enum_deep_t::container1_t::container2_t::animal_t pet_2_param() const { return m_pet_2_param; }
-    params_def_enum_imported_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // PARAMS_DEF_ENUM_IMPORTED_H_

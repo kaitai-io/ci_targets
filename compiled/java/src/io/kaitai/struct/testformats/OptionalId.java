@@ -34,14 +34,14 @@ public class OptionalId extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private int _unnamed0;
-    private int _unnamed1;
-    private byte[] _unnamed2;
-    private OptionalId _root;
-    private KaitaiStruct _parent;
     public int _unnamed0() { return _unnamed0; }
     public int _unnamed1() { return _unnamed1; }
     public byte[] _unnamed2() { return _unnamed2; }
     public OptionalId _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private int _unnamed0;
+    private int _unnamed1;
+    private byte[] _unnamed2;
+    private OptionalId _root;
+    private KaitaiStruct _parent;
 }

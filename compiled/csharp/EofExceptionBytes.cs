@@ -21,11 +21,11 @@ namespace Kaitai
         {
             _buf = m_io.ReadBytes(13);
         }
-        private byte[] _buf;
-        private EofExceptionBytes m_root;
-        private KaitaiStruct m_parent;
         public byte[] Buf { get { return _buf; } }
         public EofExceptionBytes M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte[] _buf;
+        private EofExceptionBytes m_root;
+        private KaitaiStruct m_parent;
     }
 }

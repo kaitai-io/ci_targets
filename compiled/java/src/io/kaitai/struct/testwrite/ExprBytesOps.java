@@ -47,7 +47,6 @@ public class ExprBytesOps extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("one", 3, this.one.length);
         _dirty = false;
     }
-    private Integer oneFirst;
     public Integer oneFirst() {
         if (this.oneFirst != null)
             return this.oneFirst;
@@ -55,7 +54,6 @@ public class ExprBytesOps extends KaitaiStruct.ReadWrite {
         return this.oneFirst;
     }
     public void _invalidateOneFirst() { this.oneFirst = null; }
-    private Integer oneLast;
     public Integer oneLast() {
         if (this.oneLast != null)
             return this.oneLast;
@@ -63,7 +61,6 @@ public class ExprBytesOps extends KaitaiStruct.ReadWrite {
         return this.oneLast;
     }
     public void _invalidateOneLast() { this.oneLast = null; }
-    private Integer oneMax;
     public Integer oneMax() {
         if (this.oneMax != null)
             return this.oneMax;
@@ -71,7 +68,6 @@ public class ExprBytesOps extends KaitaiStruct.ReadWrite {
         return this.oneMax;
     }
     public void _invalidateOneMax() { this.oneMax = null; }
-    private Integer oneMid;
     public Integer oneMid() {
         if (this.oneMid != null)
             return this.oneMid;
@@ -79,7 +75,6 @@ public class ExprBytesOps extends KaitaiStruct.ReadWrite {
         return this.oneMid;
     }
     public void _invalidateOneMid() { this.oneMid = null; }
-    private Integer oneMin;
     public Integer oneMin() {
         if (this.oneMin != null)
             return this.oneMin;
@@ -87,7 +82,6 @@ public class ExprBytesOps extends KaitaiStruct.ReadWrite {
         return this.oneMin;
     }
     public void _invalidateOneMin() { this.oneMin = null; }
-    private Integer oneSize;
     public Integer oneSize() {
         if (this.oneSize != null)
             return this.oneSize;
@@ -95,7 +89,6 @@ public class ExprBytesOps extends KaitaiStruct.ReadWrite {
         return this.oneSize;
     }
     public void _invalidateOneSize() { this.oneSize = null; }
-    private byte[] two;
     public byte[] two() {
         if (this.two != null)
             return this.two;
@@ -103,7 +96,6 @@ public class ExprBytesOps extends KaitaiStruct.ReadWrite {
         return this.two;
     }
     public void _invalidateTwo() { this.two = null; }
-    private Integer twoFirst;
     public Integer twoFirst() {
         if (this.twoFirst != null)
             return this.twoFirst;
@@ -111,7 +103,6 @@ public class ExprBytesOps extends KaitaiStruct.ReadWrite {
         return this.twoFirst;
     }
     public void _invalidateTwoFirst() { this.twoFirst = null; }
-    private Integer twoLast;
     public Integer twoLast() {
         if (this.twoLast != null)
             return this.twoLast;
@@ -119,7 +110,6 @@ public class ExprBytesOps extends KaitaiStruct.ReadWrite {
         return this.twoLast;
     }
     public void _invalidateTwoLast() { this.twoLast = null; }
-    private Integer twoMax;
     public Integer twoMax() {
         if (this.twoMax != null)
             return this.twoMax;
@@ -127,7 +117,6 @@ public class ExprBytesOps extends KaitaiStruct.ReadWrite {
         return this.twoMax;
     }
     public void _invalidateTwoMax() { this.twoMax = null; }
-    private Integer twoMid;
     public Integer twoMid() {
         if (this.twoMid != null)
             return this.twoMid;
@@ -135,7 +124,6 @@ public class ExprBytesOps extends KaitaiStruct.ReadWrite {
         return this.twoMid;
     }
     public void _invalidateTwoMid() { this.twoMid = null; }
-    private Integer twoMin;
     public Integer twoMin() {
         if (this.twoMin != null)
             return this.twoMin;
@@ -143,7 +131,6 @@ public class ExprBytesOps extends KaitaiStruct.ReadWrite {
         return this.twoMin;
     }
     public void _invalidateTwoMin() { this.twoMin = null; }
-    private Integer twoSize;
     public Integer twoSize() {
         if (this.twoSize != null)
             return this.twoSize;
@@ -151,13 +138,26 @@ public class ExprBytesOps extends KaitaiStruct.ReadWrite {
         return this.twoSize;
     }
     public void _invalidateTwoSize() { this.twoSize = null; }
-    private byte[] one;
-    private ExprBytesOps _root;
-    private KaitaiStruct.ReadWrite _parent;
     public byte[] one() { return one; }
     public void setOne(byte[] _v) { _dirty = true; one = _v; }
     public ExprBytesOps _root() { return _root; }
     public void set_root(ExprBytesOps _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer oneFirst;
+    private Integer oneLast;
+    private Integer oneMax;
+    private Integer oneMid;
+    private Integer oneMin;
+    private Integer oneSize;
+    private byte[] two;
+    private Integer twoFirst;
+    private Integer twoLast;
+    private Integer twoMax;
+    private Integer twoMid;
+    private Integer twoMin;
+    private Integer twoSize;
+    private byte[] one;
+    private ExprBytesOps _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

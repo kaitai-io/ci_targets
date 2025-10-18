@@ -119,17 +119,16 @@ public class TypeTernary2ndFalsy extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int m;
-        private TypeTernary2ndFalsy _root;
-        private TypeTernary2ndFalsy _parent;
         public int m() { return m; }
         public void setM(int _v) { _dirty = true; m = _v; }
         public TypeTernary2ndFalsy _root() { return _root; }
         public void set_root(TypeTernary2ndFalsy _v) { _dirty = true; _root = _v; }
         public TypeTernary2ndFalsy _parent() { return _parent; }
         public void set_parent(TypeTernary2ndFalsy _v) { _dirty = true; _parent = _v; }
+        private int m;
+        private TypeTernary2ndFalsy _root;
+        private TypeTernary2ndFalsy _parent;
     }
-    private Foo nullUt;
     public Foo nullUt() {
         if (this.nullUt != null)
             return this.nullUt;
@@ -139,7 +138,6 @@ public class TypeTernary2ndFalsy extends KaitaiStruct.ReadWrite {
         return this.nullUt;
     }
     public void _invalidateNullUt() { this.nullUt = null; }
-    private Boolean t;
     public Boolean t() {
         if (this.t != null)
             return this.t;
@@ -147,7 +145,6 @@ public class TypeTernary2ndFalsy extends KaitaiStruct.ReadWrite {
         return this.t;
     }
     public void _invalidateT() { this.t = null; }
-    private Boolean vFalse;
     public Boolean vFalse() {
         if (this.vFalse != null)
             return this.vFalse;
@@ -155,7 +152,6 @@ public class TypeTernary2ndFalsy extends KaitaiStruct.ReadWrite {
         return this.vFalse;
     }
     public void _invalidateVFalse() { this.vFalse = null; }
-    private Double vFloatNegZero;
     public Double vFloatNegZero() {
         if (this.vFloatNegZero != null)
             return this.vFloatNegZero;
@@ -163,7 +159,6 @@ public class TypeTernary2ndFalsy extends KaitaiStruct.ReadWrite {
         return this.vFloatNegZero;
     }
     public void _invalidateVFloatNegZero() { this.vFloatNegZero = null; }
-    private Double vFloatZero;
     public Double vFloatZero() {
         if (this.vFloatZero != null)
             return this.vFloatZero;
@@ -171,7 +166,6 @@ public class TypeTernary2ndFalsy extends KaitaiStruct.ReadWrite {
         return this.vFloatZero;
     }
     public void _invalidateVFloatZero() { this.vFloatZero = null; }
-    private List<Integer> vIntArrayEmpty;
     public List<Integer> vIntArrayEmpty() {
         if (this.vIntArrayEmpty != null)
             return this.vIntArrayEmpty;
@@ -179,7 +173,6 @@ public class TypeTernary2ndFalsy extends KaitaiStruct.ReadWrite {
         return this.vIntArrayEmpty;
     }
     public void _invalidateVIntArrayEmpty() { this.vIntArrayEmpty = null; }
-    private Integer vIntNegZero;
     public Integer vIntNegZero() {
         if (this.vIntNegZero != null)
             return this.vIntNegZero;
@@ -187,7 +180,6 @@ public class TypeTernary2ndFalsy extends KaitaiStruct.ReadWrite {
         return this.vIntNegZero;
     }
     public void _invalidateVIntNegZero() { this.vIntNegZero = null; }
-    private Byte vIntZero;
     public Byte vIntZero() {
         if (this.vIntZero != null)
             return this.vIntZero;
@@ -195,7 +187,6 @@ public class TypeTernary2ndFalsy extends KaitaiStruct.ReadWrite {
         return this.vIntZero;
     }
     public void _invalidateVIntZero() { this.vIntZero = null; }
-    private Foo vNullUt;
     public Foo vNullUt() {
         if (this.vNullUt != null)
             return this.vNullUt;
@@ -203,7 +194,6 @@ public class TypeTernary2ndFalsy extends KaitaiStruct.ReadWrite {
         return this.vNullUt;
     }
     public void _invalidateVNullUt() { this.vNullUt = null; }
-    private String vStrEmpty;
     public String vStrEmpty() {
         if (this.vStrEmpty != null)
             return this.vStrEmpty;
@@ -211,7 +201,6 @@ public class TypeTernary2ndFalsy extends KaitaiStruct.ReadWrite {
         return this.vStrEmpty;
     }
     public void _invalidateVStrEmpty() { this.vStrEmpty = null; }
-    private String vStrWZero;
     public String vStrWZero() {
         if (this.vStrWZero != null)
             return this.vStrWZero;
@@ -219,12 +208,6 @@ public class TypeTernary2ndFalsy extends KaitaiStruct.ReadWrite {
         return this.vStrWZero;
     }
     public void _invalidateVStrWZero() { this.vStrWZero = null; }
-    private int intTruthy;
-    private Foo ut;
-    private List<Integer> intArray;
-    private List<Integer> intArrayEmpty;
-    private TypeTernary2ndFalsy _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int intTruthy() { return intTruthy; }
     public void setIntTruthy(int _v) { _dirty = true; intTruthy = _v; }
     public Foo ut() { return ut; }
@@ -237,4 +220,21 @@ public class TypeTernary2ndFalsy extends KaitaiStruct.ReadWrite {
     public void set_root(TypeTernary2ndFalsy _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Foo nullUt;
+    private Boolean t;
+    private Boolean vFalse;
+    private Double vFloatNegZero;
+    private Double vFloatZero;
+    private List<Integer> vIntArrayEmpty;
+    private Integer vIntNegZero;
+    private Byte vIntZero;
+    private Foo vNullUt;
+    private String vStrEmpty;
+    private String vStrWZero;
+    private int intTruthy;
+    private Foo ut;
+    private List<Integer> intArray;
+    private List<Integer> intArrayEmpty;
+    private TypeTernary2ndFalsy _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

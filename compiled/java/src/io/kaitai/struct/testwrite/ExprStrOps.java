@@ -49,7 +49,6 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("one", 5, (this.one).getBytes(Charset.forName("ASCII")).length);
         _dirty = false;
     }
-    private Integer oneLen;
     public Integer oneLen() {
         if (this.oneLen != null)
             return this.oneLen;
@@ -57,7 +56,6 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
         return this.oneLen;
     }
     public void _invalidateOneLen() { this.oneLen = null; }
-    private String oneRev;
     public String oneRev() {
         if (this.oneRev != null)
             return this.oneRev;
@@ -65,7 +63,6 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
         return this.oneRev;
     }
     public void _invalidateOneRev() { this.oneRev = null; }
-    private String oneSubstr0To0;
     public String oneSubstr0To0() {
         if (this.oneSubstr0To0 != null)
             return this.oneSubstr0To0;
@@ -73,7 +70,6 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
         return this.oneSubstr0To0;
     }
     public void _invalidateOneSubstr0To0() { this.oneSubstr0To0 = null; }
-    private String oneSubstr0To3;
     public String oneSubstr0To3() {
         if (this.oneSubstr0To3 != null)
             return this.oneSubstr0To3;
@@ -81,7 +77,6 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
         return this.oneSubstr0To3;
     }
     public void _invalidateOneSubstr0To3() { this.oneSubstr0To3 = null; }
-    private String oneSubstr2To5;
     public String oneSubstr2To5() {
         if (this.oneSubstr2To5 != null)
             return this.oneSubstr2To5;
@@ -89,7 +84,6 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
         return this.oneSubstr2To5;
     }
     public void _invalidateOneSubstr2To5() { this.oneSubstr2To5 = null; }
-    private String oneSubstr3To3;
     public String oneSubstr3To3() {
         if (this.oneSubstr3To3 != null)
             return this.oneSubstr3To3;
@@ -97,7 +91,6 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
         return this.oneSubstr3To3;
     }
     public void _invalidateOneSubstr3To3() { this.oneSubstr3To3 = null; }
-    private Integer toIAttr;
     public Integer toIAttr() {
         if (this.toIAttr != null)
             return this.toIAttr;
@@ -105,7 +98,6 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
         return this.toIAttr;
     }
     public void _invalidateToIAttr() { this.toIAttr = null; }
-    private Integer toIR10;
     public Integer toIR10() {
         if (this.toIR10 != null)
             return this.toIR10;
@@ -113,7 +105,6 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
         return this.toIR10;
     }
     public void _invalidateToIR10() { this.toIR10 = null; }
-    private Integer toIR16;
     public Integer toIR16() {
         if (this.toIR16 != null)
             return this.toIR16;
@@ -121,7 +112,6 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
         return this.toIR16;
     }
     public void _invalidateToIR16() { this.toIR16 = null; }
-    private Integer toIR2;
     public Integer toIR2() {
         if (this.toIR2 != null)
             return this.toIR2;
@@ -129,7 +119,6 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
         return this.toIR2;
     }
     public void _invalidateToIR2() { this.toIR2 = null; }
-    private Integer toIR8;
     public Integer toIR8() {
         if (this.toIR8 != null)
             return this.toIR8;
@@ -137,7 +126,6 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
         return this.toIR8;
     }
     public void _invalidateToIR8() { this.toIR8 = null; }
-    private String two;
     public String two() {
         if (this.two != null)
             return this.two;
@@ -145,7 +133,6 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
         return this.two;
     }
     public void _invalidateTwo() { this.two = null; }
-    private Integer twoLen;
     public Integer twoLen() {
         if (this.twoLen != null)
             return this.twoLen;
@@ -153,7 +140,6 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
         return this.twoLen;
     }
     public void _invalidateTwoLen() { this.twoLen = null; }
-    private String twoRev;
     public String twoRev() {
         if (this.twoRev != null)
             return this.twoRev;
@@ -161,7 +147,6 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
         return this.twoRev;
     }
     public void _invalidateTwoRev() { this.twoRev = null; }
-    private String twoSubstr0To10;
     public String twoSubstr0To10() {
         if (this.twoSubstr0To10 != null)
             return this.twoSubstr0To10;
@@ -169,7 +154,6 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
         return this.twoSubstr0To10;
     }
     public void _invalidateTwoSubstr0To10() { this.twoSubstr0To10 = null; }
-    private String twoSubstr0To7;
     public String twoSubstr0To7() {
         if (this.twoSubstr0To7 != null)
             return this.twoSubstr0To7;
@@ -177,7 +161,6 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
         return this.twoSubstr0To7;
     }
     public void _invalidateTwoSubstr0To7() { this.twoSubstr0To7 = null; }
-    private String twoSubstr4To10;
     public String twoSubstr4To10() {
         if (this.twoSubstr4To10 != null)
             return this.twoSubstr4To10;
@@ -185,13 +168,30 @@ public class ExprStrOps extends KaitaiStruct.ReadWrite {
         return this.twoSubstr4To10;
     }
     public void _invalidateTwoSubstr4To10() { this.twoSubstr4To10 = null; }
-    private String one;
-    private ExprStrOps _root;
-    private KaitaiStruct.ReadWrite _parent;
     public String one() { return one; }
     public void setOne(String _v) { _dirty = true; one = _v; }
     public ExprStrOps _root() { return _root; }
     public void set_root(ExprStrOps _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer oneLen;
+    private String oneRev;
+    private String oneSubstr0To0;
+    private String oneSubstr0To3;
+    private String oneSubstr2To5;
+    private String oneSubstr3To3;
+    private Integer toIAttr;
+    private Integer toIR10;
+    private Integer toIR16;
+    private Integer toIR2;
+    private Integer toIR8;
+    private String two;
+    private Integer twoLen;
+    private String twoRev;
+    private String twoSubstr0To10;
+    private String twoSubstr0To7;
+    private String twoSubstr4To10;
+    private String one;
+    private ExprStrOps _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

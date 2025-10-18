@@ -16,9 +16,9 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_lines[] = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "UTF-8");
             }
         }
-        protected $_m_qty;
-        protected $_m_lines;
         public function qty() { return $this->_m_qty; }
         public function lines() { return $this->_m_lines; }
+        protected $_m_qty;
+        protected $_m_lines;
     }
 }

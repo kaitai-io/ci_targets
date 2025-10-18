@@ -40,20 +40,20 @@ namespace Kaitai
             {
                 _buf = m_io.ReadBytes(7);
             }
-            private byte[] _buf;
-            private EosExceptionBytes m_root;
-            private EosExceptionBytes m_parent;
             public byte[] Buf { get { return _buf; } }
             public EosExceptionBytes M_Root { get { return m_root; } }
             public EosExceptionBytes M_Parent { get { return m_parent; } }
+            private byte[] _buf;
+            private EosExceptionBytes m_root;
+            private EosExceptionBytes m_parent;
         }
-        private Data _envelope;
-        private EosExceptionBytes m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_envelope;
         public Data Envelope { get { return _envelope; } }
         public EosExceptionBytes M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawEnvelope { get { return __raw_envelope; } }
+        private Data _envelope;
+        private EosExceptionBytes m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_envelope;
     }
 }

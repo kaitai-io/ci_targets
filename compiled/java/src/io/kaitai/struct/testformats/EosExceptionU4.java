@@ -60,19 +60,19 @@ public class EosExceptionU4 extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] prebuf;
-        private long failInt;
-        private EosExceptionU4 _root;
-        private EosExceptionU4 _parent;
         public byte[] prebuf() { return prebuf; }
         public long failInt() { return failInt; }
         public EosExceptionU4 _root() { return _root; }
         public EosExceptionU4 _parent() { return _parent; }
+        private byte[] prebuf;
+        private long failInt;
+        private EosExceptionU4 _root;
+        private EosExceptionU4 _parent;
     }
-    private Data envelope;
-    private EosExceptionU4 _root;
-    private KaitaiStruct _parent;
     public Data envelope() { return envelope; }
     public EosExceptionU4 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Data envelope;
+    private EosExceptionU4 _root;
+    private KaitaiStruct _parent;
 }

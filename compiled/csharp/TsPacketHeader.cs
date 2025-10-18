@@ -42,17 +42,6 @@ namespace Kaitai
             m_io.AlignToByte();
             _tsPacketRemain = m_io.ReadBytes(184);
         }
-        private byte _syncByte;
-        private bool _transportErrorIndicator;
-        private bool _payloadUnitStartIndicator;
-        private bool _transportPriority;
-        private ulong _pid;
-        private ulong _transportScramblingControl;
-        private AdaptationFieldControlEnum _adaptationFieldControl;
-        private ulong _continuityCounter;
-        private byte[] _tsPacketRemain;
-        private TsPacketHeader m_root;
-        private KaitaiStruct m_parent;
         public byte SyncByte { get { return _syncByte; } }
         public bool TransportErrorIndicator { get { return _transportErrorIndicator; } }
         public bool PayloadUnitStartIndicator { get { return _payloadUnitStartIndicator; } }
@@ -64,5 +53,16 @@ namespace Kaitai
         public byte[] TsPacketRemain { get { return _tsPacketRemain; } }
         public TsPacketHeader M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte _syncByte;
+        private bool _transportErrorIndicator;
+        private bool _payloadUnitStartIndicator;
+        private bool _transportPriority;
+        private ulong _pid;
+        private ulong _transportScramblingControl;
+        private AdaptationFieldControlEnum _adaptationFieldControl;
+        private ulong _continuityCounter;
+        private byte[] _tsPacketRemain;
+        private TsPacketHeader m_root;
+        private KaitaiStruct m_parent;
     }
 }

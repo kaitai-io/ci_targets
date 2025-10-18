@@ -24,14 +24,12 @@ private:
 
 public:
     ~default_big_endian_t();
+    uint32_t one() const { return m_one; }
+    default_big_endian_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint32_t m_one;
     default_big_endian_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint32_t one() const { return m_one; }
-    default_big_endian_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -81,14 +81,14 @@ public class EnumIf extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int len;
-        private String str;
-        private EnumIf _root;
-        private EnumIf.Operation _parent;
         public int len() { return len; }
         public String str() { return str; }
         public EnumIf _root() { return _root; }
         public EnumIf.Operation _parent() { return _parent; }
+        private int len;
+        private String str;
+        private EnumIf _root;
+        private EnumIf.Operation _parent;
     }
     public static class ArgTuple extends KaitaiStruct {
         public static ArgTuple fromFile(String fileName) throws IOException {
@@ -116,14 +116,14 @@ public class EnumIf extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int num1;
-        private int num2;
-        private EnumIf _root;
-        private EnumIf.Operation _parent;
         public int num1() { return num1; }
         public int num2() { return num2; }
         public EnumIf _root() { return _root; }
         public EnumIf.Operation _parent() { return _parent; }
+        private int num1;
+        private int num2;
+        private EnumIf _root;
+        private EnumIf.Operation _parent;
     }
     public static class Operation extends KaitaiStruct {
         public static Operation fromFile(String fileName) throws IOException {
@@ -162,25 +162,25 @@ public class EnumIf extends KaitaiStruct {
                 this.argStr._fetchInstances();
             }
         }
-        private Opcodes opcode;
-        private ArgTuple argTuple;
-        private ArgStr argStr;
-        private EnumIf _root;
-        private EnumIf _parent;
         public Opcodes opcode() { return opcode; }
         public ArgTuple argTuple() { return argTuple; }
         public ArgStr argStr() { return argStr; }
         public EnumIf _root() { return _root; }
         public EnumIf _parent() { return _parent; }
+        private Opcodes opcode;
+        private ArgTuple argTuple;
+        private ArgStr argStr;
+        private EnumIf _root;
+        private EnumIf _parent;
     }
-    private Operation op1;
-    private Operation op2;
-    private Operation op3;
-    private EnumIf _root;
-    private KaitaiStruct _parent;
     public Operation op1() { return op1; }
     public Operation op2() { return op2; }
     public Operation op3() { return op3; }
     public EnumIf _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Operation op1;
+    private Operation op2;
+    private Operation op3;
+    private EnumIf _root;
+    private KaitaiStruct _parent;
 }

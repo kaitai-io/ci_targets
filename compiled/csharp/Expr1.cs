@@ -24,8 +24,6 @@ namespace Kaitai
             _lenOf1 = m_io.ReadU2le();
             _str1 = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(LenOf1Mod));
         }
-        private bool f_lenOf1Mod;
-        private int _lenOf1Mod;
         public int LenOf1Mod
         {
             get
@@ -37,8 +35,6 @@ namespace Kaitai
                 return _lenOf1Mod;
             }
         }
-        private bool f_str1Len;
-        private int _str1Len;
         public int Str1Len
         {
             get
@@ -50,13 +46,17 @@ namespace Kaitai
                 return _str1Len;
             }
         }
-        private ushort _lenOf1;
-        private string _str1;
-        private Expr1 m_root;
-        private KaitaiStruct m_parent;
         public ushort LenOf1 { get { return _lenOf1; } }
         public string Str1 { get { return _str1; } }
         public Expr1 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_lenOf1Mod;
+        private int _lenOf1Mod;
+        private bool f_str1Len;
+        private int _str1Len;
+        private ushort _lenOf1;
+        private string _str1;
+        private Expr1 m_root;
+        private KaitaiStruct m_parent;
     }
 }

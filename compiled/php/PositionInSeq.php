@@ -15,7 +15,6 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_numbers[] = $this->_io->readU1();
             }
         }
-        protected $_m_header;
         public function header() {
             if ($this->_m_header !== null)
                 return $this->_m_header;
@@ -25,8 +24,9 @@ namespace Kaitai\Struct\Tests {
             $this->_io->seek($_pos);
             return $this->_m_header;
         }
-        protected $_m_numbers;
         public function numbers() { return $this->_m_numbers; }
+        protected $_m_header;
+        protected $_m_numbers;
     }
 }
 
@@ -40,7 +40,7 @@ namespace Kaitai\Struct\Tests\PositionInSeq {
         private function _read() {
             $this->_m_qtyNumbers = $this->_io->readU4le();
         }
-        protected $_m_qtyNumbers;
         public function qtyNumbers() { return $this->_m_qtyNumbers; }
+        protected $_m_qtyNumbers;
     }
 }

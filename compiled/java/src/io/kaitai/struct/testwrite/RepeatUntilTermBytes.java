@@ -132,11 +132,6 @@ public class RepeatUntilTermBytes extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private List<byte[]> records1;
-    private List<byte[]> records2;
-    private List<byte[]> records3;
-    private RepeatUntilTermBytes _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<byte[]> records1() { return records1; }
     public void setRecords1(List<byte[]> _v) { _dirty = true; records1 = _v; }
     public List<byte[]> records2() { return records2; }
@@ -147,4 +142,9 @@ public class RepeatUntilTermBytes extends KaitaiStruct.ReadWrite {
     public void set_root(RepeatUntilTermBytes _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<byte[]> records1;
+    private List<byte[]> records2;
+    private List<byte[]> records3;
+    private RepeatUntilTermBytes _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

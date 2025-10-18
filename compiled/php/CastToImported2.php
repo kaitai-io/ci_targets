@@ -11,14 +11,14 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
         }
-        protected $_m_hw;
         public function hw() {
             if ($this->_m_hw !== null)
                 return $this->_m_hw;
             $this->_m_hw = $this->hwParam();
             return $this->_m_hw;
         }
-        protected $_m_hwParam;
         public function hwParam() { return $this->_m_hwParam; }
+        protected $_m_hw;
+        protected $_m_hwParam;
     }
 }

@@ -41,16 +41,14 @@ public:
 
     public:
         ~s1_type_t();
+        std::string value() const { return m_value; }
+        str_eos_pad_term_equal_t* _root() const { return m__root; }
+        str_eos_pad_term_equal_t* _parent() const { return m__parent; }
 
     private:
         std::string m_value;
         str_eos_pad_term_equal_t* m__root;
         str_eos_pad_term_equal_t* m__parent;
-
-    public:
-        std::string value() const { return m_value; }
-        str_eos_pad_term_equal_t* _root() const { return m__root; }
-        str_eos_pad_term_equal_t* _parent() const { return m__parent; }
     };
 
     class s2_type_t : public kaitai::kstruct {
@@ -65,16 +63,14 @@ public:
 
     public:
         ~s2_type_t();
+        std::string value() const { return m_value; }
+        str_eos_pad_term_equal_t* _root() const { return m__root; }
+        str_eos_pad_term_equal_t* _parent() const { return m__parent; }
 
     private:
         std::string m_value;
         str_eos_pad_term_equal_t* m__root;
         str_eos_pad_term_equal_t* m__parent;
-
-    public:
-        std::string value() const { return m_value; }
-        str_eos_pad_term_equal_t* _root() const { return m__root; }
-        str_eos_pad_term_equal_t* _parent() const { return m__parent; }
     };
 
     class s3_type_t : public kaitai::kstruct {
@@ -89,16 +85,14 @@ public:
 
     public:
         ~s3_type_t();
+        std::string value() const { return m_value; }
+        str_eos_pad_term_equal_t* _root() const { return m__root; }
+        str_eos_pad_term_equal_t* _parent() const { return m__parent; }
 
     private:
         std::string m_value;
         str_eos_pad_term_equal_t* m__root;
         str_eos_pad_term_equal_t* m__parent;
-
-    public:
-        std::string value() const { return m_value; }
-        str_eos_pad_term_equal_t* _root() const { return m__root; }
-        str_eos_pad_term_equal_t* _parent() const { return m__parent; }
     };
 
     class s4_type_t : public kaitai::kstruct {
@@ -113,33 +107,15 @@ public:
 
     public:
         ~s4_type_t();
+        std::string value() const { return m_value; }
+        str_eos_pad_term_equal_t* _root() const { return m__root; }
+        str_eos_pad_term_equal_t* _parent() const { return m__parent; }
 
     private:
         std::string m_value;
         str_eos_pad_term_equal_t* m__root;
         str_eos_pad_term_equal_t* m__parent;
-
-    public:
-        std::string value() const { return m_value; }
-        str_eos_pad_term_equal_t* _root() const { return m__root; }
-        str_eos_pad_term_equal_t* _parent() const { return m__parent; }
     };
-
-private:
-    std::unique_ptr<s1_type_t> m_s1;
-    std::unique_ptr<s2_type_t> m_s2;
-    std::unique_ptr<s3_type_t> m_s3;
-    std::unique_ptr<s4_type_t> m_s4;
-    str_eos_pad_term_equal_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::string m__raw_s1;
-    std::unique_ptr<kaitai::kstream> m__io__raw_s1;
-    std::string m__raw_s2;
-    std::unique_ptr<kaitai::kstream> m__io__raw_s2;
-    std::string m__raw_s3;
-    std::unique_ptr<kaitai::kstream> m__io__raw_s3;
-    std::string m__raw_s4;
-    std::unique_ptr<kaitai::kstream> m__io__raw_s4;
 
 public:
     s1_type_t* s1() const { return m_s1.get(); }
@@ -156,4 +132,20 @@ public:
     kaitai::kstream* _io__raw_s3() const { return m__io__raw_s3.get(); }
     std::string _raw_s4() const { return m__raw_s4; }
     kaitai::kstream* _io__raw_s4() const { return m__io__raw_s4.get(); }
+
+private:
+    std::unique_ptr<s1_type_t> m_s1;
+    std::unique_ptr<s2_type_t> m_s2;
+    std::unique_ptr<s3_type_t> m_s3;
+    std::unique_ptr<s4_type_t> m_s4;
+    str_eos_pad_term_equal_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::string m__raw_s1;
+    std::unique_ptr<kaitai::kstream> m__io__raw_s1;
+    std::string m__raw_s2;
+    std::unique_ptr<kaitai::kstream> m__io__raw_s2;
+    std::string m__raw_s3;
+    std::unique_ptr<kaitai::kstream> m__io__raw_s3;
+    std::string m__raw_s4;
+    std::unique_ptr<kaitai::kstream> m__io__raw_s4;
 };

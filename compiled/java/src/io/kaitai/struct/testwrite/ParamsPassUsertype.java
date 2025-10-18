@@ -99,15 +99,15 @@ public class ParamsPassUsertype extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int foo;
-        private ParamsPassUsertype _root;
-        private ParamsPassUsertype _parent;
         public int foo() { return foo; }
         public void setFoo(int _v) { _dirty = true; foo = _v; }
         public ParamsPassUsertype _root() { return _root; }
         public void set_root(ParamsPassUsertype _v) { _dirty = true; _root = _v; }
         public ParamsPassUsertype _parent() { return _parent; }
         public void set_parent(ParamsPassUsertype _v) { _dirty = true; _parent = _v; }
+        private int foo;
+        private ParamsPassUsertype _root;
+        private ParamsPassUsertype _parent;
     }
     public static class ParamType extends KaitaiStruct.ReadWrite {
         public ParamType(Block foo) {
@@ -146,10 +146,6 @@ public class ParamsPassUsertype extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("buf", foo().foo(), this.buf.length);
             _dirty = false;
         }
-        private byte[] buf;
-        private Block foo;
-        private ParamsPassUsertype _root;
-        private ParamsPassUsertype _parent;
         public byte[] buf() { return buf; }
         public void setBuf(byte[] _v) { _dirty = true; buf = _v; }
         public Block foo() { return foo; }
@@ -158,11 +154,11 @@ public class ParamsPassUsertype extends KaitaiStruct.ReadWrite {
         public void set_root(ParamsPassUsertype _v) { _dirty = true; _root = _v; }
         public ParamsPassUsertype _parent() { return _parent; }
         public void set_parent(ParamsPassUsertype _v) { _dirty = true; _parent = _v; }
+        private byte[] buf;
+        private Block foo;
+        private ParamsPassUsertype _root;
+        private ParamsPassUsertype _parent;
     }
-    private Block first;
-    private ParamType one;
-    private ParamsPassUsertype _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Block first() { return first; }
     public void setFirst(Block _v) { _dirty = true; first = _v; }
     public ParamType one() { return one; }
@@ -171,4 +167,8 @@ public class ParamsPassUsertype extends KaitaiStruct.ReadWrite {
     public void set_root(ParamsPassUsertype _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Block first;
+    private ParamType one;
+    private ParamsPassUsertype _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

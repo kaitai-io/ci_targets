@@ -112,17 +112,17 @@ public class NavParentSwitchCast extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private Integer flag;
             public Integer flag() {
                 if (this.flag != null)
                     return this.flag;
                 this.flag = ((Number) (((NavParentSwitchCast.Foo) (_parent()._parent())).flag())).intValue();
                 return this.flag;
             }
-            private NavParentSwitchCast _root;
-            private KaitaiStruct _parent;
             public NavParentSwitchCast _root() { return _root; }
             public KaitaiStruct _parent() { return _parent; }
+            private Integer flag;
+            private NavParentSwitchCast _root;
+            private KaitaiStruct _parent;
         }
         public static class One extends KaitaiStruct {
             public static One fromFile(String fileName) throws IOException {
@@ -150,12 +150,12 @@ public class NavParentSwitchCast extends KaitaiStruct {
             public void _fetchInstances() {
                 this.branch._fetchInstances();
             }
-            private Common branch;
-            private NavParentSwitchCast _root;
-            private NavParentSwitchCast.Foo _parent;
             public Common branch() { return branch; }
             public NavParentSwitchCast _root() { return _root; }
             public NavParentSwitchCast.Foo _parent() { return _parent; }
+            private Common branch;
+            private NavParentSwitchCast _root;
+            private NavParentSwitchCast.Foo _parent;
         }
         public static class Zero extends KaitaiStruct {
             public static Zero fromFile(String fileName) throws IOException {
@@ -183,28 +183,28 @@ public class NavParentSwitchCast extends KaitaiStruct {
             public void _fetchInstances() {
                 this.branch._fetchInstances();
             }
-            private Common branch;
-            private NavParentSwitchCast _root;
-            private NavParentSwitchCast.Foo _parent;
             public Common branch() { return branch; }
             public NavParentSwitchCast _root() { return _root; }
             public NavParentSwitchCast.Foo _parent() { return _parent; }
+            private Common branch;
+            private NavParentSwitchCast _root;
+            private NavParentSwitchCast.Foo _parent;
         }
-        private int bufType;
-        private int flag;
-        private Object buf;
-        private NavParentSwitchCast _root;
-        private NavParentSwitchCast _parent;
         public int bufType() { return bufType; }
         public int flag() { return flag; }
         public Object buf() { return buf; }
         public NavParentSwitchCast _root() { return _root; }
         public NavParentSwitchCast _parent() { return _parent; }
+        private int bufType;
+        private int flag;
+        private Object buf;
+        private NavParentSwitchCast _root;
+        private NavParentSwitchCast _parent;
     }
-    private Foo main;
-    private NavParentSwitchCast _root;
-    private KaitaiStruct _parent;
     public Foo main() { return main; }
     public NavParentSwitchCast _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Foo main;
+    private NavParentSwitchCast _root;
+    private KaitaiStruct _parent;
 }

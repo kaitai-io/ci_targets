@@ -93,16 +93,6 @@ public class ValidEqStrEncodings extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private int lenOf1;
-    private String str1;
-    private int lenOf2;
-    private String str2;
-    private int lenOf3;
-    private String str3;
-    private int lenOf4;
-    private String str4;
-    private ValidEqStrEncodings _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int lenOf1() { return lenOf1; }
     public void setLenOf1(int _v) { _dirty = true; lenOf1 = _v; }
     public String str1() { return str1; }
@@ -123,4 +113,14 @@ public class ValidEqStrEncodings extends KaitaiStruct.ReadWrite {
     public void set_root(ValidEqStrEncodings _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private int lenOf1;
+    private String str1;
+    private int lenOf2;
+    private String str2;
+    private int lenOf3;
+    private String str3;
+    private int lenOf4;
+    private String str4;
+    private ValidEqStrEncodings _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

@@ -40,12 +40,12 @@ public class FixedContents extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private byte[] normal;
-    private byte[] highBit8;
-    private FixedContents _root;
-    private KaitaiStruct _parent;
     public byte[] normal() { return normal; }
     public byte[] highBit8() { return highBit8; }
     public FixedContents _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private byte[] normal;
+    private byte[] highBit8;
+    private FixedContents _root;
+    private KaitaiStruct _parent;
 }

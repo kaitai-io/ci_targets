@@ -171,20 +171,16 @@ public class RecursiveOne extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int finisher;
-        private RecursiveOne _root;
-        private RecursiveOne _parent;
         public int finisher() { return finisher; }
         public void setFinisher(int _v) { _dirty = true; finisher = _v; }
         public RecursiveOne _root() { return _root; }
         public void set_root(RecursiveOne _v) { _dirty = true; _root = _v; }
         public RecursiveOne _parent() { return _parent; }
         public void set_parent(RecursiveOne _v) { _dirty = true; _parent = _v; }
+        private int finisher;
+        private RecursiveOne _root;
+        private RecursiveOne _parent;
     }
-    private int one;
-    private KaitaiStruct.ReadWrite next;
-    private RecursiveOne _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int one() { return one; }
     public void setOne(int _v) { _dirty = true; one = _v; }
     public KaitaiStruct.ReadWrite next() { return next; }
@@ -193,4 +189,8 @@ public class RecursiveOne extends KaitaiStruct.ReadWrite {
     public void set_root(RecursiveOne _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private int one;
+    private KaitaiStruct.ReadWrite next;
+    private RecursiveOne _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

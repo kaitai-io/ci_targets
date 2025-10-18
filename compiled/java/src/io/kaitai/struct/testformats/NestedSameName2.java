@@ -88,21 +88,21 @@ public class NestedSameName2 extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private byte[] data2;
-            private NestedSameName2 _root;
-            private NestedSameName2.DummyObj _parent;
             public byte[] data2() { return data2; }
             public NestedSameName2 _root() { return _root; }
             public NestedSameName2.DummyObj _parent() { return _parent; }
+            private byte[] data2;
+            private NestedSameName2 _root;
+            private NestedSameName2.DummyObj _parent;
         }
-        private int dummySize;
-        private FooObj foo;
-        private NestedSameName2 _root;
-        private NestedSameName2 _parent;
         public int dummySize() { return dummySize; }
         public FooObj foo() { return foo; }
         public NestedSameName2 _root() { return _root; }
         public NestedSameName2 _parent() { return _parent; }
+        private int dummySize;
+        private FooObj foo;
+        private NestedSameName2 _root;
+        private NestedSameName2 _parent;
     }
     public static class Main extends KaitaiStruct {
         public static Main fromFile(String fileName) throws IOException {
@@ -156,30 +156,30 @@ public class NestedSameName2 extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private byte[] data1;
-            private NestedSameName2 _root;
-            private NestedSameName2.Main _parent;
             public byte[] data1() { return data1; }
             public NestedSameName2 _root() { return _root; }
             public NestedSameName2.Main _parent() { return _parent; }
+            private byte[] data1;
+            private NestedSameName2 _root;
+            private NestedSameName2.Main _parent;
         }
-        private int mainSize;
-        private FooObj foo;
-        private NestedSameName2 _root;
-        private NestedSameName2 _parent;
         public int mainSize() { return mainSize; }
         public FooObj foo() { return foo; }
         public NestedSameName2 _root() { return _root; }
         public NestedSameName2 _parent() { return _parent; }
+        private int mainSize;
+        private FooObj foo;
+        private NestedSameName2 _root;
+        private NestedSameName2 _parent;
     }
-    private long version;
-    private Main mainData;
-    private DummyObj dummy;
-    private NestedSameName2 _root;
-    private KaitaiStruct _parent;
     public long version() { return version; }
     public Main mainData() { return mainData; }
     public DummyObj dummy() { return dummy; }
     public NestedSameName2 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private long version;
+    private Main mainData;
+    private DummyObj dummy;
+    private NestedSameName2 _root;
+    private KaitaiStruct _parent;
 }

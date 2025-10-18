@@ -110,17 +110,17 @@ public class NestedTypes3 extends KaitaiStruct {
 
                 public void _fetchInstances() {
                 }
-                private byte valueD;
-                private NestedTypes3 _root;
-                private KaitaiStruct _parent;
                 public byte valueD() { return valueD; }
                 public NestedTypes3 _root() { return _root; }
                 public KaitaiStruct _parent() { return _parent; }
+                private byte valueD;
+                private NestedTypes3 _root;
+                private KaitaiStruct _parent;
             }
-            private NestedTypes3 _root;
-            private KaitaiStruct _parent;
             public NestedTypes3 _root() { return _root; }
             public KaitaiStruct _parent() { return _parent; }
+            private NestedTypes3 _root;
+            private KaitaiStruct _parent;
         }
         public static class SubtypeCc extends KaitaiStruct {
             public static SubtypeCc fromFile(String fileName) throws IOException {
@@ -147,17 +147,17 @@ public class NestedTypes3 extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private byte valueCc;
-            private NestedTypes3 _root;
-            private KaitaiStruct _parent;
             public byte valueCc() { return valueCc; }
             public NestedTypes3 _root() { return _root; }
             public KaitaiStruct _parent() { return _parent; }
+            private byte valueCc;
+            private NestedTypes3 _root;
+            private KaitaiStruct _parent;
         }
-        private NestedTypes3 _root;
-        private KaitaiStruct _parent;
         public NestedTypes3 _root() { return _root; }
         public KaitaiStruct _parent() { return _parent; }
+        private NestedTypes3 _root;
+        private KaitaiStruct _parent;
     }
     public static class SubtypeB extends KaitaiStruct {
         public static SubtypeB fromFile(String fileName) throws IOException {
@@ -188,25 +188,25 @@ public class NestedTypes3 extends KaitaiStruct {
             this.aCc._fetchInstances();
             this.aCD._fetchInstances();
         }
-        private byte valueB;
-        private SubtypeA.SubtypeCc aCc;
-        private SubtypeA.SubtypeC.SubtypeD aCD;
-        private NestedTypes3 _root;
-        private NestedTypes3 _parent;
         public byte valueB() { return valueB; }
         public SubtypeA.SubtypeCc aCc() { return aCc; }
         public SubtypeA.SubtypeC.SubtypeD aCD() { return aCD; }
         public NestedTypes3 _root() { return _root; }
         public NestedTypes3 _parent() { return _parent; }
+        private byte valueB;
+        private SubtypeA.SubtypeCc aCc;
+        private SubtypeA.SubtypeC.SubtypeD aCD;
+        private NestedTypes3 _root;
+        private NestedTypes3 _parent;
     }
-    private SubtypeA.SubtypeCc aCc;
-    private SubtypeA.SubtypeC.SubtypeD aCD;
-    private SubtypeB b;
-    private NestedTypes3 _root;
-    private KaitaiStruct _parent;
     public SubtypeA.SubtypeCc aCc() { return aCc; }
     public SubtypeA.SubtypeC.SubtypeD aCD() { return aCD; }
     public SubtypeB b() { return b; }
     public NestedTypes3 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private SubtypeA.SubtypeCc aCc;
+    private SubtypeA.SubtypeC.SubtypeD aCD;
+    private SubtypeB b;
+    private NestedTypes3 _root;
+    private KaitaiStruct _parent;
 }

@@ -10,7 +10,6 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
         }
-        protected $_m_index;
         public function index() {
             if ($this->_m_index !== null)
                 return $this->_m_index;
@@ -20,6 +19,7 @@ namespace Kaitai\Struct\Tests {
             $this->_io->seek($_pos);
             return $this->_m_index;
         }
+        protected $_m_index;
     }
 }
 
@@ -34,9 +34,9 @@ namespace Kaitai\Struct\Tests\PositionToEnd {
             $this->_m_foo = $this->_io->readU4le();
             $this->_m_bar = $this->_io->readU4le();
         }
-        protected $_m_foo;
-        protected $_m_bar;
         public function foo() { return $this->_m_foo; }
         public function bar() { return $this->_m_bar; }
+        protected $_m_foo;
+        protected $_m_bar;
     }
 }

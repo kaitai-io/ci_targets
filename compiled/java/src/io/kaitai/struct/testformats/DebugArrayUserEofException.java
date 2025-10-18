@@ -110,21 +110,21 @@ public class DebugArrayUserEofException extends KaitaiStruct.ReadOnly {
 
         public void _fetchInstances() {
         }
-        private int meow;
-        private int chirp;
-        private DebugArrayUserEofException _root;
-        private DebugArrayUserEofException _parent;
         public int meow() { return meow; }
         public int chirp() { return chirp; }
         public DebugArrayUserEofException _root() { return _root; }
         public DebugArrayUserEofException _parent() { return _parent; }
+        private int meow;
+        private int chirp;
+        private DebugArrayUserEofException _root;
+        private DebugArrayUserEofException _parent;
     }
-    private Cat oneCat;
-    private List<Cat> arrayOfCats;
-    private DebugArrayUserEofException _root;
-    private KaitaiStruct.ReadOnly _parent;
     public Cat oneCat() { return oneCat; }
     public List<Cat> arrayOfCats() { return arrayOfCats; }
     public DebugArrayUserEofException _root() { return _root; }
     public KaitaiStruct.ReadOnly _parent() { return _parent; }
+    private Cat oneCat;
+    private List<Cat> arrayOfCats;
+    private DebugArrayUserEofException _root;
+    private KaitaiStruct.ReadOnly _parent;
 }

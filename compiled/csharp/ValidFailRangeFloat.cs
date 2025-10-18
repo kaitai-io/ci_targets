@@ -29,11 +29,11 @@ namespace Kaitai
                 throw new ValidationGreaterThanError(0.375, _foo, m_io, "/seq/0");
             }
         }
-        private float _foo;
-        private ValidFailRangeFloat m_root;
-        private KaitaiStruct m_parent;
         public float Foo { get { return _foo; } }
         public ValidFailRangeFloat M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private float _foo;
+        private ValidFailRangeFloat m_root;
+        private KaitaiStruct m_parent;
     }
 }

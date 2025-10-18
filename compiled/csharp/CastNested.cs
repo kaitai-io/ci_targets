@@ -76,12 +76,12 @@ namespace Kaitai
                 {
                     _value = m_io.ReadU1();
                 }
-                private byte _value;
-                private CastNested m_root;
-                private CastNested.Opcode m_parent;
                 public byte Value { get { return _value; } }
                 public CastNested M_Root { get { return m_root; } }
                 public CastNested.Opcode M_Parent { get { return m_parent; } }
+                private byte _value;
+                private CastNested m_root;
+                private CastNested.Opcode m_parent;
             }
             public partial class Strval : KaitaiStruct
             {
@@ -100,24 +100,22 @@ namespace Kaitai
                 {
                     _value = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytesTerm(0, false, true, true));
                 }
-                private string _value;
-                private CastNested m_root;
-                private CastNested.Opcode m_parent;
                 public string Value { get { return _value; } }
                 public CastNested M_Root { get { return m_root; } }
                 public CastNested.Opcode M_Parent { get { return m_parent; } }
+                private string _value;
+                private CastNested m_root;
+                private CastNested.Opcode m_parent;
             }
-            private byte _code;
-            private KaitaiStruct _body;
-            private CastNested m_root;
-            private CastNested m_parent;
             public byte Code { get { return _code; } }
             public KaitaiStruct Body { get { return _body; } }
             public CastNested M_Root { get { return m_root; } }
             public CastNested M_Parent { get { return m_parent; } }
+            private byte _code;
+            private KaitaiStruct _body;
+            private CastNested m_root;
+            private CastNested m_parent;
         }
-        private bool f_opcodes0Str;
-        private CastNested.Opcode.Strval _opcodes0Str;
         public CastNested.Opcode.Strval Opcodes0Str
         {
             get
@@ -129,8 +127,6 @@ namespace Kaitai
                 return _opcodes0Str;
             }
         }
-        private bool f_opcodes0StrValue;
-        private string _opcodes0StrValue;
         public string Opcodes0StrValue
         {
             get
@@ -142,8 +138,6 @@ namespace Kaitai
                 return _opcodes0StrValue;
             }
         }
-        private bool f_opcodes1Int;
-        private CastNested.Opcode.Intval _opcodes1Int;
         public CastNested.Opcode.Intval Opcodes1Int
         {
             get
@@ -155,8 +149,6 @@ namespace Kaitai
                 return _opcodes1Int;
             }
         }
-        private bool f_opcodes1IntValue;
-        private byte _opcodes1IntValue;
         public byte Opcodes1IntValue
         {
             get
@@ -168,11 +160,19 @@ namespace Kaitai
                 return _opcodes1IntValue;
             }
         }
-        private List<Opcode> _opcodes;
-        private CastNested m_root;
-        private KaitaiStruct m_parent;
         public List<Opcode> Opcodes { get { return _opcodes; } }
         public CastNested M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_opcodes0Str;
+        private CastNested.Opcode.Strval _opcodes0Str;
+        private bool f_opcodes0StrValue;
+        private string _opcodes0StrValue;
+        private bool f_opcodes1Int;
+        private CastNested.Opcode.Intval _opcodes1Int;
+        private bool f_opcodes1IntValue;
+        private byte _opcodes1IntValue;
+        private List<Opcode> _opcodes;
+        private CastNested m_root;
+        private KaitaiStruct m_parent;
     }
 }

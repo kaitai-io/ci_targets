@@ -106,7 +106,6 @@ public class TypeTernaryOpaque extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private HelloWorld dif;
     public HelloWorld dif() {
         if (this.dif != null)
             return this.dif;
@@ -114,7 +113,6 @@ public class TypeTernaryOpaque extends KaitaiStruct.ReadWrite {
         return this.dif;
     }
     public void _invalidateDif() { this.dif = null; }
-    private Boolean isHack;
     public Boolean isHack() {
         if (this.isHack != null)
             return this.isHack;
@@ -122,13 +120,6 @@ public class TypeTernaryOpaque extends KaitaiStruct.ReadWrite {
         return this.isHack;
     }
     public void _invalidateIsHack() { this.isHack = null; }
-    private HelloWorld difWoHack;
-    private HelloWorld difWithHack;
-    private TypeTernaryOpaque _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_difWoHack;
-    private byte[] _raw_difWithHack;
-    private byte[] _raw__raw_difWithHack;
     public HelloWorld difWoHack() { return difWoHack; }
     public void setDifWoHack(HelloWorld _v) { _dirty = true; difWoHack = _v; }
     public HelloWorld difWithHack() { return difWithHack; }
@@ -143,4 +134,13 @@ public class TypeTernaryOpaque extends KaitaiStruct.ReadWrite {
     public void set_raw_DifWithHack(byte[] _v) { _dirty = true; _raw_difWithHack = _v; }
     public byte[] _raw__raw_difWithHack() { return _raw__raw_difWithHack; }
     public void set_raw__raw_DifWithHack(byte[] _v) { _dirty = true; _raw__raw_difWithHack = _v; }
+    private HelloWorld dif;
+    private Boolean isHack;
+    private HelloWorld difWoHack;
+    private HelloWorld difWithHack;
+    private TypeTernaryOpaque _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_difWoHack;
+    private byte[] _raw_difWithHack;
+    private byte[] _raw__raw_difWithHack;
 }

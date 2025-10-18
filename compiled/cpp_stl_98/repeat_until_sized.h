@@ -39,26 +39,17 @@ public:
 
     public:
         ~record_t();
+        uint8_t marker() const { return m_marker; }
+        uint32_t body() const { return m_body; }
+        repeat_until_sized_t* _root() const { return m__root; }
+        repeat_until_sized_t* _parent() const { return m__parent; }
 
     private:
         uint8_t m_marker;
         uint32_t m_body;
         repeat_until_sized_t* m__root;
         repeat_until_sized_t* m__parent;
-
-    public:
-        uint8_t marker() const { return m_marker; }
-        uint32_t body() const { return m_body; }
-        repeat_until_sized_t* _root() const { return m__root; }
-        repeat_until_sized_t* _parent() const { return m__parent; }
     };
-
-private:
-    std::vector<record_t*>* m_records;
-    repeat_until_sized_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::vector<std::string>* m__raw_records;
-    std::vector<kaitai::kstream*>* m__io__raw_records;
 
 public:
     std::vector<record_t*>* records() const { return m_records; }
@@ -66,6 +57,13 @@ public:
     kaitai::kstruct* _parent() const { return m__parent; }
     std::vector<std::string>* _raw_records() const { return m__raw_records; }
     std::vector<kaitai::kstream*>* _io__raw_records() const { return m__io__raw_records; }
+
+private:
+    std::vector<record_t*>* m_records;
+    repeat_until_sized_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::vector<std::string>* m__raw_records;
+    std::vector<kaitai::kstream*>* m__io__raw_records;
 };
 
 #endif  // REPEAT_UNTIL_SIZED_H_

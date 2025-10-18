@@ -52,36 +52,30 @@ public:
 
     public:
         ~with_param_t();
+        bool is_cat();
+        animal_t enumerated_one() const { return m_enumerated_one; }
+        params_enum_t* _root() const { return m__root; }
+        params_enum_t* _parent() const { return m__parent; }
 
     private:
         bool f_is_cat;
         bool m_is_cat;
-
-    public:
-        bool is_cat();
-
-    private:
         animal_t m_enumerated_one;
         params_enum_t* m__root;
         params_enum_t* m__parent;
-
-    public:
-        animal_t enumerated_one() const { return m_enumerated_one; }
-        params_enum_t* _root() const { return m__root; }
-        params_enum_t* _parent() const { return m__parent; }
     };
-
-private:
-    animal_t m_one;
-    with_param_t* m_invoke_with_param;
-    params_enum_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     animal_t one() const { return m_one; }
     with_param_t* invoke_with_param() const { return m_invoke_with_param; }
     params_enum_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    animal_t m_one;
+    with_param_t* m_invoke_with_param;
+    params_enum_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // PARAMS_ENUM_H_

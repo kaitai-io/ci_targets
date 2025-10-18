@@ -68,9 +68,6 @@ public class ValidFailRepeatInst extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private List<Long> inst;
-    private boolean _shouldWriteInst = false;
-    private boolean _enabledInst = true;
     public List<Long> inst() {
         if (_shouldWriteInst)
             _writeInst();
@@ -110,13 +107,16 @@ public class ValidFailRepeatInst extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("inst", 0, this._io.size() - this._io.pos());
         this._io.seek(_pos);
     }
-    private byte[] a;
-    private ValidFailRepeatInst _root;
-    private KaitaiStruct.ReadWrite _parent;
     public byte[] a() { return a; }
     public void setA(byte[] _v) { _dirty = true; a = _v; }
     public ValidFailRepeatInst _root() { return _root; }
     public void set_root(ValidFailRepeatInst _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Long> inst;
+    private boolean _shouldWriteInst = false;
+    private boolean _enabledInst = true;
+    private byte[] a;
+    private ValidFailRepeatInst _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

@@ -75,35 +75,6 @@ namespace Kaitai
             _sint32be = m_io.ReadS4be();
             _sint64be = m_io.ReadS8be();
         }
-        private byte[] _magic1;
-        private byte _uint8;
-        private sbyte _sint8;
-        private byte[] _magicUint;
-        private ushort _uint16;
-        private uint _uint32;
-        private ulong _uint64;
-        private byte[] _magicSint;
-        private short _sint16;
-        private int _sint32;
-        private long _sint64;
-        private byte[] _magicUintLe;
-        private ushort _uint16le;
-        private uint _uint32le;
-        private ulong _uint64le;
-        private byte[] _magicSintLe;
-        private short _sint16le;
-        private int _sint32le;
-        private long _sint64le;
-        private byte[] _magicUintBe;
-        private ushort _uint16be;
-        private uint _uint32be;
-        private ulong _uint64be;
-        private byte[] _magicSintBe;
-        private short _sint16be;
-        private int _sint32be;
-        private long _sint64be;
-        private Integers m_root;
-        private KaitaiStruct m_parent;
         public byte[] Magic1 { get { return _magic1; } }
         public byte Uint8 { get { return _uint8; } }
         public sbyte Sint8 { get { return _sint8; } }
@@ -133,5 +104,34 @@ namespace Kaitai
         public long Sint64be { get { return _sint64be; } }
         public Integers M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte[] _magic1;
+        private byte _uint8;
+        private sbyte _sint8;
+        private byte[] _magicUint;
+        private ushort _uint16;
+        private uint _uint32;
+        private ulong _uint64;
+        private byte[] _magicSint;
+        private short _sint16;
+        private int _sint32;
+        private long _sint64;
+        private byte[] _magicUintLe;
+        private ushort _uint16le;
+        private uint _uint32le;
+        private ulong _uint64le;
+        private byte[] _magicSintLe;
+        private short _sint16le;
+        private int _sint32le;
+        private long _sint64le;
+        private byte[] _magicUintBe;
+        private ushort _uint16be;
+        private uint _uint32be;
+        private ulong _uint64be;
+        private byte[] _magicSintBe;
+        private short _sint16be;
+        private int _sint32be;
+        private long _sint64be;
+        private Integers m_root;
+        private KaitaiStruct m_parent;
     }
 }

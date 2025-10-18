@@ -41,16 +41,14 @@ public:
 
     public:
         ~intval_t();
+        uint8_t value() const { return m_value; }
+        switch_cast_t* _root() const { return m__root; }
+        switch_cast_t::opcode_t* _parent() const { return m__parent; }
 
     private:
         uint8_t m_value;
         switch_cast_t* m__root;
         switch_cast_t::opcode_t* m__parent;
-
-    public:
-        uint8_t value() const { return m_value; }
-        switch_cast_t* _root() const { return m__root; }
-        switch_cast_t::opcode_t* _parent() const { return m__parent; }
     };
 
     class opcode_t : public kaitai::kstruct {
@@ -65,6 +63,10 @@ public:
 
     public:
         ~opcode_t();
+        uint8_t code() const { return m_code; }
+        kaitai::kstruct* body() const { return m_body; }
+        switch_cast_t* _root() const { return m__root; }
+        switch_cast_t* _parent() const { return m__parent; }
 
     private:
         uint8_t m_code;
@@ -77,12 +79,6 @@ public:
     private:
         switch_cast_t* m__root;
         switch_cast_t* m__parent;
-
-    public:
-        uint8_t code() const { return m_code; }
-        kaitai::kstruct* body() const { return m_body; }
-        switch_cast_t* _root() const { return m__root; }
-        switch_cast_t* _parent() const { return m__parent; }
     };
 
     class strval_t : public kaitai::kstruct {
@@ -97,48 +93,34 @@ public:
 
     public:
         ~strval_t();
+        std::string value() const { return m_value; }
+        switch_cast_t* _root() const { return m__root; }
+        switch_cast_t::opcode_t* _parent() const { return m__parent; }
 
     private:
         std::string m_value;
         switch_cast_t* m__root;
         switch_cast_t::opcode_t* m__parent;
-
-    public:
-        std::string value() const { return m_value; }
-        switch_cast_t* _root() const { return m__root; }
-        switch_cast_t::opcode_t* _parent() const { return m__parent; }
     };
+
+public:
+    switch_cast_t::strval_t* err_cast();
+    switch_cast_t::strval_t* first_obj();
+    uint8_t second_val();
+    std::vector<opcode_t*>* opcodes() const { return m_opcodes; }
+    switch_cast_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_err_cast;
     switch_cast_t::strval_t* m_err_cast;
-
-public:
-    switch_cast_t::strval_t* err_cast();
-
-private:
     bool f_first_obj;
     switch_cast_t::strval_t* m_first_obj;
-
-public:
-    switch_cast_t::strval_t* first_obj();
-
-private:
     bool f_second_val;
     uint8_t m_second_val;
-
-public:
-    uint8_t second_val();
-
-private:
     std::vector<opcode_t*>* m_opcodes;
     switch_cast_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::vector<opcode_t*>* opcodes() const { return m_opcodes; }
-    switch_cast_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // SWITCH_CAST_H_

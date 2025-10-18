@@ -39,18 +39,16 @@ public:
 
     public:
         ~param_type_b1_t();
+        std::string foo() const { return m_foo; }
+        bool arg() const { return m_arg; }
+        params_pass_bool_t* _root() const { return m__root; }
+        params_pass_bool_t* _parent() const { return m__parent; }
 
     private:
         std::string m_foo;
         bool m_arg;
         params_pass_bool_t* m__root;
         params_pass_bool_t* m__parent;
-
-    public:
-        std::string foo() const { return m_foo; }
-        bool arg() const { return m_arg; }
-        params_pass_bool_t* _root() const { return m__root; }
-        params_pass_bool_t* _parent() const { return m__parent; }
     };
 
     class param_type_bool_t : public kaitai::kstruct {
@@ -65,47 +63,21 @@ public:
 
     public:
         ~param_type_bool_t();
+        std::string foo() const { return m_foo; }
+        bool arg() const { return m_arg; }
+        params_pass_bool_t* _root() const { return m__root; }
+        params_pass_bool_t* _parent() const { return m__parent; }
 
     private:
         std::string m_foo;
         bool m_arg;
         params_pass_bool_t* m__root;
         params_pass_bool_t* m__parent;
-
-    public:
-        std::string foo() const { return m_foo; }
-        bool arg() const { return m_arg; }
-        params_pass_bool_t* _root() const { return m__root; }
-        params_pass_bool_t* _parent() const { return m__parent; }
     };
-
-private:
-    bool f_v_false;
-    bool m_v_false;
 
 public:
     bool v_false();
-
-private:
-    bool f_v_true;
-    bool m_v_true;
-
-public:
     bool v_true();
-
-private:
-    bool m_s_false;
-    bool m_s_true;
-    std::unique_ptr<param_type_b1_t> m_seq_b1;
-    std::unique_ptr<param_type_bool_t> m_seq_bool;
-    std::unique_ptr<param_type_b1_t> m_literal_b1;
-    std::unique_ptr<param_type_bool_t> m_literal_bool;
-    std::unique_ptr<param_type_b1_t> m_inst_b1;
-    std::unique_ptr<param_type_bool_t> m_inst_bool;
-    params_pass_bool_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     bool s_false() const { return m_s_false; }
     bool s_true() const { return m_s_true; }
     param_type_b1_t* seq_b1() const { return m_seq_b1.get(); }
@@ -116,4 +88,20 @@ public:
     param_type_bool_t* inst_bool() const { return m_inst_bool.get(); }
     params_pass_bool_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_v_false;
+    bool m_v_false;
+    bool f_v_true;
+    bool m_v_true;
+    bool m_s_false;
+    bool m_s_true;
+    std::unique_ptr<param_type_b1_t> m_seq_b1;
+    std::unique_ptr<param_type_bool_t> m_seq_bool;
+    std::unique_ptr<param_type_b1_t> m_literal_b1;
+    std::unique_ptr<param_type_bool_t> m_literal_bool;
+    std::unique_ptr<param_type_b1_t> m_inst_b1;
+    std::unique_ptr<param_type_bool_t> m_inst_bool;
+    params_pass_bool_t* m__root;
+    kaitai::kstruct* m__parent;
 };

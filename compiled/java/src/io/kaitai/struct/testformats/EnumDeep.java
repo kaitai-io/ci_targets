@@ -115,22 +115,22 @@ public class EnumDeep extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private EnumDeep _root;
-            private KaitaiStruct _parent;
             public EnumDeep _root() { return _root; }
             public KaitaiStruct _parent() { return _parent; }
+            private EnumDeep _root;
+            private KaitaiStruct _parent;
         }
-        private EnumDeep _root;
-        private KaitaiStruct _parent;
         public EnumDeep _root() { return _root; }
         public KaitaiStruct _parent() { return _parent; }
+        private EnumDeep _root;
+        private KaitaiStruct _parent;
     }
-    private Container1.Animal pet1;
-    private Container1.Container2.Animal pet2;
-    private EnumDeep _root;
-    private KaitaiStruct _parent;
     public Container1.Animal pet1() { return pet1; }
     public Container1.Container2.Animal pet2() { return pet2; }
     public EnumDeep _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Container1.Animal pet1;
+    private Container1.Container2.Animal pet2;
+    private EnumDeep _root;
+    private KaitaiStruct _parent;
 }

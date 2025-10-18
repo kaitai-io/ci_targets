@@ -47,15 +47,6 @@ namespace Kaitai
                 _s4be = m_io.ReadS4be();
                 _s8be = m_io.ReadS8be();
             }
-            private sbyte _s1;
-            private short _s2le;
-            private int _s4le;
-            private long _s8le;
-            private short _s2be;
-            private int _s4be;
-            private long _s8be;
-            private IntegersMinMax m_root;
-            private IntegersMinMax m_parent;
             public sbyte S1 { get { return _s1; } }
             public short S2le { get { return _s2le; } }
             public int S4le { get { return _s4le; } }
@@ -65,6 +56,15 @@ namespace Kaitai
             public long S8be { get { return _s8be; } }
             public IntegersMinMax M_Root { get { return m_root; } }
             public IntegersMinMax M_Parent { get { return m_parent; } }
+            private sbyte _s1;
+            private short _s2le;
+            private int _s4le;
+            private long _s8le;
+            private short _s2be;
+            private int _s4be;
+            private long _s8be;
+            private IntegersMinMax m_root;
+            private IntegersMinMax m_parent;
         }
         public partial class Unsigned : KaitaiStruct
         {
@@ -89,15 +89,6 @@ namespace Kaitai
                 _u4be = m_io.ReadU4be();
                 _u8be = m_io.ReadU8be();
             }
-            private byte _u1;
-            private ushort _u2le;
-            private uint _u4le;
-            private ulong _u8le;
-            private ushort _u2be;
-            private uint _u4be;
-            private ulong _u8be;
-            private IntegersMinMax m_root;
-            private IntegersMinMax m_parent;
             public byte U1 { get { return _u1; } }
             public ushort U2le { get { return _u2le; } }
             public uint U4le { get { return _u4le; } }
@@ -107,18 +98,27 @@ namespace Kaitai
             public ulong U8be { get { return _u8be; } }
             public IntegersMinMax M_Root { get { return m_root; } }
             public IntegersMinMax M_Parent { get { return m_parent; } }
+            private byte _u1;
+            private ushort _u2le;
+            private uint _u4le;
+            private ulong _u8le;
+            private ushort _u2be;
+            private uint _u4be;
+            private ulong _u8be;
+            private IntegersMinMax m_root;
+            private IntegersMinMax m_parent;
         }
-        private Unsigned _unsignedMin;
-        private Unsigned _unsignedMax;
-        private Signed _signedMin;
-        private Signed _signedMax;
-        private IntegersMinMax m_root;
-        private KaitaiStruct m_parent;
         public Unsigned UnsignedMin { get { return _unsignedMin; } }
         public Unsigned UnsignedMax { get { return _unsignedMax; } }
         public Signed SignedMin { get { return _signedMin; } }
         public Signed SignedMax { get { return _signedMax; } }
         public IntegersMinMax M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Unsigned _unsignedMin;
+        private Unsigned _unsignedMax;
+        private Signed _signedMin;
+        private Signed _signedMax;
+        private IntegersMinMax m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -49,10 +49,6 @@ public class ZlibWithHeader78 extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private byte[] data;
-    private ZlibWithHeader78 _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_data;
     public byte[] data() { return data; }
     public void setData(byte[] _v) { _dirty = true; data = _v; }
     public ZlibWithHeader78 _root() { return _root; }
@@ -61,4 +57,8 @@ public class ZlibWithHeader78 extends KaitaiStruct.ReadWrite {
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_data() { return _raw_data; }
     public void set_raw_Data(byte[] _v) { _dirty = true; _raw_data = _v; }
+    private byte[] data;
+    private ZlibWithHeader78 _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_data;
 }

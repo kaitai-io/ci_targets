@@ -67,12 +67,12 @@ public class ParamsPassArrayUsertype extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int foo;
-        private ParamsPassArrayUsertype _root;
-        private ParamsPassArrayUsertype _parent;
         public int foo() { return foo; }
         public ParamsPassArrayUsertype _root() { return _root; }
         public ParamsPassArrayUsertype _parent() { return _parent; }
+        private int foo;
+        private ParamsPassArrayUsertype _root;
+        private ParamsPassArrayUsertype _parent;
     }
     public static class ParamType extends KaitaiStruct {
 
@@ -98,23 +98,23 @@ public class ParamsPassArrayUsertype extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] one;
-        private byte[] two;
-        private List<Block> bar;
-        private ParamsPassArrayUsertype _root;
-        private ParamsPassArrayUsertype _parent;
         public byte[] one() { return one; }
         public byte[] two() { return two; }
         public List<Block> bar() { return bar; }
         public ParamsPassArrayUsertype _root() { return _root; }
         public ParamsPassArrayUsertype _parent() { return _parent; }
+        private byte[] one;
+        private byte[] two;
+        private List<Block> bar;
+        private ParamsPassArrayUsertype _root;
+        private ParamsPassArrayUsertype _parent;
     }
-    private List<Block> blocks;
-    private ParamType passBlocks;
-    private ParamsPassArrayUsertype _root;
-    private KaitaiStruct _parent;
     public List<Block> blocks() { return blocks; }
     public ParamType passBlocks() { return passBlocks; }
     public ParamsPassArrayUsertype _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Block> blocks;
+    private ParamType passBlocks;
+    private ParamsPassArrayUsertype _root;
+    private KaitaiStruct _parent;
 }

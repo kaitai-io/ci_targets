@@ -34,14 +34,14 @@ public class ProcessXor4Const extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private byte[] key;
-    private byte[] buf;
-    private ProcessXor4Const _root;
-    private KaitaiStruct _parent;
-    private byte[] _raw_buf;
     public byte[] key() { return key; }
     public byte[] buf() { return buf; }
     public ProcessXor4Const _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
     public byte[] _raw_buf() { return _raw_buf; }
+    private byte[] key;
+    private byte[] buf;
+    private ProcessXor4Const _root;
+    private KaitaiStruct _parent;
+    private byte[] _raw_buf;
 }

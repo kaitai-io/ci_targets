@@ -33,12 +33,12 @@ public class BitsByteAlignedEofBe extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private byte[] prebuf;
-    private long bits;
-    private BitsByteAlignedEofBe _root;
-    private KaitaiStruct _parent;
     public byte[] prebuf() { return prebuf; }
     public long bits() { return bits; }
     public BitsByteAlignedEofBe _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private byte[] prebuf;
+    private long bits;
+    private BitsByteAlignedEofBe _root;
+    private KaitaiStruct _parent;
 }

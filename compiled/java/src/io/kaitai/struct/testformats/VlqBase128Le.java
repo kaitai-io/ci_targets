@@ -114,20 +114,12 @@ public class VlqBase128Le extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private Long intermValue;
         public Long intermValue() {
             if (this.intermValue != null)
                 return this.intermValue;
             this.intermValue = ((Number) (((Number) (prevIntermValue() + value() * multiplier())).longValue())).longValue();
             return this.intermValue;
         }
-        private boolean hasNext;
-        private long value;
-        private int idx;
-        private long prevIntermValue;
-        private long multiplier;
-        private VlqBase128Le _root;
-        private VlqBase128Le _parent;
 
         /**
          * If `true`, then we have more bytes to read.
@@ -151,22 +143,27 @@ public class VlqBase128Le extends KaitaiStruct {
         public long multiplier() { return multiplier; }
         public VlqBase128Le _root() { return _root; }
         public VlqBase128Le _parent() { return _parent; }
+        private Long intermValue;
+        private boolean hasNext;
+        private long value;
+        private int idx;
+        private long prevIntermValue;
+        private long multiplier;
+        private VlqBase128Le _root;
+        private VlqBase128Le _parent;
     }
-    private Integer len;
     public Integer len() {
         if (this.len != null)
             return this.len;
         this.len = ((Number) (groups().size())).intValue();
         return this.len;
     }
-    private Long signBit;
     public Long signBit() {
         if (this.signBit != null)
             return this.signBit;
         this.signBit = ((Number) (((Number) ((len() == 10 ? 0x8000000000000000L : groups().get(groups().size() - 1).multiplier() * 64))).longValue())).longValue();
         return this.signBit;
     }
-    private Long value;
 
     /**
      * Resulting unsigned value as normal integer
@@ -177,17 +174,20 @@ public class VlqBase128Le extends KaitaiStruct {
         this.value = ((Number) (groups().get(groups().size() - 1).intermValue())).longValue();
         return this.value;
     }
-    private Long valueSigned;
     public Long valueSigned() {
         if (this.valueSigned != null)
             return this.valueSigned;
         this.valueSigned = ((Number) (( ((signBit() > 0) && (value() >= signBit()))  ? -(((Number) (signBit() - (value() - signBit()))).longValue()) : ((Number) (value())).longValue()))).longValue();
         return this.valueSigned;
     }
-    private List<Group> groups;
-    private VlqBase128Le _root;
-    private KaitaiStruct _parent;
     public List<Group> groups() { return groups; }
     public VlqBase128Le _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Integer len;
+    private Long signBit;
+    private Long value;
+    private Long valueSigned;
+    private List<Group> groups;
+    private VlqBase128Le _root;
+    private KaitaiStruct _parent;
 }

@@ -68,21 +68,13 @@ public class TermStruct2 extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] value;
-        private TermStruct2 _root;
-        private TermStruct2 _parent;
         public byte[] value() { return value; }
         public TermStruct2 _root() { return _root; }
         public TermStruct2 _parent() { return _parent; }
+        private byte[] value;
+        private TermStruct2 _root;
+        private TermStruct2 _parent;
     }
-    private BytesWrapper s1;
-    private BytesWrapper s2;
-    private BytesWrapper s3;
-    private TermStruct2 _root;
-    private KaitaiStruct _parent;
-    private byte[] _raw_s1;
-    private byte[] _raw_s2;
-    private byte[] _raw_s3;
     public BytesWrapper s1() { return s1; }
     public BytesWrapper s2() { return s2; }
     public BytesWrapper s3() { return s3; }
@@ -91,4 +83,12 @@ public class TermStruct2 extends KaitaiStruct {
     public byte[] _raw_s1() { return _raw_s1; }
     public byte[] _raw_s2() { return _raw_s2; }
     public byte[] _raw_s3() { return _raw_s3; }
+    private BytesWrapper s1;
+    private BytesWrapper s2;
+    private BytesWrapper s3;
+    private TermStruct2 _root;
+    private KaitaiStruct _parent;
+    private byte[] _raw_s1;
+    private byte[] _raw_s2;
+    private byte[] _raw_s3;
 }

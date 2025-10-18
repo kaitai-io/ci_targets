@@ -32,8 +32,6 @@ namespace Kaitai
         {
             _one = m_io.ReadU1();
         }
-        private bool f_constDog;
-        private Animal _constDog;
         public Animal ConstDog
         {
             get
@@ -45,8 +43,6 @@ namespace Kaitai
                 return _constDog;
             }
         }
-        private bool f_derivedBoom;
-        private Animal _derivedBoom;
         public Animal DerivedBoom
         {
             get
@@ -58,8 +54,6 @@ namespace Kaitai
                 return _derivedBoom;
             }
         }
-        private bool f_derivedDog;
-        private Animal _derivedDog;
         public Animal DerivedDog
         {
             get
@@ -71,11 +65,17 @@ namespace Kaitai
                 return _derivedDog;
             }
         }
-        private byte _one;
-        private ExprEnum m_root;
-        private KaitaiStruct m_parent;
         public byte One { get { return _one; } }
         public ExprEnum M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_constDog;
+        private Animal _constDog;
+        private bool f_derivedBoom;
+        private Animal _derivedBoom;
+        private bool f_derivedDog;
+        private Animal _derivedDog;
+        private byte _one;
+        private ExprEnum m_root;
+        private KaitaiStruct m_parent;
     }
 }

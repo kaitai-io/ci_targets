@@ -24,48 +24,10 @@ private:
 
 public:
     ~str_encodings_escaping_to_s_t();
-
-private:
-    bool f_str1;
-    std::string m_str1;
-
-public:
     std::string str1();
-
-private:
-    bool f_str2;
-    std::string m_str2;
-
-public:
     std::string str2();
-
-private:
-    bool f_str3;
-    std::string m_str3;
-
-public:
     std::string str3();
-
-private:
-    bool f_str4;
-    std::string m_str4;
-
-public:
     std::string str4();
-
-private:
-    uint16_t m_len_of_1;
-    std::string m_str1_raw;
-    uint16_t m_len_of_2;
-    std::string m_str2_raw;
-    uint16_t m_len_of_3;
-    std::string m_str3_raw;
-    uint16_t m_len_of_4;
-    std::string m_str4_raw;
-    str_encodings_escaping_to_s_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     uint16_t len_of_1() const { return m_len_of_1; }
     std::string str1_raw() const { return m_str1_raw; }
     uint16_t len_of_2() const { return m_len_of_2; }
@@ -76,4 +38,24 @@ public:
     std::string str4_raw() const { return m_str4_raw; }
     str_encodings_escaping_to_s_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_str1;
+    std::string m_str1;
+    bool f_str2;
+    std::string m_str2;
+    bool f_str3;
+    std::string m_str3;
+    bool f_str4;
+    std::string m_str4;
+    uint16_t m_len_of_1;
+    std::string m_str1_raw;
+    uint16_t m_len_of_2;
+    std::string m_str2_raw;
+    uint16_t m_len_of_3;
+    std::string m_str3_raw;
+    uint16_t m_len_of_4;
+    std::string m_str4_raw;
+    str_encodings_escaping_to_s_t* m__root;
+    kaitai::kstruct* m__parent;
 };

@@ -139,21 +139,16 @@ public class RepeatEosTermStruct extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private byte[] value;
-        private RepeatEosTermStruct _root;
-        private RepeatEosTermStruct _parent;
         public byte[] value() { return value; }
         public void setValue(byte[] _v) { _dirty = true; value = _v; }
         public RepeatEosTermStruct _root() { return _root; }
         public void set_root(RepeatEosTermStruct _v) { _dirty = true; _root = _v; }
         public RepeatEosTermStruct _parent() { return _parent; }
         public void set_parent(RepeatEosTermStruct _v) { _dirty = true; _parent = _v; }
+        private byte[] value;
+        private RepeatEosTermStruct _root;
+        private RepeatEosTermStruct _parent;
     }
-    private List<BytesWrapper> records;
-    private RepeatEosTermStruct _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private List<byte[]> _raw_records;
-    private List<Integer> records_OuterSize;
     public List<BytesWrapper> records() { return records; }
     public void setRecords(List<BytesWrapper> _v) { _dirty = true; records = _v; }
     public RepeatEosTermStruct _root() { return _root; }
@@ -164,4 +159,9 @@ public class RepeatEosTermStruct extends KaitaiStruct.ReadWrite {
     public void set_raw_Records(List<byte[]> _v) { _dirty = true; _raw_records = _v; }
     public List<Integer> records_OuterSize() { return records_OuterSize; }
     public void setRecords_OuterSize(List<Integer> _v) { _dirty = true; records_OuterSize = _v; }
+    private List<BytesWrapper> records;
+    private RepeatEosTermStruct _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private List<byte[]> _raw_records;
+    private List<Integer> records_OuterSize;
 }

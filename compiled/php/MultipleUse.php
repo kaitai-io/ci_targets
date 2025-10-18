@@ -12,10 +12,10 @@ namespace Kaitai\Struct\Tests {
             $this->_m_t1 = new \Kaitai\Struct\Tests\MultipleUse\Type1($this->_io, $this, $this->_root);
             $this->_m_t2 = new \Kaitai\Struct\Tests\MultipleUse\Type2($this->_io, $this, $this->_root);
         }
-        protected $_m_t1;
-        protected $_m_t2;
         public function t1() { return $this->_m_t1; }
         public function t2() { return $this->_m_t2; }
+        protected $_m_t1;
+        protected $_m_t2;
     }
 }
 
@@ -29,8 +29,8 @@ namespace Kaitai\Struct\Tests\MultipleUse {
         private function _read() {
             $this->_m_value = $this->_io->readS4le();
         }
-        protected $_m_value;
         public function value() { return $this->_m_value; }
+        protected $_m_value;
     }
 }
 
@@ -44,8 +44,8 @@ namespace Kaitai\Struct\Tests\MultipleUse {
         private function _read() {
             $this->_m_firstUse = new \Kaitai\Struct\Tests\MultipleUse\Multi($this->_io, $this, $this->_root);
         }
-        protected $_m_firstUse;
         public function firstUse() { return $this->_m_firstUse; }
+        protected $_m_firstUse;
     }
 }
 
@@ -58,7 +58,6 @@ namespace Kaitai\Struct\Tests\MultipleUse {
 
         private function _read() {
         }
-        protected $_m_secondUse;
         public function secondUse() {
             if ($this->_m_secondUse !== null)
                 return $this->_m_secondUse;
@@ -68,5 +67,6 @@ namespace Kaitai\Struct\Tests\MultipleUse {
             $this->_io->seek($_pos);
             return $this->_m_secondUse;
         }
+        protected $_m_secondUse;
     }
 }

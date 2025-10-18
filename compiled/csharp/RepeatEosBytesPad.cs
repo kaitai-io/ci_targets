@@ -28,11 +28,11 @@ namespace Kaitai
                 }
             }
         }
-        private List<byte[]> _records;
-        private RepeatEosBytesPad m_root;
-        private KaitaiStruct m_parent;
         public List<byte[]> Records { get { return _records; } }
         public RepeatEosBytesPad M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<byte[]> _records;
+        private RepeatEosBytesPad m_root;
+        private KaitaiStruct m_parent;
     }
 }

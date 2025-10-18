@@ -97,15 +97,15 @@ public class MultipleUse extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int value;
-        private MultipleUse _root;
-        private KaitaiStruct.ReadWrite _parent;
         public int value() { return value; }
         public void setValue(int _v) { _dirty = true; value = _v; }
         public MultipleUse _root() { return _root; }
         public void set_root(MultipleUse _v) { _dirty = true; _root = _v; }
         public KaitaiStruct.ReadWrite _parent() { return _parent; }
         public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+        private int value;
+        private MultipleUse _root;
+        private KaitaiStruct.ReadWrite _parent;
     }
     public static class Type1 extends KaitaiStruct.ReadWrite {
         public static Type1 fromFile(String fileName) throws IOException {
@@ -150,15 +150,15 @@ public class MultipleUse extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("first_use", this, this.firstUse._parent());
             _dirty = false;
         }
-        private Multi firstUse;
-        private MultipleUse _root;
-        private MultipleUse _parent;
         public Multi firstUse() { return firstUse; }
         public void setFirstUse(Multi _v) { _dirty = true; firstUse = _v; }
         public MultipleUse _root() { return _root; }
         public void set_root(MultipleUse _v) { _dirty = true; _root = _v; }
         public MultipleUse _parent() { return _parent; }
         public void set_parent(MultipleUse _v) { _dirty = true; _parent = _v; }
+        private Multi firstUse;
+        private MultipleUse _root;
+        private MultipleUse _parent;
     }
     public static class Type2 extends KaitaiStruct.ReadWrite {
         public static Type2 fromFile(String fileName) throws IOException {
@@ -206,9 +206,6 @@ public class MultipleUse extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private Multi secondUse;
-        private boolean _shouldWriteSecondUse = false;
-        private boolean _enabledSecondUse = true;
         public Multi secondUse() {
             if (_shouldWriteSecondUse)
                 _writeSecondUse();
@@ -233,17 +230,16 @@ public class MultipleUse extends KaitaiStruct.ReadWrite {
             this.secondUse._write_Seq(this._io);
             this._io.seek(_pos);
         }
-        private MultipleUse _root;
-        private MultipleUse _parent;
         public MultipleUse _root() { return _root; }
         public void set_root(MultipleUse _v) { _dirty = true; _root = _v; }
         public MultipleUse _parent() { return _parent; }
         public void set_parent(MultipleUse _v) { _dirty = true; _parent = _v; }
+        private Multi secondUse;
+        private boolean _shouldWriteSecondUse = false;
+        private boolean _enabledSecondUse = true;
+        private MultipleUse _root;
+        private MultipleUse _parent;
     }
-    private Type1 t1;
-    private Type2 t2;
-    private MultipleUse _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Type1 t1() { return t1; }
     public void setT1(Type1 _v) { _dirty = true; t1 = _v; }
     public Type2 t2() { return t2; }
@@ -252,4 +248,8 @@ public class MultipleUse extends KaitaiStruct.ReadWrite {
     public void set_root(MultipleUse _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Type1 t1;
+    private Type2 t2;
+    private MultipleUse _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

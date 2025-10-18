@@ -24,16 +24,14 @@ private:
 
 public:
     ~valid_fail_anyof_int_t();
+    uint8_t foo() const { return m_foo; }
+    valid_fail_anyof_int_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint8_t m_foo;
     valid_fail_anyof_int_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint8_t foo() const { return m_foo; }
-    valid_fail_anyof_int_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // VALID_FAIL_ANYOF_INT_H_

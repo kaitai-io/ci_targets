@@ -59,17 +59,17 @@ public class EosExceptionBytes extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] buf;
-        private EosExceptionBytes _root;
-        private EosExceptionBytes _parent;
         public byte[] buf() { return buf; }
         public EosExceptionBytes _root() { return _root; }
         public EosExceptionBytes _parent() { return _parent; }
+        private byte[] buf;
+        private EosExceptionBytes _root;
+        private EosExceptionBytes _parent;
     }
-    private Data envelope;
-    private EosExceptionBytes _root;
-    private KaitaiStruct _parent;
     public Data envelope() { return envelope; }
     public EosExceptionBytes _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Data envelope;
+    private EosExceptionBytes _root;
+    private KaitaiStruct _parent;
 }

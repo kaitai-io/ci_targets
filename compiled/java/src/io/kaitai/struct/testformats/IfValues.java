@@ -65,7 +65,6 @@ public class IfValues extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private Integer halfOpcode;
         public Integer halfOpcode() {
             if (this.halfOpcode != null)
                 return this.halfOpcode;
@@ -74,17 +73,18 @@ public class IfValues extends KaitaiStruct {
             }
             return this.halfOpcode;
         }
-        private int opcode;
-        private IfValues _root;
-        private IfValues _parent;
         public int opcode() { return opcode; }
         public IfValues _root() { return _root; }
         public IfValues _parent() { return _parent; }
+        private Integer halfOpcode;
+        private int opcode;
+        private IfValues _root;
+        private IfValues _parent;
     }
-    private List<Code> codes;
-    private IfValues _root;
-    private KaitaiStruct _parent;
     public List<Code> codes() { return codes; }
     public IfValues _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Code> codes;
+    private IfValues _root;
+    private KaitaiStruct _parent;
 }

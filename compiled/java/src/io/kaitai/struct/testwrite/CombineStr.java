@@ -58,7 +58,6 @@ public class CombineStr extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("str_limit", 4, (this.strLimit).getBytes(Charset.forName("ASCII")).length);
         _dirty = false;
     }
-    private byte[] calcBytes;
     public byte[] calcBytes() {
         if (this.calcBytes != null)
             return this.calcBytes;
@@ -66,7 +65,6 @@ public class CombineStr extends KaitaiStruct.ReadWrite {
         return this.calcBytes;
     }
     public void _invalidateCalcBytes() { this.calcBytes = null; }
-    private String calcOrCalcBytes;
     public String calcOrCalcBytes() {
         if (this.calcOrCalcBytes != null)
             return this.calcOrCalcBytes;
@@ -74,7 +72,6 @@ public class CombineStr extends KaitaiStruct.ReadWrite {
         return this.calcOrCalcBytes;
     }
     public void _invalidateCalcOrCalcBytes() { this.calcOrCalcBytes = null; }
-    private String eosOrCalc;
     public String eosOrCalc() {
         if (this.eosOrCalc != null)
             return this.eosOrCalc;
@@ -82,7 +79,6 @@ public class CombineStr extends KaitaiStruct.ReadWrite {
         return this.eosOrCalc;
     }
     public void _invalidateEosOrCalc() { this.eosOrCalc = null; }
-    private String eosOrCalcBytes;
     public String eosOrCalcBytes() {
         if (this.eosOrCalcBytes != null)
             return this.eosOrCalcBytes;
@@ -90,7 +86,6 @@ public class CombineStr extends KaitaiStruct.ReadWrite {
         return this.eosOrCalcBytes;
     }
     public void _invalidateEosOrCalcBytes() { this.eosOrCalcBytes = null; }
-    private String limitOrCalc;
     public String limitOrCalc() {
         if (this.limitOrCalc != null)
             return this.limitOrCalc;
@@ -98,7 +93,6 @@ public class CombineStr extends KaitaiStruct.ReadWrite {
         return this.limitOrCalc;
     }
     public void _invalidateLimitOrCalc() { this.limitOrCalc = null; }
-    private String limitOrCalcBytes;
     public String limitOrCalcBytes() {
         if (this.limitOrCalcBytes != null)
             return this.limitOrCalcBytes;
@@ -106,7 +100,6 @@ public class CombineStr extends KaitaiStruct.ReadWrite {
         return this.limitOrCalcBytes;
     }
     public void _invalidateLimitOrCalcBytes() { this.limitOrCalcBytes = null; }
-    private String limitOrEos;
     public String limitOrEos() {
         if (this.limitOrEos != null)
             return this.limitOrEos;
@@ -114,7 +107,6 @@ public class CombineStr extends KaitaiStruct.ReadWrite {
         return this.limitOrEos;
     }
     public void _invalidateLimitOrEos() { this.limitOrEos = null; }
-    private String strCalc;
     public String strCalc() {
         if (this.strCalc != null)
             return this.strCalc;
@@ -122,7 +114,6 @@ public class CombineStr extends KaitaiStruct.ReadWrite {
         return this.strCalc;
     }
     public void _invalidateStrCalc() { this.strCalc = null; }
-    private String strCalcBytes;
     public String strCalcBytes() {
         if (this.strCalcBytes != null)
             return this.strCalcBytes;
@@ -130,7 +121,6 @@ public class CombineStr extends KaitaiStruct.ReadWrite {
         return this.strCalcBytes;
     }
     public void _invalidateStrCalcBytes() { this.strCalcBytes = null; }
-    private String termOrCalc;
     public String termOrCalc() {
         if (this.termOrCalc != null)
             return this.termOrCalc;
@@ -138,7 +128,6 @@ public class CombineStr extends KaitaiStruct.ReadWrite {
         return this.termOrCalc;
     }
     public void _invalidateTermOrCalc() { this.termOrCalc = null; }
-    private String termOrCalcBytes;
     public String termOrCalcBytes() {
         if (this.termOrCalcBytes != null)
             return this.termOrCalcBytes;
@@ -146,7 +135,6 @@ public class CombineStr extends KaitaiStruct.ReadWrite {
         return this.termOrCalcBytes;
     }
     public void _invalidateTermOrCalcBytes() { this.termOrCalcBytes = null; }
-    private String termOrEos;
     public String termOrEos() {
         if (this.termOrEos != null)
             return this.termOrEos;
@@ -154,7 +142,6 @@ public class CombineStr extends KaitaiStruct.ReadWrite {
         return this.termOrEos;
     }
     public void _invalidateTermOrEos() { this.termOrEos = null; }
-    private String termOrLimit;
     public String termOrLimit() {
         if (this.termOrLimit != null)
             return this.termOrLimit;
@@ -162,11 +149,6 @@ public class CombineStr extends KaitaiStruct.ReadWrite {
         return this.termOrLimit;
     }
     public void _invalidateTermOrLimit() { this.termOrLimit = null; }
-    private String strTerm;
-    private String strLimit;
-    private String strEos;
-    private CombineStr _root;
-    private KaitaiStruct.ReadWrite _parent;
     public String strTerm() { return strTerm; }
     public void setStrTerm(String _v) { _dirty = true; strTerm = _v; }
     public String strLimit() { return strLimit; }
@@ -177,4 +159,22 @@ public class CombineStr extends KaitaiStruct.ReadWrite {
     public void set_root(CombineStr _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private byte[] calcBytes;
+    private String calcOrCalcBytes;
+    private String eosOrCalc;
+    private String eosOrCalcBytes;
+    private String limitOrCalc;
+    private String limitOrCalcBytes;
+    private String limitOrEos;
+    private String strCalc;
+    private String strCalcBytes;
+    private String termOrCalc;
+    private String termOrCalcBytes;
+    private String termOrEos;
+    private String termOrLimit;
+    private String strTerm;
+    private String strLimit;
+    private String strEos;
+    private CombineStr _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

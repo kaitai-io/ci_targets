@@ -34,12 +34,12 @@ public class ImportsCircularA extends KaitaiStruct {
     public void _fetchInstances() {
         this.two._fetchInstances();
     }
-    private int code;
-    private ImportsCircularB two;
-    private ImportsCircularA _root;
-    private KaitaiStruct _parent;
     public int code() { return code; }
     public ImportsCircularB two() { return two; }
     public ImportsCircularA _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private int code;
+    private ImportsCircularB two;
+    private ImportsCircularA _root;
+    private KaitaiStruct _parent;
 }

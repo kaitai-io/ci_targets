@@ -38,12 +38,12 @@ public class ImportsCircularB extends KaitaiStruct {
             this.backRef._fetchInstances();
         }
     }
-    private int initial;
-    private ImportsCircularA backRef;
-    private ImportsCircularB _root;
-    private KaitaiStruct _parent;
     public int initial() { return initial; }
     public ImportsCircularA backRef() { return backRef; }
     public ImportsCircularB _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private int initial;
+    private ImportsCircularA backRef;
+    private ImportsCircularB _root;
+    private KaitaiStruct _parent;
 }

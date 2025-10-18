@@ -36,58 +36,32 @@ private:
 
 public:
     ~enum_to_i_invalid_t();
-
-private:
-    bool f_one_lt_two;
-    bool m_one_lt_two;
-
-public:
     bool one_lt_two();
-
-private:
-    bool f_pet_2_eq_int_f;
-    bool m_pet_2_eq_int_f;
-
-public:
     bool pet_2_eq_int_f();
-
-private:
-    bool f_pet_2_eq_int_t;
-    bool m_pet_2_eq_int_t;
-
-public:
     bool pet_2_eq_int_t();
-
-private:
-    bool f_pet_2_i;
-    int32_t m_pet_2_i;
-
-public:
     int32_t pet_2_i();
-
-private:
-    bool f_pet_2_i_to_s;
-    std::string m_pet_2_i_to_s;
-
-public:
     std::string pet_2_i_to_s();
-
-private:
-    bool f_pet_2_mod;
-    int32_t m_pet_2_mod;
-
-public:
     int32_t pet_2_mod();
-
-private:
-    animal_t m_pet_1;
-    animal_t m_pet_2;
-    enum_to_i_invalid_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     animal_t pet_1() const { return m_pet_1; }
     animal_t pet_2() const { return m_pet_2; }
     enum_to_i_invalid_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_one_lt_two;
+    bool m_one_lt_two;
+    bool f_pet_2_eq_int_f;
+    bool m_pet_2_eq_int_f;
+    bool f_pet_2_eq_int_t;
+    bool m_pet_2_eq_int_t;
+    bool f_pet_2_i;
+    int32_t m_pet_2_i;
+    bool f_pet_2_i_to_s;
+    std::string m_pet_2_i_to_s;
+    bool f_pet_2_mod;
+    int32_t m_pet_2_mod;
+    animal_t m_pet_1;
+    animal_t m_pet_2;
+    enum_to_i_invalid_t* m__root;
+    kaitai::kstruct* m__parent;
 };

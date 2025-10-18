@@ -23,8 +23,6 @@ namespace Kaitai
             _lenParsed = m_io.ReadU2le();
             _parsed = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(LenParsed));
         }
-        private bool f_parsedEqLiteral;
-        private bool _parsedEqLiteral;
         public bool ParsedEqLiteral
         {
             get
@@ -36,13 +34,15 @@ namespace Kaitai
                 return _parsedEqLiteral;
             }
         }
-        private ushort _lenParsed;
-        private string _parsed;
-        private StrLiteralsLatin1 m_root;
-        private KaitaiStruct m_parent;
         public ushort LenParsed { get { return _lenParsed; } }
         public string Parsed { get { return _parsed; } }
         public StrLiteralsLatin1 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_parsedEqLiteral;
+        private bool _parsedEqLiteral;
+        private ushort _lenParsed;
+        private string _parsed;
+        private StrLiteralsLatin1 m_root;
+        private KaitaiStruct m_parent;
     }
 }

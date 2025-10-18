@@ -39,6 +39,10 @@ public:
 
     public:
         ~code_t();
+        int32_t half_opcode();
+        uint8_t opcode() const { return m_opcode; }
+        if_values_t* _root() const { return m__root; }
+        if_values_t* _parent() const { return m__parent; }
 
     private:
         bool f_half_opcode;
@@ -49,28 +53,18 @@ public:
         bool _is_null_half_opcode() { half_opcode(); return n_half_opcode; };
 
     private:
-
-    public:
-        int32_t half_opcode();
-
-    private:
         uint8_t m_opcode;
         if_values_t* m__root;
         if_values_t* m__parent;
-
-    public:
-        uint8_t opcode() const { return m_opcode; }
-        if_values_t* _root() const { return m__root; }
-        if_values_t* _parent() const { return m__parent; }
     };
-
-private:
-    std::unique_ptr<std::vector<std::unique_ptr<code_t>>> m_codes;
-    if_values_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     std::vector<std::unique_ptr<code_t>>* codes() const { return m_codes.get(); }
     if_values_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    std::unique_ptr<std::vector<std::unique_ptr<code_t>>> m_codes;
+    if_values_t* m__root;
+    kaitai::kstruct* m__parent;
 };

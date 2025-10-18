@@ -68,23 +68,23 @@ namespace Kaitai
                 private void _read()
                 {
                 }
-                private EnumDeep m_root;
-                private KaitaiStruct m_parent;
                 public EnumDeep M_Root { get { return m_root; } }
                 public KaitaiStruct M_Parent { get { return m_parent; } }
+                private EnumDeep m_root;
+                private KaitaiStruct m_parent;
             }
-            private EnumDeep m_root;
-            private KaitaiStruct m_parent;
             public EnumDeep M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
+            private EnumDeep m_root;
+            private KaitaiStruct m_parent;
         }
-        private Container1.Animal _pet1;
-        private Container1.Container2.Animal _pet2;
-        private EnumDeep m_root;
-        private KaitaiStruct m_parent;
         public Container1.Animal Pet1 { get { return _pet1; } }
         public Container1.Container2.Animal Pet2 { get { return _pet2; } }
         public EnumDeep M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Container1.Animal _pet1;
+        private Container1.Container2.Animal _pet2;
+        private EnumDeep m_root;
+        private KaitaiStruct m_parent;
     }
 }

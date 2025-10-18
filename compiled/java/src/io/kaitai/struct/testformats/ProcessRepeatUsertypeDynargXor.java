@@ -72,12 +72,12 @@ public class ProcessRepeatUsertypeDynargXor extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private long a;
-        private ProcessRepeatUsertypeDynargXor _root;
-        private ProcessRepeatUsertypeDynargXor _parent;
         public long a() { return a; }
         public ProcessRepeatUsertypeDynargXor _root() { return _root; }
         public ProcessRepeatUsertypeDynargXor _parent() { return _parent; }
+        private long a;
+        private ProcessRepeatUsertypeDynargXor _root;
+        private ProcessRepeatUsertypeDynargXor _parent;
     }
     public static class BlocksBWrapper extends KaitaiStruct {
         public static BlocksBWrapper fromFile(String fileName) throws IOException {
@@ -110,7 +110,6 @@ public class ProcessRepeatUsertypeDynargXor extends KaitaiStruct {
             if (this.blocks1B != null) {
             }
         }
-        private Integer blocks0B;
         public Integer blocks0B() {
             if (this.blocks0B != null)
                 return this.blocks0B;
@@ -121,7 +120,6 @@ public class ProcessRepeatUsertypeDynargXor extends KaitaiStruct {
             io.seek(_pos);
             return this.blocks0B;
         }
-        private Integer blocks1B;
         public Integer blocks1B() {
             if (this.blocks1B != null)
                 return this.blocks1B;
@@ -132,23 +130,25 @@ public class ProcessRepeatUsertypeDynargXor extends KaitaiStruct {
             io.seek(_pos);
             return this.blocks1B;
         }
-        private int dummy;
-        private ProcessRepeatUsertypeDynargXor _root;
-        private ProcessRepeatUsertypeDynargXor _parent;
         public int dummy() { return dummy; }
         public ProcessRepeatUsertypeDynargXor _root() { return _root; }
         public ProcessRepeatUsertypeDynargXor _parent() { return _parent; }
+        private Integer blocks0B;
+        private Integer blocks1B;
+        private int dummy;
+        private ProcessRepeatUsertypeDynargXor _root;
+        private ProcessRepeatUsertypeDynargXor _parent;
     }
-    private List<Block> blocks;
-    private BlocksBWrapper blocksB;
-    private ProcessRepeatUsertypeDynargXor _root;
-    private KaitaiStruct _parent;
-    private List<byte[]> _raw_blocks;
-    private List<byte[]> _raw__raw_blocks;
     public List<Block> blocks() { return blocks; }
     public BlocksBWrapper blocksB() { return blocksB; }
     public ProcessRepeatUsertypeDynargXor _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
     public List<byte[]> _raw_blocks() { return _raw_blocks; }
     public List<byte[]> _raw__raw_blocks() { return _raw__raw_blocks; }
+    private List<Block> blocks;
+    private BlocksBWrapper blocksB;
+    private ProcessRepeatUsertypeDynargXor _root;
+    private KaitaiStruct _parent;
+    private List<byte[]> _raw_blocks;
+    private List<byte[]> _raw__raw_blocks;
 }

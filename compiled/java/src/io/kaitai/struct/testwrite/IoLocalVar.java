@@ -133,16 +133,13 @@ public class IoLocalVar extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private IoLocalVar _root;
-        private IoLocalVar _parent;
         public IoLocalVar _root() { return _root; }
         public void set_root(IoLocalVar _v) { _dirty = true; _root = _v; }
         public IoLocalVar _parent() { return _parent; }
         public void set_parent(IoLocalVar _v) { _dirty = true; _parent = _v; }
+        private IoLocalVar _root;
+        private IoLocalVar _parent;
     }
-    private Object messUp;
-    private boolean _shouldWriteMessUp = false;
-    private boolean _enabledMessUp = true;
     public Object messUp() {
         if (_shouldWriteMessUp)
             _writeMessUp();
@@ -232,12 +229,6 @@ public class IoLocalVar extends KaitaiStruct.ReadWrite {
         }
         io.seek(_pos);
     }
-    private byte[] skip;
-    private Integer alwaysNull;
-    private int followup;
-    private IoLocalVar _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_messUp;
     public byte[] skip() { return skip; }
     public void setSkip(byte[] _v) { _dirty = true; skip = _v; }
     public Integer alwaysNull() { return alwaysNull; }
@@ -250,4 +241,13 @@ public class IoLocalVar extends KaitaiStruct.ReadWrite {
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_messUp() { return _raw_messUp; }
     public void set_raw_MessUp(byte[] _v) { _dirty = true; _raw_messUp = _v; }
+    private Object messUp;
+    private boolean _shouldWriteMessUp = false;
+    private boolean _enabledMessUp = true;
+    private byte[] skip;
+    private Integer alwaysNull;
+    private int followup;
+    private IoLocalVar _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_messUp;
 }

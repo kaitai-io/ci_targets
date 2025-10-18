@@ -85,42 +85,42 @@ public class ExprSizeofType1 extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private byte[] a;
-            private ExprSizeofType1 _root;
-            private ExprSizeofType1.Block _parent;
             public byte[] a() { return a; }
             public ExprSizeofType1 _root() { return _root; }
             public ExprSizeofType1.Block _parent() { return _parent; }
+            private byte[] a;
+            private ExprSizeofType1 _root;
+            private ExprSizeofType1.Block _parent;
         }
-        private int a;
-        private long b;
-        private byte[] c;
-        private Subblock d;
-        private ExprSizeofType1 _root;
-        private KaitaiStruct _parent;
         public int a() { return a; }
         public long b() { return b; }
         public byte[] c() { return c; }
         public Subblock d() { return d; }
         public ExprSizeofType1 _root() { return _root; }
         public KaitaiStruct _parent() { return _parent; }
+        private int a;
+        private long b;
+        private byte[] c;
+        private Subblock d;
+        private ExprSizeofType1 _root;
+        private KaitaiStruct _parent;
     }
-    private Integer sizeofBlock;
     public Integer sizeofBlock() {
         if (this.sizeofBlock != null)
             return this.sizeofBlock;
         this.sizeofBlock = ((Number) (11)).intValue();
         return this.sizeofBlock;
     }
-    private Integer sizeofSubblock;
     public Integer sizeofSubblock() {
         if (this.sizeofSubblock != null)
             return this.sizeofSubblock;
         this.sizeofSubblock = ((Number) (4)).intValue();
         return this.sizeofSubblock;
     }
-    private ExprSizeofType1 _root;
-    private KaitaiStruct _parent;
     public ExprSizeofType1 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Integer sizeofBlock;
+    private Integer sizeofSubblock;
+    private ExprSizeofType1 _root;
+    private KaitaiStruct _parent;
 }

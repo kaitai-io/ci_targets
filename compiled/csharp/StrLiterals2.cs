@@ -24,8 +24,6 @@ namespace Kaitai
         private void _read()
         {
         }
-        private bool f_atSign;
-        private string _atSign;
         public string AtSign
         {
             get
@@ -37,8 +35,6 @@ namespace Kaitai
                 return _atSign;
             }
         }
-        private bool f_dollar1;
-        private string _dollar1;
         public string Dollar1
         {
             get
@@ -50,8 +46,6 @@ namespace Kaitai
                 return _dollar1;
             }
         }
-        private bool f_dollar2;
-        private string _dollar2;
         public string Dollar2
         {
             get
@@ -63,8 +57,6 @@ namespace Kaitai
                 return _dollar2;
             }
         }
-        private bool f_hash;
-        private string _hash;
         public string Hash
         {
             get
@@ -76,9 +68,17 @@ namespace Kaitai
                 return _hash;
             }
         }
-        private StrLiterals2 m_root;
-        private KaitaiStruct m_parent;
         public StrLiterals2 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_atSign;
+        private string _atSign;
+        private bool f_dollar1;
+        private string _dollar1;
+        private bool f_dollar2;
+        private string _dollar2;
+        private bool f_hash;
+        private string _hash;
+        private StrLiterals2 m_root;
+        private KaitaiStruct m_parent;
     }
 }

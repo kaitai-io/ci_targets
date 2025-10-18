@@ -54,17 +54,6 @@ namespace Kaitai\Struct\Tests {
                 throw new \Kaitai\Struct\Error\ValidationNotEqualError(-1, $this->_m_sint64, $this->_io, "/seq/10");
             }
         }
-        protected $_m_magic1;
-        protected $_m_uint8;
-        protected $_m_sint8;
-        protected $_m_magicUint;
-        protected $_m_uint16;
-        protected $_m_uint32;
-        protected $_m_uint64;
-        protected $_m_magicSint;
-        protected $_m_sint16;
-        protected $_m_sint32;
-        protected $_m_sint64;
         public function magic1() { return $this->_m_magic1; }
         public function uint8() { return $this->_m_uint8; }
         public function sint8() { return $this->_m_sint8; }
@@ -76,5 +65,16 @@ namespace Kaitai\Struct\Tests {
         public function sint16() { return $this->_m_sint16; }
         public function sint32() { return $this->_m_sint32; }
         public function sint64() { return $this->_m_sint64; }
+        protected $_m_magic1;
+        protected $_m_uint8;
+        protected $_m_sint8;
+        protected $_m_magicUint;
+        protected $_m_uint16;
+        protected $_m_uint32;
+        protected $_m_uint64;
+        protected $_m_magicSint;
+        protected $_m_sint16;
+        protected $_m_sint32;
+        protected $_m_sint64;
     }
 }

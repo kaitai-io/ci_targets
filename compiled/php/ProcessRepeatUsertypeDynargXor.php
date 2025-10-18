@@ -21,14 +21,14 @@ namespace Kaitai\Struct\Tests {
             }
             $this->_m_blocksB = new \Kaitai\Struct\Tests\ProcessRepeatUsertypeDynargXor\BlocksBWrapper($this->_io, $this, $this->_root);
         }
-        protected $_m_blocks;
-        protected $_m_blocksB;
-        protected $_m__raw_blocks;
-        protected $_m__raw__raw_blocks;
         public function blocks() { return $this->_m_blocks; }
         public function blocksB() { return $this->_m_blocksB; }
         public function _raw_blocks() { return $this->_m__raw_blocks; }
         public function _raw__raw_blocks() { return $this->_m__raw__raw_blocks; }
+        protected $_m_blocks;
+        protected $_m_blocksB;
+        protected $_m__raw_blocks;
+        protected $_m__raw__raw_blocks;
     }
 }
 
@@ -42,8 +42,8 @@ namespace Kaitai\Struct\Tests\ProcessRepeatUsertypeDynargXor {
         private function _read() {
             $this->_m_a = $this->_io->readU4le();
         }
-        protected $_m_a;
         public function a() { return $this->_m_a; }
+        protected $_m_a;
     }
 }
 
@@ -57,7 +57,6 @@ namespace Kaitai\Struct\Tests\ProcessRepeatUsertypeDynargXor {
         private function _read() {
             $this->_m_dummy = $this->_io->readU1();
         }
-        protected $_m_blocks0B;
         public function blocks0B() {
             if ($this->_m_blocks0B !== null)
                 return $this->_m_blocks0B;
@@ -68,7 +67,6 @@ namespace Kaitai\Struct\Tests\ProcessRepeatUsertypeDynargXor {
             $io->seek($_pos);
             return $this->_m_blocks0B;
         }
-        protected $_m_blocks1B;
         public function blocks1B() {
             if ($this->_m_blocks1B !== null)
                 return $this->_m_blocks1B;
@@ -79,7 +77,9 @@ namespace Kaitai\Struct\Tests\ProcessRepeatUsertypeDynargXor {
             $io->seek($_pos);
             return $this->_m_blocks1B;
         }
-        protected $_m_dummy;
         public function dummy() { return $this->_m_dummy; }
+        protected $_m_blocks0B;
+        protected $_m_blocks1B;
+        protected $_m_dummy;
     }
 }

@@ -39,36 +39,30 @@ public:
 
     public:
         ~wants_ints_t();
+        std::vector<uint16_t>* nums() const { return m_nums; }
+        params_pass_array_int_t* _root() const { return m__root; }
+        params_pass_array_int_t* _parent() const { return m__parent; }
 
     private:
         std::vector<uint16_t>* m_nums;
         params_pass_array_int_t* m__root;
         params_pass_array_int_t* m__parent;
-
-    public:
-        std::vector<uint16_t>* nums() const { return m_nums; }
-        params_pass_array_int_t* _root() const { return m__root; }
-        params_pass_array_int_t* _parent() const { return m__parent; }
     };
-
-private:
-    bool f_ints_calc;
-    std::unique_ptr<std::vector<uint16_t>> m_ints_calc;
 
 public:
     std::vector<uint16_t>* ints_calc();
-
-private:
-    std::unique_ptr<std::vector<uint16_t>> m_ints;
-    std::unique_ptr<wants_ints_t> m_pass_ints;
-    std::unique_ptr<wants_ints_t> m_pass_ints_calc;
-    params_pass_array_int_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     std::vector<uint16_t>* ints() const { return m_ints.get(); }
     wants_ints_t* pass_ints() const { return m_pass_ints.get(); }
     wants_ints_t* pass_ints_calc() const { return m_pass_ints_calc.get(); }
     params_pass_array_int_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_ints_calc;
+    std::unique_ptr<std::vector<uint16_t>> m_ints_calc;
+    std::unique_ptr<std::vector<uint16_t>> m_ints;
+    std::unique_ptr<wants_ints_t> m_pass_ints;
+    std::unique_ptr<wants_ints_t> m_pass_ints_calc;
+    params_pass_array_int_t* m__root;
+    kaitai::kstruct* m__parent;
 };

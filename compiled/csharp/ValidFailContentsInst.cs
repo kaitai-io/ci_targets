@@ -24,8 +24,6 @@ namespace Kaitai
                 _a = m_io.ReadBytes(0);
             }
         }
-        private bool f_foo;
-        private byte[] _foo;
         public byte[] Foo
         {
             get
@@ -44,11 +42,13 @@ namespace Kaitai
                 return _foo;
             }
         }
-        private byte[] _a;
-        private ValidFailContentsInst m_root;
-        private KaitaiStruct m_parent;
         public byte[] A { get { return _a; } }
         public ValidFailContentsInst M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_foo;
+        private byte[] _foo;
+        private byte[] _a;
+        private ValidFailContentsInst m_root;
+        private KaitaiStruct m_parent;
     }
 }

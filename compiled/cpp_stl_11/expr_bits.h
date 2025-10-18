@@ -58,33 +58,33 @@ public:
 
     public:
         ~endian_switch_t();
+        int16_t foo() const { return m_foo; }
+        expr_bits_t* _root() const { return m__root; }
+        expr_bits_t* _parent() const { return m__parent; }
 
     private:
         int16_t m_foo;
         expr_bits_t* m__root;
         expr_bits_t* m__parent;
-
-    public:
-        int16_t foo() const { return m_foo; }
-        expr_bits_t* _root() const { return m__root; }
-        expr_bits_t* _parent() const { return m__parent; }
     };
+
+public:
+    items_t enum_inst();
+    int8_t inst_pos();
+    items_t enum_seq() const { return m_enum_seq; }
+    uint64_t a() const { return m_a; }
+    std::string byte_size() const { return m_byte_size; }
+    std::vector<int8_t>* repeat_expr() const { return m_repeat_expr.get(); }
+    int8_t switch_on_type() const { return m_switch_on_type; }
+    endian_switch_t* switch_on_endian() const { return m_switch_on_endian.get(); }
+    expr_bits_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_enum_inst;
     items_t m_enum_inst;
-
-public:
-    items_t enum_inst();
-
-private:
     bool f_inst_pos;
     int8_t m_inst_pos;
-
-public:
-    int8_t inst_pos();
-
-private:
     items_t m_enum_seq;
     uint64_t m_a;
     std::string m_byte_size;
@@ -99,14 +99,4 @@ private:
     std::unique_ptr<endian_switch_t> m_switch_on_endian;
     expr_bits_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    items_t enum_seq() const { return m_enum_seq; }
-    uint64_t a() const { return m_a; }
-    std::string byte_size() const { return m_byte_size; }
-    std::vector<int8_t>* repeat_expr() const { return m_repeat_expr.get(); }
-    int8_t switch_on_type() const { return m_switch_on_type; }
-    endian_switch_t* switch_on_endian() const { return m_switch_on_endian.get(); }
-    expr_bits_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

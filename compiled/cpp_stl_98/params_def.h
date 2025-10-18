@@ -24,6 +24,12 @@ private:
 
 public:
     ~params_def_t();
+    std::string buf() const { return m_buf; }
+    uint8_t trailer() const { return m_trailer; }
+    uint32_t len() const { return m_len; }
+    bool has_trailer() const { return m_has_trailer; }
+    params_def_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::string m_buf;
@@ -38,14 +44,6 @@ private:
     bool m_has_trailer;
     params_def_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::string buf() const { return m_buf; }
-    uint8_t trailer() const { return m_trailer; }
-    uint32_t len() const { return m_len; }
-    bool has_trailer() const { return m_has_trailer; }
-    params_def_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // PARAMS_DEF_H_

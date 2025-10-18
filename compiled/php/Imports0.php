@@ -12,16 +12,16 @@ namespace Kaitai\Struct\Tests {
             $this->_m_two = $this->_io->readU1();
             $this->_m_hw = new \Kaitai\Struct\Tests\HelloWorld($this->_io);
         }
-        protected $_m_hwOne;
         public function hwOne() {
             if ($this->_m_hwOne !== null)
                 return $this->_m_hwOne;
             $this->_m_hwOne = $this->hw()->one();
             return $this->_m_hwOne;
         }
-        protected $_m_two;
-        protected $_m_hw;
         public function two() { return $this->_m_two; }
         public function hw() { return $this->_m_hw; }
+        protected $_m_hwOne;
+        protected $_m_two;
+        protected $_m_hw;
     }
 }

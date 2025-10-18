@@ -64,13 +64,13 @@ public class RepeatEosU4 extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private List<Long> numbers;
-    private RepeatEosU4 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Long> numbers() { return numbers; }
     public void setNumbers(List<Long> _v) { _dirty = true; numbers = _v; }
     public RepeatEosU4 _root() { return _root; }
     public void set_root(RepeatEosU4 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Long> numbers;
+    private RepeatEosU4 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

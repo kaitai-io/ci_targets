@@ -35,12 +35,12 @@ public class ImportsParamsDefEnumImported extends KaitaiStruct {
         this.one._fetchInstances();
         this.two._fetchInstances();
     }
-    private EnumImportSeq one;
-    private ParamsDefEnumImported two;
-    private ImportsParamsDefEnumImported _root;
-    private KaitaiStruct _parent;
     public EnumImportSeq one() { return one; }
     public ParamsDefEnumImported two() { return two; }
     public ImportsParamsDefEnumImported _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private EnumImportSeq one;
+    private ParamsDefEnumImported two;
+    private ImportsParamsDefEnumImported _root;
+    private KaitaiStruct _parent;
 }

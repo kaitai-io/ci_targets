@@ -25,21 +25,15 @@ private:
 
 public:
     ~instance_in_repeat_until_t();
+    int16_t until_val();
+    std::vector<int16_t>* entries() const { return m_entries.get(); }
+    instance_in_repeat_until_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_until_val;
     int16_t m_until_val;
-
-public:
-    int16_t until_val();
-
-private:
     std::unique_ptr<std::vector<int16_t>> m_entries;
     instance_in_repeat_until_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::vector<int16_t>* entries() const { return m_entries.get(); }
-    instance_in_repeat_until_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

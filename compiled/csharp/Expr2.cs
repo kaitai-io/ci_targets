@@ -53,8 +53,6 @@ namespace Kaitai
                 var io___raw_rest = new KaitaiStream(__raw_rest);
                 _rest = new Tuple(io___raw_rest, this, m_root);
             }
-            private bool f_char5;
-            private string _char5;
             public string Char5
             {
                 get
@@ -69,8 +67,6 @@ namespace Kaitai
                     return _char5;
                 }
             }
-            private bool f_lenMod;
-            private int _lenMod;
             public int LenMod
             {
                 get
@@ -82,8 +78,6 @@ namespace Kaitai
                     return _lenMod;
                 }
             }
-            private bool f_tuple5;
-            private Tuple _tuple5;
             public Tuple Tuple5
             {
                 get
@@ -98,18 +92,24 @@ namespace Kaitai
                     return _tuple5;
                 }
             }
-            private ushort _lenOrig;
-            private string _str;
-            private Tuple _rest;
-            private Expr2 m_root;
-            private Expr2 m_parent;
-            private byte[] __raw_rest;
             public ushort LenOrig { get { return _lenOrig; } }
             public string Str { get { return _str; } }
             public Tuple Rest { get { return _rest; } }
             public Expr2 M_Root { get { return m_root; } }
             public Expr2 M_Parent { get { return m_parent; } }
             public byte[] M_RawRest { get { return __raw_rest; } }
+            private bool f_char5;
+            private string _char5;
+            private bool f_lenMod;
+            private int _lenMod;
+            private bool f_tuple5;
+            private Tuple _tuple5;
+            private ushort _lenOrig;
+            private string _str;
+            private Tuple _rest;
+            private Expr2 m_root;
+            private Expr2 m_parent;
+            private byte[] __raw_rest;
         }
         public partial class Tuple : KaitaiStruct
         {
@@ -131,8 +131,6 @@ namespace Kaitai
                 _byte1 = m_io.ReadU1();
                 _byte2 = m_io.ReadU1();
             }
-            private bool f_avg;
-            private int _avg;
             public int Avg
             {
                 get
@@ -144,19 +142,19 @@ namespace Kaitai
                     return _avg;
                 }
             }
-            private byte _byte0;
-            private byte _byte1;
-            private byte _byte2;
-            private Expr2 m_root;
-            private Expr2.ModStr m_parent;
             public byte Byte0 { get { return _byte0; } }
             public byte Byte1 { get { return _byte1; } }
             public byte Byte2 { get { return _byte2; } }
             public Expr2 M_Root { get { return m_root; } }
             public Expr2.ModStr M_Parent { get { return m_parent; } }
+            private bool f_avg;
+            private int _avg;
+            private byte _byte0;
+            private byte _byte1;
+            private byte _byte2;
+            private Expr2 m_root;
+            private Expr2.ModStr m_parent;
         }
-        private bool f_str1Avg;
-        private int _str1Avg;
         public int Str1Avg
         {
             get
@@ -168,8 +166,6 @@ namespace Kaitai
                 return _str1Avg;
             }
         }
-        private bool f_str1Byte1;
-        private byte _str1Byte1;
         public byte Str1Byte1
         {
             get
@@ -181,8 +177,6 @@ namespace Kaitai
                 return _str1Byte1;
             }
         }
-        private bool f_str1Char5;
-        private string _str1Char5;
         public string Str1Char5
         {
             get
@@ -194,8 +188,6 @@ namespace Kaitai
                 return _str1Char5;
             }
         }
-        private bool f_str1Len;
-        private int _str1Len;
         public int Str1Len
         {
             get
@@ -207,8 +199,6 @@ namespace Kaitai
                 return _str1Len;
             }
         }
-        private bool f_str1LenMod;
-        private int _str1LenMod;
         public int Str1LenMod
         {
             get
@@ -220,8 +210,6 @@ namespace Kaitai
                 return _str1LenMod;
             }
         }
-        private bool f_str1Tuple5;
-        private Tuple _str1Tuple5;
         public Tuple Str1Tuple5
         {
             get
@@ -233,8 +221,6 @@ namespace Kaitai
                 return _str1Tuple5;
             }
         }
-        private bool f_str2Tuple5;
-        private Tuple _str2Tuple5;
         public Tuple Str2Tuple5
         {
             get
@@ -246,13 +232,27 @@ namespace Kaitai
                 return _str2Tuple5;
             }
         }
-        private ModStr _str1;
-        private ModStr _str2;
-        private Expr2 m_root;
-        private KaitaiStruct m_parent;
         public ModStr Str1 { get { return _str1; } }
         public ModStr Str2 { get { return _str2; } }
         public Expr2 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_str1Avg;
+        private int _str1Avg;
+        private bool f_str1Byte1;
+        private byte _str1Byte1;
+        private bool f_str1Char5;
+        private string _str1Char5;
+        private bool f_str1Len;
+        private int _str1Len;
+        private bool f_str1LenMod;
+        private int _str1LenMod;
+        private bool f_str1Tuple5;
+        private Tuple _str1Tuple5;
+        private bool f_str2Tuple5;
+        private Tuple _str2Tuple5;
+        private ModStr _str1;
+        private ModStr _str2;
+        private Expr2 m_root;
+        private KaitaiStruct m_parent;
     }
 }

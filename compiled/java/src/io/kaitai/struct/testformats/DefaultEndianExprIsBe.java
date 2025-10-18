@@ -160,14 +160,13 @@ public class DefaultEndianExprIsBe extends KaitaiStruct {
 
                 public void _fetchInstances() {
                 }
-                private long foo;
-                private DefaultEndianExprIsBe _root;
-                private DefaultEndianExprIsBe.Doc.MainObj _parent;
                 public long foo() { return foo; }
                 public DefaultEndianExprIsBe _root() { return _root; }
                 public DefaultEndianExprIsBe.Doc.MainObj _parent() { return _parent; }
+                private long foo;
+                private DefaultEndianExprIsBe _root;
+                private DefaultEndianExprIsBe.Doc.MainObj _parent;
             }
-            private Long instInt;
             public Long instInt() {
                 if (this.instInt != null)
                     return this.instInt;
@@ -181,7 +180,6 @@ public class DefaultEndianExprIsBe extends KaitaiStruct {
                 this._io.seek(_pos);
                 return this.instInt;
             }
-            private SubMainObj instSub;
             public SubMainObj instSub() {
                 if (this.instSub != null)
                     return this.instSub;
@@ -195,30 +193,32 @@ public class DefaultEndianExprIsBe extends KaitaiStruct {
                 this._io.seek(_pos);
                 return this.instSub;
             }
-            private long someInt;
-            private int someIntBe;
-            private int someIntLe;
-            private DefaultEndianExprIsBe _root;
-            private DefaultEndianExprIsBe.Doc _parent;
             public long someInt() { return someInt; }
             public int someIntBe() { return someIntBe; }
             public int someIntLe() { return someIntLe; }
             public DefaultEndianExprIsBe _root() { return _root; }
             public DefaultEndianExprIsBe.Doc _parent() { return _parent; }
+            private Long instInt;
+            private SubMainObj instSub;
+            private long someInt;
+            private int someIntBe;
+            private int someIntLe;
+            private DefaultEndianExprIsBe _root;
+            private DefaultEndianExprIsBe.Doc _parent;
         }
-        private byte[] indicator;
-        private MainObj main;
-        private DefaultEndianExprIsBe _root;
-        private DefaultEndianExprIsBe _parent;
         public byte[] indicator() { return indicator; }
         public MainObj main() { return main; }
         public DefaultEndianExprIsBe _root() { return _root; }
         public DefaultEndianExprIsBe _parent() { return _parent; }
+        private byte[] indicator;
+        private MainObj main;
+        private DefaultEndianExprIsBe _root;
+        private DefaultEndianExprIsBe _parent;
     }
-    private List<Doc> docs;
-    private DefaultEndianExprIsBe _root;
-    private KaitaiStruct _parent;
     public List<Doc> docs() { return docs; }
     public DefaultEndianExprIsBe _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Doc> docs;
+    private DefaultEndianExprIsBe _root;
+    private KaitaiStruct _parent;
 }

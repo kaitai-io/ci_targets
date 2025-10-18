@@ -50,9 +50,6 @@ public class IfInstances extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private Integer neverHappens;
-    private boolean _shouldWriteNeverHappens = false;
-    private boolean _enabledNeverHappens = true;
     public Integer neverHappens() {
         if (_shouldWriteNeverHappens)
             _writeNeverHappens();
@@ -80,10 +77,13 @@ public class IfInstances extends KaitaiStruct.ReadWrite {
             this._io.seek(_pos);
         }
     }
-    private IfInstances _root;
-    private KaitaiStruct.ReadWrite _parent;
     public IfInstances _root() { return _root; }
     public void set_root(IfInstances _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer neverHappens;
+    private boolean _shouldWriteNeverHappens = false;
+    private boolean _enabledNeverHappens = true;
+    private IfInstances _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

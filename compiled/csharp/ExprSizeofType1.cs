@@ -59,28 +59,26 @@ namespace Kaitai
                 {
                     _a = m_io.ReadBytes(4);
                 }
-                private byte[] _a;
-                private ExprSizeofType1 m_root;
-                private ExprSizeofType1.Block m_parent;
                 public byte[] A { get { return _a; } }
                 public ExprSizeofType1 M_Root { get { return m_root; } }
                 public ExprSizeofType1.Block M_Parent { get { return m_parent; } }
+                private byte[] _a;
+                private ExprSizeofType1 m_root;
+                private ExprSizeofType1.Block m_parent;
             }
-            private byte _a;
-            private uint _b;
-            private byte[] _c;
-            private Subblock _d;
-            private ExprSizeofType1 m_root;
-            private KaitaiStruct m_parent;
             public byte A { get { return _a; } }
             public uint B { get { return _b; } }
             public byte[] C { get { return _c; } }
             public Subblock D { get { return _d; } }
             public ExprSizeofType1 M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
+            private byte _a;
+            private uint _b;
+            private byte[] _c;
+            private Subblock _d;
+            private ExprSizeofType1 m_root;
+            private KaitaiStruct m_parent;
         }
-        private bool f_sizeofBlock;
-        private int _sizeofBlock;
         public int SizeofBlock
         {
             get
@@ -92,8 +90,6 @@ namespace Kaitai
                 return _sizeofBlock;
             }
         }
-        private bool f_sizeofSubblock;
-        private int _sizeofSubblock;
         public int SizeofSubblock
         {
             get
@@ -105,9 +101,13 @@ namespace Kaitai
                 return _sizeofSubblock;
             }
         }
-        private ExprSizeofType1 m_root;
-        private KaitaiStruct m_parent;
         public ExprSizeofType1 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_sizeofBlock;
+        private int _sizeofBlock;
+        private bool f_sizeofSubblock;
+        private int _sizeofSubblock;
+        private ExprSizeofType1 m_root;
+        private KaitaiStruct m_parent;
     }
 }

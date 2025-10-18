@@ -48,18 +48,18 @@ namespace Kaitai
             {
                 _meow = m_io.ReadBytes(3 - M_Parent.ArrayOfCats.Count);
             }
-            private byte[] _meow;
-            private DebugArrayUserCurrentExcluded m_root;
-            private DebugArrayUserCurrentExcluded m_parent;
             public byte[] Meow { get { return _meow; } }
             public DebugArrayUserCurrentExcluded M_Root { get { return m_root; } }
             public DebugArrayUserCurrentExcluded M_Parent { get { return m_parent; } }
+            private byte[] _meow;
+            private DebugArrayUserCurrentExcluded m_root;
+            private DebugArrayUserCurrentExcluded m_parent;
         }
-        private List<Cat> _arrayOfCats;
-        private DebugArrayUserCurrentExcluded m_root;
-        private KaitaiStruct m_parent;
         public List<Cat> ArrayOfCats { get { return _arrayOfCats; } }
         public DebugArrayUserCurrentExcluded M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<Cat> _arrayOfCats;
+        private DebugArrayUserCurrentExcluded m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -25,8 +25,6 @@ namespace Kaitai
         private void _read()
         {
         }
-        private bool f_backslashes;
-        private string _backslashes;
         public string Backslashes
         {
             get
@@ -38,8 +36,6 @@ namespace Kaitai
                 return _backslashes;
             }
         }
-        private bool f_complexStr;
-        private string _complexStr;
         public string ComplexStr
         {
             get
@@ -51,8 +47,6 @@ namespace Kaitai
                 return _complexStr;
             }
         }
-        private bool f_doubleQuotes;
-        private string _doubleQuotes;
         public string DoubleQuotes
         {
             get
@@ -64,8 +58,6 @@ namespace Kaitai
                 return _doubleQuotes;
             }
         }
-        private bool f_octalEatup;
-        private string _octalEatup;
         public string OctalEatup
         {
             get
@@ -77,8 +69,6 @@ namespace Kaitai
                 return _octalEatup;
             }
         }
-        private bool f_octalEatup2;
-        private string _octalEatup2;
         public string OctalEatup2
         {
             get
@@ -90,9 +80,19 @@ namespace Kaitai
                 return _octalEatup2;
             }
         }
-        private StrLiterals m_root;
-        private KaitaiStruct m_parent;
         public StrLiterals M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_backslashes;
+        private string _backslashes;
+        private bool f_complexStr;
+        private string _complexStr;
+        private bool f_doubleQuotes;
+        private string _doubleQuotes;
+        private bool f_octalEatup;
+        private string _octalEatup;
+        private bool f_octalEatup2;
+        private string _octalEatup2;
+        private StrLiterals m_root;
+        private KaitaiStruct m_parent;
     }
 }

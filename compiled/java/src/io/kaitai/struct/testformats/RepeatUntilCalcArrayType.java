@@ -73,33 +73,33 @@ public class RepeatUntilCalcArrayType extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int marker;
-        private long body;
-        private RepeatUntilCalcArrayType _root;
-        private RepeatUntilCalcArrayType _parent;
         public int marker() { return marker; }
         public long body() { return body; }
         public RepeatUntilCalcArrayType _root() { return _root; }
         public RepeatUntilCalcArrayType _parent() { return _parent; }
+        private int marker;
+        private long body;
+        private RepeatUntilCalcArrayType _root;
+        private RepeatUntilCalcArrayType _parent;
     }
-    private Record firstRec;
     public Record firstRec() {
         if (this.firstRec != null)
             return this.firstRec;
         this.firstRec = recsAccessor().get(0);
         return this.firstRec;
     }
-    private List<Record> recsAccessor;
     public List<Record> recsAccessor() {
         if (this.recsAccessor != null)
             return this.recsAccessor;
         this.recsAccessor = records();
         return this.recsAccessor;
     }
-    private List<Record> records;
-    private RepeatUntilCalcArrayType _root;
-    private KaitaiStruct _parent;
     public List<Record> records() { return records; }
     public RepeatUntilCalcArrayType _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Record firstRec;
+    private List<Record> recsAccessor;
+    private List<Record> records;
+    private RepeatUntilCalcArrayType _root;
+    private KaitaiStruct _parent;
 }

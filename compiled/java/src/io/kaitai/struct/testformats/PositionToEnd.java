@@ -61,16 +61,15 @@ public class PositionToEnd extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private long foo;
-        private long bar;
-        private PositionToEnd _root;
-        private PositionToEnd _parent;
         public long foo() { return foo; }
         public long bar() { return bar; }
         public PositionToEnd _root() { return _root; }
         public PositionToEnd _parent() { return _parent; }
+        private long foo;
+        private long bar;
+        private PositionToEnd _root;
+        private PositionToEnd _parent;
     }
-    private IndexObj index;
     public IndexObj index() {
         if (this.index != null)
             return this.index;
@@ -80,8 +79,9 @@ public class PositionToEnd extends KaitaiStruct {
         this._io.seek(_pos);
         return this.index;
     }
-    private PositionToEnd _root;
-    private KaitaiStruct _parent;
     public PositionToEnd _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private IndexObj index;
+    private PositionToEnd _root;
+    private KaitaiStruct _parent;
 }

@@ -32,14 +32,14 @@ namespace Kaitai\Struct\Tests {
                 }
             }
         }
-        protected $_m_code;
-        protected $_m_size;
-        protected $_m_body;
-        protected $_m__raw_body;
         public function code() { return $this->_m_code; }
         public function size() { return $this->_m_size; }
         public function body() { return $this->_m_body; }
         public function _raw_body() { return $this->_m__raw_body; }
+        protected $_m_code;
+        protected $_m_size;
+        protected $_m_body;
+        protected $_m__raw_body;
     }
 }
 
@@ -53,8 +53,8 @@ namespace Kaitai\Struct\Tests\SwitchRepeatExpr {
         private function _read() {
             $this->_m_first = $this->_io->readBytesFull();
         }
-        protected $_m_first;
         public function first() { return $this->_m_first; }
+        protected $_m_first;
     }
 }
 
@@ -68,7 +68,7 @@ namespace Kaitai\Struct\Tests\SwitchRepeatExpr {
         private function _read() {
             $this->_m_second = $this->_io->readBytesFull();
         }
-        protected $_m_second;
         public function second() { return $this->_m_second; }
+        protected $_m_second;
     }
 }

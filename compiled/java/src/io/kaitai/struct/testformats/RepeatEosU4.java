@@ -43,10 +43,10 @@ public class RepeatEosU4 extends KaitaiStruct {
         for (int i = 0; i < this.numbers.size(); i++) {
         }
     }
-    private List<Long> numbers;
-    private RepeatEosU4 _root;
-    private KaitaiStruct _parent;
     public List<Long> numbers() { return numbers; }
     public RepeatEosU4 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Long> numbers;
+    private RepeatEosU4 _root;
+    private KaitaiStruct _parent;
 }

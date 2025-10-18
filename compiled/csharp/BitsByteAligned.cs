@@ -33,17 +33,6 @@ namespace Kaitai
             m_io.AlignToByte();
             _byte4 = m_io.ReadU1();
         }
-        private ulong _one;
-        private byte _byte1;
-        private ulong _two;
-        private bool _three;
-        private byte _byte2;
-        private ulong _four;
-        private byte[] _byte3;
-        private ulong _fullByte;
-        private byte _byte4;
-        private BitsByteAligned m_root;
-        private KaitaiStruct m_parent;
         public ulong One { get { return _one; } }
         public byte Byte1 { get { return _byte1; } }
         public ulong Two { get { return _two; } }
@@ -55,5 +44,16 @@ namespace Kaitai
         public byte Byte4 { get { return _byte4; } }
         public BitsByteAligned M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private ulong _one;
+        private byte _byte1;
+        private ulong _two;
+        private bool _three;
+        private byte _byte2;
+        private ulong _four;
+        private byte[] _byte3;
+        private ulong _fullByte;
+        private byte _byte4;
+        private BitsByteAligned m_root;
+        private KaitaiStruct m_parent;
     }
 }

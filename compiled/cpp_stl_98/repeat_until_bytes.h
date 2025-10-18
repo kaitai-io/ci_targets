@@ -25,16 +25,14 @@ private:
 
 public:
     ~repeat_until_bytes_t();
+    std::vector<std::string>* records() const { return m_records; }
+    repeat_until_bytes_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::vector<std::string>* m_records;
     repeat_until_bytes_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::vector<std::string>* records() const { return m_records; }
-    repeat_until_bytes_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // REPEAT_UNTIL_BYTES_H_

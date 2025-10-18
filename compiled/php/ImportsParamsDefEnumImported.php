@@ -12,9 +12,9 @@ namespace Kaitai\Struct\Tests {
             $this->_m_one = new \Kaitai\Struct\Tests\EnumImportSeq($this->_io);
             $this->_m_two = new \Kaitai\Struct\Tests\ParamsDefEnumImported($this->one()->pet1(), $this->one()->pet2(), $this->_io);
         }
-        protected $_m_one;
-        protected $_m_two;
         public function one() { return $this->_m_one; }
         public function two() { return $this->_m_two; }
+        protected $_m_one;
+        protected $_m_two;
     }
 }

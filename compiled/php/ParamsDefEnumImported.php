@@ -12,9 +12,9 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
         }
-        protected $_m_pet1Param;
-        protected $_m_pet2Param;
         public function pet1Param() { return $this->_m_pet1Param; }
         public function pet2Param() { return $this->_m_pet2Param; }
+        protected $_m_pet1Param;
+        protected $_m_pet2Param;
     }
 }

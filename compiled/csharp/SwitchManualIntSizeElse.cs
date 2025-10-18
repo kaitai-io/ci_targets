@@ -90,12 +90,12 @@ namespace Kaitai
                         }
                     }
                 }
-                private List<string> _entries;
-                private SwitchManualIntSizeElse m_root;
-                private SwitchManualIntSizeElse.Chunk m_parent;
                 public List<string> Entries { get { return _entries; } }
                 public SwitchManualIntSizeElse M_Root { get { return m_root; } }
                 public SwitchManualIntSizeElse.Chunk M_Parent { get { return m_parent; } }
+                private List<string> _entries;
+                private SwitchManualIntSizeElse m_root;
+                private SwitchManualIntSizeElse.Chunk m_parent;
             }
             public partial class ChunkMeta : KaitaiStruct
             {
@@ -115,14 +115,14 @@ namespace Kaitai
                     _title = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true));
                     _author = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true));
                 }
-                private string _title;
-                private string _author;
-                private SwitchManualIntSizeElse m_root;
-                private SwitchManualIntSizeElse.Chunk m_parent;
                 public string Title { get { return _title; } }
                 public string Author { get { return _author; } }
                 public SwitchManualIntSizeElse M_Root { get { return m_root; } }
                 public SwitchManualIntSizeElse.Chunk M_Parent { get { return m_parent; } }
+                private string _title;
+                private string _author;
+                private SwitchManualIntSizeElse m_root;
+                private SwitchManualIntSizeElse.Chunk m_parent;
             }
             public partial class Dummy : KaitaiStruct
             {
@@ -141,31 +141,31 @@ namespace Kaitai
                 {
                     _rest = m_io.ReadBytesFull();
                 }
-                private byte[] _rest;
-                private SwitchManualIntSizeElse m_root;
-                private SwitchManualIntSizeElse.Chunk m_parent;
                 public byte[] Rest { get { return _rest; } }
                 public SwitchManualIntSizeElse M_Root { get { return m_root; } }
                 public SwitchManualIntSizeElse.Chunk M_Parent { get { return m_parent; } }
+                private byte[] _rest;
+                private SwitchManualIntSizeElse m_root;
+                private SwitchManualIntSizeElse.Chunk m_parent;
             }
-            private byte _code;
-            private uint _size;
-            private KaitaiStruct _body;
-            private SwitchManualIntSizeElse m_root;
-            private SwitchManualIntSizeElse m_parent;
-            private byte[] __raw_body;
             public byte Code { get { return _code; } }
             public uint Size { get { return _size; } }
             public KaitaiStruct Body { get { return _body; } }
             public SwitchManualIntSizeElse M_Root { get { return m_root; } }
             public SwitchManualIntSizeElse M_Parent { get { return m_parent; } }
             public byte[] M_RawBody { get { return __raw_body; } }
+            private byte _code;
+            private uint _size;
+            private KaitaiStruct _body;
+            private SwitchManualIntSizeElse m_root;
+            private SwitchManualIntSizeElse m_parent;
+            private byte[] __raw_body;
         }
-        private List<Chunk> _chunks;
-        private SwitchManualIntSizeElse m_root;
-        private KaitaiStruct m_parent;
         public List<Chunk> Chunks { get { return _chunks; } }
         public SwitchManualIntSizeElse M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<Chunk> _chunks;
+        private SwitchManualIntSizeElse m_root;
+        private KaitaiStruct m_parent;
     }
 }

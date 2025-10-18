@@ -48,11 +48,6 @@ public class BitsUnalignedB64Le extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private boolean a;
-    private long b;
-    private long c;
-    private BitsUnalignedB64Le _root;
-    private KaitaiStruct.ReadWrite _parent;
     public boolean a() { return a; }
     public void setA(boolean _v) { _dirty = true; a = _v; }
     public long b() { return b; }
@@ -63,4 +58,9 @@ public class BitsUnalignedB64Le extends KaitaiStruct.ReadWrite {
     public void set_root(BitsUnalignedB64Le _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private boolean a;
+    private long b;
+    private long c;
+    private BitsUnalignedB64Le _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

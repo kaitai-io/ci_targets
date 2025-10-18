@@ -60,6 +60,11 @@ public:
 
         public:
             ~main_obj_t();
+            uint32_t some_int() const { return m_some_int; }
+            uint16_t some_int_be() const { return m_some_int_be; }
+            uint16_t some_int_le() const { return m_some_int_le; }
+            default_endian_expr_is_le_t* _root() const { return m__root; }
+            default_endian_expr_is_le_t::doc_t* _parent() const { return m__parent; }
 
         private:
             uint32_t m_some_int;
@@ -67,37 +72,30 @@ public:
             uint16_t m_some_int_le;
             default_endian_expr_is_le_t* m__root;
             default_endian_expr_is_le_t::doc_t* m__parent;
-
-        public:
-            uint32_t some_int() const { return m_some_int; }
-            uint16_t some_int_be() const { return m_some_int_be; }
-            uint16_t some_int_le() const { return m_some_int_le; }
-            default_endian_expr_is_le_t* _root() const { return m__root; }
-            default_endian_expr_is_le_t::doc_t* _parent() const { return m__parent; }
         };
-
-    private:
-        std::string m_indicator;
-        main_obj_t* m_main;
-        default_endian_expr_is_le_t* m__root;
-        default_endian_expr_is_le_t* m__parent;
 
     public:
         std::string indicator() const { return m_indicator; }
         main_obj_t* main() const { return m_main; }
         default_endian_expr_is_le_t* _root() const { return m__root; }
         default_endian_expr_is_le_t* _parent() const { return m__parent; }
-    };
 
-private:
-    std::vector<doc_t*>* m_docs;
-    default_endian_expr_is_le_t* m__root;
-    kaitai::kstruct* m__parent;
+    private:
+        std::string m_indicator;
+        main_obj_t* m_main;
+        default_endian_expr_is_le_t* m__root;
+        default_endian_expr_is_le_t* m__parent;
+    };
 
 public:
     std::vector<doc_t*>* docs() const { return m_docs; }
     default_endian_expr_is_le_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    std::vector<doc_t*>* m_docs;
+    default_endian_expr_is_le_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // DEFAULT_ENDIAN_EXPR_IS_LE_H_

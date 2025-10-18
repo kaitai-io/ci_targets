@@ -34,13 +34,13 @@ namespace Kaitai
                 }
             }
         }
-        private byte? _notParsed;
-        private byte? _parsed;
-        private ValidNotParsedIf m_root;
-        private KaitaiStruct m_parent;
         public byte? NotParsed { get { return _notParsed; } }
         public byte? Parsed { get { return _parsed; } }
         public ValidNotParsedIf M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte? _notParsed;
+        private byte? _parsed;
+        private ValidNotParsedIf m_root;
+        private KaitaiStruct m_parent;
     }
 }

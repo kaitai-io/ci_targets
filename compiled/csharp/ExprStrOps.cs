@@ -38,8 +38,6 @@ namespace Kaitai
         {
             _one = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(5));
         }
-        private bool f_oneLen;
-        private int _oneLen;
         public int OneLen
         {
             get
@@ -51,8 +49,6 @@ namespace Kaitai
                 return _oneLen;
             }
         }
-        private bool f_oneRev;
-        private string _oneRev;
         public string OneRev
         {
             get
@@ -64,8 +60,6 @@ namespace Kaitai
                 return _oneRev;
             }
         }
-        private bool f_oneSubstr0To0;
-        private string _oneSubstr0To0;
         public string OneSubstr0To0
         {
             get
@@ -77,8 +71,6 @@ namespace Kaitai
                 return _oneSubstr0To0;
             }
         }
-        private bool f_oneSubstr0To3;
-        private string _oneSubstr0To3;
         public string OneSubstr0To3
         {
             get
@@ -90,8 +82,6 @@ namespace Kaitai
                 return _oneSubstr0To3;
             }
         }
-        private bool f_oneSubstr2To5;
-        private string _oneSubstr2To5;
         public string OneSubstr2To5
         {
             get
@@ -103,8 +93,6 @@ namespace Kaitai
                 return _oneSubstr2To5;
             }
         }
-        private bool f_oneSubstr3To3;
-        private string _oneSubstr3To3;
         public string OneSubstr3To3
         {
             get
@@ -116,8 +104,6 @@ namespace Kaitai
                 return _oneSubstr3To3;
             }
         }
-        private bool f_toIAttr;
-        private int _toIAttr;
         public int ToIAttr
         {
             get
@@ -129,8 +115,6 @@ namespace Kaitai
                 return _toIAttr;
             }
         }
-        private bool f_toIR10;
-        private int _toIR10;
         public int ToIR10
         {
             get
@@ -142,8 +126,6 @@ namespace Kaitai
                 return _toIR10;
             }
         }
-        private bool f_toIR16;
-        private int _toIR16;
         public int ToIR16
         {
             get
@@ -155,8 +137,6 @@ namespace Kaitai
                 return _toIR16;
             }
         }
-        private bool f_toIR2;
-        private int _toIR2;
         public int ToIR2
         {
             get
@@ -168,8 +148,6 @@ namespace Kaitai
                 return _toIR2;
             }
         }
-        private bool f_toIR8;
-        private int _toIR8;
         public int ToIR8
         {
             get
@@ -181,8 +159,6 @@ namespace Kaitai
                 return _toIR8;
             }
         }
-        private bool f_two;
-        private string _two;
         public string Two
         {
             get
@@ -194,8 +170,6 @@ namespace Kaitai
                 return _two;
             }
         }
-        private bool f_twoLen;
-        private int _twoLen;
         public int TwoLen
         {
             get
@@ -207,8 +181,6 @@ namespace Kaitai
                 return _twoLen;
             }
         }
-        private bool f_twoRev;
-        private string _twoRev;
         public string TwoRev
         {
             get
@@ -220,8 +192,6 @@ namespace Kaitai
                 return _twoRev;
             }
         }
-        private bool f_twoSubstr0To10;
-        private string _twoSubstr0To10;
         public string TwoSubstr0To10
         {
             get
@@ -233,8 +203,6 @@ namespace Kaitai
                 return _twoSubstr0To10;
             }
         }
-        private bool f_twoSubstr0To7;
-        private string _twoSubstr0To7;
         public string TwoSubstr0To7
         {
             get
@@ -246,8 +214,6 @@ namespace Kaitai
                 return _twoSubstr0To7;
             }
         }
-        private bool f_twoSubstr4To10;
-        private string _twoSubstr4To10;
         public string TwoSubstr4To10
         {
             get
@@ -259,11 +225,45 @@ namespace Kaitai
                 return _twoSubstr4To10;
             }
         }
-        private string _one;
-        private ExprStrOps m_root;
-        private KaitaiStruct m_parent;
         public string One { get { return _one; } }
         public ExprStrOps M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_oneLen;
+        private int _oneLen;
+        private bool f_oneRev;
+        private string _oneRev;
+        private bool f_oneSubstr0To0;
+        private string _oneSubstr0To0;
+        private bool f_oneSubstr0To3;
+        private string _oneSubstr0To3;
+        private bool f_oneSubstr2To5;
+        private string _oneSubstr2To5;
+        private bool f_oneSubstr3To3;
+        private string _oneSubstr3To3;
+        private bool f_toIAttr;
+        private int _toIAttr;
+        private bool f_toIR10;
+        private int _toIR10;
+        private bool f_toIR16;
+        private int _toIR16;
+        private bool f_toIR2;
+        private int _toIR2;
+        private bool f_toIR8;
+        private int _toIR8;
+        private bool f_two;
+        private string _two;
+        private bool f_twoLen;
+        private int _twoLen;
+        private bool f_twoRev;
+        private string _twoRev;
+        private bool f_twoSubstr0To10;
+        private string _twoSubstr0To10;
+        private bool f_twoSubstr0To7;
+        private string _twoSubstr0To7;
+        private bool f_twoSubstr4To10;
+        private string _twoSubstr4To10;
+        private string _one;
+        private ExprStrOps m_root;
+        private KaitaiStruct m_parent;
     }
 }

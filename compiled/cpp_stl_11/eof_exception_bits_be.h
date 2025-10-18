@@ -24,16 +24,14 @@ private:
 
 public:
     ~eof_exception_bits_be_t();
+    uint64_t pre_bits() const { return m_pre_bits; }
+    uint64_t fail_bits() const { return m_fail_bits; }
+    eof_exception_bits_be_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint64_t m_pre_bits;
     uint64_t m_fail_bits;
     eof_exception_bits_be_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint64_t pre_bits() const { return m_pre_bits; }
-    uint64_t fail_bits() const { return m_fail_bits; }
-    eof_exception_bits_be_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

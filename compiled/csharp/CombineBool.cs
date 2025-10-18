@@ -23,8 +23,6 @@ namespace Kaitai
         {
             _boolBit = m_io.ReadBitsIntBe(1) != 0;
         }
-        private bool f_boolCalc;
-        private bool _boolCalc;
         public bool BoolCalc
         {
             get
@@ -36,8 +34,6 @@ namespace Kaitai
                 return _boolCalc;
             }
         }
-        private bool f_boolCalcBit;
-        private bool _boolCalcBit;
         public bool BoolCalcBit
         {
             get
@@ -49,11 +45,15 @@ namespace Kaitai
                 return _boolCalcBit;
             }
         }
-        private bool _boolBit;
-        private CombineBool m_root;
-        private KaitaiStruct m_parent;
         public bool BoolBit { get { return _boolBit; } }
         public CombineBool M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_boolCalc;
+        private bool _boolCalc;
+        private bool f_boolCalcBit;
+        private bool _boolCalcBit;
+        private bool _boolBit;
+        private CombineBool m_root;
+        private KaitaiStruct m_parent;
     }
 }

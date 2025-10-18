@@ -22,13 +22,13 @@ namespace Kaitai
             __raw_data = m_io.ReadBytesFull();
             _data = m_io.ProcessZlib(__raw_data);
         }
-        private byte[] _data;
-        private ZlibWithHeader78 m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_data;
         public byte[] Data { get { return _data; } }
         public ZlibWithHeader78 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawData { get { return __raw_data; } }
+        private byte[] _data;
+        private ZlibWithHeader78 m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_data;
     }
 }

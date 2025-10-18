@@ -114,21 +114,16 @@ public class ProcessToUser extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private String str;
-        private ProcessToUser _root;
-        private ProcessToUser _parent;
         public String str() { return str; }
         public void setStr(String _v) { _dirty = true; str = _v; }
         public ProcessToUser _root() { return _root; }
         public void set_root(ProcessToUser _v) { _dirty = true; _root = _v; }
         public ProcessToUser _parent() { return _parent; }
         public void set_parent(ProcessToUser _v) { _dirty = true; _parent = _v; }
+        private String str;
+        private ProcessToUser _root;
+        private ProcessToUser _parent;
     }
-    private JustStr buf1;
-    private ProcessToUser _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_buf1;
-    private byte[] _raw__raw_buf1;
     public JustStr buf1() { return buf1; }
     public void setBuf1(JustStr _v) { _dirty = true; buf1 = _v; }
     public ProcessToUser _root() { return _root; }
@@ -139,4 +134,9 @@ public class ProcessToUser extends KaitaiStruct.ReadWrite {
     public void set_raw_Buf1(byte[] _v) { _dirty = true; _raw_buf1 = _v; }
     public byte[] _raw__raw_buf1() { return _raw__raw_buf1; }
     public void set_raw__raw_Buf1(byte[] _v) { _dirty = true; _raw__raw_buf1 = _v; }
+    private JustStr buf1;
+    private ProcessToUser _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_buf1;
+    private byte[] _raw__raw_buf1;
 }

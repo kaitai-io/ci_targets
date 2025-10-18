@@ -25,16 +25,14 @@ private:
 
 public:
     ~valid_fail_repeat_min_int_t();
+    std::vector<int8_t>* foo() const { return m_foo; }
+    valid_fail_repeat_min_int_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::vector<int8_t>* m_foo;
     valid_fail_repeat_min_int_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::vector<int8_t>* foo() const { return m_foo; }
-    valid_fail_repeat_min_int_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // VALID_FAIL_REPEAT_MIN_INT_H_

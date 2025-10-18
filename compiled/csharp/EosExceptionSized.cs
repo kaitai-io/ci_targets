@@ -42,14 +42,14 @@ namespace Kaitai
                 var io___raw_buf = new KaitaiStream(__raw_buf);
                 _buf = new Foo(io___raw_buf, this, m_root);
             }
-            private Foo _buf;
-            private EosExceptionSized m_root;
-            private EosExceptionSized m_parent;
-            private byte[] __raw_buf;
             public Foo Buf { get { return _buf; } }
             public EosExceptionSized M_Root { get { return m_root; } }
             public EosExceptionSized M_Parent { get { return m_parent; } }
             public byte[] M_RawBuf { get { return __raw_buf; } }
+            private Foo _buf;
+            private EosExceptionSized m_root;
+            private EosExceptionSized m_parent;
+            private byte[] __raw_buf;
         }
         public partial class Foo : KaitaiStruct
         {
@@ -67,18 +67,18 @@ namespace Kaitai
             private void _read()
             {
             }
-            private EosExceptionSized m_root;
-            private EosExceptionSized.Data m_parent;
             public EosExceptionSized M_Root { get { return m_root; } }
             public EosExceptionSized.Data M_Parent { get { return m_parent; } }
+            private EosExceptionSized m_root;
+            private EosExceptionSized.Data m_parent;
         }
-        private Data _envelope;
-        private EosExceptionSized m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_envelope;
         public Data Envelope { get { return _envelope; } }
         public EosExceptionSized M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawEnvelope { get { return __raw_envelope; } }
+        private Data _envelope;
+        private EosExceptionSized m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_envelope;
     }
 }

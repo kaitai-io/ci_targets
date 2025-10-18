@@ -88,21 +88,21 @@ public class NestedTypes extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private byte valueC;
-            private NestedTypes _root;
-            private NestedTypes.SubtypeA _parent;
             public byte valueC() { return valueC; }
             public NestedTypes _root() { return _root; }
             public NestedTypes.SubtypeA _parent() { return _parent; }
+            private byte valueC;
+            private NestedTypes _root;
+            private NestedTypes.SubtypeA _parent;
         }
-        private SubtypeB typedAtRoot;
-        private SubtypeC typedHere;
-        private NestedTypes _root;
-        private NestedTypes _parent;
         public SubtypeB typedAtRoot() { return typedAtRoot; }
         public SubtypeC typedHere() { return typedHere; }
         public NestedTypes _root() { return _root; }
         public NestedTypes _parent() { return _parent; }
+        private SubtypeB typedAtRoot;
+        private SubtypeC typedHere;
+        private NestedTypes _root;
+        private NestedTypes _parent;
     }
     public static class SubtypeB extends KaitaiStruct {
         public static SubtypeB fromFile(String fileName) throws IOException {
@@ -129,19 +129,19 @@ public class NestedTypes extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte valueB;
-        private NestedTypes _root;
-        private KaitaiStruct _parent;
         public byte valueB() { return valueB; }
         public NestedTypes _root() { return _root; }
         public KaitaiStruct _parent() { return _parent; }
+        private byte valueB;
+        private NestedTypes _root;
+        private KaitaiStruct _parent;
     }
-    private SubtypeA one;
-    private SubtypeB two;
-    private NestedTypes _root;
-    private KaitaiStruct _parent;
     public SubtypeA one() { return one; }
     public SubtypeB two() { return two; }
     public NestedTypes _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private SubtypeA one;
+    private SubtypeB two;
+    private NestedTypes _root;
+    private KaitaiStruct _parent;
 }

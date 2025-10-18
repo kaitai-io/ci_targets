@@ -153,17 +153,17 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private Byte value;
             public Byte value() {
                 if (this.value != null)
                     return this.value;
                 this.value = ((byte) 123);
                 return this.value;
             }
-            private SwitchManualEnumInvalidElse _root;
-            private SwitchManualEnumInvalidElse.Opcode _parent;
             public SwitchManualEnumInvalidElse _root() { return _root; }
             public SwitchManualEnumInvalidElse.Opcode _parent() { return _parent; }
+            private Byte value;
+            private SwitchManualEnumInvalidElse _root;
+            private SwitchManualEnumInvalidElse.Opcode _parent;
         }
         public static class Intval extends KaitaiStruct {
             public static Intval fromFile(String fileName) throws IOException {
@@ -190,12 +190,12 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private int value;
-            private SwitchManualEnumInvalidElse _root;
-            private SwitchManualEnumInvalidElse.Opcode _parent;
             public int value() { return value; }
             public SwitchManualEnumInvalidElse _root() { return _root; }
             public SwitchManualEnumInvalidElse.Opcode _parent() { return _parent; }
+            private int value;
+            private SwitchManualEnumInvalidElse _root;
+            private SwitchManualEnumInvalidElse.Opcode _parent;
         }
         public static class Strval extends KaitaiStruct {
             public static Strval fromFile(String fileName) throws IOException {
@@ -222,26 +222,26 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private String value;
-            private SwitchManualEnumInvalidElse _root;
-            private SwitchManualEnumInvalidElse.Opcode _parent;
             public String value() { return value; }
             public SwitchManualEnumInvalidElse _root() { return _root; }
             public SwitchManualEnumInvalidElse.Opcode _parent() { return _parent; }
+            private String value;
+            private SwitchManualEnumInvalidElse _root;
+            private SwitchManualEnumInvalidElse.Opcode _parent;
         }
-        private CodeEnum code;
-        private KaitaiStruct body;
-        private SwitchManualEnumInvalidElse _root;
-        private SwitchManualEnumInvalidElse _parent;
         public CodeEnum code() { return code; }
         public KaitaiStruct body() { return body; }
         public SwitchManualEnumInvalidElse _root() { return _root; }
         public SwitchManualEnumInvalidElse _parent() { return _parent; }
+        private CodeEnum code;
+        private KaitaiStruct body;
+        private SwitchManualEnumInvalidElse _root;
+        private SwitchManualEnumInvalidElse _parent;
     }
-    private List<Opcode> opcodes;
-    private SwitchManualEnumInvalidElse _root;
-    private KaitaiStruct _parent;
     public List<Opcode> opcodes() { return opcodes; }
     public SwitchManualEnumInvalidElse _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Opcode> opcodes;
+    private SwitchManualEnumInvalidElse _root;
+    private KaitaiStruct _parent;
 }

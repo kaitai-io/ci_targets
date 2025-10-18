@@ -36,7 +36,6 @@ public class CastToTop extends KaitaiStruct {
             this.header._fetchInstances();
         }
     }
-    private CastToTop header;
     public CastToTop header() {
         if (this.header != null)
             return this.header;
@@ -46,17 +45,18 @@ public class CastToTop extends KaitaiStruct {
         this._io.seek(_pos);
         return this.header;
     }
-    private CastToTop headerCasted;
     public CastToTop headerCasted() {
         if (this.headerCasted != null)
             return this.headerCasted;
         this.headerCasted = ((CastToTop) (header()));
         return this.headerCasted;
     }
-    private int code;
-    private CastToTop _root;
-    private KaitaiStruct _parent;
     public int code() { return code; }
     public CastToTop _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private CastToTop header;
+    private CastToTop headerCasted;
+    private int code;
+    private CastToTop _root;
+    private KaitaiStruct _parent;
 }

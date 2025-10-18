@@ -16,7 +16,7 @@ namespace Kaitai\Struct\Tests {
                 $i++;
             }
         }
-        protected $_m_records;
         public function records() { return $this->_m_records; }
+        protected $_m_records;
     }
 }

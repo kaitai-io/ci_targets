@@ -37,25 +37,19 @@ private:
 
 public:
     ~combine_enum_t();
-
-private:
-    bool f_enum_u4_u2;
-    animal_t m_enum_u4_u2;
-
-public:
     animal_t enum_u4_u2();
-
-private:
-    animal_t m_enum_u4;
-    animal_t m_enum_u2;
-    combine_enum_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     animal_t enum_u4() const { return m_enum_u4; }
     animal_t enum_u2() const { return m_enum_u2; }
     combine_enum_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_enum_u4_u2;
+    animal_t m_enum_u4_u2;
+    animal_t m_enum_u4;
+    animal_t m_enum_u2;
+    combine_enum_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // COMBINE_ENUM_H_

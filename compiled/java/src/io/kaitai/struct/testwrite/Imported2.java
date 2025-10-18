@@ -44,13 +44,13 @@ public class Imported2 extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private int one;
-    private Imported2 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int one() { return one; }
     public void setOne(int _v) { _dirty = true; one = _v; }
     public Imported2 _root() { return _root; }
     public void set_root(Imported2 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private int one;
+    private Imported2 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

@@ -44,16 +44,6 @@ namespace Kaitai
                 throw new ValidationNotEqualError("\u2591\u2592\u2593", _str4, m_io, "/seq/7");
             }
         }
-        private ushort _lenOf1;
-        private string _str1;
-        private ushort _lenOf2;
-        private string _str2;
-        private ushort _lenOf3;
-        private string _str3;
-        private ushort _lenOf4;
-        private string _str4;
-        private ValidEqStrEncodings m_root;
-        private KaitaiStruct m_parent;
         public ushort LenOf1 { get { return _lenOf1; } }
         public string Str1 { get { return _str1; } }
         public ushort LenOf2 { get { return _lenOf2; } }
@@ -64,5 +54,15 @@ namespace Kaitai
         public string Str4 { get { return _str4; } }
         public ValidEqStrEncodings M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private ushort _lenOf1;
+        private string _str1;
+        private ushort _lenOf2;
+        private string _str2;
+        private ushort _lenOf3;
+        private string _str3;
+        private ushort _lenOf4;
+        private string _str4;
+        private ValidEqStrEncodings m_root;
+        private KaitaiStruct m_parent;
     }
 }

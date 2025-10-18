@@ -76,11 +76,6 @@ public class ValidOptionalId extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private byte[] _unnamed0;
-    private int _unnamed1;
-    private byte _unnamed2;
-    private ValidOptionalId _root;
-    private KaitaiStruct.ReadWrite _parent;
     public byte[] _unnamed0() { return _unnamed0; }
     public void set_unnamed0(byte[] _v) { _dirty = true; _unnamed0 = _v; }
     public int _unnamed1() { return _unnamed1; }
@@ -91,4 +86,9 @@ public class ValidOptionalId extends KaitaiStruct.ReadWrite {
     public void set_root(ValidOptionalId _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private byte[] _unnamed0;
+    private int _unnamed1;
+    private byte _unnamed2;
+    private ValidOptionalId _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

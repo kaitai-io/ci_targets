@@ -31,8 +31,6 @@ namespace Kaitai
             _pet1 = ((Animal) m_io.ReadU4le());
             _pet2 = ((Animal) m_io.ReadU4le());
         }
-        private bool f_pet3;
-        private Animal _pet3;
         public Animal Pet3
         {
             get
@@ -44,8 +42,6 @@ namespace Kaitai
                 return _pet3;
             }
         }
-        private bool f_pet4;
-        private Animal _pet4;
         public Animal Pet4
         {
             get
@@ -57,13 +53,17 @@ namespace Kaitai
                 return _pet4;
             }
         }
-        private Animal _pet1;
-        private Animal _pet2;
-        private EnumOfValueInst m_root;
-        private KaitaiStruct m_parent;
         public Animal Pet1 { get { return _pet1; } }
         public Animal Pet2 { get { return _pet2; } }
         public EnumOfValueInst M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_pet3;
+        private Animal _pet3;
+        private bool f_pet4;
+        private Animal _pet4;
+        private Animal _pet1;
+        private Animal _pet2;
+        private EnumOfValueInst m_root;
+        private KaitaiStruct m_parent;
     }
 }

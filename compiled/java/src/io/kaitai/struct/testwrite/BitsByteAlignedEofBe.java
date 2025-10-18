@@ -49,10 +49,6 @@ public class BitsByteAlignedEofBe extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("prebuf", 8, this.prebuf.length);
         _dirty = false;
     }
-    private byte[] prebuf;
-    private long bits;
-    private BitsByteAlignedEofBe _root;
-    private KaitaiStruct.ReadWrite _parent;
     public byte[] prebuf() { return prebuf; }
     public void setPrebuf(byte[] _v) { _dirty = true; prebuf = _v; }
     public long bits() { return bits; }
@@ -61,4 +57,8 @@ public class BitsByteAlignedEofBe extends KaitaiStruct.ReadWrite {
     public void set_root(BitsByteAlignedEofBe _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private byte[] prebuf;
+    private long bits;
+    private BitsByteAlignedEofBe _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

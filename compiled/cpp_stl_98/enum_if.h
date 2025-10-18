@@ -53,18 +53,16 @@ public:
 
     public:
         ~arg_str_t();
+        uint8_t len() const { return m_len; }
+        std::string str() const { return m_str; }
+        enum_if_t* _root() const { return m__root; }
+        enum_if_t::operation_t* _parent() const { return m__parent; }
 
     private:
         uint8_t m_len;
         std::string m_str;
         enum_if_t* m__root;
         enum_if_t::operation_t* m__parent;
-
-    public:
-        uint8_t len() const { return m_len; }
-        std::string str() const { return m_str; }
-        enum_if_t* _root() const { return m__root; }
-        enum_if_t::operation_t* _parent() const { return m__parent; }
     };
 
     class arg_tuple_t : public kaitai::kstruct {
@@ -79,18 +77,16 @@ public:
 
     public:
         ~arg_tuple_t();
+        uint8_t num1() const { return m_num1; }
+        uint8_t num2() const { return m_num2; }
+        enum_if_t* _root() const { return m__root; }
+        enum_if_t::operation_t* _parent() const { return m__parent; }
 
     private:
         uint8_t m_num1;
         uint8_t m_num2;
         enum_if_t* m__root;
         enum_if_t::operation_t* m__parent;
-
-    public:
-        uint8_t num1() const { return m_num1; }
-        uint8_t num2() const { return m_num2; }
-        enum_if_t* _root() const { return m__root; }
-        enum_if_t::operation_t* _parent() const { return m__parent; }
     };
 
     class operation_t : public kaitai::kstruct {
@@ -105,6 +101,11 @@ public:
 
     public:
         ~operation_t();
+        opcodes_t opcode() const { return m_opcode; }
+        arg_tuple_t* arg_tuple() const { return m_arg_tuple; }
+        arg_str_t* arg_str() const { return m_arg_str; }
+        enum_if_t* _root() const { return m__root; }
+        enum_if_t* _parent() const { return m__parent; }
 
     private:
         opcodes_t m_opcode;
@@ -124,21 +125,7 @@ public:
     private:
         enum_if_t* m__root;
         enum_if_t* m__parent;
-
-    public:
-        opcodes_t opcode() const { return m_opcode; }
-        arg_tuple_t* arg_tuple() const { return m_arg_tuple; }
-        arg_str_t* arg_str() const { return m_arg_str; }
-        enum_if_t* _root() const { return m__root; }
-        enum_if_t* _parent() const { return m__parent; }
     };
-
-private:
-    operation_t* m_op1;
-    operation_t* m_op2;
-    operation_t* m_op3;
-    enum_if_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     operation_t* op1() const { return m_op1; }
@@ -146,6 +133,13 @@ public:
     operation_t* op3() const { return m_op3; }
     enum_if_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    operation_t* m_op1;
+    operation_t* m_op2;
+    operation_t* m_op3;
+    enum_if_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // ENUM_IF_H_

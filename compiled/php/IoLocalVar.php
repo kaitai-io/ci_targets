@@ -15,7 +15,6 @@ namespace Kaitai\Struct\Tests {
             }
             $this->_m_followup = $this->_io->readU1();
         }
-        protected $_m_messUp;
         public function messUp() {
             if ($this->_m_messUp !== null)
                 return $this->_m_messUp;
@@ -40,14 +39,15 @@ namespace Kaitai\Struct\Tests {
             $io->seek($_pos);
             return $this->_m_messUp;
         }
-        protected $_m_skip;
-        protected $_m_alwaysNull;
-        protected $_m_followup;
-        protected $_m__raw_messUp;
         public function skip() { return $this->_m_skip; }
         public function alwaysNull() { return $this->_m_alwaysNull; }
         public function followup() { return $this->_m_followup; }
         public function _raw_messUp() { return $this->_m__raw_messUp; }
+        protected $_m_messUp;
+        protected $_m_skip;
+        protected $_m_alwaysNull;
+        protected $_m_followup;
+        protected $_m__raw_messUp;
     }
 }
 

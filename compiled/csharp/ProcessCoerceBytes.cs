@@ -50,8 +50,6 @@ namespace Kaitai
                     _bufProc = m_io.ProcessXor(__raw_bufProc, 170);
                 }
             }
-            private bool f_buf;
-            private byte[] _buf;
             public byte[] Buf
             {
                 get
@@ -63,24 +61,26 @@ namespace Kaitai
                     return _buf;
                 }
             }
-            private byte _flag;
-            private byte[] _bufUnproc;
-            private byte[] _bufProc;
-            private ProcessCoerceBytes m_root;
-            private ProcessCoerceBytes m_parent;
-            private byte[] __raw_bufProc;
             public byte Flag { get { return _flag; } }
             public byte[] BufUnproc { get { return _bufUnproc; } }
             public byte[] BufProc { get { return _bufProc; } }
             public ProcessCoerceBytes M_Root { get { return m_root; } }
             public ProcessCoerceBytes M_Parent { get { return m_parent; } }
             public byte[] M_RawBufProc { get { return __raw_bufProc; } }
+            private bool f_buf;
+            private byte[] _buf;
+            private byte _flag;
+            private byte[] _bufUnproc;
+            private byte[] _bufProc;
+            private ProcessCoerceBytes m_root;
+            private ProcessCoerceBytes m_parent;
+            private byte[] __raw_bufProc;
         }
-        private List<Record> _records;
-        private ProcessCoerceBytes m_root;
-        private KaitaiStruct m_parent;
         public List<Record> Records { get { return _records; } }
         public ProcessCoerceBytes M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<Record> _records;
+        private ProcessCoerceBytes m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -42,12 +42,12 @@ namespace Kaitai
             {
                 _value = m_io.ReadU4le();
             }
-            private uint _value;
-            private ProcessCoerceUsertype2 m_root;
-            private ProcessCoerceUsertype2.Record m_parent;
             public uint Value { get { return _value; } }
             public ProcessCoerceUsertype2 M_Root { get { return m_root; } }
             public ProcessCoerceUsertype2.Record M_Parent { get { return m_parent; } }
+            private uint _value;
+            private ProcessCoerceUsertype2 m_root;
+            private ProcessCoerceUsertype2.Record m_parent;
         }
         public partial class Record : KaitaiStruct
         {
@@ -76,8 +76,6 @@ namespace Kaitai
                     _bufProc = new Foo(io___raw_bufProc, this, m_root);
                 }
             }
-            private bool f_buf;
-            private Foo _buf;
             public Foo Buf
             {
                 get
@@ -89,13 +87,6 @@ namespace Kaitai
                     return _buf;
                 }
             }
-            private byte _flag;
-            private Foo _bufUnproc;
-            private Foo _bufProc;
-            private ProcessCoerceUsertype2 m_root;
-            private ProcessCoerceUsertype2 m_parent;
-            private byte[] __raw_bufProc;
-            private byte[] __raw__raw_bufProc;
             public byte Flag { get { return _flag; } }
             public Foo BufUnproc { get { return _bufUnproc; } }
             public Foo BufProc { get { return _bufProc; } }
@@ -103,12 +94,21 @@ namespace Kaitai
             public ProcessCoerceUsertype2 M_Parent { get { return m_parent; } }
             public byte[] M_RawBufProc { get { return __raw_bufProc; } }
             public byte[] M_RawM_RawBufProc { get { return __raw__raw_bufProc; } }
+            private bool f_buf;
+            private Foo _buf;
+            private byte _flag;
+            private Foo _bufUnproc;
+            private Foo _bufProc;
+            private ProcessCoerceUsertype2 m_root;
+            private ProcessCoerceUsertype2 m_parent;
+            private byte[] __raw_bufProc;
+            private byte[] __raw__raw_bufProc;
         }
-        private List<Record> _records;
-        private ProcessCoerceUsertype2 m_root;
-        private KaitaiStruct m_parent;
         public List<Record> Records { get { return _records; } }
         public ProcessCoerceUsertype2 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<Record> _records;
+        private ProcessCoerceUsertype2 m_root;
+        private KaitaiStruct m_parent;
     }
 }

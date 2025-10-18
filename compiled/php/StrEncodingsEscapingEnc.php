@@ -26,18 +26,6 @@ namespace Kaitai\Struct\Tests {
             $_io__raw_str4 = new \Kaitai\Struct\Stream($this->_m__raw_str4);
             $this->_m_str4 = new \Kaitai\Struct\Tests\StrEncodingsEscapingEnc\Str4Wrapper($_io__raw_str4, $this, $this->_root);
         }
-        protected $_m_lenOf1;
-        protected $_m_str1;
-        protected $_m_lenOf2;
-        protected $_m_str2;
-        protected $_m_lenOf3;
-        protected $_m_str3;
-        protected $_m_lenOf4;
-        protected $_m_str4;
-        protected $_m__raw_str1;
-        protected $_m__raw_str2;
-        protected $_m__raw_str3;
-        protected $_m__raw_str4;
         public function lenOf1() { return $this->_m_lenOf1; }
         public function str1() { return $this->_m_str1; }
         public function lenOf2() { return $this->_m_lenOf2; }
@@ -50,6 +38,18 @@ namespace Kaitai\Struct\Tests {
         public function _raw_str2() { return $this->_m__raw_str2; }
         public function _raw_str3() { return $this->_m__raw_str3; }
         public function _raw_str4() { return $this->_m__raw_str4; }
+        protected $_m_lenOf1;
+        protected $_m_str1;
+        protected $_m_lenOf2;
+        protected $_m_str2;
+        protected $_m_lenOf3;
+        protected $_m_str3;
+        protected $_m_lenOf4;
+        protected $_m_str4;
+        protected $_m__raw_str1;
+        protected $_m__raw_str2;
+        protected $_m__raw_str3;
+        protected $_m__raw_str4;
     }
 }
 
@@ -62,7 +62,6 @@ namespace Kaitai\Struct\Tests\StrEncodingsEscapingEnc {
 
         private function _read() {
         }
-        protected $_m_v;
         public function v() {
             if ($this->_m_v !== null)
                 return $this->_m_v;
@@ -72,6 +71,7 @@ namespace Kaitai\Struct\Tests\StrEncodingsEscapingEnc {
             $this->_io->seek($_pos);
             return $this->_m_v;
         }
+        protected $_m_v;
     }
 }
 
@@ -84,7 +84,6 @@ namespace Kaitai\Struct\Tests\StrEncodingsEscapingEnc {
 
         private function _read() {
         }
-        protected $_m_v;
         public function v() {
             if ($this->_m_v !== null)
                 return $this->_m_v;
@@ -94,6 +93,7 @@ namespace Kaitai\Struct\Tests\StrEncodingsEscapingEnc {
             $this->_io->seek($_pos);
             return $this->_m_v;
         }
+        protected $_m_v;
     }
 }
 
@@ -106,7 +106,6 @@ namespace Kaitai\Struct\Tests\StrEncodingsEscapingEnc {
 
         private function _read() {
         }
-        protected $_m_v;
         public function v() {
             if ($this->_m_v !== null)
                 return $this->_m_v;
@@ -116,6 +115,7 @@ namespace Kaitai\Struct\Tests\StrEncodingsEscapingEnc {
             $this->_io->seek($_pos);
             return $this->_m_v;
         }
+        protected $_m_v;
     }
 }
 
@@ -128,7 +128,6 @@ namespace Kaitai\Struct\Tests\StrEncodingsEscapingEnc {
 
         private function _read() {
         }
-        protected $_m_v;
         public function v() {
             if ($this->_m_v !== null)
                 return $this->_m_v;
@@ -138,5 +137,6 @@ namespace Kaitai\Struct\Tests\StrEncodingsEscapingEnc {
             $this->_io->seek($_pos);
             return $this->_m_v;
         }
+        protected $_m_v;
     }
 }

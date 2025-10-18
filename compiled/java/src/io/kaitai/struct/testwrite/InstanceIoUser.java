@@ -146,9 +146,6 @@ public class InstanceIoUser extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private String name;
-        private boolean _shouldWriteName = false;
-        private boolean _enabledName = true;
         public String name() {
             if (_shouldWriteName)
                 _writeName();
@@ -175,10 +172,6 @@ public class InstanceIoUser extends KaitaiStruct.ReadWrite {
             io.writeU1(0);
             io.seek(_pos);
         }
-        private long nameOfs;
-        private long value;
-        private InstanceIoUser _root;
-        private InstanceIoUser _parent;
         public long nameOfs() { return nameOfs; }
         public void setNameOfs(long _v) { _dirty = true; nameOfs = _v; }
         public long value() { return value; }
@@ -187,6 +180,13 @@ public class InstanceIoUser extends KaitaiStruct.ReadWrite {
         public void set_root(InstanceIoUser _v) { _dirty = true; _root = _v; }
         public InstanceIoUser _parent() { return _parent; }
         public void set_parent(InstanceIoUser _v) { _dirty = true; _parent = _v; }
+        private String name;
+        private boolean _shouldWriteName = false;
+        private boolean _enabledName = true;
+        private long nameOfs;
+        private long value;
+        private InstanceIoUser _root;
+        private InstanceIoUser _parent;
     }
     public static class StringsObj extends KaitaiStruct.ReadWrite {
         public static StringsObj fromFile(String fileName) throws IOException {
@@ -245,22 +245,16 @@ public class InstanceIoUser extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private List<String> str;
-        private InstanceIoUser _root;
-        private InstanceIoUser _parent;
         public List<String> str() { return str; }
         public void setStr(List<String> _v) { _dirty = true; str = _v; }
         public InstanceIoUser _root() { return _root; }
         public void set_root(InstanceIoUser _v) { _dirty = true; _root = _v; }
         public InstanceIoUser _parent() { return _parent; }
         public void set_parent(InstanceIoUser _v) { _dirty = true; _parent = _v; }
+        private List<String> str;
+        private InstanceIoUser _root;
+        private InstanceIoUser _parent;
     }
-    private long qtyEntries;
-    private List<Entry> entries;
-    private StringsObj strings;
-    private InstanceIoUser _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_strings;
     public long qtyEntries() { return qtyEntries; }
     public void setQtyEntries(long _v) { _dirty = true; qtyEntries = _v; }
     public List<Entry> entries() { return entries; }
@@ -273,4 +267,10 @@ public class InstanceIoUser extends KaitaiStruct.ReadWrite {
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_strings() { return _raw_strings; }
     public void set_raw_Strings(byte[] _v) { _dirty = true; _raw_strings = _v; }
+    private long qtyEntries;
+    private List<Entry> entries;
+    private StringsObj strings;
+    private InstanceIoUser _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_strings;
 }

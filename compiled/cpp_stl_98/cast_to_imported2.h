@@ -24,23 +24,17 @@ private:
 
 public:
     ~cast_to_imported2_t();
+    hello_world_t* hw();
+    kaitai::kstruct* hw_param() const { return m_hw_param; }
+    cast_to_imported2_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_hw;
     hello_world_t* m_hw;
-
-public:
-    hello_world_t* hw();
-
-private:
     kaitai::kstruct* m_hw_param;
     cast_to_imported2_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    kaitai::kstruct* hw_param() const { return m_hw_param; }
-    cast_to_imported2_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // CAST_TO_IMPORTED2_H_

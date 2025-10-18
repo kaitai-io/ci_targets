@@ -48,12 +48,12 @@ namespace Kaitai
             {
                 _a = m_io.ReadU4le();
             }
-            private uint _a;
-            private ProcessRepeatUsertypeDynargXor m_root;
-            private ProcessRepeatUsertypeDynargXor m_parent;
             public uint A { get { return _a; } }
             public ProcessRepeatUsertypeDynargXor M_Root { get { return m_root; } }
             public ProcessRepeatUsertypeDynargXor M_Parent { get { return m_parent; } }
+            private uint _a;
+            private ProcessRepeatUsertypeDynargXor m_root;
+            private ProcessRepeatUsertypeDynargXor m_parent;
         }
         public partial class BlocksBWrapper : KaitaiStruct
         {
@@ -74,8 +74,6 @@ namespace Kaitai
             {
                 _dummy = m_io.ReadU1();
             }
-            private bool f_blocks0B;
-            private byte _blocks0B;
             public byte Blocks0B
             {
                 get
@@ -91,8 +89,6 @@ namespace Kaitai
                     return _blocks0B;
                 }
             }
-            private bool f_blocks1B;
-            private byte _blocks1B;
             public byte Blocks1B
             {
                 get
@@ -108,24 +104,28 @@ namespace Kaitai
                     return _blocks1B;
                 }
             }
-            private byte _dummy;
-            private ProcessRepeatUsertypeDynargXor m_root;
-            private ProcessRepeatUsertypeDynargXor m_parent;
             public byte Dummy { get { return _dummy; } }
             public ProcessRepeatUsertypeDynargXor M_Root { get { return m_root; } }
             public ProcessRepeatUsertypeDynargXor M_Parent { get { return m_parent; } }
+            private bool f_blocks0B;
+            private byte _blocks0B;
+            private bool f_blocks1B;
+            private byte _blocks1B;
+            private byte _dummy;
+            private ProcessRepeatUsertypeDynargXor m_root;
+            private ProcessRepeatUsertypeDynargXor m_parent;
         }
-        private List<Block> _blocks;
-        private BlocksBWrapper _blocksB;
-        private ProcessRepeatUsertypeDynargXor m_root;
-        private KaitaiStruct m_parent;
-        private List<byte[]> __raw_blocks;
-        private List<byte[]> __raw__raw_blocks;
         public List<Block> Blocks { get { return _blocks; } }
         public BlocksBWrapper BlocksB { get { return _blocksB; } }
         public ProcessRepeatUsertypeDynargXor M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public List<byte[]> M_RawBlocks { get { return __raw_blocks; } }
         public List<byte[]> M_RawM_RawBlocks { get { return __raw__raw_blocks; } }
+        private List<Block> _blocks;
+        private BlocksBWrapper _blocksB;
+        private ProcessRepeatUsertypeDynargXor m_root;
+        private KaitaiStruct m_parent;
+        private List<byte[]> __raw_blocks;
+        private List<byte[]> __raw__raw_blocks;
     }
 }

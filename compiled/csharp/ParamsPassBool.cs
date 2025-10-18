@@ -44,14 +44,14 @@ namespace Kaitai
             {
                 _foo = m_io.ReadBytes((Arg ? 1 : 2));
             }
-            private byte[] _foo;
-            private bool _arg;
-            private ParamsPassBool m_root;
-            private ParamsPassBool m_parent;
             public byte[] Foo { get { return _foo; } }
             public bool Arg { get { return _arg; } }
             public ParamsPassBool M_Root { get { return m_root; } }
             public ParamsPassBool M_Parent { get { return m_parent; } }
+            private byte[] _foo;
+            private bool _arg;
+            private ParamsPassBool m_root;
+            private ParamsPassBool m_parent;
         }
         public partial class ParamTypeBool : KaitaiStruct
         {
@@ -66,17 +66,15 @@ namespace Kaitai
             {
                 _foo = m_io.ReadBytes((Arg ? 1 : 2));
             }
-            private byte[] _foo;
-            private bool _arg;
-            private ParamsPassBool m_root;
-            private ParamsPassBool m_parent;
             public byte[] Foo { get { return _foo; } }
             public bool Arg { get { return _arg; } }
             public ParamsPassBool M_Root { get { return m_root; } }
             public ParamsPassBool M_Parent { get { return m_parent; } }
+            private byte[] _foo;
+            private bool _arg;
+            private ParamsPassBool m_root;
+            private ParamsPassBool m_parent;
         }
-        private bool f_vFalse;
-        private bool _vFalse;
         public bool VFalse
         {
             get
@@ -88,8 +86,6 @@ namespace Kaitai
                 return _vFalse;
             }
         }
-        private bool f_vTrue;
-        private bool _vTrue;
         public bool VTrue
         {
             get
@@ -101,16 +97,6 @@ namespace Kaitai
                 return _vTrue;
             }
         }
-        private bool _sFalse;
-        private bool _sTrue;
-        private ParamTypeB1 _seqB1;
-        private ParamTypeBool _seqBool;
-        private ParamTypeB1 _literalB1;
-        private ParamTypeBool _literalBool;
-        private ParamTypeB1 _instB1;
-        private ParamTypeBool _instBool;
-        private ParamsPassBool m_root;
-        private KaitaiStruct m_parent;
         public bool SFalse { get { return _sFalse; } }
         public bool STrue { get { return _sTrue; } }
         public ParamTypeB1 SeqB1 { get { return _seqB1; } }
@@ -121,5 +107,19 @@ namespace Kaitai
         public ParamTypeBool InstBool { get { return _instBool; } }
         public ParamsPassBool M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_vFalse;
+        private bool _vFalse;
+        private bool f_vTrue;
+        private bool _vTrue;
+        private bool _sFalse;
+        private bool _sTrue;
+        private ParamTypeB1 _seqB1;
+        private ParamTypeBool _seqBool;
+        private ParamTypeB1 _literalB1;
+        private ParamTypeBool _literalBool;
+        private ParamTypeB1 _instB1;
+        private ParamTypeBool _instBool;
+        private ParamsPassBool m_root;
+        private KaitaiStruct m_parent;
     }
 }

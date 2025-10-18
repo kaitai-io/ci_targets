@@ -33,12 +33,12 @@ public class EnumImportSeq extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Enum0.Animal pet1;
-    private EnumDeep.Container1.Container2.Animal pet2;
-    private EnumImportSeq _root;
-    private KaitaiStruct _parent;
     public Enum0.Animal pet1() { return pet1; }
     public EnumDeep.Container1.Container2.Animal pet2() { return pet2; }
     public EnumImportSeq _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Enum0.Animal pet1;
+    private EnumDeep.Container1.Container2.Animal pet2;
+    private EnumImportSeq _root;
+    private KaitaiStruct _parent;
 }

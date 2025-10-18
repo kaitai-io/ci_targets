@@ -49,12 +49,12 @@ namespace Kaitai
             {
                 _value = System.Text.Encoding.GetEncoding("UTF-8").GetString(KaitaiStream.BytesTerminate(KaitaiStream.BytesStripRight(m_io.ReadBytesFull(), 64), 64, false));
             }
-            private string _value;
-            private StrEosPadTermEqual m_root;
-            private StrEosPadTermEqual m_parent;
             public string Value { get { return _value; } }
             public StrEosPadTermEqual M_Root { get { return m_root; } }
             public StrEosPadTermEqual M_Parent { get { return m_parent; } }
+            private string _value;
+            private StrEosPadTermEqual m_root;
+            private StrEosPadTermEqual m_parent;
         }
         public partial class S2Type : KaitaiStruct
         {
@@ -73,12 +73,12 @@ namespace Kaitai
             {
                 _value = System.Text.Encoding.GetEncoding("UTF-8").GetString(KaitaiStream.BytesTerminate(KaitaiStream.BytesStripRight(m_io.ReadBytesFull(), 43), 64, true));
             }
-            private string _value;
-            private StrEosPadTermEqual m_root;
-            private StrEosPadTermEqual m_parent;
             public string Value { get { return _value; } }
             public StrEosPadTermEqual M_Root { get { return m_root; } }
             public StrEosPadTermEqual M_Parent { get { return m_parent; } }
+            private string _value;
+            private StrEosPadTermEqual m_root;
+            private StrEosPadTermEqual m_parent;
         }
         public partial class S3Type : KaitaiStruct
         {
@@ -97,12 +97,12 @@ namespace Kaitai
             {
                 _value = System.Text.Encoding.GetEncoding("UTF-8").GetString(KaitaiStream.BytesTerminate(KaitaiStream.BytesStripRight(m_io.ReadBytesFull(), 43), 43, false));
             }
-            private string _value;
-            private StrEosPadTermEqual m_root;
-            private StrEosPadTermEqual m_parent;
             public string Value { get { return _value; } }
             public StrEosPadTermEqual M_Root { get { return m_root; } }
             public StrEosPadTermEqual M_Parent { get { return m_parent; } }
+            private string _value;
+            private StrEosPadTermEqual m_root;
+            private StrEosPadTermEqual m_parent;
         }
         public partial class S4Type : KaitaiStruct
         {
@@ -121,23 +121,13 @@ namespace Kaitai
             {
                 _value = System.Text.Encoding.GetEncoding("UTF-8").GetString(KaitaiStream.BytesTerminate(KaitaiStream.BytesStripRight(m_io.ReadBytesFull(), 46), 46, true));
             }
-            private string _value;
-            private StrEosPadTermEqual m_root;
-            private StrEosPadTermEqual m_parent;
             public string Value { get { return _value; } }
             public StrEosPadTermEqual M_Root { get { return m_root; } }
             public StrEosPadTermEqual M_Parent { get { return m_parent; } }
+            private string _value;
+            private StrEosPadTermEqual m_root;
+            private StrEosPadTermEqual m_parent;
         }
-        private S1Type _s1;
-        private S2Type _s2;
-        private S3Type _s3;
-        private S4Type _s4;
-        private StrEosPadTermEqual m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_s1;
-        private byte[] __raw_s2;
-        private byte[] __raw_s3;
-        private byte[] __raw_s4;
         public S1Type S1 { get { return _s1; } }
         public S2Type S2 { get { return _s2; } }
         public S3Type S3 { get { return _s3; } }
@@ -148,5 +138,15 @@ namespace Kaitai
         public byte[] M_RawS2 { get { return __raw_s2; } }
         public byte[] M_RawS3 { get { return __raw_s3; } }
         public byte[] M_RawS4 { get { return __raw_s4; } }
+        private S1Type _s1;
+        private S2Type _s2;
+        private S3Type _s3;
+        private S4Type _s4;
+        private StrEosPadTermEqual m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_s1;
+        private byte[] __raw_s2;
+        private byte[] __raw_s3;
+        private byte[] __raw_s4;
     }
 }

@@ -40,15 +40,13 @@ namespace Kaitai
             private void _read()
             {
             }
-            private List<ushort> _nums;
-            private ParamsPassArrayInt m_root;
-            private ParamsPassArrayInt m_parent;
             public List<ushort> Nums { get { return _nums; } }
             public ParamsPassArrayInt M_Root { get { return m_root; } }
             public ParamsPassArrayInt M_Parent { get { return m_parent; } }
+            private List<ushort> _nums;
+            private ParamsPassArrayInt m_root;
+            private ParamsPassArrayInt m_parent;
         }
-        private bool f_intsCalc;
-        private List<ushort> _intsCalc;
         public List<ushort> IntsCalc
         {
             get
@@ -60,15 +58,17 @@ namespace Kaitai
                 return _intsCalc;
             }
         }
-        private List<ushort> _ints;
-        private WantsInts _passInts;
-        private WantsInts _passIntsCalc;
-        private ParamsPassArrayInt m_root;
-        private KaitaiStruct m_parent;
         public List<ushort> Ints { get { return _ints; } }
         public WantsInts PassInts { get { return _passInts; } }
         public WantsInts PassIntsCalc { get { return _passIntsCalc; } }
         public ParamsPassArrayInt M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_intsCalc;
+        private List<ushort> _intsCalc;
+        private List<ushort> _ints;
+        private WantsInts _passInts;
+        private WantsInts _passIntsCalc;
+        private ParamsPassArrayInt m_root;
+        private KaitaiStruct m_parent;
     }
 }

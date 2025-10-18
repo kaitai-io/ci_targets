@@ -28,8 +28,6 @@ namespace Kaitai
             _doubleValueBe = m_io.ReadF8be();
             _approximateValue = m_io.ReadF4le();
         }
-        private bool f_doubleValuePlusFloat;
-        private double _doubleValuePlusFloat;
         public double DoubleValuePlusFloat
         {
             get
@@ -41,8 +39,6 @@ namespace Kaitai
                 return _doubleValuePlusFloat;
             }
         }
-        private bool f_singleValuePlusFloat;
-        private double _singleValuePlusFloat;
         public double SingleValuePlusFloat
         {
             get
@@ -54,8 +50,6 @@ namespace Kaitai
                 return _singleValuePlusFloat;
             }
         }
-        private bool f_singleValuePlusInt;
-        private double _singleValuePlusInt;
         public double SingleValuePlusInt
         {
             get
@@ -67,13 +61,6 @@ namespace Kaitai
                 return _singleValuePlusInt;
             }
         }
-        private float _singleValue;
-        private double _doubleValue;
-        private float _singleValueBe;
-        private double _doubleValueBe;
-        private float _approximateValue;
-        private FloatingPoints m_root;
-        private KaitaiStruct m_parent;
         public float SingleValue { get { return _singleValue; } }
         public double DoubleValue { get { return _doubleValue; } }
         public float SingleValueBe { get { return _singleValueBe; } }
@@ -81,5 +68,18 @@ namespace Kaitai
         public float ApproximateValue { get { return _approximateValue; } }
         public FloatingPoints M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_doubleValuePlusFloat;
+        private double _doubleValuePlusFloat;
+        private bool f_singleValuePlusFloat;
+        private double _singleValuePlusFloat;
+        private bool f_singleValuePlusInt;
+        private double _singleValuePlusInt;
+        private float _singleValue;
+        private double _doubleValue;
+        private float _singleValueBe;
+        private double _doubleValueBe;
+        private float _approximateValue;
+        private FloatingPoints m_root;
+        private KaitaiStruct m_parent;
     }
 }

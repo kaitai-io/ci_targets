@@ -26,18 +26,6 @@ namespace Kaitai\Struct\Tests {
             $_io__raw_strTermInclude = new \Kaitai\Struct\Stream($this->_m__raw_strTermInclude);
             $this->_m_strTermInclude = new \Kaitai\Struct\Tests\ProcessStructPadTerm\BytesWrapper($_io__raw_strTermInclude, $this, $this->_root);
         }
-        protected $_m_strPad;
-        protected $_m_strTerm;
-        protected $_m_strTermAndPad;
-        protected $_m_strTermInclude;
-        protected $_m__raw_strPad;
-        protected $_m__raw__raw_strPad;
-        protected $_m__raw_strTerm;
-        protected $_m__raw__raw_strTerm;
-        protected $_m__raw_strTermAndPad;
-        protected $_m__raw__raw_strTermAndPad;
-        protected $_m__raw_strTermInclude;
-        protected $_m__raw__raw_strTermInclude;
         public function strPad() { return $this->_m_strPad; }
         public function strTerm() { return $this->_m_strTerm; }
         public function strTermAndPad() { return $this->_m_strTermAndPad; }
@@ -50,6 +38,18 @@ namespace Kaitai\Struct\Tests {
         public function _raw__raw_strTermAndPad() { return $this->_m__raw__raw_strTermAndPad; }
         public function _raw_strTermInclude() { return $this->_m__raw_strTermInclude; }
         public function _raw__raw_strTermInclude() { return $this->_m__raw__raw_strTermInclude; }
+        protected $_m_strPad;
+        protected $_m_strTerm;
+        protected $_m_strTermAndPad;
+        protected $_m_strTermInclude;
+        protected $_m__raw_strPad;
+        protected $_m__raw__raw_strPad;
+        protected $_m__raw_strTerm;
+        protected $_m__raw__raw_strTerm;
+        protected $_m__raw_strTermAndPad;
+        protected $_m__raw__raw_strTermAndPad;
+        protected $_m__raw_strTermInclude;
+        protected $_m__raw__raw_strTermInclude;
     }
 }
 
@@ -63,7 +63,7 @@ namespace Kaitai\Struct\Tests\ProcessStructPadTerm {
         private function _read() {
             $this->_m_value = $this->_io->readBytesFull();
         }
-        protected $_m_value;
         public function value() { return $this->_m_value; }
+        protected $_m_value;
     }
 }

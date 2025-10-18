@@ -23,15 +23,6 @@ namespace Kaitai\Struct\Tests {
             $this->_io->alignToByte();
             $this->_m_byte4 = $this->_io->readU1();
         }
-        protected $_m_one;
-        protected $_m_byte1;
-        protected $_m_two;
-        protected $_m_three;
-        protected $_m_byte2;
-        protected $_m_four;
-        protected $_m_byte3;
-        protected $_m_fullByte;
-        protected $_m_byte4;
         public function one() { return $this->_m_one; }
         public function byte1() { return $this->_m_byte1; }
         public function two() { return $this->_m_two; }
@@ -41,5 +32,14 @@ namespace Kaitai\Struct\Tests {
         public function byte3() { return $this->_m_byte3; }
         public function fullByte() { return $this->_m_fullByte; }
         public function byte4() { return $this->_m_byte4; }
+        protected $_m_one;
+        protected $_m_byte1;
+        protected $_m_two;
+        protected $_m_three;
+        protected $_m_byte2;
+        protected $_m_four;
+        protected $_m_byte3;
+        protected $_m_fullByte;
+        protected $_m_byte4;
     }
 }

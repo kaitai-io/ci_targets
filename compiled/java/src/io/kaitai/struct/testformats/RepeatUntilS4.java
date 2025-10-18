@@ -47,12 +47,12 @@ public class RepeatUntilS4 extends KaitaiStruct {
         for (int i = 0; i < this.entries.size(); i++) {
         }
     }
-    private List<Integer> entries;
-    private String afterall;
-    private RepeatUntilS4 _root;
-    private KaitaiStruct _parent;
     public List<Integer> entries() { return entries; }
     public String afterall() { return afterall; }
     public RepeatUntilS4 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Integer> entries;
+    private String afterall;
+    private RepeatUntilS4 _root;
+    private KaitaiStruct _parent;
 }

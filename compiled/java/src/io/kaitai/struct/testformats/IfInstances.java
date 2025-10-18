@@ -34,7 +34,6 @@ public class IfInstances extends KaitaiStruct {
         if (this.neverHappens != null) {
         }
     }
-    private Integer neverHappens;
     public Integer neverHappens() {
         if (this.neverHappens != null)
             return this.neverHappens;
@@ -46,8 +45,9 @@ public class IfInstances extends KaitaiStruct {
         }
         return this.neverHappens;
     }
-    private IfInstances _root;
-    private KaitaiStruct _parent;
     public IfInstances _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Integer neverHappens;
+    private IfInstances _root;
+    private KaitaiStruct _parent;
 }

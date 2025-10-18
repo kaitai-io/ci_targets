@@ -39,25 +39,23 @@ public:
 
     public:
         ~parent_obj_t();
+        opaque_external_type_02_child_t* child() const { return m_child.get(); }
+        opaque_external_type_02_parent_t* _root() const { return m__root; }
+        opaque_external_type_02_parent_t* _parent() const { return m__parent; }
 
     private:
         std::unique_ptr<opaque_external_type_02_child_t> m_child;
         opaque_external_type_02_parent_t* m__root;
         opaque_external_type_02_parent_t* m__parent;
-
-    public:
-        opaque_external_type_02_child_t* child() const { return m_child.get(); }
-        opaque_external_type_02_parent_t* _root() const { return m__root; }
-        opaque_external_type_02_parent_t* _parent() const { return m__parent; }
     };
-
-private:
-    std::unique_ptr<parent_obj_t> m_parent;
-    opaque_external_type_02_parent_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     parent_obj_t* parent() const { return m_parent.get(); }
     opaque_external_type_02_parent_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    std::unique_ptr<parent_obj_t> m_parent;
+    opaque_external_type_02_parent_t* m__root;
+    kaitai::kstruct* m__parent;
 };

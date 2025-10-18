@@ -44,22 +44,22 @@ namespace Kaitai
                 _offset = m_io.ReadU4le();
                 _len = m_io.ReadU4le();
             }
-            private uint _offset;
-            private uint _len;
-            private RepeatNStruct m_root;
-            private RepeatNStruct m_parent;
             public uint Offset { get { return _offset; } }
             public uint Len { get { return _len; } }
             public RepeatNStruct M_Root { get { return m_root; } }
             public RepeatNStruct M_Parent { get { return m_parent; } }
+            private uint _offset;
+            private uint _len;
+            private RepeatNStruct m_root;
+            private RepeatNStruct m_parent;
         }
-        private uint _qty;
-        private List<Chunk> _chunks;
-        private RepeatNStruct m_root;
-        private KaitaiStruct m_parent;
         public uint Qty { get { return _qty; } }
         public List<Chunk> Chunks { get { return _chunks; } }
         public RepeatNStruct M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private uint _qty;
+        private List<Chunk> _chunks;
+        private RepeatNStruct m_root;
+        private KaitaiStruct m_parent;
     }
 }

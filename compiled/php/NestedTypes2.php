@@ -12,10 +12,10 @@ namespace Kaitai\Struct\Tests {
             $this->_m_one = new \Kaitai\Struct\Tests\NestedTypes2\SubtypeA($this->_io, $this, $this->_root);
             $this->_m_two = new \Kaitai\Struct\Tests\NestedTypes2\SubtypeB($this->_io, $this, $this->_root);
         }
-        protected $_m_one;
-        protected $_m_two;
         public function one() { return $this->_m_one; }
         public function two() { return $this->_m_two; }
+        protected $_m_one;
+        protected $_m_two;
     }
 }
 
@@ -31,12 +31,12 @@ namespace Kaitai\Struct\Tests\NestedTypes2 {
             $this->_m_typedHere1 = new \Kaitai\Struct\Tests\NestedTypes2\SubtypeA\SubtypeC($this->_io, $this, $this->_root);
             $this->_m_typedHere2 = new \Kaitai\Struct\Tests\NestedTypes2\SubtypeA\SubtypeCc($this->_io, $this, $this->_root);
         }
-        protected $_m_typedAtRoot;
-        protected $_m_typedHere1;
-        protected $_m_typedHere2;
         public function typedAtRoot() { return $this->_m_typedAtRoot; }
         public function typedHere1() { return $this->_m_typedHere1; }
         public function typedHere2() { return $this->_m_typedHere2; }
+        protected $_m_typedAtRoot;
+        protected $_m_typedHere1;
+        protected $_m_typedHere2;
     }
 }
 
@@ -53,14 +53,14 @@ namespace Kaitai\Struct\Tests\NestedTypes2\SubtypeA {
             $this->_m_typedParent = new \Kaitai\Struct\Tests\NestedTypes2\SubtypeA\SubtypeCc($this->_io, $this, $this->_root);
             $this->_m_typedRoot = new \Kaitai\Struct\Tests\NestedTypes2\SubtypeB($this->_io, $this, $this->_root);
         }
-        protected $_m_valueC;
-        protected $_m_typedHere;
-        protected $_m_typedParent;
-        protected $_m_typedRoot;
         public function valueC() { return $this->_m_valueC; }
         public function typedHere() { return $this->_m_typedHere; }
         public function typedParent() { return $this->_m_typedParent; }
         public function typedRoot() { return $this->_m_typedRoot; }
+        protected $_m_valueC;
+        protected $_m_typedHere;
+        protected $_m_typedParent;
+        protected $_m_typedRoot;
     }
 }
 
@@ -74,8 +74,8 @@ namespace Kaitai\Struct\Tests\NestedTypes2\SubtypeA\SubtypeC {
         private function _read() {
             $this->_m_valueD = $this->_io->readS1();
         }
-        protected $_m_valueD;
         public function valueD() { return $this->_m_valueD; }
+        protected $_m_valueD;
     }
 }
 
@@ -89,8 +89,8 @@ namespace Kaitai\Struct\Tests\NestedTypes2\SubtypeA {
         private function _read() {
             $this->_m_valueCc = $this->_io->readS1();
         }
-        protected $_m_valueCc;
         public function valueCc() { return $this->_m_valueCc; }
+        protected $_m_valueCc;
     }
 }
 
@@ -104,7 +104,7 @@ namespace Kaitai\Struct\Tests\NestedTypes2 {
         private function _read() {
             $this->_m_valueB = $this->_io->readS1();
         }
-        protected $_m_valueB;
         public function valueB() { return $this->_m_valueB; }
+        protected $_m_valueB;
     }
 }

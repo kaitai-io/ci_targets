@@ -15,8 +15,8 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_records[] = new \Kaitai\Struct\Tests\ProcessCoerceUsertype2\Record($this->_io, $this, $this->_root);
             }
         }
-        protected $_m_records;
         public function records() { return $this->_m_records; }
+        protected $_m_records;
     }
 }
 
@@ -30,8 +30,8 @@ namespace Kaitai\Struct\Tests\ProcessCoerceUsertype2 {
         private function _read() {
             $this->_m_value = $this->_io->readU4le();
         }
-        protected $_m_value;
         public function value() { return $this->_m_value; }
+        protected $_m_value;
     }
 }
 
@@ -54,22 +54,22 @@ namespace Kaitai\Struct\Tests\ProcessCoerceUsertype2 {
                 $this->_m_bufProc = new \Kaitai\Struct\Tests\ProcessCoerceUsertype2\Foo($_io__raw_bufProc, $this, $this->_root);
             }
         }
-        protected $_m_buf;
         public function buf() {
             if ($this->_m_buf !== null)
                 return $this->_m_buf;
             $this->_m_buf = ($this->flag() == 0 ? $this->bufUnproc() : $this->bufProc());
             return $this->_m_buf;
         }
-        protected $_m_flag;
-        protected $_m_bufUnproc;
-        protected $_m_bufProc;
-        protected $_m__raw_bufProc;
-        protected $_m__raw__raw_bufProc;
         public function flag() { return $this->_m_flag; }
         public function bufUnproc() { return $this->_m_bufUnproc; }
         public function bufProc() { return $this->_m_bufProc; }
         public function _raw_bufProc() { return $this->_m__raw_bufProc; }
         public function _raw__raw_bufProc() { return $this->_m__raw__raw_bufProc; }
+        protected $_m_buf;
+        protected $_m_flag;
+        protected $_m_bufUnproc;
+        protected $_m_bufProc;
+        protected $_m__raw_bufProc;
+        protected $_m__raw__raw_bufProc;
     }
 }

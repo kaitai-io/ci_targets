@@ -35,8 +35,6 @@ namespace Kaitai
             _pet1 = ((Animal) m_io.ReadU4le());
             _pet2 = ((Animal) m_io.ReadU4le());
         }
-        private bool f_oneLtTwo;
-        private bool _oneLtTwo;
         public bool OneLtTwo
         {
             get
@@ -48,8 +46,6 @@ namespace Kaitai
                 return _oneLtTwo;
             }
         }
-        private bool f_pet1EqInt;
-        private bool _pet1EqInt;
         public bool Pet1EqInt
         {
             get
@@ -61,8 +57,6 @@ namespace Kaitai
                 return _pet1EqInt;
             }
         }
-        private bool f_pet1I;
-        private int _pet1I;
         public int Pet1I
         {
             get
@@ -74,8 +68,6 @@ namespace Kaitai
                 return _pet1I;
             }
         }
-        private bool f_pet1IToS;
-        private string _pet1IToS;
         public string Pet1IToS
         {
             get
@@ -87,8 +79,6 @@ namespace Kaitai
                 return _pet1IToS;
             }
         }
-        private bool f_pet1Mod;
-        private int _pet1Mod;
         public int Pet1Mod
         {
             get
@@ -100,8 +90,6 @@ namespace Kaitai
                 return _pet1Mod;
             }
         }
-        private bool f_pet2EqInt;
-        private bool _pet2EqInt;
         public bool Pet2EqInt
         {
             get
@@ -113,13 +101,25 @@ namespace Kaitai
                 return _pet2EqInt;
             }
         }
-        private Animal _pet1;
-        private Animal _pet2;
-        private EnumToI m_root;
-        private KaitaiStruct m_parent;
         public Animal Pet1 { get { return _pet1; } }
         public Animal Pet2 { get { return _pet2; } }
         public EnumToI M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_oneLtTwo;
+        private bool _oneLtTwo;
+        private bool f_pet1EqInt;
+        private bool _pet1EqInt;
+        private bool f_pet1I;
+        private int _pet1I;
+        private bool f_pet1IToS;
+        private string _pet1IToS;
+        private bool f_pet1Mod;
+        private int _pet1Mod;
+        private bool f_pet2EqInt;
+        private bool _pet2EqInt;
+        private Animal _pet1;
+        private Animal _pet2;
+        private EnumToI m_root;
+        private KaitaiStruct m_parent;
     }
 }

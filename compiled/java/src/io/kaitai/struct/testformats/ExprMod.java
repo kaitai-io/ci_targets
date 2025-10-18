@@ -33,40 +33,40 @@ public class ExprMod extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Integer modNegConst;
     public Integer modNegConst() {
         if (this.modNegConst != null)
             return this.modNegConst;
         this.modNegConst = ((Number) (KaitaiStream.mod(-9837, 13))).intValue();
         return this.modNegConst;
     }
-    private Integer modNegSeq;
     public Integer modNegSeq() {
         if (this.modNegSeq != null)
             return this.modNegSeq;
         this.modNegSeq = ((Number) (KaitaiStream.mod(intS(), 13))).intValue();
         return this.modNegSeq;
     }
-    private Integer modPosConst;
     public Integer modPosConst() {
         if (this.modPosConst != null)
             return this.modPosConst;
         this.modPosConst = ((Number) (KaitaiStream.mod(9837, 13))).intValue();
         return this.modPosConst;
     }
-    private Integer modPosSeq;
     public Integer modPosSeq() {
         if (this.modPosSeq != null)
             return this.modPosSeq;
         this.modPosSeq = ((Number) (KaitaiStream.mod(intU(), 13))).intValue();
         return this.modPosSeq;
     }
-    private long intU;
-    private int intS;
-    private ExprMod _root;
-    private KaitaiStruct _parent;
     public long intU() { return intU; }
     public int intS() { return intS; }
     public ExprMod _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Integer modNegConst;
+    private Integer modNegSeq;
+    private Integer modPosConst;
+    private Integer modPosSeq;
+    private long intU;
+    private int intS;
+    private ExprMod _root;
+    private KaitaiStruct _parent;
 }

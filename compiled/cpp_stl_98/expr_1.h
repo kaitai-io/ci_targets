@@ -24,32 +24,22 @@ private:
 
 public:
     ~expr_1_t();
-
-private:
-    bool f_len_of_1_mod;
-    int32_t m_len_of_1_mod;
-
-public:
     int32_t len_of_1_mod();
-
-private:
-    bool f_str1_len;
-    int32_t m_str1_len;
-
-public:
     int32_t str1_len();
-
-private:
-    uint16_t m_len_of_1;
-    std::string m_str1;
-    expr_1_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     uint16_t len_of_1() const { return m_len_of_1; }
     std::string str1() const { return m_str1; }
     expr_1_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_len_of_1_mod;
+    int32_t m_len_of_1_mod;
+    bool f_str1_len;
+    int32_t m_str1_len;
+    uint16_t m_len_of_1;
+    std::string m_str1;
+    expr_1_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // EXPR_1_H_

@@ -55,10 +55,6 @@ public class ImportsParamsDefEnumImported extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("two", one().pet2(), this.two.pet2Param());
         _dirty = false;
     }
-    private EnumImportSeq one;
-    private ParamsDefEnumImported two;
-    private ImportsParamsDefEnumImported _root;
-    private KaitaiStruct.ReadWrite _parent;
     public EnumImportSeq one() { return one; }
     public void setOne(EnumImportSeq _v) { _dirty = true; one = _v; }
     public ParamsDefEnumImported two() { return two; }
@@ -67,4 +63,8 @@ public class ImportsParamsDefEnumImported extends KaitaiStruct.ReadWrite {
     public void set_root(ImportsParamsDefEnumImported _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private EnumImportSeq one;
+    private ParamsDefEnumImported two;
+    private ImportsParamsDefEnumImported _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

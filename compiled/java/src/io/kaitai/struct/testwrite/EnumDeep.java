@@ -150,24 +150,20 @@ public class EnumDeep extends KaitaiStruct.ReadWrite {
             public void _check() {
                 _dirty = false;
             }
-            private EnumDeep _root;
-            private KaitaiStruct.ReadWrite _parent;
             public EnumDeep _root() { return _root; }
             public void set_root(EnumDeep _v) { _dirty = true; _root = _v; }
             public KaitaiStruct.ReadWrite _parent() { return _parent; }
             public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+            private EnumDeep _root;
+            private KaitaiStruct.ReadWrite _parent;
         }
-        private EnumDeep _root;
-        private KaitaiStruct.ReadWrite _parent;
         public EnumDeep _root() { return _root; }
         public void set_root(EnumDeep _v) { _dirty = true; _root = _v; }
         public KaitaiStruct.ReadWrite _parent() { return _parent; }
         public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+        private EnumDeep _root;
+        private KaitaiStruct.ReadWrite _parent;
     }
-    private Container1.Animal pet1;
-    private Container1.Container2.Animal pet2;
-    private EnumDeep _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Container1.Animal pet1() { return pet1; }
     public void setPet1(Container1.Animal _v) { _dirty = true; pet1 = _v; }
     public Container1.Container2.Animal pet2() { return pet2; }
@@ -176,4 +172,8 @@ public class EnumDeep extends KaitaiStruct.ReadWrite {
     public void set_root(EnumDeep _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Container1.Animal pet1;
+    private Container1.Container2.Animal pet2;
+    private EnumDeep _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

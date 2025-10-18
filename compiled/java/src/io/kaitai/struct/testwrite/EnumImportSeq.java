@@ -46,10 +46,6 @@ public class EnumImportSeq extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private Enum0.Animal pet1;
-    private EnumDeep.Container1.Container2.Animal pet2;
-    private EnumImportSeq _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Enum0.Animal pet1() { return pet1; }
     public void setPet1(Enum0.Animal _v) { _dirty = true; pet1 = _v; }
     public EnumDeep.Container1.Container2.Animal pet2() { return pet2; }
@@ -58,4 +54,8 @@ public class EnumImportSeq extends KaitaiStruct.ReadWrite {
     public void set_root(EnumImportSeq _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Enum0.Animal pet1;
+    private EnumDeep.Container1.Container2.Animal pet2;
+    private EnumImportSeq _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

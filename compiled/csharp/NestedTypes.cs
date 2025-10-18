@@ -57,21 +57,21 @@ namespace Kaitai
                 {
                     _valueC = m_io.ReadS1();
                 }
-                private sbyte _valueC;
-                private NestedTypes m_root;
-                private NestedTypes.SubtypeA m_parent;
                 public sbyte ValueC { get { return _valueC; } }
                 public NestedTypes M_Root { get { return m_root; } }
                 public NestedTypes.SubtypeA M_Parent { get { return m_parent; } }
+                private sbyte _valueC;
+                private NestedTypes m_root;
+                private NestedTypes.SubtypeA m_parent;
             }
-            private SubtypeB _typedAtRoot;
-            private SubtypeC _typedHere;
-            private NestedTypes m_root;
-            private NestedTypes m_parent;
             public SubtypeB TypedAtRoot { get { return _typedAtRoot; } }
             public SubtypeC TypedHere { get { return _typedHere; } }
             public NestedTypes M_Root { get { return m_root; } }
             public NestedTypes M_Parent { get { return m_parent; } }
+            private SubtypeB _typedAtRoot;
+            private SubtypeC _typedHere;
+            private NestedTypes m_root;
+            private NestedTypes m_parent;
         }
         public partial class SubtypeB : KaitaiStruct
         {
@@ -90,20 +90,20 @@ namespace Kaitai
             {
                 _valueB = m_io.ReadS1();
             }
-            private sbyte _valueB;
-            private NestedTypes m_root;
-            private KaitaiStruct m_parent;
             public sbyte ValueB { get { return _valueB; } }
             public NestedTypes M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
+            private sbyte _valueB;
+            private NestedTypes m_root;
+            private KaitaiStruct m_parent;
         }
-        private SubtypeA _one;
-        private SubtypeB _two;
-        private NestedTypes m_root;
-        private KaitaiStruct m_parent;
         public SubtypeA One { get { return _one; } }
         public SubtypeB Two { get { return _two; } }
         public NestedTypes M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private SubtypeA _one;
+        private SubtypeB _two;
+        private NestedTypes m_root;
+        private KaitaiStruct m_parent;
     }
 }

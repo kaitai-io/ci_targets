@@ -24,30 +24,20 @@ private:
 
 public:
     ~expr_0_t();
+    std::string must_be_abc123();
+    int32_t must_be_f7();
+    uint16_t len_of_1() const { return m_len_of_1; }
+    expr_0_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_must_be_abc123;
     std::string m_must_be_abc123;
-
-public:
-    std::string must_be_abc123();
-
-private:
     bool f_must_be_f7;
     int32_t m_must_be_f7;
-
-public:
-    int32_t must_be_f7();
-
-private:
     uint16_t m_len_of_1;
     expr_0_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint16_t len_of_1() const { return m_len_of_1; }
-    expr_0_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // EXPR_0_H_

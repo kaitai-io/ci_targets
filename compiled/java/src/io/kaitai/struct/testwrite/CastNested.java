@@ -199,15 +199,15 @@ public class CastNested extends KaitaiStruct.ReadWrite {
             public void _check() {
                 _dirty = false;
             }
-            private int value;
-            private CastNested _root;
-            private CastNested.Opcode _parent;
             public int value() { return value; }
             public void setValue(int _v) { _dirty = true; value = _v; }
             public CastNested _root() { return _root; }
             public void set_root(CastNested _v) { _dirty = true; _root = _v; }
             public CastNested.Opcode _parent() { return _parent; }
             public void set_parent(CastNested.Opcode _v) { _dirty = true; _parent = _v; }
+            private int value;
+            private CastNested _root;
+            private CastNested.Opcode _parent;
         }
         public static class Strval extends KaitaiStruct.ReadWrite {
             public static Strval fromFile(String fileName) throws IOException {
@@ -249,20 +249,16 @@ public class CastNested extends KaitaiStruct.ReadWrite {
                     throw new ConsistencyError("value", -1, KaitaiStream.byteArrayIndexOf((this.value).getBytes(Charset.forName("ASCII")), ((byte) 0)));
                 _dirty = false;
             }
-            private String value;
-            private CastNested _root;
-            private CastNested.Opcode _parent;
             public String value() { return value; }
             public void setValue(String _v) { _dirty = true; value = _v; }
             public CastNested _root() { return _root; }
             public void set_root(CastNested _v) { _dirty = true; _root = _v; }
             public CastNested.Opcode _parent() { return _parent; }
             public void set_parent(CastNested.Opcode _v) { _dirty = true; _parent = _v; }
+            private String value;
+            private CastNested _root;
+            private CastNested.Opcode _parent;
         }
-        private int code;
-        private KaitaiStruct.ReadWrite body;
-        private CastNested _root;
-        private CastNested _parent;
         public int code() { return code; }
         public void setCode(int _v) { _dirty = true; code = _v; }
         public KaitaiStruct.ReadWrite body() { return body; }
@@ -271,8 +267,11 @@ public class CastNested extends KaitaiStruct.ReadWrite {
         public void set_root(CastNested _v) { _dirty = true; _root = _v; }
         public CastNested _parent() { return _parent; }
         public void set_parent(CastNested _v) { _dirty = true; _parent = _v; }
+        private int code;
+        private KaitaiStruct.ReadWrite body;
+        private CastNested _root;
+        private CastNested _parent;
     }
-    private CastNested.Opcode.Strval opcodes0Str;
     public CastNested.Opcode.Strval opcodes0Str() {
         if (this.opcodes0Str != null)
             return this.opcodes0Str;
@@ -280,7 +279,6 @@ public class CastNested extends KaitaiStruct.ReadWrite {
         return this.opcodes0Str;
     }
     public void _invalidateOpcodes0Str() { this.opcodes0Str = null; }
-    private String opcodes0StrValue;
     public String opcodes0StrValue() {
         if (this.opcodes0StrValue != null)
             return this.opcodes0StrValue;
@@ -288,7 +286,6 @@ public class CastNested extends KaitaiStruct.ReadWrite {
         return this.opcodes0StrValue;
     }
     public void _invalidateOpcodes0StrValue() { this.opcodes0StrValue = null; }
-    private CastNested.Opcode.Intval opcodes1Int;
     public CastNested.Opcode.Intval opcodes1Int() {
         if (this.opcodes1Int != null)
             return this.opcodes1Int;
@@ -296,7 +293,6 @@ public class CastNested extends KaitaiStruct.ReadWrite {
         return this.opcodes1Int;
     }
     public void _invalidateOpcodes1Int() { this.opcodes1Int = null; }
-    private Integer opcodes1IntValue;
     public Integer opcodes1IntValue() {
         if (this.opcodes1IntValue != null)
             return this.opcodes1IntValue;
@@ -304,13 +300,17 @@ public class CastNested extends KaitaiStruct.ReadWrite {
         return this.opcodes1IntValue;
     }
     public void _invalidateOpcodes1IntValue() { this.opcodes1IntValue = null; }
-    private List<Opcode> opcodes;
-    private CastNested _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Opcode> opcodes() { return opcodes; }
     public void setOpcodes(List<Opcode> _v) { _dirty = true; opcodes = _v; }
     public CastNested _root() { return _root; }
     public void set_root(CastNested _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private CastNested.Opcode.Strval opcodes0Str;
+    private String opcodes0StrValue;
+    private CastNested.Opcode.Intval opcodes1Int;
+    private Integer opcodes1IntValue;
+    private List<Opcode> opcodes;
+    private CastNested _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

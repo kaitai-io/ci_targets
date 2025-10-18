@@ -25,22 +25,23 @@ private:
 
 public:
     ~type_ternary_opaque_t();
+    hello_world_t* dif();
+    bool is_hack();
+    hello_world_t* dif_wo_hack() const { return m_dif_wo_hack; }
+    hello_world_t* dif_with_hack() const { return m_dif_with_hack; }
+    type_ternary_opaque_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
+    std::string _raw_dif_wo_hack() const { return m__raw_dif_wo_hack; }
+    kaitai::kstream* _io__raw_dif_wo_hack() const { return m__io__raw_dif_wo_hack; }
+    std::string _raw_dif_with_hack() const { return m__raw_dif_with_hack; }
+    kaitai::kstream* _io__raw_dif_with_hack() const { return m__io__raw_dif_with_hack; }
+    std::string _raw__raw_dif_with_hack() const { return m__raw__raw_dif_with_hack; }
 
 private:
     bool f_dif;
     hello_world_t* m_dif;
-
-public:
-    hello_world_t* dif();
-
-private:
     bool f_is_hack;
     bool m_is_hack;
-
-public:
-    bool is_hack();
-
-private:
     hello_world_t* m_dif_wo_hack;
     bool n_dif_wo_hack;
 
@@ -80,17 +81,6 @@ public:
     bool _is_null__raw__raw_dif_with_hack() { _raw__raw_dif_with_hack(); return n__raw__raw_dif_with_hack; };
 
 private:
-
-public:
-    hello_world_t* dif_wo_hack() const { return m_dif_wo_hack; }
-    hello_world_t* dif_with_hack() const { return m_dif_with_hack; }
-    type_ternary_opaque_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
-    std::string _raw_dif_wo_hack() const { return m__raw_dif_wo_hack; }
-    kaitai::kstream* _io__raw_dif_wo_hack() const { return m__io__raw_dif_wo_hack; }
-    std::string _raw_dif_with_hack() const { return m__raw_dif_with_hack; }
-    kaitai::kstream* _io__raw_dif_with_hack() const { return m__io__raw_dif_with_hack; }
-    std::string _raw__raw_dif_with_hack() const { return m__raw__raw_dif_with_hack; }
 };
 
 #endif  // TYPE_TERNARY_OPAQUE_H_

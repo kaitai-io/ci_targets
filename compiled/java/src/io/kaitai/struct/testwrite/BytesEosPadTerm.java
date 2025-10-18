@@ -187,15 +187,15 @@ public class BytesEosPadTerm extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private byte[] value;
-        private BytesEosPadTerm _root;
-        private BytesEosPadTerm _parent;
         public byte[] value() { return value; }
         public void setValue(byte[] _v) { _dirty = true; value = _v; }
         public BytesEosPadTerm _root() { return _root; }
         public void set_root(BytesEosPadTerm _v) { _dirty = true; _root = _v; }
         public BytesEosPadTerm _parent() { return _parent; }
         public void set_parent(BytesEosPadTerm _v) { _dirty = true; _parent = _v; }
+        private byte[] value;
+        private BytesEosPadTerm _root;
+        private BytesEosPadTerm _parent;
     }
     public static class StrTermAndPadType extends KaitaiStruct.ReadWrite {
         public static StrTermAndPadType fromFile(String fileName) throws IOException {
@@ -236,15 +236,15 @@ public class BytesEosPadTerm extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private byte[] value;
-        private BytesEosPadTerm _root;
-        private BytesEosPadTerm _parent;
         public byte[] value() { return value; }
         public void setValue(byte[] _v) { _dirty = true; value = _v; }
         public BytesEosPadTerm _root() { return _root; }
         public void set_root(BytesEosPadTerm _v) { _dirty = true; _root = _v; }
         public BytesEosPadTerm _parent() { return _parent; }
         public void set_parent(BytesEosPadTerm _v) { _dirty = true; _parent = _v; }
+        private byte[] value;
+        private BytesEosPadTerm _root;
+        private BytesEosPadTerm _parent;
     }
     public static class StrTermIncludeType extends KaitaiStruct.ReadWrite {
         public static StrTermIncludeType fromFile(String fileName) throws IOException {
@@ -285,15 +285,15 @@ public class BytesEosPadTerm extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private byte[] value;
-        private BytesEosPadTerm _root;
-        private BytesEosPadTerm _parent;
         public byte[] value() { return value; }
         public void setValue(byte[] _v) { _dirty = true; value = _v; }
         public BytesEosPadTerm _root() { return _root; }
         public void set_root(BytesEosPadTerm _v) { _dirty = true; _root = _v; }
         public BytesEosPadTerm _parent() { return _parent; }
         public void set_parent(BytesEosPadTerm _v) { _dirty = true; _parent = _v; }
+        private byte[] value;
+        private BytesEosPadTerm _root;
+        private BytesEosPadTerm _parent;
     }
     public static class StrTermType extends KaitaiStruct.ReadWrite {
         public static StrTermType fromFile(String fileName) throws IOException {
@@ -334,26 +334,16 @@ public class BytesEosPadTerm extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private byte[] value;
-        private BytesEosPadTerm _root;
-        private BytesEosPadTerm _parent;
         public byte[] value() { return value; }
         public void setValue(byte[] _v) { _dirty = true; value = _v; }
         public BytesEosPadTerm _root() { return _root; }
         public void set_root(BytesEosPadTerm _v) { _dirty = true; _root = _v; }
         public BytesEosPadTerm _parent() { return _parent; }
         public void set_parent(BytesEosPadTerm _v) { _dirty = true; _parent = _v; }
+        private byte[] value;
+        private BytesEosPadTerm _root;
+        private BytesEosPadTerm _parent;
     }
-    private StrPadType strPad;
-    private StrTermType strTerm;
-    private StrTermAndPadType strTermAndPad;
-    private StrTermIncludeType strTermInclude;
-    private BytesEosPadTerm _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_strPad;
-    private byte[] _raw_strTerm;
-    private byte[] _raw_strTermAndPad;
-    private byte[] _raw_strTermInclude;
     public StrPadType strPad() { return strPad; }
     public void setStrPad(StrPadType _v) { _dirty = true; strPad = _v; }
     public StrTermType strTerm() { return strTerm; }
@@ -374,4 +364,14 @@ public class BytesEosPadTerm extends KaitaiStruct.ReadWrite {
     public void set_raw_StrTermAndPad(byte[] _v) { _dirty = true; _raw_strTermAndPad = _v; }
     public byte[] _raw_strTermInclude() { return _raw_strTermInclude; }
     public void set_raw_StrTermInclude(byte[] _v) { _dirty = true; _raw_strTermInclude = _v; }
+    private StrPadType strPad;
+    private StrTermType strTerm;
+    private StrTermAndPadType strTermAndPad;
+    private StrTermIncludeType strTermInclude;
+    private BytesEosPadTerm _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_strPad;
+    private byte[] _raw_strTerm;
+    private byte[] _raw_strTermAndPad;
+    private byte[] _raw_strTermInclude;
 }

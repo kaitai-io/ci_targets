@@ -15,8 +15,8 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_codes[] = new \Kaitai\Struct\Tests\IfValues\Code($this->_io, $this, $this->_root);
             }
         }
-        protected $_m_codes;
         public function codes() { return $this->_m_codes; }
+        protected $_m_codes;
     }
 }
 
@@ -30,7 +30,6 @@ namespace Kaitai\Struct\Tests\IfValues {
         private function _read() {
             $this->_m_opcode = $this->_io->readU1();
         }
-        protected $_m_halfOpcode;
         public function halfOpcode() {
             if ($this->_m_halfOpcode !== null)
                 return $this->_m_halfOpcode;
@@ -39,7 +38,8 @@ namespace Kaitai\Struct\Tests\IfValues {
             }
             return $this->_m_halfOpcode;
         }
-        protected $_m_opcode;
         public function opcode() { return $this->_m_opcode; }
+        protected $_m_halfOpcode;
+        protected $_m_opcode;
     }
 }

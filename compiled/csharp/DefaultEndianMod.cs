@@ -57,12 +57,12 @@ namespace Kaitai
                 {
                     _two = m_io.ReadS4le();
                 }
-                private int _two;
-                private DefaultEndianMod m_root;
-                private DefaultEndianMod.MainObj m_parent;
                 public int Two { get { return _two; } }
                 public DefaultEndianMod M_Root { get { return m_root; } }
                 public DefaultEndianMod.MainObj M_Parent { get { return m_parent; } }
+                private int _two;
+                private DefaultEndianMod m_root;
+                private DefaultEndianMod.MainObj m_parent;
             }
             public partial class SubnestBe : KaitaiStruct
             {
@@ -81,29 +81,29 @@ namespace Kaitai
                 {
                     _two = m_io.ReadS4be();
                 }
-                private int _two;
-                private DefaultEndianMod m_root;
-                private DefaultEndianMod.MainObj m_parent;
                 public int Two { get { return _two; } }
                 public DefaultEndianMod M_Root { get { return m_root; } }
                 public DefaultEndianMod.MainObj M_Parent { get { return m_parent; } }
+                private int _two;
+                private DefaultEndianMod m_root;
+                private DefaultEndianMod.MainObj m_parent;
             }
-            private int _one;
-            private Subnest _nest;
-            private SubnestBe _nestBe;
-            private DefaultEndianMod m_root;
-            private DefaultEndianMod m_parent;
             public int One { get { return _one; } }
             public Subnest Nest { get { return _nest; } }
             public SubnestBe NestBe { get { return _nestBe; } }
             public DefaultEndianMod M_Root { get { return m_root; } }
             public DefaultEndianMod M_Parent { get { return m_parent; } }
+            private int _one;
+            private Subnest _nest;
+            private SubnestBe _nestBe;
+            private DefaultEndianMod m_root;
+            private DefaultEndianMod m_parent;
         }
-        private MainObj _main;
-        private DefaultEndianMod m_root;
-        private KaitaiStruct m_parent;
         public MainObj Main { get { return _main; } }
         public DefaultEndianMod M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private MainObj _main;
+        private DefaultEndianMod m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -39,8 +39,6 @@ namespace Kaitai
             private void _read()
             {
             }
-            private bool f_doSomething;
-            private bool _doSomething;
             public bool DoSomething
             {
                 get
@@ -52,18 +50,20 @@ namespace Kaitai
                     return _doSomething;
                 }
             }
-            private NavParentVsValueInst m_root;
-            private NavParentVsValueInst m_parent;
             public NavParentVsValueInst M_Root { get { return m_root; } }
             public NavParentVsValueInst M_Parent { get { return m_parent; } }
+            private bool f_doSomething;
+            private bool _doSomething;
+            private NavParentVsValueInst m_root;
+            private NavParentVsValueInst m_parent;
         }
-        private string _s1;
-        private ChildObj _child;
-        private NavParentVsValueInst m_root;
-        private KaitaiStruct m_parent;
         public string S1 { get { return _s1; } }
         public ChildObj Child { get { return _child; } }
         public NavParentVsValueInst M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private string _s1;
+        private ChildObj _child;
+        private NavParentVsValueInst m_root;
+        private KaitaiStruct m_parent;
     }
 }

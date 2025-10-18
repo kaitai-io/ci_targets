@@ -26,8 +26,6 @@ namespace Kaitai
             _intU = m_io.ReadU4le();
             _intS = m_io.ReadS4le();
         }
-        private bool f_divNegConst;
-        private int _divNegConst;
         public int DivNegConst
         {
             get
@@ -39,8 +37,6 @@ namespace Kaitai
                 return _divNegConst;
             }
         }
-        private bool f_divNegSeq;
-        private int _divNegSeq;
         public int DivNegSeq
         {
             get
@@ -52,8 +48,6 @@ namespace Kaitai
                 return _divNegSeq;
             }
         }
-        private bool f_divPosConst;
-        private int _divPosConst;
         public int DivPosConst
         {
             get
@@ -65,8 +59,6 @@ namespace Kaitai
                 return _divPosConst;
             }
         }
-        private bool f_divPosSeq;
-        private int _divPosSeq;
         public int DivPosSeq
         {
             get
@@ -78,13 +70,21 @@ namespace Kaitai
                 return _divPosSeq;
             }
         }
-        private uint _intU;
-        private int _intS;
-        private ExprIntDiv m_root;
-        private KaitaiStruct m_parent;
         public uint IntU { get { return _intU; } }
         public int IntS { get { return _intS; } }
         public ExprIntDiv M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_divNegConst;
+        private int _divNegConst;
+        private bool f_divNegSeq;
+        private int _divNegSeq;
+        private bool f_divPosConst;
+        private int _divPosConst;
+        private bool f_divPosSeq;
+        private int _divPosSeq;
+        private uint _intU;
+        private int _intS;
+        private ExprIntDiv m_root;
+        private KaitaiStruct m_parent;
     }
 }

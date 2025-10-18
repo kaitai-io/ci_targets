@@ -31,36 +31,36 @@ public class YamlInts extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Integer testU4Dec;
     public Integer testU4Dec() {
         if (this.testU4Dec != null)
             return this.testU4Dec;
         this.testU4Dec = ((int) 4294967295L);
         return this.testU4Dec;
     }
-    private Integer testU4Hex;
     public Integer testU4Hex() {
         if (this.testU4Hex != null)
             return this.testU4Hex;
         this.testU4Hex = ((int) 4294967295L);
         return this.testU4Hex;
     }
-    private Integer testU8Dec;
     public Integer testU8Dec() {
         if (this.testU8Dec != null)
             return this.testU8Dec;
         this.testU8Dec = ((int) 0xffffffffffffffffL);
         return this.testU8Dec;
     }
-    private Integer testU8Hex;
     public Integer testU8Hex() {
         if (this.testU8Hex != null)
             return this.testU8Hex;
         this.testU8Hex = ((int) 0xffffffffffffffffL);
         return this.testU8Hex;
     }
-    private YamlInts _root;
-    private KaitaiStruct _parent;
     public YamlInts _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Integer testU4Dec;
+    private Integer testU4Hex;
+    private Integer testU8Dec;
+    private Integer testU8Hex;
+    private YamlInts _root;
+    private KaitaiStruct _parent;
 }

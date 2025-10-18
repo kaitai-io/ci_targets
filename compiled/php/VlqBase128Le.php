@@ -49,21 +49,18 @@ namespace Kaitai\Struct\Tests {
                 $i++;
             } while (!(!($_->hasNext())));
         }
-        protected $_m_len;
         public function len() {
             if ($this->_m_len !== null)
                 return $this->_m_len;
             $this->_m_len = count($this->groups());
             return $this->_m_len;
         }
-        protected $_m_signBit;
         public function signBit() {
             if ($this->_m_signBit !== null)
                 return $this->_m_signBit;
             $this->_m_signBit = ($this->len() == 10 ? (-9223372036854775807 - 1) : $this->groups()[count($this->groups()) - 1]->multiplier() * 64);
             return $this->_m_signBit;
         }
-        protected $_m_value;
 
         /**
          * Resulting unsigned value as normal integer
@@ -74,15 +71,18 @@ namespace Kaitai\Struct\Tests {
             $this->_m_value = $this->groups()[count($this->groups()) - 1]->intermValue();
             return $this->_m_value;
         }
-        protected $_m_valueSigned;
         public function valueSigned() {
             if ($this->_m_valueSigned !== null)
                 return $this->_m_valueSigned;
             $this->_m_valueSigned = ( (($this->signBit() > 0) && ($this->value() >= $this->signBit()))  ? -(($this->signBit() - ($this->value() - $this->signBit()))) : $this->value());
             return $this->_m_valueSigned;
         }
-        protected $_m_groups;
         public function groups() { return $this->_m_groups; }
+        protected $_m_len;
+        protected $_m_signBit;
+        protected $_m_value;
+        protected $_m_valueSigned;
+        protected $_m_groups;
     }
 }
 
@@ -110,18 +110,12 @@ namespace Kaitai\Struct\Tests\VlqBase128Le {
                 throw new \Kaitai\Struct\Error\ValidationGreaterThanError(($this->idx() == 9 ? 1 : 127), $this->_m_value, $this->_io, "/types/group/seq/1");
             }
         }
-        protected $_m_intermValue;
         public function intermValue() {
             if ($this->_m_intermValue !== null)
                 return $this->_m_intermValue;
             $this->_m_intermValue = ($this->prevIntermValue() + $this->value() * $this->multiplier());
             return $this->_m_intermValue;
         }
-        protected $_m_hasNext;
-        protected $_m_value;
-        protected $_m_idx;
-        protected $_m_prevIntermValue;
-        protected $_m_multiplier;
 
         /**
          * If `true`, then we have more bytes to read.
@@ -143,5 +137,11 @@ namespace Kaitai\Struct\Tests\VlqBase128Le {
         public function idx() { return $this->_m_idx; }
         public function prevIntermValue() { return $this->_m_prevIntermValue; }
         public function multiplier() { return $this->_m_multiplier; }
+        protected $_m_intermValue;
+        protected $_m_hasNext;
+        protected $_m_value;
+        protected $_m_idx;
+        protected $_m_prevIntermValue;
+        protected $_m_multiplier;
     }
 }

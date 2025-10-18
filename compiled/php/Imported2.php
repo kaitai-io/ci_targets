@@ -11,7 +11,7 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_one = $this->_io->readU1();
         }
-        protected $_m_one;
         public function one() { return $this->_m_one; }
+        protected $_m_one;
     }
 }

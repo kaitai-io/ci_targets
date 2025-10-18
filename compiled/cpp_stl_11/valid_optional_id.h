@@ -24,6 +24,11 @@ private:
 
 public:
     ~valid_optional_id_t();
+    std::string _unnamed0() const { return m__unnamed0; }
+    uint8_t _unnamed1() const { return m__unnamed1; }
+    int8_t _unnamed2() const { return m__unnamed2; }
+    valid_optional_id_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::string m__unnamed0;
@@ -31,11 +36,4 @@ private:
     int8_t m__unnamed2;
     valid_optional_id_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::string _unnamed0() const { return m__unnamed0; }
-    uint8_t _unnamed1() const { return m__unnamed1; }
-    int8_t _unnamed2() const { return m__unnamed2; }
-    valid_optional_id_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -115,12 +115,12 @@ public class CastNested extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private int value;
-            private CastNested _root;
-            private CastNested.Opcode _parent;
             public int value() { return value; }
             public CastNested _root() { return _root; }
             public CastNested.Opcode _parent() { return _parent; }
+            private int value;
+            private CastNested _root;
+            private CastNested.Opcode _parent;
         }
         public static class Strval extends KaitaiStruct {
             public static Strval fromFile(String fileName) throws IOException {
@@ -147,54 +147,54 @@ public class CastNested extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private String value;
-            private CastNested _root;
-            private CastNested.Opcode _parent;
             public String value() { return value; }
             public CastNested _root() { return _root; }
             public CastNested.Opcode _parent() { return _parent; }
+            private String value;
+            private CastNested _root;
+            private CastNested.Opcode _parent;
         }
-        private int code;
-        private KaitaiStruct body;
-        private CastNested _root;
-        private CastNested _parent;
         public int code() { return code; }
         public KaitaiStruct body() { return body; }
         public CastNested _root() { return _root; }
         public CastNested _parent() { return _parent; }
+        private int code;
+        private KaitaiStruct body;
+        private CastNested _root;
+        private CastNested _parent;
     }
-    private CastNested.Opcode.Strval opcodes0Str;
     public CastNested.Opcode.Strval opcodes0Str() {
         if (this.opcodes0Str != null)
             return this.opcodes0Str;
         this.opcodes0Str = ((CastNested.Opcode.Strval) (opcodes().get(((int) 0)).body()));
         return this.opcodes0Str;
     }
-    private String opcodes0StrValue;
     public String opcodes0StrValue() {
         if (this.opcodes0StrValue != null)
             return this.opcodes0StrValue;
         this.opcodes0StrValue = ((CastNested.Opcode.Strval) (opcodes().get(((int) 0)).body())).value();
         return this.opcodes0StrValue;
     }
-    private CastNested.Opcode.Intval opcodes1Int;
     public CastNested.Opcode.Intval opcodes1Int() {
         if (this.opcodes1Int != null)
             return this.opcodes1Int;
         this.opcodes1Int = ((CastNested.Opcode.Intval) (opcodes().get(((int) 1)).body()));
         return this.opcodes1Int;
     }
-    private Integer opcodes1IntValue;
     public Integer opcodes1IntValue() {
         if (this.opcodes1IntValue != null)
             return this.opcodes1IntValue;
         this.opcodes1IntValue = ((Number) (((CastNested.Opcode.Intval) (opcodes().get(((int) 1)).body())).value())).intValue();
         return this.opcodes1IntValue;
     }
-    private List<Opcode> opcodes;
-    private CastNested _root;
-    private KaitaiStruct _parent;
     public List<Opcode> opcodes() { return opcodes; }
     public CastNested _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private CastNested.Opcode.Strval opcodes0Str;
+    private String opcodes0StrValue;
+    private CastNested.Opcode.Intval opcodes1Int;
+    private Integer opcodes1IntValue;
+    private List<Opcode> opcodes;
+    private CastNested _root;
+    private KaitaiStruct _parent;
 }

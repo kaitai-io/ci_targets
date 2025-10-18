@@ -22,13 +22,13 @@ namespace Kaitai
             _a = m_io.ReadBitsIntLe(32);
             _b = m_io.ReadBitsIntLe(8);
         }
-        private ulong _a;
-        private ulong _b;
-        private BitsShiftByB32Le m_root;
-        private KaitaiStruct m_parent;
         public ulong A { get { return _a; } }
         public ulong B { get { return _b; } }
         public BitsShiftByB32Le M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private ulong _a;
+        private ulong _b;
+        private BitsShiftByB32Le m_root;
+        private KaitaiStruct m_parent;
     }
 }

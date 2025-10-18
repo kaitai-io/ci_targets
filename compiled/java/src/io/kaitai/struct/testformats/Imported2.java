@@ -32,10 +32,10 @@ public class Imported2 extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private int one;
-    private Imported2 _root;
-    private KaitaiStruct _parent;
     public int one() { return one; }
     public Imported2 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private int one;
+    private Imported2 _root;
+    private KaitaiStruct _parent;
 }

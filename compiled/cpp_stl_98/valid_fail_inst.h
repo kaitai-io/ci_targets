@@ -24,15 +24,14 @@ private:
 
 public:
     ~valid_fail_inst_t();
+    uint8_t inst();
+    uint8_t a() const { return m_a; }
+    valid_fail_inst_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_inst;
     uint8_t m_inst;
-
-public:
-    uint8_t inst();
-
-private:
     uint8_t m_a;
     bool n_a;
 
@@ -42,11 +41,6 @@ public:
 private:
     valid_fail_inst_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint8_t a() const { return m_a; }
-    valid_fail_inst_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // VALID_FAIL_INST_H_

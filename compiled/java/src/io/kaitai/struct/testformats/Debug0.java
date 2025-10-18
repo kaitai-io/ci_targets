@@ -70,14 +70,14 @@ public class Debug0 extends KaitaiStruct.ReadOnly {
         for (int i = 0; i < this.arrayOfInts.size(); i++) {
         }
     }
-    private int one;
-    private List<Integer> arrayOfInts;
-    private int _unnamed2;
-    private Debug0 _root;
-    private KaitaiStruct.ReadOnly _parent;
     public int one() { return one; }
     public List<Integer> arrayOfInts() { return arrayOfInts; }
     public int _unnamed2() { return _unnamed2; }
     public Debug0 _root() { return _root; }
     public KaitaiStruct.ReadOnly _parent() { return _parent; }
+    private int one;
+    private List<Integer> arrayOfInts;
+    private int _unnamed2;
+    private Debug0 _root;
+    private KaitaiStruct.ReadOnly _parent;
 }

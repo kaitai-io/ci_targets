@@ -81,69 +81,59 @@ public:
 
             public:
                 ~sub_main_obj_t();
+                uint32_t foo() const { return m_foo; }
+                default_endian_expr_is_be_t* _root() const { return m__root; }
+                default_endian_expr_is_be_t::doc_t::main_obj_t* _parent() const { return m__parent; }
 
             private:
                 uint32_t m_foo;
                 default_endian_expr_is_be_t* m__root;
                 default_endian_expr_is_be_t::doc_t::main_obj_t* m__parent;
-
-            public:
-                uint32_t foo() const { return m_foo; }
-                default_endian_expr_is_be_t* _root() const { return m__root; }
-                default_endian_expr_is_be_t::doc_t::main_obj_t* _parent() const { return m__parent; }
             };
-
-        private:
-            bool f_inst_int;
-            uint32_t m_inst_int;
 
         public:
             uint32_t inst_int();
-
-        private:
-            bool f_inst_sub;
-            sub_main_obj_t* m_inst_sub;
-
-        public:
             sub_main_obj_t* inst_sub();
-
-        private:
-            uint32_t m_some_int;
-            uint16_t m_some_int_be;
-            uint16_t m_some_int_le;
-            default_endian_expr_is_be_t* m__root;
-            default_endian_expr_is_be_t::doc_t* m__parent;
-
-        public:
             uint32_t some_int() const { return m_some_int; }
             uint16_t some_int_be() const { return m_some_int_be; }
             uint16_t some_int_le() const { return m_some_int_le; }
             default_endian_expr_is_be_t* _root() const { return m__root; }
             default_endian_expr_is_be_t::doc_t* _parent() const { return m__parent; }
-        };
 
-    private:
-        std::string m_indicator;
-        main_obj_t* m_main;
-        default_endian_expr_is_be_t* m__root;
-        default_endian_expr_is_be_t* m__parent;
+        private:
+            bool f_inst_int;
+            uint32_t m_inst_int;
+            bool f_inst_sub;
+            sub_main_obj_t* m_inst_sub;
+            uint32_t m_some_int;
+            uint16_t m_some_int_be;
+            uint16_t m_some_int_le;
+            default_endian_expr_is_be_t* m__root;
+            default_endian_expr_is_be_t::doc_t* m__parent;
+        };
 
     public:
         std::string indicator() const { return m_indicator; }
         main_obj_t* main() const { return m_main; }
         default_endian_expr_is_be_t* _root() const { return m__root; }
         default_endian_expr_is_be_t* _parent() const { return m__parent; }
-    };
 
-private:
-    std::vector<doc_t*>* m_docs;
-    default_endian_expr_is_be_t* m__root;
-    kaitai::kstruct* m__parent;
+    private:
+        std::string m_indicator;
+        main_obj_t* m_main;
+        default_endian_expr_is_be_t* m__root;
+        default_endian_expr_is_be_t* m__parent;
+    };
 
 public:
     std::vector<doc_t*>* docs() const { return m_docs; }
     default_endian_expr_is_be_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    std::vector<doc_t*>* m_docs;
+    default_endian_expr_is_be_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // DEFAULT_ENDIAN_EXPR_IS_BE_H_

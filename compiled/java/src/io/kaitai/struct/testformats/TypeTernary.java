@@ -68,44 +68,44 @@ public class TypeTernary extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int value;
-        private TypeTernary _root;
-        private TypeTernary _parent;
         public int value() { return value; }
         public TypeTernary _root() { return _root; }
         public TypeTernary _parent() { return _parent; }
+        private int value;
+        private TypeTernary _root;
+        private TypeTernary _parent;
     }
-    private Dummy dif;
     public Dummy dif() {
         if (this.dif != null)
             return this.dif;
         this.dif = (!(isHack()) ? difWoHack() : difWithHack());
         return this.dif;
     }
-    private Integer difValue;
     public Integer difValue() {
         if (this.difValue != null)
             return this.difValue;
         this.difValue = ((Number) (dif().value())).intValue();
         return this.difValue;
     }
-    private Boolean isHack;
     public Boolean isHack() {
         if (this.isHack != null)
             return this.isHack;
         this.isHack = true;
         return this.isHack;
     }
-    private Dummy difWoHack;
-    private Dummy difWithHack;
-    private TypeTernary _root;
-    private KaitaiStruct _parent;
-    private byte[] _raw_difWithHack;
-    private byte[] _raw__raw_difWithHack;
     public Dummy difWoHack() { return difWoHack; }
     public Dummy difWithHack() { return difWithHack; }
     public TypeTernary _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
     public byte[] _raw_difWithHack() { return _raw_difWithHack; }
     public byte[] _raw__raw_difWithHack() { return _raw__raw_difWithHack; }
+    private Dummy dif;
+    private Integer difValue;
+    private Boolean isHack;
+    private Dummy difWoHack;
+    private Dummy difWithHack;
+    private TypeTernary _root;
+    private KaitaiStruct _parent;
+    private byte[] _raw_difWithHack;
+    private byte[] _raw__raw_difWithHack;
 }

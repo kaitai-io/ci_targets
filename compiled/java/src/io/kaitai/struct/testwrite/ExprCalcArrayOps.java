@@ -46,7 +46,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private List<Double> doubleArray;
     public List<Double> doubleArray() {
         if (this.doubleArray != null)
             return this.doubleArray;
@@ -54,7 +53,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.doubleArray;
     }
     public void _invalidateDoubleArray() { this.doubleArray = null; }
-    private Double doubleArrayFirst;
     public Double doubleArrayFirst() {
         if (this.doubleArrayFirst != null)
             return this.doubleArrayFirst;
@@ -62,7 +60,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.doubleArrayFirst;
     }
     public void _invalidateDoubleArrayFirst() { this.doubleArrayFirst = null; }
-    private Double doubleArrayLast;
     public Double doubleArrayLast() {
         if (this.doubleArrayLast != null)
             return this.doubleArrayLast;
@@ -70,7 +67,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.doubleArrayLast;
     }
     public void _invalidateDoubleArrayLast() { this.doubleArrayLast = null; }
-    private Double doubleArrayMax;
     public Double doubleArrayMax() {
         if (this.doubleArrayMax != null)
             return this.doubleArrayMax;
@@ -78,7 +74,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.doubleArrayMax;
     }
     public void _invalidateDoubleArrayMax() { this.doubleArrayMax = null; }
-    private Double doubleArrayMid;
     public Double doubleArrayMid() {
         if (this.doubleArrayMid != null)
             return this.doubleArrayMid;
@@ -86,7 +81,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.doubleArrayMid;
     }
     public void _invalidateDoubleArrayMid() { this.doubleArrayMid = null; }
-    private Double doubleArrayMin;
     public Double doubleArrayMin() {
         if (this.doubleArrayMin != null)
             return this.doubleArrayMin;
@@ -94,7 +88,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.doubleArrayMin;
     }
     public void _invalidateDoubleArrayMin() { this.doubleArrayMin = null; }
-    private Integer doubleArraySize;
     public Integer doubleArraySize() {
         if (this.doubleArraySize != null)
             return this.doubleArraySize;
@@ -102,7 +95,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.doubleArraySize;
     }
     public void _invalidateDoubleArraySize() { this.doubleArraySize = null; }
-    private List<Integer> intArray;
     public List<Integer> intArray() {
         if (this.intArray != null)
             return this.intArray;
@@ -110,7 +102,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.intArray;
     }
     public void _invalidateIntArray() { this.intArray = null; }
-    private Integer intArrayFirst;
     public Integer intArrayFirst() {
         if (this.intArrayFirst != null)
             return this.intArrayFirst;
@@ -118,7 +109,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.intArrayFirst;
     }
     public void _invalidateIntArrayFirst() { this.intArrayFirst = null; }
-    private Integer intArrayLast;
     public Integer intArrayLast() {
         if (this.intArrayLast != null)
             return this.intArrayLast;
@@ -126,7 +116,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.intArrayLast;
     }
     public void _invalidateIntArrayLast() { this.intArrayLast = null; }
-    private Integer intArrayMax;
     public Integer intArrayMax() {
         if (this.intArrayMax != null)
             return this.intArrayMax;
@@ -134,7 +123,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.intArrayMax;
     }
     public void _invalidateIntArrayMax() { this.intArrayMax = null; }
-    private Integer intArrayMid;
     public Integer intArrayMid() {
         if (this.intArrayMid != null)
             return this.intArrayMid;
@@ -142,7 +130,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.intArrayMid;
     }
     public void _invalidateIntArrayMid() { this.intArrayMid = null; }
-    private Integer intArrayMin;
     public Integer intArrayMin() {
         if (this.intArrayMin != null)
             return this.intArrayMin;
@@ -150,7 +137,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.intArrayMin;
     }
     public void _invalidateIntArrayMin() { this.intArrayMin = null; }
-    private Integer intArraySize;
     public Integer intArraySize() {
         if (this.intArraySize != null)
             return this.intArraySize;
@@ -158,7 +144,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.intArraySize;
     }
     public void _invalidateIntArraySize() { this.intArraySize = null; }
-    private List<String> strArray;
     public List<String> strArray() {
         if (this.strArray != null)
             return this.strArray;
@@ -166,7 +151,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.strArray;
     }
     public void _invalidateStrArray() { this.strArray = null; }
-    private String strArrayFirst;
     public String strArrayFirst() {
         if (this.strArrayFirst != null)
             return this.strArrayFirst;
@@ -174,7 +158,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.strArrayFirst;
     }
     public void _invalidateStrArrayFirst() { this.strArrayFirst = null; }
-    private String strArrayLast;
     public String strArrayLast() {
         if (this.strArrayLast != null)
             return this.strArrayLast;
@@ -182,7 +165,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.strArrayLast;
     }
     public void _invalidateStrArrayLast() { this.strArrayLast = null; }
-    private String strArrayMax;
     public String strArrayMax() {
         if (this.strArrayMax != null)
             return this.strArrayMax;
@@ -190,7 +172,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.strArrayMax;
     }
     public void _invalidateStrArrayMax() { this.strArrayMax = null; }
-    private String strArrayMid;
     public String strArrayMid() {
         if (this.strArrayMid != null)
             return this.strArrayMid;
@@ -198,7 +179,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.strArrayMid;
     }
     public void _invalidateStrArrayMid() { this.strArrayMid = null; }
-    private String strArrayMin;
     public String strArrayMin() {
         if (this.strArrayMin != null)
             return this.strArrayMin;
@@ -206,7 +186,6 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.strArrayMin;
     }
     public void _invalidateStrArrayMin() { this.strArrayMin = null; }
-    private Integer strArraySize;
     public Integer strArraySize() {
         if (this.strArraySize != null)
             return this.strArraySize;
@@ -214,10 +193,31 @@ public class ExprCalcArrayOps extends KaitaiStruct.ReadWrite {
         return this.strArraySize;
     }
     public void _invalidateStrArraySize() { this.strArraySize = null; }
-    private ExprCalcArrayOps _root;
-    private KaitaiStruct.ReadWrite _parent;
     public ExprCalcArrayOps _root() { return _root; }
     public void set_root(ExprCalcArrayOps _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Double> doubleArray;
+    private Double doubleArrayFirst;
+    private Double doubleArrayLast;
+    private Double doubleArrayMax;
+    private Double doubleArrayMid;
+    private Double doubleArrayMin;
+    private Integer doubleArraySize;
+    private List<Integer> intArray;
+    private Integer intArrayFirst;
+    private Integer intArrayLast;
+    private Integer intArrayMax;
+    private Integer intArrayMid;
+    private Integer intArrayMin;
+    private Integer intArraySize;
+    private List<String> strArray;
+    private String strArrayFirst;
+    private String strArrayLast;
+    private String strArrayMax;
+    private String strArrayMid;
+    private String strArrayMin;
+    private Integer strArraySize;
+    private ExprCalcArrayOps _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

@@ -16,10 +16,10 @@ namespace Kaitai\Struct\Tests {
                     break;
             }
         }
-        protected $_m_category;
-        protected $_m_content;
         public function category() { return $this->_m_category; }
         public function content() { return $this->_m_content; }
+        protected $_m_category;
+        protected $_m_content;
     }
 }
 
@@ -34,10 +34,10 @@ namespace Kaitai\Struct\Tests\NavParentSwitch {
             $this->_m_foo = $this->_io->readU1();
             $this->_m_subelement = new \Kaitai\Struct\Tests\NavParentSwitch\Subelement1($this->_io, $this, $this->_root);
         }
-        protected $_m_foo;
-        protected $_m_subelement;
         public function foo() { return $this->_m_foo; }
         public function subelement() { return $this->_m_subelement; }
+        protected $_m_foo;
+        protected $_m_subelement;
     }
 }
 
@@ -53,7 +53,7 @@ namespace Kaitai\Struct\Tests\NavParentSwitch {
                 $this->_m_bar = $this->_io->readU1();
             }
         }
-        protected $_m_bar;
         public function bar() { return $this->_m_bar; }
+        protected $_m_bar;
     }
 }

@@ -39,16 +39,14 @@ public:
 
     public:
         ~block_t();
+        uint8_t foo() const { return m_foo; }
+        params_pass_struct_t* _root() const { return m__root; }
+        params_pass_struct_t* _parent() const { return m__parent; }
 
     private:
         uint8_t m_foo;
         params_pass_struct_t* m__root;
         params_pass_struct_t* m__parent;
-
-    public:
-        uint8_t foo() const { return m_foo; }
-        params_pass_struct_t* _root() const { return m__root; }
-        params_pass_struct_t* _parent() const { return m__parent; }
     };
 
     class struct_type_t : public kaitai::kstruct {
@@ -77,44 +75,42 @@ public:
 
         public:
             ~baz_t();
+            uint8_t qux() const { return m_qux; }
+            kaitai::kstruct* foo() const { return m_foo; }
+            params_pass_struct_t* _root() const { return m__root; }
+            params_pass_struct_t::struct_type_t* _parent() const { return m__parent; }
 
         private:
             uint8_t m_qux;
             kaitai::kstruct* m_foo;
             params_pass_struct_t* m__root;
             params_pass_struct_t::struct_type_t* m__parent;
-
-        public:
-            uint8_t qux() const { return m_qux; }
-            kaitai::kstruct* foo() const { return m_foo; }
-            params_pass_struct_t* _root() const { return m__root; }
-            params_pass_struct_t::struct_type_t* _parent() const { return m__parent; }
         };
-
-    private:
-        baz_t* m_bar;
-        kaitai::kstruct* m_foo;
-        params_pass_struct_t* m__root;
-        params_pass_struct_t* m__parent;
 
     public:
         baz_t* bar() const { return m_bar; }
         kaitai::kstruct* foo() const { return m_foo; }
         params_pass_struct_t* _root() const { return m__root; }
         params_pass_struct_t* _parent() const { return m__parent; }
-    };
 
-private:
-    block_t* m_first;
-    struct_type_t* m_one;
-    params_pass_struct_t* m__root;
-    kaitai::kstruct* m__parent;
+    private:
+        baz_t* m_bar;
+        kaitai::kstruct* m_foo;
+        params_pass_struct_t* m__root;
+        params_pass_struct_t* m__parent;
+    };
 
 public:
     block_t* first() const { return m_first; }
     struct_type_t* one() const { return m_one; }
     params_pass_struct_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    block_t* m_first;
+    struct_type_t* m_one;
+    params_pass_struct_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // PARAMS_PASS_STRUCT_H_

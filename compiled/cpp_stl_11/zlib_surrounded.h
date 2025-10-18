@@ -38,27 +38,15 @@ public:
 
     public:
         ~inflated_t();
+        int32_t num() const { return m_num; }
+        zlib_surrounded_t* _root() const { return m__root; }
+        zlib_surrounded_t* _parent() const { return m__parent; }
 
     private:
         int32_t m_num;
         zlib_surrounded_t* m__root;
         zlib_surrounded_t* m__parent;
-
-    public:
-        int32_t num() const { return m_num; }
-        zlib_surrounded_t* _root() const { return m__root; }
-        zlib_surrounded_t* _parent() const { return m__parent; }
     };
-
-private:
-    std::string m_pre;
-    std::unique_ptr<inflated_t> m_zlib;
-    std::string m_post;
-    zlib_surrounded_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::string m__raw_zlib;
-    std::unique_ptr<kaitai::kstream> m__io__raw_zlib;
-    std::string m__raw__raw_zlib;
 
 public:
     std::string pre() const { return m_pre; }
@@ -69,4 +57,14 @@ public:
     std::string _raw_zlib() const { return m__raw_zlib; }
     kaitai::kstream* _io__raw_zlib() const { return m__io__raw_zlib.get(); }
     std::string _raw__raw_zlib() const { return m__raw__raw_zlib; }
+
+private:
+    std::string m_pre;
+    std::unique_ptr<inflated_t> m_zlib;
+    std::string m_post;
+    zlib_surrounded_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::string m__raw_zlib;
+    std::unique_ptr<kaitai::kstream> m__io__raw_zlib;
+    std::string m__raw__raw_zlib;
 };

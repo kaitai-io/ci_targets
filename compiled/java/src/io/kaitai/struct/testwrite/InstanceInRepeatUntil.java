@@ -75,9 +75,6 @@ public class InstanceInRepeatUntil extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private Short untilVal;
-    private boolean _shouldWriteUntilVal = false;
-    private boolean _enabledUntilVal = true;
     public Short untilVal() {
         if (_shouldWriteUntilVal)
             _writeUntilVal();
@@ -101,13 +98,16 @@ public class InstanceInRepeatUntil extends KaitaiStruct.ReadWrite {
         this._io.writeS2le(this.untilVal);
         this._io.seek(_pos);
     }
-    private List<Short> entries;
-    private InstanceInRepeatUntil _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Short> entries() { return entries; }
     public void setEntries(List<Short> _v) { _dirty = true; entries = _v; }
     public InstanceInRepeatUntil _root() { return _root; }
     public void set_root(InstanceInRepeatUntil _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Short untilVal;
+    private boolean _shouldWriteUntilVal = false;
+    private boolean _enabledUntilVal = true;
+    private List<Short> entries;
+    private InstanceInRepeatUntil _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

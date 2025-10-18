@@ -123,12 +123,12 @@ public class SwitchManualIntElse extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private int value;
-            private SwitchManualIntElse _root;
-            private SwitchManualIntElse.Opcode _parent;
             public int value() { return value; }
             public SwitchManualIntElse _root() { return _root; }
             public SwitchManualIntElse.Opcode _parent() { return _parent; }
+            private int value;
+            private SwitchManualIntElse _root;
+            private SwitchManualIntElse.Opcode _parent;
         }
         public static class Noneval extends KaitaiStruct {
             public static Noneval fromFile(String fileName) throws IOException {
@@ -155,12 +155,12 @@ public class SwitchManualIntElse extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private long filler;
-            private SwitchManualIntElse _root;
-            private SwitchManualIntElse.Opcode _parent;
             public long filler() { return filler; }
             public SwitchManualIntElse _root() { return _root; }
             public SwitchManualIntElse.Opcode _parent() { return _parent; }
+            private long filler;
+            private SwitchManualIntElse _root;
+            private SwitchManualIntElse.Opcode _parent;
         }
         public static class Strval extends KaitaiStruct {
             public static Strval fromFile(String fileName) throws IOException {
@@ -187,26 +187,26 @@ public class SwitchManualIntElse extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private String value;
-            private SwitchManualIntElse _root;
-            private SwitchManualIntElse.Opcode _parent;
             public String value() { return value; }
             public SwitchManualIntElse _root() { return _root; }
             public SwitchManualIntElse.Opcode _parent() { return _parent; }
+            private String value;
+            private SwitchManualIntElse _root;
+            private SwitchManualIntElse.Opcode _parent;
         }
-        private int code;
-        private KaitaiStruct body;
-        private SwitchManualIntElse _root;
-        private SwitchManualIntElse _parent;
         public int code() { return code; }
         public KaitaiStruct body() { return body; }
         public SwitchManualIntElse _root() { return _root; }
         public SwitchManualIntElse _parent() { return _parent; }
+        private int code;
+        private KaitaiStruct body;
+        private SwitchManualIntElse _root;
+        private SwitchManualIntElse _parent;
     }
-    private List<Opcode> opcodes;
-    private SwitchManualIntElse _root;
-    private KaitaiStruct _parent;
     public List<Opcode> opcodes() { return opcodes; }
     public SwitchManualIntElse _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Opcode> opcodes;
+    private SwitchManualIntElse _root;
+    private KaitaiStruct _parent;
 }

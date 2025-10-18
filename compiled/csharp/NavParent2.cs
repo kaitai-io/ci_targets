@@ -64,15 +64,13 @@ namespace Kaitai
                 {
                     _content = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(M_Parent.NumItems));
                 }
-                private string _content;
-                private NavParent2 m_root;
-                private NavParent2.Tag m_parent;
                 public string Content { get { return _content; } }
                 public NavParent2 M_Root { get { return m_root; } }
                 public NavParent2.Tag M_Parent { get { return m_parent; } }
+                private string _content;
+                private NavParent2 m_root;
+                private NavParent2.Tag m_parent;
             }
-            private bool f_tagContent;
-            private TagChar _tagContent;
             public TagChar TagContent
             {
                 get
@@ -93,26 +91,28 @@ namespace Kaitai
                     return _tagContent;
                 }
             }
-            private string _name;
-            private uint _ofs;
-            private uint _numItems;
-            private NavParent2 m_root;
-            private NavParent2 m_parent;
             public string Name { get { return _name; } }
             public uint Ofs { get { return _ofs; } }
             public uint NumItems { get { return _numItems; } }
             public NavParent2 M_Root { get { return m_root; } }
             public NavParent2 M_Parent { get { return m_parent; } }
+            private bool f_tagContent;
+            private TagChar _tagContent;
+            private string _name;
+            private uint _ofs;
+            private uint _numItems;
+            private NavParent2 m_root;
+            private NavParent2 m_parent;
         }
-        private uint _ofsTags;
-        private uint _numTags;
-        private List<Tag> _tags;
-        private NavParent2 m_root;
-        private KaitaiStruct m_parent;
         public uint OfsTags { get { return _ofsTags; } }
         public uint NumTags { get { return _numTags; } }
         public List<Tag> Tags { get { return _tags; } }
         public NavParent2 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private uint _ofsTags;
+        private uint _numTags;
+        private List<Tag> _tags;
+        private NavParent2 m_root;
+        private KaitaiStruct m_parent;
     }
 }

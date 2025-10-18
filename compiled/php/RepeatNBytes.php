@@ -15,7 +15,7 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_records[] = $this->_io->readBytes(5);
             }
         }
-        protected $_m_records;
         public function records() { return $this->_m_records; }
+        protected $_m_records;
     }
 }

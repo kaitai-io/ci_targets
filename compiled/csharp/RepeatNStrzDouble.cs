@@ -31,15 +31,15 @@ namespace Kaitai
                 _lines2.Add(System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true)));
             }
         }
-        private uint _qty;
-        private List<string> _lines1;
-        private List<string> _lines2;
-        private RepeatNStrzDouble m_root;
-        private KaitaiStruct m_parent;
         public uint Qty { get { return _qty; } }
         public List<string> Lines1 { get { return _lines1; } }
         public List<string> Lines2 { get { return _lines2; } }
         public RepeatNStrzDouble M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private uint _qty;
+        private List<string> _lines1;
+        private List<string> _lines2;
+        private RepeatNStrzDouble m_root;
+        private KaitaiStruct m_parent;
     }
 }

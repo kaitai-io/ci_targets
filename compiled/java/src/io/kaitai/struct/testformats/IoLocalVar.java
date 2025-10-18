@@ -78,12 +78,11 @@ public class IoLocalVar extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private IoLocalVar _root;
-        private IoLocalVar _parent;
         public IoLocalVar _root() { return _root; }
         public IoLocalVar _parent() { return _parent; }
+        private IoLocalVar _root;
+        private IoLocalVar _parent;
     }
-    private Object messUp;
     public Object messUp() {
         if (this.messUp != null)
             return this.messUp;
@@ -109,14 +108,15 @@ public class IoLocalVar extends KaitaiStruct {
         io.seek(_pos);
         return this.messUp;
     }
-    private byte[] skip;
-    private Integer alwaysNull;
-    private int followup;
-    private IoLocalVar _root;
-    private KaitaiStruct _parent;
     public byte[] skip() { return skip; }
     public Integer alwaysNull() { return alwaysNull; }
     public int followup() { return followup; }
     public IoLocalVar _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Object messUp;
+    private byte[] skip;
+    private Integer alwaysNull;
+    private int followup;
+    private IoLocalVar _root;
+    private KaitaiStruct _parent;
 }

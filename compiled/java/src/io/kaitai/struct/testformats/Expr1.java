@@ -34,26 +34,26 @@ public class Expr1 extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Integer lenOf1Mod;
     public Integer lenOf1Mod() {
         if (this.lenOf1Mod != null)
             return this.lenOf1Mod;
         this.lenOf1Mod = ((Number) (lenOf1() - 2)).intValue();
         return this.lenOf1Mod;
     }
-    private Integer str1Len;
     public Integer str1Len() {
         if (this.str1Len != null)
             return this.str1Len;
         this.str1Len = ((Number) (str1().length())).intValue();
         return this.str1Len;
     }
-    private int lenOf1;
-    private String str1;
-    private Expr1 _root;
-    private KaitaiStruct _parent;
     public int lenOf1() { return lenOf1; }
     public String str1() { return str1; }
     public Expr1 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Integer lenOf1Mod;
+    private Integer str1Len;
+    private int lenOf1;
+    private String str1;
+    private Expr1 _root;
+    private KaitaiStruct _parent;
 }

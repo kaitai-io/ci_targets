@@ -110,15 +110,15 @@ public class ParamsPassArrayStruct extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int b;
-        private ParamsPassArrayStruct _root;
-        private ParamsPassArrayStruct _parent;
         public int b() { return b; }
         public void setB(int _v) { _dirty = true; b = _v; }
         public ParamsPassArrayStruct _root() { return _root; }
         public void set_root(ParamsPassArrayStruct _v) { _dirty = true; _root = _v; }
         public ParamsPassArrayStruct _parent() { return _parent; }
         public void set_parent(ParamsPassArrayStruct _v) { _dirty = true; _parent = _v; }
+        private int b;
+        private ParamsPassArrayStruct _root;
+        private ParamsPassArrayStruct _parent;
     }
     public static class Foo extends KaitaiStruct.ReadWrite {
         public static Foo fromFile(String fileName) throws IOException {
@@ -157,15 +157,15 @@ public class ParamsPassArrayStruct extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int f;
-        private ParamsPassArrayStruct _root;
-        private ParamsPassArrayStruct _parent;
         public int f() { return f; }
         public void setF(int _v) { _dirty = true; f = _v; }
         public ParamsPassArrayStruct _root() { return _root; }
         public void set_root(ParamsPassArrayStruct _v) { _dirty = true; _root = _v; }
         public ParamsPassArrayStruct _parent() { return _parent; }
         public void set_parent(ParamsPassArrayStruct _v) { _dirty = true; _parent = _v; }
+        private int f;
+        private ParamsPassArrayStruct _root;
+        private ParamsPassArrayStruct _parent;
     }
     public static class StructType extends KaitaiStruct.ReadWrite {
         public StructType(List<KaitaiStruct.ReadWrite> structs) {
@@ -200,17 +200,16 @@ public class ParamsPassArrayStruct extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private List<KaitaiStruct.ReadWrite> structs;
-        private ParamsPassArrayStruct _root;
-        private ParamsPassArrayStruct _parent;
         public List<KaitaiStruct.ReadWrite> structs() { return structs; }
         public void setStructs(List<KaitaiStruct.ReadWrite> _v) { _dirty = true; structs = _v; }
         public ParamsPassArrayStruct _root() { return _root; }
         public void set_root(ParamsPassArrayStruct _v) { _dirty = true; _root = _v; }
         public ParamsPassArrayStruct _parent() { return _parent; }
         public void set_parent(ParamsPassArrayStruct _v) { _dirty = true; _parent = _v; }
+        private List<KaitaiStruct.ReadWrite> structs;
+        private ParamsPassArrayStruct _root;
+        private ParamsPassArrayStruct _parent;
     }
-    private List<KaitaiStruct.ReadWrite> oneTwo;
     public List<KaitaiStruct.ReadWrite> oneTwo() {
         if (this.oneTwo != null)
             return this.oneTwo;
@@ -218,11 +217,6 @@ public class ParamsPassArrayStruct extends KaitaiStruct.ReadWrite {
         return this.oneTwo;
     }
     public void _invalidateOneTwo() { this.oneTwo = null; }
-    private Foo one;
-    private Bar two;
-    private StructType passStructs;
-    private ParamsPassArrayStruct _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Foo one() { return one; }
     public void setOne(Foo _v) { _dirty = true; one = _v; }
     public Bar two() { return two; }
@@ -233,4 +227,10 @@ public class ParamsPassArrayStruct extends KaitaiStruct.ReadWrite {
     public void set_root(ParamsPassArrayStruct _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<KaitaiStruct.ReadWrite> oneTwo;
+    private Foo one;
+    private Bar two;
+    private StructType passStructs;
+    private ParamsPassArrayStruct _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

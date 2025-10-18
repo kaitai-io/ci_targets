@@ -53,16 +53,14 @@ public:
 
         public:
             ~subnest_t();
+            uint64_t two() const { return m_two; }
+            default_bit_endian_mod_t* _root() const { return m__root; }
+            default_bit_endian_mod_t::main_obj_t* _parent() const { return m__parent; }
 
         private:
             uint64_t m_two;
             default_bit_endian_mod_t* m__root;
             default_bit_endian_mod_t::main_obj_t* m__parent;
-
-        public:
-            uint64_t two() const { return m_two; }
-            default_bit_endian_mod_t* _root() const { return m__root; }
-            default_bit_endian_mod_t::main_obj_t* _parent() const { return m__parent; }
         };
 
         class subnest_be_t : public kaitai::kstruct {
@@ -77,25 +75,15 @@ public:
 
         public:
             ~subnest_be_t();
+            uint64_t two() const { return m_two; }
+            default_bit_endian_mod_t* _root() const { return m__root; }
+            default_bit_endian_mod_t::main_obj_t* _parent() const { return m__parent; }
 
         private:
             uint64_t m_two;
             default_bit_endian_mod_t* m__root;
             default_bit_endian_mod_t::main_obj_t* m__parent;
-
-        public:
-            uint64_t two() const { return m_two; }
-            default_bit_endian_mod_t* _root() const { return m__root; }
-            default_bit_endian_mod_t::main_obj_t* _parent() const { return m__parent; }
         };
-
-    private:
-        uint64_t m_one;
-        uint64_t m_two;
-        subnest_t* m_nest;
-        subnest_be_t* m_nest_be;
-        default_bit_endian_mod_t* m__root;
-        default_bit_endian_mod_t* m__parent;
 
     public:
         uint64_t one() const { return m_one; }
@@ -104,17 +92,25 @@ public:
         subnest_be_t* nest_be() const { return m_nest_be; }
         default_bit_endian_mod_t* _root() const { return m__root; }
         default_bit_endian_mod_t* _parent() const { return m__parent; }
-    };
 
-private:
-    main_obj_t* m_main;
-    default_bit_endian_mod_t* m__root;
-    kaitai::kstruct* m__parent;
+    private:
+        uint64_t m_one;
+        uint64_t m_two;
+        subnest_t* m_nest;
+        subnest_be_t* m_nest_be;
+        default_bit_endian_mod_t* m__root;
+        default_bit_endian_mod_t* m__parent;
+    };
 
 public:
     main_obj_t* main() const { return m_main; }
     default_bit_endian_mod_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    main_obj_t* m_main;
+    default_bit_endian_mod_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // DEFAULT_BIT_ENDIAN_MOD_H_

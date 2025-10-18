@@ -43,8 +43,6 @@ namespace Kaitai
             {
                 _opcode = m_io.ReadU1();
             }
-            private bool f_halfOpcode;
-            private int? _halfOpcode;
             public int? HalfOpcode
             {
                 get
@@ -58,18 +56,20 @@ namespace Kaitai
                     return _halfOpcode;
                 }
             }
-            private byte _opcode;
-            private IfValues m_root;
-            private IfValues m_parent;
             public byte Opcode { get { return _opcode; } }
             public IfValues M_Root { get { return m_root; } }
             public IfValues M_Parent { get { return m_parent; } }
+            private bool f_halfOpcode;
+            private int? _halfOpcode;
+            private byte _opcode;
+            private IfValues m_root;
+            private IfValues m_parent;
         }
-        private List<Code> _codes;
-        private IfValues m_root;
-        private KaitaiStruct m_parent;
         public List<Code> Codes { get { return _codes; } }
         public IfValues M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<Code> _codes;
+        private IfValues m_root;
+        private KaitaiStruct m_parent;
     }
 }

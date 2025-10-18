@@ -51,26 +51,26 @@ public class EnumOfValueInst extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Animal pet3;
     public Animal pet3() {
         if (this.pet3 != null)
             return this.pet3;
         this.pet3 = Animal.byId((pet1() == Animal.CAT ? 4 : 12));
         return this.pet3;
     }
-    private Animal pet4;
     public Animal pet4() {
         if (this.pet4 != null)
             return this.pet4;
         this.pet4 = (pet1() == Animal.CAT ? Animal.DOG : Animal.CHICKEN);
         return this.pet4;
     }
-    private Animal pet1;
-    private Animal pet2;
-    private EnumOfValueInst _root;
-    private KaitaiStruct _parent;
     public Animal pet1() { return pet1; }
     public Animal pet2() { return pet2; }
     public EnumOfValueInst _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Animal pet3;
+    private Animal pet4;
+    private Animal pet1;
+    private Animal pet2;
+    private EnumOfValueInst _root;
+    private KaitaiStruct _parent;
 }

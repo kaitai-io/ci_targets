@@ -22,14 +22,6 @@ namespace Kaitai\Struct\Tests {
             $_io__raw_s4 = new \Kaitai\Struct\Stream($this->_m__raw_s4);
             $this->_m_s4 = new \Kaitai\Struct\Tests\StructPadTermEqual\BytesWrapper($_io__raw_s4, $this, $this->_root);
         }
-        protected $_m_s1;
-        protected $_m_s2;
-        protected $_m_s3;
-        protected $_m_s4;
-        protected $_m__raw_s1;
-        protected $_m__raw_s2;
-        protected $_m__raw_s3;
-        protected $_m__raw_s4;
         public function s1() { return $this->_m_s1; }
         public function s2() { return $this->_m_s2; }
         public function s3() { return $this->_m_s3; }
@@ -38,6 +30,14 @@ namespace Kaitai\Struct\Tests {
         public function _raw_s2() { return $this->_m__raw_s2; }
         public function _raw_s3() { return $this->_m__raw_s3; }
         public function _raw_s4() { return $this->_m__raw_s4; }
+        protected $_m_s1;
+        protected $_m_s2;
+        protected $_m_s3;
+        protected $_m_s4;
+        protected $_m__raw_s1;
+        protected $_m__raw_s2;
+        protected $_m__raw_s3;
+        protected $_m__raw_s4;
     }
 }
 
@@ -51,7 +51,7 @@ namespace Kaitai\Struct\Tests\StructPadTermEqual {
         private function _read() {
             $this->_m_value = $this->_io->readBytesFull();
         }
-        protected $_m_value;
         public function value() { return $this->_m_value; }
+        protected $_m_value;
     }
 }

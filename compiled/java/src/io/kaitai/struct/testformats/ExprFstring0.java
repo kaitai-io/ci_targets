@@ -34,61 +34,61 @@ public class ExprFstring0 extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private String empty;
     public String empty() {
         if (this.empty != null)
             return this.empty;
         this.empty = "";
         return this.empty;
     }
-    private String headAndInt;
     public String headAndInt() {
         if (this.headAndInt != null)
             return this.headAndInt;
         this.headAndInt = "abc=" + Long.toString(seqInt());
         return this.headAndInt;
     }
-    private String headAndIntLiteral;
     public String headAndIntLiteral() {
         if (this.headAndIntLiteral != null)
             return this.headAndIntLiteral;
         this.headAndIntLiteral = "abc=" + Long.toString(123);
         return this.headAndIntLiteral;
     }
-    private String headAndStr;
     public String headAndStr() {
         if (this.headAndStr != null)
             return this.headAndStr;
         this.headAndStr = "abc=" + seqStr();
         return this.headAndStr;
     }
-    private String headAndStrLiteral;
     public String headAndStrLiteral() {
         if (this.headAndStrLiteral != null)
             return this.headAndStrLiteral;
         this.headAndStrLiteral = "abc=" + "foo";
         return this.headAndStrLiteral;
     }
-    private String literal;
     public String literal() {
         if (this.literal != null)
             return this.literal;
         this.literal = "abc";
         return this.literal;
     }
-    private String literalWithEscapes;
     public String literalWithEscapes() {
         if (this.literalWithEscapes != null)
             return this.literalWithEscapes;
         this.literalWithEscapes = "abc\n\tt";
         return this.literalWithEscapes;
     }
-    private String seqStr;
-    private int seqInt;
-    private ExprFstring0 _root;
-    private KaitaiStruct _parent;
     public String seqStr() { return seqStr; }
     public int seqInt() { return seqInt; }
     public ExprFstring0 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private String empty;
+    private String headAndInt;
+    private String headAndIntLiteral;
+    private String headAndStr;
+    private String headAndStrLiteral;
+    private String literal;
+    private String literalWithEscapes;
+    private String seqStr;
+    private int seqInt;
+    private ExprFstring0 _root;
+    private KaitaiStruct _parent;
 }

@@ -39,34 +39,28 @@ public:
 
     public:
         ~header_obj_t();
+        uint32_t qty_numbers() const { return m_qty_numbers; }
+        position_in_seq_t* _root() const { return m__root; }
+        position_in_seq_t* _parent() const { return m__parent; }
 
     private:
         uint32_t m_qty_numbers;
         position_in_seq_t* m__root;
         position_in_seq_t* m__parent;
-
-    public:
-        uint32_t qty_numbers() const { return m_qty_numbers; }
-        position_in_seq_t* _root() const { return m__root; }
-        position_in_seq_t* _parent() const { return m__parent; }
     };
+
+public:
+    header_obj_t* header();
+    std::vector<uint8_t>* numbers() const { return m_numbers; }
+    position_in_seq_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_header;
     header_obj_t* m_header;
-
-public:
-    header_obj_t* header();
-
-private:
     std::vector<uint8_t>* m_numbers;
     position_in_seq_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::vector<uint8_t>* numbers() const { return m_numbers; }
-    position_in_seq_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // POSITION_IN_SEQ_H_

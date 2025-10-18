@@ -21,11 +21,11 @@ namespace Kaitai
         {
             _str = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesFull());
         }
-        private string _str;
-        private StrEos m_root;
-        private KaitaiStruct m_parent;
         public string Str { get { return _str; } }
         public StrEos M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private string _str;
+        private StrEos m_root;
+        private KaitaiStruct m_parent;
     }
 }

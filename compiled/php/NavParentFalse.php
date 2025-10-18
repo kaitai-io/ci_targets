@@ -13,12 +13,12 @@ namespace Kaitai\Struct\Tests {
             $this->_m_elementA = new \Kaitai\Struct\Tests\NavParentFalse\ParentA($this->_io, $this, $this->_root);
             $this->_m_elementB = new \Kaitai\Struct\Tests\NavParentFalse\ParentB($this->_io, $this, $this->_root);
         }
-        protected $_m_childSize;
-        protected $_m_elementA;
-        protected $_m_elementB;
         public function childSize() { return $this->_m_childSize; }
         public function elementA() { return $this->_m_elementA; }
         public function elementB() { return $this->_m_elementB; }
+        protected $_m_childSize;
+        protected $_m_elementA;
+        protected $_m_elementB;
     }
 }
 
@@ -35,10 +35,10 @@ namespace Kaitai\Struct\Tests\NavParentFalse {
                 $this->_m_more = $this->_io->readBytes($this->_parent()->_parent()->childSize());
             }
         }
-        protected $_m_code;
-        protected $_m_more;
         public function code() { return $this->_m_code; }
         public function more() { return $this->_m_more; }
+        protected $_m_code;
+        protected $_m_more;
     }
 }
 
@@ -53,10 +53,10 @@ namespace Kaitai\Struct\Tests\NavParentFalse {
             $this->_m_foo = new \Kaitai\Struct\Tests\NavParentFalse\Child($this->_io, $this, $this->_root);
             $this->_m_bar = new \Kaitai\Struct\Tests\NavParentFalse\ParentB($this->_io, $this, $this->_root);
         }
-        protected $_m_foo;
-        protected $_m_bar;
         public function foo() { return $this->_m_foo; }
         public function bar() { return $this->_m_bar; }
+        protected $_m_foo;
+        protected $_m_bar;
     }
 }
 
@@ -70,7 +70,7 @@ namespace Kaitai\Struct\Tests\NavParentFalse {
         private function _read() {
             $this->_m_foo = new \Kaitai\Struct\Tests\NavParentFalse\Child($this->_io, null, $this->_root);
         }
-        protected $_m_foo;
         public function foo() { return $this->_m_foo; }
+        protected $_m_foo;
     }
 }

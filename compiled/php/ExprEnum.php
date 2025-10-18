@@ -11,29 +11,29 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_one = $this->_io->readU1();
         }
-        protected $_m_constDog;
         public function constDog() {
             if ($this->_m_constDog !== null)
                 return $this->_m_constDog;
             $this->_m_constDog = 4;
             return $this->_m_constDog;
         }
-        protected $_m_derivedBoom;
         public function derivedBoom() {
             if ($this->_m_derivedBoom !== null)
                 return $this->_m_derivedBoom;
             $this->_m_derivedBoom = $this->one();
             return $this->_m_derivedBoom;
         }
-        protected $_m_derivedDog;
         public function derivedDog() {
             if ($this->_m_derivedDog !== null)
                 return $this->_m_derivedDog;
             $this->_m_derivedDog = $this->one() - 98;
             return $this->_m_derivedDog;
         }
-        protected $_m_one;
         public function one() { return $this->_m_one; }
+        protected $_m_constDog;
+        protected $_m_derivedBoom;
+        protected $_m_derivedDog;
+        protected $_m_one;
     }
 }
 

@@ -24,17 +24,17 @@ namespace Kaitai
             _strTermAndPad = KaitaiStream.BytesTerminate(KaitaiStream.BytesStripRight(m_io.ReadBytes(0), 43), 64, false);
             _strTermInclude = KaitaiStream.BytesTerminate(m_io.ReadBytes(0), 64, true);
         }
-        private byte[] _strPad;
-        private byte[] _strTerm;
-        private byte[] _strTermAndPad;
-        private byte[] _strTermInclude;
-        private BytesPadTermZeroSize m_root;
-        private KaitaiStruct m_parent;
         public byte[] StrPad { get { return _strPad; } }
         public byte[] StrTerm { get { return _strTerm; } }
         public byte[] StrTermAndPad { get { return _strTermAndPad; } }
         public byte[] StrTermInclude { get { return _strTermInclude; } }
         public BytesPadTermZeroSize M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte[] _strPad;
+        private byte[] _strTerm;
+        private byte[] _strTermAndPad;
+        private byte[] _strTermInclude;
+        private BytesPadTermZeroSize m_root;
+        private KaitaiStruct m_parent;
     }
 }

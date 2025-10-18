@@ -47,30 +47,30 @@ public class TypeTernaryOpaque extends KaitaiStruct {
             this.difWithHack._fetchInstances();
         }
     }
-    private HelloWorld dif;
     public HelloWorld dif() {
         if (this.dif != null)
             return this.dif;
         this.dif = (!(isHack()) ? difWoHack() : difWithHack());
         return this.dif;
     }
-    private Boolean isHack;
     public Boolean isHack() {
         if (this.isHack != null)
             return this.isHack;
         this.isHack = false;
         return this.isHack;
     }
-    private HelloWorld difWoHack;
-    private HelloWorld difWithHack;
-    private TypeTernaryOpaque _root;
-    private KaitaiStruct _parent;
-    private byte[] _raw_difWithHack;
-    private byte[] _raw__raw_difWithHack;
     public HelloWorld difWoHack() { return difWoHack; }
     public HelloWorld difWithHack() { return difWithHack; }
     public TypeTernaryOpaque _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
     public byte[] _raw_difWithHack() { return _raw_difWithHack; }
     public byte[] _raw__raw_difWithHack() { return _raw__raw_difWithHack; }
+    private HelloWorld dif;
+    private Boolean isHack;
+    private HelloWorld difWoHack;
+    private HelloWorld difWithHack;
+    private TypeTernaryOpaque _root;
+    private KaitaiStruct _parent;
+    private byte[] _raw_difWithHack;
+    private byte[] _raw__raw_difWithHack;
 }

@@ -12,7 +12,6 @@ namespace Kaitai\Struct\Tests {
             $this->_m_ofsTags = $this->_io->readU4le();
             $this->_m_numTags = $this->_io->readU4le();
         }
-        protected $_m_tags;
         public function tags() {
             if ($this->_m_tags !== null)
                 return $this->_m_tags;
@@ -26,10 +25,11 @@ namespace Kaitai\Struct\Tests {
             $this->_io->seek($_pos);
             return $this->_m_tags;
         }
-        protected $_m_ofsTags;
-        protected $_m_numTags;
         public function ofsTags() { return $this->_m_ofsTags; }
         public function numTags() { return $this->_m_numTags; }
+        protected $_m_tags;
+        protected $_m_ofsTags;
+        protected $_m_numTags;
     }
 }
 
@@ -45,7 +45,6 @@ namespace Kaitai\Struct\Tests\NavParent3 {
             $this->_m_ofs = $this->_io->readU4le();
             $this->_m_numItems = $this->_io->readU4le();
         }
-        protected $_m_tagContent;
         public function tagContent() {
             if ($this->_m_tagContent !== null)
                 return $this->_m_tagContent;
@@ -60,12 +59,13 @@ namespace Kaitai\Struct\Tests\NavParent3 {
             $io->seek($_pos);
             return $this->_m_tagContent;
         }
-        protected $_m_name;
-        protected $_m_ofs;
-        protected $_m_numItems;
         public function name() { return $this->_m_name; }
         public function ofs() { return $this->_m_ofs; }
         public function numItems() { return $this->_m_numItems; }
+        protected $_m_tagContent;
+        protected $_m_name;
+        protected $_m_ofs;
+        protected $_m_numItems;
     }
 }
 
@@ -79,7 +79,7 @@ namespace Kaitai\Struct\Tests\NavParent3\Tag {
         private function _read() {
             $this->_m_content = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->_parent()->numItems()), "ASCII");
         }
-        protected $_m_content;
         public function content() { return $this->_m_content; }
+        protected $_m_content;
     }
 }

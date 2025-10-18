@@ -40,6 +40,9 @@ public:
 
     public:
         ~baz_t();
+        uint8_t v() const { return m_v; }
+        instance_io_user_earlier_t* _root() const { return m__root; }
+        instance_io_user_earlier_t* _parent() const { return m__parent; }
 
     private:
         uint8_t m_v;
@@ -51,11 +54,6 @@ public:
     private:
         instance_io_user_earlier_t* m__root;
         instance_io_user_earlier_t* m__parent;
-
-    public:
-        uint8_t v() const { return m_v; }
-        instance_io_user_earlier_t* _root() const { return m__root; }
-        instance_io_user_earlier_t* _parent() const { return m__parent; }
     };
 
     class foo_t : public kaitai::kstruct {
@@ -70,15 +68,17 @@ public:
 
     public:
         ~foo_t();
+        slot_t* inst();
+        uint8_t indicator() const { return m_indicator; }
+        uint8_t bar() const { return m_bar; }
+        instance_io_user_earlier_t* _root() const { return m__root; }
+        instance_io_user_earlier_t* _parent() const { return m__parent; }
+        std::string _raw_inst() const { return m__raw_inst; }
+        kaitai::kstream* _io__raw_inst() const { return m__io__raw_inst; }
 
     private:
         bool f_inst;
         slot_t* m_inst;
-
-    public:
-        slot_t* inst();
-
-    private:
         uint8_t m_indicator;
         uint8_t m_bar;
         bool n_bar;
@@ -91,14 +91,6 @@ public:
         instance_io_user_earlier_t* m__parent;
         std::string m__raw_inst;
         kaitai::kstream* m__io__raw_inst;
-
-    public:
-        uint8_t indicator() const { return m_indicator; }
-        uint8_t bar() const { return m_bar; }
-        instance_io_user_earlier_t* _root() const { return m__root; }
-        instance_io_user_earlier_t* _parent() const { return m__parent; }
-        std::string _raw_inst() const { return m__raw_inst; }
-        kaitai::kstream* _io__raw_inst() const { return m__io__raw_inst; }
     };
 
     class slot_t : public kaitai::kstruct {
@@ -113,6 +105,10 @@ public:
 
     public:
         ~slot_t();
+        uint8_t last();
+        uint8_t content() const { return m_content; }
+        instance_io_user_earlier_t* _root() const { return m__root; }
+        kaitai::kstruct* _parent() const { return m__parent; }
 
     private:
         bool f_last;
@@ -121,11 +117,6 @@ public:
 
     public:
         bool _is_null_last() { last(); return n_last; };
-
-    private:
-
-    public:
-        uint8_t last();
 
     private:
         uint8_t m_content;
@@ -137,42 +128,11 @@ public:
     private:
         instance_io_user_earlier_t* m__root;
         kaitai::kstruct* m__parent;
-
-    public:
-        uint8_t content() const { return m_content; }
-        instance_io_user_earlier_t* _root() const { return m__root; }
-        kaitai::kstruct* _parent() const { return m__parent; }
     };
-
-private:
-    bool f_a_mid;
-    uint16_t m_a_mid;
 
 public:
     uint16_t a_mid();
-
-private:
-    bool f_b_mid;
-    uint16_t m_b_mid;
-
-public:
     uint16_t b_mid();
-
-private:
-    slot_t* m_sized_a;
-    slot_t* m_sized_b;
-    foo_t* m_into_b;
-    foo_t* m_into_a_skipped;
-    foo_t* m_into_a;
-    baz_t* m_last_accessor;
-    instance_io_user_earlier_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::string m__raw_sized_a;
-    kaitai::kstream* m__io__raw_sized_a;
-    std::string m__raw_sized_b;
-    kaitai::kstream* m__io__raw_sized_b;
-
-public:
     slot_t* sized_a() const { return m_sized_a; }
     slot_t* sized_b() const { return m_sized_b; }
     foo_t* into_b() const { return m_into_b; }
@@ -185,6 +145,24 @@ public:
     kaitai::kstream* _io__raw_sized_a() const { return m__io__raw_sized_a; }
     std::string _raw_sized_b() const { return m__raw_sized_b; }
     kaitai::kstream* _io__raw_sized_b() const { return m__io__raw_sized_b; }
+
+private:
+    bool f_a_mid;
+    uint16_t m_a_mid;
+    bool f_b_mid;
+    uint16_t m_b_mid;
+    slot_t* m_sized_a;
+    slot_t* m_sized_b;
+    foo_t* m_into_b;
+    foo_t* m_into_a_skipped;
+    foo_t* m_into_a;
+    baz_t* m_last_accessor;
+    instance_io_user_earlier_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::string m__raw_sized_a;
+    kaitai::kstream* m__io__raw_sized_a;
+    std::string m__raw_sized_b;
+    kaitai::kstream* m__io__raw_sized_b;
 };
 
 #endif  // INSTANCE_IO_USER_EARLIER_H_

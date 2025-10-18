@@ -50,10 +50,10 @@ public class ValidFailRepeatExpr extends KaitaiStruct {
         for (int i = 0; i < this.foo.size(); i++) {
         }
     }
-    private List<byte[]> foo;
-    private ValidFailRepeatExpr _root;
-    private KaitaiStruct _parent;
     public List<byte[]> foo() { return foo; }
     public ValidFailRepeatExpr _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<byte[]> foo;
+    private ValidFailRepeatExpr _root;
+    private KaitaiStruct _parent;
 }

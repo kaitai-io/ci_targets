@@ -21,11 +21,11 @@ namespace Kaitai
         {
             _a = m_io.ReadBitsIntBe(32);
         }
-        private ulong _a;
-        private BitsSignedResB32Be m_root;
-        private KaitaiStruct m_parent;
         public ulong A { get { return _a; } }
         public BitsSignedResB32Be M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private ulong _a;
+        private BitsSignedResB32Be m_root;
+        private KaitaiStruct m_parent;
     }
 }

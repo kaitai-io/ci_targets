@@ -67,14 +67,6 @@ public class StrEncodingsDefault extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int lenOf2;
-        private String str2;
-        private int lenOf3;
-        private String str3;
-        private int lenOf4;
-        private String str4;
-        private StrEncodingsDefault _root;
-        private StrEncodingsDefault _parent;
         public int lenOf2() { return lenOf2; }
         public String str2() { return str2; }
         public int lenOf3() { return lenOf3; }
@@ -83,15 +75,23 @@ public class StrEncodingsDefault extends KaitaiStruct {
         public String str4() { return str4; }
         public StrEncodingsDefault _root() { return _root; }
         public StrEncodingsDefault _parent() { return _parent; }
+        private int lenOf2;
+        private String str2;
+        private int lenOf3;
+        private String str3;
+        private int lenOf4;
+        private String str4;
+        private StrEncodingsDefault _root;
+        private StrEncodingsDefault _parent;
     }
-    private int lenOf1;
-    private String str1;
-    private Subtype rest;
-    private StrEncodingsDefault _root;
-    private KaitaiStruct _parent;
     public int lenOf1() { return lenOf1; }
     public String str1() { return str1; }
     public Subtype rest() { return rest; }
     public StrEncodingsDefault _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private int lenOf1;
+    private String str1;
+    private Subtype rest;
+    private StrEncodingsDefault _root;
+    private KaitaiStruct _parent;
 }

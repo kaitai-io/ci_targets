@@ -48,24 +48,24 @@ namespace Kaitai
                 _a = m_io.ReadS4le();
                 _b = m_io.ReadS1();
             }
-            private int _a;
-            private sbyte _b;
-            private ProcessRepeatUsertype m_root;
-            private ProcessRepeatUsertype m_parent;
             public int A { get { return _a; } }
             public sbyte B { get { return _b; } }
             public ProcessRepeatUsertype M_Root { get { return m_root; } }
             public ProcessRepeatUsertype M_Parent { get { return m_parent; } }
+            private int _a;
+            private sbyte _b;
+            private ProcessRepeatUsertype m_root;
+            private ProcessRepeatUsertype m_parent;
         }
-        private List<Block> _blocks;
-        private ProcessRepeatUsertype m_root;
-        private KaitaiStruct m_parent;
-        private List<byte[]> __raw_blocks;
-        private List<byte[]> __raw__raw_blocks;
         public List<Block> Blocks { get { return _blocks; } }
         public ProcessRepeatUsertype M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public List<byte[]> M_RawBlocks { get { return __raw_blocks; } }
         public List<byte[]> M_RawM_RawBlocks { get { return __raw__raw_blocks; } }
+        private List<Block> _blocks;
+        private ProcessRepeatUsertype m_root;
+        private KaitaiStruct m_parent;
+        private List<byte[]> __raw_blocks;
+        private List<byte[]> __raw__raw_blocks;
     }
 }

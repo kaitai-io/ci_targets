@@ -65,12 +65,12 @@ public class ParamsPassArrayStruct extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int b;
-        private ParamsPassArrayStruct _root;
-        private ParamsPassArrayStruct _parent;
         public int b() { return b; }
         public ParamsPassArrayStruct _root() { return _root; }
         public ParamsPassArrayStruct _parent() { return _parent; }
+        private int b;
+        private ParamsPassArrayStruct _root;
+        private ParamsPassArrayStruct _parent;
     }
     public static class Foo extends KaitaiStruct {
         public static Foo fromFile(String fileName) throws IOException {
@@ -97,12 +97,12 @@ public class ParamsPassArrayStruct extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int f;
-        private ParamsPassArrayStruct _root;
-        private ParamsPassArrayStruct _parent;
         public int f() { return f; }
         public ParamsPassArrayStruct _root() { return _root; }
         public ParamsPassArrayStruct _parent() { return _parent; }
+        private int f;
+        private ParamsPassArrayStruct _root;
+        private ParamsPassArrayStruct _parent;
     }
     public static class StructType extends KaitaiStruct {
 
@@ -126,28 +126,28 @@ public class ParamsPassArrayStruct extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private List<KaitaiStruct> structs;
-        private ParamsPassArrayStruct _root;
-        private ParamsPassArrayStruct _parent;
         public List<KaitaiStruct> structs() { return structs; }
         public ParamsPassArrayStruct _root() { return _root; }
         public ParamsPassArrayStruct _parent() { return _parent; }
+        private List<KaitaiStruct> structs;
+        private ParamsPassArrayStruct _root;
+        private ParamsPassArrayStruct _parent;
     }
-    private List<KaitaiStruct> oneTwo;
     public List<KaitaiStruct> oneTwo() {
         if (this.oneTwo != null)
             return this.oneTwo;
         this.oneTwo = new ArrayList<KaitaiStruct>(Arrays.asList(one(), two()));
         return this.oneTwo;
     }
-    private Foo one;
-    private Bar two;
-    private StructType passStructs;
-    private ParamsPassArrayStruct _root;
-    private KaitaiStruct _parent;
     public Foo one() { return one; }
     public Bar two() { return two; }
     public StructType passStructs() { return passStructs; }
     public ParamsPassArrayStruct _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<KaitaiStruct> oneTwo;
+    private Foo one;
+    private Bar two;
+    private StructType passStructs;
+    private ParamsPassArrayStruct _root;
+    private KaitaiStruct _parent;
 }

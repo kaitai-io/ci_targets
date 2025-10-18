@@ -39,7 +39,6 @@ public class ValidFailInst extends KaitaiStruct {
         if (this.inst != null) {
         }
     }
-    private Integer inst;
     public Integer inst() {
         if (this.inst != null)
             return this.inst;
@@ -52,10 +51,11 @@ public class ValidFailInst extends KaitaiStruct {
         this._io.seek(_pos);
         return this.inst;
     }
-    private Integer a;
-    private ValidFailInst _root;
-    private KaitaiStruct _parent;
     public Integer a() { return a; }
     public ValidFailInst _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Integer inst;
+    private Integer a;
+    private ValidFailInst _root;
+    private KaitaiStruct _parent;
 }

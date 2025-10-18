@@ -24,47 +24,25 @@ private:
 
 public:
     ~str_literals_t();
+    std::string backslashes();
+    std::string complex_str();
+    std::string double_quotes();
+    std::string octal_eatup();
+    std::string octal_eatup2();
+    str_literals_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_backslashes;
     std::string m_backslashes;
-
-public:
-    std::string backslashes();
-
-private:
     bool f_complex_str;
     std::string m_complex_str;
-
-public:
-    std::string complex_str();
-
-private:
     bool f_double_quotes;
     std::string m_double_quotes;
-
-public:
-    std::string double_quotes();
-
-private:
     bool f_octal_eatup;
     std::string m_octal_eatup;
-
-public:
-    std::string octal_eatup();
-
-private:
     bool f_octal_eatup2;
     std::string m_octal_eatup2;
-
-public:
-    std::string octal_eatup2();
-
-private:
     str_literals_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    str_literals_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -62,14 +62,13 @@ public class PositionAbs extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private String entry;
-        private PositionAbs _root;
-        private PositionAbs _parent;
         public String entry() { return entry; }
         public PositionAbs _root() { return _root; }
         public PositionAbs _parent() { return _parent; }
+        private String entry;
+        private PositionAbs _root;
+        private PositionAbs _parent;
     }
-    private IndexObj index;
     public IndexObj index() {
         if (this.index != null)
             return this.index;
@@ -79,10 +78,11 @@ public class PositionAbs extends KaitaiStruct {
         this._io.seek(_pos);
         return this.index;
     }
-    private long indexOffset;
-    private PositionAbs _root;
-    private KaitaiStruct _parent;
     public long indexOffset() { return indexOffset; }
     public PositionAbs _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private IndexObj index;
+    private long indexOffset;
+    private PositionAbs _root;
+    private KaitaiStruct _parent;
 }

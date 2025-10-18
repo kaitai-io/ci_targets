@@ -46,7 +46,6 @@ public class ExprMod extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private Integer modNegConst;
     public Integer modNegConst() {
         if (this.modNegConst != null)
             return this.modNegConst;
@@ -54,7 +53,6 @@ public class ExprMod extends KaitaiStruct.ReadWrite {
         return this.modNegConst;
     }
     public void _invalidateModNegConst() { this.modNegConst = null; }
-    private Integer modNegSeq;
     public Integer modNegSeq() {
         if (this.modNegSeq != null)
             return this.modNegSeq;
@@ -62,7 +60,6 @@ public class ExprMod extends KaitaiStruct.ReadWrite {
         return this.modNegSeq;
     }
     public void _invalidateModNegSeq() { this.modNegSeq = null; }
-    private Integer modPosConst;
     public Integer modPosConst() {
         if (this.modPosConst != null)
             return this.modPosConst;
@@ -70,7 +67,6 @@ public class ExprMod extends KaitaiStruct.ReadWrite {
         return this.modPosConst;
     }
     public void _invalidateModPosConst() { this.modPosConst = null; }
-    private Integer modPosSeq;
     public Integer modPosSeq() {
         if (this.modPosSeq != null)
             return this.modPosSeq;
@@ -78,10 +74,6 @@ public class ExprMod extends KaitaiStruct.ReadWrite {
         return this.modPosSeq;
     }
     public void _invalidateModPosSeq() { this.modPosSeq = null; }
-    private long intU;
-    private int intS;
-    private ExprMod _root;
-    private KaitaiStruct.ReadWrite _parent;
     public long intU() { return intU; }
     public void setIntU(long _v) { _dirty = true; intU = _v; }
     public int intS() { return intS; }
@@ -90,4 +82,12 @@ public class ExprMod extends KaitaiStruct.ReadWrite {
     public void set_root(ExprMod _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer modNegConst;
+    private Integer modNegSeq;
+    private Integer modPosConst;
+    private Integer modPosSeq;
+    private long intU;
+    private int intS;
+    private ExprMod _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

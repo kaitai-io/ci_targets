@@ -29,17 +29,17 @@ public class CastToImported2 extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private HelloWorld hw;
     public HelloWorld hw() {
         if (this.hw != null)
             return this.hw;
         this.hw = ((HelloWorld) (hwParam()));
         return this.hw;
     }
-    private KaitaiStruct hwParam;
-    private CastToImported2 _root;
-    private KaitaiStruct _parent;
     public KaitaiStruct hwParam() { return hwParam; }
     public CastToImported2 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private HelloWorld hw;
+    private KaitaiStruct hwParam;
+    private CastToImported2 _root;
+    private KaitaiStruct _parent;
 }

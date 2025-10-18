@@ -150,20 +150,16 @@ public class DebugArrayUser extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int meow;
-        private DebugArrayUser _root;
-        private DebugArrayUser _parent;
         public int meow() { return meow; }
         public void setMeow(int _v) { _dirty = true; meow = _v; }
         public DebugArrayUser _root() { return _root; }
         public void set_root(DebugArrayUser _v) { _dirty = true; _root = _v; }
         public DebugArrayUser _parent() { return _parent; }
         public void set_parent(DebugArrayUser _v) { _dirty = true; _parent = _v; }
+        private int meow;
+        private DebugArrayUser _root;
+        private DebugArrayUser _parent;
     }
-    private Cat oneCat;
-    private List<Cat> arrayOfCats;
-    private DebugArrayUser _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Cat oneCat() { return oneCat; }
     public void setOneCat(Cat _v) { _dirty = true; oneCat = _v; }
     public List<Cat> arrayOfCats() { return arrayOfCats; }
@@ -172,4 +168,8 @@ public class DebugArrayUser extends KaitaiStruct.ReadWrite {
     public void set_root(DebugArrayUser _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Cat oneCat;
+    private List<Cat> arrayOfCats;
+    private DebugArrayUser _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

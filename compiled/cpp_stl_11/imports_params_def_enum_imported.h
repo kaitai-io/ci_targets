@@ -26,16 +26,14 @@ private:
 
 public:
     ~imports_params_def_enum_imported_t();
+    enum_import_seq_t* one() const { return m_one.get(); }
+    params_def_enum_imported_t* two() const { return m_two.get(); }
+    imports_params_def_enum_imported_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::unique_ptr<enum_import_seq_t> m_one;
     std::unique_ptr<params_def_enum_imported_t> m_two;
     imports_params_def_enum_imported_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    enum_import_seq_t* one() const { return m_one.get(); }
-    params_def_enum_imported_t* two() const { return m_two.get(); }
-    imports_params_def_enum_imported_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

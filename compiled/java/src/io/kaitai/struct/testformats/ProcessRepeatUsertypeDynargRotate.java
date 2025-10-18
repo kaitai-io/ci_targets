@@ -84,12 +84,12 @@ public class ProcessRepeatUsertypeDynargRotate extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int a;
-        private ProcessRepeatUsertypeDynargRotate _root;
-        private ProcessRepeatUsertypeDynargRotate _parent;
         public int a() { return a; }
         public ProcessRepeatUsertypeDynargRotate _root() { return _root; }
         public ProcessRepeatUsertypeDynargRotate _parent() { return _parent; }
+        private int a;
+        private ProcessRepeatUsertypeDynargRotate _root;
+        private ProcessRepeatUsertypeDynargRotate _parent;
     }
     public static class BlocksBWrapper extends KaitaiStruct {
         public static BlocksBWrapper fromFile(String fileName) throws IOException {
@@ -131,7 +131,6 @@ public class ProcessRepeatUsertypeDynargRotate extends KaitaiStruct {
             if (this.blocksRor2B != null) {
             }
         }
-        private Integer blocksRol0B;
         public Integer blocksRol0B() {
             if (this.blocksRol0B != null)
                 return this.blocksRol0B;
@@ -142,7 +141,6 @@ public class ProcessRepeatUsertypeDynargRotate extends KaitaiStruct {
             io.seek(_pos);
             return this.blocksRol0B;
         }
-        private Integer blocksRol1B;
         public Integer blocksRol1B() {
             if (this.blocksRol1B != null)
                 return this.blocksRol1B;
@@ -153,7 +151,6 @@ public class ProcessRepeatUsertypeDynargRotate extends KaitaiStruct {
             io.seek(_pos);
             return this.blocksRol1B;
         }
-        private Integer blocksRor0B;
         public Integer blocksRor0B() {
             if (this.blocksRor0B != null)
                 return this.blocksRor0B;
@@ -164,7 +161,6 @@ public class ProcessRepeatUsertypeDynargRotate extends KaitaiStruct {
             io.seek(_pos);
             return this.blocksRor0B;
         }
-        private Integer blocksRor1B;
         public Integer blocksRor1B() {
             if (this.blocksRor1B != null)
                 return this.blocksRor1B;
@@ -175,7 +171,6 @@ public class ProcessRepeatUsertypeDynargRotate extends KaitaiStruct {
             io.seek(_pos);
             return this.blocksRor1B;
         }
-        private Integer blocksRor2B;
         public Integer blocksRor2B() {
             if (this.blocksRor2B != null)
                 return this.blocksRor2B;
@@ -186,22 +181,18 @@ public class ProcessRepeatUsertypeDynargRotate extends KaitaiStruct {
             io.seek(_pos);
             return this.blocksRor2B;
         }
-        private int dummy;
-        private ProcessRepeatUsertypeDynargRotate _root;
-        private ProcessRepeatUsertypeDynargRotate _parent;
         public int dummy() { return dummy; }
         public ProcessRepeatUsertypeDynargRotate _root() { return _root; }
         public ProcessRepeatUsertypeDynargRotate _parent() { return _parent; }
+        private Integer blocksRol0B;
+        private Integer blocksRol1B;
+        private Integer blocksRor0B;
+        private Integer blocksRor1B;
+        private Integer blocksRor2B;
+        private int dummy;
+        private ProcessRepeatUsertypeDynargRotate _root;
+        private ProcessRepeatUsertypeDynargRotate _parent;
     }
-    private List<Block> blocksRol;
-    private List<Block> blocksRor;
-    private BlocksBWrapper blocksB;
-    private ProcessRepeatUsertypeDynargRotate _root;
-    private KaitaiStruct _parent;
-    private List<byte[]> _raw_blocksRol;
-    private List<byte[]> _raw__raw_blocksRol;
-    private List<byte[]> _raw_blocksRor;
-    private List<byte[]> _raw__raw_blocksRor;
     public List<Block> blocksRol() { return blocksRol; }
     public List<Block> blocksRor() { return blocksRor; }
     public BlocksBWrapper blocksB() { return blocksB; }
@@ -211,4 +202,13 @@ public class ProcessRepeatUsertypeDynargRotate extends KaitaiStruct {
     public List<byte[]> _raw__raw_blocksRol() { return _raw__raw_blocksRol; }
     public List<byte[]> _raw_blocksRor() { return _raw_blocksRor; }
     public List<byte[]> _raw__raw_blocksRor() { return _raw__raw_blocksRor; }
+    private List<Block> blocksRol;
+    private List<Block> blocksRor;
+    private BlocksBWrapper blocksB;
+    private ProcessRepeatUsertypeDynargRotate _root;
+    private KaitaiStruct _parent;
+    private List<byte[]> _raw_blocksRol;
+    private List<byte[]> _raw__raw_blocksRol;
+    private List<byte[]> _raw_blocksRor;
+    private List<byte[]> _raw__raw_blocksRor;
 }

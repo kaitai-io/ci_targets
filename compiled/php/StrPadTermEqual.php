@@ -14,13 +14,13 @@ namespace Kaitai\Struct\Tests {
             $this->_m_s3 = \Kaitai\Struct\Stream::bytesToStr(\Kaitai\Struct\Stream::bytesTerminate(\Kaitai\Struct\Stream::bytesStripRight($this->_io->readBytes(20), 43), 43, false), "UTF-8");
             $this->_m_s4 = \Kaitai\Struct\Stream::bytesToStr(\Kaitai\Struct\Stream::bytesTerminate(\Kaitai\Struct\Stream::bytesStripRight($this->_io->readBytes(20), 46), 46, true), "UTF-8");
         }
-        protected $_m_s1;
-        protected $_m_s2;
-        protected $_m_s3;
-        protected $_m_s4;
         public function s1() { return $this->_m_s1; }
         public function s2() { return $this->_m_s2; }
         public function s3() { return $this->_m_s3; }
         public function s4() { return $this->_m_s4; }
+        protected $_m_s1;
+        protected $_m_s2;
+        protected $_m_s3;
+        protected $_m_s4;
     }
 }

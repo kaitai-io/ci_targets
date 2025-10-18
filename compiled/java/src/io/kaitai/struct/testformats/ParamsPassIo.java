@@ -61,12 +61,12 @@ public class ParamsPassIo extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int foo;
-        private ParamsPassIo _root;
-        private ParamsPassIo _parent;
         public int foo() { return foo; }
         public ParamsPassIo _root() { return _root; }
         public ParamsPassIo _parent() { return _parent; }
+        private int foo;
+        private ParamsPassIo _root;
+        private ParamsPassIo _parent;
     }
     public static class ParamType extends KaitaiStruct {
 
@@ -91,21 +91,21 @@ public class ParamsPassIo extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] buf;
-        private KaitaiStream argStream;
-        private ParamsPassIo _root;
-        private ParamsPassIo _parent;
         public byte[] buf() { return buf; }
         public KaitaiStream argStream() { return argStream; }
         public ParamsPassIo _root() { return _root; }
         public ParamsPassIo _parent() { return _parent; }
+        private byte[] buf;
+        private KaitaiStream argStream;
+        private ParamsPassIo _root;
+        private ParamsPassIo _parent;
     }
-    private Block first;
-    private ParamType one;
-    private ParamsPassIo _root;
-    private KaitaiStruct _parent;
     public Block first() { return first; }
     public ParamType one() { return one; }
     public ParamsPassIo _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Block first;
+    private ParamType one;
+    private ParamsPassIo _root;
+    private KaitaiStruct _parent;
 }

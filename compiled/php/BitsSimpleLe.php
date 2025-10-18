@@ -24,7 +24,6 @@ namespace Kaitai\Struct\Tests {
             $this->_m_byte15To19 = $this->_io->readBitsIntLe(40);
             $this->_m_byte20To27 = $this->_io->readBitsIntLe(64);
         }
-        protected $_m_testIfB1;
         public function testIfB1() {
             if ($this->_m_testIfB1 !== null)
                 return $this->_m_testIfB1;
@@ -33,19 +32,6 @@ namespace Kaitai\Struct\Tests {
             }
             return $this->_m_testIfB1;
         }
-        protected $_m_byte1;
-        protected $_m_byte2;
-        protected $_m_bitsA;
-        protected $_m_bitsB;
-        protected $_m_bitsC;
-        protected $_m_largeBits1;
-        protected $_m_spacer;
-        protected $_m_largeBits2;
-        protected $_m_normalS2;
-        protected $_m_byte8910;
-        protected $_m_byte11To14;
-        protected $_m_byte15To19;
-        protected $_m_byte20To27;
         public function byte1() { return $this->_m_byte1; }
         public function byte2() { return $this->_m_byte2; }
         public function bitsA() { return $this->_m_bitsA; }
@@ -59,5 +45,19 @@ namespace Kaitai\Struct\Tests {
         public function byte11To14() { return $this->_m_byte11To14; }
         public function byte15To19() { return $this->_m_byte15To19; }
         public function byte20To27() { return $this->_m_byte20To27; }
+        protected $_m_testIfB1;
+        protected $_m_byte1;
+        protected $_m_byte2;
+        protected $_m_bitsA;
+        protected $_m_bitsB;
+        protected $_m_bitsC;
+        protected $_m_largeBits1;
+        protected $_m_spacer;
+        protected $_m_largeBits2;
+        protected $_m_normalS2;
+        protected $_m_byte8910;
+        protected $_m_byte11To14;
+        protected $_m_byte15To19;
+        protected $_m_byte20To27;
     }
 }

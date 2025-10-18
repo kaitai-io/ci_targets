@@ -75,23 +75,23 @@ public class IndexToParamEos extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private String buf;
-        private int idx;
-        private IndexToParamEos _root;
-        private IndexToParamEos _parent;
         public String buf() { return buf; }
         public int idx() { return idx; }
         public IndexToParamEos _root() { return _root; }
         public IndexToParamEos _parent() { return _parent; }
+        private String buf;
+        private int idx;
+        private IndexToParamEos _root;
+        private IndexToParamEos _parent;
     }
-    private long qty;
-    private List<Long> sizes;
-    private List<Block> blocks;
-    private IndexToParamEos _root;
-    private KaitaiStruct _parent;
     public long qty() { return qty; }
     public List<Long> sizes() { return sizes; }
     public List<Block> blocks() { return blocks; }
     public IndexToParamEos _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private long qty;
+    private List<Long> sizes;
+    private List<Block> blocks;
+    private IndexToParamEos _root;
+    private KaitaiStruct _parent;
 }

@@ -59,10 +59,6 @@ public class EofExceptionBitsLe extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private long preBits;
-    private long failBits;
-    private EofExceptionBitsLe _root;
-    private KaitaiStruct.ReadWrite _parent;
     public long preBits() { return preBits; }
     public void setPreBits(long _v) { _dirty = true; preBits = _v; }
     public long failBits() { return failBits; }
@@ -71,4 +67,8 @@ public class EofExceptionBitsLe extends KaitaiStruct.ReadWrite {
     public void set_root(EofExceptionBitsLe _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private long preBits;
+    private long failBits;
+    private EofExceptionBitsLe _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

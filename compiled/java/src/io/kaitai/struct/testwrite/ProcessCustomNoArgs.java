@@ -51,10 +51,6 @@ public class ProcessCustomNoArgs extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private byte[] buf;
-    private ProcessCustomNoArgs _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_buf;
     public byte[] buf() { return buf; }
     public void setBuf(byte[] _v) { _dirty = true; buf = _v; }
     public ProcessCustomNoArgs _root() { return _root; }
@@ -63,4 +59,8 @@ public class ProcessCustomNoArgs extends KaitaiStruct.ReadWrite {
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_buf() { return _raw_buf; }
     public void set_raw_Buf(byte[] _v) { _dirty = true; _raw_buf = _v; }
+    private byte[] buf;
+    private ProcessCustomNoArgs _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_buf;
 }

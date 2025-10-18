@@ -40,19 +40,17 @@ namespace Kaitai
                 _b = m_io.ReadU4le();
                 _c = m_io.ReadBytes(2);
             }
-            private byte _a;
-            private uint _b;
-            private byte[] _c;
-            private ExprSizeofType0 m_root;
-            private KaitaiStruct m_parent;
             public byte A { get { return _a; } }
             public uint B { get { return _b; } }
             public byte[] C { get { return _c; } }
             public ExprSizeofType0 M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
+            private byte _a;
+            private uint _b;
+            private byte[] _c;
+            private ExprSizeofType0 m_root;
+            private KaitaiStruct m_parent;
         }
-        private bool f_sizeofBlock;
-        private int _sizeofBlock;
         public int SizeofBlock
         {
             get
@@ -64,9 +62,11 @@ namespace Kaitai
                 return _sizeofBlock;
             }
         }
-        private ExprSizeofType0 m_root;
-        private KaitaiStruct m_parent;
         public ExprSizeofType0 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_sizeofBlock;
+        private int _sizeofBlock;
+        private ExprSizeofType0 m_root;
+        private KaitaiStruct m_parent;
     }
 }

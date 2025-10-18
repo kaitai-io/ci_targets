@@ -53,11 +53,6 @@ public class ProcessXor4Value extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("key", 4, this.key.length);
         _dirty = false;
     }
-    private byte[] key;
-    private byte[] buf;
-    private ProcessXor4Value _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_buf;
     public byte[] key() { return key; }
     public void setKey(byte[] _v) { _dirty = true; key = _v; }
     public byte[] buf() { return buf; }
@@ -68,4 +63,9 @@ public class ProcessXor4Value extends KaitaiStruct.ReadWrite {
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public byte[] _raw_buf() { return _raw_buf; }
     public void set_raw_Buf(byte[] _v) { _dirty = true; _raw_buf = _v; }
+    private byte[] key;
+    private byte[] buf;
+    private ProcessXor4Value _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_buf;
 }

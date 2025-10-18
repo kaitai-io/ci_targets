@@ -25,6 +25,11 @@ private:
 
 public:
     ~debug_0_t();
+    uint8_t one() const { return m_one; }
+    std::vector<uint8_t>* array_of_ints() const { return m_array_of_ints; }
+    uint8_t _unnamed2() const { return m__unnamed2; }
+    debug_0_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint8_t m_one;
@@ -32,13 +37,6 @@ private:
     uint8_t m__unnamed2;
     debug_0_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint8_t one() const { return m_one; }
-    std::vector<uint8_t>* array_of_ints() const { return m_array_of_ints; }
-    uint8_t _unnamed2() const { return m__unnamed2; }
-    debug_0_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // DEBUG_0_H_

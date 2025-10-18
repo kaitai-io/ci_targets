@@ -67,28 +67,28 @@ public class ParamsPassArrayStr extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private List<String> strs;
-        private ParamsPassArrayStr _root;
-        private ParamsPassArrayStr _parent;
         public List<String> strs() { return strs; }
         public ParamsPassArrayStr _root() { return _root; }
         public ParamsPassArrayStr _parent() { return _parent; }
+        private List<String> strs;
+        private ParamsPassArrayStr _root;
+        private ParamsPassArrayStr _parent;
     }
-    private List<String> strArrayCalc;
     public List<String> strArrayCalc() {
         if (this.strArrayCalc != null)
             return this.strArrayCalc;
         this.strArrayCalc = new ArrayList<String>(Arrays.asList("aB", "Cd"));
         return this.strArrayCalc;
     }
-    private List<String> strArray;
-    private WantsStrs passStrArray;
-    private WantsStrs passStrArrayCalc;
-    private ParamsPassArrayStr _root;
-    private KaitaiStruct _parent;
     public List<String> strArray() { return strArray; }
     public WantsStrs passStrArray() { return passStrArray; }
     public WantsStrs passStrArrayCalc() { return passStrArrayCalc; }
     public ParamsPassArrayStr _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<String> strArrayCalc;
+    private List<String> strArray;
+    private WantsStrs passStrArray;
+    private WantsStrs passStrArrayCalc;
+    private ParamsPassArrayStr _root;
+    private KaitaiStruct _parent;
 }

@@ -12,10 +12,10 @@ namespace Kaitai\Struct\Tests {
             $this->_m_pet1 = $this->_io->readU1();
             $this->_m_pet2 = $this->_io->readU1();
         }
-        protected $_m_pet1;
-        protected $_m_pet2;
         public function pet1() { return $this->_m_pet1; }
         public function pet2() { return $this->_m_pet2; }
+        protected $_m_pet1;
+        protected $_m_pet2;
     }
 }
 

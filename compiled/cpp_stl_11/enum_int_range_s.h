@@ -37,6 +37,11 @@ private:
 
 public:
     ~enum_int_range_s_t();
+    constants_t f1() const { return m_f1; }
+    constants_t f2() const { return m_f2; }
+    constants_t f3() const { return m_f3; }
+    enum_int_range_s_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     constants_t m_f1;
@@ -44,11 +49,4 @@ private:
     constants_t m_f3;
     enum_int_range_s_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    constants_t f1() const { return m_f1; }
-    constants_t f2() const { return m_f2; }
-    constants_t f3() const { return m_f3; }
-    enum_int_range_s_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

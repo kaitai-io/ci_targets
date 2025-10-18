@@ -34,12 +34,12 @@ public class ProcessCustomNoArgs extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private byte[] buf;
-    private ProcessCustomNoArgs _root;
-    private KaitaiStruct _parent;
-    private byte[] _raw_buf;
     public byte[] buf() { return buf; }
     public ProcessCustomNoArgs _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
     public byte[] _raw_buf() { return _raw_buf; }
+    private byte[] buf;
+    private ProcessCustomNoArgs _root;
+    private KaitaiStruct _parent;
+    private byte[] _raw_buf;
 }

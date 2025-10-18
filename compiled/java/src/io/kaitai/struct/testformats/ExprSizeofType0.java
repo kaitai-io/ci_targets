@@ -58,26 +58,26 @@ public class ExprSizeofType0 extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int a;
-        private long b;
-        private byte[] c;
-        private ExprSizeofType0 _root;
-        private KaitaiStruct _parent;
         public int a() { return a; }
         public long b() { return b; }
         public byte[] c() { return c; }
         public ExprSizeofType0 _root() { return _root; }
         public KaitaiStruct _parent() { return _parent; }
+        private int a;
+        private long b;
+        private byte[] c;
+        private ExprSizeofType0 _root;
+        private KaitaiStruct _parent;
     }
-    private Integer sizeofBlock;
     public Integer sizeofBlock() {
         if (this.sizeofBlock != null)
             return this.sizeofBlock;
         this.sizeofBlock = ((Number) (7)).intValue();
         return this.sizeofBlock;
     }
-    private ExprSizeofType0 _root;
-    private KaitaiStruct _parent;
     public ExprSizeofType0 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Integer sizeofBlock;
+    private ExprSizeofType0 _root;
+    private KaitaiStruct _parent;
 }

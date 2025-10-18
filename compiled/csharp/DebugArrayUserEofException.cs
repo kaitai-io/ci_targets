@@ -51,22 +51,22 @@ namespace Kaitai
                 _meow = m_io.ReadU1();
                 _chirp = m_io.ReadU1();
             }
-            private byte _meow;
-            private byte _chirp;
-            private DebugArrayUserEofException m_root;
-            private DebugArrayUserEofException m_parent;
             public byte Meow { get { return _meow; } }
             public byte Chirp { get { return _chirp; } }
             public DebugArrayUserEofException M_Root { get { return m_root; } }
             public DebugArrayUserEofException M_Parent { get { return m_parent; } }
+            private byte _meow;
+            private byte _chirp;
+            private DebugArrayUserEofException m_root;
+            private DebugArrayUserEofException m_parent;
         }
-        private Cat _oneCat;
-        private List<Cat> _arrayOfCats;
-        private DebugArrayUserEofException m_root;
-        private KaitaiStruct m_parent;
         public Cat OneCat { get { return _oneCat; } }
         public List<Cat> ArrayOfCats { get { return _arrayOfCats; } }
         public DebugArrayUserEofException M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Cat _oneCat;
+        private List<Cat> _arrayOfCats;
+        private DebugArrayUserEofException m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -19,14 +19,14 @@ namespace Kaitai\Struct\Tests {
             $_io__raw_strings = new \Kaitai\Struct\Stream($this->_m__raw_strings);
             $this->_m_strings = new \Kaitai\Struct\Tests\InstanceIoUser\StringsObj($_io__raw_strings, $this, $this->_root);
         }
-        protected $_m_qtyEntries;
-        protected $_m_entries;
-        protected $_m_strings;
-        protected $_m__raw_strings;
         public function qtyEntries() { return $this->_m_qtyEntries; }
         public function entries() { return $this->_m_entries; }
         public function strings() { return $this->_m_strings; }
         public function _raw_strings() { return $this->_m__raw_strings; }
+        protected $_m_qtyEntries;
+        protected $_m_entries;
+        protected $_m_strings;
+        protected $_m__raw_strings;
     }
 }
 
@@ -41,7 +41,6 @@ namespace Kaitai\Struct\Tests\InstanceIoUser {
             $this->_m_nameOfs = $this->_io->readU4le();
             $this->_m_value = $this->_io->readU4le();
         }
-        protected $_m_name;
         public function name() {
             if ($this->_m_name !== null)
                 return $this->_m_name;
@@ -52,10 +51,11 @@ namespace Kaitai\Struct\Tests\InstanceIoUser {
             $io->seek($_pos);
             return $this->_m_name;
         }
-        protected $_m_nameOfs;
-        protected $_m_value;
         public function nameOfs() { return $this->_m_nameOfs; }
         public function value() { return $this->_m_value; }
+        protected $_m_name;
+        protected $_m_nameOfs;
+        protected $_m_value;
     }
 }
 
@@ -74,7 +74,7 @@ namespace Kaitai\Struct\Tests\InstanceIoUser {
                 $i++;
             }
         }
-        protected $_m_str;
         public function str() { return $this->_m_str; }
+        protected $_m_str;
     }
 }

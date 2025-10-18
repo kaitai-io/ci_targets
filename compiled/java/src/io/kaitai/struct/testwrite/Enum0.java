@@ -64,10 +64,6 @@ public class Enum0 extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private Animal pet1;
-    private Animal pet2;
-    private Enum0 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Animal pet1() { return pet1; }
     public void setPet1(Animal _v) { _dirty = true; pet1 = _v; }
     public Animal pet2() { return pet2; }
@@ -76,4 +72,8 @@ public class Enum0 extends KaitaiStruct.ReadWrite {
     public void set_root(Enum0 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Animal pet1;
+    private Animal pet2;
+    private Enum0 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

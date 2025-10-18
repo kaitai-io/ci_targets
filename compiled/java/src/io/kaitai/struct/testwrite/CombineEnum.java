@@ -63,7 +63,6 @@ public class CombineEnum extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private Animal enumU4U2;
     public Animal enumU4U2() {
         if (this.enumU4U2 != null)
             return this.enumU4U2;
@@ -71,10 +70,6 @@ public class CombineEnum extends KaitaiStruct.ReadWrite {
         return this.enumU4U2;
     }
     public void _invalidateEnumU4U2() { this.enumU4U2 = null; }
-    private Animal enumU4;
-    private Animal enumU2;
-    private CombineEnum _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Animal enumU4() { return enumU4; }
     public void setEnumU4(Animal _v) { _dirty = true; enumU4 = _v; }
     public Animal enumU2() { return enumU2; }
@@ -83,4 +78,9 @@ public class CombineEnum extends KaitaiStruct.ReadWrite {
     public void set_root(CombineEnum _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Animal enumU4U2;
+    private Animal enumU4;
+    private Animal enumU2;
+    private CombineEnum _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

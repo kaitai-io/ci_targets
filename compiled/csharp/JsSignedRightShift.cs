@@ -22,8 +22,6 @@ namespace Kaitai
         private void _read()
         {
         }
-        private bool f_shouldBe40000000;
-        private int _shouldBe40000000;
         public int ShouldBe40000000
         {
             get
@@ -35,8 +33,6 @@ namespace Kaitai
                 return _shouldBe40000000;
             }
         }
-        private bool f_shouldBeA00000;
-        private int _shouldBeA00000;
         public int ShouldBeA00000
         {
             get
@@ -48,9 +44,13 @@ namespace Kaitai
                 return _shouldBeA00000;
             }
         }
-        private JsSignedRightShift m_root;
-        private KaitaiStruct m_parent;
         public JsSignedRightShift M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_shouldBe40000000;
+        private int _shouldBe40000000;
+        private bool f_shouldBeA00000;
+        private int _shouldBeA00000;
+        private JsSignedRightShift m_root;
+        private KaitaiStruct m_parent;
     }
 }

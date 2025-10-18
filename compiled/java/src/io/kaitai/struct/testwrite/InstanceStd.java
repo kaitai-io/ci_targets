@@ -53,9 +53,6 @@ public class InstanceStd extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private String header;
-    private boolean _shouldWriteHeader = false;
-    private boolean _enabledHeader = true;
     public String header() {
         if (_shouldWriteHeader)
             _writeHeader();
@@ -79,10 +76,13 @@ public class InstanceStd extends KaitaiStruct.ReadWrite {
         this._io.writeBytes((this.header).getBytes(Charset.forName("ASCII")));
         this._io.seek(_pos);
     }
-    private InstanceStd _root;
-    private KaitaiStruct.ReadWrite _parent;
     public InstanceStd _root() { return _root; }
     public void set_root(InstanceStd _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private String header;
+    private boolean _shouldWriteHeader = false;
+    private boolean _enabledHeader = true;
+    private InstanceStd _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

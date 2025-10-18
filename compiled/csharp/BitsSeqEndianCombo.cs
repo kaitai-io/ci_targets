@@ -28,16 +28,6 @@ namespace Kaitai
             _le7 = m_io.ReadBitsIntLe(5);
             _be8 = m_io.ReadBitsIntBe(1) != 0;
         }
-        private ulong _be1;
-        private ulong _be2;
-        private ulong _le3;
-        private ulong _be4;
-        private ulong _le5;
-        private ulong _le6;
-        private ulong _le7;
-        private bool _be8;
-        private BitsSeqEndianCombo m_root;
-        private KaitaiStruct m_parent;
         public ulong Be1 { get { return _be1; } }
         public ulong Be2 { get { return _be2; } }
         public ulong Le3 { get { return _le3; } }
@@ -48,5 +38,15 @@ namespace Kaitai
         public bool Be8 { get { return _be8; } }
         public BitsSeqEndianCombo M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private ulong _be1;
+        private ulong _be2;
+        private ulong _le3;
+        private ulong _be4;
+        private ulong _le5;
+        private ulong _le6;
+        private ulong _le7;
+        private bool _be8;
+        private BitsSeqEndianCombo m_root;
+        private KaitaiStruct m_parent;
     }
 }

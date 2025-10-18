@@ -54,16 +54,14 @@ public:
 
         public:
             ~intval_t();
+            uint8_t value() const { return m_value; }
+            cast_nested_t* _root() const { return m__root; }
+            cast_nested_t::opcode_t* _parent() const { return m__parent; }
 
         private:
             uint8_t m_value;
             cast_nested_t* m__root;
             cast_nested_t::opcode_t* m__parent;
-
-        public:
-            uint8_t value() const { return m_value; }
-            cast_nested_t* _root() const { return m__root; }
-            cast_nested_t::opcode_t* _parent() const { return m__parent; }
         };
 
         class strval_t : public kaitai::kstruct {
@@ -78,17 +76,21 @@ public:
 
         public:
             ~strval_t();
+            std::string value() const { return m_value; }
+            cast_nested_t* _root() const { return m__root; }
+            cast_nested_t::opcode_t* _parent() const { return m__parent; }
 
         private:
             std::string m_value;
             cast_nested_t* m__root;
             cast_nested_t::opcode_t* m__parent;
-
-        public:
-            std::string value() const { return m_value; }
-            cast_nested_t* _root() const { return m__root; }
-            cast_nested_t::opcode_t* _parent() const { return m__parent; }
         };
+
+    public:
+        uint8_t code() const { return m_code; }
+        kaitai::kstruct* body() const { return m_body.get(); }
+        cast_nested_t* _root() const { return m__root; }
+        cast_nested_t* _parent() const { return m__parent; }
 
     private:
         uint8_t m_code;
@@ -101,49 +103,27 @@ public:
     private:
         cast_nested_t* m__root;
         cast_nested_t* m__parent;
-
-    public:
-        uint8_t code() const { return m_code; }
-        kaitai::kstruct* body() const { return m_body.get(); }
-        cast_nested_t* _root() const { return m__root; }
-        cast_nested_t* _parent() const { return m__parent; }
     };
+
+public:
+    cast_nested_t::opcode_t::strval_t* opcodes_0_str();
+    std::string opcodes_0_str_value();
+    cast_nested_t::opcode_t::intval_t* opcodes_1_int();
+    uint8_t opcodes_1_int_value();
+    std::vector<std::unique_ptr<opcode_t>>* opcodes() const { return m_opcodes.get(); }
+    cast_nested_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_opcodes_0_str;
     cast_nested_t::opcode_t::strval_t* m_opcodes_0_str;
-
-public:
-    cast_nested_t::opcode_t::strval_t* opcodes_0_str();
-
-private:
     bool f_opcodes_0_str_value;
     std::string m_opcodes_0_str_value;
-
-public:
-    std::string opcodes_0_str_value();
-
-private:
     bool f_opcodes_1_int;
     cast_nested_t::opcode_t::intval_t* m_opcodes_1_int;
-
-public:
-    cast_nested_t::opcode_t::intval_t* opcodes_1_int();
-
-private:
     bool f_opcodes_1_int_value;
     uint8_t m_opcodes_1_int_value;
-
-public:
-    uint8_t opcodes_1_int_value();
-
-private:
     std::unique_ptr<std::vector<std::unique_ptr<opcode_t>>> m_opcodes;
     cast_nested_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::vector<std::unique_ptr<opcode_t>>* opcodes() const { return m_opcodes.get(); }
-    cast_nested_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

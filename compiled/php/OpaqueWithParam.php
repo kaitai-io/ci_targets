@@ -11,7 +11,7 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_one = new \Kaitai\Struct\Tests\ParamsDef(5, true, $this->_io);
         }
-        protected $_m_one;
         public function one() { return $this->_m_one; }
+        protected $_m_one;
     }
 }

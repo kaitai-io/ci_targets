@@ -24,6 +24,11 @@ private:
 
 public:
     ~nav_parent_recursive_t();
+    uint8_t parent_value();
+    uint8_t value() const { return m_value; }
+    nav_parent_recursive_t* next() const { return m_next; }
+    nav_parent_recursive_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_parent_value;
@@ -32,11 +37,6 @@ private:
 
 public:
     bool _is_null_parent_value() { parent_value(); return n_parent_value; };
-
-private:
-
-public:
-    uint8_t parent_value();
 
 private:
     uint8_t m_value;
@@ -49,12 +49,6 @@ public:
 private:
     nav_parent_recursive_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint8_t value() const { return m_value; }
-    nav_parent_recursive_t* next() const { return m_next; }
-    nav_parent_recursive_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // NAV_PARENT_RECURSIVE_H_

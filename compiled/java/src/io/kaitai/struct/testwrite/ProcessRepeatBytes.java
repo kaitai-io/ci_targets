@@ -64,10 +64,6 @@ public class ProcessRepeatBytes extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private List<byte[]> bufs;
-    private ProcessRepeatBytes _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private List<byte[]> _raw_bufs;
     public List<byte[]> bufs() { return bufs; }
     public void setBufs(List<byte[]> _v) { _dirty = true; bufs = _v; }
     public ProcessRepeatBytes _root() { return _root; }
@@ -76,4 +72,8 @@ public class ProcessRepeatBytes extends KaitaiStruct.ReadWrite {
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public List<byte[]> _raw_bufs() { return _raw_bufs; }
     public void set_raw_Bufs(List<byte[]> _v) { _dirty = true; _raw_bufs = _v; }
+    private List<byte[]> bufs;
+    private ProcessRepeatBytes _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private List<byte[]> _raw_bufs;
 }

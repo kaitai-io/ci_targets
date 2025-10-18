@@ -13,11 +13,11 @@ namespace Kaitai\Struct\Tests {
             $this->_m__unnamed1 = $this->_io->readU1();
             $this->_m__unnamed2 = $this->_io->readBytes(5);
         }
-        protected $_m__unnamed0;
-        protected $_m__unnamed1;
-        protected $_m__unnamed2;
         public function _unnamed0() { return $this->_m__unnamed0; }
         public function _unnamed1() { return $this->_m__unnamed1; }
         public function _unnamed2() { return $this->_m__unnamed2; }
+        protected $_m__unnamed0;
+        protected $_m__unnamed1;
+        protected $_m__unnamed2;
     }
 }

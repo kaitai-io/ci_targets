@@ -83,15 +83,15 @@ public class NestedSameName extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private NestedSameName _root;
-            private KaitaiStruct _parent;
             public NestedSameName _root() { return _root; }
             public KaitaiStruct _parent() { return _parent; }
+            private NestedSameName _root;
+            private KaitaiStruct _parent;
         }
-        private NestedSameName _root;
-        private NestedSameName _parent;
         public NestedSameName _root() { return _root; }
         public NestedSameName _parent() { return _parent; }
+        private NestedSameName _root;
+        private NestedSameName _parent;
     }
     public static class Main extends KaitaiStruct {
         public static Main fromFile(String fileName) throws IOException {
@@ -145,28 +145,28 @@ public class NestedSameName extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private byte[] data;
-            private NestedSameName _root;
-            private NestedSameName.Main _parent;
             public byte[] data() { return data; }
             public NestedSameName _root() { return _root; }
             public NestedSameName.Main _parent() { return _parent; }
+            private byte[] data;
+            private NestedSameName _root;
+            private NestedSameName.Main _parent;
         }
-        private int mainSize;
-        private FooObj foo;
-        private NestedSameName _root;
-        private NestedSameName _parent;
         public int mainSize() { return mainSize; }
         public FooObj foo() { return foo; }
         public NestedSameName _root() { return _root; }
         public NestedSameName _parent() { return _parent; }
+        private int mainSize;
+        private FooObj foo;
+        private NestedSameName _root;
+        private NestedSameName _parent;
     }
-    private Main mainData;
-    private DummyObj dummy;
-    private NestedSameName _root;
-    private KaitaiStruct _parent;
     public Main mainData() { return mainData; }
     public DummyObj dummy() { return dummy; }
     public NestedSameName _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Main mainData;
+    private DummyObj dummy;
+    private NestedSameName _root;
+    private KaitaiStruct _parent;
 }

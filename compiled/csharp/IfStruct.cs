@@ -41,14 +41,14 @@ namespace Kaitai
                 _len = m_io.ReadU1();
                 _str = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(Len));
             }
-            private byte _len;
-            private string _str;
-            private IfStruct m_root;
-            private IfStruct.Operation m_parent;
             public byte Len { get { return _len; } }
             public string Str { get { return _str; } }
             public IfStruct M_Root { get { return m_root; } }
             public IfStruct.Operation M_Parent { get { return m_parent; } }
+            private byte _len;
+            private string _str;
+            private IfStruct m_root;
+            private IfStruct.Operation m_parent;
         }
         public partial class ArgTuple : KaitaiStruct
         {
@@ -68,14 +68,14 @@ namespace Kaitai
                 _num1 = m_io.ReadU1();
                 _num2 = m_io.ReadU1();
             }
-            private byte _num1;
-            private byte _num2;
-            private IfStruct m_root;
-            private IfStruct.Operation m_parent;
             public byte Num1 { get { return _num1; } }
             public byte Num2 { get { return _num2; } }
             public IfStruct M_Root { get { return m_root; } }
             public IfStruct.Operation M_Parent { get { return m_parent; } }
+            private byte _num1;
+            private byte _num2;
+            private IfStruct m_root;
+            private IfStruct.Operation m_parent;
         }
         public partial class Operation : KaitaiStruct
         {
@@ -100,26 +100,26 @@ namespace Kaitai
                     _argStr = new ArgStr(m_io, this, m_root);
                 }
             }
-            private byte _opcode;
-            private ArgTuple _argTuple;
-            private ArgStr _argStr;
-            private IfStruct m_root;
-            private IfStruct m_parent;
             public byte Opcode { get { return _opcode; } }
             public ArgTuple ArgTuple { get { return _argTuple; } }
             public ArgStr ArgStr { get { return _argStr; } }
             public IfStruct M_Root { get { return m_root; } }
             public IfStruct M_Parent { get { return m_parent; } }
+            private byte _opcode;
+            private ArgTuple _argTuple;
+            private ArgStr _argStr;
+            private IfStruct m_root;
+            private IfStruct m_parent;
         }
-        private Operation _op1;
-        private Operation _op2;
-        private Operation _op3;
-        private IfStruct m_root;
-        private KaitaiStruct m_parent;
         public Operation Op1 { get { return _op1; } }
         public Operation Op2 { get { return _op2; } }
         public Operation Op3 { get { return _op3; } }
         public IfStruct M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Operation _op1;
+        private Operation _op2;
+        private Operation _op3;
+        private IfStruct m_root;
+        private KaitaiStruct m_parent;
     }
 }

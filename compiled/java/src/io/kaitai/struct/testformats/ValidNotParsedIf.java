@@ -47,12 +47,12 @@ public class ValidNotParsedIf extends KaitaiStruct {
         if (true) {
         }
     }
-    private Integer notParsed;
-    private Integer parsed;
-    private ValidNotParsedIf _root;
-    private KaitaiStruct _parent;
     public Integer notParsed() { return notParsed; }
     public Integer parsed() { return parsed; }
     public ValidNotParsedIf _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Integer notParsed;
+    private Integer parsed;
+    private ValidNotParsedIf _root;
+    private KaitaiStruct _parent;
 }

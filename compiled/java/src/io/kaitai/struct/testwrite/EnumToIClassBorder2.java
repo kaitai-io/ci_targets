@@ -40,7 +40,6 @@ public class EnumToIClassBorder2 extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private Boolean isDog;
     public Boolean isDog() {
         if (this.isDog != null)
             return this.isDog;
@@ -48,13 +47,14 @@ public class EnumToIClassBorder2 extends KaitaiStruct.ReadWrite {
         return this.isDog;
     }
     public void _invalidateIsDog() { this.isDog = null; }
-    private EnumToIClassBorder1 parent;
-    private EnumToIClassBorder2 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public EnumToIClassBorder1 parent() { return parent; }
     public void setParent(EnumToIClassBorder1 _v) { _dirty = true; parent = _v; }
     public EnumToIClassBorder2 _root() { return _root; }
     public void set_root(EnumToIClassBorder2 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Boolean isDog;
+    private EnumToIClassBorder1 parent;
+    private EnumToIClassBorder2 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

@@ -38,27 +38,25 @@ public:
 
     public:
         ~child_t();
+        uint8_t foo() const { return m_foo; }
+        nav_parent_false2_t* _root() const { return m__root; }
+        kaitai::kstruct* _parent() const { return m__parent; }
 
     private:
         uint8_t m_foo;
         nav_parent_false2_t* m__root;
         kaitai::kstruct* m__parent;
-
-    public:
-        uint8_t foo() const { return m_foo; }
-        nav_parent_false2_t* _root() const { return m__root; }
-        kaitai::kstruct* _parent() const { return m__parent; }
     };
-
-private:
-    child_t* m_parentless;
-    nav_parent_false2_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     child_t* parentless() const { return m_parentless; }
     nav_parent_false2_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    child_t* m_parentless;
+    nav_parent_false2_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // NAV_PARENT_FALSE2_H_

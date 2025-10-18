@@ -47,24 +47,15 @@ namespace Kaitai
                 _number1 = m_io.ReadU4le();
                 _number2 = m_io.ReadU4le();
             }
-            private uint _number1;
-            private uint _number2;
-            private BufferedStruct m_root;
-            private BufferedStruct m_parent;
             public uint Number1 { get { return _number1; } }
             public uint Number2 { get { return _number2; } }
             public BufferedStruct M_Root { get { return m_root; } }
             public BufferedStruct M_Parent { get { return m_parent; } }
+            private uint _number1;
+            private uint _number2;
+            private BufferedStruct m_root;
+            private BufferedStruct m_parent;
         }
-        private uint _len1;
-        private Block _block1;
-        private uint _len2;
-        private Block _block2;
-        private uint _finisher;
-        private BufferedStruct m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_block1;
-        private byte[] __raw_block2;
         public uint Len1 { get { return _len1; } }
         public Block Block1 { get { return _block1; } }
         public uint Len2 { get { return _len2; } }
@@ -74,5 +65,14 @@ namespace Kaitai
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawBlock1 { get { return __raw_block1; } }
         public byte[] M_RawBlock2 { get { return __raw_block2; } }
+        private uint _len1;
+        private Block _block1;
+        private uint _len2;
+        private Block _block2;
+        private uint _finisher;
+        private BufferedStruct m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_block1;
+        private byte[] __raw_block2;
     }
 }

@@ -26,15 +26,15 @@ namespace Kaitai
             }
             __unnamed2 = m_io.ReadU1();
         }
-        private byte _one;
-        private List<byte> _arrayOfInts;
-        private byte __unnamed2;
-        private Debug0 m_root;
-        private KaitaiStruct m_parent;
         public byte One { get { return _one; } }
         public List<byte> ArrayOfInts { get { return _arrayOfInts; } }
         public byte Unnamed_2 { get { return __unnamed2; } }
         public Debug0 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte _one;
+        private List<byte> _arrayOfInts;
+        private byte __unnamed2;
+        private Debug0 m_root;
+        private KaitaiStruct m_parent;
     }
 }

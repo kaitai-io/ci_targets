@@ -107,19 +107,19 @@ public class DebugArrayUser extends KaitaiStruct.ReadOnly {
 
         public void _fetchInstances() {
         }
-        private int meow;
-        private DebugArrayUser _root;
-        private DebugArrayUser _parent;
         public int meow() { return meow; }
         public DebugArrayUser _root() { return _root; }
         public DebugArrayUser _parent() { return _parent; }
+        private int meow;
+        private DebugArrayUser _root;
+        private DebugArrayUser _parent;
     }
-    private Cat oneCat;
-    private List<Cat> arrayOfCats;
-    private DebugArrayUser _root;
-    private KaitaiStruct.ReadOnly _parent;
     public Cat oneCat() { return oneCat; }
     public List<Cat> arrayOfCats() { return arrayOfCats; }
     public DebugArrayUser _root() { return _root; }
     public KaitaiStruct.ReadOnly _parent() { return _parent; }
+    private Cat oneCat;
+    private List<Cat> arrayOfCats;
+    private DebugArrayUser _root;
+    private KaitaiStruct.ReadOnly _parent;
 }

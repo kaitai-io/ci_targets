@@ -55,13 +55,13 @@ public class ValidFailEqStr extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private String foo;
-    private ValidFailEqStr _root;
-    private KaitaiStruct.ReadWrite _parent;
     public String foo() { return foo; }
     public void setFoo(String _v) { _dirty = true; foo = _v; }
     public ValidFailEqStr _root() { return _root; }
     public void set_root(ValidFailEqStr _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private String foo;
+    private ValidFailEqStr _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

@@ -24,8 +24,6 @@ namespace Kaitai
             _valueS2 = m_io.ReadS2le();
             _valueS8 = m_io.ReadS8le();
         }
-        private bool f_unaryS2;
-        private int _unaryS2;
         public int UnaryS2
         {
             get
@@ -37,8 +35,6 @@ namespace Kaitai
                 return _unaryS2;
             }
         }
-        private bool f_unaryS8;
-        private long _unaryS8;
         public long UnaryS8
         {
             get
@@ -50,13 +46,17 @@ namespace Kaitai
                 return _unaryS8;
             }
         }
-        private short _valueS2;
-        private long _valueS8;
-        private TypeIntUnaryOp m_root;
-        private KaitaiStruct m_parent;
         public short ValueS2 { get { return _valueS2; } }
         public long ValueS8 { get { return _valueS8; } }
         public TypeIntUnaryOp M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_unaryS2;
+        private int _unaryS2;
+        private bool f_unaryS8;
+        private long _unaryS8;
+        private short _valueS2;
+        private long _valueS8;
+        private TypeIntUnaryOp m_root;
+        private KaitaiStruct m_parent;
     }
 }

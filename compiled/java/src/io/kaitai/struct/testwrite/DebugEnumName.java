@@ -204,7 +204,6 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private InnerEnum2 instanceField;
         public InnerEnum2 instanceField() {
             if (this.instanceField != null)
                 return this.instanceField;
@@ -212,10 +211,6 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
             return this.instanceField;
         }
         public void _invalidateInstanceField() { this.instanceField = null; }
-        private InnerEnum1 field1;
-        private int field2;
-        private DebugEnumName _root;
-        private DebugEnumName _parent;
         public InnerEnum1 field1() { return field1; }
         public void setField1(InnerEnum1 _v) { _dirty = true; field1 = _v; }
         public int field2() { return field2; }
@@ -224,12 +219,12 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
         public void set_root(DebugEnumName _v) { _dirty = true; _root = _v; }
         public DebugEnumName _parent() { return _parent; }
         public void set_parent(DebugEnumName _v) { _dirty = true; _parent = _v; }
+        private InnerEnum2 instanceField;
+        private InnerEnum1 field1;
+        private int field2;
+        private DebugEnumName _root;
+        private DebugEnumName _parent;
     }
-    private TestEnum1 one;
-    private List<TestEnum2> arrayOfInts;
-    private TestSubtype testType;
-    private DebugEnumName _root;
-    private KaitaiStruct.ReadWrite _parent;
     public TestEnum1 one() { return one; }
     public void setOne(TestEnum1 _v) { _dirty = true; one = _v; }
     public List<TestEnum2> arrayOfInts() { return arrayOfInts; }
@@ -240,4 +235,9 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
     public void set_root(DebugEnumName _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private TestEnum1 one;
+    private List<TestEnum2> arrayOfInts;
+    private TestSubtype testType;
+    private DebugEnumName _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

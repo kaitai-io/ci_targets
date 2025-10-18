@@ -146,20 +146,16 @@ public class NestedSameName2 extends KaitaiStruct.ReadWrite {
                     throw new ConsistencyError("data2", _parent().dummySize() * 2, this.data2.length);
                 _dirty = false;
             }
-            private byte[] data2;
-            private NestedSameName2 _root;
-            private NestedSameName2.DummyObj _parent;
             public byte[] data2() { return data2; }
             public void setData2(byte[] _v) { _dirty = true; data2 = _v; }
             public NestedSameName2 _root() { return _root; }
             public void set_root(NestedSameName2 _v) { _dirty = true; _root = _v; }
             public NestedSameName2.DummyObj _parent() { return _parent; }
             public void set_parent(NestedSameName2.DummyObj _v) { _dirty = true; _parent = _v; }
+            private byte[] data2;
+            private NestedSameName2 _root;
+            private NestedSameName2.DummyObj _parent;
         }
-        private int dummySize;
-        private FooObj foo;
-        private NestedSameName2 _root;
-        private NestedSameName2 _parent;
         public int dummySize() { return dummySize; }
         public void setDummySize(int _v) { _dirty = true; dummySize = _v; }
         public FooObj foo() { return foo; }
@@ -168,6 +164,10 @@ public class NestedSameName2 extends KaitaiStruct.ReadWrite {
         public void set_root(NestedSameName2 _v) { _dirty = true; _root = _v; }
         public NestedSameName2 _parent() { return _parent; }
         public void set_parent(NestedSameName2 _v) { _dirty = true; _parent = _v; }
+        private int dummySize;
+        private FooObj foo;
+        private NestedSameName2 _root;
+        private NestedSameName2 _parent;
     }
     public static class Main extends KaitaiStruct.ReadWrite {
         public static Main fromFile(String fileName) throws IOException {
@@ -253,20 +253,16 @@ public class NestedSameName2 extends KaitaiStruct.ReadWrite {
                     throw new ConsistencyError("data1", _parent().mainSize() * 2, this.data1.length);
                 _dirty = false;
             }
-            private byte[] data1;
-            private NestedSameName2 _root;
-            private NestedSameName2.Main _parent;
             public byte[] data1() { return data1; }
             public void setData1(byte[] _v) { _dirty = true; data1 = _v; }
             public NestedSameName2 _root() { return _root; }
             public void set_root(NestedSameName2 _v) { _dirty = true; _root = _v; }
             public NestedSameName2.Main _parent() { return _parent; }
             public void set_parent(NestedSameName2.Main _v) { _dirty = true; _parent = _v; }
+            private byte[] data1;
+            private NestedSameName2 _root;
+            private NestedSameName2.Main _parent;
         }
-        private int mainSize;
-        private FooObj foo;
-        private NestedSameName2 _root;
-        private NestedSameName2 _parent;
         public int mainSize() { return mainSize; }
         public void setMainSize(int _v) { _dirty = true; mainSize = _v; }
         public FooObj foo() { return foo; }
@@ -275,12 +271,11 @@ public class NestedSameName2 extends KaitaiStruct.ReadWrite {
         public void set_root(NestedSameName2 _v) { _dirty = true; _root = _v; }
         public NestedSameName2 _parent() { return _parent; }
         public void set_parent(NestedSameName2 _v) { _dirty = true; _parent = _v; }
+        private int mainSize;
+        private FooObj foo;
+        private NestedSameName2 _root;
+        private NestedSameName2 _parent;
     }
-    private long version;
-    private Main mainData;
-    private DummyObj dummy;
-    private NestedSameName2 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public long version() { return version; }
     public void setVersion(long _v) { _dirty = true; version = _v; }
     public Main mainData() { return mainData; }
@@ -291,4 +286,9 @@ public class NestedSameName2 extends KaitaiStruct.ReadWrite {
     public void set_root(NestedSameName2 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private long version;
+    private Main mainData;
+    private DummyObj dummy;
+    private NestedSameName2 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

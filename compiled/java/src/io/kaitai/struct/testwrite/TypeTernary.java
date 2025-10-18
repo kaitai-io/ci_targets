@@ -144,17 +144,16 @@ public class TypeTernary extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int value;
-        private TypeTernary _root;
-        private TypeTernary _parent;
         public int value() { return value; }
         public void setValue(int _v) { _dirty = true; value = _v; }
         public TypeTernary _root() { return _root; }
         public void set_root(TypeTernary _v) { _dirty = true; _root = _v; }
         public TypeTernary _parent() { return _parent; }
         public void set_parent(TypeTernary _v) { _dirty = true; _parent = _v; }
+        private int value;
+        private TypeTernary _root;
+        private TypeTernary _parent;
     }
-    private Dummy dif;
     public Dummy dif() {
         if (this.dif != null)
             return this.dif;
@@ -162,7 +161,6 @@ public class TypeTernary extends KaitaiStruct.ReadWrite {
         return this.dif;
     }
     public void _invalidateDif() { this.dif = null; }
-    private Integer difValue;
     public Integer difValue() {
         if (this.difValue != null)
             return this.difValue;
@@ -170,7 +168,6 @@ public class TypeTernary extends KaitaiStruct.ReadWrite {
         return this.difValue;
     }
     public void _invalidateDifValue() { this.difValue = null; }
-    private Boolean isHack;
     public Boolean isHack() {
         if (this.isHack != null)
             return this.isHack;
@@ -178,13 +175,6 @@ public class TypeTernary extends KaitaiStruct.ReadWrite {
         return this.isHack;
     }
     public void _invalidateIsHack() { this.isHack = null; }
-    private Dummy difWoHack;
-    private Dummy difWithHack;
-    private TypeTernary _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_difWoHack;
-    private byte[] _raw_difWithHack;
-    private byte[] _raw__raw_difWithHack;
     public Dummy difWoHack() { return difWoHack; }
     public void setDifWoHack(Dummy _v) { _dirty = true; difWoHack = _v; }
     public Dummy difWithHack() { return difWithHack; }
@@ -199,4 +189,14 @@ public class TypeTernary extends KaitaiStruct.ReadWrite {
     public void set_raw_DifWithHack(byte[] _v) { _dirty = true; _raw_difWithHack = _v; }
     public byte[] _raw__raw_difWithHack() { return _raw__raw_difWithHack; }
     public void set_raw__raw_DifWithHack(byte[] _v) { _dirty = true; _raw__raw_difWithHack = _v; }
+    private Dummy dif;
+    private Integer difValue;
+    private Boolean isHack;
+    private Dummy difWoHack;
+    private Dummy difWithHack;
+    private TypeTernary _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_difWoHack;
+    private byte[] _raw_difWithHack;
+    private byte[] _raw__raw_difWithHack;
 }

@@ -39,16 +39,14 @@ public:
 
     public:
         ~one_t();
+        int16_t val() const { return m_val; }
+        debug_switch_user_t* _root() const { return m__root; }
+        debug_switch_user_t* _parent() const { return m__parent; }
 
     private:
         int16_t m_val;
         debug_switch_user_t* m__root;
         debug_switch_user_t* m__parent;
-
-    public:
-        int16_t val() const { return m_val; }
-        debug_switch_user_t* _root() const { return m__root; }
-        debug_switch_user_t* _parent() const { return m__parent; }
     };
 
     class two_t : public kaitai::kstruct {
@@ -63,17 +61,21 @@ public:
 
     public:
         ~two_t();
+        uint16_t val() const { return m_val; }
+        debug_switch_user_t* _root() const { return m__root; }
+        debug_switch_user_t* _parent() const { return m__parent; }
 
     private:
         uint16_t m_val;
         debug_switch_user_t* m__root;
         debug_switch_user_t* m__parent;
-
-    public:
-        uint16_t val() const { return m_val; }
-        debug_switch_user_t* _root() const { return m__root; }
-        debug_switch_user_t* _parent() const { return m__parent; }
     };
+
+public:
+    uint8_t code() const { return m_code; }
+    kaitai::kstruct* data() const { return m_data; }
+    debug_switch_user_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint8_t m_code;
@@ -86,12 +88,6 @@ public:
 private:
     debug_switch_user_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint8_t code() const { return m_code; }
-    kaitai::kstruct* data() const { return m_data; }
-    debug_switch_user_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // DEBUG_SWITCH_USER_H_

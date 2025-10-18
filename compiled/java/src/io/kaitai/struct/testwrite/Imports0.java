@@ -48,7 +48,6 @@ public class Imports0 extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private Integer hwOne;
     public Integer hwOne() {
         if (this.hwOne != null)
             return this.hwOne;
@@ -56,10 +55,6 @@ public class Imports0 extends KaitaiStruct.ReadWrite {
         return this.hwOne;
     }
     public void _invalidateHwOne() { this.hwOne = null; }
-    private int two;
-    private HelloWorld hw;
-    private Imports0 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int two() { return two; }
     public void setTwo(int _v) { _dirty = true; two = _v; }
     public HelloWorld hw() { return hw; }
@@ -68,4 +63,9 @@ public class Imports0 extends KaitaiStruct.ReadWrite {
     public void set_root(Imports0 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer hwOne;
+    private int two;
+    private HelloWorld hw;
+    private Imports0 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

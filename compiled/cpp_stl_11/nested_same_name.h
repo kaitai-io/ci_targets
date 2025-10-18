@@ -53,23 +53,21 @@ public:
 
         public:
             ~foo_t();
+            nested_same_name_t* _root() const { return m__root; }
+            kaitai::kstruct* _parent() const { return m__parent; }
 
         private:
             nested_same_name_t* m__root;
             kaitai::kstruct* m__parent;
-
-        public:
-            nested_same_name_t* _root() const { return m__root; }
-            kaitai::kstruct* _parent() const { return m__parent; }
         };
-
-    private:
-        nested_same_name_t* m__root;
-        nested_same_name_t* m__parent;
 
     public:
         nested_same_name_t* _root() const { return m__root; }
         nested_same_name_t* _parent() const { return m__parent; }
+
+    private:
+        nested_same_name_t* m__root;
+        nested_same_name_t* m__parent;
     };
 
     class main_t : public kaitai::kstruct {
@@ -98,40 +96,38 @@ public:
 
         public:
             ~foo_obj_t();
+            std::string data() const { return m_data; }
+            nested_same_name_t* _root() const { return m__root; }
+            nested_same_name_t::main_t* _parent() const { return m__parent; }
 
         private:
             std::string m_data;
             nested_same_name_t* m__root;
             nested_same_name_t::main_t* m__parent;
-
-        public:
-            std::string data() const { return m_data; }
-            nested_same_name_t* _root() const { return m__root; }
-            nested_same_name_t::main_t* _parent() const { return m__parent; }
         };
-
-    private:
-        int32_t m_main_size;
-        std::unique_ptr<foo_obj_t> m_foo;
-        nested_same_name_t* m__root;
-        nested_same_name_t* m__parent;
 
     public:
         int32_t main_size() const { return m_main_size; }
         foo_obj_t* foo() const { return m_foo.get(); }
         nested_same_name_t* _root() const { return m__root; }
         nested_same_name_t* _parent() const { return m__parent; }
-    };
 
-private:
-    std::unique_ptr<main_t> m_main_data;
-    std::unique_ptr<dummy_obj_t> m_dummy;
-    nested_same_name_t* m__root;
-    kaitai::kstruct* m__parent;
+    private:
+        int32_t m_main_size;
+        std::unique_ptr<foo_obj_t> m_foo;
+        nested_same_name_t* m__root;
+        nested_same_name_t* m__parent;
+    };
 
 public:
     main_t* main_data() const { return m_main_data.get(); }
     dummy_obj_t* dummy() const { return m_dummy.get(); }
     nested_same_name_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    std::unique_ptr<main_t> m_main_data;
+    std::unique_ptr<dummy_obj_t> m_dummy;
+    nested_same_name_t* m__root;
+    kaitai::kstruct* m__parent;
 };

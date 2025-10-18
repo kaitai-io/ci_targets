@@ -12,24 +12,24 @@ namespace Kaitai\Struct\Tests {
             $this->_m_pet1 = $this->_io->readU4le();
             $this->_m_pet2 = $this->_io->readU4le();
         }
-        protected $_m_isPet1Ok;
         public function isPet1Ok() {
             if ($this->_m_isPet1Ok !== null)
                 return $this->_m_isPet1Ok;
             $this->_m_isPet1Ok = $this->pet1() == \Kaitai\Struct\Tests\EnumDeepLiterals\Container1\Animal::CAT;
             return $this->_m_isPet1Ok;
         }
-        protected $_m_isPet2Ok;
         public function isPet2Ok() {
             if ($this->_m_isPet2Ok !== null)
                 return $this->_m_isPet2Ok;
             $this->_m_isPet2Ok = $this->pet2() == \Kaitai\Struct\Tests\EnumDeepLiterals\Container1\Container2\Animal::HARE;
             return $this->_m_isPet2Ok;
         }
-        protected $_m_pet1;
-        protected $_m_pet2;
         public function pet1() { return $this->_m_pet1; }
         public function pet2() { return $this->_m_pet2; }
+        protected $_m_isPet1Ok;
+        protected $_m_isPet2Ok;
+        protected $_m_pet1;
+        protected $_m_pet2;
     }
 }
 

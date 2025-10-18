@@ -35,14 +35,14 @@ public class TermStrz2 extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private String s1;
-    private String s2;
-    private String s3;
-    private TermStrz2 _root;
-    private KaitaiStruct _parent;
     public String s1() { return s1; }
     public String s2() { return s2; }
     public String s3() { return s3; }
     public TermStrz2 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private String s1;
+    private String s2;
+    private String s3;
+    private TermStrz2 _root;
+    private KaitaiStruct _parent;
 }

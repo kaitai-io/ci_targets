@@ -223,34 +223,16 @@ public class ProcessStructPadTerm extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private byte[] value;
-        private ProcessStructPadTerm _root;
-        private ProcessStructPadTerm _parent;
         public byte[] value() { return value; }
         public void setValue(byte[] _v) { _dirty = true; value = _v; }
         public ProcessStructPadTerm _root() { return _root; }
         public void set_root(ProcessStructPadTerm _v) { _dirty = true; _root = _v; }
         public ProcessStructPadTerm _parent() { return _parent; }
         public void set_parent(ProcessStructPadTerm _v) { _dirty = true; _parent = _v; }
+        private byte[] value;
+        private ProcessStructPadTerm _root;
+        private ProcessStructPadTerm _parent;
     }
-    private BytesWrapper strPad;
-    private BytesWrapper strTerm;
-    private BytesWrapper strTermAndPad;
-    private BytesWrapper strTermInclude;
-    private ProcessStructPadTerm _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_strPad;
-    private int strPad_InnerSize;
-    private byte[] _raw__raw_strPad;
-    private byte[] _raw_strTerm;
-    private int strTerm_InnerSize;
-    private byte[] _raw__raw_strTerm;
-    private byte[] _raw_strTermAndPad;
-    private int strTermAndPad_InnerSize;
-    private byte[] _raw__raw_strTermAndPad;
-    private byte[] _raw_strTermInclude;
-    private int strTermInclude_InnerSize;
-    private byte[] _raw__raw_strTermInclude;
     public BytesWrapper strPad() { return strPad; }
     public void setStrPad(BytesWrapper _v) { _dirty = true; strPad = _v; }
     public BytesWrapper strTerm() { return strTerm; }
@@ -287,4 +269,22 @@ public class ProcessStructPadTerm extends KaitaiStruct.ReadWrite {
     public void setStrTermInclude_InnerSize(int _v) { _dirty = true; strTermInclude_InnerSize = _v; }
     public byte[] _raw__raw_strTermInclude() { return _raw__raw_strTermInclude; }
     public void set_raw__raw_StrTermInclude(byte[] _v) { _dirty = true; _raw__raw_strTermInclude = _v; }
+    private BytesWrapper strPad;
+    private BytesWrapper strTerm;
+    private BytesWrapper strTermAndPad;
+    private BytesWrapper strTermInclude;
+    private ProcessStructPadTerm _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_strPad;
+    private int strPad_InnerSize;
+    private byte[] _raw__raw_strPad;
+    private byte[] _raw_strTerm;
+    private int strTerm_InnerSize;
+    private byte[] _raw__raw_strTerm;
+    private byte[] _raw_strTermAndPad;
+    private int strTermAndPad_InnerSize;
+    private byte[] _raw__raw_strTermAndPad;
+    private byte[] _raw_strTermInclude;
+    private int strTermInclude_InnerSize;
+    private byte[] _raw__raw_strTermInclude;
 }

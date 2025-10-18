@@ -20,7 +20,7 @@ namespace Kaitai\Struct\Tests {
                 $i++;
             }
         }
-        protected $_m_foo;
         public function foo() { return $this->_m_foo; }
+        protected $_m_foo;
     }
 }

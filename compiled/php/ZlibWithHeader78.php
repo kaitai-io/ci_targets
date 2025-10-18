@@ -12,9 +12,9 @@ namespace Kaitai\Struct\Tests {
             $this->_m__raw_data = $this->_io->readBytesFull();
             $this->_m_data = \Kaitai\Struct\Stream::processZlib($this->_m__raw_data);
         }
-        protected $_m_data;
-        protected $_m__raw_data;
         public function data() { return $this->_m_data; }
         public function _raw_data() { return $this->_m__raw_data; }
+        protected $_m_data;
+        protected $_m__raw_data;
     }
 }

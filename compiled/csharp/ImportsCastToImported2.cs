@@ -22,13 +22,13 @@ namespace Kaitai
             _hw = new HelloWorld(m_io);
             _two = new CastToImported2(Hw, m_io);
         }
-        private HelloWorld _hw;
-        private CastToImported2 _two;
-        private ImportsCastToImported2 m_root;
-        private KaitaiStruct m_parent;
         public HelloWorld Hw { get { return _hw; } }
         public CastToImported2 Two { get { return _two; } }
         public ImportsCastToImported2 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private HelloWorld _hw;
+        private CastToImported2 _two;
+        private ImportsCastToImported2 m_root;
+        private KaitaiStruct m_parent;
     }
 }

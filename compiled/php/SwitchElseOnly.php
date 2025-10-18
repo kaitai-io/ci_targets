@@ -14,14 +14,14 @@ namespace Kaitai\Struct\Tests {
             $this->_m_indicator = $this->_io->readBytes(4);
             $this->_m_ut = new \Kaitai\Struct\Tests\SwitchElseOnly\Data($this->_io, $this, $this->_root);
         }
-        protected $_m_opcode;
-        protected $_m_primByte;
-        protected $_m_indicator;
-        protected $_m_ut;
         public function opcode() { return $this->_m_opcode; }
         public function primByte() { return $this->_m_primByte; }
         public function indicator() { return $this->_m_indicator; }
         public function ut() { return $this->_m_ut; }
+        protected $_m_opcode;
+        protected $_m_primByte;
+        protected $_m_indicator;
+        protected $_m_ut;
     }
 }
 
@@ -35,7 +35,7 @@ namespace Kaitai\Struct\Tests\SwitchElseOnly {
         private function _read() {
             $this->_m_value = $this->_io->readBytes(4);
         }
-        protected $_m_value;
         public function value() { return $this->_m_value; }
+        protected $_m_value;
     }
 }

@@ -11,7 +11,7 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_a = $this->_io->readBitsIntLe(32);
         }
-        protected $_m_a;
         public function a() { return $this->_m_a; }
+        protected $_m_a;
     }
 }

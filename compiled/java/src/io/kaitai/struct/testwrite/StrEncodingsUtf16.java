@@ -143,10 +143,6 @@ public class StrEncodingsUtf16 extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int bom;
-        private String str;
-        private StrEncodingsUtf16 _root;
-        private StrEncodingsUtf16 _parent;
         public int bom() { return bom; }
         public void setBom(int _v) { _dirty = true; bom = _v; }
         public String str() { return str; }
@@ -155,6 +151,10 @@ public class StrEncodingsUtf16 extends KaitaiStruct.ReadWrite {
         public void set_root(StrEncodingsUtf16 _v) { _dirty = true; _root = _v; }
         public StrEncodingsUtf16 _parent() { return _parent; }
         public void set_parent(StrEncodingsUtf16 _v) { _dirty = true; _parent = _v; }
+        private int bom;
+        private String str;
+        private StrEncodingsUtf16 _root;
+        private StrEncodingsUtf16 _parent;
     }
     public static class StrLeBomRemoved extends KaitaiStruct.ReadWrite {
         public static StrLeBomRemoved fromFile(String fileName) throws IOException {
@@ -197,10 +197,6 @@ public class StrEncodingsUtf16 extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int bom;
-        private String str;
-        private StrEncodingsUtf16 _root;
-        private StrEncodingsUtf16 _parent;
         public int bom() { return bom; }
         public void setBom(int _v) { _dirty = true; bom = _v; }
         public String str() { return str; }
@@ -209,15 +205,11 @@ public class StrEncodingsUtf16 extends KaitaiStruct.ReadWrite {
         public void set_root(StrEncodingsUtf16 _v) { _dirty = true; _root = _v; }
         public StrEncodingsUtf16 _parent() { return _parent; }
         public void set_parent(StrEncodingsUtf16 _v) { _dirty = true; _parent = _v; }
+        private int bom;
+        private String str;
+        private StrEncodingsUtf16 _root;
+        private StrEncodingsUtf16 _parent;
     }
-    private long lenBe;
-    private StrBeBomRemoved beBomRemoved;
-    private long lenLe;
-    private StrLeBomRemoved leBomRemoved;
-    private StrEncodingsUtf16 _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_beBomRemoved;
-    private byte[] _raw_leBomRemoved;
     public long lenBe() { return lenBe; }
     public void setLenBe(long _v) { _dirty = true; lenBe = _v; }
     public StrBeBomRemoved beBomRemoved() { return beBomRemoved; }
@@ -234,4 +226,12 @@ public class StrEncodingsUtf16 extends KaitaiStruct.ReadWrite {
     public void set_raw_BeBomRemoved(byte[] _v) { _dirty = true; _raw_beBomRemoved = _v; }
     public byte[] _raw_leBomRemoved() { return _raw_leBomRemoved; }
     public void set_raw_LeBomRemoved(byte[] _v) { _dirty = true; _raw_leBomRemoved = _v; }
+    private long lenBe;
+    private StrBeBomRemoved beBomRemoved;
+    private long lenLe;
+    private StrLeBomRemoved leBomRemoved;
+    private StrEncodingsUtf16 _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_beBomRemoved;
+    private byte[] _raw_leBomRemoved;
 }

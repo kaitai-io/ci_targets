@@ -48,12 +48,12 @@ namespace Kaitai
             {
                 _value = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(124, false, true, false));
             }
-            private string _value;
-            private TermStrz4 m_root;
-            private TermStrz4 m_parent;
             public string Value { get { return _value; } }
             public TermStrz4 M_Root { get { return m_root; } }
             public TermStrz4 M_Parent { get { return m_parent; } }
+            private string _value;
+            private TermStrz4 m_root;
+            private TermStrz4 m_parent;
         }
         public partial class S2Type : KaitaiStruct
         {
@@ -72,12 +72,12 @@ namespace Kaitai
             {
                 _value = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(124, false, false, false));
             }
-            private string _value;
-            private TermStrz4 m_root;
-            private TermStrz4 m_parent;
             public string Value { get { return _value; } }
             public TermStrz4 M_Root { get { return m_root; } }
             public TermStrz4 M_Parent { get { return m_parent; } }
+            private string _value;
+            private TermStrz4 m_root;
+            private TermStrz4 m_parent;
         }
         public partial class S3Type : KaitaiStruct
         {
@@ -96,23 +96,13 @@ namespace Kaitai
             {
                 _value = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(64, true, true, false));
             }
-            private string _value;
-            private TermStrz4 m_root;
-            private TermStrz4 m_parent;
             public string Value { get { return _value; } }
             public TermStrz4 M_Root { get { return m_root; } }
             public TermStrz4 M_Parent { get { return m_parent; } }
+            private string _value;
+            private TermStrz4 m_root;
+            private TermStrz4 m_parent;
         }
-        private S1Type _s1;
-        private byte _skipTerm1;
-        private S2Type _s2;
-        private byte _skipTerm2;
-        private S3Type _s3;
-        private TermStrz4 m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_s1;
-        private byte[] __raw_s2;
-        private byte[] __raw_s3;
         public S1Type S1 { get { return _s1; } }
         public byte SkipTerm1 { get { return _skipTerm1; } }
         public S2Type S2 { get { return _s2; } }
@@ -123,5 +113,15 @@ namespace Kaitai
         public byte[] M_RawS1 { get { return __raw_s1; } }
         public byte[] M_RawS2 { get { return __raw_s2; } }
         public byte[] M_RawS3 { get { return __raw_s3; } }
+        private S1Type _s1;
+        private byte _skipTerm1;
+        private S2Type _s2;
+        private byte _skipTerm2;
+        private S3Type _s3;
+        private TermStrz4 m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_s1;
+        private byte[] __raw_s2;
+        private byte[] __raw_s3;
     }
 }

@@ -39,38 +39,9 @@ public:
 
     public:
         ~mod_str_t();
-
-    private:
-        bool f_char5;
-        std::string m_char5;
-
-    public:
         std::string char5();
-
-    private:
-        bool f_len_mod;
-        int32_t m_len_mod;
-
-    public:
         int32_t len_mod();
-
-    private:
-        bool f_tuple5;
-        std::unique_ptr<tuple_t> m_tuple5;
-
-    public:
         tuple_t* tuple5();
-
-    private:
-        uint16_t m_len_orig;
-        std::string m_str;
-        std::unique_ptr<tuple_t> m_rest;
-        expr_2_t* m__root;
-        expr_2_t* m__parent;
-        std::string m__raw_rest;
-        std::unique_ptr<kaitai::kstream> m__io__raw_rest;
-
-    public:
         uint16_t len_orig() const { return m_len_orig; }
         std::string str() const { return m_str; }
         tuple_t* rest() const { return m_rest.get(); }
@@ -78,6 +49,21 @@ public:
         expr_2_t* _parent() const { return m__parent; }
         std::string _raw_rest() const { return m__raw_rest; }
         kaitai::kstream* _io__raw_rest() const { return m__io__raw_rest.get(); }
+
+    private:
+        bool f_char5;
+        std::string m_char5;
+        bool f_len_mod;
+        int32_t m_len_mod;
+        bool f_tuple5;
+        std::unique_ptr<tuple_t> m_tuple5;
+        uint16_t m_len_orig;
+        std::string m_str;
+        std::unique_ptr<tuple_t> m_rest;
+        expr_2_t* m__root;
+        expr_2_t* m__parent;
+        std::string m__raw_rest;
+        std::unique_ptr<kaitai::kstream> m__io__raw_rest;
     };
 
     class tuple_t : public kaitai::kstruct {
@@ -92,87 +78,53 @@ public:
 
     public:
         ~tuple_t();
-
-    private:
-        bool f_avg;
-        int32_t m_avg;
-
-    public:
         int32_t avg();
-
-    private:
-        uint8_t m_byte0;
-        uint8_t m_byte1;
-        uint8_t m_byte2;
-        expr_2_t* m__root;
-        expr_2_t::mod_str_t* m__parent;
-
-    public:
         uint8_t byte0() const { return m_byte0; }
         uint8_t byte1() const { return m_byte1; }
         uint8_t byte2() const { return m_byte2; }
         expr_2_t* _root() const { return m__root; }
         expr_2_t::mod_str_t* _parent() const { return m__parent; }
-    };
 
-private:
-    bool f_str1_avg;
-    int32_t m_str1_avg;
+    private:
+        bool f_avg;
+        int32_t m_avg;
+        uint8_t m_byte0;
+        uint8_t m_byte1;
+        uint8_t m_byte2;
+        expr_2_t* m__root;
+        expr_2_t::mod_str_t* m__parent;
+    };
 
 public:
     int32_t str1_avg();
-
-private:
-    bool f_str1_byte1;
-    uint8_t m_str1_byte1;
-
-public:
     uint8_t str1_byte1();
-
-private:
-    bool f_str1_char5;
-    std::string m_str1_char5;
-
-public:
     std::string str1_char5();
-
-private:
-    bool f_str1_len;
-    int32_t m_str1_len;
-
-public:
     int32_t str1_len();
-
-private:
-    bool f_str1_len_mod;
-    int32_t m_str1_len_mod;
-
-public:
     int32_t str1_len_mod();
-
-private:
-    bool f_str1_tuple5;
-    tuple_t* m_str1_tuple5;
-
-public:
     tuple_t* str1_tuple5();
-
-private:
-    bool f_str2_tuple5;
-    tuple_t* m_str2_tuple5;
-
-public:
     tuple_t* str2_tuple5();
-
-private:
-    std::unique_ptr<mod_str_t> m_str1;
-    std::unique_ptr<mod_str_t> m_str2;
-    expr_2_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     mod_str_t* str1() const { return m_str1.get(); }
     mod_str_t* str2() const { return m_str2.get(); }
     expr_2_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_str1_avg;
+    int32_t m_str1_avg;
+    bool f_str1_byte1;
+    uint8_t m_str1_byte1;
+    bool f_str1_char5;
+    std::string m_str1_char5;
+    bool f_str1_len;
+    int32_t m_str1_len;
+    bool f_str1_len_mod;
+    int32_t m_str1_len_mod;
+    bool f_str1_tuple5;
+    tuple_t* m_str1_tuple5;
+    bool f_str2_tuple5;
+    tuple_t* m_str2_tuple5;
+    std::unique_ptr<mod_str_t> m_str1;
+    std::unique_ptr<mod_str_t> m_str2;
+    expr_2_t* m__root;
+    kaitai::kstruct* m__parent;
 };

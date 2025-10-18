@@ -35,8 +35,6 @@ namespace Kaitai
             _lenOf4 = m_io.ReadU2le();
             _str4 = System.Text.Encoding.GetEncoding("IBM437").GetString(m_io.ReadBytes(LenOf4));
         }
-        private bool f_str1Eq;
-        private bool _str1Eq;
         public bool Str1Eq
         {
             get
@@ -48,8 +46,6 @@ namespace Kaitai
                 return _str1Eq;
             }
         }
-        private bool f_str2Eq;
-        private bool _str2Eq;
         public bool Str2Eq
         {
             get
@@ -61,8 +57,6 @@ namespace Kaitai
                 return _str2Eq;
             }
         }
-        private bool f_str3Eq;
-        private bool _str3Eq;
         public bool Str3Eq
         {
             get
@@ -74,8 +68,6 @@ namespace Kaitai
                 return _str3Eq;
             }
         }
-        private bool f_str3EqStr2;
-        private bool _str3EqStr2;
         public bool Str3EqStr2
         {
             get
@@ -87,8 +79,6 @@ namespace Kaitai
                 return _str3EqStr2;
             }
         }
-        private bool f_str4Eq;
-        private bool _str4Eq;
         public bool Str4Eq
         {
             get
@@ -100,8 +90,6 @@ namespace Kaitai
                 return _str4Eq;
             }
         }
-        private bool f_str4GtStrCalc;
-        private bool _str4GtStrCalc;
         public bool Str4GtStrCalc
         {
             get
@@ -113,8 +101,6 @@ namespace Kaitai
                 return _str4GtStrCalc;
             }
         }
-        private bool f_str4GtStrFromBytes;
-        private bool _str4GtStrFromBytes;
         public bool Str4GtStrFromBytes
         {
             get
@@ -126,16 +112,6 @@ namespace Kaitai
                 return _str4GtStrFromBytes;
             }
         }
-        private ushort _lenOf1;
-        private string _str1;
-        private ushort _lenOf2;
-        private string _str2;
-        private ushort _lenOf3;
-        private string _str3;
-        private ushort _lenOf4;
-        private string _str4;
-        private ExprStrEncodings m_root;
-        private KaitaiStruct m_parent;
         public ushort LenOf1 { get { return _lenOf1; } }
         public string Str1 { get { return _str1; } }
         public ushort LenOf2 { get { return _lenOf2; } }
@@ -146,5 +122,29 @@ namespace Kaitai
         public string Str4 { get { return _str4; } }
         public ExprStrEncodings M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_str1Eq;
+        private bool _str1Eq;
+        private bool f_str2Eq;
+        private bool _str2Eq;
+        private bool f_str3Eq;
+        private bool _str3Eq;
+        private bool f_str3EqStr2;
+        private bool _str3EqStr2;
+        private bool f_str4Eq;
+        private bool _str4Eq;
+        private bool f_str4GtStrCalc;
+        private bool _str4GtStrCalc;
+        private bool f_str4GtStrFromBytes;
+        private bool _str4GtStrFromBytes;
+        private ushort _lenOf1;
+        private string _str1;
+        private ushort _lenOf2;
+        private string _str2;
+        private ushort _lenOf3;
+        private string _str3;
+        private ushort _lenOf4;
+        private string _str4;
+        private ExprStrEncodings m_root;
+        private KaitaiStruct m_parent;
     }
 }

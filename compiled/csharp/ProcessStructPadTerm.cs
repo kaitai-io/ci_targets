@@ -53,27 +53,13 @@ namespace Kaitai
             {
                 _value = m_io.ReadBytesFull();
             }
-            private byte[] _value;
-            private ProcessStructPadTerm m_root;
-            private ProcessStructPadTerm m_parent;
             public byte[] Value { get { return _value; } }
             public ProcessStructPadTerm M_Root { get { return m_root; } }
             public ProcessStructPadTerm M_Parent { get { return m_parent; } }
+            private byte[] _value;
+            private ProcessStructPadTerm m_root;
+            private ProcessStructPadTerm m_parent;
         }
-        private BytesWrapper _strPad;
-        private BytesWrapper _strTerm;
-        private BytesWrapper _strTermAndPad;
-        private BytesWrapper _strTermInclude;
-        private ProcessStructPadTerm m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_strPad;
-        private byte[] __raw__raw_strPad;
-        private byte[] __raw_strTerm;
-        private byte[] __raw__raw_strTerm;
-        private byte[] __raw_strTermAndPad;
-        private byte[] __raw__raw_strTermAndPad;
-        private byte[] __raw_strTermInclude;
-        private byte[] __raw__raw_strTermInclude;
         public BytesWrapper StrPad { get { return _strPad; } }
         public BytesWrapper StrTerm { get { return _strTerm; } }
         public BytesWrapper StrTermAndPad { get { return _strTermAndPad; } }
@@ -88,5 +74,19 @@ namespace Kaitai
         public byte[] M_RawM_RawStrTermAndPad { get { return __raw__raw_strTermAndPad; } }
         public byte[] M_RawStrTermInclude { get { return __raw_strTermInclude; } }
         public byte[] M_RawM_RawStrTermInclude { get { return __raw__raw_strTermInclude; } }
+        private BytesWrapper _strPad;
+        private BytesWrapper _strTerm;
+        private BytesWrapper _strTermAndPad;
+        private BytesWrapper _strTermInclude;
+        private ProcessStructPadTerm m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_strPad;
+        private byte[] __raw__raw_strPad;
+        private byte[] __raw_strTerm;
+        private byte[] __raw__raw_strTerm;
+        private byte[] __raw_strTermAndPad;
+        private byte[] __raw__raw_strTermAndPad;
+        private byte[] __raw_strTermInclude;
+        private byte[] __raw__raw_strTermInclude;
     }
 }

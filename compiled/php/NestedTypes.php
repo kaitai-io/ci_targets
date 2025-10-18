@@ -12,10 +12,10 @@ namespace Kaitai\Struct\Tests {
             $this->_m_one = new \Kaitai\Struct\Tests\NestedTypes\SubtypeA($this->_io, $this, $this->_root);
             $this->_m_two = new \Kaitai\Struct\Tests\NestedTypes\SubtypeB($this->_io, $this, $this->_root);
         }
-        protected $_m_one;
-        protected $_m_two;
         public function one() { return $this->_m_one; }
         public function two() { return $this->_m_two; }
+        protected $_m_one;
+        protected $_m_two;
     }
 }
 
@@ -30,10 +30,10 @@ namespace Kaitai\Struct\Tests\NestedTypes {
             $this->_m_typedAtRoot = new \Kaitai\Struct\Tests\NestedTypes\SubtypeB($this->_io, $this, $this->_root);
             $this->_m_typedHere = new \Kaitai\Struct\Tests\NestedTypes\SubtypeA\SubtypeC($this->_io, $this, $this->_root);
         }
-        protected $_m_typedAtRoot;
-        protected $_m_typedHere;
         public function typedAtRoot() { return $this->_m_typedAtRoot; }
         public function typedHere() { return $this->_m_typedHere; }
+        protected $_m_typedAtRoot;
+        protected $_m_typedHere;
     }
 }
 
@@ -47,8 +47,8 @@ namespace Kaitai\Struct\Tests\NestedTypes\SubtypeA {
         private function _read() {
             $this->_m_valueC = $this->_io->readS1();
         }
-        protected $_m_valueC;
         public function valueC() { return $this->_m_valueC; }
+        protected $_m_valueC;
     }
 }
 
@@ -62,7 +62,7 @@ namespace Kaitai\Struct\Tests\NestedTypes {
         private function _read() {
             $this->_m_valueB = $this->_io->readS1();
         }
-        protected $_m_valueB;
         public function valueB() { return $this->_m_valueB; }
+        protected $_m_valueB;
     }
 }

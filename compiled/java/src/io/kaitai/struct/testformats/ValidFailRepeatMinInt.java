@@ -46,10 +46,10 @@ public class ValidFailRepeatMinInt extends KaitaiStruct {
         for (int i = 0; i < this.foo.size(); i++) {
         }
     }
-    private List<Byte> foo;
-    private ValidFailRepeatMinInt _root;
-    private KaitaiStruct _parent;
     public List<Byte> foo() { return foo; }
     public ValidFailRepeatMinInt _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Byte> foo;
+    private ValidFailRepeatMinInt _root;
+    private KaitaiStruct _parent;
 }

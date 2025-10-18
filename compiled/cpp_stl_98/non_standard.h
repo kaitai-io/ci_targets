@@ -24,22 +24,18 @@ private:
 
 public:
     ~non_standard_t();
+    uint8_t pi();
+    uint8_t vi();
+    uint8_t foo() const { return m_foo; }
+    uint32_t bar() const { return m_bar; }
+    non_standard_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_pi;
     uint8_t m_pi;
-
-public:
-    uint8_t pi();
-
-private:
     bool f_vi;
     uint8_t m_vi;
-
-public:
-    uint8_t vi();
-
-private:
     uint8_t m_foo;
     uint32_t m_bar;
     bool n_bar;
@@ -50,12 +46,6 @@ public:
 private:
     non_standard_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint8_t foo() const { return m_foo; }
-    uint32_t bar() const { return m_bar; }
-    non_standard_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // NON_STANDARD_H_

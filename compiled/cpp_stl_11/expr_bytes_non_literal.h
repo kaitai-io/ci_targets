@@ -24,23 +24,17 @@ private:
 
 public:
     ~expr_bytes_non_literal_t();
-
-private:
-    bool f_calc_bytes;
-    std::string m_calc_bytes;
-
-public:
     std::string calc_bytes();
-
-private:
-    uint8_t m_one;
-    uint8_t m_two;
-    expr_bytes_non_literal_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     uint8_t one() const { return m_one; }
     uint8_t two() const { return m_two; }
     expr_bytes_non_literal_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_calc_bytes;
+    std::string m_calc_bytes;
+    uint8_t m_one;
+    uint8_t m_two;
+    expr_bytes_non_literal_t* m__root;
+    kaitai::kstruct* m__parent;
 };

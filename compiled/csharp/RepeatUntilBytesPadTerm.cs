@@ -30,11 +30,11 @@ namespace Kaitai
                 } while (!((KaitaiStream.ByteArrayCompare(M_, new byte[] { 170, 85 }) == 0)));
             }
         }
-        private List<byte[]> _records;
-        private RepeatUntilBytesPadTerm m_root;
-        private KaitaiStruct m_parent;
         public List<byte[]> Records { get { return _records; } }
         public RepeatUntilBytesPadTerm M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<byte[]> _records;
+        private RepeatUntilBytesPadTerm m_root;
+        private KaitaiStruct m_parent;
     }
 }

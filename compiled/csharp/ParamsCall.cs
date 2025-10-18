@@ -35,14 +35,14 @@ namespace Kaitai
             {
                 _body = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(Len));
             }
-            private string _body;
-            private uint _len;
-            private ParamsCall m_root;
-            private ParamsCall m_parent;
             public string Body { get { return _body; } }
             public uint Len { get { return _len; } }
             public ParamsCall M_Root { get { return m_root; } }
             public ParamsCall M_Parent { get { return m_parent; } }
+            private string _body;
+            private uint _len;
+            private ParamsCall m_root;
+            private ParamsCall m_parent;
         }
         public partial class MyStr2 : KaitaiStruct
         {
@@ -61,26 +61,26 @@ namespace Kaitai
                     _trailer = m_io.ReadU1();
                 }
             }
-            private string _body;
-            private byte? _trailer;
-            private uint _len;
-            private bool _hasTrailer;
-            private ParamsCall m_root;
-            private ParamsCall m_parent;
             public string Body { get { return _body; } }
             public byte? Trailer { get { return _trailer; } }
             public uint Len { get { return _len; } }
             public bool HasTrailer { get { return _hasTrailer; } }
             public ParamsCall M_Root { get { return m_root; } }
             public ParamsCall M_Parent { get { return m_parent; } }
+            private string _body;
+            private byte? _trailer;
+            private uint _len;
+            private bool _hasTrailer;
+            private ParamsCall m_root;
+            private ParamsCall m_parent;
         }
-        private MyStr1 _buf1;
-        private MyStr2 _buf2;
-        private ParamsCall m_root;
-        private KaitaiStruct m_parent;
         public MyStr1 Buf1 { get { return _buf1; } }
         public MyStr2 Buf2 { get { return _buf2; } }
         public ParamsCall M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private MyStr1 _buf1;
+        private MyStr2 _buf2;
+        private ParamsCall m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -113,14 +113,6 @@ public class StrEncodingsDefault extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("str4", lenOf4(), (this.str4).getBytes(Charset.forName("IBM437")).length);
             _dirty = false;
         }
-        private int lenOf2;
-        private String str2;
-        private int lenOf3;
-        private String str3;
-        private int lenOf4;
-        private String str4;
-        private StrEncodingsDefault _root;
-        private StrEncodingsDefault _parent;
         public int lenOf2() { return lenOf2; }
         public void setLenOf2(int _v) { _dirty = true; lenOf2 = _v; }
         public String str2() { return str2; }
@@ -137,12 +129,15 @@ public class StrEncodingsDefault extends KaitaiStruct.ReadWrite {
         public void set_root(StrEncodingsDefault _v) { _dirty = true; _root = _v; }
         public StrEncodingsDefault _parent() { return _parent; }
         public void set_parent(StrEncodingsDefault _v) { _dirty = true; _parent = _v; }
+        private int lenOf2;
+        private String str2;
+        private int lenOf3;
+        private String str3;
+        private int lenOf4;
+        private String str4;
+        private StrEncodingsDefault _root;
+        private StrEncodingsDefault _parent;
     }
-    private int lenOf1;
-    private String str1;
-    private Subtype rest;
-    private StrEncodingsDefault _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int lenOf1() { return lenOf1; }
     public void setLenOf1(int _v) { _dirty = true; lenOf1 = _v; }
     public String str1() { return str1; }
@@ -153,4 +148,9 @@ public class StrEncodingsDefault extends KaitaiStruct.ReadWrite {
     public void set_root(StrEncodingsDefault _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private int lenOf1;
+    private String str1;
+    private Subtype rest;
+    private StrEncodingsDefault _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

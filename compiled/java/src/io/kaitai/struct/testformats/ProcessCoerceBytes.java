@@ -76,30 +76,30 @@ public class ProcessCoerceBytes extends KaitaiStruct {
             if (flag() != 0) {
             }
         }
-        private byte[] buf;
         public byte[] buf() {
             if (this.buf != null)
                 return this.buf;
             this.buf = (flag() == 0 ? bufUnproc() : bufProc());
             return this.buf;
         }
-        private int flag;
-        private byte[] bufUnproc;
-        private byte[] bufProc;
-        private ProcessCoerceBytes _root;
-        private ProcessCoerceBytes _parent;
-        private byte[] _raw_bufProc;
         public int flag() { return flag; }
         public byte[] bufUnproc() { return bufUnproc; }
         public byte[] bufProc() { return bufProc; }
         public ProcessCoerceBytes _root() { return _root; }
         public ProcessCoerceBytes _parent() { return _parent; }
         public byte[] _raw_bufProc() { return _raw_bufProc; }
+        private byte[] buf;
+        private int flag;
+        private byte[] bufUnproc;
+        private byte[] bufProc;
+        private ProcessCoerceBytes _root;
+        private ProcessCoerceBytes _parent;
+        private byte[] _raw_bufProc;
     }
-    private List<Record> records;
-    private ProcessCoerceBytes _root;
-    private KaitaiStruct _parent;
     public List<Record> records() { return records; }
     public ProcessCoerceBytes _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Record> records;
+    private ProcessCoerceBytes _root;
+    private KaitaiStruct _parent;
 }

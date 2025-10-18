@@ -25,16 +25,14 @@ private:
 
 public:
     ~imports_rel_1_t();
+    uint8_t one() const { return m_one; }
+    imported_1_t* two() const { return m_two.get(); }
+    imports_rel_1_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint8_t m_one;
     std::unique_ptr<imported_1_t> m_two;
     imports_rel_1_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint8_t one() const { return m_one; }
-    imported_1_t* two() const { return m_two.get(); }
-    imports_rel_1_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

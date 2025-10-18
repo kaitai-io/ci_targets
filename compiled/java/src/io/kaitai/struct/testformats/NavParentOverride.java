@@ -61,12 +61,12 @@ public class NavParentOverride extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] data;
-        private NavParentOverride _root;
-        private NavParentOverride _parent;
         public byte[] data() { return data; }
         public NavParentOverride _root() { return _root; }
         public NavParentOverride _parent() { return _parent; }
+        private byte[] data;
+        private NavParentOverride _root;
+        private NavParentOverride _parent;
     }
     public static class Mediator extends KaitaiStruct {
         public static Mediator fromFile(String fileName) throws IOException {
@@ -94,21 +94,21 @@ public class NavParentOverride extends KaitaiStruct {
         public void _fetchInstances() {
             this.child2._fetchInstances();
         }
-        private Child child2;
-        private NavParentOverride _root;
-        private NavParentOverride _parent;
         public Child child2() { return child2; }
         public NavParentOverride _root() { return _root; }
         public NavParentOverride _parent() { return _parent; }
+        private Child child2;
+        private NavParentOverride _root;
+        private NavParentOverride _parent;
     }
-    private int childSize;
-    private Child child1;
-    private Mediator mediator2;
-    private NavParentOverride _root;
-    private KaitaiStruct _parent;
     public int childSize() { return childSize; }
     public Child child1() { return child1; }
     public Mediator mediator2() { return mediator2; }
     public NavParentOverride _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private int childSize;
+    private Child child1;
+    private Mediator mediator2;
+    private NavParentOverride _root;
+    private KaitaiStruct _parent;
 }

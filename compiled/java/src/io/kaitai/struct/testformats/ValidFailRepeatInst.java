@@ -43,7 +43,6 @@ public class ValidFailRepeatInst extends KaitaiStruct {
             }
         }
     }
-    private List<Long> inst;
     public List<Long> inst() {
         if (this.inst != null)
             return this.inst;
@@ -63,10 +62,11 @@ public class ValidFailRepeatInst extends KaitaiStruct {
         this._io.seek(_pos);
         return this.inst;
     }
-    private byte[] a;
-    private ValidFailRepeatInst _root;
-    private KaitaiStruct _parent;
     public byte[] a() { return a; }
     public ValidFailRepeatInst _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Long> inst;
+    private byte[] a;
+    private ValidFailRepeatInst _root;
+    private KaitaiStruct _parent;
 }

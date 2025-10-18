@@ -39,6 +39,11 @@ public:
 
     public:
         ~data_t();
+        foo_t* buf() const { return m_buf; }
+        eos_exception_sized_t* _root() const { return m__root; }
+        eos_exception_sized_t* _parent() const { return m__parent; }
+        std::string _raw_buf() const { return m__raw_buf; }
+        kaitai::kstream* _io__raw_buf() const { return m__io__raw_buf; }
 
     private:
         foo_t* m_buf;
@@ -46,13 +51,6 @@ public:
         eos_exception_sized_t* m__parent;
         std::string m__raw_buf;
         kaitai::kstream* m__io__raw_buf;
-
-    public:
-        foo_t* buf() const { return m_buf; }
-        eos_exception_sized_t* _root() const { return m__root; }
-        eos_exception_sized_t* _parent() const { return m__parent; }
-        std::string _raw_buf() const { return m__raw_buf; }
-        kaitai::kstream* _io__raw_buf() const { return m__io__raw_buf; }
     };
 
     class foo_t : public kaitai::kstruct {
@@ -67,22 +65,13 @@ public:
 
     public:
         ~foo_t();
+        eos_exception_sized_t* _root() const { return m__root; }
+        eos_exception_sized_t::data_t* _parent() const { return m__parent; }
 
     private:
         eos_exception_sized_t* m__root;
         eos_exception_sized_t::data_t* m__parent;
-
-    public:
-        eos_exception_sized_t* _root() const { return m__root; }
-        eos_exception_sized_t::data_t* _parent() const { return m__parent; }
     };
-
-private:
-    data_t* m_envelope;
-    eos_exception_sized_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::string m__raw_envelope;
-    kaitai::kstream* m__io__raw_envelope;
 
 public:
     data_t* envelope() const { return m_envelope; }
@@ -90,6 +79,13 @@ public:
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_envelope() const { return m__raw_envelope; }
     kaitai::kstream* _io__raw_envelope() const { return m__io__raw_envelope; }
+
+private:
+    data_t* m_envelope;
+    eos_exception_sized_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::string m__raw_envelope;
+    kaitai::kstream* m__io__raw_envelope;
 };
 
 #endif  // EOS_EXCEPTION_SIZED_H_

@@ -11,7 +11,7 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_buf = $this->_io->readBytes(13);
         }
-        protected $_m_buf;
         public function buf() { return $this->_m_buf; }
+        protected $_m_buf;
     }
 }

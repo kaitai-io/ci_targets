@@ -24,16 +24,14 @@ private:
 
 public:
     ~bits_signed_res_b32_be_t();
+    uint64_t a() const { return m_a; }
+    bits_signed_res_b32_be_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint64_t m_a;
     bits_signed_res_b32_be_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint64_t a() const { return m_a; }
-    bits_signed_res_b32_be_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // BITS_SIGNED_RES_B32_BE_H_

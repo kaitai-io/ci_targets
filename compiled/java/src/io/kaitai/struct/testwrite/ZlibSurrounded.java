@@ -118,24 +118,16 @@ public class ZlibSurrounded extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int num;
-        private ZlibSurrounded _root;
-        private ZlibSurrounded _parent;
         public int num() { return num; }
         public void setNum(int _v) { _dirty = true; num = _v; }
         public ZlibSurrounded _root() { return _root; }
         public void set_root(ZlibSurrounded _v) { _dirty = true; _root = _v; }
         public ZlibSurrounded _parent() { return _parent; }
         public void set_parent(ZlibSurrounded _v) { _dirty = true; _parent = _v; }
+        private int num;
+        private ZlibSurrounded _root;
+        private ZlibSurrounded _parent;
     }
-    private byte[] pre;
-    private Inflated zlib;
-    private byte[] post;
-    private ZlibSurrounded _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_zlib;
-    private int zlib_InnerSize;
-    private byte[] _raw__raw_zlib;
     public byte[] pre() { return pre; }
     public void setPre(byte[] _v) { _dirty = true; pre = _v; }
     public Inflated zlib() { return zlib; }
@@ -152,4 +144,12 @@ public class ZlibSurrounded extends KaitaiStruct.ReadWrite {
     public void setZlib_InnerSize(int _v) { _dirty = true; zlib_InnerSize = _v; }
     public byte[] _raw__raw_zlib() { return _raw__raw_zlib; }
     public void set_raw__raw_Zlib(byte[] _v) { _dirty = true; _raw__raw_zlib = _v; }
+    private byte[] pre;
+    private Inflated zlib;
+    private byte[] post;
+    private ZlibSurrounded _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_zlib;
+    private int zlib_InnerSize;
+    private byte[] _raw__raw_zlib;
 }

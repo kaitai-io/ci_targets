@@ -86,11 +86,6 @@ public class ExprSizeofType0 extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("c", 2, this.c.length);
             _dirty = false;
         }
-        private int a;
-        private long b;
-        private byte[] c;
-        private ExprSizeofType0 _root;
-        private KaitaiStruct.ReadWrite _parent;
         public int a() { return a; }
         public void setA(int _v) { _dirty = true; a = _v; }
         public long b() { return b; }
@@ -101,8 +96,12 @@ public class ExprSizeofType0 extends KaitaiStruct.ReadWrite {
         public void set_root(ExprSizeofType0 _v) { _dirty = true; _root = _v; }
         public KaitaiStruct.ReadWrite _parent() { return _parent; }
         public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+        private int a;
+        private long b;
+        private byte[] c;
+        private ExprSizeofType0 _root;
+        private KaitaiStruct.ReadWrite _parent;
     }
-    private Integer sizeofBlock;
     public Integer sizeofBlock() {
         if (this.sizeofBlock != null)
             return this.sizeofBlock;
@@ -110,10 +109,11 @@ public class ExprSizeofType0 extends KaitaiStruct.ReadWrite {
         return this.sizeofBlock;
     }
     public void _invalidateSizeofBlock() { this.sizeofBlock = null; }
-    private ExprSizeofType0 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public ExprSizeofType0 _root() { return _root; }
     public void set_root(ExprSizeofType0 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer sizeofBlock;
+    private ExprSizeofType0 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

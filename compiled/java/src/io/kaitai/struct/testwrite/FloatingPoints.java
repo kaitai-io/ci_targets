@@ -52,7 +52,6 @@ public class FloatingPoints extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private Double doubleValuePlusFloat;
     public Double doubleValuePlusFloat() {
         if (this.doubleValuePlusFloat != null)
             return this.doubleValuePlusFloat;
@@ -60,7 +59,6 @@ public class FloatingPoints extends KaitaiStruct.ReadWrite {
         return this.doubleValuePlusFloat;
     }
     public void _invalidateDoubleValuePlusFloat() { this.doubleValuePlusFloat = null; }
-    private Double singleValuePlusFloat;
     public Double singleValuePlusFloat() {
         if (this.singleValuePlusFloat != null)
             return this.singleValuePlusFloat;
@@ -68,7 +66,6 @@ public class FloatingPoints extends KaitaiStruct.ReadWrite {
         return this.singleValuePlusFloat;
     }
     public void _invalidateSingleValuePlusFloat() { this.singleValuePlusFloat = null; }
-    private Double singleValuePlusInt;
     public Double singleValuePlusInt() {
         if (this.singleValuePlusInt != null)
             return this.singleValuePlusInt;
@@ -76,13 +73,6 @@ public class FloatingPoints extends KaitaiStruct.ReadWrite {
         return this.singleValuePlusInt;
     }
     public void _invalidateSingleValuePlusInt() { this.singleValuePlusInt = null; }
-    private float singleValue;
-    private double doubleValue;
-    private float singleValueBe;
-    private double doubleValueBe;
-    private float approximateValue;
-    private FloatingPoints _root;
-    private KaitaiStruct.ReadWrite _parent;
     public float singleValue() { return singleValue; }
     public void setSingleValue(float _v) { _dirty = true; singleValue = _v; }
     public double doubleValue() { return doubleValue; }
@@ -97,4 +87,14 @@ public class FloatingPoints extends KaitaiStruct.ReadWrite {
     public void set_root(FloatingPoints _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Double doubleValuePlusFloat;
+    private Double singleValuePlusFloat;
+    private Double singleValuePlusInt;
+    private float singleValue;
+    private double doubleValue;
+    private float singleValueBe;
+    private double doubleValueBe;
+    private float approximateValue;
+    private FloatingPoints _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

@@ -51,7 +51,6 @@ public class Expr1 extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("str1", lenOf1Mod(), (this.str1).getBytes(Charset.forName("ASCII")).length);
         _dirty = false;
     }
-    private Integer lenOf1Mod;
     public Integer lenOf1Mod() {
         if (this.lenOf1Mod != null)
             return this.lenOf1Mod;
@@ -59,7 +58,6 @@ public class Expr1 extends KaitaiStruct.ReadWrite {
         return this.lenOf1Mod;
     }
     public void _invalidateLenOf1Mod() { this.lenOf1Mod = null; }
-    private Integer str1Len;
     public Integer str1Len() {
         if (this.str1Len != null)
             return this.str1Len;
@@ -67,10 +65,6 @@ public class Expr1 extends KaitaiStruct.ReadWrite {
         return this.str1Len;
     }
     public void _invalidateStr1Len() { this.str1Len = null; }
-    private int lenOf1;
-    private String str1;
-    private Expr1 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int lenOf1() { return lenOf1; }
     public void setLenOf1(int _v) { _dirty = true; lenOf1 = _v; }
     public String str1() { return str1; }
@@ -79,4 +73,10 @@ public class Expr1 extends KaitaiStruct.ReadWrite {
     public void set_root(Expr1 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer lenOf1Mod;
+    private Integer str1Len;
+    private int lenOf1;
+    private String str1;
+    private Expr1 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

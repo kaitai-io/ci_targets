@@ -24,13 +24,13 @@ namespace Kaitai
                 _backRef = new ImportsCircularA(m_io);
             }
         }
-        private byte _initial;
-        private ImportsCircularA _backRef;
-        private ImportsCircularB m_root;
-        private KaitaiStruct m_parent;
         public byte Initial { get { return _initial; } }
         public ImportsCircularA BackRef { get { return _backRef; } }
         public ImportsCircularB M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte _initial;
+        private ImportsCircularA _backRef;
+        private ImportsCircularB m_root;
+        private KaitaiStruct m_parent;
     }
 }

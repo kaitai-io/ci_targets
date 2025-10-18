@@ -39,13 +39,13 @@ namespace Kaitai
                 throw new ValidationNotEqualError(17217, _b, m_io, "/seq/1");
             }
         }
-        private byte _a;
-        private int _b;
-        private ValidSwitch m_root;
-        private KaitaiStruct m_parent;
         public byte A { get { return _a; } }
         public int B { get { return _b; } }
         public ValidSwitch M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte _a;
+        private int _b;
+        private ValidSwitch m_root;
+        private KaitaiStruct m_parent;
     }
 }

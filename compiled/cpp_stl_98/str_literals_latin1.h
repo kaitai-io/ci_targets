@@ -24,25 +24,19 @@ private:
 
 public:
     ~str_literals_latin1_t();
-
-private:
-    bool f_parsed_eq_literal;
-    bool m_parsed_eq_literal;
-
-public:
     bool parsed_eq_literal();
-
-private:
-    uint16_t m_len_parsed;
-    std::string m_parsed;
-    str_literals_latin1_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     uint16_t len_parsed() const { return m_len_parsed; }
     std::string parsed() const { return m_parsed; }
     str_literals_latin1_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_parsed_eq_literal;
+    bool m_parsed_eq_literal;
+    uint16_t m_len_parsed;
+    std::string m_parsed;
+    str_literals_latin1_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // STR_LITERALS_LATIN1_H_

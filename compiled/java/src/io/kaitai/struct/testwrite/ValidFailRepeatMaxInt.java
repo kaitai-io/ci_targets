@@ -70,13 +70,13 @@ public class ValidFailRepeatMaxInt extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private List<Integer> foo;
-    private ValidFailRepeatMaxInt _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Integer> foo() { return foo; }
     public void setFoo(List<Integer> _v) { _dirty = true; foo = _v; }
     public ValidFailRepeatMaxInt _root() { return _root; }
     public void set_root(ValidFailRepeatMaxInt _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Integer> foo;
+    private ValidFailRepeatMaxInt _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

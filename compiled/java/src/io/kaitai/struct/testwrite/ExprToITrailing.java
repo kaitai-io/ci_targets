@@ -42,7 +42,6 @@ public class ExprToITrailing extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private Integer toIGarbage;
     public Integer toIGarbage() {
         if (this.toIGarbage != null)
             return this.toIGarbage;
@@ -50,7 +49,6 @@ public class ExprToITrailing extends KaitaiStruct.ReadWrite {
         return this.toIGarbage;
     }
     public void _invalidateToIGarbage() { this.toIGarbage = null; }
-    private Integer toIR10;
     public Integer toIR10() {
         if (this.toIR10 != null)
             return this.toIR10;
@@ -58,7 +56,6 @@ public class ExprToITrailing extends KaitaiStruct.ReadWrite {
         return this.toIR10;
     }
     public void _invalidateToIR10() { this.toIR10 = null; }
-    private Integer toIR16;
     public Integer toIR16() {
         if (this.toIR16 != null)
             return this.toIR16;
@@ -66,10 +63,13 @@ public class ExprToITrailing extends KaitaiStruct.ReadWrite {
         return this.toIR16;
     }
     public void _invalidateToIR16() { this.toIR16 = null; }
-    private ExprToITrailing _root;
-    private KaitaiStruct.ReadWrite _parent;
     public ExprToITrailing _root() { return _root; }
     public void set_root(ExprToITrailing _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer toIGarbage;
+    private Integer toIR10;
+    private Integer toIR16;
+    private ExprToITrailing _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

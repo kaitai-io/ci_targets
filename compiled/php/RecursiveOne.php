@@ -25,10 +25,10 @@ namespace Kaitai\Struct\Tests {
                     break;
             }
         }
-        protected $_m_one;
-        protected $_m_next;
         public function one() { return $this->_m_one; }
         public function next() { return $this->_m_next; }
+        protected $_m_one;
+        protected $_m_next;
     }
 }
 
@@ -42,7 +42,7 @@ namespace Kaitai\Struct\Tests\RecursiveOne {
         private function _read() {
             $this->_m_finisher = $this->_io->readU2le();
         }
-        protected $_m_finisher;
         public function finisher() { return $this->_m_finisher; }
+        protected $_m_finisher;
     }
 }

@@ -12,10 +12,10 @@ namespace Kaitai\Struct\Tests {
             $this->_m_first = new \Kaitai\Struct\Tests\ParamsPassStruct\Block($this->_io, $this, $this->_root);
             $this->_m_one = new \Kaitai\Struct\Tests\ParamsPassStruct\StructType($this->first(), $this->_io, $this, $this->_root);
         }
-        protected $_m_first;
-        protected $_m_one;
         public function first() { return $this->_m_first; }
         public function one() { return $this->_m_one; }
+        protected $_m_first;
+        protected $_m_one;
     }
 }
 
@@ -29,8 +29,8 @@ namespace Kaitai\Struct\Tests\ParamsPassStruct {
         private function _read() {
             $this->_m_foo = $this->_io->readU1();
         }
-        protected $_m_foo;
         public function foo() { return $this->_m_foo; }
+        protected $_m_foo;
     }
 }
 
@@ -45,10 +45,10 @@ namespace Kaitai\Struct\Tests\ParamsPassStruct {
         private function _read() {
             $this->_m_bar = new \Kaitai\Struct\Tests\ParamsPassStruct\StructType\Baz($this->foo(), $this->_io, $this, $this->_root);
         }
-        protected $_m_bar;
-        protected $_m_foo;
         public function bar() { return $this->_m_bar; }
         public function foo() { return $this->_m_foo; }
+        protected $_m_bar;
+        protected $_m_foo;
     }
 }
 
@@ -63,9 +63,9 @@ namespace Kaitai\Struct\Tests\ParamsPassStruct\StructType {
         private function _read() {
             $this->_m_qux = $this->_io->readU1();
         }
-        protected $_m_qux;
-        protected $_m_foo;
         public function qux() { return $this->_m_qux; }
         public function foo() { return $this->_m_foo; }
+        protected $_m_qux;
+        protected $_m_foo;
     }
 }

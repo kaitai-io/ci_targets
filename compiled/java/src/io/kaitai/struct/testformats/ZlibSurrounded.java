@@ -63,20 +63,13 @@ public class ZlibSurrounded extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int num;
-        private ZlibSurrounded _root;
-        private ZlibSurrounded _parent;
         public int num() { return num; }
         public ZlibSurrounded _root() { return _root; }
         public ZlibSurrounded _parent() { return _parent; }
+        private int num;
+        private ZlibSurrounded _root;
+        private ZlibSurrounded _parent;
     }
-    private byte[] pre;
-    private Inflated zlib;
-    private byte[] post;
-    private ZlibSurrounded _root;
-    private KaitaiStruct _parent;
-    private byte[] _raw_zlib;
-    private byte[] _raw__raw_zlib;
     public byte[] pre() { return pre; }
     public Inflated zlib() { return zlib; }
     public byte[] post() { return post; }
@@ -84,4 +77,11 @@ public class ZlibSurrounded extends KaitaiStruct {
     public KaitaiStruct _parent() { return _parent; }
     public byte[] _raw_zlib() { return _raw_zlib; }
     public byte[] _raw__raw_zlib() { return _raw__raw_zlib; }
+    private byte[] pre;
+    private Inflated zlib;
+    private byte[] post;
+    private ZlibSurrounded _root;
+    private KaitaiStruct _parent;
+    private byte[] _raw_zlib;
+    private byte[] _raw__raw_zlib;
 }

@@ -25,16 +25,14 @@ private:
 
 public:
     ~opaque_external_type_t();
+    hello_world_t* hw() const { return m_hw; }
+    opaque_external_type_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     hello_world_t* m_hw;
     opaque_external_type_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    hello_world_t* hw() const { return m_hw; }
-    opaque_external_type_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // OPAQUE_EXTERNAL_TYPE_H_

@@ -32,10 +32,10 @@ public class BitsSignedResB32Be extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private long a;
-    private BitsSignedResB32Be _root;
-    private KaitaiStruct _parent;
     public long a() { return a; }
     public BitsSignedResB32Be _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private long a;
+    private BitsSignedResB32Be _root;
+    private KaitaiStruct _parent;
 }

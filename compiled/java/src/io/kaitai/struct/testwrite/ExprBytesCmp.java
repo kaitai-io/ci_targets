@@ -52,7 +52,6 @@ public class ExprBytesCmp extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("two", 3, this.two.length);
         _dirty = false;
     }
-    private byte[] ack;
     public byte[] ack() {
         if (this.ack != null)
             return this.ack;
@@ -60,7 +59,6 @@ public class ExprBytesCmp extends KaitaiStruct.ReadWrite {
         return this.ack;
     }
     public void _invalidateAck() { this.ack = null; }
-    private byte[] ack2;
     public byte[] ack2() {
         if (this.ack2 != null)
             return this.ack2;
@@ -68,7 +66,6 @@ public class ExprBytesCmp extends KaitaiStruct.ReadWrite {
         return this.ack2;
     }
     public void _invalidateAck2() { this.ack2 = null; }
-    private byte[] hiVal;
     public byte[] hiVal() {
         if (this.hiVal != null)
             return this.hiVal;
@@ -76,7 +73,6 @@ public class ExprBytesCmp extends KaitaiStruct.ReadWrite {
         return this.hiVal;
     }
     public void _invalidateHiVal() { this.hiVal = null; }
-    private Boolean isEq;
     public Boolean isEq() {
         if (this.isEq != null)
             return this.isEq;
@@ -84,7 +80,6 @@ public class ExprBytesCmp extends KaitaiStruct.ReadWrite {
         return this.isEq;
     }
     public void _invalidateIsEq() { this.isEq = null; }
-    private Boolean isGe;
     public Boolean isGe() {
         if (this.isGe != null)
             return this.isGe;
@@ -92,7 +87,6 @@ public class ExprBytesCmp extends KaitaiStruct.ReadWrite {
         return this.isGe;
     }
     public void _invalidateIsGe() { this.isGe = null; }
-    private Boolean isGt;
     public Boolean isGt() {
         if (this.isGt != null)
             return this.isGt;
@@ -100,7 +94,6 @@ public class ExprBytesCmp extends KaitaiStruct.ReadWrite {
         return this.isGt;
     }
     public void _invalidateIsGt() { this.isGt = null; }
-    private Boolean isGt2;
     public Boolean isGt2() {
         if (this.isGt2 != null)
             return this.isGt2;
@@ -108,7 +101,6 @@ public class ExprBytesCmp extends KaitaiStruct.ReadWrite {
         return this.isGt2;
     }
     public void _invalidateIsGt2() { this.isGt2 = null; }
-    private Boolean isLe;
     public Boolean isLe() {
         if (this.isLe != null)
             return this.isLe;
@@ -116,7 +108,6 @@ public class ExprBytesCmp extends KaitaiStruct.ReadWrite {
         return this.isLe;
     }
     public void _invalidateIsLe() { this.isLe = null; }
-    private Boolean isLt;
     public Boolean isLt() {
         if (this.isLt != null)
             return this.isLt;
@@ -124,7 +115,6 @@ public class ExprBytesCmp extends KaitaiStruct.ReadWrite {
         return this.isLt;
     }
     public void _invalidateIsLt() { this.isLt = null; }
-    private Boolean isLt2;
     public Boolean isLt2() {
         if (this.isLt2 != null)
             return this.isLt2;
@@ -132,7 +122,6 @@ public class ExprBytesCmp extends KaitaiStruct.ReadWrite {
         return this.isLt2;
     }
     public void _invalidateIsLt2() { this.isLt2 = null; }
-    private Boolean isNe;
     public Boolean isNe() {
         if (this.isNe != null)
             return this.isNe;
@@ -140,10 +129,6 @@ public class ExprBytesCmp extends KaitaiStruct.ReadWrite {
         return this.isNe;
     }
     public void _invalidateIsNe() { this.isNe = null; }
-    private byte[] one;
-    private byte[] two;
-    private ExprBytesCmp _root;
-    private KaitaiStruct.ReadWrite _parent;
     public byte[] one() { return one; }
     public void setOne(byte[] _v) { _dirty = true; one = _v; }
     public byte[] two() { return two; }
@@ -152,4 +137,19 @@ public class ExprBytesCmp extends KaitaiStruct.ReadWrite {
     public void set_root(ExprBytesCmp _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private byte[] ack;
+    private byte[] ack2;
+    private byte[] hiVal;
+    private Boolean isEq;
+    private Boolean isGe;
+    private Boolean isGt;
+    private Boolean isGt2;
+    private Boolean isLe;
+    private Boolean isLt;
+    private Boolean isLt2;
+    private Boolean isNe;
+    private byte[] one;
+    private byte[] two;
+    private ExprBytesCmp _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

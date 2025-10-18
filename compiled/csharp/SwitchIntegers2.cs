@@ -44,8 +44,6 @@ namespace Kaitai
                 _padding = m_io.ReadU1();
             }
         }
-        private bool f_lenModStr;
-        private string _lenModStr;
         public string LenModStr
         {
             get
@@ -57,17 +55,19 @@ namespace Kaitai
                 return _lenModStr;
             }
         }
-        private byte _code;
-        private ulong _len;
-        private byte[] _ham;
-        private byte? _padding;
-        private SwitchIntegers2 m_root;
-        private KaitaiStruct m_parent;
         public byte Code { get { return _code; } }
         public ulong Len { get { return _len; } }
         public byte[] Ham { get { return _ham; } }
         public byte? Padding { get { return _padding; } }
         public SwitchIntegers2 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_lenModStr;
+        private string _lenModStr;
+        private byte _code;
+        private ulong _len;
+        private byte[] _ham;
+        private byte? _padding;
+        private SwitchIntegers2 m_root;
+        private KaitaiStruct m_parent;
     }
 }

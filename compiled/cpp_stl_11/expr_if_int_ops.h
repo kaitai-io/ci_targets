@@ -25,22 +25,21 @@ private:
 
 public:
     ~expr_if_int_ops_t();
+    uint8_t bytes_sub_key();
+    int8_t items_sub_key();
+    uint64_t key() const { return m_key; }
+    std::string skip() const { return m_skip; }
+    std::string bytes() const { return m_bytes; }
+    std::vector<int8_t>* items() const { return m_items.get(); }
+    expr_if_int_ops_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
+    std::string _raw_bytes() const { return m__raw_bytes; }
 
 private:
     bool f_bytes_sub_key;
     uint8_t m_bytes_sub_key;
-
-public:
-    uint8_t bytes_sub_key();
-
-private:
     bool f_items_sub_key;
     int8_t m_items_sub_key;
-
-public:
-    int8_t items_sub_key();
-
-private:
     uint64_t m_key;
     bool n_key;
 
@@ -54,13 +53,4 @@ private:
     expr_if_int_ops_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_bytes;
-
-public:
-    uint64_t key() const { return m_key; }
-    std::string skip() const { return m_skip; }
-    std::string bytes() const { return m_bytes; }
-    std::vector<int8_t>* items() const { return m_items.get(); }
-    expr_if_int_ops_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
-    std::string _raw_bytes() const { return m__raw_bytes; }
 };

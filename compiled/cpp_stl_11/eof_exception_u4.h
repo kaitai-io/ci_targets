@@ -24,16 +24,14 @@ private:
 
 public:
     ~eof_exception_u4_t();
+    std::string prebuf() const { return m_prebuf; }
+    uint32_t fail_int() const { return m_fail_int; }
+    eof_exception_u4_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::string m_prebuf;
     uint32_t m_fail_int;
     eof_exception_u4_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::string prebuf() const { return m_prebuf; }
-    uint32_t fail_int() const { return m_fail_int; }
-    eof_exception_u4_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

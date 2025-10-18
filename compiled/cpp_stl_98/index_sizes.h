@@ -25,6 +25,11 @@ private:
 
 public:
     ~index_sizes_t();
+    uint32_t qty() const { return m_qty; }
+    std::vector<uint32_t>* sizes() const { return m_sizes; }
+    std::vector<std::string>* bufs() const { return m_bufs; }
+    index_sizes_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint32_t m_qty;
@@ -32,13 +37,6 @@ private:
     std::vector<std::string>* m_bufs;
     index_sizes_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint32_t qty() const { return m_qty; }
-    std::vector<uint32_t>* sizes() const { return m_sizes; }
-    std::vector<std::string>* bufs() const { return m_bufs; }
-    index_sizes_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // INDEX_SIZES_H_

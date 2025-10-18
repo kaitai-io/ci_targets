@@ -232,17 +232,16 @@ public class ProcessCoerceSwitch extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("bar", 4, this.bar.length);
             _dirty = false;
         }
-        private byte[] bar;
-        private ProcessCoerceSwitch _root;
-        private ProcessCoerceSwitch _parent;
         public byte[] bar() { return bar; }
         public void setBar(byte[] _v) { _dirty = true; bar = _v; }
         public ProcessCoerceSwitch _root() { return _root; }
         public void set_root(ProcessCoerceSwitch _v) { _dirty = true; _root = _v; }
         public ProcessCoerceSwitch _parent() { return _parent; }
         public void set_parent(ProcessCoerceSwitch _v) { _dirty = true; _parent = _v; }
+        private byte[] bar;
+        private ProcessCoerceSwitch _root;
+        private ProcessCoerceSwitch _parent;
     }
-    private Object buf;
     public Object buf() {
         if (this.buf != null)
             return this.buf;
@@ -250,15 +249,6 @@ public class ProcessCoerceSwitch extends KaitaiStruct.ReadWrite {
         return this.buf;
     }
     public void _invalidateBuf() { this.buf = null; }
-    private int bufType;
-    private int flag;
-    private Object bufUnproc;
-    private Object bufProc;
-    private ProcessCoerceSwitch _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_bufUnproc;
-    private byte[] _raw_bufProc;
-    private byte[] _raw__raw_bufProc;
     public int bufType() { return bufType; }
     public void setBufType(int _v) { _dirty = true; bufType = _v; }
     public int flag() { return flag; }
@@ -277,4 +267,14 @@ public class ProcessCoerceSwitch extends KaitaiStruct.ReadWrite {
     public void set_raw_BufProc(byte[] _v) { _dirty = true; _raw_bufProc = _v; }
     public byte[] _raw__raw_bufProc() { return _raw__raw_bufProc; }
     public void set_raw__raw_BufProc(byte[] _v) { _dirty = true; _raw__raw_bufProc = _v; }
+    private Object buf;
+    private int bufType;
+    private int flag;
+    private Object bufUnproc;
+    private Object bufProc;
+    private ProcessCoerceSwitch _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_bufUnproc;
+    private byte[] _raw_bufProc;
+    private byte[] _raw__raw_bufProc;
 }

@@ -32,24 +32,24 @@ public class CombineBool extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Boolean boolCalc;
     public Boolean boolCalc() {
         if (this.boolCalc != null)
             return this.boolCalc;
         this.boolCalc = false;
         return this.boolCalc;
     }
-    private Boolean boolCalcBit;
     public Boolean boolCalcBit() {
         if (this.boolCalcBit != null)
             return this.boolCalcBit;
         this.boolCalcBit = (true ? boolCalc() : boolBit());
         return this.boolCalcBit;
     }
-    private boolean boolBit;
-    private CombineBool _root;
-    private KaitaiStruct _parent;
     public boolean boolBit() { return boolBit; }
     public CombineBool _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Boolean boolCalc;
+    private Boolean boolCalcBit;
+    private boolean boolBit;
+    private CombineBool _root;
+    private KaitaiStruct _parent;
 }

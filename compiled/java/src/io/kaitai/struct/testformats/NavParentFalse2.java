@@ -58,17 +58,17 @@ public class NavParentFalse2 extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int foo;
-        private NavParentFalse2 _root;
-        private KaitaiStruct _parent;
         public int foo() { return foo; }
         public NavParentFalse2 _root() { return _root; }
         public KaitaiStruct _parent() { return _parent; }
+        private int foo;
+        private NavParentFalse2 _root;
+        private KaitaiStruct _parent;
     }
-    private Child parentless;
-    private NavParentFalse2 _root;
-    private KaitaiStruct _parent;
     public Child parentless() { return parentless; }
     public NavParentFalse2 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Child parentless;
+    private NavParentFalse2 _root;
+    private KaitaiStruct _parent;
 }

@@ -37,14 +37,14 @@ public class NestedTypesImport extends KaitaiStruct {
         this.aCD._fetchInstances();
         this.b._fetchInstances();
     }
-    private NestedTypes3.SubtypeA.SubtypeCc aCc;
-    private NestedTypes3.SubtypeA.SubtypeC.SubtypeD aCD;
-    private NestedTypes3.SubtypeB b;
-    private NestedTypesImport _root;
-    private KaitaiStruct _parent;
     public NestedTypes3.SubtypeA.SubtypeCc aCc() { return aCc; }
     public NestedTypes3.SubtypeA.SubtypeC.SubtypeD aCD() { return aCD; }
     public NestedTypes3.SubtypeB b() { return b; }
     public NestedTypesImport _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private NestedTypes3.SubtypeA.SubtypeCc aCc;
+    private NestedTypes3.SubtypeA.SubtypeC.SubtypeD aCD;
+    private NestedTypes3.SubtypeB b;
+    private NestedTypesImport _root;
+    private KaitaiStruct _parent;
 }

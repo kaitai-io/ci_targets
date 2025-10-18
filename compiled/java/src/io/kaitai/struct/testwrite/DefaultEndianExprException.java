@@ -208,11 +208,6 @@ public class DefaultEndianExprException extends KaitaiStruct.ReadWrite {
             public void _check() {
                 _dirty = false;
             }
-            private long someInt;
-            private int someIntBe;
-            private int someIntLe;
-            private DefaultEndianExprException _root;
-            private DefaultEndianExprException.Doc _parent;
             public long someInt() { return someInt; }
             public void setSomeInt(long _v) { _dirty = true; someInt = _v; }
             public int someIntBe() { return someIntBe; }
@@ -223,11 +218,12 @@ public class DefaultEndianExprException extends KaitaiStruct.ReadWrite {
             public void set_root(DefaultEndianExprException _v) { _dirty = true; _root = _v; }
             public DefaultEndianExprException.Doc _parent() { return _parent; }
             public void set_parent(DefaultEndianExprException.Doc _v) { _dirty = true; _parent = _v; }
+            private long someInt;
+            private int someIntBe;
+            private int someIntLe;
+            private DefaultEndianExprException _root;
+            private DefaultEndianExprException.Doc _parent;
         }
-        private byte[] indicator;
-        private MainObj main;
-        private DefaultEndianExprException _root;
-        private DefaultEndianExprException _parent;
         public byte[] indicator() { return indicator; }
         public void setIndicator(byte[] _v) { _dirty = true; indicator = _v; }
         public MainObj main() { return main; }
@@ -236,14 +232,18 @@ public class DefaultEndianExprException extends KaitaiStruct.ReadWrite {
         public void set_root(DefaultEndianExprException _v) { _dirty = true; _root = _v; }
         public DefaultEndianExprException _parent() { return _parent; }
         public void set_parent(DefaultEndianExprException _v) { _dirty = true; _parent = _v; }
+        private byte[] indicator;
+        private MainObj main;
+        private DefaultEndianExprException _root;
+        private DefaultEndianExprException _parent;
     }
-    private List<Doc> docs;
-    private DefaultEndianExprException _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Doc> docs() { return docs; }
     public void setDocs(List<Doc> _v) { _dirty = true; docs = _v; }
     public DefaultEndianExprException _root() { return _root; }
     public void set_root(DefaultEndianExprException _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Doc> docs;
+    private DefaultEndianExprException _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

@@ -18,7 +18,6 @@ namespace Kaitai\Struct\Tests {
             $this->_m_signedUnsafePosBe = $this->_io->readS8be();
             $this->_m_signedUnsafePosLe = $this->_io->readS8le();
         }
-        protected $_m_unsignedSafeMaxBe;
         public function unsignedSafeMaxBe() {
             if ($this->_m_unsignedSafeMaxBe !== null)
                 return $this->_m_unsignedSafeMaxBe;
@@ -28,7 +27,6 @@ namespace Kaitai\Struct\Tests {
             $this->_io->seek($_pos);
             return $this->_m_unsignedSafeMaxBe;
         }
-        protected $_m_unsignedSafeMaxLe;
         public function unsignedSafeMaxLe() {
             if ($this->_m_unsignedSafeMaxLe !== null)
                 return $this->_m_unsignedSafeMaxLe;
@@ -38,7 +36,6 @@ namespace Kaitai\Struct\Tests {
             $this->_io->seek($_pos);
             return $this->_m_unsignedSafeMaxLe;
         }
-        protected $_m_unsignedUnsafePosBe;
         public function unsignedUnsafePosBe() {
             if ($this->_m_unsignedUnsafePosBe !== null)
                 return $this->_m_unsignedUnsafePosBe;
@@ -48,7 +45,6 @@ namespace Kaitai\Struct\Tests {
             $this->_io->seek($_pos);
             return $this->_m_unsignedUnsafePosBe;
         }
-        protected $_m_unsignedUnsafePosLe;
         public function unsignedUnsafePosLe() {
             if ($this->_m_unsignedUnsafePosLe !== null)
                 return $this->_m_unsignedUnsafePosLe;
@@ -58,14 +54,6 @@ namespace Kaitai\Struct\Tests {
             $this->_io->seek($_pos);
             return $this->_m_unsignedUnsafePosLe;
         }
-        protected $_m_signedSafeMinBe;
-        protected $_m_signedSafeMinLe;
-        protected $_m_signedSafeMaxBe;
-        protected $_m_signedSafeMaxLe;
-        protected $_m_signedUnsafeNegBe;
-        protected $_m_signedUnsafeNegLe;
-        protected $_m_signedUnsafePosBe;
-        protected $_m_signedUnsafePosLe;
         public function signedSafeMinBe() { return $this->_m_signedSafeMinBe; }
         public function signedSafeMinLe() { return $this->_m_signedSafeMinLe; }
         public function signedSafeMaxBe() { return $this->_m_signedSafeMaxBe; }
@@ -74,5 +62,17 @@ namespace Kaitai\Struct\Tests {
         public function signedUnsafeNegLe() { return $this->_m_signedUnsafeNegLe; }
         public function signedUnsafePosBe() { return $this->_m_signedUnsafePosBe; }
         public function signedUnsafePosLe() { return $this->_m_signedUnsafePosLe; }
+        protected $_m_unsignedSafeMaxBe;
+        protected $_m_unsignedSafeMaxLe;
+        protected $_m_unsignedUnsafePosBe;
+        protected $_m_unsignedUnsafePosLe;
+        protected $_m_signedSafeMinBe;
+        protected $_m_signedSafeMinLe;
+        protected $_m_signedSafeMaxBe;
+        protected $_m_signedSafeMaxLe;
+        protected $_m_signedUnsafeNegBe;
+        protected $_m_signedUnsafeNegLe;
+        protected $_m_signedUnsafePosBe;
+        protected $_m_signedUnsafePosLe;
     }
 }

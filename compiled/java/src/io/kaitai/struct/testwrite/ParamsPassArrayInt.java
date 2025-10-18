@@ -113,17 +113,16 @@ public class ParamsPassArrayInt extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private List<Integer> nums;
-        private ParamsPassArrayInt _root;
-        private ParamsPassArrayInt _parent;
         public List<Integer> nums() { return nums; }
         public void setNums(List<Integer> _v) { _dirty = true; nums = _v; }
         public ParamsPassArrayInt _root() { return _root; }
         public void set_root(ParamsPassArrayInt _v) { _dirty = true; _root = _v; }
         public ParamsPassArrayInt _parent() { return _parent; }
         public void set_parent(ParamsPassArrayInt _v) { _dirty = true; _parent = _v; }
+        private List<Integer> nums;
+        private ParamsPassArrayInt _root;
+        private ParamsPassArrayInt _parent;
     }
-    private List<Integer> intsCalc;
     public List<Integer> intsCalc() {
         if (this.intsCalc != null)
             return this.intsCalc;
@@ -131,11 +130,6 @@ public class ParamsPassArrayInt extends KaitaiStruct.ReadWrite {
         return this.intsCalc;
     }
     public void _invalidateIntsCalc() { this.intsCalc = null; }
-    private List<Integer> ints;
-    private WantsInts passInts;
-    private WantsInts passIntsCalc;
-    private ParamsPassArrayInt _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Integer> ints() { return ints; }
     public void setInts(List<Integer> _v) { _dirty = true; ints = _v; }
     public WantsInts passInts() { return passInts; }
@@ -146,4 +140,10 @@ public class ParamsPassArrayInt extends KaitaiStruct.ReadWrite {
     public void set_root(ParamsPassArrayInt _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Integer> intsCalc;
+    private List<Integer> ints;
+    private WantsInts passInts;
+    private WantsInts passIntsCalc;
+    private ParamsPassArrayInt _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

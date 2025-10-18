@@ -121,25 +121,25 @@ public class NestedTypes2 extends KaitaiStruct {
 
                 public void _fetchInstances() {
                 }
-                private byte valueD;
-                private NestedTypes2 _root;
-                private NestedTypes2.SubtypeA.SubtypeC _parent;
                 public byte valueD() { return valueD; }
                 public NestedTypes2 _root() { return _root; }
                 public NestedTypes2.SubtypeA.SubtypeC _parent() { return _parent; }
+                private byte valueD;
+                private NestedTypes2 _root;
+                private NestedTypes2.SubtypeA.SubtypeC _parent;
             }
-            private byte valueC;
-            private SubtypeD typedHere;
-            private SubtypeCc typedParent;
-            private SubtypeB typedRoot;
-            private NestedTypes2 _root;
-            private NestedTypes2.SubtypeA _parent;
             public byte valueC() { return valueC; }
             public SubtypeD typedHere() { return typedHere; }
             public SubtypeCc typedParent() { return typedParent; }
             public SubtypeB typedRoot() { return typedRoot; }
             public NestedTypes2 _root() { return _root; }
             public NestedTypes2.SubtypeA _parent() { return _parent; }
+            private byte valueC;
+            private SubtypeD typedHere;
+            private SubtypeCc typedParent;
+            private SubtypeB typedRoot;
+            private NestedTypes2 _root;
+            private NestedTypes2.SubtypeA _parent;
         }
         public static class SubtypeCc extends KaitaiStruct {
             public static SubtypeCc fromFile(String fileName) throws IOException {
@@ -166,23 +166,23 @@ public class NestedTypes2 extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private byte valueCc;
-            private NestedTypes2 _root;
-            private KaitaiStruct _parent;
             public byte valueCc() { return valueCc; }
             public NestedTypes2 _root() { return _root; }
             public KaitaiStruct _parent() { return _parent; }
+            private byte valueCc;
+            private NestedTypes2 _root;
+            private KaitaiStruct _parent;
         }
-        private SubtypeB typedAtRoot;
-        private SubtypeC typedHere1;
-        private SubtypeCc typedHere2;
-        private NestedTypes2 _root;
-        private NestedTypes2 _parent;
         public SubtypeB typedAtRoot() { return typedAtRoot; }
         public SubtypeC typedHere1() { return typedHere1; }
         public SubtypeCc typedHere2() { return typedHere2; }
         public NestedTypes2 _root() { return _root; }
         public NestedTypes2 _parent() { return _parent; }
+        private SubtypeB typedAtRoot;
+        private SubtypeC typedHere1;
+        private SubtypeCc typedHere2;
+        private NestedTypes2 _root;
+        private NestedTypes2 _parent;
     }
     public static class SubtypeB extends KaitaiStruct {
         public static SubtypeB fromFile(String fileName) throws IOException {
@@ -209,19 +209,19 @@ public class NestedTypes2 extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte valueB;
-        private NestedTypes2 _root;
-        private KaitaiStruct _parent;
         public byte valueB() { return valueB; }
         public NestedTypes2 _root() { return _root; }
         public KaitaiStruct _parent() { return _parent; }
+        private byte valueB;
+        private NestedTypes2 _root;
+        private KaitaiStruct _parent;
     }
-    private SubtypeA one;
-    private SubtypeB two;
-    private NestedTypes2 _root;
-    private KaitaiStruct _parent;
     public SubtypeA one() { return one; }
     public SubtypeB two() { return two; }
     public NestedTypes2 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private SubtypeA one;
+    private SubtypeB two;
+    private NestedTypes2 _root;
+    private KaitaiStruct _parent;
 }

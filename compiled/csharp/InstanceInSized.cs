@@ -41,8 +41,6 @@ namespace Kaitai
             {
                 _seqF = m_io.ReadU1();
             }
-            private bool f_inst;
-            private byte[] _inst;
             public byte[] Inst
             {
                 get
@@ -57,12 +55,14 @@ namespace Kaitai
                     return _inst;
                 }
             }
-            private byte _seqF;
-            private InstanceInSized m_root;
-            private InstanceInSized.Wrapper m_parent;
             public byte SeqF { get { return _seqF; } }
             public InstanceInSized M_Root { get { return m_root; } }
             public InstanceInSized.Wrapper M_Parent { get { return m_parent; } }
+            private bool f_inst;
+            private byte[] _inst;
+            private byte _seqF;
+            private InstanceInSized m_root;
+            private InstanceInSized.Wrapper m_parent;
         }
         public partial class Baz : KaitaiStruct
         {
@@ -82,8 +82,6 @@ namespace Kaitai
             {
                 _seqF = m_io.ReadU1();
             }
-            private bool f_inst;
-            private byte[] _inst;
             public byte[] Inst
             {
                 get
@@ -98,12 +96,14 @@ namespace Kaitai
                     return _inst;
                 }
             }
-            private byte _seqF;
-            private InstanceInSized m_root;
-            private InstanceInSized.Wrapper m_parent;
             public byte SeqF { get { return _seqF; } }
             public InstanceInSized M_Root { get { return m_root; } }
             public InstanceInSized.Wrapper M_Parent { get { return m_parent; } }
+            private bool f_inst;
+            private byte[] _inst;
+            private byte _seqF;
+            private InstanceInSized m_root;
+            private InstanceInSized.Wrapper m_parent;
         }
         public partial class Qux : KaitaiStruct
         {
@@ -126,8 +126,6 @@ namespace Kaitai
                     _seqF = m_io.ReadU1();
                 }
             }
-            private bool f_instInvoked;
-            private byte _instInvoked;
             public byte InstInvoked
             {
                 get
@@ -142,8 +140,6 @@ namespace Kaitai
                     return _instInvoked;
                 }
             }
-            private bool f_instUnusedBySeq;
-            private byte[] _instUnusedBySeq;
             public byte[] InstUnusedBySeq
             {
                 get
@@ -158,12 +154,16 @@ namespace Kaitai
                     return _instUnusedBySeq;
                 }
             }
-            private byte? _seqF;
-            private InstanceInSized m_root;
-            private InstanceInSized.Wrapper m_parent;
             public byte? SeqF { get { return _seqF; } }
             public InstanceInSized M_Root { get { return m_root; } }
             public InstanceInSized.Wrapper M_Parent { get { return m_parent; } }
+            private bool f_instInvoked;
+            private byte _instInvoked;
+            private bool f_instUnusedBySeq;
+            private byte[] _instUnusedBySeq;
+            private byte? _seqF;
+            private InstanceInSized m_root;
+            private InstanceInSized.Wrapper m_parent;
         }
         public partial class Wrapper : KaitaiStruct
         {
@@ -187,8 +187,6 @@ namespace Kaitai
                 _seqSized = new Qux(io___raw_seqSized, this, m_root);
                 _seqInStream = new Bar(m_io, this, m_root);
             }
-            private bool f_instInStream;
-            private Baz _instInStream;
             public Baz InstInStream
             {
                 get
@@ -203,8 +201,6 @@ namespace Kaitai
                     return _instInStream;
                 }
             }
-            private bool f_instSized;
-            private Qux _instSized;
             public Qux InstSized
             {
                 get
@@ -221,26 +217,30 @@ namespace Kaitai
                     return _instSized;
                 }
             }
-            private Qux _seqSized;
-            private Bar _seqInStream;
-            private InstanceInSized m_root;
-            private InstanceInSized m_parent;
-            private byte[] __raw_seqSized;
-            private byte[] __raw_instSized;
             public Qux SeqSized { get { return _seqSized; } }
             public Bar SeqInStream { get { return _seqInStream; } }
             public InstanceInSized M_Root { get { return m_root; } }
             public InstanceInSized M_Parent { get { return m_parent; } }
             public byte[] M_RawSeqSized { get { return __raw_seqSized; } }
             public byte[] M_RawInstSized { get { return __raw_instSized; } }
+            private bool f_instInStream;
+            private Baz _instInStream;
+            private bool f_instSized;
+            private Qux _instSized;
+            private Qux _seqSized;
+            private Bar _seqInStream;
+            private InstanceInSized m_root;
+            private InstanceInSized m_parent;
+            private byte[] __raw_seqSized;
+            private byte[] __raw_instSized;
         }
-        private Wrapper _cont;
-        private InstanceInSized m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_cont;
         public Wrapper Cont { get { return _cont; } }
         public InstanceInSized M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawCont { get { return __raw_cont; } }
+        private Wrapper _cont;
+        private InstanceInSized m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_cont;
     }
 }

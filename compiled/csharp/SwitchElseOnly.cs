@@ -41,24 +41,24 @@ namespace Kaitai
             {
                 _value = m_io.ReadBytes(4);
             }
-            private byte[] _value;
-            private SwitchElseOnly m_root;
-            private SwitchElseOnly m_parent;
             public byte[] Value { get { return _value; } }
             public SwitchElseOnly M_Root { get { return m_root; } }
             public SwitchElseOnly M_Parent { get { return m_parent; } }
+            private byte[] _value;
+            private SwitchElseOnly m_root;
+            private SwitchElseOnly m_parent;
         }
-        private sbyte _opcode;
-        private sbyte _primByte;
-        private byte[] _indicator;
-        private Data _ut;
-        private SwitchElseOnly m_root;
-        private KaitaiStruct m_parent;
         public sbyte Opcode { get { return _opcode; } }
         public sbyte PrimByte { get { return _primByte; } }
         public byte[] Indicator { get { return _indicator; } }
         public Data Ut { get { return _ut; } }
         public SwitchElseOnly M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private sbyte _opcode;
+        private sbyte _primByte;
+        private byte[] _indicator;
+        private Data _ut;
+        private SwitchElseOnly m_root;
+        private KaitaiStruct m_parent;
     }
 }

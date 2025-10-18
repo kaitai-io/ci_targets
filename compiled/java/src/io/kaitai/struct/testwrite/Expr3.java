@@ -51,7 +51,6 @@ public class Expr3 extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("two", 3, (this.two).getBytes(Charset.forName("ASCII")).length);
         _dirty = false;
     }
-    private String four;
     public String four() {
         if (this.four != null)
             return this.four;
@@ -59,7 +58,6 @@ public class Expr3 extends KaitaiStruct.ReadWrite {
         return this.four;
     }
     public void _invalidateFour() { this.four = null; }
-    private Boolean isStrEq;
     public Boolean isStrEq() {
         if (this.isStrEq != null)
             return this.isStrEq;
@@ -67,7 +65,6 @@ public class Expr3 extends KaitaiStruct.ReadWrite {
         return this.isStrEq;
     }
     public void _invalidateIsStrEq() { this.isStrEq = null; }
-    private Boolean isStrGe;
     public Boolean isStrGe() {
         if (this.isStrGe != null)
             return this.isStrGe;
@@ -75,7 +72,6 @@ public class Expr3 extends KaitaiStruct.ReadWrite {
         return this.isStrGe;
     }
     public void _invalidateIsStrGe() { this.isStrGe = null; }
-    private Boolean isStrGt;
     public Boolean isStrGt() {
         if (this.isStrGt != null)
             return this.isStrGt;
@@ -83,7 +79,6 @@ public class Expr3 extends KaitaiStruct.ReadWrite {
         return this.isStrGt;
     }
     public void _invalidateIsStrGt() { this.isStrGt = null; }
-    private Boolean isStrLe;
     public Boolean isStrLe() {
         if (this.isStrLe != null)
             return this.isStrLe;
@@ -91,7 +86,6 @@ public class Expr3 extends KaitaiStruct.ReadWrite {
         return this.isStrLe;
     }
     public void _invalidateIsStrLe() { this.isStrLe = null; }
-    private Boolean isStrLt;
     public Boolean isStrLt() {
         if (this.isStrLt != null)
             return this.isStrLt;
@@ -99,7 +93,6 @@ public class Expr3 extends KaitaiStruct.ReadWrite {
         return this.isStrLt;
     }
     public void _invalidateIsStrLt() { this.isStrLt = null; }
-    private Boolean isStrLt2;
     public Boolean isStrLt2() {
         if (this.isStrLt2 != null)
             return this.isStrLt2;
@@ -107,7 +100,6 @@ public class Expr3 extends KaitaiStruct.ReadWrite {
         return this.isStrLt2;
     }
     public void _invalidateIsStrLt2() { this.isStrLt2 = null; }
-    private Boolean isStrNe;
     public Boolean isStrNe() {
         if (this.isStrNe != null)
             return this.isStrNe;
@@ -115,7 +107,6 @@ public class Expr3 extends KaitaiStruct.ReadWrite {
         return this.isStrNe;
     }
     public void _invalidateIsStrNe() { this.isStrNe = null; }
-    private Boolean testNot;
     public Boolean testNot() {
         if (this.testNot != null)
             return this.testNot;
@@ -123,7 +114,6 @@ public class Expr3 extends KaitaiStruct.ReadWrite {
         return this.testNot;
     }
     public void _invalidateTestNot() { this.testNot = null; }
-    private String three;
     public String three() {
         if (this.three != null)
             return this.three;
@@ -131,10 +121,6 @@ public class Expr3 extends KaitaiStruct.ReadWrite {
         return this.three;
     }
     public void _invalidateThree() { this.three = null; }
-    private int one;
-    private String two;
-    private Expr3 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int one() { return one; }
     public void setOne(int _v) { _dirty = true; one = _v; }
     public String two() { return two; }
@@ -143,4 +129,18 @@ public class Expr3 extends KaitaiStruct.ReadWrite {
     public void set_root(Expr3 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private String four;
+    private Boolean isStrEq;
+    private Boolean isStrGe;
+    private Boolean isStrGt;
+    private Boolean isStrLe;
+    private Boolean isStrLt;
+    private Boolean isStrLt2;
+    private Boolean isStrNe;
+    private Boolean testNot;
+    private String three;
+    private int one;
+    private String two;
+    private Expr3 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

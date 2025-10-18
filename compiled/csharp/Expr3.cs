@@ -32,8 +32,6 @@ namespace Kaitai
             _one = m_io.ReadU1();
             _two = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(3));
         }
-        private bool f_four;
-        private string _four;
         public string Four
         {
             get
@@ -45,8 +43,6 @@ namespace Kaitai
                 return _four;
             }
         }
-        private bool f_isStrEq;
-        private bool _isStrEq;
         public bool IsStrEq
         {
             get
@@ -58,8 +54,6 @@ namespace Kaitai
                 return _isStrEq;
             }
         }
-        private bool f_isStrGe;
-        private bool _isStrGe;
         public bool IsStrGe
         {
             get
@@ -71,8 +65,6 @@ namespace Kaitai
                 return _isStrGe;
             }
         }
-        private bool f_isStrGt;
-        private bool _isStrGt;
         public bool IsStrGt
         {
             get
@@ -84,8 +76,6 @@ namespace Kaitai
                 return _isStrGt;
             }
         }
-        private bool f_isStrLe;
-        private bool _isStrLe;
         public bool IsStrLe
         {
             get
@@ -97,8 +87,6 @@ namespace Kaitai
                 return _isStrLe;
             }
         }
-        private bool f_isStrLt;
-        private bool _isStrLt;
         public bool IsStrLt
         {
             get
@@ -110,8 +98,6 @@ namespace Kaitai
                 return _isStrLt;
             }
         }
-        private bool f_isStrLt2;
-        private bool _isStrLt2;
         public bool IsStrLt2
         {
             get
@@ -123,8 +109,6 @@ namespace Kaitai
                 return _isStrLt2;
             }
         }
-        private bool f_isStrNe;
-        private bool _isStrNe;
         public bool IsStrNe
         {
             get
@@ -136,8 +120,6 @@ namespace Kaitai
                 return _isStrNe;
             }
         }
-        private bool f_testNot;
-        private bool _testNot;
         public bool TestNot
         {
             get
@@ -149,8 +131,6 @@ namespace Kaitai
                 return _testNot;
             }
         }
-        private bool f_three;
-        private string _three;
         public string Three
         {
             get
@@ -162,13 +142,33 @@ namespace Kaitai
                 return _three;
             }
         }
-        private byte _one;
-        private string _two;
-        private Expr3 m_root;
-        private KaitaiStruct m_parent;
         public byte One { get { return _one; } }
         public string Two { get { return _two; } }
         public Expr3 M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_four;
+        private string _four;
+        private bool f_isStrEq;
+        private bool _isStrEq;
+        private bool f_isStrGe;
+        private bool _isStrGe;
+        private bool f_isStrGt;
+        private bool _isStrGt;
+        private bool f_isStrLe;
+        private bool _isStrLe;
+        private bool f_isStrLt;
+        private bool _isStrLt;
+        private bool f_isStrLt2;
+        private bool _isStrLt2;
+        private bool f_isStrNe;
+        private bool _isStrNe;
+        private bool f_testNot;
+        private bool _testNot;
+        private bool f_three;
+        private string _three;
+        private byte _one;
+        private string _two;
+        private Expr3 m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -87,16 +87,6 @@ public class ProcessBytesPadTerm extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private byte[] strPad;
-    private byte[] strTerm;
-    private byte[] strTermAndPad;
-    private byte[] strTermInclude;
-    private ProcessBytesPadTerm _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_strPad;
-    private byte[] _raw_strTerm;
-    private byte[] _raw_strTermAndPad;
-    private byte[] _raw_strTermInclude;
     public byte[] strPad() { return strPad; }
     public void setStrPad(byte[] _v) { _dirty = true; strPad = _v; }
     public byte[] strTerm() { return strTerm; }
@@ -117,4 +107,14 @@ public class ProcessBytesPadTerm extends KaitaiStruct.ReadWrite {
     public void set_raw_StrTermAndPad(byte[] _v) { _dirty = true; _raw_strTermAndPad = _v; }
     public byte[] _raw_strTermInclude() { return _raw_strTermInclude; }
     public void set_raw_StrTermInclude(byte[] _v) { _dirty = true; _raw_strTermInclude = _v; }
+    private byte[] strPad;
+    private byte[] strTerm;
+    private byte[] strTermAndPad;
+    private byte[] strTermInclude;
+    private ProcessBytesPadTerm _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_strPad;
+    private byte[] _raw_strTerm;
+    private byte[] _raw_strTermAndPad;
+    private byte[] _raw_strTermInclude;
 }

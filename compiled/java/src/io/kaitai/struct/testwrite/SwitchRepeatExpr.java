@@ -212,15 +212,15 @@ public class SwitchRepeatExpr extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private byte[] first;
-        private SwitchRepeatExpr _root;
-        private SwitchRepeatExpr _parent;
         public byte[] first() { return first; }
         public void setFirst(byte[] _v) { _dirty = true; first = _v; }
         public SwitchRepeatExpr _root() { return _root; }
         public void set_root(SwitchRepeatExpr _v) { _dirty = true; _root = _v; }
         public SwitchRepeatExpr _parent() { return _parent; }
         public void set_parent(SwitchRepeatExpr _v) { _dirty = true; _parent = _v; }
+        private byte[] first;
+        private SwitchRepeatExpr _root;
+        private SwitchRepeatExpr _parent;
     }
     public static class Two extends KaitaiStruct.ReadWrite {
         public static Two fromFile(String fileName) throws IOException {
@@ -261,22 +261,16 @@ public class SwitchRepeatExpr extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private byte[] second;
-        private SwitchRepeatExpr _root;
-        private SwitchRepeatExpr _parent;
         public byte[] second() { return second; }
         public void setSecond(byte[] _v) { _dirty = true; second = _v; }
         public SwitchRepeatExpr _root() { return _root; }
         public void set_root(SwitchRepeatExpr _v) { _dirty = true; _root = _v; }
         public SwitchRepeatExpr _parent() { return _parent; }
         public void set_parent(SwitchRepeatExpr _v) { _dirty = true; _parent = _v; }
+        private byte[] second;
+        private SwitchRepeatExpr _root;
+        private SwitchRepeatExpr _parent;
     }
-    private int code;
-    private long size;
-    private List<Object> body;
-    private SwitchRepeatExpr _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private List<byte[]> _raw_body;
     public int code() { return code; }
     public void setCode(int _v) { _dirty = true; code = _v; }
     public long size() { return size; }
@@ -289,4 +283,10 @@ public class SwitchRepeatExpr extends KaitaiStruct.ReadWrite {
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     public List<byte[]> _raw_body() { return _raw_body; }
     public void set_raw_Body(List<byte[]> _v) { _dirty = true; _raw_body = _v; }
+    private int code;
+    private long size;
+    private List<Object> body;
+    private SwitchRepeatExpr _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private List<byte[]> _raw_body;
 }

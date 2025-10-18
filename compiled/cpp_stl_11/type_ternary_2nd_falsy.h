@@ -39,17 +39,34 @@ public:
 
     public:
         ~foo_t();
+        uint8_t m() const { return m_m; }
+        type_ternary_2nd_falsy_t* _root() const { return m__root; }
+        type_ternary_2nd_falsy_t* _parent() const { return m__parent; }
 
     private:
         uint8_t m_m;
         type_ternary_2nd_falsy_t* m__root;
         type_ternary_2nd_falsy_t* m__parent;
-
-    public:
-        uint8_t m() const { return m_m; }
-        type_ternary_2nd_falsy_t* _root() const { return m__root; }
-        type_ternary_2nd_falsy_t* _parent() const { return m__parent; }
     };
+
+public:
+    foo_t* null_ut();
+    bool t();
+    bool v_false();
+    double v_float_neg_zero();
+    double v_float_zero();
+    std::vector<uint8_t>* v_int_array_empty();
+    int32_t v_int_neg_zero();
+    int8_t v_int_zero();
+    foo_t* v_null_ut();
+    std::string v_str_empty();
+    std::string v_str_w_zero();
+    uint8_t int_truthy() const { return m_int_truthy; }
+    foo_t* ut() const { return m_ut.get(); }
+    std::vector<uint8_t>* int_array() const { return m_int_array.get(); }
+    std::vector<uint8_t>* int_array_empty() const { return m_int_array_empty.get(); }
+    type_ternary_2nd_falsy_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_null_ut;
@@ -60,93 +77,30 @@ public:
     bool _is_null_null_ut() { null_ut(); return n_null_ut; };
 
 private:
-
-public:
-    foo_t* null_ut();
-
-private:
     bool f_t;
     bool m_t;
-
-public:
-    bool t();
-
-private:
     bool f_v_false;
     bool m_v_false;
-
-public:
-    bool v_false();
-
-private:
     bool f_v_float_neg_zero;
     double m_v_float_neg_zero;
-
-public:
-    double v_float_neg_zero();
-
-private:
     bool f_v_float_zero;
     double m_v_float_zero;
-
-public:
-    double v_float_zero();
-
-private:
     bool f_v_int_array_empty;
     std::vector<uint8_t>* m_v_int_array_empty;
-
-public:
-    std::vector<uint8_t>* v_int_array_empty();
-
-private:
     bool f_v_int_neg_zero;
     int32_t m_v_int_neg_zero;
-
-public:
-    int32_t v_int_neg_zero();
-
-private:
     bool f_v_int_zero;
     int8_t m_v_int_zero;
-
-public:
-    int8_t v_int_zero();
-
-private:
     bool f_v_null_ut;
     foo_t* m_v_null_ut;
-
-public:
-    foo_t* v_null_ut();
-
-private:
     bool f_v_str_empty;
     std::string m_v_str_empty;
-
-public:
-    std::string v_str_empty();
-
-private:
     bool f_v_str_w_zero;
     std::string m_v_str_w_zero;
-
-public:
-    std::string v_str_w_zero();
-
-private:
     uint8_t m_int_truthy;
     std::unique_ptr<foo_t> m_ut;
     std::unique_ptr<std::vector<uint8_t>> m_int_array;
     std::unique_ptr<std::vector<uint8_t>> m_int_array_empty;
     type_ternary_2nd_falsy_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint8_t int_truthy() const { return m_int_truthy; }
-    foo_t* ut() const { return m_ut.get(); }
-    std::vector<uint8_t>* int_array() const { return m_int_array.get(); }
-    std::vector<uint8_t>* int_array_empty() const { return m_int_array_empty.get(); }
-    type_ternary_2nd_falsy_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -77,19 +77,6 @@ public class ValidShort extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private byte[] magic1;
-    private int uint8;
-    private byte sint8;
-    private String magicUint;
-    private int uint16;
-    private long uint32;
-    private long uint64;
-    private String magicSint;
-    private short sint16;
-    private int sint32;
-    private long sint64;
-    private ValidShort _root;
-    private KaitaiStruct _parent;
     public byte[] magic1() { return magic1; }
     public int uint8() { return uint8; }
     public byte sint8() { return sint8; }
@@ -103,4 +90,17 @@ public class ValidShort extends KaitaiStruct {
     public long sint64() { return sint64; }
     public ValidShort _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private byte[] magic1;
+    private int uint8;
+    private byte sint8;
+    private String magicUint;
+    private int uint16;
+    private long uint32;
+    private long uint64;
+    private String magicSint;
+    private short sint16;
+    private int sint32;
+    private long sint64;
+    private ValidShort _root;
+    private KaitaiStruct _parent;
 }

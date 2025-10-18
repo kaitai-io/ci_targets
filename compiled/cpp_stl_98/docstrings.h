@@ -58,19 +58,13 @@ public:
 
     public:
         ~complex_subtype_t();
+        docstrings_t* _root() const { return m__root; }
+        kaitai::kstruct* _parent() const { return m__parent; }
 
     private:
         docstrings_t* m__root;
         kaitai::kstruct* m__parent;
-
-    public:
-        docstrings_t* _root() const { return m__root; }
-        kaitai::kstruct* _parent() const { return m__parent; }
     };
-
-private:
-    bool f_three;
-    int8_t m_three;
 
 public:
 
@@ -79,23 +73,10 @@ public:
      */
     int8_t three();
 
-private:
-    bool f_two;
-    uint8_t m_two;
-
-public:
-
     /**
      * Another description for parse instance "two"
      */
     uint8_t two();
-
-private:
-    uint8_t m_one;
-    docstrings_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
 
     /**
      * A pretty verbose description for sequence attribute "one"
@@ -103,6 +84,15 @@ public:
     uint8_t one() const { return m_one; }
     docstrings_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_three;
+    int8_t m_three;
+    bool f_two;
+    uint8_t m_two;
+    uint8_t m_one;
+    docstrings_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // DOCSTRINGS_H_

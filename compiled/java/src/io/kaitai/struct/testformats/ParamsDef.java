@@ -37,16 +37,16 @@ public class ParamsDef extends KaitaiStruct {
         if (hasTrailer()) {
         }
     }
-    private String buf;
-    private Integer trailer;
-    private long len;
-    private boolean hasTrailer;
-    private ParamsDef _root;
-    private KaitaiStruct _parent;
     public String buf() { return buf; }
     public Integer trailer() { return trailer; }
     public long len() { return len; }
     public boolean hasTrailer() { return hasTrailer; }
     public ParamsDef _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private String buf;
+    private Integer trailer;
+    private long len;
+    private boolean hasTrailer;
+    private ParamsDef _root;
+    private KaitaiStruct _parent;
 }

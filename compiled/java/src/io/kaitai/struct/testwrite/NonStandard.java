@@ -86,9 +86,6 @@ public class NonStandard extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private Integer pi;
-    private boolean _shouldWritePi = false;
-    private boolean _enabledPi = true;
     public Integer pi() {
         if (_shouldWritePi)
             _writePi();
@@ -112,7 +109,6 @@ public class NonStandard extends KaitaiStruct.ReadWrite {
         this._io.writeU1(this.pi);
         this._io.seek(_pos);
     }
-    private Integer vi;
     public Integer vi() {
         if (this.vi != null)
             return this.vi;
@@ -120,10 +116,6 @@ public class NonStandard extends KaitaiStruct.ReadWrite {
         return this.vi;
     }
     public void _invalidateVi() { this.vi = null; }
-    private int foo;
-    private Long bar;
-    private NonStandard _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int foo() { return foo; }
     public void setFoo(int _v) { _dirty = true; foo = _v; }
     public Long bar() { return bar; }
@@ -132,4 +124,12 @@ public class NonStandard extends KaitaiStruct.ReadWrite {
     public void set_root(NonStandard _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer pi;
+    private boolean _shouldWritePi = false;
+    private boolean _enabledPi = true;
+    private Integer vi;
+    private int foo;
+    private Long bar;
+    private NonStandard _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

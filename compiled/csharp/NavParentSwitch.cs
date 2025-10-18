@@ -45,14 +45,14 @@ namespace Kaitai
                 _foo = m_io.ReadU1();
                 _subelement = new Subelement1(m_io, this, m_root);
             }
-            private byte _foo;
-            private Subelement1 _subelement;
-            private NavParentSwitch m_root;
-            private NavParentSwitch m_parent;
             public byte Foo { get { return _foo; } }
             public Subelement1 Subelement { get { return _subelement; } }
             public NavParentSwitch M_Root { get { return m_root; } }
             public NavParentSwitch M_Parent { get { return m_parent; } }
+            private byte _foo;
+            private Subelement1 _subelement;
+            private NavParentSwitch m_root;
+            private NavParentSwitch m_parent;
         }
         public partial class Subelement1 : KaitaiStruct
         {
@@ -73,20 +73,20 @@ namespace Kaitai
                     _bar = m_io.ReadU1();
                 }
             }
-            private byte? _bar;
-            private NavParentSwitch m_root;
-            private NavParentSwitch.Element1 m_parent;
             public byte? Bar { get { return _bar; } }
             public NavParentSwitch M_Root { get { return m_root; } }
             public NavParentSwitch.Element1 M_Parent { get { return m_parent; } }
+            private byte? _bar;
+            private NavParentSwitch m_root;
+            private NavParentSwitch.Element1 m_parent;
         }
-        private byte _category;
-        private Element1 _content;
-        private NavParentSwitch m_root;
-        private KaitaiStruct m_parent;
         public byte Category { get { return _category; } }
         public Element1 Content { get { return _content; } }
         public NavParentSwitch M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte _category;
+        private Element1 _content;
+        private NavParentSwitch m_root;
+        private KaitaiStruct m_parent;
     }
 }

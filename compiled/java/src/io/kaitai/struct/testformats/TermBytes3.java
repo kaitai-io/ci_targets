@@ -34,14 +34,14 @@ public class TermBytes3 extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private byte[] s1;
-    private byte[] s2;
-    private byte[] s3;
-    private TermBytes3 _root;
-    private KaitaiStruct _parent;
     public byte[] s1() { return s1; }
     public byte[] s2() { return s2; }
     public byte[] s3() { return s3; }
     public TermBytes3 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private byte[] s1;
+    private byte[] s2;
+    private byte[] s3;
+    private TermBytes3 _root;
+    private KaitaiStruct _parent;
 }

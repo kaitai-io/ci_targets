@@ -125,10 +125,6 @@ public class IndexToParamExpr extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("buf", _root().sizes().get(((Number) (idx())).intValue()), (this.buf).getBytes(Charset.forName("ASCII")).length);
             _dirty = false;
         }
-        private String buf;
-        private int idx;
-        private IndexToParamExpr _root;
-        private IndexToParamExpr _parent;
         public String buf() { return buf; }
         public void setBuf(String _v) { _dirty = true; buf = _v; }
         public int idx() { return idx; }
@@ -137,12 +133,11 @@ public class IndexToParamExpr extends KaitaiStruct.ReadWrite {
         public void set_root(IndexToParamExpr _v) { _dirty = true; _root = _v; }
         public IndexToParamExpr _parent() { return _parent; }
         public void set_parent(IndexToParamExpr _v) { _dirty = true; _parent = _v; }
+        private String buf;
+        private int idx;
+        private IndexToParamExpr _root;
+        private IndexToParamExpr _parent;
     }
-    private long qty;
-    private List<Long> sizes;
-    private List<Block> blocks;
-    private IndexToParamExpr _root;
-    private KaitaiStruct.ReadWrite _parent;
     public long qty() { return qty; }
     public void setQty(long _v) { _dirty = true; qty = _v; }
     public List<Long> sizes() { return sizes; }
@@ -153,4 +148,9 @@ public class IndexToParamExpr extends KaitaiStruct.ReadWrite {
     public void set_root(IndexToParamExpr _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private long qty;
+    private List<Long> sizes;
+    private List<Block> blocks;
+    private IndexToParamExpr _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

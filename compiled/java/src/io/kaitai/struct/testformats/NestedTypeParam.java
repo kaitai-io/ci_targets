@@ -81,24 +81,24 @@ public class NestedTypeParam extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private String body;
-            private long myLen;
-            private NestedTypeParam _root;
-            private NestedTypeParam _parent;
             public String body() { return body; }
             public long myLen() { return myLen; }
             public NestedTypeParam _root() { return _root; }
             public NestedTypeParam _parent() { return _parent; }
+            private String body;
+            private long myLen;
+            private NestedTypeParam _root;
+            private NestedTypeParam _parent;
         }
-        private NestedTypeParam _root;
-        private KaitaiStruct _parent;
         public NestedTypeParam _root() { return _root; }
         public KaitaiStruct _parent() { return _parent; }
+        private NestedTypeParam _root;
+        private KaitaiStruct _parent;
     }
-    private Nested.MyType mainSeq;
-    private NestedTypeParam _root;
-    private KaitaiStruct _parent;
     public Nested.MyType mainSeq() { return mainSeq; }
     public NestedTypeParam _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Nested.MyType mainSeq;
+    private NestedTypeParam _root;
+    private KaitaiStruct _parent;
 }

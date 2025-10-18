@@ -76,10 +76,6 @@ public class RepeatUntilS4 extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("afterall", -1, KaitaiStream.byteArrayIndexOf((this.afterall).getBytes(Charset.forName("ASCII")), ((byte) 0)));
         _dirty = false;
     }
-    private List<Integer> entries;
-    private String afterall;
-    private RepeatUntilS4 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Integer> entries() { return entries; }
     public void setEntries(List<Integer> _v) { _dirty = true; entries = _v; }
     public String afterall() { return afterall; }
@@ -88,4 +84,8 @@ public class RepeatUntilS4 extends KaitaiStruct.ReadWrite {
     public void set_root(RepeatUntilS4 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Integer> entries;
+    private String afterall;
+    private RepeatUntilS4 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

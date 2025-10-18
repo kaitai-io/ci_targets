@@ -164,8 +164,6 @@ namespace Kaitai
                             _someInt1 = m_io.ReadU2be();
                             _someInt2 = m_io.ReadU2be();
                         }
-                        private bool f_someInst;
-                        private uint _someInst;
                         public uint SomeInst
                         {
                             get
@@ -184,45 +182,47 @@ namespace Kaitai
                                 return _someInst;
                             }
                         }
-                        private ushort _someInt1;
-                        private ushort _someInt2;
-                        private DefaultEndianExprInherited m_root;
-                        private DefaultEndianExprInherited.Doc.MainObj.SubObj m_parent;
                         public ushort SomeInt1 { get { return _someInt1; } }
                         public ushort SomeInt2 { get { return _someInt2; } }
                         public DefaultEndianExprInherited M_Root { get { return m_root; } }
                         public DefaultEndianExprInherited.Doc.MainObj.SubObj M_Parent { get { return m_parent; } }
+                        private bool f_someInst;
+                        private uint _someInst;
+                        private ushort _someInt1;
+                        private ushort _someInt2;
+                        private DefaultEndianExprInherited m_root;
+                        private DefaultEndianExprInherited.Doc.MainObj.SubObj m_parent;
                     }
-                    private uint _someInt;
-                    private SubsubObj _more;
-                    private DefaultEndianExprInherited m_root;
-                    private DefaultEndianExprInherited.Doc.MainObj m_parent;
                     public uint SomeInt { get { return _someInt; } }
                     public SubsubObj More { get { return _more; } }
                     public DefaultEndianExprInherited M_Root { get { return m_root; } }
                     public DefaultEndianExprInherited.Doc.MainObj M_Parent { get { return m_parent; } }
+                    private uint _someInt;
+                    private SubsubObj _more;
+                    private DefaultEndianExprInherited m_root;
+                    private DefaultEndianExprInherited.Doc.MainObj m_parent;
                 }
-                private SubObj _insides;
-                private DefaultEndianExprInherited m_root;
-                private DefaultEndianExprInherited.Doc m_parent;
                 public SubObj Insides { get { return _insides; } }
                 public DefaultEndianExprInherited M_Root { get { return m_root; } }
                 public DefaultEndianExprInherited.Doc M_Parent { get { return m_parent; } }
+                private SubObj _insides;
+                private DefaultEndianExprInherited m_root;
+                private DefaultEndianExprInherited.Doc m_parent;
             }
-            private byte[] _indicator;
-            private MainObj _main;
-            private DefaultEndianExprInherited m_root;
-            private DefaultEndianExprInherited m_parent;
             public byte[] Indicator { get { return _indicator; } }
             public MainObj Main { get { return _main; } }
             public DefaultEndianExprInherited M_Root { get { return m_root; } }
             public DefaultEndianExprInherited M_Parent { get { return m_parent; } }
+            private byte[] _indicator;
+            private MainObj _main;
+            private DefaultEndianExprInherited m_root;
+            private DefaultEndianExprInherited m_parent;
         }
-        private List<Doc> _docs;
-        private DefaultEndianExprInherited m_root;
-        private KaitaiStruct m_parent;
         public List<Doc> Docs { get { return _docs; } }
         public DefaultEndianExprInherited M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<Doc> _docs;
+        private DefaultEndianExprInherited m_root;
+        private KaitaiStruct m_parent;
     }
 }

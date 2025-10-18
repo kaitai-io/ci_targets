@@ -67,12 +67,12 @@ public class TermStruct4 extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] value;
-        private TermStruct4 _root;
-        private KaitaiStruct _parent;
         public byte[] value() { return value; }
         public TermStruct4 _root() { return _root; }
         public KaitaiStruct _parent() { return _parent; }
+        private byte[] value;
+        private TermStruct4 _root;
+        private KaitaiStruct _parent;
     }
     public static class S1Type extends KaitaiStruct {
         public static S1Type fromFile(String fileName) throws IOException {
@@ -102,14 +102,14 @@ public class TermStruct4 extends KaitaiStruct {
         public void _fetchInstances() {
             this.value._fetchInstances();
         }
-        private BytesWrapper value;
-        private TermStruct4 _root;
-        private TermStruct4 _parent;
-        private byte[] _raw_value;
         public BytesWrapper value() { return value; }
         public TermStruct4 _root() { return _root; }
         public TermStruct4 _parent() { return _parent; }
         public byte[] _raw_value() { return _raw_value; }
+        private BytesWrapper value;
+        private TermStruct4 _root;
+        private TermStruct4 _parent;
+        private byte[] _raw_value;
     }
     public static class S2Type extends KaitaiStruct {
         public static S2Type fromFile(String fileName) throws IOException {
@@ -139,14 +139,14 @@ public class TermStruct4 extends KaitaiStruct {
         public void _fetchInstances() {
             this.value._fetchInstances();
         }
-        private BytesWrapper value;
-        private TermStruct4 _root;
-        private TermStruct4 _parent;
-        private byte[] _raw_value;
         public BytesWrapper value() { return value; }
         public TermStruct4 _root() { return _root; }
         public TermStruct4 _parent() { return _parent; }
         public byte[] _raw_value() { return _raw_value; }
+        private BytesWrapper value;
+        private TermStruct4 _root;
+        private TermStruct4 _parent;
+        private byte[] _raw_value;
     }
     public static class S3Type extends KaitaiStruct {
         public static S3Type fromFile(String fileName) throws IOException {
@@ -176,22 +176,15 @@ public class TermStruct4 extends KaitaiStruct {
         public void _fetchInstances() {
             this.value._fetchInstances();
         }
-        private BytesWrapper value;
-        private TermStruct4 _root;
-        private TermStruct4 _parent;
-        private byte[] _raw_value;
         public BytesWrapper value() { return value; }
         public TermStruct4 _root() { return _root; }
         public TermStruct4 _parent() { return _parent; }
         public byte[] _raw_value() { return _raw_value; }
+        private BytesWrapper value;
+        private TermStruct4 _root;
+        private TermStruct4 _parent;
+        private byte[] _raw_value;
     }
-    private S1Type s1;
-    private int skipTerm1;
-    private S2Type s2;
-    private int skipTerm2;
-    private S3Type s3;
-    private TermStruct4 _root;
-    private KaitaiStruct _parent;
     public S1Type s1() { return s1; }
     public int skipTerm1() { return skipTerm1; }
     public S2Type s2() { return s2; }
@@ -199,4 +192,11 @@ public class TermStruct4 extends KaitaiStruct {
     public S3Type s3() { return s3; }
     public TermStruct4 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private S1Type s1;
+    private int skipTerm1;
+    private S2Type s2;
+    private int skipTerm2;
+    private S3Type s3;
+    private TermStruct4 _root;
+    private KaitaiStruct _parent;
 }

@@ -16,13 +16,13 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_trailer = $this->_io->readU1();
             }
         }
-        protected $_m_buf;
-        protected $_m_trailer;
-        protected $_m_len;
-        protected $_m_hasTrailer;
         public function buf() { return $this->_m_buf; }
         public function trailer() { return $this->_m_trailer; }
         public function len() { return $this->_m_len; }
         public function hasTrailer() { return $this->_m_hasTrailer; }
+        protected $_m_buf;
+        protected $_m_trailer;
+        protected $_m_len;
+        protected $_m_hasTrailer;
     }
 }

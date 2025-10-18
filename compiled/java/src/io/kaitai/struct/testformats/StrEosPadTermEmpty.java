@@ -69,12 +69,12 @@ public class StrEosPadTermEmpty extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private String value;
-        private StrEosPadTermEmpty _root;
-        private StrEosPadTermEmpty _parent;
         public String value() { return value; }
         public StrEosPadTermEmpty _root() { return _root; }
         public StrEosPadTermEmpty _parent() { return _parent; }
+        private String value;
+        private StrEosPadTermEmpty _root;
+        private StrEosPadTermEmpty _parent;
     }
     public static class StrTermAndPadType extends KaitaiStruct {
         public static StrTermAndPadType fromFile(String fileName) throws IOException {
@@ -101,12 +101,12 @@ public class StrEosPadTermEmpty extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private String value;
-        private StrEosPadTermEmpty _root;
-        private StrEosPadTermEmpty _parent;
         public String value() { return value; }
         public StrEosPadTermEmpty _root() { return _root; }
         public StrEosPadTermEmpty _parent() { return _parent; }
+        private String value;
+        private StrEosPadTermEmpty _root;
+        private StrEosPadTermEmpty _parent;
     }
     public static class StrTermIncludeType extends KaitaiStruct {
         public static StrTermIncludeType fromFile(String fileName) throws IOException {
@@ -133,12 +133,12 @@ public class StrEosPadTermEmpty extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private String value;
-        private StrEosPadTermEmpty _root;
-        private StrEosPadTermEmpty _parent;
         public String value() { return value; }
         public StrEosPadTermEmpty _root() { return _root; }
         public StrEosPadTermEmpty _parent() { return _parent; }
+        private String value;
+        private StrEosPadTermEmpty _root;
+        private StrEosPadTermEmpty _parent;
     }
     public static class StrTermType extends KaitaiStruct {
         public static StrTermType fromFile(String fileName) throws IOException {
@@ -165,23 +165,23 @@ public class StrEosPadTermEmpty extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private String value;
-        private StrEosPadTermEmpty _root;
-        private StrEosPadTermEmpty _parent;
         public String value() { return value; }
         public StrEosPadTermEmpty _root() { return _root; }
         public StrEosPadTermEmpty _parent() { return _parent; }
+        private String value;
+        private StrEosPadTermEmpty _root;
+        private StrEosPadTermEmpty _parent;
     }
-    private StrPadType strPad;
-    private StrTermType strTerm;
-    private StrTermAndPadType strTermAndPad;
-    private StrTermIncludeType strTermInclude;
-    private StrEosPadTermEmpty _root;
-    private KaitaiStruct _parent;
     public StrPadType strPad() { return strPad; }
     public StrTermType strTerm() { return strTerm; }
     public StrTermAndPadType strTermAndPad() { return strTermAndPad; }
     public StrTermIncludeType strTermInclude() { return strTermInclude; }
     public StrEosPadTermEmpty _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private StrPadType strPad;
+    private StrTermType strTerm;
+    private StrTermAndPadType strTermAndPad;
+    private StrTermIncludeType strTermInclude;
+    private StrEosPadTermEmpty _root;
+    private KaitaiStruct _parent;
 }

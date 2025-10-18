@@ -64,10 +64,6 @@ public class FixedContents extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private byte[] normal;
-    private byte[] highBit8;
-    private FixedContents _root;
-    private KaitaiStruct.ReadWrite _parent;
     public byte[] normal() { return normal; }
     public void setNormal(byte[] _v) { _dirty = true; normal = _v; }
     public byte[] highBit8() { return highBit8; }
@@ -76,4 +72,8 @@ public class FixedContents extends KaitaiStruct.ReadWrite {
     public void set_root(FixedContents _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private byte[] normal;
+    private byte[] highBit8;
+    private FixedContents _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

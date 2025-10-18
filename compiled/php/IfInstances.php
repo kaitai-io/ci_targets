@@ -10,7 +10,6 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
         }
-        protected $_m_neverHappens;
         public function neverHappens() {
             if ($this->_m_neverHappens !== null)
                 return $this->_m_neverHappens;
@@ -22,5 +21,6 @@ namespace Kaitai\Struct\Tests {
             }
             return $this->_m_neverHappens;
         }
+        protected $_m_neverHappens;
     }
 }

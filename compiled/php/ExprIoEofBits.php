@@ -21,15 +21,15 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_qux = $this->_io->readBitsIntBe(16);
             }
         }
-        protected $_m_foo;
-        protected $_m_bar;
-        protected $_m_baz;
-        protected $_m_align;
-        protected $_m_qux;
         public function foo() { return $this->_m_foo; }
         public function bar() { return $this->_m_bar; }
         public function baz() { return $this->_m_baz; }
         public function align() { return $this->_m_align; }
         public function qux() { return $this->_m_qux; }
+        protected $_m_foo;
+        protected $_m_bar;
+        protected $_m_baz;
+        protected $_m_align;
+        protected $_m_qux;
     }
 }

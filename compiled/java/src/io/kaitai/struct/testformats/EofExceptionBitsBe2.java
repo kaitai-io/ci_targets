@@ -45,12 +45,12 @@ public class EofExceptionBitsBe2 extends KaitaiStruct.ReadOnly {
 
     public void _fetchInstances() {
     }
-    private long preBits;
-    private long failBits;
-    private EofExceptionBitsBe2 _root;
-    private KaitaiStruct.ReadOnly _parent;
     public long preBits() { return preBits; }
     public long failBits() { return failBits; }
     public EofExceptionBitsBe2 _root() { return _root; }
     public KaitaiStruct.ReadOnly _parent() { return _parent; }
+    private long preBits;
+    private long failBits;
+    private EofExceptionBitsBe2 _root;
+    private KaitaiStruct.ReadOnly _parent;
 }

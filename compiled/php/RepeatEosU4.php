@@ -16,7 +16,7 @@ namespace Kaitai\Struct\Tests {
                 $i++;
             }
         }
-        protected $_m_numbers;
         public function numbers() { return $this->_m_numbers; }
+        protected $_m_numbers;
     }
 }

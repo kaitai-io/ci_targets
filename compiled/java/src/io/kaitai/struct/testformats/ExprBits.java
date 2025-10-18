@@ -124,21 +124,19 @@ public class ExprBits extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private short foo;
-        private ExprBits _root;
-        private ExprBits _parent;
         public short foo() { return foo; }
         public ExprBits _root() { return _root; }
         public ExprBits _parent() { return _parent; }
+        private short foo;
+        private ExprBits _root;
+        private ExprBits _parent;
     }
-    private Items enumInst;
     public Items enumInst() {
         if (this.enumInst != null)
             return this.enumInst;
         this.enumInst = Items.byId(a());
         return this.enumInst;
     }
-    private Byte instPos;
     public Byte instPos() {
         if (this.instPos != null)
             return this.instPos;
@@ -148,14 +146,6 @@ public class ExprBits extends KaitaiStruct {
         this._io.seek(_pos);
         return this.instPos;
     }
-    private Items enumSeq;
-    private long a;
-    private byte[] byteSize;
-    private List<Byte> repeatExpr;
-    private Byte switchOnType;
-    private EndianSwitch switchOnEndian;
-    private ExprBits _root;
-    private KaitaiStruct _parent;
     public Items enumSeq() { return enumSeq; }
     public long a() { return a; }
     public byte[] byteSize() { return byteSize; }
@@ -164,4 +154,14 @@ public class ExprBits extends KaitaiStruct {
     public EndianSwitch switchOnEndian() { return switchOnEndian; }
     public ExprBits _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Items enumInst;
+    private Byte instPos;
+    private Items enumSeq;
+    private long a;
+    private byte[] byteSize;
+    private List<Byte> repeatExpr;
+    private Byte switchOnType;
+    private EndianSwitch switchOnEndian;
+    private ExprBits _root;
+    private KaitaiStruct _parent;
 }

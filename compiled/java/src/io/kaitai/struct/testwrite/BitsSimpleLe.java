@@ -68,7 +68,6 @@ public class BitsSimpleLe extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private Byte testIfB1;
     public Byte testIfB1() {
         if (this.testIfB1 != null)
             return this.testIfB1;
@@ -78,21 +77,6 @@ public class BitsSimpleLe extends KaitaiStruct.ReadWrite {
         return this.testIfB1;
     }
     public void _invalidateTestIfB1() { this.testIfB1 = null; }
-    private long byte1;
-    private long byte2;
-    private boolean bitsA;
-    private long bitsB;
-    private long bitsC;
-    private long largeBits1;
-    private long spacer;
-    private long largeBits2;
-    private short normalS2;
-    private long byte8910;
-    private long byte11To14;
-    private long byte15To19;
-    private long byte20To27;
-    private BitsSimpleLe _root;
-    private KaitaiStruct.ReadWrite _parent;
     public long byte1() { return byte1; }
     public void setByte1(long _v) { _dirty = true; byte1 = _v; }
     public long byte2() { return byte2; }
@@ -123,4 +107,20 @@ public class BitsSimpleLe extends KaitaiStruct.ReadWrite {
     public void set_root(BitsSimpleLe _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Byte testIfB1;
+    private long byte1;
+    private long byte2;
+    private boolean bitsA;
+    private long bitsB;
+    private long bitsC;
+    private long largeBits1;
+    private long spacer;
+    private long largeBits2;
+    private short normalS2;
+    private long byte8910;
+    private long byte11To14;
+    private long byte15To19;
+    private long byte20To27;
+    private BitsSimpleLe _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

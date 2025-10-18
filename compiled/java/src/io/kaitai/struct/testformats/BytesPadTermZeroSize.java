@@ -35,16 +35,16 @@ public class BytesPadTermZeroSize extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private byte[] strPad;
-    private byte[] strTerm;
-    private byte[] strTermAndPad;
-    private byte[] strTermInclude;
-    private BytesPadTermZeroSize _root;
-    private KaitaiStruct _parent;
     public byte[] strPad() { return strPad; }
     public byte[] strTerm() { return strTerm; }
     public byte[] strTermAndPad() { return strTermAndPad; }
     public byte[] strTermInclude() { return strTermInclude; }
     public BytesPadTermZeroSize _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private byte[] strPad;
+    private byte[] strTerm;
+    private byte[] strTermAndPad;
+    private byte[] strTermInclude;
+    private BytesPadTermZeroSize _root;
+    private KaitaiStruct _parent;
 }

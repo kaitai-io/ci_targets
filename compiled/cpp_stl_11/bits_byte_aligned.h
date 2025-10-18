@@ -24,6 +24,17 @@ private:
 
 public:
     ~bits_byte_aligned_t();
+    uint64_t one() const { return m_one; }
+    uint8_t byte_1() const { return m_byte_1; }
+    uint64_t two() const { return m_two; }
+    bool three() const { return m_three; }
+    uint8_t byte_2() const { return m_byte_2; }
+    uint64_t four() const { return m_four; }
+    std::string byte_3() const { return m_byte_3; }
+    uint64_t full_byte() const { return m_full_byte; }
+    uint8_t byte_4() const { return m_byte_4; }
+    bits_byte_aligned_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     uint64_t m_one;
@@ -37,17 +48,4 @@ private:
     uint8_t m_byte_4;
     bits_byte_aligned_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint64_t one() const { return m_one; }
-    uint8_t byte_1() const { return m_byte_1; }
-    uint64_t two() const { return m_two; }
-    bool three() const { return m_three; }
-    uint8_t byte_2() const { return m_byte_2; }
-    uint64_t four() const { return m_four; }
-    std::string byte_3() const { return m_byte_3; }
-    uint64_t full_byte() const { return m_full_byte; }
-    uint8_t byte_4() const { return m_byte_4; }
-    bits_byte_aligned_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

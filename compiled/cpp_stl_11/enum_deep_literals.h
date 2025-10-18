@@ -77,48 +77,38 @@ public:
 
         public:
             ~container2_t();
+            enum_deep_literals_t* _root() const { return m__root; }
+            kaitai::kstruct* _parent() const { return m__parent; }
 
         private:
             enum_deep_literals_t* m__root;
             kaitai::kstruct* m__parent;
-
-        public:
-            enum_deep_literals_t* _root() const { return m__root; }
-            kaitai::kstruct* _parent() const { return m__parent; }
         };
-
-    private:
-        enum_deep_literals_t* m__root;
-        kaitai::kstruct* m__parent;
 
     public:
         enum_deep_literals_t* _root() const { return m__root; }
         kaitai::kstruct* _parent() const { return m__parent; }
-    };
 
-private:
-    bool f_is_pet_1_ok;
-    bool m_is_pet_1_ok;
+    private:
+        enum_deep_literals_t* m__root;
+        kaitai::kstruct* m__parent;
+    };
 
 public:
     bool is_pet_1_ok();
-
-private:
-    bool f_is_pet_2_ok;
-    bool m_is_pet_2_ok;
-
-public:
     bool is_pet_2_ok();
-
-private:
-    container1_t::animal_t m_pet_1;
-    container1_t::container2_t::animal_t m_pet_2;
-    enum_deep_literals_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     container1_t::animal_t pet_1() const { return m_pet_1; }
     container1_t::container2_t::animal_t pet_2() const { return m_pet_2; }
     enum_deep_literals_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_is_pet_1_ok;
+    bool m_is_pet_1_ok;
+    bool f_is_pet_2_ok;
+    bool m_is_pet_2_ok;
+    container1_t::animal_t m_pet_1;
+    container1_t::container2_t::animal_t m_pet_2;
+    enum_deep_literals_t* m__root;
+    kaitai::kstruct* m__parent;
 };

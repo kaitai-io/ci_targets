@@ -20,12 +20,12 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_blocks[] = new \Kaitai\Struct\Tests\ProcessRepeatUsertype\Block($_io__raw_blocks, $this, $this->_root);
             }
         }
-        protected $_m_blocks;
-        protected $_m__raw_blocks;
-        protected $_m__raw__raw_blocks;
         public function blocks() { return $this->_m_blocks; }
         public function _raw_blocks() { return $this->_m__raw_blocks; }
         public function _raw__raw_blocks() { return $this->_m__raw__raw_blocks; }
+        protected $_m_blocks;
+        protected $_m__raw_blocks;
+        protected $_m__raw__raw_blocks;
     }
 }
 
@@ -40,9 +40,9 @@ namespace Kaitai\Struct\Tests\ProcessRepeatUsertype {
             $this->_m_a = $this->_io->readS4le();
             $this->_m_b = $this->_io->readS1();
         }
-        protected $_m_a;
-        protected $_m_b;
         public function a() { return $this->_m_a; }
         public function b() { return $this->_m_b; }
+        protected $_m_a;
+        protected $_m_b;
     }
 }

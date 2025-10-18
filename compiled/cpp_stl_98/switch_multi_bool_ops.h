@@ -39,6 +39,10 @@ public:
 
     public:
         ~opcode_t();
+        uint8_t code() const { return m_code; }
+        uint64_t body() const { return m_body; }
+        switch_multi_bool_ops_t* _root() const { return m__root; }
+        switch_multi_bool_ops_t* _parent() const { return m__parent; }
 
     private:
         uint8_t m_code;
@@ -51,23 +55,17 @@ public:
     private:
         switch_multi_bool_ops_t* m__root;
         switch_multi_bool_ops_t* m__parent;
-
-    public:
-        uint8_t code() const { return m_code; }
-        uint64_t body() const { return m_body; }
-        switch_multi_bool_ops_t* _root() const { return m__root; }
-        switch_multi_bool_ops_t* _parent() const { return m__parent; }
     };
-
-private:
-    std::vector<opcode_t*>* m_opcodes;
-    switch_multi_bool_ops_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     std::vector<opcode_t*>* opcodes() const { return m_opcodes; }
     switch_multi_bool_ops_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    std::vector<opcode_t*>* m_opcodes;
+    switch_multi_bool_ops_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // SWITCH_MULTI_BOOL_OPS_H_

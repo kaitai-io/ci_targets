@@ -63,7 +63,6 @@ public class ExprEnum extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private Animal constDog;
     public Animal constDog() {
         if (this.constDog != null)
             return this.constDog;
@@ -71,7 +70,6 @@ public class ExprEnum extends KaitaiStruct.ReadWrite {
         return this.constDog;
     }
     public void _invalidateConstDog() { this.constDog = null; }
-    private Animal derivedBoom;
     public Animal derivedBoom() {
         if (this.derivedBoom != null)
             return this.derivedBoom;
@@ -79,7 +77,6 @@ public class ExprEnum extends KaitaiStruct.ReadWrite {
         return this.derivedBoom;
     }
     public void _invalidateDerivedBoom() { this.derivedBoom = null; }
-    private Animal derivedDog;
     public Animal derivedDog() {
         if (this.derivedDog != null)
             return this.derivedDog;
@@ -87,13 +84,16 @@ public class ExprEnum extends KaitaiStruct.ReadWrite {
         return this.derivedDog;
     }
     public void _invalidateDerivedDog() { this.derivedDog = null; }
-    private int one;
-    private ExprEnum _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int one() { return one; }
     public void setOne(int _v) { _dirty = true; one = _v; }
     public ExprEnum _root() { return _root; }
     public void set_root(ExprEnum _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Animal constDog;
+    private Animal derivedBoom;
+    private Animal derivedDog;
+    private int one;
+    private ExprEnum _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

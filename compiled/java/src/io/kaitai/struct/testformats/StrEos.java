@@ -33,10 +33,10 @@ public class StrEos extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private String str;
-    private StrEos _root;
-    private KaitaiStruct _parent;
     public String str() { return str; }
     public StrEos _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private String str;
+    private StrEos _root;
+    private KaitaiStruct _parent;
 }

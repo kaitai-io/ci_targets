@@ -80,12 +80,12 @@ public class InstanceIoUserEarlier extends KaitaiStruct {
             if (_parent().intoB().inst().last() == 89) {
             }
         }
-        private Integer v;
-        private InstanceIoUserEarlier _root;
-        private InstanceIoUserEarlier _parent;
         public Integer v() { return v; }
         public InstanceIoUserEarlier _root() { return _root; }
         public InstanceIoUserEarlier _parent() { return _parent; }
+        private Integer v;
+        private InstanceIoUserEarlier _root;
+        private InstanceIoUserEarlier _parent;
     }
     public static class Foo extends KaitaiStruct {
         public static Foo fromFile(String fileName) throws IOException {
@@ -121,7 +121,6 @@ public class InstanceIoUserEarlier extends KaitaiStruct {
                 this.inst._fetchInstances();
             }
         }
-        private Slot inst;
         public Slot inst() {
             if (this.inst != null)
                 return this.inst;
@@ -133,14 +132,15 @@ public class InstanceIoUserEarlier extends KaitaiStruct {
             io.seek(_pos);
             return this.inst;
         }
-        private int indicator;
-        private Integer bar;
-        private InstanceIoUserEarlier _root;
-        private InstanceIoUserEarlier _parent;
         public int indicator() { return indicator; }
         public Integer bar() { return bar; }
         public InstanceIoUserEarlier _root() { return _root; }
         public InstanceIoUserEarlier _parent() { return _parent; }
+        private Slot inst;
+        private int indicator;
+        private Integer bar;
+        private InstanceIoUserEarlier _root;
+        private InstanceIoUserEarlier _parent;
     }
     public static class Slot extends KaitaiStruct {
         public static Slot fromFile(String fileName) throws IOException {
@@ -174,7 +174,6 @@ public class InstanceIoUserEarlier extends KaitaiStruct {
             if (this.last != null) {
             }
         }
-        private Integer last;
         public Integer last() {
             if (this.last != null)
                 return this.last;
@@ -186,14 +185,14 @@ public class InstanceIoUserEarlier extends KaitaiStruct {
             }
             return this.last;
         }
-        private Integer content;
-        private InstanceIoUserEarlier _root;
-        private KaitaiStruct _parent;
         public Integer content() { return content; }
         public InstanceIoUserEarlier _root() { return _root; }
         public KaitaiStruct _parent() { return _parent; }
+        private Integer last;
+        private Integer content;
+        private InstanceIoUserEarlier _root;
+        private KaitaiStruct _parent;
     }
-    private Integer aMid;
     public Integer aMid() {
         if (this.aMid != null)
             return this.aMid;
@@ -204,7 +203,6 @@ public class InstanceIoUserEarlier extends KaitaiStruct {
         io.seek(_pos);
         return this.aMid;
     }
-    private Integer bMid;
     public Integer bMid() {
         if (this.bMid != null)
             return this.bMid;
@@ -215,14 +213,6 @@ public class InstanceIoUserEarlier extends KaitaiStruct {
         io.seek(_pos);
         return this.bMid;
     }
-    private Slot sizedA;
-    private Slot sizedB;
-    private Foo intoB;
-    private Foo intoASkipped;
-    private Foo intoA;
-    private Baz lastAccessor;
-    private InstanceIoUserEarlier _root;
-    private KaitaiStruct _parent;
     public Slot sizedA() { return sizedA; }
     public Slot sizedB() { return sizedB; }
     public Foo intoB() { return intoB; }
@@ -231,4 +221,14 @@ public class InstanceIoUserEarlier extends KaitaiStruct {
     public Baz lastAccessor() { return lastAccessor; }
     public InstanceIoUserEarlier _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Integer aMid;
+    private Integer bMid;
+    private Slot sizedA;
+    private Slot sizedB;
+    private Foo intoB;
+    private Foo intoASkipped;
+    private Foo intoA;
+    private Baz lastAccessor;
+    private InstanceIoUserEarlier _root;
+    private KaitaiStruct _parent;
 }

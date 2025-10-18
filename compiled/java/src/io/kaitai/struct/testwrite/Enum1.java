@@ -152,10 +152,6 @@ public class Enum1 extends KaitaiStruct.ReadWrite {
             public void _check() {
                 _dirty = false;
             }
-            private Animal pet1;
-            private Animal pet2;
-            private Enum1 _root;
-            private Enum1.MainObj _parent;
             public Animal pet1() { return pet1; }
             public void setPet1(Animal _v) { _dirty = true; pet1 = _v; }
             public Animal pet2() { return pet2; }
@@ -164,24 +160,28 @@ public class Enum1 extends KaitaiStruct.ReadWrite {
             public void set_root(Enum1 _v) { _dirty = true; _root = _v; }
             public Enum1.MainObj _parent() { return _parent; }
             public void set_parent(Enum1.MainObj _v) { _dirty = true; _parent = _v; }
+            private Animal pet1;
+            private Animal pet2;
+            private Enum1 _root;
+            private Enum1.MainObj _parent;
         }
-        private SubmainObj submain;
-        private Enum1 _root;
-        private Enum1 _parent;
         public SubmainObj submain() { return submain; }
         public void setSubmain(SubmainObj _v) { _dirty = true; submain = _v; }
         public Enum1 _root() { return _root; }
         public void set_root(Enum1 _v) { _dirty = true; _root = _v; }
         public Enum1 _parent() { return _parent; }
         public void set_parent(Enum1 _v) { _dirty = true; _parent = _v; }
+        private SubmainObj submain;
+        private Enum1 _root;
+        private Enum1 _parent;
     }
-    private MainObj main;
-    private Enum1 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public MainObj main() { return main; }
     public void setMain(MainObj _v) { _dirty = true; main = _v; }
     public Enum1 _root() { return _root; }
     public void set_root(Enum1 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private MainObj main;
+    private Enum1 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

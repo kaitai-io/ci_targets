@@ -44,7 +44,6 @@ public class CombineBool extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private Boolean boolCalc;
     public Boolean boolCalc() {
         if (this.boolCalc != null)
             return this.boolCalc;
@@ -52,7 +51,6 @@ public class CombineBool extends KaitaiStruct.ReadWrite {
         return this.boolCalc;
     }
     public void _invalidateBoolCalc() { this.boolCalc = null; }
-    private Boolean boolCalcBit;
     public Boolean boolCalcBit() {
         if (this.boolCalcBit != null)
             return this.boolCalcBit;
@@ -60,13 +58,15 @@ public class CombineBool extends KaitaiStruct.ReadWrite {
         return this.boolCalcBit;
     }
     public void _invalidateBoolCalcBit() { this.boolCalcBit = null; }
-    private boolean boolBit;
-    private CombineBool _root;
-    private KaitaiStruct.ReadWrite _parent;
     public boolean boolBit() { return boolBit; }
     public void setBoolBit(boolean _v) { _dirty = true; boolBit = _v; }
     public CombineBool _root() { return _root; }
     public void set_root(CombineBool _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Boolean boolCalc;
+    private Boolean boolCalcBit;
+    private boolean boolBit;
+    private CombineBool _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

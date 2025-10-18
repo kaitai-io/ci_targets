@@ -25,27 +25,21 @@ private:
 
 public:
     ~instance_std_array_t();
-
-private:
-    bool f_entries;
-    std::vector<std::string>* m_entries;
-
-public:
     std::vector<std::string>* entries();
-
-private:
-    uint32_t m_ofs;
-    uint32_t m_entry_size;
-    uint32_t m_qty_entries;
-    instance_std_array_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     uint32_t ofs() const { return m_ofs; }
     uint32_t entry_size() const { return m_entry_size; }
     uint32_t qty_entries() const { return m_qty_entries; }
     instance_std_array_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_entries;
+    std::vector<std::string>* m_entries;
+    uint32_t m_ofs;
+    uint32_t m_entry_size;
+    uint32_t m_qty_entries;
+    instance_std_array_t* m__root;
+    kaitai::kstruct* m__parent;
 };
 
 #endif  // INSTANCE_STD_ARRAY_H_

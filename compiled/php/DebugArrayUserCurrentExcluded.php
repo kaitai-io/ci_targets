@@ -19,8 +19,8 @@ namespace Kaitai\Struct\Tests {
                 }
             }
         }
-        protected $_m_arrayOfCats;
         public function arrayOfCats() { return $this->_m_arrayOfCats; }
+        protected $_m_arrayOfCats;
     }
 }
 
@@ -33,7 +33,7 @@ namespace Kaitai\Struct\Tests\DebugArrayUserCurrentExcluded {
         public function _read() {
             $this->_m_meow = $this->_io->readBytes(3 - count($this->_parent()->arrayOfCats()));
         }
-        protected $_m_meow;
         public function meow() { return $this->_m_meow; }
+        protected $_m_meow;
     }
 }

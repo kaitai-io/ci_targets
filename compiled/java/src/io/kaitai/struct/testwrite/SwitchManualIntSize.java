@@ -272,15 +272,15 @@ public class SwitchManualIntSize extends KaitaiStruct.ReadWrite {
                 }
                 _dirty = false;
             }
-            private List<String> entries;
-            private SwitchManualIntSize _root;
-            private SwitchManualIntSize.Chunk _parent;
             public List<String> entries() { return entries; }
             public void setEntries(List<String> _v) { _dirty = true; entries = _v; }
             public SwitchManualIntSize _root() { return _root; }
             public void set_root(SwitchManualIntSize _v) { _dirty = true; _root = _v; }
             public SwitchManualIntSize.Chunk _parent() { return _parent; }
             public void set_parent(SwitchManualIntSize.Chunk _v) { _dirty = true; _parent = _v; }
+            private List<String> entries;
+            private SwitchManualIntSize _root;
+            private SwitchManualIntSize.Chunk _parent;
         }
         public static class ChunkMeta extends KaitaiStruct.ReadWrite {
             public static ChunkMeta fromFile(String fileName) throws IOException {
@@ -327,10 +327,6 @@ public class SwitchManualIntSize extends KaitaiStruct.ReadWrite {
                     throw new ConsistencyError("author", -1, KaitaiStream.byteArrayIndexOf((this.author).getBytes(Charset.forName("UTF-8")), ((byte) 0)));
                 _dirty = false;
             }
-            private String title;
-            private String author;
-            private SwitchManualIntSize _root;
-            private SwitchManualIntSize.Chunk _parent;
             public String title() { return title; }
             public void setTitle(String _v) { _dirty = true; title = _v; }
             public String author() { return author; }
@@ -339,13 +335,11 @@ public class SwitchManualIntSize extends KaitaiStruct.ReadWrite {
             public void set_root(SwitchManualIntSize _v) { _dirty = true; _root = _v; }
             public SwitchManualIntSize.Chunk _parent() { return _parent; }
             public void set_parent(SwitchManualIntSize.Chunk _v) { _dirty = true; _parent = _v; }
+            private String title;
+            private String author;
+            private SwitchManualIntSize _root;
+            private SwitchManualIntSize.Chunk _parent;
         }
-        private int code;
-        private long size;
-        private Object body;
-        private SwitchManualIntSize _root;
-        private SwitchManualIntSize _parent;
-        private byte[] _raw_body;
         public int code() { return code; }
         public void setCode(int _v) { _dirty = true; code = _v; }
         public long size() { return size; }
@@ -358,14 +352,20 @@ public class SwitchManualIntSize extends KaitaiStruct.ReadWrite {
         public void set_parent(SwitchManualIntSize _v) { _dirty = true; _parent = _v; }
         public byte[] _raw_body() { return _raw_body; }
         public void set_raw_Body(byte[] _v) { _dirty = true; _raw_body = _v; }
+        private int code;
+        private long size;
+        private Object body;
+        private SwitchManualIntSize _root;
+        private SwitchManualIntSize _parent;
+        private byte[] _raw_body;
     }
-    private List<Chunk> chunks;
-    private SwitchManualIntSize _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Chunk> chunks() { return chunks; }
     public void setChunks(List<Chunk> _v) { _dirty = true; chunks = _v; }
     public SwitchManualIntSize _root() { return _root; }
     public void set_root(SwitchManualIntSize _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Chunk> chunks;
+    private SwitchManualIntSize _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

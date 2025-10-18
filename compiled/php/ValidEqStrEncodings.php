@@ -30,14 +30,6 @@ namespace Kaitai\Struct\Tests {
                 throw new \Kaitai\Struct\Error\ValidationNotEqualError("\u{2591}\u{2592}\u{2593}", $this->_m_str4, $this->_io, "/seq/7");
             }
         }
-        protected $_m_lenOf1;
-        protected $_m_str1;
-        protected $_m_lenOf2;
-        protected $_m_str2;
-        protected $_m_lenOf3;
-        protected $_m_str3;
-        protected $_m_lenOf4;
-        protected $_m_str4;
         public function lenOf1() { return $this->_m_lenOf1; }
         public function str1() { return $this->_m_str1; }
         public function lenOf2() { return $this->_m_lenOf2; }
@@ -46,5 +38,13 @@ namespace Kaitai\Struct\Tests {
         public function str3() { return $this->_m_str3; }
         public function lenOf4() { return $this->_m_lenOf4; }
         public function str4() { return $this->_m_str4; }
+        protected $_m_lenOf1;
+        protected $_m_str1;
+        protected $_m_lenOf2;
+        protected $_m_str2;
+        protected $_m_lenOf3;
+        protected $_m_str3;
+        protected $_m_lenOf4;
+        protected $_m_str4;
     }
 }

@@ -47,14 +47,14 @@ public class IndexSizes extends KaitaiStruct {
         for (int i = 0; i < this.bufs.size(); i++) {
         }
     }
-    private long qty;
-    private List<Long> sizes;
-    private List<String> bufs;
-    private IndexSizes _root;
-    private KaitaiStruct _parent;
     public long qty() { return qty; }
     public List<Long> sizes() { return sizes; }
     public List<String> bufs() { return bufs; }
     public IndexSizes _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private long qty;
+    private List<Long> sizes;
+    private List<String> bufs;
+    private IndexSizes _root;
+    private KaitaiStruct _parent;
 }

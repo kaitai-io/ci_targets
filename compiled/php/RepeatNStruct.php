@@ -16,10 +16,10 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_chunks[] = new \Kaitai\Struct\Tests\RepeatNStruct\Chunk($this->_io, $this, $this->_root);
             }
         }
-        protected $_m_qty;
-        protected $_m_chunks;
         public function qty() { return $this->_m_qty; }
         public function chunks() { return $this->_m_chunks; }
+        protected $_m_qty;
+        protected $_m_chunks;
     }
 }
 
@@ -34,9 +34,9 @@ namespace Kaitai\Struct\Tests\RepeatNStruct {
             $this->_m_offset = $this->_io->readU4le();
             $this->_m_len = $this->_io->readU4le();
         }
-        protected $_m_offset;
-        protected $_m_len;
         public function offset() { return $this->_m_offset; }
         public function len() { return $this->_m_len; }
+        protected $_m_offset;
+        protected $_m_len;
     }
 }

@@ -31,11 +31,11 @@ namespace Kaitai\Struct\Tests {
                 $i++;
             } while (!($_ == $this->records1()[count($this->records1()) - 1]));
         }
-        protected $_m_records1;
-        protected $_m_records2;
-        protected $_m_records3;
         public function records1() { return $this->_m_records1; }
         public function records2() { return $this->_m_records2; }
         public function records3() { return $this->_m_records3; }
+        protected $_m_records1;
+        protected $_m_records2;
+        protected $_m_records3;
     }
 }

@@ -69,7 +69,6 @@ public class ExprStrEncodings extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("str4", lenOf4(), (this.str4).getBytes(Charset.forName("IBM437")).length);
         _dirty = false;
     }
-    private Boolean str1Eq;
     public Boolean str1Eq() {
         if (this.str1Eq != null)
             return this.str1Eq;
@@ -77,7 +76,6 @@ public class ExprStrEncodings extends KaitaiStruct.ReadWrite {
         return this.str1Eq;
     }
     public void _invalidateStr1Eq() { this.str1Eq = null; }
-    private Boolean str2Eq;
     public Boolean str2Eq() {
         if (this.str2Eq != null)
             return this.str2Eq;
@@ -85,7 +83,6 @@ public class ExprStrEncodings extends KaitaiStruct.ReadWrite {
         return this.str2Eq;
     }
     public void _invalidateStr2Eq() { this.str2Eq = null; }
-    private Boolean str3Eq;
     public Boolean str3Eq() {
         if (this.str3Eq != null)
             return this.str3Eq;
@@ -93,7 +90,6 @@ public class ExprStrEncodings extends KaitaiStruct.ReadWrite {
         return this.str3Eq;
     }
     public void _invalidateStr3Eq() { this.str3Eq = null; }
-    private Boolean str3EqStr2;
     public Boolean str3EqStr2() {
         if (this.str3EqStr2 != null)
             return this.str3EqStr2;
@@ -101,7 +97,6 @@ public class ExprStrEncodings extends KaitaiStruct.ReadWrite {
         return this.str3EqStr2;
     }
     public void _invalidateStr3EqStr2() { this.str3EqStr2 = null; }
-    private Boolean str4Eq;
     public Boolean str4Eq() {
         if (this.str4Eq != null)
             return this.str4Eq;
@@ -109,7 +104,6 @@ public class ExprStrEncodings extends KaitaiStruct.ReadWrite {
         return this.str4Eq;
     }
     public void _invalidateStr4Eq() { this.str4Eq = null; }
-    private Boolean str4GtStrCalc;
     public Boolean str4GtStrCalc() {
         if (this.str4GtStrCalc != null)
             return this.str4GtStrCalc;
@@ -117,7 +111,6 @@ public class ExprStrEncodings extends KaitaiStruct.ReadWrite {
         return this.str4GtStrCalc;
     }
     public void _invalidateStr4GtStrCalc() { this.str4GtStrCalc = null; }
-    private Boolean str4GtStrFromBytes;
     public Boolean str4GtStrFromBytes() {
         if (this.str4GtStrFromBytes != null)
             return this.str4GtStrFromBytes;
@@ -125,16 +118,6 @@ public class ExprStrEncodings extends KaitaiStruct.ReadWrite {
         return this.str4GtStrFromBytes;
     }
     public void _invalidateStr4GtStrFromBytes() { this.str4GtStrFromBytes = null; }
-    private int lenOf1;
-    private String str1;
-    private int lenOf2;
-    private String str2;
-    private int lenOf3;
-    private String str3;
-    private int lenOf4;
-    private String str4;
-    private ExprStrEncodings _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int lenOf1() { return lenOf1; }
     public void setLenOf1(int _v) { _dirty = true; lenOf1 = _v; }
     public String str1() { return str1; }
@@ -155,4 +138,21 @@ public class ExprStrEncodings extends KaitaiStruct.ReadWrite {
     public void set_root(ExprStrEncodings _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Boolean str1Eq;
+    private Boolean str2Eq;
+    private Boolean str3Eq;
+    private Boolean str3EqStr2;
+    private Boolean str4Eq;
+    private Boolean str4GtStrCalc;
+    private Boolean str4GtStrFromBytes;
+    private int lenOf1;
+    private String str1;
+    private int lenOf2;
+    private String str2;
+    private int lenOf3;
+    private String str3;
+    private int lenOf4;
+    private String str4;
+    private ExprStrEncodings _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

@@ -49,13 +49,13 @@ public class StrEos extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private String str;
-    private StrEos _root;
-    private KaitaiStruct.ReadWrite _parent;
     public String str() { return str; }
     public void setStr(String _v) { _dirty = true; str = _v; }
     public StrEos _root() { return _root; }
     public void set_root(StrEos _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private String str;
+    private StrEos _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

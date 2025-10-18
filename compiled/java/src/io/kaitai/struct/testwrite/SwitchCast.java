@@ -114,15 +114,15 @@ public class SwitchCast extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        private int value;
-        private SwitchCast _root;
-        private SwitchCast.Opcode _parent;
         public int value() { return value; }
         public void setValue(int _v) { _dirty = true; value = _v; }
         public SwitchCast _root() { return _root; }
         public void set_root(SwitchCast _v) { _dirty = true; _root = _v; }
         public SwitchCast.Opcode _parent() { return _parent; }
         public void set_parent(SwitchCast.Opcode _v) { _dirty = true; _parent = _v; }
+        private int value;
+        private SwitchCast _root;
+        private SwitchCast.Opcode _parent;
     }
     public static class Opcode extends KaitaiStruct.ReadWrite {
         public static Opcode fromFile(String fileName) throws IOException {
@@ -209,10 +209,6 @@ public class SwitchCast extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private int code;
-        private KaitaiStruct.ReadWrite body;
-        private SwitchCast _root;
-        private SwitchCast _parent;
         public int code() { return code; }
         public void setCode(int _v) { _dirty = true; code = _v; }
         public KaitaiStruct.ReadWrite body() { return body; }
@@ -221,6 +217,10 @@ public class SwitchCast extends KaitaiStruct.ReadWrite {
         public void set_root(SwitchCast _v) { _dirty = true; _root = _v; }
         public SwitchCast _parent() { return _parent; }
         public void set_parent(SwitchCast _v) { _dirty = true; _parent = _v; }
+        private int code;
+        private KaitaiStruct.ReadWrite body;
+        private SwitchCast _root;
+        private SwitchCast _parent;
     }
     public static class Strval extends KaitaiStruct.ReadWrite {
         public static Strval fromFile(String fileName) throws IOException {
@@ -262,17 +262,16 @@ public class SwitchCast extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("value", -1, KaitaiStream.byteArrayIndexOf((this.value).getBytes(Charset.forName("ASCII")), ((byte) 0)));
             _dirty = false;
         }
-        private String value;
-        private SwitchCast _root;
-        private SwitchCast.Opcode _parent;
         public String value() { return value; }
         public void setValue(String _v) { _dirty = true; value = _v; }
         public SwitchCast _root() { return _root; }
         public void set_root(SwitchCast _v) { _dirty = true; _root = _v; }
         public SwitchCast.Opcode _parent() { return _parent; }
         public void set_parent(SwitchCast.Opcode _v) { _dirty = true; _parent = _v; }
+        private String value;
+        private SwitchCast _root;
+        private SwitchCast.Opcode _parent;
     }
-    private SwitchCast.Strval errCast;
     public SwitchCast.Strval errCast() {
         if (this.errCast != null)
             return this.errCast;
@@ -280,7 +279,6 @@ public class SwitchCast extends KaitaiStruct.ReadWrite {
         return this.errCast;
     }
     public void _invalidateErrCast() { this.errCast = null; }
-    private SwitchCast.Strval firstObj;
     public SwitchCast.Strval firstObj() {
         if (this.firstObj != null)
             return this.firstObj;
@@ -288,7 +286,6 @@ public class SwitchCast extends KaitaiStruct.ReadWrite {
         return this.firstObj;
     }
     public void _invalidateFirstObj() { this.firstObj = null; }
-    private Integer secondVal;
     public Integer secondVal() {
         if (this.secondVal != null)
             return this.secondVal;
@@ -296,13 +293,16 @@ public class SwitchCast extends KaitaiStruct.ReadWrite {
         return this.secondVal;
     }
     public void _invalidateSecondVal() { this.secondVal = null; }
-    private List<Opcode> opcodes;
-    private SwitchCast _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Opcode> opcodes() { return opcodes; }
     public void setOpcodes(List<Opcode> _v) { _dirty = true; opcodes = _v; }
     public SwitchCast _root() { return _root; }
     public void set_root(SwitchCast _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private SwitchCast.Strval errCast;
+    private SwitchCast.Strval firstObj;
+    private Integer secondVal;
+    private List<Opcode> opcodes;
+    private SwitchCast _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

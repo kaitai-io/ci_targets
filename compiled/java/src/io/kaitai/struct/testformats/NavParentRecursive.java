@@ -38,7 +38,6 @@ public class NavParentRecursive extends KaitaiStruct {
             this.next._fetchInstances();
         }
     }
-    private Integer parentValue;
     public Integer parentValue() {
         if (this.parentValue != null)
             return this.parentValue;
@@ -47,12 +46,13 @@ public class NavParentRecursive extends KaitaiStruct {
         }
         return this.parentValue;
     }
-    private int value;
-    private NavParentRecursive next;
-    private NavParentRecursive _root;
-    private KaitaiStruct _parent;
     public int value() { return value; }
     public NavParentRecursive next() { return next; }
     public NavParentRecursive _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Integer parentValue;
+    private int value;
+    private NavParentRecursive next;
+    private NavParentRecursive _root;
+    private KaitaiStruct _parent;
 }

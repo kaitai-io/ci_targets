@@ -13,7 +13,6 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_a = $this->_io->readU1();
             }
         }
-        protected $_m_inst;
         public function inst() {
             if ($this->_m_inst !== null)
                 return $this->_m_inst;
@@ -26,7 +25,8 @@ namespace Kaitai\Struct\Tests {
             $this->_io->seek($_pos);
             return $this->_m_inst;
         }
-        protected $_m_a;
         public function a() { return $this->_m_a; }
+        protected $_m_inst;
+        protected $_m_a;
     }
 }

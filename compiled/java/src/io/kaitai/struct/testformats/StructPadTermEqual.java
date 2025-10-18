@@ -72,23 +72,13 @@ public class StructPadTermEqual extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] value;
-        private StructPadTermEqual _root;
-        private StructPadTermEqual _parent;
         public byte[] value() { return value; }
         public StructPadTermEqual _root() { return _root; }
         public StructPadTermEqual _parent() { return _parent; }
+        private byte[] value;
+        private StructPadTermEqual _root;
+        private StructPadTermEqual _parent;
     }
-    private BytesWrapper s1;
-    private BytesWrapper s2;
-    private BytesWrapper s3;
-    private BytesWrapper s4;
-    private StructPadTermEqual _root;
-    private KaitaiStruct _parent;
-    private byte[] _raw_s1;
-    private byte[] _raw_s2;
-    private byte[] _raw_s3;
-    private byte[] _raw_s4;
     public BytesWrapper s1() { return s1; }
     public BytesWrapper s2() { return s2; }
     public BytesWrapper s3() { return s3; }
@@ -99,4 +89,14 @@ public class StructPadTermEqual extends KaitaiStruct {
     public byte[] _raw_s2() { return _raw_s2; }
     public byte[] _raw_s3() { return _raw_s3; }
     public byte[] _raw_s4() { return _raw_s4; }
+    private BytesWrapper s1;
+    private BytesWrapper s2;
+    private BytesWrapper s3;
+    private BytesWrapper s4;
+    private StructPadTermEqual _root;
+    private KaitaiStruct _parent;
+    private byte[] _raw_s1;
+    private byte[] _raw_s2;
+    private byte[] _raw_s3;
+    private byte[] _raw_s4;
 }

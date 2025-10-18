@@ -86,17 +86,6 @@ public class TsPacketHeader extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("ts_packet_remain", 184, this.tsPacketRemain.length);
         _dirty = false;
     }
-    private int syncByte;
-    private boolean transportErrorIndicator;
-    private boolean payloadUnitStartIndicator;
-    private boolean transportPriority;
-    private long pid;
-    private long transportScramblingControl;
-    private AdaptationFieldControlEnum adaptationFieldControl;
-    private long continuityCounter;
-    private byte[] tsPacketRemain;
-    private TsPacketHeader _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int syncByte() { return syncByte; }
     public void setSyncByte(int _v) { _dirty = true; syncByte = _v; }
     public boolean transportErrorIndicator() { return transportErrorIndicator; }
@@ -119,4 +108,15 @@ public class TsPacketHeader extends KaitaiStruct.ReadWrite {
     public void set_root(TsPacketHeader _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private int syncByte;
+    private boolean transportErrorIndicator;
+    private boolean payloadUnitStartIndicator;
+    private boolean transportPriority;
+    private long pid;
+    private long transportScramblingControl;
+    private AdaptationFieldControlEnum adaptationFieldControl;
+    private long continuityCounter;
+    private byte[] tsPacketRemain;
+    private TsPacketHeader _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

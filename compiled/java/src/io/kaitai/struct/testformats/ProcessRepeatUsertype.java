@@ -71,23 +71,23 @@ public class ProcessRepeatUsertype extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int a;
-        private byte b;
-        private ProcessRepeatUsertype _root;
-        private ProcessRepeatUsertype _parent;
         public int a() { return a; }
         public byte b() { return b; }
         public ProcessRepeatUsertype _root() { return _root; }
         public ProcessRepeatUsertype _parent() { return _parent; }
+        private int a;
+        private byte b;
+        private ProcessRepeatUsertype _root;
+        private ProcessRepeatUsertype _parent;
     }
-    private List<Block> blocks;
-    private ProcessRepeatUsertype _root;
-    private KaitaiStruct _parent;
-    private List<byte[]> _raw_blocks;
-    private List<byte[]> _raw__raw_blocks;
     public List<Block> blocks() { return blocks; }
     public ProcessRepeatUsertype _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
     public List<byte[]> _raw_blocks() { return _raw_blocks; }
     public List<byte[]> _raw__raw_blocks() { return _raw__raw_blocks; }
+    private List<Block> blocks;
+    private ProcessRepeatUsertype _root;
+    private KaitaiStruct _parent;
+    private List<byte[]> _raw_blocks;
+    private List<byte[]> _raw__raw_blocks;
 }

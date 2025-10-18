@@ -93,19 +93,19 @@ public class RecursiveOne extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int finisher;
-        private RecursiveOne _root;
-        private RecursiveOne _parent;
         public int finisher() { return finisher; }
         public RecursiveOne _root() { return _root; }
         public RecursiveOne _parent() { return _parent; }
+        private int finisher;
+        private RecursiveOne _root;
+        private RecursiveOne _parent;
     }
-    private int one;
-    private KaitaiStruct next;
-    private RecursiveOne _root;
-    private KaitaiStruct _parent;
     public int one() { return one; }
     public KaitaiStruct next() { return next; }
     public RecursiveOne _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private int one;
+    private KaitaiStruct next;
+    private RecursiveOne _root;
+    private KaitaiStruct _parent;
 }

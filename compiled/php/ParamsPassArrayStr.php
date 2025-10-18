@@ -17,19 +17,19 @@ namespace Kaitai\Struct\Tests {
             $this->_m_passStrArray = new \Kaitai\Struct\Tests\ParamsPassArrayStr\WantsStrs($this->strArray(), $this->_io, $this, $this->_root);
             $this->_m_passStrArrayCalc = new \Kaitai\Struct\Tests\ParamsPassArrayStr\WantsStrs($this->strArrayCalc(), $this->_io, $this, $this->_root);
         }
-        protected $_m_strArrayCalc;
         public function strArrayCalc() {
             if ($this->_m_strArrayCalc !== null)
                 return $this->_m_strArrayCalc;
             $this->_m_strArrayCalc = ["aB", "Cd"];
             return $this->_m_strArrayCalc;
         }
-        protected $_m_strArray;
-        protected $_m_passStrArray;
-        protected $_m_passStrArrayCalc;
         public function strArray() { return $this->_m_strArray; }
         public function passStrArray() { return $this->_m_passStrArray; }
         public function passStrArrayCalc() { return $this->_m_passStrArrayCalc; }
+        protected $_m_strArrayCalc;
+        protected $_m_strArray;
+        protected $_m_passStrArray;
+        protected $_m_passStrArrayCalc;
     }
 }
 
@@ -43,7 +43,7 @@ namespace Kaitai\Struct\Tests\ParamsPassArrayStr {
 
         private function _read() {
         }
-        protected $_m_strs;
         public function strs() { return $this->_m_strs; }
+        protected $_m_strs;
     }
 }

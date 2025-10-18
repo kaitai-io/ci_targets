@@ -95,8 +95,6 @@ namespace Kaitai
                     throw new ValidationGreaterThanError(((ulong) ((Idx == 9 ? 1 : 127))), _value, m_io, "/types/group/seq/1");
                 }
             }
-            private bool f_intermValue;
-            private ulong _intermValue;
             public ulong IntermValue
             {
                 get
@@ -108,13 +106,6 @@ namespace Kaitai
                     return _intermValue;
                 }
             }
-            private bool _hasNext;
-            private ulong _value;
-            private int _idx;
-            private ulong _prevIntermValue;
-            private ulong _multiplier;
-            private VlqBase128Le m_root;
-            private VlqBase128Le m_parent;
 
             /// <summary>
             /// If `true`, then we have more bytes to read.
@@ -138,9 +129,16 @@ namespace Kaitai
             public ulong Multiplier { get { return _multiplier; } }
             public VlqBase128Le M_Root { get { return m_root; } }
             public VlqBase128Le M_Parent { get { return m_parent; } }
+            private bool f_intermValue;
+            private ulong _intermValue;
+            private bool _hasNext;
+            private ulong _value;
+            private int _idx;
+            private ulong _prevIntermValue;
+            private ulong _multiplier;
+            private VlqBase128Le m_root;
+            private VlqBase128Le m_parent;
         }
-        private bool f_len;
-        private int _len;
         public int Len
         {
             get
@@ -152,8 +150,6 @@ namespace Kaitai
                 return _len;
             }
         }
-        private bool f_signBit;
-        private ulong _signBit;
         public ulong SignBit
         {
             get
@@ -165,8 +161,6 @@ namespace Kaitai
                 return _signBit;
             }
         }
-        private bool f_value;
-        private ulong _value;
 
         /// <summary>
         /// Resulting unsigned value as normal integer
@@ -182,8 +176,6 @@ namespace Kaitai
                 return _value;
             }
         }
-        private bool f_valueSigned;
-        private long _valueSigned;
         public long ValueSigned
         {
             get
@@ -195,11 +187,19 @@ namespace Kaitai
                 return _valueSigned;
             }
         }
-        private List<Group> _groups;
-        private VlqBase128Le m_root;
-        private KaitaiStruct m_parent;
         public List<Group> Groups { get { return _groups; } }
         public VlqBase128Le M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_len;
+        private int _len;
+        private bool f_signBit;
+        private ulong _signBit;
+        private bool f_value;
+        private ulong _value;
+        private bool f_valueSigned;
+        private long _valueSigned;
+        private List<Group> _groups;
+        private VlqBase128Le m_root;
+        private KaitaiStruct m_parent;
     }
 }

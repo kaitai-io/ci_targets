@@ -59,8 +59,6 @@ namespace Kaitai
                 _b3 = m_io.ReadU1();
                 _b4 = m_io.ReadU1();
             }
-            private bool f_asInt;
-            private int _asInt;
             public int AsInt
             {
                 get
@@ -72,8 +70,6 @@ namespace Kaitai
                     return _asInt;
                 }
             }
-            private bool f_asStr;
-            private string _asStr;
             public string AsStr
             {
                 get
@@ -85,8 +81,6 @@ namespace Kaitai
                     return _asStr;
                 }
             }
-            private bool f_digit1;
-            private int _digit1;
             public int Digit1
             {
                 get
@@ -98,8 +92,6 @@ namespace Kaitai
                     return _digit1;
                 }
             }
-            private bool f_digit2;
-            private int _digit2;
             public int Digit2
             {
                 get
@@ -111,8 +103,6 @@ namespace Kaitai
                     return _digit2;
                 }
             }
-            private bool f_digit3;
-            private int _digit3;
             public int Digit3
             {
                 get
@@ -124,8 +114,6 @@ namespace Kaitai
                     return _digit3;
                 }
             }
-            private bool f_digit4;
-            private int _digit4;
             public int Digit4
             {
                 get
@@ -137,8 +125,6 @@ namespace Kaitai
                     return _digit4;
                 }
             }
-            private bool f_digit5;
-            private int _digit5;
             public int Digit5
             {
                 get
@@ -150,8 +136,6 @@ namespace Kaitai
                     return _digit5;
                 }
             }
-            private bool f_digit6;
-            private int _digit6;
             public int Digit6
             {
                 get
@@ -163,8 +147,6 @@ namespace Kaitai
                     return _digit6;
                 }
             }
-            private bool f_digit7;
-            private int _digit7;
             public int Digit7
             {
                 get
@@ -176,8 +158,6 @@ namespace Kaitai
                     return _digit7;
                 }
             }
-            private bool f_digit8;
-            private int _digit8;
             public int Digit8
             {
                 get
@@ -189,18 +169,38 @@ namespace Kaitai
                     return _digit8;
                 }
             }
-            private byte _b1;
-            private byte _b2;
-            private byte _b3;
-            private byte _b4;
-            private BcdUserTypeLe m_root;
-            private BcdUserTypeLe m_parent;
             public byte B1 { get { return _b1; } }
             public byte B2 { get { return _b2; } }
             public byte B3 { get { return _b3; } }
             public byte B4 { get { return _b4; } }
             public BcdUserTypeLe M_Root { get { return m_root; } }
             public BcdUserTypeLe M_Parent { get { return m_parent; } }
+            private bool f_asInt;
+            private int _asInt;
+            private bool f_asStr;
+            private string _asStr;
+            private bool f_digit1;
+            private int _digit1;
+            private bool f_digit2;
+            private int _digit2;
+            private bool f_digit3;
+            private int _digit3;
+            private bool f_digit4;
+            private int _digit4;
+            private bool f_digit5;
+            private int _digit5;
+            private bool f_digit6;
+            private int _digit6;
+            private bool f_digit7;
+            private int _digit7;
+            private bool f_digit8;
+            private int _digit8;
+            private byte _b1;
+            private byte _b2;
+            private byte _b3;
+            private byte _b4;
+            private BcdUserTypeLe m_root;
+            private BcdUserTypeLe m_parent;
         }
         public partial class LtrObj : KaitaiStruct
         {
@@ -232,8 +232,6 @@ namespace Kaitai
                 _b3 = m_io.ReadU1();
                 _b4 = m_io.ReadU1();
             }
-            private bool f_asInt;
-            private int _asInt;
             public int AsInt
             {
                 get
@@ -245,8 +243,6 @@ namespace Kaitai
                     return _asInt;
                 }
             }
-            private bool f_asStr;
-            private string _asStr;
             public string AsStr
             {
                 get
@@ -258,8 +254,6 @@ namespace Kaitai
                     return _asStr;
                 }
             }
-            private bool f_digit1;
-            private int _digit1;
             public int Digit1
             {
                 get
@@ -271,8 +265,6 @@ namespace Kaitai
                     return _digit1;
                 }
             }
-            private bool f_digit2;
-            private int _digit2;
             public int Digit2
             {
                 get
@@ -284,8 +276,6 @@ namespace Kaitai
                     return _digit2;
                 }
             }
-            private bool f_digit3;
-            private int _digit3;
             public int Digit3
             {
                 get
@@ -297,8 +287,6 @@ namespace Kaitai
                     return _digit3;
                 }
             }
-            private bool f_digit4;
-            private int _digit4;
             public int Digit4
             {
                 get
@@ -310,8 +298,6 @@ namespace Kaitai
                     return _digit4;
                 }
             }
-            private bool f_digit5;
-            private int _digit5;
             public int Digit5
             {
                 get
@@ -323,8 +309,6 @@ namespace Kaitai
                     return _digit5;
                 }
             }
-            private bool f_digit6;
-            private int _digit6;
             public int Digit6
             {
                 get
@@ -336,8 +320,6 @@ namespace Kaitai
                     return _digit6;
                 }
             }
-            private bool f_digit7;
-            private int _digit7;
             public int Digit7
             {
                 get
@@ -349,8 +331,6 @@ namespace Kaitai
                     return _digit7;
                 }
             }
-            private bool f_digit8;
-            private int _digit8;
             public int Digit8
             {
                 get
@@ -362,18 +342,38 @@ namespace Kaitai
                     return _digit8;
                 }
             }
-            private byte _b1;
-            private byte _b2;
-            private byte _b3;
-            private byte _b4;
-            private BcdUserTypeLe m_root;
-            private BcdUserTypeLe m_parent;
             public byte B1 { get { return _b1; } }
             public byte B2 { get { return _b2; } }
             public byte B3 { get { return _b3; } }
             public byte B4 { get { return _b4; } }
             public BcdUserTypeLe M_Root { get { return m_root; } }
             public BcdUserTypeLe M_Parent { get { return m_parent; } }
+            private bool f_asInt;
+            private int _asInt;
+            private bool f_asStr;
+            private string _asStr;
+            private bool f_digit1;
+            private int _digit1;
+            private bool f_digit2;
+            private int _digit2;
+            private bool f_digit3;
+            private int _digit3;
+            private bool f_digit4;
+            private int _digit4;
+            private bool f_digit5;
+            private int _digit5;
+            private bool f_digit6;
+            private int _digit6;
+            private bool f_digit7;
+            private int _digit7;
+            private bool f_digit8;
+            private int _digit8;
+            private byte _b1;
+            private byte _b2;
+            private byte _b3;
+            private byte _b4;
+            private BcdUserTypeLe m_root;
+            private BcdUserTypeLe m_parent;
         }
         public partial class RtlObj : KaitaiStruct
         {
@@ -405,8 +405,6 @@ namespace Kaitai
                 _b3 = m_io.ReadU1();
                 _b4 = m_io.ReadU1();
             }
-            private bool f_asInt;
-            private int _asInt;
             public int AsInt
             {
                 get
@@ -418,8 +416,6 @@ namespace Kaitai
                     return _asInt;
                 }
             }
-            private bool f_asStr;
-            private string _asStr;
             public string AsStr
             {
                 get
@@ -431,8 +427,6 @@ namespace Kaitai
                     return _asStr;
                 }
             }
-            private bool f_digit1;
-            private int _digit1;
             public int Digit1
             {
                 get
@@ -444,8 +438,6 @@ namespace Kaitai
                     return _digit1;
                 }
             }
-            private bool f_digit2;
-            private int _digit2;
             public int Digit2
             {
                 get
@@ -457,8 +449,6 @@ namespace Kaitai
                     return _digit2;
                 }
             }
-            private bool f_digit3;
-            private int _digit3;
             public int Digit3
             {
                 get
@@ -470,8 +460,6 @@ namespace Kaitai
                     return _digit3;
                 }
             }
-            private bool f_digit4;
-            private int _digit4;
             public int Digit4
             {
                 get
@@ -483,8 +471,6 @@ namespace Kaitai
                     return _digit4;
                 }
             }
-            private bool f_digit5;
-            private int _digit5;
             public int Digit5
             {
                 get
@@ -496,8 +482,6 @@ namespace Kaitai
                     return _digit5;
                 }
             }
-            private bool f_digit6;
-            private int _digit6;
             public int Digit6
             {
                 get
@@ -509,8 +493,6 @@ namespace Kaitai
                     return _digit6;
                 }
             }
-            private bool f_digit7;
-            private int _digit7;
             public int Digit7
             {
                 get
@@ -522,8 +504,6 @@ namespace Kaitai
                     return _digit7;
                 }
             }
-            private bool f_digit8;
-            private int _digit8;
             public int Digit8
             {
                 get
@@ -535,27 +515,39 @@ namespace Kaitai
                     return _digit8;
                 }
             }
-            private byte _b1;
-            private byte _b2;
-            private byte _b3;
-            private byte _b4;
-            private BcdUserTypeLe m_root;
-            private BcdUserTypeLe m_parent;
             public byte B1 { get { return _b1; } }
             public byte B2 { get { return _b2; } }
             public byte B3 { get { return _b3; } }
             public byte B4 { get { return _b4; } }
             public BcdUserTypeLe M_Root { get { return m_root; } }
             public BcdUserTypeLe M_Parent { get { return m_parent; } }
+            private bool f_asInt;
+            private int _asInt;
+            private bool f_asStr;
+            private string _asStr;
+            private bool f_digit1;
+            private int _digit1;
+            private bool f_digit2;
+            private int _digit2;
+            private bool f_digit3;
+            private int _digit3;
+            private bool f_digit4;
+            private int _digit4;
+            private bool f_digit5;
+            private int _digit5;
+            private bool f_digit6;
+            private int _digit6;
+            private bool f_digit7;
+            private int _digit7;
+            private bool f_digit8;
+            private int _digit8;
+            private byte _b1;
+            private byte _b2;
+            private byte _b3;
+            private byte _b4;
+            private BcdUserTypeLe m_root;
+            private BcdUserTypeLe m_parent;
         }
-        private LtrObj _ltr;
-        private RtlObj _rtl;
-        private LeadingZeroLtrObj _leadingZeroLtr;
-        private BcdUserTypeLe m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_ltr;
-        private byte[] __raw_rtl;
-        private byte[] __raw_leadingZeroLtr;
         public LtrObj Ltr { get { return _ltr; } }
         public RtlObj Rtl { get { return _rtl; } }
         public LeadingZeroLtrObj LeadingZeroLtr { get { return _leadingZeroLtr; } }
@@ -564,5 +556,13 @@ namespace Kaitai
         public byte[] M_RawLtr { get { return __raw_ltr; } }
         public byte[] M_RawRtl { get { return __raw_rtl; } }
         public byte[] M_RawLeadingZeroLtr { get { return __raw_leadingZeroLtr; } }
+        private LtrObj _ltr;
+        private RtlObj _rtl;
+        private LeadingZeroLtrObj _leadingZeroLtr;
+        private BcdUserTypeLe m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_ltr;
+        private byte[] __raw_rtl;
+        private byte[] __raw_leadingZeroLtr;
     }
 }

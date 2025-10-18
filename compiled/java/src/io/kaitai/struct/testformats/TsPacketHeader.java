@@ -63,17 +63,6 @@ public class TsPacketHeader extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private int syncByte;
-    private boolean transportErrorIndicator;
-    private boolean payloadUnitStartIndicator;
-    private boolean transportPriority;
-    private long pid;
-    private long transportScramblingControl;
-    private AdaptationFieldControlEnum adaptationFieldControl;
-    private long continuityCounter;
-    private byte[] tsPacketRemain;
-    private TsPacketHeader _root;
-    private KaitaiStruct _parent;
     public int syncByte() { return syncByte; }
     public boolean transportErrorIndicator() { return transportErrorIndicator; }
     public boolean payloadUnitStartIndicator() { return payloadUnitStartIndicator; }
@@ -85,4 +74,15 @@ public class TsPacketHeader extends KaitaiStruct {
     public byte[] tsPacketRemain() { return tsPacketRemain; }
     public TsPacketHeader _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private int syncByte;
+    private boolean transportErrorIndicator;
+    private boolean payloadUnitStartIndicator;
+    private boolean transportPriority;
+    private long pid;
+    private long transportScramblingControl;
+    private AdaptationFieldControlEnum adaptationFieldControl;
+    private long continuityCounter;
+    private byte[] tsPacketRemain;
+    private TsPacketHeader _root;
+    private KaitaiStruct _parent;
 }

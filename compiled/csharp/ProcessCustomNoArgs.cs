@@ -23,13 +23,13 @@ namespace Kaitai
             CustomFxNoArgs _process__raw_buf = new CustomFxNoArgs();
             _buf = _process__raw_buf.Decode(__raw_buf);
         }
-        private byte[] _buf;
-        private ProcessCustomNoArgs m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_buf;
         public byte[] Buf { get { return _buf; } }
         public ProcessCustomNoArgs M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawBuf { get { return __raw_buf; } }
+        private byte[] _buf;
+        private ProcessCustomNoArgs m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_buf;
     }
 }

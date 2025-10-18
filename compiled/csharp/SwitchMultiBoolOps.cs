@@ -63,20 +63,20 @@ namespace Kaitai
                 }
                 }
             }
-            private byte _code;
-            private ulong _body;
-            private SwitchMultiBoolOps m_root;
-            private SwitchMultiBoolOps m_parent;
             public byte Code { get { return _code; } }
             public ulong Body { get { return _body; } }
             public SwitchMultiBoolOps M_Root { get { return m_root; } }
             public SwitchMultiBoolOps M_Parent { get { return m_parent; } }
+            private byte _code;
+            private ulong _body;
+            private SwitchMultiBoolOps m_root;
+            private SwitchMultiBoolOps m_parent;
         }
-        private List<Opcode> _opcodes;
-        private SwitchMultiBoolOps m_root;
-        private KaitaiStruct m_parent;
         public List<Opcode> Opcodes { get { return _opcodes; } }
         public SwitchMultiBoolOps M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<Opcode> _opcodes;
+        private SwitchMultiBoolOps m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -40,7 +40,6 @@ public class CastToImported extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private Integer hwOne;
     public Integer hwOne() {
         if (this.hwOne != null)
             return this.hwOne;
@@ -48,13 +47,14 @@ public class CastToImported extends KaitaiStruct.ReadWrite {
         return this.hwOne;
     }
     public void _invalidateHwOne() { this.hwOne = null; }
-    private KaitaiStruct.ReadWrite hwParam;
-    private CastToImported _root;
-    private KaitaiStruct.ReadWrite _parent;
     public KaitaiStruct.ReadWrite hwParam() { return hwParam; }
     public void setHwParam(KaitaiStruct.ReadWrite _v) { _dirty = true; hwParam = _v; }
     public CastToImported _root() { return _root; }
     public void set_root(CastToImported _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer hwOne;
+    private KaitaiStruct.ReadWrite hwParam;
+    private CastToImported _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

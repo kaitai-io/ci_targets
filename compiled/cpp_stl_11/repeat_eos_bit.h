@@ -25,14 +25,12 @@ private:
 
 public:
     ~repeat_eos_bit_t();
+    std::vector<uint64_t>* nibbles() const { return m_nibbles.get(); }
+    repeat_eos_bit_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::unique_ptr<std::vector<uint64_t>> m_nibbles;
     repeat_eos_bit_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::vector<uint64_t>* nibbles() const { return m_nibbles.get(); }
-    repeat_eos_bit_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

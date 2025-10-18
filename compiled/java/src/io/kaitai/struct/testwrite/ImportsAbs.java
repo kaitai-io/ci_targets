@@ -51,10 +51,6 @@ public class ImportsAbs extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("body", len().value(), this.body.length);
         _dirty = false;
     }
-    private VlqBase128Le len;
-    private byte[] body;
-    private ImportsAbs _root;
-    private KaitaiStruct.ReadWrite _parent;
     public VlqBase128Le len() { return len; }
     public void setLen(VlqBase128Le _v) { _dirty = true; len = _v; }
     public byte[] body() { return body; }
@@ -63,4 +59,8 @@ public class ImportsAbs extends KaitaiStruct.ReadWrite {
     public void set_root(ImportsAbs _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private VlqBase128Le len;
+    private byte[] body;
+    private ImportsAbs _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

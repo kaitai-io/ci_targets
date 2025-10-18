@@ -74,10 +74,6 @@ public class ValidNotParsedIf extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private Integer notParsed;
-    private Integer parsed;
-    private ValidNotParsedIf _root;
-    private KaitaiStruct.ReadWrite _parent;
     public Integer notParsed() { return notParsed; }
     public void setNotParsed(Integer _v) { _dirty = true; notParsed = _v; }
     public Integer parsed() { return parsed; }
@@ -86,4 +82,8 @@ public class ValidNotParsedIf extends KaitaiStruct.ReadWrite {
     public void set_root(ValidNotParsedIf _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer notParsed;
+    private Integer parsed;
+    private ValidNotParsedIf _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

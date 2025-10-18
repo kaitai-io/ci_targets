@@ -25,15 +25,14 @@ private:
 
 public:
     ~valid_fail_repeat_inst_t();
+    std::vector<uint32_t>* inst();
+    std::string a() const { return m_a; }
+    valid_fail_repeat_inst_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_inst;
     std::vector<uint32_t>* m_inst;
-
-public:
-    std::vector<uint32_t>* inst();
-
-private:
     std::string m_a;
     bool n_a;
 
@@ -43,11 +42,6 @@ public:
 private:
     valid_fail_repeat_inst_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::string a() const { return m_a; }
-    valid_fail_repeat_inst_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // VALID_FAIL_REPEAT_INST_H_

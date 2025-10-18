@@ -39,16 +39,14 @@ public:
 
     public:
         ~child_t();
+        std::string data() const { return m_data; }
+        nav_parent_override_t* _root() const { return m__root; }
+        nav_parent_override_t* _parent() const { return m__parent; }
 
     private:
         std::string m_data;
         nav_parent_override_t* m__root;
         nav_parent_override_t* m__parent;
-
-    public:
-        std::string data() const { return m_data; }
-        nav_parent_override_t* _root() const { return m__root; }
-        nav_parent_override_t* _parent() const { return m__parent; }
     };
 
     class mediator_t : public kaitai::kstruct {
@@ -63,24 +61,15 @@ public:
 
     public:
         ~mediator_t();
+        child_t* child_2() const { return m_child_2.get(); }
+        nav_parent_override_t* _root() const { return m__root; }
+        nav_parent_override_t* _parent() const { return m__parent; }
 
     private:
         std::unique_ptr<child_t> m_child_2;
         nav_parent_override_t* m__root;
         nav_parent_override_t* m__parent;
-
-    public:
-        child_t* child_2() const { return m_child_2.get(); }
-        nav_parent_override_t* _root() const { return m__root; }
-        nav_parent_override_t* _parent() const { return m__parent; }
     };
-
-private:
-    uint8_t m_child_size;
-    std::unique_ptr<child_t> m_child_1;
-    std::unique_ptr<mediator_t> m_mediator_2;
-    nav_parent_override_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     uint8_t child_size() const { return m_child_size; }
@@ -88,4 +77,11 @@ public:
     mediator_t* mediator_2() const { return m_mediator_2.get(); }
     nav_parent_override_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    uint8_t m_child_size;
+    std::unique_ptr<child_t> m_child_1;
+    std::unique_ptr<mediator_t> m_mediator_2;
+    nav_parent_override_t* m__root;
+    kaitai::kstruct* m__parent;
 };

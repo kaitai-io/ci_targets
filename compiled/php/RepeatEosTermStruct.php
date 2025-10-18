@@ -19,10 +19,10 @@ namespace Kaitai\Struct\Tests {
                 $i++;
             }
         }
-        protected $_m_records;
-        protected $_m__raw_records;
         public function records() { return $this->_m_records; }
         public function _raw_records() { return $this->_m__raw_records; }
+        protected $_m_records;
+        protected $_m__raw_records;
     }
 }
 
@@ -36,7 +36,7 @@ namespace Kaitai\Struct\Tests\RepeatEosTermStruct {
         private function _read() {
             $this->_m_value = $this->_io->readBytesFull();
         }
-        protected $_m_value;
         public function value() { return $this->_m_value; }
+        protected $_m_value;
     }
 }

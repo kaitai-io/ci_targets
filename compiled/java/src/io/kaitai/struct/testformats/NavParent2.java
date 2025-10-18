@@ -104,14 +104,13 @@ public class NavParent2 extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private String content;
-            private NavParent2 _root;
-            private NavParent2.Tag _parent;
             public String content() { return content; }
             public NavParent2 _root() { return _root; }
             public NavParent2.Tag _parent() { return _parent; }
+            private String content;
+            private NavParent2 _root;
+            private NavParent2.Tag _parent;
         }
-        private TagChar tagContent;
         public TagChar tagContent() {
             if (this.tagContent != null)
                 return this.tagContent;
@@ -127,25 +126,26 @@ public class NavParent2 extends KaitaiStruct {
             io.seek(_pos);
             return this.tagContent;
         }
-        private String name;
-        private long ofs;
-        private long numItems;
-        private NavParent2 _root;
-        private NavParent2 _parent;
         public String name() { return name; }
         public long ofs() { return ofs; }
         public long numItems() { return numItems; }
         public NavParent2 _root() { return _root; }
         public NavParent2 _parent() { return _parent; }
+        private TagChar tagContent;
+        private String name;
+        private long ofs;
+        private long numItems;
+        private NavParent2 _root;
+        private NavParent2 _parent;
     }
-    private long ofsTags;
-    private long numTags;
-    private List<Tag> tags;
-    private NavParent2 _root;
-    private KaitaiStruct _parent;
     public long ofsTags() { return ofsTags; }
     public long numTags() { return numTags; }
     public List<Tag> tags() { return tags; }
     public NavParent2 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private long ofsTags;
+    private long numTags;
+    private List<Tag> tags;
+    private NavParent2 _root;
+    private KaitaiStruct _parent;
 }

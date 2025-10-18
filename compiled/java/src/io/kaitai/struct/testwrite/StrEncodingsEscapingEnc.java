@@ -198,9 +198,6 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private String v;
-        private boolean _shouldWriteV = false;
-        private boolean _enabledV = true;
         public String v() {
             if (_shouldWriteV)
                 _writeV();
@@ -226,12 +223,15 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("v", 0, this._io.size() - this._io.pos());
             this._io.seek(_pos);
         }
-        private StrEncodingsEscapingEnc _root;
-        private StrEncodingsEscapingEnc _parent;
         public StrEncodingsEscapingEnc _root() { return _root; }
         public void set_root(StrEncodingsEscapingEnc _v) { _dirty = true; _root = _v; }
         public StrEncodingsEscapingEnc _parent() { return _parent; }
         public void set_parent(StrEncodingsEscapingEnc _v) { _dirty = true; _parent = _v; }
+        private String v;
+        private boolean _shouldWriteV = false;
+        private boolean _enabledV = true;
+        private StrEncodingsEscapingEnc _root;
+        private StrEncodingsEscapingEnc _parent;
     }
     public static class Str2Wrapper extends KaitaiStruct.ReadWrite {
         public static Str2Wrapper fromFile(String fileName) throws IOException {
@@ -274,9 +274,6 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private String v;
-        private boolean _shouldWriteV = false;
-        private boolean _enabledV = true;
         public String v() {
             if (_shouldWriteV)
                 _writeV();
@@ -302,12 +299,15 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("v", 0, this._io.size() - this._io.pos());
             this._io.seek(_pos);
         }
-        private StrEncodingsEscapingEnc _root;
-        private StrEncodingsEscapingEnc _parent;
         public StrEncodingsEscapingEnc _root() { return _root; }
         public void set_root(StrEncodingsEscapingEnc _v) { _dirty = true; _root = _v; }
         public StrEncodingsEscapingEnc _parent() { return _parent; }
         public void set_parent(StrEncodingsEscapingEnc _v) { _dirty = true; _parent = _v; }
+        private String v;
+        private boolean _shouldWriteV = false;
+        private boolean _enabledV = true;
+        private StrEncodingsEscapingEnc _root;
+        private StrEncodingsEscapingEnc _parent;
     }
     public static class Str3Wrapper extends KaitaiStruct.ReadWrite {
         public static Str3Wrapper fromFile(String fileName) throws IOException {
@@ -350,9 +350,6 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private String v;
-        private boolean _shouldWriteV = false;
-        private boolean _enabledV = true;
         public String v() {
             if (_shouldWriteV)
                 _writeV();
@@ -378,12 +375,15 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("v", 0, this._io.size() - this._io.pos());
             this._io.seek(_pos);
         }
-        private StrEncodingsEscapingEnc _root;
-        private StrEncodingsEscapingEnc _parent;
         public StrEncodingsEscapingEnc _root() { return _root; }
         public void set_root(StrEncodingsEscapingEnc _v) { _dirty = true; _root = _v; }
         public StrEncodingsEscapingEnc _parent() { return _parent; }
         public void set_parent(StrEncodingsEscapingEnc _v) { _dirty = true; _parent = _v; }
+        private String v;
+        private boolean _shouldWriteV = false;
+        private boolean _enabledV = true;
+        private StrEncodingsEscapingEnc _root;
+        private StrEncodingsEscapingEnc _parent;
     }
     public static class Str4Wrapper extends KaitaiStruct.ReadWrite {
         public static Str4Wrapper fromFile(String fileName) throws IOException {
@@ -426,9 +426,6 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private String v;
-        private boolean _shouldWriteV = false;
-        private boolean _enabledV = true;
         public String v() {
             if (_shouldWriteV)
                 _writeV();
@@ -454,27 +451,16 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct.ReadWrite {
                 throw new ConsistencyError("v", 0, this._io.size() - this._io.pos());
             this._io.seek(_pos);
         }
-        private StrEncodingsEscapingEnc _root;
-        private StrEncodingsEscapingEnc _parent;
         public StrEncodingsEscapingEnc _root() { return _root; }
         public void set_root(StrEncodingsEscapingEnc _v) { _dirty = true; _root = _v; }
         public StrEncodingsEscapingEnc _parent() { return _parent; }
         public void set_parent(StrEncodingsEscapingEnc _v) { _dirty = true; _parent = _v; }
+        private String v;
+        private boolean _shouldWriteV = false;
+        private boolean _enabledV = true;
+        private StrEncodingsEscapingEnc _root;
+        private StrEncodingsEscapingEnc _parent;
     }
-    private int lenOf1;
-    private Str1Wrapper str1;
-    private int lenOf2;
-    private Str2Wrapper str2;
-    private int lenOf3;
-    private Str3Wrapper str3;
-    private int lenOf4;
-    private Str4Wrapper str4;
-    private StrEncodingsEscapingEnc _root;
-    private KaitaiStruct.ReadWrite _parent;
-    private byte[] _raw_str1;
-    private byte[] _raw_str2;
-    private byte[] _raw_str3;
-    private byte[] _raw_str4;
     public int lenOf1() { return lenOf1; }
     public void setLenOf1(int _v) { _dirty = true; lenOf1 = _v; }
     public Str1Wrapper str1() { return str1; }
@@ -503,4 +489,18 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct.ReadWrite {
     public void set_raw_Str3(byte[] _v) { _dirty = true; _raw_str3 = _v; }
     public byte[] _raw_str4() { return _raw_str4; }
     public void set_raw_Str4(byte[] _v) { _dirty = true; _raw_str4 = _v; }
+    private int lenOf1;
+    private Str1Wrapper str1;
+    private int lenOf2;
+    private Str2Wrapper str2;
+    private int lenOf3;
+    private Str3Wrapper str3;
+    private int lenOf4;
+    private Str4Wrapper str4;
+    private StrEncodingsEscapingEnc _root;
+    private KaitaiStruct.ReadWrite _parent;
+    private byte[] _raw_str1;
+    private byte[] _raw_str2;
+    private byte[] _raw_str3;
+    private byte[] _raw_str4;
 }

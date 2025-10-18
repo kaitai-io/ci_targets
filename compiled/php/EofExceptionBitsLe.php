@@ -11,9 +11,9 @@ namespace Kaitai\Struct\Tests {
             $this->_m_preBits = $this->_io->readBitsIntLe(7);
             $this->_m_failBits = $this->_io->readBitsIntLe(18);
         }
-        protected $_m_preBits;
-        protected $_m_failBits;
         public function preBits() { return $this->_m_preBits; }
         public function failBits() { return $this->_m_failBits; }
+        protected $_m_preBits;
+        protected $_m_failBits;
     }
 }

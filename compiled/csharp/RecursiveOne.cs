@@ -56,20 +56,20 @@ namespace Kaitai
             {
                 _finisher = m_io.ReadU2le();
             }
-            private ushort _finisher;
-            private RecursiveOne m_root;
-            private RecursiveOne m_parent;
             public ushort Finisher { get { return _finisher; } }
             public RecursiveOne M_Root { get { return m_root; } }
             public RecursiveOne M_Parent { get { return m_parent; } }
+            private ushort _finisher;
+            private RecursiveOne m_root;
+            private RecursiveOne m_parent;
         }
-        private byte _one;
-        private KaitaiStruct _next;
-        private RecursiveOne m_root;
-        private KaitaiStruct m_parent;
         public byte One { get { return _one; } }
         public KaitaiStruct Next { get { return _next; } }
         public RecursiveOne M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte _one;
+        private KaitaiStruct _next;
+        private RecursiveOne m_root;
+        private KaitaiStruct m_parent;
     }
 }

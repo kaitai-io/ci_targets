@@ -13,12 +13,12 @@ namespace Kaitai\Struct\Tests {
             $this->_m_f2 = $this->_io->readS4be();
             $this->_m_f3 = $this->_io->readS4be();
         }
-        protected $_m_f1;
-        protected $_m_f2;
-        protected $_m_f3;
         public function f1() { return $this->_m_f1; }
         public function f2() { return $this->_m_f2; }
         public function f3() { return $this->_m_f3; }
+        protected $_m_f1;
+        protected $_m_f2;
+        protected $_m_f3;
     }
 }
 

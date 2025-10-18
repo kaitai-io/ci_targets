@@ -68,12 +68,6 @@ public class ExprIoPosBits extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private long foo;
-    private Long bar;
-    private Boolean baz;
-    private Long qux;
-    private ExprIoPosBits _root;
-    private KaitaiStruct.ReadWrite _parent;
     public long foo() { return foo; }
     public void setFoo(long _v) { _dirty = true; foo = _v; }
     public Long bar() { return bar; }
@@ -86,4 +80,10 @@ public class ExprIoPosBits extends KaitaiStruct.ReadWrite {
     public void set_root(ExprIoPosBits _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private long foo;
+    private Long bar;
+    private Boolean baz;
+    private Long qux;
+    private ExprIoPosBits _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

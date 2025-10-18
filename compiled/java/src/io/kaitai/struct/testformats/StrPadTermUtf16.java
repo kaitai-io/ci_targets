@@ -35,14 +35,14 @@ public class StrPadTermUtf16 extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private String strTerm;
-    private String strTermInclude;
-    private String strTermAndPad;
-    private StrPadTermUtf16 _root;
-    private KaitaiStruct _parent;
     public String strTerm() { return strTerm; }
     public String strTermInclude() { return strTermInclude; }
     public String strTermAndPad() { return strTermAndPad; }
     public StrPadTermUtf16 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private String strTerm;
+    private String strTermInclude;
+    private String strTermAndPad;
+    private StrPadTermUtf16 _root;
+    private KaitaiStruct _parent;
 }

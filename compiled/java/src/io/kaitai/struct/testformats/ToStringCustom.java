@@ -34,14 +34,14 @@ public class ToStringCustom extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private String s1;
-    private String s2;
-    private ToStringCustom _root;
-    private KaitaiStruct _parent;
     public String s1() { return s1; }
     public String s2() { return s2; }
     public ToStringCustom _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private String s1;
+    private String s2;
+    private ToStringCustom _root;
+    private KaitaiStruct _parent;
 
     @Override
     public String toString() {

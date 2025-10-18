@@ -47,13 +47,13 @@ public class EofExceptionBytes extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("buf", 13, this.buf.length);
         _dirty = false;
     }
-    private byte[] buf;
-    private EofExceptionBytes _root;
-    private KaitaiStruct.ReadWrite _parent;
     public byte[] buf() { return buf; }
     public void setBuf(byte[] _v) { _dirty = true; buf = _v; }
     public EofExceptionBytes _root() { return _root; }
     public void set_root(EofExceptionBytes _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private byte[] buf;
+    private EofExceptionBytes _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

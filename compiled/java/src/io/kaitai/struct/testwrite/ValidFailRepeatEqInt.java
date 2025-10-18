@@ -70,13 +70,13 @@ public class ValidFailRepeatEqInt extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private List<Long> foo;
-    private ValidFailRepeatEqInt _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Long> foo() { return foo; }
     public void setFoo(List<Long> _v) { _dirty = true; foo = _v; }
     public ValidFailRepeatEqInt _root() { return _root; }
     public void set_root(ValidFailRepeatEqInt _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Long> foo;
+    private ValidFailRepeatEqInt _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

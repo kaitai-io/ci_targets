@@ -33,8 +33,6 @@ namespace Kaitai
                 _difWithHack = new HelloWorld(io___raw_difWithHack);
             }
         }
-        private bool f_dif;
-        private HelloWorld _dif;
         public HelloWorld Dif
         {
             get
@@ -46,8 +44,6 @@ namespace Kaitai
                 return _dif;
             }
         }
-        private bool f_isHack;
-        private bool _isHack;
         public bool IsHack
         {
             get
@@ -59,13 +55,6 @@ namespace Kaitai
                 return _isHack;
             }
         }
-        private HelloWorld _difWoHack;
-        private HelloWorld _difWithHack;
-        private TypeTernaryOpaque m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_difWoHack;
-        private byte[] __raw_difWithHack;
-        private byte[] __raw__raw_difWithHack;
         public HelloWorld DifWoHack { get { return _difWoHack; } }
         public HelloWorld DifWithHack { get { return _difWithHack; } }
         public TypeTernaryOpaque M_Root { get { return m_root; } }
@@ -73,5 +62,16 @@ namespace Kaitai
         public byte[] M_RawDifWoHack { get { return __raw_difWoHack; } }
         public byte[] M_RawDifWithHack { get { return __raw_difWithHack; } }
         public byte[] M_RawM_RawDifWithHack { get { return __raw__raw_difWithHack; } }
+        private bool f_dif;
+        private HelloWorld _dif;
+        private bool f_isHack;
+        private bool _isHack;
+        private HelloWorld _difWoHack;
+        private HelloWorld _difWithHack;
+        private TypeTernaryOpaque m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_difWoHack;
+        private byte[] __raw_difWithHack;
+        private byte[] __raw__raw_difWithHack;
     }
 }

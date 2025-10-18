@@ -58,15 +58,15 @@ public class EofExceptionSized extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private EofExceptionSized _root;
-        private EofExceptionSized _parent;
         public EofExceptionSized _root() { return _root; }
         public EofExceptionSized _parent() { return _parent; }
+        private EofExceptionSized _root;
+        private EofExceptionSized _parent;
     }
-    private Foo buf;
-    private EofExceptionSized _root;
-    private KaitaiStruct _parent;
     public Foo buf() { return buf; }
     public EofExceptionSized _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Foo buf;
+    private EofExceptionSized _root;
+    private KaitaiStruct _parent;
 }

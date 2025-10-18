@@ -35,8 +35,6 @@ namespace Kaitai
             _byte15To19 = m_io.ReadBitsIntLe(40);
             _byte20To27 = m_io.ReadBitsIntLe(64);
         }
-        private bool f_testIfB1;
-        private sbyte? _testIfB1;
         public sbyte? TestIfB1
         {
             get
@@ -50,21 +48,6 @@ namespace Kaitai
                 return _testIfB1;
             }
         }
-        private ulong _byte1;
-        private ulong _byte2;
-        private bool _bitsA;
-        private ulong _bitsB;
-        private ulong _bitsC;
-        private ulong _largeBits1;
-        private ulong _spacer;
-        private ulong _largeBits2;
-        private short _normalS2;
-        private ulong _byte8910;
-        private ulong _byte11To14;
-        private ulong _byte15To19;
-        private ulong _byte20To27;
-        private BitsSimpleLe m_root;
-        private KaitaiStruct m_parent;
         public ulong Byte1 { get { return _byte1; } }
         public ulong Byte2 { get { return _byte2; } }
         public bool BitsA { get { return _bitsA; } }
@@ -80,5 +63,22 @@ namespace Kaitai
         public ulong Byte20To27 { get { return _byte20To27; } }
         public BitsSimpleLe M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_testIfB1;
+        private sbyte? _testIfB1;
+        private ulong _byte1;
+        private ulong _byte2;
+        private bool _bitsA;
+        private ulong _bitsB;
+        private ulong _bitsC;
+        private ulong _largeBits1;
+        private ulong _spacer;
+        private ulong _largeBits2;
+        private short _normalS2;
+        private ulong _byte8910;
+        private ulong _byte11To14;
+        private ulong _byte15To19;
+        private ulong _byte20To27;
+        private BitsSimpleLe m_root;
+        private KaitaiStruct m_parent;
     }
 }

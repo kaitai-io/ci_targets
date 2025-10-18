@@ -11,8 +11,8 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_main = new \Kaitai\Struct\Tests\DefaultBitEndianMod\MainObj($this->_io, $this, $this->_root);
         }
-        protected $_m_main;
         public function main() { return $this->_m_main; }
+        protected $_m_main;
     }
 }
 
@@ -30,14 +30,14 @@ namespace Kaitai\Struct\Tests\DefaultBitEndianMod {
             $this->_m_nest = new \Kaitai\Struct\Tests\DefaultBitEndianMod\MainObj\Subnest($this->_io, $this, $this->_root);
             $this->_m_nestBe = new \Kaitai\Struct\Tests\DefaultBitEndianMod\MainObj\SubnestBe($this->_io, $this, $this->_root);
         }
-        protected $_m_one;
-        protected $_m_two;
-        protected $_m_nest;
-        protected $_m_nestBe;
         public function one() { return $this->_m_one; }
         public function two() { return $this->_m_two; }
         public function nest() { return $this->_m_nest; }
         public function nestBe() { return $this->_m_nestBe; }
+        protected $_m_one;
+        protected $_m_two;
+        protected $_m_nest;
+        protected $_m_nestBe;
     }
 }
 
@@ -51,8 +51,8 @@ namespace Kaitai\Struct\Tests\DefaultBitEndianMod\MainObj {
         private function _read() {
             $this->_m_two = $this->_io->readBitsIntLe(16);
         }
-        protected $_m_two;
         public function two() { return $this->_m_two; }
+        protected $_m_two;
     }
 }
 
@@ -66,7 +66,7 @@ namespace Kaitai\Struct\Tests\DefaultBitEndianMod\MainObj {
         private function _read() {
             $this->_m_two = $this->_io->readBitsIntBe(16);
         }
-        protected $_m_two;
         public function two() { return $this->_m_two; }
+        protected $_m_two;
     }
 }

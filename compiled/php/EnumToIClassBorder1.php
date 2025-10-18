@@ -12,7 +12,6 @@ namespace Kaitai\Struct\Tests {
             $this->_m_pet1 = $this->_io->readU4le();
             $this->_m_pet2 = $this->_io->readU4le();
         }
-        protected $_m_checker;
         public function checker() {
             if ($this->_m_checker !== null)
                 return $this->_m_checker;
@@ -22,17 +21,18 @@ namespace Kaitai\Struct\Tests {
             $this->_io->seek($_pos);
             return $this->_m_checker;
         }
-        protected $_m_someDog;
         public function someDog() {
             if ($this->_m_someDog !== null)
                 return $this->_m_someDog;
             $this->_m_someDog = 4;
             return $this->_m_someDog;
         }
-        protected $_m_pet1;
-        protected $_m_pet2;
         public function pet1() { return $this->_m_pet1; }
         public function pet2() { return $this->_m_pet2; }
+        protected $_m_checker;
+        protected $_m_someDog;
+        protected $_m_pet1;
+        protected $_m_pet2;
     }
 }
 

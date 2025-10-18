@@ -42,7 +42,6 @@ public class ExprOpsParens extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private Integer boolAnd;
     public Integer boolAnd() {
         if (this.boolAnd != null)
             return this.boolAnd;
@@ -50,7 +49,6 @@ public class ExprOpsParens extends KaitaiStruct.ReadWrite {
         return this.boolAnd;
     }
     public void _invalidateBoolAnd() { this.boolAnd = null; }
-    private Integer boolEq;
     public Integer boolEq() {
         if (this.boolEq != null)
             return this.boolEq;
@@ -58,7 +56,6 @@ public class ExprOpsParens extends KaitaiStruct.ReadWrite {
         return this.boolEq;
     }
     public void _invalidateBoolEq() { this.boolEq = null; }
-    private Integer boolOr;
     public Integer boolOr() {
         if (this.boolOr != null)
             return this.boolOr;
@@ -66,7 +63,6 @@ public class ExprOpsParens extends KaitaiStruct.ReadWrite {
         return this.boolOr;
     }
     public void _invalidateBoolOr() { this.boolOr = null; }
-    private Double f2pi;
     public Double f2pi() {
         if (this.f2pi != null)
             return this.f2pi;
@@ -74,7 +70,6 @@ public class ExprOpsParens extends KaitaiStruct.ReadWrite {
         return this.f2pi;
     }
     public void _invalidateF2pi() { this.f2pi = null; }
-    private Double fE;
     public Double fE() {
         if (this.fE != null)
             return this.fE;
@@ -82,7 +77,6 @@ public class ExprOpsParens extends KaitaiStruct.ReadWrite {
         return this.fE;
     }
     public void _invalidateFE() { this.fE = null; }
-    private Integer fSumToInt;
     public Integer fSumToInt() {
         if (this.fSumToInt != null)
             return this.fSumToInt;
@@ -90,7 +84,6 @@ public class ExprOpsParens extends KaitaiStruct.ReadWrite {
         return this.fSumToInt;
     }
     public void _invalidateFSumToInt() { this.fSumToInt = null; }
-    private Byte i42;
     public Byte i42() {
         if (this.i42 != null)
             return this.i42;
@@ -98,7 +91,6 @@ public class ExprOpsParens extends KaitaiStruct.ReadWrite {
         return this.i42;
     }
     public void _invalidateI42() { this.i42 = null; }
-    private Integer iM13;
     public Integer iM13() {
         if (this.iM13 != null)
             return this.iM13;
@@ -106,7 +98,6 @@ public class ExprOpsParens extends KaitaiStruct.ReadWrite {
         return this.iM13;
     }
     public void _invalidateIM13() { this.iM13 = null; }
-    private String iSumToStr;
     public String iSumToStr() {
         if (this.iSumToStr != null)
             return this.iSumToStr;
@@ -114,7 +105,6 @@ public class ExprOpsParens extends KaitaiStruct.ReadWrite {
         return this.iSumToStr;
     }
     public void _invalidateISumToStr() { this.iSumToStr = null; }
-    private String str0To4;
     public String str0To4() {
         if (this.str0To4 != null)
             return this.str0To4;
@@ -122,7 +112,6 @@ public class ExprOpsParens extends KaitaiStruct.ReadWrite {
         return this.str0To4;
     }
     public void _invalidateStr0To4() { this.str0To4 = null; }
-    private String str5To9;
     public String str5To9() {
         if (this.str5To9 != null)
             return this.str5To9;
@@ -130,7 +119,6 @@ public class ExprOpsParens extends KaitaiStruct.ReadWrite {
         return this.str5To9;
     }
     public void _invalidateStr5To9() { this.str5To9 = null; }
-    private Integer strConcatLen;
     public Integer strConcatLen() {
         if (this.strConcatLen != null)
             return this.strConcatLen;
@@ -138,7 +126,6 @@ public class ExprOpsParens extends KaitaiStruct.ReadWrite {
         return this.strConcatLen;
     }
     public void _invalidateStrConcatLen() { this.strConcatLen = null; }
-    private String strConcatRev;
     public String strConcatRev() {
         if (this.strConcatRev != null)
             return this.strConcatRev;
@@ -146,7 +133,6 @@ public class ExprOpsParens extends KaitaiStruct.ReadWrite {
         return this.strConcatRev;
     }
     public void _invalidateStrConcatRev() { this.strConcatRev = null; }
-    private String strConcatSubstr2To7;
     public String strConcatSubstr2To7() {
         if (this.strConcatSubstr2To7 != null)
             return this.strConcatSubstr2To7;
@@ -154,7 +140,6 @@ public class ExprOpsParens extends KaitaiStruct.ReadWrite {
         return this.strConcatSubstr2To7;
     }
     public void _invalidateStrConcatSubstr2To7() { this.strConcatSubstr2To7 = null; }
-    private Integer strConcatToI;
     public Integer strConcatToI() {
         if (this.strConcatToI != null)
             return this.strConcatToI;
@@ -162,10 +147,25 @@ public class ExprOpsParens extends KaitaiStruct.ReadWrite {
         return this.strConcatToI;
     }
     public void _invalidateStrConcatToI() { this.strConcatToI = null; }
-    private ExprOpsParens _root;
-    private KaitaiStruct.ReadWrite _parent;
     public ExprOpsParens _root() { return _root; }
     public void set_root(ExprOpsParens _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer boolAnd;
+    private Integer boolEq;
+    private Integer boolOr;
+    private Double f2pi;
+    private Double fE;
+    private Integer fSumToInt;
+    private Byte i42;
+    private Integer iM13;
+    private String iSumToStr;
+    private String str0To4;
+    private String str5To9;
+    private Integer strConcatLen;
+    private String strConcatRev;
+    private String strConcatSubstr2To7;
+    private Integer strConcatToI;
+    private ExprOpsParens _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

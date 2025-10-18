@@ -38,15 +38,6 @@ namespace Kaitai
             _f6 = ((Constants) m_io.ReadS8be());
             _f7 = ((Constants) m_io.ReadS8be());
         }
-        private Constants _f1;
-        private Constants _f2;
-        private Constants _f3;
-        private Constants _f4;
-        private Constants _f5;
-        private Constants _f6;
-        private Constants _f7;
-        private EnumLongRangeS m_root;
-        private KaitaiStruct m_parent;
         public Constants F1 { get { return _f1; } }
         public Constants F2 { get { return _f2; } }
         public Constants F3 { get { return _f3; } }
@@ -56,5 +47,14 @@ namespace Kaitai
         public Constants F7 { get { return _f7; } }
         public EnumLongRangeS M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private Constants _f1;
+        private Constants _f2;
+        private Constants _f3;
+        private Constants _f4;
+        private Constants _f5;
+        private Constants _f6;
+        private Constants _f7;
+        private EnumLongRangeS m_root;
+        private KaitaiStruct m_parent;
     }
 }

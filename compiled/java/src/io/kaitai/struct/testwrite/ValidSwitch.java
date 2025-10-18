@@ -92,10 +92,6 @@ public class ValidSwitch extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private int a;
-    private int b;
-    private ValidSwitch _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int a() { return a; }
     public void setA(int _v) { _dirty = true; a = _v; }
     public int b() { return b; }
@@ -104,4 +100,8 @@ public class ValidSwitch extends KaitaiStruct.ReadWrite {
     public void set_root(ValidSwitch _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private int a;
+    private int b;
+    private ValidSwitch _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

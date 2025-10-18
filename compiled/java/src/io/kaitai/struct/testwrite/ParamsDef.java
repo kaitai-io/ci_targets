@@ -58,12 +58,6 @@ public class ParamsDef extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private String buf;
-    private Integer trailer;
-    private long len;
-    private boolean hasTrailer;
-    private ParamsDef _root;
-    private KaitaiStruct.ReadWrite _parent;
     public String buf() { return buf; }
     public void setBuf(String _v) { _dirty = true; buf = _v; }
     public Integer trailer() { return trailer; }
@@ -76,4 +70,10 @@ public class ParamsDef extends KaitaiStruct.ReadWrite {
     public void set_root(ParamsDef _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private String buf;
+    private Integer trailer;
+    private long len;
+    private boolean hasTrailer;
+    private ParamsDef _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

@@ -51,12 +51,12 @@ namespace Kaitai
                     _v = m_io.ReadU1();
                 }
             }
-            private byte? _v;
-            private InstanceIoUserEarlier m_root;
-            private InstanceIoUserEarlier m_parent;
             public byte? V { get { return _v; } }
             public InstanceIoUserEarlier M_Root { get { return m_root; } }
             public InstanceIoUserEarlier M_Parent { get { return m_parent; } }
+            private byte? _v;
+            private InstanceIoUserEarlier m_root;
+            private InstanceIoUserEarlier m_parent;
         }
         public partial class Foo : KaitaiStruct
         {
@@ -79,8 +79,6 @@ namespace Kaitai
                     _bar = m_io.ReadU1();
                 }
             }
-            private bool f_inst;
-            private Slot _inst;
             public Slot Inst
             {
                 get
@@ -98,16 +96,18 @@ namespace Kaitai
                     return _inst;
                 }
             }
-            private byte _indicator;
-            private byte? _bar;
-            private InstanceIoUserEarlier m_root;
-            private InstanceIoUserEarlier m_parent;
-            private byte[] __raw_inst;
             public byte Indicator { get { return _indicator; } }
             public byte? Bar { get { return _bar; } }
             public InstanceIoUserEarlier M_Root { get { return m_root; } }
             public InstanceIoUserEarlier M_Parent { get { return m_parent; } }
             public byte[] M_RawInst { get { return __raw_inst; } }
+            private bool f_inst;
+            private Slot _inst;
+            private byte _indicator;
+            private byte? _bar;
+            private InstanceIoUserEarlier m_root;
+            private InstanceIoUserEarlier m_parent;
+            private byte[] __raw_inst;
         }
         public partial class Slot : KaitaiStruct
         {
@@ -129,8 +129,6 @@ namespace Kaitai
                     _content = m_io.ReadU1();
                 }
             }
-            private bool f_last;
-            private byte? _last;
             public byte? Last
             {
                 get
@@ -147,15 +145,15 @@ namespace Kaitai
                     return _last;
                 }
             }
-            private byte? _content;
-            private InstanceIoUserEarlier m_root;
-            private KaitaiStruct m_parent;
             public byte? Content { get { return _content; } }
             public InstanceIoUserEarlier M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
+            private bool f_last;
+            private byte? _last;
+            private byte? _content;
+            private InstanceIoUserEarlier m_root;
+            private KaitaiStruct m_parent;
         }
-        private bool f_aMid;
-        private ushort _aMid;
         public ushort AMid
         {
             get
@@ -171,8 +169,6 @@ namespace Kaitai
                 return _aMid;
             }
         }
-        private bool f_bMid;
-        private ushort _bMid;
         public ushort BMid
         {
             get
@@ -188,16 +184,6 @@ namespace Kaitai
                 return _bMid;
             }
         }
-        private Slot _sizedA;
-        private Slot _sizedB;
-        private Foo _intoB;
-        private Foo _intoASkipped;
-        private Foo _intoA;
-        private Baz _lastAccessor;
-        private InstanceIoUserEarlier m_root;
-        private KaitaiStruct m_parent;
-        private byte[] __raw_sizedA;
-        private byte[] __raw_sizedB;
         public Slot SizedA { get { return _sizedA; } }
         public Slot SizedB { get { return _sizedB; } }
         public Foo IntoB { get { return _intoB; } }
@@ -208,5 +194,19 @@ namespace Kaitai
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawSizedA { get { return __raw_sizedA; } }
         public byte[] M_RawSizedB { get { return __raw_sizedB; } }
+        private bool f_aMid;
+        private ushort _aMid;
+        private bool f_bMid;
+        private ushort _bMid;
+        private Slot _sizedA;
+        private Slot _sizedB;
+        private Foo _intoB;
+        private Foo _intoASkipped;
+        private Foo _intoA;
+        private Baz _lastAccessor;
+        private InstanceIoUserEarlier m_root;
+        private KaitaiStruct m_parent;
+        private byte[] __raw_sizedA;
+        private byte[] __raw_sizedB;
     }
 }

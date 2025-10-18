@@ -12,9 +12,9 @@ namespace Kaitai\Struct\Tests {
             $this->_m_one = $this->_io->readU1();
             $this->_m_two = new \Kaitai\Struct\Tests\Imported1($this->_io);
         }
-        protected $_m_one;
-        protected $_m_two;
         public function one() { return $this->_m_one; }
         public function two() { return $this->_m_two; }
+        protected $_m_one;
+        protected $_m_two;
     }
 }

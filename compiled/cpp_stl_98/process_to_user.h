@@ -38,25 +38,15 @@ public:
 
     public:
         ~just_str_t();
+        std::string str() const { return m_str; }
+        process_to_user_t* _root() const { return m__root; }
+        process_to_user_t* _parent() const { return m__parent; }
 
     private:
         std::string m_str;
         process_to_user_t* m__root;
         process_to_user_t* m__parent;
-
-    public:
-        std::string str() const { return m_str; }
-        process_to_user_t* _root() const { return m__root; }
-        process_to_user_t* _parent() const { return m__parent; }
     };
-
-private:
-    just_str_t* m_buf1;
-    process_to_user_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::string m__raw_buf1;
-    kaitai::kstream* m__io__raw_buf1;
-    std::string m__raw__raw_buf1;
 
 public:
     just_str_t* buf1() const { return m_buf1; }
@@ -65,6 +55,14 @@ public:
     std::string _raw_buf1() const { return m__raw_buf1; }
     kaitai::kstream* _io__raw_buf1() const { return m__io__raw_buf1; }
     std::string _raw__raw_buf1() const { return m__raw__raw_buf1; }
+
+private:
+    just_str_t* m_buf1;
+    process_to_user_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::string m__raw_buf1;
+    kaitai::kstream* m__io__raw_buf1;
+    std::string m__raw__raw_buf1;
 };
 
 #endif  // PROCESS_TO_USER_H_

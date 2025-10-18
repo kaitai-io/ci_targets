@@ -13,12 +13,12 @@ namespace Kaitai\Struct\Tests {
             $this->_m_two = $this->_io->readBitsIntBe(8);
             $this->_m_three = $this->_io->readBitsIntBe(1);
         }
-        protected $_m_one;
-        protected $_m_two;
-        protected $_m_three;
         public function one() { return $this->_m_one; }
         public function two() { return $this->_m_two; }
         public function three() { return $this->_m_three; }
+        protected $_m_one;
+        protected $_m_two;
+        protected $_m_three;
     }
 }
 

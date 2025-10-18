@@ -47,27 +47,18 @@ public class ExprIfIntOps extends KaitaiStruct {
         for (int i = 0; i < this.items.size(); i++) {
         }
     }
-    private Integer bytesSubKey;
     public Integer bytesSubKey() {
         if (this.bytesSubKey != null)
             return this.bytesSubKey;
         this.bytesSubKey = ((Number) ((bytes()[((Number) (key())).intValue()] & 0xff))).intValue();
         return this.bytesSubKey;
     }
-    private Byte itemsSubKey;
     public Byte itemsSubKey() {
         if (this.itemsSubKey != null)
             return this.itemsSubKey;
         this.itemsSubKey = ((Number) (items().get(((Number) (key())).intValue()))).byteValue();
         return this.itemsSubKey;
     }
-    private Long key;
-    private byte[] skip;
-    private byte[] bytes;
-    private List<Byte> items;
-    private ExprIfIntOps _root;
-    private KaitaiStruct _parent;
-    private byte[] _raw_bytes;
     public Long key() { return key; }
     public byte[] skip() { return skip; }
     public byte[] bytes() { return bytes; }
@@ -75,4 +66,13 @@ public class ExprIfIntOps extends KaitaiStruct {
     public ExprIfIntOps _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
     public byte[] _raw_bytes() { return _raw_bytes; }
+    private Integer bytesSubKey;
+    private Byte itemsSubKey;
+    private Long key;
+    private byte[] skip;
+    private byte[] bytes;
+    private List<Byte> items;
+    private ExprIfIntOps _root;
+    private KaitaiStruct _parent;
+    private byte[] _raw_bytes;
 }

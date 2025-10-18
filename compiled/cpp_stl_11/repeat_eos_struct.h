@@ -39,27 +39,25 @@ public:
 
     public:
         ~chunk_t();
+        uint32_t offset() const { return m_offset; }
+        uint32_t len() const { return m_len; }
+        repeat_eos_struct_t* _root() const { return m__root; }
+        repeat_eos_struct_t* _parent() const { return m__parent; }
 
     private:
         uint32_t m_offset;
         uint32_t m_len;
         repeat_eos_struct_t* m__root;
         repeat_eos_struct_t* m__parent;
-
-    public:
-        uint32_t offset() const { return m_offset; }
-        uint32_t len() const { return m_len; }
-        repeat_eos_struct_t* _root() const { return m__root; }
-        repeat_eos_struct_t* _parent() const { return m__parent; }
     };
-
-private:
-    std::unique_ptr<std::vector<std::unique_ptr<chunk_t>>> m_chunks;
-    repeat_eos_struct_t* m__root;
-    kaitai::kstruct* m__parent;
 
 public:
     std::vector<std::unique_ptr<chunk_t>>* chunks() const { return m_chunks.get(); }
     repeat_eos_struct_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    std::unique_ptr<std::vector<std::unique_ptr<chunk_t>>> m_chunks;
+    repeat_eos_struct_t* m__root;
+    kaitai::kstruct* m__parent;
 };

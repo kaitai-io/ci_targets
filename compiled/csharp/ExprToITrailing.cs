@@ -23,8 +23,6 @@ namespace Kaitai
         private void _read()
         {
         }
-        private bool f_toIGarbage;
-        private int _toIGarbage;
         public int ToIGarbage
         {
             get
@@ -36,8 +34,6 @@ namespace Kaitai
                 return _toIGarbage;
             }
         }
-        private bool f_toIR10;
-        private int _toIR10;
         public int ToIR10
         {
             get
@@ -49,8 +45,6 @@ namespace Kaitai
                 return _toIR10;
             }
         }
-        private bool f_toIR16;
-        private int _toIR16;
         public int ToIR16
         {
             get
@@ -62,9 +56,15 @@ namespace Kaitai
                 return _toIR16;
             }
         }
-        private ExprToITrailing m_root;
-        private KaitaiStruct m_parent;
         public ExprToITrailing M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_toIGarbage;
+        private int _toIGarbage;
+        private bool f_toIR10;
+        private int _toIR10;
+        private bool f_toIR16;
+        private int _toIR16;
+        private ExprToITrailing m_root;
+        private KaitaiStruct m_parent;
     }
 }

@@ -266,7 +266,6 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct.ReadWrite {
             public void _check() {
                 _dirty = false;
             }
-            private Byte value;
             public Byte value() {
                 if (this.value != null)
                     return this.value;
@@ -274,12 +273,13 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct.ReadWrite {
                 return this.value;
             }
             public void _invalidateValue() { this.value = null; }
-            private SwitchManualEnumInvalidElse _root;
-            private SwitchManualEnumInvalidElse.Opcode _parent;
             public SwitchManualEnumInvalidElse _root() { return _root; }
             public void set_root(SwitchManualEnumInvalidElse _v) { _dirty = true; _root = _v; }
             public SwitchManualEnumInvalidElse.Opcode _parent() { return _parent; }
             public void set_parent(SwitchManualEnumInvalidElse.Opcode _v) { _dirty = true; _parent = _v; }
+            private Byte value;
+            private SwitchManualEnumInvalidElse _root;
+            private SwitchManualEnumInvalidElse.Opcode _parent;
         }
         public static class Intval extends KaitaiStruct.ReadWrite {
             public static Intval fromFile(String fileName) throws IOException {
@@ -318,15 +318,15 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct.ReadWrite {
             public void _check() {
                 _dirty = false;
             }
-            private int value;
-            private SwitchManualEnumInvalidElse _root;
-            private SwitchManualEnumInvalidElse.Opcode _parent;
             public int value() { return value; }
             public void setValue(int _v) { _dirty = true; value = _v; }
             public SwitchManualEnumInvalidElse _root() { return _root; }
             public void set_root(SwitchManualEnumInvalidElse _v) { _dirty = true; _root = _v; }
             public SwitchManualEnumInvalidElse.Opcode _parent() { return _parent; }
             public void set_parent(SwitchManualEnumInvalidElse.Opcode _v) { _dirty = true; _parent = _v; }
+            private int value;
+            private SwitchManualEnumInvalidElse _root;
+            private SwitchManualEnumInvalidElse.Opcode _parent;
         }
         public static class Strval extends KaitaiStruct.ReadWrite {
             public static Strval fromFile(String fileName) throws IOException {
@@ -368,20 +368,16 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct.ReadWrite {
                     throw new ConsistencyError("value", -1, KaitaiStream.byteArrayIndexOf((this.value).getBytes(Charset.forName("ASCII")), ((byte) 0)));
                 _dirty = false;
             }
-            private String value;
-            private SwitchManualEnumInvalidElse _root;
-            private SwitchManualEnumInvalidElse.Opcode _parent;
             public String value() { return value; }
             public void setValue(String _v) { _dirty = true; value = _v; }
             public SwitchManualEnumInvalidElse _root() { return _root; }
             public void set_root(SwitchManualEnumInvalidElse _v) { _dirty = true; _root = _v; }
             public SwitchManualEnumInvalidElse.Opcode _parent() { return _parent; }
             public void set_parent(SwitchManualEnumInvalidElse.Opcode _v) { _dirty = true; _parent = _v; }
+            private String value;
+            private SwitchManualEnumInvalidElse _root;
+            private SwitchManualEnumInvalidElse.Opcode _parent;
         }
-        private CodeEnum code;
-        private KaitaiStruct.ReadWrite body;
-        private SwitchManualEnumInvalidElse _root;
-        private SwitchManualEnumInvalidElse _parent;
         public CodeEnum code() { return code; }
         public void setCode(CodeEnum _v) { _dirty = true; code = _v; }
         public KaitaiStruct.ReadWrite body() { return body; }
@@ -390,14 +386,18 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct.ReadWrite {
         public void set_root(SwitchManualEnumInvalidElse _v) { _dirty = true; _root = _v; }
         public SwitchManualEnumInvalidElse _parent() { return _parent; }
         public void set_parent(SwitchManualEnumInvalidElse _v) { _dirty = true; _parent = _v; }
+        private CodeEnum code;
+        private KaitaiStruct.ReadWrite body;
+        private SwitchManualEnumInvalidElse _root;
+        private SwitchManualEnumInvalidElse _parent;
     }
-    private List<Opcode> opcodes;
-    private SwitchManualEnumInvalidElse _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Opcode> opcodes() { return opcodes; }
     public void setOpcodes(List<Opcode> _v) { _dirty = true; opcodes = _v; }
     public SwitchManualEnumInvalidElse _root() { return _root; }
     public void set_root(SwitchManualEnumInvalidElse _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<Opcode> opcodes;
+    private SwitchManualEnumInvalidElse _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

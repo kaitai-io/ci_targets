@@ -19,28 +19,18 @@ namespace Kaitai\Struct\Tests {
             $this->_m_instB1 = new \Kaitai\Struct\Tests\ParamsPassBool\ParamTypeB1($this->vTrue(), $this->_io, $this, $this->_root);
             $this->_m_instBool = new \Kaitai\Struct\Tests\ParamsPassBool\ParamTypeBool($this->vFalse(), $this->_io, $this, $this->_root);
         }
-        protected $_m_vFalse;
         public function vFalse() {
             if ($this->_m_vFalse !== null)
                 return $this->_m_vFalse;
             $this->_m_vFalse = false;
             return $this->_m_vFalse;
         }
-        protected $_m_vTrue;
         public function vTrue() {
             if ($this->_m_vTrue !== null)
                 return $this->_m_vTrue;
             $this->_m_vTrue = true;
             return $this->_m_vTrue;
         }
-        protected $_m_sFalse;
-        protected $_m_sTrue;
-        protected $_m_seqB1;
-        protected $_m_seqBool;
-        protected $_m_literalB1;
-        protected $_m_literalBool;
-        protected $_m_instB1;
-        protected $_m_instBool;
         public function sFalse() { return $this->_m_sFalse; }
         public function sTrue() { return $this->_m_sTrue; }
         public function seqB1() { return $this->_m_seqB1; }
@@ -49,6 +39,16 @@ namespace Kaitai\Struct\Tests {
         public function literalBool() { return $this->_m_literalBool; }
         public function instB1() { return $this->_m_instB1; }
         public function instBool() { return $this->_m_instBool; }
+        protected $_m_vFalse;
+        protected $_m_vTrue;
+        protected $_m_sFalse;
+        protected $_m_sTrue;
+        protected $_m_seqB1;
+        protected $_m_seqBool;
+        protected $_m_literalB1;
+        protected $_m_literalBool;
+        protected $_m_instB1;
+        protected $_m_instBool;
     }
 }
 
@@ -63,10 +63,10 @@ namespace Kaitai\Struct\Tests\ParamsPassBool {
         private function _read() {
             $this->_m_foo = $this->_io->readBytes(($this->arg() ? 1 : 2));
         }
-        protected $_m_foo;
-        protected $_m_arg;
         public function foo() { return $this->_m_foo; }
         public function arg() { return $this->_m_arg; }
+        protected $_m_foo;
+        protected $_m_arg;
     }
 }
 
@@ -81,9 +81,9 @@ namespace Kaitai\Struct\Tests\ParamsPassBool {
         private function _read() {
             $this->_m_foo = $this->_io->readBytes(($this->arg() ? 1 : 2));
         }
-        protected $_m_foo;
-        protected $_m_arg;
         public function foo() { return $this->_m_foo; }
         public function arg() { return $this->_m_arg; }
+        protected $_m_foo;
+        protected $_m_arg;
     }
 }

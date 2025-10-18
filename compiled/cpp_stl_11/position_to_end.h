@@ -38,32 +38,26 @@ public:
 
     public:
         ~index_obj_t();
+        uint32_t foo() const { return m_foo; }
+        uint32_t bar() const { return m_bar; }
+        position_to_end_t* _root() const { return m__root; }
+        position_to_end_t* _parent() const { return m__parent; }
 
     private:
         uint32_t m_foo;
         uint32_t m_bar;
         position_to_end_t* m__root;
         position_to_end_t* m__parent;
-
-    public:
-        uint32_t foo() const { return m_foo; }
-        uint32_t bar() const { return m_bar; }
-        position_to_end_t* _root() const { return m__root; }
-        position_to_end_t* _parent() const { return m__parent; }
     };
+
+public:
+    index_obj_t* index();
+    position_to_end_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_index;
     std::unique_ptr<index_obj_t> m_index;
-
-public:
-    index_obj_t* index();
-
-private:
     position_to_end_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    position_to_end_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -18,9 +18,9 @@ namespace Kaitai\Struct\Tests {
                 throw new \Kaitai\Struct\Error\ValidationNotEqualError("\xFF\xFF", $this->_m_highBit8, $this->_io, "/seq/1");
             }
         }
-        protected $_m_normal;
-        protected $_m_highBit8;
         public function normal() { return $this->_m_normal; }
         public function highBit8() { return $this->_m_highBit8; }
+        protected $_m_normal;
+        protected $_m_highBit8;
     }
 }

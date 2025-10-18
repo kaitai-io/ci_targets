@@ -24,65 +24,35 @@ private:
 
 public:
     ~expr_fstring_0_t();
-
-private:
-    bool f_empty;
-    std::string m_empty;
-
-public:
     std::string empty();
-
-private:
-    bool f_head_and_int;
-    std::string m_head_and_int;
-
-public:
     std::string head_and_int();
-
-private:
-    bool f_head_and_int_literal;
-    std::string m_head_and_int_literal;
-
-public:
     std::string head_and_int_literal();
-
-private:
-    bool f_head_and_str;
-    std::string m_head_and_str;
-
-public:
     std::string head_and_str();
-
-private:
-    bool f_head_and_str_literal;
-    std::string m_head_and_str_literal;
-
-public:
     std::string head_and_str_literal();
-
-private:
-    bool f_literal;
-    std::string m_literal;
-
-public:
     std::string literal();
-
-private:
-    bool f_literal_with_escapes;
-    std::string m_literal_with_escapes;
-
-public:
     std::string literal_with_escapes();
-
-private:
-    std::string m_seq_str;
-    uint8_t m_seq_int;
-    expr_fstring_0_t* m__root;
-    kaitai::kstruct* m__parent;
-
-public:
     std::string seq_str() const { return m_seq_str; }
     uint8_t seq_int() const { return m_seq_int; }
     expr_fstring_0_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+
+private:
+    bool f_empty;
+    std::string m_empty;
+    bool f_head_and_int;
+    std::string m_head_and_int;
+    bool f_head_and_int_literal;
+    std::string m_head_and_int_literal;
+    bool f_head_and_str;
+    std::string m_head_and_str;
+    bool f_head_and_str_literal;
+    std::string m_head_and_str_literal;
+    bool f_literal;
+    std::string m_literal;
+    bool f_literal_with_escapes;
+    std::string m_literal_with_escapes;
+    std::string m_seq_str;
+    uint8_t m_seq_int;
+    expr_fstring_0_t* m__root;
+    kaitai::kstruct* m__parent;
 };

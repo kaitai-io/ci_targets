@@ -188,10 +188,6 @@ public class RepeatUntilComplex extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private int count;
-        private List<Integer> values;
-        private RepeatUntilComplex _root;
-        private RepeatUntilComplex _parent;
         public int count() { return count; }
         public void setCount(int _v) { _dirty = true; count = _v; }
         public List<Integer> values() { return values; }
@@ -200,6 +196,10 @@ public class RepeatUntilComplex extends KaitaiStruct.ReadWrite {
         public void set_root(RepeatUntilComplex _v) { _dirty = true; _root = _v; }
         public RepeatUntilComplex _parent() { return _parent; }
         public void set_parent(RepeatUntilComplex _v) { _dirty = true; _parent = _v; }
+        private int count;
+        private List<Integer> values;
+        private RepeatUntilComplex _root;
+        private RepeatUntilComplex _parent;
     }
     public static class TypeU2 extends KaitaiStruct.ReadWrite {
         public static TypeU2 fromFile(String fileName) throws IOException {
@@ -251,10 +251,6 @@ public class RepeatUntilComplex extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private int count;
-        private List<Integer> values;
-        private RepeatUntilComplex _root;
-        private RepeatUntilComplex _parent;
         public int count() { return count; }
         public void setCount(int _v) { _dirty = true; count = _v; }
         public List<Integer> values() { return values; }
@@ -263,12 +259,11 @@ public class RepeatUntilComplex extends KaitaiStruct.ReadWrite {
         public void set_root(RepeatUntilComplex _v) { _dirty = true; _root = _v; }
         public RepeatUntilComplex _parent() { return _parent; }
         public void set_parent(RepeatUntilComplex _v) { _dirty = true; _parent = _v; }
+        private int count;
+        private List<Integer> values;
+        private RepeatUntilComplex _root;
+        private RepeatUntilComplex _parent;
     }
-    private List<TypeU1> first;
-    private List<TypeU2> second;
-    private List<Integer> third;
-    private RepeatUntilComplex _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<TypeU1> first() { return first; }
     public void setFirst(List<TypeU1> _v) { _dirty = true; first = _v; }
     public List<TypeU2> second() { return second; }
@@ -279,4 +274,9 @@ public class RepeatUntilComplex extends KaitaiStruct.ReadWrite {
     public void set_root(RepeatUntilComplex _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private List<TypeU1> first;
+    private List<TypeU2> second;
+    private List<Integer> third;
+    private RepeatUntilComplex _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

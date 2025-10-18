@@ -25,16 +25,14 @@ private:
 
 public:
     ~repeat_eos_bytes_pad_term_t();
+    std::vector<std::string>* records() const { return m_records; }
+    repeat_eos_bytes_pad_term_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     std::vector<std::string>* m_records;
     repeat_eos_bytes_pad_term_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    std::vector<std::string>* records() const { return m_records; }
-    repeat_eos_bytes_pad_term_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // REPEAT_EOS_BYTES_PAD_TERM_H_

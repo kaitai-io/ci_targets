@@ -46,7 +46,6 @@ public class ExprIntDiv extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private Integer divNegConst;
     public Integer divNegConst() {
         if (this.divNegConst != null)
             return this.divNegConst;
@@ -54,7 +53,6 @@ public class ExprIntDiv extends KaitaiStruct.ReadWrite {
         return this.divNegConst;
     }
     public void _invalidateDivNegConst() { this.divNegConst = null; }
-    private Integer divNegSeq;
     public Integer divNegSeq() {
         if (this.divNegSeq != null)
             return this.divNegSeq;
@@ -62,7 +60,6 @@ public class ExprIntDiv extends KaitaiStruct.ReadWrite {
         return this.divNegSeq;
     }
     public void _invalidateDivNegSeq() { this.divNegSeq = null; }
-    private Integer divPosConst;
     public Integer divPosConst() {
         if (this.divPosConst != null)
             return this.divPosConst;
@@ -70,7 +67,6 @@ public class ExprIntDiv extends KaitaiStruct.ReadWrite {
         return this.divPosConst;
     }
     public void _invalidateDivPosConst() { this.divPosConst = null; }
-    private Integer divPosSeq;
     public Integer divPosSeq() {
         if (this.divPosSeq != null)
             return this.divPosSeq;
@@ -78,10 +74,6 @@ public class ExprIntDiv extends KaitaiStruct.ReadWrite {
         return this.divPosSeq;
     }
     public void _invalidateDivPosSeq() { this.divPosSeq = null; }
-    private long intU;
-    private int intS;
-    private ExprIntDiv _root;
-    private KaitaiStruct.ReadWrite _parent;
     public long intU() { return intU; }
     public void setIntU(long _v) { _dirty = true; intU = _v; }
     public int intS() { return intS; }
@@ -90,4 +82,12 @@ public class ExprIntDiv extends KaitaiStruct.ReadWrite {
     public void set_root(ExprIntDiv _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer divNegConst;
+    private Integer divNegSeq;
+    private Integer divPosConst;
+    private Integer divPosSeq;
+    private long intU;
+    private int intS;
+    private ExprIntDiv _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

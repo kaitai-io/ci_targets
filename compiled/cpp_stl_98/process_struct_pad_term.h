@@ -38,37 +38,15 @@ public:
 
     public:
         ~bytes_wrapper_t();
+        std::string value() const { return m_value; }
+        process_struct_pad_term_t* _root() const { return m__root; }
+        process_struct_pad_term_t* _parent() const { return m__parent; }
 
     private:
         std::string m_value;
         process_struct_pad_term_t* m__root;
         process_struct_pad_term_t* m__parent;
-
-    public:
-        std::string value() const { return m_value; }
-        process_struct_pad_term_t* _root() const { return m__root; }
-        process_struct_pad_term_t* _parent() const { return m__parent; }
     };
-
-private:
-    bytes_wrapper_t* m_str_pad;
-    bytes_wrapper_t* m_str_term;
-    bytes_wrapper_t* m_str_term_and_pad;
-    bytes_wrapper_t* m_str_term_include;
-    process_struct_pad_term_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::string m__raw_str_pad;
-    kaitai::kstream* m__io__raw_str_pad;
-    std::string m__raw__raw_str_pad;
-    std::string m__raw_str_term;
-    kaitai::kstream* m__io__raw_str_term;
-    std::string m__raw__raw_str_term;
-    std::string m__raw_str_term_and_pad;
-    kaitai::kstream* m__io__raw_str_term_and_pad;
-    std::string m__raw__raw_str_term_and_pad;
-    std::string m__raw_str_term_include;
-    kaitai::kstream* m__io__raw_str_term_include;
-    std::string m__raw__raw_str_term_include;
 
 public:
     bytes_wrapper_t* str_pad() const { return m_str_pad; }
@@ -89,6 +67,26 @@ public:
     std::string _raw_str_term_include() const { return m__raw_str_term_include; }
     kaitai::kstream* _io__raw_str_term_include() const { return m__io__raw_str_term_include; }
     std::string _raw__raw_str_term_include() const { return m__raw__raw_str_term_include; }
+
+private:
+    bytes_wrapper_t* m_str_pad;
+    bytes_wrapper_t* m_str_term;
+    bytes_wrapper_t* m_str_term_and_pad;
+    bytes_wrapper_t* m_str_term_include;
+    process_struct_pad_term_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::string m__raw_str_pad;
+    kaitai::kstream* m__io__raw_str_pad;
+    std::string m__raw__raw_str_pad;
+    std::string m__raw_str_term;
+    kaitai::kstream* m__io__raw_str_term;
+    std::string m__raw__raw_str_term;
+    std::string m__raw_str_term_and_pad;
+    kaitai::kstream* m__io__raw_str_term_and_pad;
+    std::string m__raw__raw_str_term_and_pad;
+    std::string m__raw_str_term_include;
+    kaitai::kstream* m__io__raw_str_term_include;
+    std::string m__raw__raw_str_term_include;
 };
 
 #endif  // PROCESS_STRUCT_PAD_TERM_H_

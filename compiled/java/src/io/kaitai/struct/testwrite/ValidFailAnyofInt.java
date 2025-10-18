@@ -50,13 +50,13 @@ public class ValidFailAnyofInt extends KaitaiStruct.ReadWrite {
         }
         _dirty = false;
     }
-    private int foo;
-    private ValidFailAnyofInt _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int foo() { return foo; }
     public void setFoo(int _v) { _dirty = true; foo = _v; }
     public ValidFailAnyofInt _root() { return _root; }
     public void set_root(ValidFailAnyofInt _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private int foo;
+    private ValidFailAnyofInt _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

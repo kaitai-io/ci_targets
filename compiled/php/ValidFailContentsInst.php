@@ -13,7 +13,6 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_a = $this->_io->readBytes(0);
             }
         }
-        protected $_m_foo;
         public function foo() {
             if ($this->_m_foo !== null)
                 return $this->_m_foo;
@@ -26,7 +25,8 @@ namespace Kaitai\Struct\Tests {
             $this->_io->seek($_pos);
             return $this->_m_foo;
         }
-        protected $_m_a;
         public function a() { return $this->_m_a; }
+        protected $_m_foo;
+        protected $_m_a;
     }
 }

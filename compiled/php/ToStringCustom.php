@@ -12,10 +12,10 @@ namespace Kaitai\Struct\Tests {
             $this->_m_s1 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(124, false, true, true), "UTF-8");
             $this->_m_s2 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(124, false, true, true), "UTF-8");
         }
-        protected $_m_s1;
-        protected $_m_s2;
         public function s1() { return $this->_m_s1; }
         public function s2() { return $this->_m_s2; }
+        protected $_m_s1;
+        protected $_m_s2;
 
         public function __toString() {
             return (("s1 = " . $this->s1()) . ", s2 = ") . $this->s2();

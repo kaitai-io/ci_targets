@@ -24,35 +24,21 @@ private:
 
 public:
     ~expr_to_i_trailing_t();
+    int32_t to_i_garbage();
+    int32_t to_i_r10();
+    int32_t to_i_r16();
+    expr_to_i_trailing_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_to_i_garbage;
     int32_t m_to_i_garbage;
-
-public:
-    int32_t to_i_garbage();
-
-private:
     bool f_to_i_r10;
     int32_t m_to_i_r10;
-
-public:
-    int32_t to_i_r10();
-
-private:
     bool f_to_i_r16;
     int32_t m_to_i_r16;
-
-public:
-    int32_t to_i_r16();
-
-private:
     expr_to_i_trailing_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    expr_to_i_trailing_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // EXPR_TO_I_TRAILING_H_

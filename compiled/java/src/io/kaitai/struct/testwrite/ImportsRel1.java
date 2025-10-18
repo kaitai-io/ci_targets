@@ -48,10 +48,6 @@ public class ImportsRel1 extends KaitaiStruct.ReadWrite {
     public void _check() {
         _dirty = false;
     }
-    private int one;
-    private Imported1 two;
-    private ImportsRel1 _root;
-    private KaitaiStruct.ReadWrite _parent;
     public int one() { return one; }
     public void setOne(int _v) { _dirty = true; one = _v; }
     public Imported1 two() { return two; }
@@ -60,4 +56,8 @@ public class ImportsRel1 extends KaitaiStruct.ReadWrite {
     public void set_root(ImportsRel1 _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private int one;
+    private Imported1 two;
+    private ImportsRel1 _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

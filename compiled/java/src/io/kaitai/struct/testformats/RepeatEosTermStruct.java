@@ -72,19 +72,19 @@ public class RepeatEosTermStruct extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private byte[] value;
-        private RepeatEosTermStruct _root;
-        private RepeatEosTermStruct _parent;
         public byte[] value() { return value; }
         public RepeatEosTermStruct _root() { return _root; }
         public RepeatEosTermStruct _parent() { return _parent; }
+        private byte[] value;
+        private RepeatEosTermStruct _root;
+        private RepeatEosTermStruct _parent;
     }
-    private List<BytesWrapper> records;
-    private RepeatEosTermStruct _root;
-    private KaitaiStruct _parent;
-    private List<byte[]> _raw_records;
     public List<BytesWrapper> records() { return records; }
     public RepeatEosTermStruct _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
     public List<byte[]> _raw_records() { return _raw_records; }
+    private List<BytesWrapper> records;
+    private RepeatEosTermStruct _root;
+    private KaitaiStruct _parent;
+    private List<byte[]> _raw_records;
 }

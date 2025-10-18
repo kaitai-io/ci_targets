@@ -50,54 +50,54 @@ public class EnumToIInvalid extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Boolean oneLtTwo;
     public Boolean oneLtTwo() {
         if (this.oneLtTwo != null)
             return this.oneLtTwo;
         this.oneLtTwo = pet1().id() < pet2().id();
         return this.oneLtTwo;
     }
-    private Boolean pet2EqIntF;
     public Boolean pet2EqIntF() {
         if (this.pet2EqIntF != null)
             return this.pet2EqIntF;
         this.pet2EqIntF = pet2().id() == 110;
         return this.pet2EqIntF;
     }
-    private Boolean pet2EqIntT;
     public Boolean pet2EqIntT() {
         if (this.pet2EqIntT != null)
             return this.pet2EqIntT;
         this.pet2EqIntT = pet2().id() == 111;
         return this.pet2EqIntT;
     }
-    private Integer pet2I;
     public Integer pet2I() {
         if (this.pet2I != null)
             return this.pet2I;
         this.pet2I = ((Number) (pet2().id())).intValue();
         return this.pet2I;
     }
-    private String pet2IToS;
     public String pet2IToS() {
         if (this.pet2IToS != null)
             return this.pet2IToS;
         this.pet2IToS = Long.toString(pet2().id());
         return this.pet2IToS;
     }
-    private Integer pet2Mod;
     public Integer pet2Mod() {
         if (this.pet2Mod != null)
             return this.pet2Mod;
         this.pet2Mod = ((Number) (pet2().id() + 32768)).intValue();
         return this.pet2Mod;
     }
-    private Animal pet1;
-    private Animal pet2;
-    private EnumToIInvalid _root;
-    private KaitaiStruct _parent;
     public Animal pet1() { return pet1; }
     public Animal pet2() { return pet2; }
     public EnumToIInvalid _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Boolean oneLtTwo;
+    private Boolean pet2EqIntF;
+    private Boolean pet2EqIntT;
+    private Integer pet2I;
+    private String pet2IToS;
+    private Integer pet2Mod;
+    private Animal pet1;
+    private Animal pet2;
+    private EnumToIInvalid _root;
+    private KaitaiStruct _parent;
 }

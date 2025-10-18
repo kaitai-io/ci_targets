@@ -17,14 +17,12 @@ namespace Kaitai\Struct\Tests {
             $this->_m_two = $this->_io->readU1();
             $this->_m_three = $this->_io->readU1();
         }
-        protected $_m_foo;
         public function foo() {
             if ($this->_m_foo !== null)
                 return $this->_m_foo;
             $this->_m_foo = true;
             return $this->_m_foo;
         }
-        protected $_m_parseInst;
         public function parseInst() {
             if ($this->_m_parseInst !== null)
                 return $this->_m_parseInst;
@@ -34,9 +32,6 @@ namespace Kaitai\Struct\Tests {
             $this->_io->seek($_pos);
             return $this->_m_parseInst;
         }
-        protected $_m_one;
-        protected $_m_two;
-        protected $_m_three;
         public function one() { return $this->_m_one; }
 
         /**
@@ -44,5 +39,10 @@ namespace Kaitai\Struct\Tests {
          */
         public function two() { return $this->_m_two; }
         public function three() { return $this->_m_three; }
+        protected $_m_foo;
+        protected $_m_parseInst;
+        protected $_m_one;
+        protected $_m_two;
+        protected $_m_three;
     }
 }

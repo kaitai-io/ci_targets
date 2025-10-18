@@ -51,7 +51,6 @@ public class IntegersDoubleOverflow extends KaitaiStruct {
         if (this.unsignedUnsafePosLe != null) {
         }
     }
-    private Long unsignedSafeMaxBe;
     public Long unsignedSafeMaxBe() {
         if (this.unsignedSafeMaxBe != null)
             return this.unsignedSafeMaxBe;
@@ -61,7 +60,6 @@ public class IntegersDoubleOverflow extends KaitaiStruct {
         this._io.seek(_pos);
         return this.unsignedSafeMaxBe;
     }
-    private Long unsignedSafeMaxLe;
     public Long unsignedSafeMaxLe() {
         if (this.unsignedSafeMaxLe != null)
             return this.unsignedSafeMaxLe;
@@ -71,7 +69,6 @@ public class IntegersDoubleOverflow extends KaitaiStruct {
         this._io.seek(_pos);
         return this.unsignedSafeMaxLe;
     }
-    private Long unsignedUnsafePosBe;
     public Long unsignedUnsafePosBe() {
         if (this.unsignedUnsafePosBe != null)
             return this.unsignedUnsafePosBe;
@@ -81,7 +78,6 @@ public class IntegersDoubleOverflow extends KaitaiStruct {
         this._io.seek(_pos);
         return this.unsignedUnsafePosBe;
     }
-    private Long unsignedUnsafePosLe;
     public Long unsignedUnsafePosLe() {
         if (this.unsignedUnsafePosLe != null)
             return this.unsignedUnsafePosLe;
@@ -91,16 +87,6 @@ public class IntegersDoubleOverflow extends KaitaiStruct {
         this._io.seek(_pos);
         return this.unsignedUnsafePosLe;
     }
-    private long signedSafeMinBe;
-    private long signedSafeMinLe;
-    private long signedSafeMaxBe;
-    private long signedSafeMaxLe;
-    private long signedUnsafeNegBe;
-    private long signedUnsafeNegLe;
-    private long signedUnsafePosBe;
-    private long signedUnsafePosLe;
-    private IntegersDoubleOverflow _root;
-    private KaitaiStruct _parent;
     public long signedSafeMinBe() { return signedSafeMinBe; }
     public long signedSafeMinLe() { return signedSafeMinLe; }
     public long signedSafeMaxBe() { return signedSafeMaxBe; }
@@ -111,4 +97,18 @@ public class IntegersDoubleOverflow extends KaitaiStruct {
     public long signedUnsafePosLe() { return signedUnsafePosLe; }
     public IntegersDoubleOverflow _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Long unsignedSafeMaxBe;
+    private Long unsignedSafeMaxLe;
+    private Long unsignedUnsafePosBe;
+    private Long unsignedUnsafePosLe;
+    private long signedSafeMinBe;
+    private long signedSafeMinLe;
+    private long signedSafeMaxBe;
+    private long signedSafeMaxLe;
+    private long signedUnsafeNegBe;
+    private long signedUnsafeNegLe;
+    private long signedUnsafePosBe;
+    private long signedUnsafePosLe;
+    private IntegersDoubleOverflow _root;
+    private KaitaiStruct _parent;
 }

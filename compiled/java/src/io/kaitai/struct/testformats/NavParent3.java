@@ -103,14 +103,13 @@ public class NavParent3 extends KaitaiStruct {
 
             public void _fetchInstances() {
             }
-            private String content;
-            private NavParent3 _root;
-            private NavParent3.Tag _parent;
             public String content() { return content; }
             public NavParent3 _root() { return _root; }
             public NavParent3.Tag _parent() { return _parent; }
+            private String content;
+            private NavParent3 _root;
+            private NavParent3.Tag _parent;
         }
-        private TagChar tagContent;
         public TagChar tagContent() {
             if (this.tagContent != null)
                 return this.tagContent;
@@ -126,18 +125,18 @@ public class NavParent3 extends KaitaiStruct {
             io.seek(_pos);
             return this.tagContent;
         }
-        private String name;
-        private long ofs;
-        private long numItems;
-        private NavParent3 _root;
-        private NavParent3 _parent;
         public String name() { return name; }
         public long ofs() { return ofs; }
         public long numItems() { return numItems; }
         public NavParent3 _root() { return _root; }
         public NavParent3 _parent() { return _parent; }
+        private TagChar tagContent;
+        private String name;
+        private long ofs;
+        private long numItems;
+        private NavParent3 _root;
+        private NavParent3 _parent;
     }
-    private List<Tag> tags;
     public List<Tag> tags() {
         if (this.tags != null)
             return this.tags;
@@ -150,12 +149,13 @@ public class NavParent3 extends KaitaiStruct {
         this._io.seek(_pos);
         return this.tags;
     }
-    private long ofsTags;
-    private long numTags;
-    private NavParent3 _root;
-    private KaitaiStruct _parent;
     public long ofsTags() { return ofsTags; }
     public long numTags() { return numTags; }
     public NavParent3 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private List<Tag> tags;
+    private long ofsTags;
+    private long numTags;
+    private NavParent3 _root;
+    private KaitaiStruct _parent;
 }

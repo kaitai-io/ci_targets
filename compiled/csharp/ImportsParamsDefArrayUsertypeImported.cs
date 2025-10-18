@@ -26,13 +26,13 @@ namespace Kaitai
             }
             _two = new ParamsDefArrayUsertypeImported(Hws, m_io);
         }
-        private List<HelloWorld> _hws;
-        private ParamsDefArrayUsertypeImported _two;
-        private ImportsParamsDefArrayUsertypeImported m_root;
-        private KaitaiStruct m_parent;
         public List<HelloWorld> Hws { get { return _hws; } }
         public ParamsDefArrayUsertypeImported Two { get { return _two; } }
         public ImportsParamsDefArrayUsertypeImported M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private List<HelloWorld> _hws;
+        private ParamsDefArrayUsertypeImported _two;
+        private ImportsParamsDefArrayUsertypeImported m_root;
+        private KaitaiStruct m_parent;
     }
 }

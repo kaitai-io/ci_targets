@@ -25,11 +25,11 @@ namespace Kaitai
                 throw new ValidationGreaterThanError(12, _foo, m_io, "/seq/0");
             }
         }
-        private byte _foo;
-        private ValidFailMaxInt m_root;
-        private KaitaiStruct m_parent;
         public byte Foo { get { return _foo; } }
         public ValidFailMaxInt M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private byte _foo;
+        private ValidFailMaxInt m_root;
+        private KaitaiStruct m_parent;
     }
 }

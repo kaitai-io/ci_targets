@@ -34,19 +34,19 @@ public class StrLiteralsLatin1 extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private Boolean parsedEqLiteral;
     public Boolean parsedEqLiteral() {
         if (this.parsedEqLiteral != null)
             return this.parsedEqLiteral;
         this.parsedEqLiteral = parsed().equals("\243");
         return this.parsedEqLiteral;
     }
-    private int lenParsed;
-    private String parsed;
-    private StrLiteralsLatin1 _root;
-    private KaitaiStruct _parent;
     public int lenParsed() { return lenParsed; }
     public String parsed() { return parsed; }
     public StrLiteralsLatin1 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Boolean parsedEqLiteral;
+    private int lenParsed;
+    private String parsed;
+    private StrLiteralsLatin1 _root;
+    private KaitaiStruct _parent;
 }

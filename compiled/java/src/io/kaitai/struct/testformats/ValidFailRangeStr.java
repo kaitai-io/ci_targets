@@ -39,10 +39,10 @@ public class ValidFailRangeStr extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    private String foo;
-    private ValidFailRangeStr _root;
-    private KaitaiStruct _parent;
     public String foo() { return foo; }
     public ValidFailRangeStr _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private String foo;
+    private ValidFailRangeStr _root;
+    private KaitaiStruct _parent;
 }

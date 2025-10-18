@@ -66,14 +66,14 @@ public class NavParentFalse extends KaitaiStruct {
             if (code() == 73) {
             }
         }
-        private int code;
-        private byte[] more;
-        private NavParentFalse _root;
-        private NavParentFalse.ParentA _parent;
         public int code() { return code; }
         public byte[] more() { return more; }
         public NavParentFalse _root() { return _root; }
         public NavParentFalse.ParentA _parent() { return _parent; }
+        private int code;
+        private byte[] more;
+        private NavParentFalse _root;
+        private NavParentFalse.ParentA _parent;
     }
     public static class ParentA extends KaitaiStruct {
         public static ParentA fromFile(String fileName) throws IOException {
@@ -103,14 +103,14 @@ public class NavParentFalse extends KaitaiStruct {
             this.foo._fetchInstances();
             this.bar._fetchInstances();
         }
-        private Child foo;
-        private ParentB bar;
-        private NavParentFalse _root;
-        private NavParentFalse _parent;
         public Child foo() { return foo; }
         public ParentB bar() { return bar; }
         public NavParentFalse _root() { return _root; }
         public NavParentFalse _parent() { return _parent; }
+        private Child foo;
+        private ParentB bar;
+        private NavParentFalse _root;
+        private NavParentFalse _parent;
     }
     public static class ParentB extends KaitaiStruct {
         public static ParentB fromFile(String fileName) throws IOException {
@@ -138,21 +138,21 @@ public class NavParentFalse extends KaitaiStruct {
         public void _fetchInstances() {
             this.foo._fetchInstances();
         }
-        private Child foo;
-        private NavParentFalse _root;
-        private KaitaiStruct _parent;
         public Child foo() { return foo; }
         public NavParentFalse _root() { return _root; }
         public KaitaiStruct _parent() { return _parent; }
+        private Child foo;
+        private NavParentFalse _root;
+        private KaitaiStruct _parent;
     }
-    private int childSize;
-    private ParentA elementA;
-    private ParentB elementB;
-    private NavParentFalse _root;
-    private KaitaiStruct _parent;
     public int childSize() { return childSize; }
     public ParentA elementA() { return elementA; }
     public ParentB elementB() { return elementB; }
     public NavParentFalse _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private int childSize;
+    private ParentA elementA;
+    private ParentB elementB;
+    private NavParentFalse _root;
+    private KaitaiStruct _parent;
 }

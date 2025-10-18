@@ -54,10 +54,6 @@ public class ImportsParamsDefUsertypeImported extends KaitaiStruct.ReadWrite {
             throw new ConsistencyError("two", hw(), this.two.hwParam());
         _dirty = false;
     }
-    private HelloWorld hw;
-    private ParamsDefUsertypeImported two;
-    private ImportsParamsDefUsertypeImported _root;
-    private KaitaiStruct.ReadWrite _parent;
     public HelloWorld hw() { return hw; }
     public void setHw(HelloWorld _v) { _dirty = true; hw = _v; }
     public ParamsDefUsertypeImported two() { return two; }
@@ -66,4 +62,8 @@ public class ImportsParamsDefUsertypeImported extends KaitaiStruct.ReadWrite {
     public void set_root(ImportsParamsDefUsertypeImported _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private HelloWorld hw;
+    private ParamsDefUsertypeImported two;
+    private ImportsParamsDefUsertypeImported _root;
+    private KaitaiStruct.ReadWrite _parent;
 }

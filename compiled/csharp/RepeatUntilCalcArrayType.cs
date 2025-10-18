@@ -54,17 +54,15 @@ namespace Kaitai
                 _marker = m_io.ReadU1();
                 _body = m_io.ReadU4le();
             }
-            private byte _marker;
-            private uint _body;
-            private RepeatUntilCalcArrayType m_root;
-            private RepeatUntilCalcArrayType m_parent;
             public byte Marker { get { return _marker; } }
             public uint Body { get { return _body; } }
             public RepeatUntilCalcArrayType M_Root { get { return m_root; } }
             public RepeatUntilCalcArrayType M_Parent { get { return m_parent; } }
+            private byte _marker;
+            private uint _body;
+            private RepeatUntilCalcArrayType m_root;
+            private RepeatUntilCalcArrayType m_parent;
         }
-        private bool f_firstRec;
-        private Record _firstRec;
         public Record FirstRec
         {
             get
@@ -76,8 +74,6 @@ namespace Kaitai
                 return _firstRec;
             }
         }
-        private bool f_recsAccessor;
-        private List<Record> _recsAccessor;
         public List<Record> RecsAccessor
         {
             get
@@ -89,13 +85,17 @@ namespace Kaitai
                 return _recsAccessor;
             }
         }
-        private List<Record> _records;
-        private RepeatUntilCalcArrayType m_root;
-        private KaitaiStruct m_parent;
-        private List<byte[]> __raw_records;
         public List<Record> Records { get { return _records; } }
         public RepeatUntilCalcArrayType M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public List<byte[]> M_RawRecords { get { return __raw_records; } }
+        private bool f_firstRec;
+        private Record _firstRec;
+        private bool f_recsAccessor;
+        private List<Record> _recsAccessor;
+        private List<Record> _records;
+        private RepeatUntilCalcArrayType m_root;
+        private KaitaiStruct m_parent;
+        private List<byte[]> __raw_records;
     }
 }

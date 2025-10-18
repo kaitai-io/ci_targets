@@ -64,14 +64,14 @@ public class IfStruct extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int len;
-        private String str;
-        private IfStruct _root;
-        private IfStruct.Operation _parent;
         public int len() { return len; }
         public String str() { return str; }
         public IfStruct _root() { return _root; }
         public IfStruct.Operation _parent() { return _parent; }
+        private int len;
+        private String str;
+        private IfStruct _root;
+        private IfStruct.Operation _parent;
     }
     public static class ArgTuple extends KaitaiStruct {
         public static ArgTuple fromFile(String fileName) throws IOException {
@@ -99,14 +99,14 @@ public class IfStruct extends KaitaiStruct {
 
         public void _fetchInstances() {
         }
-        private int num1;
-        private int num2;
-        private IfStruct _root;
-        private IfStruct.Operation _parent;
         public int num1() { return num1; }
         public int num2() { return num2; }
         public IfStruct _root() { return _root; }
         public IfStruct.Operation _parent() { return _parent; }
+        private int num1;
+        private int num2;
+        private IfStruct _root;
+        private IfStruct.Operation _parent;
     }
     public static class Operation extends KaitaiStruct {
         public static Operation fromFile(String fileName) throws IOException {
@@ -145,25 +145,25 @@ public class IfStruct extends KaitaiStruct {
                 this.argStr._fetchInstances();
             }
         }
-        private int opcode;
-        private ArgTuple argTuple;
-        private ArgStr argStr;
-        private IfStruct _root;
-        private IfStruct _parent;
         public int opcode() { return opcode; }
         public ArgTuple argTuple() { return argTuple; }
         public ArgStr argStr() { return argStr; }
         public IfStruct _root() { return _root; }
         public IfStruct _parent() { return _parent; }
+        private int opcode;
+        private ArgTuple argTuple;
+        private ArgStr argStr;
+        private IfStruct _root;
+        private IfStruct _parent;
     }
-    private Operation op1;
-    private Operation op2;
-    private Operation op3;
-    private IfStruct _root;
-    private KaitaiStruct _parent;
     public Operation op1() { return op1; }
     public Operation op2() { return op2; }
     public Operation op3() { return op3; }
     public IfStruct _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+    private Operation op1;
+    private Operation op2;
+    private Operation op3;
+    private IfStruct _root;
+    private KaitaiStruct _parent;
 }

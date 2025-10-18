@@ -41,23 +41,17 @@ public:
 
     public:
         ~bar_t();
+        std::string inst();
+        uint8_t seq_f() const { return m_seq_f; }
+        instance_in_sized_t* _root() const { return m__root; }
+        instance_in_sized_t::wrapper_t* _parent() const { return m__parent; }
 
     private:
         bool f_inst;
         std::string m_inst;
-
-    public:
-        std::string inst();
-
-    private:
         uint8_t m_seq_f;
         instance_in_sized_t* m__root;
         instance_in_sized_t::wrapper_t* m__parent;
-
-    public:
-        uint8_t seq_f() const { return m_seq_f; }
-        instance_in_sized_t* _root() const { return m__root; }
-        instance_in_sized_t::wrapper_t* _parent() const { return m__parent; }
     };
 
     class baz_t : public kaitai::kstruct {
@@ -72,23 +66,17 @@ public:
 
     public:
         ~baz_t();
+        std::string inst();
+        uint8_t seq_f() const { return m_seq_f; }
+        instance_in_sized_t* _root() const { return m__root; }
+        instance_in_sized_t::wrapper_t* _parent() const { return m__parent; }
 
     private:
         bool f_inst;
         std::string m_inst;
-
-    public:
-        std::string inst();
-
-    private:
         uint8_t m_seq_f;
         instance_in_sized_t* m__root;
         instance_in_sized_t::wrapper_t* m__parent;
-
-    public:
-        uint8_t seq_f() const { return m_seq_f; }
-        instance_in_sized_t* _root() const { return m__root; }
-        instance_in_sized_t::wrapper_t* _parent() const { return m__parent; }
     };
 
     class qux_t : public kaitai::kstruct {
@@ -103,22 +91,17 @@ public:
 
     public:
         ~qux_t();
+        uint8_t inst_invoked();
+        std::string inst_unused_by_seq();
+        uint8_t seq_f() const { return m_seq_f; }
+        instance_in_sized_t* _root() const { return m__root; }
+        instance_in_sized_t::wrapper_t* _parent() const { return m__parent; }
 
     private:
         bool f_inst_invoked;
         uint8_t m_inst_invoked;
-
-    public:
-        uint8_t inst_invoked();
-
-    private:
         bool f_inst_unused_by_seq;
         std::string m_inst_unused_by_seq;
-
-    public:
-        std::string inst_unused_by_seq();
-
-    private:
         uint8_t m_seq_f;
         bool n_seq_f;
 
@@ -128,11 +111,6 @@ public:
     private:
         instance_in_sized_t* m__root;
         instance_in_sized_t::wrapper_t* m__parent;
-
-    public:
-        uint8_t seq_f() const { return m_seq_f; }
-        instance_in_sized_t* _root() const { return m__root; }
-        instance_in_sized_t::wrapper_t* _parent() const { return m__parent; }
     };
 
     class wrapper_t : public kaitai::kstruct {
@@ -147,32 +125,8 @@ public:
 
     public:
         ~wrapper_t();
-
-    private:
-        bool f_inst_in_stream;
-        baz_t* m_inst_in_stream;
-
-    public:
         baz_t* inst_in_stream();
-
-    private:
-        bool f_inst_sized;
-        qux_t* m_inst_sized;
-
-    public:
         qux_t* inst_sized();
-
-    private:
-        qux_t* m_seq_sized;
-        bar_t* m_seq_in_stream;
-        instance_in_sized_t* m__root;
-        instance_in_sized_t* m__parent;
-        std::string m__raw_seq_sized;
-        kaitai::kstream* m__io__raw_seq_sized;
-        std::string m__raw_inst_sized;
-        kaitai::kstream* m__io__raw_inst_sized;
-
-    public:
         qux_t* seq_sized() const { return m_seq_sized; }
         bar_t* seq_in_stream() const { return m_seq_in_stream; }
         instance_in_sized_t* _root() const { return m__root; }
@@ -181,14 +135,21 @@ public:
         kaitai::kstream* _io__raw_seq_sized() const { return m__io__raw_seq_sized; }
         std::string _raw_inst_sized() const { return m__raw_inst_sized; }
         kaitai::kstream* _io__raw_inst_sized() const { return m__io__raw_inst_sized; }
-    };
 
-private:
-    wrapper_t* m_cont;
-    instance_in_sized_t* m__root;
-    kaitai::kstruct* m__parent;
-    std::string m__raw_cont;
-    kaitai::kstream* m__io__raw_cont;
+    private:
+        bool f_inst_in_stream;
+        baz_t* m_inst_in_stream;
+        bool f_inst_sized;
+        qux_t* m_inst_sized;
+        qux_t* m_seq_sized;
+        bar_t* m_seq_in_stream;
+        instance_in_sized_t* m__root;
+        instance_in_sized_t* m__parent;
+        std::string m__raw_seq_sized;
+        kaitai::kstream* m__io__raw_seq_sized;
+        std::string m__raw_inst_sized;
+        kaitai::kstream* m__io__raw_inst_sized;
+    };
 
 public:
     wrapper_t* cont() const { return m_cont; }
@@ -196,6 +157,13 @@ public:
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_cont() const { return m__raw_cont; }
     kaitai::kstream* _io__raw_cont() const { return m__io__raw_cont; }
+
+private:
+    wrapper_t* m_cont;
+    instance_in_sized_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::string m__raw_cont;
+    kaitai::kstream* m__io__raw_cont;
 };
 
 #endif  // INSTANCE_IN_SIZED_H_

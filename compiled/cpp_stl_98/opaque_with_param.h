@@ -25,16 +25,14 @@ private:
 
 public:
     ~opaque_with_param_t();
+    params_def_t* one() const { return m_one; }
+    opaque_with_param_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     params_def_t* m_one;
     opaque_with_param_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    params_def_t* one() const { return m_one; }
-    opaque_with_param_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // OPAQUE_WITH_PARAM_H_

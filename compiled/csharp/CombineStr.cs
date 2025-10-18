@@ -36,8 +36,6 @@ namespace Kaitai
             _strLimit = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(4));
             _strEos = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytesFull());
         }
-        private bool f_calcBytes;
-        private byte[] _calcBytes;
         public byte[] CalcBytes
         {
             get
@@ -49,8 +47,6 @@ namespace Kaitai
                 return _calcBytes;
             }
         }
-        private bool f_calcOrCalcBytes;
-        private string _calcOrCalcBytes;
         public string CalcOrCalcBytes
         {
             get
@@ -62,8 +58,6 @@ namespace Kaitai
                 return _calcOrCalcBytes;
             }
         }
-        private bool f_eosOrCalc;
-        private string _eosOrCalc;
         public string EosOrCalc
         {
             get
@@ -75,8 +69,6 @@ namespace Kaitai
                 return _eosOrCalc;
             }
         }
-        private bool f_eosOrCalcBytes;
-        private string _eosOrCalcBytes;
         public string EosOrCalcBytes
         {
             get
@@ -88,8 +80,6 @@ namespace Kaitai
                 return _eosOrCalcBytes;
             }
         }
-        private bool f_limitOrCalc;
-        private string _limitOrCalc;
         public string LimitOrCalc
         {
             get
@@ -101,8 +91,6 @@ namespace Kaitai
                 return _limitOrCalc;
             }
         }
-        private bool f_limitOrCalcBytes;
-        private string _limitOrCalcBytes;
         public string LimitOrCalcBytes
         {
             get
@@ -114,8 +102,6 @@ namespace Kaitai
                 return _limitOrCalcBytes;
             }
         }
-        private bool f_limitOrEos;
-        private string _limitOrEos;
         public string LimitOrEos
         {
             get
@@ -127,8 +113,6 @@ namespace Kaitai
                 return _limitOrEos;
             }
         }
-        private bool f_strCalc;
-        private string _strCalc;
         public string StrCalc
         {
             get
@@ -140,8 +124,6 @@ namespace Kaitai
                 return _strCalc;
             }
         }
-        private bool f_strCalcBytes;
-        private string _strCalcBytes;
         public string StrCalcBytes
         {
             get
@@ -153,8 +135,6 @@ namespace Kaitai
                 return _strCalcBytes;
             }
         }
-        private bool f_termOrCalc;
-        private string _termOrCalc;
         public string TermOrCalc
         {
             get
@@ -166,8 +146,6 @@ namespace Kaitai
                 return _termOrCalc;
             }
         }
-        private bool f_termOrCalcBytes;
-        private string _termOrCalcBytes;
         public string TermOrCalcBytes
         {
             get
@@ -179,8 +157,6 @@ namespace Kaitai
                 return _termOrCalcBytes;
             }
         }
-        private bool f_termOrEos;
-        private string _termOrEos;
         public string TermOrEos
         {
             get
@@ -192,8 +168,6 @@ namespace Kaitai
                 return _termOrEos;
             }
         }
-        private bool f_termOrLimit;
-        private string _termOrLimit;
         public string TermOrLimit
         {
             get
@@ -205,15 +179,41 @@ namespace Kaitai
                 return _termOrLimit;
             }
         }
-        private string _strTerm;
-        private string _strLimit;
-        private string _strEos;
-        private CombineStr m_root;
-        private KaitaiStruct m_parent;
         public string StrTerm { get { return _strTerm; } }
         public string StrLimit { get { return _strLimit; } }
         public string StrEos { get { return _strEos; } }
         public CombineStr M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+        private bool f_calcBytes;
+        private byte[] _calcBytes;
+        private bool f_calcOrCalcBytes;
+        private string _calcOrCalcBytes;
+        private bool f_eosOrCalc;
+        private string _eosOrCalc;
+        private bool f_eosOrCalcBytes;
+        private string _eosOrCalcBytes;
+        private bool f_limitOrCalc;
+        private string _limitOrCalc;
+        private bool f_limitOrCalcBytes;
+        private string _limitOrCalcBytes;
+        private bool f_limitOrEos;
+        private string _limitOrEos;
+        private bool f_strCalc;
+        private string _strCalc;
+        private bool f_strCalcBytes;
+        private string _strCalcBytes;
+        private bool f_termOrCalc;
+        private string _termOrCalc;
+        private bool f_termOrCalcBytes;
+        private string _termOrCalcBytes;
+        private bool f_termOrEos;
+        private string _termOrEos;
+        private bool f_termOrLimit;
+        private string _termOrLimit;
+        private string _strTerm;
+        private string _strLimit;
+        private string _strEos;
+        private CombineStr m_root;
+        private KaitaiStruct m_parent;
     }
 }

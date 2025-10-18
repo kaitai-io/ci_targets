@@ -38,34 +38,28 @@ public:
 
     public:
         ~index_obj_t();
+        std::string entry() const { return m_entry; }
+        position_abs_t* _root() const { return m__root; }
+        position_abs_t* _parent() const { return m__parent; }
 
     private:
         std::string m_entry;
         position_abs_t* m__root;
         position_abs_t* m__parent;
-
-    public:
-        std::string entry() const { return m_entry; }
-        position_abs_t* _root() const { return m__root; }
-        position_abs_t* _parent() const { return m__parent; }
     };
+
+public:
+    index_obj_t* index();
+    uint32_t index_offset() const { return m_index_offset; }
+    position_abs_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 
 private:
     bool f_index;
     index_obj_t* m_index;
-
-public:
-    index_obj_t* index();
-
-private:
     uint32_t m_index_offset;
     position_abs_t* m__root;
     kaitai::kstruct* m__parent;
-
-public:
-    uint32_t index_offset() const { return m_index_offset; }
-    position_abs_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // POSITION_ABS_H_

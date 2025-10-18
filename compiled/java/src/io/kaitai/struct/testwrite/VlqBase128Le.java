@@ -173,7 +173,6 @@ public class VlqBase128Le extends KaitaiStruct.ReadWrite {
             }
             _dirty = false;
         }
-        private Long intermValue;
         public Long intermValue() {
             if (this.intermValue != null)
                 return this.intermValue;
@@ -181,13 +180,6 @@ public class VlqBase128Le extends KaitaiStruct.ReadWrite {
             return this.intermValue;
         }
         public void _invalidateIntermValue() { this.intermValue = null; }
-        private boolean hasNext;
-        private long value;
-        private int idx;
-        private long prevIntermValue;
-        private long multiplier;
-        private VlqBase128Le _root;
-        private VlqBase128Le _parent;
 
         /**
          * If `true`, then we have more bytes to read.
@@ -218,8 +210,15 @@ public class VlqBase128Le extends KaitaiStruct.ReadWrite {
         public void set_root(VlqBase128Le _v) { _dirty = true; _root = _v; }
         public VlqBase128Le _parent() { return _parent; }
         public void set_parent(VlqBase128Le _v) { _dirty = true; _parent = _v; }
+        private Long intermValue;
+        private boolean hasNext;
+        private long value;
+        private int idx;
+        private long prevIntermValue;
+        private long multiplier;
+        private VlqBase128Le _root;
+        private VlqBase128Le _parent;
     }
-    private Integer len;
     public Integer len() {
         if (this.len != null)
             return this.len;
@@ -227,7 +226,6 @@ public class VlqBase128Le extends KaitaiStruct.ReadWrite {
         return this.len;
     }
     public void _invalidateLen() { this.len = null; }
-    private Long signBit;
     public Long signBit() {
         if (this.signBit != null)
             return this.signBit;
@@ -235,7 +233,6 @@ public class VlqBase128Le extends KaitaiStruct.ReadWrite {
         return this.signBit;
     }
     public void _invalidateSignBit() { this.signBit = null; }
-    private Long value;
 
     /**
      * Resulting unsigned value as normal integer
@@ -247,7 +244,6 @@ public class VlqBase128Le extends KaitaiStruct.ReadWrite {
         return this.value;
     }
     public void _invalidateValue() { this.value = null; }
-    private Long valueSigned;
     public Long valueSigned() {
         if (this.valueSigned != null)
             return this.valueSigned;
@@ -255,13 +251,17 @@ public class VlqBase128Le extends KaitaiStruct.ReadWrite {
         return this.valueSigned;
     }
     public void _invalidateValueSigned() { this.valueSigned = null; }
-    private List<Group> groups;
-    private VlqBase128Le _root;
-    private KaitaiStruct.ReadWrite _parent;
     public List<Group> groups() { return groups; }
     public void setGroups(List<Group> _v) { _dirty = true; groups = _v; }
     public VlqBase128Le _root() { return _root; }
     public void set_root(VlqBase128Le _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
+    private Integer len;
+    private Long signBit;
+    private Long value;
+    private Long valueSigned;
+    private List<Group> groups;
+    private VlqBase128Le _root;
+    private KaitaiStruct.ReadWrite _parent;
 }
