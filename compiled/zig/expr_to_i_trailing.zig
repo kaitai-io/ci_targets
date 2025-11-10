@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ExprToITrailing = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ExprToITrailing) !*ExprToITrailing {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ExprToITrailing) !*ExprToITrailing {
         const self = try _arena.allocator().create(ExprToITrailing);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const ExprToITrailing = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ExprToITrailing) std.mem.Allocator {
+    fn _allocator(self: *const ExprToITrailing) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ExprToITrailing) !void {
@@ -25,7 +25,7 @@ pub const ExprToITrailing = struct {
         if (self._m_to_i_garbage) |_v|
             return _v;
         var _v: i32 = undefined;
-        _v = (try std.fmt.parseInt(i32, "123_.^", 10));
+        _v = (try _imp_std.fmt.parseInt(i32, "123_.^", 10));
         self._m_to_i_garbage = _v;
         return _v;
     }
@@ -33,7 +33,7 @@ pub const ExprToITrailing = struct {
         if (self._m_to_i_r10) |_v|
             return _v;
         var _v: i32 = undefined;
-        _v = (try std.fmt.parseInt(i32, "9173abc", 10));
+        _v = (try _imp_std.fmt.parseInt(i32, "9173abc", 10));
         self._m_to_i_r10 = _v;
         return _v;
     }
@@ -41,7 +41,7 @@ pub const ExprToITrailing = struct {
         if (self._m_to_i_r16) |_v|
             return _v;
         var _v: i32 = undefined;
-        _v = (try std.fmt.parseInt(i32, "9173abc", 16));
+        _v = (try _imp_std.fmt.parseInt(i32, "9173abc", 16));
         self._m_to_i_r16 = _v;
         return _v;
     }
@@ -50,6 +50,6 @@ pub const ExprToITrailing = struct {
     _m_to_i_r16: ?i32 = null,
     _root: ?*ExprToITrailing,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

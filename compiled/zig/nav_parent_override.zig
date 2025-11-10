@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const NavParentOverride = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*NavParentOverride) !*NavParentOverride {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*NavParentOverride) !*NavParentOverride {
         const self = try _arena.allocator().create(NavParentOverride);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const NavParentOverride = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const NavParentOverride) std.mem.Allocator {
+    fn _allocator(self: *const NavParentOverride) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *NavParentOverride) !void {
@@ -24,7 +24,7 @@ pub const NavParentOverride = struct {
         self.mediator_2 = try Mediator.create(self._arena, self._io, self, self._root);
     }
     pub const Child = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*NavParentOverride, _root: ?*NavParentOverride) !*Child {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*NavParentOverride, _root: ?*NavParentOverride) !*Child {
             const self = try _arena.allocator().create(Child);
             self.* = .{
                 ._arena = _arena,
@@ -35,20 +35,20 @@ pub const NavParentOverride = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Child) std.mem.Allocator {
+        fn _allocator(self: *const Child) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Child) !void {
             self.data = try self._io.readBytes(self._allocator(), self._parent.?.child_size);
         }
-        data: []u8 = undefined,
+        data: []const u8 = undefined,
         _root: ?*NavParentOverride,
         _parent: ?*NavParentOverride,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const Mediator = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*NavParentOverride, _root: ?*NavParentOverride) !*Mediator {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*NavParentOverride, _root: ?*NavParentOverride) !*Mediator {
             const self = try _arena.allocator().create(Mediator);
             self.* = .{
                 ._arena = _arena,
@@ -59,7 +59,7 @@ pub const NavParentOverride = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Mediator) std.mem.Allocator {
+        fn _allocator(self: *const Mediator) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Mediator) !void {
@@ -68,14 +68,14 @@ pub const NavParentOverride = struct {
         child_2: *Child = undefined,
         _root: ?*NavParentOverride,
         _parent: ?*NavParentOverride,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     child_size: u8 = undefined,
     child_1: *Child = undefined,
     mediator_2: *Mediator = undefined,
     _root: ?*NavParentOverride,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

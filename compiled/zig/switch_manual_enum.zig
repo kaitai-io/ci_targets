@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const SwitchManualEnum = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*SwitchManualEnum) !*SwitchManualEnum {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*SwitchManualEnum) !*SwitchManualEnum {
         const self = try _arena.allocator().create(SwitchManualEnum);
         self.* = .{
             ._arena = _arena,
@@ -15,11 +15,11 @@ pub const SwitchManualEnum = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const SwitchManualEnum) std.mem.Allocator {
+    fn _allocator(self: *const SwitchManualEnum) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *SwitchManualEnum) !void {
-        self.opcodes = try self._allocator().create(std.ArrayList(*Opcode));
+        self.opcodes = try self._allocator().create(_imp_std.ArrayList(*Opcode));
         self.opcodes.* = .empty;
         {
             var i: usize = 0;
@@ -34,7 +34,7 @@ pub const SwitchManualEnum = struct {
             strval = 83,
             _,
         };
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*SwitchManualEnum, _root: ?*SwitchManualEnum) !*Opcode {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*SwitchManualEnum, _root: ?*SwitchManualEnum) !*Opcode {
             const self = try _arena.allocator().create(Opcode);
             self.* = .{
                 ._arena = _arena,
@@ -45,7 +45,7 @@ pub const SwitchManualEnum = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Opcode) std.mem.Allocator {
+        fn _allocator(self: *const Opcode) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Opcode) !void {
@@ -62,7 +62,7 @@ pub const SwitchManualEnum = struct {
             }
         }
         pub const Intval = struct {
-            pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*SwitchManualEnum.Opcode, _root: ?*SwitchManualEnum) !*Intval {
+            pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*SwitchManualEnum.Opcode, _root: ?*SwitchManualEnum) !*Intval {
                 const self = try _arena.allocator().create(Intval);
                 self.* = .{
                     ._arena = _arena,
@@ -73,7 +73,7 @@ pub const SwitchManualEnum = struct {
                 try self._read();
                 return self;
             }
-            fn _allocator(self: *const Intval) std.mem.Allocator {
+            fn _allocator(self: *const Intval) _imp_std.mem.Allocator {
                 return self._arena.allocator();
             }
             fn _read(self: *Intval) !void {
@@ -82,11 +82,11 @@ pub const SwitchManualEnum = struct {
             value: u8 = undefined,
             _root: ?*SwitchManualEnum,
             _parent: ?*SwitchManualEnum.Opcode,
-            _arena: *std.heap.ArenaAllocator,
-            _io: *kaitai_struct.KaitaiStream,
+            _arena: *_imp_std.heap.ArenaAllocator,
+            _io: *_imp_kaitai_struct.KaitaiStream,
         };
         pub const Strval = struct {
-            pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*SwitchManualEnum.Opcode, _root: ?*SwitchManualEnum) !*Strval {
+            pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*SwitchManualEnum.Opcode, _root: ?*SwitchManualEnum) !*Strval {
                 const self = try _arena.allocator().create(Strval);
                 self.* = .{
                     ._arena = _arena,
@@ -97,28 +97,28 @@ pub const SwitchManualEnum = struct {
                 try self._read();
                 return self;
             }
-            fn _allocator(self: *const Strval) std.mem.Allocator {
+            fn _allocator(self: *const Strval) _imp_std.mem.Allocator {
                 return self._arena.allocator();
             }
             fn _read(self: *Strval) !void {
-                self.value = kaitai_struct.KaitaiStream.bytesToStr(try self._io.readBytesTerm(self._allocator(), 0, false, true, true), "ASCII");
+                self.value = (try _imp_kaitai_struct.KaitaiStream.bytesToStr(self._allocator(), try self._io.readBytesTerm(self._allocator(), 0, false, true, true), "ASCII"));
             }
-            value: []u8 = undefined,
+            value: []const u8 = undefined,
             _root: ?*SwitchManualEnum,
             _parent: ?*SwitchManualEnum.Opcode,
-            _arena: *std.heap.ArenaAllocator,
-            _io: *kaitai_struct.KaitaiStream,
+            _arena: *_imp_std.heap.ArenaAllocator,
+            _io: *_imp_kaitai_struct.KaitaiStream,
         };
         code: CodeEnum = undefined,
         body: ?*anyopaque = null,
         _root: ?*SwitchManualEnum,
         _parent: ?*SwitchManualEnum,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
-    opcodes: *std.ArrayList(*Opcode) = undefined,
+    opcodes: *_imp_std.ArrayList(*Opcode) = undefined,
     _root: ?*SwitchManualEnum,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

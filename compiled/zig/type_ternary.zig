@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const TypeTernary = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*TypeTernary) !*TypeTernary {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*TypeTernary) !*TypeTernary {
         const self = try _arena.allocator().create(TypeTernary);
         self.* = .{
             ._arena = _arena,
@@ -15,24 +15,24 @@ pub const TypeTernary = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const TypeTernary) std.mem.Allocator {
+    fn _allocator(self: *const TypeTernary) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *TypeTernary) !void {
         if (!((try self.isHack()))) {
-            self._raw_dif_wo_hack = try self._io.readBytes(self._allocator(), 1);
-            const _io__raw_dif_wo_hack = try self._allocator().create(kaitai_struct.KaitaiStream);
-            _io__raw_dif_wo_hack.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_dif_wo_hack);
+            const _raw_dif_wo_hack = try self._io.readBytes(self._allocator(), 1);
+            const _io__raw_dif_wo_hack = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+            _io__raw_dif_wo_hack.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_dif_wo_hack);
             self.dif_wo_hack = try Dummy.create(self._arena, _io__raw_dif_wo_hack, self, self._root);
         }
-        self._raw__raw_dif_with_hack = try self._io.readBytes(self._allocator(), 1);
-        self._raw_dif_with_hack = kaitai_struct.KaitaiStream.processXor(self._raw__raw_dif_with_hack, @as(i8, 3));
-        const _io__raw_dif_with_hack = try self._allocator().create(kaitai_struct.KaitaiStream);
-        _io__raw_dif_with_hack.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_dif_with_hack);
+        const _raw__raw_dif_with_hack = try self._io.readBytes(self._allocator(), 1);
+        const _raw_dif_with_hack = try _imp_kaitai_struct.KaitaiStream.processXorOne(self._allocator(), _raw__raw_dif_with_hack, @as(u8, 3));
+        const _io__raw_dif_with_hack = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+        _io__raw_dif_with_hack.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_dif_with_hack);
         self.dif_with_hack = try Dummy.create(self._arena, _io__raw_dif_with_hack, self, self._root);
     }
     pub const Dummy = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*TypeTernary, _root: ?*TypeTernary) !*Dummy {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*TypeTernary, _root: ?*TypeTernary) !*Dummy {
             const self = try _arena.allocator().create(Dummy);
             self.* = .{
                 ._arena = _arena,
@@ -43,7 +43,7 @@ pub const TypeTernary = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Dummy) std.mem.Allocator {
+        fn _allocator(self: *const Dummy) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Dummy) !void {
@@ -52,8 +52,8 @@ pub const TypeTernary = struct {
         value: u8 = undefined,
         _root: ?*TypeTernary,
         _parent: ?*TypeTernary,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub fn dif(self: *TypeTernary) !*Dummy {
         if (self._m_dif) |_v|
@@ -86,9 +86,6 @@ pub const TypeTernary = struct {
     dif_with_hack: *Dummy = undefined,
     _root: ?*TypeTernary,
     _parent: ?*anyopaque,
-    _raw_dif_wo_hack: ?[]u8 = null,
-    _raw_dif_with_hack: []u8 = undefined,
-    _raw__raw_dif_with_hack: []u8 = undefined,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

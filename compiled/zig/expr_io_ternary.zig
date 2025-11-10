@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ExprIoTernary = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ExprIoTernary) !*ExprIoTernary {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ExprIoTernary) !*ExprIoTernary {
         const self = try _arena.allocator().create(ExprIoTernary);
         self.* = .{
             ._arena = _arena,
@@ -15,22 +15,22 @@ pub const ExprIoTernary = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ExprIoTernary) std.mem.Allocator {
+    fn _allocator(self: *const ExprIoTernary) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ExprIoTernary) !void {
         self.flag = try self._io.readU1();
-        self._raw_obj1 = try self._io.readBytes(self._allocator(), 4);
-        const _io__raw_obj1 = try self._allocator().create(kaitai_struct.KaitaiStream);
-        _io__raw_obj1.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_obj1);
+        const _raw_obj1 = try self._io.readBytes(self._allocator(), 4);
+        const _io__raw_obj1 = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+        _io__raw_obj1.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_obj1);
         self.obj1 = try One.create(self._arena, _io__raw_obj1, self, self._root);
-        self._raw_obj2 = try self._io.readBytes(self._allocator(), 8);
-        const _io__raw_obj2 = try self._allocator().create(kaitai_struct.KaitaiStream);
-        _io__raw_obj2.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_obj2);
+        const _raw_obj2 = try self._io.readBytes(self._allocator(), 8);
+        const _io__raw_obj2 = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+        _io__raw_obj2.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_obj2);
         self.obj2 = try Two.create(self._arena, _io__raw_obj2, self, self._root);
     }
     pub const One = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*ExprIoTernary, _root: ?*ExprIoTernary) !*One {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*ExprIoTernary, _root: ?*ExprIoTernary) !*One {
             const self = try _arena.allocator().create(One);
             self.* = .{
                 ._arena = _arena,
@@ -41,7 +41,7 @@ pub const ExprIoTernary = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const One) std.mem.Allocator {
+        fn _allocator(self: *const One) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *One) !void {
@@ -50,11 +50,11 @@ pub const ExprIoTernary = struct {
         one: u8 = undefined,
         _root: ?*ExprIoTernary,
         _parent: ?*ExprIoTernary,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const Two = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*ExprIoTernary, _root: ?*ExprIoTernary) !*Two {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*ExprIoTernary, _root: ?*ExprIoTernary) !*Two {
             const self = try _arena.allocator().create(Two);
             self.* = .{
                 ._arena = _arena,
@@ -65,7 +65,7 @@ pub const ExprIoTernary = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Two) std.mem.Allocator {
+        fn _allocator(self: *const Two) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Two) !void {
@@ -74,13 +74,13 @@ pub const ExprIoTernary = struct {
         two: u8 = undefined,
         _root: ?*ExprIoTernary,
         _parent: ?*ExprIoTernary,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
-    pub fn oneOrTwoIo(self: *ExprIoTernary) !*kaitai_struct.KaitaiStream {
+    pub fn oneOrTwoIo(self: *ExprIoTernary) !*_imp_kaitai_struct.KaitaiStream {
         if (self._m_one_or_two_io) |_v|
             return _v;
-        var _v: *kaitai_struct.KaitaiStream = undefined;
+        var _v: *_imp_kaitai_struct.KaitaiStream = undefined;
         _v = (if (self.flag == 64) self.obj1 else self.obj2)._io;
         self._m_one_or_two_io = _v;
         return _v;
@@ -117,7 +117,7 @@ pub const ExprIoTernary = struct {
         self._m_one_or_two_obj = _v;
         return _v;
     }
-    _m_one_or_two_io: ?*kaitai_struct.KaitaiStream = null,
+    _m_one_or_two_io: ?*_imp_kaitai_struct.KaitaiStream = null,
     _m_one_or_two_io_size1: ?i32 = null,
     _m_one_or_two_io_size2: ?i32 = null,
     _m_one_or_two_io_size_add_3: ?i32 = null,
@@ -127,8 +127,6 @@ pub const ExprIoTernary = struct {
     obj2: *Two = undefined,
     _root: ?*ExprIoTernary,
     _parent: ?*anyopaque,
-    _raw_obj1: []u8 = undefined,
-    _raw_obj2: []u8 = undefined,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

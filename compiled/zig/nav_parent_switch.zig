@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const NavParentSwitch = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*NavParentSwitch) !*NavParentSwitch {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*NavParentSwitch) !*NavParentSwitch {
         const self = try _arena.allocator().create(NavParentSwitch);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const NavParentSwitch = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const NavParentSwitch) std.mem.Allocator {
+    fn _allocator(self: *const NavParentSwitch) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *NavParentSwitch) !void {
@@ -29,7 +29,7 @@ pub const NavParentSwitch = struct {
         }
     }
     pub const Element1 = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*NavParentSwitch, _root: ?*NavParentSwitch) !*Element1 {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*NavParentSwitch, _root: ?*NavParentSwitch) !*Element1 {
             const self = try _arena.allocator().create(Element1);
             self.* = .{
                 ._arena = _arena,
@@ -40,7 +40,7 @@ pub const NavParentSwitch = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Element1) std.mem.Allocator {
+        fn _allocator(self: *const Element1) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Element1) !void {
@@ -51,11 +51,11 @@ pub const NavParentSwitch = struct {
         subelement: *Subelement1 = undefined,
         _root: ?*NavParentSwitch,
         _parent: ?*NavParentSwitch,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const Subelement1 = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*NavParentSwitch.Element1, _root: ?*NavParentSwitch) !*Subelement1 {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*NavParentSwitch.Element1, _root: ?*NavParentSwitch) !*Subelement1 {
             const self = try _arena.allocator().create(Subelement1);
             self.* = .{
                 ._arena = _arena,
@@ -66,7 +66,7 @@ pub const NavParentSwitch = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Subelement1) std.mem.Allocator {
+        fn _allocator(self: *const Subelement1) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Subelement1) !void {
@@ -77,13 +77,13 @@ pub const NavParentSwitch = struct {
         bar: ?u8 = null,
         _root: ?*NavParentSwitch,
         _parent: ?*NavParentSwitch.Element1,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     category: u8 = undefined,
     content: ?*Element1 = null,
     _root: ?*NavParentSwitch,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

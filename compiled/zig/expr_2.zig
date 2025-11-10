@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const Expr2 = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*Expr2) !*Expr2 {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*Expr2) !*Expr2 {
         const self = try _arena.allocator().create(Expr2);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const Expr2 = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const Expr2) std.mem.Allocator {
+    fn _allocator(self: *const Expr2) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *Expr2) !void {
@@ -23,7 +23,7 @@ pub const Expr2 = struct {
         self.str2 = try ModStr.create(self._arena, self._io, self, self._root);
     }
     pub const ModStr = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*Expr2, _root: ?*Expr2) !*ModStr {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*Expr2, _root: ?*Expr2) !*ModStr {
             const self = try _arena.allocator().create(ModStr);
             self.* = .{
                 ._arena = _arena,
@@ -34,24 +34,24 @@ pub const Expr2 = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const ModStr) std.mem.Allocator {
+        fn _allocator(self: *const ModStr) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *ModStr) !void {
             self.len_orig = try self._io.readU2le();
-            self.str = kaitai_struct.KaitaiStream.bytesToStr(try self._io.readBytes(self._allocator(), (try self.lenMod())), "UTF-8");
-            self._raw_rest = try self._io.readBytes(self._allocator(), 3);
-            const _io__raw_rest = try self._allocator().create(kaitai_struct.KaitaiStream);
-            _io__raw_rest.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_rest);
+            self.str = (try _imp_kaitai_struct.KaitaiStream.bytesToStr(self._allocator(), try self._io.readBytes(self._allocator(), (try self.lenMod())), "UTF-8"));
+            const _raw_rest = try self._io.readBytes(self._allocator(), 3);
+            const _io__raw_rest = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+            _io__raw_rest.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_rest);
             self.rest = try Tuple.create(self._arena, _io__raw_rest, self, self._root);
         }
-        pub fn char5(self: *ModStr) ![]u8 {
+        pub fn char5(self: *ModStr) ![]const u8 {
             if (self._m_char5) |_v|
                 return _v;
-            var _v: []u8 = undefined;
+            var _v: []const u8 = undefined;
             const _pos = self._io.pos();
             try self._io.seek(5);
-            _v = kaitai_struct.KaitaiStream.bytesToStr(try self._io.readBytes(self._allocator(), 1), "ASCII");
+            _v = (try _imp_kaitai_struct.KaitaiStream.bytesToStr(self._allocator(), try self._io.readBytes(self._allocator(), 1), "ASCII"));
             try self._io.seek(_pos);
             self._m_char5 = _v;
             return _v;
@@ -75,20 +75,19 @@ pub const Expr2 = struct {
             self._m_tuple5 = _v;
             return _v;
         }
-        _m_char5: ?[]u8 = null,
+        _m_char5: ?[]const u8 = null,
         _m_len_mod: ?i32 = null,
         _m_tuple5: ?*Tuple = null,
         len_orig: u16 = undefined,
-        str: []u8 = undefined,
+        str: []const u8 = undefined,
         rest: *Tuple = undefined,
         _root: ?*Expr2,
         _parent: ?*Expr2,
-        _raw_rest: []u8 = undefined,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const Tuple = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*Expr2.ModStr, _root: ?*Expr2) !*Tuple {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*Expr2.ModStr, _root: ?*Expr2) !*Tuple {
             const self = try _arena.allocator().create(Tuple);
             self.* = .{
                 ._arena = _arena,
@@ -99,7 +98,7 @@ pub const Expr2 = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Tuple) std.mem.Allocator {
+        fn _allocator(self: *const Tuple) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Tuple) !void {
@@ -121,8 +120,8 @@ pub const Expr2 = struct {
         byte2: u8 = undefined,
         _root: ?*Expr2,
         _parent: ?*Expr2.ModStr,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub fn str1Avg(self: *Expr2) !i32 {
         if (self._m_str1_avg) |_v|
@@ -140,10 +139,10 @@ pub const Expr2 = struct {
         self._m_str1_byte1 = _v;
         return _v;
     }
-    pub fn str1Char5(self: *Expr2) ![]u8 {
+    pub fn str1Char5(self: *Expr2) ![]const u8 {
         if (self._m_str1_char5) |_v|
             return _v;
-        var _v: []u8 = undefined;
+        var _v: []const u8 = undefined;
         _v = (try self.str1.char5());
         self._m_str1_char5 = _v;
         return _v;
@@ -182,7 +181,7 @@ pub const Expr2 = struct {
     }
     _m_str1_avg: ?i32 = null,
     _m_str1_byte1: ?u8 = null,
-    _m_str1_char5: ?[]u8 = null,
+    _m_str1_char5: ?[]const u8 = null,
     _m_str1_len: ?i32 = null,
     _m_str1_len_mod: ?i32 = null,
     _m_str1_tuple5: ?*Tuple = null,
@@ -191,6 +190,6 @@ pub const Expr2 = struct {
     str2: *ModStr = undefined,
     _root: ?*Expr2,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

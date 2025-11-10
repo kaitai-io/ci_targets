@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const IfInstances = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*IfInstances) !*IfInstances {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*IfInstances) !*IfInstances {
         const self = try _arena.allocator().create(IfInstances);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const IfInstances = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const IfInstances) std.mem.Allocator {
+    fn _allocator(self: *const IfInstances) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *IfInstances) !void {
@@ -24,19 +24,26 @@ pub const IfInstances = struct {
     pub fn neverHappens(self: *IfInstances) !?u8 {
         if (self._m_never_happens) |_v|
             return _v;
-        var _v: ?u8 = null;
+        var _v: u8 = undefined;
+        var _n = true;
         if (false) {
+            _n = false;
             const _pos = self._io.pos();
             try self._io.seek(100500);
             _v = try self._io.readU1();
             try self._io.seek(_pos);
         }
-        self._m_never_happens = _v;
-        return _v;
+        if (_n) {
+            self._m_never_happens = @as(?u8, null);
+            return null;
+        } else {
+            self._m_never_happens = _v;
+            return _v;
+        }
     }
     _m_never_happens: ??u8 = null,
     _root: ?*IfInstances,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

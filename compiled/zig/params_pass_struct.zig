@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ParamsPassStruct = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ParamsPassStruct) !*ParamsPassStruct {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ParamsPassStruct) !*ParamsPassStruct {
         const self = try _arena.allocator().create(ParamsPassStruct);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const ParamsPassStruct = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ParamsPassStruct) std.mem.Allocator {
+    fn _allocator(self: *const ParamsPassStruct) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ParamsPassStruct) !void {
@@ -23,7 +23,7 @@ pub const ParamsPassStruct = struct {
         self.one = try StructType.create(self._arena, self._io, self, self._root, self.first);
     }
     pub const Block = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*ParamsPassStruct, _root: ?*ParamsPassStruct) !*Block {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*ParamsPassStruct, _root: ?*ParamsPassStruct) !*Block {
             const self = try _arena.allocator().create(Block);
             self.* = .{
                 ._arena = _arena,
@@ -34,7 +34,7 @@ pub const ParamsPassStruct = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Block) std.mem.Allocator {
+        fn _allocator(self: *const Block) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Block) !void {
@@ -43,11 +43,11 @@ pub const ParamsPassStruct = struct {
         foo: u8 = undefined,
         _root: ?*ParamsPassStruct,
         _parent: ?*ParamsPassStruct,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const StructType = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*ParamsPassStruct, _root: ?*ParamsPassStruct, foo: *anyopaque) !*StructType {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*ParamsPassStruct, _root: ?*ParamsPassStruct, foo: *anyopaque) !*StructType {
             const self = try _arena.allocator().create(StructType);
             self.* = .{
                 ._arena = _arena,
@@ -59,14 +59,14 @@ pub const ParamsPassStruct = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const StructType) std.mem.Allocator {
+        fn _allocator(self: *const StructType) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *StructType) !void {
             self.bar = try Baz.create(self._arena, self._io, self, self._root, self.foo);
         }
         pub const Baz = struct {
-            pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*ParamsPassStruct.StructType, _root: ?*ParamsPassStruct, foo: *anyopaque) !*Baz {
+            pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*ParamsPassStruct.StructType, _root: ?*ParamsPassStruct, foo: *anyopaque) !*Baz {
                 const self = try _arena.allocator().create(Baz);
                 self.* = .{
                     ._arena = _arena,
@@ -78,7 +78,7 @@ pub const ParamsPassStruct = struct {
                 try self._read();
                 return self;
             }
-            fn _allocator(self: *const Baz) std.mem.Allocator {
+            fn _allocator(self: *const Baz) _imp_std.mem.Allocator {
                 return self._arena.allocator();
             }
             fn _read(self: *Baz) !void {
@@ -88,20 +88,20 @@ pub const ParamsPassStruct = struct {
             foo: *anyopaque = undefined,
             _root: ?*ParamsPassStruct,
             _parent: ?*ParamsPassStruct.StructType,
-            _arena: *std.heap.ArenaAllocator,
-            _io: *kaitai_struct.KaitaiStream,
+            _arena: *_imp_std.heap.ArenaAllocator,
+            _io: *_imp_kaitai_struct.KaitaiStream,
         };
         bar: *Baz = undefined,
         foo: *anyopaque = undefined,
         _root: ?*ParamsPassStruct,
         _parent: ?*ParamsPassStruct,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     first: *Block = undefined,
     one: *StructType = undefined,
     _root: ?*ParamsPassStruct,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

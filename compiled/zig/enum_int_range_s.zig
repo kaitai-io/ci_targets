@@ -1,7 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const EnumIntRangeS = struct {
     pub const Constants = enum(i32) {
@@ -10,7 +10,7 @@ pub const EnumIntRangeS = struct {
         int_max = 2147483647,
         _,
     };
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*EnumIntRangeS) !*EnumIntRangeS {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*EnumIntRangeS) !*EnumIntRangeS {
         const self = try _arena.allocator().create(EnumIntRangeS);
         self.* = .{
             ._arena = _arena,
@@ -21,7 +21,7 @@ pub const EnumIntRangeS = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const EnumIntRangeS) std.mem.Allocator {
+    fn _allocator(self: *const EnumIntRangeS) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *EnumIntRangeS) !void {
@@ -34,6 +34,6 @@ pub const EnumIntRangeS = struct {
     f3: Constants = undefined,
     _root: ?*EnumIntRangeS,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

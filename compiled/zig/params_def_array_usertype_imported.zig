@@ -1,11 +1,11 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
-const hello_world = @import("hello_world.zig");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
+const _imp_hello_world = @import("hello_world.zig");
 
 pub const ParamsDefArrayUsertypeImported = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ParamsDefArrayUsertypeImported, hws_param: *std.ArrayList(*hello_world.HelloWorld)) !*ParamsDefArrayUsertypeImported {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ParamsDefArrayUsertypeImported, hws_param: *_imp_std.ArrayList(*_imp_hello_world.HelloWorld)) !*ParamsDefArrayUsertypeImported {
         const self = try _arena.allocator().create(ParamsDefArrayUsertypeImported);
         self.* = .{
             ._arena = _arena,
@@ -17,7 +17,7 @@ pub const ParamsDefArrayUsertypeImported = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ParamsDefArrayUsertypeImported) std.mem.Allocator {
+    fn _allocator(self: *const ParamsDefArrayUsertypeImported) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ParamsDefArrayUsertypeImported) !void {
@@ -41,9 +41,9 @@ pub const ParamsDefArrayUsertypeImported = struct {
     }
     _m_hw0_one: ?u8 = null,
     _m_hw1_one: ?u8 = null,
-    hws_param: *std.ArrayList(*hello_world.HelloWorld) = undefined,
+    hws_param: *_imp_std.ArrayList(*_imp_hello_world.HelloWorld) = undefined,
     _root: ?*ParamsDefArrayUsertypeImported,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

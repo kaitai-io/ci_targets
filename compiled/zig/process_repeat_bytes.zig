@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ProcessRepeatBytes = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ProcessRepeatBytes) !*ProcessRepeatBytes {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ProcessRepeatBytes) !*ProcessRepeatBytes {
         const self = try _arena.allocator().create(ProcessRepeatBytes);
         self.* = .{
             ._arena = _arena,
@@ -15,27 +15,24 @@ pub const ProcessRepeatBytes = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ProcessRepeatBytes) std.mem.Allocator {
+    fn _allocator(self: *const ProcessRepeatBytes) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ProcessRepeatBytes) !void {
-        self._raw_bufs = try self._allocator().create(std.ArrayList([]u8));
-        self._raw_bufs.* = .empty;
-        self.bufs = try self._allocator().create(std.ArrayList([]u8));
+        self.bufs = try self._allocator().create(_imp_std.ArrayList([]const u8));
         self.bufs.* = .empty;
         for (0..2) |i| {
             {
                 const _maybe_unused = i;
                 _ = _maybe_unused;
             }
-            try self._raw_bufs.append(self._allocator(), try self._io.readBytes(self._allocator(), 5));
-            try self.bufs.append(self._allocator(), kaitai_struct.KaitaiStream.processXor(self._raw_bufs.items[i], @as(i8, 158)));
+            const _raw_bufs = try self._io.readBytes(self._allocator(), 5);
+            try self.bufs.append(self._allocator(), try _imp_kaitai_struct.KaitaiStream.processXorOne(self._allocator(), _raw_bufs, @as(u8, 158)));
         }
     }
-    bufs: *std.ArrayList([]u8) = undefined,
+    bufs: *_imp_std.ArrayList([]const u8) = undefined,
     _root: ?*ProcessRepeatBytes,
     _parent: ?*anyopaque,
-    _raw_bufs: *std.ArrayList([]u8) = undefined,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

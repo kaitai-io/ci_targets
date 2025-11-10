@@ -1,7 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 
 /// Sample docstring
@@ -12,7 +12,7 @@ const kaitai_struct = @import("kaitai_struct");
 /// * [Source](http://www.example.com/some/path/?even_with=query&more=2)
 /// * [Documentation name](http://www.example.com/three)
 pub const DocstringsDocrefMulti = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*DocstringsDocrefMulti) !*DocstringsDocrefMulti {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*DocstringsDocrefMulti) !*DocstringsDocrefMulti {
         const self = try _arena.allocator().create(DocstringsDocrefMulti);
         self.* = .{
             ._arena = _arena,
@@ -23,7 +23,7 @@ pub const DocstringsDocrefMulti = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const DocstringsDocrefMulti) std.mem.Allocator {
+    fn _allocator(self: *const DocstringsDocrefMulti) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *DocstringsDocrefMulti) !void {
@@ -31,6 +31,6 @@ pub const DocstringsDocrefMulti = struct {
     }
     _root: ?*DocstringsDocrefMulti,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

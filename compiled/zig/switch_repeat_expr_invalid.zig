@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const SwitchRepeatExprInvalid = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*SwitchRepeatExprInvalid) !*SwitchRepeatExprInvalid {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*SwitchRepeatExprInvalid) !*SwitchRepeatExprInvalid {
         const self = try _arena.allocator().create(SwitchRepeatExprInvalid);
         self.* = .{
             ._arena = _arena,
@@ -15,15 +15,13 @@ pub const SwitchRepeatExprInvalid = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const SwitchRepeatExprInvalid) std.mem.Allocator {
+    fn _allocator(self: *const SwitchRepeatExprInvalid) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *SwitchRepeatExprInvalid) !void {
         self.code = try self._io.readU1();
         self.size = try self._io.readU4le();
-        self._raw_body = try self._allocator().create(std.ArrayList([]u8));
-        self._raw_body.* = .empty;
-        self.body = try self._allocator().create(std.ArrayList(*anyopaque));
+        self.body = try self._allocator().create(_imp_std.ArrayList(*anyopaque));
         self.body.* = .empty;
         for (0..1) |i| {
             {
@@ -32,15 +30,15 @@ pub const SwitchRepeatExprInvalid = struct {
             }
             switch (self.code) {
                 255 => {
-                    try self._raw_body.append(self._allocator(), try self._io.readBytes(self._allocator(), self.size));
-                    const _io__raw_body = try self._allocator().create(kaitai_struct.KaitaiStream);
-                    _io__raw_body.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_body.items[i]);
+                    const _raw_body = try self._io.readBytes(self._allocator(), self.size);
+                    const _io__raw_body = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+                    _io__raw_body.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_body);
                     try self.body.append(self._allocator(), try One.create(self._arena, _io__raw_body, self, self._root));
                 },
                 34 => {
-                    try self._raw_body.append(self._allocator(), try self._io.readBytes(self._allocator(), self.size));
-                    const _io__raw_body = try self._allocator().create(kaitai_struct.KaitaiStream);
-                    _io__raw_body.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_body.items[i]);
+                    const _raw_body = try self._io.readBytes(self._allocator(), self.size);
+                    const _io__raw_body = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+                    _io__raw_body.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_body);
                     try self.body.append(self._allocator(), try Two.create(self._arena, _io__raw_body, self, self._root));
                 },
                 else => {
@@ -50,7 +48,7 @@ pub const SwitchRepeatExprInvalid = struct {
         }
     }
     pub const One = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*SwitchRepeatExprInvalid, _root: ?*SwitchRepeatExprInvalid) !*One {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*SwitchRepeatExprInvalid, _root: ?*SwitchRepeatExprInvalid) !*One {
             const self = try _arena.allocator().create(One);
             self.* = .{
                 ._arena = _arena,
@@ -61,20 +59,20 @@ pub const SwitchRepeatExprInvalid = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const One) std.mem.Allocator {
+        fn _allocator(self: *const One) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *One) !void {
             self.first = try self._io.readBytesFull(self._allocator());
         }
-        first: []u8 = undefined,
+        first: []const u8 = undefined,
         _root: ?*SwitchRepeatExprInvalid,
         _parent: ?*SwitchRepeatExprInvalid,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const Two = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*SwitchRepeatExprInvalid, _root: ?*SwitchRepeatExprInvalid) !*Two {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*SwitchRepeatExprInvalid, _root: ?*SwitchRepeatExprInvalid) !*Two {
             const self = try _arena.allocator().create(Two);
             self.* = .{
                 ._arena = _arena,
@@ -85,24 +83,23 @@ pub const SwitchRepeatExprInvalid = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Two) std.mem.Allocator {
+        fn _allocator(self: *const Two) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Two) !void {
             self.second = try self._io.readBytesFull(self._allocator());
         }
-        second: []u8 = undefined,
+        second: []const u8 = undefined,
         _root: ?*SwitchRepeatExprInvalid,
         _parent: ?*SwitchRepeatExprInvalid,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     code: u8 = undefined,
     size: u32 = undefined,
-    body: *std.ArrayList(*anyopaque) = undefined,
+    body: *_imp_std.ArrayList(*anyopaque) = undefined,
     _root: ?*SwitchRepeatExprInvalid,
     _parent: ?*anyopaque,
-    _raw_body: *std.ArrayList([]u8) = undefined,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

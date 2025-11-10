@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ExprArray = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ExprArray) !*ExprArray {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ExprArray) !*ExprArray {
         const self = try _arena.allocator().create(ExprArray);
         self.* = .{
             ._arena = _arena,
@@ -15,11 +15,11 @@ pub const ExprArray = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ExprArray) std.mem.Allocator {
+    fn _allocator(self: *const ExprArray) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ExprArray) !void {
-        self.aint = try self._allocator().create(std.ArrayList(u32));
+        self.aint = try self._allocator().create(_imp_std.ArrayList(u32));
         self.aint.* = .empty;
         for (0..4) |i| {
             {
@@ -28,7 +28,7 @@ pub const ExprArray = struct {
             }
             try self.aint.append(self._allocator(), try self._io.readU4le());
         }
-        self.afloat = try self._allocator().create(std.ArrayList(f64));
+        self.afloat = try self._allocator().create(_imp_std.ArrayList(f64));
         self.afloat.* = .empty;
         for (0..3) |i| {
             {
@@ -37,14 +37,14 @@ pub const ExprArray = struct {
             }
             try self.afloat.append(self._allocator(), try self._io.readF8le());
         }
-        self.astr = try self._allocator().create(std.ArrayList([]u8));
+        self.astr = try self._allocator().create(_imp_std.ArrayList([]const u8));
         self.astr.* = .empty;
         for (0..3) |i| {
             {
                 const _maybe_unused = i;
                 _ = _maybe_unused;
             }
-            try self.astr.append(self._allocator(), kaitai_struct.KaitaiStream.bytesToStr(try self._io.readBytesTerm(self._allocator(), 0, false, true, true), "UTF-8"));
+            try self.astr.append(self._allocator(), (try _imp_kaitai_struct.KaitaiStream.bytesToStr(self._allocator(), try self._io.readBytesTerm(self._allocator(), 0, false, true, true), "UTF-8")));
         }
     }
     pub fn afloatFirst(self: *ExprArray) !f64 {
@@ -67,7 +67,7 @@ pub const ExprArray = struct {
         if (self._m_afloat_max) |_v|
             return _v;
         var _v: f64 = undefined;
-        _v = std.mem.max(f64, self.afloat.items);
+        _v = _imp_std.mem.max(f64, self.afloat.items);
         self._m_afloat_max = _v;
         return _v;
     }
@@ -75,7 +75,7 @@ pub const ExprArray = struct {
         if (self._m_afloat_min) |_v|
             return _v;
         var _v: f64 = undefined;
-        _v = std.mem.min(f64, self.afloat.items);
+        _v = _imp_std.mem.min(f64, self.afloat.items);
         self._m_afloat_min = _v;
         return _v;
     }
@@ -107,7 +107,7 @@ pub const ExprArray = struct {
         if (self._m_aint_max) |_v|
             return _v;
         var _v: u32 = undefined;
-        _v = std.mem.max(u32, self.aint.items);
+        _v = _imp_std.mem.max(u32, self.aint.items);
         self._m_aint_max = _v;
         return _v;
     }
@@ -115,7 +115,7 @@ pub const ExprArray = struct {
         if (self._m_aint_min) |_v|
             return _v;
         var _v: u32 = undefined;
-        _v = std.mem.min(u32, self.aint.items);
+        _v = _imp_std.mem.min(u32, self.aint.items);
         self._m_aint_min = _v;
         return _v;
     }
@@ -127,35 +127,35 @@ pub const ExprArray = struct {
         self._m_aint_size = _v;
         return _v;
     }
-    pub fn astrFirst(self: *ExprArray) ![]u8 {
+    pub fn astrFirst(self: *ExprArray) ![]const u8 {
         if (self._m_astr_first) |_v|
             return _v;
-        var _v: []u8 = undefined;
+        var _v: []const u8 = undefined;
         _v = self.astr.items[0];
         self._m_astr_first = _v;
         return _v;
     }
-    pub fn astrLast(self: *ExprArray) ![]u8 {
+    pub fn astrLast(self: *ExprArray) ![]const u8 {
         if (self._m_astr_last) |_v|
             return _v;
-        var _v: []u8 = undefined;
+        var _v: []const u8 = undefined;
         _v = self.astr.items[self.astr.items.len - 1];
         self._m_astr_last = _v;
         return _v;
     }
-    pub fn astrMax(self: *ExprArray) ![]u8 {
+    pub fn astrMax(self: *ExprArray) ![]const u8 {
         if (self._m_astr_max) |_v|
             return _v;
-        var _v: []u8 = undefined;
-        _v = std.mem.max([]u8, self.astr.items);
+        var _v: []const u8 = undefined;
+        _v = _imp_std.mem.max([]const u8, self.astr.items);
         self._m_astr_max = _v;
         return _v;
     }
-    pub fn astrMin(self: *ExprArray) ![]u8 {
+    pub fn astrMin(self: *ExprArray) ![]const u8 {
         if (self._m_astr_min) |_v|
             return _v;
-        var _v: []u8 = undefined;
-        _v = std.mem.min([]u8, self.astr.items);
+        var _v: []const u8 = undefined;
+        _v = _imp_std.mem.min([]const u8, self.astr.items);
         self._m_astr_min = _v;
         return _v;
     }
@@ -177,16 +177,16 @@ pub const ExprArray = struct {
     _m_aint_max: ?u32 = null,
     _m_aint_min: ?u32 = null,
     _m_aint_size: ?i32 = null,
-    _m_astr_first: ?[]u8 = null,
-    _m_astr_last: ?[]u8 = null,
-    _m_astr_max: ?[]u8 = null,
-    _m_astr_min: ?[]u8 = null,
+    _m_astr_first: ?[]const u8 = null,
+    _m_astr_last: ?[]const u8 = null,
+    _m_astr_max: ?[]const u8 = null,
+    _m_astr_min: ?[]const u8 = null,
     _m_astr_size: ?i32 = null,
-    aint: *std.ArrayList(u32) = undefined,
-    afloat: *std.ArrayList(f64) = undefined,
-    astr: *std.ArrayList([]u8) = undefined,
+    aint: *_imp_std.ArrayList(u32) = undefined,
+    afloat: *_imp_std.ArrayList(f64) = undefined,
+    astr: *_imp_std.ArrayList([]const u8) = undefined,
     _root: ?*ExprArray,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

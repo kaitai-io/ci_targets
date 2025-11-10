@@ -1,7 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 
 /// A variable-length unsigned/signed integer using base128 encoding. 1-byte groups
@@ -34,7 +34,7 @@ const kaitai_struct = @import("kaitai_struct");
 /// enforced by this implementation. They were inspired by the Protoscope tool,
 /// see <https://github.com/protocolbuffers/protoscope/blob/8e7a6aafa2c9958527b1e0747e66e1bfff045819/writer.go#L644-L648>.
 pub const VlqBase128Le = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*VlqBase128Le) !*VlqBase128Le {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*VlqBase128Le) !*VlqBase128Le {
         const self = try _arena.allocator().create(VlqBase128Le);
         self.* = .{
             ._arena = _arena,
@@ -45,11 +45,11 @@ pub const VlqBase128Le = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const VlqBase128Le) std.mem.Allocator {
+    fn _allocator(self: *const VlqBase128Le) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *VlqBase128Le) !void {
-        self.groups = try self._allocator().create(std.ArrayList(*Group));
+        self.groups = try self._allocator().create(_imp_std.ArrayList(*Group));
         self.groups.* = .empty;
         {
             var i: usize = 0;
@@ -65,7 +65,7 @@ pub const VlqBase128Le = struct {
 
     /// One byte group, clearly divided into 7-bit "value" chunk and 1-bit "continuation" flag.
     pub const Group = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*VlqBase128Le, _root: ?*VlqBase128Le, idx: i32, prev_interm_value: u64, multiplier: u64) !*Group {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*VlqBase128Le, _root: ?*VlqBase128Le, idx: i32, prev_interm_value: u64, multiplier: u64) !*Group {
             const self = try _arena.allocator().create(Group);
             self.* = .{
                 ._arena = _arena,
@@ -79,7 +79,7 @@ pub const VlqBase128Le = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Group) std.mem.Allocator {
+        fn _allocator(self: *const Group) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Group) !void {
@@ -120,8 +120,8 @@ pub const VlqBase128Le = struct {
         multiplier: u64 = undefined,
         _root: ?*VlqBase128Le,
         _parent: ?*VlqBase128Le,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub fn len(self: *VlqBase128Le) !i32 {
         if (self._m_len) |_v|
@@ -161,9 +161,9 @@ pub const VlqBase128Le = struct {
     _m_sign_bit: ?u64 = null,
     _m_value: ?u64 = null,
     _m_value_signed: ?i64 = null,
-    groups: *std.ArrayList(*Group) = undefined,
+    groups: *_imp_std.ArrayList(*Group) = undefined,
     _root: ?*VlqBase128Le,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

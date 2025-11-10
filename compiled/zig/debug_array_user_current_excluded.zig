@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const DebugArrayUserCurrentExcluded = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*DebugArrayUserCurrentExcluded) !*DebugArrayUserCurrentExcluded {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*DebugArrayUserCurrentExcluded) !*DebugArrayUserCurrentExcluded {
         const self = try _arena.allocator().create(DebugArrayUserCurrentExcluded);
         self.* = .{
             ._arena = _arena,
@@ -14,11 +14,11 @@ pub const DebugArrayUserCurrentExcluded = struct {
         };
         return self;
     }
-    fn _allocator(self: *const DebugArrayUserCurrentExcluded) std.mem.Allocator {
+    fn _allocator(self: *const DebugArrayUserCurrentExcluded) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     pub fn _read(self: *DebugArrayUserCurrentExcluded) !void {
-        self.array_of_cats = try self._allocator().create(std.ArrayList(*Cat));
+        self.array_of_cats = try self._allocator().create(_imp_std.ArrayList(*Cat));
         self.array_of_cats.* = .empty;
         for (0..3) |i| {
             {
@@ -34,7 +34,7 @@ pub const DebugArrayUserCurrentExcluded = struct {
         }
     }
     pub const Cat = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*DebugArrayUserCurrentExcluded, _root: ?*DebugArrayUserCurrentExcluded) !*Cat {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*DebugArrayUserCurrentExcluded, _root: ?*DebugArrayUserCurrentExcluded) !*Cat {
             const self = try _arena.allocator().create(Cat);
             self.* = .{
                 ._arena = _arena,
@@ -44,21 +44,21 @@ pub const DebugArrayUserCurrentExcluded = struct {
             };
             return self;
         }
-        fn _allocator(self: *const Cat) std.mem.Allocator {
+        fn _allocator(self: *const Cat) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         pub fn _read(self: *Cat) !void {
             self.meow = try self._io.readBytes(self._allocator(), 3 - self._parent.?.array_of_cats.items.len);
         }
-        meow: []u8 = undefined,
+        meow: []const u8 = undefined,
         _root: ?*DebugArrayUserCurrentExcluded,
         _parent: ?*DebugArrayUserCurrentExcluded,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
-    array_of_cats: *std.ArrayList(*Cat) = undefined,
+    array_of_cats: *_imp_std.ArrayList(*Cat) = undefined,
     _root: ?*DebugArrayUserCurrentExcluded,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

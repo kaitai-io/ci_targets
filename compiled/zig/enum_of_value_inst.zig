@@ -1,7 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const EnumOfValueInst = struct {
     pub const Animal = enum(i32) {
@@ -10,7 +10,7 @@ pub const EnumOfValueInst = struct {
         chicken = 12,
         _,
     };
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*EnumOfValueInst) !*EnumOfValueInst {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*EnumOfValueInst) !*EnumOfValueInst {
         const self = try _arena.allocator().create(EnumOfValueInst);
         self.* = .{
             ._arena = _arena,
@@ -21,7 +21,7 @@ pub const EnumOfValueInst = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const EnumOfValueInst) std.mem.Allocator {
+    fn _allocator(self: *const EnumOfValueInst) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *EnumOfValueInst) !void {
@@ -50,6 +50,6 @@ pub const EnumOfValueInst = struct {
     pet_2: Animal = undefined,
     _root: ?*EnumOfValueInst,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const DebugSwitchUser = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*DebugSwitchUser) !*DebugSwitchUser {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*DebugSwitchUser) !*DebugSwitchUser {
         const self = try _arena.allocator().create(DebugSwitchUser);
         self.* = .{
             ._arena = _arena,
@@ -14,7 +14,7 @@ pub const DebugSwitchUser = struct {
         };
         return self;
     }
-    fn _allocator(self: *const DebugSwitchUser) std.mem.Allocator {
+    fn _allocator(self: *const DebugSwitchUser) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     pub fn _read(self: *DebugSwitchUser) !void {
@@ -33,7 +33,7 @@ pub const DebugSwitchUser = struct {
         }
     }
     pub const One = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*DebugSwitchUser, _root: ?*DebugSwitchUser) !*One {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*DebugSwitchUser, _root: ?*DebugSwitchUser) !*One {
             const self = try _arena.allocator().create(One);
             self.* = .{
                 ._arena = _arena,
@@ -43,7 +43,7 @@ pub const DebugSwitchUser = struct {
             };
             return self;
         }
-        fn _allocator(self: *const One) std.mem.Allocator {
+        fn _allocator(self: *const One) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         pub fn _read(self: *One) !void {
@@ -52,11 +52,11 @@ pub const DebugSwitchUser = struct {
         val: i16 = undefined,
         _root: ?*DebugSwitchUser,
         _parent: ?*DebugSwitchUser,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const Two = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*DebugSwitchUser, _root: ?*DebugSwitchUser) !*Two {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*DebugSwitchUser, _root: ?*DebugSwitchUser) !*Two {
             const self = try _arena.allocator().create(Two);
             self.* = .{
                 ._arena = _arena,
@@ -66,7 +66,7 @@ pub const DebugSwitchUser = struct {
             };
             return self;
         }
-        fn _allocator(self: *const Two) std.mem.Allocator {
+        fn _allocator(self: *const Two) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         pub fn _read(self: *Two) !void {
@@ -75,13 +75,13 @@ pub const DebugSwitchUser = struct {
         val: u16 = undefined,
         _root: ?*DebugSwitchUser,
         _parent: ?*DebugSwitchUser,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     code: u8 = undefined,
     data: ?*anyopaque = null,
     _root: ?*DebugSwitchUser,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

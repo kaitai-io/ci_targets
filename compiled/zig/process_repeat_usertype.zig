@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ProcessRepeatUsertype = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ProcessRepeatUsertype) !*ProcessRepeatUsertype {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ProcessRepeatUsertype) !*ProcessRepeatUsertype {
         const self = try _arena.allocator().create(ProcessRepeatUsertype);
         self.* = .{
             ._arena = _arena,
@@ -15,30 +15,26 @@ pub const ProcessRepeatUsertype = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ProcessRepeatUsertype) std.mem.Allocator {
+    fn _allocator(self: *const ProcessRepeatUsertype) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ProcessRepeatUsertype) !void {
-        self._raw_blocks = try self._allocator().create(std.ArrayList([]u8));
-        self._raw_blocks.* = .empty;
-        self._raw__raw_blocks = try self._allocator().create(std.ArrayList([]u8));
-        self._raw__raw_blocks.* = .empty;
-        self.blocks = try self._allocator().create(std.ArrayList(*Block));
+        self.blocks = try self._allocator().create(_imp_std.ArrayList(*Block));
         self.blocks.* = .empty;
         for (0..2) |i| {
             {
                 const _maybe_unused = i;
                 _ = _maybe_unused;
             }
-            try self._raw__raw_blocks.append(self._allocator(), try self._io.readBytes(self._allocator(), 5));
-            try self._raw_blocks.append(self._allocator(), kaitai_struct.KaitaiStream.processXor(self._raw__raw_blocks.items[i], @as(i8, 158)));
-            const _io__raw_blocks = try self._allocator().create(kaitai_struct.KaitaiStream);
-            _io__raw_blocks.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_blocks.items[i]);
+            const _raw__raw_blocks = try self._io.readBytes(self._allocator(), 5);
+            const _raw_blocks = try _imp_kaitai_struct.KaitaiStream.processXorOne(self._allocator(), _raw__raw_blocks, @as(u8, 158));
+            const _io__raw_blocks = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+            _io__raw_blocks.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_blocks);
             try self.blocks.append(self._allocator(), try Block.create(self._arena, _io__raw_blocks, self, self._root));
         }
     }
     pub const Block = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*ProcessRepeatUsertype, _root: ?*ProcessRepeatUsertype) !*Block {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*ProcessRepeatUsertype, _root: ?*ProcessRepeatUsertype) !*Block {
             const self = try _arena.allocator().create(Block);
             self.* = .{
                 ._arena = _arena,
@@ -49,7 +45,7 @@ pub const ProcessRepeatUsertype = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Block) std.mem.Allocator {
+        fn _allocator(self: *const Block) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Block) !void {
@@ -60,14 +56,12 @@ pub const ProcessRepeatUsertype = struct {
         b: i8 = undefined,
         _root: ?*ProcessRepeatUsertype,
         _parent: ?*ProcessRepeatUsertype,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
-    blocks: *std.ArrayList(*Block) = undefined,
+    blocks: *_imp_std.ArrayList(*Block) = undefined,
     _root: ?*ProcessRepeatUsertype,
     _parent: ?*anyopaque,
-    _raw_blocks: *std.ArrayList([]u8) = undefined,
-    _raw__raw_blocks: *std.ArrayList([]u8) = undefined,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

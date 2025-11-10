@@ -1,7 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const EnumToI = struct {
     pub const Animal = enum(i32) {
@@ -10,7 +10,7 @@ pub const EnumToI = struct {
         chicken = 12,
         _,
     };
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*EnumToI) !*EnumToI {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*EnumToI) !*EnumToI {
         const self = try _arena.allocator().create(EnumToI);
         self.* = .{
             ._arena = _arena,
@@ -21,7 +21,7 @@ pub const EnumToI = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const EnumToI) std.mem.Allocator {
+    fn _allocator(self: *const EnumToI) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *EnumToI) !void {
@@ -52,11 +52,11 @@ pub const EnumToI = struct {
         self._m_pet_1_i = _v;
         return _v;
     }
-    pub fn pet1IToS(self: *EnumToI) ![]u8 {
+    pub fn pet1IToS(self: *EnumToI) ![]const u8 {
         if (self._m_pet_1_i_to_s) |_v|
             return _v;
-        var _v: []u8 = undefined;
-        _v = (try std.fmt.allocPrint(self._allocator(), "{d}", .{ @intFromEnum(self.pet_1) }));
+        var _v: []const u8 = undefined;
+        _v = (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ @intFromEnum(self.pet_1) }));
         self._m_pet_1_i_to_s = _v;
         return _v;
     }
@@ -79,13 +79,13 @@ pub const EnumToI = struct {
     _m_one_lt_two: ?bool = null,
     _m_pet_1_eq_int: ?bool = null,
     _m_pet_1_i: ?i32 = null,
-    _m_pet_1_i_to_s: ?[]u8 = null,
+    _m_pet_1_i_to_s: ?[]const u8 = null,
     _m_pet_1_mod: ?i32 = null,
     _m_pet_2_eq_int: ?bool = null,
     pet_1: Animal = undefined,
     pet_2: Animal = undefined,
     _root: ?*EnumToI,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

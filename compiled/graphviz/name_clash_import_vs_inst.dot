@@ -1,0 +1,21 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__name_clash_import_vs_inst {
+		label="NameClashImportVsInst";
+		graph[style=dotted];
+
+		name_clash_import_vs_inst__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+		</TABLE>>];
+		name_clash_import_vs_inst__inst__integers [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="integers_pos">0</TD><TD PORT="integers_size">148</TD><TD>Integers</TD><TD PORT="integers_type">integers</TD></TR>
+		</TABLE>>];
+		name_clash_import_vs_inst__inst__std [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>std</TD><TD>1 + 2</TD></TR>
+		</TABLE>>];
+	}
+	name_clash_import_vs_inst__inst__integers:integers_type -> integers__seq [style=bold];
+}

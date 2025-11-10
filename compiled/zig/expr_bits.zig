@@ -1,7 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ExprBits = struct {
     pub const Items = enum(i32) {
@@ -9,7 +9,7 @@ pub const ExprBits = struct {
         bar = 2,
         _,
     };
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ExprBits) !*ExprBits {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ExprBits) !*ExprBits {
         const self = try _arena.allocator().create(ExprBits);
         self.* = .{
             ._arena = _arena,
@@ -20,14 +20,14 @@ pub const ExprBits = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ExprBits) std.mem.Allocator {
+    fn _allocator(self: *const ExprBits) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ExprBits) !void {
         self.enum_seq = @as(ExprBits.Items, @enumFromInt(try self._io.readBitsIntBe(2)));
         self.a = try self._io.readBitsIntBe(3);
         self.byte_size = try self._io.readBytes(self._allocator(), self.a);
-        self.repeat_expr = try self._allocator().create(std.ArrayList(i8));
+        self.repeat_expr = try self._allocator().create(_imp_std.ArrayList(i8));
         self.repeat_expr.* = .empty;
         for (0..self.a) |i| {
             {
@@ -46,7 +46,7 @@ pub const ExprBits = struct {
         self.switch_on_endian = try EndianSwitch.create(self._arena, self._io, self, self._root);
     }
     pub const EndianSwitch = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*ExprBits, _root: ?*ExprBits) !*EndianSwitch {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*ExprBits, _root: ?*ExprBits) !*EndianSwitch {
             const self = try _arena.allocator().create(EndianSwitch);
             self.* = .{
                 ._arena = _arena,
@@ -57,7 +57,7 @@ pub const ExprBits = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const EndianSwitch) std.mem.Allocator {
+        fn _allocator(self: *const EndianSwitch) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *EndianSwitch) !void {
@@ -88,8 +88,8 @@ pub const ExprBits = struct {
         foo: i16 = undefined,
         _root: ?*ExprBits,
         _parent: ?*ExprBits,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
         _is_le: ?bool = null,
     };
     pub fn enumInst(self: *ExprBits) !Items {
@@ -115,12 +115,12 @@ pub const ExprBits = struct {
     _m_inst_pos: ?i8 = null,
     enum_seq: Items = undefined,
     a: u64 = undefined,
-    byte_size: []u8 = undefined,
-    repeat_expr: *std.ArrayList(i8) = undefined,
+    byte_size: []const u8 = undefined,
+    repeat_expr: *_imp_std.ArrayList(i8) = undefined,
     switch_on_type: ?i8 = null,
     switch_on_endian: *EndianSwitch = undefined,
     _root: ?*ExprBits,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

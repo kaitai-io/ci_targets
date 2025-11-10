@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ParamsPassArrayIo = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ParamsPassArrayIo) !*ParamsPassArrayIo {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ParamsPassArrayIo) !*ParamsPassArrayIo {
         const self = try _arena.allocator().create(ParamsPassArrayIo);
         self.* = .{
             ._arena = _arena,
@@ -15,18 +15,18 @@ pub const ParamsPassArrayIo = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ParamsPassArrayIo) std.mem.Allocator {
+    fn _allocator(self: *const ParamsPassArrayIo) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ParamsPassArrayIo) !void {
-        self._raw_first = try self._io.readBytes(self._allocator(), 1);
-        const _io__raw_first = try self._allocator().create(kaitai_struct.KaitaiStream);
-        _io__raw_first.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_first);
+        const _raw_first = try self._io.readBytes(self._allocator(), 1);
+        const _io__raw_first = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+        _io__raw_first.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_first);
         self.first = try Block.create(self._arena, _io__raw_first, self, self._root);
-        self.one = try ParamType.create(self._arena, self._io, self, self._root, std.ArrayList(*kaitai_struct.KaitaiStream){ .items = @constCast(@as([]const *kaitai_struct.KaitaiStream, &.{ self.first._io, self._root.?._io })), .capacity = 2 });
+        self.one = try ParamType.create(self._arena, self._io, self, self._root, _imp_std.ArrayList(*_imp_kaitai_struct.KaitaiStream){ .items = @constCast(@as([]const *_imp_kaitai_struct.KaitaiStream, &.{ self.first._io, self._root.?._io })), .capacity = 2 });
     }
     pub const Block = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*ParamsPassArrayIo, _root: ?*ParamsPassArrayIo) !*Block {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*ParamsPassArrayIo, _root: ?*ParamsPassArrayIo) !*Block {
             const self = try _arena.allocator().create(Block);
             self.* = .{
                 ._arena = _arena,
@@ -37,7 +37,7 @@ pub const ParamsPassArrayIo = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Block) std.mem.Allocator {
+        fn _allocator(self: *const Block) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Block) !void {
@@ -46,11 +46,11 @@ pub const ParamsPassArrayIo = struct {
         foo: u8 = undefined,
         _root: ?*ParamsPassArrayIo,
         _parent: ?*ParamsPassArrayIo,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const ParamType = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*ParamsPassArrayIo, _root: ?*ParamsPassArrayIo, arg_streams: *std.ArrayList(*kaitai_struct.KaitaiStream)) !*ParamType {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*ParamsPassArrayIo, _root: ?*ParamsPassArrayIo, arg_streams: *_imp_std.ArrayList(*_imp_kaitai_struct.KaitaiStream)) !*ParamType {
             const self = try _arena.allocator().create(ParamType);
             self.* = .{
                 ._arena = _arena,
@@ -62,24 +62,23 @@ pub const ParamsPassArrayIo = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const ParamType) std.mem.Allocator {
+        fn _allocator(self: *const ParamType) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *ParamType) !void {
             self.buf = try self._io.readBytes(self._allocator(), (try self.arg_streams.items[0].size()));
         }
-        buf: []u8 = undefined,
-        arg_streams: *std.ArrayList(*kaitai_struct.KaitaiStream) = undefined,
+        buf: []const u8 = undefined,
+        arg_streams: *_imp_std.ArrayList(*_imp_kaitai_struct.KaitaiStream) = undefined,
         _root: ?*ParamsPassArrayIo,
         _parent: ?*ParamsPassArrayIo,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     first: *Block = undefined,
     one: *ParamType = undefined,
     _root: ?*ParamsPassArrayIo,
     _parent: ?*anyopaque,
-    _raw_first: []u8 = undefined,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

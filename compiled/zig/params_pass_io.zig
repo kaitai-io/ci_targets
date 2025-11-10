@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ParamsPassIo = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ParamsPassIo) !*ParamsPassIo {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ParamsPassIo) !*ParamsPassIo {
         const self = try _arena.allocator().create(ParamsPassIo);
         self.* = .{
             ._arena = _arena,
@@ -15,18 +15,18 @@ pub const ParamsPassIo = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ParamsPassIo) std.mem.Allocator {
+    fn _allocator(self: *const ParamsPassIo) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ParamsPassIo) !void {
-        self._raw_first = try self._io.readBytes(self._allocator(), 1);
-        const _io__raw_first = try self._allocator().create(kaitai_struct.KaitaiStream);
-        _io__raw_first.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_first);
+        const _raw_first = try self._io.readBytes(self._allocator(), 1);
+        const _io__raw_first = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+        _io__raw_first.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_first);
         self.first = try Block.create(self._arena, _io__raw_first, self, self._root);
         self.one = try ParamType.create(self._arena, self._io, self, self._root, (if (self.first.foo == 255) self.first._io else self._root.?._io));
     }
     pub const Block = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*ParamsPassIo, _root: ?*ParamsPassIo) !*Block {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*ParamsPassIo, _root: ?*ParamsPassIo) !*Block {
             const self = try _arena.allocator().create(Block);
             self.* = .{
                 ._arena = _arena,
@@ -37,7 +37,7 @@ pub const ParamsPassIo = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Block) std.mem.Allocator {
+        fn _allocator(self: *const Block) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Block) !void {
@@ -46,11 +46,11 @@ pub const ParamsPassIo = struct {
         foo: u8 = undefined,
         _root: ?*ParamsPassIo,
         _parent: ?*ParamsPassIo,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const ParamType = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*ParamsPassIo, _root: ?*ParamsPassIo, arg_stream: *kaitai_struct.KaitaiStream) !*ParamType {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*ParamsPassIo, _root: ?*ParamsPassIo, arg_stream: *_imp_kaitai_struct.KaitaiStream) !*ParamType {
             const self = try _arena.allocator().create(ParamType);
             self.* = .{
                 ._arena = _arena,
@@ -62,24 +62,23 @@ pub const ParamsPassIo = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const ParamType) std.mem.Allocator {
+        fn _allocator(self: *const ParamType) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *ParamType) !void {
             self.buf = try self._io.readBytes(self._allocator(), (try self.arg_stream.size()));
         }
-        buf: []u8 = undefined,
-        arg_stream: *kaitai_struct.KaitaiStream = undefined,
+        buf: []const u8 = undefined,
+        arg_stream: *_imp_kaitai_struct.KaitaiStream = undefined,
         _root: ?*ParamsPassIo,
         _parent: ?*ParamsPassIo,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     first: *Block = undefined,
     one: *ParamType = undefined,
     _root: ?*ParamsPassIo,
     _parent: ?*anyopaque,
-    _raw_first: []u8 = undefined,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

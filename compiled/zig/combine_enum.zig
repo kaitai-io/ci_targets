@@ -1,7 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const CombineEnum = struct {
     pub const Animal = enum(i32) {
@@ -9,7 +9,7 @@ pub const CombineEnum = struct {
         horse = 12,
         _,
     };
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*CombineEnum) !*CombineEnum {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*CombineEnum) !*CombineEnum {
         const self = try _arena.allocator().create(CombineEnum);
         self.* = .{
             ._arena = _arena,
@@ -20,7 +20,7 @@ pub const CombineEnum = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const CombineEnum) std.mem.Allocator {
+    fn _allocator(self: *const CombineEnum) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *CombineEnum) !void {
@@ -40,6 +40,6 @@ pub const CombineEnum = struct {
     enum_u2: Animal = undefined,
     _root: ?*CombineEnum,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

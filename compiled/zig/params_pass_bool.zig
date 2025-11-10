@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ParamsPassBool = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ParamsPassBool) !*ParamsPassBool {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ParamsPassBool) !*ParamsPassBool {
         const self = try _arena.allocator().create(ParamsPassBool);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const ParamsPassBool = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ParamsPassBool) std.mem.Allocator {
+    fn _allocator(self: *const ParamsPassBool) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ParamsPassBool) !void {
@@ -29,7 +29,7 @@ pub const ParamsPassBool = struct {
         self.inst_bool = try ParamTypeBool.create(self._arena, self._io, self, self._root, (try self.vFalse()));
     }
     pub const ParamTypeB1 = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*ParamsPassBool, _root: ?*ParamsPassBool, arg: bool) !*ParamTypeB1 {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*ParamsPassBool, _root: ?*ParamsPassBool, arg: bool) !*ParamTypeB1 {
             const self = try _arena.allocator().create(ParamTypeB1);
             self.* = .{
                 ._arena = _arena,
@@ -41,21 +41,21 @@ pub const ParamsPassBool = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const ParamTypeB1) std.mem.Allocator {
+        fn _allocator(self: *const ParamTypeB1) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *ParamTypeB1) !void {
             self.foo = try self._io.readBytes(self._allocator(), (if (self.arg) 1 else 2));
         }
-        foo: []u8 = undefined,
+        foo: []const u8 = undefined,
         arg: bool = undefined,
         _root: ?*ParamsPassBool,
         _parent: ?*ParamsPassBool,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const ParamTypeBool = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*ParamsPassBool, _root: ?*ParamsPassBool, arg: bool) !*ParamTypeBool {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*ParamsPassBool, _root: ?*ParamsPassBool, arg: bool) !*ParamTypeBool {
             const self = try _arena.allocator().create(ParamTypeBool);
             self.* = .{
                 ._arena = _arena,
@@ -67,18 +67,18 @@ pub const ParamsPassBool = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const ParamTypeBool) std.mem.Allocator {
+        fn _allocator(self: *const ParamTypeBool) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *ParamTypeBool) !void {
             self.foo = try self._io.readBytes(self._allocator(), (if (self.arg) 1 else 2));
         }
-        foo: []u8 = undefined,
+        foo: []const u8 = undefined,
         arg: bool = undefined,
         _root: ?*ParamsPassBool,
         _parent: ?*ParamsPassBool,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub fn vFalse(self: *ParamsPassBool) !bool {
         if (self._m_v_false) |_v|
@@ -108,6 +108,6 @@ pub const ParamsPassBool = struct {
     inst_bool: *ParamTypeBool = undefined,
     _root: ?*ParamsPassBool,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

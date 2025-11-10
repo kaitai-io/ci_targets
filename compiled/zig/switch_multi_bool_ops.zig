@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const SwitchMultiBoolOps = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*SwitchMultiBoolOps) !*SwitchMultiBoolOps {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*SwitchMultiBoolOps) !*SwitchMultiBoolOps {
         const self = try _arena.allocator().create(SwitchMultiBoolOps);
         self.* = .{
             ._arena = _arena,
@@ -15,11 +15,11 @@ pub const SwitchMultiBoolOps = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const SwitchMultiBoolOps) std.mem.Allocator {
+    fn _allocator(self: *const SwitchMultiBoolOps) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *SwitchMultiBoolOps) !void {
-        self.opcodes = try self._allocator().create(std.ArrayList(*Opcode));
+        self.opcodes = try self._allocator().create(_imp_std.ArrayList(*Opcode));
         self.opcodes.* = .empty;
         {
             var i: usize = 0;
@@ -29,7 +29,7 @@ pub const SwitchMultiBoolOps = struct {
         }
     }
     pub const Opcode = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*SwitchMultiBoolOps, _root: ?*SwitchMultiBoolOps) !*Opcode {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*SwitchMultiBoolOps, _root: ?*SwitchMultiBoolOps) !*Opcode {
             const self = try _arena.allocator().create(Opcode);
             self.* = .{
                 ._arena = _arena,
@@ -40,7 +40,7 @@ pub const SwitchMultiBoolOps = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Opcode) std.mem.Allocator {
+        fn _allocator(self: *const Opcode) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Opcode) !void {
@@ -66,12 +66,12 @@ pub const SwitchMultiBoolOps = struct {
         body: ?u64 = null,
         _root: ?*SwitchMultiBoolOps,
         _parent: ?*SwitchMultiBoolOps,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
-    opcodes: *std.ArrayList(*Opcode) = undefined,
+    opcodes: *_imp_std.ArrayList(*Opcode) = undefined,
     _root: ?*SwitchMultiBoolOps,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

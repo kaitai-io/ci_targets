@@ -1,12 +1,12 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 
 /// One-liner description of a type.
 pub const Docstrings = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*Docstrings) !*Docstrings {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*Docstrings) !*Docstrings {
         const self = try _arena.allocator().create(Docstrings);
         self.* = .{
             ._arena = _arena,
@@ -17,7 +17,7 @@ pub const Docstrings = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const Docstrings) std.mem.Allocator {
+    fn _allocator(self: *const Docstrings) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *Docstrings) !void {
@@ -38,7 +38,7 @@ pub const Docstrings = struct {
     /// [woohoo](http://example.com) - one day it will be supported as
     /// well.
     pub const ComplexSubtype = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*Docstrings) !*ComplexSubtype {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*Docstrings) !*ComplexSubtype {
             const self = try _arena.allocator().create(ComplexSubtype);
             self.* = .{
                 ._arena = _arena,
@@ -49,7 +49,7 @@ pub const Docstrings = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const ComplexSubtype) std.mem.Allocator {
+        fn _allocator(self: *const ComplexSubtype) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *ComplexSubtype) !void {
@@ -57,8 +57,8 @@ pub const Docstrings = struct {
         }
         _root: ?*Docstrings,
         _parent: ?*anyopaque,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
 
     /// And yet another one for value instance "three"
@@ -90,6 +90,6 @@ pub const Docstrings = struct {
     one: u8 = undefined,
     _root: ?*Docstrings,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

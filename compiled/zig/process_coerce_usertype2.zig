@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ProcessCoerceUsertype2 = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ProcessCoerceUsertype2) !*ProcessCoerceUsertype2 {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ProcessCoerceUsertype2) !*ProcessCoerceUsertype2 {
         const self = try _arena.allocator().create(ProcessCoerceUsertype2);
         self.* = .{
             ._arena = _arena,
@@ -15,11 +15,11 @@ pub const ProcessCoerceUsertype2 = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ProcessCoerceUsertype2) std.mem.Allocator {
+    fn _allocator(self: *const ProcessCoerceUsertype2) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ProcessCoerceUsertype2) !void {
-        self.records = try self._allocator().create(std.ArrayList(*Record));
+        self.records = try self._allocator().create(_imp_std.ArrayList(*Record));
         self.records.* = .empty;
         for (0..2) |i| {
             {
@@ -30,7 +30,7 @@ pub const ProcessCoerceUsertype2 = struct {
         }
     }
     pub const Foo = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*ProcessCoerceUsertype2.Record, _root: ?*ProcessCoerceUsertype2) !*Foo {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*ProcessCoerceUsertype2.Record, _root: ?*ProcessCoerceUsertype2) !*Foo {
             const self = try _arena.allocator().create(Foo);
             self.* = .{
                 ._arena = _arena,
@@ -41,7 +41,7 @@ pub const ProcessCoerceUsertype2 = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Foo) std.mem.Allocator {
+        fn _allocator(self: *const Foo) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Foo) !void {
@@ -50,11 +50,11 @@ pub const ProcessCoerceUsertype2 = struct {
         value: u32 = undefined,
         _root: ?*ProcessCoerceUsertype2,
         _parent: ?*ProcessCoerceUsertype2.Record,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const Record = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*ProcessCoerceUsertype2, _root: ?*ProcessCoerceUsertype2) !*Record {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*ProcessCoerceUsertype2, _root: ?*ProcessCoerceUsertype2) !*Record {
             const self = try _arena.allocator().create(Record);
             self.* = .{
                 ._arena = _arena,
@@ -65,7 +65,7 @@ pub const ProcessCoerceUsertype2 = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Record) std.mem.Allocator {
+        fn _allocator(self: *const Record) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Record) !void {
@@ -74,10 +74,10 @@ pub const ProcessCoerceUsertype2 = struct {
                 self.buf_unproc = try Foo.create(self._arena, self._io, self, self._root);
             }
             if (self.flag != 0) {
-                self._raw__raw_buf_proc = try self._io.readBytes(self._allocator(), 4);
-                self._raw_buf_proc = kaitai_struct.KaitaiStream.processXor(self._raw__raw_buf_proc, @as(i8, 170));
-                const _io__raw_buf_proc = try self._allocator().create(kaitai_struct.KaitaiStream);
-                _io__raw_buf_proc.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_buf_proc);
+                const _raw__raw_buf_proc = try self._io.readBytes(self._allocator(), 4);
+                const _raw_buf_proc = try _imp_kaitai_struct.KaitaiStream.processXorOne(self._allocator(), _raw__raw_buf_proc, @as(u8, 170));
+                const _io__raw_buf_proc = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+                _io__raw_buf_proc.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_buf_proc);
                 self.buf_proc = try Foo.create(self._arena, _io__raw_buf_proc, self, self._root);
             }
         }
@@ -95,14 +95,12 @@ pub const ProcessCoerceUsertype2 = struct {
         buf_proc: ?*Foo = null,
         _root: ?*ProcessCoerceUsertype2,
         _parent: ?*ProcessCoerceUsertype2,
-        _raw_buf_proc: ?[]u8 = null,
-        _raw__raw_buf_proc: ?[]u8 = null,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
-    records: *std.ArrayList(*Record) = undefined,
+    records: *_imp_std.ArrayList(*Record) = undefined,
     _root: ?*ProcessCoerceUsertype2,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

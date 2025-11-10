@@ -1,7 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ParamsEnum = struct {
     pub const Animal = enum(i32) {
@@ -10,7 +10,7 @@ pub const ParamsEnum = struct {
         chicken = 12,
         _,
     };
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ParamsEnum) !*ParamsEnum {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ParamsEnum) !*ParamsEnum {
         const self = try _arena.allocator().create(ParamsEnum);
         self.* = .{
             ._arena = _arena,
@@ -21,7 +21,7 @@ pub const ParamsEnum = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ParamsEnum) std.mem.Allocator {
+    fn _allocator(self: *const ParamsEnum) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ParamsEnum) !void {
@@ -29,7 +29,7 @@ pub const ParamsEnum = struct {
         self.invoke_with_param = try WithParam.create(self._arena, self._io, self, self._root, self.one);
     }
     pub const WithParam = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*ParamsEnum, _root: ?*ParamsEnum, enumerated_one: Animal) !*WithParam {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*ParamsEnum, _root: ?*ParamsEnum, enumerated_one: Animal) !*WithParam {
             const self = try _arena.allocator().create(WithParam);
             self.* = .{
                 ._arena = _arena,
@@ -41,7 +41,7 @@ pub const ParamsEnum = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const WithParam) std.mem.Allocator {
+        fn _allocator(self: *const WithParam) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *WithParam) !void {
@@ -59,13 +59,13 @@ pub const ParamsEnum = struct {
         enumerated_one: Animal = undefined,
         _root: ?*ParamsEnum,
         _parent: ?*ParamsEnum,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     one: Animal = undefined,
     invoke_with_param: *WithParam = undefined,
     _root: ?*ParamsEnum,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

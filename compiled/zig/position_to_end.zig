@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const PositionToEnd = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*PositionToEnd) !*PositionToEnd {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*PositionToEnd) !*PositionToEnd {
         const self = try _arena.allocator().create(PositionToEnd);
         self.* = .{
             ._arena = _arena,
@@ -15,14 +15,14 @@ pub const PositionToEnd = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const PositionToEnd) std.mem.Allocator {
+    fn _allocator(self: *const PositionToEnd) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *PositionToEnd) !void {
         _ = self;
     }
     pub const IndexObj = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*PositionToEnd, _root: ?*PositionToEnd) !*IndexObj {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*PositionToEnd, _root: ?*PositionToEnd) !*IndexObj {
             const self = try _arena.allocator().create(IndexObj);
             self.* = .{
                 ._arena = _arena,
@@ -33,7 +33,7 @@ pub const PositionToEnd = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const IndexObj) std.mem.Allocator {
+        fn _allocator(self: *const IndexObj) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *IndexObj) !void {
@@ -44,8 +44,8 @@ pub const PositionToEnd = struct {
         bar: u32 = undefined,
         _root: ?*PositionToEnd,
         _parent: ?*PositionToEnd,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub fn index(self: *PositionToEnd) !*IndexObj {
         if (self._m_index) |_v|
@@ -61,6 +61,6 @@ pub const PositionToEnd = struct {
     _m_index: ?*IndexObj = null,
     _root: ?*PositionToEnd,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

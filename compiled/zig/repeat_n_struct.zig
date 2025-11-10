@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const RepeatNStruct = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*RepeatNStruct) !*RepeatNStruct {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*RepeatNStruct) !*RepeatNStruct {
         const self = try _arena.allocator().create(RepeatNStruct);
         self.* = .{
             ._arena = _arena,
@@ -15,12 +15,12 @@ pub const RepeatNStruct = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const RepeatNStruct) std.mem.Allocator {
+    fn _allocator(self: *const RepeatNStruct) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *RepeatNStruct) !void {
         self.qty = try self._io.readU4le();
-        self.chunks = try self._allocator().create(std.ArrayList(*Chunk));
+        self.chunks = try self._allocator().create(_imp_std.ArrayList(*Chunk));
         self.chunks.* = .empty;
         for (0..self.qty) |i| {
             {
@@ -31,7 +31,7 @@ pub const RepeatNStruct = struct {
         }
     }
     pub const Chunk = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*RepeatNStruct, _root: ?*RepeatNStruct) !*Chunk {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*RepeatNStruct, _root: ?*RepeatNStruct) !*Chunk {
             const self = try _arena.allocator().create(Chunk);
             self.* = .{
                 ._arena = _arena,
@@ -42,7 +42,7 @@ pub const RepeatNStruct = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Chunk) std.mem.Allocator {
+        fn _allocator(self: *const Chunk) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Chunk) !void {
@@ -53,13 +53,13 @@ pub const RepeatNStruct = struct {
         len: u32 = undefined,
         _root: ?*RepeatNStruct,
         _parent: ?*RepeatNStruct,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     qty: u32 = undefined,
-    chunks: *std.ArrayList(*Chunk) = undefined,
+    chunks: *_imp_std.ArrayList(*Chunk) = undefined,
     _root: ?*RepeatNStruct,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

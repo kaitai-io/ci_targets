@@ -1,12 +1,12 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
-const hello_world = @import("hello_world.zig");
-const cast_to_imported = @import("cast_to_imported.zig");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
+const _imp_hello_world = @import("hello_world.zig");
+const _imp_cast_to_imported = @import("cast_to_imported.zig");
 
 pub const ImportsCastToImported = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ImportsCastToImported) !*ImportsCastToImported {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ImportsCastToImported) !*ImportsCastToImported {
         const self = try _arena.allocator().create(ImportsCastToImported);
         self.* = .{
             ._arena = _arena,
@@ -17,17 +17,17 @@ pub const ImportsCastToImported = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ImportsCastToImported) std.mem.Allocator {
+    fn _allocator(self: *const ImportsCastToImported) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ImportsCastToImported) !void {
-        self.hw = try hello_world.HelloWorld.create(self._arena, self._io, null, null);
-        self.two = try cast_to_imported.CastToImported.create(self._arena, self._io, null, null, self.hw);
+        self.hw = try _imp_hello_world.HelloWorld.create(self._arena, self._io, null, null);
+        self.two = try _imp_cast_to_imported.CastToImported.create(self._arena, self._io, null, null, self.hw);
     }
-    hw: *hello_world.HelloWorld = undefined,
-    two: *cast_to_imported.CastToImported = undefined,
+    hw: *_imp_hello_world.HelloWorld = undefined,
+    two: *_imp_cast_to_imported.CastToImported = undefined,
     _root: ?*ImportsCastToImported,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const BitsSimpleLe = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*BitsSimpleLe) !*BitsSimpleLe {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*BitsSimpleLe) !*BitsSimpleLe {
         const self = try _arena.allocator().create(BitsSimpleLe);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const BitsSimpleLe = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const BitsSimpleLe) std.mem.Allocator {
+    fn _allocator(self: *const BitsSimpleLe) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *BitsSimpleLe) !void {
@@ -36,12 +36,19 @@ pub const BitsSimpleLe = struct {
     pub fn testIfB1(self: *BitsSimpleLe) !?i8 {
         if (self._m_test_if_b1) |_v|
             return _v;
-        var _v: ?i8 = null;
+        var _v: i8 = undefined;
+        var _n = true;
         if (self.bits_a == true) {
+            _n = false;
             _v = 123;
         }
-        self._m_test_if_b1 = _v;
-        return _v;
+        if (_n) {
+            self._m_test_if_b1 = @as(?i8, null);
+            return null;
+        } else {
+            self._m_test_if_b1 = _v;
+            return _v;
+        }
     }
     _m_test_if_b1: ??i8 = null,
     byte_1: u64 = undefined,
@@ -59,6 +66,6 @@ pub const BitsSimpleLe = struct {
     byte_20_to_27: u64 = undefined,
     _root: ?*BitsSimpleLe,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

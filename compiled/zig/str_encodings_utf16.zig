@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const StrEncodingsUtf16 = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*StrEncodingsUtf16) !*StrEncodingsUtf16 {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*StrEncodingsUtf16) !*StrEncodingsUtf16 {
         const self = try _arena.allocator().create(StrEncodingsUtf16);
         self.* = .{
             ._arena = _arena,
@@ -15,23 +15,23 @@ pub const StrEncodingsUtf16 = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const StrEncodingsUtf16) std.mem.Allocator {
+    fn _allocator(self: *const StrEncodingsUtf16) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *StrEncodingsUtf16) !void {
         self.len_be = try self._io.readU4le();
-        self._raw_be_bom_removed = try self._io.readBytes(self._allocator(), self.len_be);
-        const _io__raw_be_bom_removed = try self._allocator().create(kaitai_struct.KaitaiStream);
-        _io__raw_be_bom_removed.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_be_bom_removed);
+        const _raw_be_bom_removed = try self._io.readBytes(self._allocator(), self.len_be);
+        const _io__raw_be_bom_removed = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+        _io__raw_be_bom_removed.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_be_bom_removed);
         self.be_bom_removed = try StrBeBomRemoved.create(self._arena, _io__raw_be_bom_removed, self, self._root);
         self.len_le = try self._io.readU4le();
-        self._raw_le_bom_removed = try self._io.readBytes(self._allocator(), self.len_le);
-        const _io__raw_le_bom_removed = try self._allocator().create(kaitai_struct.KaitaiStream);
-        _io__raw_le_bom_removed.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_le_bom_removed);
+        const _raw_le_bom_removed = try self._io.readBytes(self._allocator(), self.len_le);
+        const _io__raw_le_bom_removed = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+        _io__raw_le_bom_removed.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_le_bom_removed);
         self.le_bom_removed = try StrLeBomRemoved.create(self._arena, _io__raw_le_bom_removed, self, self._root);
     }
     pub const StrBeBomRemoved = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*StrEncodingsUtf16, _root: ?*StrEncodingsUtf16) !*StrBeBomRemoved {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*StrEncodingsUtf16, _root: ?*StrEncodingsUtf16) !*StrBeBomRemoved {
             const self = try _arena.allocator().create(StrBeBomRemoved);
             self.* = .{
                 ._arena = _arena,
@@ -42,22 +42,22 @@ pub const StrEncodingsUtf16 = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const StrBeBomRemoved) std.mem.Allocator {
+        fn _allocator(self: *const StrBeBomRemoved) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *StrBeBomRemoved) !void {
             self.bom = try self._io.readU2be();
-            self.str = kaitai_struct.KaitaiStream.bytesToStr(try self._io.readBytesFull(self._allocator()), "UTF-16BE");
+            self.str = (try _imp_kaitai_struct.KaitaiStream.bytesToStr(self._allocator(), try self._io.readBytesFull(self._allocator()), "UTF-16BE"));
         }
         bom: u16 = undefined,
-        str: []u8 = undefined,
+        str: []const u8 = undefined,
         _root: ?*StrEncodingsUtf16,
         _parent: ?*StrEncodingsUtf16,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const StrLeBomRemoved = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*StrEncodingsUtf16, _root: ?*StrEncodingsUtf16) !*StrLeBomRemoved {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*StrEncodingsUtf16, _root: ?*StrEncodingsUtf16) !*StrLeBomRemoved {
             const self = try _arena.allocator().create(StrLeBomRemoved);
             self.* = .{
                 ._arena = _arena,
@@ -68,19 +68,19 @@ pub const StrEncodingsUtf16 = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const StrLeBomRemoved) std.mem.Allocator {
+        fn _allocator(self: *const StrLeBomRemoved) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *StrLeBomRemoved) !void {
             self.bom = try self._io.readU2le();
-            self.str = kaitai_struct.KaitaiStream.bytesToStr(try self._io.readBytesFull(self._allocator()), "UTF-16LE");
+            self.str = (try _imp_kaitai_struct.KaitaiStream.bytesToStr(self._allocator(), try self._io.readBytesFull(self._allocator()), "UTF-16LE"));
         }
         bom: u16 = undefined,
-        str: []u8 = undefined,
+        str: []const u8 = undefined,
         _root: ?*StrEncodingsUtf16,
         _parent: ?*StrEncodingsUtf16,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     len_be: u32 = undefined,
     be_bom_removed: *StrBeBomRemoved = undefined,
@@ -88,8 +88,6 @@ pub const StrEncodingsUtf16 = struct {
     le_bom_removed: *StrLeBomRemoved = undefined,
     _root: ?*StrEncodingsUtf16,
     _parent: ?*anyopaque,
-    _raw_be_bom_removed: []u8 = undefined,
-    _raw_le_bom_removed: []u8 = undefined,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const NestedSameName = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*NestedSameName) !*NestedSameName {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*NestedSameName) !*NestedSameName {
         const self = try _arena.allocator().create(NestedSameName);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const NestedSameName = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const NestedSameName) std.mem.Allocator {
+    fn _allocator(self: *const NestedSameName) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *NestedSameName) !void {
@@ -23,7 +23,7 @@ pub const NestedSameName = struct {
         self.dummy = try DummyObj.create(self._arena, self._io, self, self._root);
     }
     pub const DummyObj = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*NestedSameName, _root: ?*NestedSameName) !*DummyObj {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*NestedSameName, _root: ?*NestedSameName) !*DummyObj {
             const self = try _arena.allocator().create(DummyObj);
             self.* = .{
                 ._arena = _arena,
@@ -34,14 +34,14 @@ pub const NestedSameName = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const DummyObj) std.mem.Allocator {
+        fn _allocator(self: *const DummyObj) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *DummyObj) !void {
             _ = self;
         }
         pub const Foo = struct {
-            pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*NestedSameName) !*Foo {
+            pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*NestedSameName) !*Foo {
                 const self = try _arena.allocator().create(Foo);
                 self.* = .{
                     ._arena = _arena,
@@ -52,7 +52,7 @@ pub const NestedSameName = struct {
                 try self._read();
                 return self;
             }
-            fn _allocator(self: *const Foo) std.mem.Allocator {
+            fn _allocator(self: *const Foo) _imp_std.mem.Allocator {
                 return self._arena.allocator();
             }
             fn _read(self: *Foo) !void {
@@ -60,16 +60,16 @@ pub const NestedSameName = struct {
             }
             _root: ?*NestedSameName,
             _parent: ?*anyopaque,
-            _arena: *std.heap.ArenaAllocator,
-            _io: *kaitai_struct.KaitaiStream,
+            _arena: *_imp_std.heap.ArenaAllocator,
+            _io: *_imp_kaitai_struct.KaitaiStream,
         };
         _root: ?*NestedSameName,
         _parent: ?*NestedSameName,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const Main = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*NestedSameName, _root: ?*NestedSameName) !*Main {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*NestedSameName, _root: ?*NestedSameName) !*Main {
             const self = try _arena.allocator().create(Main);
             self.* = .{
                 ._arena = _arena,
@@ -80,7 +80,7 @@ pub const NestedSameName = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Main) std.mem.Allocator {
+        fn _allocator(self: *const Main) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Main) !void {
@@ -88,7 +88,7 @@ pub const NestedSameName = struct {
             self.foo = try FooObj.create(self._arena, self._io, self, self._root);
         }
         pub const FooObj = struct {
-            pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*NestedSameName.Main, _root: ?*NestedSameName) !*FooObj {
+            pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*NestedSameName.Main, _root: ?*NestedSameName) !*FooObj {
                 const self = try _arena.allocator().create(FooObj);
                 self.* = .{
                     ._arena = _arena,
@@ -99,29 +99,29 @@ pub const NestedSameName = struct {
                 try self._read();
                 return self;
             }
-            fn _allocator(self: *const FooObj) std.mem.Allocator {
+            fn _allocator(self: *const FooObj) _imp_std.mem.Allocator {
                 return self._arena.allocator();
             }
             fn _read(self: *FooObj) !void {
                 self.data = try self._io.readBytes(self._allocator(), self._parent.?.main_size * 2);
             }
-            data: []u8 = undefined,
+            data: []const u8 = undefined,
             _root: ?*NestedSameName,
             _parent: ?*NestedSameName.Main,
-            _arena: *std.heap.ArenaAllocator,
-            _io: *kaitai_struct.KaitaiStream,
+            _arena: *_imp_std.heap.ArenaAllocator,
+            _io: *_imp_kaitai_struct.KaitaiStream,
         };
         main_size: i32 = undefined,
         foo: *FooObj = undefined,
         _root: ?*NestedSameName,
         _parent: ?*NestedSameName,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     main_data: *Main = undefined,
     dummy: *DummyObj = undefined,
     _root: ?*NestedSameName,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

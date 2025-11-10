@@ -1,7 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const DebugEnumName = struct {
     pub const TestEnum1 = enum(i32) {
@@ -12,7 +12,7 @@ pub const DebugEnumName = struct {
         enum_value_65 = 65,
         _,
     };
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*DebugEnumName) !*DebugEnumName {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*DebugEnumName) !*DebugEnumName {
         const self = try _arena.allocator().create(DebugEnumName);
         self.* = .{
             ._arena = _arena,
@@ -22,12 +22,12 @@ pub const DebugEnumName = struct {
         };
         return self;
     }
-    fn _allocator(self: *const DebugEnumName) std.mem.Allocator {
+    fn _allocator(self: *const DebugEnumName) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     pub fn _read(self: *DebugEnumName) !void {
         self.one = @as(DebugEnumName.TestEnum1, @enumFromInt(try self._io.readU1()));
-        self.array_of_ints = try self._allocator().create(std.ArrayList(TestEnum2));
+        self.array_of_ints = try self._allocator().create(_imp_std.ArrayList(TestEnum2));
         self.array_of_ints.* = .empty;
         for (0..1) |i| {
             {
@@ -48,7 +48,7 @@ pub const DebugEnumName = struct {
             enum_value_11 = 11,
             _,
         };
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*DebugEnumName, _root: ?*DebugEnumName) !*TestSubtype {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*DebugEnumName, _root: ?*DebugEnumName) !*TestSubtype {
             const self = try _arena.allocator().create(TestSubtype);
             self.* = .{
                 ._arena = _arena,
@@ -58,7 +58,7 @@ pub const DebugEnumName = struct {
             };
             return self;
         }
-        fn _allocator(self: *const TestSubtype) std.mem.Allocator {
+        fn _allocator(self: *const TestSubtype) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         pub fn _read(self: *TestSubtype) !void {
@@ -78,14 +78,14 @@ pub const DebugEnumName = struct {
         field2: u8 = undefined,
         _root: ?*DebugEnumName,
         _parent: ?*DebugEnumName,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     one: TestEnum1 = undefined,
-    array_of_ints: *std.ArrayList(TestEnum2) = undefined,
+    array_of_ints: *_imp_std.ArrayList(TestEnum2) = undefined,
     test_type: *TestSubtype = undefined,
     _root: ?*DebugEnumName,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

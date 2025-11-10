@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const EofExceptionBitsBe2 = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*EofExceptionBitsBe2) !*EofExceptionBitsBe2 {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*EofExceptionBitsBe2) !*EofExceptionBitsBe2 {
         const self = try _arena.allocator().create(EofExceptionBitsBe2);
         self.* = .{
             ._arena = _arena,
@@ -14,7 +14,7 @@ pub const EofExceptionBitsBe2 = struct {
         };
         return self;
     }
-    fn _allocator(self: *const EofExceptionBitsBe2) std.mem.Allocator {
+    fn _allocator(self: *const EofExceptionBitsBe2) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     pub fn _read(self: *EofExceptionBitsBe2) !void {
@@ -25,6 +25,6 @@ pub const EofExceptionBitsBe2 = struct {
     fail_bits: u64 = undefined,
     _root: ?*EofExceptionBitsBe2,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

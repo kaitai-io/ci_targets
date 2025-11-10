@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ProcessRepeatUsertypeDynargCustom = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ProcessRepeatUsertypeDynargCustom) !*ProcessRepeatUsertypeDynargCustom {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ProcessRepeatUsertypeDynargCustom) !*ProcessRepeatUsertypeDynargCustom {
         const self = try _arena.allocator().create(ProcessRepeatUsertypeDynargCustom);
         self.* = .{
             ._arena = _arena,
@@ -15,32 +15,28 @@ pub const ProcessRepeatUsertypeDynargCustom = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ProcessRepeatUsertypeDynargCustom) std.mem.Allocator {
+    fn _allocator(self: *const ProcessRepeatUsertypeDynargCustom) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ProcessRepeatUsertypeDynargCustom) !void {
-        self._raw_blocks = try self._allocator().create(std.ArrayList([]u8));
-        self._raw_blocks.* = .empty;
-        self._raw__raw_blocks = try self._allocator().create(std.ArrayList([]u8));
-        self._raw__raw_blocks.* = .empty;
-        self.blocks = try self._allocator().create(std.ArrayList(*Block));
+        self.blocks = try self._allocator().create(_imp_std.ArrayList(*Block));
         self.blocks.* = .empty;
         for (0..2) |i| {
             {
                 const _maybe_unused = i;
                 _ = _maybe_unused;
             }
-            try self._raw__raw_blocks.append(self._allocator(), try self._io.readBytes(self._allocator(), 5));
-            MyCustomFx _process__raw__raw_blocks = new MyCustomFx(self._io.pos() + 13 * i, kaitai_struct.KaitaiStream.mod(self._io.pos(), 2) == 0, (if (i == 1) &[_]u8{ 32, 48 } else &[_]u8{ 64 }));
-            try self._raw_blocks.append(self._allocator(), _process__raw__raw_blocks.decode(self._raw__raw_blocks.items[i]));
-            const _io__raw_blocks = try self._allocator().create(kaitai_struct.KaitaiStream);
-            _io__raw_blocks.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_blocks.items[i]);
+            const _raw__raw_blocks = try self._io.readBytes(self._allocator(), 5);
+            MyCustomFx _process__raw__raw_blocks = new MyCustomFx(self._io.pos() + 13 * i, @mod(self._io.pos(), 2) == 0, (if (i == 1) &[_]u8{ 32, 48 } else &[_]u8{ 64 }));
+            const _raw_blocks = _process__raw__raw_blocks.decode(self._allocator(), _raw__raw_blocks);
+            const _io__raw_blocks = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+            _io__raw_blocks.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_blocks);
             try self.blocks.append(self._allocator(), try Block.create(self._arena, _io__raw_blocks, self, self._root));
         }
         self.blocks_b = try BlocksBWrapper.create(self._arena, self._io, self, self._root);
     }
     pub const Block = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*ProcessRepeatUsertypeDynargCustom, _root: ?*ProcessRepeatUsertypeDynargCustom) !*Block {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*ProcessRepeatUsertypeDynargCustom, _root: ?*ProcessRepeatUsertypeDynargCustom) !*Block {
             const self = try _arena.allocator().create(Block);
             self.* = .{
                 ._arena = _arena,
@@ -51,7 +47,7 @@ pub const ProcessRepeatUsertypeDynargCustom = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Block) std.mem.Allocator {
+        fn _allocator(self: *const Block) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Block) !void {
@@ -60,11 +56,11 @@ pub const ProcessRepeatUsertypeDynargCustom = struct {
         a: u32 = undefined,
         _root: ?*ProcessRepeatUsertypeDynargCustom,
         _parent: ?*ProcessRepeatUsertypeDynargCustom,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const BlocksBWrapper = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*ProcessRepeatUsertypeDynargCustom, _root: ?*ProcessRepeatUsertypeDynargCustom) !*BlocksBWrapper {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*ProcessRepeatUsertypeDynargCustom, _root: ?*ProcessRepeatUsertypeDynargCustom) !*BlocksBWrapper {
             const self = try _arena.allocator().create(BlocksBWrapper);
             self.* = .{
                 ._arena = _arena,
@@ -75,7 +71,7 @@ pub const ProcessRepeatUsertypeDynargCustom = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const BlocksBWrapper) std.mem.Allocator {
+        fn _allocator(self: *const BlocksBWrapper) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *BlocksBWrapper) !void {
@@ -110,15 +106,13 @@ pub const ProcessRepeatUsertypeDynargCustom = struct {
         dummy: u8 = undefined,
         _root: ?*ProcessRepeatUsertypeDynargCustom,
         _parent: ?*ProcessRepeatUsertypeDynargCustom,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
-    blocks: *std.ArrayList(*Block) = undefined,
+    blocks: *_imp_std.ArrayList(*Block) = undefined,
     blocks_b: *BlocksBWrapper = undefined,
     _root: ?*ProcessRepeatUsertypeDynargCustom,
     _parent: ?*anyopaque,
-    _raw_blocks: *std.ArrayList([]u8) = undefined,
-    _raw__raw_blocks: *std.ArrayList([]u8) = undefined,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ValidSwitch = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ValidSwitch) !*ValidSwitch {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ValidSwitch) !*ValidSwitch {
         const self = try _arena.allocator().create(ValidSwitch);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const ValidSwitch = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ValidSwitch) std.mem.Allocator {
+    fn _allocator(self: *const ValidSwitch) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ValidSwitch) !void {
@@ -39,6 +39,6 @@ pub const ValidSwitch = struct {
     b: i32 = undefined,
     _root: ?*ValidSwitch,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

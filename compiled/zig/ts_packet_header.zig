@@ -1,7 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 
 /// describes the first 4 header bytes of a TS Packet header
@@ -13,7 +13,7 @@ pub const TsPacketHeader = struct {
         adaptation_field_and_payload = 3,
         _,
     };
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*TsPacketHeader) !*TsPacketHeader {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*TsPacketHeader) !*TsPacketHeader {
         const self = try _arena.allocator().create(TsPacketHeader);
         self.* = .{
             ._arena = _arena,
@@ -24,7 +24,7 @@ pub const TsPacketHeader = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const TsPacketHeader) std.mem.Allocator {
+    fn _allocator(self: *const TsPacketHeader) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *TsPacketHeader) !void {
@@ -46,9 +46,9 @@ pub const TsPacketHeader = struct {
     transport_scrambling_control: u64 = undefined,
     adaptation_field_control: AdaptationFieldControlEnum = undefined,
     continuity_counter: u64 = undefined,
-    ts_packet_remain: []u8 = undefined,
+    ts_packet_remain: []const u8 = undefined,
     _root: ?*TsPacketHeader,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

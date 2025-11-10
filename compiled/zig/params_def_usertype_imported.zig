@@ -1,11 +1,11 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
-const hello_world = @import("hello_world.zig");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
+const _imp_hello_world = @import("hello_world.zig");
 
 pub const ParamsDefUsertypeImported = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ParamsDefUsertypeImported, hw_param: *hello_world.HelloWorld) !*ParamsDefUsertypeImported {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ParamsDefUsertypeImported, hw_param: *_imp_hello_world.HelloWorld) !*ParamsDefUsertypeImported {
         const self = try _arena.allocator().create(ParamsDefUsertypeImported);
         self.* = .{
             ._arena = _arena,
@@ -17,7 +17,7 @@ pub const ParamsDefUsertypeImported = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ParamsDefUsertypeImported) std.mem.Allocator {
+    fn _allocator(self: *const ParamsDefUsertypeImported) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ParamsDefUsertypeImported) !void {
@@ -32,9 +32,9 @@ pub const ParamsDefUsertypeImported = struct {
         return _v;
     }
     _m_hw_one: ?u8 = null,
-    hw_param: *hello_world.HelloWorld = undefined,
+    hw_param: *_imp_hello_world.HelloWorld = undefined,
     _root: ?*ParamsDefUsertypeImported,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

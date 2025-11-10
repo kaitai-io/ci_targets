@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const JsSignedRightShift = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*JsSignedRightShift) !*JsSignedRightShift {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*JsSignedRightShift) !*JsSignedRightShift {
         const self = try _arena.allocator().create(JsSignedRightShift);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const JsSignedRightShift = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const JsSignedRightShift) std.mem.Allocator {
+    fn _allocator(self: *const JsSignedRightShift) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *JsSignedRightShift) !void {
@@ -41,6 +41,6 @@ pub const JsSignedRightShift = struct {
     _m_should_be_a00000: ?i32 = null,
     _root: ?*JsSignedRightShift,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

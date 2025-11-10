@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ValidFailInst = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ValidFailInst) !*ValidFailInst {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ValidFailInst) !*ValidFailInst {
         const self = try _arena.allocator().create(ValidFailInst);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const ValidFailInst = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ValidFailInst) std.mem.Allocator {
+    fn _allocator(self: *const ValidFailInst) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ValidFailInst) !void {
@@ -30,7 +30,7 @@ pub const ValidFailInst = struct {
         const _pos = self._io.pos();
         try self._io.seek(5);
         _v = try self._io.readU1();
-        if (!(self._m_inst == 80)) {
+        if (!(_v == 80)) {
             return error.ValidationNotEqualError;
         }
         try self._io.seek(_pos);
@@ -41,6 +41,6 @@ pub const ValidFailInst = struct {
     a: ?u8 = null,
     _root: ?*ValidFailInst,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

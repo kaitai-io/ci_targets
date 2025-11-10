@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const DefaultEndianExprInherited = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*DefaultEndianExprInherited) !*DefaultEndianExprInherited {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*DefaultEndianExprInherited) !*DefaultEndianExprInherited {
         const self = try _arena.allocator().create(DefaultEndianExprInherited);
         self.* = .{
             ._arena = _arena,
@@ -15,11 +15,11 @@ pub const DefaultEndianExprInherited = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const DefaultEndianExprInherited) std.mem.Allocator {
+    fn _allocator(self: *const DefaultEndianExprInherited) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *DefaultEndianExprInherited) !void {
-        self.docs = try self._allocator().create(std.ArrayList(*Doc));
+        self.docs = try self._allocator().create(_imp_std.ArrayList(*Doc));
         self.docs.* = .empty;
         {
             var i: usize = 0;
@@ -29,7 +29,7 @@ pub const DefaultEndianExprInherited = struct {
         }
     }
     pub const Doc = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*DefaultEndianExprInherited, _root: ?*DefaultEndianExprInherited) !*Doc {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*DefaultEndianExprInherited, _root: ?*DefaultEndianExprInherited) !*Doc {
             const self = try _arena.allocator().create(Doc);
             self.* = .{
                 ._arena = _arena,
@@ -40,7 +40,7 @@ pub const DefaultEndianExprInherited = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Doc) std.mem.Allocator {
+        fn _allocator(self: *const Doc) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Doc) !void {
@@ -48,7 +48,7 @@ pub const DefaultEndianExprInherited = struct {
             self.main = try MainObj.create(self._arena, self._io, self, self._root);
         }
         pub const MainObj = struct {
-            pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*DefaultEndianExprInherited.Doc, _root: ?*DefaultEndianExprInherited) !*MainObj {
+            pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*DefaultEndianExprInherited.Doc, _root: ?*DefaultEndianExprInherited) !*MainObj {
                 const self = try _arena.allocator().create(MainObj);
                 self.* = .{
                     ._arena = _arena,
@@ -59,13 +59,13 @@ pub const DefaultEndianExprInherited = struct {
                 try self._read();
                 return self;
             }
-            fn _allocator(self: *const MainObj) std.mem.Allocator {
+            fn _allocator(self: *const MainObj) _imp_std.mem.Allocator {
                 return self._arena.allocator();
             }
             fn _read(self: *MainObj) !void {
                 {
                     const _on = self._parent.?.indicator;
-                    if (std.mem.eql(u8, _on, &[_]u8{ 73, 73 })) {
+                    if (_imp_std.mem.eql(u8, _on, &[_]u8{ 73, 73 })) {
                         self._is_le = true;
                     }
                     else {
@@ -87,7 +87,7 @@ pub const DefaultEndianExprInherited = struct {
                 self.insides = try SubObj.create(self._arena, self._io, self, self._root, self._is_le);
             }
             pub const SubObj = struct {
-                pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*DefaultEndianExprInherited.Doc.MainObj, _root: ?*DefaultEndianExprInherited, _is_le: ?bool) !*SubObj {
+                pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*DefaultEndianExprInherited.Doc.MainObj, _root: ?*DefaultEndianExprInherited, _is_le: ?bool) !*SubObj {
                     const self = try _arena.allocator().create(SubObj);
                     self.* = .{
                         ._arena = _arena,
@@ -99,7 +99,7 @@ pub const DefaultEndianExprInherited = struct {
                     try self._read();
                     return self;
                 }
-                fn _allocator(self: *const SubObj) std.mem.Allocator {
+                fn _allocator(self: *const SubObj) _imp_std.mem.Allocator {
                     return self._arena.allocator();
                 }
                 fn _read(self: *SubObj) !void {
@@ -120,7 +120,7 @@ pub const DefaultEndianExprInherited = struct {
                     self.more = try SubsubObj.create(self._arena, self._io, self, self._root, self._is_le);
                 }
                 pub const SubsubObj = struct {
-                    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*DefaultEndianExprInherited.Doc.MainObj.SubObj, _root: ?*DefaultEndianExprInherited, _is_le: ?bool) !*SubsubObj {
+                    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*DefaultEndianExprInherited.Doc.MainObj.SubObj, _root: ?*DefaultEndianExprInherited, _is_le: ?bool) !*SubsubObj {
                         const self = try _arena.allocator().create(SubsubObj);
                         self.* = .{
                             ._arena = _arena,
@@ -132,7 +132,7 @@ pub const DefaultEndianExprInherited = struct {
                         try self._read();
                         return self;
                     }
-                    fn _allocator(self: *const SubsubObj) std.mem.Allocator {
+                    fn _allocator(self: *const SubsubObj) _imp_std.mem.Allocator {
                         return self._arena.allocator();
                     }
                     fn _read(self: *SubsubObj) !void {
@@ -172,35 +172,35 @@ pub const DefaultEndianExprInherited = struct {
                     some_int2: u16 = undefined,
                     _root: ?*DefaultEndianExprInherited,
                     _parent: ?*DefaultEndianExprInherited.Doc.MainObj.SubObj,
-                    _arena: *std.heap.ArenaAllocator,
-                    _io: *kaitai_struct.KaitaiStream,
+                    _arena: *_imp_std.heap.ArenaAllocator,
+                    _io: *_imp_kaitai_struct.KaitaiStream,
                     _is_le: ?bool,
                 };
                 some_int: u32 = undefined,
                 more: *SubsubObj = undefined,
                 _root: ?*DefaultEndianExprInherited,
                 _parent: ?*DefaultEndianExprInherited.Doc.MainObj,
-                _arena: *std.heap.ArenaAllocator,
-                _io: *kaitai_struct.KaitaiStream,
+                _arena: *_imp_std.heap.ArenaAllocator,
+                _io: *_imp_kaitai_struct.KaitaiStream,
                 _is_le: ?bool,
             };
             insides: *SubObj = undefined,
             _root: ?*DefaultEndianExprInherited,
             _parent: ?*DefaultEndianExprInherited.Doc,
-            _arena: *std.heap.ArenaAllocator,
-            _io: *kaitai_struct.KaitaiStream,
+            _arena: *_imp_std.heap.ArenaAllocator,
+            _io: *_imp_kaitai_struct.KaitaiStream,
             _is_le: ?bool = null,
         };
-        indicator: []u8 = undefined,
+        indicator: []const u8 = undefined,
         main: *MainObj = undefined,
         _root: ?*DefaultEndianExprInherited,
         _parent: ?*DefaultEndianExprInherited,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
-    docs: *std.ArrayList(*Doc) = undefined,
+    docs: *_imp_std.ArrayList(*Doc) = undefined,
     _root: ?*DefaultEndianExprInherited,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

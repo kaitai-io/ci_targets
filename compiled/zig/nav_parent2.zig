@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const NavParent2 = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*NavParent2) !*NavParent2 {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*NavParent2) !*NavParent2 {
         const self = try _arena.allocator().create(NavParent2);
         self.* = .{
             ._arena = _arena,
@@ -15,13 +15,13 @@ pub const NavParent2 = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const NavParent2) std.mem.Allocator {
+    fn _allocator(self: *const NavParent2) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *NavParent2) !void {
         self.ofs_tags = try self._io.readU4le();
         self.num_tags = try self._io.readU4le();
-        self.tags = try self._allocator().create(std.ArrayList(*Tag));
+        self.tags = try self._allocator().create(_imp_std.ArrayList(*Tag));
         self.tags.* = .empty;
         for (0..self.num_tags) |i| {
             {
@@ -32,7 +32,7 @@ pub const NavParent2 = struct {
         }
     }
     pub const Tag = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*NavParent2, _root: ?*NavParent2) !*Tag {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*NavParent2, _root: ?*NavParent2) !*Tag {
             const self = try _arena.allocator().create(Tag);
             self.* = .{
                 ._arena = _arena,
@@ -43,16 +43,16 @@ pub const NavParent2 = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Tag) std.mem.Allocator {
+        fn _allocator(self: *const Tag) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Tag) !void {
-            self.name = kaitai_struct.KaitaiStream.bytesToStr(try self._io.readBytes(self._allocator(), 4), "ASCII");
+            self.name = (try _imp_kaitai_struct.KaitaiStream.bytesToStr(self._allocator(), try self._io.readBytes(self._allocator(), 4), "ASCII"));
             self.ofs = try self._io.readU4le();
             self.num_items = try self._io.readU4le();
         }
         pub const TagChar = struct {
-            pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*NavParent2.Tag, _root: ?*NavParent2) !*TagChar {
+            pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*NavParent2.Tag, _root: ?*NavParent2) !*TagChar {
                 const self = try _arena.allocator().create(TagChar);
                 self.* = .{
                     ._arena = _arena,
@@ -63,49 +63,56 @@ pub const NavParent2 = struct {
                 try self._read();
                 return self;
             }
-            fn _allocator(self: *const TagChar) std.mem.Allocator {
+            fn _allocator(self: *const TagChar) _imp_std.mem.Allocator {
                 return self._arena.allocator();
             }
             fn _read(self: *TagChar) !void {
-                self.content = kaitai_struct.KaitaiStream.bytesToStr(try self._io.readBytes(self._allocator(), self._parent.?.num_items), "ASCII");
+                self.content = (try _imp_kaitai_struct.KaitaiStream.bytesToStr(self._allocator(), try self._io.readBytes(self._allocator(), self._parent.?.num_items), "ASCII"));
             }
-            content: []u8 = undefined,
+            content: []const u8 = undefined,
             _root: ?*NavParent2,
             _parent: ?*NavParent2.Tag,
-            _arena: *std.heap.ArenaAllocator,
-            _io: *kaitai_struct.KaitaiStream,
+            _arena: *_imp_std.heap.ArenaAllocator,
+            _io: *_imp_kaitai_struct.KaitaiStream,
         };
         pub fn tagContent(self: *Tag) !?*TagChar {
             if (self._m_tag_content) |_v|
                 return _v;
-            var _v: ?*TagChar = null;
+            var _v: *TagChar = undefined;
             const io = self._root.?._io;
             const _pos = io.pos();
             try io.seek(self.ofs);
+            var _n = true;
             {
                 const _on = self.name;
-                if (std.mem.eql(u8, _on, "RAHC")) {
+                if (_imp_std.mem.eql(u8, _on, "RAHC")) {
+                    _n = false;
                     _v = try TagChar.create(self._arena, io, self, self._root);
                 }
             }
             try io.seek(_pos);
-            self._m_tag_content = _v;
-            return _v;
+            if (_n) {
+                self._m_tag_content = @as(?*TagChar, null);
+                return null;
+            } else {
+                self._m_tag_content = _v;
+                return _v;
+            }
         }
         _m_tag_content: ??*TagChar = null,
-        name: []u8 = undefined,
+        name: []const u8 = undefined,
         ofs: u32 = undefined,
         num_items: u32 = undefined,
         _root: ?*NavParent2,
         _parent: ?*NavParent2,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     ofs_tags: u32 = undefined,
     num_tags: u32 = undefined,
-    tags: *std.ArrayList(*Tag) = undefined,
+    tags: *_imp_std.ArrayList(*Tag) = undefined,
     _root: ?*NavParent2,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

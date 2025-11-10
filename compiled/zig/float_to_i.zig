@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const FloatToI = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*FloatToI) !*FloatToI {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*FloatToI) !*FloatToI {
         const self = try _arena.allocator().create(FloatToI);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const FloatToI = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const FloatToI) std.mem.Allocator {
+    fn _allocator(self: *const FloatToI) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *FloatToI) !void {
@@ -160,6 +160,6 @@ pub const FloatToI = struct {
     double_value_if: ?f64 = null,
     _root: ?*FloatToI,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

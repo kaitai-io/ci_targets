@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const BitsByteAligned = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*BitsByteAligned) !*BitsByteAligned {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*BitsByteAligned) !*BitsByteAligned {
         const self = try _arena.allocator().create(BitsByteAligned);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const BitsByteAligned = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const BitsByteAligned) std.mem.Allocator {
+    fn _allocator(self: *const BitsByteAligned) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *BitsByteAligned) !void {
@@ -35,11 +35,11 @@ pub const BitsByteAligned = struct {
     three: bool = undefined,
     byte_2: u8 = undefined,
     four: u64 = undefined,
-    byte_3: []u8 = undefined,
+    byte_3: []const u8 = undefined,
     full_byte: u64 = undefined,
     byte_4: u8 = undefined,
     _root: ?*BitsByteAligned,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

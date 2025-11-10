@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ExprOpsParens = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ExprOpsParens) !*ExprOpsParens {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ExprOpsParens) !*ExprOpsParens {
         const self = try _arena.allocator().create(ExprOpsParens);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const ExprOpsParens = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ExprOpsParens) std.mem.Allocator {
+    fn _allocator(self: *const ExprOpsParens) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ExprOpsParens) !void {
@@ -85,26 +85,26 @@ pub const ExprOpsParens = struct {
         self._m_i_m13 = _v;
         return _v;
     }
-    pub fn iSumToStr(self: *ExprOpsParens) ![]u8 {
+    pub fn iSumToStr(self: *ExprOpsParens) ![]const u8 {
         if (self._m_i_sum_to_str) |_v|
             return _v;
-        var _v: []u8 = undefined;
-        _v = (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.i42()) + (try self.iM13()) }));
+        var _v: []const u8 = undefined;
+        _v = (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.i42()) + (try self.iM13()) }));
         self._m_i_sum_to_str = _v;
         return _v;
     }
-    pub fn str0To4(self: *ExprOpsParens) ![]u8 {
+    pub fn str0To4(self: *ExprOpsParens) ![]const u8 {
         if (self._m_str_0_to_4) |_v|
             return _v;
-        var _v: []u8 = undefined;
+        var _v: []const u8 = undefined;
         _v = "01234";
         self._m_str_0_to_4 = _v;
         return _v;
     }
-    pub fn str5To9(self: *ExprOpsParens) ![]u8 {
+    pub fn str5To9(self: *ExprOpsParens) ![]const u8 {
         if (self._m_str_5_to_9) |_v|
             return _v;
-        var _v: []u8 = undefined;
+        var _v: []const u8 = undefined;
         _v = "56789";
         self._m_str_5_to_9 = _v;
         return _v;
@@ -113,23 +113,23 @@ pub const ExprOpsParens = struct {
         if (self._m_str_concat_len) |_v|
             return _v;
         var _v: i32 = undefined;
-        _v = (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try self.str0To4()), (try self.str5To9()) })).len;
+        _v = (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try self.str0To4()), (try self.str5To9()) })).len;
         self._m_str_concat_len = _v;
         return _v;
     }
-    pub fn strConcatRev(self: *ExprOpsParens) ![]u8 {
+    pub fn strConcatRev(self: *ExprOpsParens) ![]const u8 {
         if (self._m_str_concat_rev) |_v|
             return _v;
-        var _v: []u8 = undefined;
-        _v = new StringBuilder((try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try self.str0To4()), (try self.str5To9()) }))).reverse().toString();
+        var _v: []const u8 = undefined;
+        _v = new StringBuilder((try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try self.str0To4()), (try self.str5To9()) }))).reverse().toString();
         self._m_str_concat_rev = _v;
         return _v;
     }
-    pub fn strConcatSubstr2To7(self: *ExprOpsParens) ![]u8 {
+    pub fn strConcatSubstr2To7(self: *ExprOpsParens) ![]const u8 {
         if (self._m_str_concat_substr_2_to_7) |_v|
             return _v;
-        var _v: []u8 = undefined;
-        _v = (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try self.str0To4()), (try self.str5To9()) }))[2..7];
+        var _v: []const u8 = undefined;
+        _v = (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try self.str0To4()), (try self.str5To9()) }))[2..7];
         self._m_str_concat_substr_2_to_7 = _v;
         return _v;
     }
@@ -137,7 +137,7 @@ pub const ExprOpsParens = struct {
         if (self._m_str_concat_to_i) |_v|
             return _v;
         var _v: i32 = undefined;
-        _v = (try std.fmt.parseInt(i32, (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try self.str0To4()), (try self.str5To9()) })), 10));
+        _v = (try _imp_std.fmt.parseInt(i32, (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try self.str0To4()), (try self.str5To9()) })), 10));
         self._m_str_concat_to_i = _v;
         return _v;
     }
@@ -149,15 +149,15 @@ pub const ExprOpsParens = struct {
     _m_f_sum_to_int: ?i32 = null,
     _m_i_42: ?i8 = null,
     _m_i_m13: ?i32 = null,
-    _m_i_sum_to_str: ?[]u8 = null,
-    _m_str_0_to_4: ?[]u8 = null,
-    _m_str_5_to_9: ?[]u8 = null,
+    _m_i_sum_to_str: ?[]const u8 = null,
+    _m_str_0_to_4: ?[]const u8 = null,
+    _m_str_5_to_9: ?[]const u8 = null,
     _m_str_concat_len: ?i32 = null,
-    _m_str_concat_rev: ?[]u8 = null,
-    _m_str_concat_substr_2_to_7: ?[]u8 = null,
+    _m_str_concat_rev: ?[]const u8 = null,
+    _m_str_concat_substr_2_to_7: ?[]const u8 = null,
     _m_str_concat_to_i: ?i32 = null,
     _root: ?*ExprOpsParens,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

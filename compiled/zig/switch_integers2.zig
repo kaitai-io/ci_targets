@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const SwitchIntegers2 = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*SwitchIntegers2) !*SwitchIntegers2 {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*SwitchIntegers2) !*SwitchIntegers2 {
         const self = try _arena.allocator().create(SwitchIntegers2);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const SwitchIntegers2 = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const SwitchIntegers2) std.mem.Allocator {
+    fn _allocator(self: *const SwitchIntegers2) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *SwitchIntegers2) !void {
@@ -41,21 +41,21 @@ pub const SwitchIntegers2 = struct {
             self.padding = try self._io.readU1();
         }
     }
-    pub fn lenModStr(self: *SwitchIntegers2) ![]u8 {
+    pub fn lenModStr(self: *SwitchIntegers2) ![]const u8 {
         if (self._m_len_mod_str) |_v|
             return _v;
-        var _v: []u8 = undefined;
-        _v = (try std.fmt.allocPrint(self._allocator(), "{d}", .{ self.len * 2 - 1 }));
+        var _v: []const u8 = undefined;
+        _v = (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ self.len * 2 - 1 }));
         self._m_len_mod_str = _v;
         return _v;
     }
-    _m_len_mod_str: ?[]u8 = null,
+    _m_len_mod_str: ?[]const u8 = null,
     code: u8 = undefined,
     len: ?u64 = null,
-    ham: []u8 = undefined,
+    ham: []const u8 = undefined,
     padding: ?u8 = null,
     _root: ?*SwitchIntegers2,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

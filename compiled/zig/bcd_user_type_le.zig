@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const BcdUserTypeLe = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*BcdUserTypeLe) !*BcdUserTypeLe {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*BcdUserTypeLe) !*BcdUserTypeLe {
         const self = try _arena.allocator().create(BcdUserTypeLe);
         self.* = .{
             ._arena = _arena,
@@ -15,25 +15,25 @@ pub const BcdUserTypeLe = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const BcdUserTypeLe) std.mem.Allocator {
+    fn _allocator(self: *const BcdUserTypeLe) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *BcdUserTypeLe) !void {
-        self._raw_ltr = try self._io.readBytes(self._allocator(), 4);
-        const _io__raw_ltr = try self._allocator().create(kaitai_struct.KaitaiStream);
-        _io__raw_ltr.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_ltr);
+        const _raw_ltr = try self._io.readBytes(self._allocator(), 4);
+        const _io__raw_ltr = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+        _io__raw_ltr.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_ltr);
         self.ltr = try LtrObj.create(self._arena, _io__raw_ltr, self, self._root);
-        self._raw_rtl = try self._io.readBytes(self._allocator(), 4);
-        const _io__raw_rtl = try self._allocator().create(kaitai_struct.KaitaiStream);
-        _io__raw_rtl.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_rtl);
+        const _raw_rtl = try self._io.readBytes(self._allocator(), 4);
+        const _io__raw_rtl = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+        _io__raw_rtl.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_rtl);
         self.rtl = try RtlObj.create(self._arena, _io__raw_rtl, self, self._root);
-        self._raw_leading_zero_ltr = try self._io.readBytes(self._allocator(), 4);
-        const _io__raw_leading_zero_ltr = try self._allocator().create(kaitai_struct.KaitaiStream);
-        _io__raw_leading_zero_ltr.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_leading_zero_ltr);
+        const _raw_leading_zero_ltr = try self._io.readBytes(self._allocator(), 4);
+        const _io__raw_leading_zero_ltr = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+        _io__raw_leading_zero_ltr.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_leading_zero_ltr);
         self.leading_zero_ltr = try LeadingZeroLtrObj.create(self._arena, _io__raw_leading_zero_ltr, self, self._root);
     }
     pub const LeadingZeroLtrObj = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*BcdUserTypeLe, _root: ?*BcdUserTypeLe) !*LeadingZeroLtrObj {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*BcdUserTypeLe, _root: ?*BcdUserTypeLe) !*LeadingZeroLtrObj {
             const self = try _arena.allocator().create(LeadingZeroLtrObj);
             self.* = .{
                 ._arena = _arena,
@@ -44,7 +44,7 @@ pub const BcdUserTypeLe = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const LeadingZeroLtrObj) std.mem.Allocator {
+        fn _allocator(self: *const LeadingZeroLtrObj) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *LeadingZeroLtrObj) !void {
@@ -61,11 +61,11 @@ pub const BcdUserTypeLe = struct {
             self._m_as_int = _v;
             return _v;
         }
-        pub fn asStr(self: *LeadingZeroLtrObj) ![]u8 {
+        pub fn asStr(self: *LeadingZeroLtrObj) ![]const u8 {
             if (self._m_as_str) |_v|
                 return _v;
-            var _v: []u8 = undefined;
-            _v = (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit1()) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit2()) })) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit3()) })) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit4()) })) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit5()) })) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit6()) })) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit7()) })) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit8()) })) }));
+            var _v: []const u8 = undefined;
+            _v = (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit1()) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit2()) })) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit3()) })) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit4()) })) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit5()) })) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit6()) })) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit7()) })) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit8()) })) }));
             self._m_as_str = _v;
             return _v;
         }
@@ -134,7 +134,7 @@ pub const BcdUserTypeLe = struct {
             return _v;
         }
         _m_as_int: ?i32 = null,
-        _m_as_str: ?[]u8 = null,
+        _m_as_str: ?[]const u8 = null,
         _m_digit1: ?i32 = null,
         _m_digit2: ?i32 = null,
         _m_digit3: ?i32 = null,
@@ -149,11 +149,11 @@ pub const BcdUserTypeLe = struct {
         b4: u8 = undefined,
         _root: ?*BcdUserTypeLe,
         _parent: ?*BcdUserTypeLe,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const LtrObj = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*BcdUserTypeLe, _root: ?*BcdUserTypeLe) !*LtrObj {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*BcdUserTypeLe, _root: ?*BcdUserTypeLe) !*LtrObj {
             const self = try _arena.allocator().create(LtrObj);
             self.* = .{
                 ._arena = _arena,
@@ -164,7 +164,7 @@ pub const BcdUserTypeLe = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const LtrObj) std.mem.Allocator {
+        fn _allocator(self: *const LtrObj) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *LtrObj) !void {
@@ -181,11 +181,11 @@ pub const BcdUserTypeLe = struct {
             self._m_as_int = _v;
             return _v;
         }
-        pub fn asStr(self: *LtrObj) ![]u8 {
+        pub fn asStr(self: *LtrObj) ![]const u8 {
             if (self._m_as_str) |_v|
                 return _v;
-            var _v: []u8 = undefined;
-            _v = (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit1()) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit2()) })) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit3()) })) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit4()) })) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit5()) })) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit6()) })) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit7()) })) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit8()) })) }));
+            var _v: []const u8 = undefined;
+            _v = (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit1()) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit2()) })) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit3()) })) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit4()) })) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit5()) })) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit6()) })) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit7()) })) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit8()) })) }));
             self._m_as_str = _v;
             return _v;
         }
@@ -254,7 +254,7 @@ pub const BcdUserTypeLe = struct {
             return _v;
         }
         _m_as_int: ?i32 = null,
-        _m_as_str: ?[]u8 = null,
+        _m_as_str: ?[]const u8 = null,
         _m_digit1: ?i32 = null,
         _m_digit2: ?i32 = null,
         _m_digit3: ?i32 = null,
@@ -269,11 +269,11 @@ pub const BcdUserTypeLe = struct {
         b4: u8 = undefined,
         _root: ?*BcdUserTypeLe,
         _parent: ?*BcdUserTypeLe,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const RtlObj = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*BcdUserTypeLe, _root: ?*BcdUserTypeLe) !*RtlObj {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*BcdUserTypeLe, _root: ?*BcdUserTypeLe) !*RtlObj {
             const self = try _arena.allocator().create(RtlObj);
             self.* = .{
                 ._arena = _arena,
@@ -284,7 +284,7 @@ pub const BcdUserTypeLe = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const RtlObj) std.mem.Allocator {
+        fn _allocator(self: *const RtlObj) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *RtlObj) !void {
@@ -301,11 +301,11 @@ pub const BcdUserTypeLe = struct {
             self._m_as_int = _v;
             return _v;
         }
-        pub fn asStr(self: *RtlObj) ![]u8 {
+        pub fn asStr(self: *RtlObj) ![]const u8 {
             if (self._m_as_str) |_v|
                 return _v;
-            var _v: []u8 = undefined;
-            _v = (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit8()) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit7()) })) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit6()) })) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit5()) })) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit4()) })) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit3()) })) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit2()) })) })), (try std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit1()) })) }));
+            var _v: []const u8 = undefined;
+            _v = (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.mem.concat(self._allocator(), u8, &[_][]const u8{ (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit8()) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit7()) })) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit6()) })) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit5()) })) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit4()) })) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit3()) })) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit2()) })) })), (try _imp_std.fmt.allocPrint(self._allocator(), "{d}", .{ (try self.digit1()) })) }));
             self._m_as_str = _v;
             return _v;
         }
@@ -374,7 +374,7 @@ pub const BcdUserTypeLe = struct {
             return _v;
         }
         _m_as_int: ?i32 = null,
-        _m_as_str: ?[]u8 = null,
+        _m_as_str: ?[]const u8 = null,
         _m_digit1: ?i32 = null,
         _m_digit2: ?i32 = null,
         _m_digit3: ?i32 = null,
@@ -389,17 +389,14 @@ pub const BcdUserTypeLe = struct {
         b4: u8 = undefined,
         _root: ?*BcdUserTypeLe,
         _parent: ?*BcdUserTypeLe,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     ltr: *LtrObj = undefined,
     rtl: *RtlObj = undefined,
     leading_zero_ltr: *LeadingZeroLtrObj = undefined,
     _root: ?*BcdUserTypeLe,
     _parent: ?*anyopaque,
-    _raw_ltr: []u8 = undefined,
-    _raw_rtl: []u8 = undefined,
-    _raw_leading_zero_ltr: []u8 = undefined,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

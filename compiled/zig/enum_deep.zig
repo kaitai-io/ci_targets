@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const EnumDeep = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*EnumDeep) !*EnumDeep {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*EnumDeep) !*EnumDeep {
         const self = try _arena.allocator().create(EnumDeep);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const EnumDeep = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const EnumDeep) std.mem.Allocator {
+    fn _allocator(self: *const EnumDeep) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *EnumDeep) !void {
@@ -29,7 +29,7 @@ pub const EnumDeep = struct {
             chicken = 12,
             _,
         };
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*EnumDeep) !*Container1 {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*EnumDeep) !*Container1 {
             const self = try _arena.allocator().create(Container1);
             self.* = .{
                 ._arena = _arena,
@@ -40,7 +40,7 @@ pub const EnumDeep = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Container1) std.mem.Allocator {
+        fn _allocator(self: *const Container1) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Container1) !void {
@@ -53,7 +53,7 @@ pub const EnumDeep = struct {
                 hare = 12,
                 _,
             };
-            pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*EnumDeep) !*Container2 {
+            pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*EnumDeep) !*Container2 {
                 const self = try _arena.allocator().create(Container2);
                 self.* = .{
                     ._arena = _arena,
@@ -64,7 +64,7 @@ pub const EnumDeep = struct {
                 try self._read();
                 return self;
             }
-            fn _allocator(self: *const Container2) std.mem.Allocator {
+            fn _allocator(self: *const Container2) _imp_std.mem.Allocator {
                 return self._arena.allocator();
             }
             fn _read(self: *Container2) !void {
@@ -72,18 +72,18 @@ pub const EnumDeep = struct {
             }
             _root: ?*EnumDeep,
             _parent: ?*anyopaque,
-            _arena: *std.heap.ArenaAllocator,
-            _io: *kaitai_struct.KaitaiStream,
+            _arena: *_imp_std.heap.ArenaAllocator,
+            _io: *_imp_kaitai_struct.KaitaiStream,
         };
         _root: ?*EnumDeep,
         _parent: ?*anyopaque,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pet_1: Container1.Animal = undefined,
     pet_2: Container1.Container2.Animal = undefined,
     _root: ?*EnumDeep,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

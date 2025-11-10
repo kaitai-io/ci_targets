@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const IntegersMinMax = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*IntegersMinMax) !*IntegersMinMax {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*IntegersMinMax) !*IntegersMinMax {
         const self = try _arena.allocator().create(IntegersMinMax);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const IntegersMinMax = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const IntegersMinMax) std.mem.Allocator {
+    fn _allocator(self: *const IntegersMinMax) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *IntegersMinMax) !void {
@@ -25,7 +25,7 @@ pub const IntegersMinMax = struct {
         self.signed_max = try Signed.create(self._arena, self._io, self, self._root);
     }
     pub const Signed = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*IntegersMinMax, _root: ?*IntegersMinMax) !*Signed {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*IntegersMinMax, _root: ?*IntegersMinMax) !*Signed {
             const self = try _arena.allocator().create(Signed);
             self.* = .{
                 ._arena = _arena,
@@ -36,7 +36,7 @@ pub const IntegersMinMax = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Signed) std.mem.Allocator {
+        fn _allocator(self: *const Signed) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Signed) !void {
@@ -57,11 +57,11 @@ pub const IntegersMinMax = struct {
         s8be: i64 = undefined,
         _root: ?*IntegersMinMax,
         _parent: ?*IntegersMinMax,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const Unsigned = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*IntegersMinMax, _root: ?*IntegersMinMax) !*Unsigned {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*IntegersMinMax, _root: ?*IntegersMinMax) !*Unsigned {
             const self = try _arena.allocator().create(Unsigned);
             self.* = .{
                 ._arena = _arena,
@@ -72,7 +72,7 @@ pub const IntegersMinMax = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Unsigned) std.mem.Allocator {
+        fn _allocator(self: *const Unsigned) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Unsigned) !void {
@@ -93,8 +93,8 @@ pub const IntegersMinMax = struct {
         u8be: u64 = undefined,
         _root: ?*IntegersMinMax,
         _parent: ?*IntegersMinMax,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     unsigned_min: *Unsigned = undefined,
     unsigned_max: *Unsigned = undefined,
@@ -102,6 +102,6 @@ pub const IntegersMinMax = struct {
     signed_max: *Signed = undefined,
     _root: ?*IntegersMinMax,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

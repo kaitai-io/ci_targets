@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ExprSizeofValueSized = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ExprSizeofValueSized) !*ExprSizeofValueSized {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ExprSizeofValueSized) !*ExprSizeofValueSized {
         const self = try _arena.allocator().create(ExprSizeofValueSized);
         self.* = .{
             ._arena = _arena,
@@ -15,18 +15,18 @@ pub const ExprSizeofValueSized = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ExprSizeofValueSized) std.mem.Allocator {
+    fn _allocator(self: *const ExprSizeofValueSized) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ExprSizeofValueSized) !void {
-        self._raw_block1 = try self._io.readBytes(self._allocator(), 12);
-        const _io__raw_block1 = try self._allocator().create(kaitai_struct.KaitaiStream);
-        _io__raw_block1.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_block1);
+        const _raw_block1 = try self._io.readBytes(self._allocator(), 12);
+        const _io__raw_block1 = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+        _io__raw_block1.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_block1);
         self.block1 = try Block.create(self._arena, _io__raw_block1, self, self._root);
         self.more = try self._io.readU2le();
     }
     pub const Block = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*ExprSizeofValueSized, _root: ?*ExprSizeofValueSized) !*Block {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*ExprSizeofValueSized, _root: ?*ExprSizeofValueSized) !*Block {
             const self = try _arena.allocator().create(Block);
             self.* = .{
                 ._arena = _arena,
@@ -37,7 +37,7 @@ pub const ExprSizeofValueSized = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Block) std.mem.Allocator {
+        fn _allocator(self: *const Block) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Block) !void {
@@ -47,11 +47,11 @@ pub const ExprSizeofValueSized = struct {
         }
         a: u8 = undefined,
         b: u32 = undefined,
-        c: []u8 = undefined,
+        c: []const u8 = undefined,
         _root: ?*ExprSizeofValueSized,
         _parent: ?*ExprSizeofValueSized,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub fn selfSizeof(self: *ExprSizeofValueSized) !i32 {
         if (self._m_self_sizeof) |_v|
@@ -102,7 +102,6 @@ pub const ExprSizeofValueSized = struct {
     more: u16 = undefined,
     _root: ?*ExprSizeofValueSized,
     _parent: ?*anyopaque,
-    _raw_block1: []u8 = undefined,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

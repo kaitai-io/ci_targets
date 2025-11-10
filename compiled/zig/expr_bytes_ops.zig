@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ExprBytesOps = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ExprBytesOps) !*ExprBytesOps {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ExprBytesOps) !*ExprBytesOps {
         const self = try _arena.allocator().create(ExprBytesOps);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const ExprBytesOps = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ExprBytesOps) std.mem.Allocator {
+    fn _allocator(self: *const ExprBytesOps) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ExprBytesOps) !void {
@@ -41,7 +41,7 @@ pub const ExprBytesOps = struct {
         if (self._m_one_max) |_v|
             return _v;
         var _v: u8 = undefined;
-        _v = std.mem.max(u8, self.one);
+        _v = _imp_std.mem.max(u8, self.one);
         self._m_one_max = _v;
         return _v;
     }
@@ -57,7 +57,7 @@ pub const ExprBytesOps = struct {
         if (self._m_one_min) |_v|
             return _v;
         var _v: u8 = undefined;
-        _v = std.mem.min(u8, self.one);
+        _v = _imp_std.mem.min(u8, self.one);
         self._m_one_min = _v;
         return _v;
     }
@@ -69,10 +69,10 @@ pub const ExprBytesOps = struct {
         self._m_one_size = _v;
         return _v;
     }
-    pub fn two(self: *ExprBytesOps) ![]u8 {
+    pub fn two(self: *ExprBytesOps) ![]const u8 {
         if (self._m_two) |_v|
             return _v;
-        var _v: []u8 = undefined;
+        var _v: []const u8 = undefined;
         _v = &[_]u8{ 65, 255, 75 };
         self._m_two = _v;
         return _v;
@@ -97,7 +97,7 @@ pub const ExprBytesOps = struct {
         if (self._m_two_max) |_v|
             return _v;
         var _v: u8 = undefined;
-        _v = std.mem.max(u8, (try self.two()));
+        _v = _imp_std.mem.max(u8, (try self.two()));
         self._m_two_max = _v;
         return _v;
     }
@@ -113,7 +113,7 @@ pub const ExprBytesOps = struct {
         if (self._m_two_min) |_v|
             return _v;
         var _v: u8 = undefined;
-        _v = std.mem.min(u8, (try self.two()));
+        _v = _imp_std.mem.min(u8, (try self.two()));
         self._m_two_min = _v;
         return _v;
     }
@@ -131,16 +131,16 @@ pub const ExprBytesOps = struct {
     _m_one_mid: ?u8 = null,
     _m_one_min: ?u8 = null,
     _m_one_size: ?i32 = null,
-    _m_two: ?[]u8 = null,
+    _m_two: ?[]const u8 = null,
     _m_two_first: ?u8 = null,
     _m_two_last: ?u8 = null,
     _m_two_max: ?u8 = null,
     _m_two_mid: ?u8 = null,
     _m_two_min: ?u8 = null,
     _m_two_size: ?i32 = null,
-    one: []u8 = undefined,
+    one: []const u8 = undefined,
     _root: ?*ExprBytesOps,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

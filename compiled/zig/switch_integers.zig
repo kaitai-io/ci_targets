@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const SwitchIntegers = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*SwitchIntegers) !*SwitchIntegers {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*SwitchIntegers) !*SwitchIntegers {
         const self = try _arena.allocator().create(SwitchIntegers);
         self.* = .{
             ._arena = _arena,
@@ -15,11 +15,11 @@ pub const SwitchIntegers = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const SwitchIntegers) std.mem.Allocator {
+    fn _allocator(self: *const SwitchIntegers) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *SwitchIntegers) !void {
-        self.opcodes = try self._allocator().create(std.ArrayList(*Opcode));
+        self.opcodes = try self._allocator().create(_imp_std.ArrayList(*Opcode));
         self.opcodes.* = .empty;
         {
             var i: usize = 0;
@@ -29,7 +29,7 @@ pub const SwitchIntegers = struct {
         }
     }
     pub const Opcode = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*SwitchIntegers, _root: ?*SwitchIntegers) !*Opcode {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*SwitchIntegers, _root: ?*SwitchIntegers) !*Opcode {
             const self = try _arena.allocator().create(Opcode);
             self.* = .{
                 ._arena = _arena,
@@ -40,7 +40,7 @@ pub const SwitchIntegers = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Opcode) std.mem.Allocator {
+        fn _allocator(self: *const Opcode) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Opcode) !void {
@@ -66,12 +66,12 @@ pub const SwitchIntegers = struct {
         body: ?u64 = null,
         _root: ?*SwitchIntegers,
         _parent: ?*SwitchIntegers,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
-    opcodes: *std.ArrayList(*Opcode) = undefined,
+    opcodes: *_imp_std.ArrayList(*Opcode) = undefined,
     _root: ?*SwitchIntegers,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

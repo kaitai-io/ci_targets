@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const RepeatUntilComplex = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*RepeatUntilComplex) !*RepeatUntilComplex {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*RepeatUntilComplex) !*RepeatUntilComplex {
         const self = try _arena.allocator().create(RepeatUntilComplex);
         self.* = .{
             ._arena = _arena,
@@ -15,11 +15,11 @@ pub const RepeatUntilComplex = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const RepeatUntilComplex) std.mem.Allocator {
+    fn _allocator(self: *const RepeatUntilComplex) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *RepeatUntilComplex) !void {
-        self.first = try self._allocator().create(std.ArrayList(*TypeU1));
+        self.first = try self._allocator().create(_imp_std.ArrayList(*TypeU1));
         self.first.* = .empty;
         {
             var i: usize = 0;
@@ -31,7 +31,7 @@ pub const RepeatUntilComplex = struct {
                 }
             }
         }
-        self.second = try self._allocator().create(std.ArrayList(*TypeU2));
+        self.second = try self._allocator().create(_imp_std.ArrayList(*TypeU2));
         self.second.* = .empty;
         {
             var i: usize = 0;
@@ -43,7 +43,7 @@ pub const RepeatUntilComplex = struct {
                 }
             }
         }
-        self.third = try self._allocator().create(std.ArrayList(u8));
+        self.third = try self._allocator().create(_imp_std.ArrayList(u8));
         self.third.* = .empty;
         {
             var i: usize = 0;
@@ -57,7 +57,7 @@ pub const RepeatUntilComplex = struct {
         }
     }
     pub const TypeU1 = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*RepeatUntilComplex, _root: ?*RepeatUntilComplex) !*TypeU1 {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*RepeatUntilComplex, _root: ?*RepeatUntilComplex) !*TypeU1 {
             const self = try _arena.allocator().create(TypeU1);
             self.* = .{
                 ._arena = _arena,
@@ -68,12 +68,12 @@ pub const RepeatUntilComplex = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const TypeU1) std.mem.Allocator {
+        fn _allocator(self: *const TypeU1) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *TypeU1) !void {
             self.count = try self._io.readU1();
-            self.values = try self._allocator().create(std.ArrayList(u8));
+            self.values = try self._allocator().create(_imp_std.ArrayList(u8));
             self.values.* = .empty;
             for (0..self.count) |i| {
                 {
@@ -84,14 +84,14 @@ pub const RepeatUntilComplex = struct {
             }
         }
         count: u8 = undefined,
-        values: *std.ArrayList(u8) = undefined,
+        values: *_imp_std.ArrayList(u8) = undefined,
         _root: ?*RepeatUntilComplex,
         _parent: ?*RepeatUntilComplex,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const TypeU2 = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*RepeatUntilComplex, _root: ?*RepeatUntilComplex) !*TypeU2 {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*RepeatUntilComplex, _root: ?*RepeatUntilComplex) !*TypeU2 {
             const self = try _arena.allocator().create(TypeU2);
             self.* = .{
                 ._arena = _arena,
@@ -102,12 +102,12 @@ pub const RepeatUntilComplex = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const TypeU2) std.mem.Allocator {
+        fn _allocator(self: *const TypeU2) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *TypeU2) !void {
             self.count = try self._io.readU2le();
-            self.values = try self._allocator().create(std.ArrayList(u16));
+            self.values = try self._allocator().create(_imp_std.ArrayList(u16));
             self.values.* = .empty;
             for (0..self.count) |i| {
                 {
@@ -118,17 +118,17 @@ pub const RepeatUntilComplex = struct {
             }
         }
         count: u16 = undefined,
-        values: *std.ArrayList(u16) = undefined,
+        values: *_imp_std.ArrayList(u16) = undefined,
         _root: ?*RepeatUntilComplex,
         _parent: ?*RepeatUntilComplex,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
-    first: *std.ArrayList(*TypeU1) = undefined,
-    second: *std.ArrayList(*TypeU2) = undefined,
-    third: *std.ArrayList(u8) = undefined,
+    first: *_imp_std.ArrayList(*TypeU1) = undefined,
+    second: *_imp_std.ArrayList(*TypeU2) = undefined,
+    third: *_imp_std.ArrayList(u8) = undefined,
     _root: ?*RepeatUntilComplex,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

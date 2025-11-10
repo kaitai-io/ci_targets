@@ -1,11 +1,11 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
-const imported_and_abs = @import("imported_and_abs.zig");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
+const _imp_imported_and_abs = @import("imported_and_abs.zig");
 
 pub const ImportsAbsAbs = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ImportsAbsAbs) !*ImportsAbsAbs {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ImportsAbsAbs) !*ImportsAbsAbs {
         const self = try _arena.allocator().create(ImportsAbsAbs);
         self.* = .{
             ._arena = _arena,
@@ -16,17 +16,17 @@ pub const ImportsAbsAbs = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ImportsAbsAbs) std.mem.Allocator {
+    fn _allocator(self: *const ImportsAbsAbs) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ImportsAbsAbs) !void {
         self.one = try self._io.readU1();
-        self.two = try imported_and_abs.ImportedAndAbs.create(self._arena, self._io, null, null);
+        self.two = try _imp_imported_and_abs.ImportedAndAbs.create(self._arena, self._io, null, null);
     }
     one: u8 = undefined,
-    two: *imported_and_abs.ImportedAndAbs = undefined,
+    two: *_imp_imported_and_abs.ImportedAndAbs = undefined,
     _root: ?*ImportsAbsAbs,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

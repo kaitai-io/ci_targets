@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ExprIoEof = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ExprIoEof) !*ExprIoEof {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ExprIoEof) !*ExprIoEof {
         const self = try _arena.allocator().create(ExprIoEof);
         self.* = .{
             ._arena = _arena,
@@ -15,21 +15,21 @@ pub const ExprIoEof = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ExprIoEof) std.mem.Allocator {
+    fn _allocator(self: *const ExprIoEof) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ExprIoEof) !void {
-        self._raw_substream1 = try self._io.readBytes(self._allocator(), 4);
-        const _io__raw_substream1 = try self._allocator().create(kaitai_struct.KaitaiStream);
-        _io__raw_substream1.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_substream1);
+        const _raw_substream1 = try self._io.readBytes(self._allocator(), 4);
+        const _io__raw_substream1 = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+        _io__raw_substream1.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_substream1);
         self.substream1 = try OneOrTwo.create(self._arena, _io__raw_substream1, self, self._root);
-        self._raw_substream2 = try self._io.readBytes(self._allocator(), 8);
-        const _io__raw_substream2 = try self._allocator().create(kaitai_struct.KaitaiStream);
-        _io__raw_substream2.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_substream2);
+        const _raw_substream2 = try self._io.readBytes(self._allocator(), 8);
+        const _io__raw_substream2 = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+        _io__raw_substream2.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_substream2);
         self.substream2 = try OneOrTwo.create(self._arena, _io__raw_substream2, self, self._root);
     }
     pub const OneOrTwo = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*ExprIoEof, _root: ?*ExprIoEof) !*OneOrTwo {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*ExprIoEof, _root: ?*ExprIoEof) !*OneOrTwo {
             const self = try _arena.allocator().create(OneOrTwo);
             self.* = .{
                 ._arena = _arena,
@@ -40,7 +40,7 @@ pub const ExprIoEof = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const OneOrTwo) std.mem.Allocator {
+        fn _allocator(self: *const OneOrTwo) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *OneOrTwo) !void {
@@ -62,15 +62,13 @@ pub const ExprIoEof = struct {
         two: ?u32 = null,
         _root: ?*ExprIoEof,
         _parent: ?*ExprIoEof,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     substream1: *OneOrTwo = undefined,
     substream2: *OneOrTwo = undefined,
     _root: ?*ExprIoEof,
     _parent: ?*anyopaque,
-    _raw_substream1: []u8 = undefined,
-    _raw_substream2: []u8 = undefined,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const InstanceIoUserEarlier = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*InstanceIoUserEarlier) !*InstanceIoUserEarlier {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*InstanceIoUserEarlier) !*InstanceIoUserEarlier {
         const self = try _arena.allocator().create(InstanceIoUserEarlier);
         self.* = .{
             ._arena = _arena,
@@ -15,17 +15,17 @@ pub const InstanceIoUserEarlier = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const InstanceIoUserEarlier) std.mem.Allocator {
+    fn _allocator(self: *const InstanceIoUserEarlier) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *InstanceIoUserEarlier) !void {
-        self._raw_sized_a = try self._io.readBytes(self._allocator(), 6);
-        const _io__raw_sized_a = try self._allocator().create(kaitai_struct.KaitaiStream);
-        _io__raw_sized_a.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_sized_a);
+        const _raw_sized_a = try self._io.readBytes(self._allocator(), 6);
+        const _io__raw_sized_a = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+        _io__raw_sized_a.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_sized_a);
         self.sized_a = try Slot.create(self._arena, _io__raw_sized_a, self, self._root);
-        self._raw_sized_b = try self._io.readBytes(self._allocator(), 6);
-        const _io__raw_sized_b = try self._allocator().create(kaitai_struct.KaitaiStream);
-        _io__raw_sized_b.* = kaitai_struct.KaitaiStream.fromBytes(self._raw_sized_b);
+        const _raw_sized_b = try self._io.readBytes(self._allocator(), 6);
+        const _io__raw_sized_b = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+        _io__raw_sized_b.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_sized_b);
         self.sized_b = try Slot.create(self._arena, _io__raw_sized_b, self, self._root);
         self.into_b = try Foo.create(self._arena, self._io, self, self._root);
         self.into_a_skipped = try Foo.create(self._arena, self._io, self, self._root);
@@ -33,7 +33,7 @@ pub const InstanceIoUserEarlier = struct {
         self.last_accessor = try Baz.create(self._arena, self._io, self, self._root);
     }
     pub const Baz = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*InstanceIoUserEarlier, _root: ?*InstanceIoUserEarlier) !*Baz {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*InstanceIoUserEarlier, _root: ?*InstanceIoUserEarlier) !*Baz {
             const self = try _arena.allocator().create(Baz);
             self.* = .{
                 ._arena = _arena,
@@ -44,7 +44,7 @@ pub const InstanceIoUserEarlier = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Baz) std.mem.Allocator {
+        fn _allocator(self: *const Baz) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Baz) !void {
@@ -55,11 +55,11 @@ pub const InstanceIoUserEarlier = struct {
         v: ?u8 = null,
         _root: ?*InstanceIoUserEarlier,
         _parent: ?*InstanceIoUserEarlier,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const Foo = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*InstanceIoUserEarlier, _root: ?*InstanceIoUserEarlier) !*Foo {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*InstanceIoUserEarlier, _root: ?*InstanceIoUserEarlier) !*Foo {
             const self = try _arena.allocator().create(Foo);
             self.* = .{
                 ._arena = _arena,
@@ -70,7 +70,7 @@ pub const InstanceIoUserEarlier = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Foo) std.mem.Allocator {
+        fn _allocator(self: *const Foo) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Foo) !void {
@@ -86,9 +86,9 @@ pub const InstanceIoUserEarlier = struct {
             const io = (if (self.indicator == 202) self._parent.?.sized_b._io else self._parent.?.sized_a._io);
             const _pos = io.pos();
             try io.seek(1);
-            self._raw__m_inst = try io.readBytes(self._allocator(), (if (self._io.pos() != 14) 4 else 0));
-            const _io__raw__m_inst = try self._allocator().create(kaitai_struct.KaitaiStream);
-            _io__raw__m_inst.* = kaitai_struct.KaitaiStream.fromBytes(self._raw__m_inst);
+            const _raw__m_inst = try io.readBytes(self._allocator(), (if (self._io.pos() != 14) 4 else 0));
+            const _io__raw__m_inst = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+            _io__raw__m_inst.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw__m_inst);
             _v = try Slot.create(self._arena, _io__raw__m_inst, self, self._root);
             try io.seek(_pos);
             self._m_inst = _v;
@@ -99,12 +99,11 @@ pub const InstanceIoUserEarlier = struct {
         bar: ?u8 = null,
         _root: ?*InstanceIoUserEarlier,
         _parent: ?*InstanceIoUserEarlier,
-        _raw__m_inst: []u8 = undefined,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const Slot = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*InstanceIoUserEarlier) !*Slot {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*InstanceIoUserEarlier) !*Slot {
             const self = try _arena.allocator().create(Slot);
             self.* = .{
                 ._arena = _arena,
@@ -115,7 +114,7 @@ pub const InstanceIoUserEarlier = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Slot) std.mem.Allocator {
+        fn _allocator(self: *const Slot) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Slot) !void {
@@ -126,22 +125,29 @@ pub const InstanceIoUserEarlier = struct {
         pub fn last(self: *Slot) !?u8 {
             if (self._m_last) |_v|
                 return _v;
-            var _v: ?u8 = null;
+            var _v: u8 = undefined;
+            var _n = true;
             if ((try self._io.size()) != 0) {
+                _n = false;
                 const _pos = self._io.pos();
                 try self._io.seek((try self._io.size()) - 1);
                 _v = try self._io.readU1();
                 try self._io.seek(_pos);
             }
-            self._m_last = _v;
-            return _v;
+            if (_n) {
+                self._m_last = @as(?u8, null);
+                return null;
+            } else {
+                self._m_last = _v;
+                return _v;
+            }
         }
         _m_last: ??u8 = null,
         content: ?u8 = null,
         _root: ?*InstanceIoUserEarlier,
         _parent: ?*anyopaque,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub fn aMid(self: *InstanceIoUserEarlier) !u16 {
         if (self._m_a_mid) |_v|
@@ -177,8 +183,6 @@ pub const InstanceIoUserEarlier = struct {
     last_accessor: *Baz = undefined,
     _root: ?*InstanceIoUserEarlier,
     _parent: ?*anyopaque,
-    _raw_sized_a: []u8 = undefined,
-    _raw_sized_b: []u8 = undefined,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

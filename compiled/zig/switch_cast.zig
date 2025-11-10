@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const SwitchCast = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*SwitchCast) !*SwitchCast {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*SwitchCast) !*SwitchCast {
         const self = try _arena.allocator().create(SwitchCast);
         self.* = .{
             ._arena = _arena,
@@ -15,11 +15,11 @@ pub const SwitchCast = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const SwitchCast) std.mem.Allocator {
+    fn _allocator(self: *const SwitchCast) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *SwitchCast) !void {
-        self.opcodes = try self._allocator().create(std.ArrayList(*Opcode));
+        self.opcodes = try self._allocator().create(_imp_std.ArrayList(*Opcode));
         self.opcodes.* = .empty;
         {
             var i: usize = 0;
@@ -29,7 +29,7 @@ pub const SwitchCast = struct {
         }
     }
     pub const Intval = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*SwitchCast.Opcode, _root: ?*SwitchCast) !*Intval {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*SwitchCast.Opcode, _root: ?*SwitchCast) !*Intval {
             const self = try _arena.allocator().create(Intval);
             self.* = .{
                 ._arena = _arena,
@@ -40,7 +40,7 @@ pub const SwitchCast = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Intval) std.mem.Allocator {
+        fn _allocator(self: *const Intval) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Intval) !void {
@@ -49,11 +49,11 @@ pub const SwitchCast = struct {
         value: u8 = undefined,
         _root: ?*SwitchCast,
         _parent: ?*SwitchCast.Opcode,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const Opcode = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*SwitchCast, _root: ?*SwitchCast) !*Opcode {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*SwitchCast, _root: ?*SwitchCast) !*Opcode {
             const self = try _arena.allocator().create(Opcode);
             self.* = .{
                 ._arena = _arena,
@@ -64,7 +64,7 @@ pub const SwitchCast = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Opcode) std.mem.Allocator {
+        fn _allocator(self: *const Opcode) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Opcode) !void {
@@ -84,11 +84,11 @@ pub const SwitchCast = struct {
         body: ?*anyopaque = null,
         _root: ?*SwitchCast,
         _parent: ?*SwitchCast,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const Strval = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*SwitchCast.Opcode, _root: ?*SwitchCast) !*Strval {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*SwitchCast.Opcode, _root: ?*SwitchCast) !*Strval {
             const self = try _arena.allocator().create(Strval);
             self.* = .{
                 ._arena = _arena,
@@ -99,17 +99,17 @@ pub const SwitchCast = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Strval) std.mem.Allocator {
+        fn _allocator(self: *const Strval) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Strval) !void {
-            self.value = kaitai_struct.KaitaiStream.bytesToStr(try self._io.readBytesTerm(self._allocator(), 0, false, true, true), "ASCII");
+            self.value = (try _imp_kaitai_struct.KaitaiStream.bytesToStr(self._allocator(), try self._io.readBytesTerm(self._allocator(), 0, false, true, true), "ASCII"));
         }
-        value: []u8 = undefined,
+        value: []const u8 = undefined,
         _root: ?*SwitchCast,
         _parent: ?*SwitchCast.Opcode,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub fn errCast(self: *SwitchCast) !*SwitchCast.Strval {
         if (self._m_err_cast) |_v|
@@ -138,9 +138,9 @@ pub const SwitchCast = struct {
     _m_err_cast: ?*SwitchCast.Strval = null,
     _m_first_obj: ?*SwitchCast.Strval = null,
     _m_second_val: ?u8 = null,
-    opcodes: *std.ArrayList(*Opcode) = undefined,
+    opcodes: *_imp_std.ArrayList(*Opcode) = undefined,
     _root: ?*SwitchCast,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

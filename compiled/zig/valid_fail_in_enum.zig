@@ -1,7 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ValidFailInEnum = struct {
     pub const Animal = enum(i32) {
@@ -9,7 +9,7 @@ pub const ValidFailInEnum = struct {
         chicken = 12,
         _,
     };
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ValidFailInEnum) !*ValidFailInEnum {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ValidFailInEnum) !*ValidFailInEnum {
         const self = try _arena.allocator().create(ValidFailInEnum);
         self.* = .{
             ._arena = _arena,
@@ -20,7 +20,7 @@ pub const ValidFailInEnum = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ValidFailInEnum) std.mem.Allocator {
+    fn _allocator(self: *const ValidFailInEnum) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ValidFailInEnum) !void {
@@ -32,6 +32,6 @@ pub const ValidFailInEnum = struct {
     foo: Animal = undefined,
     _root: ?*ValidFailInEnum,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

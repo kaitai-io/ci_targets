@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const RecursiveOne = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*RecursiveOne) !*RecursiveOne {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*RecursiveOne) !*RecursiveOne {
         const self = try _arena.allocator().create(RecursiveOne);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const RecursiveOne = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const RecursiveOne) std.mem.Allocator {
+    fn _allocator(self: *const RecursiveOne) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *RecursiveOne) !void {
@@ -38,7 +38,7 @@ pub const RecursiveOne = struct {
         }
     }
     pub const Fini = struct {
-        pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*RecursiveOne, _root: ?*RecursiveOne) !*Fini {
+        pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*RecursiveOne, _root: ?*RecursiveOne) !*Fini {
             const self = try _arena.allocator().create(Fini);
             self.* = .{
                 ._arena = _arena,
@@ -49,7 +49,7 @@ pub const RecursiveOne = struct {
             try self._read();
             return self;
         }
-        fn _allocator(self: *const Fini) std.mem.Allocator {
+        fn _allocator(self: *const Fini) _imp_std.mem.Allocator {
             return self._arena.allocator();
         }
         fn _read(self: *Fini) !void {
@@ -58,13 +58,13 @@ pub const RecursiveOne = struct {
         finisher: u16 = undefined,
         _root: ?*RecursiveOne,
         _parent: ?*RecursiveOne,
-        _arena: *std.heap.ArenaAllocator,
-        _io: *kaitai_struct.KaitaiStream,
+        _arena: *_imp_std.heap.ArenaAllocator,
+        _io: *_imp_kaitai_struct.KaitaiStream,
     };
     one: u8 = undefined,
     next: ?*anyopaque = null,
     _root: ?*RecursiveOne,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

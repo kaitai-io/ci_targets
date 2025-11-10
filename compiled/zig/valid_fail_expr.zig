@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ValidFailExpr = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ValidFailExpr) !*ValidFailExpr {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ValidFailExpr) !*ValidFailExpr {
         const self = try _arena.allocator().create(ValidFailExpr);
         self.* = .{
             ._arena = _arena,
@@ -15,7 +15,7 @@ pub const ValidFailExpr = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ValidFailExpr) std.mem.Allocator {
+    fn _allocator(self: *const ValidFailExpr) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ValidFailExpr) !void {
@@ -38,6 +38,6 @@ pub const ValidFailExpr = struct {
     bar: i16 = undefined,
     _root: ?*ValidFailExpr,
     _parent: ?*anyopaque,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };

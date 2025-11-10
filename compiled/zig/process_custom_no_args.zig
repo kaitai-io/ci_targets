@@ -1,10 +1,10 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ProcessCustomNoArgs = struct {
-    pub fn create(_arena: *std.heap.ArenaAllocator, _io: *kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ProcessCustomNoArgs) !*ProcessCustomNoArgs {
+    pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ProcessCustomNoArgs) !*ProcessCustomNoArgs {
         const self = try _arena.allocator().create(ProcessCustomNoArgs);
         self.* = .{
             ._arena = _arena,
@@ -15,18 +15,17 @@ pub const ProcessCustomNoArgs = struct {
         try self._read();
         return self;
     }
-    fn _allocator(self: *const ProcessCustomNoArgs) std.mem.Allocator {
+    fn _allocator(self: *const ProcessCustomNoArgs) _imp_std.mem.Allocator {
         return self._arena.allocator();
     }
     fn _read(self: *ProcessCustomNoArgs) !void {
-        self._raw_buf = try self._io.readBytes(self._allocator(), 5);
+        const _raw_buf = try self._io.readBytes(self._allocator(), 5);
         CustomFxNoArgs _process__raw_buf = new CustomFxNoArgs();
-        self.buf = _process__raw_buf.decode(self._raw_buf);
+        self.buf = _process__raw_buf.decode(self._allocator(), _raw_buf);
     }
-    buf: []u8 = undefined,
+    buf: []const u8 = undefined,
     _root: ?*ProcessCustomNoArgs,
     _parent: ?*anyopaque,
-    _raw_buf: []u8 = undefined,
-    _arena: *std.heap.ArenaAllocator,
-    _io: *kaitai_struct.KaitaiStream,
+    _arena: *_imp_std.heap.ArenaAllocator,
+    _io: *_imp_kaitai_struct.KaitaiStream,
 };
