@@ -1,5 +1,0 @@
-#!/bin/sh
-
-. ./config
-
-python -m pip install construct unittest-xml-reporting
