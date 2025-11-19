@@ -40,7 +40,6 @@ sub _read {
     if (!($self->_io()->is_eof())) {
         $self->{baz} = $self->{_io}->read_bits_int_be(16);
     }
-    $self->{_io}->align_to_byte();
     $self->{align} = $self->{_io}->read_bytes(0);
     if (!($self->_io()->is_eof())) {
         $self->{qux} = $self->{_io}->read_bits_int_be(16);

@@ -27,24 +27,20 @@ proc read*(_: typedesc[BitsByteAligned], io: KaitaiStream, root: KaitaiStruct, p
 
   let oneExpr = this.io.readBitsIntBe(6)
   this.one = oneExpr
-  alignToByte(this.io)
   let byte1Expr = this.io.readU1()
   this.byte1 = byte1Expr
   let twoExpr = this.io.readBitsIntBe(3)
   this.two = twoExpr
   let threeExpr = this.io.readBitsIntBe(1) != 0
   this.three = threeExpr
-  alignToByte(this.io)
   let byte2Expr = this.io.readU1()
   this.byte2 = byte2Expr
   let fourExpr = this.io.readBitsIntBe(14)
   this.four = fourExpr
-  alignToByte(this.io)
   let byte3Expr = this.io.readBytes(int(1))
   this.byte3 = byte3Expr
   let fullByteExpr = this.io.readBitsIntBe(8)
   this.fullByte = fullByteExpr
-  alignToByte(this.io)
   let byte4Expr = this.io.readU1()
   this.byte4 = byte4Expr
 

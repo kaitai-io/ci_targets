@@ -21,7 +21,6 @@ class ExprBits < Kaitai::Struct::Struct
   def _read
     @enum_seq = Kaitai::Struct::Stream::resolve_enum(ITEMS, @_io.read_bits_int_be(2))
     @a = @_io.read_bits_int_be(3)
-    @_io.align_to_byte
     @byte_size = @_io.read_bytes(a)
     @repeat_expr = []
     (a).times { |i|

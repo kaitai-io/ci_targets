@@ -50,7 +50,6 @@ proc read*(_: typedesc[DefaultBitEndianMod_MainObj], io: KaitaiStream, root: Kai
   this.one = oneExpr
   let twoExpr = this.io.readBitsIntLe(15)
   this.two = twoExpr
-  alignToByte(this.io)
   let nestExpr = DefaultBitEndianMod_MainObj_Subnest.read(this.io, this.root, this)
   this.nest = nestExpr
   let nestBeExpr = DefaultBitEndianMod_MainObj_SubnestBe.read(this.io, this.root, this)

@@ -48,7 +48,6 @@ proc read*(_: typedesc[BitsSimple], io: KaitaiStream, root: KaitaiStruct, parent
   this.spacer = spacerExpr
   let largeBits2Expr = this.io.readBitsIntBe(11)
   this.largeBits2 = largeBits2Expr
-  alignToByte(this.io)
   let normalS2Expr = this.io.readS2be()
   this.normalS2 = normalS2Expr
   let byte8910Expr = this.io.readBitsIntBe(24)

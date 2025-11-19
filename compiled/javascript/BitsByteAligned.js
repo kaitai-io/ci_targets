@@ -19,17 +19,13 @@ var BitsByteAligned = (function() {
   }
   BitsByteAligned.prototype._read = function() {
     this.one = this._io.readBitsIntBe(6);
-    this._io.alignToByte();
     this.byte1 = this._io.readU1();
     this.two = this._io.readBitsIntBe(3);
     this.three = this._io.readBitsIntBe(1) != 0;
-    this._io.alignToByte();
     this.byte2 = this._io.readU1();
     this.four = this._io.readBitsIntBe(14);
-    this._io.alignToByte();
     this.byte3 = this._io.readBytes(1);
     this.fullByte = this._io.readBitsIntBe(8);
-    this._io.alignToByte();
     this.byte4 = this._io.readU1();
   }
 

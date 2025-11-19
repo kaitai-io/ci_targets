@@ -23,7 +23,6 @@ end
 function ExprBits:_read()
   self.enum_seq = ExprBits.Items(self._io:read_bits_int_be(2))
   self.a = self._io:read_bits_int_be(3)
-  self._io:align_to_byte()
   self.byte_size = self._io:read_bytes(self.a)
   self.repeat_expr = {}
   for i = 0, self.a - 1 do

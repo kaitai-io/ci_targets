@@ -42,7 +42,6 @@ var TsPacketHeader = (function() {
     this.transportScramblingControl = this._io.readBitsIntBe(2);
     this.adaptationFieldControl = this._io.readBitsIntBe(2);
     this.continuityCounter = this._io.readBitsIntBe(4);
-    this._io.alignToByte();
     this.tsPacketRemain = this._io.readBytes(184);
   }
 

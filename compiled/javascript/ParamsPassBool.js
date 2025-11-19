@@ -20,7 +20,6 @@ var ParamsPassBool = (function() {
   ParamsPassBool.prototype._read = function() {
     this.sFalse = this._io.readBitsIntBe(1) != 0;
     this.sTrue = this._io.readBitsIntBe(1) != 0;
-    this._io.alignToByte();
     this.seqB1 = new ParamTypeB1(this._io, this, this._root, this.sTrue);
     this.seqBool = new ParamTypeBool(this._io, this, this._root, this.sFalse);
     this.literalB1 = new ParamTypeB1(this._io, this, this._root, false);

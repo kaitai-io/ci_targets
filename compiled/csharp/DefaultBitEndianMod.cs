@@ -38,7 +38,6 @@ namespace Kaitai
             {
                 _one = m_io.ReadBitsIntLe(9);
                 _two = m_io.ReadBitsIntLe(15);
-                m_io.AlignToByte();
                 _nest = new Subnest(m_io, this, m_root);
                 _nestBe = new SubnestBe(m_io, this, m_root);
             }

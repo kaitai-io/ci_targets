@@ -17,7 +17,6 @@ namespace Kaitai\Struct\Tests {
             $this->_m_largeBits1 = $this->_io->readBitsIntBe(10);
             $this->_m_spacer = $this->_io->readBitsIntBe(3);
             $this->_m_largeBits2 = $this->_io->readBitsIntBe(11);
-            $this->_io->alignToByte();
             $this->_m_normalS2 = $this->_io->readS2be();
             $this->_m_byte8910 = $this->_io->readBitsIntBe(24);
             $this->_m_byte11To14 = $this->_io->readBitsIntBe(32);

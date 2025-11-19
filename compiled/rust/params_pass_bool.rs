@@ -50,7 +50,6 @@ impl KStruct for ParamsPassBool {
         let _r = _rrc.as_ref().unwrap();
         *self_rc.s_false.borrow_mut() = _io.read_bits_int_be(1)? != 0;
         *self_rc.s_true.borrow_mut() = _io.read_bits_int_be(1)? != 0;
-        _io.align_to_byte()?;
         let f = |t : &mut ParamsPassBool_ParamTypeB1| Ok(t.set_params(*self_rc.s_true()));
         let t = Self::read_into_with_init::<_, ParamsPassBool_ParamTypeB1>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()), &f)?.into();
         *self_rc.seq_b1.borrow_mut() = t;

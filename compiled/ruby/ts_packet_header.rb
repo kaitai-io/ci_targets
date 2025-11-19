@@ -32,7 +32,6 @@ class TsPacketHeader < Kaitai::Struct::Struct
     @transport_scrambling_control = @_io.read_bits_int_be(2)
     @adaptation_field_control = Kaitai::Struct::Stream::resolve_enum(ADAPTATION_FIELD_CONTROL_ENUM, @_io.read_bits_int_be(2))
     @continuity_counter = @_io.read_bits_int_be(4)
-    @_io.align_to_byte
     @ts_packet_remain = @_io.read_bytes(184)
     self
   end

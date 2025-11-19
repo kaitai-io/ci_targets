@@ -37,7 +37,6 @@ func (this *BitsByteAligned) Read(io *kaitai.Stream, parent kaitai.Struct, root 
 		return err
 	}
 	this.One = tmp1
-	this._io.AlignToByte()
 	tmp2, err := this._io.ReadU1()
 	if err != nil {
 		return err
@@ -53,7 +52,6 @@ func (this *BitsByteAligned) Read(io *kaitai.Stream, parent kaitai.Struct, root 
 		return err
 	}
 	this.Three = tmp4 != 0
-	this._io.AlignToByte()
 	tmp5, err := this._io.ReadU1()
 	if err != nil {
 		return err
@@ -64,7 +62,6 @@ func (this *BitsByteAligned) Read(io *kaitai.Stream, parent kaitai.Struct, root 
 		return err
 	}
 	this.Four = tmp6
-	this._io.AlignToByte()
 	tmp7, err := this._io.ReadBytes(int(1))
 	if err != nil {
 		return err
@@ -76,7 +73,6 @@ func (this *BitsByteAligned) Read(io *kaitai.Stream, parent kaitai.Struct, root 
 		return err
 	}
 	this.FullByte = tmp8
-	this._io.AlignToByte()
 	tmp9, err := this._io.ReadU1()
 	if err != nil {
 		return err

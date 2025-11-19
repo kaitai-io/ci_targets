@@ -55,7 +55,6 @@ func (this *ExprIoEofBits) Read(io *kaitai.Stream, parent kaitai.Struct, root *E
 		}
 		this.Baz = tmp5
 	}
-	this._io.AlignToByte()
 	tmp6, err := this._io.ReadBytes(int(0))
 	if err != nil {
 		return err

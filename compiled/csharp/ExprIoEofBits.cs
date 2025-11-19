@@ -25,7 +25,6 @@ namespace Kaitai
             if (!(M_Io.IsEof)) {
                 _baz = m_io.ReadBitsIntBe(16);
             }
-            m_io.AlignToByte();
             _align = m_io.ReadBytes(0);
             if (!(M_Io.IsEof)) {
                 _qux = m_io.ReadBitsIntBe(16);

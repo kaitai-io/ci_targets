@@ -28,7 +28,6 @@ class ExprIoEofBits < Kaitai::Struct::Struct
       @baz = @_io.read_bits_int_be(16)
       (@_debug['baz'] ||= {})[:end] = @_io.pos
     end
-    @_io.align_to_byte
     (@_debug['align'] ||= {})[:start] = @_io.pos
     @align = @_io.read_bytes(0)
     (@_debug['align'] ||= {})[:end] = @_io.pos

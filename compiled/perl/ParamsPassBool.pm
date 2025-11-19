@@ -36,7 +36,6 @@ sub _read {
 
     $self->{s_false} = $self->{_io}->read_bits_int_be(1);
     $self->{s_true} = $self->{_io}->read_bits_int_be(1);
-    $self->{_io}->align_to_byte();
     $self->{seq_b1} = ParamsPassBool::ParamTypeB1->new($self->{_io}, $self, $self->{_root});
     $self->{seq_bool} = ParamsPassBool::ParamTypeBool->new($self->{_io}, $self, $self->{_root});
     $self->{literal_b1} = ParamsPassBool::ParamTypeB1->new($self->{_io}, $self, $self->{_root});

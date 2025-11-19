@@ -21,7 +21,6 @@ function ExprIoEofBits:_read()
   if not(self._io:is_eof()) then
     self.baz = self._io:read_bits_int_be(16)
   end
-  self._io:align_to_byte()
   self.align = self._io:read_bytes(0)
   if not(self._io:is_eof()) then
     self.qux = self._io:read_bits_int_be(16)

@@ -26,7 +26,6 @@ var BitsSimple = (function() {
     this.largeBits1 = this._io.readBitsIntBe(10);
     this.spacer = this._io.readBitsIntBe(3);
     this.largeBits2 = this._io.readBitsIntBe(11);
-    this._io.alignToByte();
     this.normalS2 = this._io.readS2be();
     this.byte8910 = this._io.readBitsIntBe(24);
     this.byte11To14 = this._io.readBitsIntBe(32);

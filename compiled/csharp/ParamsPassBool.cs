@@ -23,7 +23,6 @@ namespace Kaitai
         {
             _sFalse = m_io.ReadBitsIntBe(1) != 0;
             _sTrue = m_io.ReadBitsIntBe(1) != 0;
-            m_io.AlignToByte();
             _seqB1 = new ParamTypeB1(STrue, m_io, this, m_root);
             _seqBool = new ParamTypeBool(SFalse, m_io, this, m_root);
             _literalB1 = new ParamTypeB1(false, m_io, this, m_root);

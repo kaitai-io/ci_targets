@@ -39,7 +39,6 @@ namespace Kaitai
             _transportScramblingControl = m_io.ReadBitsIntBe(2);
             _adaptationFieldControl = ((AdaptationFieldControlEnum) m_io.ReadBitsIntBe(2));
             _continuityCounter = m_io.ReadBitsIntBe(4);
-            m_io.AlignToByte();
             _tsPacketRemain = m_io.ReadBytes(184);
         }
         public byte SyncByte { get { return _syncByte; } }

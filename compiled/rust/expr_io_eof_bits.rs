@@ -48,7 +48,6 @@ impl KStruct for ExprIoEofBits {
         if !(_io.is_eof()) {
             *self_rc.baz.borrow_mut() = _io.read_bits_int_be(16)?;
         }
-        _io.align_to_byte()?;
         *self_rc.align.borrow_mut() = _io.read_bytes(0 as usize)?.into();
         if !(_io.is_eof()) {
             *self_rc.qux.borrow_mut() = _io.read_bits_int_be(16)?;

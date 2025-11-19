@@ -29,7 +29,6 @@ proc read*(_: typedesc[ExprIoEofBits], io: KaitaiStream, root: KaitaiStruct, par
   if not(this.io.isEof):
     let bazExpr = this.io.readBitsIntBe(16)
     this.baz = bazExpr
-  alignToByte(this.io)
   let alignExpr = this.io.readBytes(int(0))
   this.align = alignExpr
   if not(this.io.isEof):

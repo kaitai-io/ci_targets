@@ -19,7 +19,6 @@ params_pass_bool_t::params_pass_bool_t(kaitai::kstream* p__io, kaitai::kstruct* 
 void params_pass_bool_t::_read() {
     m_s_false = m__io->read_bits_int_be(1);
     m_s_true = m__io->read_bits_int_be(1);
-    m__io->align_to_byte();
     m_seq_b1 = std::unique_ptr<param_type_b1_t>(new param_type_b1_t(s_true(), m__io, this, m__root));
     m_seq_bool = std::unique_ptr<param_type_bool_t>(new param_type_bool_t(s_false(), m__io, this, m__root));
     m_literal_b1 = std::unique_ptr<param_type_b1_t>(new param_type_b1_t(false, m__io, this, m__root));

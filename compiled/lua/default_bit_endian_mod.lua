@@ -31,7 +31,6 @@ end
 function DefaultBitEndianMod.MainObj:_read()
   self.one = self._io:read_bits_int_le(9)
   self.two = self._io:read_bits_int_le(15)
-  self._io:align_to_byte()
   self.nest = DefaultBitEndianMod.MainObj.Subnest(self._io, self, self._root)
   self.nest_be = DefaultBitEndianMod.MainObj.SubnestBe(self._io, self, self._root)
 end

@@ -25,7 +25,6 @@ class DefaultBitEndianMod < Kaitai::Struct::Struct
     def _read
       @one = @_io.read_bits_int_le(9)
       @two = @_io.read_bits_int_le(15)
-      @_io.align_to_byte
       @nest = Subnest.new(@_io, self, @_root)
       @nest_be = SubnestBe.new(@_io, self, @_root)
       self

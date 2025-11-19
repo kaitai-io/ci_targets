@@ -51,7 +51,6 @@ proc read*(_: typedesc[TsPacketHeader], io: KaitaiStream, root: KaitaiStruct, pa
   this.adaptationFieldControl = adaptationFieldControlExpr
   let continuityCounterExpr = this.io.readBitsIntBe(4)
   this.continuityCounter = continuityCounterExpr
-  alignToByte(this.io)
   let tsPacketRemainExpr = this.io.readBytes(int(184))
   this.tsPacketRemain = tsPacketRemainExpr
 

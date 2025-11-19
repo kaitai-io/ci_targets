@@ -57,7 +57,6 @@ func (this *ExprBits) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprBi
 		return err
 	}
 	this.A = tmp2
-	this._io.AlignToByte()
 	tmp3, err := this._io.ReadBytes(int(this.A))
 	if err != nil {
 		return err

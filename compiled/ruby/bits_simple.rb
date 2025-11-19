@@ -21,7 +21,6 @@ class BitsSimple < Kaitai::Struct::Struct
     @large_bits_1 = @_io.read_bits_int_be(10)
     @spacer = @_io.read_bits_int_be(3)
     @large_bits_2 = @_io.read_bits_int_be(11)
-    @_io.align_to_byte
     @normal_s2 = @_io.read_s2be
     @byte_8_9_10 = @_io.read_bits_int_be(24)
     @byte_11_to_14 = @_io.read_bits_int_be(32)

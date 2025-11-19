@@ -31,7 +31,6 @@ var ExprIoEofBits = (function() {
       this.baz = this._io.readBitsIntBe(16);
       this._debug.baz.end = this._io.pos;
     }
-    this._io.alignToByte();
     this._debug.align = { start: this._io.pos, ioOffset: this._io.byteOffset };
     this.align = this._io.readBytes(0);
     this._debug.align.end = this._io.pos;

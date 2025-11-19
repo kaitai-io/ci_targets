@@ -89,7 +89,6 @@ func (this *TsPacketHeader) Read(io *kaitai.Stream, parent kaitai.Struct, root *
 		return err
 	}
 	this.ContinuityCounter = tmp8
-	this._io.AlignToByte()
 	tmp9, err := this._io.ReadBytes(int(184))
 	if err != nil {
 		return err

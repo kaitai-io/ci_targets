@@ -11,7 +11,6 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_sFalse = $this->_io->readBitsIntBe(1) != 0;
             $this->_m_sTrue = $this->_io->readBitsIntBe(1) != 0;
-            $this->_io->alignToByte();
             $this->_m_seqB1 = new \Kaitai\Struct\Tests\ParamsPassBool\ParamTypeB1($this->sTrue(), $this->_io, $this, $this->_root);
             $this->_m_seqBool = new \Kaitai\Struct\Tests\ParamsPassBool\ParamTypeBool($this->sFalse(), $this->_io, $this, $this->_root);
             $this->_m_literalB1 = new \Kaitai\Struct\Tests\ParamsPassBool\ParamTypeB1(false, $this->_io, $this, $this->_root);

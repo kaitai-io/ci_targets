@@ -26,7 +26,6 @@ namespace Kaitai\Struct\Tests\DefaultBitEndianMod {
         private function _read() {
             $this->_m_one = $this->_io->readBitsIntLe(9);
             $this->_m_two = $this->_io->readBitsIntLe(15);
-            $this->_io->alignToByte();
             $this->_m_nest = new \Kaitai\Struct\Tests\DefaultBitEndianMod\MainObj\Subnest($this->_io, $this, $this->_root);
             $this->_m_nestBe = new \Kaitai\Struct\Tests\DefaultBitEndianMod\MainObj\SubnestBe($this->_io, $this, $this->_root);
         }

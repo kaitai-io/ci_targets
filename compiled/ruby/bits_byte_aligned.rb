@@ -14,17 +14,13 @@ class BitsByteAligned < Kaitai::Struct::Struct
 
   def _read
     @one = @_io.read_bits_int_be(6)
-    @_io.align_to_byte
     @byte_1 = @_io.read_u1
     @two = @_io.read_bits_int_be(3)
     @three = @_io.read_bits_int_be(1) != 0
-    @_io.align_to_byte
     @byte_2 = @_io.read_u1
     @four = @_io.read_bits_int_be(14)
-    @_io.align_to_byte
     @byte_3 = @_io.read_bytes(1)
     @full_byte = @_io.read_bits_int_be(8)
-    @_io.align_to_byte
     @byte_4 = @_io.read_u1
     self
   end

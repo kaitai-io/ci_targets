@@ -32,7 +32,6 @@ var DefaultBitEndianMod = (function() {
     MainObj.prototype._read = function() {
       this.one = this._io.readBitsIntLe(9);
       this.two = this._io.readBitsIntLe(15);
-      this._io.alignToByte();
       this.nest = new Subnest(this._io, this, this._root);
       this.nestBe = new SubnestBe(this._io, this, this._root);
     }

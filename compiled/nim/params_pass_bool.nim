@@ -44,7 +44,6 @@ proc read*(_: typedesc[ParamsPassBool], io: KaitaiStream, root: KaitaiStruct, pa
   this.sFalse = sFalseExpr
   let sTrueExpr = this.io.readBitsIntBe(1) != 0
   this.sTrue = sTrueExpr
-  alignToByte(this.io)
   let seqB1Expr = ParamsPassBool_ParamTypeB1.read(this.io, this.root, this, this.sTrue)
   this.seqB1 = seqB1Expr
   let seqBoolExpr = ParamsPassBool_ParamTypeBool.read(this.io, this.root, this, this.sFalse)

@@ -21,7 +21,6 @@ namespace Kaitai\Struct\Tests {
             $this->_m_transportScramblingControl = $this->_io->readBitsIntBe(2);
             $this->_m_adaptationFieldControl = $this->_io->readBitsIntBe(2);
             $this->_m_continuityCounter = $this->_io->readBitsIntBe(4);
-            $this->_io->alignToByte();
             $this->_m_tsPacketRemain = $this->_io->readBytes(184);
         }
         public function syncByte() { return $this->_m_syncByte; }

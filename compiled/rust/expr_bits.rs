@@ -73,7 +73,6 @@ impl KStruct for ExprBits {
         let _r = _rrc.as_ref().unwrap();
         *self_rc.enum_seq.borrow_mut() = (_io.read_bits_int_be(2)? as i64).try_into()?;
         *self_rc.a.borrow_mut() = _io.read_bits_int_be(3)?;
-        _io.align_to_byte()?;
         *self_rc.byte_size.borrow_mut() = _io.read_bytes(*self_rc.a() as usize)?.into();
         *self_rc.repeat_expr.borrow_mut() = Vec::new();
         let l_repeat_expr = *self_rc.a();

@@ -18,7 +18,6 @@ void bits_simple_le_t::_read() {
     m_large_bits_1 = m__io->read_bits_int_le(10);
     m_spacer = m__io->read_bits_int_le(3);
     m_large_bits_2 = m__io->read_bits_int_le(11);
-    m__io->align_to_byte();
     m_normal_s2 = m__io->read_s2be();
     m_byte_8_9_10 = m__io->read_bits_int_le(24);
     m_byte_11_to_14 = m__io->read_bits_int_le(32);

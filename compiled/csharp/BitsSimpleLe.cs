@@ -28,7 +28,6 @@ namespace Kaitai
             _largeBits1 = m_io.ReadBitsIntLe(10);
             _spacer = m_io.ReadBitsIntLe(3);
             _largeBits2 = m_io.ReadBitsIntLe(11);
-            m_io.AlignToByte();
             _normalS2 = m_io.ReadS2be();
             _byte8910 = m_io.ReadBitsIntLe(24);
             _byte11To14 = m_io.ReadBitsIntLe(32);

@@ -78,7 +78,6 @@ func (this *BitsSimpleLe) Read(io *kaitai.Stream, parent kaitai.Struct, root *Bi
 		return err
 	}
 	this.LargeBits2 = tmp8
-	this._io.AlignToByte()
 	tmp9, err := this._io.ReadS2be()
 	if err != nil {
 		return err

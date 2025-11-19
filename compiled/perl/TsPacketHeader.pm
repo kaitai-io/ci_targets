@@ -47,7 +47,6 @@ sub _read {
     $self->{transport_scrambling_control} = $self->{_io}->read_bits_int_be(2);
     $self->{adaptation_field_control} = $self->{_io}->read_bits_int_be(2);
     $self->{continuity_counter} = $self->{_io}->read_bits_int_be(4);
-    $self->{_io}->align_to_byte();
     $self->{ts_packet_remain} = $self->{_io}->read_bytes(184);
 }
 

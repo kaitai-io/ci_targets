@@ -45,7 +45,6 @@ func (this *ParamsPassBool) Read(io *kaitai.Stream, parent kaitai.Struct, root *
 		return err
 	}
 	this.STrue = tmp2 != 0
-	this._io.AlignToByte()
 	tmp3 := NewParamsPassBool_ParamTypeB1(this.STrue)
 	err = tmp3.Read(this._io, this, this._root)
 	if err != nil {

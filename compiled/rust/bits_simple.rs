@@ -59,7 +59,6 @@ impl KStruct for BitsSimple {
         *self_rc.large_bits_1.borrow_mut() = _io.read_bits_int_be(10)?;
         *self_rc.spacer.borrow_mut() = _io.read_bits_int_be(3)?;
         *self_rc.large_bits_2.borrow_mut() = _io.read_bits_int_be(11)?;
-        _io.align_to_byte()?;
         *self_rc.normal_s2.borrow_mut() = _io.read_s2be()?.into();
         *self_rc.byte_8_9_10.borrow_mut() = _io.read_bits_int_be(24)?;
         *self_rc.byte_11_to_14.borrow_mut() = _io.read_bits_int_be(32)?;

@@ -65,7 +65,6 @@ func (this *DefaultBitEndianMod_MainObj) Read(io *kaitai.Stream, parent *Default
 		return err
 	}
 	this.Two = tmp3
-	this._io.AlignToByte()
 	tmp4 := NewDefaultBitEndianMod_MainObj_Subnest()
 	err = tmp4.Read(this._io, this, this._root)
 	if err != nil {

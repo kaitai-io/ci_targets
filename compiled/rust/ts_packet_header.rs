@@ -57,7 +57,6 @@ impl KStruct for TsPacketHeader {
         *self_rc.transport_scrambling_control.borrow_mut() = _io.read_bits_int_be(2)?;
         *self_rc.adaptation_field_control.borrow_mut() = (_io.read_bits_int_be(2)? as i64).try_into()?;
         *self_rc.continuity_counter.borrow_mut() = _io.read_bits_int_be(4)?;
-        _io.align_to_byte()?;
         *self_rc.ts_packet_remain.borrow_mut() = _io.read_bytes(184 as usize)?.into();
         Ok(())
     }

@@ -46,17 +46,13 @@ impl KStruct for BitsByteAligned {
         let _prc = self_rc._parent.get_value().borrow().upgrade();
         let _r = _rrc.as_ref().unwrap();
         *self_rc.one.borrow_mut() = _io.read_bits_int_be(6)?;
-        _io.align_to_byte()?;
         *self_rc.byte_1.borrow_mut() = _io.read_u1()?.into();
         *self_rc.two.borrow_mut() = _io.read_bits_int_be(3)?;
         *self_rc.three.borrow_mut() = _io.read_bits_int_be(1)? != 0;
-        _io.align_to_byte()?;
         *self_rc.byte_2.borrow_mut() = _io.read_u1()?.into();
         *self_rc.four.borrow_mut() = _io.read_bits_int_be(14)?;
-        _io.align_to_byte()?;
         *self_rc.byte_3.borrow_mut() = _io.read_bytes(1 as usize)?.into();
         *self_rc.full_byte.borrow_mut() = _io.read_bits_int_be(8)?;
-        _io.align_to_byte()?;
         *self_rc.byte_4.borrow_mut() = _io.read_u1()?.into();
         Ok(())
     }

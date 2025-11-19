@@ -85,7 +85,6 @@ impl KStruct for DefaultBitEndianMod_MainObj {
         let _r = _rrc.as_ref().unwrap();
         *self_rc.one.borrow_mut() = _io.read_bits_int_le(9)?;
         *self_rc.two.borrow_mut() = _io.read_bits_int_le(15)?;
-        _io.align_to_byte()?;
         let t = Self::read_into::<_, DefaultBitEndianMod_MainObj_Subnest>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
         *self_rc.nest.borrow_mut() = t;
         let t = Self::read_into::<_, DefaultBitEndianMod_MainObj_SubnestBe>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();

@@ -15,7 +15,6 @@ namespace Kaitai\Struct\Tests {
             if (!($this->_io()->isEof())) {
                 $this->_m_baz = $this->_io->readBitsIntBe(16);
             }
-            $this->_io->alignToByte();
             $this->_m_align = $this->_io->readBytes(0);
             if (!($this->_io()->isEof())) {
                 $this->_m_qux = $this->_io->readBitsIntBe(16);

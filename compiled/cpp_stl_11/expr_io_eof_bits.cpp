@@ -19,7 +19,6 @@ void expr_io_eof_bits_t::_read() {
         n_baz = false;
         m_baz = m__io->read_bits_int_be(16);
     }
-    m__io->align_to_byte();
     m_align = m__io->read_bytes(0);
     n_qux = true;
     if (!(_io()->is_eof())) {

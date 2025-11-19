@@ -31,7 +31,6 @@ default_bit_endian_mod_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, default
 void default_bit_endian_mod_t::main_obj_t::_read() {
     m_one = m__io->read_bits_int_le(9);
     m_two = m__io->read_bits_int_le(15);
-    m__io->align_to_byte();
     m_nest = std::unique_ptr<subnest_t>(new subnest_t(m__io, this, m__root));
     m_nest_be = std::unique_ptr<subnest_be_t>(new subnest_be_t(m__io, this, m__root));
 }
