@@ -148,7 +148,7 @@ jobs:
           - target: construct
             implementation: python3.6
           - target: construct
-            implementation: python3.13
+            implementation: python3.14
           - target: cpp_stl
             subtarget: _98
             implementation: clang3.4
@@ -174,15 +174,13 @@ jobs:
             subtarget: _11
             implementation: gcc13
           - target: csharp
-            implementation: net6.0
+            implementation: net8.0
           - target: csharp
-            implementation: net9.0
+            implementation: net10.0
           - target: go
             implementation: '1.25'
           - target: graphviz
             implementation: '12'
-          - target: java
-            implementation: zulu7
           - target: java
             implementation: temurin8
           - target: java
@@ -191,8 +189,8 @@ jobs:
             implementation: temurin17
           - target: java
             implementation: temurin21
-          - target: javascript
-            implementation: nodejs10
+          - target: java
+            implementation: temurin25
           - target: javascript
             implementation: nodejs12
           - target: javascript
@@ -208,7 +206,7 @@ jobs:
           - target: nim
             implementation: '1.6.20'
           - target: nim
-            implementation: '2.2.4'
+            implementation: '2.2.6'
           - target: perl
             implementation: '5.30'
           - target: perl
@@ -222,7 +220,7 @@ jobs:
           - target: python
             implementation: '3.4'
           - target: python
-            implementation: '3.13'
+            implementation: '3.14'
           - target: ruby
             implementation: '1.9'
           - target: ruby
@@ -230,7 +228,7 @@ jobs:
           - target: ruby
             implementation: '3.4'
           - target: rust
-            implementation: '1.89'
+            implementation: '1.91'
           - target: zig
             implementation: '0.15.2'
     env:
