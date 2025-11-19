@@ -6,6 +6,9 @@ on:
       - master
   pull_request: {}
 
+permissions:
+  contents: read
+
 jobs:
   windows:
     runs-on: windows-latest
@@ -33,6 +36,7 @@ jobs:
         run: echo "$MATRIX_CONTEXT"
       - uses: actions/checkout@v5
         with:
+          persist-credentials: false
           submodules: 'true'
       - name: install rsync
         run: choco install rsync --no-progress
@@ -97,6 +101,7 @@ jobs:
           echo "$ver" | grep -q 'clang version 17\.'
       - uses: actions/checkout@v5
         with:
+          persist-credentials: false
           submodules: 'true'
       - name: prepare
         run: |
@@ -239,6 +244,7 @@ jobs:
         run: echo "$MATRIX_CONTEXT"
       - uses: actions/checkout@v5
         with:
+          persist-credentials: false
           submodules: 'true'
       - name: docker pull
         run: |
