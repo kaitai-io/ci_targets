@@ -30,10 +30,11 @@ if [ -n "$GITHUB_ACTIONS" ] && [ "$RUNNER_OS" = macOS ]; then
 	# In the past https://formulae.brew.sh/formula/boost@1.76 was available, but it was disabled on
 	# 2024-12-14. Therefore, we resort to building Boost.Test from source, as we already do when
 	# building our `cpp_stl/gcc4.8-linux-x86_64` Docker image, see
-	# https://github.com/kaitai-io/kaitai_struct_docker_images/blob/f1f1d11ded824918c5bd5b5e1dbb6a48d8201b94/src/cpp_stl/gcc4.8-linux-x86_64/Dockerfile#L32-L57
+	# https://github.com/kaitai-io/kaitai_struct_docker_images/blob/7adebc2244ee9a06c803063f0713ecf20a97e22e/src/cpp_stl/gcc4.8-linux-x86_64/Dockerfile#L59-L85
 
 	set -x
-	curl -fsSLO https://archives.boost.io/release/1.81.0/source/boost_1_81_0.tar.bz2
+	curl -fLO https://archives.boost.io/release/1.81.0/source/boost_1_81_0.tar.bz2
+	sha256sum -c -w boost_1_81_0.tar.bz2.sha256
 	tar --bzip2 -xf boost_1_81_0.tar.bz2
 	rm -f boost_1_81_0.tar.bz2
 	cd boost_1_81_0
