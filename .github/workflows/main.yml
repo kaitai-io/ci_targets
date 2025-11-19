@@ -9,7 +9,7 @@ on:
 jobs:
   windows:
     runs-on: windows-latest
-    # NB: see https://github.com/actions/runner-images/blob/main/images/win/Windows2022-Readme.md for what's available in this image
+    # NB: see https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md for what's available in this image
     strategy:
       fail-fast: false
       matrix:
