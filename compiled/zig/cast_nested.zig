@@ -29,6 +29,10 @@ pub const CastNested = struct {
         }
     }
     pub const Opcode = struct {
+        pub const Body_switch = union(enum) {
+            intval: *Intval,
+            strval: *Strval,
+        };
         pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*CastNested, _root: ?*CastNested) !*Opcode {
             const self = try _arena.allocator().create(Opcode);
             self.* = .{
@@ -47,10 +51,10 @@ pub const CastNested = struct {
             self.code = try self._io.readU1();
             switch (self.code) {
                 73 => {
-                    self.body = try Intval.create(self._arena, self._io, self, self._root);
+                    self.body = .{ .intval = try Intval.create(self._arena, self._io, self, self._root) };
                 },
                 83 => {
-                    self.body = try Strval.create(self._arena, self._io, self, self._root);
+                    self.body = .{ .strval = try Strval.create(self._arena, self._io, self, self._root) };
                 },
                 else => {
                 },
@@ -105,7 +109,7 @@ pub const CastNested = struct {
             _io: *_imp_kaitai_struct.KaitaiStream,
         };
         code: u8 = undefined,
-        body: ?*anyopaque = null,
+        body: ?Body_switch = null,
         _root: ?*CastNested,
         _parent: ?*CastNested,
         _arena: *_imp_std.heap.ArenaAllocator,
@@ -115,7 +119,7 @@ pub const CastNested = struct {
         if (self._m_opcodes_0_str) |_v|
             return _v;
         var _v: *CastNested.Opcode.Strval = undefined;
-        _v = @as(*CastNested.Opcode.Strval, self.opcodes.items[0].body);
+        _v = self.opcodes.items[0].body.strval;
         self._m_opcodes_0_str = _v;
         return _v;
     }
@@ -123,7 +127,7 @@ pub const CastNested = struct {
         if (self._m_opcodes_0_str_value) |_v|
             return _v;
         var _v: []const u8 = undefined;
-        _v = @as(*CastNested.Opcode.Strval, self.opcodes.items[0].body).value;
+        _v = self.opcodes.items[0].body.strval.value;
         self._m_opcodes_0_str_value = _v;
         return _v;
     }
@@ -131,7 +135,7 @@ pub const CastNested = struct {
         if (self._m_opcodes_1_int) |_v|
             return _v;
         var _v: *CastNested.Opcode.Intval = undefined;
-        _v = @as(*CastNested.Opcode.Intval, self.opcodes.items[1].body);
+        _v = self.opcodes.items[1].body.intval;
         self._m_opcodes_1_int = _v;
         return _v;
     }
@@ -139,7 +143,7 @@ pub const CastNested = struct {
         if (self._m_opcodes_1_int_value) |_v|
             return _v;
         var _v: u8 = undefined;
-        _v = @as(*CastNested.Opcode.Intval, self.opcodes.items[1].body).value;
+        _v = self.opcodes.items[1].body.intval.value;
         self._m_opcodes_1_int_value = _v;
         return _v;
     }

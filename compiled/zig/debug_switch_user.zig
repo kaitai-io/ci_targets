@@ -4,6 +4,10 @@ const _imp_std = @import("std");
 const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const DebugSwitchUser = struct {
+    pub const Data_switch = union(enum) {
+        one: *One,
+        two: *Two,
+    };
     pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*DebugSwitchUser) !*DebugSwitchUser {
         const self = try _arena.allocator().create(DebugSwitchUser);
         self.* = .{
@@ -21,12 +25,12 @@ pub const DebugSwitchUser = struct {
         self.code = try self._io.readU1();
         switch (self.code) {
             1 => {
-                self.data = try One.create(self._arena, self._io, self, self._root);
-                @as(*One, self.data)._read();
+                self.data = .{ .one = try One.create(self._arena, self._io, self, self._root) };
+                self.data.one._read();
             },
             2 => {
-                self.data = try Two.create(self._arena, self._io, self, self._root);
-                @as(*Two, self.data)._read();
+                self.data = .{ .two = try Two.create(self._arena, self._io, self, self._root) };
+                self.data.two._read();
             },
             else => {
             },
@@ -79,7 +83,7 @@ pub const DebugSwitchUser = struct {
         _io: *_imp_kaitai_struct.KaitaiStream,
     };
     code: u8 = undefined,
-    data: ?*anyopaque = null,
+    data: ?Data_switch = null,
     _root: ?*DebugSwitchUser,
     _parent: ?*anyopaque,
     _arena: *_imp_std.heap.ArenaAllocator,

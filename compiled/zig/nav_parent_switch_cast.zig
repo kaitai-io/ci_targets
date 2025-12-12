@@ -22,6 +22,11 @@ pub const NavParentSwitchCast = struct {
         self.main = try Foo.create(self._arena, self._io, self, self._root);
     }
     pub const Foo = struct {
+        pub const Buf_switch = union(enum) {
+            zero: *Zero,
+            one: *One,
+            bytes: []const u8,
+        };
         pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*NavParentSwitchCast, _root: ?*NavParentSwitchCast) !*Foo {
             const self = try _arena.allocator().create(Foo);
             self.* = .{
@@ -44,16 +49,16 @@ pub const NavParentSwitchCast = struct {
                     const _raw_buf = try self._io.readBytes(self._allocator(), 4);
                     const _io__raw_buf = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
                     _io__raw_buf.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_buf);
-                    self.buf = try Zero.create(self._arena, _io__raw_buf, self, self._root);
+                    self.buf = .{ .zero = try Zero.create(self._arena, _io__raw_buf, self, self._root) };
                 },
                 1 => {
                     const _raw_buf = try self._io.readBytes(self._allocator(), 4);
                     const _io__raw_buf = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
                     _io__raw_buf.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_buf);
-                    self.buf = try One.create(self._arena, _io__raw_buf, self, self._root);
+                    self.buf = .{ .one = try One.create(self._arena, _io__raw_buf, self, self._root) };
                 },
                 else => {
-                    self.buf = try self._io.readBytes(self._allocator(), 4);
+                    self.buf = .{ .bytes = try self._io.readBytes(self._allocator(), 4) };
                 },
             }
         }
@@ -139,7 +144,7 @@ pub const NavParentSwitchCast = struct {
         };
         buf_type: u8 = undefined,
         flag: u8 = undefined,
-        buf: *anyopaque = undefined,
+        buf: Buf_switch = undefined,
         _root: ?*NavParentSwitchCast,
         _parent: ?*NavParentSwitchCast,
         _arena: *_imp_std.heap.ArenaAllocator,

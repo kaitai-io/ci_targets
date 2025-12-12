@@ -29,6 +29,11 @@ pub const SwitchManualIntElse = struct {
         }
     }
     pub const Opcode = struct {
+        pub const Body_switch = union(enum) {
+            intval: *Intval,
+            strval: *Strval,
+            noneval: *Noneval,
+        };
         pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*SwitchManualIntElse, _root: ?*SwitchManualIntElse) !*Opcode {
             const self = try _arena.allocator().create(Opcode);
             self.* = .{
@@ -47,13 +52,13 @@ pub const SwitchManualIntElse = struct {
             self.code = try self._io.readU1();
             switch (self.code) {
                 73 => {
-                    self.body = try Intval.create(self._arena, self._io, self, self._root);
+                    self.body = .{ .intval = try Intval.create(self._arena, self._io, self, self._root) };
                 },
                 83 => {
-                    self.body = try Strval.create(self._arena, self._io, self, self._root);
+                    self.body = .{ .strval = try Strval.create(self._arena, self._io, self, self._root) };
                 },
                 else => {
-                    self.body = try Noneval.create(self._arena, self._io, self, self._root);
+                    self.body = .{ .noneval = try Noneval.create(self._arena, self._io, self, self._root) };
                 },
             }
         }
@@ -130,7 +135,7 @@ pub const SwitchManualIntElse = struct {
             _io: *_imp_kaitai_struct.KaitaiStream,
         };
         code: u8 = undefined,
-        body: *anyopaque = undefined,
+        body: Body_switch = undefined,
         _root: ?*SwitchManualIntElse,
         _parent: ?*SwitchManualIntElse,
         _arena: *_imp_std.heap.ArenaAllocator,

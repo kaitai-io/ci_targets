@@ -4,6 +4,10 @@ const _imp_std = @import("std");
 const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const RecursiveOne = struct {
+    pub const Next_switch = union(enum) {
+        recursive_one: *RecursiveOne,
+        fini: *Fini,
+    };
     pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*RecursiveOne) !*RecursiveOne {
         const self = try _arena.allocator().create(RecursiveOne);
         self.* = .{
@@ -22,16 +26,16 @@ pub const RecursiveOne = struct {
         self.one = try self._io.readU1();
         switch (self.one & 3) {
             0 => {
-                self.next = try RecursiveOne.create(self._arena, self._io, self, self._root);
+                self.next = .{ .recursive_one = try RecursiveOne.create(self._arena, self._io, self, self._root) };
             },
             1 => {
-                self.next = try RecursiveOne.create(self._arena, self._io, self, self._root);
+                self.next = .{ .recursive_one = try RecursiveOne.create(self._arena, self._io, self, self._root) };
             },
             2 => {
-                self.next = try RecursiveOne.create(self._arena, self._io, self, self._root);
+                self.next = .{ .recursive_one = try RecursiveOne.create(self._arena, self._io, self, self._root) };
             },
             3 => {
-                self.next = try Fini.create(self._arena, self._io, self, self._root);
+                self.next = .{ .fini = try Fini.create(self._arena, self._io, self, self._root) };
             },
             else => {
             },
@@ -62,7 +66,7 @@ pub const RecursiveOne = struct {
         _io: *_imp_kaitai_struct.KaitaiStream,
     };
     one: u8 = undefined,
-    next: ?*anyopaque = null,
+    next: ?Next_switch = null,
     _root: ?*RecursiveOne,
     _parent: ?*anyopaque,
     _arena: *_imp_std.heap.ArenaAllocator,

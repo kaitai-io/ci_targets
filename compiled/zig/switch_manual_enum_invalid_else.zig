@@ -34,6 +34,11 @@ pub const SwitchManualEnumInvalidElse = struct {
             strval = 83,
             _,
         };
+        pub const Body_switch = union(enum) {
+            intval: *Intval,
+            strval: *Strval,
+            defval: *Defval,
+        };
         pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*SwitchManualEnumInvalidElse, _root: ?*SwitchManualEnumInvalidElse) !*Opcode {
             const self = try _arena.allocator().create(Opcode);
             self.* = .{
@@ -52,13 +57,13 @@ pub const SwitchManualEnumInvalidElse = struct {
             self.code = @as(SwitchManualEnumInvalidElse.Opcode.CodeEnum, @enumFromInt(try self._io.readU1()));
             switch (self.code) {
                 SwitchManualEnumInvalidElse.Opcode.CodeEnum.intval => {
-                    self.body = try Intval.create(self._arena, self._io, self, self._root);
+                    self.body = .{ .intval = try Intval.create(self._arena, self._io, self, self._root) };
                 },
                 SwitchManualEnumInvalidElse.Opcode.CodeEnum.strval => {
-                    self.body = try Strval.create(self._arena, self._io, self, self._root);
+                    self.body = .{ .strval = try Strval.create(self._arena, self._io, self, self._root) };
                 },
                 else => {
-                    self.body = try Defval.create(self._arena, self._io, self, self._root);
+                    self.body = .{ .defval = try Defval.create(self._arena, self._io, self, self._root) };
                 },
             }
         }
@@ -143,7 +148,7 @@ pub const SwitchManualEnumInvalidElse = struct {
             _io: *_imp_kaitai_struct.KaitaiStream,
         };
         code: CodeEnum = undefined,
-        body: *anyopaque = undefined,
+        body: Body_switch = undefined,
         _root: ?*SwitchManualEnumInvalidElse,
         _parent: ?*SwitchManualEnumInvalidElse,
         _arena: *_imp_std.heap.ArenaAllocator,

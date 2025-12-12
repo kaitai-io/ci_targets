@@ -29,6 +29,11 @@ pub const SwitchManualIntSizeElse = struct {
         }
     }
     pub const Chunk = struct {
+        pub const Body_switch = union(enum) {
+            chunk_meta: *ChunkMeta,
+            chunk_dir: *ChunkDir,
+            dummy: *Dummy,
+        };
         pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*SwitchManualIntSizeElse, _root: ?*SwitchManualIntSizeElse) !*Chunk {
             const self = try _arena.allocator().create(Chunk);
             self.* = .{
@@ -51,19 +56,19 @@ pub const SwitchManualIntSizeElse = struct {
                     const _raw_body = try self._io.readBytes(self._allocator(), self.size);
                     const _io__raw_body = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
                     _io__raw_body.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_body);
-                    self.body = try ChunkMeta.create(self._arena, _io__raw_body, self, self._root);
+                    self.body = .{ .chunk_meta = try ChunkMeta.create(self._arena, _io__raw_body, self, self._root) };
                 },
                 34 => {
                     const _raw_body = try self._io.readBytes(self._allocator(), self.size);
                     const _io__raw_body = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
                     _io__raw_body.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_body);
-                    self.body = try ChunkDir.create(self._arena, _io__raw_body, self, self._root);
+                    self.body = .{ .chunk_dir = try ChunkDir.create(self._arena, _io__raw_body, self, self._root) };
                 },
                 else => {
                     const _raw_body = try self._io.readBytes(self._allocator(), self.size);
                     const _io__raw_body = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
                     _io__raw_body.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_body);
-                    self.body = try Dummy.create(self._arena, _io__raw_body, self, self._root);
+                    self.body = .{ .dummy = try Dummy.create(self._arena, _io__raw_body, self, self._root) };
                 },
             }
         }
@@ -150,7 +155,7 @@ pub const SwitchManualIntSizeElse = struct {
         };
         code: u8 = undefined,
         size: u32 = undefined,
-        body: *anyopaque = undefined,
+        body: Body_switch = undefined,
         _root: ?*SwitchManualIntSizeElse,
         _parent: ?*SwitchManualIntSizeElse,
         _arena: *_imp_std.heap.ArenaAllocator,

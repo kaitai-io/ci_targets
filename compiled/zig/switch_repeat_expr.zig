@@ -4,6 +4,11 @@ const _imp_std = @import("std");
 const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const SwitchRepeatExpr = struct {
+    pub const Body_switch = union(enum) {
+        one: *One,
+        two: *Two,
+        bytes: []const u8,
+    };
     pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*SwitchRepeatExpr) !*SwitchRepeatExpr {
         const self = try _arena.allocator().create(SwitchRepeatExpr);
         self.* = .{
@@ -21,7 +26,7 @@ pub const SwitchRepeatExpr = struct {
     fn _read(self: *SwitchRepeatExpr) !void {
         self.code = try self._io.readU1();
         self.size = try self._io.readU4le();
-        self.body = try self._allocator().create(_imp_std.ArrayList(*anyopaque));
+        self.body = try self._allocator().create(_imp_std.ArrayList(Body_switch));
         self.body.* = .empty;
         for (0..1) |i| {
             {
@@ -33,16 +38,16 @@ pub const SwitchRepeatExpr = struct {
                     const _raw_body = try self._io.readBytes(self._allocator(), self.size);
                     const _io__raw_body = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
                     _io__raw_body.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_body);
-                    try self.body.append(self._allocator(), try One.create(self._arena, _io__raw_body, self, self._root));
+                    try self.body.append(self._allocator(), .{ .one = try One.create(self._arena, _io__raw_body, self, self._root) });
                 },
                 34 => {
                     const _raw_body = try self._io.readBytes(self._allocator(), self.size);
                     const _io__raw_body = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
                     _io__raw_body.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_body);
-                    try self.body.append(self._allocator(), try Two.create(self._arena, _io__raw_body, self, self._root));
+                    try self.body.append(self._allocator(), .{ .two = try Two.create(self._arena, _io__raw_body, self, self._root) });
                 },
                 else => {
-                    try self.body.append(self._allocator(), try self._io.readBytes(self._allocator(), self.size));
+                    try self.body.append(self._allocator(), .{ .bytes = try self._io.readBytes(self._allocator(), self.size) });
                 },
             }
         }
@@ -97,7 +102,7 @@ pub const SwitchRepeatExpr = struct {
     };
     code: u8 = undefined,
     size: u32 = undefined,
-    body: *_imp_std.ArrayList(*anyopaque) = undefined,
+    body: *_imp_std.ArrayList(Body_switch) = undefined,
     _root: ?*SwitchRepeatExpr,
     _parent: ?*anyopaque,
     _arena: *_imp_std.heap.ArenaAllocator,

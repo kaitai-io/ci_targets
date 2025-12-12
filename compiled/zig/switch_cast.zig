@@ -53,6 +53,10 @@ pub const SwitchCast = struct {
         _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const Opcode = struct {
+        pub const Body_switch = union(enum) {
+            intval: *Intval,
+            strval: *Strval,
+        };
         pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*SwitchCast, _root: ?*SwitchCast) !*Opcode {
             const self = try _arena.allocator().create(Opcode);
             self.* = .{
@@ -71,17 +75,17 @@ pub const SwitchCast = struct {
             self.code = try self._io.readU1();
             switch (self.code) {
                 73 => {
-                    self.body = try Intval.create(self._arena, self._io, self, self._root);
+                    self.body = .{ .intval = try Intval.create(self._arena, self._io, self, self._root) };
                 },
                 83 => {
-                    self.body = try Strval.create(self._arena, self._io, self, self._root);
+                    self.body = .{ .strval = try Strval.create(self._arena, self._io, self, self._root) };
                 },
                 else => {
                 },
             }
         }
         code: u8 = undefined,
-        body: ?*anyopaque = null,
+        body: ?Body_switch = null,
         _root: ?*SwitchCast,
         _parent: ?*SwitchCast,
         _arena: *_imp_std.heap.ArenaAllocator,
@@ -115,7 +119,7 @@ pub const SwitchCast = struct {
         if (self._m_err_cast) |_v|
             return _v;
         var _v: *SwitchCast.Strval = undefined;
-        _v = @as(*SwitchCast.Strval, self.opcodes.items[2].body);
+        _v = self.opcodes.items[2].body.strval;
         self._m_err_cast = _v;
         return _v;
     }
@@ -123,7 +127,7 @@ pub const SwitchCast = struct {
         if (self._m_first_obj) |_v|
             return _v;
         var _v: *SwitchCast.Strval = undefined;
-        _v = @as(*SwitchCast.Strval, self.opcodes.items[0].body);
+        _v = self.opcodes.items[0].body.strval;
         self._m_first_obj = _v;
         return _v;
     }
@@ -131,7 +135,7 @@ pub const SwitchCast = struct {
         if (self._m_second_val) |_v|
             return _v;
         var _v: u8 = undefined;
-        _v = @as(*SwitchCast.Intval, self.opcodes.items[1].body).value;
+        _v = self.opcodes.items[1].body.intval.value;
         self._m_second_val = _v;
         return _v;
     }

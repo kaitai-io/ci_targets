@@ -29,6 +29,10 @@ pub const SwitchBytearray = struct {
         }
     }
     pub const Opcode = struct {
+        pub const Body_switch = union(enum) {
+            intval: *Intval,
+            strval: *Strval,
+        };
         pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*SwitchBytearray, _root: ?*SwitchBytearray) !*Opcode {
             const self = try _arena.allocator().create(Opcode);
             self.* = .{
@@ -48,10 +52,10 @@ pub const SwitchBytearray = struct {
             {
                 const _on = self.code;
                 if (_imp_std.mem.eql(u8, _on, &[_]u8{ 73 })) {
-                    self.body = try Intval.create(self._arena, self._io, self, self._root);
+                    self.body = .{ .intval = try Intval.create(self._arena, self._io, self, self._root) };
                 }
                 else if (_imp_std.mem.eql(u8, _on, &[_]u8{ 83 })) {
-                    self.body = try Strval.create(self._arena, self._io, self, self._root);
+                    self.body = .{ .strval = try Strval.create(self._arena, self._io, self, self._root) };
                 }
             }
         }
@@ -104,7 +108,7 @@ pub const SwitchBytearray = struct {
             _io: *_imp_kaitai_struct.KaitaiStream,
         };
         code: []const u8 = undefined,
-        body: ?*anyopaque = null,
+        body: ?Body_switch = null,
         _root: ?*SwitchBytearray,
         _parent: ?*SwitchBytearray,
         _arena: *_imp_std.heap.ArenaAllocator,

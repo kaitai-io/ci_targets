@@ -60,6 +60,11 @@ pub const SwitchManualIntSizeEos = struct {
         _io: *_imp_kaitai_struct.KaitaiStream,
     };
     pub const ChunkBody = struct {
+        pub const Body_switch = union(enum) {
+            chunk_meta: *ChunkMeta,
+            chunk_dir: *ChunkDir,
+            bytes: []const u8,
+        };
         pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*SwitchManualIntSizeEos.Chunk, _root: ?*SwitchManualIntSizeEos) !*ChunkBody {
             const self = try _arena.allocator().create(ChunkBody);
             self.* = .{
@@ -80,16 +85,16 @@ pub const SwitchManualIntSizeEos = struct {
                     const _raw_body = try self._io.readBytesFull(self._allocator());
                     const _io__raw_body = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
                     _io__raw_body.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_body);
-                    self.body = try ChunkMeta.create(self._arena, _io__raw_body, self, self._root);
+                    self.body = .{ .chunk_meta = try ChunkMeta.create(self._arena, _io__raw_body, self, self._root) };
                 },
                 34 => {
                     const _raw_body = try self._io.readBytesFull(self._allocator());
                     const _io__raw_body = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
                     _io__raw_body.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_body);
-                    self.body = try ChunkDir.create(self._arena, _io__raw_body, self, self._root);
+                    self.body = .{ .chunk_dir = try ChunkDir.create(self._arena, _io__raw_body, self, self._root) };
                 },
                 else => {
-                    self.body = try self._io.readBytesFull(self._allocator());
+                    self.body = .{ .bytes = try self._io.readBytesFull(self._allocator()) };
                 },
             }
         }
@@ -150,7 +155,7 @@ pub const SwitchManualIntSizeEos = struct {
             _arena: *_imp_std.heap.ArenaAllocator,
             _io: *_imp_kaitai_struct.KaitaiStream,
         };
-        body: *anyopaque = undefined,
+        body: Body_switch = undefined,
         _root: ?*SwitchManualIntSizeEos,
         _parent: ?*SwitchManualIntSizeEos.Chunk,
         _arena: *_imp_std.heap.ArenaAllocator,

@@ -29,6 +29,11 @@ pub const SwitchManualIntSize = struct {
         }
     }
     pub const Chunk = struct {
+        pub const Body_switch = union(enum) {
+            chunk_meta: *ChunkMeta,
+            chunk_dir: *ChunkDir,
+            bytes: []const u8,
+        };
         pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*SwitchManualIntSize, _root: ?*SwitchManualIntSize) !*Chunk {
             const self = try _arena.allocator().create(Chunk);
             self.* = .{
@@ -51,16 +56,16 @@ pub const SwitchManualIntSize = struct {
                     const _raw_body = try self._io.readBytes(self._allocator(), self.size);
                     const _io__raw_body = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
                     _io__raw_body.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_body);
-                    self.body = try ChunkMeta.create(self._arena, _io__raw_body, self, self._root);
+                    self.body = .{ .chunk_meta = try ChunkMeta.create(self._arena, _io__raw_body, self, self._root) };
                 },
                 34 => {
                     const _raw_body = try self._io.readBytes(self._allocator(), self.size);
                     const _io__raw_body = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
                     _io__raw_body.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_body);
-                    self.body = try ChunkDir.create(self._arena, _io__raw_body, self, self._root);
+                    self.body = .{ .chunk_dir = try ChunkDir.create(self._arena, _io__raw_body, self, self._root) };
                 },
                 else => {
-                    self.body = try self._io.readBytes(self._allocator(), self.size);
+                    self.body = .{ .bytes = try self._io.readBytes(self._allocator(), self.size) };
                 },
             }
         }
@@ -123,7 +128,7 @@ pub const SwitchManualIntSize = struct {
         };
         code: u8 = undefined,
         size: u32 = undefined,
-        body: *anyopaque = undefined,
+        body: Body_switch = undefined,
         _root: ?*SwitchManualIntSize,
         _parent: ?*SwitchManualIntSize,
         _arena: *_imp_std.heap.ArenaAllocator,

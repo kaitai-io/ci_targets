@@ -4,6 +4,14 @@ const _imp_std = @import("std");
 const _imp_kaitai_struct = @import("kaitai_struct");
 
 pub const ProcessCoerceSwitch = struct {
+    pub const BufUnproc_switch = union(enum) {
+        foo: *Foo,
+        bytes: []const u8,
+    };
+    pub const BufProc_switch = union(enum) {
+        foo: *Foo,
+        bytes: []const u8,
+    };
     pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ProcessCoerceSwitch) !*ProcessCoerceSwitch {
         const self = try _arena.allocator().create(ProcessCoerceSwitch);
         self.* = .{
@@ -27,10 +35,10 @@ pub const ProcessCoerceSwitch = struct {
                     const _raw_buf_unproc = try self._io.readBytes(self._allocator(), 4);
                     const _io__raw_buf_unproc = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
                     _io__raw_buf_unproc.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_buf_unproc);
-                    self.buf_unproc = try Foo.create(self._arena, _io__raw_buf_unproc, self, self._root);
+                    self.buf_unproc = .{ .foo = try Foo.create(self._arena, _io__raw_buf_unproc, self, self._root) };
                 },
                 else => {
-                    self.buf_unproc = try self._io.readBytes(self._allocator(), 4);
+                    self.buf_unproc = .{ .bytes = try self._io.readBytes(self._allocator(), 4) };
                 },
             }
         }
@@ -41,11 +49,11 @@ pub const ProcessCoerceSwitch = struct {
                     const _raw_buf_proc = try _imp_kaitai_struct.KaitaiStream.processXorOne(self._allocator(), _raw__raw_buf_proc, @as(u8, 170));
                     const _io__raw_buf_proc = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
                     _io__raw_buf_proc.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_buf_proc);
-                    self.buf_proc = try Foo.create(self._arena, _io__raw_buf_proc, self, self._root);
+                    self.buf_proc = .{ .foo = try Foo.create(self._arena, _io__raw_buf_proc, self, self._root) };
                 },
                 else => {
                     const _raw_buf_proc = try self._io.readBytes(self._allocator(), 4);
-                    self.buf_proc = try _imp_kaitai_struct.KaitaiStream.processXorOne(self._allocator(), _raw_buf_proc, @as(u8, 170));
+                    self.buf_proc = .{ .bytes = try _imp_kaitai_struct.KaitaiStream.processXorOne(self._allocator(), _raw_buf_proc, @as(u8, 170)) };
                 },
             }
         }
@@ -85,8 +93,8 @@ pub const ProcessCoerceSwitch = struct {
     _m_buf: ?*anyopaque = null,
     buf_type: u8 = undefined,
     flag: u8 = undefined,
-    buf_unproc: ?*anyopaque = null,
-    buf_proc: ?*anyopaque = null,
+    buf_unproc: ?BufUnproc_switch = null,
+    buf_proc: ?BufProc_switch = null,
     _root: ?*ProcessCoerceSwitch,
     _parent: ?*anyopaque,
     _arena: *_imp_std.heap.ArenaAllocator,
