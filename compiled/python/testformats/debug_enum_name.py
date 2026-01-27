@@ -8,7 +8,7 @@ import collections
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class DebugEnumName(KaitaiStruct):
 
@@ -19,7 +19,7 @@ class DebugEnumName(KaitaiStruct):
         enum_value_65 = 65
     SEQ_FIELDS = ["one", "array_of_ints", "test_type"]
     def __init__(self, _io, _parent=None, _root=None):
-        super(DebugEnumName, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._debug = collections.defaultdict(dict)
@@ -59,7 +59,7 @@ class DebugEnumName(KaitaiStruct):
             enum_value_11 = 11
         SEQ_FIELDS = ["field1", "field2"]
         def __init__(self, _io, _parent=None, _root=None):
-            super(DebugEnumName.TestSubtype, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._debug = collections.defaultdict(dict)

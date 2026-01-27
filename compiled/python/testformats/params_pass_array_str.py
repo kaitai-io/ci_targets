@@ -6,11 +6,11 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ParamsPassArrayStr(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(ParamsPassArrayStr, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -18,7 +18,7 @@ class ParamsPassArrayStr(KaitaiStruct):
     def _read(self):
         self.str_array = []
         for i in range(3):
-            self.str_array.append((self._io.read_bytes(2)).decode(u"ASCII"))
+            self.str_array.append((self._io.read_bytes(2)).decode("ASCII"))
 
         self.pass_str_array = ParamsPassArrayStr.WantsStrs(self.str_array, self._io, self, self._root)
         self.pass_str_array_calc = ParamsPassArrayStr.WantsStrs(self.str_array_calc, self._io, self, self._root)
@@ -34,7 +34,7 @@ class ParamsPassArrayStr(KaitaiStruct):
 
     class WantsStrs(KaitaiStruct):
         def __init__(self, strs, _io, _parent=None, _root=None):
-            super(ParamsPassArrayStr.WantsStrs, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self.strs = strs
@@ -53,7 +53,7 @@ class ParamsPassArrayStr(KaitaiStruct):
         if hasattr(self, '_m_str_array_calc'):
             return self._m_str_array_calc
 
-        self._m_str_array_calc = [u"aB", u"Cd"]
+        self._m_str_array_calc = ["aB", "Cd"]
         return getattr(self, '_m_str_array_calc', None)
 
 

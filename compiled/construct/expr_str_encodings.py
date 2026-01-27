@@ -10,13 +10,13 @@ expr_str_encodings = Struct(
 	'str3' / FixedSized(this.len_of_3, GreedyString(encoding='Shift_JIS')),
 	'len_of_4' / Int16ul,
 	'str4' / FixedSized(this.len_of_4, GreedyString(encoding='IBM437')),
-	'str1_eq' / Computed(lambda this: this.str1 == u"Some ASCII"),
-	'str2_eq' / Computed(lambda this: this.str2 == u"\u3053\u3093\u306b\u3061\u306f"),
-	'str3_eq' / Computed(lambda this: this.str3 == u"\u3053\u3093\u306b\u3061\u306f"),
+	'str1_eq' / Computed(lambda this: this.str1 == "Some ASCII"),
+	'str2_eq' / Computed(lambda this: this.str2 == "\u3053\u3093\u306b\u3061\u306f"),
+	'str3_eq' / Computed(lambda this: this.str3 == "\u3053\u3093\u306b\u3061\u306f"),
 	'str3_eq_str2' / Computed(lambda this: this.str3 == this.str2),
-	'str4_eq' / Computed(lambda this: this.str4 == u"\u2591\u2592\u2593"),
-	'str4_gt_str_calc' / Computed(lambda this: this.str4 > u"\u2524"),
-	'str4_gt_str_from_bytes' / Computed(lambda this: this.str4 > (b"\xB4").decode(u"IBM437")),
+	'str4_eq' / Computed(lambda this: this.str4 == "\u2591\u2592\u2593"),
+	'str4_gt_str_calc' / Computed(lambda this: this.str4 > "\u2524"),
+	'str4_gt_str_from_bytes' / Computed(lambda this: this.str4 > (b"\xB4").decode("IBM437")),
 )
 
 _schema = expr_str_encodings

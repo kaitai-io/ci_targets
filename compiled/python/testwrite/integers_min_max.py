@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class IntegersMinMax(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(IntegersMinMax, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -35,7 +35,7 @@ class IntegersMinMax(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(IntegersMinMax, self)._write__seq(io)
+        super()._write__seq(io)
         self.unsigned_min._write__seq(self._io)
         self.unsigned_max._write__seq(self._io)
         self.signed_min._write__seq(self._io)
@@ -44,26 +44,26 @@ class IntegersMinMax(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.unsigned_min._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"unsigned_min", self._root, self.unsigned_min._root)
+            raise kaitaistruct.ConsistencyError("unsigned_min", self._root, self.unsigned_min._root)
         if self.unsigned_min._parent != self:
-            raise kaitaistruct.ConsistencyError(u"unsigned_min", self, self.unsigned_min._parent)
+            raise kaitaistruct.ConsistencyError("unsigned_min", self, self.unsigned_min._parent)
         if self.unsigned_max._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"unsigned_max", self._root, self.unsigned_max._root)
+            raise kaitaistruct.ConsistencyError("unsigned_max", self._root, self.unsigned_max._root)
         if self.unsigned_max._parent != self:
-            raise kaitaistruct.ConsistencyError(u"unsigned_max", self, self.unsigned_max._parent)
+            raise kaitaistruct.ConsistencyError("unsigned_max", self, self.unsigned_max._parent)
         if self.signed_min._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"signed_min", self._root, self.signed_min._root)
+            raise kaitaistruct.ConsistencyError("signed_min", self._root, self.signed_min._root)
         if self.signed_min._parent != self:
-            raise kaitaistruct.ConsistencyError(u"signed_min", self, self.signed_min._parent)
+            raise kaitaistruct.ConsistencyError("signed_min", self, self.signed_min._parent)
         if self.signed_max._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"signed_max", self._root, self.signed_max._root)
+            raise kaitaistruct.ConsistencyError("signed_max", self._root, self.signed_max._root)
         if self.signed_max._parent != self:
-            raise kaitaistruct.ConsistencyError(u"signed_max", self, self.signed_max._parent)
+            raise kaitaistruct.ConsistencyError("signed_max", self, self.signed_max._parent)
         self._dirty = False
 
     class Signed(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(IntegersMinMax.Signed, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -83,7 +83,7 @@ class IntegersMinMax(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(IntegersMinMax.Signed, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_s1(self.s1)
             self._io.write_s2le(self.s2le)
             self._io.write_s4le(self.s4le)
@@ -99,7 +99,7 @@ class IntegersMinMax(ReadWriteKaitaiStruct):
 
     class Unsigned(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(IntegersMinMax.Unsigned, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -119,7 +119,7 @@ class IntegersMinMax(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(IntegersMinMax.Unsigned, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u1(self.u1)
             self._io.write_u2le(self.u2le)
             self._io.write_u4le(self.u4le)

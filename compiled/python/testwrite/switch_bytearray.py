@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class SwitchBytearray(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(SwitchBytearray, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -37,30 +37,30 @@ class SwitchBytearray(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(SwitchBytearray, self)._write__seq(io)
+        super()._write__seq(io)
         for i in range(len(self.opcodes)):
             pass
             if self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"opcodes", 0, self._io.size() - self._io.pos())
+                raise kaitaistruct.ConsistencyError("opcodes", 0, self._io.size() - self._io.pos())
             self.opcodes[i]._write__seq(self._io)
 
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"opcodes", 0, self._io.size() - self._io.pos())
+            raise kaitaistruct.ConsistencyError("opcodes", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):
         for i in range(len(self.opcodes)):
             pass
             if self.opcodes[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"opcodes", self._root, self.opcodes[i]._root)
+                raise kaitaistruct.ConsistencyError("opcodes", self._root, self.opcodes[i]._root)
             if self.opcodes[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"opcodes", self, self.opcodes[i]._parent)
+                raise kaitaistruct.ConsistencyError("opcodes", self, self.opcodes[i]._parent)
 
         self._dirty = False
 
     class Opcode(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(SwitchBytearray.Opcode, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -90,7 +90,7 @@ class SwitchBytearray(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(SwitchBytearray.Opcode, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_bytes(self.code)
             _on = self.code
             if _on == b"\x49":
@@ -103,25 +103,25 @@ class SwitchBytearray(ReadWriteKaitaiStruct):
 
         def _check(self):
             if len(self.code) != 1:
-                raise kaitaistruct.ConsistencyError(u"code", 1, len(self.code))
+                raise kaitaistruct.ConsistencyError("code", 1, len(self.code))
             _on = self.code
             if _on == b"\x49":
                 pass
                 if self.body._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"body", self._root, self.body._root)
+                    raise kaitaistruct.ConsistencyError("body", self._root, self.body._root)
                 if self.body._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"body", self, self.body._parent)
+                    raise kaitaistruct.ConsistencyError("body", self, self.body._parent)
             elif _on == b"\x53":
                 pass
                 if self.body._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"body", self._root, self.body._root)
+                    raise kaitaistruct.ConsistencyError("body", self._root, self.body._root)
                 if self.body._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"body", self, self.body._parent)
+                    raise kaitaistruct.ConsistencyError("body", self, self.body._parent)
             self._dirty = False
 
         class Intval(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                super(SwitchBytearray.Opcode.Intval, self).__init__(_io)
+                super().__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
@@ -135,7 +135,7 @@ class SwitchBytearray(ReadWriteKaitaiStruct):
 
 
             def _write__seq(self, io=None):
-                super(SwitchBytearray.Opcode.Intval, self)._write__seq(io)
+                super()._write__seq(io)
                 self._io.write_u1(self.value)
 
 
@@ -145,12 +145,12 @@ class SwitchBytearray(ReadWriteKaitaiStruct):
 
         class Strval(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                super(SwitchBytearray.Opcode.Strval, self).__init__(_io)
+                super().__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
             def _read(self):
-                self.value = (self._io.read_bytes_term(0, False, True, True)).decode(u"ASCII")
+                self.value = (self._io.read_bytes_term(0, False, True, True)).decode("ASCII")
                 self._dirty = False
 
 
@@ -159,14 +159,14 @@ class SwitchBytearray(ReadWriteKaitaiStruct):
 
 
             def _write__seq(self, io=None):
-                super(SwitchBytearray.Opcode.Strval, self)._write__seq(io)
-                self._io.write_bytes((self.value).encode(u"ASCII"))
+                super()._write__seq(io)
+                self._io.write_bytes((self.value).encode("ASCII"))
                 self._io.write_u1(0)
 
 
             def _check(self):
-                if KaitaiStream.byte_array_index_of((self.value).encode(u"ASCII"), 0) != -1:
-                    raise kaitaistruct.ConsistencyError(u"value", -1, KaitaiStream.byte_array_index_of((self.value).encode(u"ASCII"), 0))
+                if KaitaiStream.byte_array_index_of((self.value).encode("ASCII"), 0) != -1:
+                    raise kaitaistruct.ConsistencyError("value", -1, KaitaiStream.byte_array_index_of((self.value).encode("ASCII"), 0))
                 self._dirty = False
 
 

@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ExprArray(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ExprArray, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -25,7 +25,7 @@ class ExprArray(ReadWriteKaitaiStruct):
 
         self.astr = []
         for i in range(3):
-            self.astr.append((self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8"))
+            self.astr.append((self._io.read_bytes_term(0, False, True, True)).decode("UTF-8"))
 
         self._dirty = False
 
@@ -44,7 +44,7 @@ class ExprArray(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ExprArray, self)._write__seq(io)
+        super()._write__seq(io)
         for i in range(len(self.aint)):
             pass
             self._io.write_u4le(self.aint[i])
@@ -55,28 +55,28 @@ class ExprArray(ReadWriteKaitaiStruct):
 
         for i in range(len(self.astr)):
             pass
-            self._io.write_bytes((self.astr[i]).encode(u"UTF-8"))
+            self._io.write_bytes((self.astr[i]).encode("UTF-8"))
             self._io.write_u1(0)
 
 
 
     def _check(self):
         if len(self.aint) != 4:
-            raise kaitaistruct.ConsistencyError(u"aint", 4, len(self.aint))
+            raise kaitaistruct.ConsistencyError("aint", 4, len(self.aint))
         for i in range(len(self.aint)):
             pass
 
         if len(self.afloat) != 3:
-            raise kaitaistruct.ConsistencyError(u"afloat", 3, len(self.afloat))
+            raise kaitaistruct.ConsistencyError("afloat", 3, len(self.afloat))
         for i in range(len(self.afloat)):
             pass
 
         if len(self.astr) != 3:
-            raise kaitaistruct.ConsistencyError(u"astr", 3, len(self.astr))
+            raise kaitaistruct.ConsistencyError("astr", 3, len(self.astr))
         for i in range(len(self.astr)):
             pass
-            if KaitaiStream.byte_array_index_of((self.astr[i]).encode(u"UTF-8"), 0) != -1:
-                raise kaitaistruct.ConsistencyError(u"astr", -1, KaitaiStream.byte_array_index_of((self.astr[i]).encode(u"UTF-8"), 0))
+            if KaitaiStream.byte_array_index_of((self.astr[i]).encode("UTF-8"), 0) != -1:
+                raise kaitaistruct.ConsistencyError("astr", -1, KaitaiStream.byte_array_index_of((self.astr[i]).encode("UTF-8"), 0))
 
         self._dirty = False
 

@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class IfValues(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(IfValues, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -35,7 +35,7 @@ class IfValues(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(IfValues, self)._write__seq(io)
+        super()._write__seq(io)
         for i in range(len(self.codes)):
             pass
             self.codes[i]._write__seq(self._io)
@@ -44,19 +44,19 @@ class IfValues(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.codes) != 3:
-            raise kaitaistruct.ConsistencyError(u"codes", 3, len(self.codes))
+            raise kaitaistruct.ConsistencyError("codes", 3, len(self.codes))
         for i in range(len(self.codes)):
             pass
             if self.codes[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"codes", self._root, self.codes[i]._root)
+                raise kaitaistruct.ConsistencyError("codes", self._root, self.codes[i]._root)
             if self.codes[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"codes", self, self.codes[i]._parent)
+                raise kaitaistruct.ConsistencyError("codes", self, self.codes[i]._parent)
 
         self._dirty = False
 
     class Code(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(IfValues.Code, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -70,7 +70,7 @@ class IfValues(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(IfValues.Code, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u1(self.opcode)
 
 

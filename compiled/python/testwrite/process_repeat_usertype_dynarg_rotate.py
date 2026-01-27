@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ProcessRepeatUsertypeDynargRotate, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -60,12 +60,12 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ProcessRepeatUsertypeDynargRotate, self)._write__seq(io)
+        super()._write__seq(io)
         self._raw_blocks_rol = []
         self._raw__raw_blocks_rol = []
         for i in range(len(self.blocks_rol)):
             pass
-            _io__raw_blocks_rol = KaitaiStream(BytesIO(bytearray(3)))
+            _io__raw_blocks_rol = KaitaiStream(BytesIO(bytes(3)))
             self._io.add_child_stream(_io__raw_blocks_rol)
             _pos2 = self._io.pos()
             self._io.seek(self._io.pos() + (3))
@@ -74,7 +74,7 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
                 self._raw_blocks_rol.append(_io__raw_blocks_rol.to_byte_array())
                 self._raw__raw_blocks_rol.append(KaitaiStream.process_rotate_left(self._raw_blocks_rol[i], 8 - (_process_val), 1))
                 if len(self._raw__raw_blocks_rol[i]) != 3:
-                    raise kaitaistruct.ConsistencyError(u"raw(blocks_rol)", 3, len(self._raw__raw_blocks_rol[i]))
+                    raise kaitaistruct.ConsistencyError("raw(blocks_rol)", 3, len(self._raw__raw_blocks_rol[i]))
                 parent.write_bytes(self._raw__raw_blocks_rol[i])
             _io__raw_blocks_rol.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self.blocks_rol[i]._write__seq(_io__raw_blocks_rol)
@@ -83,7 +83,7 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
         self._raw__raw_blocks_ror = []
         for i in range(len(self.blocks_ror)):
             pass
-            _io__raw_blocks_ror = KaitaiStream(BytesIO(bytearray(3)))
+            _io__raw_blocks_ror = KaitaiStream(BytesIO(bytes(3)))
             self._io.add_child_stream(_io__raw_blocks_ror)
             _pos2 = self._io.pos()
             self._io.seek(self._io.pos() + (3))
@@ -92,7 +92,7 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
                 self._raw_blocks_ror.append(_io__raw_blocks_ror.to_byte_array())
                 self._raw__raw_blocks_ror.append(KaitaiStream.process_rotate_left(self._raw_blocks_ror[i], _process_val, 1))
                 if len(self._raw__raw_blocks_ror[i]) != 3:
-                    raise kaitaistruct.ConsistencyError(u"raw(blocks_ror)", 3, len(self._raw__raw_blocks_ror[i]))
+                    raise kaitaistruct.ConsistencyError("raw(blocks_ror)", 3, len(self._raw__raw_blocks_ror[i]))
                 parent.write_bytes(self._raw__raw_blocks_ror[i])
             _io__raw_blocks_ror.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self.blocks_ror[i]._write__seq(_io__raw_blocks_ror)
@@ -102,32 +102,32 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.blocks_rol) != 2:
-            raise kaitaistruct.ConsistencyError(u"blocks_rol", 2, len(self.blocks_rol))
+            raise kaitaistruct.ConsistencyError("blocks_rol", 2, len(self.blocks_rol))
         for i in range(len(self.blocks_rol)):
             pass
             if self.blocks_rol[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"blocks_rol", self._root, self.blocks_rol[i]._root)
+                raise kaitaistruct.ConsistencyError("blocks_rol", self._root, self.blocks_rol[i]._root)
             if self.blocks_rol[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"blocks_rol", self, self.blocks_rol[i]._parent)
+                raise kaitaistruct.ConsistencyError("blocks_rol", self, self.blocks_rol[i]._parent)
 
         if len(self.blocks_ror) != 3:
-            raise kaitaistruct.ConsistencyError(u"blocks_ror", 3, len(self.blocks_ror))
+            raise kaitaistruct.ConsistencyError("blocks_ror", 3, len(self.blocks_ror))
         for i in range(len(self.blocks_ror)):
             pass
             if self.blocks_ror[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"blocks_ror", self._root, self.blocks_ror[i]._root)
+                raise kaitaistruct.ConsistencyError("blocks_ror", self._root, self.blocks_ror[i]._root)
             if self.blocks_ror[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"blocks_ror", self, self.blocks_ror[i]._parent)
+                raise kaitaistruct.ConsistencyError("blocks_ror", self, self.blocks_ror[i]._parent)
 
         if self.blocks_b._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"blocks_b", self._root, self.blocks_b._root)
+            raise kaitaistruct.ConsistencyError("blocks_b", self._root, self.blocks_b._root)
         if self.blocks_b._parent != self:
-            raise kaitaistruct.ConsistencyError(u"blocks_b", self, self.blocks_b._parent)
+            raise kaitaistruct.ConsistencyError("blocks_b", self, self.blocks_b._parent)
         self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(ProcessRepeatUsertypeDynargRotate.Block, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -141,7 +141,7 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(ProcessRepeatUsertypeDynargRotate.Block, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u2le(self.a)
 
 
@@ -151,7 +151,7 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
 
     class BlocksBWrapper(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(ProcessRepeatUsertypeDynargRotate.BlocksBWrapper, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._should_write_blocks_rol_0_b = False
@@ -195,7 +195,7 @@ class ProcessRepeatUsertypeDynargRotate(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(ProcessRepeatUsertypeDynargRotate.BlocksBWrapper, self)._write__seq(io)
+            super()._write__seq(io)
             self._should_write_blocks_rol_0_b = self.blocks_rol_0_b__enabled
             self._should_write_blocks_rol_1_b = self.blocks_rol_1_b__enabled
             self._should_write_blocks_ror_0_b = self.blocks_ror_0_b__enabled

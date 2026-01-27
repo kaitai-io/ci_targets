@@ -8,7 +8,7 @@ from enum import IntEnum
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class EnumToIClassBorder1(ReadWriteKaitaiStruct):
 
@@ -17,7 +17,7 @@ class EnumToIClassBorder1(ReadWriteKaitaiStruct):
         cat = 7
         chicken = 12
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(EnumToIClassBorder1, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_checker = False
@@ -39,7 +39,7 @@ class EnumToIClassBorder1(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(EnumToIClassBorder1, self)._write__seq(io)
+        super()._write__seq(io)
         self._should_write_checker = self.checker__enabled
         self._io.write_u4le(int(self.pet_1))
         self._io.write_u4le(int(self.pet_2))
@@ -49,7 +49,7 @@ class EnumToIClassBorder1(ReadWriteKaitaiStruct):
         if self.checker__enabled:
             pass
             if self._m_checker.parent != self._root:
-                raise kaitaistruct.ConsistencyError(u"checker", self._root, self._m_checker.parent)
+                raise kaitaistruct.ConsistencyError("checker", self._root, self._m_checker.parent)
 
         self._dirty = False
 

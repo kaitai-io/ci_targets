@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class IoLocalVar(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(IoLocalVar, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_mess_up = False
@@ -47,7 +47,7 @@ class IoLocalVar(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(IoLocalVar, self)._write__seq(io)
+        super()._write__seq(io)
         self._should_write_mess_up = self.mess_up__enabled
         self._io.write_bytes(self.skip)
         if self.mess_up._io.pos() < 0:
@@ -59,32 +59,32 @@ class IoLocalVar(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.skip) != 20:
-            raise kaitaistruct.ConsistencyError(u"skip", 20, len(self.skip))
+            raise kaitaistruct.ConsistencyError("skip", 20, len(self.skip))
         if self.mess_up__enabled:
             pass
             _on = 2
             if _on == 1:
                 pass
                 if self._m_mess_up._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"mess_up", self._root, self._m_mess_up._root)
+                    raise kaitaistruct.ConsistencyError("mess_up", self._root, self._m_mess_up._root)
                 if self._m_mess_up._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"mess_up", self, self._m_mess_up._parent)
+                    raise kaitaistruct.ConsistencyError("mess_up", self, self._m_mess_up._parent)
             elif _on == 2:
                 pass
                 if self._m_mess_up._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"mess_up", self._root, self._m_mess_up._root)
+                    raise kaitaistruct.ConsistencyError("mess_up", self._root, self._m_mess_up._root)
                 if self._m_mess_up._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"mess_up", self, self._m_mess_up._parent)
+                    raise kaitaistruct.ConsistencyError("mess_up", self, self._m_mess_up._parent)
             else:
                 pass
                 if len(self._m_mess_up) != 2:
-                    raise kaitaistruct.ConsistencyError(u"mess_up", 2, len(self._m_mess_up))
+                    raise kaitaistruct.ConsistencyError("mess_up", 2, len(self._m_mess_up))
 
         self._dirty = False
 
     class Dummy(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(IoLocalVar.Dummy, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -98,7 +98,7 @@ class IoLocalVar(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(IoLocalVar.Dummy, self)._write__seq(io)
+            super()._write__seq(io)
 
 
         def _check(self):
@@ -150,27 +150,27 @@ class IoLocalVar(ReadWriteKaitaiStruct):
         _on = 2
         if _on == 1:
             pass
-            _io__raw__m_mess_up = KaitaiStream(BytesIO(bytearray(2)))
+            _io__raw__m_mess_up = KaitaiStream(BytesIO(bytes(2)))
             io.add_child_stream(_io__raw__m_mess_up)
             _pos2 = io.pos()
             io.seek(io.pos() + (2))
             def handler(parent, _io__raw__m_mess_up=_io__raw__m_mess_up):
                 self._raw__m_mess_up = _io__raw__m_mess_up.to_byte_array()
                 if len(self._raw__m_mess_up) != 2:
-                    raise kaitaistruct.ConsistencyError(u"raw(mess_up)", 2, len(self._raw__m_mess_up))
+                    raise kaitaistruct.ConsistencyError("raw(mess_up)", 2, len(self._raw__m_mess_up))
                 parent.write_bytes(self._raw__m_mess_up)
             _io__raw__m_mess_up.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self._m_mess_up._write__seq(_io__raw__m_mess_up)
         elif _on == 2:
             pass
-            _io__raw__m_mess_up = KaitaiStream(BytesIO(bytearray(2)))
+            _io__raw__m_mess_up = KaitaiStream(BytesIO(bytes(2)))
             io.add_child_stream(_io__raw__m_mess_up)
             _pos2 = io.pos()
             io.seek(io.pos() + (2))
             def handler(parent, _io__raw__m_mess_up=_io__raw__m_mess_up):
                 self._raw__m_mess_up = _io__raw__m_mess_up.to_byte_array()
                 if len(self._raw__m_mess_up) != 2:
-                    raise kaitaistruct.ConsistencyError(u"raw(mess_up)", 2, len(self._raw__m_mess_up))
+                    raise kaitaistruct.ConsistencyError("raw(mess_up)", 2, len(self._raw__m_mess_up))
                 parent.write_bytes(self._raw__m_mess_up)
             _io__raw__m_mess_up.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self._m_mess_up._write__seq(_io__raw__m_mess_up)

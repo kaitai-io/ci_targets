@@ -7,12 +7,12 @@ import collections
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class DebugArrayUser(ReadWriteKaitaiStruct):
     SEQ_FIELDS = ["one_cat", "array_of_cats"]
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(DebugArrayUser, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._debug = collections.defaultdict(dict)
@@ -48,7 +48,7 @@ class DebugArrayUser(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(DebugArrayUser, self)._write__seq(io)
+        super()._write__seq(io)
         self.one_cat._write__seq(self._io)
         for i in range(len(self.array_of_cats)):
             pass
@@ -58,24 +58,24 @@ class DebugArrayUser(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.one_cat._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"one_cat", self._root, self.one_cat._root)
+            raise kaitaistruct.ConsistencyError("one_cat", self._root, self.one_cat._root)
         if self.one_cat._parent != self:
-            raise kaitaistruct.ConsistencyError(u"one_cat", self, self.one_cat._parent)
+            raise kaitaistruct.ConsistencyError("one_cat", self, self.one_cat._parent)
         if len(self.array_of_cats) != 3:
-            raise kaitaistruct.ConsistencyError(u"array_of_cats", 3, len(self.array_of_cats))
+            raise kaitaistruct.ConsistencyError("array_of_cats", 3, len(self.array_of_cats))
         for i in range(len(self.array_of_cats)):
             pass
             if self.array_of_cats[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"array_of_cats", self._root, self.array_of_cats[i]._root)
+                raise kaitaistruct.ConsistencyError("array_of_cats", self._root, self.array_of_cats[i]._root)
             if self.array_of_cats[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"array_of_cats", self, self.array_of_cats[i]._parent)
+                raise kaitaistruct.ConsistencyError("array_of_cats", self, self.array_of_cats[i]._parent)
 
         self._dirty = False
 
     class Cat(ReadWriteKaitaiStruct):
         SEQ_FIELDS = ["meow"]
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(DebugArrayUser.Cat, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._debug = collections.defaultdict(dict)
@@ -92,7 +92,7 @@ class DebugArrayUser(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(DebugArrayUser.Cat, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u1(self.meow)
 
 

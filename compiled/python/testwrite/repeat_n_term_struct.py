@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class RepeatNTermStruct(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(RepeatNTermStruct, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -74,11 +74,11 @@ class RepeatNTermStruct(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(RepeatNTermStruct, self)._write__seq(io)
+        super()._write__seq(io)
         self._raw_records1 = []
         for i in range(len(self.records1)):
             pass
-            _io__raw_records1 = KaitaiStream(BytesIO(bytearray(self.records1__outer_size[i])))
+            _io__raw_records1 = KaitaiStream(BytesIO(bytes(self.records1__outer_size[i])))
             self._io.add_child_stream(_io__raw_records1)
             _pos2 = self._io.pos()
             self._io.seek(self._io.pos() + (self.records1__outer_size[i]))
@@ -86,7 +86,7 @@ class RepeatNTermStruct(ReadWriteKaitaiStruct):
             def handler(parent, _io__raw_records1=_io__raw_records1, i=i):
                 self._raw_records1.append(_io__raw_records1.to_byte_array())
                 if KaitaiStream.byte_array_index_of(self._raw_records1[i], 170) != -1:
-                    raise kaitaistruct.ConsistencyError(u"raw(records1)", -1, KaitaiStream.byte_array_index_of(self._raw_records1[i], 170))
+                    raise kaitaistruct.ConsistencyError("raw(records1)", -1, KaitaiStream.byte_array_index_of(self._raw_records1[i], 170))
                 parent.write_bytes(self._raw_records1[i])
                 parent.write_u1(170)
             _io__raw_records1.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
@@ -95,16 +95,16 @@ class RepeatNTermStruct(ReadWriteKaitaiStruct):
         self._raw_records2 = []
         for i in range(len(self.records2)):
             pass
-            _io__raw_records2 = KaitaiStream(BytesIO(bytearray(self.records2__outer_size[i])))
+            _io__raw_records2 = KaitaiStream(BytesIO(bytes(self.records2__outer_size[i])))
             self._io.add_child_stream(_io__raw_records2)
             _pos2 = self._io.pos()
             self._io.seek(self._io.pos() + (self.records2__outer_size[i]))
             def handler(parent, _io__raw_records2=_io__raw_records2, i=i):
                 self._raw_records2.append(_io__raw_records2.to_byte_array())
                 if len(self._raw_records2[i]) == 0:
-                    raise kaitaistruct.ConsistencyError(u"raw(records2)", 0, len(self._raw_records2[i]))
+                    raise kaitaistruct.ConsistencyError("raw(records2)", 0, len(self._raw_records2[i]))
                 if KaitaiStream.byte_array_index_of(self._raw_records2[i], 170) != len(self._raw_records2[i]) - 1:
-                    raise kaitaistruct.ConsistencyError(u"raw(records2)", len(self._raw_records2[i]) - 1, KaitaiStream.byte_array_index_of(self._raw_records2[i], 170))
+                    raise kaitaistruct.ConsistencyError("raw(records2)", len(self._raw_records2[i]) - 1, KaitaiStream.byte_array_index_of(self._raw_records2[i], 170))
                 parent.write_bytes(self._raw_records2[i])
             _io__raw_records2.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self.records2[i]._write__seq(_io__raw_records2)
@@ -112,14 +112,14 @@ class RepeatNTermStruct(ReadWriteKaitaiStruct):
         self._raw_records3 = []
         for i in range(len(self.records3)):
             pass
-            _io__raw_records3 = KaitaiStream(BytesIO(bytearray(self.records3__outer_size[i])))
+            _io__raw_records3 = KaitaiStream(BytesIO(bytes(self.records3__outer_size[i])))
             self._io.add_child_stream(_io__raw_records3)
             _pos2 = self._io.pos()
             self._io.seek(self._io.pos() + (self.records3__outer_size[i]))
             def handler(parent, _io__raw_records3=_io__raw_records3, i=i):
                 self._raw_records3.append(_io__raw_records3.to_byte_array())
                 if KaitaiStream.byte_array_index_of(self._raw_records3[i], 85) != -1:
-                    raise kaitaistruct.ConsistencyError(u"raw(records3)", -1, KaitaiStream.byte_array_index_of(self._raw_records3[i], 85))
+                    raise kaitaistruct.ConsistencyError("raw(records3)", -1, KaitaiStream.byte_array_index_of(self._raw_records3[i], 85))
                 parent.write_bytes(self._raw_records3[i])
                 _pos = parent.pos()
                 parent.write_u1(85)
@@ -131,37 +131,37 @@ class RepeatNTermStruct(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.records1) != 2:
-            raise kaitaistruct.ConsistencyError(u"records1", 2, len(self.records1))
+            raise kaitaistruct.ConsistencyError("records1", 2, len(self.records1))
         for i in range(len(self.records1)):
             pass
             if self.records1[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"records1", self._root, self.records1[i]._root)
+                raise kaitaistruct.ConsistencyError("records1", self._root, self.records1[i]._root)
             if self.records1[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"records1", self, self.records1[i]._parent)
+                raise kaitaistruct.ConsistencyError("records1", self, self.records1[i]._parent)
 
         if len(self.records2) != 2:
-            raise kaitaistruct.ConsistencyError(u"records2", 2, len(self.records2))
+            raise kaitaistruct.ConsistencyError("records2", 2, len(self.records2))
         for i in range(len(self.records2)):
             pass
             if self.records2[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"records2", self._root, self.records2[i]._root)
+                raise kaitaistruct.ConsistencyError("records2", self._root, self.records2[i]._root)
             if self.records2[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"records2", self, self.records2[i]._parent)
+                raise kaitaistruct.ConsistencyError("records2", self, self.records2[i]._parent)
 
         if len(self.records3) != 2:
-            raise kaitaistruct.ConsistencyError(u"records3", 2, len(self.records3))
+            raise kaitaistruct.ConsistencyError("records3", 2, len(self.records3))
         for i in range(len(self.records3)):
             pass
             if self.records3[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"records3", self._root, self.records3[i]._root)
+                raise kaitaistruct.ConsistencyError("records3", self._root, self.records3[i]._root)
             if self.records3[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"records3", self, self.records3[i]._parent)
+                raise kaitaistruct.ConsistencyError("records3", self, self.records3[i]._parent)
 
         self._dirty = False
 
     class BytesWrapper(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(RepeatNTermStruct.BytesWrapper, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -175,10 +175,10 @@ class RepeatNTermStruct(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(RepeatNTermStruct.BytesWrapper, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_bytes(self.value)
             if not self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"value", 0, self._io.size() - self._io.pos())
+                raise kaitaistruct.ConsistencyError("value", 0, self._io.size() - self._io.pos())
 
 
         def _check(self):

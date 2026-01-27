@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class InstanceStd(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(InstanceStd, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_header = False
@@ -30,15 +30,15 @@ class InstanceStd(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(InstanceStd, self)._write__seq(io)
+        super()._write__seq(io)
         self._should_write_header = self.header__enabled
 
 
     def _check(self):
         if self.header__enabled:
             pass
-            if len((self._m_header).encode(u"ASCII")) != 5:
-                raise kaitaistruct.ConsistencyError(u"header", 5, len((self._m_header).encode(u"ASCII")))
+            if len((self._m_header).encode("ASCII")) != 5:
+                raise kaitaistruct.ConsistencyError("header", 5, len((self._m_header).encode("ASCII")))
 
         self._dirty = False
 
@@ -54,7 +54,7 @@ class InstanceStd(ReadWriteKaitaiStruct):
 
         _pos = self._io.pos()
         self._io.seek(2)
-        self._m_header = (self._io.read_bytes(5)).decode(u"ASCII")
+        self._m_header = (self._io.read_bytes(5)).decode("ASCII")
         self._io.seek(_pos)
         return getattr(self, '_m_header', None)
 
@@ -67,7 +67,7 @@ class InstanceStd(ReadWriteKaitaiStruct):
         self._should_write_header = False
         _pos = self._io.pos()
         self._io.seek(2)
-        self._io.write_bytes((self._m_header).encode(u"ASCII"))
+        self._io.write_bytes((self._m_header).encode("ASCII"))
         self._io.seek(_pos)
 
 

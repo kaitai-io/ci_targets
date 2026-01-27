@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ParamsPassBool(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ParamsPassBool, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -43,7 +43,7 @@ class ParamsPassBool(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ParamsPassBool, self)._write__seq(io)
+        super()._write__seq(io)
         self._io.write_bits_int_be(1, int(self.s_false))
         self._io.write_bits_int_be(1, int(self.s_true))
         self.seq_b1._write__seq(self._io)
@@ -56,46 +56,46 @@ class ParamsPassBool(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.seq_b1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"seq_b1", self._root, self.seq_b1._root)
+            raise kaitaistruct.ConsistencyError("seq_b1", self._root, self.seq_b1._root)
         if self.seq_b1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"seq_b1", self, self.seq_b1._parent)
+            raise kaitaistruct.ConsistencyError("seq_b1", self, self.seq_b1._parent)
         if self.seq_b1.arg != self.s_true:
-            raise kaitaistruct.ConsistencyError(u"seq_b1", self.s_true, self.seq_b1.arg)
+            raise kaitaistruct.ConsistencyError("seq_b1", self.s_true, self.seq_b1.arg)
         if self.seq_bool._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"seq_bool", self._root, self.seq_bool._root)
+            raise kaitaistruct.ConsistencyError("seq_bool", self._root, self.seq_bool._root)
         if self.seq_bool._parent != self:
-            raise kaitaistruct.ConsistencyError(u"seq_bool", self, self.seq_bool._parent)
+            raise kaitaistruct.ConsistencyError("seq_bool", self, self.seq_bool._parent)
         if self.seq_bool.arg != self.s_false:
-            raise kaitaistruct.ConsistencyError(u"seq_bool", self.s_false, self.seq_bool.arg)
+            raise kaitaistruct.ConsistencyError("seq_bool", self.s_false, self.seq_bool.arg)
         if self.literal_b1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"literal_b1", self._root, self.literal_b1._root)
+            raise kaitaistruct.ConsistencyError("literal_b1", self._root, self.literal_b1._root)
         if self.literal_b1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"literal_b1", self, self.literal_b1._parent)
+            raise kaitaistruct.ConsistencyError("literal_b1", self, self.literal_b1._parent)
         if self.literal_b1.arg != False:
-            raise kaitaistruct.ConsistencyError(u"literal_b1", False, self.literal_b1.arg)
+            raise kaitaistruct.ConsistencyError("literal_b1", False, self.literal_b1.arg)
         if self.literal_bool._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"literal_bool", self._root, self.literal_bool._root)
+            raise kaitaistruct.ConsistencyError("literal_bool", self._root, self.literal_bool._root)
         if self.literal_bool._parent != self:
-            raise kaitaistruct.ConsistencyError(u"literal_bool", self, self.literal_bool._parent)
+            raise kaitaistruct.ConsistencyError("literal_bool", self, self.literal_bool._parent)
         if self.literal_bool.arg != True:
-            raise kaitaistruct.ConsistencyError(u"literal_bool", True, self.literal_bool.arg)
+            raise kaitaistruct.ConsistencyError("literal_bool", True, self.literal_bool.arg)
         if self.inst_b1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"inst_b1", self._root, self.inst_b1._root)
+            raise kaitaistruct.ConsistencyError("inst_b1", self._root, self.inst_b1._root)
         if self.inst_b1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"inst_b1", self, self.inst_b1._parent)
+            raise kaitaistruct.ConsistencyError("inst_b1", self, self.inst_b1._parent)
         if self.inst_b1.arg != self.v_true:
-            raise kaitaistruct.ConsistencyError(u"inst_b1", self.v_true, self.inst_b1.arg)
+            raise kaitaistruct.ConsistencyError("inst_b1", self.v_true, self.inst_b1.arg)
         if self.inst_bool._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"inst_bool", self._root, self.inst_bool._root)
+            raise kaitaistruct.ConsistencyError("inst_bool", self._root, self.inst_bool._root)
         if self.inst_bool._parent != self:
-            raise kaitaistruct.ConsistencyError(u"inst_bool", self, self.inst_bool._parent)
+            raise kaitaistruct.ConsistencyError("inst_bool", self, self.inst_bool._parent)
         if self.inst_bool.arg != self.v_false:
-            raise kaitaistruct.ConsistencyError(u"inst_bool", self.v_false, self.inst_bool.arg)
+            raise kaitaistruct.ConsistencyError("inst_bool", self.v_false, self.inst_bool.arg)
         self._dirty = False
 
     class ParamTypeB1(ReadWriteKaitaiStruct):
         def __init__(self, arg, _io=None, _parent=None, _root=None):
-            super(ParamsPassBool.ParamTypeB1, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self.arg = arg
@@ -110,19 +110,19 @@ class ParamsPassBool(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(ParamsPassBool.ParamTypeB1, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_bytes(self.foo)
 
 
         def _check(self):
             if len(self.foo) != (1 if self.arg else 2):
-                raise kaitaistruct.ConsistencyError(u"foo", (1 if self.arg else 2), len(self.foo))
+                raise kaitaistruct.ConsistencyError("foo", (1 if self.arg else 2), len(self.foo))
             self._dirty = False
 
 
     class ParamTypeBool(ReadWriteKaitaiStruct):
         def __init__(self, arg, _io=None, _parent=None, _root=None):
-            super(ParamsPassBool.ParamTypeBool, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self.arg = arg
@@ -137,13 +137,13 @@ class ParamsPassBool(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(ParamsPassBool.ParamTypeBool, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_bytes(self.foo)
 
 
         def _check(self):
             if len(self.foo) != (1 if self.arg else 2):
-                raise kaitaistruct.ConsistencyError(u"foo", (1 if self.arg else 2), len(self.foo))
+                raise kaitaistruct.ConsistencyError("foo", (1 if self.arg else 2), len(self.foo))
             self._dirty = False
 
 

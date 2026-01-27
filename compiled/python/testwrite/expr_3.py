@@ -6,17 +6,17 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class Expr3(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(Expr3, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self.one = self._io.read_u1()
-        self.two = (self._io.read_bytes(3)).decode(u"ASCII")
+        self.two = (self._io.read_bytes(3)).decode("ASCII")
         self._dirty = False
 
 
@@ -25,14 +25,14 @@ class Expr3(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(Expr3, self)._write__seq(io)
+        super()._write__seq(io)
         self._io.write_u1(self.one)
-        self._io.write_bytes((self.two).encode(u"ASCII"))
+        self._io.write_bytes((self.two).encode("ASCII"))
 
 
     def _check(self):
-        if len((self.two).encode(u"ASCII")) != 3:
-            raise kaitaistruct.ConsistencyError(u"two", 3, len((self.two).encode(u"ASCII")))
+        if len((self.two).encode("ASCII")) != 3:
+            raise kaitaistruct.ConsistencyError("two", 3, len((self.two).encode("ASCII")))
         self._dirty = False
 
     @property
@@ -40,7 +40,7 @@ class Expr3(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_four'):
             return self._m_four
 
-        self._m_four = (u"_" + self.two) + u"_"
+        self._m_four = ("_" + self.two) + "_"
         return getattr(self, '_m_four', None)
 
     def _invalidate_four(self):
@@ -50,7 +50,7 @@ class Expr3(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_is_str_eq'):
             return self._m_is_str_eq
 
-        self._m_is_str_eq = self.two == u"ACK"
+        self._m_is_str_eq = self.two == "ACK"
         return getattr(self, '_m_is_str_eq', None)
 
     def _invalidate_is_str_eq(self):
@@ -60,7 +60,7 @@ class Expr3(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_is_str_ge'):
             return self._m_is_str_ge
 
-        self._m_is_str_ge = self.two >= u"ACK2"
+        self._m_is_str_ge = self.two >= "ACK2"
         return getattr(self, '_m_is_str_ge', None)
 
     def _invalidate_is_str_ge(self):
@@ -70,7 +70,7 @@ class Expr3(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_is_str_gt'):
             return self._m_is_str_gt
 
-        self._m_is_str_gt = self.two > u"ACK2"
+        self._m_is_str_gt = self.two > "ACK2"
         return getattr(self, '_m_is_str_gt', None)
 
     def _invalidate_is_str_gt(self):
@@ -80,7 +80,7 @@ class Expr3(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_is_str_le'):
             return self._m_is_str_le
 
-        self._m_is_str_le = self.two <= u"ACK2"
+        self._m_is_str_le = self.two <= "ACK2"
         return getattr(self, '_m_is_str_le', None)
 
     def _invalidate_is_str_le(self):
@@ -90,7 +90,7 @@ class Expr3(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_is_str_lt'):
             return self._m_is_str_lt
 
-        self._m_is_str_lt = self.two < u"ACK2"
+        self._m_is_str_lt = self.two < "ACK2"
         return getattr(self, '_m_is_str_lt', None)
 
     def _invalidate_is_str_lt(self):
@@ -110,7 +110,7 @@ class Expr3(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_is_str_ne'):
             return self._m_is_str_ne
 
-        self._m_is_str_ne = self.two != u"ACK"
+        self._m_is_str_ne = self.two != "ACK"
         return getattr(self, '_m_is_str_ne', None)
 
     def _invalidate_is_str_ne(self):
@@ -130,7 +130,7 @@ class Expr3(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_three'):
             return self._m_three
 
-        self._m_three = u"@" + self.two
+        self._m_three = "@" + self.two
         return getattr(self, '_m_three', None)
 
     def _invalidate_three(self):

@@ -16,7 +16,7 @@ expr_calc_array_ops = Struct(
 	'int_array_mid' / Computed(lambda this: this.int_array[1]),
 	'int_array_min' / Computed(lambda this: min(this.int_array)),
 	'int_array_size' / Computed(lambda this: len(this.int_array)),
-	'str_array' / Computed(lambda this: [u"un", u"deux", u"trois", u"quatre"]),
+	'str_array' / Computed(lambda this: ["un", "deux", "trois", "quatre"]),
 	'str_array_first' / Computed(lambda this: this.str_array[0]),
 	'str_array_last' / Computed(lambda this: this.str_array[-1]),
 	'str_array_max' / Computed(lambda this: max(this.str_array)),

@@ -6,17 +6,17 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ExprStrOps(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(ExprStrOps, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
 
     def _read(self):
-        self.one = (self._io.read_bytes(5)).decode(u"ASCII")
+        self.one = (self._io.read_bytes(5)).decode("ASCII")
 
 
     def _fetch_instances(self):
@@ -75,7 +75,7 @@ class ExprStrOps(KaitaiStruct):
         if hasattr(self, '_m_to_i_attr'):
             return self._m_to_i_attr
 
-        self._m_to_i_attr = int(u"9173")
+        self._m_to_i_attr = int("9173")
         return getattr(self, '_m_to_i_attr', None)
 
     @property
@@ -83,7 +83,7 @@ class ExprStrOps(KaitaiStruct):
         if hasattr(self, '_m_to_i_r10'):
             return self._m_to_i_r10
 
-        self._m_to_i_r10 = int(u"-072")
+        self._m_to_i_r10 = int("-072")
         return getattr(self, '_m_to_i_r10', None)
 
     @property
@@ -91,7 +91,7 @@ class ExprStrOps(KaitaiStruct):
         if hasattr(self, '_m_to_i_r16'):
             return self._m_to_i_r16
 
-        self._m_to_i_r16 = int(u"47cf", 16)
+        self._m_to_i_r16 = int("47cf", 16)
         return getattr(self, '_m_to_i_r16', None)
 
     @property
@@ -99,7 +99,7 @@ class ExprStrOps(KaitaiStruct):
         if hasattr(self, '_m_to_i_r2'):
             return self._m_to_i_r2
 
-        self._m_to_i_r2 = int(u"1010110", 2)
+        self._m_to_i_r2 = int("1010110", 2)
         return getattr(self, '_m_to_i_r2', None)
 
     @property
@@ -107,7 +107,7 @@ class ExprStrOps(KaitaiStruct):
         if hasattr(self, '_m_to_i_r8'):
             return self._m_to_i_r8
 
-        self._m_to_i_r8 = int(u"721", 8)
+        self._m_to_i_r8 = int("721", 8)
         return getattr(self, '_m_to_i_r8', None)
 
     @property
@@ -115,7 +115,7 @@ class ExprStrOps(KaitaiStruct):
         if hasattr(self, '_m_two'):
             return self._m_two
 
-        self._m_two = u"0123456789"
+        self._m_two = "0123456789"
         return getattr(self, '_m_two', None)
 
     @property

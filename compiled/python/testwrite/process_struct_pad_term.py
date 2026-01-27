@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ProcessStructPadTerm(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ProcessStructPadTerm, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -51,8 +51,8 @@ class ProcessStructPadTerm(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ProcessStructPadTerm, self)._write__seq(io)
-        _io__raw_str_pad = KaitaiStream(BytesIO(bytearray(self.str_pad__inner_size)))
+        super()._write__seq(io)
+        _io__raw_str_pad = KaitaiStream(BytesIO(bytes(self.str_pad__inner_size)))
         self._io.add_child_stream(_io__raw_str_pad)
         _pos2 = self._io.pos()
         self._io.seek(self._io.pos() + (20))
@@ -61,13 +61,13 @@ class ProcessStructPadTerm(ReadWriteKaitaiStruct):
             self._raw_str_pad = _io__raw_str_pad.to_byte_array()
             self._raw__raw_str_pad = KaitaiStream.process_xor_one(self._raw_str_pad, _process_val)
             if len(self._raw__raw_str_pad) > 20:
-                raise kaitaistruct.ConsistencyError(u"raw(str_pad)", 20, len(self._raw__raw_str_pad))
-            if  ((len(self._raw__raw_str_pad) != 0) and (KaitaiStream.byte_array_index(self._raw__raw_str_pad, -1) == 64)) :
-                raise kaitaistruct.ConsistencyError(u"raw(str_pad)", 64, KaitaiStream.byte_array_index(self._raw__raw_str_pad, -1))
+                raise kaitaistruct.ConsistencyError("raw(str_pad)", 20, len(self._raw__raw_str_pad))
+            if  ((len(self._raw__raw_str_pad) != 0) and (self._raw__raw_str_pad[-1] == 64)) :
+                raise kaitaistruct.ConsistencyError("raw(str_pad)", 64, self._raw__raw_str_pad[-1])
             parent.write_bytes_limit(self._raw__raw_str_pad, 20, 64, 64)
         _io__raw_str_pad.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.str_pad._write__seq(_io__raw_str_pad)
-        _io__raw_str_term = KaitaiStream(BytesIO(bytearray(self.str_term__inner_size)))
+        _io__raw_str_term = KaitaiStream(BytesIO(bytes(self.str_term__inner_size)))
         self._io.add_child_stream(_io__raw_str_term)
         _pos2 = self._io.pos()
         self._io.seek(self._io.pos() + (20))
@@ -76,13 +76,13 @@ class ProcessStructPadTerm(ReadWriteKaitaiStruct):
             self._raw_str_term = _io__raw_str_term.to_byte_array()
             self._raw__raw_str_term = KaitaiStream.process_xor_one(self._raw_str_term, _process_val)
             if len(self._raw__raw_str_term) > 20:
-                raise kaitaistruct.ConsistencyError(u"raw(str_term)", 20, len(self._raw__raw_str_term))
+                raise kaitaistruct.ConsistencyError("raw(str_term)", 20, len(self._raw__raw_str_term))
             if KaitaiStream.byte_array_index_of(self._raw__raw_str_term, 64) != -1:
-                raise kaitaistruct.ConsistencyError(u"raw(str_term)", -1, KaitaiStream.byte_array_index_of(self._raw__raw_str_term, 64))
+                raise kaitaistruct.ConsistencyError("raw(str_term)", -1, KaitaiStream.byte_array_index_of(self._raw__raw_str_term, 64))
             parent.write_bytes_limit(self._raw__raw_str_term, 20, 64, 0)
         _io__raw_str_term.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.str_term._write__seq(_io__raw_str_term)
-        _io__raw_str_term_and_pad = KaitaiStream(BytesIO(bytearray(self.str_term_and_pad__inner_size)))
+        _io__raw_str_term_and_pad = KaitaiStream(BytesIO(bytes(self.str_term_and_pad__inner_size)))
         self._io.add_child_stream(_io__raw_str_term_and_pad)
         _pos2 = self._io.pos()
         self._io.seek(self._io.pos() + (20))
@@ -91,18 +91,18 @@ class ProcessStructPadTerm(ReadWriteKaitaiStruct):
             self._raw_str_term_and_pad = _io__raw_str_term_and_pad.to_byte_array()
             self._raw__raw_str_term_and_pad = KaitaiStream.process_xor_one(self._raw_str_term_and_pad, _process_val)
             if len(self._raw__raw_str_term_and_pad) > 20:
-                raise kaitaistruct.ConsistencyError(u"raw(str_term_and_pad)", 20, len(self._raw__raw_str_term_and_pad))
+                raise kaitaistruct.ConsistencyError("raw(str_term_and_pad)", 20, len(self._raw__raw_str_term_and_pad))
             if KaitaiStream.byte_array_index_of(self._raw__raw_str_term_and_pad, 64) != -1:
-                raise kaitaistruct.ConsistencyError(u"raw(str_term_and_pad)", -1, KaitaiStream.byte_array_index_of(self._raw__raw_str_term_and_pad, 64))
+                raise kaitaistruct.ConsistencyError("raw(str_term_and_pad)", -1, KaitaiStream.byte_array_index_of(self._raw__raw_str_term_and_pad, 64))
             if len(self._raw__raw_str_term_and_pad) == 20:
                 pass
-                if  ((len(self._raw__raw_str_term_and_pad) != 0) and (KaitaiStream.byte_array_index(self._raw__raw_str_term_and_pad, -1) == 43)) :
-                    raise kaitaistruct.ConsistencyError(u"raw(str_term_and_pad)", 43, KaitaiStream.byte_array_index(self._raw__raw_str_term_and_pad, -1))
+                if  ((len(self._raw__raw_str_term_and_pad) != 0) and (self._raw__raw_str_term_and_pad[-1] == 43)) :
+                    raise kaitaistruct.ConsistencyError("raw(str_term_and_pad)", 43, self._raw__raw_str_term_and_pad[-1])
 
             parent.write_bytes_limit(self._raw__raw_str_term_and_pad, 20, 64, 43)
         _io__raw_str_term_and_pad.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.str_term_and_pad._write__seq(_io__raw_str_term_and_pad)
-        _io__raw_str_term_include = KaitaiStream(BytesIO(bytearray(self.str_term_include__inner_size)))
+        _io__raw_str_term_include = KaitaiStream(BytesIO(bytes(self.str_term_include__inner_size)))
         self._io.add_child_stream(_io__raw_str_term_include)
         _pos2 = self._io.pos()
         self._io.seek(self._io.pos() + (20))
@@ -111,18 +111,18 @@ class ProcessStructPadTerm(ReadWriteKaitaiStruct):
             self._raw_str_term_include = _io__raw_str_term_include.to_byte_array()
             self._raw__raw_str_term_include = KaitaiStream.process_xor_one(self._raw_str_term_include, _process_val)
             if len(self._raw__raw_str_term_include) > 20:
-                raise kaitaistruct.ConsistencyError(u"raw(str_term_include)", 20, len(self._raw__raw_str_term_include))
+                raise kaitaistruct.ConsistencyError("raw(str_term_include)", 20, len(self._raw__raw_str_term_include))
             if len(self._raw__raw_str_term_include) < 20:
                 pass
                 if len(self._raw__raw_str_term_include) == 0:
-                    raise kaitaistruct.ConsistencyError(u"raw(str_term_include)", 0, len(self._raw__raw_str_term_include))
+                    raise kaitaistruct.ConsistencyError("raw(str_term_include)", 0, len(self._raw__raw_str_term_include))
                 if KaitaiStream.byte_array_index_of(self._raw__raw_str_term_include, 64) != len(self._raw__raw_str_term_include) - 1:
-                    raise kaitaistruct.ConsistencyError(u"raw(str_term_include)", len(self._raw__raw_str_term_include) - 1, KaitaiStream.byte_array_index_of(self._raw__raw_str_term_include, 64))
+                    raise kaitaistruct.ConsistencyError("raw(str_term_include)", len(self._raw__raw_str_term_include) - 1, KaitaiStream.byte_array_index_of(self._raw__raw_str_term_include, 64))
 
             if len(self._raw__raw_str_term_include) == 20:
                 pass
                 if  ((KaitaiStream.byte_array_index_of(self._raw__raw_str_term_include, 64) != -1) and (KaitaiStream.byte_array_index_of(self._raw__raw_str_term_include, 64) != len(self._raw__raw_str_term_include) - 1)) :
-                    raise kaitaistruct.ConsistencyError(u"raw(str_term_include)", len(self._raw__raw_str_term_include) - 1, KaitaiStream.byte_array_index_of(self._raw__raw_str_term_include, 64))
+                    raise kaitaistruct.ConsistencyError("raw(str_term_include)", len(self._raw__raw_str_term_include) - 1, KaitaiStream.byte_array_index_of(self._raw__raw_str_term_include, 64))
 
             parent.write_bytes_limit(self._raw__raw_str_term_include, 20, 0, 0)
         _io__raw_str_term_include.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
@@ -131,26 +131,26 @@ class ProcessStructPadTerm(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.str_pad._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"str_pad", self._root, self.str_pad._root)
+            raise kaitaistruct.ConsistencyError("str_pad", self._root, self.str_pad._root)
         if self.str_pad._parent != self:
-            raise kaitaistruct.ConsistencyError(u"str_pad", self, self.str_pad._parent)
+            raise kaitaistruct.ConsistencyError("str_pad", self, self.str_pad._parent)
         if self.str_term._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"str_term", self._root, self.str_term._root)
+            raise kaitaistruct.ConsistencyError("str_term", self._root, self.str_term._root)
         if self.str_term._parent != self:
-            raise kaitaistruct.ConsistencyError(u"str_term", self, self.str_term._parent)
+            raise kaitaistruct.ConsistencyError("str_term", self, self.str_term._parent)
         if self.str_term_and_pad._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"str_term_and_pad", self._root, self.str_term_and_pad._root)
+            raise kaitaistruct.ConsistencyError("str_term_and_pad", self._root, self.str_term_and_pad._root)
         if self.str_term_and_pad._parent != self:
-            raise kaitaistruct.ConsistencyError(u"str_term_and_pad", self, self.str_term_and_pad._parent)
+            raise kaitaistruct.ConsistencyError("str_term_and_pad", self, self.str_term_and_pad._parent)
         if self.str_term_include._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"str_term_include", self._root, self.str_term_include._root)
+            raise kaitaistruct.ConsistencyError("str_term_include", self._root, self.str_term_include._root)
         if self.str_term_include._parent != self:
-            raise kaitaistruct.ConsistencyError(u"str_term_include", self, self.str_term_include._parent)
+            raise kaitaistruct.ConsistencyError("str_term_include", self, self.str_term_include._parent)
         self._dirty = False
 
     class BytesWrapper(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(ProcessStructPadTerm.BytesWrapper, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -164,10 +164,10 @@ class ProcessStructPadTerm(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(ProcessStructPadTerm.BytesWrapper, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_bytes(self.value)
             if not self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"value", 0, self._io.size() - self._io.pos())
+                raise kaitaistruct.ConsistencyError("value", 0, self._io.size() - self._io.pos())
 
 
         def _check(self):

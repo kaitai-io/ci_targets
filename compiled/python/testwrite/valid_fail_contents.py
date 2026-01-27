@@ -6,18 +6,18 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ValidFailContents(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ValidFailContents, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self.foo = self._io.read_bytes(2)
         if not self.foo == b"\x51\x41":
-            raise kaitaistruct.ValidationNotEqualError(b"\x51\x41", self.foo, self._io, u"/seq/0")
+            raise kaitaistruct.ValidationNotEqualError(b"\x51\x41", self.foo, self._io, "/seq/0")
         self._dirty = False
 
 
@@ -26,15 +26,15 @@ class ValidFailContents(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ValidFailContents, self)._write__seq(io)
+        super()._write__seq(io)
         self._io.write_bytes(self.foo)
 
 
     def _check(self):
         if len(self.foo) != 2:
-            raise kaitaistruct.ConsistencyError(u"foo", 2, len(self.foo))
+            raise kaitaistruct.ConsistencyError("foo", 2, len(self.foo))
         if not self.foo == b"\x51\x41":
-            raise kaitaistruct.ValidationNotEqualError(b"\x51\x41", self.foo, None, u"/seq/0")
+            raise kaitaistruct.ValidationNotEqualError(b"\x51\x41", self.foo, None, "/seq/0")
         self._dirty = False
 
 

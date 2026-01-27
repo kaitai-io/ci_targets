@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ProcessCoerceBytes(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ProcessCoerceBytes, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -35,7 +35,7 @@ class ProcessCoerceBytes(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ProcessCoerceBytes, self)._write__seq(io)
+        super()._write__seq(io)
         for i in range(len(self.records)):
             pass
             self.records[i]._write__seq(self._io)
@@ -44,19 +44,19 @@ class ProcessCoerceBytes(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.records) != 2:
-            raise kaitaistruct.ConsistencyError(u"records", 2, len(self.records))
+            raise kaitaistruct.ConsistencyError("records", 2, len(self.records))
         for i in range(len(self.records)):
             pass
             if self.records[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"records", self._root, self.records[i]._root)
+                raise kaitaistruct.ConsistencyError("records", self._root, self.records[i]._root)
             if self.records[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"records", self, self.records[i]._parent)
+                raise kaitaistruct.ConsistencyError("records", self, self.records[i]._parent)
 
         self._dirty = False
 
     class Record(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(ProcessCoerceBytes.Record, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -85,7 +85,7 @@ class ProcessCoerceBytes(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(ProcessCoerceBytes.Record, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u1(self.flag)
             if self.flag == 0:
                 pass
@@ -95,7 +95,7 @@ class ProcessCoerceBytes(ReadWriteKaitaiStruct):
                 pass
                 self._raw_buf_proc = KaitaiStream.process_xor_one(self.buf_proc, 170)
                 if len(self._raw_buf_proc) != 4:
-                    raise kaitaistruct.ConsistencyError(u"buf_proc", 4, len(self._raw_buf_proc))
+                    raise kaitaistruct.ConsistencyError("buf_proc", 4, len(self._raw_buf_proc))
                 self._io.write_bytes(self._raw_buf_proc)
 
 
@@ -104,7 +104,7 @@ class ProcessCoerceBytes(ReadWriteKaitaiStruct):
             if self.flag == 0:
                 pass
                 if len(self.buf_unproc) != 4:
-                    raise kaitaistruct.ConsistencyError(u"buf_unproc", 4, len(self.buf_unproc))
+                    raise kaitaistruct.ConsistencyError("buf_unproc", 4, len(self.buf_unproc))
 
             if self.flag != 0:
                 pass

@@ -7,7 +7,7 @@ from enum import IntEnum
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class BitsEnum(ReadWriteKaitaiStruct):
 
@@ -17,7 +17,7 @@ class BitsEnum(ReadWriteKaitaiStruct):
         horse = 4
         platypus = 5
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(BitsEnum, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -33,7 +33,7 @@ class BitsEnum(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(BitsEnum, self)._write__seq(io)
+        super()._write__seq(io)
         self._io.write_bits_int_be(4, int(self.one))
         self._io.write_bits_int_be(8, int(self.two))
         self._io.write_bits_int_be(1, int(self.three))

@@ -11,7 +11,7 @@ switch_manual_str__opcode__strval = Struct(
 
 switch_manual_str__opcode = Struct(
 	'code' / FixedSized(1, GreedyString(encoding='ASCII')),
-	'body' / Switch(this.code, {u"I": LazyBound(lambda: switch_manual_str__opcode__intval), u"S": LazyBound(lambda: switch_manual_str__opcode__strval), }),
+	'body' / Switch(this.code, {"I": LazyBound(lambda: switch_manual_str__opcode__intval), "S": LazyBound(lambda: switch_manual_str__opcode__strval), }),
 )
 
 switch_manual_str = Struct(

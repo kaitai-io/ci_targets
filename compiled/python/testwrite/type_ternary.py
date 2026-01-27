@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class TypeTernary(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(TypeTernary, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -40,22 +40,22 @@ class TypeTernary(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(TypeTernary, self)._write__seq(io)
+        super()._write__seq(io)
         if (not (self.is_hack)):
             pass
-            _io__raw_dif_wo_hack = KaitaiStream(BytesIO(bytearray(1)))
+            _io__raw_dif_wo_hack = KaitaiStream(BytesIO(bytes(1)))
             self._io.add_child_stream(_io__raw_dif_wo_hack)
             _pos2 = self._io.pos()
             self._io.seek(self._io.pos() + (1))
             def handler(parent, _io__raw_dif_wo_hack=_io__raw_dif_wo_hack):
                 self._raw_dif_wo_hack = _io__raw_dif_wo_hack.to_byte_array()
                 if len(self._raw_dif_wo_hack) != 1:
-                    raise kaitaistruct.ConsistencyError(u"raw(dif_wo_hack)", 1, len(self._raw_dif_wo_hack))
+                    raise kaitaistruct.ConsistencyError("raw(dif_wo_hack)", 1, len(self._raw_dif_wo_hack))
                 parent.write_bytes(self._raw_dif_wo_hack)
             _io__raw_dif_wo_hack.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self.dif_wo_hack._write__seq(_io__raw_dif_wo_hack)
 
-        _io__raw_dif_with_hack = KaitaiStream(BytesIO(bytearray(1)))
+        _io__raw_dif_with_hack = KaitaiStream(BytesIO(bytes(1)))
         self._io.add_child_stream(_io__raw_dif_with_hack)
         _pos2 = self._io.pos()
         self._io.seek(self._io.pos() + (1))
@@ -64,7 +64,7 @@ class TypeTernary(ReadWriteKaitaiStruct):
             self._raw_dif_with_hack = _io__raw_dif_with_hack.to_byte_array()
             self._raw__raw_dif_with_hack = KaitaiStream.process_xor_one(self._raw_dif_with_hack, _process_val)
             if len(self._raw__raw_dif_with_hack) != 1:
-                raise kaitaistruct.ConsistencyError(u"raw(dif_with_hack)", 1, len(self._raw__raw_dif_with_hack))
+                raise kaitaistruct.ConsistencyError("raw(dif_with_hack)", 1, len(self._raw__raw_dif_with_hack))
             parent.write_bytes(self._raw__raw_dif_with_hack)
         _io__raw_dif_with_hack.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.dif_with_hack._write__seq(_io__raw_dif_with_hack)
@@ -74,19 +74,19 @@ class TypeTernary(ReadWriteKaitaiStruct):
         if (not (self.is_hack)):
             pass
             if self.dif_wo_hack._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"dif_wo_hack", self._root, self.dif_wo_hack._root)
+                raise kaitaistruct.ConsistencyError("dif_wo_hack", self._root, self.dif_wo_hack._root)
             if self.dif_wo_hack._parent != self:
-                raise kaitaistruct.ConsistencyError(u"dif_wo_hack", self, self.dif_wo_hack._parent)
+                raise kaitaistruct.ConsistencyError("dif_wo_hack", self, self.dif_wo_hack._parent)
 
         if self.dif_with_hack._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"dif_with_hack", self._root, self.dif_with_hack._root)
+            raise kaitaistruct.ConsistencyError("dif_with_hack", self._root, self.dif_with_hack._root)
         if self.dif_with_hack._parent != self:
-            raise kaitaistruct.ConsistencyError(u"dif_with_hack", self, self.dif_with_hack._parent)
+            raise kaitaistruct.ConsistencyError("dif_with_hack", self, self.dif_with_hack._parent)
         self._dirty = False
 
     class Dummy(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(TypeTernary.Dummy, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -100,7 +100,7 @@ class TypeTernary(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(TypeTernary.Dummy, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u1(self.value)
 
 

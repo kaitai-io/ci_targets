@@ -6,11 +6,11 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class NestedTypes(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(NestedTypes, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -27,7 +27,7 @@ class NestedTypes(KaitaiStruct):
 
     class SubtypeA(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            super(NestedTypes.SubtypeA, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -44,7 +44,7 @@ class NestedTypes(KaitaiStruct):
 
         class SubtypeC(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
-                super(NestedTypes.SubtypeA.SubtypeC, self).__init__(_io)
+                super().__init__(_io)
                 self._parent = _parent
                 self._root = _root
                 self._read()
@@ -60,7 +60,7 @@ class NestedTypes(KaitaiStruct):
 
     class SubtypeB(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            super(NestedTypes.SubtypeB, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()

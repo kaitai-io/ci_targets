@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ExprIfIntOps(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ExprIfIntOps, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -40,7 +40,7 @@ class ExprIfIntOps(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ExprIfIntOps, self)._write__seq(io)
+        super()._write__seq(io)
         if True:
             pass
             self._io.write_u8le(self.key)
@@ -48,7 +48,7 @@ class ExprIfIntOps(ReadWriteKaitaiStruct):
         self._io.write_bytes(self.skip)
         self._raw_bytes = KaitaiStream.process_xor_one(self.bytes, self.key)
         if len(self._raw_bytes) != 8:
-            raise kaitaistruct.ConsistencyError(u"bytes", 8, len(self._raw_bytes))
+            raise kaitaistruct.ConsistencyError("bytes", 8, len(self._raw_bytes))
         self._io.write_bytes(self._raw_bytes)
         for i in range(len(self.items)):
             pass
@@ -61,9 +61,9 @@ class ExprIfIntOps(ReadWriteKaitaiStruct):
             pass
 
         if len(self.skip) != 8:
-            raise kaitaistruct.ConsistencyError(u"skip", 8, len(self.skip))
+            raise kaitaistruct.ConsistencyError("skip", 8, len(self.skip))
         if len(self.items) != 4:
-            raise kaitaistruct.ConsistencyError(u"items", 4, len(self.items))
+            raise kaitaistruct.ConsistencyError("items", 4, len(self.items))
         for i in range(len(self.items)):
             pass
 
@@ -74,7 +74,7 @@ class ExprIfIntOps(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_bytes_sub_key'):
             return self._m_bytes_sub_key
 
-        self._m_bytes_sub_key = KaitaiStream.byte_array_index(self.bytes, self.key)
+        self._m_bytes_sub_key = self.bytes[self.key]
         return getattr(self, '_m_bytes_sub_key', None)
 
     def _invalidate_bytes_sub_key(self):

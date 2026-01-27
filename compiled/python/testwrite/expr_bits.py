@@ -7,7 +7,7 @@ from enum import IntEnum
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ExprBits(ReadWriteKaitaiStruct):
 
@@ -15,7 +15,7 @@ class ExprBits(ReadWriteKaitaiStruct):
         foo = 1
         bar = 2
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ExprBits, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_inst_pos = False
@@ -54,7 +54,7 @@ class ExprBits(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ExprBits, self)._write__seq(io)
+        super()._write__seq(io)
         self._should_write_inst_pos = self.inst_pos__enabled
         self._io.write_bits_int_be(2, int(self.enum_seq))
         self._io.write_bits_int_be(3, self.a)
@@ -72,9 +72,9 @@ class ExprBits(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.byte_size) != self.a:
-            raise kaitaistruct.ConsistencyError(u"byte_size", self.a, len(self.byte_size))
+            raise kaitaistruct.ConsistencyError("byte_size", self.a, len(self.byte_size))
         if len(self.repeat_expr) != self.a:
-            raise kaitaistruct.ConsistencyError(u"repeat_expr", self.a, len(self.repeat_expr))
+            raise kaitaistruct.ConsistencyError("repeat_expr", self.a, len(self.repeat_expr))
         for i in range(len(self.repeat_expr)):
             pass
 
@@ -82,9 +82,9 @@ class ExprBits(ReadWriteKaitaiStruct):
         if _on == 2:
             pass
         if self.switch_on_endian._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"switch_on_endian", self._root, self.switch_on_endian._root)
+            raise kaitaistruct.ConsistencyError("switch_on_endian", self._root, self.switch_on_endian._root)
         if self.switch_on_endian._parent != self:
-            raise kaitaistruct.ConsistencyError(u"switch_on_endian", self, self.switch_on_endian._parent)
+            raise kaitaistruct.ConsistencyError("switch_on_endian", self, self.switch_on_endian._parent)
         if self.inst_pos__enabled:
             pass
 
@@ -92,7 +92,7 @@ class ExprBits(ReadWriteKaitaiStruct):
 
     class EndianSwitch(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(ExprBits.EndianSwitch, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -126,7 +126,7 @@ class ExprBits(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(ExprBits.EndianSwitch, self)._write__seq(io)
+            super()._write__seq(io)
             if not hasattr(self, '_is_le'):
                 raise kaitaistruct.UndecidedEndiannessError("/types/endian_switch")
             elif self._is_le == True:

@@ -8,11 +8,11 @@ import nested.deeply
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ProcessCustom(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ProcessCustom, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -35,22 +35,22 @@ class ProcessCustom(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ProcessCustom, self)._write__seq(io)
+        super()._write__seq(io)
         _process_buf1 = MyCustomFx(7, True, b"\x20\x30\x40")
         self._raw_buf1 = _process_buf1.encode(self.buf1)
         if len(self._raw_buf1) != 5:
-            raise kaitaistruct.ConsistencyError(u"buf1", 5, len(self._raw_buf1))
+            raise kaitaistruct.ConsistencyError("buf1", 5, len(self._raw_buf1))
         self._io.write_bytes(self._raw_buf1)
         _process_buf2 = nested.deeply.CustomFx(7)
         self._raw_buf2 = _process_buf2.encode(self.buf2)
         if len(self._raw_buf2) != 5:
-            raise kaitaistruct.ConsistencyError(u"buf2", 5, len(self._raw_buf2))
+            raise kaitaistruct.ConsistencyError("buf2", 5, len(self._raw_buf2))
         self._io.write_bytes(self._raw_buf2)
         self._io.write_u1(self.key)
         _process_buf3 = MyCustomFx(self.key, False, b"\x00")
         self._raw_buf3 = _process_buf3.encode(self.buf3)
         if len(self._raw_buf3) != 5:
-            raise kaitaistruct.ConsistencyError(u"buf3", 5, len(self._raw_buf3))
+            raise kaitaistruct.ConsistencyError("buf3", 5, len(self._raw_buf3))
         self._io.write_bytes(self._raw_buf3)
 
 

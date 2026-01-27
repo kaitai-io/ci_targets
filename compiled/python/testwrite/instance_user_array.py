@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class InstanceUserArray(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(InstanceUserArray, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_user_entries = False
@@ -36,7 +36,7 @@ class InstanceUserArray(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(InstanceUserArray, self)._write__seq(io)
+        super()._write__seq(io)
         self._should_write_user_entries = self.user_entries__enabled
         self._io.write_u4le(self.ofs)
         self._io.write_u4le(self.entry_size)
@@ -49,13 +49,13 @@ class InstanceUserArray(ReadWriteKaitaiStruct):
             if self.ofs > 0:
                 pass
                 if len(self._m_user_entries) != self.qty_entries:
-                    raise kaitaistruct.ConsistencyError(u"user_entries", self.qty_entries, len(self._m_user_entries))
+                    raise kaitaistruct.ConsistencyError("user_entries", self.qty_entries, len(self._m_user_entries))
                 for i in range(len(self._m_user_entries)):
                     pass
                     if self._m_user_entries[i]._root != self._root:
-                        raise kaitaistruct.ConsistencyError(u"user_entries", self._root, self._m_user_entries[i]._root)
+                        raise kaitaistruct.ConsistencyError("user_entries", self._root, self._m_user_entries[i]._root)
                     if self._m_user_entries[i]._parent != self:
-                        raise kaitaistruct.ConsistencyError(u"user_entries", self, self._m_user_entries[i]._parent)
+                        raise kaitaistruct.ConsistencyError("user_entries", self, self._m_user_entries[i]._parent)
 
 
 
@@ -63,7 +63,7 @@ class InstanceUserArray(ReadWriteKaitaiStruct):
 
     class Entry(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(InstanceUserArray.Entry, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -78,7 +78,7 @@ class InstanceUserArray(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(InstanceUserArray.Entry, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u2le(self.word1)
             self._io.write_u2le(self.word2)
 
@@ -130,14 +130,14 @@ class InstanceUserArray(ReadWriteKaitaiStruct):
             self._raw__m_user_entries = []
             for i in range(len(self._m_user_entries)):
                 pass
-                _io__raw__m_user_entries = KaitaiStream(BytesIO(bytearray(self.entry_size)))
+                _io__raw__m_user_entries = KaitaiStream(BytesIO(bytes(self.entry_size)))
                 self._io.add_child_stream(_io__raw__m_user_entries)
                 _pos2 = self._io.pos()
                 self._io.seek(self._io.pos() + (self.entry_size))
                 def handler(parent, _io__raw__m_user_entries=_io__raw__m_user_entries, i=i):
                     self._raw__m_user_entries.append(_io__raw__m_user_entries.to_byte_array())
                     if len(self._raw__m_user_entries[i]) != self.entry_size:
-                        raise kaitaistruct.ConsistencyError(u"raw(user_entries)", self.entry_size, len(self._raw__m_user_entries[i]))
+                        raise kaitaistruct.ConsistencyError("raw(user_entries)", self.entry_size, len(self._raw__m_user_entries[i]))
                     parent.write_bytes(self._raw__m_user_entries[i])
                 _io__raw__m_user_entries.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
                 self._m_user_entries[i]._write__seq(_io__raw__m_user_entries)

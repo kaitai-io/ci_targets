@@ -7,7 +7,7 @@ from enum import IntEnum
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class TsPacketHeader(ReadWriteKaitaiStruct):
     """describes the first 4 header bytes of a TS Packet header
@@ -19,7 +19,7 @@ class TsPacketHeader(ReadWriteKaitaiStruct):
         adaptation_field_only = 2
         adaptation_field_and_payload = 3
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(TsPacketHeader, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -41,7 +41,7 @@ class TsPacketHeader(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(TsPacketHeader, self)._write__seq(io)
+        super()._write__seq(io)
         self._io.write_u1(self.sync_byte)
         self._io.write_bits_int_be(1, int(self.transport_error_indicator))
         self._io.write_bits_int_be(1, int(self.payload_unit_start_indicator))
@@ -55,7 +55,7 @@ class TsPacketHeader(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.ts_packet_remain) != 184:
-            raise kaitaistruct.ConsistencyError(u"ts_packet_remain", 184, len(self.ts_packet_remain))
+            raise kaitaistruct.ConsistencyError("ts_packet_remain", 184, len(self.ts_packet_remain))
         self._dirty = False
 
 

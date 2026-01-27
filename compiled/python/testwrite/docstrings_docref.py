@@ -6,7 +6,7 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class DocstringsDocref(ReadWriteKaitaiStruct):
     """Another one-liner.
@@ -15,7 +15,7 @@ class DocstringsDocref(ReadWriteKaitaiStruct):
        Source - http://www.example.com/some/path/?even_with=query&more=2
     """
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(DocstringsDocref, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_parse_inst = False
@@ -37,7 +37,7 @@ class DocstringsDocref(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(DocstringsDocref, self)._write__seq(io)
+        super()._write__seq(io)
         self._should_write_parse_inst = self.parse_inst__enabled
         self._io.write_u1(self.one)
         self._io.write_u1(self.two)

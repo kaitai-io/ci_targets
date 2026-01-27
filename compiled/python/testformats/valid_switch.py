@@ -6,11 +6,11 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ValidSwitch(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(ValidSwitch, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -18,7 +18,7 @@ class ValidSwitch(KaitaiStruct):
     def _read(self):
         self.a = self._io.read_u1()
         if not self.a == 80:
-            raise kaitaistruct.ValidationNotEqualError(80, self.a, self._io, u"/seq/0")
+            raise kaitaistruct.ValidationNotEqualError(80, self.a, self._io, "/seq/0")
         _on = self.a
         if _on == 80:
             pass
@@ -27,7 +27,7 @@ class ValidSwitch(KaitaiStruct):
             pass
             self.b = self._io.read_u2be()
         if not self.b == 17217:
-            raise kaitaistruct.ValidationNotEqualError(17217, self.b, self._io, u"/seq/1")
+            raise kaitaistruct.ValidationNotEqualError(17217, self.b, self._io, "/seq/1")
 
 
     def _fetch_instances(self):

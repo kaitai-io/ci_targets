@@ -6,11 +6,11 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class Expr2(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(Expr2, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -27,14 +27,14 @@ class Expr2(KaitaiStruct):
 
     class ModStr(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            super(Expr2.ModStr, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
 
         def _read(self):
             self.len_orig = self._io.read_u2le()
-            self.str = (self._io.read_bytes(self.len_mod)).decode(u"UTF-8")
+            self.str = (self._io.read_bytes(self.len_mod)).decode("UTF-8")
             self._raw_rest = self._io.read_bytes(3)
             _io__raw_rest = KaitaiStream(BytesIO(self._raw_rest))
             self.rest = Expr2.Tuple(_io__raw_rest, self, self._root)
@@ -60,7 +60,7 @@ class Expr2(KaitaiStruct):
 
             _pos = self._io.pos()
             self._io.seek(5)
-            self._m_char5 = (self._io.read_bytes(1)).decode(u"ASCII")
+            self._m_char5 = (self._io.read_bytes(1)).decode("ASCII")
             self._io.seek(_pos)
             return getattr(self, '_m_char5', None)
 
@@ -86,7 +86,7 @@ class Expr2(KaitaiStruct):
 
     class Tuple(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            super(Expr2.Tuple, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()

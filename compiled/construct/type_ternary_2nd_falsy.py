@@ -19,8 +19,8 @@ type_ternary_2nd_falsy = Struct(
 	'v_int_neg_zero' / Computed(lambda this: (0 if this.t else -20)),
 	'v_int_zero' / Computed(lambda this: (0 if this.t else 10)),
 	'v_null_ut' / Computed(lambda this: (this.null_ut if this.t else this.ut)),
-	'v_str_empty' / Computed(lambda this: (u"" if this.t else u"kaitai")),
-	'v_str_w_zero' / Computed(lambda this: (u"0" if this.t else u"30")),
+	'v_str_empty' / Computed(lambda this: ("" if this.t else "kaitai")),
+	'v_str_w_zero' / Computed(lambda this: ("0" if this.t else "30")),
 )
 
 _schema = type_ternary_2nd_falsy

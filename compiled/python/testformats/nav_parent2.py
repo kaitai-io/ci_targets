@@ -6,11 +6,11 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class NavParent2(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(NavParent2, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -33,13 +33,13 @@ class NavParent2(KaitaiStruct):
 
     class Tag(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            super(NavParent2.Tag, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
 
         def _read(self):
-            self.name = (self._io.read_bytes(4)).decode(u"ASCII")
+            self.name = (self._io.read_bytes(4)).decode("ASCII")
             self.ofs = self._io.read_u4le()
             self.num_items = self._io.read_u4le()
 
@@ -50,20 +50,20 @@ class NavParent2(KaitaiStruct):
             if hasattr(self, '_m_tag_content'):
                 pass
                 _on = self.name
-                if _on == u"RAHC":
+                if _on == "RAHC":
                     pass
                     self._m_tag_content._fetch_instances()
 
 
         class TagChar(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
-                super(NavParent2.Tag.TagChar, self).__init__(_io)
+                super().__init__(_io)
                 self._parent = _parent
                 self._root = _root
                 self._read()
 
             def _read(self):
-                self.content = (self._io.read_bytes(self._parent.num_items)).decode(u"ASCII")
+                self.content = (self._io.read_bytes(self._parent.num_items)).decode("ASCII")
 
 
             def _fetch_instances(self):
@@ -79,7 +79,7 @@ class NavParent2(KaitaiStruct):
             _pos = io.pos()
             io.seek(self.ofs)
             _on = self.name
-            if _on == u"RAHC":
+            if _on == "RAHC":
                 pass
                 self._m_tag_content = NavParent2.Tag.TagChar(io, self, self._root)
             io.seek(_pos)

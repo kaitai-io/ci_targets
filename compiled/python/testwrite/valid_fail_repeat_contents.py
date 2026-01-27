@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ValidFailRepeatContents(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ValidFailRepeatContents, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -20,7 +20,7 @@ class ValidFailRepeatContents(ReadWriteKaitaiStruct):
         while not self._io.is_eof():
             self.foo.append(self._io.read_bytes(4))
             if not self.foo[i] == b"\x12\x34\x56\x78":
-                raise kaitaistruct.ValidationNotEqualError(b"\x12\x34\x56\x78", self.foo[i], self._io, u"/seq/0")
+                raise kaitaistruct.ValidationNotEqualError(b"\x12\x34\x56\x78", self.foo[i], self._io, "/seq/0")
             i += 1
 
         self._dirty = False
@@ -34,24 +34,24 @@ class ValidFailRepeatContents(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ValidFailRepeatContents, self)._write__seq(io)
+        super()._write__seq(io)
         for i in range(len(self.foo)):
             pass
             if self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"foo", 0, self._io.size() - self._io.pos())
+                raise kaitaistruct.ConsistencyError("foo", 0, self._io.size() - self._io.pos())
             self._io.write_bytes(self.foo[i])
 
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"foo", 0, self._io.size() - self._io.pos())
+            raise kaitaistruct.ConsistencyError("foo", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):
         for i in range(len(self.foo)):
             pass
             if len(self.foo[i]) != 4:
-                raise kaitaistruct.ConsistencyError(u"foo", 4, len(self.foo[i]))
+                raise kaitaistruct.ConsistencyError("foo", 4, len(self.foo[i]))
             if not self.foo[i] == b"\x12\x34\x56\x78":
-                raise kaitaistruct.ValidationNotEqualError(b"\x12\x34\x56\x78", self.foo[i], None, u"/seq/0")
+                raise kaitaistruct.ValidationNotEqualError(b"\x12\x34\x56\x78", self.foo[i], None, "/seq/0")
 
         self._dirty = False
 

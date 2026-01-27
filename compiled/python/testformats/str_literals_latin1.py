@@ -6,18 +6,18 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class StrLiteralsLatin1(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(StrLiteralsLatin1, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
 
     def _read(self):
         self.len_parsed = self._io.read_u2le()
-        self.parsed = (self._io.read_bytes(self.len_parsed)).decode(u"UTF-8")
+        self.parsed = (self._io.read_bytes(self.len_parsed)).decode("UTF-8")
 
 
     def _fetch_instances(self):
@@ -28,7 +28,7 @@ class StrLiteralsLatin1(KaitaiStruct):
         if hasattr(self, '_m_parsed_eq_literal'):
             return self._m_parsed_eq_literal
 
-        self._m_parsed_eq_literal = self.parsed == u"\243"
+        self._m_parsed_eq_literal = self.parsed == "\243"
         return getattr(self, '_m_parsed_eq_literal', None)
 
 

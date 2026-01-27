@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ParamsCall(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ParamsCall, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -29,37 +29,37 @@ class ParamsCall(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ParamsCall, self)._write__seq(io)
+        super()._write__seq(io)
         self.buf1._write__seq(self._io)
         self.buf2._write__seq(self._io)
 
 
     def _check(self):
         if self.buf1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"buf1", self._root, self.buf1._root)
+            raise kaitaistruct.ConsistencyError("buf1", self._root, self.buf1._root)
         if self.buf1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"buf1", self, self.buf1._parent)
+            raise kaitaistruct.ConsistencyError("buf1", self, self.buf1._parent)
         if self.buf1.len != 5:
-            raise kaitaistruct.ConsistencyError(u"buf1", 5, self.buf1.len)
+            raise kaitaistruct.ConsistencyError("buf1", 5, self.buf1.len)
         if self.buf2._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"buf2", self._root, self.buf2._root)
+            raise kaitaistruct.ConsistencyError("buf2", self._root, self.buf2._root)
         if self.buf2._parent != self:
-            raise kaitaistruct.ConsistencyError(u"buf2", self, self.buf2._parent)
+            raise kaitaistruct.ConsistencyError("buf2", self, self.buf2._parent)
         if self.buf2.len != 2 + 3:
-            raise kaitaistruct.ConsistencyError(u"buf2", 2 + 3, self.buf2.len)
+            raise kaitaistruct.ConsistencyError("buf2", 2 + 3, self.buf2.len)
         if self.buf2.has_trailer != True:
-            raise kaitaistruct.ConsistencyError(u"buf2", True, self.buf2.has_trailer)
+            raise kaitaistruct.ConsistencyError("buf2", True, self.buf2.has_trailer)
         self._dirty = False
 
     class MyStr1(ReadWriteKaitaiStruct):
         def __init__(self, len, _io=None, _parent=None, _root=None):
-            super(ParamsCall.MyStr1, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self.len = len
 
         def _read(self):
-            self.body = (self._io.read_bytes(self.len)).decode(u"UTF-8")
+            self.body = (self._io.read_bytes(self.len)).decode("UTF-8")
             self._dirty = False
 
 
@@ -68,26 +68,26 @@ class ParamsCall(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(ParamsCall.MyStr1, self)._write__seq(io)
-            self._io.write_bytes((self.body).encode(u"UTF-8"))
+            super()._write__seq(io)
+            self._io.write_bytes((self.body).encode("UTF-8"))
 
 
         def _check(self):
-            if len((self.body).encode(u"UTF-8")) != self.len:
-                raise kaitaistruct.ConsistencyError(u"body", self.len, len((self.body).encode(u"UTF-8")))
+            if len((self.body).encode("UTF-8")) != self.len:
+                raise kaitaistruct.ConsistencyError("body", self.len, len((self.body).encode("UTF-8")))
             self._dirty = False
 
 
     class MyStr2(ReadWriteKaitaiStruct):
         def __init__(self, len, has_trailer, _io=None, _parent=None, _root=None):
-            super(ParamsCall.MyStr2, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self.len = len
             self.has_trailer = has_trailer
 
         def _read(self):
-            self.body = (self._io.read_bytes(self.len)).decode(u"UTF-8")
+            self.body = (self._io.read_bytes(self.len)).decode("UTF-8")
             if self.has_trailer:
                 pass
                 self.trailer = self._io.read_u1()
@@ -103,8 +103,8 @@ class ParamsCall(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(ParamsCall.MyStr2, self)._write__seq(io)
-            self._io.write_bytes((self.body).encode(u"UTF-8"))
+            super()._write__seq(io)
+            self._io.write_bytes((self.body).encode("UTF-8"))
             if self.has_trailer:
                 pass
                 self._io.write_u1(self.trailer)
@@ -112,8 +112,8 @@ class ParamsCall(ReadWriteKaitaiStruct):
 
 
         def _check(self):
-            if len((self.body).encode(u"UTF-8")) != self.len:
-                raise kaitaistruct.ConsistencyError(u"body", self.len, len((self.body).encode(u"UTF-8")))
+            if len((self.body).encode("UTF-8")) != self.len:
+                raise kaitaistruct.ConsistencyError("body", self.len, len((self.body).encode("UTF-8")))
             if self.has_trailer:
                 pass
 

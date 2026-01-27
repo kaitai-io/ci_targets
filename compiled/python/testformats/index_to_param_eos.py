@@ -6,11 +6,11 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class IndexToParamEos(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(IndexToParamEos, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -41,14 +41,14 @@ class IndexToParamEos(KaitaiStruct):
 
     class Block(KaitaiStruct):
         def __init__(self, idx, _io, _parent=None, _root=None):
-            super(IndexToParamEos.Block, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self.idx = idx
             self._read()
 
         def _read(self):
-            self.buf = (self._io.read_bytes(self._root.sizes[self.idx])).decode(u"ASCII")
+            self.buf = (self._io.read_bytes(self._root.sizes[self.idx])).decode("ASCII")
 
 
         def _fetch_instances(self):

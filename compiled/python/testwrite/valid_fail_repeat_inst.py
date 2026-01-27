@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ValidFailRepeatInst(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ValidFailRepeatInst, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_inst = False
@@ -39,12 +39,12 @@ class ValidFailRepeatInst(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ValidFailRepeatInst, self)._write__seq(io)
+        super()._write__seq(io)
         self._should_write_inst = self.inst__enabled
         if len(self.inst) == 0:
             pass
             if len(self.a) != 0:
-                raise kaitaistruct.ConsistencyError(u"a", 0, len(self.a))
+                raise kaitaistruct.ConsistencyError("a", 0, len(self.a))
             self._io.write_bytes(self.a)
 
 
@@ -55,7 +55,7 @@ class ValidFailRepeatInst(ReadWriteKaitaiStruct):
             for i in range(len(self._m_inst)):
                 pass
                 if not self._m_inst[i] == 305419896:
-                    raise kaitaistruct.ValidationNotEqualError(305419896, self._m_inst[i], None, u"/instances/inst")
+                    raise kaitaistruct.ValidationNotEqualError(305419896, self._m_inst[i], None, "/instances/inst")
 
 
         self._dirty = False
@@ -77,7 +77,7 @@ class ValidFailRepeatInst(ReadWriteKaitaiStruct):
         while not self._io.is_eof():
             self._m_inst.append(self._io.read_u4be())
             if not self._m_inst[i] == 305419896:
-                raise kaitaistruct.ValidationNotEqualError(305419896, self._m_inst[i], self._io, u"/instances/inst")
+                raise kaitaistruct.ValidationNotEqualError(305419896, self._m_inst[i], self._io, "/instances/inst")
             i += 1
 
         self._io.seek(_pos)
@@ -95,11 +95,11 @@ class ValidFailRepeatInst(ReadWriteKaitaiStruct):
         for i in range(len(self._m_inst)):
             pass
             if self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"inst", 0, self._io.size() - self._io.pos())
+                raise kaitaistruct.ConsistencyError("inst", 0, self._io.size() - self._io.pos())
             self._io.write_u4be(self._m_inst[i])
 
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"inst", 0, self._io.size() - self._io.pos())
+            raise kaitaistruct.ConsistencyError("inst", 0, self._io.size() - self._io.pos())
         self._io.seek(_pos)
 
 

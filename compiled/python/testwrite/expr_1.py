@@ -6,17 +6,17 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class Expr1(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(Expr1, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self.len_of_1 = self._io.read_u2le()
-        self.str1 = (self._io.read_bytes(self.len_of_1_mod)).decode(u"ASCII")
+        self.str1 = (self._io.read_bytes(self.len_of_1_mod)).decode("ASCII")
         self._dirty = False
 
 
@@ -25,14 +25,14 @@ class Expr1(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(Expr1, self)._write__seq(io)
+        super()._write__seq(io)
         self._io.write_u2le(self.len_of_1)
-        self._io.write_bytes((self.str1).encode(u"ASCII"))
+        self._io.write_bytes((self.str1).encode("ASCII"))
 
 
     def _check(self):
-        if len((self.str1).encode(u"ASCII")) != self.len_of_1_mod:
-            raise kaitaistruct.ConsistencyError(u"str1", self.len_of_1_mod, len((self.str1).encode(u"ASCII")))
+        if len((self.str1).encode("ASCII")) != self.len_of_1_mod:
+            raise kaitaistruct.ConsistencyError("str1", self.len_of_1_mod, len((self.str1).encode("ASCII")))
         self._dirty = False
 
     @property

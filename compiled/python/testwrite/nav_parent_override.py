@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class NavParentOverride(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(NavParentOverride, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -30,7 +30,7 @@ class NavParentOverride(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(NavParentOverride, self)._write__seq(io)
+        super()._write__seq(io)
         self._io.write_u1(self.child_size)
         self.child_1._write__seq(self._io)
         self.mediator_2._write__seq(self._io)
@@ -38,18 +38,18 @@ class NavParentOverride(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.child_1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"child_1", self._root, self.child_1._root)
+            raise kaitaistruct.ConsistencyError("child_1", self._root, self.child_1._root)
         if self.child_1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"child_1", self, self.child_1._parent)
+            raise kaitaistruct.ConsistencyError("child_1", self, self.child_1._parent)
         if self.mediator_2._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"mediator_2", self._root, self.mediator_2._root)
+            raise kaitaistruct.ConsistencyError("mediator_2", self._root, self.mediator_2._root)
         if self.mediator_2._parent != self:
-            raise kaitaistruct.ConsistencyError(u"mediator_2", self, self.mediator_2._parent)
+            raise kaitaistruct.ConsistencyError("mediator_2", self, self.mediator_2._parent)
         self._dirty = False
 
     class Child(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(NavParentOverride.Child, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -63,19 +63,19 @@ class NavParentOverride(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(NavParentOverride.Child, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_bytes(self.data)
 
 
         def _check(self):
             if len(self.data) != self._parent.child_size:
-                raise kaitaistruct.ConsistencyError(u"data", self._parent.child_size, len(self.data))
+                raise kaitaistruct.ConsistencyError("data", self._parent.child_size, len(self.data))
             self._dirty = False
 
 
     class Mediator(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(NavParentOverride.Mediator, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -91,15 +91,15 @@ class NavParentOverride(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(NavParentOverride.Mediator, self)._write__seq(io)
+            super()._write__seq(io)
             self.child_2._write__seq(self._io)
 
 
         def _check(self):
             if self.child_2._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"child_2", self._root, self.child_2._root)
+                raise kaitaistruct.ConsistencyError("child_2", self._root, self.child_2._root)
             if self.child_2._parent != self._parent:
-                raise kaitaistruct.ConsistencyError(u"child_2", self._parent, self.child_2._parent)
+                raise kaitaistruct.ConsistencyError("child_2", self._parent, self.child_2._parent)
             self._dirty = False
 
 

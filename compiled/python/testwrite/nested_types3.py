@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class NestedTypes3(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(NestedTypes3, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -32,7 +32,7 @@ class NestedTypes3(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(NestedTypes3, self)._write__seq(io)
+        super()._write__seq(io)
         self.a_cc._write__seq(self._io)
         self.a_c_d._write__seq(self._io)
         self.b._write__seq(self._io)
@@ -40,22 +40,22 @@ class NestedTypes3(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.a_cc._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"a_cc", self._root, self.a_cc._root)
+            raise kaitaistruct.ConsistencyError("a_cc", self._root, self.a_cc._root)
         if self.a_cc._parent != self:
-            raise kaitaistruct.ConsistencyError(u"a_cc", self, self.a_cc._parent)
+            raise kaitaistruct.ConsistencyError("a_cc", self, self.a_cc._parent)
         if self.a_c_d._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"a_c_d", self._root, self.a_c_d._root)
+            raise kaitaistruct.ConsistencyError("a_c_d", self._root, self.a_c_d._root)
         if self.a_c_d._parent != self:
-            raise kaitaistruct.ConsistencyError(u"a_c_d", self, self.a_c_d._parent)
+            raise kaitaistruct.ConsistencyError("a_c_d", self, self.a_c_d._parent)
         if self.b._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"b", self._root, self.b._root)
+            raise kaitaistruct.ConsistencyError("b", self._root, self.b._root)
         if self.b._parent != self:
-            raise kaitaistruct.ConsistencyError(u"b", self, self.b._parent)
+            raise kaitaistruct.ConsistencyError("b", self, self.b._parent)
         self._dirty = False
 
     class SubtypeA(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(NestedTypes3.SubtypeA, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -69,7 +69,7 @@ class NestedTypes3(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(NestedTypes3.SubtypeA, self)._write__seq(io)
+            super()._write__seq(io)
 
 
         def _check(self):
@@ -77,7 +77,7 @@ class NestedTypes3(ReadWriteKaitaiStruct):
 
         class SubtypeC(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                super(NestedTypes3.SubtypeA.SubtypeC, self).__init__(_io)
+                super().__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
@@ -91,7 +91,7 @@ class NestedTypes3(ReadWriteKaitaiStruct):
 
 
             def _write__seq(self, io=None):
-                super(NestedTypes3.SubtypeA.SubtypeC, self)._write__seq(io)
+                super()._write__seq(io)
 
 
             def _check(self):
@@ -99,7 +99,7 @@ class NestedTypes3(ReadWriteKaitaiStruct):
 
             class SubtypeD(ReadWriteKaitaiStruct):
                 def __init__(self, _io=None, _parent=None, _root=None):
-                    super(NestedTypes3.SubtypeA.SubtypeC.SubtypeD, self).__init__(_io)
+                    super().__init__(_io)
                     self._parent = _parent
                     self._root = _root
 
@@ -113,7 +113,7 @@ class NestedTypes3(ReadWriteKaitaiStruct):
 
 
                 def _write__seq(self, io=None):
-                    super(NestedTypes3.SubtypeA.SubtypeC.SubtypeD, self)._write__seq(io)
+                    super()._write__seq(io)
                     self._io.write_s1(self.value_d)
 
 
@@ -124,7 +124,7 @@ class NestedTypes3(ReadWriteKaitaiStruct):
 
         class SubtypeCc(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                super(NestedTypes3.SubtypeA.SubtypeCc, self).__init__(_io)
+                super().__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
@@ -138,7 +138,7 @@ class NestedTypes3(ReadWriteKaitaiStruct):
 
 
             def _write__seq(self, io=None):
-                super(NestedTypes3.SubtypeA.SubtypeCc, self)._write__seq(io)
+                super()._write__seq(io)
                 self._io.write_s1(self.value_cc)
 
 
@@ -149,7 +149,7 @@ class NestedTypes3(ReadWriteKaitaiStruct):
 
     class SubtypeB(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(NestedTypes3.SubtypeB, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -169,7 +169,7 @@ class NestedTypes3(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(NestedTypes3.SubtypeB, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_s1(self.value_b)
             self.a_cc._write__seq(self._io)
             self.a_c_d._write__seq(self._io)
@@ -177,13 +177,13 @@ class NestedTypes3(ReadWriteKaitaiStruct):
 
         def _check(self):
             if self.a_cc._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"a_cc", self._root, self.a_cc._root)
+                raise kaitaistruct.ConsistencyError("a_cc", self._root, self.a_cc._root)
             if self.a_cc._parent != self:
-                raise kaitaistruct.ConsistencyError(u"a_cc", self, self.a_cc._parent)
+                raise kaitaistruct.ConsistencyError("a_cc", self, self.a_cc._parent)
             if self.a_c_d._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"a_c_d", self._root, self.a_c_d._root)
+                raise kaitaistruct.ConsistencyError("a_c_d", self._root, self.a_c_d._root)
             if self.a_c_d._parent != self:
-                raise kaitaistruct.ConsistencyError(u"a_c_d", self, self.a_c_d._parent)
+                raise kaitaistruct.ConsistencyError("a_c_d", self, self.a_c_d._parent)
             self._dirty = False
 
 

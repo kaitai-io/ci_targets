@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class InstanceInRepeatExpr(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(InstanceInRepeatExpr, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_num_chunks = False
@@ -41,10 +41,10 @@ class InstanceInRepeatExpr(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(InstanceInRepeatExpr, self)._write__seq(io)
+        super()._write__seq(io)
         self._should_write_num_chunks = self.num_chunks__enabled
         if len(self.chunks) != self.num_chunks:
-            raise kaitaistruct.ConsistencyError(u"chunks", self.num_chunks, len(self.chunks))
+            raise kaitaistruct.ConsistencyError("chunks", self.num_chunks, len(self.chunks))
         for i in range(len(self.chunks)):
             pass
             self.chunks[i]._write__seq(self._io)
@@ -55,9 +55,9 @@ class InstanceInRepeatExpr(ReadWriteKaitaiStruct):
         for i in range(len(self.chunks)):
             pass
             if self.chunks[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"chunks", self._root, self.chunks[i]._root)
+                raise kaitaistruct.ConsistencyError("chunks", self._root, self.chunks[i]._root)
             if self.chunks[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"chunks", self, self.chunks[i]._parent)
+                raise kaitaistruct.ConsistencyError("chunks", self, self.chunks[i]._parent)
 
         if self.num_chunks__enabled:
             pass
@@ -66,7 +66,7 @@ class InstanceInRepeatExpr(ReadWriteKaitaiStruct):
 
     class Chunk(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(InstanceInRepeatExpr.Chunk, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -81,7 +81,7 @@ class InstanceInRepeatExpr(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(InstanceInRepeatExpr.Chunk, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u4le(self.offset)
             self._io.write_u4le(self.len)
 

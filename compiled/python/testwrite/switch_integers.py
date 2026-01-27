@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class SwitchIntegers(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(SwitchIntegers, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -37,30 +37,30 @@ class SwitchIntegers(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(SwitchIntegers, self)._write__seq(io)
+        super()._write__seq(io)
         for i in range(len(self.opcodes)):
             pass
             if self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"opcodes", 0, self._io.size() - self._io.pos())
+                raise kaitaistruct.ConsistencyError("opcodes", 0, self._io.size() - self._io.pos())
             self.opcodes[i]._write__seq(self._io)
 
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"opcodes", 0, self._io.size() - self._io.pos())
+            raise kaitaistruct.ConsistencyError("opcodes", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):
         for i in range(len(self.opcodes)):
             pass
             if self.opcodes[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"opcodes", self._root, self.opcodes[i]._root)
+                raise kaitaistruct.ConsistencyError("opcodes", self._root, self.opcodes[i]._root)
             if self.opcodes[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"opcodes", self, self.opcodes[i]._parent)
+                raise kaitaistruct.ConsistencyError("opcodes", self, self.opcodes[i]._parent)
 
         self._dirty = False
 
     class Opcode(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(SwitchIntegers.Opcode, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -96,7 +96,7 @@ class SwitchIntegers(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(SwitchIntegers.Opcode, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u1(self.code)
             _on = self.code
             if _on == 1:

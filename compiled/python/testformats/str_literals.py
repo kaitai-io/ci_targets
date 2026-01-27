@@ -6,11 +6,11 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class StrLiterals(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(StrLiterals, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -27,7 +27,7 @@ class StrLiterals(KaitaiStruct):
         if hasattr(self, '_m_backslashes'):
             return self._m_backslashes
 
-        self._m_backslashes = u"\\\\\\"
+        self._m_backslashes = "\\\\\\"
         return getattr(self, '_m_backslashes', None)
 
     @property
@@ -35,7 +35,7 @@ class StrLiterals(KaitaiStruct):
         if hasattr(self, '_m_complex_str'):
             return self._m_complex_str
 
-        self._m_complex_str = u"\000\001\002\a\b\n\r\t\v\f\033=\a\n$\u263b"
+        self._m_complex_str = "\000\001\002\a\b\n\r\t\v\f\033=\a\n$\u263b"
         return getattr(self, '_m_complex_str', None)
 
     @property
@@ -43,7 +43,7 @@ class StrLiterals(KaitaiStruct):
         if hasattr(self, '_m_double_quotes'):
             return self._m_double_quotes
 
-        self._m_double_quotes = u"\"\"\""
+        self._m_double_quotes = "\"\"\""
         return getattr(self, '_m_double_quotes', None)
 
     @property
@@ -51,7 +51,7 @@ class StrLiterals(KaitaiStruct):
         if hasattr(self, '_m_octal_eatup'):
             return self._m_octal_eatup
 
-        self._m_octal_eatup = u"\00022"
+        self._m_octal_eatup = "\00022"
         return getattr(self, '_m_octal_eatup', None)
 
     @property
@@ -59,7 +59,7 @@ class StrLiterals(KaitaiStruct):
         if hasattr(self, '_m_octal_eatup2'):
             return self._m_octal_eatup2
 
-        self._m_octal_eatup2 = u"\0022"
+        self._m_octal_eatup2 = "\0022"
         return getattr(self, '_m_octal_eatup2', None)
 
 

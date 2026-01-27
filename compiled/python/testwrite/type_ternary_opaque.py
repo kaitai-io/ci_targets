@@ -7,11 +7,11 @@ from testwrite import hello_world
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class TypeTernaryOpaque(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(TypeTernaryOpaque, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -47,24 +47,24 @@ class TypeTernaryOpaque(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(TypeTernaryOpaque, self)._write__seq(io)
+        super()._write__seq(io)
         if (not (self.is_hack)):
             pass
-            _io__raw_dif_wo_hack = KaitaiStream(BytesIO(bytearray(1)))
+            _io__raw_dif_wo_hack = KaitaiStream(BytesIO(bytes(1)))
             self._io.add_child_stream(_io__raw_dif_wo_hack)
             _pos2 = self._io.pos()
             self._io.seek(self._io.pos() + (1))
             def handler(parent, _io__raw_dif_wo_hack=_io__raw_dif_wo_hack):
                 self._raw_dif_wo_hack = _io__raw_dif_wo_hack.to_byte_array()
                 if len(self._raw_dif_wo_hack) != 1:
-                    raise kaitaistruct.ConsistencyError(u"raw(dif_wo_hack)", 1, len(self._raw_dif_wo_hack))
+                    raise kaitaistruct.ConsistencyError("raw(dif_wo_hack)", 1, len(self._raw_dif_wo_hack))
                 parent.write_bytes(self._raw_dif_wo_hack)
             _io__raw_dif_wo_hack.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self.dif_wo_hack._write__seq(_io__raw_dif_wo_hack)
 
         if self.is_hack:
             pass
-            _io__raw_dif_with_hack = KaitaiStream(BytesIO(bytearray(1)))
+            _io__raw_dif_with_hack = KaitaiStream(BytesIO(bytes(1)))
             self._io.add_child_stream(_io__raw_dif_with_hack)
             _pos2 = self._io.pos()
             self._io.seek(self._io.pos() + (1))
@@ -73,7 +73,7 @@ class TypeTernaryOpaque(ReadWriteKaitaiStruct):
                 self._raw_dif_with_hack = _io__raw_dif_with_hack.to_byte_array()
                 self._raw__raw_dif_with_hack = KaitaiStream.process_xor_one(self._raw_dif_with_hack, _process_val)
                 if len(self._raw__raw_dif_with_hack) != 1:
-                    raise kaitaistruct.ConsistencyError(u"raw(dif_with_hack)", 1, len(self._raw__raw_dif_with_hack))
+                    raise kaitaistruct.ConsistencyError("raw(dif_with_hack)", 1, len(self._raw__raw_dif_with_hack))
                 parent.write_bytes(self._raw__raw_dif_with_hack)
             _io__raw_dif_with_hack.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self.dif_with_hack._write__seq(_io__raw_dif_with_hack)

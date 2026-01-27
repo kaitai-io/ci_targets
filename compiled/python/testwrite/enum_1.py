@@ -7,11 +7,11 @@ from enum import IntEnum
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class Enum1(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(Enum1, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -27,15 +27,15 @@ class Enum1(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(Enum1, self)._write__seq(io)
+        super()._write__seq(io)
         self.main._write__seq(self._io)
 
 
     def _check(self):
         if self.main._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"main", self._root, self.main._root)
+            raise kaitaistruct.ConsistencyError("main", self._root, self.main._root)
         if self.main._parent != self:
-            raise kaitaistruct.ConsistencyError(u"main", self, self.main._parent)
+            raise kaitaistruct.ConsistencyError("main", self, self.main._parent)
         self._dirty = False
 
     class MainObj(ReadWriteKaitaiStruct):
@@ -45,7 +45,7 @@ class Enum1(ReadWriteKaitaiStruct):
             cat = 7
             chicken = 12
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(Enum1.MainObj, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -61,20 +61,20 @@ class Enum1(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(Enum1.MainObj, self)._write__seq(io)
+            super()._write__seq(io)
             self.submain._write__seq(self._io)
 
 
         def _check(self):
             if self.submain._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"submain", self._root, self.submain._root)
+                raise kaitaistruct.ConsistencyError("submain", self._root, self.submain._root)
             if self.submain._parent != self:
-                raise kaitaistruct.ConsistencyError(u"submain", self, self.submain._parent)
+                raise kaitaistruct.ConsistencyError("submain", self, self.submain._parent)
             self._dirty = False
 
         class SubmainObj(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                super(Enum1.MainObj.SubmainObj, self).__init__(_io)
+                super().__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
@@ -89,7 +89,7 @@ class Enum1(ReadWriteKaitaiStruct):
 
 
             def _write__seq(self, io=None):
-                super(Enum1.MainObj.SubmainObj, self)._write__seq(io)
+                super()._write__seq(io)
                 self._io.write_u4le(int(self.pet_1))
                 self._io.write_u4le(int(self.pet_2))
 

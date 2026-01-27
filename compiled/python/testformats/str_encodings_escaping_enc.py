@@ -6,11 +6,11 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class StrEncodingsEscapingEnc(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(StrEncodingsEscapingEnc, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -43,7 +43,7 @@ class StrEncodingsEscapingEnc(KaitaiStruct):
 
     class Str1Wrapper(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            super(StrEncodingsEscapingEnc.Str1Wrapper, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -66,14 +66,14 @@ class StrEncodingsEscapingEnc(KaitaiStruct):
 
             _pos = self._io.pos()
             self._io.seek(0)
-            self._m_v = (self._io.read_bytes_full()).decode(u"ASCII\\\\x")
+            self._m_v = (self._io.read_bytes_full()).decode("ASCII\\\\x")
             self._io.seek(_pos)
             return getattr(self, '_m_v', None)
 
 
     class Str2Wrapper(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            super(StrEncodingsEscapingEnc.Str2Wrapper, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -96,14 +96,14 @@ class StrEncodingsEscapingEnc(KaitaiStruct):
 
             _pos = self._io.pos()
             self._io.seek(0)
-            self._m_v = (self._io.read_bytes_full()).decode(u"UTF-8\\'x")
+            self._m_v = (self._io.read_bytes_full()).decode("UTF-8\\'x")
             self._io.seek(_pos)
             return getattr(self, '_m_v', None)
 
 
     class Str3Wrapper(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            super(StrEncodingsEscapingEnc.Str3Wrapper, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -126,14 +126,14 @@ class StrEncodingsEscapingEnc(KaitaiStruct):
 
             _pos = self._io.pos()
             self._io.seek(0)
-            self._m_v = (self._io.read_bytes_full()).decode(u"SJIS\\\"x")
+            self._m_v = (self._io.read_bytes_full()).decode("SJIS\\\"x")
             self._io.seek(_pos)
             return getattr(self, '_m_v', None)
 
 
     class Str4Wrapper(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            super(StrEncodingsEscapingEnc.Str4Wrapper, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -156,7 +156,7 @@ class StrEncodingsEscapingEnc(KaitaiStruct):
 
             _pos = self._io.pos()
             self._io.seek(0)
-            self._m_v = (self._io.read_bytes_full()).decode(u"IBM437\\nx")
+            self._m_v = (self._io.read_bytes_full()).decode("IBM437\\nx")
             self._io.seek(_pos)
             return getattr(self, '_m_v', None)
 

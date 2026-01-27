@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ValidFailInst(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ValidFailInst, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_inst = False
@@ -36,7 +36,7 @@ class ValidFailInst(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ValidFailInst, self)._write__seq(io)
+        super()._write__seq(io)
         self._should_write_inst = self.inst__enabled
         if self.inst >= 0:
             pass
@@ -48,7 +48,7 @@ class ValidFailInst(ReadWriteKaitaiStruct):
         if self.inst__enabled:
             pass
             if not self._m_inst == 80:
-                raise kaitaistruct.ValidationNotEqualError(80, self._m_inst, None, u"/instances/inst")
+                raise kaitaistruct.ValidationNotEqualError(80, self._m_inst, None, "/instances/inst")
 
         self._dirty = False
 
@@ -66,7 +66,7 @@ class ValidFailInst(ReadWriteKaitaiStruct):
         self._io.seek(5)
         self._m_inst = self._io.read_u1()
         if not self._m_inst == 80:
-            raise kaitaistruct.ValidationNotEqualError(80, self._m_inst, self._io, u"/instances/inst")
+            raise kaitaistruct.ValidationNotEqualError(80, self._m_inst, self._io, "/instances/inst")
         self._io.seek(_pos)
         return getattr(self, '_m_inst', None)
 

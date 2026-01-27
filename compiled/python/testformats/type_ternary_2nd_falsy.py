@@ -6,11 +6,11 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class TypeTernary2ndFalsy(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(TypeTernary2ndFalsy, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -40,7 +40,7 @@ class TypeTernary2ndFalsy(KaitaiStruct):
 
     class Foo(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            super(TypeTernary2ndFalsy.Foo, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -133,7 +133,7 @@ class TypeTernary2ndFalsy(KaitaiStruct):
         if hasattr(self, '_m_v_str_empty'):
             return self._m_v_str_empty
 
-        self._m_v_str_empty = (u"" if self.t else u"kaitai")
+        self._m_v_str_empty = ("" if self.t else "kaitai")
         return getattr(self, '_m_v_str_empty', None)
 
     @property
@@ -141,7 +141,7 @@ class TypeTernary2ndFalsy(KaitaiStruct):
         if hasattr(self, '_m_v_str_w_zero'):
             return self._m_v_str_w_zero
 
-        self._m_v_str_w_zero = (u"0" if self.t else u"30")
+        self._m_v_str_w_zero = ("0" if self.t else "30")
         return getattr(self, '_m_v_str_w_zero', None)
 
 

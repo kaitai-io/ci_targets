@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class MultipleUse(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(MultipleUse, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -29,25 +29,25 @@ class MultipleUse(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(MultipleUse, self)._write__seq(io)
+        super()._write__seq(io)
         self.t1._write__seq(self._io)
         self.t2._write__seq(self._io)
 
 
     def _check(self):
         if self.t1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"t1", self._root, self.t1._root)
+            raise kaitaistruct.ConsistencyError("t1", self._root, self.t1._root)
         if self.t1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"t1", self, self.t1._parent)
+            raise kaitaistruct.ConsistencyError("t1", self, self.t1._parent)
         if self.t2._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"t2", self._root, self.t2._root)
+            raise kaitaistruct.ConsistencyError("t2", self._root, self.t2._root)
         if self.t2._parent != self:
-            raise kaitaistruct.ConsistencyError(u"t2", self, self.t2._parent)
+            raise kaitaistruct.ConsistencyError("t2", self, self.t2._parent)
         self._dirty = False
 
     class Multi(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(MultipleUse.Multi, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -61,7 +61,7 @@ class MultipleUse(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(MultipleUse.Multi, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_s4le(self.value)
 
 
@@ -71,7 +71,7 @@ class MultipleUse(ReadWriteKaitaiStruct):
 
     class Type1(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(MultipleUse.Type1, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -87,21 +87,21 @@ class MultipleUse(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(MultipleUse.Type1, self)._write__seq(io)
+            super()._write__seq(io)
             self.first_use._write__seq(self._io)
 
 
         def _check(self):
             if self.first_use._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"first_use", self._root, self.first_use._root)
+                raise kaitaistruct.ConsistencyError("first_use", self._root, self.first_use._root)
             if self.first_use._parent != self:
-                raise kaitaistruct.ConsistencyError(u"first_use", self, self.first_use._parent)
+                raise kaitaistruct.ConsistencyError("first_use", self, self.first_use._parent)
             self._dirty = False
 
 
     class Type2(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(MultipleUse.Type2, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._should_write_second_use = False
@@ -122,7 +122,7 @@ class MultipleUse(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(MultipleUse.Type2, self)._write__seq(io)
+            super()._write__seq(io)
             self._should_write_second_use = self.second_use__enabled
 
 
@@ -130,9 +130,9 @@ class MultipleUse(ReadWriteKaitaiStruct):
             if self.second_use__enabled:
                 pass
                 if self._m_second_use._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"second_use", self._root, self._m_second_use._root)
+                    raise kaitaistruct.ConsistencyError("second_use", self._root, self._m_second_use._root)
                 if self._m_second_use._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"second_use", self, self._m_second_use._parent)
+                    raise kaitaistruct.ConsistencyError("second_use", self, self._m_second_use._parent)
 
             self._dirty = False
 

@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class DefaultEndianExprException(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(DefaultEndianExprException, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -37,30 +37,30 @@ class DefaultEndianExprException(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(DefaultEndianExprException, self)._write__seq(io)
+        super()._write__seq(io)
         for i in range(len(self.docs)):
             pass
             if self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"docs", 0, self._io.size() - self._io.pos())
+                raise kaitaistruct.ConsistencyError("docs", 0, self._io.size() - self._io.pos())
             self.docs[i]._write__seq(self._io)
 
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"docs", 0, self._io.size() - self._io.pos())
+            raise kaitaistruct.ConsistencyError("docs", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):
         for i in range(len(self.docs)):
             pass
             if self.docs[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"docs", self._root, self.docs[i]._root)
+                raise kaitaistruct.ConsistencyError("docs", self._root, self.docs[i]._root)
             if self.docs[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"docs", self, self.docs[i]._parent)
+                raise kaitaistruct.ConsistencyError("docs", self, self.docs[i]._parent)
 
         self._dirty = False
 
     class Doc(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(DefaultEndianExprException.Doc, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -77,23 +77,23 @@ class DefaultEndianExprException(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(DefaultEndianExprException.Doc, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_bytes(self.indicator)
             self.main._write__seq(self._io)
 
 
         def _check(self):
             if len(self.indicator) != 2:
-                raise kaitaistruct.ConsistencyError(u"indicator", 2, len(self.indicator))
+                raise kaitaistruct.ConsistencyError("indicator", 2, len(self.indicator))
             if self.main._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"main", self._root, self.main._root)
+                raise kaitaistruct.ConsistencyError("main", self._root, self.main._root)
             if self.main._parent != self:
-                raise kaitaistruct.ConsistencyError(u"main", self, self.main._parent)
+                raise kaitaistruct.ConsistencyError("main", self, self.main._parent)
             self._dirty = False
 
         class MainObj(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                super(DefaultEndianExprException.Doc.MainObj, self).__init__(_io)
+                super().__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
@@ -131,7 +131,7 @@ class DefaultEndianExprException(ReadWriteKaitaiStruct):
 
 
             def _write__seq(self, io=None):
-                super(DefaultEndianExprException.Doc.MainObj, self)._write__seq(io)
+                super()._write__seq(io)
                 if not hasattr(self, '_is_le'):
                     raise kaitaistruct.UndecidedEndiannessError("/types/doc/types/main_obj")
                 elif self._is_le == True:

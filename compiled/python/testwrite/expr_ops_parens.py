@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ExprOpsParens(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ExprOpsParens, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -24,7 +24,7 @@ class ExprOpsParens(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ExprOpsParens, self)._write__seq(io)
+        super()._write__seq(io)
 
 
     def _check(self):
@@ -125,7 +125,7 @@ class ExprOpsParens(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_str_0_to_4'):
             return self._m_str_0_to_4
 
-        self._m_str_0_to_4 = u"01234"
+        self._m_str_0_to_4 = "01234"
         return getattr(self, '_m_str_0_to_4', None)
 
     def _invalidate_str_0_to_4(self):
@@ -135,7 +135,7 @@ class ExprOpsParens(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_str_5_to_9'):
             return self._m_str_5_to_9
 
-        self._m_str_5_to_9 = u"56789"
+        self._m_str_5_to_9 = "56789"
         return getattr(self, '_m_str_5_to_9', None)
 
     def _invalidate_str_5_to_9(self):

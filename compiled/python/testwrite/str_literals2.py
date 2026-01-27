@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class StrLiterals2(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(StrLiterals2, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -24,7 +24,7 @@ class StrLiterals2(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(StrLiterals2, self)._write__seq(io)
+        super()._write__seq(io)
 
 
     def _check(self):
@@ -35,7 +35,7 @@ class StrLiterals2(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_at_sign'):
             return self._m_at_sign
 
-        self._m_at_sign = u"@foo"
+        self._m_at_sign = "@foo"
         return getattr(self, '_m_at_sign', None)
 
     def _invalidate_at_sign(self):
@@ -45,7 +45,7 @@ class StrLiterals2(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_dollar1'):
             return self._m_dollar1
 
-        self._m_dollar1 = u"$foo"
+        self._m_dollar1 = "$foo"
         return getattr(self, '_m_dollar1', None)
 
     def _invalidate_dollar1(self):
@@ -55,7 +55,7 @@ class StrLiterals2(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_dollar2'):
             return self._m_dollar2
 
-        self._m_dollar2 = u"${foo}"
+        self._m_dollar2 = "${foo}"
         return getattr(self, '_m_dollar2', None)
 
     def _invalidate_dollar2(self):
@@ -65,7 +65,7 @@ class StrLiterals2(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_hash'):
             return self._m_hash
 
-        self._m_hash = u"#{foo}"
+        self._m_hash = "#{foo}"
         return getattr(self, '_m_hash', None)
 
     def _invalidate_hash(self):

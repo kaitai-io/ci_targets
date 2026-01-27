@@ -6,11 +6,11 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class InstanceIoUser(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(InstanceIoUser, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -36,7 +36,7 @@ class InstanceIoUser(KaitaiStruct):
 
     class Entry(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            super(InstanceIoUser.Entry, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -61,14 +61,14 @@ class InstanceIoUser(KaitaiStruct):
             io = self._root.strings._io
             _pos = io.pos()
             io.seek(self.name_ofs)
-            self._m_name = (io.read_bytes_term(0, False, True, True)).decode(u"UTF-8")
+            self._m_name = (io.read_bytes_term(0, False, True, True)).decode("UTF-8")
             io.seek(_pos)
             return getattr(self, '_m_name', None)
 
 
     class StringsObj(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            super(InstanceIoUser.StringsObj, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -77,7 +77,7 @@ class InstanceIoUser(KaitaiStruct):
             self.str = []
             i = 0
             while not self._io.is_eof():
-                self.str.append((self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8"))
+                self.str.append((self._io.read_bytes_term(0, False, True, True)).decode("UTF-8"))
                 i += 1
 
 

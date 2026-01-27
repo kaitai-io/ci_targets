@@ -7,12 +7,12 @@ import collections
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ExprIoEofBits(ReadWriteKaitaiStruct):
     SEQ_FIELDS = ["foo", "bar", "baz", "align", "qux"]
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ExprIoEofBits, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._debug = collections.defaultdict(dict)
@@ -59,7 +59,7 @@ class ExprIoEofBits(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ExprIoEofBits, self)._write__seq(io)
+        super()._write__seq(io)
         self._io.write_bits_int_be(20, self.foo)
         if (not (self._io.is_eof())):
             pass
@@ -78,7 +78,7 @@ class ExprIoEofBits(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.align) != 0:
-            raise kaitaistruct.ConsistencyError(u"align", 0, len(self.align))
+            raise kaitaistruct.ConsistencyError("align", 0, len(self.align))
         self._dirty = False
 
 

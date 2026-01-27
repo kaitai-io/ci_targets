@@ -6,18 +6,18 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ValidFailEqStr(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ValidFailEqStr, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
-        self.foo = (self._io.read_bytes(4)).decode(u"ASCII")
-        if not self.foo == u"BACK":
-            raise kaitaistruct.ValidationNotEqualError(u"BACK", self.foo, self._io, u"/seq/0")
+        self.foo = (self._io.read_bytes(4)).decode("ASCII")
+        if not self.foo == "BACK":
+            raise kaitaistruct.ValidationNotEqualError("BACK", self.foo, self._io, "/seq/0")
         self._dirty = False
 
 
@@ -26,15 +26,15 @@ class ValidFailEqStr(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ValidFailEqStr, self)._write__seq(io)
-        self._io.write_bytes((self.foo).encode(u"ASCII"))
+        super()._write__seq(io)
+        self._io.write_bytes((self.foo).encode("ASCII"))
 
 
     def _check(self):
-        if len((self.foo).encode(u"ASCII")) != 4:
-            raise kaitaistruct.ConsistencyError(u"foo", 4, len((self.foo).encode(u"ASCII")))
-        if not self.foo == u"BACK":
-            raise kaitaistruct.ValidationNotEqualError(u"BACK", self.foo, None, u"/seq/0")
+        if len((self.foo).encode("ASCII")) != 4:
+            raise kaitaistruct.ConsistencyError("foo", 4, len((self.foo).encode("ASCII")))
+        if not self.foo == "BACK":
+            raise kaitaistruct.ValidationNotEqualError("BACK", self.foo, None, "/seq/0")
         self._dirty = False
 
 

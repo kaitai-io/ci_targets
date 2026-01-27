@@ -6,11 +6,11 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ValidFailInst(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(ValidFailInst, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -41,7 +41,7 @@ class ValidFailInst(KaitaiStruct):
         self._io.seek(5)
         self._m_inst = self._io.read_u1()
         if not self._m_inst == 80:
-            raise kaitaistruct.ValidationNotEqualError(80, self._m_inst, self._io, u"/instances/inst")
+            raise kaitaistruct.ValidationNotEqualError(80, self._m_inst, self._io, "/instances/inst")
         self._io.seek(_pos)
         return getattr(self, '_m_inst', None)
 

@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ExprSizeofValue0(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ExprSizeofValue0, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -27,21 +27,21 @@ class ExprSizeofValue0(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ExprSizeofValue0, self)._write__seq(io)
+        super()._write__seq(io)
         self.block1._write__seq(self._io)
         self._io.write_u2le(self.more)
 
 
     def _check(self):
         if self.block1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"block1", self._root, self.block1._root)
+            raise kaitaistruct.ConsistencyError("block1", self._root, self.block1._root)
         if self.block1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"block1", self, self.block1._parent)
+            raise kaitaistruct.ConsistencyError("block1", self, self.block1._parent)
         self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(ExprSizeofValue0.Block, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -57,7 +57,7 @@ class ExprSizeofValue0(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(ExprSizeofValue0.Block, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u1(self.a)
             self._io.write_u4le(self.b)
             self._io.write_bytes(self.c)
@@ -65,7 +65,7 @@ class ExprSizeofValue0(ReadWriteKaitaiStruct):
 
         def _check(self):
             if len(self.c) != 2:
-                raise kaitaistruct.ConsistencyError(u"c", 2, len(self.c))
+                raise kaitaistruct.ConsistencyError("c", 2, len(self.c))
             self._dirty = False
 
 

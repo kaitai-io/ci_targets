@@ -6,11 +6,11 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class RepeatNStrzDouble(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(RepeatNStrzDouble, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -19,11 +19,11 @@ class RepeatNStrzDouble(KaitaiStruct):
         self.qty = self._io.read_u4le()
         self.lines1 = []
         for i in range(self.qty // 2):
-            self.lines1.append((self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8"))
+            self.lines1.append((self._io.read_bytes_term(0, False, True, True)).decode("UTF-8"))
 
         self.lines2 = []
         for i in range(self.qty // 2):
-            self.lines2.append((self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8"))
+            self.lines2.append((self._io.read_bytes_term(0, False, True, True)).decode("UTF-8"))
 
 
 

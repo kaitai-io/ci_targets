@@ -6,19 +6,19 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class CombineStr(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(CombineStr, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
 
     def _read(self):
-        self.str_term = (self._io.read_bytes_term(124, False, True, True)).decode(u"ASCII")
-        self.str_limit = (self._io.read_bytes(4)).decode(u"ASCII")
-        self.str_eos = (self._io.read_bytes_full()).decode(u"ASCII")
+        self.str_term = (self._io.read_bytes_term(124, False, True, True)).decode("ASCII")
+        self.str_limit = (self._io.read_bytes(4)).decode("ASCII")
+        self.str_eos = (self._io.read_bytes_full()).decode("ASCII")
 
 
     def _fetch_instances(self):
@@ -85,7 +85,7 @@ class CombineStr(KaitaiStruct):
         if hasattr(self, '_m_str_calc'):
             return self._m_str_calc
 
-        self._m_str_calc = u"bar"
+        self._m_str_calc = "bar"
         return getattr(self, '_m_str_calc', None)
 
     @property
@@ -93,7 +93,7 @@ class CombineStr(KaitaiStruct):
         if hasattr(self, '_m_str_calc_bytes'):
             return self._m_str_calc_bytes
 
-        self._m_str_calc_bytes = (self.calc_bytes).decode(u"ASCII")
+        self._m_str_calc_bytes = (self.calc_bytes).decode("ASCII")
         return getattr(self, '_m_str_calc_bytes', None)
 
     @property

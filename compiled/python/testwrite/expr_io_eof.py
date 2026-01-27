@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ExprIoEof(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ExprIoEof, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -33,26 +33,26 @@ class ExprIoEof(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ExprIoEof, self)._write__seq(io)
-        _io__raw_substream1 = KaitaiStream(BytesIO(bytearray(4)))
+        super()._write__seq(io)
+        _io__raw_substream1 = KaitaiStream(BytesIO(bytes(4)))
         self._io.add_child_stream(_io__raw_substream1)
         _pos2 = self._io.pos()
         self._io.seek(self._io.pos() + (4))
         def handler(parent, _io__raw_substream1=_io__raw_substream1):
             self._raw_substream1 = _io__raw_substream1.to_byte_array()
             if len(self._raw_substream1) != 4:
-                raise kaitaistruct.ConsistencyError(u"raw(substream1)", 4, len(self._raw_substream1))
+                raise kaitaistruct.ConsistencyError("raw(substream1)", 4, len(self._raw_substream1))
             parent.write_bytes(self._raw_substream1)
         _io__raw_substream1.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.substream1._write__seq(_io__raw_substream1)
-        _io__raw_substream2 = KaitaiStream(BytesIO(bytearray(8)))
+        _io__raw_substream2 = KaitaiStream(BytesIO(bytes(8)))
         self._io.add_child_stream(_io__raw_substream2)
         _pos2 = self._io.pos()
         self._io.seek(self._io.pos() + (8))
         def handler(parent, _io__raw_substream2=_io__raw_substream2):
             self._raw_substream2 = _io__raw_substream2.to_byte_array()
             if len(self._raw_substream2) != 8:
-                raise kaitaistruct.ConsistencyError(u"raw(substream2)", 8, len(self._raw_substream2))
+                raise kaitaistruct.ConsistencyError("raw(substream2)", 8, len(self._raw_substream2))
             parent.write_bytes(self._raw_substream2)
         _io__raw_substream2.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.substream2._write__seq(_io__raw_substream2)
@@ -60,18 +60,18 @@ class ExprIoEof(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.substream1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"substream1", self._root, self.substream1._root)
+            raise kaitaistruct.ConsistencyError("substream1", self._root, self.substream1._root)
         if self.substream1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"substream1", self, self.substream1._parent)
+            raise kaitaistruct.ConsistencyError("substream1", self, self.substream1._parent)
         if self.substream2._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"substream2", self._root, self.substream2._root)
+            raise kaitaistruct.ConsistencyError("substream2", self._root, self.substream2._root)
         if self.substream2._parent != self:
-            raise kaitaistruct.ConsistencyError(u"substream2", self, self.substream2._parent)
+            raise kaitaistruct.ConsistencyError("substream2", self, self.substream2._parent)
         self._dirty = False
 
     class OneOrTwo(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(ExprIoEof.OneOrTwo, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -92,7 +92,7 @@ class ExprIoEof(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(ExprIoEof.OneOrTwo, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u4le(self.one)
             if (not (self._io.is_eof())):
                 pass

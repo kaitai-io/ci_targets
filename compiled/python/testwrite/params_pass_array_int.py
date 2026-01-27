@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ParamsPassArrayInt(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ParamsPassArrayInt, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -36,7 +36,7 @@ class ParamsPassArrayInt(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ParamsPassArrayInt, self)._write__seq(io)
+        super()._write__seq(io)
         for i in range(len(self.ints)):
             pass
             self._io.write_u2le(self.ints[i])
@@ -47,27 +47,27 @@ class ParamsPassArrayInt(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.ints) != 3:
-            raise kaitaistruct.ConsistencyError(u"ints", 3, len(self.ints))
+            raise kaitaistruct.ConsistencyError("ints", 3, len(self.ints))
         for i in range(len(self.ints)):
             pass
 
         if self.pass_ints._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"pass_ints", self._root, self.pass_ints._root)
+            raise kaitaistruct.ConsistencyError("pass_ints", self._root, self.pass_ints._root)
         if self.pass_ints._parent != self:
-            raise kaitaistruct.ConsistencyError(u"pass_ints", self, self.pass_ints._parent)
+            raise kaitaistruct.ConsistencyError("pass_ints", self, self.pass_ints._parent)
         if self.pass_ints.nums != self.ints:
-            raise kaitaistruct.ConsistencyError(u"pass_ints", self.ints, self.pass_ints.nums)
+            raise kaitaistruct.ConsistencyError("pass_ints", self.ints, self.pass_ints.nums)
         if self.pass_ints_calc._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"pass_ints_calc", self._root, self.pass_ints_calc._root)
+            raise kaitaistruct.ConsistencyError("pass_ints_calc", self._root, self.pass_ints_calc._root)
         if self.pass_ints_calc._parent != self:
-            raise kaitaistruct.ConsistencyError(u"pass_ints_calc", self, self.pass_ints_calc._parent)
+            raise kaitaistruct.ConsistencyError("pass_ints_calc", self, self.pass_ints_calc._parent)
         if self.pass_ints_calc.nums != self.ints_calc:
-            raise kaitaistruct.ConsistencyError(u"pass_ints_calc", self.ints_calc, self.pass_ints_calc.nums)
+            raise kaitaistruct.ConsistencyError("pass_ints_calc", self.ints_calc, self.pass_ints_calc.nums)
         self._dirty = False
 
     class WantsInts(ReadWriteKaitaiStruct):
         def __init__(self, nums, _io=None, _parent=None, _root=None):
-            super(ParamsPassArrayInt.WantsInts, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self.nums = nums
@@ -82,7 +82,7 @@ class ParamsPassArrayInt(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(ParamsPassArrayInt.WantsInts, self)._write__seq(io)
+            super()._write__seq(io)
 
 
         def _check(self):

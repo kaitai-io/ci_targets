@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class PositionAbs(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(PositionAbs, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_index = False
@@ -31,7 +31,7 @@ class PositionAbs(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(PositionAbs, self)._write__seq(io)
+        super()._write__seq(io)
         self._should_write_index = self.index__enabled
         self._io.write_u4le(self.index_offset)
 
@@ -40,20 +40,20 @@ class PositionAbs(ReadWriteKaitaiStruct):
         if self.index__enabled:
             pass
             if self._m_index._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"index", self._root, self._m_index._root)
+                raise kaitaistruct.ConsistencyError("index", self._root, self._m_index._root)
             if self._m_index._parent != self:
-                raise kaitaistruct.ConsistencyError(u"index", self, self._m_index._parent)
+                raise kaitaistruct.ConsistencyError("index", self, self._m_index._parent)
 
         self._dirty = False
 
     class IndexObj(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(PositionAbs.IndexObj, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
-            self.entry = (self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8")
+            self.entry = (self._io.read_bytes_term(0, False, True, True)).decode("UTF-8")
             self._dirty = False
 
 
@@ -62,14 +62,14 @@ class PositionAbs(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(PositionAbs.IndexObj, self)._write__seq(io)
-            self._io.write_bytes((self.entry).encode(u"UTF-8"))
+            super()._write__seq(io)
+            self._io.write_bytes((self.entry).encode("UTF-8"))
             self._io.write_u1(0)
 
 
         def _check(self):
-            if KaitaiStream.byte_array_index_of((self.entry).encode(u"UTF-8"), 0) != -1:
-                raise kaitaistruct.ConsistencyError(u"entry", -1, KaitaiStream.byte_array_index_of((self.entry).encode(u"UTF-8"), 0))
+            if KaitaiStream.byte_array_index_of((self.entry).encode("UTF-8"), 0) != -1:
+                raise kaitaistruct.ConsistencyError("entry", -1, KaitaiStream.byte_array_index_of((self.entry).encode("UTF-8"), 0))
             self._dirty = False
 
 

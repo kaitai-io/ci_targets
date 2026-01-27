@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class EosExceptionSized(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(EosExceptionSized, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -28,15 +28,15 @@ class EosExceptionSized(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(EosExceptionSized, self)._write__seq(io)
-        _io__raw_envelope = KaitaiStream(BytesIO(bytearray(6)))
+        super()._write__seq(io)
+        _io__raw_envelope = KaitaiStream(BytesIO(bytes(6)))
         self._io.add_child_stream(_io__raw_envelope)
         _pos2 = self._io.pos()
         self._io.seek(self._io.pos() + (6))
         def handler(parent, _io__raw_envelope=_io__raw_envelope):
             self._raw_envelope = _io__raw_envelope.to_byte_array()
             if len(self._raw_envelope) != 6:
-                raise kaitaistruct.ConsistencyError(u"raw(envelope)", 6, len(self._raw_envelope))
+                raise kaitaistruct.ConsistencyError("raw(envelope)", 6, len(self._raw_envelope))
             parent.write_bytes(self._raw_envelope)
         _io__raw_envelope.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.envelope._write__seq(_io__raw_envelope)
@@ -44,14 +44,14 @@ class EosExceptionSized(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.envelope._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"envelope", self._root, self.envelope._root)
+            raise kaitaistruct.ConsistencyError("envelope", self._root, self.envelope._root)
         if self.envelope._parent != self:
-            raise kaitaistruct.ConsistencyError(u"envelope", self, self.envelope._parent)
+            raise kaitaistruct.ConsistencyError("envelope", self, self.envelope._parent)
         self._dirty = False
 
     class Data(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(EosExceptionSized.Data, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -69,15 +69,15 @@ class EosExceptionSized(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(EosExceptionSized.Data, self)._write__seq(io)
-            _io__raw_buf = KaitaiStream(BytesIO(bytearray(7)))
+            super()._write__seq(io)
+            _io__raw_buf = KaitaiStream(BytesIO(bytes(7)))
             self._io.add_child_stream(_io__raw_buf)
             _pos2 = self._io.pos()
             self._io.seek(self._io.pos() + (7))
             def handler(parent, _io__raw_buf=_io__raw_buf):
                 self._raw_buf = _io__raw_buf.to_byte_array()
                 if len(self._raw_buf) != 7:
-                    raise kaitaistruct.ConsistencyError(u"raw(buf)", 7, len(self._raw_buf))
+                    raise kaitaistruct.ConsistencyError("raw(buf)", 7, len(self._raw_buf))
                 parent.write_bytes(self._raw_buf)
             _io__raw_buf.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self.buf._write__seq(_io__raw_buf)
@@ -85,15 +85,15 @@ class EosExceptionSized(ReadWriteKaitaiStruct):
 
         def _check(self):
             if self.buf._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"buf", self._root, self.buf._root)
+                raise kaitaistruct.ConsistencyError("buf", self._root, self.buf._root)
             if self.buf._parent != self:
-                raise kaitaistruct.ConsistencyError(u"buf", self, self.buf._parent)
+                raise kaitaistruct.ConsistencyError("buf", self, self.buf._parent)
             self._dirty = False
 
 
     class Foo(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(EosExceptionSized.Foo, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -107,7 +107,7 @@ class EosExceptionSized(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(EosExceptionSized.Foo, self)._write__seq(io)
+            super()._write__seq(io)
 
 
         def _check(self):

@@ -6,7 +6,7 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class VlqBase128Le(KaitaiStruct):
     """A variable-length unsigned/signed integer using base128 encoding. 1-byte groups
@@ -40,7 +40,7 @@ class VlqBase128Le(KaitaiStruct):
     see <https://github.com/protocolbuffers/protoscope/blob/8e7a6aafa2c9958527b1e0747e66e1bfff045819/writer.go#L644-L648>.
     """
     def __init__(self, _io, _parent=None, _root=None):
-        super(VlqBase128Le, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -67,7 +67,7 @@ class VlqBase128Le(KaitaiStruct):
         """One byte group, clearly divided into 7-bit "value" chunk and 1-bit "continuation" flag.
         """
         def __init__(self, idx, prev_interm_value, multiplier, _io, _parent=None, _root=None):
-            super(VlqBase128Le.Group, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self.idx = idx
@@ -78,10 +78,10 @@ class VlqBase128Le(KaitaiStruct):
         def _read(self):
             self.has_next = self._io.read_bits_int_be(1) != 0
             if not self.has_next == (False if self.idx == 9 else self.has_next):
-                raise kaitaistruct.ValidationNotEqualError((False if self.idx == 9 else self.has_next), self.has_next, self._io, u"/types/group/seq/0")
+                raise kaitaistruct.ValidationNotEqualError((False if self.idx == 9 else self.has_next), self.has_next, self._io, "/types/group/seq/0")
             self.value = self._io.read_bits_int_be(7)
             if not self.value <= (1 if self.idx == 9 else 127):
-                raise kaitaistruct.ValidationGreaterThanError((1 if self.idx == 9 else 127), self.value, self._io, u"/types/group/seq/1")
+                raise kaitaistruct.ValidationGreaterThanError((1 if self.idx == 9 else 127), self.value, self._io, "/types/group/seq/1")
 
 
         def _fetch_instances(self):

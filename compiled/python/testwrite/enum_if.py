@@ -7,7 +7,7 @@ from enum import IntEnum
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class EnumIf(ReadWriteKaitaiStruct):
 
@@ -15,7 +15,7 @@ class EnumIf(ReadWriteKaitaiStruct):
         a_string = 83
         a_tuple = 84
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(EnumIf, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -37,7 +37,7 @@ class EnumIf(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(EnumIf, self)._write__seq(io)
+        super()._write__seq(io)
         self.op1._write__seq(self._io)
         self.op2._write__seq(self._io)
         self.op3._write__seq(self._io)
@@ -45,28 +45,28 @@ class EnumIf(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.op1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"op1", self._root, self.op1._root)
+            raise kaitaistruct.ConsistencyError("op1", self._root, self.op1._root)
         if self.op1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"op1", self, self.op1._parent)
+            raise kaitaistruct.ConsistencyError("op1", self, self.op1._parent)
         if self.op2._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"op2", self._root, self.op2._root)
+            raise kaitaistruct.ConsistencyError("op2", self._root, self.op2._root)
         if self.op2._parent != self:
-            raise kaitaistruct.ConsistencyError(u"op2", self, self.op2._parent)
+            raise kaitaistruct.ConsistencyError("op2", self, self.op2._parent)
         if self.op3._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"op3", self._root, self.op3._root)
+            raise kaitaistruct.ConsistencyError("op3", self._root, self.op3._root)
         if self.op3._parent != self:
-            raise kaitaistruct.ConsistencyError(u"op3", self, self.op3._parent)
+            raise kaitaistruct.ConsistencyError("op3", self, self.op3._parent)
         self._dirty = False
 
     class ArgStr(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(EnumIf.ArgStr, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
         def _read(self):
             self.len = self._io.read_u1()
-            self.str = (self._io.read_bytes(self.len)).decode(u"UTF-8")
+            self.str = (self._io.read_bytes(self.len)).decode("UTF-8")
             self._dirty = False
 
 
@@ -75,20 +75,20 @@ class EnumIf(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(EnumIf.ArgStr, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u1(self.len)
-            self._io.write_bytes((self.str).encode(u"UTF-8"))
+            self._io.write_bytes((self.str).encode("UTF-8"))
 
 
         def _check(self):
-            if len((self.str).encode(u"UTF-8")) != self.len:
-                raise kaitaistruct.ConsistencyError(u"str", self.len, len((self.str).encode(u"UTF-8")))
+            if len((self.str).encode("UTF-8")) != self.len:
+                raise kaitaistruct.ConsistencyError("str", self.len, len((self.str).encode("UTF-8")))
             self._dirty = False
 
 
     class ArgTuple(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(EnumIf.ArgTuple, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -103,7 +103,7 @@ class EnumIf(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(EnumIf.ArgTuple, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u1(self.num1)
             self._io.write_u1(self.num2)
 
@@ -114,7 +114,7 @@ class EnumIf(ReadWriteKaitaiStruct):
 
     class Operation(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(EnumIf.Operation, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -146,7 +146,7 @@ class EnumIf(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(EnumIf.Operation, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u1(int(self.opcode))
             if self.opcode == EnumIf.Opcodes.a_tuple:
                 pass
@@ -162,16 +162,16 @@ class EnumIf(ReadWriteKaitaiStruct):
             if self.opcode == EnumIf.Opcodes.a_tuple:
                 pass
                 if self.arg_tuple._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"arg_tuple", self._root, self.arg_tuple._root)
+                    raise kaitaistruct.ConsistencyError("arg_tuple", self._root, self.arg_tuple._root)
                 if self.arg_tuple._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"arg_tuple", self, self.arg_tuple._parent)
+                    raise kaitaistruct.ConsistencyError("arg_tuple", self, self.arg_tuple._parent)
 
             if self.opcode == EnumIf.Opcodes.a_string:
                 pass
                 if self.arg_str._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"arg_str", self._root, self.arg_str._root)
+                    raise kaitaistruct.ConsistencyError("arg_str", self._root, self.arg_str._root)
                 if self.arg_str._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"arg_str", self, self.arg_str._parent)
+                    raise kaitaistruct.ConsistencyError("arg_str", self, self.arg_str._parent)
 
             self._dirty = False
 

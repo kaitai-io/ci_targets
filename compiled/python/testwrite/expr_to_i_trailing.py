@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ExprToITrailing(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ExprToITrailing, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -24,7 +24,7 @@ class ExprToITrailing(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ExprToITrailing, self)._write__seq(io)
+        super()._write__seq(io)
 
 
     def _check(self):
@@ -35,7 +35,7 @@ class ExprToITrailing(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_to_i_garbage'):
             return self._m_to_i_garbage
 
-        self._m_to_i_garbage = int(u"123_.^")
+        self._m_to_i_garbage = int("123_.^")
         return getattr(self, '_m_to_i_garbage', None)
 
     def _invalidate_to_i_garbage(self):
@@ -45,7 +45,7 @@ class ExprToITrailing(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_to_i_r10'):
             return self._m_to_i_r10
 
-        self._m_to_i_r10 = int(u"9173abc")
+        self._m_to_i_r10 = int("9173abc")
         return getattr(self, '_m_to_i_r10', None)
 
     def _invalidate_to_i_r10(self):
@@ -55,7 +55,7 @@ class ExprToITrailing(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_to_i_r16'):
             return self._m_to_i_r16
 
-        self._m_to_i_r16 = int(u"9173abc", 16)
+        self._m_to_i_r16 = int("9173abc", 16)
         return getattr(self, '_m_to_i_r16', None)
 
     def _invalidate_to_i_r16(self):

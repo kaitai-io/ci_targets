@@ -6,11 +6,11 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ExprIoPos(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(ExprIoPos, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -31,13 +31,13 @@ class ExprIoPos(KaitaiStruct):
 
     class AllPlusNumber(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            super(ExprIoPos.AllPlusNumber, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
 
         def _read(self):
-            self.my_str = (self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8")
+            self.my_str = (self._io.read_bytes_term(0, False, True, True)).decode("UTF-8")
             self.body = self._io.read_bytes((self._io.size() - self._io.pos()) - 2)
             self.number = self._io.read_u2le()
 

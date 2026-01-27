@@ -7,11 +7,11 @@ from testwrite import opaque_external_type_02_child
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class OpaqueExternalType02Parent(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(OpaqueExternalType02Parent, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -27,20 +27,20 @@ class OpaqueExternalType02Parent(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(OpaqueExternalType02Parent, self)._write__seq(io)
+        super()._write__seq(io)
         self.parent._write__seq(self._io)
 
 
     def _check(self):
         if self.parent._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"parent", self._root, self.parent._root)
+            raise kaitaistruct.ConsistencyError("parent", self._root, self.parent._root)
         if self.parent._parent != self:
-            raise kaitaistruct.ConsistencyError(u"parent", self, self.parent._parent)
+            raise kaitaistruct.ConsistencyError("parent", self, self.parent._parent)
         self._dirty = False
 
     class ParentObj(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(OpaqueExternalType02Parent.ParentObj, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -56,7 +56,7 @@ class OpaqueExternalType02Parent(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(OpaqueExternalType02Parent.ParentObj, self)._write__seq(io)
+            super()._write__seq(io)
             self.child._write__seq(self._io)
 
 

@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class SwitchRepeatExprInvalid(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(SwitchRepeatExprInvalid, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -63,7 +63,7 @@ class SwitchRepeatExprInvalid(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(SwitchRepeatExprInvalid, self)._write__seq(io)
+        super()._write__seq(io)
         self._io.write_u1(self.code)
         self._io.write_u4le(self.size)
         self._raw_body = []
@@ -72,27 +72,27 @@ class SwitchRepeatExprInvalid(ReadWriteKaitaiStruct):
             _on = self.code
             if _on == 255:
                 pass
-                _io__raw_body = KaitaiStream(BytesIO(bytearray(self.size)))
+                _io__raw_body = KaitaiStream(BytesIO(bytes(self.size)))
                 self._io.add_child_stream(_io__raw_body)
                 _pos2 = self._io.pos()
                 self._io.seek(self._io.pos() + (self.size))
                 def handler(parent, _io__raw_body=_io__raw_body, i=i):
                     self._raw_body.append(_io__raw_body.to_byte_array())
                     if len(self._raw_body[i]) != self.size:
-                        raise kaitaistruct.ConsistencyError(u"raw(body)", self.size, len(self._raw_body[i]))
+                        raise kaitaistruct.ConsistencyError("raw(body)", self.size, len(self._raw_body[i]))
                     parent.write_bytes(self._raw_body[i])
                 _io__raw_body.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
                 self.body[i]._write__seq(_io__raw_body)
             elif _on == 34:
                 pass
-                _io__raw_body = KaitaiStream(BytesIO(bytearray(self.size)))
+                _io__raw_body = KaitaiStream(BytesIO(bytes(self.size)))
                 self._io.add_child_stream(_io__raw_body)
                 _pos2 = self._io.pos()
                 self._io.seek(self._io.pos() + (self.size))
                 def handler(parent, _io__raw_body=_io__raw_body, i=i):
                     self._raw_body.append(_io__raw_body.to_byte_array())
                     if len(self._raw_body[i]) != self.size:
-                        raise kaitaistruct.ConsistencyError(u"raw(body)", self.size, len(self._raw_body[i]))
+                        raise kaitaistruct.ConsistencyError("raw(body)", self.size, len(self._raw_body[i]))
                     parent.write_bytes(self._raw_body[i])
                 _io__raw_body.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
                 self.body[i]._write__seq(_io__raw_body)
@@ -104,32 +104,32 @@ class SwitchRepeatExprInvalid(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.body) != 1:
-            raise kaitaistruct.ConsistencyError(u"body", 1, len(self.body))
+            raise kaitaistruct.ConsistencyError("body", 1, len(self.body))
         for i in range(len(self.body)):
             pass
             _on = self.code
             if _on == 255:
                 pass
                 if self.body[i]._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"body", self._root, self.body[i]._root)
+                    raise kaitaistruct.ConsistencyError("body", self._root, self.body[i]._root)
                 if self.body[i]._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"body", self, self.body[i]._parent)
+                    raise kaitaistruct.ConsistencyError("body", self, self.body[i]._parent)
             elif _on == 34:
                 pass
                 if self.body[i]._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"body", self._root, self.body[i]._root)
+                    raise kaitaistruct.ConsistencyError("body", self._root, self.body[i]._root)
                 if self.body[i]._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"body", self, self.body[i]._parent)
+                    raise kaitaistruct.ConsistencyError("body", self, self.body[i]._parent)
             else:
                 pass
                 if len(self.body[i]) != self.size:
-                    raise kaitaistruct.ConsistencyError(u"body", self.size, len(self.body[i]))
+                    raise kaitaistruct.ConsistencyError("body", self.size, len(self.body[i]))
 
         self._dirty = False
 
     class One(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(SwitchRepeatExprInvalid.One, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -143,10 +143,10 @@ class SwitchRepeatExprInvalid(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(SwitchRepeatExprInvalid.One, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_bytes(self.first)
             if not self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"first", 0, self._io.size() - self._io.pos())
+                raise kaitaistruct.ConsistencyError("first", 0, self._io.size() - self._io.pos())
 
 
         def _check(self):
@@ -155,7 +155,7 @@ class SwitchRepeatExprInvalid(ReadWriteKaitaiStruct):
 
     class Two(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(SwitchRepeatExprInvalid.Two, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -169,10 +169,10 @@ class SwitchRepeatExprInvalid(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(SwitchRepeatExprInvalid.Two, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_bytes(self.second)
             if not self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"second", 0, self._io.size() - self._io.pos())
+                raise kaitaistruct.ConsistencyError("second", 0, self._io.size() - self._io.pos())
 
 
         def _check(self):

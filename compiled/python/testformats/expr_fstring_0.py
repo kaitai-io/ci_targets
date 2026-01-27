@@ -6,17 +6,17 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ExprFstring0(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(ExprFstring0, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
 
     def _read(self):
-        self.seq_str = (self._io.read_bytes(5)).decode(u"ASCII")
+        self.seq_str = (self._io.read_bytes(5)).decode("ASCII")
         self.seq_int = self._io.read_u1()
 
 
@@ -28,7 +28,7 @@ class ExprFstring0(KaitaiStruct):
         if hasattr(self, '_m_empty'):
             return self._m_empty
 
-        self._m_empty = u""
+        self._m_empty = ""
         return getattr(self, '_m_empty', None)
 
     @property
@@ -36,7 +36,7 @@ class ExprFstring0(KaitaiStruct):
         if hasattr(self, '_m_head_and_int'):
             return self._m_head_and_int
 
-        self._m_head_and_int = u"abc=" + str(self.seq_int)
+        self._m_head_and_int = "abc=" + str(self.seq_int)
         return getattr(self, '_m_head_and_int', None)
 
     @property
@@ -44,7 +44,7 @@ class ExprFstring0(KaitaiStruct):
         if hasattr(self, '_m_head_and_int_literal'):
             return self._m_head_and_int_literal
 
-        self._m_head_and_int_literal = u"abc=" + str(123)
+        self._m_head_and_int_literal = "abc=" + str(123)
         return getattr(self, '_m_head_and_int_literal', None)
 
     @property
@@ -52,7 +52,7 @@ class ExprFstring0(KaitaiStruct):
         if hasattr(self, '_m_head_and_str'):
             return self._m_head_and_str
 
-        self._m_head_and_str = u"abc=" + self.seq_str
+        self._m_head_and_str = "abc=" + self.seq_str
         return getattr(self, '_m_head_and_str', None)
 
     @property
@@ -60,7 +60,7 @@ class ExprFstring0(KaitaiStruct):
         if hasattr(self, '_m_head_and_str_literal'):
             return self._m_head_and_str_literal
 
-        self._m_head_and_str_literal = u"abc=" + u"foo"
+        self._m_head_and_str_literal = "abc=" + "foo"
         return getattr(self, '_m_head_and_str_literal', None)
 
     @property
@@ -68,7 +68,7 @@ class ExprFstring0(KaitaiStruct):
         if hasattr(self, '_m_literal'):
             return self._m_literal
 
-        self._m_literal = u"abc"
+        self._m_literal = "abc"
         return getattr(self, '_m_literal', None)
 
     @property
@@ -76,7 +76,7 @@ class ExprFstring0(KaitaiStruct):
         if hasattr(self, '_m_literal_with_escapes'):
             return self._m_literal_with_escapes
 
-        self._m_literal_with_escapes = u"abc\n\tt"
+        self._m_literal_with_escapes = "abc\n\tt"
         return getattr(self, '_m_literal_with_escapes', None)
 
 

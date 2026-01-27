@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class InstanceStdArray(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(InstanceStdArray, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_entries = False
@@ -35,7 +35,7 @@ class InstanceStdArray(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(InstanceStdArray, self)._write__seq(io)
+        super()._write__seq(io)
         self._should_write_entries = self.entries__enabled
         self._io.write_u4le(self.ofs)
         self._io.write_u4le(self.entry_size)
@@ -46,11 +46,11 @@ class InstanceStdArray(ReadWriteKaitaiStruct):
         if self.entries__enabled:
             pass
             if len(self._m_entries) != self.qty_entries:
-                raise kaitaistruct.ConsistencyError(u"entries", self.qty_entries, len(self._m_entries))
+                raise kaitaistruct.ConsistencyError("entries", self.qty_entries, len(self._m_entries))
             for i in range(len(self._m_entries)):
                 pass
                 if len(self._m_entries[i]) != self.entry_size:
-                    raise kaitaistruct.ConsistencyError(u"entries", self.entry_size, len(self._m_entries[i]))
+                    raise kaitaistruct.ConsistencyError("entries", self.entry_size, len(self._m_entries[i]))
 
 
         self._dirty = False

@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class RepeatEosU4(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(RepeatEosU4, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -32,15 +32,15 @@ class RepeatEosU4(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(RepeatEosU4, self)._write__seq(io)
+        super()._write__seq(io)
         for i in range(len(self.numbers)):
             pass
             if self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"numbers", 0, self._io.size() - self._io.pos())
+                raise kaitaistruct.ConsistencyError("numbers", 0, self._io.size() - self._io.pos())
             self._io.write_u4le(self.numbers[i])
 
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"numbers", 0, self._io.size() - self._io.pos())
+            raise kaitaistruct.ConsistencyError("numbers", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):

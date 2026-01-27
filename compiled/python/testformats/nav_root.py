@@ -6,11 +6,11 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class NavRoot(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(NavRoot, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -27,13 +27,13 @@ class NavRoot(KaitaiStruct):
 
     class Entry(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            super(NavRoot.Entry, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
 
         def _read(self):
-            self.filename = (self._io.read_bytes(self._root.header.filename_len)).decode(u"UTF-8")
+            self.filename = (self._io.read_bytes(self._root.header.filename_len)).decode("UTF-8")
 
 
         def _fetch_instances(self):
@@ -42,7 +42,7 @@ class NavRoot(KaitaiStruct):
 
     class HeaderObj(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            super(NavRoot.HeaderObj, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -58,7 +58,7 @@ class NavRoot(KaitaiStruct):
 
     class IndexObj(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            super(NavRoot.IndexObj, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()

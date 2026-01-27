@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class BcdUserTypeLe(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(BcdUserTypeLe, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -38,37 +38,37 @@ class BcdUserTypeLe(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(BcdUserTypeLe, self)._write__seq(io)
-        _io__raw_ltr = KaitaiStream(BytesIO(bytearray(4)))
+        super()._write__seq(io)
+        _io__raw_ltr = KaitaiStream(BytesIO(bytes(4)))
         self._io.add_child_stream(_io__raw_ltr)
         _pos2 = self._io.pos()
         self._io.seek(self._io.pos() + (4))
         def handler(parent, _io__raw_ltr=_io__raw_ltr):
             self._raw_ltr = _io__raw_ltr.to_byte_array()
             if len(self._raw_ltr) != 4:
-                raise kaitaistruct.ConsistencyError(u"raw(ltr)", 4, len(self._raw_ltr))
+                raise kaitaistruct.ConsistencyError("raw(ltr)", 4, len(self._raw_ltr))
             parent.write_bytes(self._raw_ltr)
         _io__raw_ltr.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.ltr._write__seq(_io__raw_ltr)
-        _io__raw_rtl = KaitaiStream(BytesIO(bytearray(4)))
+        _io__raw_rtl = KaitaiStream(BytesIO(bytes(4)))
         self._io.add_child_stream(_io__raw_rtl)
         _pos2 = self._io.pos()
         self._io.seek(self._io.pos() + (4))
         def handler(parent, _io__raw_rtl=_io__raw_rtl):
             self._raw_rtl = _io__raw_rtl.to_byte_array()
             if len(self._raw_rtl) != 4:
-                raise kaitaistruct.ConsistencyError(u"raw(rtl)", 4, len(self._raw_rtl))
+                raise kaitaistruct.ConsistencyError("raw(rtl)", 4, len(self._raw_rtl))
             parent.write_bytes(self._raw_rtl)
         _io__raw_rtl.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.rtl._write__seq(_io__raw_rtl)
-        _io__raw_leading_zero_ltr = KaitaiStream(BytesIO(bytearray(4)))
+        _io__raw_leading_zero_ltr = KaitaiStream(BytesIO(bytes(4)))
         self._io.add_child_stream(_io__raw_leading_zero_ltr)
         _pos2 = self._io.pos()
         self._io.seek(self._io.pos() + (4))
         def handler(parent, _io__raw_leading_zero_ltr=_io__raw_leading_zero_ltr):
             self._raw_leading_zero_ltr = _io__raw_leading_zero_ltr.to_byte_array()
             if len(self._raw_leading_zero_ltr) != 4:
-                raise kaitaistruct.ConsistencyError(u"raw(leading_zero_ltr)", 4, len(self._raw_leading_zero_ltr))
+                raise kaitaistruct.ConsistencyError("raw(leading_zero_ltr)", 4, len(self._raw_leading_zero_ltr))
             parent.write_bytes(self._raw_leading_zero_ltr)
         _io__raw_leading_zero_ltr.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.leading_zero_ltr._write__seq(_io__raw_leading_zero_ltr)
@@ -76,22 +76,22 @@ class BcdUserTypeLe(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.ltr._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"ltr", self._root, self.ltr._root)
+            raise kaitaistruct.ConsistencyError("ltr", self._root, self.ltr._root)
         if self.ltr._parent != self:
-            raise kaitaistruct.ConsistencyError(u"ltr", self, self.ltr._parent)
+            raise kaitaistruct.ConsistencyError("ltr", self, self.ltr._parent)
         if self.rtl._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"rtl", self._root, self.rtl._root)
+            raise kaitaistruct.ConsistencyError("rtl", self._root, self.rtl._root)
         if self.rtl._parent != self:
-            raise kaitaistruct.ConsistencyError(u"rtl", self, self.rtl._parent)
+            raise kaitaistruct.ConsistencyError("rtl", self, self.rtl._parent)
         if self.leading_zero_ltr._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"leading_zero_ltr", self._root, self.leading_zero_ltr._root)
+            raise kaitaistruct.ConsistencyError("leading_zero_ltr", self._root, self.leading_zero_ltr._root)
         if self.leading_zero_ltr._parent != self:
-            raise kaitaistruct.ConsistencyError(u"leading_zero_ltr", self, self.leading_zero_ltr._parent)
+            raise kaitaistruct.ConsistencyError("leading_zero_ltr", self, self.leading_zero_ltr._parent)
         self._dirty = False
 
     class LeadingZeroLtrObj(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(BcdUserTypeLe.LeadingZeroLtrObj, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -108,7 +108,7 @@ class BcdUserTypeLe(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(BcdUserTypeLe.LeadingZeroLtrObj, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u1(self.b1)
             self._io.write_u1(self.b2)
             self._io.write_u1(self.b3)
@@ -221,7 +221,7 @@ class BcdUserTypeLe(ReadWriteKaitaiStruct):
 
     class LtrObj(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(BcdUserTypeLe.LtrObj, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -238,7 +238,7 @@ class BcdUserTypeLe(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(BcdUserTypeLe.LtrObj, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u1(self.b1)
             self._io.write_u1(self.b2)
             self._io.write_u1(self.b3)
@@ -351,7 +351,7 @@ class BcdUserTypeLe(ReadWriteKaitaiStruct):
 
     class RtlObj(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(BcdUserTypeLe.RtlObj, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -368,7 +368,7 @@ class BcdUserTypeLe(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(BcdUserTypeLe.RtlObj, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u1(self.b1)
             self._io.write_u1(self.b2)
             self._io.write_u1(self.b3)

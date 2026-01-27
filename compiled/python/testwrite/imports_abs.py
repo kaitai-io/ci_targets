@@ -7,11 +7,11 @@ from testwrite import vlq_base128_le
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ImportsAbs(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ImportsAbs, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -28,14 +28,14 @@ class ImportsAbs(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ImportsAbs, self)._write__seq(io)
+        super()._write__seq(io)
         self.len._write__seq(self._io)
         self._io.write_bytes(self.body)
 
 
     def _check(self):
         if len(self.body) != self.len.value:
-            raise kaitaistruct.ConsistencyError(u"body", self.len.value, len(self.body))
+            raise kaitaistruct.ConsistencyError("body", self.len.value, len(self.body))
         self._dirty = False
 
 

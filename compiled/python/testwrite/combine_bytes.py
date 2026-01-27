@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class CombineBytes(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(CombineBytes, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -26,20 +26,20 @@ class CombineBytes(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(CombineBytes, self)._write__seq(io)
+        super()._write__seq(io)
         self._io.write_bytes(self.bytes_term)
         self._io.write_u1(124)
         self._io.write_bytes(self.bytes_limit)
         self._io.write_bytes(self.bytes_eos)
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"bytes_eos", 0, self._io.size() - self._io.pos())
+            raise kaitaistruct.ConsistencyError("bytes_eos", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):
         if KaitaiStream.byte_array_index_of(self.bytes_term, 124) != -1:
-            raise kaitaistruct.ConsistencyError(u"bytes_term", -1, KaitaiStream.byte_array_index_of(self.bytes_term, 124))
+            raise kaitaistruct.ConsistencyError("bytes_term", -1, KaitaiStream.byte_array_index_of(self.bytes_term, 124))
         if len(self.bytes_limit) != 4:
-            raise kaitaistruct.ConsistencyError(u"bytes_limit", 4, len(self.bytes_limit))
+            raise kaitaistruct.ConsistencyError("bytes_limit", 4, len(self.bytes_limit))
         self._dirty = False
 
     @property

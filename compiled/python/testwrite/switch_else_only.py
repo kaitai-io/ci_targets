@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class SwitchElseOnly(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(SwitchElseOnly, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -29,7 +29,7 @@ class SwitchElseOnly(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(SwitchElseOnly, self)._write__seq(io)
+        super()._write__seq(io)
         self._io.write_s1(self.opcode)
         self._io.write_s1(self.prim_byte)
         self._io.write_bytes(self.indicator)
@@ -38,16 +38,16 @@ class SwitchElseOnly(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.indicator) != 4:
-            raise kaitaistruct.ConsistencyError(u"indicator", 4, len(self.indicator))
+            raise kaitaistruct.ConsistencyError("indicator", 4, len(self.indicator))
         if self.ut._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"ut", self._root, self.ut._root)
+            raise kaitaistruct.ConsistencyError("ut", self._root, self.ut._root)
         if self.ut._parent != self:
-            raise kaitaistruct.ConsistencyError(u"ut", self, self.ut._parent)
+            raise kaitaistruct.ConsistencyError("ut", self, self.ut._parent)
         self._dirty = False
 
     class Data(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(SwitchElseOnly.Data, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -61,13 +61,13 @@ class SwitchElseOnly(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(SwitchElseOnly.Data, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_bytes(self.value)
 
 
         def _check(self):
             if len(self.value) != 4:
-                raise kaitaistruct.ConsistencyError(u"value", 4, len(self.value))
+                raise kaitaistruct.ConsistencyError("value", 4, len(self.value))
             self._dirty = False
 
 

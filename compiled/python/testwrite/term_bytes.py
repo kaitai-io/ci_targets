@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class TermBytes(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(TermBytes, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -26,7 +26,7 @@ class TermBytes(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(TermBytes, self)._write__seq(io)
+        super()._write__seq(io)
         self._io.write_bytes(self.s1)
         self._io.write_u1(124)
         self._io.write_bytes(self.s2)
@@ -38,13 +38,13 @@ class TermBytes(ReadWriteKaitaiStruct):
 
     def _check(self):
         if KaitaiStream.byte_array_index_of(self.s1, 124) != -1:
-            raise kaitaistruct.ConsistencyError(u"s1", -1, KaitaiStream.byte_array_index_of(self.s1, 124))
+            raise kaitaistruct.ConsistencyError("s1", -1, KaitaiStream.byte_array_index_of(self.s1, 124))
         if KaitaiStream.byte_array_index_of(self.s2, 124) != -1:
-            raise kaitaistruct.ConsistencyError(u"s2", -1, KaitaiStream.byte_array_index_of(self.s2, 124))
+            raise kaitaistruct.ConsistencyError("s2", -1, KaitaiStream.byte_array_index_of(self.s2, 124))
         if len(self.s3) == 0:
-            raise kaitaistruct.ConsistencyError(u"s3", 0, len(self.s3))
+            raise kaitaistruct.ConsistencyError("s3", 0, len(self.s3))
         if KaitaiStream.byte_array_index_of(self.s3, 64) != len(self.s3) - 1:
-            raise kaitaistruct.ConsistencyError(u"s3", len(self.s3) - 1, KaitaiStream.byte_array_index_of(self.s3, 64))
+            raise kaitaistruct.ConsistencyError("s3", len(self.s3) - 1, KaitaiStream.byte_array_index_of(self.s3, 64))
         self._dirty = False
 
 

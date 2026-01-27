@@ -6,20 +6,20 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ValidFailRangeFloat(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ValidFailRangeFloat, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self.foo = self._io.read_f4le()
         if not self.foo >= 0.25:
-            raise kaitaistruct.ValidationLessThanError(0.25, self.foo, self._io, u"/seq/0")
+            raise kaitaistruct.ValidationLessThanError(0.25, self.foo, self._io, "/seq/0")
         if not self.foo <= 0.375:
-            raise kaitaistruct.ValidationGreaterThanError(0.375, self.foo, self._io, u"/seq/0")
+            raise kaitaistruct.ValidationGreaterThanError(0.375, self.foo, self._io, "/seq/0")
         self._dirty = False
 
 
@@ -28,15 +28,15 @@ class ValidFailRangeFloat(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ValidFailRangeFloat, self)._write__seq(io)
+        super()._write__seq(io)
         self._io.write_f4le(self.foo)
 
 
     def _check(self):
         if not self.foo >= 0.25:
-            raise kaitaistruct.ValidationLessThanError(0.25, self.foo, None, u"/seq/0")
+            raise kaitaistruct.ValidationLessThanError(0.25, self.foo, None, "/seq/0")
         if not self.foo <= 0.375:
-            raise kaitaistruct.ValidationGreaterThanError(0.375, self.foo, None, u"/seq/0")
+            raise kaitaistruct.ValidationGreaterThanError(0.375, self.foo, None, "/seq/0")
         self._dirty = False
 
 

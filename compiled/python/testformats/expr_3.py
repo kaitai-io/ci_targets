@@ -6,18 +6,18 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class Expr3(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(Expr3, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
 
     def _read(self):
         self.one = self._io.read_u1()
-        self.two = (self._io.read_bytes(3)).decode(u"ASCII")
+        self.two = (self._io.read_bytes(3)).decode("ASCII")
 
 
     def _fetch_instances(self):
@@ -28,7 +28,7 @@ class Expr3(KaitaiStruct):
         if hasattr(self, '_m_four'):
             return self._m_four
 
-        self._m_four = (u"_" + self.two) + u"_"
+        self._m_four = ("_" + self.two) + "_"
         return getattr(self, '_m_four', None)
 
     @property
@@ -36,7 +36,7 @@ class Expr3(KaitaiStruct):
         if hasattr(self, '_m_is_str_eq'):
             return self._m_is_str_eq
 
-        self._m_is_str_eq = self.two == u"ACK"
+        self._m_is_str_eq = self.two == "ACK"
         return getattr(self, '_m_is_str_eq', None)
 
     @property
@@ -44,7 +44,7 @@ class Expr3(KaitaiStruct):
         if hasattr(self, '_m_is_str_ge'):
             return self._m_is_str_ge
 
-        self._m_is_str_ge = self.two >= u"ACK2"
+        self._m_is_str_ge = self.two >= "ACK2"
         return getattr(self, '_m_is_str_ge', None)
 
     @property
@@ -52,7 +52,7 @@ class Expr3(KaitaiStruct):
         if hasattr(self, '_m_is_str_gt'):
             return self._m_is_str_gt
 
-        self._m_is_str_gt = self.two > u"ACK2"
+        self._m_is_str_gt = self.two > "ACK2"
         return getattr(self, '_m_is_str_gt', None)
 
     @property
@@ -60,7 +60,7 @@ class Expr3(KaitaiStruct):
         if hasattr(self, '_m_is_str_le'):
             return self._m_is_str_le
 
-        self._m_is_str_le = self.two <= u"ACK2"
+        self._m_is_str_le = self.two <= "ACK2"
         return getattr(self, '_m_is_str_le', None)
 
     @property
@@ -68,7 +68,7 @@ class Expr3(KaitaiStruct):
         if hasattr(self, '_m_is_str_lt'):
             return self._m_is_str_lt
 
-        self._m_is_str_lt = self.two < u"ACK2"
+        self._m_is_str_lt = self.two < "ACK2"
         return getattr(self, '_m_is_str_lt', None)
 
     @property
@@ -84,7 +84,7 @@ class Expr3(KaitaiStruct):
         if hasattr(self, '_m_is_str_ne'):
             return self._m_is_str_ne
 
-        self._m_is_str_ne = self.two != u"ACK"
+        self._m_is_str_ne = self.two != "ACK"
         return getattr(self, '_m_is_str_ne', None)
 
     @property
@@ -100,7 +100,7 @@ class Expr3(KaitaiStruct):
         if hasattr(self, '_m_three'):
             return self._m_three
 
-        self._m_three = u"@" + self.two
+        self._m_three = "@" + self.two
         return getattr(self, '_m_three', None)
 
 

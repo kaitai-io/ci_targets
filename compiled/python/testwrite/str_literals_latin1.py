@@ -6,17 +6,17 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class StrLiteralsLatin1(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(StrLiteralsLatin1, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
         self.len_parsed = self._io.read_u2le()
-        self.parsed = (self._io.read_bytes(self.len_parsed)).decode(u"UTF-8")
+        self.parsed = (self._io.read_bytes(self.len_parsed)).decode("UTF-8")
         self._dirty = False
 
 
@@ -25,14 +25,14 @@ class StrLiteralsLatin1(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(StrLiteralsLatin1, self)._write__seq(io)
+        super()._write__seq(io)
         self._io.write_u2le(self.len_parsed)
-        self._io.write_bytes((self.parsed).encode(u"UTF-8"))
+        self._io.write_bytes((self.parsed).encode("UTF-8"))
 
 
     def _check(self):
-        if len((self.parsed).encode(u"UTF-8")) != self.len_parsed:
-            raise kaitaistruct.ConsistencyError(u"parsed", self.len_parsed, len((self.parsed).encode(u"UTF-8")))
+        if len((self.parsed).encode("UTF-8")) != self.len_parsed:
+            raise kaitaistruct.ConsistencyError("parsed", self.len_parsed, len((self.parsed).encode("UTF-8")))
         self._dirty = False
 
     @property
@@ -40,7 +40,7 @@ class StrLiteralsLatin1(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_parsed_eq_literal'):
             return self._m_parsed_eq_literal
 
-        self._m_parsed_eq_literal = self.parsed == u"\243"
+        self._m_parsed_eq_literal = self.parsed == "\243"
         return getattr(self, '_m_parsed_eq_literal', None)
 
     def _invalidate_parsed_eq_literal(self):

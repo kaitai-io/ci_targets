@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ProcessRepeatUsertypeDynargXor(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ProcessRepeatUsertypeDynargXor, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -43,12 +43,12 @@ class ProcessRepeatUsertypeDynargXor(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ProcessRepeatUsertypeDynargXor, self)._write__seq(io)
+        super()._write__seq(io)
         self._raw_blocks = []
         self._raw__raw_blocks = []
         for i in range(len(self.blocks)):
             pass
-            _io__raw_blocks = KaitaiStream(BytesIO(bytearray(5)))
+            _io__raw_blocks = KaitaiStream(BytesIO(bytes(5)))
             self._io.add_child_stream(_io__raw_blocks)
             _pos2 = self._io.pos()
             self._io.seek(self._io.pos() + (5))
@@ -57,7 +57,7 @@ class ProcessRepeatUsertypeDynargXor(ReadWriteKaitaiStruct):
                 self._raw_blocks.append(_io__raw_blocks.to_byte_array())
                 self._raw__raw_blocks.append(KaitaiStream.process_xor_one(self._raw_blocks[i], _process_val))
                 if len(self._raw__raw_blocks[i]) != 5:
-                    raise kaitaistruct.ConsistencyError(u"raw(blocks)", 5, len(self._raw__raw_blocks[i]))
+                    raise kaitaistruct.ConsistencyError("raw(blocks)", 5, len(self._raw__raw_blocks[i]))
                 parent.write_bytes(self._raw__raw_blocks[i])
             _io__raw_blocks.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self.blocks[i]._write__seq(_io__raw_blocks)
@@ -67,23 +67,23 @@ class ProcessRepeatUsertypeDynargXor(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.blocks) != 2:
-            raise kaitaistruct.ConsistencyError(u"blocks", 2, len(self.blocks))
+            raise kaitaistruct.ConsistencyError("blocks", 2, len(self.blocks))
         for i in range(len(self.blocks)):
             pass
             if self.blocks[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"blocks", self._root, self.blocks[i]._root)
+                raise kaitaistruct.ConsistencyError("blocks", self._root, self.blocks[i]._root)
             if self.blocks[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"blocks", self, self.blocks[i]._parent)
+                raise kaitaistruct.ConsistencyError("blocks", self, self.blocks[i]._parent)
 
         if self.blocks_b._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"blocks_b", self._root, self.blocks_b._root)
+            raise kaitaistruct.ConsistencyError("blocks_b", self._root, self.blocks_b._root)
         if self.blocks_b._parent != self:
-            raise kaitaistruct.ConsistencyError(u"blocks_b", self, self.blocks_b._parent)
+            raise kaitaistruct.ConsistencyError("blocks_b", self, self.blocks_b._parent)
         self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(ProcessRepeatUsertypeDynargXor.Block, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -97,7 +97,7 @@ class ProcessRepeatUsertypeDynargXor(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(ProcessRepeatUsertypeDynargXor.Block, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u4le(self.a)
 
 
@@ -107,7 +107,7 @@ class ProcessRepeatUsertypeDynargXor(ReadWriteKaitaiStruct):
 
     class BlocksBWrapper(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(ProcessRepeatUsertypeDynargXor.BlocksBWrapper, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._should_write_blocks_0_b = False
@@ -133,7 +133,7 @@ class ProcessRepeatUsertypeDynargXor(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(ProcessRepeatUsertypeDynargXor.BlocksBWrapper, self)._write__seq(io)
+            super()._write__seq(io)
             self._should_write_blocks_0_b = self.blocks_0_b__enabled
             self._should_write_blocks_1_b = self.blocks_1_b__enabled
             self._io.write_u1(self.dummy)

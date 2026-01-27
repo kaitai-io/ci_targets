@@ -7,11 +7,11 @@ from testwrite import hello_world
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class Imports0(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(Imports0, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -28,7 +28,7 @@ class Imports0(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(Imports0, self)._write__seq(io)
+        super()._write__seq(io)
         self._io.write_u1(self.two)
         self.hw._write__seq(self._io)
 

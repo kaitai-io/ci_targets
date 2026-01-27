@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class TermStruct4(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(TermStruct4, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -40,39 +40,39 @@ class TermStruct4(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(TermStruct4, self)._write__seq(io)
-        _io__raw_s1 = KaitaiStream(BytesIO(bytearray(3)))
+        super()._write__seq(io)
+        _io__raw_s1 = KaitaiStream(BytesIO(bytes(3)))
         self._io.add_child_stream(_io__raw_s1)
         _pos2 = self._io.pos()
         self._io.seek(self._io.pos() + (3))
         def handler(parent, _io__raw_s1=_io__raw_s1):
             self._raw_s1 = _io__raw_s1.to_byte_array()
             if len(self._raw_s1) != 3:
-                raise kaitaistruct.ConsistencyError(u"raw(s1)", 3, len(self._raw_s1))
+                raise kaitaistruct.ConsistencyError("raw(s1)", 3, len(self._raw_s1))
             parent.write_bytes(self._raw_s1)
         _io__raw_s1.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.s1._write__seq(_io__raw_s1)
         self._io.write_u1(self.skip_term1)
-        _io__raw_s2 = KaitaiStream(BytesIO(bytearray(3)))
+        _io__raw_s2 = KaitaiStream(BytesIO(bytes(3)))
         self._io.add_child_stream(_io__raw_s2)
         _pos2 = self._io.pos()
         self._io.seek(self._io.pos() + (3))
         def handler(parent, _io__raw_s2=_io__raw_s2):
             self._raw_s2 = _io__raw_s2.to_byte_array()
             if len(self._raw_s2) != 3:
-                raise kaitaistruct.ConsistencyError(u"raw(s2)", 3, len(self._raw_s2))
+                raise kaitaistruct.ConsistencyError("raw(s2)", 3, len(self._raw_s2))
             parent.write_bytes(self._raw_s2)
         _io__raw_s2.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.s2._write__seq(_io__raw_s2)
         self._io.write_u1(self.skip_term2)
-        _io__raw_s3 = KaitaiStream(BytesIO(bytearray(3)))
+        _io__raw_s3 = KaitaiStream(BytesIO(bytes(3)))
         self._io.add_child_stream(_io__raw_s3)
         _pos2 = self._io.pos()
         self._io.seek(self._io.pos() + (3))
         def handler(parent, _io__raw_s3=_io__raw_s3):
             self._raw_s3 = _io__raw_s3.to_byte_array()
             if len(self._raw_s3) != 3:
-                raise kaitaistruct.ConsistencyError(u"raw(s3)", 3, len(self._raw_s3))
+                raise kaitaistruct.ConsistencyError("raw(s3)", 3, len(self._raw_s3))
             parent.write_bytes(self._raw_s3)
         _io__raw_s3.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
         self.s3._write__seq(_io__raw_s3)
@@ -80,22 +80,22 @@ class TermStruct4(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.s1._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"s1", self._root, self.s1._root)
+            raise kaitaistruct.ConsistencyError("s1", self._root, self.s1._root)
         if self.s1._parent != self:
-            raise kaitaistruct.ConsistencyError(u"s1", self, self.s1._parent)
+            raise kaitaistruct.ConsistencyError("s1", self, self.s1._parent)
         if self.s2._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"s2", self._root, self.s2._root)
+            raise kaitaistruct.ConsistencyError("s2", self._root, self.s2._root)
         if self.s2._parent != self:
-            raise kaitaistruct.ConsistencyError(u"s2", self, self.s2._parent)
+            raise kaitaistruct.ConsistencyError("s2", self, self.s2._parent)
         if self.s3._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"s3", self._root, self.s3._root)
+            raise kaitaistruct.ConsistencyError("s3", self._root, self.s3._root)
         if self.s3._parent != self:
-            raise kaitaistruct.ConsistencyError(u"s3", self, self.s3._parent)
+            raise kaitaistruct.ConsistencyError("s3", self, self.s3._parent)
         self._dirty = False
 
     class BytesWrapper(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(TermStruct4.BytesWrapper, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -109,10 +109,10 @@ class TermStruct4(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(TermStruct4.BytesWrapper, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_bytes(self.value)
             if not self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"value", 0, self._io.size() - self._io.pos())
+                raise kaitaistruct.ConsistencyError("value", 0, self._io.size() - self._io.pos())
 
 
         def _check(self):
@@ -121,7 +121,7 @@ class TermStruct4(ReadWriteKaitaiStruct):
 
     class S1Type(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(TermStruct4.S1Type, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -140,8 +140,8 @@ class TermStruct4(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(TermStruct4.S1Type, self)._write__seq(io)
-            _io__raw_value = KaitaiStream(BytesIO(bytearray(self.value__outer_size)))
+            super()._write__seq(io)
+            _io__raw_value = KaitaiStream(BytesIO(bytes(self.value__outer_size)))
             self._io.add_child_stream(_io__raw_value)
             _pos2 = self._io.pos()
             self._io.seek(self._io.pos() + (self.value__outer_size))
@@ -151,7 +151,7 @@ class TermStruct4(ReadWriteKaitaiStruct):
             def handler(parent, _io__raw_value=_io__raw_value):
                 self._raw_value = _io__raw_value.to_byte_array()
                 if KaitaiStream.byte_array_index_of(self._raw_value, 124) != -1:
-                    raise kaitaistruct.ConsistencyError(u"raw(value)", -1, KaitaiStream.byte_array_index_of(self._raw_value, 124))
+                    raise kaitaistruct.ConsistencyError("raw(value)", -1, KaitaiStream.byte_array_index_of(self._raw_value, 124))
                 parent.write_bytes(self._raw_value)
                 if not parent.is_eof():
                     parent.write_u1(124)
@@ -162,15 +162,15 @@ class TermStruct4(ReadWriteKaitaiStruct):
 
         def _check(self):
             if self.value._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"value", self._root, self.value._root)
+                raise kaitaistruct.ConsistencyError("value", self._root, self.value._root)
             if self.value._parent != self:
-                raise kaitaistruct.ConsistencyError(u"value", self, self.value._parent)
+                raise kaitaistruct.ConsistencyError("value", self, self.value._parent)
             self._dirty = False
 
 
     class S2Type(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(TermStruct4.S2Type, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -189,15 +189,15 @@ class TermStruct4(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(TermStruct4.S2Type, self)._write__seq(io)
-            _io__raw_value = KaitaiStream(BytesIO(bytearray(self.value__outer_size)))
+            super()._write__seq(io)
+            _io__raw_value = KaitaiStream(BytesIO(bytes(self.value__outer_size)))
             self._io.add_child_stream(_io__raw_value)
             _pos2 = self._io.pos()
             self._io.seek(self._io.pos() + (self.value__outer_size))
             def handler(parent, _io__raw_value=_io__raw_value):
                 self._raw_value = _io__raw_value.to_byte_array()
                 if KaitaiStream.byte_array_index_of(self._raw_value, 124) != -1:
-                    raise kaitaistruct.ConsistencyError(u"raw(value)", -1, KaitaiStream.byte_array_index_of(self._raw_value, 124))
+                    raise kaitaistruct.ConsistencyError("raw(value)", -1, KaitaiStream.byte_array_index_of(self._raw_value, 124))
                 parent.write_bytes(self._raw_value)
                 if not parent.is_eof():
                     _pos = parent.pos()
@@ -210,15 +210,15 @@ class TermStruct4(ReadWriteKaitaiStruct):
 
         def _check(self):
             if self.value._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"value", self._root, self.value._root)
+                raise kaitaistruct.ConsistencyError("value", self._root, self.value._root)
             if self.value._parent != self:
-                raise kaitaistruct.ConsistencyError(u"value", self, self.value._parent)
+                raise kaitaistruct.ConsistencyError("value", self, self.value._parent)
             self._dirty = False
 
 
     class S3Type(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(TermStruct4.S3Type, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -237,20 +237,20 @@ class TermStruct4(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(TermStruct4.S3Type, self)._write__seq(io)
-            _io__raw_value = KaitaiStream(BytesIO(bytearray(self.value__outer_size)))
+            super()._write__seq(io)
+            _io__raw_value = KaitaiStream(BytesIO(bytes(self.value__outer_size)))
             self._io.add_child_stream(_io__raw_value)
             _pos2 = self._io.pos()
             self._io.seek(self._io.pos() + (self.value__outer_size))
             def handler(parent, _io__raw_value=_io__raw_value):
                 self._raw_value = _io__raw_value.to_byte_array()
                 if  ((KaitaiStream.byte_array_index_of(self._raw_value, 64) != -1) and (KaitaiStream.byte_array_index_of(self._raw_value, 64) != len(self._raw_value) - 1)) :
-                    raise kaitaistruct.ConsistencyError(u"raw(value)", len(self._raw_value) - 1, KaitaiStream.byte_array_index_of(self._raw_value, 64))
+                    raise kaitaistruct.ConsistencyError("raw(value)", len(self._raw_value) - 1, KaitaiStream.byte_array_index_of(self._raw_value, 64))
                 parent.write_bytes(self._raw_value)
                 if KaitaiStream.byte_array_index_of(self._raw_value, 64) == -1:
                     pass
                     if not parent.is_eof():
-                        raise kaitaistruct.ConsistencyError(u"raw(value)", 0, parent.size() - parent.pos())
+                        raise kaitaistruct.ConsistencyError("raw(value)", 0, parent.size() - parent.pos())
 
             _io__raw_value.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
             self.value._write__seq(_io__raw_value)
@@ -258,9 +258,9 @@ class TermStruct4(ReadWriteKaitaiStruct):
 
         def _check(self):
             if self.value._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"value", self._root, self.value._root)
+                raise kaitaistruct.ConsistencyError("value", self._root, self.value._root)
             if self.value._parent != self:
-                raise kaitaistruct.ConsistencyError(u"value", self, self.value._parent)
+                raise kaitaistruct.ConsistencyError("value", self, self.value._parent)
             self._dirty = False
 
 

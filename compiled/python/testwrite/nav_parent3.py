@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class NavParent3(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(NavParent3, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_tags = False
@@ -35,7 +35,7 @@ class NavParent3(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(NavParent3, self)._write__seq(io)
+        super()._write__seq(io)
         self._should_write_tags = self.tags__enabled
         self._io.write_u4le(self.ofs_tags)
         self._io.write_u4le(self.num_tags)
@@ -45,27 +45,27 @@ class NavParent3(ReadWriteKaitaiStruct):
         if self.tags__enabled:
             pass
             if len(self._m_tags) != self.num_tags:
-                raise kaitaistruct.ConsistencyError(u"tags", self.num_tags, len(self._m_tags))
+                raise kaitaistruct.ConsistencyError("tags", self.num_tags, len(self._m_tags))
             for i in range(len(self._m_tags)):
                 pass
                 if self._m_tags[i]._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"tags", self._root, self._m_tags[i]._root)
+                    raise kaitaistruct.ConsistencyError("tags", self._root, self._m_tags[i]._root)
                 if self._m_tags[i]._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"tags", self, self._m_tags[i]._parent)
+                    raise kaitaistruct.ConsistencyError("tags", self, self._m_tags[i]._parent)
 
 
         self._dirty = False
 
     class Tag(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(NavParent3.Tag, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._should_write_tag_content = False
             self.tag_content__enabled = True
 
         def _read(self):
-            self.name = (self._io.read_bytes(4)).decode(u"ASCII")
+            self.name = (self._io.read_bytes(4)).decode("ASCII")
             self.ofs = self._io.read_u4le()
             self.num_items = self._io.read_u4le()
             self._dirty = False
@@ -77,43 +77,43 @@ class NavParent3(ReadWriteKaitaiStruct):
             if hasattr(self, '_m_tag_content'):
                 pass
                 _on = self.name
-                if _on == u"RAHC":
+                if _on == "RAHC":
                     pass
                     self._m_tag_content._fetch_instances()
 
 
 
         def _write__seq(self, io=None):
-            super(NavParent3.Tag, self)._write__seq(io)
+            super()._write__seq(io)
             self._should_write_tag_content = self.tag_content__enabled
-            self._io.write_bytes((self.name).encode(u"ASCII"))
+            self._io.write_bytes((self.name).encode("ASCII"))
             self._io.write_u4le(self.ofs)
             self._io.write_u4le(self.num_items)
 
 
         def _check(self):
-            if len((self.name).encode(u"ASCII")) != 4:
-                raise kaitaistruct.ConsistencyError(u"name", 4, len((self.name).encode(u"ASCII")))
+            if len((self.name).encode("ASCII")) != 4:
+                raise kaitaistruct.ConsistencyError("name", 4, len((self.name).encode("ASCII")))
             if self.tag_content__enabled:
                 pass
                 _on = self.name
-                if _on == u"RAHC":
+                if _on == "RAHC":
                     pass
                     if self._m_tag_content._root != self._root:
-                        raise kaitaistruct.ConsistencyError(u"tag_content", self._root, self._m_tag_content._root)
+                        raise kaitaistruct.ConsistencyError("tag_content", self._root, self._m_tag_content._root)
                     if self._m_tag_content._parent != self:
-                        raise kaitaistruct.ConsistencyError(u"tag_content", self, self._m_tag_content._parent)
+                        raise kaitaistruct.ConsistencyError("tag_content", self, self._m_tag_content._parent)
 
             self._dirty = False
 
         class TagChar(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                super(NavParent3.Tag.TagChar, self).__init__(_io)
+                super().__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
             def _read(self):
-                self.content = (self._io.read_bytes(self._parent.num_items)).decode(u"ASCII")
+                self.content = (self._io.read_bytes(self._parent.num_items)).decode("ASCII")
                 self._dirty = False
 
 
@@ -122,13 +122,13 @@ class NavParent3(ReadWriteKaitaiStruct):
 
 
             def _write__seq(self, io=None):
-                super(NavParent3.Tag.TagChar, self)._write__seq(io)
-                self._io.write_bytes((self.content).encode(u"ASCII"))
+                super()._write__seq(io)
+                self._io.write_bytes((self.content).encode("ASCII"))
 
 
             def _check(self):
-                if len((self.content).encode(u"ASCII")) != self._parent.num_items:
-                    raise kaitaistruct.ConsistencyError(u"content", self._parent.num_items, len((self.content).encode(u"ASCII")))
+                if len((self.content).encode("ASCII")) != self._parent.num_items:
+                    raise kaitaistruct.ConsistencyError("content", self._parent.num_items, len((self.content).encode("ASCII")))
                 self._dirty = False
 
 
@@ -146,7 +146,7 @@ class NavParent3(ReadWriteKaitaiStruct):
             _pos = io.pos()
             io.seek(self.ofs)
             _on = self.name
-            if _on == u"RAHC":
+            if _on == "RAHC":
                 pass
                 self._m_tag_content = NavParent3.Tag.TagChar(io, self, self._root)
                 self._m_tag_content._read()
@@ -164,7 +164,7 @@ class NavParent3(ReadWriteKaitaiStruct):
             _pos = io.pos()
             io.seek(self.ofs)
             _on = self.name
-            if _on == u"RAHC":
+            if _on == "RAHC":
                 pass
                 self._m_tag_content._write__seq(io)
             io.seek(_pos)

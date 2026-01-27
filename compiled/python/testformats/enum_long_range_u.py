@@ -7,7 +7,7 @@ from enum import IntEnum
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class EnumLongRangeU(KaitaiStruct):
 
@@ -17,7 +17,7 @@ class EnumLongRangeU(KaitaiStruct):
         int_over_max = 4294967296
         long_max = 9223372036854775807
     def __init__(self, _io, _parent=None, _root=None):
-        super(EnumLongRangeU, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()

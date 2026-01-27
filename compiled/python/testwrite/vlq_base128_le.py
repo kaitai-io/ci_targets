@@ -6,7 +6,7 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class VlqBase128Le(ReadWriteKaitaiStruct):
     """A variable-length unsigned/signed integer using base128 encoding. 1-byte groups
@@ -40,7 +40,7 @@ class VlqBase128Le(ReadWriteKaitaiStruct):
     see <https://github.com/protocolbuffers/protoscope/blob/8e7a6aafa2c9958527b1e0747e66e1bfff045819/writer.go#L644-L648>.
     """
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(VlqBase128Le, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -69,7 +69,7 @@ class VlqBase128Le(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(VlqBase128Le, self)._write__seq(io)
+        super()._write__seq(io)
         for i in range(len(self.groups)):
             pass
             self.groups[i]._write__seq(self._io)
@@ -78,22 +78,22 @@ class VlqBase128Le(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.groups) == 0:
-            raise kaitaistruct.ConsistencyError(u"groups", 0, len(self.groups))
+            raise kaitaistruct.ConsistencyError("groups", 0, len(self.groups))
         for i in range(len(self.groups)):
             pass
             if self.groups[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"groups", self._root, self.groups[i]._root)
+                raise kaitaistruct.ConsistencyError("groups", self._root, self.groups[i]._root)
             if self.groups[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"groups", self, self.groups[i]._parent)
+                raise kaitaistruct.ConsistencyError("groups", self, self.groups[i]._parent)
             if self.groups[i].idx != i:
-                raise kaitaistruct.ConsistencyError(u"groups", i, self.groups[i].idx)
+                raise kaitaistruct.ConsistencyError("groups", i, self.groups[i].idx)
             if self.groups[i].prev_interm_value != (self.groups[i - 1].interm_value if i != 0 else 0):
-                raise kaitaistruct.ConsistencyError(u"groups", (self.groups[i - 1].interm_value if i != 0 else 0), self.groups[i].prev_interm_value)
+                raise kaitaistruct.ConsistencyError("groups", (self.groups[i - 1].interm_value if i != 0 else 0), self.groups[i].prev_interm_value)
             if self.groups[i].multiplier != ((9223372036854775808 if i == 9 else self.groups[i - 1].multiplier * 128) if i != 0 else 1):
-                raise kaitaistruct.ConsistencyError(u"groups", ((9223372036854775808 if i == 9 else self.groups[i - 1].multiplier * 128) if i != 0 else 1), self.groups[i].multiplier)
+                raise kaitaistruct.ConsistencyError("groups", ((9223372036854775808 if i == 9 else self.groups[i - 1].multiplier * 128) if i != 0 else 1), self.groups[i].multiplier)
             _ = self.groups[i]
             if (not (_.has_next)) != (i == len(self.groups) - 1):
-                raise kaitaistruct.ConsistencyError(u"groups", i == len(self.groups) - 1, (not (_.has_next)))
+                raise kaitaistruct.ConsistencyError("groups", i == len(self.groups) - 1, (not (_.has_next)))
 
         self._dirty = False
 
@@ -101,7 +101,7 @@ class VlqBase128Le(ReadWriteKaitaiStruct):
         """One byte group, clearly divided into 7-bit "value" chunk and 1-bit "continuation" flag.
         """
         def __init__(self, idx, prev_interm_value, multiplier, _io=None, _parent=None, _root=None):
-            super(VlqBase128Le.Group, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self.idx = idx
@@ -111,10 +111,10 @@ class VlqBase128Le(ReadWriteKaitaiStruct):
         def _read(self):
             self.has_next = self._io.read_bits_int_be(1) != 0
             if not self.has_next == (False if self.idx == 9 else self.has_next):
-                raise kaitaistruct.ValidationNotEqualError((False if self.idx == 9 else self.has_next), self.has_next, self._io, u"/types/group/seq/0")
+                raise kaitaistruct.ValidationNotEqualError((False if self.idx == 9 else self.has_next), self.has_next, self._io, "/types/group/seq/0")
             self.value = self._io.read_bits_int_be(7)
             if not self.value <= (1 if self.idx == 9 else 127):
-                raise kaitaistruct.ValidationGreaterThanError((1 if self.idx == 9 else 127), self.value, self._io, u"/types/group/seq/1")
+                raise kaitaistruct.ValidationGreaterThanError((1 if self.idx == 9 else 127), self.value, self._io, "/types/group/seq/1")
             self._dirty = False
 
 
@@ -123,16 +123,16 @@ class VlqBase128Le(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(VlqBase128Le.Group, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_bits_int_be(1, int(self.has_next))
             self._io.write_bits_int_be(7, self.value)
 
 
         def _check(self):
             if not self.has_next == (False if self.idx == 9 else self.has_next):
-                raise kaitaistruct.ValidationNotEqualError((False if self.idx == 9 else self.has_next), self.has_next, None, u"/types/group/seq/0")
+                raise kaitaistruct.ValidationNotEqualError((False if self.idx == 9 else self.has_next), self.has_next, None, "/types/group/seq/0")
             if not self.value <= (1 if self.idx == 9 else 127):
-                raise kaitaistruct.ValidationGreaterThanError((1 if self.idx == 9 else 127), self.value, None, u"/types/group/seq/1")
+                raise kaitaistruct.ValidationGreaterThanError((1 if self.idx == 9 else 127), self.value, None, "/types/group/seq/1")
             self._dirty = False
 
         @property

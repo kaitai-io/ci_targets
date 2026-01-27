@@ -6,11 +6,11 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ExprCalcArrayOps(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(ExprCalcArrayOps, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -139,7 +139,7 @@ class ExprCalcArrayOps(KaitaiStruct):
         if hasattr(self, '_m_str_array'):
             return self._m_str_array
 
-        self._m_str_array = [u"un", u"deux", u"trois", u"quatre"]
+        self._m_str_array = ["un", "deux", "trois", "quatre"]
         return getattr(self, '_m_str_array', None)
 
     @property

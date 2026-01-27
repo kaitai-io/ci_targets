@@ -6,11 +6,11 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class DefaultEndianExprInherited(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(DefaultEndianExprInherited, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -33,7 +33,7 @@ class DefaultEndianExprInherited(KaitaiStruct):
 
     class Doc(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            super(DefaultEndianExprInherited.Doc, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -49,7 +49,7 @@ class DefaultEndianExprInherited(KaitaiStruct):
 
         class MainObj(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
-                super(DefaultEndianExprInherited.Doc.MainObj, self).__init__(_io)
+                super().__init__(_io)
                 self._parent = _parent
                 self._root = _root
                 self._read()
@@ -82,7 +82,7 @@ class DefaultEndianExprInherited(KaitaiStruct):
 
             class SubObj(KaitaiStruct):
                 def __init__(self, _io, _parent=None, _root=None, _is_le=None):
-                    super(DefaultEndianExprInherited.Doc.MainObj.SubObj, self).__init__(_io)
+                    super().__init__(_io)
                     self._parent = _parent
                     self._root = _root
                     self._is_le = _is_le
@@ -111,7 +111,7 @@ class DefaultEndianExprInherited(KaitaiStruct):
 
                 class SubsubObj(KaitaiStruct):
                     def __init__(self, _io, _parent=None, _root=None, _is_le=None):
-                        super(DefaultEndianExprInherited.Doc.MainObj.SubObj.SubsubObj, self).__init__(_io)
+                        super().__init__(_io)
                         self._parent = _parent
                         self._root = _root
                         self._is_le = _is_le

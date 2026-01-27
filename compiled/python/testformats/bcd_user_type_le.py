@@ -6,11 +6,11 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class BcdUserTypeLe(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(BcdUserTypeLe, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -35,7 +35,7 @@ class BcdUserTypeLe(KaitaiStruct):
 
     class LeadingZeroLtrObj(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            super(BcdUserTypeLe.LeadingZeroLtrObj, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -133,7 +133,7 @@ class BcdUserTypeLe(KaitaiStruct):
 
     class LtrObj(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            super(BcdUserTypeLe.LtrObj, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()
@@ -231,7 +231,7 @@ class BcdUserTypeLe(KaitaiStruct):
 
     class RtlObj(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
-            super(BcdUserTypeLe.RtlObj, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self._read()

@@ -8,11 +8,11 @@ from testwrite import enum_0
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class EnumImportSeq(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(EnumImportSeq, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -27,7 +27,7 @@ class EnumImportSeq(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(EnumImportSeq, self)._write__seq(io)
+        super()._write__seq(io)
         self._io.write_u4le(int(self.pet_1))
         self._io.write_u4le(int(self.pet_2))
 

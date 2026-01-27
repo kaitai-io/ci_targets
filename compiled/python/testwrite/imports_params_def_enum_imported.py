@@ -8,11 +8,11 @@ from testwrite import enum_import_seq
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ImportsParamsDefEnumImported(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ImportsParamsDefEnumImported, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -31,16 +31,16 @@ class ImportsParamsDefEnumImported(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ImportsParamsDefEnumImported, self)._write__seq(io)
+        super()._write__seq(io)
         self.one._write__seq(self._io)
         self.two._write__seq(self._io)
 
 
     def _check(self):
         if self.two.pet_1_param != self.one.pet_1:
-            raise kaitaistruct.ConsistencyError(u"two", self.one.pet_1, self.two.pet_1_param)
+            raise kaitaistruct.ConsistencyError("two", self.one.pet_1, self.two.pet_1_param)
         if self.two.pet_2_param != self.one.pet_2:
-            raise kaitaistruct.ConsistencyError(u"two", self.one.pet_2, self.two.pet_2_param)
+            raise kaitaistruct.ConsistencyError("two", self.one.pet_2, self.two.pet_2_param)
         self._dirty = False
 
 

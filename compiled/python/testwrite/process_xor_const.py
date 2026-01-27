@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ProcessXorConst(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ProcessXorConst, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -26,12 +26,12 @@ class ProcessXorConst(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ProcessXorConst, self)._write__seq(io)
+        super()._write__seq(io)
         self._io.write_u1(self.key)
         self._raw_buf = KaitaiStream.process_xor_one(self.buf, 255)
         self._io.write_bytes(self._raw_buf)
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"buf", 0, self._io.size() - self._io.pos())
+            raise kaitaistruct.ConsistencyError("buf", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):

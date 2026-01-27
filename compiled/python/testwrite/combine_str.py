@@ -6,18 +6,18 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class CombineStr(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(CombineStr, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
     def _read(self):
-        self.str_term = (self._io.read_bytes_term(124, False, True, True)).decode(u"ASCII")
-        self.str_limit = (self._io.read_bytes(4)).decode(u"ASCII")
-        self.str_eos = (self._io.read_bytes_full()).decode(u"ASCII")
+        self.str_term = (self._io.read_bytes_term(124, False, True, True)).decode("ASCII")
+        self.str_limit = (self._io.read_bytes(4)).decode("ASCII")
+        self.str_eos = (self._io.read_bytes_full()).decode("ASCII")
         self._dirty = False
 
 
@@ -26,20 +26,20 @@ class CombineStr(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(CombineStr, self)._write__seq(io)
-        self._io.write_bytes((self.str_term).encode(u"ASCII"))
+        super()._write__seq(io)
+        self._io.write_bytes((self.str_term).encode("ASCII"))
         self._io.write_u1(124)
-        self._io.write_bytes((self.str_limit).encode(u"ASCII"))
-        self._io.write_bytes((self.str_eos).encode(u"ASCII"))
+        self._io.write_bytes((self.str_limit).encode("ASCII"))
+        self._io.write_bytes((self.str_eos).encode("ASCII"))
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"str_eos", 0, self._io.size() - self._io.pos())
+            raise kaitaistruct.ConsistencyError("str_eos", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):
-        if KaitaiStream.byte_array_index_of((self.str_term).encode(u"ASCII"), 124) != -1:
-            raise kaitaistruct.ConsistencyError(u"str_term", -1, KaitaiStream.byte_array_index_of((self.str_term).encode(u"ASCII"), 124))
-        if len((self.str_limit).encode(u"ASCII")) != 4:
-            raise kaitaistruct.ConsistencyError(u"str_limit", 4, len((self.str_limit).encode(u"ASCII")))
+        if KaitaiStream.byte_array_index_of((self.str_term).encode("ASCII"), 124) != -1:
+            raise kaitaistruct.ConsistencyError("str_term", -1, KaitaiStream.byte_array_index_of((self.str_term).encode("ASCII"), 124))
+        if len((self.str_limit).encode("ASCII")) != 4:
+            raise kaitaistruct.ConsistencyError("str_limit", 4, len((self.str_limit).encode("ASCII")))
         self._dirty = False
 
     @property
@@ -117,7 +117,7 @@ class CombineStr(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_str_calc'):
             return self._m_str_calc
 
-        self._m_str_calc = u"bar"
+        self._m_str_calc = "bar"
         return getattr(self, '_m_str_calc', None)
 
     def _invalidate_str_calc(self):
@@ -127,7 +127,7 @@ class CombineStr(ReadWriteKaitaiStruct):
         if hasattr(self, '_m_str_calc_bytes'):
             return self._m_str_calc_bytes
 
-        self._m_str_calc_bytes = (self.calc_bytes).decode(u"ASCII")
+        self._m_str_calc_bytes = (self.calc_bytes).decode("ASCII")
         return getattr(self, '_m_str_calc_bytes', None)
 
     def _invalidate_str_calc_bytes(self):

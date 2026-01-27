@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ParamsPassArrayStruct(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ParamsPassArrayStruct, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -32,7 +32,7 @@ class ParamsPassArrayStruct(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ParamsPassArrayStruct, self)._write__seq(io)
+        super()._write__seq(io)
         self.one._write__seq(self._io)
         self.two._write__seq(self._io)
         self.pass_structs._write__seq(self._io)
@@ -40,24 +40,24 @@ class ParamsPassArrayStruct(ReadWriteKaitaiStruct):
 
     def _check(self):
         if self.one._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"one", self._root, self.one._root)
+            raise kaitaistruct.ConsistencyError("one", self._root, self.one._root)
         if self.one._parent != self:
-            raise kaitaistruct.ConsistencyError(u"one", self, self.one._parent)
+            raise kaitaistruct.ConsistencyError("one", self, self.one._parent)
         if self.two._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"two", self._root, self.two._root)
+            raise kaitaistruct.ConsistencyError("two", self._root, self.two._root)
         if self.two._parent != self:
-            raise kaitaistruct.ConsistencyError(u"two", self, self.two._parent)
+            raise kaitaistruct.ConsistencyError("two", self, self.two._parent)
         if self.pass_structs._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"pass_structs", self._root, self.pass_structs._root)
+            raise kaitaistruct.ConsistencyError("pass_structs", self._root, self.pass_structs._root)
         if self.pass_structs._parent != self:
-            raise kaitaistruct.ConsistencyError(u"pass_structs", self, self.pass_structs._parent)
+            raise kaitaistruct.ConsistencyError("pass_structs", self, self.pass_structs._parent)
         if self.pass_structs.structs != self.one_two:
-            raise kaitaistruct.ConsistencyError(u"pass_structs", self.one_two, self.pass_structs.structs)
+            raise kaitaistruct.ConsistencyError("pass_structs", self.one_two, self.pass_structs.structs)
         self._dirty = False
 
     class Bar(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(ParamsPassArrayStruct.Bar, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -71,7 +71,7 @@ class ParamsPassArrayStruct(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(ParamsPassArrayStruct.Bar, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u1(self.b)
 
 
@@ -81,7 +81,7 @@ class ParamsPassArrayStruct(ReadWriteKaitaiStruct):
 
     class Foo(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(ParamsPassArrayStruct.Foo, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -95,7 +95,7 @@ class ParamsPassArrayStruct(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(ParamsPassArrayStruct.Foo, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u1(self.f)
 
 
@@ -105,7 +105,7 @@ class ParamsPassArrayStruct(ReadWriteKaitaiStruct):
 
     class StructType(ReadWriteKaitaiStruct):
         def __init__(self, structs, _io=None, _parent=None, _root=None):
-            super(ParamsPassArrayStruct.StructType, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self.structs = structs
@@ -120,7 +120,7 @@ class ParamsPassArrayStruct(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(ParamsPassArrayStruct.StructType, self)._write__seq(io)
+            super()._write__seq(io)
 
 
         def _check(self):

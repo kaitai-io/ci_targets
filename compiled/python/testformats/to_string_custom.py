@@ -6,18 +6,18 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ToStringCustom(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(ToStringCustom, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
 
     def _read(self):
-        self.s1 = (self._io.read_bytes_term(124, False, True, True)).decode(u"UTF-8")
-        self.s2 = (self._io.read_bytes_term(124, False, True, True)).decode(u"UTF-8")
+        self.s1 = (self._io.read_bytes_term(124, False, True, True)).decode("UTF-8")
+        self.s2 = (self._io.read_bytes_term(124, False, True, True)).decode("UTF-8")
 
 
     def _fetch_instances(self):
@@ -25,5 +25,5 @@ class ToStringCustom(KaitaiStruct):
 
 
     def __str__(self):
-        return ((u"s1 = " + self.s1) + u", s2 = ") + self.s2
+        return (("s1 = " + self.s1) + ", s2 = ") + self.s2
 

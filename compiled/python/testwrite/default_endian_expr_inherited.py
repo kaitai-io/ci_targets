@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class DefaultEndianExprInherited(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(DefaultEndianExprInherited, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -37,30 +37,30 @@ class DefaultEndianExprInherited(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(DefaultEndianExprInherited, self)._write__seq(io)
+        super()._write__seq(io)
         for i in range(len(self.docs)):
             pass
             if self._io.is_eof():
-                raise kaitaistruct.ConsistencyError(u"docs", 0, self._io.size() - self._io.pos())
+                raise kaitaistruct.ConsistencyError("docs", 0, self._io.size() - self._io.pos())
             self.docs[i]._write__seq(self._io)
 
         if not self._io.is_eof():
-            raise kaitaistruct.ConsistencyError(u"docs", 0, self._io.size() - self._io.pos())
+            raise kaitaistruct.ConsistencyError("docs", 0, self._io.size() - self._io.pos())
 
 
     def _check(self):
         for i in range(len(self.docs)):
             pass
             if self.docs[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"docs", self._root, self.docs[i]._root)
+                raise kaitaistruct.ConsistencyError("docs", self._root, self.docs[i]._root)
             if self.docs[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"docs", self, self.docs[i]._parent)
+                raise kaitaistruct.ConsistencyError("docs", self, self.docs[i]._parent)
 
         self._dirty = False
 
     class Doc(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(DefaultEndianExprInherited.Doc, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -77,23 +77,23 @@ class DefaultEndianExprInherited(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(DefaultEndianExprInherited.Doc, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_bytes(self.indicator)
             self.main._write__seq(self._io)
 
 
         def _check(self):
             if len(self.indicator) != 2:
-                raise kaitaistruct.ConsistencyError(u"indicator", 2, len(self.indicator))
+                raise kaitaistruct.ConsistencyError("indicator", 2, len(self.indicator))
             if self.main._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"main", self._root, self.main._root)
+                raise kaitaistruct.ConsistencyError("main", self._root, self.main._root)
             if self.main._parent != self:
-                raise kaitaistruct.ConsistencyError(u"main", self, self.main._parent)
+                raise kaitaistruct.ConsistencyError("main", self, self.main._parent)
             self._dirty = False
 
         class MainObj(ReadWriteKaitaiStruct):
             def __init__(self, _io=None, _parent=None, _root=None):
-                super(DefaultEndianExprInherited.Doc.MainObj, self).__init__(_io)
+                super().__init__(_io)
                 self._parent = _parent
                 self._root = _root
 
@@ -130,7 +130,7 @@ class DefaultEndianExprInherited(ReadWriteKaitaiStruct):
 
 
             def _write__seq(self, io=None):
-                super(DefaultEndianExprInherited.Doc.MainObj, self)._write__seq(io)
+                super()._write__seq(io)
                 if not hasattr(self, '_is_le'):
                     raise kaitaistruct.UndecidedEndiannessError("/types/doc/types/main_obj")
                 elif self._is_le == True:
@@ -149,14 +149,14 @@ class DefaultEndianExprInherited(ReadWriteKaitaiStruct):
 
             def _check(self):
                 if self.insides._root != self._root:
-                    raise kaitaistruct.ConsistencyError(u"insides", self._root, self.insides._root)
+                    raise kaitaistruct.ConsistencyError("insides", self._root, self.insides._root)
                 if self.insides._parent != self:
-                    raise kaitaistruct.ConsistencyError(u"insides", self, self.insides._parent)
+                    raise kaitaistruct.ConsistencyError("insides", self, self.insides._parent)
                 self._dirty = False
 
             class SubObj(ReadWriteKaitaiStruct):
                 def __init__(self, _io=None, _parent=None, _root=None, _is_le=None):
-                    super(DefaultEndianExprInherited.Doc.MainObj.SubObj, self).__init__(_io)
+                    super().__init__(_io)
                     self._parent = _parent
                     self._root = _root
                     self._is_le = _is_le
@@ -189,7 +189,7 @@ class DefaultEndianExprInherited(ReadWriteKaitaiStruct):
 
 
                 def _write__seq(self, io=None):
-                    super(DefaultEndianExprInherited.Doc.MainObj.SubObj, self)._write__seq(io)
+                    super()._write__seq(io)
                     if not hasattr(self, '_is_le'):
                         raise kaitaistruct.UndecidedEndiannessError("/types/doc/types/main_obj/types/sub_obj")
                     elif self._is_le == True:
@@ -210,14 +210,14 @@ class DefaultEndianExprInherited(ReadWriteKaitaiStruct):
 
                 def _check(self):
                     if self.more._root != self._root:
-                        raise kaitaistruct.ConsistencyError(u"more", self._root, self.more._root)
+                        raise kaitaistruct.ConsistencyError("more", self._root, self.more._root)
                     if self.more._parent != self:
-                        raise kaitaistruct.ConsistencyError(u"more", self, self.more._parent)
+                        raise kaitaistruct.ConsistencyError("more", self, self.more._parent)
                     self._dirty = False
 
                 class SubsubObj(ReadWriteKaitaiStruct):
                     def __init__(self, _io=None, _parent=None, _root=None, _is_le=None):
-                        super(DefaultEndianExprInherited.Doc.MainObj.SubObj.SubsubObj, self).__init__(_io)
+                        super().__init__(_io)
                         self._parent = _parent
                         self._root = _root
                         self._is_le = _is_le
@@ -253,7 +253,7 @@ class DefaultEndianExprInherited(ReadWriteKaitaiStruct):
 
 
                     def _write__seq(self, io=None):
-                        super(DefaultEndianExprInherited.Doc.MainObj.SubObj.SubsubObj, self)._write__seq(io)
+                        super()._write__seq(io)
                         if not hasattr(self, '_is_le'):
                             raise kaitaistruct.UndecidedEndiannessError("/types/doc/types/main_obj/types/sub_obj/types/subsub_obj")
                         elif self._is_le == True:

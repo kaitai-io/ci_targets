@@ -6,11 +6,11 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class StrEncodingsEscapingToS(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
-        super(StrEncodingsEscapingToS, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._read()
@@ -34,7 +34,7 @@ class StrEncodingsEscapingToS(KaitaiStruct):
         if hasattr(self, '_m_str1'):
             return self._m_str1
 
-        self._m_str1 = (self.str1_raw).decode(u"ASCII\\\\x")
+        self._m_str1 = (self.str1_raw).decode("ASCII\\\\x")
         return getattr(self, '_m_str1', None)
 
     @property
@@ -42,7 +42,7 @@ class StrEncodingsEscapingToS(KaitaiStruct):
         if hasattr(self, '_m_str2'):
             return self._m_str2
 
-        self._m_str2 = (self.str2_raw).decode(u"UTF-8\\'x")
+        self._m_str2 = (self.str2_raw).decode("UTF-8\\'x")
         return getattr(self, '_m_str2', None)
 
     @property
@@ -50,7 +50,7 @@ class StrEncodingsEscapingToS(KaitaiStruct):
         if hasattr(self, '_m_str3'):
             return self._m_str3
 
-        self._m_str3 = (self.str3_raw).decode(u"SJIS\\\"x")
+        self._m_str3 = (self.str3_raw).decode("SJIS\\\"x")
         return getattr(self, '_m_str3', None)
 
     @property
@@ -58,7 +58,7 @@ class StrEncodingsEscapingToS(KaitaiStruct):
         if hasattr(self, '_m_str4'):
             return self._m_str4
 
-        self._m_str4 = (self.str4_raw).decode(u"IBM437\\nx")
+        self._m_str4 = (self.str4_raw).decode("IBM437\\nx")
         return getattr(self, '_m_str4', None)
 
 

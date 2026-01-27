@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class InstanceInRepeatUntil(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(InstanceInRepeatUntil, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
         self._should_write_until_val = False
@@ -40,20 +40,20 @@ class InstanceInRepeatUntil(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(InstanceInRepeatUntil, self)._write__seq(io)
+        super()._write__seq(io)
         self._should_write_until_val = self.until_val__enabled
         for i in range(len(self.entries)):
             pass
             self._io.write_s2le(self.entries[i])
             _ = self.entries[i]
             if (_ == self.until_val) != (i == len(self.entries) - 1):
-                raise kaitaistruct.ConsistencyError(u"entries", i == len(self.entries) - 1, _ == self.until_val)
+                raise kaitaistruct.ConsistencyError("entries", i == len(self.entries) - 1, _ == self.until_val)
 
 
 
     def _check(self):
         if len(self.entries) == 0:
-            raise kaitaistruct.ConsistencyError(u"entries", 0, len(self.entries))
+            raise kaitaistruct.ConsistencyError("entries", 0, len(self.entries))
         for i in range(len(self.entries)):
             pass
 

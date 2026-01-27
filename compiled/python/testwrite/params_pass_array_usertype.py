@@ -6,11 +6,11 @@ from kaitaistruct import ReadWriteKaitaiStruct, KaitaiStream, BytesIO
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
+    raise Exception(f"Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have {kaitaistruct.__version__}")
 
 class ParamsPassArrayUsertype(ReadWriteKaitaiStruct):
     def __init__(self, _io=None, _parent=None, _root=None):
-        super(ParamsPassArrayUsertype, self).__init__(_io)
+        super().__init__(_io)
         self._parent = _parent
         self._root = _root or self
 
@@ -38,7 +38,7 @@ class ParamsPassArrayUsertype(ReadWriteKaitaiStruct):
 
 
     def _write__seq(self, io=None):
-        super(ParamsPassArrayUsertype, self)._write__seq(io)
+        super()._write__seq(io)
         for i in range(len(self.blocks)):
             pass
             self.blocks[i]._write__seq(self._io)
@@ -48,25 +48,25 @@ class ParamsPassArrayUsertype(ReadWriteKaitaiStruct):
 
     def _check(self):
         if len(self.blocks) != 2:
-            raise kaitaistruct.ConsistencyError(u"blocks", 2, len(self.blocks))
+            raise kaitaistruct.ConsistencyError("blocks", 2, len(self.blocks))
         for i in range(len(self.blocks)):
             pass
             if self.blocks[i]._root != self._root:
-                raise kaitaistruct.ConsistencyError(u"blocks", self._root, self.blocks[i]._root)
+                raise kaitaistruct.ConsistencyError("blocks", self._root, self.blocks[i]._root)
             if self.blocks[i]._parent != self:
-                raise kaitaistruct.ConsistencyError(u"blocks", self, self.blocks[i]._parent)
+                raise kaitaistruct.ConsistencyError("blocks", self, self.blocks[i]._parent)
 
         if self.pass_blocks._root != self._root:
-            raise kaitaistruct.ConsistencyError(u"pass_blocks", self._root, self.pass_blocks._root)
+            raise kaitaistruct.ConsistencyError("pass_blocks", self._root, self.pass_blocks._root)
         if self.pass_blocks._parent != self:
-            raise kaitaistruct.ConsistencyError(u"pass_blocks", self, self.pass_blocks._parent)
+            raise kaitaistruct.ConsistencyError("pass_blocks", self, self.pass_blocks._parent)
         if self.pass_blocks.bar != self.blocks:
-            raise kaitaistruct.ConsistencyError(u"pass_blocks", self.blocks, self.pass_blocks.bar)
+            raise kaitaistruct.ConsistencyError("pass_blocks", self.blocks, self.pass_blocks.bar)
         self._dirty = False
 
     class Block(ReadWriteKaitaiStruct):
         def __init__(self, _io=None, _parent=None, _root=None):
-            super(ParamsPassArrayUsertype.Block, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
 
@@ -80,7 +80,7 @@ class ParamsPassArrayUsertype(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(ParamsPassArrayUsertype.Block, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_u1(self.foo)
 
 
@@ -90,7 +90,7 @@ class ParamsPassArrayUsertype(ReadWriteKaitaiStruct):
 
     class ParamType(ReadWriteKaitaiStruct):
         def __init__(self, bar, _io=None, _parent=None, _root=None):
-            super(ParamsPassArrayUsertype.ParamType, self).__init__(_io)
+            super().__init__(_io)
             self._parent = _parent
             self._root = _root
             self.bar = bar
@@ -106,16 +106,16 @@ class ParamsPassArrayUsertype(ReadWriteKaitaiStruct):
 
 
         def _write__seq(self, io=None):
-            super(ParamsPassArrayUsertype.ParamType, self)._write__seq(io)
+            super()._write__seq(io)
             self._io.write_bytes(self.one)
             self._io.write_bytes(self.two)
 
 
         def _check(self):
             if len(self.one) != self.bar[0].foo:
-                raise kaitaistruct.ConsistencyError(u"one", self.bar[0].foo, len(self.one))
+                raise kaitaistruct.ConsistencyError("one", self.bar[0].foo, len(self.one))
             if len(self.two) != self.bar[1].foo:
-                raise kaitaistruct.ConsistencyError(u"two", self.bar[1].foo, len(self.two))
+                raise kaitaistruct.ConsistencyError("two", self.bar[1].foo, len(self.two))
             self._dirty = False
 
 
