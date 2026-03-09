@@ -178,7 +178,7 @@ jobs:
           - target: csharp
             implementation: net10.0
           - target: go
-            implementation: '1.25'
+            implementation: '1.26'
           - target: graphviz
             implementation: '12'
           - target: java
@@ -206,7 +206,7 @@ jobs:
           - target: nim
             implementation: '1.6.20'
           - target: nim
-            implementation: '2.2.6'
+            implementation: '2.2.8'
           - target: perl
             implementation: '5.30'
           - target: perl
@@ -214,19 +214,17 @@ jobs:
           - target: php
             implementation: '7.1'
           - target: php
-            implementation: '8.4'
+            implementation: '8.5'
           - target: python
             implementation: '3.8'
           - target: python
             implementation: '3.14'
           - target: ruby
-            implementation: '1.9'
+            implementation: '2.4'
           - target: ruby
-            implementation: '2.3'
-          - target: ruby
-            implementation: '3.4'
+            implementation: '4.0'
           - target: rust
-            implementation: '1.91'
+            implementation: '1.94'
           - target: zig
             implementation: '0.15.2'
     env:
