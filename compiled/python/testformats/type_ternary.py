@@ -18,9 +18,8 @@ class TypeTernary(KaitaiStruct):
     def _read(self):
         if (not (self.is_hack)):
             pass
-            self._raw_dif_wo_hack = self._io.read_bytes(1)
-            _io__raw_dif_wo_hack = KaitaiStream(BytesIO(self._raw_dif_wo_hack))
-            self.dif_wo_hack = TypeTernary.Dummy(_io__raw_dif_wo_hack, self, self._root)
+            _io_dif_wo_hack = self._io.substream(1)
+            self.dif_wo_hack = TypeTernary.Dummy(_io_dif_wo_hack, self, self._root)
 
         self._raw__raw_dif_with_hack = self._io.read_bytes(1)
         self._raw_dif_with_hack = KaitaiStream.process_xor_one(self._raw__raw_dif_with_hack, 3)

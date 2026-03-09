@@ -44,19 +44,16 @@ class SwitchManualIntSizeElse(KaitaiStruct):
             _on = self.code
             if _on == 17:
                 pass
-                self._raw_body = self._io.read_bytes(self.size)
-                _io__raw_body = KaitaiStream(BytesIO(self._raw_body))
-                self.body = SwitchManualIntSizeElse.Chunk.ChunkMeta(_io__raw_body, self, self._root)
+                _io_body = self._io.substream(self.size)
+                self.body = SwitchManualIntSizeElse.Chunk.ChunkMeta(_io_body, self, self._root)
             elif _on == 34:
                 pass
-                self._raw_body = self._io.read_bytes(self.size)
-                _io__raw_body = KaitaiStream(BytesIO(self._raw_body))
-                self.body = SwitchManualIntSizeElse.Chunk.ChunkDir(_io__raw_body, self, self._root)
+                _io_body = self._io.substream(self.size)
+                self.body = SwitchManualIntSizeElse.Chunk.ChunkDir(_io_body, self, self._root)
             else:
                 pass
-                self._raw_body = self._io.read_bytes(self.size)
-                _io__raw_body = KaitaiStream(BytesIO(self._raw_body))
-                self.body = SwitchManualIntSizeElse.Chunk.Dummy(_io__raw_body, self, self._root)
+                _io_body = self._io.substream(self.size)
+                self.body = SwitchManualIntSizeElse.Chunk.Dummy(_io_body, self, self._root)
 
 
         def _fetch_instances(self):

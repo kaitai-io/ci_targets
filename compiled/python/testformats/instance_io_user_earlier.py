@@ -16,12 +16,10 @@ class InstanceIoUserEarlier(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self._raw_sized_a = self._io.read_bytes(6)
-        _io__raw_sized_a = KaitaiStream(BytesIO(self._raw_sized_a))
-        self.sized_a = InstanceIoUserEarlier.Slot(_io__raw_sized_a, self, self._root)
-        self._raw_sized_b = self._io.read_bytes(6)
-        _io__raw_sized_b = KaitaiStream(BytesIO(self._raw_sized_b))
-        self.sized_b = InstanceIoUserEarlier.Slot(_io__raw_sized_b, self, self._root)
+        _io_sized_a = self._io.substream(6)
+        self.sized_a = InstanceIoUserEarlier.Slot(_io_sized_a, self, self._root)
+        _io_sized_b = self._io.substream(6)
+        self.sized_b = InstanceIoUserEarlier.Slot(_io_sized_b, self, self._root)
         self.into_b = InstanceIoUserEarlier.Foo(self._io, self, self._root)
         self.into_a_skipped = InstanceIoUserEarlier.Foo(self._io, self, self._root)
         self.into_a = InstanceIoUserEarlier.Foo(self._io, self, self._root)
@@ -100,9 +98,8 @@ class InstanceIoUserEarlier(KaitaiStruct):
             io = (self._parent.sized_b._io if self.indicator == 202 else self._parent.sized_a._io)
             _pos = io.pos()
             io.seek(1)
-            self._raw__m_inst = io.read_bytes((4 if self._io.pos() != 14 else 0))
-            _io__raw__m_inst = KaitaiStream(BytesIO(self._raw__m_inst))
-            self._m_inst = InstanceIoUserEarlier.Slot(_io__raw__m_inst, self, self._root)
+            _io__m_inst = io.substream((4 if self._io.pos() != 14 else 0))
+            self._m_inst = InstanceIoUserEarlier.Slot(_io__m_inst, self, self._root)
             io.seek(_pos)
             return getattr(self, '_m_inst', None)
 

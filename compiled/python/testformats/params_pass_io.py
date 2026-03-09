@@ -16,9 +16,8 @@ class ParamsPassIo(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self._raw_first = self._io.read_bytes(1)
-        _io__raw_first = KaitaiStream(BytesIO(self._raw_first))
-        self.first = ParamsPassIo.Block(_io__raw_first, self, self._root)
+        _io_first = self._io.substream(1)
+        self.first = ParamsPassIo.Block(_io_first, self, self._root)
         self.one = ParamsPassIo.ParamType((self.first._io if self.first.foo == 255 else self._root._io), self._io, self, self._root)
 
 

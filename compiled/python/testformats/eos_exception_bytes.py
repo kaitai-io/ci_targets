@@ -16,9 +16,8 @@ class EosExceptionBytes(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self._raw_envelope = self._io.read_bytes(6)
-        _io__raw_envelope = KaitaiStream(BytesIO(self._raw_envelope))
-        self.envelope = EosExceptionBytes.Data(_io__raw_envelope, self, self._root)
+        _io_envelope = self._io.substream(6)
+        self.envelope = EosExceptionBytes.Data(_io_envelope, self, self._root)
 
 
     def _fetch_instances(self):

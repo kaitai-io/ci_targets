@@ -19,9 +19,8 @@ class TypeTernaryOpaque(KaitaiStruct):
     def _read(self):
         if (not (self.is_hack)):
             pass
-            self._raw_dif_wo_hack = self._io.read_bytes(1)
-            _io__raw_dif_wo_hack = KaitaiStream(BytesIO(self._raw_dif_wo_hack))
-            self.dif_wo_hack = hello_world.HelloWorld(_io__raw_dif_wo_hack)
+            _io_dif_wo_hack = self._io.substream(1)
+            self.dif_wo_hack = hello_world.HelloWorld(_io_dif_wo_hack)
 
         if self.is_hack:
             pass

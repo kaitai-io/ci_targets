@@ -41,9 +41,8 @@ class SwitchManualIntSizeEos(KaitaiStruct):
         def _read(self):
             self.code = self._io.read_u1()
             self.size = self._io.read_u4le()
-            self._raw_body = self._io.read_bytes(self.size)
-            _io__raw_body = KaitaiStream(BytesIO(self._raw_body))
-            self.body = SwitchManualIntSizeEos.ChunkBody(_io__raw_body, self, self._root)
+            _io_body = self._io.substream(self.size)
+            self.body = SwitchManualIntSizeEos.ChunkBody(_io_body, self, self._root)
 
 
         def _fetch_instances(self):

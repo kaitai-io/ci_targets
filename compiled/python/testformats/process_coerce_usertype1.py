@@ -55,9 +55,8 @@ class ProcessCoerceUsertype1(KaitaiStruct):
             self.flag = self._io.read_u1()
             if self.flag == 0:
                 pass
-                self._raw_buf_unproc = self._io.read_bytes(4)
-                _io__raw_buf_unproc = KaitaiStream(BytesIO(self._raw_buf_unproc))
-                self.buf_unproc = ProcessCoerceUsertype1.Foo(_io__raw_buf_unproc, self, self._root)
+                _io_buf_unproc = self._io.substream(4)
+                self.buf_unproc = ProcessCoerceUsertype1.Foo(_io_buf_unproc, self, self._root)
 
             if self.flag != 0:
                 pass

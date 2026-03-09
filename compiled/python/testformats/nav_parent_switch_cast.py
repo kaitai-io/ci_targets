@@ -36,14 +36,12 @@ class NavParentSwitchCast(KaitaiStruct):
             _on = self.buf_type
             if _on == 0:
                 pass
-                self._raw_buf = self._io.read_bytes(4)
-                _io__raw_buf = KaitaiStream(BytesIO(self._raw_buf))
-                self.buf = NavParentSwitchCast.Foo.Zero(_io__raw_buf, self, self._root)
+                _io_buf = self._io.substream(4)
+                self.buf = NavParentSwitchCast.Foo.Zero(_io_buf, self, self._root)
             elif _on == 1:
                 pass
-                self._raw_buf = self._io.read_bytes(4)
-                _io__raw_buf = KaitaiStream(BytesIO(self._raw_buf))
-                self.buf = NavParentSwitchCast.Foo.One(_io__raw_buf, self, self._root)
+                _io_buf = self._io.substream(4)
+                self.buf = NavParentSwitchCast.Foo.One(_io_buf, self, self._root)
             else:
                 pass
                 self.buf = self._io.read_bytes(4)

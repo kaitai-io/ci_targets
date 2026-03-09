@@ -17,13 +17,11 @@ class StrEncodingsUtf16(KaitaiStruct):
 
     def _read(self):
         self.len_be = self._io.read_u4le()
-        self._raw_be_bom_removed = self._io.read_bytes(self.len_be)
-        _io__raw_be_bom_removed = KaitaiStream(BytesIO(self._raw_be_bom_removed))
-        self.be_bom_removed = StrEncodingsUtf16.StrBeBomRemoved(_io__raw_be_bom_removed, self, self._root)
+        _io_be_bom_removed = self._io.substream(self.len_be)
+        self.be_bom_removed = StrEncodingsUtf16.StrBeBomRemoved(_io_be_bom_removed, self, self._root)
         self.len_le = self._io.read_u4le()
-        self._raw_le_bom_removed = self._io.read_bytes(self.len_le)
-        _io__raw_le_bom_removed = KaitaiStream(BytesIO(self._raw_le_bom_removed))
-        self.le_bom_removed = StrEncodingsUtf16.StrLeBomRemoved(_io__raw_le_bom_removed, self, self._root)
+        _io_le_bom_removed = self._io.substream(self.len_le)
+        self.le_bom_removed = StrEncodingsUtf16.StrLeBomRemoved(_io_le_bom_removed, self, self._root)
 
 
     def _fetch_instances(self):

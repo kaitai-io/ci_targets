@@ -16,18 +16,14 @@ class BytesEosPadTerm(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self._raw_str_pad = self._io.read_bytes(20)
-        _io__raw_str_pad = KaitaiStream(BytesIO(self._raw_str_pad))
-        self.str_pad = BytesEosPadTerm.StrPadType(_io__raw_str_pad, self, self._root)
-        self._raw_str_term = self._io.read_bytes(20)
-        _io__raw_str_term = KaitaiStream(BytesIO(self._raw_str_term))
-        self.str_term = BytesEosPadTerm.StrTermType(_io__raw_str_term, self, self._root)
-        self._raw_str_term_and_pad = self._io.read_bytes(20)
-        _io__raw_str_term_and_pad = KaitaiStream(BytesIO(self._raw_str_term_and_pad))
-        self.str_term_and_pad = BytesEosPadTerm.StrTermAndPadType(_io__raw_str_term_and_pad, self, self._root)
-        self._raw_str_term_include = self._io.read_bytes(20)
-        _io__raw_str_term_include = KaitaiStream(BytesIO(self._raw_str_term_include))
-        self.str_term_include = BytesEosPadTerm.StrTermIncludeType(_io__raw_str_term_include, self, self._root)
+        _io_str_pad = self._io.substream(20)
+        self.str_pad = BytesEosPadTerm.StrPadType(_io_str_pad, self, self._root)
+        _io_str_term = self._io.substream(20)
+        self.str_term = BytesEosPadTerm.StrTermType(_io_str_term, self, self._root)
+        _io_str_term_and_pad = self._io.substream(20)
+        self.str_term_and_pad = BytesEosPadTerm.StrTermAndPadType(_io_str_term_and_pad, self, self._root)
+        _io_str_term_include = self._io.substream(20)
+        self.str_term_include = BytesEosPadTerm.StrTermIncludeType(_io_str_term_include, self, self._root)
 
 
     def _fetch_instances(self):

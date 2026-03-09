@@ -16,17 +16,14 @@ class TermStruct4(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self._raw_s1 = self._io.read_bytes(3)
-        _io__raw_s1 = KaitaiStream(BytesIO(self._raw_s1))
-        self.s1 = TermStruct4.S1Type(_io__raw_s1, self, self._root)
+        _io_s1 = self._io.substream(3)
+        self.s1 = TermStruct4.S1Type(_io_s1, self, self._root)
         self.skip_term1 = self._io.read_u1()
-        self._raw_s2 = self._io.read_bytes(3)
-        _io__raw_s2 = KaitaiStream(BytesIO(self._raw_s2))
-        self.s2 = TermStruct4.S2Type(_io__raw_s2, self, self._root)
+        _io_s2 = self._io.substream(3)
+        self.s2 = TermStruct4.S2Type(_io_s2, self, self._root)
         self.skip_term2 = self._io.read_u1()
-        self._raw_s3 = self._io.read_bytes(3)
-        _io__raw_s3 = KaitaiStream(BytesIO(self._raw_s3))
-        self.s3 = TermStruct4.S3Type(_io__raw_s3, self, self._root)
+        _io_s3 = self._io.substream(3)
+        self.s3 = TermStruct4.S3Type(_io_s3, self, self._root)
 
 
     def _fetch_instances(self):

@@ -17,21 +17,17 @@ class StrEncodingsEscapingEnc(KaitaiStruct):
 
     def _read(self):
         self.len_of_1 = self._io.read_u2le()
-        self._raw_str1 = self._io.read_bytes(self.len_of_1)
-        _io__raw_str1 = KaitaiStream(BytesIO(self._raw_str1))
-        self.str1 = StrEncodingsEscapingEnc.Str1Wrapper(_io__raw_str1, self, self._root)
+        _io_str1 = self._io.substream(self.len_of_1)
+        self.str1 = StrEncodingsEscapingEnc.Str1Wrapper(_io_str1, self, self._root)
         self.len_of_2 = self._io.read_u2le()
-        self._raw_str2 = self._io.read_bytes(self.len_of_2)
-        _io__raw_str2 = KaitaiStream(BytesIO(self._raw_str2))
-        self.str2 = StrEncodingsEscapingEnc.Str2Wrapper(_io__raw_str2, self, self._root)
+        _io_str2 = self._io.substream(self.len_of_2)
+        self.str2 = StrEncodingsEscapingEnc.Str2Wrapper(_io_str2, self, self._root)
         self.len_of_3 = self._io.read_u2le()
-        self._raw_str3 = self._io.read_bytes(self.len_of_3)
-        _io__raw_str3 = KaitaiStream(BytesIO(self._raw_str3))
-        self.str3 = StrEncodingsEscapingEnc.Str3Wrapper(_io__raw_str3, self, self._root)
+        _io_str3 = self._io.substream(self.len_of_3)
+        self.str3 = StrEncodingsEscapingEnc.Str3Wrapper(_io_str3, self, self._root)
         self.len_of_4 = self._io.read_u2le()
-        self._raw_str4 = self._io.read_bytes(self.len_of_4)
-        _io__raw_str4 = KaitaiStream(BytesIO(self._raw_str4))
-        self.str4 = StrEncodingsEscapingEnc.Str4Wrapper(_io__raw_str4, self, self._root)
+        _io_str4 = self._io.substream(self.len_of_4)
+        self.str4 = StrEncodingsEscapingEnc.Str4Wrapper(_io_str4, self, self._root)
 
 
     def _fetch_instances(self):

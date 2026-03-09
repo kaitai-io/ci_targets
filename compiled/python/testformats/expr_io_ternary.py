@@ -17,12 +17,10 @@ class ExprIoTernary(KaitaiStruct):
 
     def _read(self):
         self.flag = self._io.read_u1()
-        self._raw_obj1 = self._io.read_bytes(4)
-        _io__raw_obj1 = KaitaiStream(BytesIO(self._raw_obj1))
-        self.obj1 = ExprIoTernary.One(_io__raw_obj1, self, self._root)
-        self._raw_obj2 = self._io.read_bytes(8)
-        _io__raw_obj2 = KaitaiStream(BytesIO(self._raw_obj2))
-        self.obj2 = ExprIoTernary.Two(_io__raw_obj2, self, self._root)
+        _io_obj1 = self._io.substream(4)
+        self.obj1 = ExprIoTernary.One(_io_obj1, self, self._root)
+        _io_obj2 = self._io.substream(8)
+        self.obj2 = ExprIoTernary.Two(_io_obj2, self, self._root)
 
 
     def _fetch_instances(self):

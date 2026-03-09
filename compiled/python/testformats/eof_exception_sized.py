@@ -16,9 +16,8 @@ class EofExceptionSized(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self._raw_buf = self._io.read_bytes(13)
-        _io__raw_buf = KaitaiStream(BytesIO(self._raw_buf))
-        self.buf = EofExceptionSized.Foo(_io__raw_buf, self, self._root)
+        _io_buf = self._io.substream(13)
+        self.buf = EofExceptionSized.Foo(_io_buf, self, self._root)
 
 
     def _fetch_instances(self):

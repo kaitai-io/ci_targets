@@ -16,9 +16,8 @@ class InstanceInSized(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self._raw_cont = self._io.read_bytes(16)
-        _io__raw_cont = KaitaiStream(BytesIO(self._raw_cont))
-        self.cont = InstanceInSized.Wrapper(_io__raw_cont, self, self._root)
+        _io_cont = self._io.substream(16)
+        self.cont = InstanceInSized.Wrapper(_io_cont, self, self._root)
 
 
     def _fetch_instances(self):
@@ -144,9 +143,8 @@ class InstanceInSized(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self._raw_seq_sized = self._io.read_bytes(4)
-            _io__raw_seq_sized = KaitaiStream(BytesIO(self._raw_seq_sized))
-            self.seq_sized = InstanceInSized.Qux(_io__raw_seq_sized, self, self._root)
+            _io_seq_sized = self._io.substream(4)
+            self.seq_sized = InstanceInSized.Qux(_io_seq_sized, self, self._root)
             self.seq_in_stream = InstanceInSized.Bar(self._io, self, self._root)
 
 
@@ -183,9 +181,8 @@ class InstanceInSized(KaitaiStruct):
 
             _pos = self._io.pos()
             self._io.seek(self._io.pos() + 7)
-            self._raw__m_inst_sized = self._io.read_bytes(4)
-            _io__raw__m_inst_sized = KaitaiStream(BytesIO(self._raw__m_inst_sized))
-            self._m_inst_sized = InstanceInSized.Qux(_io__raw__m_inst_sized, self, self._root)
+            _io__m_inst_sized = self._io.substream(4)
+            self._m_inst_sized = InstanceInSized.Qux(_io__m_inst_sized, self, self._root)
             self._io.seek(_pos)
             return getattr(self, '_m_inst_sized', None)
 

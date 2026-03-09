@@ -35,9 +35,8 @@ class Expr2(KaitaiStruct):
         def _read(self):
             self.len_orig = self._io.read_u2le()
             self.str = (self._io.read_bytes(self.len_mod)).decode("UTF-8")
-            self._raw_rest = self._io.read_bytes(3)
-            _io__raw_rest = KaitaiStream(BytesIO(self._raw_rest))
-            self.rest = Expr2.Tuple(_io__raw_rest, self, self._root)
+            _io_rest = self._io.substream(3)
+            self.rest = Expr2.Tuple(_io_rest, self, self._root)
 
 
         def _fetch_instances(self):

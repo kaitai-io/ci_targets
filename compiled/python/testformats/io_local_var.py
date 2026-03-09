@@ -69,14 +69,12 @@ class IoLocalVar(KaitaiStruct):
         _on = 2
         if _on == 1:
             pass
-            self._raw__m_mess_up = io.read_bytes(2)
-            _io__raw__m_mess_up = KaitaiStream(BytesIO(self._raw__m_mess_up))
-            self._m_mess_up = IoLocalVar.Dummy(_io__raw__m_mess_up, self, self._root)
+            _io__m_mess_up = io.substream(2)
+            self._m_mess_up = IoLocalVar.Dummy(_io__m_mess_up, self, self._root)
         elif _on == 2:
             pass
-            self._raw__m_mess_up = io.read_bytes(2)
-            _io__raw__m_mess_up = KaitaiStream(BytesIO(self._raw__m_mess_up))
-            self._m_mess_up = IoLocalVar.Dummy(_io__raw__m_mess_up, self, self._root)
+            _io__m_mess_up = io.substream(2)
+            self._m_mess_up = IoLocalVar.Dummy(_io__m_mess_up, self, self._root)
         else:
             pass
             self._m_mess_up = io.read_bytes(2)

@@ -44,14 +44,12 @@ class SwitchManualIntSize(KaitaiStruct):
             _on = self.code
             if _on == 17:
                 pass
-                self._raw_body = self._io.read_bytes(self.size)
-                _io__raw_body = KaitaiStream(BytesIO(self._raw_body))
-                self.body = SwitchManualIntSize.Chunk.ChunkMeta(_io__raw_body, self, self._root)
+                _io_body = self._io.substream(self.size)
+                self.body = SwitchManualIntSize.Chunk.ChunkMeta(_io_body, self, self._root)
             elif _on == 34:
                 pass
-                self._raw_body = self._io.read_bytes(self.size)
-                _io__raw_body = KaitaiStream(BytesIO(self._raw_body))
-                self.body = SwitchManualIntSize.Chunk.ChunkDir(_io__raw_body, self, self._root)
+                _io_body = self._io.substream(self.size)
+                self.body = SwitchManualIntSize.Chunk.ChunkDir(_io_body, self, self._root)
             else:
                 pass
                 self.body = self._io.read_bytes(self.size)
