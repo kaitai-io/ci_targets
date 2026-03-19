@@ -24,30 +24,43 @@ pub const SwitchRepeatExpr = struct {
         return self._arena.allocator();
     }
     fn _read(self: *SwitchRepeatExpr) !void {
-        self.code = try self._io.readU1();
-        self.size = try self._io.readU4le();
-        self.body = try self._allocator().create(_imp_std.ArrayList(Body_switch));
-        self.body.* = .empty;
-        for (0..1) |i| {
+        self.codes = try self._allocator().create(_imp_std.ArrayList(u8));
+        self.codes.* = .empty;
+        for (0..3) |i| {
             {
                 const _maybe_unused = i;
                 _ = _maybe_unused;
             }
-            switch (self.code) {
-                17 => {
-                    const _raw_body = try self._io.readBytes(self._allocator(), self.size);
+            try self.codes.append(self._allocator(), try self._io.readU1());
+        }
+        self.body = try self._allocator().create(_imp_std.ArrayList(Body_switch));
+        self.body.* = .empty;
+        for (0..3) |i| {
+            {
+                const _maybe_unused = i;
+                _ = _maybe_unused;
+            }
+            switch (self.codes.items[i]) {
+                1 => {
+                    const _raw_body = try self._io.readBytes(self._allocator(), 4);
                     const _io__raw_body = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
                     _io__raw_body.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_body);
                     try self.body.append(self._allocator(), .{ .one = try One.create(self._arena, _io__raw_body, self, self._root) });
                 },
-                34 => {
-                    const _raw_body = try self._io.readBytes(self._allocator(), self.size);
+                2 => {
+                    const _raw_body = try self._io.readBytes(self._allocator(), 4);
+                    const _io__raw_body = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
+                    _io__raw_body.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_body);
+                    try self.body.append(self._allocator(), .{ .one = try One.create(self._arena, _io__raw_body, self, self._root) });
+                },
+                7 => {
+                    const _raw_body = try self._io.readBytes(self._allocator(), 4);
                     const _io__raw_body = try self._allocator().create(_imp_kaitai_struct.KaitaiStream);
                     _io__raw_body.* = _imp_kaitai_struct.KaitaiStream.fromBytes(_raw_body);
                     try self.body.append(self._allocator(), .{ .two = try Two.create(self._arena, _io__raw_body, self, self._root) });
                 },
                 else => {
-                    try self.body.append(self._allocator(), .{ .bytes = try self._io.readBytes(self._allocator(), self.size) });
+                    try self.body.append(self._allocator(), .{ .bytes = try self._io.readBytes(self._allocator(), 4) });
                 },
             }
         }
@@ -100,8 +113,7 @@ pub const SwitchRepeatExpr = struct {
         _arena: *_imp_std.heap.ArenaAllocator,
         _io: *_imp_kaitai_struct.KaitaiStream,
     };
-    code: u8 = undefined,
-    size: u32 = undefined,
+    codes: *_imp_std.ArrayList(u8) = undefined,
     body: *_imp_std.ArrayList(Body_switch) = undefined,
     _root: ?*SwitchRepeatExpr,
     _parent: ?*anyopaque,

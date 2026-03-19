@@ -34,37 +34,35 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{code} = $self->{_io}->read_u1();
-    $self->{size} = $self->{_io}->read_u4le();
+    $self->{codes} = [];
+    my $n_codes = 3;
+    for (my $i = 0; $i < $n_codes; $i++) {
+        push @{$self->{codes}}, $self->{_io}->read_u1();
+    }
     $self->{_raw_body} = [];
     $self->{body} = [];
-    my $n_body = 1;
+    my $n_body = 3;
     for (my $i = 0; $i < $n_body; $i++) {
-        my $_on = $self->code();
-        if ($_on == 255) {
-            push @{$self->{_raw_body}}, $self->{_io}->read_bytes($self->size());
+        my $_on = @{$self->codes()}[$i];
+        if ($_on == 1) {
+            push @{$self->{_raw_body}}, $self->{_io}->read_bytes(4);
             my $io__raw_body = IO::KaitaiStruct::Stream->new($self->{_raw_body}[$i]);
             push @{$self->{body}}, SwitchRepeatExprInvalid::One->new($io__raw_body, $self, $self->{_root});
         }
-        elsif ($_on == 34) {
-            push @{$self->{_raw_body}}, $self->{_io}->read_bytes($self->size());
+        elsif ($_on == 2) {
+            push @{$self->{_raw_body}}, $self->{_io}->read_bytes(4);
             my $io__raw_body = IO::KaitaiStruct::Stream->new($self->{_raw_body}[$i]);
             push @{$self->{body}}, SwitchRepeatExprInvalid::Two->new($io__raw_body, $self, $self->{_root});
         }
         else {
-            push @{$self->{body}}, $self->{_io}->read_bytes($self->size());
+            push @{$self->{body}}, $self->{_io}->read_bytes(4);
         }
     }
 }
 
-sub code {
+sub codes {
     my ($self) = @_;
-    return $self->{code};
-}
-
-sub size {
-    my ($self) = @_;
-    return $self->{size};
+    return $self->{codes};
 }
 
 sub body {

@@ -13,20 +13,22 @@ class SwitchRepeatExprInvalid < Kaitai::Struct::Struct
   end
 
   def _read
-    @code = @_io.read_u1
-    @size = @_io.read_u4le
+    @codes = []
+    (3).times { |i|
+      @codes << @_io.read_u1
+    }
     @_raw_body = []
     @body = []
-    (1).times { |i|
-      case code
-      when 255
-        _io_body = @_io.substream(size)
+    (3).times { |i|
+      case codes[i]
+      when 1
+        _io_body = @_io.substream(4)
         @body << One.new(_io_body, self, @_root)
-      when 34
-        _io_body = @_io.substream(size)
+      when 2
+        _io_body = @_io.substream(4)
         @body << Two.new(_io_body, self, @_root)
       else
-        @body << @_io.read_bytes(size)
+        @body << @_io.read_bytes(4)
       end
     }
     self
@@ -55,8 +57,7 @@ class SwitchRepeatExprInvalid < Kaitai::Struct::Struct
     end
     attr_reader :second
   end
-  attr_reader :code
-  attr_reader :size
+  attr_reader :codes
   attr_reader :body
   attr_reader :_raw_body
 end

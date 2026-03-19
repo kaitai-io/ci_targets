@@ -15,24 +15,35 @@ class SwitchRepeatExpr(ReadWriteKaitaiStruct):
         self._root = _root or self
 
     def _read(self):
-        self.code = self._io.read_u1()
-        self.size = self._io.read_u4le()
+        self.codes = []
+        for i in range(3):
+            self.codes.append(self._io.read_u1())
+
         self._raw_body = []
         self.body = []
-        for i in range(1):
-            _on = self.code
-            if _on == 17:
+        for i in range(3):
+            _on = self.codes[i]
+            if _on == 1:
                 pass
-                self._raw_body.append(self._io.read_bytes(self.size))
+                self._raw_body.append(self._io.read_bytes(4))
                 _io__raw_body = KaitaiStream(BytesIO(self._raw_body[i]))
                 _t_body = SwitchRepeatExpr.One(_io__raw_body, self, self._root)
                 try:
                     _t_body._read()
                 finally:
                     self.body.append(_t_body)
-            elif _on == 34:
+            elif _on == 2:
                 pass
-                self._raw_body.append(self._io.read_bytes(self.size))
+                self._raw_body.append(self._io.read_bytes(4))
+                _io__raw_body = KaitaiStream(BytesIO(self._raw_body[i]))
+                _t_body = SwitchRepeatExpr.One(_io__raw_body, self, self._root)
+                try:
+                    _t_body._read()
+                finally:
+                    self.body.append(_t_body)
+            elif _on == 7:
+                pass
+                self._raw_body.append(self._io.read_bytes(4))
                 _io__raw_body = KaitaiStream(BytesIO(self._raw_body[i]))
                 _t_body = SwitchRepeatExpr.Two(_io__raw_body, self, self._root)
                 try:
@@ -41,20 +52,26 @@ class SwitchRepeatExpr(ReadWriteKaitaiStruct):
                     self.body.append(_t_body)
             else:
                 pass
-                self.body.append(self._io.read_bytes(self.size))
+                self.body.append(self._io.read_bytes(4))
 
         self._dirty = False
 
 
     def _fetch_instances(self):
         pass
+        for i in range(len(self.codes)):
+            pass
+
         for i in range(len(self.body)):
             pass
-            _on = self.code
-            if _on == 17:
+            _on = self.codes[i]
+            if _on == 1:
                 pass
                 self.body[i]._fetch_instances()
-            elif _on == 34:
+            elif _on == 2:
+                pass
+                self.body[i]._fetch_instances()
+            elif _on == 7:
                 pass
                 self.body[i]._fetch_instances()
             else:
@@ -64,35 +81,50 @@ class SwitchRepeatExpr(ReadWriteKaitaiStruct):
 
     def _write__seq(self, io=None):
         super()._write__seq(io)
-        self._io.write_u1(self.code)
-        self._io.write_u4le(self.size)
+        for i in range(len(self.codes)):
+            pass
+            self._io.write_u1(self.codes[i])
+
         self._raw_body = []
         for i in range(len(self.body)):
             pass
-            _on = self.code
-            if _on == 17:
+            _on = self.codes[i]
+            if _on == 1:
                 pass
-                _io__raw_body = KaitaiStream(BytesIO(bytes(self.size)))
+                _io__raw_body = KaitaiStream(BytesIO(bytes(4)))
                 self._io.add_child_stream(_io__raw_body)
                 _pos2 = self._io.pos()
-                self._io.seek(self._io.pos() + (self.size))
+                self._io.seek(self._io.pos() + (4))
                 def handler(parent, _io__raw_body=_io__raw_body, i=i):
                     self._raw_body.append(_io__raw_body.to_byte_array())
-                    if len(self._raw_body[i]) != self.size:
-                        raise kaitaistruct.ConsistencyError("raw(body)", self.size, len(self._raw_body[i]))
+                    if len(self._raw_body[i]) != 4:
+                        raise kaitaistruct.ConsistencyError("raw(body)", 4, len(self._raw_body[i]))
                     parent.write_bytes(self._raw_body[i])
                 _io__raw_body.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
                 self.body[i]._write__seq(_io__raw_body)
-            elif _on == 34:
+            elif _on == 2:
                 pass
-                _io__raw_body = KaitaiStream(BytesIO(bytes(self.size)))
+                _io__raw_body = KaitaiStream(BytesIO(bytes(4)))
                 self._io.add_child_stream(_io__raw_body)
                 _pos2 = self._io.pos()
-                self._io.seek(self._io.pos() + (self.size))
+                self._io.seek(self._io.pos() + (4))
                 def handler(parent, _io__raw_body=_io__raw_body, i=i):
                     self._raw_body.append(_io__raw_body.to_byte_array())
-                    if len(self._raw_body[i]) != self.size:
-                        raise kaitaistruct.ConsistencyError("raw(body)", self.size, len(self._raw_body[i]))
+                    if len(self._raw_body[i]) != 4:
+                        raise kaitaistruct.ConsistencyError("raw(body)", 4, len(self._raw_body[i]))
+                    parent.write_bytes(self._raw_body[i])
+                _io__raw_body.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
+                self.body[i]._write__seq(_io__raw_body)
+            elif _on == 7:
+                pass
+                _io__raw_body = KaitaiStream(BytesIO(bytes(4)))
+                self._io.add_child_stream(_io__raw_body)
+                _pos2 = self._io.pos()
+                self._io.seek(self._io.pos() + (4))
+                def handler(parent, _io__raw_body=_io__raw_body, i=i):
+                    self._raw_body.append(_io__raw_body.to_byte_array())
+                    if len(self._raw_body[i]) != 4:
+                        raise kaitaistruct.ConsistencyError("raw(body)", 4, len(self._raw_body[i]))
                     parent.write_bytes(self._raw_body[i])
                 _io__raw_body.write_back_handler = KaitaiStream.WriteBackHandler(_pos2, handler)
                 self.body[i]._write__seq(_io__raw_body)
@@ -103,18 +135,29 @@ class SwitchRepeatExpr(ReadWriteKaitaiStruct):
 
 
     def _check(self):
-        if len(self.body) != 1:
-            raise kaitaistruct.ConsistencyError("body", 1, len(self.body))
+        if len(self.codes) != 3:
+            raise kaitaistruct.ConsistencyError("codes", 3, len(self.codes))
+        for i in range(len(self.codes)):
+            pass
+
+        if len(self.body) != 3:
+            raise kaitaistruct.ConsistencyError("body", 3, len(self.body))
         for i in range(len(self.body)):
             pass
-            _on = self.code
-            if _on == 17:
+            _on = self.codes[i]
+            if _on == 1:
                 pass
                 if self.body[i]._root != self._root:
                     raise kaitaistruct.ConsistencyError("body", self._root, self.body[i]._root)
                 if self.body[i]._parent != self:
                     raise kaitaistruct.ConsistencyError("body", self, self.body[i]._parent)
-            elif _on == 34:
+            elif _on == 2:
+                pass
+                if self.body[i]._root != self._root:
+                    raise kaitaistruct.ConsistencyError("body", self._root, self.body[i]._root)
+                if self.body[i]._parent != self:
+                    raise kaitaistruct.ConsistencyError("body", self, self.body[i]._parent)
+            elif _on == 7:
                 pass
                 if self.body[i]._root != self._root:
                     raise kaitaistruct.ConsistencyError("body", self._root, self.body[i]._root)
@@ -122,8 +165,8 @@ class SwitchRepeatExpr(ReadWriteKaitaiStruct):
                     raise kaitaistruct.ConsistencyError("body", self, self.body[i]._parent)
             else:
                 pass
-                if len(self.body[i]) != self.size:
-                    raise kaitaistruct.ConsistencyError("body", self.size, len(self.body[i]))
+                if len(self.body[i]) != 4:
+                    raise kaitaistruct.ConsistencyError("body", 4, len(self.body[i]))
 
         self._dirty = False
 

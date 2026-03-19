@@ -1,0 +1,41 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__eof_exception_switch_user {
+		label="EofExceptionSwitchUser";
+		graph[style=dotted];
+
+		eof_exception_switch_user__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="code_pos">0</TD><TD PORT="code_size">2</TD><TD>u2le</TD><TD PORT="code_type">code</TD></TR>
+			<TR><TD PORT="data_pos">2</TD><TD PORT="data_size">...</TD><TD>switch (code)</TD><TD PORT="data_type">data</TD></TR>
+		</TABLE>>];
+eof_exception_switch_user__seq_data_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<TR><TD BGCOLOR="#F0F2E4">case</TD><TD BGCOLOR="#F0F2E4">type</TD></TR>
+	<TR><TD>2</TD><TD PORT="case0">Two</TD></TR>
+	<TR><TD>511</TD><TD PORT="case1">One</TD></TR>
+</TABLE>>];
+		subgraph cluster__one {
+			label="EofExceptionSwitchUser::One";
+			graph[style=dotted];
+
+			one__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="val_pos">0</TD><TD PORT="val_size">2</TD><TD>s2le</TD><TD PORT="val_type">val</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__two {
+			label="EofExceptionSwitchUser::Two";
+			graph[style=dotted];
+
+			two__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="val_pos">0</TD><TD PORT="val_size">2</TD><TD>u2le</TD><TD PORT="val_type">val</TD></TR>
+			</TABLE>>];
+		}
+	}
+	eof_exception_switch_user__seq:data_type -> eof_exception_switch_user__seq_data_switch [style=bold];
+	eof_exception_switch_user__seq_data_switch:case0 -> two__seq [style=bold];
+	eof_exception_switch_user__seq_data_switch:case1 -> one__seq [style=bold];
+	eof_exception_switch_user__seq:code_type -> eof_exception_switch_user__seq:data_type [color="#404040"];
+}

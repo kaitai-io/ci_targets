@@ -3,8 +3,7 @@ import options
 
 type
   SwitchRepeatExpr* = ref object of KaitaiStruct
-    `code`*: uint8
-    `size`*: uint32
+    `codes`*: seq[uint8]
     `body`*: seq[KaitaiStruct]
     `parent`*: KaitaiStruct
     `rawBody`*: seq[seq[byte]]
@@ -28,27 +27,32 @@ proc read*(_: typedesc[SwitchRepeatExpr], io: KaitaiStream, root: KaitaiStruct, 
   this.root = root
   this.parent = parent
 
-  let codeExpr = this.io.readU1()
-  this.code = codeExpr
-  let sizeExpr = this.io.readU4le()
-  this.size = sizeExpr
-  for i in 0 ..< int(1):
+  for i in 0 ..< int(3):
+    let it = this.io.readU1()
+    this.codes.add(it)
+  for i in 0 ..< int(3):
     block:
-      let on = this.code
-      if on == 17:
-        let buf = this.io.readBytes(int(this.size))
+      let on = this.codes[i]
+      if on == 1:
+        let buf = this.io.readBytes(int(4))
         this.rawBody.add(buf)
         let rawBodyIo = newKaitaiStream(buf)
         let it = SwitchRepeatExpr_One.read(rawBodyIo, this.root, this)
         this.body.add(it)
-      elif on == 34:
-        let buf = this.io.readBytes(int(this.size))
+      elif on == 2:
+        let buf = this.io.readBytes(int(4))
+        this.rawBody.add(buf)
+        let rawBodyIo = newKaitaiStream(buf)
+        let it = SwitchRepeatExpr_One.read(rawBodyIo, this.root, this)
+        this.body.add(it)
+      elif on == 7:
+        let buf = this.io.readBytes(int(4))
         this.rawBody.add(buf)
         let rawBodyIo = newKaitaiStream(buf)
         let it = SwitchRepeatExpr_Two.read(rawBodyIo, this.root, this)
         this.body.add(it)
       else:
-        let it = this.io.readBytes(int(this.size))
+        let it = this.io.readBytes(int(4))
         this.body.add(it)
 
 proc fromFile*(_: typedesc[SwitchRepeatExpr], filename: string): SwitchRepeatExpr =

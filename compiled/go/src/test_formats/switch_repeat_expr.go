@@ -8,8 +8,7 @@ import (
 )
 
 type SwitchRepeatExpr struct {
-	Code uint8
-	Size uint32
+	Codes []uint8
 	Body []interface{}
 	_io *kaitai.Stream
 	_root *SwitchRepeatExpr
@@ -30,54 +29,66 @@ func (this *SwitchRepeatExpr) Read(io *kaitai.Stream, parent kaitai.Struct, root
 	this._parent = parent
 	this._root = root
 
-	tmp1, err := this._io.ReadU1()
-	if err != nil {
-		return err
-	}
-	this.Code = tmp1
-	tmp2, err := this._io.ReadU4le()
-	if err != nil {
-		return err
-	}
-	this.Size = uint32(tmp2)
-	for i := 0; i < int(1); i++ {
+	for i := 0; i < int(3); i++ {
 		_ = i
-		switch (this.Code) {
-		case 17:
-			tmp3, err := this._io.ReadBytes(int(this.Size))
+		tmp1, err := this._io.ReadU1()
+		if err != nil {
+			return err
+		}
+		this.Codes = append(this.Codes, tmp1)
+	}
+	for i := 0; i < int(3); i++ {
+		_ = i
+		switch (this.Codes[i]) {
+		case 1:
+			tmp2, err := this._io.ReadBytes(int(4))
 			if err != nil {
 				return err
 			}
-			tmp3 = tmp3
-			this._raw_Body = append(this._raw_Body, tmp3)
+			tmp2 = tmp2
+			this._raw_Body = append(this._raw_Body, tmp2)
 			_io__raw_Body := kaitai.NewStream(bytes.NewReader(this._raw_Body[i]))
-			tmp4 := NewSwitchRepeatExpr_One()
-			err = tmp4.Read(_io__raw_Body, this, this._root)
+			tmp3 := NewSwitchRepeatExpr_One()
+			err = tmp3.Read(_io__raw_Body, this, this._root)
 			if err != nil {
 				return err
 			}
-			this.Body = append(this.Body, tmp4)
-		case 34:
-			tmp5, err := this._io.ReadBytes(int(this.Size))
+			this.Body = append(this.Body, tmp3)
+		case 2:
+			tmp4, err := this._io.ReadBytes(int(4))
 			if err != nil {
 				return err
 			}
-			tmp5 = tmp5
-			this._raw_Body = append(this._raw_Body, tmp5)
+			tmp4 = tmp4
+			this._raw_Body = append(this._raw_Body, tmp4)
 			_io__raw_Body := kaitai.NewStream(bytes.NewReader(this._raw_Body[i]))
-			tmp6 := NewSwitchRepeatExpr_Two()
-			err = tmp6.Read(_io__raw_Body, this, this._root)
+			tmp5 := NewSwitchRepeatExpr_One()
+			err = tmp5.Read(_io__raw_Body, this, this._root)
 			if err != nil {
 				return err
 			}
-			this.Body = append(this.Body, tmp6)
+			this.Body = append(this.Body, tmp5)
+		case 7:
+			tmp6, err := this._io.ReadBytes(int(4))
+			if err != nil {
+				return err
+			}
+			tmp6 = tmp6
+			this._raw_Body = append(this._raw_Body, tmp6)
+			_io__raw_Body := kaitai.NewStream(bytes.NewReader(this._raw_Body[i]))
+			tmp7 := NewSwitchRepeatExpr_Two()
+			err = tmp7.Read(_io__raw_Body, this, this._root)
+			if err != nil {
+				return err
+			}
+			this.Body = append(this.Body, tmp7)
 		default:
-			tmp7, err := this._io.ReadBytes(int(this.Size))
+			tmp8, err := this._io.ReadBytes(int(4))
 			if err != nil {
 				return err
 			}
-			tmp7 = tmp7
-			this._raw_Body = append(this._raw_Body, tmp7)
+			tmp8 = tmp8
+			this._raw_Body = append(this._raw_Body, tmp8)
 		}
 	}
 	return err
@@ -102,12 +113,12 @@ func (this *SwitchRepeatExpr_One) Read(io *kaitai.Stream, parent *SwitchRepeatEx
 	this._parent = parent
 	this._root = root
 
-	tmp8, err := this._io.ReadBytesFull()
+	tmp9, err := this._io.ReadBytesFull()
 	if err != nil {
 		return err
 	}
-	tmp8 = tmp8
-	this.First = tmp8
+	tmp9 = tmp9
+	this.First = tmp9
 	return err
 }
 type SwitchRepeatExpr_Two struct {
@@ -130,11 +141,11 @@ func (this *SwitchRepeatExpr_Two) Read(io *kaitai.Stream, parent *SwitchRepeatEx
 	this._parent = parent
 	this._root = root
 
-	tmp9, err := this._io.ReadBytesFull()
+	tmp10, err := this._io.ReadBytesFull()
 	if err != nil {
 		return err
 	}
-	tmp9 = tmp9
-	this.Second = tmp9
+	tmp10 = tmp10
+	this.Second = tmp10
 	return err
 }

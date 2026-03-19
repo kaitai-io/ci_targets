@@ -5,6 +5,7 @@
 switch_repeat_expr_invalid_t::switch_repeat_expr_invalid_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_repeat_expr_invalid_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
+    m_codes = 0;
     m_body = 0;
     m__raw_body = 0;
     m__io__raw_body = 0;
@@ -18,30 +19,33 @@ switch_repeat_expr_invalid_t::switch_repeat_expr_invalid_t(kaitai::kstream* p__i
 }
 
 void switch_repeat_expr_invalid_t::_read() {
-    m_code = m__io->read_u1();
-    m_size = m__io->read_u4le();
+    m_codes = new std::vector<uint8_t>();
+    const int l_codes = 3;
+    for (int i = 0; i < l_codes; i++) {
+        m_codes->push_back(m__io->read_u1());
+    }
     m__raw_body = new std::vector<std::string>();
     m__io__raw_body = new std::vector<kaitai::kstream*>();
     m_body = new std::vector<kaitai::kstruct*>();
-    const int l_body = 1;
+    const int l_body = 3;
     for (int i = 0; i < l_body; i++) {
-        switch (code()) {
-        case 255: {
-            m__raw_body->push_back(m__io->read_bytes(size()));
+        switch (codes()->at(i)) {
+        case 1: {
+            m__raw_body->push_back(m__io->read_bytes(4));
             kaitai::kstream* io__raw_body = new kaitai::kstream(m__raw_body->at(m__raw_body->size() - 1));
             m__io__raw_body->push_back(io__raw_body);
             m_body->push_back(new one_t(io__raw_body, this, m__root));
             break;
         }
-        case 34: {
-            m__raw_body->push_back(m__io->read_bytes(size()));
+        case 2: {
+            m__raw_body->push_back(m__io->read_bytes(4));
             kaitai::kstream* io__raw_body = new kaitai::kstream(m__raw_body->at(m__raw_body->size() - 1));
             m__io__raw_body->push_back(io__raw_body);
             m_body->push_back(new two_t(io__raw_body, this, m__root));
             break;
         }
         default: {
-            m__raw_body->push_back(m__io->read_bytes(size()));
+            m__raw_body->push_back(m__io->read_bytes(4));
             break;
         }
         }
@@ -53,6 +57,9 @@ switch_repeat_expr_invalid_t::~switch_repeat_expr_invalid_t() {
 }
 
 void switch_repeat_expr_invalid_t::_clean_up() {
+    if (m_codes) {
+        delete m_codes; m_codes = 0;
+    }
     if (m__raw_body) {
         delete m__raw_body; m__raw_body = 0;
     }

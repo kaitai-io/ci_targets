@@ -21,12 +21,16 @@ pub struct BitsByteAligned {
     byte_1: RefCell<u8>,
     two: RefCell<u64>,
     three: RefCell<bool>,
-    byte_2: RefCell<u8>,
+    byte_2: RefCell<Vec<u8>>,
     four: RefCell<u64>,
-    byte_3: RefCell<Vec<u8>>,
+    byte_3: RefCell<OptRc<BitsByteAligned_Foo>>,
     full_byte: RefCell<u64>,
     byte_4: RefCell<u8>,
+    five: RefCell<u64>,
+    bytes_term: RefCell<Vec<u8>>,
+    six: RefCell<u64>,
     _io: RefCell<BytesReader>,
+    byte_3_raw: RefCell<Vec<u8>>,
 }
 impl KStruct for BitsByteAligned {
     type Root = BitsByteAligned;
@@ -49,11 +53,18 @@ impl KStruct for BitsByteAligned {
         *self_rc.byte_1.borrow_mut() = _io.read_u1()?.into();
         *self_rc.two.borrow_mut() = _io.read_bits_int_be(3)?;
         *self_rc.three.borrow_mut() = _io.read_bits_int_be(1)? != 0;
-        *self_rc.byte_2.borrow_mut() = _io.read_u1()?.into();
+        *self_rc.byte_2.borrow_mut() = _io.read_bytes(1 as usize)?.into();
         *self_rc.four.borrow_mut() = _io.read_bits_int_be(14)?;
-        *self_rc.byte_3.borrow_mut() = _io.read_bytes(1 as usize)?.into();
+        *self_rc.byte_3_raw.borrow_mut() = _io.read_bytes(3 as usize)?.into();
+        let byte_3_raw = self_rc.byte_3_raw.borrow();
+        let _t_byte_3_raw_io = BytesReader::from(byte_3_raw.clone());
+        let t = Self::read_into::<BytesReader, BitsByteAligned_Foo>(&_t_byte_3_raw_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.byte_3.borrow_mut() = t;
         *self_rc.full_byte.borrow_mut() = _io.read_bits_int_be(8)?;
         *self_rc.byte_4.borrow_mut() = _io.read_u1()?.into();
+        *self_rc.five.borrow_mut() = _io.read_bits_int_be(22)?;
+        *self_rc.bytes_term.borrow_mut() = _io.read_bytes_term(69, true, true, true)?.into();
+        *self_rc.six.borrow_mut() = _io.read_bits_int_be(8)?;
         Ok(())
     }
 }
@@ -80,7 +91,7 @@ impl BitsByteAligned {
     }
 }
 impl BitsByteAligned {
-    pub fn byte_2(&self) -> Ref<'_, u8> {
+    pub fn byte_2(&self) -> Ref<'_, Vec<u8>> {
         self.byte_2.borrow()
     }
 }
@@ -90,7 +101,7 @@ impl BitsByteAligned {
     }
 }
 impl BitsByteAligned {
-    pub fn byte_3(&self) -> Ref<'_, Vec<u8>> {
+    pub fn byte_3(&self) -> Ref<'_, OptRc<BitsByteAligned_Foo>> {
         self.byte_3.borrow()
     }
 }
@@ -105,6 +116,68 @@ impl BitsByteAligned {
     }
 }
 impl BitsByteAligned {
+    pub fn five(&self) -> Ref<'_, u64> {
+        self.five.borrow()
+    }
+}
+impl BitsByteAligned {
+    pub fn bytes_term(&self) -> Ref<'_, Vec<u8>> {
+        self.bytes_term.borrow()
+    }
+}
+impl BitsByteAligned {
+    pub fn six(&self) -> Ref<'_, u64> {
+        self.six.borrow()
+    }
+}
+impl BitsByteAligned {
+    pub fn _io(&self) -> Ref<'_, BytesReader> {
+        self._io.borrow()
+    }
+}
+impl BitsByteAligned {
+    pub fn byte_3_raw(&self) -> Ref<'_, Vec<u8>> {
+        self.byte_3_raw.borrow()
+    }
+}
+
+#[derive(Default, Debug, Clone)]
+pub struct BitsByteAligned_Foo {
+    pub _root: SharedType<BitsByteAligned>,
+    pub _parent: SharedType<BitsByteAligned>,
+    pub _self: SharedType<Self>,
+    inner: RefCell<u64>,
+    _io: RefCell<BytesReader>,
+}
+impl KStruct for BitsByteAligned_Foo {
+    type Root = BitsByteAligned;
+    type Parent = BitsByteAligned;
+
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.inner.borrow_mut() = _io.read_bits_int_be(19)?;
+        Ok(())
+    }
+}
+impl BitsByteAligned_Foo {
+}
+impl BitsByteAligned_Foo {
+    pub fn inner(&self) -> Ref<'_, u64> {
+        self.inner.borrow()
+    }
+}
+impl BitsByteAligned_Foo {
     pub fn _io(&self) -> Ref<'_, BytesReader> {
         self._io.borrow()
     }

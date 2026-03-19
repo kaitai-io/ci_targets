@@ -19,27 +19,36 @@ namespace Kaitai
         }
         private void _read()
         {
-            _code = m_io.ReadU1();
-            _size = m_io.ReadU4le();
+            _codes = new List<byte>();
+            for (var i = 0; i < 3; i++)
+            {
+                _codes.Add(m_io.ReadU1());
+            }
             __raw_body = new List<byte[]>();
             _body = new List<object>();
-            for (var i = 0; i < 1; i++)
+            for (var i = 0; i < 3; i++)
             {
-                switch (Code) {
-                case 17: {
-                    __raw_body.Add(m_io.ReadBytes(Size));
+                switch (Codes[i]) {
+                case 1: {
+                    __raw_body.Add(m_io.ReadBytes(4));
                     var io___raw_body = new KaitaiStream(__raw_body[__raw_body.Count - 1]);
                     _body.Add(new One(io___raw_body, this, m_root));
                     break;
                 }
-                case 34: {
-                    __raw_body.Add(m_io.ReadBytes(Size));
+                case 2: {
+                    __raw_body.Add(m_io.ReadBytes(4));
+                    var io___raw_body = new KaitaiStream(__raw_body[__raw_body.Count - 1]);
+                    _body.Add(new One(io___raw_body, this, m_root));
+                    break;
+                }
+                case 7: {
+                    __raw_body.Add(m_io.ReadBytes(4));
                     var io___raw_body = new KaitaiStream(__raw_body[__raw_body.Count - 1]);
                     _body.Add(new Two(io___raw_body, this, m_root));
                     break;
                 }
                 default: {
-                    _body.Add(m_io.ReadBytes(Size));
+                    _body.Add(m_io.ReadBytes(4));
                     break;
                 }
                 }
@@ -93,14 +102,12 @@ namespace Kaitai
             private SwitchRepeatExpr m_root;
             private SwitchRepeatExpr m_parent;
         }
-        public byte Code { get { return _code; } }
-        public uint Size { get { return _size; } }
+        public List<byte> Codes { get { return _codes; } }
         public List<object> Body { get { return _body; } }
         public SwitchRepeatExpr M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public List<byte[]> M_RawBody { get { return __raw_body; } }
-        private byte _code;
-        private uint _size;
+        private List<byte> _codes;
         private List<object> _body;
         private SwitchRepeatExpr m_root;
         private KaitaiStruct m_parent;

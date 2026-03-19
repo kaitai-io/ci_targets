@@ -8,8 +8,7 @@ import (
 )
 
 type SwitchRepeatExprInvalid struct {
-	Code uint8
-	Size uint32
+	Codes []uint8
 	Body []interface{}
 	_io *kaitai.Stream
 	_root *SwitchRepeatExprInvalid
@@ -30,54 +29,52 @@ func (this *SwitchRepeatExprInvalid) Read(io *kaitai.Stream, parent kaitai.Struc
 	this._parent = parent
 	this._root = root
 
-	tmp1, err := this._io.ReadU1()
-	if err != nil {
-		return err
-	}
-	this.Code = tmp1
-	tmp2, err := this._io.ReadU4le()
-	if err != nil {
-		return err
-	}
-	this.Size = uint32(tmp2)
-	for i := 0; i < int(1); i++ {
+	for i := 0; i < int(3); i++ {
 		_ = i
-		switch (this.Code) {
-		case 255:
-			tmp3, err := this._io.ReadBytes(int(this.Size))
+		tmp1, err := this._io.ReadU1()
+		if err != nil {
+			return err
+		}
+		this.Codes = append(this.Codes, tmp1)
+	}
+	for i := 0; i < int(3); i++ {
+		_ = i
+		switch (this.Codes[i]) {
+		case 1:
+			tmp2, err := this._io.ReadBytes(int(4))
 			if err != nil {
 				return err
 			}
-			tmp3 = tmp3
-			this._raw_Body = append(this._raw_Body, tmp3)
+			tmp2 = tmp2
+			this._raw_Body = append(this._raw_Body, tmp2)
 			_io__raw_Body := kaitai.NewStream(bytes.NewReader(this._raw_Body[i]))
-			tmp4 := NewSwitchRepeatExprInvalid_One()
-			err = tmp4.Read(_io__raw_Body, this, this._root)
+			tmp3 := NewSwitchRepeatExprInvalid_One()
+			err = tmp3.Read(_io__raw_Body, this, this._root)
 			if err != nil {
 				return err
 			}
-			this.Body = append(this.Body, tmp4)
-		case 34:
-			tmp5, err := this._io.ReadBytes(int(this.Size))
+			this.Body = append(this.Body, tmp3)
+		case 2:
+			tmp4, err := this._io.ReadBytes(int(4))
 			if err != nil {
 				return err
 			}
-			tmp5 = tmp5
-			this._raw_Body = append(this._raw_Body, tmp5)
+			tmp4 = tmp4
+			this._raw_Body = append(this._raw_Body, tmp4)
 			_io__raw_Body := kaitai.NewStream(bytes.NewReader(this._raw_Body[i]))
-			tmp6 := NewSwitchRepeatExprInvalid_Two()
-			err = tmp6.Read(_io__raw_Body, this, this._root)
+			tmp5 := NewSwitchRepeatExprInvalid_Two()
+			err = tmp5.Read(_io__raw_Body, this, this._root)
 			if err != nil {
 				return err
 			}
-			this.Body = append(this.Body, tmp6)
+			this.Body = append(this.Body, tmp5)
 		default:
-			tmp7, err := this._io.ReadBytes(int(this.Size))
+			tmp6, err := this._io.ReadBytes(int(4))
 			if err != nil {
 				return err
 			}
-			tmp7 = tmp7
-			this._raw_Body = append(this._raw_Body, tmp7)
+			tmp6 = tmp6
+			this._raw_Body = append(this._raw_Body, tmp6)
 		}
 	}
 	return err
@@ -102,12 +99,12 @@ func (this *SwitchRepeatExprInvalid_One) Read(io *kaitai.Stream, parent *SwitchR
 	this._parent = parent
 	this._root = root
 
-	tmp8, err := this._io.ReadBytesFull()
+	tmp7, err := this._io.ReadBytesFull()
 	if err != nil {
 		return err
 	}
-	tmp8 = tmp8
-	this.First = tmp8
+	tmp7 = tmp7
+	this.First = tmp7
 	return err
 }
 type SwitchRepeatExprInvalid_Two struct {
@@ -130,11 +127,11 @@ func (this *SwitchRepeatExprInvalid_Two) Read(io *kaitai.Stream, parent *SwitchR
 	this._parent = parent
 	this._root = root
 
-	tmp9, err := this._io.ReadBytesFull()
+	tmp8, err := this._io.ReadBytesFull()
 	if err != nil {
 		return err
 	}
-	tmp9 = tmp9
-	this.Second = tmp9
+	tmp8 = tmp8
+	this.Second = tmp8
 	return err
 }

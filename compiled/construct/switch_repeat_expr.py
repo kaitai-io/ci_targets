@@ -10,9 +10,8 @@ switch_repeat_expr__two = Struct(
 )
 
 switch_repeat_expr = Struct(
-	'code' / Int8ub,
-	'size' / Int32ul,
-	'body' / Array(1, Switch(this.code, {17: FixedSized(this.size, LazyBound(lambda: switch_repeat_expr__one)), 34: FixedSized(this.size, LazyBound(lambda: switch_repeat_expr__two)), }, default=FixedSized(this.size, GreedyBytes))),
+	'codes' / Array(3, Int8ub),
+	'body' / Array(3, Switch(this.codes[i], {1: FixedSized(4, LazyBound(lambda: switch_repeat_expr__one)), 2: FixedSized(4, LazyBound(lambda: switch_repeat_expr__one)), 7: FixedSized(4, LazyBound(lambda: switch_repeat_expr__two)), }, default=FixedSized(4, GreedyBytes))),
 )
 
 _schema = switch_repeat_expr

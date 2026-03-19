@@ -73,8 +73,7 @@ public:
     };
 
 public:
-    uint8_t code() const { return m_code; }
-    uint32_t size() const { return m_size; }
+    std::vector<uint8_t>* codes() const { return m_codes; }
     std::vector<kaitai::kstruct*>* body() const { return m_body; }
     switch_repeat_expr_invalid_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
@@ -82,8 +81,7 @@ public:
     std::vector<kaitai::kstream*>* _io__raw_body() const { return m__io__raw_body; }
 
 private:
-    uint8_t m_code;
-    uint32_t m_size;
+    std::vector<uint8_t>* m_codes;
     std::vector<kaitai::kstruct*>* m_body;
     switch_repeat_expr_invalid_t* m__root;
     kaitai::kstruct* m__parent;

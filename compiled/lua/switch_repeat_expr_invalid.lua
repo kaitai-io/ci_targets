@@ -16,22 +16,24 @@ function SwitchRepeatExprInvalid:_init(io, parent, root)
 end
 
 function SwitchRepeatExprInvalid:_read()
-  self.code = self._io:read_u1()
-  self.size = self._io:read_u4le()
+  self.codes = {}
+  for i = 0, 3 - 1 do
+    self.codes[i + 1] = self._io:read_u1()
+  end
   self._raw_body = {}
   self.body = {}
-  for i = 0, 1 - 1 do
-    local _on = self.code
-    if _on == 255 then
-      self._raw_body[i + 1] = self._io:read_bytes(self.size)
+  for i = 0, 3 - 1 do
+    local _on = self.codes[i + 1]
+    if _on == 1 then
+      self._raw_body[i + 1] = self._io:read_bytes(4)
       local _io = KaitaiStream(stringstream(self._raw_body[i + 1]))
       self.body[i + 1] = SwitchRepeatExprInvalid.One(_io, self, self._root)
-    elseif _on == 34 then
-      self._raw_body[i + 1] = self._io:read_bytes(self.size)
+    elseif _on == 2 then
+      self._raw_body[i + 1] = self._io:read_bytes(4)
       local _io = KaitaiStream(stringstream(self._raw_body[i + 1]))
       self.body[i + 1] = SwitchRepeatExprInvalid.Two(_io, self, self._root)
     else
-      self.body[i + 1] = self._io:read_bytes(self.size)
+      self.body[i + 1] = self._io:read_bytes(4)
     end
   end
 end

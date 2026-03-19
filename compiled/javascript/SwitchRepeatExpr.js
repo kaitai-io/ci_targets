@@ -18,24 +18,31 @@ var SwitchRepeatExpr = (function() {
     this._read();
   }
   SwitchRepeatExpr.prototype._read = function() {
-    this.code = this._io.readU1();
-    this.size = this._io.readU4le();
+    this.codes = [];
+    for (var i = 0; i < 3; i++) {
+      this.codes.push(this._io.readU1());
+    }
     this._raw_body = [];
     this.body = [];
-    for (var i = 0; i < 1; i++) {
-      switch (this.code) {
-      case 17:
-        this._raw_body.push(this._io.readBytes(this.size));
+    for (var i = 0; i < 3; i++) {
+      switch (this.codes[i]) {
+      case 1:
+        this._raw_body.push(this._io.readBytes(4));
         var _io__raw_body = new KaitaiStream(this._raw_body[i]);
         this.body.push(new One(_io__raw_body, this, this._root));
         break;
-      case 34:
-        this._raw_body.push(this._io.readBytes(this.size));
+      case 2:
+        this._raw_body.push(this._io.readBytes(4));
+        var _io__raw_body = new KaitaiStream(this._raw_body[i]);
+        this.body.push(new One(_io__raw_body, this, this._root));
+        break;
+      case 7:
+        this._raw_body.push(this._io.readBytes(4));
         var _io__raw_body = new KaitaiStream(this._raw_body[i]);
         this.body.push(new Two(_io__raw_body, this, this._root));
         break;
       default:
-        this.body.push(this._io.readBytes(this.size));
+        this.body.push(this._io.readBytes(4));
         break;
       }
     }

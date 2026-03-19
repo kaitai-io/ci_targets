@@ -13,11 +13,16 @@ namespace Kaitai\Struct\Tests {
             $this->_m_byte1 = $this->_io->readU1();
             $this->_m_two = $this->_io->readBitsIntBe(3);
             $this->_m_three = $this->_io->readBitsIntBe(1) != 0;
-            $this->_m_byte2 = $this->_io->readU1();
+            $this->_m_byte2 = $this->_io->readBytes(1);
             $this->_m_four = $this->_io->readBitsIntBe(14);
-            $this->_m_byte3 = $this->_io->readBytes(1);
+            $this->_m__raw_byte3 = $this->_io->readBytes(3);
+            $_io__raw_byte3 = new \Kaitai\Struct\Stream($this->_m__raw_byte3);
+            $this->_m_byte3 = new \Kaitai\Struct\Tests\BitsByteAligned\Foo($_io__raw_byte3, $this, $this->_root);
             $this->_m_fullByte = $this->_io->readBitsIntBe(8);
             $this->_m_byte4 = $this->_io->readU1();
+            $this->_m_five = $this->_io->readBitsIntBe(22);
+            $this->_m_bytesTerm = $this->_io->readBytesTerm(69, true, true, true);
+            $this->_m_six = $this->_io->readBitsIntBe(8);
         }
         public function one() { return $this->_m_one; }
         public function byte1() { return $this->_m_byte1; }
@@ -28,6 +33,10 @@ namespace Kaitai\Struct\Tests {
         public function byte3() { return $this->_m_byte3; }
         public function fullByte() { return $this->_m_fullByte; }
         public function byte4() { return $this->_m_byte4; }
+        public function five() { return $this->_m_five; }
+        public function bytesTerm() { return $this->_m_bytesTerm; }
+        public function six() { return $this->_m_six; }
+        public function _raw_byte3() { return $this->_m__raw_byte3; }
         protected $_m_one;
         protected $_m_byte1;
         protected $_m_two;
@@ -37,5 +46,24 @@ namespace Kaitai\Struct\Tests {
         protected $_m_byte3;
         protected $_m_fullByte;
         protected $_m_byte4;
+        protected $_m_five;
+        protected $_m_bytesTerm;
+        protected $_m_six;
+        protected $_m__raw_byte3;
+    }
+}
+
+namespace Kaitai\Struct\Tests\BitsByteAligned {
+    class Foo extends \Kaitai\Struct\Struct {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\BitsByteAligned $_parent = null, ?\Kaitai\Struct\Tests\BitsByteAligned $_root = null) {
+            parent::__construct($_io, $_parent, $_root);
+            $this->_read();
+        }
+
+        private function _read() {
+            $this->_m_inner = $this->_io->readBitsIntBe(19);
+        }
+        public function inner() { return $this->_m_inner; }
+        protected $_m_inner;
     }
 }

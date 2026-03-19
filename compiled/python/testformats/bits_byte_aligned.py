@@ -20,14 +20,34 @@ class BitsByteAligned(KaitaiStruct):
         self.byte_1 = self._io.read_u1()
         self.two = self._io.read_bits_int_be(3)
         self.three = self._io.read_bits_int_be(1) != 0
-        self.byte_2 = self._io.read_u1()
+        self.byte_2 = self._io.read_bytes(1)
         self.four = self._io.read_bits_int_be(14)
-        self.byte_3 = self._io.read_bytes(1)
+        _io_byte_3 = self._io.substream(3)
+        self.byte_3 = BitsByteAligned.Foo(_io_byte_3, self, self._root)
         self.full_byte = self._io.read_bits_int_be(8)
         self.byte_4 = self._io.read_u1()
+        self.five = self._io.read_bits_int_be(22)
+        self.bytes_term = self._io.read_bytes_term(69, True, True, True)
+        self.six = self._io.read_bits_int_be(8)
 
 
     def _fetch_instances(self):
         pass
+        self.byte_3._fetch_instances()
+
+    class Foo(KaitaiStruct):
+        def __init__(self, _io, _parent=None, _root=None):
+            super().__init__(_io)
+            self._parent = _parent
+            self._root = _root
+            self._read()
+
+        def _read(self):
+            self.inner = self._io.read_bits_int_be(19)
+
+
+        def _fetch_instances(self):
+            pass
+
 
 

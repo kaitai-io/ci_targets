@@ -2,21 +2,28 @@
 
 package test_formats
 
-import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+import (
+	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+	"bytes"
+)
 
 type BitsByteAligned struct {
 	One uint64
 	Byte1 uint8
 	Two uint64
 	Three bool
-	Byte2 uint8
+	Byte2 []byte
 	Four uint64
-	Byte3 []byte
+	Byte3 *BitsByteAligned_Foo
 	FullByte uint64
 	Byte4 uint8
+	Five uint64
+	BytesTerm []byte
+	Six uint64
 	_io *kaitai.Stream
 	_root *BitsByteAligned
 	_parent kaitai.Struct
+	_raw_Byte3 []byte
 }
 func NewBitsByteAligned() *BitsByteAligned {
 	return &BitsByteAligned{
@@ -52,31 +59,81 @@ func (this *BitsByteAligned) Read(io *kaitai.Stream, parent kaitai.Struct, root 
 		return err
 	}
 	this.Three = tmp4 != 0
-	tmp5, err := this._io.ReadU1()
+	tmp5, err := this._io.ReadBytes(int(1))
 	if err != nil {
 		return err
 	}
+	tmp5 = tmp5
 	this.Byte2 = tmp5
 	tmp6, err := this._io.ReadBitsIntBe(14)
 	if err != nil {
 		return err
 	}
 	this.Four = tmp6
-	tmp7, err := this._io.ReadBytes(int(1))
+	tmp7, err := this._io.ReadBytes(int(3))
 	if err != nil {
 		return err
 	}
 	tmp7 = tmp7
-	this.Byte3 = tmp7
-	tmp8, err := this._io.ReadBitsIntBe(8)
+	this._raw_Byte3 = tmp7
+	_io__raw_Byte3 := kaitai.NewStream(bytes.NewReader(this._raw_Byte3))
+	tmp8 := NewBitsByteAligned_Foo()
+	err = tmp8.Read(_io__raw_Byte3, this, this._root)
 	if err != nil {
 		return err
 	}
-	this.FullByte = tmp8
-	tmp9, err := this._io.ReadU1()
+	this.Byte3 = tmp8
+	tmp9, err := this._io.ReadBitsIntBe(8)
 	if err != nil {
 		return err
 	}
-	this.Byte4 = tmp9
+	this.FullByte = tmp9
+	tmp10, err := this._io.ReadU1()
+	if err != nil {
+		return err
+	}
+	this.Byte4 = tmp10
+	tmp11, err := this._io.ReadBitsIntBe(22)
+	if err != nil {
+		return err
+	}
+	this.Five = tmp11
+	tmp12, err := this._io.ReadBytesTerm(69, true, true, true)
+	if err != nil {
+		return err
+	}
+	this.BytesTerm = tmp12
+	tmp13, err := this._io.ReadBitsIntBe(8)
+	if err != nil {
+		return err
+	}
+	this.Six = tmp13
+	return err
+}
+type BitsByteAligned_Foo struct {
+	Inner uint64
+	_io *kaitai.Stream
+	_root *BitsByteAligned
+	_parent *BitsByteAligned
+}
+func NewBitsByteAligned_Foo() *BitsByteAligned_Foo {
+	return &BitsByteAligned_Foo{
+	}
+}
+
+func (this BitsByteAligned_Foo) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *BitsByteAligned_Foo) Read(io *kaitai.Stream, parent *BitsByteAligned, root *BitsByteAligned) (err error) {
+	this._io = io
+	this._parent = parent
+	this._root = root
+
+	tmp14, err := this._io.ReadBitsIntBe(19)
+	if err != nil {
+		return err
+	}
+	this.Inner = tmp14
 	return err
 }

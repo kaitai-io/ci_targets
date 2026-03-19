@@ -17,8 +17,7 @@ pub struct SwitchRepeatExpr {
     pub _root: SharedType<SwitchRepeatExpr>,
     pub _parent: SharedType<SwitchRepeatExpr>,
     pub _self: SharedType<Self>,
-    code: RefCell<u8>,
-    size: RefCell<u32>,
+    codes: RefCell<Vec<u8>>,
     body: RefCell<Vec<SwitchRepeatExpr_Body>>,
     _io: RefCell<BytesReader>,
     body_raw: RefCell<Vec<Vec<u8>>>,
@@ -85,29 +84,39 @@ impl KStruct for SwitchRepeatExpr {
         let _rrc = self_rc._root.get_value().borrow().upgrade();
         let _prc = self_rc._parent.get_value().borrow().upgrade();
         let _r = _rrc.as_ref().unwrap();
-        *self_rc.code.borrow_mut() = _io.read_u1()?.into();
-        *self_rc.size.borrow_mut() = _io.read_u4le()?.into();
+        *self_rc.codes.borrow_mut() = Vec::new();
+        let l_codes = 3;
+        for _i in 0..l_codes {
+            self_rc.codes.borrow_mut().push(_io.read_u1()?.into());
+        }
         *self_rc.body_raw.borrow_mut() = Vec::new();
         *self_rc.body.borrow_mut() = Vec::new();
-        let l_body = 1;
+        let l_body = 3;
         for _i in 0..l_body {
-            match *self_rc.code() {
-                17 => {
-                    self_rc.body_raw.borrow_mut().push(_io.read_bytes(*self_rc.size() as usize)?.into());
+            match self_rc.codes()[_i as usize] {
+                1 => {
+                    self_rc.body_raw.borrow_mut().push(_io.read_bytes(4 as usize)?.into());
                     let body_raw = self_rc.body_raw.borrow();
                     let io_body_raw = BytesReader::from(body_raw.last().unwrap().clone());
                     let t = Self::read_into::<BytesReader, SwitchRepeatExpr_One>(&io_body_raw, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
                     self_rc.body.borrow_mut().push(t);
                 }
-                34 => {
-                    self_rc.body_raw.borrow_mut().push(_io.read_bytes(*self_rc.size() as usize)?.into());
+                2 => {
+                    self_rc.body_raw.borrow_mut().push(_io.read_bytes(4 as usize)?.into());
+                    let body_raw = self_rc.body_raw.borrow();
+                    let io_body_raw = BytesReader::from(body_raw.last().unwrap().clone());
+                    let t = Self::read_into::<BytesReader, SwitchRepeatExpr_One>(&io_body_raw, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+                    self_rc.body.borrow_mut().push(t);
+                }
+                7 => {
+                    self_rc.body_raw.borrow_mut().push(_io.read_bytes(4 as usize)?.into());
                     let body_raw = self_rc.body_raw.borrow();
                     let io_body_raw = BytesReader::from(body_raw.last().unwrap().clone());
                     let t = Self::read_into::<BytesReader, SwitchRepeatExpr_Two>(&io_body_raw, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
                     self_rc.body.borrow_mut().push(t);
                 }
                 _ => {
-                    self_rc.body.borrow_mut().push(_io.read_bytes(*self_rc.size() as usize)?.into());
+                    self_rc.body.borrow_mut().push(_io.read_bytes(4 as usize)?.into());
                 }
             }
         }
@@ -117,13 +126,8 @@ impl KStruct for SwitchRepeatExpr {
 impl SwitchRepeatExpr {
 }
 impl SwitchRepeatExpr {
-    pub fn code(&self) -> Ref<'_, u8> {
-        self.code.borrow()
-    }
-}
-impl SwitchRepeatExpr {
-    pub fn size(&self) -> Ref<'_, u32> {
-        self.size.borrow()
+    pub fn codes(&self) -> Ref<'_, Vec<u8>> {
+        self.codes.borrow()
     }
 }
 impl SwitchRepeatExpr {

@@ -29,23 +29,25 @@ public class SwitchRepeatExprInvalid extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this.code = this._io.readU1();
-        this.size = this._io.readU4le();
+        this.codes = new ArrayList<Integer>();
+        for (int i = 0; i < 3; i++) {
+            this.codes.add(this._io.readU1());
+        }
         this.body = new ArrayList<Object>();
-        for (int i = 0; i < 1; i++) {
-            switch (code()) {
-            case 255: {
-                KaitaiStream _io_body = this._io.substream(size());
+        for (int i = 0; i < 3; i++) {
+            switch (codes().get(((Number) (i)).intValue())) {
+            case 1: {
+                KaitaiStream _io_body = this._io.substream(4);
                 this.body.add(new One(_io_body, this, _root));
                 break;
             }
-            case 34: {
-                KaitaiStream _io_body = this._io.substream(size());
+            case 2: {
+                KaitaiStream _io_body = this._io.substream(4);
                 this.body.add(new Two(_io_body, this, _root));
                 break;
             }
             default: {
-                this.body.add(this._io.readBytes(size()));
+                this.body.add(this._io.readBytes(4));
                 break;
             }
             }
@@ -53,13 +55,15 @@ public class SwitchRepeatExprInvalid extends KaitaiStruct {
     }
 
     public void _fetchInstances() {
+        for (int i = 0; i < this.codes.size(); i++) {
+        }
         for (int i = 0; i < this.body.size(); i++) {
-            switch (code()) {
-            case 255: {
+            switch (codes().get(((Number) (i)).intValue())) {
+            case 1: {
                 ((One) (this.body.get(((Number) (i)).intValue())))._fetchInstances();
                 break;
             }
-            case 34: {
+            case 2: {
                 ((Two) (this.body.get(((Number) (i)).intValue())))._fetchInstances();
                 break;
             }
@@ -133,13 +137,11 @@ public class SwitchRepeatExprInvalid extends KaitaiStruct {
         private SwitchRepeatExprInvalid _root;
         private SwitchRepeatExprInvalid _parent;
     }
-    public int code() { return code; }
-    public long size() { return size; }
+    public List<Integer> codes() { return codes; }
     public List<Object> body() { return body; }
     public SwitchRepeatExprInvalid _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
-    private int code;
-    private long size;
+    private List<Integer> codes;
     private List<Object> body;
     private SwitchRepeatExprInvalid _root;
     private KaitaiStruct _parent;

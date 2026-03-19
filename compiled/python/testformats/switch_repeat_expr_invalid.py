@@ -16,35 +16,40 @@ class SwitchRepeatExprInvalid(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.code = self._io.read_u1()
-        self.size = self._io.read_u4le()
+        self.codes = []
+        for i in range(3):
+            self.codes.append(self._io.read_u1())
+
         self._raw_body = []
         self.body = []
-        for i in range(1):
-            _on = self.code
-            if _on == 255:
+        for i in range(3):
+            _on = self.codes[i]
+            if _on == 1:
                 pass
-                _io_body = self._io.substream(self.size)
+                _io_body = self._io.substream(4)
                 self.body.append(SwitchRepeatExprInvalid.One(_io_body, self, self._root))
-            elif _on == 34:
+            elif _on == 2:
                 pass
-                _io_body = self._io.substream(self.size)
+                _io_body = self._io.substream(4)
                 self.body.append(SwitchRepeatExprInvalid.Two(_io_body, self, self._root))
             else:
                 pass
-                self.body.append(self._io.read_bytes(self.size))
+                self.body.append(self._io.read_bytes(4))
 
 
 
     def _fetch_instances(self):
         pass
+        for i in range(len(self.codes)):
+            pass
+
         for i in range(len(self.body)):
             pass
-            _on = self.code
-            if _on == 255:
+            _on = self.codes[i]
+            if _on == 1:
                 pass
                 self.body[i]._fetch_instances()
-            elif _on == 34:
+            elif _on == 2:
                 pass
                 self.body[i]._fetch_instances()
             else:
