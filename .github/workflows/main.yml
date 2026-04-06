@@ -58,6 +58,7 @@ jobs:
         run: ./ci-$TARGET$SUBTARGET
         shell: bash
       - name: publish
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         env:
           BOT_SSH_KEY: ${{secrets.BOT_SSH_KEY}}
         run: |
@@ -128,6 +129,7 @@ jobs:
             "$PREV_REPORT" \
             "test_out/$TARGET$SUBTARGET/ci.json"
       - name: publish
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         env:
           BOT_SSH_KEY: ${{secrets.BOT_SSH_KEY}}
         run: |
@@ -267,6 +269,7 @@ jobs:
       #     name: test-${{matrix.tsv.target}}${{matrix.tsv.subtarget}}-${{matrix.tsv.implementation}}
       #     path: tests/test_out
       - name: publish
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         env:
           BOT_SSH_KEY: ${{secrets.BOT_SSH_KEY}}
         run: |
