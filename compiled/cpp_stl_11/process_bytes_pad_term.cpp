@@ -19,9 +19,4 @@ void process_bytes_pad_term_t::_read() {
     m_str_term_include = kaitai::kstream::process_xor_one(m__raw_str_term_include, 21);
 }
 
-process_bytes_pad_term_t::~process_bytes_pad_term_t() {
-    _clean_up();
-}
-
-void process_bytes_pad_term_t::_clean_up() {
-}
+process_bytes_pad_term_t::~process_bytes_pad_term_t() {}

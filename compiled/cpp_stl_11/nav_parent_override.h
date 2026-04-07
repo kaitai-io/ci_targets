@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~nav_parent_override_t();
@@ -35,7 +34,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~child_t();
@@ -57,7 +55,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~mediator_t();

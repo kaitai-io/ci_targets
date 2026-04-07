@@ -5,10 +5,6 @@
 buffered_struct_t::buffered_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, buffered_struct_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_block1 = nullptr;
-    m__io__raw_block1 = nullptr;
-    m_block2 = nullptr;
-    m__io__raw_block2 = nullptr;
     _read();
 }
 
@@ -24,12 +20,7 @@ void buffered_struct_t::_read() {
     m_finisher = m__io->read_u4le();
 }
 
-buffered_struct_t::~buffered_struct_t() {
-    _clean_up();
-}
-
-void buffered_struct_t::_clean_up() {
-}
+buffered_struct_t::~buffered_struct_t() {}
 
 buffered_struct_t::block_t::block_t(kaitai::kstream* p__io, buffered_struct_t* p__parent, buffered_struct_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -42,9 +33,4 @@ void buffered_struct_t::block_t::_read() {
     m_number2 = m__io->read_u4le();
 }
 
-buffered_struct_t::block_t::~block_t() {
-    _clean_up();
-}
-
-void buffered_struct_t::block_t::_clean_up() {
-}
+buffered_struct_t::block_t::~block_t() {}

@@ -74,10 +74,9 @@ public:
     private:
         bool f_tag_content;
         tag_char_t* m_tag_content;
-        bool n_tag_content;
 
     public:
-        bool _is_null_tag_content() { tag_content(); return n_tag_content; };
+        bool _is_null_tag_content() { return !tag_content(); };
 
     private:
         std::string m_name;

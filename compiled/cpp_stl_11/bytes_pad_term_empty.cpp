@@ -15,9 +15,4 @@ void bytes_pad_term_empty_t::_read() {
     m_str_term_include = kaitai::kstream::bytes_terminate(m__io->read_bytes(20), 64, true);
 }
 
-bytes_pad_term_empty_t::~bytes_pad_term_empty_t() {
-    _clean_up();
-}
-
-void bytes_pad_term_empty_t::_clean_up() {
-}
+bytes_pad_term_empty_t::~bytes_pad_term_empty_t() {}

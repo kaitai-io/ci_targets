@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~switch_manual_int_size_else_t();
@@ -38,7 +37,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~chunk_t();
@@ -51,7 +49,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~chunk_dir_t();
@@ -73,7 +70,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~chunk_meta_t();
@@ -97,7 +93,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~dummy_t();

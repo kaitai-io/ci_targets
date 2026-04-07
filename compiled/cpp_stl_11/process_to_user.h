@@ -21,7 +21,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~process_to_user_t();
@@ -34,7 +33,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~just_str_t();

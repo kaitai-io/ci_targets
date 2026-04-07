@@ -23,7 +23,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~process_coerce_usertype1_t();
@@ -36,7 +35,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~foo_t();
@@ -58,7 +56,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~record_t();
@@ -79,17 +76,15 @@ public:
         foo_t* m_buf;
         uint8_t m_flag;
         std::unique_ptr<foo_t> m_buf_unproc;
-        bool n_buf_unproc;
 
     public:
-        bool _is_null_buf_unproc() { buf_unproc(); return n_buf_unproc; };
+        bool _is_null_buf_unproc() { return !buf_unproc(); };
 
     private:
         std::unique_ptr<foo_t> m_buf_proc;
-        bool n_buf_proc;
 
     public:
-        bool _is_null_buf_proc() { buf_proc(); return n_buf_proc; };
+        bool _is_null_buf_proc() { return !buf_proc(); };
 
     private:
         process_coerce_usertype1_t* m__root;

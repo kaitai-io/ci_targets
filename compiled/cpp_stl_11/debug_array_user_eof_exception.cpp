@@ -5,8 +5,6 @@
 debug_array_user_eof_exception_t::debug_array_user_eof_exception_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debug_array_user_eof_exception_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_one_cat = nullptr;
-    m_array_of_cats = nullptr;
 }
 
 void debug_array_user_eof_exception_t::_read() {
@@ -26,12 +24,7 @@ void debug_array_user_eof_exception_t::_read() {
     }
 }
 
-debug_array_user_eof_exception_t::~debug_array_user_eof_exception_t() {
-    _clean_up();
-}
-
-void debug_array_user_eof_exception_t::_clean_up() {
-}
+debug_array_user_eof_exception_t::~debug_array_user_eof_exception_t() {}
 
 debug_array_user_eof_exception_t::cat_t::cat_t(kaitai::kstream* p__io, debug_array_user_eof_exception_t* p__parent, debug_array_user_eof_exception_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -43,9 +36,4 @@ void debug_array_user_eof_exception_t::cat_t::_read() {
     m_chirp = m__io->read_u1();
 }
 
-debug_array_user_eof_exception_t::cat_t::~cat_t() {
-    _clean_up();
-}
-
-void debug_array_user_eof_exception_t::cat_t::_clean_up() {
-}
+debug_array_user_eof_exception_t::cat_t::~cat_t() {}

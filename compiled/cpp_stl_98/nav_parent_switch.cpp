@@ -5,6 +5,7 @@
 nav_parent_switch_t::nav_parent_switch_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_switch_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
+    m_content = 0;
 
     try {
         _read();
@@ -16,10 +17,8 @@ nav_parent_switch_t::nav_parent_switch_t(kaitai::kstream* p__io, kaitai::kstruct
 
 void nav_parent_switch_t::_read() {
     m_category = m__io->read_u1();
-    n_content = true;
     switch (category()) {
     case 1: {
-        n_content = false;
         m_content = new element_1_t(m__io, this, m__root);
         break;
     }
@@ -31,11 +30,7 @@ nav_parent_switch_t::~nav_parent_switch_t() {
 }
 
 void nav_parent_switch_t::_clean_up() {
-    if (!n_content) {
-        if (m_content) {
-            delete m_content; m_content = 0;
-        }
-    }
+    delete m_content;
 }
 
 nav_parent_switch_t::element_1_t::element_1_t(kaitai::kstream* p__io, nav_parent_switch_t* p__parent, nav_parent_switch_t* p__root) : kaitai::kstruct(p__io) {
@@ -61,9 +56,7 @@ nav_parent_switch_t::element_1_t::~element_1_t() {
 }
 
 void nav_parent_switch_t::element_1_t::_clean_up() {
-    if (m_subelement) {
-        delete m_subelement; m_subelement = 0;
-    }
+    delete m_subelement;
 }
 
 nav_parent_switch_t::subelement_1_t::subelement_1_t(kaitai::kstream* p__io, nav_parent_switch_t::element_1_t* p__parent, nav_parent_switch_t* p__root) : kaitai::kstruct(p__io) {
@@ -91,6 +84,4 @@ nav_parent_switch_t::subelement_1_t::~subelement_1_t() {
 }
 
 void nav_parent_switch_t::subelement_1_t::_clean_up() {
-    if (!n_bar) {
-    }
 }

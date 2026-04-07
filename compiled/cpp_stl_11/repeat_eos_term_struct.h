@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~repeat_eos_term_struct_t();
@@ -35,7 +34,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~bytes_wrapper_t();

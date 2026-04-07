@@ -20,9 +20,4 @@ void fixed_contents_t::_read() {
     }
 }
 
-fixed_contents_t::~fixed_contents_t() {
-    _clean_up();
-}
-
-void fixed_contents_t::_clean_up() {
-}
+fixed_contents_t::~fixed_contents_t() {}

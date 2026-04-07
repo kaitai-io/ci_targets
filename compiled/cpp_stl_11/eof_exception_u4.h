@@ -20,7 +20,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~eof_exception_u4_t();

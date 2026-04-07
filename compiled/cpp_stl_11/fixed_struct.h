@@ -21,7 +21,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~fixed_struct_t();
@@ -34,7 +33,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~header_t();

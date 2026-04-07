@@ -14,12 +14,7 @@ void expr_0_t::_read() {
     m_len_of_1 = m__io->read_u2le();
 }
 
-expr_0_t::~expr_0_t() {
-    _clean_up();
-}
-
-void expr_0_t::_clean_up() {
-}
+expr_0_t::~expr_0_t() {}
 
 std::string expr_0_t::must_be_abc123() {
     if (f_must_be_abc123)

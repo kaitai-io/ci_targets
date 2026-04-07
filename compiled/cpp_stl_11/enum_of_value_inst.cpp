@@ -23,12 +23,7 @@ void enum_of_value_inst_t::_read() {
     m_pet_2 = static_cast<enum_of_value_inst_t::animal_t>(m__io->read_u4le());
 }
 
-enum_of_value_inst_t::~enum_of_value_inst_t() {
-    _clean_up();
-}
-
-void enum_of_value_inst_t::_clean_up() {
-}
+enum_of_value_inst_t::~enum_of_value_inst_t() {}
 
 enum_of_value_inst_t::animal_t enum_of_value_inst_t::pet_3() {
     if (f_pet_3)

@@ -32,7 +32,7 @@ void debug_array_user_current_excluded_t::_clean_up() {
         for (std::vector<cat_t*>::iterator it = m_array_of_cats->begin(); it != m_array_of_cats->end(); ++it) {
             delete *it;
         }
-        delete m_array_of_cats; m_array_of_cats = 0;
+        delete m_array_of_cats;
     }
 }
 

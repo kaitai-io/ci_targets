@@ -6,7 +6,6 @@
 fixed_struct_t::fixed_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, fixed_struct_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_hdr = nullptr;
     f_hdr = false;
     _read();
 }
@@ -14,14 +13,7 @@ fixed_struct_t::fixed_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
 void fixed_struct_t::_read() {
 }
 
-fixed_struct_t::~fixed_struct_t() {
-    _clean_up();
-}
-
-void fixed_struct_t::_clean_up() {
-    if (f_hdr) {
-    }
-}
+fixed_struct_t::~fixed_struct_t() {}
 
 fixed_struct_t::header_t::header_t(kaitai::kstream* p__io, fixed_struct_t* p__parent, fixed_struct_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -80,12 +72,7 @@ void fixed_struct_t::header_t::_read() {
     m_sint64be = m__io->read_s8be();
 }
 
-fixed_struct_t::header_t::~header_t() {
-    _clean_up();
-}
-
-void fixed_struct_t::header_t::_clean_up() {
-}
+fixed_struct_t::header_t::~header_t() {}
 
 fixed_struct_t::header_t* fixed_struct_t::hdr() {
     if (f_hdr)

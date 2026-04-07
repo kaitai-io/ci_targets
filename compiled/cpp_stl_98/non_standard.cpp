@@ -38,10 +38,6 @@ non_standard_t::~non_standard_t() {
 }
 
 void non_standard_t::_clean_up() {
-    if (!n_bar) {
-    }
-    if (f_pi) {
-    }
 }
 
 uint8_t non_standard_t::pi() {

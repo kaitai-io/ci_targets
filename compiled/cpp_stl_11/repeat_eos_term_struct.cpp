@@ -5,9 +5,6 @@
 repeat_eos_term_struct_t::repeat_eos_term_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_eos_term_struct_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_records = nullptr;
-    m__raw_records = nullptr;
-    m__io__raw_records = nullptr;
     _read();
 }
 
@@ -27,12 +24,7 @@ void repeat_eos_term_struct_t::_read() {
     }
 }
 
-repeat_eos_term_struct_t::~repeat_eos_term_struct_t() {
-    _clean_up();
-}
-
-void repeat_eos_term_struct_t::_clean_up() {
-}
+repeat_eos_term_struct_t::~repeat_eos_term_struct_t() {}
 
 repeat_eos_term_struct_t::bytes_wrapper_t::bytes_wrapper_t(kaitai::kstream* p__io, repeat_eos_term_struct_t* p__parent, repeat_eos_term_struct_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -44,9 +36,4 @@ void repeat_eos_term_struct_t::bytes_wrapper_t::_read() {
     m_value = m__io->read_bytes_full();
 }
 
-repeat_eos_term_struct_t::bytes_wrapper_t::~bytes_wrapper_t() {
-    _clean_up();
-}
-
-void repeat_eos_term_struct_t::bytes_wrapper_t::_clean_up() {
-}
+repeat_eos_term_struct_t::bytes_wrapper_t::~bytes_wrapper_t() {}

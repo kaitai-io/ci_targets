@@ -35,7 +35,7 @@ void switch_integers_t::_clean_up() {
         for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
             delete *it;
         }
-        delete m_opcodes; m_opcodes = 0;
+        delete m_opcodes;
     }
 }
 
@@ -83,6 +83,4 @@ switch_integers_t::opcode_t::~opcode_t() {
 }
 
 void switch_integers_t::opcode_t::_clean_up() {
-    if (!n_body) {
-    }
 }

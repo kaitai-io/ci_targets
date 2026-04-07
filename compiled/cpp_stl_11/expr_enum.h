@@ -34,7 +34,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~expr_enum_t();

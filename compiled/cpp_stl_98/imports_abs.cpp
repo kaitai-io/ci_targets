@@ -25,7 +25,5 @@ imports_abs_t::~imports_abs_t() {
 }
 
 void imports_abs_t::_clean_up() {
-    if (m_len) {
-        delete m_len; m_len = 0;
-    }
+    delete m_len;
 }

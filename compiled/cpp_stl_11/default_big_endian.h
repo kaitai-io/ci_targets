@@ -20,7 +20,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~default_big_endian_t();

@@ -27,12 +27,7 @@ void enum_to_i_t::_read() {
     m_pet_2 = static_cast<enum_to_i_t::animal_t>(m__io->read_u4le());
 }
 
-enum_to_i_t::~enum_to_i_t() {
-    _clean_up();
-}
-
-void enum_to_i_t::_clean_up() {
-}
+enum_to_i_t::~enum_to_i_t() {}
 
 bool enum_to_i_t::one_lt_two() {
     if (f_one_lt_two)

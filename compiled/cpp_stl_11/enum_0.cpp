@@ -21,9 +21,4 @@ void enum_0_t::_read() {
     m_pet_2 = static_cast<enum_0_t::animal_t>(m__io->read_u4le());
 }
 
-enum_0_t::~enum_0_t() {
-    _clean_up();
-}
-
-void enum_0_t::_clean_up() {
-}
+enum_0_t::~enum_0_t() {}

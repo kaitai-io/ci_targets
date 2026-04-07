@@ -25,11 +25,7 @@ fixed_struct_t::~fixed_struct_t() {
 }
 
 void fixed_struct_t::_clean_up() {
-    if (f_hdr) {
-        if (m_hdr) {
-            delete m_hdr; m_hdr = 0;
-        }
-    }
+    delete m_hdr;
 }
 
 fixed_struct_t::header_t::header_t(kaitai::kstream* p__io, fixed_struct_t* p__parent, fixed_struct_t* p__root) : kaitai::kstruct(p__io) {

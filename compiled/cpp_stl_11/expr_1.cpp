@@ -15,12 +15,7 @@ void expr_1_t::_read() {
     m_str1 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_1_mod()), "ASCII");
 }
 
-expr_1_t::~expr_1_t() {
-    _clean_up();
-}
-
-void expr_1_t::_clean_up() {
-}
+expr_1_t::~expr_1_t() {}
 
 int32_t expr_1_t::len_of_1_mod() {
     if (f_len_of_1_mod)

@@ -13,8 +13,8 @@ class ParamsPassBool < Kaitai::Struct::Struct
   end
 
   def _read
-    @s_false = @_io.read_bits_int_be(1) != 0
-    @s_true = @_io.read_bits_int_be(1) != 0
+    @s_false = (@_io.read_bits_int_be(1) != 0)
+    @s_true = (@_io.read_bits_int_be(1) != 0)
     @seq_b1 = ParamTypeB1.new(@_io, self, @_root, s_true)
     @seq_bool = ParamTypeBool.new(@_io, self, @_root, s_false)
     @literal_b1 = ParamTypeB1.new(@_io, self, @_root, false)

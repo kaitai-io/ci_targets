@@ -5,7 +5,6 @@
 imports0_t::imports0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imports0_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_hw = nullptr;
     f_hw_one = false;
     _read();
 }
@@ -15,12 +14,7 @@ void imports0_t::_read() {
     m_hw = std::unique_ptr<hello_world_t>(new hello_world_t(m__io));
 }
 
-imports0_t::~imports0_t() {
-    _clean_up();
-}
-
-void imports0_t::_clean_up() {
-}
+imports0_t::~imports0_t() {}
 
 uint8_t imports0_t::hw_one() {
     if (f_hw_one)

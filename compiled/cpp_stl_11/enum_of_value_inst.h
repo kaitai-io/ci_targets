@@ -33,7 +33,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~enum_of_value_inst_t();

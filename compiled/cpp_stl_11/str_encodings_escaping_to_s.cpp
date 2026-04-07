@@ -23,12 +23,7 @@ void str_encodings_escaping_to_s_t::_read() {
     m_str4_raw = m__io->read_bytes(len_of_4());
 }
 
-str_encodings_escaping_to_s_t::~str_encodings_escaping_to_s_t() {
-    _clean_up();
-}
-
-void str_encodings_escaping_to_s_t::_clean_up() {
-}
+str_encodings_escaping_to_s_t::~str_encodings_escaping_to_s_t() {}
 
 std::string str_encodings_escaping_to_s_t::str1() {
     if (f_str1)

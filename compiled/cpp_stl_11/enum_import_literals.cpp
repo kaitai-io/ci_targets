@@ -14,12 +14,7 @@ enum_import_literals_t::enum_import_literals_t(kaitai::kstream* p__io, kaitai::k
 void enum_import_literals_t::_read() {
 }
 
-enum_import_literals_t::~enum_import_literals_t() {
-    _clean_up();
-}
-
-void enum_import_literals_t::_clean_up() {
-}
+enum_import_literals_t::~enum_import_literals_t() {}
 
 bool enum_import_literals_t::pet_1_eq() {
     if (f_pet_1_eq)

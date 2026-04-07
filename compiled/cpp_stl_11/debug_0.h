@@ -19,11 +19,6 @@ public:
 
     debug_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, debug_0_t* p__root = nullptr);
     void _read();
-
-private:
-    void _clean_up();
-
-public:
     ~debug_0_t();
     uint8_t one() const { return m_one; }
     std::vector<uint8_t>* array_of_ints() const { return m_array_of_ints.get(); }

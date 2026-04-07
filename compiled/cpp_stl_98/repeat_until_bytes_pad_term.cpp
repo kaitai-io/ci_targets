@@ -33,7 +33,5 @@ repeat_until_bytes_pad_term_t::~repeat_until_bytes_pad_term_t() {
 }
 
 void repeat_until_bytes_pad_term_t::_clean_up() {
-    if (m_records) {
-        delete m_records; m_records = 0;
-    }
+    delete m_records;
 }

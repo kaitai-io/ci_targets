@@ -26,12 +26,8 @@ nested_types_t::~nested_types_t() {
 }
 
 void nested_types_t::_clean_up() {
-    if (m_one) {
-        delete m_one; m_one = 0;
-    }
-    if (m_two) {
-        delete m_two; m_two = 0;
-    }
+    delete m_one;
+    delete m_two;
 }
 
 nested_types_t::subtype_a_t::subtype_a_t(kaitai::kstream* p__io, nested_types_t* p__parent, nested_types_t* p__root) : kaitai::kstruct(p__io) {
@@ -58,12 +54,8 @@ nested_types_t::subtype_a_t::~subtype_a_t() {
 }
 
 void nested_types_t::subtype_a_t::_clean_up() {
-    if (m_typed_at_root) {
-        delete m_typed_at_root; m_typed_at_root = 0;
-    }
-    if (m_typed_here) {
-        delete m_typed_here; m_typed_here = 0;
-    }
+    delete m_typed_at_root;
+    delete m_typed_here;
 }
 
 nested_types_t::subtype_a_t::subtype_c_t::subtype_c_t(kaitai::kstream* p__io, nested_types_t::subtype_a_t* p__parent, nested_types_t* p__root) : kaitai::kstruct(p__io) {

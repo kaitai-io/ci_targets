@@ -5,12 +5,6 @@
 term_struct4_t::term_struct4_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, term_struct4_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_s1 = nullptr;
-    m__io__raw_s1 = nullptr;
-    m_s2 = nullptr;
-    m__io__raw_s2 = nullptr;
-    m_s3 = nullptr;
-    m__io__raw_s3 = nullptr;
     _read();
 }
 
@@ -28,12 +22,7 @@ void term_struct4_t::_read() {
     m_s3 = std::unique_ptr<s3_type_t>(new s3_type_t(m__io__raw_s3.get(), this, m__root));
 }
 
-term_struct4_t::~term_struct4_t() {
-    _clean_up();
-}
-
-void term_struct4_t::_clean_up() {
-}
+term_struct4_t::~term_struct4_t() {}
 
 term_struct4_t::bytes_wrapper_t::bytes_wrapper_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, term_struct4_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -45,18 +34,11 @@ void term_struct4_t::bytes_wrapper_t::_read() {
     m_value = m__io->read_bytes_full();
 }
 
-term_struct4_t::bytes_wrapper_t::~bytes_wrapper_t() {
-    _clean_up();
-}
-
-void term_struct4_t::bytes_wrapper_t::_clean_up() {
-}
+term_struct4_t::bytes_wrapper_t::~bytes_wrapper_t() {}
 
 term_struct4_t::s1_type_t::s1_type_t(kaitai::kstream* p__io, term_struct4_t* p__parent, term_struct4_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m_value = nullptr;
-    m__io__raw_value = nullptr;
     _read();
 }
 
@@ -66,18 +48,11 @@ void term_struct4_t::s1_type_t::_read() {
     m_value = std::unique_ptr<bytes_wrapper_t>(new bytes_wrapper_t(m__io__raw_value.get(), this, m__root));
 }
 
-term_struct4_t::s1_type_t::~s1_type_t() {
-    _clean_up();
-}
-
-void term_struct4_t::s1_type_t::_clean_up() {
-}
+term_struct4_t::s1_type_t::~s1_type_t() {}
 
 term_struct4_t::s2_type_t::s2_type_t(kaitai::kstream* p__io, term_struct4_t* p__parent, term_struct4_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m_value = nullptr;
-    m__io__raw_value = nullptr;
     _read();
 }
 
@@ -87,18 +62,11 @@ void term_struct4_t::s2_type_t::_read() {
     m_value = std::unique_ptr<bytes_wrapper_t>(new bytes_wrapper_t(m__io__raw_value.get(), this, m__root));
 }
 
-term_struct4_t::s2_type_t::~s2_type_t() {
-    _clean_up();
-}
-
-void term_struct4_t::s2_type_t::_clean_up() {
-}
+term_struct4_t::s2_type_t::~s2_type_t() {}
 
 term_struct4_t::s3_type_t::s3_type_t(kaitai::kstream* p__io, term_struct4_t* p__parent, term_struct4_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m_value = nullptr;
-    m__io__raw_value = nullptr;
     _read();
 }
 
@@ -108,9 +76,4 @@ void term_struct4_t::s3_type_t::_read() {
     m_value = std::unique_ptr<bytes_wrapper_t>(new bytes_wrapper_t(m__io__raw_value.get(), this, m__root));
 }
 
-term_struct4_t::s3_type_t::~s3_type_t() {
-    _clean_up();
-}
-
-void term_struct4_t::s3_type_t::_clean_up() {
-}
+term_struct4_t::s3_type_t::~s3_type_t() {}

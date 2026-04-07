@@ -5,9 +5,6 @@
 nested_types_import_t::nested_types_import_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_types_import_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_a_cc = nullptr;
-    m_a_c_d = nullptr;
-    m_b = nullptr;
     _read();
 }
 
@@ -17,9 +14,4 @@ void nested_types_import_t::_read() {
     m_b = std::unique_ptr<nested_types3_t::subtype_b_t>(new nested_types3_t::subtype_b_t(m__io));
 }
 
-nested_types_import_t::~nested_types_import_t() {
-    _clean_up();
-}
-
-void nested_types_import_t::_clean_up() {
-}
+nested_types_import_t::~nested_types_import_t() {}

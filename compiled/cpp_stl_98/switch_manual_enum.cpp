@@ -35,7 +35,7 @@ void switch_manual_enum_t::_clean_up() {
         for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
             delete *it;
         }
-        delete m_opcodes; m_opcodes = 0;
+        delete m_opcodes;
     }
 }
 std::set<switch_manual_enum_t::opcode_t::code_enum_t> switch_manual_enum_t::opcode_t::_build_values_code_enum_t() {
@@ -52,6 +52,7 @@ bool switch_manual_enum_t::opcode_t::_is_defined_code_enum_t(switch_manual_enum_
 switch_manual_enum_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_manual_enum_t* p__parent, switch_manual_enum_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
+    m_body = 0;
 
     try {
         _read();
@@ -63,15 +64,12 @@ switch_manual_enum_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_manual_e
 
 void switch_manual_enum_t::opcode_t::_read() {
     m_code = static_cast<switch_manual_enum_t::opcode_t::code_enum_t>(m__io->read_u1());
-    n_body = true;
     switch (code()) {
     case switch_manual_enum_t::opcode_t::CODE_ENUM_INTVAL: {
-        n_body = false;
         m_body = new intval_t(m__io, this, m__root);
         break;
     }
     case switch_manual_enum_t::opcode_t::CODE_ENUM_STRVAL: {
-        n_body = false;
         m_body = new strval_t(m__io, this, m__root);
         break;
     }
@@ -83,11 +81,7 @@ switch_manual_enum_t::opcode_t::~opcode_t() {
 }
 
 void switch_manual_enum_t::opcode_t::_clean_up() {
-    if (!n_body) {
-        if (m_body) {
-            delete m_body; m_body = 0;
-        }
-    }
+    delete m_body;
 }
 
 switch_manual_enum_t::opcode_t::intval_t::intval_t(kaitai::kstream* p__io, switch_manual_enum_t::opcode_t* p__parent, switch_manual_enum_t* p__root) : kaitai::kstruct(p__io) {

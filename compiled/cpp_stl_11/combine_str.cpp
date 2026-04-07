@@ -27,12 +27,7 @@ void combine_str_t::_read() {
     m_str_eos = kaitai::kstream::bytes_to_str(m__io->read_bytes_full(), "ASCII");
 }
 
-combine_str_t::~combine_str_t() {
-    _clean_up();
-}
-
-void combine_str_t::_clean_up() {
-}
+combine_str_t::~combine_str_t() {}
 
 std::string combine_str_t::calc_bytes() {
     if (f_calc_bytes)

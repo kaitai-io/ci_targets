@@ -5,7 +5,6 @@
 instance_std_array_t::instance_std_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instance_std_array_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_entries = nullptr;
     f_entries = false;
     _read();
 }
@@ -16,14 +15,7 @@ void instance_std_array_t::_read() {
     m_qty_entries = m__io->read_u4le();
 }
 
-instance_std_array_t::~instance_std_array_t() {
-    _clean_up();
-}
-
-void instance_std_array_t::_clean_up() {
-    if (f_entries) {
-    }
-}
+instance_std_array_t::~instance_std_array_t() {}
 
 std::vector<std::string>* instance_std_array_t::entries() {
     if (f_entries)

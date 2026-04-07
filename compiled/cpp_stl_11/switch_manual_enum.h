@@ -23,7 +23,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~switch_manual_enum_t();
@@ -49,7 +48,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~opcode_t();
@@ -62,7 +60,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~intval_t();
@@ -84,7 +81,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~strval_t();
@@ -107,10 +103,9 @@ public:
     private:
         code_enum_t m_code;
         std::unique_ptr<kaitai::kstruct> m_body;
-        bool n_body;
 
     public:
-        bool _is_null_body() { body(); return n_body; };
+        bool _is_null_body() { return !body(); };
 
     private:
         switch_manual_enum_t* m__root;

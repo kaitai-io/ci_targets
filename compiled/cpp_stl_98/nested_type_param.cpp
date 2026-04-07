@@ -24,9 +24,7 @@ nested_type_param_t::~nested_type_param_t() {
 }
 
 void nested_type_param_t::_clean_up() {
-    if (m_main_seq) {
-        delete m_main_seq; m_main_seq = 0;
-    }
+    delete m_main_seq;
 }
 
 nested_type_param_t::nested_t::nested_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_type_param_t* p__root) : kaitai::kstruct(p__io) {

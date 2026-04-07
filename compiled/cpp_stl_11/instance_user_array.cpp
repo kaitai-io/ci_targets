@@ -5,9 +5,6 @@
 instance_user_array_t::instance_user_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instance_user_array_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_user_entries = nullptr;
-    m__raw_user_entries = nullptr;
-    m__io__raw_user_entries = nullptr;
     f_user_entries = false;
     _read();
 }
@@ -18,14 +15,7 @@ void instance_user_array_t::_read() {
     m_qty_entries = m__io->read_u4le();
 }
 
-instance_user_array_t::~instance_user_array_t() {
-    _clean_up();
-}
-
-void instance_user_array_t::_clean_up() {
-    if (f_user_entries && !n_user_entries) {
-    }
-}
+instance_user_array_t::~instance_user_array_t() {}
 
 instance_user_array_t::entry_t::entry_t(kaitai::kstream* p__io, instance_user_array_t* p__parent, instance_user_array_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -38,20 +28,13 @@ void instance_user_array_t::entry_t::_read() {
     m_word2 = m__io->read_u2le();
 }
 
-instance_user_array_t::entry_t::~entry_t() {
-    _clean_up();
-}
-
-void instance_user_array_t::entry_t::_clean_up() {
-}
+instance_user_array_t::entry_t::~entry_t() {}
 
 std::vector<std::unique_ptr<instance_user_array_t::entry_t>>* instance_user_array_t::user_entries() {
     if (f_user_entries)
         return m_user_entries.get();
     f_user_entries = true;
-    n_user_entries = true;
     if (ofs() > 0) {
-        n_user_entries = false;
         std::streampos _pos = m__io->pos();
         m__io->seek(ofs());
         m__raw_user_entries = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());

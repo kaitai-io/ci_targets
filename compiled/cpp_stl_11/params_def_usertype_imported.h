@@ -21,7 +21,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~params_def_usertype_imported_t();

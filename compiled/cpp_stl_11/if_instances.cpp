@@ -12,14 +12,7 @@ if_instances_t::if_instances_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
 void if_instances_t::_read() {
 }
 
-if_instances_t::~if_instances_t() {
-    _clean_up();
-}
-
-void if_instances_t::_clean_up() {
-    if (f_never_happens && !n_never_happens) {
-    }
-}
+if_instances_t::~if_instances_t() {}
 
 uint8_t if_instances_t::never_happens() {
     if (f_never_happens)

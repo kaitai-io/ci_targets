@@ -24,7 +24,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~switch_cast_t();
@@ -37,7 +36,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~intval_t();
@@ -59,7 +57,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~opcode_t();
@@ -71,10 +68,9 @@ public:
     private:
         uint8_t m_code;
         std::unique_ptr<kaitai::kstruct> m_body;
-        bool n_body;
 
     public:
-        bool _is_null_body() { body(); return n_body; };
+        bool _is_null_body() { return !body(); };
 
     private:
         switch_cast_t* m__root;
@@ -89,7 +85,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~strval_t();

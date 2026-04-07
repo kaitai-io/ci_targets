@@ -35,10 +35,6 @@ repeat_n_strz_double_t::~repeat_n_strz_double_t() {
 }
 
 void repeat_n_strz_double_t::_clean_up() {
-    if (m_lines1) {
-        delete m_lines1; m_lines1 = 0;
-    }
-    if (m_lines2) {
-        delete m_lines2; m_lines2 = 0;
-    }
+    delete m_lines1;
+    delete m_lines2;
 }

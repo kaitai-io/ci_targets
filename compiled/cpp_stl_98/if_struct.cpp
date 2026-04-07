@@ -28,15 +28,9 @@ if_struct_t::~if_struct_t() {
 }
 
 void if_struct_t::_clean_up() {
-    if (m_op1) {
-        delete m_op1; m_op1 = 0;
-    }
-    if (m_op2) {
-        delete m_op2; m_op2 = 0;
-    }
-    if (m_op3) {
-        delete m_op3; m_op3 = 0;
-    }
+    delete m_op1;
+    delete m_op2;
+    delete m_op3;
 }
 
 if_struct_t::arg_str_t::arg_str_t(kaitai::kstream* p__io, if_struct_t::operation_t* p__parent, if_struct_t* p__root) : kaitai::kstruct(p__io) {
@@ -103,14 +97,10 @@ if_struct_t::operation_t::operation_t(kaitai::kstream* p__io, if_struct_t* p__pa
 
 void if_struct_t::operation_t::_read() {
     m_opcode = m__io->read_u1();
-    n_arg_tuple = true;
     if (opcode() == 84) {
-        n_arg_tuple = false;
         m_arg_tuple = new arg_tuple_t(m__io, this, m__root);
     }
-    n_arg_str = true;
     if (opcode() == 83) {
-        n_arg_str = false;
         m_arg_str = new arg_str_t(m__io, this, m__root);
     }
 }
@@ -120,14 +110,6 @@ if_struct_t::operation_t::~operation_t() {
 }
 
 void if_struct_t::operation_t::_clean_up() {
-    if (!n_arg_tuple) {
-        if (m_arg_tuple) {
-            delete m_arg_tuple; m_arg_tuple = 0;
-        }
-    }
-    if (!n_arg_str) {
-        if (m_arg_str) {
-            delete m_arg_str; m_arg_str = 0;
-        }
-    }
+    delete m_arg_tuple;
+    delete m_arg_str;
 }

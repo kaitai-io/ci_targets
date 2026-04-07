@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~expr_io_ternary_t();
@@ -35,7 +34,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~one_t();
@@ -57,7 +55,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~two_t();

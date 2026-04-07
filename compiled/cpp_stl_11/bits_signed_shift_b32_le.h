@@ -20,7 +20,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~bits_signed_shift_b32_le_t();

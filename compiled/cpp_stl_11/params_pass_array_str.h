@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~params_pass_array_str_t();
@@ -35,7 +34,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~wants_strs_t();

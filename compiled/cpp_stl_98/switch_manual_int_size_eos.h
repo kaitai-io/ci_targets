@@ -128,10 +128,9 @@ public:
 
     private:
         kaitai::kstruct* m_body;
-        bool n_body;
 
     public:
-        bool _is_null_body() { body(); return n_body; };
+        bool _is_null_body() { return !body(); };
 
     private:
         switch_manual_int_size_eos_t* m__root;

@@ -30,6 +30,4 @@ params_def_t::~params_def_t() {
 }
 
 void params_def_t::_clean_up() {
-    if (!n_trailer) {
-    }
 }

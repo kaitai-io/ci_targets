@@ -20,7 +20,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~bits_unaligned_b64_le_t();

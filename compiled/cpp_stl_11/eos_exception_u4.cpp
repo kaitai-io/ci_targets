@@ -5,8 +5,6 @@
 eos_exception_u4_t::eos_exception_u4_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, eos_exception_u4_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_envelope = nullptr;
-    m__io__raw_envelope = nullptr;
     _read();
 }
 
@@ -16,12 +14,7 @@ void eos_exception_u4_t::_read() {
     m_envelope = std::unique_ptr<data_t>(new data_t(m__io__raw_envelope.get(), this, m__root));
 }
 
-eos_exception_u4_t::~eos_exception_u4_t() {
-    _clean_up();
-}
-
-void eos_exception_u4_t::_clean_up() {
-}
+eos_exception_u4_t::~eos_exception_u4_t() {}
 
 eos_exception_u4_t::data_t::data_t(kaitai::kstream* p__io, eos_exception_u4_t* p__parent, eos_exception_u4_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -34,9 +27,4 @@ void eos_exception_u4_t::data_t::_read() {
     m_fail_int = m__io->read_u4le();
 }
 
-eos_exception_u4_t::data_t::~data_t() {
-    _clean_up();
-}
-
-void eos_exception_u4_t::data_t::_clean_up() {
-}
+eos_exception_u4_t::data_t::~data_t() {}

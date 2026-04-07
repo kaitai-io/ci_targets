@@ -14,12 +14,7 @@ enum_to_i_class_border_2_t::enum_to_i_class_border_2_t(enum_to_i_class_border_1_
 void enum_to_i_class_border_2_t::_read() {
 }
 
-enum_to_i_class_border_2_t::~enum_to_i_class_border_2_t() {
-    _clean_up();
-}
-
-void enum_to_i_class_border_2_t::_clean_up() {
-}
+enum_to_i_class_border_2_t::~enum_to_i_class_border_2_t() {}
 
 bool enum_to_i_class_border_2_t::is_dog() {
     if (f_is_dog)

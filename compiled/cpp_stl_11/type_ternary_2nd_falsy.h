@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~type_ternary_2nd_falsy_t();
@@ -35,7 +34,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~foo_t();
@@ -71,10 +69,9 @@ public:
 private:
     bool f_null_ut;
     foo_t* m_null_ut;
-    bool n_null_ut;
 
 public:
-    bool _is_null_null_ut() { null_ut(); return n_null_ut; };
+    bool _is_null_null_ut() { return !null_ut(); };
 
 private:
     bool f_t;

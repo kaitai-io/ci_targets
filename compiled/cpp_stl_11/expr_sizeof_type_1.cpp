@@ -13,17 +13,11 @@ expr_sizeof_type_1_t::expr_sizeof_type_1_t(kaitai::kstream* p__io, kaitai::kstru
 void expr_sizeof_type_1_t::_read() {
 }
 
-expr_sizeof_type_1_t::~expr_sizeof_type_1_t() {
-    _clean_up();
-}
-
-void expr_sizeof_type_1_t::_clean_up() {
-}
+expr_sizeof_type_1_t::~expr_sizeof_type_1_t() {}
 
 expr_sizeof_type_1_t::block_t::block_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_sizeof_type_1_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m_d = nullptr;
     _read();
 }
 
@@ -34,12 +28,7 @@ void expr_sizeof_type_1_t::block_t::_read() {
     m_d = std::unique_ptr<subblock_t>(new subblock_t(m__io, this, m__root));
 }
 
-expr_sizeof_type_1_t::block_t::~block_t() {
-    _clean_up();
-}
-
-void expr_sizeof_type_1_t::block_t::_clean_up() {
-}
+expr_sizeof_type_1_t::block_t::~block_t() {}
 
 expr_sizeof_type_1_t::block_t::subblock_t::subblock_t(kaitai::kstream* p__io, expr_sizeof_type_1_t::block_t* p__parent, expr_sizeof_type_1_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -51,12 +40,7 @@ void expr_sizeof_type_1_t::block_t::subblock_t::_read() {
     m_a = m__io->read_bytes(4);
 }
 
-expr_sizeof_type_1_t::block_t::subblock_t::~subblock_t() {
-    _clean_up();
-}
-
-void expr_sizeof_type_1_t::block_t::subblock_t::_clean_up() {
-}
+expr_sizeof_type_1_t::block_t::subblock_t::~subblock_t() {}
 
 int32_t expr_sizeof_type_1_t::sizeof_block() {
     if (f_sizeof_block)

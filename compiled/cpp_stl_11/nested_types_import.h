@@ -21,7 +21,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~nested_types_import_t();

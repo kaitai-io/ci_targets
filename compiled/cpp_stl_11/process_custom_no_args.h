@@ -20,7 +20,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~process_custom_no_args_t();

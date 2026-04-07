@@ -27,12 +27,8 @@ eos_exception_bytes_t::~eos_exception_bytes_t() {
 }
 
 void eos_exception_bytes_t::_clean_up() {
-    if (m__io__raw_envelope) {
-        delete m__io__raw_envelope; m__io__raw_envelope = 0;
-    }
-    if (m_envelope) {
-        delete m_envelope; m_envelope = 0;
-    }
+    delete m__io__raw_envelope;
+    delete m_envelope;
 }
 
 eos_exception_bytes_t::data_t::data_t(kaitai::kstream* p__io, eos_exception_bytes_t* p__parent, eos_exception_bytes_t* p__root) : kaitai::kstruct(p__io) {

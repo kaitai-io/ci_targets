@@ -56,9 +56,4 @@ void valid_short_t::_read() {
     }
 }
 
-valid_short_t::~valid_short_t() {
-    _clean_up();
-}
-
-void valid_short_t::_clean_up() {
-}
+valid_short_t::~valid_short_t() {}

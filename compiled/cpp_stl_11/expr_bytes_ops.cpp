@@ -25,12 +25,7 @@ void expr_bytes_ops_t::_read() {
     m_one = m__io->read_bytes(3);
 }
 
-expr_bytes_ops_t::~expr_bytes_ops_t() {
-    _clean_up();
-}
-
-void expr_bytes_ops_t::_clean_up() {
-}
+expr_bytes_ops_t::~expr_bytes_ops_t() {}
 
 uint8_t expr_bytes_ops_t::one_first() {
     if (f_one_first)

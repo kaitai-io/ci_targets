@@ -16,7 +16,7 @@ class BitsByteAligned < Kaitai::Struct::Struct
     @one = @_io.read_bits_int_be(6)
     @byte_1 = @_io.read_u1
     @two = @_io.read_bits_int_be(3)
-    @three = @_io.read_bits_int_be(1) != 0
+    @three = (@_io.read_bits_int_be(1) != 0)
     @byte_2 = @_io.read_bytes(1)
     @four = @_io.read_bits_int_be(14)
     _io_byte_3 = @_io.substream(3)

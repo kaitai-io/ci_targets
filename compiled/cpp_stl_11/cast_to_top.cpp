@@ -5,7 +5,6 @@
 cast_to_top_t::cast_to_top_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, cast_to_top_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_header = nullptr;
     f_header = false;
     f_header_casted = false;
     _read();
@@ -15,14 +14,7 @@ void cast_to_top_t::_read() {
     m_code = m__io->read_u1();
 }
 
-cast_to_top_t::~cast_to_top_t() {
-    _clean_up();
-}
-
-void cast_to_top_t::_clean_up() {
-    if (f_header) {
-    }
-}
+cast_to_top_t::~cast_to_top_t() {}
 
 cast_to_top_t* cast_to_top_t::header() {
     if (f_header)

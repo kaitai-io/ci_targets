@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~default_endian_expr_is_le_t();
@@ -36,7 +35,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~doc_t();
@@ -56,7 +54,6 @@ public:
             void _read();
             void _read_le();
             void _read_be();
-            void _clean_up();
 
         public:
             ~main_obj_t();

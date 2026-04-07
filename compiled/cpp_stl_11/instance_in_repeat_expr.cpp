@@ -5,7 +5,6 @@
 instance_in_repeat_expr_t::instance_in_repeat_expr_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instance_in_repeat_expr_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_chunks = nullptr;
     f_num_chunks = false;
     _read();
 }
@@ -18,14 +17,7 @@ void instance_in_repeat_expr_t::_read() {
     }
 }
 
-instance_in_repeat_expr_t::~instance_in_repeat_expr_t() {
-    _clean_up();
-}
-
-void instance_in_repeat_expr_t::_clean_up() {
-    if (f_num_chunks) {
-    }
-}
+instance_in_repeat_expr_t::~instance_in_repeat_expr_t() {}
 
 instance_in_repeat_expr_t::chunk_t::chunk_t(kaitai::kstream* p__io, instance_in_repeat_expr_t* p__parent, instance_in_repeat_expr_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -38,12 +30,7 @@ void instance_in_repeat_expr_t::chunk_t::_read() {
     m_len = m__io->read_u4le();
 }
 
-instance_in_repeat_expr_t::chunk_t::~chunk_t() {
-    _clean_up();
-}
-
-void instance_in_repeat_expr_t::chunk_t::_clean_up() {
-}
+instance_in_repeat_expr_t::chunk_t::~chunk_t() {}
 
 uint32_t instance_in_repeat_expr_t::num_chunks() {
     if (f_num_chunks)

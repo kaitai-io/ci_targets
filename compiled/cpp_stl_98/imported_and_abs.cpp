@@ -25,7 +25,5 @@ imported_and_abs_t::~imported_and_abs_t() {
 }
 
 void imported_and_abs_t::_clean_up() {
-    if (m_two) {
-        delete m_two; m_two = 0;
-    }
+    delete m_two;
 }

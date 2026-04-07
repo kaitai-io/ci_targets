@@ -37,16 +37,7 @@ void float_to_i_t::_read() {
     }
 }
 
-float_to_i_t::~float_to_i_t() {
-    _clean_up();
-}
-
-void float_to_i_t::_clean_up() {
-    if (!n_single_value_if) {
-    }
-    if (!n_double_value_if) {
-    }
-}
+float_to_i_t::~float_to_i_t() {}
 
 double float_to_i_t::calc_float1() {
     if (f_calc_float1)

@@ -20,11 +20,6 @@ public:
 
     debug_switch_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, debug_switch_user_t* p__root = nullptr);
     void _read();
-
-private:
-    void _clean_up();
-
-public:
     ~debug_switch_user_t();
 
     class one_t : public kaitai::kstruct {
@@ -33,11 +28,6 @@ public:
 
         one_t(kaitai::kstream* p__io, debug_switch_user_t* p__parent = nullptr, debug_switch_user_t* p__root = nullptr);
         void _read();
-
-    private:
-        void _clean_up();
-
-    public:
         ~one_t();
         int16_t val() const { return m_val; }
         debug_switch_user_t* _root() const { return m__root; }
@@ -55,11 +45,6 @@ public:
 
         two_t(kaitai::kstream* p__io, debug_switch_user_t* p__parent = nullptr, debug_switch_user_t* p__root = nullptr);
         void _read();
-
-    private:
-        void _clean_up();
-
-    public:
         ~two_t();
         uint16_t val() const { return m_val; }
         debug_switch_user_t* _root() const { return m__root; }
@@ -80,10 +65,9 @@ public:
 private:
     uint8_t m_code;
     std::unique_ptr<kaitai::kstruct> m_data;
-    bool n_data;
 
 public:
-    bool _is_null_data() { data(); return n_data; };
+    bool _is_null_data() { return !data(); };
 
 private:
     debug_switch_user_t* m__root;

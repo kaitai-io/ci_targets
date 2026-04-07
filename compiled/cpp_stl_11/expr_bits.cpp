@@ -13,8 +13,6 @@ bool expr_bits_t::_is_defined_items_t(expr_bits_t::items_t v) {
 expr_bits_t::expr_bits_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_bits_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_repeat_expr = nullptr;
-    m_switch_on_endian = nullptr;
     f_enum_inst = false;
     f_inst_pos = false;
     _read();
@@ -40,16 +38,7 @@ void expr_bits_t::_read() {
     m_switch_on_endian = std::unique_ptr<endian_switch_t>(new endian_switch_t(m__io, this, m__root));
 }
 
-expr_bits_t::~expr_bits_t() {
-    _clean_up();
-}
-
-void expr_bits_t::_clean_up() {
-    if (!n_switch_on_type) {
-    }
-    if (f_inst_pos) {
-    }
-}
+expr_bits_t::~expr_bits_t() {}
 
 expr_bits_t::endian_switch_t::endian_switch_t(kaitai::kstream* p__io, expr_bits_t* p__parent, expr_bits_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -87,12 +76,7 @@ void expr_bits_t::endian_switch_t::_read_be() {
     m_foo = m__io->read_s2be();
 }
 
-expr_bits_t::endian_switch_t::~endian_switch_t() {
-    _clean_up();
-}
-
-void expr_bits_t::endian_switch_t::_clean_up() {
-}
+expr_bits_t::endian_switch_t::~endian_switch_t() {}
 
 expr_bits_t::items_t expr_bits_t::enum_inst() {
     if (f_enum_inst)

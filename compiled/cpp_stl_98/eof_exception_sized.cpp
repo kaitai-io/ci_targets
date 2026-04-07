@@ -27,12 +27,8 @@ eof_exception_sized_t::~eof_exception_sized_t() {
 }
 
 void eof_exception_sized_t::_clean_up() {
-    if (m__io__raw_buf) {
-        delete m__io__raw_buf; m__io__raw_buf = 0;
-    }
-    if (m_buf) {
-        delete m_buf; m_buf = 0;
-    }
+    delete m__io__raw_buf;
+    delete m_buf;
 }
 
 eof_exception_sized_t::foo_t::foo_t(kaitai::kstream* p__io, eof_exception_sized_t* p__parent, eof_exception_sized_t* p__root) : kaitai::kstruct(p__io) {

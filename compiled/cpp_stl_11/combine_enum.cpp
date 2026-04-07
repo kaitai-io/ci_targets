@@ -21,12 +21,7 @@ void combine_enum_t::_read() {
     m_enum_u2 = static_cast<combine_enum_t::animal_t>(m__io->read_u2le());
 }
 
-combine_enum_t::~combine_enum_t() {
-    _clean_up();
-}
-
-void combine_enum_t::_clean_up() {
-}
+combine_enum_t::~combine_enum_t() {}
 
 combine_enum_t::animal_t combine_enum_t::enum_u4_u2() {
     if (f_enum_u4_u2)

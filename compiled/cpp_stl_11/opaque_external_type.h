@@ -21,7 +21,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~opaque_external_type_t();

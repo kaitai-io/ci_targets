@@ -5,10 +5,6 @@
 integers_min_max_t::integers_min_max_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, integers_min_max_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_unsigned_min = nullptr;
-    m_unsigned_max = nullptr;
-    m_signed_min = nullptr;
-    m_signed_max = nullptr;
     _read();
 }
 
@@ -19,12 +15,7 @@ void integers_min_max_t::_read() {
     m_signed_max = std::unique_ptr<signed_t>(new signed_t(m__io, this, m__root));
 }
 
-integers_min_max_t::~integers_min_max_t() {
-    _clean_up();
-}
-
-void integers_min_max_t::_clean_up() {
-}
+integers_min_max_t::~integers_min_max_t() {}
 
 integers_min_max_t::signed_t::signed_t(kaitai::kstream* p__io, integers_min_max_t* p__parent, integers_min_max_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -42,12 +33,7 @@ void integers_min_max_t::signed_t::_read() {
     m_s8be = m__io->read_s8be();
 }
 
-integers_min_max_t::signed_t::~signed_t() {
-    _clean_up();
-}
-
-void integers_min_max_t::signed_t::_clean_up() {
-}
+integers_min_max_t::signed_t::~signed_t() {}
 
 integers_min_max_t::unsigned_t::unsigned_t(kaitai::kstream* p__io, integers_min_max_t* p__parent, integers_min_max_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -65,9 +51,4 @@ void integers_min_max_t::unsigned_t::_read() {
     m_u8be = m__io->read_u8be();
 }
 
-integers_min_max_t::unsigned_t::~unsigned_t() {
-    _clean_up();
-}
-
-void integers_min_max_t::unsigned_t::_clean_up() {
-}
+integers_min_max_t::unsigned_t::~unsigned_t() {}

@@ -56,45 +56,35 @@ process_repeat_usertype_dynarg_rotate_t::~process_repeat_usertype_dynarg_rotate_
 }
 
 void process_repeat_usertype_dynarg_rotate_t::_clean_up() {
-    if (m__raw_blocks_rol) {
-        delete m__raw_blocks_rol; m__raw_blocks_rol = 0;
-    }
+    delete m__raw_blocks_rol;
     if (m__io__raw_blocks_rol) {
         for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_blocks_rol->begin(); it != m__io__raw_blocks_rol->end(); ++it) {
             delete *it;
         }
-        delete m__io__raw_blocks_rol; m__io__raw_blocks_rol = 0;
+        delete m__io__raw_blocks_rol;
     }
-    if (m__raw__raw_blocks_rol) {
-        delete m__raw__raw_blocks_rol; m__raw__raw_blocks_rol = 0;
-    }
+    delete m__raw__raw_blocks_rol;
     if (m_blocks_rol) {
         for (std::vector<block_t*>::iterator it = m_blocks_rol->begin(); it != m_blocks_rol->end(); ++it) {
             delete *it;
         }
-        delete m_blocks_rol; m_blocks_rol = 0;
+        delete m_blocks_rol;
     }
-    if (m__raw_blocks_ror) {
-        delete m__raw_blocks_ror; m__raw_blocks_ror = 0;
-    }
+    delete m__raw_blocks_ror;
     if (m__io__raw_blocks_ror) {
         for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_blocks_ror->begin(); it != m__io__raw_blocks_ror->end(); ++it) {
             delete *it;
         }
-        delete m__io__raw_blocks_ror; m__io__raw_blocks_ror = 0;
+        delete m__io__raw_blocks_ror;
     }
-    if (m__raw__raw_blocks_ror) {
-        delete m__raw__raw_blocks_ror; m__raw__raw_blocks_ror = 0;
-    }
+    delete m__raw__raw_blocks_ror;
     if (m_blocks_ror) {
         for (std::vector<block_t*>::iterator it = m_blocks_ror->begin(); it != m_blocks_ror->end(); ++it) {
             delete *it;
         }
-        delete m_blocks_ror; m_blocks_ror = 0;
+        delete m_blocks_ror;
     }
-    if (m_blocks_b) {
-        delete m_blocks_b; m_blocks_b = 0;
-    }
+    delete m_blocks_b;
 }
 
 process_repeat_usertype_dynarg_rotate_t::block_t::block_t(kaitai::kstream* p__io, process_repeat_usertype_dynarg_rotate_t* p__parent, process_repeat_usertype_dynarg_rotate_t* p__root) : kaitai::kstruct(p__io) {
@@ -146,16 +136,6 @@ process_repeat_usertype_dynarg_rotate_t::blocks_b_wrapper_t::~blocks_b_wrapper_t
 }
 
 void process_repeat_usertype_dynarg_rotate_t::blocks_b_wrapper_t::_clean_up() {
-    if (f_blocks_rol_0_b) {
-    }
-    if (f_blocks_rol_1_b) {
-    }
-    if (f_blocks_ror_0_b) {
-    }
-    if (f_blocks_ror_1_b) {
-    }
-    if (f_blocks_ror_2_b) {
-    }
 }
 
 uint8_t process_repeat_usertype_dynarg_rotate_t::blocks_b_wrapper_t::blocks_rol_0_b() {

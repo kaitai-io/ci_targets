@@ -12,9 +12,4 @@ void str_eos_t::_read() {
     m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes_full(), "UTF-8");
 }
 
-str_eos_t::~str_eos_t() {
-    _clean_up();
-}
-
-void str_eos_t::_clean_up() {
-}
+str_eos_t::~str_eos_t() {}

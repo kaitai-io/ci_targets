@@ -38,18 +38,10 @@ expr_io_ternary_t::~expr_io_ternary_t() {
 }
 
 void expr_io_ternary_t::_clean_up() {
-    if (m__io__raw_obj1) {
-        delete m__io__raw_obj1; m__io__raw_obj1 = 0;
-    }
-    if (m_obj1) {
-        delete m_obj1; m_obj1 = 0;
-    }
-    if (m__io__raw_obj2) {
-        delete m__io__raw_obj2; m__io__raw_obj2 = 0;
-    }
-    if (m_obj2) {
-        delete m_obj2; m_obj2 = 0;
-    }
+    delete m__io__raw_obj1;
+    delete m_obj1;
+    delete m__io__raw_obj2;
+    delete m_obj2;
 }
 
 expr_io_ternary_t::one_t::one_t(kaitai::kstream* p__io, expr_io_ternary_t* p__parent, expr_io_ternary_t* p__root) : kaitai::kstruct(p__io) {

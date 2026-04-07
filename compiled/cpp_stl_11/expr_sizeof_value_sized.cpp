@@ -5,8 +5,6 @@
 expr_sizeof_value_sized_t::expr_sizeof_value_sized_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_sizeof_value_sized_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_block1 = nullptr;
-    m__io__raw_block1 = nullptr;
     f_self_sizeof = false;
     f_sizeof_block = false;
     f_sizeof_block_a = false;
@@ -22,12 +20,7 @@ void expr_sizeof_value_sized_t::_read() {
     m_more = m__io->read_u2le();
 }
 
-expr_sizeof_value_sized_t::~expr_sizeof_value_sized_t() {
-    _clean_up();
-}
-
-void expr_sizeof_value_sized_t::_clean_up() {
-}
+expr_sizeof_value_sized_t::~expr_sizeof_value_sized_t() {}
 
 expr_sizeof_value_sized_t::block_t::block_t(kaitai::kstream* p__io, expr_sizeof_value_sized_t* p__parent, expr_sizeof_value_sized_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -41,12 +34,7 @@ void expr_sizeof_value_sized_t::block_t::_read() {
     m_c = m__io->read_bytes(2);
 }
 
-expr_sizeof_value_sized_t::block_t::~block_t() {
-    _clean_up();
-}
-
-void expr_sizeof_value_sized_t::block_t::_clean_up() {
-}
+expr_sizeof_value_sized_t::block_t::~block_t() {}
 
 int32_t expr_sizeof_value_sized_t::self_sizeof() {
     if (f_self_sizeof)

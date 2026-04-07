@@ -5,9 +5,6 @@
 params_pass_array_str_t::params_pass_array_str_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, params_pass_array_str_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_str_array = nullptr;
-    m_pass_str_array = nullptr;
-    m_pass_str_array_calc = nullptr;
     f_str_array_calc = false;
     _read();
 }
@@ -22,12 +19,7 @@ void params_pass_array_str_t::_read() {
     m_pass_str_array_calc = std::unique_ptr<wants_strs_t>(new wants_strs_t(str_array_calc(), m__io, this, m__root));
 }
 
-params_pass_array_str_t::~params_pass_array_str_t() {
-    _clean_up();
-}
-
-void params_pass_array_str_t::_clean_up() {
-}
+params_pass_array_str_t::~params_pass_array_str_t() {}
 
 params_pass_array_str_t::wants_strs_t::wants_strs_t(std::vector<std::string>* p_strs, kaitai::kstream* p__io, params_pass_array_str_t* p__parent, params_pass_array_str_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -39,12 +31,7 @@ params_pass_array_str_t::wants_strs_t::wants_strs_t(std::vector<std::string>* p_
 void params_pass_array_str_t::wants_strs_t::_read() {
 }
 
-params_pass_array_str_t::wants_strs_t::~wants_strs_t() {
-    _clean_up();
-}
-
-void params_pass_array_str_t::wants_strs_t::_clean_up() {
-}
+params_pass_array_str_t::wants_strs_t::~wants_strs_t() {}
 
 std::vector<std::string>* params_pass_array_str_t::str_array_calc() {
     if (f_str_array_calc)

@@ -42,30 +42,14 @@ struct_pad_term_equal_t::~struct_pad_term_equal_t() {
 }
 
 void struct_pad_term_equal_t::_clean_up() {
-    if (m__io__raw_s1) {
-        delete m__io__raw_s1; m__io__raw_s1 = 0;
-    }
-    if (m_s1) {
-        delete m_s1; m_s1 = 0;
-    }
-    if (m__io__raw_s2) {
-        delete m__io__raw_s2; m__io__raw_s2 = 0;
-    }
-    if (m_s2) {
-        delete m_s2; m_s2 = 0;
-    }
-    if (m__io__raw_s3) {
-        delete m__io__raw_s3; m__io__raw_s3 = 0;
-    }
-    if (m_s3) {
-        delete m_s3; m_s3 = 0;
-    }
-    if (m__io__raw_s4) {
-        delete m__io__raw_s4; m__io__raw_s4 = 0;
-    }
-    if (m_s4) {
-        delete m_s4; m_s4 = 0;
-    }
+    delete m__io__raw_s1;
+    delete m_s1;
+    delete m__io__raw_s2;
+    delete m_s2;
+    delete m__io__raw_s3;
+    delete m_s3;
+    delete m__io__raw_s4;
+    delete m_s4;
 }
 
 struct_pad_term_equal_t::bytes_wrapper_t::bytes_wrapper_t(kaitai::kstream* p__io, struct_pad_term_equal_t* p__parent, struct_pad_term_equal_t* p__root) : kaitai::kstruct(p__io) {

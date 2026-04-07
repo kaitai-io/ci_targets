@@ -34,18 +34,10 @@ str_encodings_utf16_t::~str_encodings_utf16_t() {
 }
 
 void str_encodings_utf16_t::_clean_up() {
-    if (m__io__raw_be_bom_removed) {
-        delete m__io__raw_be_bom_removed; m__io__raw_be_bom_removed = 0;
-    }
-    if (m_be_bom_removed) {
-        delete m_be_bom_removed; m_be_bom_removed = 0;
-    }
-    if (m__io__raw_le_bom_removed) {
-        delete m__io__raw_le_bom_removed; m__io__raw_le_bom_removed = 0;
-    }
-    if (m_le_bom_removed) {
-        delete m_le_bom_removed; m_le_bom_removed = 0;
-    }
+    delete m__io__raw_be_bom_removed;
+    delete m_be_bom_removed;
+    delete m__io__raw_le_bom_removed;
+    delete m_le_bom_removed;
 }
 
 str_encodings_utf16_t::str_be_bom_removed_t::str_be_bom_removed_t(kaitai::kstream* p__io, str_encodings_utf16_t* p__parent, str_encodings_utf16_t* p__root) : kaitai::kstruct(p__io) {

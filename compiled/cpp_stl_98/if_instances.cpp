@@ -23,8 +23,6 @@ if_instances_t::~if_instances_t() {
 }
 
 void if_instances_t::_clean_up() {
-    if (f_never_happens && !n_never_happens) {
-    }
 }
 
 uint8_t if_instances_t::never_happens() {

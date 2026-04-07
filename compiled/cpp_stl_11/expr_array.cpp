@@ -6,9 +6,6 @@
 expr_array_t::expr_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_array_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_aint = nullptr;
-    m_afloat = nullptr;
-    m_astr = nullptr;
     f_afloat_first = false;
     f_afloat_last = false;
     f_afloat_max = false;
@@ -45,12 +42,7 @@ void expr_array_t::_read() {
     }
 }
 
-expr_array_t::~expr_array_t() {
-    _clean_up();
-}
-
-void expr_array_t::_clean_up() {
-}
+expr_array_t::~expr_array_t() {}
 
 double expr_array_t::afloat_first() {
     if (f_afloat_first)

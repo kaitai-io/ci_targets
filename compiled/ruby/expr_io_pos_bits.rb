@@ -18,7 +18,7 @@ class ExprIoPosBits < Kaitai::Struct::Struct
       @bar = @_io.read_bits_int_be(5)
     end
     if _io.pos == 1
-      @baz = @_io.read_bits_int_be(1) != 0
+      @baz = (@_io.read_bits_int_be(1) != 0)
     end
     if _io.pos == 2
       @qux = @_io.read_bits_int_be(7)

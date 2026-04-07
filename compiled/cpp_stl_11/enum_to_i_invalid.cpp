@@ -26,12 +26,7 @@ void enum_to_i_invalid_t::_read() {
     m_pet_2 = static_cast<enum_to_i_invalid_t::animal_t>(m__io->read_u1());
 }
 
-enum_to_i_invalid_t::~enum_to_i_invalid_t() {
-    _clean_up();
-}
-
-void enum_to_i_invalid_t::_clean_up() {
-}
+enum_to_i_invalid_t::~enum_to_i_invalid_t() {}
 
 bool enum_to_i_invalid_t::one_lt_two() {
     if (f_one_lt_two)

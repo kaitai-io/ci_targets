@@ -42,30 +42,14 @@ bytes_eos_pad_term_t::~bytes_eos_pad_term_t() {
 }
 
 void bytes_eos_pad_term_t::_clean_up() {
-    if (m__io__raw_str_pad) {
-        delete m__io__raw_str_pad; m__io__raw_str_pad = 0;
-    }
-    if (m_str_pad) {
-        delete m_str_pad; m_str_pad = 0;
-    }
-    if (m__io__raw_str_term) {
-        delete m__io__raw_str_term; m__io__raw_str_term = 0;
-    }
-    if (m_str_term) {
-        delete m_str_term; m_str_term = 0;
-    }
-    if (m__io__raw_str_term_and_pad) {
-        delete m__io__raw_str_term_and_pad; m__io__raw_str_term_and_pad = 0;
-    }
-    if (m_str_term_and_pad) {
-        delete m_str_term_and_pad; m_str_term_and_pad = 0;
-    }
-    if (m__io__raw_str_term_include) {
-        delete m__io__raw_str_term_include; m__io__raw_str_term_include = 0;
-    }
-    if (m_str_term_include) {
-        delete m_str_term_include; m_str_term_include = 0;
-    }
+    delete m__io__raw_str_pad;
+    delete m_str_pad;
+    delete m__io__raw_str_term;
+    delete m_str_term;
+    delete m__io__raw_str_term_and_pad;
+    delete m_str_term_and_pad;
+    delete m__io__raw_str_term_include;
+    delete m_str_term_include;
 }
 
 bytes_eos_pad_term_t::str_pad_type_t::str_pad_type_t(kaitai::kstream* p__io, bytes_eos_pad_term_t* p__parent, bytes_eos_pad_term_t* p__root) : kaitai::kstruct(p__io) {

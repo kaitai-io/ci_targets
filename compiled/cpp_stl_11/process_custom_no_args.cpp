@@ -15,9 +15,4 @@ void process_custom_no_args_t::_read() {
     m_buf = _process__raw_buf.decode(m__raw_buf);
 }
 
-process_custom_no_args_t::~process_custom_no_args_t() {
-    _clean_up();
-}
-
-void process_custom_no_args_t::_clean_up() {
-}
+process_custom_no_args_t::~process_custom_no_args_t() {}

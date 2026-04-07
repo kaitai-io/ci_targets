@@ -31,7 +31,5 @@ repeat_eos_bits_b4_t::~repeat_eos_bits_b4_t() {
 }
 
 void repeat_eos_bits_b4_t::_clean_up() {
-    if (m_nibbles) {
-        delete m_nibbles; m_nibbles = 0;
-    }
+    delete m_nibbles;
 }

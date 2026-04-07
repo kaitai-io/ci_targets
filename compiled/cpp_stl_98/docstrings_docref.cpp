@@ -27,8 +27,6 @@ docstrings_docref_t::~docstrings_docref_t() {
 }
 
 void docstrings_docref_t::_clean_up() {
-    if (f_parse_inst) {
-    }
 }
 
 bool docstrings_docref_t::foo() {

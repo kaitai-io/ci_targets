@@ -13,12 +13,7 @@ cast_to_imported_t::cast_to_imported_t(kaitai::kstruct* p_hw_param, kaitai::kstr
 void cast_to_imported_t::_read() {
 }
 
-cast_to_imported_t::~cast_to_imported_t() {
-    _clean_up();
-}
-
-void cast_to_imported_t::_clean_up() {
-}
+cast_to_imported_t::~cast_to_imported_t() {}
 
 uint8_t cast_to_imported_t::hw_one() {
     if (f_hw_one)

@@ -30,9 +30,4 @@ void enum_long_range_s_t::_read() {
     m_f7 = static_cast<enum_long_range_s_t::constants_t>(m__io->read_s8be());
 }
 
-enum_long_range_s_t::~enum_long_range_s_t() {
-    _clean_up();
-}
-
-void enum_long_range_s_t::_clean_up() {
-}
+enum_long_range_s_t::~enum_long_range_s_t() {}

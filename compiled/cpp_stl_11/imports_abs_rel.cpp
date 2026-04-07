@@ -5,7 +5,6 @@
 imports_abs_rel_t::imports_abs_rel_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imports_abs_rel_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_two = nullptr;
     _read();
 }
 
@@ -14,9 +13,4 @@ void imports_abs_rel_t::_read() {
     m_two = std::unique_ptr<imported_and_rel_t>(new imported_and_rel_t(m__io));
 }
 
-imports_abs_rel_t::~imports_abs_rel_t() {
-    _clean_up();
-}
-
-void imports_abs_rel_t::_clean_up() {
-}
+imports_abs_rel_t::~imports_abs_rel_t() {}

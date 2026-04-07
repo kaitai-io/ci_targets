@@ -23,9 +23,4 @@ void process_custom_t::_read() {
     m_buf3 = _process__raw_buf3.decode(m__raw_buf3);
 }
 
-process_custom_t::~process_custom_t() {
-    _clean_up();
-}
-
-void process_custom_t::_clean_up() {
-}
+process_custom_t::~process_custom_t() {}

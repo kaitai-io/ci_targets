@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~params_call_t();
@@ -35,7 +34,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~my_str1_t();
@@ -59,7 +57,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~my_str2_t();

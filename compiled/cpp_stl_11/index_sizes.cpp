@@ -5,8 +5,6 @@
 index_sizes_t::index_sizes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, index_sizes_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_sizes = nullptr;
-    m_bufs = nullptr;
     _read();
 }
 
@@ -24,9 +22,4 @@ void index_sizes_t::_read() {
     }
 }
 
-index_sizes_t::~index_sizes_t() {
-    _clean_up();
-}
-
-void index_sizes_t::_clean_up() {
-}
+index_sizes_t::~index_sizes_t() {}

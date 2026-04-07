@@ -5,15 +5,6 @@
 process_repeat_usertype_dynarg_rotate_t::process_repeat_usertype_dynarg_rotate_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_repeat_usertype_dynarg_rotate_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_blocks_rol = nullptr;
-    m__raw_blocks_rol = nullptr;
-    m__io__raw_blocks_rol = nullptr;
-    m__raw__raw_blocks_rol = nullptr;
-    m_blocks_ror = nullptr;
-    m__raw_blocks_ror = nullptr;
-    m__io__raw_blocks_ror = nullptr;
-    m__raw__raw_blocks_ror = nullptr;
-    m_blocks_b = nullptr;
     _read();
 }
 
@@ -45,12 +36,7 @@ void process_repeat_usertype_dynarg_rotate_t::_read() {
     m_blocks_b = std::unique_ptr<blocks_b_wrapper_t>(new blocks_b_wrapper_t(m__io, this, m__root));
 }
 
-process_repeat_usertype_dynarg_rotate_t::~process_repeat_usertype_dynarg_rotate_t() {
-    _clean_up();
-}
-
-void process_repeat_usertype_dynarg_rotate_t::_clean_up() {
-}
+process_repeat_usertype_dynarg_rotate_t::~process_repeat_usertype_dynarg_rotate_t() {}
 
 process_repeat_usertype_dynarg_rotate_t::block_t::block_t(kaitai::kstream* p__io, process_repeat_usertype_dynarg_rotate_t* p__parent, process_repeat_usertype_dynarg_rotate_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -62,12 +48,7 @@ void process_repeat_usertype_dynarg_rotate_t::block_t::_read() {
     m_a = m__io->read_u2le();
 }
 
-process_repeat_usertype_dynarg_rotate_t::block_t::~block_t() {
-    _clean_up();
-}
-
-void process_repeat_usertype_dynarg_rotate_t::block_t::_clean_up() {
-}
+process_repeat_usertype_dynarg_rotate_t::block_t::~block_t() {}
 
 process_repeat_usertype_dynarg_rotate_t::blocks_b_wrapper_t::blocks_b_wrapper_t(kaitai::kstream* p__io, process_repeat_usertype_dynarg_rotate_t* p__parent, process_repeat_usertype_dynarg_rotate_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -84,22 +65,7 @@ void process_repeat_usertype_dynarg_rotate_t::blocks_b_wrapper_t::_read() {
     m_dummy = m__io->read_u1();
 }
 
-process_repeat_usertype_dynarg_rotate_t::blocks_b_wrapper_t::~blocks_b_wrapper_t() {
-    _clean_up();
-}
-
-void process_repeat_usertype_dynarg_rotate_t::blocks_b_wrapper_t::_clean_up() {
-    if (f_blocks_rol_0_b) {
-    }
-    if (f_blocks_rol_1_b) {
-    }
-    if (f_blocks_ror_0_b) {
-    }
-    if (f_blocks_ror_1_b) {
-    }
-    if (f_blocks_ror_2_b) {
-    }
-}
+process_repeat_usertype_dynarg_rotate_t::blocks_b_wrapper_t::~blocks_b_wrapper_t() {}
 
 uint8_t process_repeat_usertype_dynarg_rotate_t::blocks_b_wrapper_t::blocks_rol_0_b() {
     if (f_blocks_rol_0_b)

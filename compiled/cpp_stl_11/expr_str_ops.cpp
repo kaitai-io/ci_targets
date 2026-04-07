@@ -29,12 +29,7 @@ void expr_str_ops_t::_read() {
     m_one = kaitai::kstream::bytes_to_str(m__io->read_bytes(5), "ASCII");
 }
 
-expr_str_ops_t::~expr_str_ops_t() {
-    _clean_up();
-}
-
-void expr_str_ops_t::_clean_up() {
-}
+expr_str_ops_t::~expr_str_ops_t() {}
 
 int32_t expr_str_ops_t::one_len() {
     if (f_one_len)

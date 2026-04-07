@@ -33,9 +33,7 @@ void instance_in_repeat_expr_t::_clean_up() {
         for (std::vector<chunk_t*>::iterator it = m_chunks->begin(); it != m_chunks->end(); ++it) {
             delete *it;
         }
-        delete m_chunks; m_chunks = 0;
-    }
-    if (f_num_chunks) {
+        delete m_chunks;
     }
 }
 

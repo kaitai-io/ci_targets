@@ -12,9 +12,4 @@ void eof_exception_bits_le_t::_read() {
     m_fail_bits = m__io->read_bits_int_le(18);
 }
 
-eof_exception_bits_le_t::~eof_exception_bits_le_t() {
-    _clean_up();
-}
-
-void eof_exception_bits_le_t::_clean_up() {
-}
+eof_exception_bits_le_t::~eof_exception_bits_le_t() {}

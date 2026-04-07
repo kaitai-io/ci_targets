@@ -21,7 +21,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~expr_io_pos_t();
@@ -34,7 +33,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~all_plus_number_t();

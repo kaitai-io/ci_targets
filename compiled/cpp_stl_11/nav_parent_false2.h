@@ -21,7 +21,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~nav_parent_false2_t();
@@ -34,7 +33,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~child_t();

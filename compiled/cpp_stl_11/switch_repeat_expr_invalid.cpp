@@ -5,10 +5,6 @@
 switch_repeat_expr_invalid_t::switch_repeat_expr_invalid_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_repeat_expr_invalid_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_codes = nullptr;
-    m_body = nullptr;
-    m__raw_body = nullptr;
-    m__io__raw_body = nullptr;
     _read();
 }
 
@@ -46,12 +42,7 @@ void switch_repeat_expr_invalid_t::_read() {
     }
 }
 
-switch_repeat_expr_invalid_t::~switch_repeat_expr_invalid_t() {
-    _clean_up();
-}
-
-void switch_repeat_expr_invalid_t::_clean_up() {
-}
+switch_repeat_expr_invalid_t::~switch_repeat_expr_invalid_t() {}
 
 switch_repeat_expr_invalid_t::one_t::one_t(kaitai::kstream* p__io, switch_repeat_expr_invalid_t* p__parent, switch_repeat_expr_invalid_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -63,12 +54,7 @@ void switch_repeat_expr_invalid_t::one_t::_read() {
     m_first = m__io->read_bytes_full();
 }
 
-switch_repeat_expr_invalid_t::one_t::~one_t() {
-    _clean_up();
-}
-
-void switch_repeat_expr_invalid_t::one_t::_clean_up() {
-}
+switch_repeat_expr_invalid_t::one_t::~one_t() {}
 
 switch_repeat_expr_invalid_t::two_t::two_t(kaitai::kstream* p__io, switch_repeat_expr_invalid_t* p__parent, switch_repeat_expr_invalid_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -80,9 +66,4 @@ void switch_repeat_expr_invalid_t::two_t::_read() {
     m_second = m__io->read_bytes_full();
 }
 
-switch_repeat_expr_invalid_t::two_t::~two_t() {
-    _clean_up();
-}
-
-void switch_repeat_expr_invalid_t::two_t::_clean_up() {
-}
+switch_repeat_expr_invalid_t::two_t::~two_t() {}

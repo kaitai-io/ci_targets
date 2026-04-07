@@ -35,13 +35,14 @@ void switch_bytearray_t::_clean_up() {
         for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
             delete *it;
         }
-        delete m_opcodes; m_opcodes = 0;
+        delete m_opcodes;
     }
 }
 
 switch_bytearray_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_bytearray_t* p__parent, switch_bytearray_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
+    m_body = 0;
 
     try {
         _read();
@@ -53,15 +54,12 @@ switch_bytearray_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_bytearray_
 
 void switch_bytearray_t::opcode_t::_read() {
     m_code = m__io->read_bytes(1);
-    n_body = true;
     {
         std::string on = code();
         if (on == std::string("\x49", 1)) {
-            n_body = false;
             m_body = new intval_t(m__io, this, m__root);
         }
         else if (on == std::string("\x53", 1)) {
-            n_body = false;
             m_body = new strval_t(m__io, this, m__root);
         }
     }
@@ -72,11 +70,7 @@ switch_bytearray_t::opcode_t::~opcode_t() {
 }
 
 void switch_bytearray_t::opcode_t::_clean_up() {
-    if (!n_body) {
-        if (m_body) {
-            delete m_body; m_body = 0;
-        }
-    }
+    delete m_body;
 }
 
 switch_bytearray_t::opcode_t::intval_t::intval_t(kaitai::kstream* p__io, switch_bytearray_t::opcode_t* p__parent, switch_bytearray_t* p__root) : kaitai::kstruct(p__io) {

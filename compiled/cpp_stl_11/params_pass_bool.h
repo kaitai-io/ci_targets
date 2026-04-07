@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~params_pass_bool_t();
@@ -35,7 +34,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~param_type_b1_t();
@@ -59,7 +57,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~param_type_bool_t();

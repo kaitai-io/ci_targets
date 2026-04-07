@@ -29,22 +29,18 @@ instance_user_array_t::~instance_user_array_t() {
 }
 
 void instance_user_array_t::_clean_up() {
-    if (f_user_entries && !n_user_entries) {
-        if (m__raw_user_entries) {
-            delete m__raw_user_entries; m__raw_user_entries = 0;
+    delete m__raw_user_entries;
+    if (m__io__raw_user_entries) {
+        for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_user_entries->begin(); it != m__io__raw_user_entries->end(); ++it) {
+            delete *it;
         }
-        if (m__io__raw_user_entries) {
-            for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_user_entries->begin(); it != m__io__raw_user_entries->end(); ++it) {
-                delete *it;
-            }
-            delete m__io__raw_user_entries; m__io__raw_user_entries = 0;
+        delete m__io__raw_user_entries;
+    }
+    if (m_user_entries) {
+        for (std::vector<entry_t*>::iterator it = m_user_entries->begin(); it != m_user_entries->end(); ++it) {
+            delete *it;
         }
-        if (m_user_entries) {
-            for (std::vector<entry_t*>::iterator it = m_user_entries->begin(); it != m_user_entries->end(); ++it) {
-                delete *it;
-            }
-            delete m_user_entries; m_user_entries = 0;
-        }
+        delete m_user_entries;
     }
 }
 
@@ -76,9 +72,7 @@ std::vector<instance_user_array_t::entry_t*>* instance_user_array_t::user_entrie
     if (f_user_entries)
         return m_user_entries;
     f_user_entries = true;
-    n_user_entries = true;
     if (ofs() > 0) {
-        n_user_entries = false;
         std::streampos _pos = m__io->pos();
         m__io->seek(ofs());
         m__raw_user_entries = new std::vector<std::string>();

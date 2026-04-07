@@ -12,9 +12,4 @@ void imported_2_t::_read() {
     m_one = m__io->read_u1();
 }
 
-imported_2_t::~imported_2_t() {
-    _clean_up();
-}
-
-void imported_2_t::_clean_up() {
-}
+imported_2_t::~imported_2_t() {}

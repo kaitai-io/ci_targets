@@ -23,7 +23,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~params_pass_array_usertype_t();
@@ -36,7 +35,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~block_t();
@@ -58,7 +56,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~param_type_t();

@@ -21,7 +21,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~nav_parent_switch_cast_t();
@@ -37,7 +36,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~foo_t();
@@ -50,7 +48,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~common_t();
@@ -73,7 +70,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~one_t();
@@ -95,7 +91,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~zero_t();
@@ -122,10 +117,9 @@ public:
         uint8_t m_buf_type;
         uint8_t m_flag;
         std::unique_ptr<kaitai::kstruct> m_buf;
-        bool n_buf;
 
     public:
-        bool _is_null_buf() { buf(); return n_buf; };
+        bool _is_null_buf() { return !buf(); };
 
     private:
         nav_parent_switch_cast_t* m__root;

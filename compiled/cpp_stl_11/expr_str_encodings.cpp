@@ -26,12 +26,7 @@ void expr_str_encodings_t::_read() {
     m_str4 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_4()), "IBM437");
 }
 
-expr_str_encodings_t::~expr_str_encodings_t() {
-    _clean_up();
-}
-
-void expr_str_encodings_t::_clean_up() {
-}
+expr_str_encodings_t::~expr_str_encodings_t() {}
 
 bool expr_str_encodings_t::str1_eq() {
     if (f_str1_eq)

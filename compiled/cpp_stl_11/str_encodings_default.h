@@ -21,7 +21,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~str_encodings_default_t();
@@ -34,7 +33,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~subtype_t();

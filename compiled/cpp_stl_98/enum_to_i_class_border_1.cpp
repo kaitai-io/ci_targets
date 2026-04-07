@@ -38,11 +38,7 @@ enum_to_i_class_border_1_t::~enum_to_i_class_border_1_t() {
 }
 
 void enum_to_i_class_border_1_t::_clean_up() {
-    if (f_checker) {
-        if (m_checker) {
-            delete m_checker; m_checker = 0;
-        }
-    }
+    delete m_checker;
 }
 
 enum_to_i_class_border_2_t* enum_to_i_class_border_1_t::checker() {

@@ -5,7 +5,6 @@
 enum_1_t::enum_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_1_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_main = nullptr;
     _read();
 }
 
@@ -13,12 +12,7 @@ void enum_1_t::_read() {
     m_main = std::unique_ptr<main_obj_t>(new main_obj_t(m__io, this, m__root));
 }
 
-enum_1_t::~enum_1_t() {
-    _clean_up();
-}
-
-void enum_1_t::_clean_up() {
-}
+enum_1_t::~enum_1_t() {}
 const std::set<enum_1_t::main_obj_t::animal_t> enum_1_t::main_obj_t::_values_animal_t{
     enum_1_t::main_obj_t::ANIMAL_DOG,
     enum_1_t::main_obj_t::ANIMAL_CAT,
@@ -31,7 +25,6 @@ bool enum_1_t::main_obj_t::_is_defined_animal_t(enum_1_t::main_obj_t::animal_t v
 enum_1_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, enum_1_t* p__parent, enum_1_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m_submain = nullptr;
     _read();
 }
 
@@ -39,12 +32,7 @@ void enum_1_t::main_obj_t::_read() {
     m_submain = std::unique_ptr<submain_obj_t>(new submain_obj_t(m__io, this, m__root));
 }
 
-enum_1_t::main_obj_t::~main_obj_t() {
-    _clean_up();
-}
-
-void enum_1_t::main_obj_t::_clean_up() {
-}
+enum_1_t::main_obj_t::~main_obj_t() {}
 
 enum_1_t::main_obj_t::submain_obj_t::submain_obj_t(kaitai::kstream* p__io, enum_1_t::main_obj_t* p__parent, enum_1_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -57,9 +45,4 @@ void enum_1_t::main_obj_t::submain_obj_t::_read() {
     m_pet_2 = static_cast<enum_1_t::main_obj_t::animal_t>(m__io->read_u4le());
 }
 
-enum_1_t::main_obj_t::submain_obj_t::~submain_obj_t() {
-    _clean_up();
-}
-
-void enum_1_t::main_obj_t::submain_obj_t::_clean_up() {
-}
+enum_1_t::main_obj_t::submain_obj_t::~submain_obj_t() {}

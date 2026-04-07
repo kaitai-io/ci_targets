@@ -5,10 +5,6 @@
 expr_io_ternary_t::expr_io_ternary_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_io_ternary_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_obj1 = nullptr;
-    m__io__raw_obj1 = nullptr;
-    m_obj2 = nullptr;
-    m__io__raw_obj2 = nullptr;
     f_one_or_two_io = false;
     f_one_or_two_io_size1 = false;
     f_one_or_two_io_size2 = false;
@@ -27,12 +23,7 @@ void expr_io_ternary_t::_read() {
     m_obj2 = std::unique_ptr<two_t>(new two_t(m__io__raw_obj2.get(), this, m__root));
 }
 
-expr_io_ternary_t::~expr_io_ternary_t() {
-    _clean_up();
-}
-
-void expr_io_ternary_t::_clean_up() {
-}
+expr_io_ternary_t::~expr_io_ternary_t() {}
 
 expr_io_ternary_t::one_t::one_t(kaitai::kstream* p__io, expr_io_ternary_t* p__parent, expr_io_ternary_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -44,12 +35,7 @@ void expr_io_ternary_t::one_t::_read() {
     m_one = m__io->read_u1();
 }
 
-expr_io_ternary_t::one_t::~one_t() {
-    _clean_up();
-}
-
-void expr_io_ternary_t::one_t::_clean_up() {
-}
+expr_io_ternary_t::one_t::~one_t() {}
 
 expr_io_ternary_t::two_t::two_t(kaitai::kstream* p__io, expr_io_ternary_t* p__parent, expr_io_ternary_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -61,12 +47,7 @@ void expr_io_ternary_t::two_t::_read() {
     m_two = m__io->read_u1();
 }
 
-expr_io_ternary_t::two_t::~two_t() {
-    _clean_up();
-}
-
-void expr_io_ternary_t::two_t::_clean_up() {
-}
+expr_io_ternary_t::two_t::~two_t() {}
 
 kaitai::kstream* expr_io_ternary_t::one_or_two_io() {
     if (f_one_or_two_io)

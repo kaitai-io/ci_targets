@@ -43,17 +43,15 @@ private:
     bool f_is_hack;
     bool m_is_hack;
     hello_world_t* m_dif_wo_hack;
-    bool n_dif_wo_hack;
 
 public:
-    bool _is_null_dif_wo_hack() { dif_wo_hack(); return n_dif_wo_hack; };
+    bool _is_null_dif_wo_hack() { return !dif_wo_hack(); };
 
 private:
     hello_world_t* m_dif_with_hack;
-    bool n_dif_with_hack;
 
 public:
-    bool _is_null_dif_with_hack() { dif_with_hack(); return n_dif_with_hack; };
+    bool _is_null_dif_with_hack() { return !dif_with_hack(); };
 
 private:
     type_ternary_opaque_t* m__root;

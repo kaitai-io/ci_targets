@@ -32,7 +32,7 @@ void if_values_t::_clean_up() {
         for (std::vector<code_t*>::iterator it = m_codes->begin(); it != m_codes->end(); ++it) {
             delete *it;
         }
-        delete m_codes; m_codes = 0;
+        delete m_codes;
     }
 }
 

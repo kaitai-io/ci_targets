@@ -5,7 +5,6 @@
 if_values_t::if_values_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, if_values_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_codes = nullptr;
     _read();
 }
 
@@ -17,12 +16,7 @@ void if_values_t::_read() {
     }
 }
 
-if_values_t::~if_values_t() {
-    _clean_up();
-}
-
-void if_values_t::_clean_up() {
-}
+if_values_t::~if_values_t() {}
 
 if_values_t::code_t::code_t(kaitai::kstream* p__io, if_values_t* p__parent, if_values_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -35,12 +29,7 @@ void if_values_t::code_t::_read() {
     m_opcode = m__io->read_u1();
 }
 
-if_values_t::code_t::~code_t() {
-    _clean_up();
-}
-
-void if_values_t::code_t::_clean_up() {
-}
+if_values_t::code_t::~code_t() {}
 
 int32_t if_values_t::code_t::half_opcode() {
     if (f_half_opcode)

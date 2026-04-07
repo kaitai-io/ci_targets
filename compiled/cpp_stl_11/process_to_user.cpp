@@ -5,8 +5,6 @@
 process_to_user_t::process_to_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_to_user_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_buf1 = nullptr;
-    m__io__raw_buf1 = nullptr;
     _read();
 }
 
@@ -17,12 +15,7 @@ void process_to_user_t::_read() {
     m_buf1 = std::unique_ptr<just_str_t>(new just_str_t(m__io__raw_buf1.get(), this, m__root));
 }
 
-process_to_user_t::~process_to_user_t() {
-    _clean_up();
-}
-
-void process_to_user_t::_clean_up() {
-}
+process_to_user_t::~process_to_user_t() {}
 
 process_to_user_t::just_str_t::just_str_t(kaitai::kstream* p__io, process_to_user_t* p__parent, process_to_user_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -34,9 +27,4 @@ void process_to_user_t::just_str_t::_read() {
     m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes_full(), "UTF-8");
 }
 
-process_to_user_t::just_str_t::~just_str_t() {
-    _clean_up();
-}
-
-void process_to_user_t::just_str_t::_clean_up() {
-}
+process_to_user_t::just_str_t::~just_str_t() {}

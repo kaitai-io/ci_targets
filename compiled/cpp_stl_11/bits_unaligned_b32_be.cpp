@@ -14,9 +14,4 @@ void bits_unaligned_b32_be_t::_read() {
     m_c = m__io->read_bits_int_be(7);
 }
 
-bits_unaligned_b32_be_t::~bits_unaligned_b32_be_t() {
-    _clean_up();
-}
-
-void bits_unaligned_b32_be_t::_clean_up() {
-}
+bits_unaligned_b32_be_t::~bits_unaligned_b32_be_t() {}

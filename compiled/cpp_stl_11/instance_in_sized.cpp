@@ -5,8 +5,6 @@
 instance_in_sized_t::instance_in_sized_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instance_in_sized_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_cont = nullptr;
-    m__io__raw_cont = nullptr;
     _read();
 }
 
@@ -16,12 +14,7 @@ void instance_in_sized_t::_read() {
     m_cont = std::unique_ptr<wrapper_t>(new wrapper_t(m__io__raw_cont.get(), this, m__root));
 }
 
-instance_in_sized_t::~instance_in_sized_t() {
-    _clean_up();
-}
-
-void instance_in_sized_t::_clean_up() {
-}
+instance_in_sized_t::~instance_in_sized_t() {}
 
 instance_in_sized_t::bar_t::bar_t(kaitai::kstream* p__io, instance_in_sized_t::wrapper_t* p__parent, instance_in_sized_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -34,14 +27,7 @@ void instance_in_sized_t::bar_t::_read() {
     m_seq_f = m__io->read_u1();
 }
 
-instance_in_sized_t::bar_t::~bar_t() {
-    _clean_up();
-}
-
-void instance_in_sized_t::bar_t::_clean_up() {
-    if (f_inst) {
-    }
-}
+instance_in_sized_t::bar_t::~bar_t() {}
 
 std::string instance_in_sized_t::bar_t::inst() {
     if (f_inst)
@@ -65,14 +51,7 @@ void instance_in_sized_t::baz_t::_read() {
     m_seq_f = m__io->read_u1();
 }
 
-instance_in_sized_t::baz_t::~baz_t() {
-    _clean_up();
-}
-
-void instance_in_sized_t::baz_t::_clean_up() {
-    if (f_inst) {
-    }
-}
+instance_in_sized_t::baz_t::~baz_t() {}
 
 std::string instance_in_sized_t::baz_t::inst() {
     if (f_inst)
@@ -101,18 +80,7 @@ void instance_in_sized_t::qux_t::_read() {
     }
 }
 
-instance_in_sized_t::qux_t::~qux_t() {
-    _clean_up();
-}
-
-void instance_in_sized_t::qux_t::_clean_up() {
-    if (!n_seq_f) {
-    }
-    if (f_inst_invoked) {
-    }
-    if (f_inst_unused_by_seq) {
-    }
-}
+instance_in_sized_t::qux_t::~qux_t() {}
 
 uint8_t instance_in_sized_t::qux_t::inst_invoked() {
     if (f_inst_invoked)
@@ -139,12 +107,6 @@ std::string instance_in_sized_t::qux_t::inst_unused_by_seq() {
 instance_in_sized_t::wrapper_t::wrapper_t(kaitai::kstream* p__io, instance_in_sized_t* p__parent, instance_in_sized_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m_seq_sized = nullptr;
-    m__io__raw_seq_sized = nullptr;
-    m_seq_in_stream = nullptr;
-    m_inst_in_stream = nullptr;
-    m_inst_sized = nullptr;
-    m__io__raw_inst_sized = nullptr;
     f_inst_in_stream = false;
     f_inst_sized = false;
     _read();
@@ -157,16 +119,7 @@ void instance_in_sized_t::wrapper_t::_read() {
     m_seq_in_stream = std::unique_ptr<bar_t>(new bar_t(m__io, this, m__root));
 }
 
-instance_in_sized_t::wrapper_t::~wrapper_t() {
-    _clean_up();
-}
-
-void instance_in_sized_t::wrapper_t::_clean_up() {
-    if (f_inst_in_stream) {
-    }
-    if (f_inst_sized) {
-    }
-}
+instance_in_sized_t::wrapper_t::~wrapper_t() {}
 
 instance_in_sized_t::baz_t* instance_in_sized_t::wrapper_t::inst_in_stream() {
     if (f_inst_in_stream)

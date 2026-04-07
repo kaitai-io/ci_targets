@@ -14,9 +14,4 @@ void bits_unaligned_b64_le_t::_read() {
     m_c = m__io->read_bits_int_le(7);
 }
 
-bits_unaligned_b64_le_t::~bits_unaligned_b64_le_t() {
-    _clean_up();
-}
-
-void bits_unaligned_b64_le_t::_clean_up() {
-}
+bits_unaligned_b64_le_t::~bits_unaligned_b64_le_t() {}

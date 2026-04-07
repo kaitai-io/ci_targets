@@ -13,9 +13,4 @@ void zlib_with_header_78_t::_read() {
     m_data = kaitai::kstream::process_zlib(m__raw_data);
 }
 
-zlib_with_header_78_t::~zlib_with_header_78_t() {
-    _clean_up();
-}
-
-void zlib_with_header_78_t::_clean_up() {
-}
+zlib_with_header_78_t::~zlib_with_header_78_t() {}

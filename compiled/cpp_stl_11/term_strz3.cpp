@@ -14,9 +14,4 @@ void term_strz3_t::_read() {
     m_s3 = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(64, false, true, true), "UTF-8");
 }
 
-term_strz3_t::~term_strz3_t() {
-    _clean_up();
-}
-
-void term_strz3_t::_clean_up() {
-}
+term_strz3_t::~term_strz3_t() {}

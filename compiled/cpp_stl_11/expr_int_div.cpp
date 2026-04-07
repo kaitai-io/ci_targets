@@ -17,12 +17,7 @@ void expr_int_div_t::_read() {
     m_int_s = m__io->read_s4le();
 }
 
-expr_int_div_t::~expr_int_div_t() {
-    _clean_up();
-}
-
-void expr_int_div_t::_clean_up() {
-}
+expr_int_div_t::~expr_int_div_t() {}
 
 int32_t expr_int_div_t::div_neg_const() {
     if (f_div_neg_const)

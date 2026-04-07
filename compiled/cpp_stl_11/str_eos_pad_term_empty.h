@@ -24,7 +24,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~str_eos_pad_term_empty_t();
@@ -37,7 +36,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~str_pad_type_t();
@@ -59,7 +57,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~str_term_and_pad_type_t();
@@ -81,7 +78,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~str_term_include_type_t();
@@ -103,7 +99,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~str_term_type_t();

@@ -25,7 +25,5 @@ imports_circular_a_t::~imports_circular_a_t() {
 }
 
 void imports_circular_a_t::_clean_up() {
-    if (m_two) {
-        delete m_two; m_two = 0;
-    }
+    delete m_two;
 }

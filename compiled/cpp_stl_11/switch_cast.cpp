@@ -5,7 +5,6 @@
 switch_cast_t::switch_cast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_opcodes = nullptr;
     f_err_cast = false;
     f_first_obj = false;
     f_second_val = false;
@@ -23,12 +22,7 @@ void switch_cast_t::_read() {
     }
 }
 
-switch_cast_t::~switch_cast_t() {
-    _clean_up();
-}
-
-void switch_cast_t::_clean_up() {
-}
+switch_cast_t::~switch_cast_t() {}
 
 switch_cast_t::intval_t::intval_t(kaitai::kstream* p__io, switch_cast_t::opcode_t* p__parent, switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -40,12 +34,7 @@ void switch_cast_t::intval_t::_read() {
     m_value = m__io->read_u1();
 }
 
-switch_cast_t::intval_t::~intval_t() {
-    _clean_up();
-}
-
-void switch_cast_t::intval_t::_clean_up() {
-}
+switch_cast_t::intval_t::~intval_t() {}
 
 switch_cast_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_cast_t* p__parent, switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -55,29 +44,19 @@ switch_cast_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_cast_t* p__pare
 
 void switch_cast_t::opcode_t::_read() {
     m_code = m__io->read_u1();
-    n_body = true;
     switch (code()) {
     case 73: {
-        n_body = false;
         m_body = std::unique_ptr<intval_t>(new intval_t(m__io, this, m__root));
         break;
     }
     case 83: {
-        n_body = false;
         m_body = std::unique_ptr<strval_t>(new strval_t(m__io, this, m__root));
         break;
     }
     }
 }
 
-switch_cast_t::opcode_t::~opcode_t() {
-    _clean_up();
-}
-
-void switch_cast_t::opcode_t::_clean_up() {
-    if (!n_body) {
-    }
-}
+switch_cast_t::opcode_t::~opcode_t() {}
 
 switch_cast_t::strval_t::strval_t(kaitai::kstream* p__io, switch_cast_t::opcode_t* p__parent, switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -89,12 +68,7 @@ void switch_cast_t::strval_t::_read() {
     m_value = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), "ASCII");
 }
 
-switch_cast_t::strval_t::~strval_t() {
-    _clean_up();
-}
-
-void switch_cast_t::strval_t::_clean_up() {
-}
+switch_cast_t::strval_t::~strval_t() {}
 
 switch_cast_t::strval_t* switch_cast_t::err_cast() {
     if (f_err_cast)

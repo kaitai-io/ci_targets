@@ -28,13 +28,7 @@ nested_types_import_t::~nested_types_import_t() {
 }
 
 void nested_types_import_t::_clean_up() {
-    if (m_a_cc) {
-        delete m_a_cc; m_a_cc = 0;
-    }
-    if (m_a_c_d) {
-        delete m_a_c_d; m_a_c_d = 0;
-    }
-    if (m_b) {
-        delete m_b; m_b = 0;
-    }
+    delete m_a_cc;
+    delete m_a_c_d;
+    delete m_b;
 }

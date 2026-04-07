@@ -43,12 +43,8 @@ debug_enum_name_t::~debug_enum_name_t() {
 }
 
 void debug_enum_name_t::_clean_up() {
-    if (m_array_of_ints) {
-        delete m_array_of_ints; m_array_of_ints = 0;
-    }
-    if (m_test_type) {
-        delete m_test_type; m_test_type = 0;
-    }
+    delete m_array_of_ints;
+    delete m_test_type;
 }
 std::set<debug_enum_name_t::test_subtype_t::inner_enum1_t> debug_enum_name_t::test_subtype_t::_build_values_inner_enum1_t() {
     std::set<debug_enum_name_t::test_subtype_t::inner_enum1_t> _t;

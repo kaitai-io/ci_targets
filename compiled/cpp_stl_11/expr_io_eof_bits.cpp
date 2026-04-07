@@ -27,15 +27,4 @@ void expr_io_eof_bits_t::_read() {
     }
 }
 
-expr_io_eof_bits_t::~expr_io_eof_bits_t() {
-    _clean_up();
-}
-
-void expr_io_eof_bits_t::_clean_up() {
-    if (!n_bar) {
-    }
-    if (!n_baz) {
-    }
-    if (!n_qux) {
-    }
-}
+expr_io_eof_bits_t::~expr_io_eof_bits_t() {}

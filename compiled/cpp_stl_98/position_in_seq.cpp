@@ -30,14 +30,8 @@ position_in_seq_t::~position_in_seq_t() {
 }
 
 void position_in_seq_t::_clean_up() {
-    if (m_numbers) {
-        delete m_numbers; m_numbers = 0;
-    }
-    if (f_header) {
-        if (m_header) {
-            delete m_header; m_header = 0;
-        }
-    }
+    delete m_numbers;
+    delete m_header;
 }
 
 position_in_seq_t::header_obj_t::header_obj_t(kaitai::kstream* p__io, position_in_seq_t* p__parent, position_in_seq_t* p__root) : kaitai::kstruct(p__io) {

@@ -15,9 +15,4 @@ void str_pad_term_zero_size_t::_read() {
     m_str_term_include = kaitai::kstream::bytes_to_str(kaitai::kstream::bytes_terminate(m__io->read_bytes(0), 64, true), "UTF-8");
 }
 
-str_pad_term_zero_size_t::~str_pad_term_zero_size_t() {
-    _clean_up();
-}
-
-void str_pad_term_zero_size_t::_clean_up() {
-}
+str_pad_term_zero_size_t::~str_pad_term_zero_size_t() {}

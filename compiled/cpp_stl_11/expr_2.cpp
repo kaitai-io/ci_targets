@@ -5,8 +5,6 @@
 expr_2_t::expr_2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_str1 = nullptr;
-    m_str2 = nullptr;
     f_str1_avg = false;
     f_str1_byte1 = false;
     f_str1_char5 = false;
@@ -22,19 +20,11 @@ void expr_2_t::_read() {
     m_str2 = std::unique_ptr<mod_str_t>(new mod_str_t(m__io, this, m__root));
 }
 
-expr_2_t::~expr_2_t() {
-    _clean_up();
-}
-
-void expr_2_t::_clean_up() {
-}
+expr_2_t::~expr_2_t() {}
 
 expr_2_t::mod_str_t::mod_str_t(kaitai::kstream* p__io, expr_2_t* p__parent, expr_2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m_rest = nullptr;
-    m__io__raw_rest = nullptr;
-    m_tuple5 = nullptr;
     f_char5 = false;
     f_len_mod = false;
     f_tuple5 = false;
@@ -49,16 +39,7 @@ void expr_2_t::mod_str_t::_read() {
     m_rest = std::unique_ptr<tuple_t>(new tuple_t(m__io__raw_rest.get(), this, m__root));
 }
 
-expr_2_t::mod_str_t::~mod_str_t() {
-    _clean_up();
-}
-
-void expr_2_t::mod_str_t::_clean_up() {
-    if (f_char5) {
-    }
-    if (f_tuple5) {
-    }
-}
+expr_2_t::mod_str_t::~mod_str_t() {}
 
 std::string expr_2_t::mod_str_t::char5() {
     if (f_char5)
@@ -103,12 +84,7 @@ void expr_2_t::tuple_t::_read() {
     m_byte2 = m__io->read_u1();
 }
 
-expr_2_t::tuple_t::~tuple_t() {
-    _clean_up();
-}
-
-void expr_2_t::tuple_t::_clean_up() {
-}
+expr_2_t::tuple_t::~tuple_t() {}
 
 int32_t expr_2_t::tuple_t::avg() {
     if (f_avg)

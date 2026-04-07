@@ -24,7 +24,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~str_encodings_escaping_enc_t();
@@ -37,7 +36,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~str1_wrapper_t();
@@ -60,7 +58,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~str2_wrapper_t();
@@ -83,7 +80,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~str3_wrapper_t();
@@ -106,7 +102,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~str4_wrapper_t();

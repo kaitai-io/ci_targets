@@ -11,9 +11,4 @@ meta_xref_t::meta_xref_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, met
 void meta_xref_t::_read() {
 }
 
-meta_xref_t::~meta_xref_t() {
-    _clean_up();
-}
-
-void meta_xref_t::_clean_up() {
-}
+meta_xref_t::~meta_xref_t() {}

@@ -27,12 +27,8 @@ eos_exception_sized_t::~eos_exception_sized_t() {
 }
 
 void eos_exception_sized_t::_clean_up() {
-    if (m__io__raw_envelope) {
-        delete m__io__raw_envelope; m__io__raw_envelope = 0;
-    }
-    if (m_envelope) {
-        delete m_envelope; m_envelope = 0;
-    }
+    delete m__io__raw_envelope;
+    delete m_envelope;
 }
 
 eos_exception_sized_t::data_t::data_t(kaitai::kstream* p__io, eos_exception_sized_t* p__parent, eos_exception_sized_t* p__root) : kaitai::kstruct(p__io) {
@@ -60,12 +56,8 @@ eos_exception_sized_t::data_t::~data_t() {
 }
 
 void eos_exception_sized_t::data_t::_clean_up() {
-    if (m__io__raw_buf) {
-        delete m__io__raw_buf; m__io__raw_buf = 0;
-    }
-    if (m_buf) {
-        delete m_buf; m_buf = 0;
-    }
+    delete m__io__raw_buf;
+    delete m_buf;
 }
 
 eos_exception_sized_t::foo_t::foo_t(kaitai::kstream* p__io, eos_exception_sized_t::data_t* p__parent, eos_exception_sized_t* p__root) : kaitai::kstruct(p__io) {

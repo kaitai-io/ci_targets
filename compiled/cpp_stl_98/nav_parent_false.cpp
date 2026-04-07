@@ -27,12 +27,8 @@ nav_parent_false_t::~nav_parent_false_t() {
 }
 
 void nav_parent_false_t::_clean_up() {
-    if (m_element_a) {
-        delete m_element_a; m_element_a = 0;
-    }
-    if (m_element_b) {
-        delete m_element_b; m_element_b = 0;
-    }
+    delete m_element_a;
+    delete m_element_b;
 }
 
 nav_parent_false_t::child_t::child_t(kaitai::kstream* p__io, nav_parent_false_t::parent_a_t* p__parent, nav_parent_false_t* p__root) : kaitai::kstruct(p__io) {
@@ -61,8 +57,6 @@ nav_parent_false_t::child_t::~child_t() {
 }
 
 void nav_parent_false_t::child_t::_clean_up() {
-    if (!n_more) {
-    }
 }
 
 nav_parent_false_t::parent_a_t::parent_a_t(kaitai::kstream* p__io, nav_parent_false_t* p__parent, nav_parent_false_t* p__root) : kaitai::kstruct(p__io) {
@@ -89,12 +83,8 @@ nav_parent_false_t::parent_a_t::~parent_a_t() {
 }
 
 void nav_parent_false_t::parent_a_t::_clean_up() {
-    if (m_foo) {
-        delete m_foo; m_foo = 0;
-    }
-    if (m_bar) {
-        delete m_bar; m_bar = 0;
-    }
+    delete m_foo;
+    delete m_bar;
 }
 
 nav_parent_false_t::parent_b_t::parent_b_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_false_t* p__root) : kaitai::kstruct(p__io) {
@@ -119,7 +109,5 @@ nav_parent_false_t::parent_b_t::~parent_b_t() {
 }
 
 void nav_parent_false_t::parent_b_t::_clean_up() {
-    if (m_foo) {
-        delete m_foo; m_foo = 0;
-    }
+    delete m_foo;
 }

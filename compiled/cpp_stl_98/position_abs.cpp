@@ -25,11 +25,7 @@ position_abs_t::~position_abs_t() {
 }
 
 void position_abs_t::_clean_up() {
-    if (f_index) {
-        if (m_index) {
-            delete m_index; m_index = 0;
-        }
-    }
+    delete m_index;
 }
 
 position_abs_t::index_obj_t::index_obj_t(kaitai::kstream* p__io, position_abs_t* p__parent, position_abs_t* p__root) : kaitai::kstruct(p__io) {

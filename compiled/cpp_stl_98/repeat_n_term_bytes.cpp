@@ -40,13 +40,7 @@ repeat_n_term_bytes_t::~repeat_n_term_bytes_t() {
 }
 
 void repeat_n_term_bytes_t::_clean_up() {
-    if (m_records1) {
-        delete m_records1; m_records1 = 0;
-    }
-    if (m_records2) {
-        delete m_records2; m_records2 = 0;
-    }
-    if (m_records3) {
-        delete m_records3; m_records3 = 0;
-    }
+    delete m_records1;
+    delete m_records2;
+    delete m_records3;
 }

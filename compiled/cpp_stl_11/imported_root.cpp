@@ -12,9 +12,4 @@ void imported_root_t::_read() {
     m_one = m__io->read_u1();
 }
 
-imported_root_t::~imported_root_t() {
-    _clean_up();
-}
-
-void imported_root_t::_clean_up() {
-}
+imported_root_t::~imported_root_t() {}

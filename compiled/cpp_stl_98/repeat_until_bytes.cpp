@@ -33,7 +33,5 @@ repeat_until_bytes_t::~repeat_until_bytes_t() {
 }
 
 void repeat_until_bytes_t::_clean_up() {
-    if (m_records) {
-        delete m_records; m_records = 0;
-    }
+    delete m_records;
 }

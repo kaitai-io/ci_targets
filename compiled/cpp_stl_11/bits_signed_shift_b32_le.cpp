@@ -13,9 +13,4 @@ void bits_signed_shift_b32_le_t::_read() {
     m_b = m__io->read_bits_int_le(9);
 }
 
-bits_signed_shift_b32_le_t::~bits_signed_shift_b32_le_t() {
-    _clean_up();
-}
-
-void bits_signed_shift_b32_le_t::_clean_up() {
-}
+bits_signed_shift_b32_le_t::~bits_signed_shift_b32_le_t() {}

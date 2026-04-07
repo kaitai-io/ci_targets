@@ -15,12 +15,7 @@ str_literals2_t::str_literals2_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
 void str_literals2_t::_read() {
 }
 
-str_literals2_t::~str_literals2_t() {
-    _clean_up();
-}
-
-void str_literals2_t::_clean_up() {
-}
+str_literals2_t::~str_literals2_t() {}
 
 std::string str_literals2_t::at_sign() {
     if (f_at_sign)

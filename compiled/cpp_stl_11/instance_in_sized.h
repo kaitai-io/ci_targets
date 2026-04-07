@@ -24,7 +24,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~instance_in_sized_t();
@@ -37,7 +36,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~bar_t();
@@ -62,7 +60,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~baz_t();
@@ -87,7 +84,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~qux_t();
@@ -121,7 +117,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~wrapper_t();

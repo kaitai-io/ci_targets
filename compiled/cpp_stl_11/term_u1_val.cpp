@@ -13,9 +13,4 @@ void term_u1_val_t::_read() {
     m_bar = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(171, true, true, true), "UTF-8");
 }
 
-term_u1_val_t::~term_u1_val_t() {
-    _clean_up();
-}
-
-void term_u1_val_t::_clean_up() {
-}
+term_u1_val_t::~term_u1_val_t() {}

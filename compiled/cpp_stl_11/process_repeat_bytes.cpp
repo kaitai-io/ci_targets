@@ -5,8 +5,6 @@
 process_repeat_bytes_t::process_repeat_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_repeat_bytes_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_bufs = nullptr;
-    m__raw_bufs = nullptr;
     _read();
 }
 
@@ -20,9 +18,4 @@ void process_repeat_bytes_t::_read() {
     }
 }
 
-process_repeat_bytes_t::~process_repeat_bytes_t() {
-    _clean_up();
-}
-
-void process_repeat_bytes_t::_clean_up() {
-}
+process_repeat_bytes_t::~process_repeat_bytes_t() {}

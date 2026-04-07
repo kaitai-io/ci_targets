@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~switch_manual_int_else_t();
@@ -38,7 +37,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~opcode_t();
@@ -51,7 +49,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~intval_t();
@@ -73,7 +70,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~noneval_t();
@@ -95,7 +91,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~strval_t();

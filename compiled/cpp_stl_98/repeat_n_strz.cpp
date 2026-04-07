@@ -29,7 +29,5 @@ repeat_n_strz_t::~repeat_n_strz_t() {
 }
 
 void repeat_n_strz_t::_clean_up() {
-    if (m_lines) {
-        delete m_lines; m_lines = 0;
-    }
+    delete m_lines;
 }

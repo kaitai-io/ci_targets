@@ -23,7 +23,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~nav_parent_false_t();
@@ -36,7 +35,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~child_t();
@@ -66,7 +64,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~parent_a_t();
@@ -90,7 +87,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~parent_b_t();

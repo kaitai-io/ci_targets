@@ -34,7 +34,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~params_enum_t();
@@ -47,7 +46,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~with_param_t();

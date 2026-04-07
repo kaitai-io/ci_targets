@@ -14,12 +14,7 @@ expr_to_i_trailing_t::expr_to_i_trailing_t(kaitai::kstream* p__io, kaitai::kstru
 void expr_to_i_trailing_t::_read() {
 }
 
-expr_to_i_trailing_t::~expr_to_i_trailing_t() {
-    _clean_up();
-}
-
-void expr_to_i_trailing_t::_clean_up() {
-}
+expr_to_i_trailing_t::~expr_to_i_trailing_t() {}
 
 int32_t expr_to_i_trailing_t::to_i_garbage() {
     if (f_to_i_garbage)

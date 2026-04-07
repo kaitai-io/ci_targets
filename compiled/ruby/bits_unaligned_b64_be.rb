@@ -13,7 +13,7 @@ class BitsUnalignedB64Be < Kaitai::Struct::Struct
   end
 
   def _read
-    @a = @_io.read_bits_int_be(1) != 0
+    @a = (@_io.read_bits_int_be(1) != 0)
     @b = @_io.read_bits_int_be(64)
     @c = @_io.read_bits_int_be(7)
     self

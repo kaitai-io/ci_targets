@@ -20,7 +20,7 @@ class BitsSeqEndianCombo < Kaitai::Struct::Struct
     @le5 = @_io.read_bits_int_le(5)
     @le6 = @_io.read_bits_int_le(6)
     @le7 = @_io.read_bits_int_le(5)
-    @be8 = @_io.read_bits_int_be(1) != 0
+    @be8 = (@_io.read_bits_int_be(1) != 0)
     self
   end
   attr_reader :be1

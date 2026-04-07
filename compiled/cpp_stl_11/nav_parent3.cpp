@@ -5,7 +5,6 @@
 nav_parent3_t::nav_parent3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent3_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_tags = nullptr;
     f_tags = false;
     _read();
 }
@@ -15,14 +14,7 @@ void nav_parent3_t::_read() {
     m_num_tags = m__io->read_u4le();
 }
 
-nav_parent3_t::~nav_parent3_t() {
-    _clean_up();
-}
-
-void nav_parent3_t::_clean_up() {
-    if (f_tags) {
-    }
-}
+nav_parent3_t::~nav_parent3_t() {}
 
 nav_parent3_t::tag_t::tag_t(kaitai::kstream* p__io, nav_parent3_t* p__parent, nav_parent3_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -37,14 +29,7 @@ void nav_parent3_t::tag_t::_read() {
     m_num_items = m__io->read_u4le();
 }
 
-nav_parent3_t::tag_t::~tag_t() {
-    _clean_up();
-}
-
-void nav_parent3_t::tag_t::_clean_up() {
-    if (f_tag_content && !n_tag_content) {
-    }
-}
+nav_parent3_t::tag_t::~tag_t() {}
 
 nav_parent3_t::tag_t::tag_char_t::tag_char_t(kaitai::kstream* p__io, nav_parent3_t::tag_t* p__parent, nav_parent3_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -56,12 +41,7 @@ void nav_parent3_t::tag_t::tag_char_t::_read() {
     m_content = kaitai::kstream::bytes_to_str(m__io->read_bytes(_parent()->num_items()), "ASCII");
 }
 
-nav_parent3_t::tag_t::tag_char_t::~tag_char_t() {
-    _clean_up();
-}
-
-void nav_parent3_t::tag_t::tag_char_t::_clean_up() {
-}
+nav_parent3_t::tag_t::tag_char_t::~tag_char_t() {}
 
 nav_parent3_t::tag_t::tag_char_t* nav_parent3_t::tag_t::tag_content() {
     if (f_tag_content)
@@ -70,11 +50,9 @@ nav_parent3_t::tag_t::tag_char_t* nav_parent3_t::tag_t::tag_content() {
     kaitai::kstream *io = _root()->_io();
     std::streampos _pos = io->pos();
     io->seek(ofs());
-    n_tag_content = true;
     {
         std::string on = name();
         if (on == std::string("RAHC")) {
-            n_tag_content = false;
             m_tag_content = std::unique_ptr<tag_char_t>(new tag_char_t(io, this, m__root));
         }
     }

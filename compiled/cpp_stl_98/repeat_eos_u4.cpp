@@ -31,7 +31,5 @@ repeat_eos_u4_t::~repeat_eos_u4_t() {
 }
 
 void repeat_eos_u4_t::_clean_up() {
-    if (m_numbers) {
-        delete m_numbers; m_numbers = 0;
-    }
+    delete m_numbers;
 }

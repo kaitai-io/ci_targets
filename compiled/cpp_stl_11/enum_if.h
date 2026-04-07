@@ -35,7 +35,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~enum_if_t();
@@ -48,7 +47,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~arg_str_t();
@@ -72,7 +70,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~arg_tuple_t();
@@ -96,7 +93,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~operation_t();
@@ -109,17 +105,15 @@ public:
     private:
         opcodes_t m_opcode;
         std::unique_ptr<arg_tuple_t> m_arg_tuple;
-        bool n_arg_tuple;
 
     public:
-        bool _is_null_arg_tuple() { arg_tuple(); return n_arg_tuple; };
+        bool _is_null_arg_tuple() { return !arg_tuple(); };
 
     private:
         std::unique_ptr<arg_str_t> m_arg_str;
-        bool n_arg_str;
 
     public:
-        bool _is_null_arg_str() { arg_str(); return n_arg_str; };
+        bool _is_null_arg_str() { return !arg_str(); };
 
     private:
         enum_if_t* m__root;

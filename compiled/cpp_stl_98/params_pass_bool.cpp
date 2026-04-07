@@ -38,24 +38,12 @@ params_pass_bool_t::~params_pass_bool_t() {
 }
 
 void params_pass_bool_t::_clean_up() {
-    if (m_seq_b1) {
-        delete m_seq_b1; m_seq_b1 = 0;
-    }
-    if (m_seq_bool) {
-        delete m_seq_bool; m_seq_bool = 0;
-    }
-    if (m_literal_b1) {
-        delete m_literal_b1; m_literal_b1 = 0;
-    }
-    if (m_literal_bool) {
-        delete m_literal_bool; m_literal_bool = 0;
-    }
-    if (m_inst_b1) {
-        delete m_inst_b1; m_inst_b1 = 0;
-    }
-    if (m_inst_bool) {
-        delete m_inst_bool; m_inst_bool = 0;
-    }
+    delete m_seq_b1;
+    delete m_seq_bool;
+    delete m_literal_b1;
+    delete m_literal_bool;
+    delete m_inst_b1;
+    delete m_inst_bool;
 }
 
 params_pass_bool_t::param_type_b1_t::param_type_b1_t(bool p_arg, kaitai::kstream* p__io, params_pass_bool_t* p__parent, params_pass_bool_t* p__root) : kaitai::kstruct(p__io) {

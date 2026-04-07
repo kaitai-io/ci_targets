@@ -27,9 +27,4 @@ void valid_optional_id_t::_read() {
     }
 }
 
-valid_optional_id_t::~valid_optional_id_t() {
-    _clean_up();
-}
-
-void valid_optional_id_t::_clean_up() {
-}
+valid_optional_id_t::~valid_optional_id_t() {}

@@ -5,9 +5,6 @@
 nested_types3_t::nested_types3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_types3_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_a_cc = nullptr;
-    m_a_c_d = nullptr;
-    m_b = nullptr;
     _read();
 }
 
@@ -17,12 +14,7 @@ void nested_types3_t::_read() {
     m_b = std::unique_ptr<subtype_b_t>(new subtype_b_t(m__io, this, m__root));
 }
 
-nested_types3_t::~nested_types3_t() {
-    _clean_up();
-}
-
-void nested_types3_t::_clean_up() {
-}
+nested_types3_t::~nested_types3_t() {}
 
 nested_types3_t::subtype_a_t::subtype_a_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_types3_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -33,12 +25,7 @@ nested_types3_t::subtype_a_t::subtype_a_t(kaitai::kstream* p__io, kaitai::kstruc
 void nested_types3_t::subtype_a_t::_read() {
 }
 
-nested_types3_t::subtype_a_t::~subtype_a_t() {
-    _clean_up();
-}
-
-void nested_types3_t::subtype_a_t::_clean_up() {
-}
+nested_types3_t::subtype_a_t::~subtype_a_t() {}
 
 nested_types3_t::subtype_a_t::subtype_c_t::subtype_c_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_types3_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -49,12 +36,7 @@ nested_types3_t::subtype_a_t::subtype_c_t::subtype_c_t(kaitai::kstream* p__io, k
 void nested_types3_t::subtype_a_t::subtype_c_t::_read() {
 }
 
-nested_types3_t::subtype_a_t::subtype_c_t::~subtype_c_t() {
-    _clean_up();
-}
-
-void nested_types3_t::subtype_a_t::subtype_c_t::_clean_up() {
-}
+nested_types3_t::subtype_a_t::subtype_c_t::~subtype_c_t() {}
 
 nested_types3_t::subtype_a_t::subtype_c_t::subtype_d_t::subtype_d_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_types3_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -66,12 +48,7 @@ void nested_types3_t::subtype_a_t::subtype_c_t::subtype_d_t::_read() {
     m_value_d = m__io->read_s1();
 }
 
-nested_types3_t::subtype_a_t::subtype_c_t::subtype_d_t::~subtype_d_t() {
-    _clean_up();
-}
-
-void nested_types3_t::subtype_a_t::subtype_c_t::subtype_d_t::_clean_up() {
-}
+nested_types3_t::subtype_a_t::subtype_c_t::subtype_d_t::~subtype_d_t() {}
 
 nested_types3_t::subtype_a_t::subtype_cc_t::subtype_cc_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_types3_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -83,18 +60,11 @@ void nested_types3_t::subtype_a_t::subtype_cc_t::_read() {
     m_value_cc = m__io->read_s1();
 }
 
-nested_types3_t::subtype_a_t::subtype_cc_t::~subtype_cc_t() {
-    _clean_up();
-}
-
-void nested_types3_t::subtype_a_t::subtype_cc_t::_clean_up() {
-}
+nested_types3_t::subtype_a_t::subtype_cc_t::~subtype_cc_t() {}
 
 nested_types3_t::subtype_b_t::subtype_b_t(kaitai::kstream* p__io, nested_types3_t* p__parent, nested_types3_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m_a_cc = nullptr;
-    m_a_c_d = nullptr;
     _read();
 }
 
@@ -104,9 +74,4 @@ void nested_types3_t::subtype_b_t::_read() {
     m_a_c_d = std::unique_ptr<subtype_a_t::subtype_c_t::subtype_d_t>(new subtype_a_t::subtype_c_t::subtype_d_t(m__io, this, m__root));
 }
 
-nested_types3_t::subtype_b_t::~subtype_b_t() {
-    _clean_up();
-}
-
-void nested_types3_t::subtype_b_t::_clean_up() {
-}
+nested_types3_t::subtype_b_t::~subtype_b_t() {}

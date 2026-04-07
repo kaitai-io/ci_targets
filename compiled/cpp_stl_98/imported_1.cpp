@@ -25,7 +25,5 @@ imported_1_t::~imported_1_t() {
 }
 
 void imported_1_t::_clean_up() {
-    if (m_two) {
-        delete m_two; m_two = 0;
-    }
+    delete m_two;
 }

@@ -24,11 +24,7 @@ position_to_end_t::~position_to_end_t() {
 }
 
 void position_to_end_t::_clean_up() {
-    if (f_index) {
-        if (m_index) {
-            delete m_index; m_index = 0;
-        }
-    }
+    delete m_index;
 }
 
 position_to_end_t::index_obj_t::index_obj_t(kaitai::kstream* p__io, position_to_end_t* p__parent, position_to_end_t* p__root) : kaitai::kstruct(p__io) {

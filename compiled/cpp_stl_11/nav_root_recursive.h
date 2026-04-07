@@ -20,7 +20,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~nav_root_recursive_t();
@@ -35,10 +34,9 @@ private:
     uint8_t m_root_value;
     uint8_t m_value;
     std::unique_ptr<nav_root_recursive_t> m_next;
-    bool n_next;
 
 public:
-    bool _is_null_next() { next(); return n_next; };
+    bool _is_null_next() { return !next(); };
 
 private:
     nav_root_recursive_t* m__root;

@@ -15,9 +15,4 @@ void str_pad_term_equal_t::_read() {
     m_s4 = kaitai::kstream::bytes_to_str(kaitai::kstream::bytes_terminate(kaitai::kstream::bytes_strip_right(m__io->read_bytes(20), 46), 46, true), "UTF-8");
 }
 
-str_pad_term_equal_t::~str_pad_term_equal_t() {
-    _clean_up();
-}
-
-void str_pad_term_equal_t::_clean_up() {
-}
+str_pad_term_equal_t::~str_pad_term_equal_t() {}

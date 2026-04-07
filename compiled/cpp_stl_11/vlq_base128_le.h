@@ -54,7 +54,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~vlq_base128_le_t();
@@ -71,7 +70,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~group_t();

@@ -13,9 +13,4 @@ void eof_exception_u4_t::_read() {
     m_fail_int = m__io->read_u4le();
 }
 
-eof_exception_u4_t::~eof_exception_u4_t() {
-    _clean_up();
-}
-
-void eof_exception_u4_t::_clean_up() {
-}
+eof_exception_u4_t::~eof_exception_u4_t() {}

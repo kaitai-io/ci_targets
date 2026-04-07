@@ -5,8 +5,6 @@
 params_call_t::params_call_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, params_call_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_buf1 = nullptr;
-    m_buf2 = nullptr;
     _read();
 }
 
@@ -15,12 +13,7 @@ void params_call_t::_read() {
     m_buf2 = std::unique_ptr<my_str2_t>(new my_str2_t(2 + 3, true, m__io, this, m__root));
 }
 
-params_call_t::~params_call_t() {
-    _clean_up();
-}
-
-void params_call_t::_clean_up() {
-}
+params_call_t::~params_call_t() {}
 
 params_call_t::my_str1_t::my_str1_t(uint32_t p_len, kaitai::kstream* p__io, params_call_t* p__parent, params_call_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -33,12 +26,7 @@ void params_call_t::my_str1_t::_read() {
     m_body = kaitai::kstream::bytes_to_str(m__io->read_bytes(len()), "UTF-8");
 }
 
-params_call_t::my_str1_t::~my_str1_t() {
-    _clean_up();
-}
-
-void params_call_t::my_str1_t::_clean_up() {
-}
+params_call_t::my_str1_t::~my_str1_t() {}
 
 params_call_t::my_str2_t::my_str2_t(uint32_t p_len, bool p_has_trailer, kaitai::kstream* p__io, params_call_t* p__parent, params_call_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -57,11 +45,4 @@ void params_call_t::my_str2_t::_read() {
     }
 }
 
-params_call_t::my_str2_t::~my_str2_t() {
-    _clean_up();
-}
-
-void params_call_t::my_str2_t::_clean_up() {
-    if (!n_trailer) {
-    }
-}
+params_call_t::my_str2_t::~my_str2_t() {}

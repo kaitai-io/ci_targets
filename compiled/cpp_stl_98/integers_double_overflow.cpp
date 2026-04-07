@@ -34,14 +34,6 @@ integers_double_overflow_t::~integers_double_overflow_t() {
 }
 
 void integers_double_overflow_t::_clean_up() {
-    if (f_unsigned_safe_max_be) {
-    }
-    if (f_unsigned_safe_max_le) {
-    }
-    if (f_unsigned_unsafe_pos_be) {
-    }
-    if (f_unsigned_unsafe_pos_le) {
-    }
 }
 
 uint64_t integers_double_overflow_t::unsigned_safe_max_be() {

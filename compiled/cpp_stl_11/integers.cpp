@@ -60,9 +60,4 @@ void integers_t::_read() {
     m_sint64be = m__io->read_s8be();
 }
 
-integers_t::~integers_t() {
-    _clean_up();
-}
-
-void integers_t::_clean_up() {
-}
+integers_t::~integers_t() {}

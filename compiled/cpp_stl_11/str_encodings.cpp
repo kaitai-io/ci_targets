@@ -19,9 +19,4 @@ void str_encodings_t::_read() {
     m_str4 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_4()), "IBM437");
 }
 
-str_encodings_t::~str_encodings_t() {
-    _clean_up();
-}
-
-void str_encodings_t::_clean_up() {
-}
+str_encodings_t::~str_encodings_t() {}

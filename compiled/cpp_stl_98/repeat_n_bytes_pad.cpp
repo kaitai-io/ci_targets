@@ -28,7 +28,5 @@ repeat_n_bytes_pad_t::~repeat_n_bytes_pad_t() {
 }
 
 void repeat_n_bytes_pad_t::_clean_up() {
-    if (m_records) {
-        delete m_records; m_records = 0;
-    }
+    delete m_records;
 }

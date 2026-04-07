@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~instance_user_array_t();
@@ -35,7 +34,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~entry_t();
@@ -64,10 +62,9 @@ public:
 private:
     bool f_user_entries;
     std::unique_ptr<std::vector<std::unique_ptr<entry_t>>> m_user_entries;
-    bool n_user_entries;
 
 public:
-    bool _is_null_user_entries() { user_entries(); return n_user_entries; };
+    bool _is_null_user_entries() { return !user_entries(); };
 
 private:
     uint32_t m_ofs;
@@ -76,10 +73,9 @@ private:
     instance_user_array_t* m__root;
     kaitai::kstruct* m__parent;
     std::unique_ptr<std::vector<std::string>> m__raw_user_entries;
-    bool n__raw_user_entries;
 
 public:
-    bool _is_null__raw_user_entries() { _raw_user_entries(); return n__raw_user_entries; };
+    bool _is_null__raw_user_entries() { return !_raw_user_entries(); };
 
 private:
     std::unique_ptr<std::vector<std::unique_ptr<kaitai::kstream>>> m__io__raw_user_entries;

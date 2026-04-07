@@ -13,7 +13,6 @@ bool enum_to_i_class_border_1_t::_is_defined_animal_t(enum_to_i_class_border_1_t
 enum_to_i_class_border_1_t::enum_to_i_class_border_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_to_i_class_border_1_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_checker = nullptr;
     f_checker = false;
     f_some_dog = false;
     _read();
@@ -24,14 +23,7 @@ void enum_to_i_class_border_1_t::_read() {
     m_pet_2 = static_cast<enum_to_i_class_border_1_t::animal_t>(m__io->read_u4le());
 }
 
-enum_to_i_class_border_1_t::~enum_to_i_class_border_1_t() {
-    _clean_up();
-}
-
-void enum_to_i_class_border_1_t::_clean_up() {
-    if (f_checker) {
-    }
-}
+enum_to_i_class_border_1_t::~enum_to_i_class_border_1_t() {}
 
 enum_to_i_class_border_2_t* enum_to_i_class_border_1_t::checker() {
     if (f_checker)

@@ -13,9 +13,4 @@ void enum_import_seq_t::_read() {
     m_pet_2 = static_cast<enum_deep_t::container1_t::container2_t::animal_t>(m__io->read_u4le());
 }
 
-enum_import_seq_t::~enum_import_seq_t() {
-    _clean_up();
-}
-
-void enum_import_seq_t::_clean_up() {
-}
+enum_import_seq_t::~enum_import_seq_t() {}

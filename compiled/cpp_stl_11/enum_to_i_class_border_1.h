@@ -34,7 +34,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~enum_to_i_class_border_1_t();

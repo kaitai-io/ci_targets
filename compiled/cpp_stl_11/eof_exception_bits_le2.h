@@ -18,11 +18,6 @@ public:
 
     eof_exception_bits_le2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, eof_exception_bits_le2_t* p__root = nullptr);
     void _read();
-
-private:
-    void _clean_up();
-
-public:
     ~eof_exception_bits_le2_t();
     uint64_t pre_bits() const { return m_pre_bits; }
     uint64_t fail_bits() const { return m_fail_bits; }

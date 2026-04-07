@@ -34,7 +34,5 @@ repeat_until_s4_t::~repeat_until_s4_t() {
 }
 
 void repeat_until_s4_t::_clean_up() {
-    if (m_entries) {
-        delete m_entries; m_entries = 0;
-    }
+    delete m_entries;
 }

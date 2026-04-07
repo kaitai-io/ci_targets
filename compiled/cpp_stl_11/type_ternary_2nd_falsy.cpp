@@ -5,9 +5,6 @@
 type_ternary_2nd_falsy_t::type_ternary_2nd_falsy_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, type_ternary_2nd_falsy_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_ut = nullptr;
-    m_int_array = nullptr;
-    m_int_array_empty = nullptr;
     f_null_ut = false;
     f_t = false;
     f_v_false = false;
@@ -37,12 +34,7 @@ void type_ternary_2nd_falsy_t::_read() {
     }
 }
 
-type_ternary_2nd_falsy_t::~type_ternary_2nd_falsy_t() {
-    _clean_up();
-}
-
-void type_ternary_2nd_falsy_t::_clean_up() {
-}
+type_ternary_2nd_falsy_t::~type_ternary_2nd_falsy_t() {}
 
 type_ternary_2nd_falsy_t::foo_t::foo_t(kaitai::kstream* p__io, type_ternary_2nd_falsy_t* p__parent, type_ternary_2nd_falsy_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -54,20 +46,13 @@ void type_ternary_2nd_falsy_t::foo_t::_read() {
     m_m = m__io->read_u1();
 }
 
-type_ternary_2nd_falsy_t::foo_t::~foo_t() {
-    _clean_up();
-}
-
-void type_ternary_2nd_falsy_t::foo_t::_clean_up() {
-}
+type_ternary_2nd_falsy_t::foo_t::~foo_t() {}
 
 type_ternary_2nd_falsy_t::foo_t* type_ternary_2nd_falsy_t::null_ut() {
     if (f_null_ut)
         return m_null_ut;
     f_null_ut = true;
-    n_null_ut = true;
     if (false) {
-        n_null_ut = false;
         m_null_ut = ut();
     }
     return m_null_ut;

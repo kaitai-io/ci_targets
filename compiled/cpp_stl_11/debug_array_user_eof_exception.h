@@ -20,11 +20,6 @@ public:
 
     debug_array_user_eof_exception_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, debug_array_user_eof_exception_t* p__root = nullptr);
     void _read();
-
-private:
-    void _clean_up();
-
-public:
     ~debug_array_user_eof_exception_t();
 
     class cat_t : public kaitai::kstruct {
@@ -33,11 +28,6 @@ public:
 
         cat_t(kaitai::kstream* p__io, debug_array_user_eof_exception_t* p__parent = nullptr, debug_array_user_eof_exception_t* p__root = nullptr);
         void _read();
-
-    private:
-        void _clean_up();
-
-    public:
         ~cat_t();
         uint8_t meow() const { return m_meow; }
         uint8_t chirp() const { return m_chirp; }

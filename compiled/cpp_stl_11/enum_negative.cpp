@@ -20,9 +20,4 @@ void enum_negative_t::_read() {
     m_f2 = static_cast<enum_negative_t::constants_t>(m__io->read_s1());
 }
 
-enum_negative_t::~enum_negative_t() {
-    _clean_up();
-}
-
-void enum_negative_t::_clean_up() {
-}
+enum_negative_t::~enum_negative_t() {}

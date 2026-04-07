@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~integers_min_max_t();
@@ -35,7 +34,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~signed_t();
@@ -69,7 +67,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~unsigned_t();

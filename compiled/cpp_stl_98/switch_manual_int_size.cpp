@@ -35,13 +35,14 @@ void switch_manual_int_size_t::_clean_up() {
         for (std::vector<chunk_t*>::iterator it = m_chunks->begin(); it != m_chunks->end(); ++it) {
             delete *it;
         }
-        delete m_chunks; m_chunks = 0;
+        delete m_chunks;
     }
 }
 
 switch_manual_int_size_t::chunk_t::chunk_t(kaitai::kstream* p__io, switch_manual_int_size_t* p__parent, switch_manual_int_size_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
+    m_body = 0;
     m__io__raw_body = 0;
 
     try {
@@ -55,17 +56,14 @@ switch_manual_int_size_t::chunk_t::chunk_t(kaitai::kstream* p__io, switch_manual
 void switch_manual_int_size_t::chunk_t::_read() {
     m_code = m__io->read_u1();
     m_size = m__io->read_u4le();
-    n_body = true;
     switch (code()) {
     case 17: {
-        n_body = false;
         m__raw_body = m__io->read_bytes(size());
         m__io__raw_body = new kaitai::kstream(m__raw_body);
         m_body = new chunk_meta_t(m__io__raw_body, this, m__root);
         break;
     }
     case 34: {
-        n_body = false;
         m__raw_body = m__io->read_bytes(size());
         m__io__raw_body = new kaitai::kstream(m__raw_body);
         m_body = new chunk_dir_t(m__io__raw_body, this, m__root);
@@ -83,14 +81,8 @@ switch_manual_int_size_t::chunk_t::~chunk_t() {
 }
 
 void switch_manual_int_size_t::chunk_t::_clean_up() {
-    if (!n_body) {
-        if (m__io__raw_body) {
-            delete m__io__raw_body; m__io__raw_body = 0;
-        }
-        if (m_body) {
-            delete m_body; m_body = 0;
-        }
-    }
+    delete m__io__raw_body;
+    delete m_body;
 }
 
 switch_manual_int_size_t::chunk_t::chunk_dir_t::chunk_dir_t(kaitai::kstream* p__io, switch_manual_int_size_t::chunk_t* p__parent, switch_manual_int_size_t* p__root) : kaitai::kstruct(p__io) {
@@ -122,9 +114,7 @@ switch_manual_int_size_t::chunk_t::chunk_dir_t::~chunk_dir_t() {
 }
 
 void switch_manual_int_size_t::chunk_t::chunk_dir_t::_clean_up() {
-    if (m_entries) {
-        delete m_entries; m_entries = 0;
-    }
+    delete m_entries;
 }
 
 switch_manual_int_size_t::chunk_t::chunk_meta_t::chunk_meta_t(kaitai::kstream* p__io, switch_manual_int_size_t::chunk_t* p__parent, switch_manual_int_size_t* p__root) : kaitai::kstruct(p__io) {

@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~nested_types2_t();
@@ -37,7 +36,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~subtype_a_t();
@@ -51,7 +49,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~subtype_c_t();
@@ -64,7 +61,6 @@ public:
 
             private:
                 void _read();
-                void _clean_up();
 
             public:
                 ~subtype_d_t();
@@ -103,7 +99,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~subtype_cc_t();
@@ -140,7 +135,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~subtype_b_t();

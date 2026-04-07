@@ -24,9 +24,7 @@ default_endian_mod_t::~default_endian_mod_t() {
 }
 
 void default_endian_mod_t::_clean_up() {
-    if (m_main) {
-        delete m_main; m_main = 0;
-    }
+    delete m_main;
 }
 
 default_endian_mod_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, default_endian_mod_t* p__parent, default_endian_mod_t* p__root) : kaitai::kstruct(p__io) {
@@ -54,12 +52,8 @@ default_endian_mod_t::main_obj_t::~main_obj_t() {
 }
 
 void default_endian_mod_t::main_obj_t::_clean_up() {
-    if (m_nest) {
-        delete m_nest; m_nest = 0;
-    }
-    if (m_nest_be) {
-        delete m_nest_be; m_nest_be = 0;
-    }
+    delete m_nest;
+    delete m_nest_be;
 }
 
 default_endian_mod_t::main_obj_t::subnest_t::subnest_t(kaitai::kstream* p__io, default_endian_mod_t::main_obj_t* p__parent, default_endian_mod_t* p__root) : kaitai::kstruct(p__io) {

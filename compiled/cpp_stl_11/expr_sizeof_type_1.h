@@ -21,7 +21,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~expr_sizeof_type_1_t();
@@ -35,7 +34,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~block_t();
@@ -48,7 +46,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~subblock_t();

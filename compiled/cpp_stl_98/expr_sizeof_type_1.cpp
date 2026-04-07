@@ -51,9 +51,7 @@ expr_sizeof_type_1_t::block_t::~block_t() {
 }
 
 void expr_sizeof_type_1_t::block_t::_clean_up() {
-    if (m_d) {
-        delete m_d; m_d = 0;
-    }
+    delete m_d;
 }
 
 expr_sizeof_type_1_t::block_t::subblock_t::subblock_t(kaitai::kstream* p__io, expr_sizeof_type_1_t::block_t* p__parent, expr_sizeof_type_1_t* p__root) : kaitai::kstruct(p__io) {

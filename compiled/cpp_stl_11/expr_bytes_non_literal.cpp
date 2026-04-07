@@ -14,12 +14,7 @@ void expr_bytes_non_literal_t::_read() {
     m_two = m__io->read_u1();
 }
 
-expr_bytes_non_literal_t::~expr_bytes_non_literal_t() {
-    _clean_up();
-}
-
-void expr_bytes_non_literal_t::_clean_up() {
-}
+expr_bytes_non_literal_t::~expr_bytes_non_literal_t() {}
 
 std::string expr_bytes_non_literal_t::calc_bytes() {
     if (f_calc_bytes)

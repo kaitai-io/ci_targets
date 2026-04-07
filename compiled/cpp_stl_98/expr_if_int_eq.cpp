@@ -41,8 +41,6 @@ expr_if_int_eq_t::~expr_if_int_eq_t() {
 }
 
 void expr_if_int_eq_t::_clean_up() {
-    if (!n_seq_if) {
-    }
 }
 
 int32_t expr_if_int_eq_t::calc() {

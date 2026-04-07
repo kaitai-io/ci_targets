@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~enum_deep_t();
@@ -48,7 +47,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~container1_t();
@@ -73,7 +71,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~container2_t();

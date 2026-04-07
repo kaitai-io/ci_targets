@@ -21,7 +21,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~io_local_var_t();
@@ -34,7 +33,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~dummy_t();
@@ -59,10 +57,9 @@ public:
 private:
     bool f_mess_up;
     std::unique_ptr<dummy_t> m_mess_up;
-    bool n_mess_up;
 
 public:
-    bool _is_null_mess_up() { mess_up(); return n_mess_up; };
+    bool _is_null_mess_up() { return !mess_up(); };
 
 private:
     std::string m_skip;

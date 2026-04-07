@@ -34,9 +34,7 @@ void imports_params_def_array_usertype_imported_t::_clean_up() {
         for (std::vector<hello_world_t*>::iterator it = m_hws->begin(); it != m_hws->end(); ++it) {
             delete *it;
         }
-        delete m_hws; m_hws = 0;
+        delete m_hws;
     }
-    if (m_two) {
-        delete m_two; m_two = 0;
-    }
+    delete m_two;
 }

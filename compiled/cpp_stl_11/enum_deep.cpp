@@ -13,12 +13,7 @@ void enum_deep_t::_read() {
     m_pet_2 = static_cast<enum_deep_t::container1_t::container2_t::animal_t>(m__io->read_u4le());
 }
 
-enum_deep_t::~enum_deep_t() {
-    _clean_up();
-}
-
-void enum_deep_t::_clean_up() {
-}
+enum_deep_t::~enum_deep_t() {}
 const std::set<enum_deep_t::container1_t::animal_t> enum_deep_t::container1_t::_values_animal_t{
     enum_deep_t::container1_t::ANIMAL_DOG,
     enum_deep_t::container1_t::ANIMAL_CAT,
@@ -37,12 +32,7 @@ enum_deep_t::container1_t::container1_t(kaitai::kstream* p__io, kaitai::kstruct*
 void enum_deep_t::container1_t::_read() {
 }
 
-enum_deep_t::container1_t::~container1_t() {
-    _clean_up();
-}
-
-void enum_deep_t::container1_t::_clean_up() {
-}
+enum_deep_t::container1_t::~container1_t() {}
 const std::set<enum_deep_t::container1_t::container2_t::animal_t> enum_deep_t::container1_t::container2_t::_values_animal_t{
     enum_deep_t::container1_t::container2_t::ANIMAL_CANARY,
     enum_deep_t::container1_t::container2_t::ANIMAL_TURTLE,
@@ -61,9 +51,4 @@ enum_deep_t::container1_t::container2_t::container2_t(kaitai::kstream* p__io, ka
 void enum_deep_t::container1_t::container2_t::_read() {
 }
 
-enum_deep_t::container1_t::container2_t::~container2_t() {
-    _clean_up();
-}
-
-void enum_deep_t::container1_t::container2_t::_clean_up() {
-}
+enum_deep_t::container1_t::container2_t::~container2_t() {}

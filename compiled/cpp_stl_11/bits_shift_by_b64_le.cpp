@@ -13,9 +13,4 @@ void bits_shift_by_b64_le_t::_read() {
     m_b = m__io->read_bits_int_le(8);
 }
 
-bits_shift_by_b64_le_t::~bits_shift_by_b64_le_t() {
-    _clean_up();
-}
-
-void bits_shift_by_b64_le_t::_clean_up() {
-}
+bits_shift_by_b64_le_t::~bits_shift_by_b64_le_t() {}

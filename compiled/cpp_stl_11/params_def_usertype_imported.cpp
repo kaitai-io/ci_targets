@@ -14,12 +14,7 @@ params_def_usertype_imported_t::params_def_usertype_imported_t(hello_world_t* p_
 void params_def_usertype_imported_t::_read() {
 }
 
-params_def_usertype_imported_t::~params_def_usertype_imported_t() {
-    _clean_up();
-}
-
-void params_def_usertype_imported_t::_clean_up() {
-}
+params_def_usertype_imported_t::~params_def_usertype_imported_t() {}
 
 uint8_t params_def_usertype_imported_t::hw_one() {
     if (f_hw_one)

@@ -38,11 +38,7 @@ expr_if_int_ops_t::~expr_if_int_ops_t() {
 }
 
 void expr_if_int_ops_t::_clean_up() {
-    if (!n_key) {
-    }
-    if (m_items) {
-        delete m_items; m_items = 0;
-    }
+    delete m_items;
 }
 
 uint8_t expr_if_int_ops_t::bytes_sub_key() {

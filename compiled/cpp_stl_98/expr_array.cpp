@@ -56,15 +56,9 @@ expr_array_t::~expr_array_t() {
 }
 
 void expr_array_t::_clean_up() {
-    if (m_aint) {
-        delete m_aint; m_aint = 0;
-    }
-    if (m_afloat) {
-        delete m_afloat; m_afloat = 0;
-    }
-    if (m_astr) {
-        delete m_astr; m_astr = 0;
-    }
+    delete m_aint;
+    delete m_afloat;
+    delete m_astr;
 }
 
 double expr_array_t::afloat_first() {

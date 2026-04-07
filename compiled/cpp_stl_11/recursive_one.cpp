@@ -10,39 +10,27 @@ recursive_one_t::recursive_one_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
 
 void recursive_one_t::_read() {
     m_one = m__io->read_u1();
-    n_next = true;
     switch (one() & 3) {
     case 0: {
-        n_next = false;
         m_next = std::unique_ptr<recursive_one_t>(new recursive_one_t(m__io, this, m__root));
         break;
     }
     case 1: {
-        n_next = false;
         m_next = std::unique_ptr<recursive_one_t>(new recursive_one_t(m__io, this, m__root));
         break;
     }
     case 2: {
-        n_next = false;
         m_next = std::unique_ptr<recursive_one_t>(new recursive_one_t(m__io, this, m__root));
         break;
     }
     case 3: {
-        n_next = false;
         m_next = std::unique_ptr<fini_t>(new fini_t(m__io, this, m__root));
         break;
     }
     }
 }
 
-recursive_one_t::~recursive_one_t() {
-    _clean_up();
-}
-
-void recursive_one_t::_clean_up() {
-    if (!n_next) {
-    }
-}
+recursive_one_t::~recursive_one_t() {}
 
 recursive_one_t::fini_t::fini_t(kaitai::kstream* p__io, recursive_one_t* p__parent, recursive_one_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -54,9 +42,4 @@ void recursive_one_t::fini_t::_read() {
     m_finisher = m__io->read_u2le();
 }
 
-recursive_one_t::fini_t::~fini_t() {
-    _clean_up();
-}
-
-void recursive_one_t::fini_t::_clean_up() {
-}
+recursive_one_t::fini_t::~fini_t() {}

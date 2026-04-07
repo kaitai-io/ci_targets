@@ -5,7 +5,6 @@
 repeat_eos_bits_b4_t::repeat_eos_bits_b4_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_eos_bits_b4_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_nibbles = nullptr;
     _read();
 }
 
@@ -20,9 +19,4 @@ void repeat_eos_bits_b4_t::_read() {
     }
 }
 
-repeat_eos_bits_b4_t::~repeat_eos_bits_b4_t() {
-    _clean_up();
-}
-
-void repeat_eos_bits_b4_t::_clean_up() {
-}
+repeat_eos_bits_b4_t::~repeat_eos_bits_b4_t() {}

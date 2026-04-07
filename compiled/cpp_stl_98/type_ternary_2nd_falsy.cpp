@@ -48,15 +48,9 @@ type_ternary_2nd_falsy_t::~type_ternary_2nd_falsy_t() {
 }
 
 void type_ternary_2nd_falsy_t::_clean_up() {
-    if (m_ut) {
-        delete m_ut; m_ut = 0;
-    }
-    if (m_int_array) {
-        delete m_int_array; m_int_array = 0;
-    }
-    if (m_int_array_empty) {
-        delete m_int_array_empty; m_int_array_empty = 0;
-    }
+    delete m_ut;
+    delete m_int_array;
+    delete m_int_array_empty;
 }
 
 type_ternary_2nd_falsy_t::foo_t::foo_t(kaitai::kstream* p__io, type_ternary_2nd_falsy_t* p__parent, type_ternary_2nd_falsy_t* p__root) : kaitai::kstruct(p__io) {
@@ -86,9 +80,7 @@ type_ternary_2nd_falsy_t::foo_t* type_ternary_2nd_falsy_t::null_ut() {
     if (f_null_ut)
         return m_null_ut;
     f_null_ut = true;
-    n_null_ut = true;
     if (false) {
-        n_null_ut = false;
         m_null_ut = ut();
     }
     return m_null_ut;

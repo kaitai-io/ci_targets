@@ -19,9 +19,4 @@ void bits_seq_endian_combo_t::_read() {
     m_be8 = m__io->read_bits_int_be(1);
 }
 
-bits_seq_endian_combo_t::~bits_seq_endian_combo_t() {
-    _clean_up();
-}
-
-void bits_seq_endian_combo_t::_clean_up() {
-}
+bits_seq_endian_combo_t::~bits_seq_endian_combo_t() {}

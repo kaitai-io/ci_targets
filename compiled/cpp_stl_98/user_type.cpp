@@ -24,9 +24,7 @@ user_type_t::~user_type_t() {
 }
 
 void user_type_t::_clean_up() {
-    if (m_one) {
-        delete m_one; m_one = 0;
-    }
+    delete m_one;
 }
 
 user_type_t::header_t::header_t(kaitai::kstream* p__io, user_type_t* p__parent, user_type_t* p__root) : kaitai::kstruct(p__io) {

@@ -25,8 +25,6 @@ docstrings_t::~docstrings_t() {
 }
 
 void docstrings_t::_clean_up() {
-    if (f_two) {
-    }
 }
 
 docstrings_t::complex_subtype_t::complex_subtype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, docstrings_t* p__root) : kaitai::kstruct(p__io) {

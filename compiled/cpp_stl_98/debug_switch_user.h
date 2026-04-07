@@ -80,10 +80,9 @@ public:
 private:
     uint8_t m_code;
     kaitai::kstruct* m_data;
-    bool n_data;
 
 public:
-    bool _is_null_data() { data(); return n_data; };
+    bool _is_null_data() { return !data(); };
 
 private:
     debug_switch_user_t* m__root;

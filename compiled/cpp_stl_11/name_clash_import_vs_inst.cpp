@@ -5,7 +5,6 @@
 name_clash_import_vs_inst_t::name_clash_import_vs_inst_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, name_clash_import_vs_inst_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_integers = nullptr;
     f_integers = false;
     f_std = false;
     _read();
@@ -14,14 +13,7 @@ name_clash_import_vs_inst_t::name_clash_import_vs_inst_t(kaitai::kstream* p__io,
 void name_clash_import_vs_inst_t::_read() {
 }
 
-name_clash_import_vs_inst_t::~name_clash_import_vs_inst_t() {
-    _clean_up();
-}
-
-void name_clash_import_vs_inst_t::_clean_up() {
-    if (f_integers) {
-    }
-}
+name_clash_import_vs_inst_t::~name_clash_import_vs_inst_t() {}
 
 integers_t* name_clash_import_vs_inst_t::integers() {
     if (f_integers)

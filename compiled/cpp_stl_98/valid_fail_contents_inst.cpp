@@ -29,10 +29,6 @@ valid_fail_contents_inst_t::~valid_fail_contents_inst_t() {
 }
 
 void valid_fail_contents_inst_t::_clean_up() {
-    if (!n_a) {
-    }
-    if (f_foo) {
-    }
 }
 
 std::string valid_fail_contents_inst_t::foo() {

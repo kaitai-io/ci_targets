@@ -6,7 +6,6 @@
 default_endian_expr_is_be_t::default_endian_expr_is_be_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, default_endian_expr_is_be_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_docs = nullptr;
     _read();
 }
 
@@ -21,17 +20,11 @@ void default_endian_expr_is_be_t::_read() {
     }
 }
 
-default_endian_expr_is_be_t::~default_endian_expr_is_be_t() {
-    _clean_up();
-}
-
-void default_endian_expr_is_be_t::_clean_up() {
-}
+default_endian_expr_is_be_t::~default_endian_expr_is_be_t() {}
 
 default_endian_expr_is_be_t::doc_t::doc_t(kaitai::kstream* p__io, default_endian_expr_is_be_t* p__parent, default_endian_expr_is_be_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m_main = nullptr;
     _read();
 }
 
@@ -40,18 +33,12 @@ void default_endian_expr_is_be_t::doc_t::_read() {
     m_main = std::unique_ptr<main_obj_t>(new main_obj_t(m__io, this, m__root));
 }
 
-default_endian_expr_is_be_t::doc_t::~doc_t() {
-    _clean_up();
-}
-
-void default_endian_expr_is_be_t::doc_t::_clean_up() {
-}
+default_endian_expr_is_be_t::doc_t::~doc_t() {}
 
 default_endian_expr_is_be_t::doc_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, default_endian_expr_is_be_t::doc_t* p__parent, default_endian_expr_is_be_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     m__is_le = -1;
-    m_inst_sub = nullptr;
     f_inst_int = false;
     f_inst_sub = false;
     _read();
@@ -89,16 +76,7 @@ void default_endian_expr_is_be_t::doc_t::main_obj_t::_read_be() {
     m_some_int_le = m__io->read_u2le();
 }
 
-default_endian_expr_is_be_t::doc_t::main_obj_t::~main_obj_t() {
-    _clean_up();
-}
-
-void default_endian_expr_is_be_t::doc_t::main_obj_t::_clean_up() {
-    if (f_inst_int) {
-    }
-    if (f_inst_sub) {
-    }
-}
+default_endian_expr_is_be_t::doc_t::main_obj_t::~main_obj_t() {}
 
 default_endian_expr_is_be_t::doc_t::main_obj_t::sub_main_obj_t::sub_main_obj_t(kaitai::kstream* p__io, default_endian_expr_is_be_t::doc_t::main_obj_t* p__parent, default_endian_expr_is_be_t* p__root, int p_is_le) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -126,12 +104,7 @@ void default_endian_expr_is_be_t::doc_t::main_obj_t::sub_main_obj_t::_read_be() 
     m_foo = m__io->read_u4be();
 }
 
-default_endian_expr_is_be_t::doc_t::main_obj_t::sub_main_obj_t::~sub_main_obj_t() {
-    _clean_up();
-}
-
-void default_endian_expr_is_be_t::doc_t::main_obj_t::sub_main_obj_t::_clean_up() {
-}
+default_endian_expr_is_be_t::doc_t::main_obj_t::sub_main_obj_t::~sub_main_obj_t() {}
 
 uint32_t default_endian_expr_is_be_t::doc_t::main_obj_t::inst_int() {
     if (f_inst_int)

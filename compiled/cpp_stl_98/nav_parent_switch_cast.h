@@ -122,10 +122,9 @@ public:
         uint8_t m_buf_type;
         uint8_t m_flag;
         kaitai::kstruct* m_buf;
-        bool n_buf;
 
     public:
-        bool _is_null_buf() { buf(); return n_buf; };
+        bool _is_null_buf() { return !buf(); };
 
     private:
         nav_parent_switch_cast_t* m__root;

@@ -5,8 +5,6 @@
 bits_byte_aligned_t::bits_byte_aligned_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, bits_byte_aligned_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_byte_3 = nullptr;
-    m__io__raw_byte_3 = nullptr;
     _read();
 }
 
@@ -27,12 +25,7 @@ void bits_byte_aligned_t::_read() {
     m_six = m__io->read_bits_int_be(8);
 }
 
-bits_byte_aligned_t::~bits_byte_aligned_t() {
-    _clean_up();
-}
-
-void bits_byte_aligned_t::_clean_up() {
-}
+bits_byte_aligned_t::~bits_byte_aligned_t() {}
 
 bits_byte_aligned_t::foo_t::foo_t(kaitai::kstream* p__io, bits_byte_aligned_t* p__parent, bits_byte_aligned_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -44,9 +37,4 @@ void bits_byte_aligned_t::foo_t::_read() {
     m_inner = m__io->read_bits_int_be(19);
 }
 
-bits_byte_aligned_t::foo_t::~foo_t() {
-    _clean_up();
-}
-
-void bits_byte_aligned_t::foo_t::_clean_up() {
-}
+bits_byte_aligned_t::foo_t::~foo_t() {}

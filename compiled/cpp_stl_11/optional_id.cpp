@@ -14,9 +14,4 @@ void optional_id_t::_read() {
     m__unnamed2 = m__io->read_bytes(5);
 }
 
-optional_id_t::~optional_id_t() {
-    _clean_up();
-}
-
-void optional_id_t::_clean_up() {
-}
+optional_id_t::~optional_id_t() {}

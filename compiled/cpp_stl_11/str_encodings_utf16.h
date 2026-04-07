@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~str_encodings_utf16_t();
@@ -35,7 +34,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~str_be_bom_removed_t();
@@ -59,7 +57,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~str_le_bom_removed_t();

@@ -18,9 +18,7 @@ nav_parent_recursive_t::nav_parent_recursive_t(kaitai::kstream* p__io, kaitai::k
 
 void nav_parent_recursive_t::_read() {
     m_value = m__io->read_u1();
-    n_next = true;
     if (value() == 255) {
-        n_next = false;
         m_next = new nav_parent_recursive_t(m__io, this, m__root);
     }
 }
@@ -30,11 +28,7 @@ nav_parent_recursive_t::~nav_parent_recursive_t() {
 }
 
 void nav_parent_recursive_t::_clean_up() {
-    if (!n_next) {
-        if (m_next) {
-            delete m_next; m_next = 0;
-        }
-    }
+    delete m_next;
 }
 
 uint8_t nav_parent_recursive_t::parent_value() {

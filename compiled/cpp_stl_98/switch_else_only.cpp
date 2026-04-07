@@ -5,6 +5,7 @@
 switch_else_only_t::switch_else_only_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_else_only_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
+    m_ut = 0;
 
     try {
         _read();
@@ -26,9 +27,7 @@ switch_else_only_t::~switch_else_only_t() {
 }
 
 void switch_else_only_t::_clean_up() {
-    if (m_ut) {
-        delete m_ut; m_ut = 0;
-    }
+    delete m_ut;
 }
 
 switch_else_only_t::data_t::data_t(kaitai::kstream* p__io, switch_else_only_t* p__parent, switch_else_only_t* p__root) : kaitai::kstruct(p__io) {

@@ -24,12 +24,7 @@ void expr_bytes_cmp_t::_read() {
     m_two = m__io->read_bytes(3);
 }
 
-expr_bytes_cmp_t::~expr_bytes_cmp_t() {
-    _clean_up();
-}
-
-void expr_bytes_cmp_t::_clean_up() {
-}
+expr_bytes_cmp_t::~expr_bytes_cmp_t() {}
 
 std::string expr_bytes_cmp_t::ack() {
     if (f_ack)

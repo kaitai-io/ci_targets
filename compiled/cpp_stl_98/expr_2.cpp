@@ -33,12 +33,8 @@ expr_2_t::~expr_2_t() {
 }
 
 void expr_2_t::_clean_up() {
-    if (m_str1) {
-        delete m_str1; m_str1 = 0;
-    }
-    if (m_str2) {
-        delete m_str2; m_str2 = 0;
-    }
+    delete m_str1;
+    delete m_str2;
 }
 
 expr_2_t::mod_str_t::mod_str_t(kaitai::kstream* p__io, expr_2_t* p__parent, expr_2_t* p__root) : kaitai::kstruct(p__io) {
@@ -72,19 +68,9 @@ expr_2_t::mod_str_t::~mod_str_t() {
 }
 
 void expr_2_t::mod_str_t::_clean_up() {
-    if (m__io__raw_rest) {
-        delete m__io__raw_rest; m__io__raw_rest = 0;
-    }
-    if (m_rest) {
-        delete m_rest; m_rest = 0;
-    }
-    if (f_char5) {
-    }
-    if (f_tuple5) {
-        if (m_tuple5) {
-            delete m_tuple5; m_tuple5 = 0;
-        }
-    }
+    delete m__io__raw_rest;
+    delete m_rest;
+    delete m_tuple5;
 }
 
 std::string expr_2_t::mod_str_t::char5() {

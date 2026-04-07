@@ -21,7 +21,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~nested_type_param_t();
@@ -35,7 +34,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~nested_t();
@@ -48,7 +46,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~my_type_t();

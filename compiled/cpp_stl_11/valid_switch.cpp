@@ -29,9 +29,4 @@ void valid_switch_t::_read() {
     }
 }
 
-valid_switch_t::~valid_switch_t() {
-    _clean_up();
-}
-
-void valid_switch_t::_clean_up() {
-}
+valid_switch_t::~valid_switch_t() {}

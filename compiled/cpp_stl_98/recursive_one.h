@@ -57,10 +57,9 @@ public:
 private:
     uint8_t m_one;
     kaitai::kstruct* m_next;
-    bool n_next;
 
 public:
-    bool _is_null_next() { next(); return n_next; };
+    bool _is_null_next() { return !next(); };
 
 private:
     recursive_one_t* m__root;

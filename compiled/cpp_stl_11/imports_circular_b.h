@@ -21,7 +21,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~imports_circular_b_t();
@@ -33,10 +32,9 @@ public:
 private:
     uint8_t m_initial;
     std::unique_ptr<imports_circular_a_t> m_back_ref;
-    bool n_back_ref;
 
 public:
-    bool _is_null_back_ref() { back_ref(); return n_back_ref; };
+    bool _is_null_back_ref() { return !back_ref(); };
 
 private:
     imports_circular_b_t* m__root;

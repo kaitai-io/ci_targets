@@ -14,9 +14,4 @@ void process_xor4_value_t::_read() {
     m_buf = kaitai::kstream::process_xor_many(m__raw_buf, key());
 }
 
-process_xor4_value_t::~process_xor4_value_t() {
-    _clean_up();
-}
-
-void process_xor4_value_t::_clean_up() {
-}
+process_xor4_value_t::~process_xor4_value_t() {}

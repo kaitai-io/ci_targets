@@ -21,12 +21,7 @@ void combine_bytes_t::_read() {
     m_bytes_eos = m__io->read_bytes_full();
 }
 
-combine_bytes_t::~combine_bytes_t() {
-    _clean_up();
-}
-
-void combine_bytes_t::_clean_up() {
-}
+combine_bytes_t::~combine_bytes_t() {}
 
 std::string combine_bytes_t::bytes_calc() {
     if (f_bytes_calc)

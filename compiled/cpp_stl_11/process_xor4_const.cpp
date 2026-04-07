@@ -14,9 +14,4 @@ void process_xor4_const_t::_read() {
     m_buf = kaitai::kstream::process_xor_many(m__raw_buf, std::string("\xEC\xBB\xA3\x14", 4));
 }
 
-process_xor4_const_t::~process_xor4_const_t() {
-    _clean_up();
-}
-
-void process_xor4_const_t::_clean_up() {
-}
+process_xor4_const_t::~process_xor4_const_t() {}

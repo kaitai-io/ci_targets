@@ -12,9 +12,4 @@ void default_big_endian_t::_read() {
     m_one = m__io->read_u4be();
 }
 
-default_big_endian_t::~default_big_endian_t() {
-    _clean_up();
-}
-
-void default_big_endian_t::_clean_up() {
-}
+default_big_endian_t::~default_big_endian_t() {}

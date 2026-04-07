@@ -42,34 +42,14 @@ instance_io_user_earlier_t::~instance_io_user_earlier_t() {
 }
 
 void instance_io_user_earlier_t::_clean_up() {
-    if (m__io__raw_sized_a) {
-        delete m__io__raw_sized_a; m__io__raw_sized_a = 0;
-    }
-    if (m_sized_a) {
-        delete m_sized_a; m_sized_a = 0;
-    }
-    if (m__io__raw_sized_b) {
-        delete m__io__raw_sized_b; m__io__raw_sized_b = 0;
-    }
-    if (m_sized_b) {
-        delete m_sized_b; m_sized_b = 0;
-    }
-    if (m_into_b) {
-        delete m_into_b; m_into_b = 0;
-    }
-    if (m_into_a_skipped) {
-        delete m_into_a_skipped; m_into_a_skipped = 0;
-    }
-    if (m_into_a) {
-        delete m_into_a; m_into_a = 0;
-    }
-    if (m_last_accessor) {
-        delete m_last_accessor; m_last_accessor = 0;
-    }
-    if (f_a_mid) {
-    }
-    if (f_b_mid) {
-    }
+    delete m__io__raw_sized_a;
+    delete m_sized_a;
+    delete m__io__raw_sized_b;
+    delete m_sized_b;
+    delete m_into_b;
+    delete m_into_a_skipped;
+    delete m_into_a;
+    delete m_last_accessor;
 }
 
 instance_io_user_earlier_t::baz_t::baz_t(kaitai::kstream* p__io, instance_io_user_earlier_t* p__parent, instance_io_user_earlier_t* p__root) : kaitai::kstruct(p__io) {
@@ -97,8 +77,6 @@ instance_io_user_earlier_t::baz_t::~baz_t() {
 }
 
 void instance_io_user_earlier_t::baz_t::_clean_up() {
-    if (!n_v) {
-    }
 }
 
 instance_io_user_earlier_t::foo_t::foo_t(kaitai::kstream* p__io, instance_io_user_earlier_t* p__parent, instance_io_user_earlier_t* p__root) : kaitai::kstruct(p__io) {
@@ -130,16 +108,8 @@ instance_io_user_earlier_t::foo_t::~foo_t() {
 }
 
 void instance_io_user_earlier_t::foo_t::_clean_up() {
-    if (!n_bar) {
-    }
-    if (f_inst) {
-        if (m__io__raw_inst) {
-            delete m__io__raw_inst; m__io__raw_inst = 0;
-        }
-        if (m_inst) {
-            delete m_inst; m_inst = 0;
-        }
-    }
+    delete m__io__raw_inst;
+    delete m_inst;
 }
 
 instance_io_user_earlier_t::slot_t* instance_io_user_earlier_t::foo_t::inst() {
@@ -182,10 +152,6 @@ instance_io_user_earlier_t::slot_t::~slot_t() {
 }
 
 void instance_io_user_earlier_t::slot_t::_clean_up() {
-    if (!n_content) {
-    }
-    if (f_last && !n_last) {
-    }
 }
 
 uint8_t instance_io_user_earlier_t::slot_t::last() {

@@ -15,12 +15,7 @@ void type_int_unary_op_t::_read() {
     m_value_s8 = m__io->read_s8le();
 }
 
-type_int_unary_op_t::~type_int_unary_op_t() {
-    _clean_up();
-}
-
-void type_int_unary_op_t::_clean_up() {
-}
+type_int_unary_op_t::~type_int_unary_op_t() {}
 
 int32_t type_int_unary_op_t::unary_s2() {
     if (f_unary_s2)

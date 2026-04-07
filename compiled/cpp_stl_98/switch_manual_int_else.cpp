@@ -35,13 +35,14 @@ void switch_manual_int_else_t::_clean_up() {
         for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
             delete *it;
         }
-        delete m_opcodes; m_opcodes = 0;
+        delete m_opcodes;
     }
 }
 
 switch_manual_int_else_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_manual_int_else_t* p__parent, switch_manual_int_else_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
+    m_body = 0;
 
     try {
         _read();
@@ -74,9 +75,7 @@ switch_manual_int_else_t::opcode_t::~opcode_t() {
 }
 
 void switch_manual_int_else_t::opcode_t::_clean_up() {
-    if (m_body) {
-        delete m_body; m_body = 0;
-    }
+    delete m_body;
 }
 
 switch_manual_int_else_t::opcode_t::intval_t::intval_t(kaitai::kstream* p__io, switch_manual_int_else_t::opcode_t* p__parent, switch_manual_int_else_t* p__root) : kaitai::kstruct(p__io) {

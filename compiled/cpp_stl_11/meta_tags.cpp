@@ -11,9 +11,4 @@ meta_tags_t::meta_tags_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, met
 void meta_tags_t::_read() {
 }
 
-meta_tags_t::~meta_tags_t() {
-    _clean_up();
-}
-
-void meta_tags_t::_clean_up() {
-}
+meta_tags_t::~meta_tags_t() {}

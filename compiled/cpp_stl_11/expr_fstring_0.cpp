@@ -20,12 +20,7 @@ void expr_fstring_0_t::_read() {
     m_seq_int = m__io->read_u1();
 }
 
-expr_fstring_0_t::~expr_fstring_0_t() {
-    _clean_up();
-}
-
-void expr_fstring_0_t::_clean_up() {
-}
+expr_fstring_0_t::~expr_fstring_0_t() {}
 
 std::string expr_fstring_0_t::empty() {
     if (f_empty)

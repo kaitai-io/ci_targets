@@ -64,23 +64,19 @@ switch_repeat_expr_t::~switch_repeat_expr_t() {
 }
 
 void switch_repeat_expr_t::_clean_up() {
-    if (m_codes) {
-        delete m_codes; m_codes = 0;
-    }
-    if (m__raw_body) {
-        delete m__raw_body; m__raw_body = 0;
-    }
+    delete m_codes;
+    delete m__raw_body;
     if (m__io__raw_body) {
         for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_body->begin(); it != m__io__raw_body->end(); ++it) {
             delete *it;
         }
-        delete m__io__raw_body; m__io__raw_body = 0;
+        delete m__io__raw_body;
     }
     if (m_body) {
         for (std::vector<kaitai::kstruct*>::iterator it = m_body->begin(); it != m_body->end(); ++it) {
             delete *it;
         }
-        delete m_body; m_body = 0;
+        delete m_body;
     }
 }
 

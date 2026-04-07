@@ -37,7 +37,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~enum_long_range_s_t();

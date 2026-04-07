@@ -40,27 +40,21 @@ process_repeat_usertype_dynarg_xor_t::~process_repeat_usertype_dynarg_xor_t() {
 }
 
 void process_repeat_usertype_dynarg_xor_t::_clean_up() {
-    if (m__raw_blocks) {
-        delete m__raw_blocks; m__raw_blocks = 0;
-    }
+    delete m__raw_blocks;
     if (m__io__raw_blocks) {
         for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_blocks->begin(); it != m__io__raw_blocks->end(); ++it) {
             delete *it;
         }
-        delete m__io__raw_blocks; m__io__raw_blocks = 0;
+        delete m__io__raw_blocks;
     }
-    if (m__raw__raw_blocks) {
-        delete m__raw__raw_blocks; m__raw__raw_blocks = 0;
-    }
+    delete m__raw__raw_blocks;
     if (m_blocks) {
         for (std::vector<block_t*>::iterator it = m_blocks->begin(); it != m_blocks->end(); ++it) {
             delete *it;
         }
-        delete m_blocks; m_blocks = 0;
+        delete m_blocks;
     }
-    if (m_blocks_b) {
-        delete m_blocks_b; m_blocks_b = 0;
-    }
+    delete m_blocks_b;
 }
 
 process_repeat_usertype_dynarg_xor_t::block_t::block_t(kaitai::kstream* p__io, process_repeat_usertype_dynarg_xor_t* p__parent, process_repeat_usertype_dynarg_xor_t* p__root) : kaitai::kstruct(p__io) {
@@ -109,10 +103,6 @@ process_repeat_usertype_dynarg_xor_t::blocks_b_wrapper_t::~blocks_b_wrapper_t() 
 }
 
 void process_repeat_usertype_dynarg_xor_t::blocks_b_wrapper_t::_clean_up() {
-    if (f_blocks_0_b) {
-    }
-    if (f_blocks_1_b) {
-    }
 }
 
 uint8_t process_repeat_usertype_dynarg_xor_t::blocks_b_wrapper_t::blocks_0_b() {

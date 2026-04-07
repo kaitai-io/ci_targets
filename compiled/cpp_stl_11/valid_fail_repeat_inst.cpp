@@ -6,7 +6,6 @@
 valid_fail_repeat_inst_t::valid_fail_repeat_inst_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, valid_fail_repeat_inst_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_inst = nullptr;
     f_inst = false;
     _read();
 }
@@ -19,16 +18,7 @@ void valid_fail_repeat_inst_t::_read() {
     }
 }
 
-valid_fail_repeat_inst_t::~valid_fail_repeat_inst_t() {
-    _clean_up();
-}
-
-void valid_fail_repeat_inst_t::_clean_up() {
-    if (!n_a) {
-    }
-    if (f_inst) {
-    }
-}
+valid_fail_repeat_inst_t::~valid_fail_repeat_inst_t() {}
 
 std::vector<uint32_t>* valid_fail_repeat_inst_t::inst() {
     if (f_inst)

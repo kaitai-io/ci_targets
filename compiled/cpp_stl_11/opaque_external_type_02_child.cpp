@@ -5,7 +5,6 @@
 opaque_external_type_02_child_t::opaque_external_type_02_child_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, opaque_external_type_02_child_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_s3 = nullptr;
     f_some_method = false;
     _read();
 }
@@ -16,12 +15,7 @@ void opaque_external_type_02_child_t::_read() {
     m_s3 = std::unique_ptr<opaque_external_type_02_child_child_t>(new opaque_external_type_02_child_child_t(m__io, this, m__root));
 }
 
-opaque_external_type_02_child_t::~opaque_external_type_02_child_t() {
-    _clean_up();
-}
-
-void opaque_external_type_02_child_t::_clean_up() {
-}
+opaque_external_type_02_child_t::~opaque_external_type_02_child_t() {}
 
 opaque_external_type_02_child_t::opaque_external_type_02_child_child_t::opaque_external_type_02_child_child_t(kaitai::kstream* p__io, opaque_external_type_02_child_t* p__parent, opaque_external_type_02_child_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -37,14 +31,7 @@ void opaque_external_type_02_child_t::opaque_external_type_02_child_child_t::_re
     }
 }
 
-opaque_external_type_02_child_t::opaque_external_type_02_child_child_t::~opaque_external_type_02_child_child_t() {
-    _clean_up();
-}
-
-void opaque_external_type_02_child_t::opaque_external_type_02_child_child_t::_clean_up() {
-    if (!n_s3) {
-    }
-}
+opaque_external_type_02_child_t::opaque_external_type_02_child_child_t::~opaque_external_type_02_child_child_t() {}
 
 bool opaque_external_type_02_child_t::some_method() {
     if (f_some_method)

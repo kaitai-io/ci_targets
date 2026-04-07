@@ -17,12 +17,7 @@ void expr_mod_t::_read() {
     m_int_s = m__io->read_s4le();
 }
 
-expr_mod_t::~expr_mod_t() {
-    _clean_up();
-}
-
-void expr_mod_t::_clean_up() {
-}
+expr_mod_t::~expr_mod_t() {}
 
 int32_t expr_mod_t::mod_neg_const() {
     if (f_mod_neg_const)

@@ -24,9 +24,4 @@ void enum_long_range_u_t::_read() {
     m_f4 = static_cast<enum_long_range_u_t::constants_t>(m__io->read_u8be());
 }
 
-enum_long_range_u_t::~enum_long_range_u_t() {
-    _clean_up();
-}
-
-void enum_long_range_u_t::_clean_up() {
-}
+enum_long_range_u_t::~enum_long_range_u_t() {}

@@ -27,16 +27,7 @@ void non_standard_t::_read() {
     }
 }
 
-non_standard_t::~non_standard_t() {
-    _clean_up();
-}
-
-void non_standard_t::_clean_up() {
-    if (!n_bar) {
-    }
-    if (f_pi) {
-    }
-}
+non_standard_t::~non_standard_t() {}
 
 uint8_t non_standard_t::pi() {
     if (f_pi)

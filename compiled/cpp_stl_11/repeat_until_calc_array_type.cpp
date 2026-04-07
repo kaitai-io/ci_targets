@@ -5,9 +5,6 @@
 repeat_until_calc_array_type_t::repeat_until_calc_array_type_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_until_calc_array_type_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_records = nullptr;
-    m__raw_records = nullptr;
-    m__io__raw_records = nullptr;
     f_first_rec = false;
     f_recs_accessor = false;
     _read();
@@ -32,12 +29,7 @@ void repeat_until_calc_array_type_t::_read() {
     }
 }
 
-repeat_until_calc_array_type_t::~repeat_until_calc_array_type_t() {
-    _clean_up();
-}
-
-void repeat_until_calc_array_type_t::_clean_up() {
-}
+repeat_until_calc_array_type_t::~repeat_until_calc_array_type_t() {}
 
 repeat_until_calc_array_type_t::record_t::record_t(kaitai::kstream* p__io, repeat_until_calc_array_type_t* p__parent, repeat_until_calc_array_type_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -50,12 +42,7 @@ void repeat_until_calc_array_type_t::record_t::_read() {
     m_body = m__io->read_u4le();
 }
 
-repeat_until_calc_array_type_t::record_t::~record_t() {
-    _clean_up();
-}
-
-void repeat_until_calc_array_type_t::record_t::_clean_up() {
-}
+repeat_until_calc_array_type_t::record_t::~record_t() {}
 
 repeat_until_calc_array_type_t::record_t* repeat_until_calc_array_type_t::first_rec() {
     if (f_first_rec)

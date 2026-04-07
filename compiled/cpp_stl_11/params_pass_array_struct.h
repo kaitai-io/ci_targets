@@ -24,7 +24,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~params_pass_array_struct_t();
@@ -37,7 +36,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~bar_t();
@@ -59,7 +57,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~foo_t();
@@ -81,7 +78,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~struct_type_t();

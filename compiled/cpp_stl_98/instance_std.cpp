@@ -23,8 +23,6 @@ instance_std_t::~instance_std_t() {
 }
 
 void instance_std_t::_clean_up() {
-    if (f_header) {
-    }
 }
 
 std::string instance_std_t::header() {

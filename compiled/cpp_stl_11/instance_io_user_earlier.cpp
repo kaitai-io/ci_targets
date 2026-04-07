@@ -5,14 +5,6 @@
 instance_io_user_earlier_t::instance_io_user_earlier_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instance_io_user_earlier_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_sized_a = nullptr;
-    m__io__raw_sized_a = nullptr;
-    m_sized_b = nullptr;
-    m__io__raw_sized_b = nullptr;
-    m_into_b = nullptr;
-    m_into_a_skipped = nullptr;
-    m_into_a = nullptr;
-    m_last_accessor = nullptr;
     f_a_mid = false;
     f_b_mid = false;
     _read();
@@ -31,16 +23,7 @@ void instance_io_user_earlier_t::_read() {
     m_last_accessor = std::unique_ptr<baz_t>(new baz_t(m__io, this, m__root));
 }
 
-instance_io_user_earlier_t::~instance_io_user_earlier_t() {
-    _clean_up();
-}
-
-void instance_io_user_earlier_t::_clean_up() {
-    if (f_a_mid) {
-    }
-    if (f_b_mid) {
-    }
-}
+instance_io_user_earlier_t::~instance_io_user_earlier_t() {}
 
 instance_io_user_earlier_t::baz_t::baz_t(kaitai::kstream* p__io, instance_io_user_earlier_t* p__parent, instance_io_user_earlier_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -56,20 +39,11 @@ void instance_io_user_earlier_t::baz_t::_read() {
     }
 }
 
-instance_io_user_earlier_t::baz_t::~baz_t() {
-    _clean_up();
-}
-
-void instance_io_user_earlier_t::baz_t::_clean_up() {
-    if (!n_v) {
-    }
-}
+instance_io_user_earlier_t::baz_t::~baz_t() {}
 
 instance_io_user_earlier_t::foo_t::foo_t(kaitai::kstream* p__io, instance_io_user_earlier_t* p__parent, instance_io_user_earlier_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m_inst = nullptr;
-    m__io__raw_inst = nullptr;
     f_inst = false;
     _read();
 }
@@ -83,16 +57,7 @@ void instance_io_user_earlier_t::foo_t::_read() {
     }
 }
 
-instance_io_user_earlier_t::foo_t::~foo_t() {
-    _clean_up();
-}
-
-void instance_io_user_earlier_t::foo_t::_clean_up() {
-    if (!n_bar) {
-    }
-    if (f_inst) {
-    }
-}
+instance_io_user_earlier_t::foo_t::~foo_t() {}
 
 instance_io_user_earlier_t::slot_t* instance_io_user_earlier_t::foo_t::inst() {
     if (f_inst)
@@ -123,16 +88,7 @@ void instance_io_user_earlier_t::slot_t::_read() {
     }
 }
 
-instance_io_user_earlier_t::slot_t::~slot_t() {
-    _clean_up();
-}
-
-void instance_io_user_earlier_t::slot_t::_clean_up() {
-    if (!n_content) {
-    }
-    if (f_last && !n_last) {
-    }
-}
+instance_io_user_earlier_t::slot_t::~slot_t() {}
 
 uint8_t instance_io_user_earlier_t::slot_t::last() {
     if (f_last)

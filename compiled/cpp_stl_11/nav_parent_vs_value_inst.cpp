@@ -5,7 +5,6 @@
 nav_parent_vs_value_inst_t::nav_parent_vs_value_inst_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_vs_value_inst_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_child = nullptr;
     _read();
 }
 
@@ -14,12 +13,7 @@ void nav_parent_vs_value_inst_t::_read() {
     m_child = std::unique_ptr<child_obj_t>(new child_obj_t(m__io, this, m__root));
 }
 
-nav_parent_vs_value_inst_t::~nav_parent_vs_value_inst_t() {
-    _clean_up();
-}
-
-void nav_parent_vs_value_inst_t::_clean_up() {
-}
+nav_parent_vs_value_inst_t::~nav_parent_vs_value_inst_t() {}
 
 nav_parent_vs_value_inst_t::child_obj_t::child_obj_t(kaitai::kstream* p__io, nav_parent_vs_value_inst_t* p__parent, nav_parent_vs_value_inst_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -31,12 +25,7 @@ nav_parent_vs_value_inst_t::child_obj_t::child_obj_t(kaitai::kstream* p__io, nav
 void nav_parent_vs_value_inst_t::child_obj_t::_read() {
 }
 
-nav_parent_vs_value_inst_t::child_obj_t::~child_obj_t() {
-    _clean_up();
-}
-
-void nav_parent_vs_value_inst_t::child_obj_t::_clean_up() {
-}
+nav_parent_vs_value_inst_t::child_obj_t::~child_obj_t() {}
 
 bool nav_parent_vs_value_inst_t::child_obj_t::do_something() {
     if (f_do_something)

@@ -108,10 +108,9 @@ public:
     private:
         code_enum_t m_code;
         kaitai::kstruct* m_body;
-        bool n_body;
 
     public:
-        bool _is_null_body() { body(); return n_body; };
+        bool _is_null_body() { return !body(); };
 
     private:
         switch_manual_enum_invalid_t* m__root;

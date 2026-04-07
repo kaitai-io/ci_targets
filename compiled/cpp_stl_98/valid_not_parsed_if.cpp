@@ -39,8 +39,4 @@ valid_not_parsed_if_t::~valid_not_parsed_if_t() {
 }
 
 void valid_not_parsed_if_t::_clean_up() {
-    if (!n_not_parsed) {
-    }
-    if (!n_parsed) {
-    }
 }

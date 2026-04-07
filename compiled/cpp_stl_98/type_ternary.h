@@ -70,10 +70,9 @@ private:
     bool f_is_hack;
     bool m_is_hack;
     dummy_t* m_dif_wo_hack;
-    bool n_dif_wo_hack;
 
 public:
-    bool _is_null_dif_wo_hack() { dif_wo_hack(); return n_dif_wo_hack; };
+    bool _is_null_dif_wo_hack() { return !dif_wo_hack(); };
 
 private:
     dummy_t* m_dif_with_hack;

@@ -25,7 +25,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~docstrings_t();
@@ -54,7 +53,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~complex_subtype_t();

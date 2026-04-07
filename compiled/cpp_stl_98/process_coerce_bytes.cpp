@@ -32,7 +32,7 @@ void process_coerce_bytes_t::_clean_up() {
         for (std::vector<record_t*>::iterator it = m_records->begin(); it != m_records->end(); ++it) {
             delete *it;
         }
-        delete m_records; m_records = 0;
+        delete m_records;
     }
 }
 
@@ -69,10 +69,6 @@ process_coerce_bytes_t::record_t::~record_t() {
 }
 
 void process_coerce_bytes_t::record_t::_clean_up() {
-    if (!n_buf_unproc) {
-    }
-    if (!n_buf_proc) {
-    }
 }
 
 std::string process_coerce_bytes_t::record_t::buf() {

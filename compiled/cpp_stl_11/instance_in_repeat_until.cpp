@@ -5,7 +5,6 @@
 instance_in_repeat_until_t::instance_in_repeat_until_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instance_in_repeat_until_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_entries = nullptr;
     f_until_val = false;
     _read();
 }
@@ -23,14 +22,7 @@ void instance_in_repeat_until_t::_read() {
     }
 }
 
-instance_in_repeat_until_t::~instance_in_repeat_until_t() {
-    _clean_up();
-}
-
-void instance_in_repeat_until_t::_clean_up() {
-    if (f_until_val) {
-    }
-}
+instance_in_repeat_until_t::~instance_in_repeat_until_t() {}
 
 int16_t instance_in_repeat_until_t::until_val() {
     if (f_until_val)

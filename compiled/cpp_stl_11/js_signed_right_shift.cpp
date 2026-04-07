@@ -13,12 +13,7 @@ js_signed_right_shift_t::js_signed_right_shift_t(kaitai::kstream* p__io, kaitai:
 void js_signed_right_shift_t::_read() {
 }
 
-js_signed_right_shift_t::~js_signed_right_shift_t() {
-    _clean_up();
-}
-
-void js_signed_right_shift_t::_clean_up() {
-}
+js_signed_right_shift_t::~js_signed_right_shift_t() {}
 
 int32_t js_signed_right_shift_t::should_be_40000000() {
     if (f_should_be_40000000)

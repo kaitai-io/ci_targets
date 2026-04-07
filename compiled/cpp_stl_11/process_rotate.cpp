@@ -18,9 +18,4 @@ void process_rotate_t::_read() {
     m_buf3 = kaitai::kstream::process_rotate_left(m__raw_buf3, key());
 }
 
-process_rotate_t::~process_rotate_t() {
-    _clean_up();
-}
-
-void process_rotate_t::_clean_up() {
-}
+process_rotate_t::~process_rotate_t() {}

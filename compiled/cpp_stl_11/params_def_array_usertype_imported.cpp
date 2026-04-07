@@ -14,12 +14,7 @@ params_def_array_usertype_imported_t::params_def_array_usertype_imported_t(std::
 void params_def_array_usertype_imported_t::_read() {
 }
 
-params_def_array_usertype_imported_t::~params_def_array_usertype_imported_t() {
-    _clean_up();
-}
-
-void params_def_array_usertype_imported_t::_clean_up() {
-}
+params_def_array_usertype_imported_t::~params_def_array_usertype_imported_t() {}
 
 uint8_t params_def_array_usertype_imported_t::hw0_one() {
     if (f_hw0_one)

@@ -32,7 +32,7 @@ void process_coerce_usertype1_t::_clean_up() {
         for (std::vector<record_t*>::iterator it = m_records->begin(); it != m_records->end(); ++it) {
             delete *it;
         }
-        delete m_records; m_records = 0;
+        delete m_records;
     }
 }
 
@@ -78,16 +78,12 @@ process_coerce_usertype1_t::record_t::record_t(kaitai::kstream* p__io, process_c
 
 void process_coerce_usertype1_t::record_t::_read() {
     m_flag = m__io->read_u1();
-    n_buf_unproc = true;
     if (flag() == 0) {
-        n_buf_unproc = false;
         m__raw_buf_unproc = m__io->read_bytes(4);
         m__io__raw_buf_unproc = new kaitai::kstream(m__raw_buf_unproc);
         m_buf_unproc = new foo_t(m__io__raw_buf_unproc, this, m__root);
     }
-    n_buf_proc = true;
     if (flag() != 0) {
-        n_buf_proc = false;
         m__raw__raw_buf_proc = m__io->read_bytes(4);
         m__raw_buf_proc = kaitai::kstream::process_xor_one(m__raw__raw_buf_proc, 170);
         m__io__raw_buf_proc = new kaitai::kstream(m__raw_buf_proc);
@@ -100,22 +96,10 @@ process_coerce_usertype1_t::record_t::~record_t() {
 }
 
 void process_coerce_usertype1_t::record_t::_clean_up() {
-    if (!n_buf_unproc) {
-        if (m__io__raw_buf_unproc) {
-            delete m__io__raw_buf_unproc; m__io__raw_buf_unproc = 0;
-        }
-        if (m_buf_unproc) {
-            delete m_buf_unproc; m_buf_unproc = 0;
-        }
-    }
-    if (!n_buf_proc) {
-        if (m__io__raw_buf_proc) {
-            delete m__io__raw_buf_proc; m__io__raw_buf_proc = 0;
-        }
-        if (m_buf_proc) {
-            delete m_buf_proc; m_buf_proc = 0;
-        }
-    }
+    delete m__io__raw_buf_unproc;
+    delete m_buf_unproc;
+    delete m__io__raw_buf_proc;
+    delete m_buf_proc;
 }
 
 process_coerce_usertype1_t::foo_t* process_coerce_usertype1_t::record_t::buf() {

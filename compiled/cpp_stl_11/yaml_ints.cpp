@@ -15,12 +15,7 @@ yaml_ints_t::yaml_ints_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, yam
 void yaml_ints_t::_read() {
 }
 
-yaml_ints_t::~yaml_ints_t() {
-    _clean_up();
-}
-
-void yaml_ints_t::_clean_up() {
-}
+yaml_ints_t::~yaml_ints_t() {}
 
 int32_t yaml_ints_t::test_u4_dec() {
     if (f_test_u4_dec)

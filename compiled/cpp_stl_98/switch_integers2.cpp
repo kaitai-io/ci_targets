@@ -53,10 +53,6 @@ switch_integers2_t::~switch_integers2_t() {
 }
 
 void switch_integers2_t::_clean_up() {
-    if (!n_len) {
-    }
-    if (!n_padding) {
-    }
 }
 
 std::string switch_integers2_t::len_mod_str() {

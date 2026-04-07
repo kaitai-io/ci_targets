@@ -30,13 +30,7 @@ valid_fail_repeat_inst_t::~valid_fail_repeat_inst_t() {
 }
 
 void valid_fail_repeat_inst_t::_clean_up() {
-    if (!n_a) {
-    }
-    if (f_inst) {
-        if (m_inst) {
-            delete m_inst; m_inst = 0;
-        }
-    }
+    delete m_inst;
 }
 
 std::vector<uint32_t>* valid_fail_repeat_inst_t::inst() {

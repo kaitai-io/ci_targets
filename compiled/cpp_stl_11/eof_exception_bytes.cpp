@@ -12,9 +12,4 @@ void eof_exception_bytes_t::_read() {
     m_buf = m__io->read_bytes(13);
 }
 
-eof_exception_bytes_t::~eof_exception_bytes_t() {
-    _clean_up();
-}
-
-void eof_exception_bytes_t::_clean_up() {
-}
+eof_exception_bytes_t::~eof_exception_bytes_t() {}

@@ -5,7 +5,6 @@
 debug_array_user_current_excluded_t::debug_array_user_current_excluded_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debug_array_user_current_excluded_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_array_of_cats = nullptr;
 }
 
 void debug_array_user_current_excluded_t::_read() {
@@ -23,12 +22,7 @@ void debug_array_user_current_excluded_t::_read() {
     }
 }
 
-debug_array_user_current_excluded_t::~debug_array_user_current_excluded_t() {
-    _clean_up();
-}
-
-void debug_array_user_current_excluded_t::_clean_up() {
-}
+debug_array_user_current_excluded_t::~debug_array_user_current_excluded_t() {}
 
 debug_array_user_current_excluded_t::cat_t::cat_t(kaitai::kstream* p__io, debug_array_user_current_excluded_t* p__parent, debug_array_user_current_excluded_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -39,9 +33,4 @@ void debug_array_user_current_excluded_t::cat_t::_read() {
     m_meow = m__io->read_bytes(3 - _parent()->array_of_cats()->size());
 }
 
-debug_array_user_current_excluded_t::cat_t::~cat_t() {
-    _clean_up();
-}
-
-void debug_array_user_current_excluded_t::cat_t::_clean_up() {
-}
+debug_array_user_current_excluded_t::cat_t::~cat_t() {}

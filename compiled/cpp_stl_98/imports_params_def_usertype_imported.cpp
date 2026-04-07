@@ -26,10 +26,6 @@ imports_params_def_usertype_imported_t::~imports_params_def_usertype_imported_t(
 }
 
 void imports_params_def_usertype_imported_t::_clean_up() {
-    if (m_hw) {
-        delete m_hw; m_hw = 0;
-    }
-    if (m_two) {
-        delete m_two; m_two = 0;
-    }
+    delete m_hw;
+    delete m_two;
 }

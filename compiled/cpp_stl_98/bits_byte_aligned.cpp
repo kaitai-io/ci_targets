@@ -38,12 +38,8 @@ bits_byte_aligned_t::~bits_byte_aligned_t() {
 }
 
 void bits_byte_aligned_t::_clean_up() {
-    if (m__io__raw_byte_3) {
-        delete m__io__raw_byte_3; m__io__raw_byte_3 = 0;
-    }
-    if (m_byte_3) {
-        delete m_byte_3; m_byte_3 = 0;
-    }
+    delete m__io__raw_byte_3;
+    delete m_byte_3;
 }
 
 bits_byte_aligned_t::foo_t::foo_t(kaitai::kstream* p__io, bits_byte_aligned_t* p__parent, bits_byte_aligned_t* p__root) : kaitai::kstruct(p__io) {

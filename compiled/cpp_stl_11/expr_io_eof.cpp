@@ -5,10 +5,6 @@
 expr_io_eof_t::expr_io_eof_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_io_eof_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_substream1 = nullptr;
-    m__io__raw_substream1 = nullptr;
-    m_substream2 = nullptr;
-    m__io__raw_substream2 = nullptr;
     _read();
 }
 
@@ -21,12 +17,7 @@ void expr_io_eof_t::_read() {
     m_substream2 = std::unique_ptr<one_or_two_t>(new one_or_two_t(m__io__raw_substream2.get(), this, m__root));
 }
 
-expr_io_eof_t::~expr_io_eof_t() {
-    _clean_up();
-}
-
-void expr_io_eof_t::_clean_up() {
-}
+expr_io_eof_t::~expr_io_eof_t() {}
 
 expr_io_eof_t::one_or_two_t::one_or_two_t(kaitai::kstream* p__io, expr_io_eof_t* p__parent, expr_io_eof_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -44,14 +35,7 @@ void expr_io_eof_t::one_or_two_t::_read() {
     }
 }
 
-expr_io_eof_t::one_or_two_t::~one_or_two_t() {
-    _clean_up();
-}
-
-void expr_io_eof_t::one_or_two_t::_clean_up() {
-    if (!n_two) {
-    }
-}
+expr_io_eof_t::one_or_two_t::~one_or_two_t() {}
 
 bool expr_io_eof_t::one_or_two_t::reflect_eof() {
     if (f_reflect_eof)

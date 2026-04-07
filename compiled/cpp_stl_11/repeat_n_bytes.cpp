@@ -5,7 +5,6 @@
 repeat_n_bytes_t::repeat_n_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_n_bytes_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_records = nullptr;
     _read();
 }
 
@@ -17,9 +16,4 @@ void repeat_n_bytes_t::_read() {
     }
 }
 
-repeat_n_bytes_t::~repeat_n_bytes_t() {
-    _clean_up();
-}
-
-void repeat_n_bytes_t::_clean_up() {
-}
+repeat_n_bytes_t::~repeat_n_bytes_t() {}

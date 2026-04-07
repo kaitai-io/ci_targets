@@ -25,7 +25,5 @@ imports_abs_rel_t::~imports_abs_rel_t() {
 }
 
 void imports_abs_rel_t::_clean_up() {
-    if (m_two) {
-        delete m_two; m_two = 0;
-    }
+    delete m_two;
 }

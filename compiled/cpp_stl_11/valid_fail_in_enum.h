@@ -32,7 +32,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~valid_fail_in_enum_t();

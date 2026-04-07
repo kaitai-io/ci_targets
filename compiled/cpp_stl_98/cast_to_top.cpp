@@ -26,11 +26,7 @@ cast_to_top_t::~cast_to_top_t() {
 }
 
 void cast_to_top_t::_clean_up() {
-    if (f_header) {
-        if (m_header) {
-            delete m_header; m_header = 0;
-        }
-    }
+    delete m_header;
 }
 
 cast_to_top_t* cast_to_top_t::header() {

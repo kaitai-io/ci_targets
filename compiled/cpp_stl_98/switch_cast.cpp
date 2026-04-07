@@ -38,7 +38,7 @@ void switch_cast_t::_clean_up() {
         for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
             delete *it;
         }
-        delete m_opcodes; m_opcodes = 0;
+        delete m_opcodes;
     }
 }
 
@@ -68,6 +68,7 @@ void switch_cast_t::intval_t::_clean_up() {
 switch_cast_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_cast_t* p__parent, switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
+    m_body = 0;
 
     try {
         _read();
@@ -79,15 +80,12 @@ switch_cast_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_cast_t* p__pare
 
 void switch_cast_t::opcode_t::_read() {
     m_code = m__io->read_u1();
-    n_body = true;
     switch (code()) {
     case 73: {
-        n_body = false;
         m_body = new intval_t(m__io, this, m__root);
         break;
     }
     case 83: {
-        n_body = false;
         m_body = new strval_t(m__io, this, m__root);
         break;
     }
@@ -99,11 +97,7 @@ switch_cast_t::opcode_t::~opcode_t() {
 }
 
 void switch_cast_t::opcode_t::_clean_up() {
-    if (!n_body) {
-        if (m_body) {
-            delete m_body; m_body = 0;
-        }
-    }
+    delete m_body;
 }
 
 switch_cast_t::strval_t::strval_t(kaitai::kstream* p__io, switch_cast_t::opcode_t* p__parent, switch_cast_t* p__root) : kaitai::kstruct(p__io) {

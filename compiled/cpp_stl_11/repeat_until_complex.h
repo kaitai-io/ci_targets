@@ -23,7 +23,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~repeat_until_complex_t();
@@ -36,7 +35,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~type_u1_t();
@@ -60,7 +58,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~type_u2_t();

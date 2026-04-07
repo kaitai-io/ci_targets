@@ -33,12 +33,7 @@ expr_calc_array_ops_t::expr_calc_array_ops_t(kaitai::kstream* p__io, kaitai::kst
 void expr_calc_array_ops_t::_read() {
 }
 
-expr_calc_array_ops_t::~expr_calc_array_ops_t() {
-    _clean_up();
-}
-
-void expr_calc_array_ops_t::_clean_up() {
-}
+expr_calc_array_ops_t::~expr_calc_array_ops_t() {}
 
 std::vector<double>* expr_calc_array_ops_t::double_array() {
     if (f_double_array)

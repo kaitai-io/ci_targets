@@ -12,14 +12,7 @@ instance_std_t::instance_std_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
 void instance_std_t::_read() {
 }
 
-instance_std_t::~instance_std_t() {
-    _clean_up();
-}
-
-void instance_std_t::_clean_up() {
-    if (f_header) {
-    }
-}
+instance_std_t::~instance_std_t() {}
 
 std::string instance_std_t::header() {
     if (f_header)

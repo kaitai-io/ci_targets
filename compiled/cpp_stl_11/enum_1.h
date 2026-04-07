@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~enum_1_t();
@@ -48,7 +47,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~main_obj_t();
@@ -61,7 +59,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~submain_obj_t();

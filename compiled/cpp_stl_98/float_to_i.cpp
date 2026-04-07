@@ -48,10 +48,6 @@ float_to_i_t::~float_to_i_t() {
 }
 
 void float_to_i_t::_clean_up() {
-    if (!n_single_value_if) {
-    }
-    if (!n_double_value_if) {
-    }
 }
 
 double float_to_i_t::calc_float1() {

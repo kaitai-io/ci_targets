@@ -5,7 +5,6 @@
 expr_if_int_ops_t::expr_if_int_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_if_int_ops_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_items = nullptr;
     f_bytes_sub_key = false;
     f_items_sub_key = false;
     _read();
@@ -27,14 +26,7 @@ void expr_if_int_ops_t::_read() {
     }
 }
 
-expr_if_int_ops_t::~expr_if_int_ops_t() {
-    _clean_up();
-}
-
-void expr_if_int_ops_t::_clean_up() {
-    if (!n_key) {
-    }
-}
+expr_if_int_ops_t::~expr_if_int_ops_t() {}
 
 uint8_t expr_if_int_ops_t::bytes_sub_key() {
     if (f_bytes_sub_key)

@@ -31,10 +31,6 @@ process_repeat_bytes_t::~process_repeat_bytes_t() {
 }
 
 void process_repeat_bytes_t::_clean_up() {
-    if (m__raw_bufs) {
-        delete m__raw_bufs; m__raw_bufs = 0;
-    }
-    if (m_bufs) {
-        delete m_bufs; m_bufs = 0;
-    }
+    delete m__raw_bufs;
+    delete m_bufs;
 }

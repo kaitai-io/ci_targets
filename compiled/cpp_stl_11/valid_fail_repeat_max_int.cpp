@@ -6,7 +6,6 @@
 valid_fail_repeat_max_int_t::valid_fail_repeat_max_int_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, valid_fail_repeat_max_int_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_foo = nullptr;
     _read();
 }
 
@@ -24,9 +23,4 @@ void valid_fail_repeat_max_int_t::_read() {
     }
 }
 
-valid_fail_repeat_max_int_t::~valid_fail_repeat_max_int_t() {
-    _clean_up();
-}
-
-void valid_fail_repeat_max_int_t::_clean_up() {
-}
+valid_fail_repeat_max_int_t::~valid_fail_repeat_max_int_t() {}

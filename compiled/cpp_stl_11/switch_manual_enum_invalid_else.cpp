@@ -5,7 +5,6 @@
 switch_manual_enum_invalid_else_t::switch_manual_enum_invalid_else_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_manual_enum_invalid_else_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_opcodes = nullptr;
     _read();
 }
 
@@ -20,12 +19,7 @@ void switch_manual_enum_invalid_else_t::_read() {
     }
 }
 
-switch_manual_enum_invalid_else_t::~switch_manual_enum_invalid_else_t() {
-    _clean_up();
-}
-
-void switch_manual_enum_invalid_else_t::_clean_up() {
-}
+switch_manual_enum_invalid_else_t::~switch_manual_enum_invalid_else_t() {}
 const std::set<switch_manual_enum_invalid_else_t::opcode_t::code_enum_t> switch_manual_enum_invalid_else_t::opcode_t::_values_code_enum_t{
     switch_manual_enum_invalid_else_t::opcode_t::CODE_ENUM_INTVAL,
     switch_manual_enum_invalid_else_t::opcode_t::CODE_ENUM_STRVAL,
@@ -58,12 +52,7 @@ void switch_manual_enum_invalid_else_t::opcode_t::_read() {
     }
 }
 
-switch_manual_enum_invalid_else_t::opcode_t::~opcode_t() {
-    _clean_up();
-}
-
-void switch_manual_enum_invalid_else_t::opcode_t::_clean_up() {
-}
+switch_manual_enum_invalid_else_t::opcode_t::~opcode_t() {}
 
 switch_manual_enum_invalid_else_t::opcode_t::defval_t::defval_t(kaitai::kstream* p__io, switch_manual_enum_invalid_else_t::opcode_t* p__parent, switch_manual_enum_invalid_else_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -75,12 +64,7 @@ switch_manual_enum_invalid_else_t::opcode_t::defval_t::defval_t(kaitai::kstream*
 void switch_manual_enum_invalid_else_t::opcode_t::defval_t::_read() {
 }
 
-switch_manual_enum_invalid_else_t::opcode_t::defval_t::~defval_t() {
-    _clean_up();
-}
-
-void switch_manual_enum_invalid_else_t::opcode_t::defval_t::_clean_up() {
-}
+switch_manual_enum_invalid_else_t::opcode_t::defval_t::~defval_t() {}
 
 int8_t switch_manual_enum_invalid_else_t::opcode_t::defval_t::value() {
     if (f_value)
@@ -100,12 +84,7 @@ void switch_manual_enum_invalid_else_t::opcode_t::intval_t::_read() {
     m_value = m__io->read_u1();
 }
 
-switch_manual_enum_invalid_else_t::opcode_t::intval_t::~intval_t() {
-    _clean_up();
-}
-
-void switch_manual_enum_invalid_else_t::opcode_t::intval_t::_clean_up() {
-}
+switch_manual_enum_invalid_else_t::opcode_t::intval_t::~intval_t() {}
 
 switch_manual_enum_invalid_else_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, switch_manual_enum_invalid_else_t::opcode_t* p__parent, switch_manual_enum_invalid_else_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -117,9 +96,4 @@ void switch_manual_enum_invalid_else_t::opcode_t::strval_t::_read() {
     m_value = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), "ASCII");
 }
 
-switch_manual_enum_invalid_else_t::opcode_t::strval_t::~strval_t() {
-    _clean_up();
-}
-
-void switch_manual_enum_invalid_else_t::opcode_t::strval_t::_clean_up() {
-}
+switch_manual_enum_invalid_else_t::opcode_t::strval_t::~strval_t() {}

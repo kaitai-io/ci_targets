@@ -24,7 +24,5 @@ opaque_external_type_t::~opaque_external_type_t() {
 }
 
 void opaque_external_type_t::_clean_up() {
-    if (m_hw) {
-        delete m_hw; m_hw = 0;
-    }
+    delete m_hw;
 }

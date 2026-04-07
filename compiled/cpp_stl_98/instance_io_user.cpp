@@ -38,14 +38,10 @@ void instance_io_user_t::_clean_up() {
         for (std::vector<entry_t*>::iterator it = m_entries->begin(); it != m_entries->end(); ++it) {
             delete *it;
         }
-        delete m_entries; m_entries = 0;
+        delete m_entries;
     }
-    if (m__io__raw_strings) {
-        delete m__io__raw_strings; m__io__raw_strings = 0;
-    }
-    if (m_strings) {
-        delete m_strings; m_strings = 0;
-    }
+    delete m__io__raw_strings;
+    delete m_strings;
 }
 
 instance_io_user_t::entry_t::entry_t(kaitai::kstream* p__io, instance_io_user_t* p__parent, instance_io_user_t* p__root) : kaitai::kstruct(p__io) {
@@ -71,8 +67,6 @@ instance_io_user_t::entry_t::~entry_t() {
 }
 
 void instance_io_user_t::entry_t::_clean_up() {
-    if (f_name) {
-    }
 }
 
 std::string instance_io_user_t::entry_t::name() {
@@ -116,7 +110,5 @@ instance_io_user_t::strings_obj_t::~strings_obj_t() {
 }
 
 void instance_io_user_t::strings_obj_t::_clean_up() {
-    if (m_str) {
-        delete m_str; m_str = 0;
-    }
+    delete m_str;
 }

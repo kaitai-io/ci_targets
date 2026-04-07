@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~nav_parent_switch_t();
@@ -35,7 +34,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~element_1_t();
@@ -59,7 +57,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~subelement_1_t();
@@ -88,10 +85,9 @@ public:
 private:
     uint8_t m_category;
     std::unique_ptr<element_1_t> m_content;
-    bool n_content;
 
 public:
-    bool _is_null_content() { content(); return n_content; };
+    bool _is_null_content() { return !content(); };
 
 private:
     nav_parent_switch_t* m__root;

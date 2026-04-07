@@ -23,12 +23,7 @@ void expr_3_t::_read() {
     m_two = kaitai::kstream::bytes_to_str(m__io->read_bytes(3), "ASCII");
 }
 
-expr_3_t::~expr_3_t() {
-    _clean_up();
-}
-
-void expr_3_t::_clean_up() {
-}
+expr_3_t::~expr_3_t() {}
 
 std::string expr_3_t::four() {
     if (f_four)

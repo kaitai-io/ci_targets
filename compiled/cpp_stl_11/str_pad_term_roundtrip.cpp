@@ -15,9 +15,4 @@ void str_pad_term_roundtrip_t::_read() {
     m_str_term_include = kaitai::kstream::bytes_to_str(kaitai::kstream::bytes_terminate(kaitai::kstream::bytes_strip_right(m__io->read_bytes(20), 46), 64, true), "UTF-8");
 }
 
-str_pad_term_roundtrip_t::~str_pad_term_roundtrip_t() {
-    _clean_up();
-}
-
-void str_pad_term_roundtrip_t::_clean_up() {
-}
+str_pad_term_roundtrip_t::~str_pad_term_roundtrip_t() {}

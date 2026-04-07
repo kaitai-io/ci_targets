@@ -5,14 +5,6 @@
 str_encodings_escaping_enc_t::str_encodings_escaping_enc_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_encodings_escaping_enc_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_str1 = nullptr;
-    m__io__raw_str1 = nullptr;
-    m_str2 = nullptr;
-    m__io__raw_str2 = nullptr;
-    m_str3 = nullptr;
-    m__io__raw_str3 = nullptr;
-    m_str4 = nullptr;
-    m__io__raw_str4 = nullptr;
     _read();
 }
 
@@ -35,12 +27,7 @@ void str_encodings_escaping_enc_t::_read() {
     m_str4 = std::unique_ptr<str4_wrapper_t>(new str4_wrapper_t(m__io__raw_str4.get(), this, m__root));
 }
 
-str_encodings_escaping_enc_t::~str_encodings_escaping_enc_t() {
-    _clean_up();
-}
-
-void str_encodings_escaping_enc_t::_clean_up() {
-}
+str_encodings_escaping_enc_t::~str_encodings_escaping_enc_t() {}
 
 str_encodings_escaping_enc_t::str1_wrapper_t::str1_wrapper_t(kaitai::kstream* p__io, str_encodings_escaping_enc_t* p__parent, str_encodings_escaping_enc_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -52,14 +39,7 @@ str_encodings_escaping_enc_t::str1_wrapper_t::str1_wrapper_t(kaitai::kstream* p_
 void str_encodings_escaping_enc_t::str1_wrapper_t::_read() {
 }
 
-str_encodings_escaping_enc_t::str1_wrapper_t::~str1_wrapper_t() {
-    _clean_up();
-}
-
-void str_encodings_escaping_enc_t::str1_wrapper_t::_clean_up() {
-    if (f_v) {
-    }
-}
+str_encodings_escaping_enc_t::str1_wrapper_t::~str1_wrapper_t() {}
 
 std::string str_encodings_escaping_enc_t::str1_wrapper_t::v() {
     if (f_v)
@@ -82,14 +62,7 @@ str_encodings_escaping_enc_t::str2_wrapper_t::str2_wrapper_t(kaitai::kstream* p_
 void str_encodings_escaping_enc_t::str2_wrapper_t::_read() {
 }
 
-str_encodings_escaping_enc_t::str2_wrapper_t::~str2_wrapper_t() {
-    _clean_up();
-}
-
-void str_encodings_escaping_enc_t::str2_wrapper_t::_clean_up() {
-    if (f_v) {
-    }
-}
+str_encodings_escaping_enc_t::str2_wrapper_t::~str2_wrapper_t() {}
 
 std::string str_encodings_escaping_enc_t::str2_wrapper_t::v() {
     if (f_v)
@@ -112,14 +85,7 @@ str_encodings_escaping_enc_t::str3_wrapper_t::str3_wrapper_t(kaitai::kstream* p_
 void str_encodings_escaping_enc_t::str3_wrapper_t::_read() {
 }
 
-str_encodings_escaping_enc_t::str3_wrapper_t::~str3_wrapper_t() {
-    _clean_up();
-}
-
-void str_encodings_escaping_enc_t::str3_wrapper_t::_clean_up() {
-    if (f_v) {
-    }
-}
+str_encodings_escaping_enc_t::str3_wrapper_t::~str3_wrapper_t() {}
 
 std::string str_encodings_escaping_enc_t::str3_wrapper_t::v() {
     if (f_v)
@@ -142,14 +108,7 @@ str_encodings_escaping_enc_t::str4_wrapper_t::str4_wrapper_t(kaitai::kstream* p_
 void str_encodings_escaping_enc_t::str4_wrapper_t::_read() {
 }
 
-str_encodings_escaping_enc_t::str4_wrapper_t::~str4_wrapper_t() {
-    _clean_up();
-}
-
-void str_encodings_escaping_enc_t::str4_wrapper_t::_clean_up() {
-    if (f_v) {
-    }
-}
+str_encodings_escaping_enc_t::str4_wrapper_t::~str4_wrapper_t() {}
 
 std::string str_encodings_escaping_enc_t::str4_wrapper_t::v() {
     if (f_v)

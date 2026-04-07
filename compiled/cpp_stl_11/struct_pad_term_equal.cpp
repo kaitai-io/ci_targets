@@ -5,14 +5,6 @@
 struct_pad_term_equal_t::struct_pad_term_equal_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, struct_pad_term_equal_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_s1 = nullptr;
-    m__io__raw_s1 = nullptr;
-    m_s2 = nullptr;
-    m__io__raw_s2 = nullptr;
-    m_s3 = nullptr;
-    m__io__raw_s3 = nullptr;
-    m_s4 = nullptr;
-    m__io__raw_s4 = nullptr;
     _read();
 }
 
@@ -31,12 +23,7 @@ void struct_pad_term_equal_t::_read() {
     m_s4 = std::unique_ptr<bytes_wrapper_t>(new bytes_wrapper_t(m__io__raw_s4.get(), this, m__root));
 }
 
-struct_pad_term_equal_t::~struct_pad_term_equal_t() {
-    _clean_up();
-}
-
-void struct_pad_term_equal_t::_clean_up() {
-}
+struct_pad_term_equal_t::~struct_pad_term_equal_t() {}
 
 struct_pad_term_equal_t::bytes_wrapper_t::bytes_wrapper_t(kaitai::kstream* p__io, struct_pad_term_equal_t* p__parent, struct_pad_term_equal_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -48,9 +35,4 @@ void struct_pad_term_equal_t::bytes_wrapper_t::_read() {
     m_value = m__io->read_bytes_full();
 }
 
-struct_pad_term_equal_t::bytes_wrapper_t::~bytes_wrapper_t() {
-    _clean_up();
-}
-
-void struct_pad_term_equal_t::bytes_wrapper_t::_clean_up() {
-}
+struct_pad_term_equal_t::bytes_wrapper_t::~bytes_wrapper_t() {}

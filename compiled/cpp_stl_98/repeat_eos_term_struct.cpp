@@ -38,20 +38,18 @@ repeat_eos_term_struct_t::~repeat_eos_term_struct_t() {
 }
 
 void repeat_eos_term_struct_t::_clean_up() {
-    if (m__raw_records) {
-        delete m__raw_records; m__raw_records = 0;
-    }
+    delete m__raw_records;
     if (m__io__raw_records) {
         for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_records->begin(); it != m__io__raw_records->end(); ++it) {
             delete *it;
         }
-        delete m__io__raw_records; m__io__raw_records = 0;
+        delete m__io__raw_records;
     }
     if (m_records) {
         for (std::vector<bytes_wrapper_t*>::iterator it = m_records->begin(); it != m_records->end(); ++it) {
             delete *it;
         }
-        delete m_records; m_records = 0;
+        delete m_records;
     }
 }
 

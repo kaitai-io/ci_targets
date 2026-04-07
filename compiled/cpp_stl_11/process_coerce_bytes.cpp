@@ -5,7 +5,6 @@
 process_coerce_bytes_t::process_coerce_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_coerce_bytes_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_records = nullptr;
     _read();
 }
 
@@ -17,12 +16,7 @@ void process_coerce_bytes_t::_read() {
     }
 }
 
-process_coerce_bytes_t::~process_coerce_bytes_t() {
-    _clean_up();
-}
-
-void process_coerce_bytes_t::_clean_up() {
-}
+process_coerce_bytes_t::~process_coerce_bytes_t() {}
 
 process_coerce_bytes_t::record_t::record_t(kaitai::kstream* p__io, process_coerce_bytes_t* p__parent, process_coerce_bytes_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -46,16 +40,7 @@ void process_coerce_bytes_t::record_t::_read() {
     }
 }
 
-process_coerce_bytes_t::record_t::~record_t() {
-    _clean_up();
-}
-
-void process_coerce_bytes_t::record_t::_clean_up() {
-    if (!n_buf_unproc) {
-    }
-    if (!n_buf_proc) {
-    }
-}
+process_coerce_bytes_t::record_t::~record_t() {}
 
 std::string process_coerce_bytes_t::record_t::buf() {
     if (f_buf)

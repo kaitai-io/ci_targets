@@ -66,7 +66,7 @@ class VlqBase128Le < Kaitai::Struct::Struct
     end
 
     def _read
-      @has_next = @_io.read_bits_int_be(1) != 0
+      @has_next = (@_io.read_bits_int_be(1) != 0)
       raise Kaitai::Struct::ValidationNotEqualError.new((idx == 9 ? false : has_next), @has_next, @_io, "/types/group/seq/0") if not @has_next == (idx == 9 ? false : has_next)
       @value = @_io.read_bits_int_be(7)
       raise Kaitai::Struct::ValidationGreaterThanError.new((idx == 9 ? 1 : 127), @value, @_io, "/types/group/seq/1") if not @value <= (idx == 9 ? 1 : 127)

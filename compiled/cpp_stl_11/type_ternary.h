@@ -21,7 +21,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~type_ternary_t();
@@ -34,7 +33,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~dummy_t();
@@ -70,10 +68,9 @@ private:
     bool f_is_hack;
     bool m_is_hack;
     std::unique_ptr<dummy_t> m_dif_wo_hack;
-    bool n_dif_wo_hack;
 
 public:
-    bool _is_null_dif_wo_hack() { dif_wo_hack(); return n_dif_wo_hack; };
+    bool _is_null_dif_wo_hack() { return !dif_wo_hack(); };
 
 private:
     std::unique_ptr<dummy_t> m_dif_with_hack;

@@ -13,12 +13,7 @@ cast_to_imported2_t::cast_to_imported2_t(kaitai::kstruct* p_hw_param, kaitai::ks
 void cast_to_imported2_t::_read() {
 }
 
-cast_to_imported2_t::~cast_to_imported2_t() {
-    _clean_up();
-}
-
-void cast_to_imported2_t::_clean_up() {
-}
+cast_to_imported2_t::~cast_to_imported2_t() {}
 
 hello_world_t* cast_to_imported2_t::hw() {
     if (f_hw)

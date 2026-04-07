@@ -14,9 +14,4 @@ void term_strz_utf16_v2_t::_read() {
     m_s3 = kaitai::kstream::bytes_to_str(m__io->read_bytes_term_multi(std::string("\x00\x00", 2), false, false, true), "UTF-16LE");
 }
 
-term_strz_utf16_v2_t::~term_strz_utf16_v2_t() {
-    _clean_up();
-}
-
-void term_strz_utf16_v2_t::_clean_up() {
-}
+term_strz_utf16_v2_t::~term_strz_utf16_v2_t() {}

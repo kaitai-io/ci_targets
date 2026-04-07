@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~expr_2_t();
@@ -35,7 +34,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~mod_str_t();
@@ -74,7 +72,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~tuple_t();

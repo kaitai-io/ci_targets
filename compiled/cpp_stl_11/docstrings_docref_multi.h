@@ -27,7 +27,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~docstrings_docref_multi_t();

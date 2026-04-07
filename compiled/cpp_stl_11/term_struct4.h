@@ -24,7 +24,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~term_struct4_t();
@@ -37,7 +36,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~bytes_wrapper_t();
@@ -59,7 +57,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~s1_type_t();
@@ -85,7 +82,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~s2_type_t();
@@ -111,7 +107,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~s3_type_t();

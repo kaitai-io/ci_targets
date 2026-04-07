@@ -16,9 +16,4 @@ void valid_fail_anyof_int_t::_read() {
     }
 }
 
-valid_fail_anyof_int_t::~valid_fail_anyof_int_t() {
-    _clean_up();
-}
-
-void valid_fail_anyof_int_t::_clean_up() {
-}
+valid_fail_anyof_int_t::~valid_fail_anyof_int_t() {}

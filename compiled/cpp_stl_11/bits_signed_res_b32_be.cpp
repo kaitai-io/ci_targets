@@ -12,9 +12,4 @@ void bits_signed_res_b32_be_t::_read() {
     m_a = m__io->read_bits_int_be(32);
 }
 
-bits_signed_res_b32_be_t::~bits_signed_res_b32_be_t() {
-    _clean_up();
-}
-
-void bits_signed_res_b32_be_t::_clean_up() {
-}
+bits_signed_res_b32_be_t::~bits_signed_res_b32_be_t() {}

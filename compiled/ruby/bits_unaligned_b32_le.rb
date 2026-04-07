@@ -13,7 +13,7 @@ class BitsUnalignedB32Le < Kaitai::Struct::Struct
   end
 
   def _read
-    @a = @_io.read_bits_int_le(1) != 0
+    @a = (@_io.read_bits_int_le(1) != 0)
     @b = @_io.read_bits_int_le(32)
     @c = @_io.read_bits_int_le(7)
     self

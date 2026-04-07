@@ -14,9 +14,4 @@ void term_bytes2_t::_read() {
     m_s3 = m__io->read_bytes_term(64, false, false, true);
 }
 
-term_bytes2_t::~term_bytes2_t() {
-    _clean_up();
-}
-
-void term_bytes2_t::_clean_up() {
-}
+term_bytes2_t::~term_bytes2_t() {}

@@ -13,7 +13,6 @@ bool params_enum_t::_is_defined_animal_t(params_enum_t::animal_t v) {
 params_enum_t::params_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, params_enum_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_invoke_with_param = nullptr;
     _read();
 }
 
@@ -22,12 +21,7 @@ void params_enum_t::_read() {
     m_invoke_with_param = std::unique_ptr<with_param_t>(new with_param_t(one(), m__io, this, m__root));
 }
 
-params_enum_t::~params_enum_t() {
-    _clean_up();
-}
-
-void params_enum_t::_clean_up() {
-}
+params_enum_t::~params_enum_t() {}
 
 params_enum_t::with_param_t::with_param_t(animal_t p_enumerated_one, kaitai::kstream* p__io, params_enum_t* p__parent, params_enum_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -40,12 +34,7 @@ params_enum_t::with_param_t::with_param_t(animal_t p_enumerated_one, kaitai::kst
 void params_enum_t::with_param_t::_read() {
 }
 
-params_enum_t::with_param_t::~with_param_t() {
-    _clean_up();
-}
-
-void params_enum_t::with_param_t::_clean_up() {
-}
+params_enum_t::with_param_t::~with_param_t() {}
 
 bool params_enum_t::with_param_t::is_cat() {
     if (f_is_cat)

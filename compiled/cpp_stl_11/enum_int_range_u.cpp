@@ -20,9 +20,4 @@ void enum_int_range_u_t::_read() {
     m_f2 = static_cast<enum_int_range_u_t::constants_t>(m__io->read_u4be());
 }
 
-enum_int_range_u_t::~enum_int_range_u_t() {
-    _clean_up();
-}
-
-void enum_int_range_u_t::_clean_up() {
-}
+enum_int_range_u_t::~enum_int_range_u_t() {}

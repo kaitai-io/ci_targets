@@ -16,7 +16,7 @@ class RepeatEosBitsB1 < Kaitai::Struct::Struct
     @bits = []
     i = 0
     while not @_io.eof?
-      @bits << @_io.read_bits_int_be(1) != 0
+      @bits << (@_io.read_bits_int_be(1) != 0)
       i += 1
     end
     self

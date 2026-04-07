@@ -5,20 +5,18 @@
 debug_switch_user_t::debug_switch_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debug_switch_user_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
+    m_data = 0;
 }
 
 void debug_switch_user_t::_read() {
     m_code = m__io->read_u1();
-    n_data = true;
     switch (code()) {
     case 1: {
-        n_data = false;
         m_data = new one_t(m__io, this, m__root);
         static_cast<one_t*>(m_data)->_read();
         break;
     }
     case 2: {
-        n_data = false;
         m_data = new two_t(m__io, this, m__root);
         static_cast<two_t*>(m_data)->_read();
         break;
@@ -31,11 +29,7 @@ debug_switch_user_t::~debug_switch_user_t() {
 }
 
 void debug_switch_user_t::_clean_up() {
-    if (!n_data) {
-        if (m_data) {
-            delete m_data; m_data = 0;
-        }
-    }
+    delete m_data;
 }
 
 debug_switch_user_t::one_t::one_t(kaitai::kstream* p__io, debug_switch_user_t* p__parent, debug_switch_user_t* p__root) : kaitai::kstruct(p__io) {

@@ -23,7 +23,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~instance_io_user_t();
@@ -36,7 +35,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~entry_t();
@@ -63,7 +61,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~strings_obj_t();

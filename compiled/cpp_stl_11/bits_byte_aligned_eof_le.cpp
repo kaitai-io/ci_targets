@@ -13,9 +13,4 @@ void bits_byte_aligned_eof_le_t::_read() {
     m_bits = m__io->read_bits_int_le(31);
 }
 
-bits_byte_aligned_eof_le_t::~bits_byte_aligned_eof_le_t() {
-    _clean_up();
-}
-
-void bits_byte_aligned_eof_le_t::_clean_up() {
-}
+bits_byte_aligned_eof_le_t::~bits_byte_aligned_eof_le_t() {}

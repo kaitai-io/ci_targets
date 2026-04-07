@@ -27,12 +27,8 @@ instance_in_sized_t::~instance_in_sized_t() {
 }
 
 void instance_in_sized_t::_clean_up() {
-    if (m__io__raw_cont) {
-        delete m__io__raw_cont; m__io__raw_cont = 0;
-    }
-    if (m_cont) {
-        delete m_cont; m_cont = 0;
-    }
+    delete m__io__raw_cont;
+    delete m_cont;
 }
 
 instance_in_sized_t::bar_t::bar_t(kaitai::kstream* p__io, instance_in_sized_t::wrapper_t* p__parent, instance_in_sized_t* p__root) : kaitai::kstruct(p__io) {
@@ -57,8 +53,6 @@ instance_in_sized_t::bar_t::~bar_t() {
 }
 
 void instance_in_sized_t::bar_t::_clean_up() {
-    if (f_inst) {
-    }
 }
 
 std::string instance_in_sized_t::bar_t::inst() {
@@ -94,8 +88,6 @@ instance_in_sized_t::baz_t::~baz_t() {
 }
 
 void instance_in_sized_t::baz_t::_clean_up() {
-    if (f_inst) {
-    }
 }
 
 std::string instance_in_sized_t::baz_t::inst() {
@@ -136,12 +128,6 @@ instance_in_sized_t::qux_t::~qux_t() {
 }
 
 void instance_in_sized_t::qux_t::_clean_up() {
-    if (!n_seq_f) {
-    }
-    if (f_inst_invoked) {
-    }
-    if (f_inst_unused_by_seq) {
-    }
 }
 
 uint8_t instance_in_sized_t::qux_t::inst_invoked() {
@@ -198,28 +184,12 @@ instance_in_sized_t::wrapper_t::~wrapper_t() {
 }
 
 void instance_in_sized_t::wrapper_t::_clean_up() {
-    if (m__io__raw_seq_sized) {
-        delete m__io__raw_seq_sized; m__io__raw_seq_sized = 0;
-    }
-    if (m_seq_sized) {
-        delete m_seq_sized; m_seq_sized = 0;
-    }
-    if (m_seq_in_stream) {
-        delete m_seq_in_stream; m_seq_in_stream = 0;
-    }
-    if (f_inst_in_stream) {
-        if (m_inst_in_stream) {
-            delete m_inst_in_stream; m_inst_in_stream = 0;
-        }
-    }
-    if (f_inst_sized) {
-        if (m__io__raw_inst_sized) {
-            delete m__io__raw_inst_sized; m__io__raw_inst_sized = 0;
-        }
-        if (m_inst_sized) {
-            delete m_inst_sized; m_inst_sized = 0;
-        }
-    }
+    delete m__io__raw_seq_sized;
+    delete m_seq_sized;
+    delete m_seq_in_stream;
+    delete m_inst_in_stream;
+    delete m__io__raw_inst_sized;
+    delete m_inst_sized;
 }
 
 instance_in_sized_t::baz_t* instance_in_sized_t::wrapper_t::inst_in_stream() {

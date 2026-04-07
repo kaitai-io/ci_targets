@@ -16,14 +16,7 @@ void docstrings_docref_t::_read() {
     m_three = m__io->read_u1();
 }
 
-docstrings_docref_t::~docstrings_docref_t() {
-    _clean_up();
-}
-
-void docstrings_docref_t::_clean_up() {
-    if (f_parse_inst) {
-    }
-}
+docstrings_docref_t::~docstrings_docref_t() {}
 
 bool docstrings_docref_t::foo() {
     if (f_foo)

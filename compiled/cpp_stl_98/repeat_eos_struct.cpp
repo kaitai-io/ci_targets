@@ -35,7 +35,7 @@ void repeat_eos_struct_t::_clean_up() {
         for (std::vector<chunk_t*>::iterator it = m_chunks->begin(); it != m_chunks->end(); ++it) {
             delete *it;
         }
-        delete m_chunks; m_chunks = 0;
+        delete m_chunks;
     }
 }
 

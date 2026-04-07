@@ -42,16 +42,7 @@ void switch_integers2_t::_read() {
     }
 }
 
-switch_integers2_t::~switch_integers2_t() {
-    _clean_up();
-}
-
-void switch_integers2_t::_clean_up() {
-    if (!n_len) {
-    }
-    if (!n_padding) {
-    }
-}
+switch_integers2_t::~switch_integers2_t() {}
 
 std::string switch_integers2_t::len_mod_str() {
     if (f_len_mod_str)

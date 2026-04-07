@@ -6,7 +6,6 @@
 vlq_base128_le_t::vlq_base128_le_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, vlq_base128_le_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_groups = nullptr;
     f_len = false;
     f_sign_bit = false;
     f_value = false;
@@ -27,12 +26,7 @@ void vlq_base128_le_t::_read() {
     }
 }
 
-vlq_base128_le_t::~vlq_base128_le_t() {
-    _clean_up();
-}
-
-void vlq_base128_le_t::_clean_up() {
-}
+vlq_base128_le_t::~vlq_base128_le_t() {}
 
 vlq_base128_le_t::group_t::group_t(int32_t p_idx, uint64_t p_prev_interm_value, uint64_t p_multiplier, kaitai::kstream* p__io, vlq_base128_le_t* p__parent, vlq_base128_le_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -55,12 +49,7 @@ void vlq_base128_le_t::group_t::_read() {
     }
 }
 
-vlq_base128_le_t::group_t::~group_t() {
-    _clean_up();
-}
-
-void vlq_base128_le_t::group_t::_clean_up() {
-}
+vlq_base128_le_t::group_t::~group_t() {}
 
 uint64_t vlq_base128_le_t::group_t::interm_value() {
     if (f_interm_value)

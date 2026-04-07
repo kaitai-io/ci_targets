@@ -14,12 +14,7 @@ void combine_bool_t::_read() {
     m_bool_bit = m__io->read_bits_int_be(1);
 }
 
-combine_bool_t::~combine_bool_t() {
-    _clean_up();
-}
-
-void combine_bool_t::_clean_up() {
-}
+combine_bool_t::~combine_bool_t() {}
 
 bool combine_bool_t::bool_calc() {
     if (f_bool_calc)

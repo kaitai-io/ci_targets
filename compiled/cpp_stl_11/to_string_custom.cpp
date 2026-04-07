@@ -13,12 +13,7 @@ void to_string_custom_t::_read() {
     m_s2 = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(124, false, true, true), "UTF-8");
 }
 
-to_string_custom_t::~to_string_custom_t() {
-    _clean_up();
-}
-
-void to_string_custom_t::_clean_up() {
-}
+to_string_custom_t::~to_string_custom_t() {}
 
 std::string to_string_custom_t::_to_string() const {
     return ((std::string("s1 = ") + s1()) + std::string(", s2 = ")) + s2();

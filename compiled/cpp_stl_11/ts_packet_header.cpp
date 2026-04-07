@@ -29,9 +29,4 @@ void ts_packet_header_t::_read() {
     m_ts_packet_remain = m__io->read_bytes(184);
 }
 
-ts_packet_header_t::~ts_packet_header_t() {
-    _clean_up();
-}
-
-void ts_packet_header_t::_clean_up() {
-}
+ts_packet_header_t::~ts_packet_header_t() {}

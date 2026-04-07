@@ -25,11 +25,7 @@ name_clash_import_vs_inst_t::~name_clash_import_vs_inst_t() {
 }
 
 void name_clash_import_vs_inst_t::_clean_up() {
-    if (f_integers) {
-        if (m_integers) {
-            delete m_integers; m_integers = 0;
-        }
-    }
+    delete m_integers;
 }
 
 integers_t* name_clash_import_vs_inst_t::integers() {

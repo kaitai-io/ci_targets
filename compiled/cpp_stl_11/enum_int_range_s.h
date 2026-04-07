@@ -33,7 +33,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~enum_int_range_s_t();

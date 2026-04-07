@@ -32,9 +32,4 @@ void valid_eq_str_encodings_t::_read() {
     }
 }
 
-valid_eq_str_encodings_t::~valid_eq_str_encodings_t() {
-    _clean_up();
-}
-
-void valid_eq_str_encodings_t::_clean_up() {
-}
+valid_eq_str_encodings_t::~valid_eq_str_encodings_t() {}

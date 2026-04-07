@@ -38,10 +38,4 @@ expr_io_pos_bits_t::~expr_io_pos_bits_t() {
 }
 
 void expr_io_pos_bits_t::_clean_up() {
-    if (!n_bar) {
-    }
-    if (!n_baz) {
-    }
-    if (!n_qux) {
-    }
 }

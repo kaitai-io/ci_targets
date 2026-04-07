@@ -23,7 +23,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~multiple_use_t();
@@ -36,7 +35,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~multi_t();
@@ -58,7 +56,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~type_1_t();
@@ -80,7 +77,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~type_2_t();

@@ -11,9 +11,4 @@ docstrings_docref_multi_t::docstrings_docref_multi_t(kaitai::kstream* p__io, kai
 void docstrings_docref_multi_t::_read() {
 }
 
-docstrings_docref_multi_t::~docstrings_docref_multi_t() {
-    _clean_up();
-}
-
-void docstrings_docref_multi_t::_clean_up() {
-}
+docstrings_docref_multi_t::~docstrings_docref_multi_t() {}

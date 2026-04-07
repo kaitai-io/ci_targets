@@ -19,12 +19,7 @@ void floating_points_t::_read() {
     m_approximate_value = m__io->read_f4le();
 }
 
-floating_points_t::~floating_points_t() {
-    _clean_up();
-}
-
-void floating_points_t::_clean_up() {
-}
+floating_points_t::~floating_points_t() {}
 
 double floating_points_t::double_value_plus_float() {
     if (f_double_value_plus_float)

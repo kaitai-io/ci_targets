@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~eof_exception_switch_user_t();
@@ -35,7 +34,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~one_t();
@@ -57,7 +55,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~two_t();
@@ -80,10 +77,9 @@ public:
 private:
     uint16_t m_code;
     std::unique_ptr<kaitai::kstruct> m_data;
-    bool n_data;
 
 public:
-    bool _is_null_data() { data(); return n_data; };
+    bool _is_null_data() { return !data(); };
 
 private:
     eof_exception_switch_user_t* m__root;

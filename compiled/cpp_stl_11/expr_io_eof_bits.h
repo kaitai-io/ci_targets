@@ -18,11 +18,6 @@ public:
 
     expr_io_eof_bits_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_io_eof_bits_t* p__root = nullptr);
     void _read();
-
-private:
-    void _clean_up();
-
-public:
     ~expr_io_eof_bits_t();
     uint64_t foo() const { return m_foo; }
     uint64_t bar() const { return m_bar; }

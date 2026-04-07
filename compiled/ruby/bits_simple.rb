@@ -15,7 +15,7 @@ class BitsSimple < Kaitai::Struct::Struct
   def _read
     @byte_1 = @_io.read_bits_int_be(8)
     @byte_2 = @_io.read_bits_int_be(8)
-    @bits_a = @_io.read_bits_int_be(1) != 0
+    @bits_a = (@_io.read_bits_int_be(1) != 0)
     @bits_b = @_io.read_bits_int_be(3)
     @bits_c = @_io.read_bits_int_be(4)
     @large_bits_1 = @_io.read_bits_int_be(10)

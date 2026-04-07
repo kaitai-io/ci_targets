@@ -21,7 +21,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~default_endian_mod_t();
@@ -36,7 +35,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~main_obj_t();
@@ -49,7 +47,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~subnest_t();
@@ -71,7 +68,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~subnest_be_t();

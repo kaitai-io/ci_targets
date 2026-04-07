@@ -5,7 +5,6 @@
 debug_0_t::debug_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debug_0_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_array_of_ints = nullptr;
 }
 
 void debug_0_t::_read() {
@@ -18,9 +17,4 @@ void debug_0_t::_read() {
     m__unnamed2 = m__io->read_u1();
 }
 
-debug_0_t::~debug_0_t() {
-    _clean_up();
-}
-
-void debug_0_t::_clean_up() {
-}
+debug_0_t::~debug_0_t() {}

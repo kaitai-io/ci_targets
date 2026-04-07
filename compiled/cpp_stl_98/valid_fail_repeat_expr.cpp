@@ -38,7 +38,5 @@ valid_fail_repeat_expr_t::~valid_fail_repeat_expr_t() {
 }
 
 void valid_fail_repeat_expr_t::_clean_up() {
-    if (m_foo) {
-        delete m_foo; m_foo = 0;
-    }
+    delete m_foo;
 }

@@ -23,9 +23,4 @@ void bits_enum_t::_read() {
     m_three = static_cast<bits_enum_t::animal_t>(m__io->read_bits_int_be(1));
 }
 
-bits_enum_t::~bits_enum_t() {
-    _clean_up();
-}
-
-void bits_enum_t::_clean_up() {
-}
+bits_enum_t::~bits_enum_t() {}

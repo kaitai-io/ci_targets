@@ -40,14 +40,12 @@ index_to_param_until_t::~index_to_param_until_t() {
 }
 
 void index_to_param_until_t::_clean_up() {
-    if (m_sizes) {
-        delete m_sizes; m_sizes = 0;
-    }
+    delete m_sizes;
     if (m_blocks) {
         for (std::vector<block_t*>::iterator it = m_blocks->begin(); it != m_blocks->end(); ++it) {
             delete *it;
         }
-        delete m_blocks; m_blocks = 0;
+        delete m_blocks;
     }
 }
 

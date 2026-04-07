@@ -34,11 +34,9 @@ void params_pass_array_usertype_t::_clean_up() {
         for (std::vector<block_t*>::iterator it = m_blocks->begin(); it != m_blocks->end(); ++it) {
             delete *it;
         }
-        delete m_blocks; m_blocks = 0;
+        delete m_blocks;
     }
-    if (m_pass_blocks) {
-        delete m_pass_blocks; m_pass_blocks = 0;
-    }
+    delete m_pass_blocks;
 }
 
 params_pass_array_usertype_t::block_t::block_t(kaitai::kstream* p__io, params_pass_array_usertype_t* p__parent, params_pass_array_usertype_t* p__root) : kaitai::kstruct(p__io) {

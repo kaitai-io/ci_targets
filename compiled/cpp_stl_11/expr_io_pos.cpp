@@ -5,10 +5,6 @@
 expr_io_pos_t::expr_io_pos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_io_pos_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_substream1 = nullptr;
-    m__io__raw_substream1 = nullptr;
-    m_substream2 = nullptr;
-    m__io__raw_substream2 = nullptr;
     _read();
 }
 
@@ -21,12 +17,7 @@ void expr_io_pos_t::_read() {
     m_substream2 = std::unique_ptr<all_plus_number_t>(new all_plus_number_t(m__io__raw_substream2.get(), this, m__root));
 }
 
-expr_io_pos_t::~expr_io_pos_t() {
-    _clean_up();
-}
-
-void expr_io_pos_t::_clean_up() {
-}
+expr_io_pos_t::~expr_io_pos_t() {}
 
 expr_io_pos_t::all_plus_number_t::all_plus_number_t(kaitai::kstream* p__io, expr_io_pos_t* p__parent, expr_io_pos_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -40,9 +31,4 @@ void expr_io_pos_t::all_plus_number_t::_read() {
     m_number = m__io->read_u2le();
 }
 
-expr_io_pos_t::all_plus_number_t::~all_plus_number_t() {
-    _clean_up();
-}
-
-void expr_io_pos_t::all_plus_number_t::_clean_up() {
-}
+expr_io_pos_t::all_plus_number_t::~all_plus_number_t() {}

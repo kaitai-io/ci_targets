@@ -15,12 +15,7 @@ void switch_else_only_t::_read() {
     m_ut = std::unique_ptr<data_t>(new data_t(m__io, this, m__root));
 }
 
-switch_else_only_t::~switch_else_only_t() {
-    _clean_up();
-}
-
-void switch_else_only_t::_clean_up() {
-}
+switch_else_only_t::~switch_else_only_t() {}
 
 switch_else_only_t::data_t::data_t(kaitai::kstream* p__io, switch_else_only_t* p__parent, switch_else_only_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -32,9 +27,4 @@ void switch_else_only_t::data_t::_read() {
     m_value = m__io->read_bytes(4);
 }
 
-switch_else_only_t::data_t::~data_t() {
-    _clean_up();
-}
-
-void switch_else_only_t::data_t::_clean_up() {
-}
+switch_else_only_t::data_t::~data_t() {}

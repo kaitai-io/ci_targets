@@ -34,7 +34,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~expr_bits_t();
@@ -54,7 +53,6 @@ public:
         void _read();
         void _read_le();
         void _read_be();
-        void _clean_up();
 
     public:
         ~endian_switch_t();

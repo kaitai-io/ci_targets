@@ -13,9 +13,4 @@ params_def_enum_imported_t::params_def_enum_imported_t(enum_0_t::animal_t p_pet_
 void params_def_enum_imported_t::_read() {
 }
 
-params_def_enum_imported_t::~params_def_enum_imported_t() {
-    _clean_up();
-}
-
-void params_def_enum_imported_t::_clean_up() {
-}
+params_def_enum_imported_t::~params_def_enum_imported_t() {}

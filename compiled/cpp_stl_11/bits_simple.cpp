@@ -25,12 +25,7 @@ void bits_simple_t::_read() {
     m_byte_20_to_27 = m__io->read_bits_int_be(64);
 }
 
-bits_simple_t::~bits_simple_t() {
-    _clean_up();
-}
-
-void bits_simple_t::_clean_up() {
-}
+bits_simple_t::~bits_simple_t() {}
 
 int8_t bits_simple_t::test_if_b1() {
     if (f_test_if_b1)

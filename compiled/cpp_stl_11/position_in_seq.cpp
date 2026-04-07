@@ -5,8 +5,6 @@
 position_in_seq_t::position_in_seq_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, position_in_seq_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_numbers = nullptr;
-    m_header = nullptr;
     f_header = false;
     _read();
 }
@@ -19,14 +17,7 @@ void position_in_seq_t::_read() {
     }
 }
 
-position_in_seq_t::~position_in_seq_t() {
-    _clean_up();
-}
-
-void position_in_seq_t::_clean_up() {
-    if (f_header) {
-    }
-}
+position_in_seq_t::~position_in_seq_t() {}
 
 position_in_seq_t::header_obj_t::header_obj_t(kaitai::kstream* p__io, position_in_seq_t* p__parent, position_in_seq_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -38,12 +29,7 @@ void position_in_seq_t::header_obj_t::_read() {
     m_qty_numbers = m__io->read_u4le();
 }
 
-position_in_seq_t::header_obj_t::~header_obj_t() {
-    _clean_up();
-}
-
-void position_in_seq_t::header_obj_t::_clean_up() {
-}
+position_in_seq_t::header_obj_t::~header_obj_t() {}
 
 position_in_seq_t::header_obj_t* position_in_seq_t::header() {
     if (f_header)

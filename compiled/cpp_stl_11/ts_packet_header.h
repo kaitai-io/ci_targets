@@ -38,7 +38,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~ts_packet_header_t();

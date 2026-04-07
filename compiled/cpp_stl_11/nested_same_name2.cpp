@@ -5,8 +5,6 @@
 nested_same_name2_t::nested_same_name2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_same_name2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_main_data = nullptr;
-    m_dummy = nullptr;
     _read();
 }
 
@@ -16,17 +14,11 @@ void nested_same_name2_t::_read() {
     m_dummy = std::unique_ptr<dummy_obj_t>(new dummy_obj_t(m__io, this, m__root));
 }
 
-nested_same_name2_t::~nested_same_name2_t() {
-    _clean_up();
-}
-
-void nested_same_name2_t::_clean_up() {
-}
+nested_same_name2_t::~nested_same_name2_t() {}
 
 nested_same_name2_t::dummy_obj_t::dummy_obj_t(kaitai::kstream* p__io, nested_same_name2_t* p__parent, nested_same_name2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m_foo = nullptr;
     _read();
 }
 
@@ -35,12 +27,7 @@ void nested_same_name2_t::dummy_obj_t::_read() {
     m_foo = std::unique_ptr<foo_obj_t>(new foo_obj_t(m__io, this, m__root));
 }
 
-nested_same_name2_t::dummy_obj_t::~dummy_obj_t() {
-    _clean_up();
-}
-
-void nested_same_name2_t::dummy_obj_t::_clean_up() {
-}
+nested_same_name2_t::dummy_obj_t::~dummy_obj_t() {}
 
 nested_same_name2_t::dummy_obj_t::foo_obj_t::foo_obj_t(kaitai::kstream* p__io, nested_same_name2_t::dummy_obj_t* p__parent, nested_same_name2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -52,17 +39,11 @@ void nested_same_name2_t::dummy_obj_t::foo_obj_t::_read() {
     m_data2 = m__io->read_bytes(_parent()->dummy_size() * 2);
 }
 
-nested_same_name2_t::dummy_obj_t::foo_obj_t::~foo_obj_t() {
-    _clean_up();
-}
-
-void nested_same_name2_t::dummy_obj_t::foo_obj_t::_clean_up() {
-}
+nested_same_name2_t::dummy_obj_t::foo_obj_t::~foo_obj_t() {}
 
 nested_same_name2_t::main_t::main_t(kaitai::kstream* p__io, nested_same_name2_t* p__parent, nested_same_name2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m_foo = nullptr;
     _read();
 }
 
@@ -71,12 +52,7 @@ void nested_same_name2_t::main_t::_read() {
     m_foo = std::unique_ptr<foo_obj_t>(new foo_obj_t(m__io, this, m__root));
 }
 
-nested_same_name2_t::main_t::~main_t() {
-    _clean_up();
-}
-
-void nested_same_name2_t::main_t::_clean_up() {
-}
+nested_same_name2_t::main_t::~main_t() {}
 
 nested_same_name2_t::main_t::foo_obj_t::foo_obj_t(kaitai::kstream* p__io, nested_same_name2_t::main_t* p__parent, nested_same_name2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -88,9 +64,4 @@ void nested_same_name2_t::main_t::foo_obj_t::_read() {
     m_data1 = m__io->read_bytes(_parent()->main_size() * 2);
 }
 
-nested_same_name2_t::main_t::foo_obj_t::~foo_obj_t() {
-    _clean_up();
-}
-
-void nested_same_name2_t::main_t::foo_obj_t::_clean_up() {
-}
+nested_same_name2_t::main_t::foo_obj_t::~foo_obj_t() {}

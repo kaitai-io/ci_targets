@@ -14,14 +14,7 @@ void docstrings_t::_read() {
     m_one = m__io->read_u1();
 }
 
-docstrings_t::~docstrings_t() {
-    _clean_up();
-}
-
-void docstrings_t::_clean_up() {
-    if (f_two) {
-    }
-}
+docstrings_t::~docstrings_t() {}
 
 docstrings_t::complex_subtype_t::complex_subtype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, docstrings_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -32,12 +25,7 @@ docstrings_t::complex_subtype_t::complex_subtype_t(kaitai::kstream* p__io, kaita
 void docstrings_t::complex_subtype_t::_read() {
 }
 
-docstrings_t::complex_subtype_t::~complex_subtype_t() {
-    _clean_up();
-}
-
-void docstrings_t::complex_subtype_t::_clean_up() {
-}
+docstrings_t::complex_subtype_t::~complex_subtype_t() {}
 
 int8_t docstrings_t::three() {
     if (f_three)

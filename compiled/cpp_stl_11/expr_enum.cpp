@@ -24,12 +24,7 @@ void expr_enum_t::_read() {
     m_one = m__io->read_u1();
 }
 
-expr_enum_t::~expr_enum_t() {
-    _clean_up();
-}
-
-void expr_enum_t::_clean_up() {
-}
+expr_enum_t::~expr_enum_t() {}
 
 expr_enum_t::animal_t expr_enum_t::const_dog() {
     if (f_const_dog)

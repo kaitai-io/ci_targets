@@ -23,7 +23,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~instance_io_user_earlier_t();
@@ -36,7 +35,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~baz_t();
@@ -64,7 +62,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~foo_t();
@@ -101,7 +98,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~slot_t();

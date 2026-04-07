@@ -12,9 +12,4 @@ void hello_world_t::_read() {
     m_one = m__io->read_u1();
 }
 
-hello_world_t::~hello_world_t() {
-    _clean_up();
-}
-
-void hello_world_t::_clean_up() {
-}
+hello_world_t::~hello_world_t() {}

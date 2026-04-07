@@ -30,14 +30,7 @@ void expr_if_int_eq_t::_read() {
     }
 }
 
-expr_if_int_eq_t::~expr_if_int_eq_t() {
-    _clean_up();
-}
-
-void expr_if_int_eq_t::_clean_up() {
-    if (!n_seq_if) {
-    }
-}
+expr_if_int_eq_t::~expr_if_int_eq_t() {}
 
 int32_t expr_if_int_eq_t::calc() {
     if (f_calc)

@@ -34,11 +34,7 @@ instance_in_repeat_until_t::~instance_in_repeat_until_t() {
 }
 
 void instance_in_repeat_until_t::_clean_up() {
-    if (m_entries) {
-        delete m_entries; m_entries = 0;
-    }
-    if (f_until_val) {
-    }
+    delete m_entries;
 }
 
 int16_t instance_in_repeat_until_t::until_val() {

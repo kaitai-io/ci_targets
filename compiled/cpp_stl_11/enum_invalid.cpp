@@ -20,9 +20,4 @@ void enum_invalid_t::_read() {
     m_pet_2 = static_cast<enum_invalid_t::animal_t>(m__io->read_u1());
 }
 
-enum_invalid_t::~enum_invalid_t() {
-    _clean_up();
-}
-
-void enum_invalid_t::_clean_up() {
-}
+enum_invalid_t::~enum_invalid_t() {}

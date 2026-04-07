@@ -16,12 +16,7 @@ str_literals_t::str_literals_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
 void str_literals_t::_read() {
 }
 
-str_literals_t::~str_literals_t() {
-    _clean_up();
-}
-
-void str_literals_t::_clean_up() {
-}
+str_literals_t::~str_literals_t() {}
 
 std::string str_literals_t::backslashes() {
     if (f_backslashes)

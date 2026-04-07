@@ -44,24 +44,12 @@ process_term_struct_t::~process_term_struct_t() {
 }
 
 void process_term_struct_t::_clean_up() {
-    if (m__io__raw_s1) {
-        delete m__io__raw_s1; m__io__raw_s1 = 0;
-    }
-    if (m_s1) {
-        delete m_s1; m_s1 = 0;
-    }
-    if (m__io__raw_s2) {
-        delete m__io__raw_s2; m__io__raw_s2 = 0;
-    }
-    if (m_s2) {
-        delete m_s2; m_s2 = 0;
-    }
-    if (m__io__raw_s3) {
-        delete m__io__raw_s3; m__io__raw_s3 = 0;
-    }
-    if (m_s3) {
-        delete m_s3; m_s3 = 0;
-    }
+    delete m__io__raw_s1;
+    delete m_s1;
+    delete m__io__raw_s2;
+    delete m_s2;
+    delete m__io__raw_s3;
+    delete m_s3;
 }
 
 process_term_struct_t::bytes_wrapper_t::bytes_wrapper_t(kaitai::kstream* p__io, process_term_struct_t* p__parent, process_term_struct_t* p__root) : kaitai::kstruct(p__io) {

@@ -54,16 +54,8 @@ expr_bits_t::~expr_bits_t() {
 }
 
 void expr_bits_t::_clean_up() {
-    if (m_repeat_expr) {
-        delete m_repeat_expr; m_repeat_expr = 0;
-    }
-    if (!n_switch_on_type) {
-    }
-    if (m_switch_on_endian) {
-        delete m_switch_on_endian; m_switch_on_endian = 0;
-    }
-    if (f_inst_pos) {
-    }
+    delete m_repeat_expr;
+    delete m_switch_on_endian;
 }
 
 expr_bits_t::endian_switch_t::endian_switch_t(kaitai::kstream* p__io, expr_bits_t* p__parent, expr_bits_t* p__root) : kaitai::kstruct(p__io) {

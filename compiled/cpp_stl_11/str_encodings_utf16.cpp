@@ -5,10 +5,6 @@
 str_encodings_utf16_t::str_encodings_utf16_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_encodings_utf16_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_be_bom_removed = nullptr;
-    m__io__raw_be_bom_removed = nullptr;
-    m_le_bom_removed = nullptr;
-    m__io__raw_le_bom_removed = nullptr;
     _read();
 }
 
@@ -23,12 +19,7 @@ void str_encodings_utf16_t::_read() {
     m_le_bom_removed = std::unique_ptr<str_le_bom_removed_t>(new str_le_bom_removed_t(m__io__raw_le_bom_removed.get(), this, m__root));
 }
 
-str_encodings_utf16_t::~str_encodings_utf16_t() {
-    _clean_up();
-}
-
-void str_encodings_utf16_t::_clean_up() {
-}
+str_encodings_utf16_t::~str_encodings_utf16_t() {}
 
 str_encodings_utf16_t::str_be_bom_removed_t::str_be_bom_removed_t(kaitai::kstream* p__io, str_encodings_utf16_t* p__parent, str_encodings_utf16_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -41,12 +32,7 @@ void str_encodings_utf16_t::str_be_bom_removed_t::_read() {
     m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes_full(), "UTF-16BE");
 }
 
-str_encodings_utf16_t::str_be_bom_removed_t::~str_be_bom_removed_t() {
-    _clean_up();
-}
-
-void str_encodings_utf16_t::str_be_bom_removed_t::_clean_up() {
-}
+str_encodings_utf16_t::str_be_bom_removed_t::~str_be_bom_removed_t() {}
 
 str_encodings_utf16_t::str_le_bom_removed_t::str_le_bom_removed_t(kaitai::kstream* p__io, str_encodings_utf16_t* p__parent, str_encodings_utf16_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -59,9 +45,4 @@ void str_encodings_utf16_t::str_le_bom_removed_t::_read() {
     m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes_full(), "UTF-16LE");
 }
 
-str_encodings_utf16_t::str_le_bom_removed_t::~str_le_bom_removed_t() {
-    _clean_up();
-}
-
-void str_encodings_utf16_t::str_le_bom_removed_t::_clean_up() {
-}
+str_encodings_utf16_t::str_le_bom_removed_t::~str_le_bom_removed_t() {}

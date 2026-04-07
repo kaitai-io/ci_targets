@@ -79,50 +79,44 @@ repeat_until_term_struct_t::~repeat_until_term_struct_t() {
 }
 
 void repeat_until_term_struct_t::_clean_up() {
-    if (m__raw_records1) {
-        delete m__raw_records1; m__raw_records1 = 0;
-    }
+    delete m__raw_records1;
     if (m__io__raw_records1) {
         for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_records1->begin(); it != m__io__raw_records1->end(); ++it) {
             delete *it;
         }
-        delete m__io__raw_records1; m__io__raw_records1 = 0;
+        delete m__io__raw_records1;
     }
     if (m_records1) {
         for (std::vector<bytes_wrapper_t*>::iterator it = m_records1->begin(); it != m_records1->end(); ++it) {
             delete *it;
         }
-        delete m_records1; m_records1 = 0;
+        delete m_records1;
     }
-    if (m__raw_records2) {
-        delete m__raw_records2; m__raw_records2 = 0;
-    }
+    delete m__raw_records2;
     if (m__io__raw_records2) {
         for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_records2->begin(); it != m__io__raw_records2->end(); ++it) {
             delete *it;
         }
-        delete m__io__raw_records2; m__io__raw_records2 = 0;
+        delete m__io__raw_records2;
     }
     if (m_records2) {
         for (std::vector<bytes_wrapper_t*>::iterator it = m_records2->begin(); it != m_records2->end(); ++it) {
             delete *it;
         }
-        delete m_records2; m_records2 = 0;
+        delete m_records2;
     }
-    if (m__raw_records3) {
-        delete m__raw_records3; m__raw_records3 = 0;
-    }
+    delete m__raw_records3;
     if (m__io__raw_records3) {
         for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_records3->begin(); it != m__io__raw_records3->end(); ++it) {
             delete *it;
         }
-        delete m__io__raw_records3; m__io__raw_records3 = 0;
+        delete m__io__raw_records3;
     }
     if (m_records3) {
         for (std::vector<bytes_wrapper_t*>::iterator it = m_records3->begin(); it != m_records3->end(); ++it) {
             delete *it;
         }
-        delete m_records3; m_records3 = 0;
+        delete m_records3;
     }
 }
 

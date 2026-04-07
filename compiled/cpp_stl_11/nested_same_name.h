@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~nested_same_name_t();
@@ -36,7 +35,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~dummy_obj_t();
@@ -49,7 +47,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~foo_t();
@@ -79,7 +76,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~main_t();
@@ -92,7 +88,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~foo_obj_t();

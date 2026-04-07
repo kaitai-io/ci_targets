@@ -23,7 +23,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~bcd_user_type_be_t();
@@ -36,7 +35,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~leading_zero_ltr_obj_t();
@@ -94,7 +92,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~ltr_obj_t();
@@ -152,7 +149,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~rtl_obj_t();

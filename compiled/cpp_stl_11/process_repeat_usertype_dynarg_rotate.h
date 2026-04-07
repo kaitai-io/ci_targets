@@ -23,7 +23,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~process_repeat_usertype_dynarg_rotate_t();
@@ -36,7 +35,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~block_t();
@@ -58,7 +56,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~blocks_b_wrapper_t();

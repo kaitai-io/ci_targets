@@ -5,12 +5,6 @@
 bcd_user_type_be_t::bcd_user_type_be_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, bcd_user_type_be_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_ltr = nullptr;
-    m__io__raw_ltr = nullptr;
-    m_rtl = nullptr;
-    m__io__raw_rtl = nullptr;
-    m_leading_zero_ltr = nullptr;
-    m__io__raw_leading_zero_ltr = nullptr;
     _read();
 }
 
@@ -26,12 +20,7 @@ void bcd_user_type_be_t::_read() {
     m_leading_zero_ltr = std::unique_ptr<leading_zero_ltr_obj_t>(new leading_zero_ltr_obj_t(m__io__raw_leading_zero_ltr.get(), this, m__root));
 }
 
-bcd_user_type_be_t::~bcd_user_type_be_t() {
-    _clean_up();
-}
-
-void bcd_user_type_be_t::_clean_up() {
-}
+bcd_user_type_be_t::~bcd_user_type_be_t() {}
 
 bcd_user_type_be_t::leading_zero_ltr_obj_t::leading_zero_ltr_obj_t(kaitai::kstream* p__io, bcd_user_type_be_t* p__parent, bcd_user_type_be_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -56,12 +45,7 @@ void bcd_user_type_be_t::leading_zero_ltr_obj_t::_read() {
     m_b4 = m__io->read_u1();
 }
 
-bcd_user_type_be_t::leading_zero_ltr_obj_t::~leading_zero_ltr_obj_t() {
-    _clean_up();
-}
-
-void bcd_user_type_be_t::leading_zero_ltr_obj_t::_clean_up() {
-}
+bcd_user_type_be_t::leading_zero_ltr_obj_t::~leading_zero_ltr_obj_t() {}
 
 int32_t bcd_user_type_be_t::leading_zero_ltr_obj_t::as_int() {
     if (f_as_int)
@@ -166,12 +150,7 @@ void bcd_user_type_be_t::ltr_obj_t::_read() {
     m_b4 = m__io->read_u1();
 }
 
-bcd_user_type_be_t::ltr_obj_t::~ltr_obj_t() {
-    _clean_up();
-}
-
-void bcd_user_type_be_t::ltr_obj_t::_clean_up() {
-}
+bcd_user_type_be_t::ltr_obj_t::~ltr_obj_t() {}
 
 int32_t bcd_user_type_be_t::ltr_obj_t::as_int() {
     if (f_as_int)
@@ -276,12 +255,7 @@ void bcd_user_type_be_t::rtl_obj_t::_read() {
     m_b4 = m__io->read_u1();
 }
 
-bcd_user_type_be_t::rtl_obj_t::~rtl_obj_t() {
-    _clean_up();
-}
-
-void bcd_user_type_be_t::rtl_obj_t::_clean_up() {
-}
+bcd_user_type_be_t::rtl_obj_t::~rtl_obj_t() {}
 
 int32_t bcd_user_type_be_t::rtl_obj_t::as_int() {
     if (f_as_int)

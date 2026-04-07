@@ -46,30 +46,14 @@ str_encodings_escaping_enc_t::~str_encodings_escaping_enc_t() {
 }
 
 void str_encodings_escaping_enc_t::_clean_up() {
-    if (m__io__raw_str1) {
-        delete m__io__raw_str1; m__io__raw_str1 = 0;
-    }
-    if (m_str1) {
-        delete m_str1; m_str1 = 0;
-    }
-    if (m__io__raw_str2) {
-        delete m__io__raw_str2; m__io__raw_str2 = 0;
-    }
-    if (m_str2) {
-        delete m_str2; m_str2 = 0;
-    }
-    if (m__io__raw_str3) {
-        delete m__io__raw_str3; m__io__raw_str3 = 0;
-    }
-    if (m_str3) {
-        delete m_str3; m_str3 = 0;
-    }
-    if (m__io__raw_str4) {
-        delete m__io__raw_str4; m__io__raw_str4 = 0;
-    }
-    if (m_str4) {
-        delete m_str4; m_str4 = 0;
-    }
+    delete m__io__raw_str1;
+    delete m_str1;
+    delete m__io__raw_str2;
+    delete m_str2;
+    delete m__io__raw_str3;
+    delete m_str3;
+    delete m__io__raw_str4;
+    delete m_str4;
 }
 
 str_encodings_escaping_enc_t::str1_wrapper_t::str1_wrapper_t(kaitai::kstream* p__io, str_encodings_escaping_enc_t* p__parent, str_encodings_escaping_enc_t* p__root) : kaitai::kstruct(p__io) {
@@ -93,8 +77,6 @@ str_encodings_escaping_enc_t::str1_wrapper_t::~str1_wrapper_t() {
 }
 
 void str_encodings_escaping_enc_t::str1_wrapper_t::_clean_up() {
-    if (f_v) {
-    }
 }
 
 std::string str_encodings_escaping_enc_t::str1_wrapper_t::v() {
@@ -129,8 +111,6 @@ str_encodings_escaping_enc_t::str2_wrapper_t::~str2_wrapper_t() {
 }
 
 void str_encodings_escaping_enc_t::str2_wrapper_t::_clean_up() {
-    if (f_v) {
-    }
 }
 
 std::string str_encodings_escaping_enc_t::str2_wrapper_t::v() {
@@ -165,8 +145,6 @@ str_encodings_escaping_enc_t::str3_wrapper_t::~str3_wrapper_t() {
 }
 
 void str_encodings_escaping_enc_t::str3_wrapper_t::_clean_up() {
-    if (f_v) {
-    }
 }
 
 std::string str_encodings_escaping_enc_t::str3_wrapper_t::v() {
@@ -201,8 +179,6 @@ str_encodings_escaping_enc_t::str4_wrapper_t::~str4_wrapper_t() {
 }
 
 void str_encodings_escaping_enc_t::str4_wrapper_t::_clean_up() {
-    if (f_v) {
-    }
 }
 
 std::string str_encodings_escaping_enc_t::str4_wrapper_t::v() {

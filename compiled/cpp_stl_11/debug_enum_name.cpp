@@ -17,8 +17,6 @@ bool debug_enum_name_t::_is_defined_test_enum2_t(debug_enum_name_t::test_enum2_t
 debug_enum_name_t::debug_enum_name_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debug_enum_name_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_array_of_ints = nullptr;
-    m_test_type = nullptr;
 }
 
 void debug_enum_name_t::_read() {
@@ -32,12 +30,7 @@ void debug_enum_name_t::_read() {
     m_test_type->_read();
 }
 
-debug_enum_name_t::~debug_enum_name_t() {
-    _clean_up();
-}
-
-void debug_enum_name_t::_clean_up() {
-}
+debug_enum_name_t::~debug_enum_name_t() {}
 const std::set<debug_enum_name_t::test_subtype_t::inner_enum1_t> debug_enum_name_t::test_subtype_t::_values_inner_enum1_t{
     debug_enum_name_t::test_subtype_t::INNER_ENUM1_ENUM_VALUE_67,
 };
@@ -62,12 +55,7 @@ void debug_enum_name_t::test_subtype_t::_read() {
     m_field2 = m__io->read_u1();
 }
 
-debug_enum_name_t::test_subtype_t::~test_subtype_t() {
-    _clean_up();
-}
-
-void debug_enum_name_t::test_subtype_t::_clean_up() {
-}
+debug_enum_name_t::test_subtype_t::~test_subtype_t() {}
 
 debug_enum_name_t::test_subtype_t::inner_enum2_t debug_enum_name_t::test_subtype_t::instance_field() {
     if (f_instance_field)

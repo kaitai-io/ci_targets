@@ -36,7 +36,7 @@ void default_endian_expr_inherited_t::_clean_up() {
         for (std::vector<doc_t*>::iterator it = m_docs->begin(); it != m_docs->end(); ++it) {
             delete *it;
         }
-        delete m_docs; m_docs = 0;
+        delete m_docs;
     }
 }
 
@@ -63,9 +63,7 @@ default_endian_expr_inherited_t::doc_t::~doc_t() {
 }
 
 void default_endian_expr_inherited_t::doc_t::_clean_up() {
-    if (m_main) {
-        delete m_main; m_main = 0;
-    }
+    delete m_main;
 }
 
 default_endian_expr_inherited_t::doc_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, default_endian_expr_inherited_t::doc_t* p__parent, default_endian_expr_inherited_t* p__root) : kaitai::kstruct(p__io) {
@@ -115,9 +113,7 @@ default_endian_expr_inherited_t::doc_t::main_obj_t::~main_obj_t() {
 }
 
 void default_endian_expr_inherited_t::doc_t::main_obj_t::_clean_up() {
-    if (m_insides) {
-        delete m_insides; m_insides = 0;
-    }
+    delete m_insides;
 }
 
 default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::sub_obj_t(kaitai::kstream* p__io, default_endian_expr_inherited_t::doc_t::main_obj_t* p__parent, default_endian_expr_inherited_t* p__root, int p_is_le) : kaitai::kstruct(p__io) {
@@ -160,9 +156,7 @@ default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::~sub_obj_t() {
 }
 
 void default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::_clean_up() {
-    if (m_more) {
-        delete m_more; m_more = 0;
-    }
+    delete m_more;
 }
 
 default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_obj_t::subsub_obj_t(kaitai::kstream* p__io, default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t* p__parent, default_endian_expr_inherited_t* p__root, int p_is_le) : kaitai::kstruct(p__io) {
@@ -205,8 +199,6 @@ default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_obj_t::~su
 }
 
 void default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_obj_t::_clean_up() {
-    if (f_some_inst) {
-    }
 }
 
 uint32_t default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_obj_t::some_inst() {

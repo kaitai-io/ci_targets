@@ -31,7 +31,5 @@ repeat_eos_bits_b1_t::~repeat_eos_bits_b1_t() {
 }
 
 void repeat_eos_bits_b1_t::_clean_up() {
-    if (m_bits) {
-        delete m_bits; m_bits = 0;
-    }
+    delete m_bits;
 }

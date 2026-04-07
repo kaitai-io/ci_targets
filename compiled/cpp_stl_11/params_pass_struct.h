@@ -22,7 +22,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~params_pass_struct_t();
@@ -35,7 +34,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~block_t();
@@ -58,7 +56,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~struct_type_t();
@@ -71,7 +68,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~baz_t();

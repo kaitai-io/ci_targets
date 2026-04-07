@@ -21,7 +21,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~recursive_one_t();
@@ -34,7 +33,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~fini_t();
@@ -57,10 +55,9 @@ public:
 private:
     uint8_t m_one;
     std::unique_ptr<kaitai::kstruct> m_next;
-    bool n_next;
 
 public:
-    bool _is_null_next() { next(); return n_next; };
+    bool _is_null_next() { return !next(); };
 
 private:
     recursive_one_t* m__root;

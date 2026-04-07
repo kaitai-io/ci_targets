@@ -24,7 +24,5 @@ opaque_with_param_t::~opaque_with_param_t() {
 }
 
 void opaque_with_param_t::_clean_up() {
-    if (m_one) {
-        delete m_one; m_one = 0;
-    }
+    delete m_one;
 }

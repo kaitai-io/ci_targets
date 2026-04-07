@@ -26,10 +26,6 @@ imports_params_def_enum_imported_t::~imports_params_def_enum_imported_t() {
 }
 
 void imports_params_def_enum_imported_t::_clean_up() {
-    if (m_one) {
-        delete m_one; m_one = 0;
-    }
-    if (m_two) {
-        delete m_two; m_two = 0;
-    }
+    delete m_one;
+    delete m_two;
 }

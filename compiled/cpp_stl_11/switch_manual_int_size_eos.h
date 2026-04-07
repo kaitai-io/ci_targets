@@ -23,7 +23,6 @@ public:
 
 private:
     void _read();
-    void _clean_up();
 
 public:
     ~switch_manual_int_size_eos_t();
@@ -36,7 +35,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~chunk_t();
@@ -68,7 +66,6 @@ public:
 
     private:
         void _read();
-        void _clean_up();
 
     public:
         ~chunk_body_t();
@@ -81,7 +78,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~chunk_dir_t();
@@ -103,7 +99,6 @@ public:
 
         private:
             void _read();
-            void _clean_up();
 
         public:
             ~chunk_meta_t();
@@ -128,10 +123,9 @@ public:
 
     private:
         std::unique_ptr<kaitai::kstruct> m_body;
-        bool n_body;
 
     public:
-        bool _is_null_body() { body(); return n_body; };
+        bool _is_null_body() { return !body(); };
 
     private:
         switch_manual_int_size_eos_t* m__root;

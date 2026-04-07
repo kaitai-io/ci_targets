@@ -24,9 +24,7 @@ enum_1_t::~enum_1_t() {
 }
 
 void enum_1_t::_clean_up() {
-    if (m_main) {
-        delete m_main; m_main = 0;
-    }
+    delete m_main;
 }
 std::set<enum_1_t::main_obj_t::animal_t> enum_1_t::main_obj_t::_build_values_animal_t() {
     std::set<enum_1_t::main_obj_t::animal_t> _t;
@@ -62,9 +60,7 @@ enum_1_t::main_obj_t::~main_obj_t() {
 }
 
 void enum_1_t::main_obj_t::_clean_up() {
-    if (m_submain) {
-        delete m_submain; m_submain = 0;
-    }
+    delete m_submain;
 }
 
 enum_1_t::main_obj_t::submain_obj_t::submain_obj_t(kaitai::kstream* p__io, enum_1_t::main_obj_t* p__parent, enum_1_t* p__root) : kaitai::kstruct(p__io) {
