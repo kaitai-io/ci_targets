@@ -21,7 +21,7 @@ sub from_file {
 our $CONSTANTS_ZERO = 0;
 our $CONSTANTS_INT_MAX = 4294967295;
 our $CONSTANTS_INT_OVER_MAX = 4294967296;
-our $CONSTANTS_LONG_MAX = 9223372036854775807;
+our $CONSTANTS_LONG_MAX = 18446744073709551615;
 
 sub new {
     my ($class, $_io, $_parent, $_root) = @_;

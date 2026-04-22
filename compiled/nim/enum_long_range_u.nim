@@ -12,7 +12,7 @@ type
     zero = 0
     int_max = 4294967295
     int_over_max = 4294967296
-    long_max = 9223372036854775807
+    long_max = 18446744073709551615
 
 proc read*(_: typedesc[EnumLongRangeU], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumLongRangeU
 

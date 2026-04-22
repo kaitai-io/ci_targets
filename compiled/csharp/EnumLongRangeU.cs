@@ -17,7 +17,7 @@ namespace Kaitai
             Zero = 0,
             IntMax = 4294967295,
             IntOverMax = 4294967296,
-            LongMax = 9223372036854775807,
+            LongMax = 18446744073709551615,
         }
         public EnumLongRangeU(KaitaiStream p__io, KaitaiStruct p__parent = null, EnumLongRangeU p__root = null) : base(p__io)
         {

@@ -21,7 +21,7 @@ public:
         CONSTANTS_ZERO = 0,
         CONSTANTS_INT_MAX = 4294967295UL,
         CONSTANTS_INT_OVER_MAX = 4294967296LL,
-        CONSTANTS_LONG_MAX = 9223372036854775807LL
+        CONSTANTS_LONG_MAX = 18446744073709551615ULL
     };
     static bool _is_defined_constants_t(constants_t v);
 

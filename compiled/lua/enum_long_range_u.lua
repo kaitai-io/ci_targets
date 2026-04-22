@@ -12,7 +12,7 @@ EnumLongRangeU.Constants = enum.Enum {
   zero = 0,
   int_max = 4294967295,
   int_over_max = 4294967296,
-  long_max = 9223372036854775807,
+  long_max = 0xffffffffffffffff,
 }
 
 function EnumLongRangeU:_init(io, parent, root)

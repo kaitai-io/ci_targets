@@ -90,7 +90,7 @@ impl TryFrom<i64> for EnumLongRangeU_Constants {
             0 => Ok(EnumLongRangeU_Constants::Zero),
             4294967295 => Ok(EnumLongRangeU_Constants::IntMax),
             4294967296 => Ok(EnumLongRangeU_Constants::IntOverMax),
-            9223372036854775807 => Ok(EnumLongRangeU_Constants::LongMax),
+            18446744073709551615 => Ok(EnumLongRangeU_Constants::LongMax),
             _ => Ok(EnumLongRangeU_Constants::Unknown(flag)),
         }
     }
@@ -102,7 +102,7 @@ impl From<&EnumLongRangeU_Constants> for i64 {
             EnumLongRangeU_Constants::Zero => 0,
             EnumLongRangeU_Constants::IntMax => 4294967295,
             EnumLongRangeU_Constants::IntOverMax => 4294967296,
-            EnumLongRangeU_Constants::LongMax => 9223372036854775807,
+            EnumLongRangeU_Constants::LongMax => 18446744073709551615,
             EnumLongRangeU_Constants::Unknown(v) => v
         }
     }

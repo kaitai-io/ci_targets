@@ -14,12 +14,12 @@ var EnumLongRangeU = (function() {
     ZERO: 0,
     INT_MAX: 4294967295,
     INT_OVER_MAX: 4294967296,
-    LONG_MAX: 9223372036854775807,
+    LONG_MAX: 18446744073709551615,
 
     0: "ZERO",
     4294967295: "INT_MAX",
     4294967296: "INT_OVER_MAX",
-    9223372036854775807: "LONG_MAX",
+    18446744073709551615: "LONG_MAX",
   });
 
   function EnumLongRangeU(_io, _parent, _root) {

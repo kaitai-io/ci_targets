@@ -8,7 +8,7 @@ pub const EnumLongRangeU = struct {
         zero = 0,
         int_max = 4294967295,
         int_over_max = 4294967296,
-        long_max = 9223372036854775807,
+        long_max = 18446744073709551615,
         _,
     };
     pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*EnumLongRangeU) !*EnumLongRangeU {
