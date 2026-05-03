@@ -22,7 +22,7 @@ end
 
 function ValidFailInEnum:_read()
   self.foo = ValidFailInEnum.Animal(self._io:read_u4le())
-  if self.foo == nil then
+  if not enum.is_defined(self.foo) then
     error("ValidationNotInEnumError")
   end
 end

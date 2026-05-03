@@ -6,8 +6,8 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.util.Map;
 import java.util.HashMap;
+import io.kaitai.struct.IKaitaiEnum;
 
 public class EnumDeepLiterals extends KaitaiStruct {
     public static EnumDeepLiterals fromFile(String fileName) throws IOException {
@@ -40,20 +40,46 @@ public class EnumDeepLiterals extends KaitaiStruct {
             return new Container1(new ByteBufferKaitaiStream(fileName));
         }
 
-        public enum Animal {
+        public interface IAnimal extends IKaitaiEnum {
+            public static final class Unknown extends IKaitaiEnum.Unknown implements IAnimal {
+                Unknown(long id) { super(id); }
+
+                @Override
+                public String toString() { return "Animal(" + this.id + ")"; }
+
+                @Override
+                public int hashCode() {
+                    final int result = 31 + "Animal".hashCode();
+                    return 31 * result + Long.hashCode(this.id);
+                }
+
+                @Override
+                public boolean equals(Object other) {
+                    return other instanceof IAnimal.Unknown && this.id == ((IAnimal.Unknown)other).id;
+                }
+            }
+        }
+        public enum Animal implements IAnimal {
             DOG(4),
             CAT(7),
             CHICKEN(12);
 
             private final long id;
-            Animal(long id) { this.id = id; }
-            public long id() { return id; }
-            private static final Map<Long, Animal> byId = new HashMap<Long, Animal>(3);
+            private static final HashMap<Long, IAnimal> variants = new HashMap<>(3);
             static {
-                for (Animal e : Animal.values())
-                    byId.put(e.id(), e);
+                for (Animal e : values()) {
+                    variants.put(e.id, e);
+                }
             }
-            public static Animal byId(long id) { return byId.get(id); }
+
+            public static IAnimal byId(final long id) {
+                return variants.computeIfAbsent(id, _id -> new IAnimal.Unknown(id));
+            }
+
+            private Animal(long id) { this.id = id; }
+
+            @Override
+            public long id() { return id; }
         }
 
         public Container1(KaitaiStream _io) {
@@ -80,20 +106,46 @@ public class EnumDeepLiterals extends KaitaiStruct {
                 return new Container2(new ByteBufferKaitaiStream(fileName));
             }
 
-            public enum Animal {
+            public interface IAnimal extends IKaitaiEnum {
+                public static final class Unknown extends IKaitaiEnum.Unknown implements IAnimal {
+                    Unknown(long id) { super(id); }
+
+                    @Override
+                    public String toString() { return "Animal(" + this.id + ")"; }
+
+                    @Override
+                    public int hashCode() {
+                        final int result = 31 + "Animal".hashCode();
+                        return 31 * result + Long.hashCode(this.id);
+                    }
+
+                    @Override
+                    public boolean equals(Object other) {
+                        return other instanceof IAnimal.Unknown && this.id == ((IAnimal.Unknown)other).id;
+                    }
+                }
+            }
+            public enum Animal implements IAnimal {
                 CANARY(4),
                 TURTLE(7),
                 HARE(12);
 
                 private final long id;
-                Animal(long id) { this.id = id; }
-                public long id() { return id; }
-                private static final Map<Long, Animal> byId = new HashMap<Long, Animal>(3);
+                private static final HashMap<Long, IAnimal> variants = new HashMap<>(3);
                 static {
-                    for (Animal e : Animal.values())
-                        byId.put(e.id(), e);
+                    for (Animal e : values()) {
+                        variants.put(e.id, e);
+                    }
                 }
-                public static Animal byId(long id) { return byId.get(id); }
+
+                public static IAnimal byId(final long id) {
+                    return variants.computeIfAbsent(id, _id -> new IAnimal.Unknown(id));
+                }
+
+                private Animal(long id) { this.id = id; }
+
+                @Override
+                public long id() { return id; }
             }
 
             public Container2(KaitaiStream _io) {
@@ -137,14 +189,14 @@ public class EnumDeepLiterals extends KaitaiStruct {
         this.isPet2Ok = pet2() == Container1.Container2.Animal.HARE;
         return this.isPet2Ok;
     }
-    public Container1.Animal pet1() { return pet1; }
-    public Container1.Container2.Animal pet2() { return pet2; }
+    public Container1.IAnimal pet1() { return pet1; }
+    public Container1.Container2.IAnimal pet2() { return pet2; }
     public EnumDeepLiterals _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
     private Boolean isPet1Ok;
     private Boolean isPet2Ok;
-    private Container1.Animal pet1;
-    private Container1.Container2.Animal pet2;
+    private Container1.IAnimal pet1;
+    private Container1.Container2.IAnimal pet2;
     private EnumDeepLiterals _root;
     private KaitaiStruct _parent;
 }

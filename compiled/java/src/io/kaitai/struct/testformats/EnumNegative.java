@@ -6,27 +6,53 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.util.Map;
 import java.util.HashMap;
+import io.kaitai.struct.IKaitaiEnum;
 
 public class EnumNegative extends KaitaiStruct {
     public static EnumNegative fromFile(String fileName) throws IOException {
         return new EnumNegative(new ByteBufferKaitaiStream(fileName));
     }
 
-    public enum Constants {
+    public interface IConstants extends IKaitaiEnum {
+        public static final class Unknown extends IKaitaiEnum.Unknown implements IConstants {
+            Unknown(long id) { super(id); }
+
+            @Override
+            public String toString() { return "Constants(" + this.id + ")"; }
+
+            @Override
+            public int hashCode() {
+                final int result = 31 + "Constants".hashCode();
+                return 31 * result + Long.hashCode(this.id);
+            }
+
+            @Override
+            public boolean equals(Object other) {
+                return other instanceof IConstants.Unknown && this.id == ((IConstants.Unknown)other).id;
+            }
+        }
+    }
+    public enum Constants implements IConstants {
         NEGATIVE_ONE(-1),
         POSITIVE_ONE(1);
 
         private final long id;
-        Constants(long id) { this.id = id; }
-        public long id() { return id; }
-        private static final Map<Long, Constants> byId = new HashMap<Long, Constants>(2);
+        private static final HashMap<Long, IConstants> variants = new HashMap<>(2);
         static {
-            for (Constants e : Constants.values())
-                byId.put(e.id(), e);
+            for (Constants e : values()) {
+                variants.put(e.id, e);
+            }
         }
-        public static Constants byId(long id) { return byId.get(id); }
+
+        public static IConstants byId(final long id) {
+            return variants.computeIfAbsent(id, _id -> new IConstants.Unknown(id));
+        }
+
+        private Constants(long id) { this.id = id; }
+
+        @Override
+        public long id() { return id; }
     }
 
     public EnumNegative(KaitaiStream _io) {
@@ -50,12 +76,12 @@ public class EnumNegative extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    public Constants f1() { return f1; }
-    public Constants f2() { return f2; }
+    public IConstants f1() { return f1; }
+    public IConstants f2() { return f2; }
     public EnumNegative _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
-    private Constants f1;
-    private Constants f2;
+    private IConstants f1;
+    private IConstants f2;
     private EnumNegative _root;
     private KaitaiStruct _parent;
 }

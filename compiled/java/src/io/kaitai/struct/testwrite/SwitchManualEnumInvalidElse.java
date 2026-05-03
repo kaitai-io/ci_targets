@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import io.kaitai.struct.ConsistencyError;
 import java.util.Objects;
-import java.util.Map;
 import java.util.HashMap;
+import io.kaitai.struct.IKaitaiEnum;
 import java.nio.charset.StandardCharsets;
 import java.nio.charset.Charset;
 import java.util.List;
@@ -84,19 +84,46 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct.ReadWrite {
             return new Opcode(new ByteBufferKaitaiStream(fileName));
         }
 
-        public enum CodeEnum {
+        public interface ICodeEnum extends IKaitaiEnum {
+            public static final class Unknown extends IKaitaiEnum.Unknown implements ICodeEnum {
+                Unknown(long id) { super(id); }
+
+                @Override
+                public String toString() { return "CodeEnum(" + this.id + ")"; }
+
+                @Override
+                public int hashCode() {
+                    final int result = 31 + "CodeEnum".hashCode();
+                    return 31 * result + Long.hashCode(this.id);
+                }
+
+                @Override
+                public boolean equals(Object other) {
+                    return other instanceof ICodeEnum.Unknown && this.id == ((ICodeEnum.Unknown)other).id;
+                }
+            }
+        }
+        public enum CodeEnum implements ICodeEnum {
+            FOO(1),
             INTVAL(73),
             STRVAL(83);
 
             private final long id;
-            CodeEnum(long id) { this.id = id; }
-            public long id() { return id; }
-            private static final Map<Long, CodeEnum> byId = new HashMap<Long, CodeEnum>(2);
+            private static final HashMap<Long, ICodeEnum> variants = new HashMap<>(3);
             static {
-                for (CodeEnum e : CodeEnum.values())
-                    byId.put(e.id(), e);
+                for (CodeEnum e : values()) {
+                    variants.put(e.id, e);
+                }
             }
-            public static CodeEnum byId(long id) { return byId.get(id); }
+
+            public static ICodeEnum byId(final long id) {
+                return variants.computeIfAbsent(id, _id -> new ICodeEnum.Unknown(id));
+            }
+
+            private CodeEnum(long id) { this.id = id; }
+
+            @Override
+            public long id() { return id; }
         }
         public Opcode() {
             this(null, null, null);
@@ -118,24 +145,24 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct.ReadWrite {
         public void _read() {
             this.code = CodeEnum.byId(this._io.readU1());
             {
-                CodeEnum on = code();
-                if (on != null) {
-                    switch (code()) {
-                    case INTVAL: {
-                        this.body = new Intval(this._io, this, _root);
-                        ((Intval) (this.body))._read();
-                        break;
-                    }
-                    case STRVAL: {
-                        this.body = new Strval(this._io, this, _root);
-                        ((Strval) (this.body))._read();
-                        break;
-                    }
-                    default: {
-                        this.body = new Defval(this._io, this, _root);
-                        ((Defval) (this.body))._read();
-                        break;
-                    }
+                final ICodeEnum on = code();
+                if (on instanceof CodeEnum) {
+                    switch ((CodeEnum)on) {
+                        case INTVAL: {
+                            this.body = new Intval(this._io, this, _root);
+                            ((Intval) (this.body))._read();
+                            break;
+                        }
+                        case STRVAL: {
+                            this.body = new Strval(this._io, this, _root);
+                            ((Strval) (this.body))._read();
+                            break;
+                        }
+                        default: {
+                            this.body = new Defval(this._io, this, _root);
+                            ((Defval) (this.body))._read();
+                            break;
+                        }
                     }
                 } else {
                     this.body = new Defval(this._io, this, _root);
@@ -147,21 +174,21 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct.ReadWrite {
 
         public void _fetchInstances() {
             {
-                CodeEnum on = code();
-                if (on != null) {
-                    switch (code()) {
-                    case INTVAL: {
-                        ((Intval) (this.body))._fetchInstances();
-                        break;
-                    }
-                    case STRVAL: {
-                        ((Strval) (this.body))._fetchInstances();
-                        break;
-                    }
-                    default: {
-                        ((Defval) (this.body))._fetchInstances();
-                        break;
-                    }
+                final ICodeEnum on = code();
+                if (on instanceof CodeEnum) {
+                    switch ((CodeEnum)on) {
+                        case INTVAL: {
+                            ((Intval) (this.body))._fetchInstances();
+                            break;
+                        }
+                        case STRVAL: {
+                            ((Strval) (this.body))._fetchInstances();
+                            break;
+                        }
+                        default: {
+                            ((Defval) (this.body))._fetchInstances();
+                            break;
+                        }
                     }
                 } else {
                     ((Defval) (this.body))._fetchInstances();
@@ -173,21 +200,21 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct.ReadWrite {
             _assertNotDirty();
             this._io.writeU1(((Number) (this.code.id())).intValue());
             {
-                CodeEnum on = code();
-                if (on != null) {
-                    switch (code()) {
-                    case INTVAL: {
-                        ((Intval) (this.body))._write_Seq(this._io);
-                        break;
-                    }
-                    case STRVAL: {
-                        ((Strval) (this.body))._write_Seq(this._io);
-                        break;
-                    }
-                    default: {
-                        ((Defval) (this.body))._write_Seq(this._io);
-                        break;
-                    }
+                final ICodeEnum on = code();
+                if (on instanceof CodeEnum) {
+                    switch ((CodeEnum)on) {
+                        case INTVAL: {
+                            ((Intval) (this.body))._write_Seq(this._io);
+                            break;
+                        }
+                        case STRVAL: {
+                            ((Strval) (this.body))._write_Seq(this._io);
+                            break;
+                        }
+                        default: {
+                            ((Defval) (this.body))._write_Seq(this._io);
+                            break;
+                        }
                     }
                 } else {
                     ((Defval) (this.body))._write_Seq(this._io);
@@ -197,30 +224,30 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct.ReadWrite {
 
         public void _check() {
             {
-                CodeEnum on = code();
-                if (on != null) {
-                    switch (code()) {
-                    case INTVAL: {
-                        if (!Objects.equals(((SwitchManualEnumInvalidElse.Opcode.Intval) (this.body))._root(), _root()))
-                            throw new ConsistencyError("body", _root(), ((SwitchManualEnumInvalidElse.Opcode.Intval) (this.body))._root());
-                        if (!Objects.equals(((SwitchManualEnumInvalidElse.Opcode.Intval) (this.body))._parent(), this))
-                            throw new ConsistencyError("body", this, ((SwitchManualEnumInvalidElse.Opcode.Intval) (this.body))._parent());
-                        break;
-                    }
-                    case STRVAL: {
-                        if (!Objects.equals(((SwitchManualEnumInvalidElse.Opcode.Strval) (this.body))._root(), _root()))
-                            throw new ConsistencyError("body", _root(), ((SwitchManualEnumInvalidElse.Opcode.Strval) (this.body))._root());
-                        if (!Objects.equals(((SwitchManualEnumInvalidElse.Opcode.Strval) (this.body))._parent(), this))
-                            throw new ConsistencyError("body", this, ((SwitchManualEnumInvalidElse.Opcode.Strval) (this.body))._parent());
-                        break;
-                    }
-                    default: {
-                        if (!Objects.equals(((SwitchManualEnumInvalidElse.Opcode.Defval) (this.body))._root(), _root()))
-                            throw new ConsistencyError("body", _root(), ((SwitchManualEnumInvalidElse.Opcode.Defval) (this.body))._root());
-                        if (!Objects.equals(((SwitchManualEnumInvalidElse.Opcode.Defval) (this.body))._parent(), this))
-                            throw new ConsistencyError("body", this, ((SwitchManualEnumInvalidElse.Opcode.Defval) (this.body))._parent());
-                        break;
-                    }
+                final ICodeEnum on = code();
+                if (on instanceof CodeEnum) {
+                    switch ((CodeEnum)on) {
+                        case INTVAL: {
+                            if (!Objects.equals(((SwitchManualEnumInvalidElse.Opcode.Intval) (this.body))._root(), _root()))
+                                throw new ConsistencyError("body", _root(), ((SwitchManualEnumInvalidElse.Opcode.Intval) (this.body))._root());
+                            if (!Objects.equals(((SwitchManualEnumInvalidElse.Opcode.Intval) (this.body))._parent(), this))
+                                throw new ConsistencyError("body", this, ((SwitchManualEnumInvalidElse.Opcode.Intval) (this.body))._parent());
+                            break;
+                        }
+                        case STRVAL: {
+                            if (!Objects.equals(((SwitchManualEnumInvalidElse.Opcode.Strval) (this.body))._root(), _root()))
+                                throw new ConsistencyError("body", _root(), ((SwitchManualEnumInvalidElse.Opcode.Strval) (this.body))._root());
+                            if (!Objects.equals(((SwitchManualEnumInvalidElse.Opcode.Strval) (this.body))._parent(), this))
+                                throw new ConsistencyError("body", this, ((SwitchManualEnumInvalidElse.Opcode.Strval) (this.body))._parent());
+                            break;
+                        }
+                        default: {
+                            if (!Objects.equals(((SwitchManualEnumInvalidElse.Opcode.Defval) (this.body))._root(), _root()))
+                                throw new ConsistencyError("body", _root(), ((SwitchManualEnumInvalidElse.Opcode.Defval) (this.body))._root());
+                            if (!Objects.equals(((SwitchManualEnumInvalidElse.Opcode.Defval) (this.body))._parent(), this))
+                                throw new ConsistencyError("body", this, ((SwitchManualEnumInvalidElse.Opcode.Defval) (this.body))._parent());
+                            break;
+                        }
                     }
                 } else {
                     if (!Objects.equals(((SwitchManualEnumInvalidElse.Opcode.Defval) (this.body))._root(), _root()))
@@ -378,15 +405,15 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct.ReadWrite {
             private SwitchManualEnumInvalidElse _root;
             private SwitchManualEnumInvalidElse.Opcode _parent;
         }
-        public CodeEnum code() { return code; }
-        public void setCode(CodeEnum _v) { _dirty = true; code = _v; }
+        public ICodeEnum code() { return code; }
+        public void setCode(ICodeEnum _v) { _dirty = true; code = _v; }
         public KaitaiStruct.ReadWrite body() { return body; }
         public void setBody(KaitaiStruct.ReadWrite _v) { _dirty = true; body = _v; }
         public SwitchManualEnumInvalidElse _root() { return _root; }
         public void set_root(SwitchManualEnumInvalidElse _v) { _dirty = true; _root = _v; }
         public SwitchManualEnumInvalidElse _parent() { return _parent; }
         public void set_parent(SwitchManualEnumInvalidElse _v) { _dirty = true; _parent = _v; }
-        private CodeEnum code;
+        private ICodeEnum code;
         private KaitaiStruct.ReadWrite body;
         private SwitchManualEnumInvalidElse _root;
         private SwitchManualEnumInvalidElse _parent;

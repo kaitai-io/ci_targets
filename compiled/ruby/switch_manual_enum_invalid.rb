@@ -24,6 +24,7 @@ class SwitchManualEnumInvalid < Kaitai::Struct::Struct
   class Opcode < Kaitai::Struct::Struct
 
     CODE_ENUM = {
+      1 => :code_enum_foo,
       73 => :code_enum_intval,
       83 => :code_enum_strval,
     }

@@ -28,9 +28,11 @@ var SwitchManualEnumInvalid = (function() {
 
   var Opcode = SwitchManualEnumInvalid.Opcode = (function() {
     Opcode.CodeEnum = Object.freeze({
+      FOO: 1,
       INTVAL: 73,
       STRVAL: 83,
 
+      1: "FOO",
       73: "INTVAL",
       83: "STRVAL",
     });

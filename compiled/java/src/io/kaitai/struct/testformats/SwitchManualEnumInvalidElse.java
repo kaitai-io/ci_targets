@@ -7,8 +7,8 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.HashMap;
+import io.kaitai.struct.IKaitaiEnum;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -52,19 +52,46 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct {
             return new Opcode(new ByteBufferKaitaiStream(fileName));
         }
 
-        public enum CodeEnum {
+        public interface ICodeEnum extends IKaitaiEnum {
+            public static final class Unknown extends IKaitaiEnum.Unknown implements ICodeEnum {
+                Unknown(long id) { super(id); }
+
+                @Override
+                public String toString() { return "CodeEnum(" + this.id + ")"; }
+
+                @Override
+                public int hashCode() {
+                    final int result = 31 + "CodeEnum".hashCode();
+                    return 31 * result + Long.hashCode(this.id);
+                }
+
+                @Override
+                public boolean equals(Object other) {
+                    return other instanceof ICodeEnum.Unknown && this.id == ((ICodeEnum.Unknown)other).id;
+                }
+            }
+        }
+        public enum CodeEnum implements ICodeEnum {
+            FOO(1),
             INTVAL(73),
             STRVAL(83);
 
             private final long id;
-            CodeEnum(long id) { this.id = id; }
-            public long id() { return id; }
-            private static final Map<Long, CodeEnum> byId = new HashMap<Long, CodeEnum>(2);
+            private static final HashMap<Long, ICodeEnum> variants = new HashMap<>(3);
             static {
-                for (CodeEnum e : CodeEnum.values())
-                    byId.put(e.id(), e);
+                for (CodeEnum e : values()) {
+                    variants.put(e.id, e);
+                }
             }
-            public static CodeEnum byId(long id) { return byId.get(id); }
+
+            public static ICodeEnum byId(final long id) {
+                return variants.computeIfAbsent(id, _id -> new ICodeEnum.Unknown(id));
+            }
+
+            private CodeEnum(long id) { this.id = id; }
+
+            @Override
+            public long id() { return id; }
         }
 
         public Opcode(KaitaiStream _io) {
@@ -84,21 +111,21 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct {
         private void _read() {
             this.code = CodeEnum.byId(this._io.readU1());
             {
-                CodeEnum on = code();
-                if (on != null) {
-                    switch (code()) {
-                    case INTVAL: {
-                        this.body = new Intval(this._io, this, _root);
-                        break;
-                    }
-                    case STRVAL: {
-                        this.body = new Strval(this._io, this, _root);
-                        break;
-                    }
-                    default: {
-                        this.body = new Defval(this._io, this, _root);
-                        break;
-                    }
+                final ICodeEnum on = code();
+                if (on instanceof CodeEnum) {
+                    switch ((CodeEnum)on) {
+                        case INTVAL: {
+                            this.body = new Intval(this._io, this, _root);
+                            break;
+                        }
+                        case STRVAL: {
+                            this.body = new Strval(this._io, this, _root);
+                            break;
+                        }
+                        default: {
+                            this.body = new Defval(this._io, this, _root);
+                            break;
+                        }
                     }
                 } else {
                     this.body = new Defval(this._io, this, _root);
@@ -108,21 +135,21 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct {
 
         public void _fetchInstances() {
             {
-                CodeEnum on = code();
-                if (on != null) {
-                    switch (code()) {
-                    case INTVAL: {
-                        ((Intval) (this.body))._fetchInstances();
-                        break;
-                    }
-                    case STRVAL: {
-                        ((Strval) (this.body))._fetchInstances();
-                        break;
-                    }
-                    default: {
-                        ((Defval) (this.body))._fetchInstances();
-                        break;
-                    }
+                final ICodeEnum on = code();
+                if (on instanceof CodeEnum) {
+                    switch ((CodeEnum)on) {
+                        case INTVAL: {
+                            ((Intval) (this.body))._fetchInstances();
+                            break;
+                        }
+                        case STRVAL: {
+                            ((Strval) (this.body))._fetchInstances();
+                            break;
+                        }
+                        default: {
+                            ((Defval) (this.body))._fetchInstances();
+                            break;
+                        }
                     }
                 } else {
                     ((Defval) (this.body))._fetchInstances();
@@ -229,11 +256,11 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct {
             private SwitchManualEnumInvalidElse _root;
             private SwitchManualEnumInvalidElse.Opcode _parent;
         }
-        public CodeEnum code() { return code; }
+        public ICodeEnum code() { return code; }
         public KaitaiStruct body() { return body; }
         public SwitchManualEnumInvalidElse _root() { return _root; }
         public SwitchManualEnumInvalidElse _parent() { return _parent; }
-        private CodeEnum code;
+        private ICodeEnum code;
         private KaitaiStruct body;
         private SwitchManualEnumInvalidElse _root;
         private SwitchManualEnumInvalidElse _parent;

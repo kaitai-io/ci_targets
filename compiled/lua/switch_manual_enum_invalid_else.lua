@@ -29,6 +29,7 @@ end
 SwitchManualEnumInvalidElse.Opcode = class.class(KaitaiStruct)
 
 SwitchManualEnumInvalidElse.Opcode.CodeEnum = enum.Enum {
+  foo = 1,
   intval = 73,
   strval = 83,
 }

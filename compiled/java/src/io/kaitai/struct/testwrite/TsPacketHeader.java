@@ -6,8 +6,8 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.util.Map;
 import java.util.HashMap;
+import io.kaitai.struct.IKaitaiEnum;
 import io.kaitai.struct.ConsistencyError;
 
 
@@ -19,21 +19,47 @@ public class TsPacketHeader extends KaitaiStruct.ReadWrite {
         return new TsPacketHeader(new ByteBufferKaitaiStream(fileName));
     }
 
-    public enum AdaptationFieldControlEnum {
+    public interface IAdaptationFieldControlEnum extends IKaitaiEnum {
+        public static final class Unknown extends IKaitaiEnum.Unknown implements IAdaptationFieldControlEnum {
+            Unknown(long id) { super(id); }
+
+            @Override
+            public String toString() { return "AdaptationFieldControlEnum(" + this.id + ")"; }
+
+            @Override
+            public int hashCode() {
+                final int result = 31 + "AdaptationFieldControlEnum".hashCode();
+                return 31 * result + Long.hashCode(this.id);
+            }
+
+            @Override
+            public boolean equals(Object other) {
+                return other instanceof IAdaptationFieldControlEnum.Unknown && this.id == ((IAdaptationFieldControlEnum.Unknown)other).id;
+            }
+        }
+    }
+    public enum AdaptationFieldControlEnum implements IAdaptationFieldControlEnum {
         RESERVED(0),
         PAYLOAD_ONLY(1),
         ADAPTATION_FIELD_ONLY(2),
         ADAPTATION_FIELD_AND_PAYLOAD(3);
 
         private final long id;
-        AdaptationFieldControlEnum(long id) { this.id = id; }
-        public long id() { return id; }
-        private static final Map<Long, AdaptationFieldControlEnum> byId = new HashMap<Long, AdaptationFieldControlEnum>(4);
+        private static final HashMap<Long, IAdaptationFieldControlEnum> variants = new HashMap<>(4);
         static {
-            for (AdaptationFieldControlEnum e : AdaptationFieldControlEnum.values())
-                byId.put(e.id(), e);
+            for (AdaptationFieldControlEnum e : values()) {
+                variants.put(e.id, e);
+            }
         }
-        public static AdaptationFieldControlEnum byId(long id) { return byId.get(id); }
+
+        public static IAdaptationFieldControlEnum byId(final long id) {
+            return variants.computeIfAbsent(id, _id -> new IAdaptationFieldControlEnum.Unknown(id));
+        }
+
+        private AdaptationFieldControlEnum(long id) { this.id = id; }
+
+        @Override
+        public long id() { return id; }
     }
     public TsPacketHeader() {
         this(null, null, null);
@@ -98,8 +124,8 @@ public class TsPacketHeader extends KaitaiStruct.ReadWrite {
     public void setPid(long _v) { _dirty = true; pid = _v; }
     public long transportScramblingControl() { return transportScramblingControl; }
     public void setTransportScramblingControl(long _v) { _dirty = true; transportScramblingControl = _v; }
-    public AdaptationFieldControlEnum adaptationFieldControl() { return adaptationFieldControl; }
-    public void setAdaptationFieldControl(AdaptationFieldControlEnum _v) { _dirty = true; adaptationFieldControl = _v; }
+    public IAdaptationFieldControlEnum adaptationFieldControl() { return adaptationFieldControl; }
+    public void setAdaptationFieldControl(IAdaptationFieldControlEnum _v) { _dirty = true; adaptationFieldControl = _v; }
     public long continuityCounter() { return continuityCounter; }
     public void setContinuityCounter(long _v) { _dirty = true; continuityCounter = _v; }
     public byte[] tsPacketRemain() { return tsPacketRemain; }
@@ -114,7 +140,7 @@ public class TsPacketHeader extends KaitaiStruct.ReadWrite {
     private boolean transportPriority;
     private long pid;
     private long transportScramblingControl;
-    private AdaptationFieldControlEnum adaptationFieldControl;
+    private IAdaptationFieldControlEnum adaptationFieldControl;
     private long continuityCounter;
     private byte[] tsPacketRemain;
     private TsPacketHeader _root;

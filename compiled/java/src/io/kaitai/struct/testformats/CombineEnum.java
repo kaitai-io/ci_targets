@@ -6,27 +6,53 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.util.Map;
 import java.util.HashMap;
+import io.kaitai.struct.IKaitaiEnum;
 
 public class CombineEnum extends KaitaiStruct {
     public static CombineEnum fromFile(String fileName) throws IOException {
         return new CombineEnum(new ByteBufferKaitaiStream(fileName));
     }
 
-    public enum Animal {
+    public interface IAnimal extends IKaitaiEnum {
+        public static final class Unknown extends IKaitaiEnum.Unknown implements IAnimal {
+            Unknown(long id) { super(id); }
+
+            @Override
+            public String toString() { return "Animal(" + this.id + ")"; }
+
+            @Override
+            public int hashCode() {
+                final int result = 31 + "Animal".hashCode();
+                return 31 * result + Long.hashCode(this.id);
+            }
+
+            @Override
+            public boolean equals(Object other) {
+                return other instanceof IAnimal.Unknown && this.id == ((IAnimal.Unknown)other).id;
+            }
+        }
+    }
+    public enum Animal implements IAnimal {
         PIG(7),
         HORSE(12);
 
         private final long id;
-        Animal(long id) { this.id = id; }
-        public long id() { return id; }
-        private static final Map<Long, Animal> byId = new HashMap<Long, Animal>(2);
+        private static final HashMap<Long, IAnimal> variants = new HashMap<>(2);
         static {
-            for (Animal e : Animal.values())
-                byId.put(e.id(), e);
+            for (Animal e : values()) {
+                variants.put(e.id, e);
+            }
         }
-        public static Animal byId(long id) { return byId.get(id); }
+
+        public static IAnimal byId(final long id) {
+            return variants.computeIfAbsent(id, _id -> new IAnimal.Unknown(id));
+        }
+
+        private Animal(long id) { this.id = id; }
+
+        @Override
+        public long id() { return id; }
     }
 
     public CombineEnum(KaitaiStream _io) {
@@ -50,19 +76,19 @@ public class CombineEnum extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    public Animal enumU4U2() {
+    public IAnimal enumU4U2() {
         if (this.enumU4U2 != null)
             return this.enumU4U2;
         this.enumU4U2 = (false ? enumU4() : enumU2());
         return this.enumU4U2;
     }
-    public Animal enumU4() { return enumU4; }
-    public Animal enumU2() { return enumU2; }
+    public IAnimal enumU4() { return enumU4; }
+    public IAnimal enumU2() { return enumU2; }
     public CombineEnum _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
-    private Animal enumU4U2;
-    private Animal enumU4;
-    private Animal enumU2;
+    private IAnimal enumU4U2;
+    private IAnimal enumU4;
+    private IAnimal enumU2;
     private CombineEnum _root;
     private KaitaiStruct _parent;
 }

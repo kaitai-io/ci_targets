@@ -100,10 +100,11 @@ namespace Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode {
 
 namespace Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode {
     class CodeEnum {
+        const FOO = 1;
         const INTVAL = 73;
         const STRVAL = 83;
 
-        private const _VALUES = [73 => true, 83 => true];
+        private const _VALUES = [1 => true, 73 => true, 83 => true];
 
         public static function isDefined(int $v): bool {
             return isset(self::_VALUES[$v]);

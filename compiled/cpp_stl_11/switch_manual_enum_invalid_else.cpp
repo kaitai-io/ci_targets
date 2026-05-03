@@ -21,6 +21,7 @@ void switch_manual_enum_invalid_else_t::_read() {
 
 switch_manual_enum_invalid_else_t::~switch_manual_enum_invalid_else_t() {}
 const std::set<switch_manual_enum_invalid_else_t::opcode_t::code_enum_t> switch_manual_enum_invalid_else_t::opcode_t::_values_code_enum_t{
+    switch_manual_enum_invalid_else_t::opcode_t::CODE_ENUM_FOO,
     switch_manual_enum_invalid_else_t::opcode_t::CODE_ENUM_INTVAL,
     switch_manual_enum_invalid_else_t::opcode_t::CODE_ENUM_STRVAL,
 };

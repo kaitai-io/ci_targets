@@ -3,8 +3,8 @@
 
 import kaitaistruct
 from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
-from testformats import params_def_enum_imported
 from testformats import enum_import_seq
+from testformats import params_def_enum_imported
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):

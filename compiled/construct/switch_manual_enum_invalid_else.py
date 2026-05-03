@@ -3,6 +3,7 @@ from construct.lib import *
 import enum
 
 class switch_manual_enum_invalid_else__opcode__code_enum(enum.IntEnum):
+	foo = 1
 	intval = 73
 	strval = 83
 

@@ -7,8 +7,8 @@ class imports_params_def_enum_imported_t;
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
 #include <memory>
-#include "params_def_enum_imported.h"
 #include "enum_import_seq.h"
+#include "params_def_enum_imported.h"
 
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"

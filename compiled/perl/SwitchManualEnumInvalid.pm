@@ -60,6 +60,7 @@ sub from_file {
     return new($class, IO::KaitaiStruct::Stream->new($fd));
 }
 
+our $CODE_ENUM_FOO = 1;
 our $CODE_ENUM_INTVAL = 73;
 our $CODE_ENUM_STRVAL = 83;
 

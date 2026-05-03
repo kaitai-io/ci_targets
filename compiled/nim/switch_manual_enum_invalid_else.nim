@@ -10,6 +10,7 @@ type
     `body`*: KaitaiStruct
     `parent`*: SwitchManualEnumInvalidElse
   SwitchManualEnumInvalidElse_Opcode_CodeEnum* = enum
+    foo = 1
     intval = 73
     strval = 83
   SwitchManualEnumInvalidElse_Opcode_Defval* = ref object of KaitaiStruct

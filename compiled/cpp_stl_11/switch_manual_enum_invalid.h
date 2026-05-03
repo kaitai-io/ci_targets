@@ -34,6 +34,7 @@ public:
         class strval_t;
 
         enum code_enum_t {
+            CODE_ENUM_FOO = 1,
             CODE_ENUM_INTVAL = 73,
             CODE_ENUM_STRVAL = 83
         };

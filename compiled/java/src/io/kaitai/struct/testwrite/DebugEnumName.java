@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import io.kaitai.struct.IKaitaiEnum;
 import java.util.ArrayList;
 import io.kaitai.struct.ConsistencyError;
 import java.util.Objects;
@@ -23,32 +24,84 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
         return new DebugEnumName(new ByteBufferKaitaiStream(fileName));
     }
 
-    public enum TestEnum1 {
+    public interface ITestEnum1 extends IKaitaiEnum {
+        public static final class Unknown extends IKaitaiEnum.Unknown implements ITestEnum1 {
+            Unknown(long id) { super(id); }
+
+            @Override
+            public String toString() { return "TestEnum1(" + this.id + ")"; }
+
+            @Override
+            public int hashCode() {
+                final int result = 31 + "TestEnum1".hashCode();
+                return 31 * result + Long.hashCode(this.id);
+            }
+
+            @Override
+            public boolean equals(Object other) {
+                return other instanceof ITestEnum1.Unknown && this.id == ((ITestEnum1.Unknown)other).id;
+            }
+        }
+    }
+    public enum TestEnum1 implements ITestEnum1 {
         ENUM_VALUE_80(80);
 
         private final long id;
-        TestEnum1(long id) { this.id = id; }
-        public long id() { return id; }
-        private static final Map<Long, TestEnum1> byId = new HashMap<Long, TestEnum1>(1);
+        private static final HashMap<Long, ITestEnum1> variants = new HashMap<>(1);
         static {
-            for (TestEnum1 e : TestEnum1.values())
-                byId.put(e.id(), e);
+            for (TestEnum1 e : values()) {
+                variants.put(e.id, e);
+            }
         }
-        public static TestEnum1 byId(long id) { return byId.get(id); }
+
+        public static ITestEnum1 byId(final long id) {
+            return variants.computeIfAbsent(id, _id -> new ITestEnum1.Unknown(id));
+        }
+
+        private TestEnum1(long id) { this.id = id; }
+
+        @Override
+        public long id() { return id; }
     }
 
-    public enum TestEnum2 {
+    public interface ITestEnum2 extends IKaitaiEnum {
+        public static final class Unknown extends IKaitaiEnum.Unknown implements ITestEnum2 {
+            Unknown(long id) { super(id); }
+
+            @Override
+            public String toString() { return "TestEnum2(" + this.id + ")"; }
+
+            @Override
+            public int hashCode() {
+                final int result = 31 + "TestEnum2".hashCode();
+                return 31 * result + Long.hashCode(this.id);
+            }
+
+            @Override
+            public boolean equals(Object other) {
+                return other instanceof ITestEnum2.Unknown && this.id == ((ITestEnum2.Unknown)other).id;
+            }
+        }
+    }
+    public enum TestEnum2 implements ITestEnum2 {
         ENUM_VALUE_65(65);
 
         private final long id;
-        TestEnum2(long id) { this.id = id; }
-        public long id() { return id; }
-        private static final Map<Long, TestEnum2> byId = new HashMap<Long, TestEnum2>(1);
+        private static final HashMap<Long, ITestEnum2> variants = new HashMap<>(1);
         static {
-            for (TestEnum2 e : TestEnum2.values())
-                byId.put(e.id(), e);
+            for (TestEnum2 e : values()) {
+                variants.put(e.id, e);
+            }
         }
-        public static TestEnum2 byId(long id) { return byId.get(id); }
+
+        public static ITestEnum2 byId(final long id) {
+            return variants.computeIfAbsent(id, _id -> new ITestEnum2.Unknown(id));
+        }
+
+        private TestEnum2(long id) { this.id = id; }
+
+        @Override
+        public long id() { return id; }
     }
     public static String[] _seqFields = new String[] { "one", "arrayOfInts", "testType" };
     public DebugEnumName() {
@@ -73,7 +126,7 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
         this.one = TestEnum1.byId(this._io.readU1());
         _attrEnd.put("one", this._io.pos());
         _attrStart.put("arrayOfInts", this._io.pos());
-        this.arrayOfInts = new ArrayList<TestEnum2>();
+        this.arrayOfInts = new ArrayList<ITestEnum2>();
         for (int i = 0; i < 1; i++) {
             {
                 List<Integer> _posList = _arrStart.get("arrayOfInts");
@@ -137,32 +190,84 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
             return new TestSubtype(new ByteBufferKaitaiStream(fileName));
         }
 
-        public enum InnerEnum1 {
+        public interface IInnerEnum1 extends IKaitaiEnum {
+            public static final class Unknown extends IKaitaiEnum.Unknown implements IInnerEnum1 {
+                Unknown(long id) { super(id); }
+
+                @Override
+                public String toString() { return "InnerEnum1(" + this.id + ")"; }
+
+                @Override
+                public int hashCode() {
+                    final int result = 31 + "InnerEnum1".hashCode();
+                    return 31 * result + Long.hashCode(this.id);
+                }
+
+                @Override
+                public boolean equals(Object other) {
+                    return other instanceof IInnerEnum1.Unknown && this.id == ((IInnerEnum1.Unknown)other).id;
+                }
+            }
+        }
+        public enum InnerEnum1 implements IInnerEnum1 {
             ENUM_VALUE_67(67);
 
             private final long id;
-            InnerEnum1(long id) { this.id = id; }
-            public long id() { return id; }
-            private static final Map<Long, InnerEnum1> byId = new HashMap<Long, InnerEnum1>(1);
+            private static final HashMap<Long, IInnerEnum1> variants = new HashMap<>(1);
             static {
-                for (InnerEnum1 e : InnerEnum1.values())
-                    byId.put(e.id(), e);
+                for (InnerEnum1 e : values()) {
+                    variants.put(e.id, e);
+                }
             }
-            public static InnerEnum1 byId(long id) { return byId.get(id); }
+
+            public static IInnerEnum1 byId(final long id) {
+                return variants.computeIfAbsent(id, _id -> new IInnerEnum1.Unknown(id));
+            }
+
+            private InnerEnum1(long id) { this.id = id; }
+
+            @Override
+            public long id() { return id; }
         }
 
-        public enum InnerEnum2 {
+        public interface IInnerEnum2 extends IKaitaiEnum {
+            public static final class Unknown extends IKaitaiEnum.Unknown implements IInnerEnum2 {
+                Unknown(long id) { super(id); }
+
+                @Override
+                public String toString() { return "InnerEnum2(" + this.id + ")"; }
+
+                @Override
+                public int hashCode() {
+                    final int result = 31 + "InnerEnum2".hashCode();
+                    return 31 * result + Long.hashCode(this.id);
+                }
+
+                @Override
+                public boolean equals(Object other) {
+                    return other instanceof IInnerEnum2.Unknown && this.id == ((IInnerEnum2.Unknown)other).id;
+                }
+            }
+        }
+        public enum InnerEnum2 implements IInnerEnum2 {
             ENUM_VALUE_11(11);
 
             private final long id;
-            InnerEnum2(long id) { this.id = id; }
-            public long id() { return id; }
-            private static final Map<Long, InnerEnum2> byId = new HashMap<Long, InnerEnum2>(1);
+            private static final HashMap<Long, IInnerEnum2> variants = new HashMap<>(1);
             static {
-                for (InnerEnum2 e : InnerEnum2.values())
-                    byId.put(e.id(), e);
+                for (InnerEnum2 e : values()) {
+                    variants.put(e.id, e);
+                }
             }
-            public static InnerEnum2 byId(long id) { return byId.get(id); }
+
+            public static IInnerEnum2 byId(final long id) {
+                return variants.computeIfAbsent(id, _id -> new IInnerEnum2.Unknown(id));
+            }
+
+            private InnerEnum2(long id) { this.id = id; }
+
+            @Override
+            public long id() { return id; }
         }
         public static String[] _seqFields = new String[] { "field1", "field2" };
         public TestSubtype() {
@@ -204,39 +309,39 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
         public void _check() {
             _dirty = false;
         }
-        public InnerEnum2 instanceField() {
+        public IInnerEnum2 instanceField() {
             if (this.instanceField != null)
                 return this.instanceField;
             this.instanceField = InnerEnum2.byId(field2() & 15);
             return this.instanceField;
         }
         public void _invalidateInstanceField() { this.instanceField = null; }
-        public InnerEnum1 field1() { return field1; }
-        public void setField1(InnerEnum1 _v) { _dirty = true; field1 = _v; }
+        public IInnerEnum1 field1() { return field1; }
+        public void setField1(IInnerEnum1 _v) { _dirty = true; field1 = _v; }
         public int field2() { return field2; }
         public void setField2(int _v) { _dirty = true; field2 = _v; }
         public DebugEnumName _root() { return _root; }
         public void set_root(DebugEnumName _v) { _dirty = true; _root = _v; }
         public DebugEnumName _parent() { return _parent; }
         public void set_parent(DebugEnumName _v) { _dirty = true; _parent = _v; }
-        private InnerEnum2 instanceField;
-        private InnerEnum1 field1;
+        private IInnerEnum2 instanceField;
+        private IInnerEnum1 field1;
         private int field2;
         private DebugEnumName _root;
         private DebugEnumName _parent;
     }
-    public TestEnum1 one() { return one; }
-    public void setOne(TestEnum1 _v) { _dirty = true; one = _v; }
-    public List<TestEnum2> arrayOfInts() { return arrayOfInts; }
-    public void setArrayOfInts(List<TestEnum2> _v) { _dirty = true; arrayOfInts = _v; }
+    public ITestEnum1 one() { return one; }
+    public void setOne(ITestEnum1 _v) { _dirty = true; one = _v; }
+    public List<ITestEnum2> arrayOfInts() { return arrayOfInts; }
+    public void setArrayOfInts(List<ITestEnum2> _v) { _dirty = true; arrayOfInts = _v; }
     public TestSubtype testType() { return testType; }
     public void setTestType(TestSubtype _v) { _dirty = true; testType = _v; }
     public DebugEnumName _root() { return _root; }
     public void set_root(DebugEnumName _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
-    private TestEnum1 one;
-    private List<TestEnum2> arrayOfInts;
+    private ITestEnum1 one;
+    private List<ITestEnum2> arrayOfInts;
     private TestSubtype testType;
     private DebugEnumName _root;
     private KaitaiStruct.ReadWrite _parent;

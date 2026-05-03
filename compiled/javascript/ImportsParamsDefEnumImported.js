@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['exports', 'kaitai-struct/KaitaiStream', './ParamsDefEnumImported', './EnumImportSeq'], factory);
+    define(['exports', 'kaitai-struct/KaitaiStream', './EnumImportSeq', './ParamsDefEnumImported'], factory);
   } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
-    factory(exports, require('kaitai-struct/KaitaiStream'), require('./ParamsDefEnumImported'), require('./EnumImportSeq'));
+    factory(exports, require('kaitai-struct/KaitaiStream'), require('./EnumImportSeq'), require('./ParamsDefEnumImported'));
   } else {
-    factory(root.ImportsParamsDefEnumImported || (root.ImportsParamsDefEnumImported = {}), root.KaitaiStream, root.ParamsDefEnumImported || (root.ParamsDefEnumImported = {}), root.EnumImportSeq || (root.EnumImportSeq = {}));
+    factory(root.ImportsParamsDefEnumImported || (root.ImportsParamsDefEnumImported = {}), root.KaitaiStream, root.EnumImportSeq || (root.EnumImportSeq = {}), root.ParamsDefEnumImported || (root.ParamsDefEnumImported = {}));
   }
-})(typeof self !== 'undefined' ? self : this, function (ImportsParamsDefEnumImported_, KaitaiStream, ParamsDefEnumImported_, EnumImportSeq_) {
+})(typeof self !== 'undefined' ? self : this, function (ImportsParamsDefEnumImported_, KaitaiStream, EnumImportSeq_, ParamsDefEnumImported_) {
 var ImportsParamsDefEnumImported = (function() {
   function ImportsParamsDefEnumImported(_io, _parent, _root) {
     this._io = _io;

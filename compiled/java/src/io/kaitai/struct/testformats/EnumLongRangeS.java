@@ -6,15 +6,34 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.util.Map;
 import java.util.HashMap;
+import io.kaitai.struct.IKaitaiEnum;
 
 public class EnumLongRangeS extends KaitaiStruct {
     public static EnumLongRangeS fromFile(String fileName) throws IOException {
         return new EnumLongRangeS(new ByteBufferKaitaiStream(fileName));
     }
 
-    public enum Constants {
+    public interface IConstants extends IKaitaiEnum {
+        public static final class Unknown extends IKaitaiEnum.Unknown implements IConstants {
+            Unknown(long id) { super(id); }
+
+            @Override
+            public String toString() { return "Constants(" + this.id + ")"; }
+
+            @Override
+            public int hashCode() {
+                final int result = 31 + "Constants".hashCode();
+                return 31 * result + Long.hashCode(this.id);
+            }
+
+            @Override
+            public boolean equals(Object other) {
+                return other instanceof IConstants.Unknown && this.id == ((IConstants.Unknown)other).id;
+            }
+        }
+    }
+    public enum Constants implements IConstants {
         LONG_MIN(-9223372036854775808L),
         INT_BELOW_MIN(-2147483649L),
         INT_MIN(-2147483648),
@@ -24,14 +43,21 @@ public class EnumLongRangeS extends KaitaiStruct {
         LONG_MAX(9223372036854775807L);
 
         private final long id;
-        Constants(long id) { this.id = id; }
-        public long id() { return id; }
-        private static final Map<Long, Constants> byId = new HashMap<Long, Constants>(7);
+        private static final HashMap<Long, IConstants> variants = new HashMap<>(7);
         static {
-            for (Constants e : Constants.values())
-                byId.put(e.id(), e);
+            for (Constants e : values()) {
+                variants.put(e.id, e);
+            }
         }
-        public static Constants byId(long id) { return byId.get(id); }
+
+        public static IConstants byId(final long id) {
+            return variants.computeIfAbsent(id, _id -> new IConstants.Unknown(id));
+        }
+
+        private Constants(long id) { this.id = id; }
+
+        @Override
+        public long id() { return id; }
     }
 
     public EnumLongRangeS(KaitaiStream _io) {
@@ -60,22 +86,22 @@ public class EnumLongRangeS extends KaitaiStruct {
 
     public void _fetchInstances() {
     }
-    public Constants f1() { return f1; }
-    public Constants f2() { return f2; }
-    public Constants f3() { return f3; }
-    public Constants f4() { return f4; }
-    public Constants f5() { return f5; }
-    public Constants f6() { return f6; }
-    public Constants f7() { return f7; }
+    public IConstants f1() { return f1; }
+    public IConstants f2() { return f2; }
+    public IConstants f3() { return f3; }
+    public IConstants f4() { return f4; }
+    public IConstants f5() { return f5; }
+    public IConstants f6() { return f6; }
+    public IConstants f7() { return f7; }
     public EnumLongRangeS _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
-    private Constants f1;
-    private Constants f2;
-    private Constants f3;
-    private Constants f4;
-    private Constants f5;
-    private Constants f6;
-    private Constants f7;
+    private IConstants f1;
+    private IConstants f2;
+    private IConstants f3;
+    private IConstants f4;
+    private IConstants f5;
+    private IConstants f6;
+    private IConstants f7;
     private EnumLongRangeS _root;
     private KaitaiStruct _parent;
 }

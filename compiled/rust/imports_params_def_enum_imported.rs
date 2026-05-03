@@ -11,8 +11,8 @@ use kaitai::*;
 use std::convert::{TryFrom, TryInto};
 use std::cell::{Ref, Cell, RefCell};
 use std::rc::{Rc, Weak};
-use super::params_def_enum_imported::ParamsDefEnumImported;
 use super::enum_import_seq::EnumImportSeq;
+use super::params_def_enum_imported::ParamsDefEnumImported;
 
 #[derive(Default, Debug, Clone)]
 pub struct ImportsParamsDefEnumImported {

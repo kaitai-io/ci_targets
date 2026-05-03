@@ -6,28 +6,54 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.util.Map;
 import java.util.HashMap;
+import io.kaitai.struct.IKaitaiEnum;
 
 public class ParamsEnum extends KaitaiStruct {
     public static ParamsEnum fromFile(String fileName) throws IOException {
         return new ParamsEnum(new ByteBufferKaitaiStream(fileName));
     }
 
-    public enum Animal {
+    public interface IAnimal extends IKaitaiEnum {
+        public static final class Unknown extends IKaitaiEnum.Unknown implements IAnimal {
+            Unknown(long id) { super(id); }
+
+            @Override
+            public String toString() { return "Animal(" + this.id + ")"; }
+
+            @Override
+            public int hashCode() {
+                final int result = 31 + "Animal".hashCode();
+                return 31 * result + Long.hashCode(this.id);
+            }
+
+            @Override
+            public boolean equals(Object other) {
+                return other instanceof IAnimal.Unknown && this.id == ((IAnimal.Unknown)other).id;
+            }
+        }
+    }
+    public enum Animal implements IAnimal {
         DOG(4),
         CAT(7),
         CHICKEN(12);
 
         private final long id;
-        Animal(long id) { this.id = id; }
-        public long id() { return id; }
-        private static final Map<Long, Animal> byId = new HashMap<Long, Animal>(3);
+        private static final HashMap<Long, IAnimal> variants = new HashMap<>(3);
         static {
-            for (Animal e : Animal.values())
-                byId.put(e.id(), e);
+            for (Animal e : values()) {
+                variants.put(e.id, e);
+            }
         }
-        public static Animal byId(long id) { return byId.get(id); }
+
+        public static IAnimal byId(final long id) {
+            return variants.computeIfAbsent(id, _id -> new IAnimal.Unknown(id));
+        }
+
+        private Animal(long id) { this.id = id; }
+
+        @Override
+        public long id() { return id; }
     }
 
     public ParamsEnum(KaitaiStream _io) {
@@ -54,15 +80,15 @@ public class ParamsEnum extends KaitaiStruct {
     }
     public static class WithParam extends KaitaiStruct {
 
-        public WithParam(KaitaiStream _io, Animal enumeratedOne) {
+        public WithParam(KaitaiStream _io, IAnimal enumeratedOne) {
             this(_io, null, null, enumeratedOne);
         }
 
-        public WithParam(KaitaiStream _io, ParamsEnum _parent, Animal enumeratedOne) {
+        public WithParam(KaitaiStream _io, ParamsEnum _parent, IAnimal enumeratedOne) {
             this(_io, _parent, null, enumeratedOne);
         }
 
-        public WithParam(KaitaiStream _io, ParamsEnum _parent, ParamsEnum _root, Animal enumeratedOne) {
+        public WithParam(KaitaiStream _io, ParamsEnum _parent, ParamsEnum _root, IAnimal enumeratedOne) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
@@ -80,19 +106,19 @@ public class ParamsEnum extends KaitaiStruct {
             this.isCat = enumeratedOne() == ParamsEnum.Animal.CAT;
             return this.isCat;
         }
-        public Animal enumeratedOne() { return enumeratedOne; }
+        public IAnimal enumeratedOne() { return enumeratedOne; }
         public ParamsEnum _root() { return _root; }
         public ParamsEnum _parent() { return _parent; }
         private Boolean isCat;
-        private Animal enumeratedOne;
+        private IAnimal enumeratedOne;
         private ParamsEnum _root;
         private ParamsEnum _parent;
     }
-    public Animal one() { return one; }
+    public IAnimal one() { return one; }
     public WithParam invokeWithParam() { return invokeWithParam; }
     public ParamsEnum _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
-    private Animal one;
+    private IAnimal one;
     private WithParam invokeWithParam;
     private ParamsEnum _root;
     private KaitaiStruct _parent;

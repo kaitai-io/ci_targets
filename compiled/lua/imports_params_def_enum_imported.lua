@@ -4,8 +4,8 @@
 
 local class = require("class")
 require("kaitaistruct")
-require("params_def_enum_imported")
 require("enum_import_seq")
+require("params_def_enum_imported")
 
 ImportsParamsDefEnumImported = class.class(KaitaiStruct)
 

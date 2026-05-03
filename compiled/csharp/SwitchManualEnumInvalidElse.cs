@@ -38,6 +38,7 @@ namespace Kaitai
 
             public enum CodeEnum
             {
+                Foo = 1,
                 Intval = 73,
                 Strval = 83,
             }

@@ -5,6 +5,7 @@
 local class = require("class")
 require("kaitaistruct")
 local utils = require("utils")
+local enum = require("enum")
 
 EnumImportLiterals = class.class(KaitaiStruct)
 
@@ -34,7 +35,7 @@ function EnumImportLiterals.property.pet_1_to_i:get()
     return self._m_pet_1_to_i
   end
 
-  self._m_pet_1_to_i = Enum0.Animal.cat.value
+  self._m_pet_1_to_i = enum.to_int(Enum0.Animal.cat)
   return self._m_pet_1_to_i
 end
 

@@ -43,7 +43,7 @@ public class EnumImportLiterals extends KaitaiStruct {
         this.pet1ToI = ((Number) (Enum0.Animal.CAT.id())).intValue();
         return this.pet1ToI;
     }
-    public EnumDeep.Container1.Container2.Animal pet2() {
+    public EnumDeep.Container1.Container2.IAnimal pet2() {
         if (this.pet2 != null)
             return this.pet2;
         this.pet2 = EnumDeep.Container1.Container2.Animal.HARE;
@@ -53,7 +53,7 @@ public class EnumImportLiterals extends KaitaiStruct {
     public KaitaiStruct _parent() { return _parent; }
     private Boolean pet1Eq;
     private Integer pet1ToI;
-    private EnumDeep.Container1.Container2.Animal pet2;
+    private EnumDeep.Container1.Container2.IAnimal pet2;
     private EnumImportLiterals _root;
     private KaitaiStruct _parent;
 }

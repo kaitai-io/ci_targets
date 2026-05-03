@@ -6,8 +6,8 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.util.Map;
 import java.util.HashMap;
+import io.kaitai.struct.IKaitaiEnum;
 import java.util.Objects;
 import io.kaitai.struct.ConsistencyError;
 
@@ -16,20 +16,46 @@ public class ParamsEnum extends KaitaiStruct.ReadWrite {
         return new ParamsEnum(new ByteBufferKaitaiStream(fileName));
     }
 
-    public enum Animal {
+    public interface IAnimal extends IKaitaiEnum {
+        public static final class Unknown extends IKaitaiEnum.Unknown implements IAnimal {
+            Unknown(long id) { super(id); }
+
+            @Override
+            public String toString() { return "Animal(" + this.id + ")"; }
+
+            @Override
+            public int hashCode() {
+                final int result = 31 + "Animal".hashCode();
+                return 31 * result + Long.hashCode(this.id);
+            }
+
+            @Override
+            public boolean equals(Object other) {
+                return other instanceof IAnimal.Unknown && this.id == ((IAnimal.Unknown)other).id;
+            }
+        }
+    }
+    public enum Animal implements IAnimal {
         DOG(4),
         CAT(7),
         CHICKEN(12);
 
         private final long id;
-        Animal(long id) { this.id = id; }
-        public long id() { return id; }
-        private static final Map<Long, Animal> byId = new HashMap<Long, Animal>(3);
+        private static final HashMap<Long, IAnimal> variants = new HashMap<>(3);
         static {
-            for (Animal e : Animal.values())
-                byId.put(e.id(), e);
+            for (Animal e : values()) {
+                variants.put(e.id, e);
+            }
         }
-        public static Animal byId(long id) { return byId.get(id); }
+
+        public static IAnimal byId(final long id) {
+            return variants.computeIfAbsent(id, _id -> new IAnimal.Unknown(id));
+        }
+
+        private Animal(long id) { this.id = id; }
+
+        @Override
+        public long id() { return id; }
     }
     public ParamsEnum() {
         this(null, null, null);
@@ -75,19 +101,19 @@ public class ParamsEnum extends KaitaiStruct.ReadWrite {
         _dirty = false;
     }
     public static class WithParam extends KaitaiStruct.ReadWrite {
-        public WithParam(Animal enumeratedOne) {
+        public WithParam(IAnimal enumeratedOne) {
             this(null, null, null, enumeratedOne);
         }
 
-        public WithParam(KaitaiStream _io, Animal enumeratedOne) {
+        public WithParam(KaitaiStream _io, IAnimal enumeratedOne) {
             this(_io, null, null, enumeratedOne);
         }
 
-        public WithParam(KaitaiStream _io, ParamsEnum _parent, Animal enumeratedOne) {
+        public WithParam(KaitaiStream _io, ParamsEnum _parent, IAnimal enumeratedOne) {
             this(_io, _parent, null, enumeratedOne);
         }
 
-        public WithParam(KaitaiStream _io, ParamsEnum _parent, ParamsEnum _root, Animal enumeratedOne) {
+        public WithParam(KaitaiStream _io, ParamsEnum _parent, ParamsEnum _root, IAnimal enumeratedOne) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
@@ -114,26 +140,26 @@ public class ParamsEnum extends KaitaiStruct.ReadWrite {
             return this.isCat;
         }
         public void _invalidateIsCat() { this.isCat = null; }
-        public Animal enumeratedOne() { return enumeratedOne; }
-        public void setEnumeratedOne(Animal _v) { _dirty = true; enumeratedOne = _v; }
+        public IAnimal enumeratedOne() { return enumeratedOne; }
+        public void setEnumeratedOne(IAnimal _v) { _dirty = true; enumeratedOne = _v; }
         public ParamsEnum _root() { return _root; }
         public void set_root(ParamsEnum _v) { _dirty = true; _root = _v; }
         public ParamsEnum _parent() { return _parent; }
         public void set_parent(ParamsEnum _v) { _dirty = true; _parent = _v; }
         private Boolean isCat;
-        private Animal enumeratedOne;
+        private IAnimal enumeratedOne;
         private ParamsEnum _root;
         private ParamsEnum _parent;
     }
-    public Animal one() { return one; }
-    public void setOne(Animal _v) { _dirty = true; one = _v; }
+    public IAnimal one() { return one; }
+    public void setOne(IAnimal _v) { _dirty = true; one = _v; }
     public WithParam invokeWithParam() { return invokeWithParam; }
     public void setInvokeWithParam(WithParam _v) { _dirty = true; invokeWithParam = _v; }
     public ParamsEnum _root() { return _root; }
     public void set_root(ParamsEnum _v) { _dirty = true; _root = _v; }
     public KaitaiStruct.ReadWrite _parent() { return _parent; }
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
-    private Animal one;
+    private IAnimal one;
     private WithParam invokeWithParam;
     private ParamsEnum _root;
     private KaitaiStruct.ReadWrite _parent;

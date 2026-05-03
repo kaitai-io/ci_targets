@@ -5,6 +5,7 @@
 local class = require("class")
 require("kaitaistruct")
 require("enum_to_i_class_border_1")
+local enum = require("enum")
 
 EnumToIClassBorder2 = class.class(KaitaiStruct)
 
@@ -25,7 +26,7 @@ function EnumToIClassBorder2.property.is_dog:get()
     return self._m_is_dog
   end
 
-  self._m_is_dog = self.parent.some_dog.value == 4
+  self._m_is_dog = enum.to_int(self.parent.some_dog) == 4
   return self._m_is_dog
 end
 

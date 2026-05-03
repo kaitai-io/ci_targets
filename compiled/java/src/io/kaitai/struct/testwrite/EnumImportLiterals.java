@@ -56,7 +56,7 @@ public class EnumImportLiterals extends KaitaiStruct.ReadWrite {
         return this.pet1ToI;
     }
     public void _invalidatePet1ToI() { this.pet1ToI = null; }
-    public EnumDeep.Container1.Container2.Animal pet2() {
+    public EnumDeep.Container1.Container2.IAnimal pet2() {
         if (this.pet2 != null)
             return this.pet2;
         this.pet2 = EnumDeep.Container1.Container2.Animal.HARE;
@@ -69,7 +69,7 @@ public class EnumImportLiterals extends KaitaiStruct.ReadWrite {
     public void set_parent(KaitaiStruct.ReadWrite _v) { _dirty = true; _parent = _v; }
     private Boolean pet1Eq;
     private Integer pet1ToI;
-    private EnumDeep.Container1.Container2.Animal pet2;
+    private EnumDeep.Container1.Container2.IAnimal pet2;
     private EnumImportLiterals _root;
     private KaitaiStruct.ReadWrite _parent;
 }

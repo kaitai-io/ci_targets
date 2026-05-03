@@ -6,8 +6,8 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.util.Map;
 import java.util.HashMap;
+import io.kaitai.struct.IKaitaiEnum;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,19 +16,45 @@ public class ExprBits extends KaitaiStruct {
         return new ExprBits(new ByteBufferKaitaiStream(fileName));
     }
 
-    public enum Items {
+    public interface IItems extends IKaitaiEnum {
+        public static final class Unknown extends IKaitaiEnum.Unknown implements IItems {
+            Unknown(long id) { super(id); }
+
+            @Override
+            public String toString() { return "Items(" + this.id + ")"; }
+
+            @Override
+            public int hashCode() {
+                final int result = 31 + "Items".hashCode();
+                return 31 * result + Long.hashCode(this.id);
+            }
+
+            @Override
+            public boolean equals(Object other) {
+                return other instanceof IItems.Unknown && this.id == ((IItems.Unknown)other).id;
+            }
+        }
+    }
+    public enum Items implements IItems {
         FOO(1),
         BAR(2);
 
         private final long id;
-        Items(long id) { this.id = id; }
-        public long id() { return id; }
-        private static final Map<Long, Items> byId = new HashMap<Long, Items>(2);
+        private static final HashMap<Long, IItems> variants = new HashMap<>(2);
         static {
-            for (Items e : Items.values())
-                byId.put(e.id(), e);
+            for (Items e : values()) {
+                variants.put(e.id, e);
+            }
         }
-        public static Items byId(long id) { return byId.get(id); }
+
+        public static IItems byId(final long id) {
+            return variants.computeIfAbsent(id, _id -> new IItems.Unknown(id));
+        }
+
+        private Items(long id) { this.id = id; }
+
+        @Override
+        public long id() { return id; }
     }
 
     public ExprBits(KaitaiStream _io) {
@@ -131,7 +157,7 @@ public class ExprBits extends KaitaiStruct {
         private ExprBits _root;
         private ExprBits _parent;
     }
-    public Items enumInst() {
+    public IItems enumInst() {
         if (this.enumInst != null)
             return this.enumInst;
         this.enumInst = Items.byId(a());
@@ -146,7 +172,7 @@ public class ExprBits extends KaitaiStruct {
         this._io.seek(_pos);
         return this.instPos;
     }
-    public Items enumSeq() { return enumSeq; }
+    public IItems enumSeq() { return enumSeq; }
     public long a() { return a; }
     public byte[] byteSize() { return byteSize; }
     public List<Byte> repeatExpr() { return repeatExpr; }
@@ -154,9 +180,9 @@ public class ExprBits extends KaitaiStruct {
     public EndianSwitch switchOnEndian() { return switchOnEndian; }
     public ExprBits _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
-    private Items enumInst;
+    private IItems enumInst;
     private Byte instPos;
-    private Items enumSeq;
+    private IItems enumSeq;
     private long a;
     private byte[] byteSize;
     private List<Byte> repeatExpr;

@@ -2,8 +2,8 @@
 
 const _imp_std = @import("std");
 const _imp_kaitai_struct = @import("kaitai_struct");
-const _imp_params_def_enum_imported = @import("params_def_enum_imported.zig");
 const _imp_enum_import_seq = @import("enum_import_seq.zig");
+const _imp_params_def_enum_imported = @import("params_def_enum_imported.zig");
 
 pub const ImportsParamsDefEnumImported = struct {
     pub fn create(_arena: *_imp_std.heap.ArenaAllocator, _io: *_imp_kaitai_struct.KaitaiStream, _parent: ?*anyopaque, _root: ?*ImportsParamsDefEnumImported) !*ImportsParamsDefEnumImported {

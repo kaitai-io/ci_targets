@@ -40,6 +40,7 @@ void switch_manual_enum_invalid_t::_clean_up() {
 }
 std::set<switch_manual_enum_invalid_t::opcode_t::code_enum_t> switch_manual_enum_invalid_t::opcode_t::_build_values_code_enum_t() {
     std::set<switch_manual_enum_invalid_t::opcode_t::code_enum_t> _t;
+    _t.insert(switch_manual_enum_invalid_t::opcode_t::CODE_ENUM_FOO);
     _t.insert(switch_manual_enum_invalid_t::opcode_t::CODE_ENUM_INTVAL);
     _t.insert(switch_manual_enum_invalid_t::opcode_t::CODE_ENUM_STRVAL);
     return _t;

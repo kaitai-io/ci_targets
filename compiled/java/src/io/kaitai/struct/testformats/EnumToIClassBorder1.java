@@ -6,28 +6,54 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.util.Map;
 import java.util.HashMap;
+import io.kaitai.struct.IKaitaiEnum;
 
 public class EnumToIClassBorder1 extends KaitaiStruct {
     public static EnumToIClassBorder1 fromFile(String fileName) throws IOException {
         return new EnumToIClassBorder1(new ByteBufferKaitaiStream(fileName));
     }
 
-    public enum Animal {
+    public interface IAnimal extends IKaitaiEnum {
+        public static final class Unknown extends IKaitaiEnum.Unknown implements IAnimal {
+            Unknown(long id) { super(id); }
+
+            @Override
+            public String toString() { return "Animal(" + this.id + ")"; }
+
+            @Override
+            public int hashCode() {
+                final int result = 31 + "Animal".hashCode();
+                return 31 * result + Long.hashCode(this.id);
+            }
+
+            @Override
+            public boolean equals(Object other) {
+                return other instanceof IAnimal.Unknown && this.id == ((IAnimal.Unknown)other).id;
+            }
+        }
+    }
+    public enum Animal implements IAnimal {
         DOG(4),
         CAT(7),
         CHICKEN(12);
 
         private final long id;
-        Animal(long id) { this.id = id; }
-        public long id() { return id; }
-        private static final Map<Long, Animal> byId = new HashMap<Long, Animal>(3);
+        private static final HashMap<Long, IAnimal> variants = new HashMap<>(3);
         static {
-            for (Animal e : Animal.values())
-                byId.put(e.id(), e);
+            for (Animal e : values()) {
+                variants.put(e.id, e);
+            }
         }
-        public static Animal byId(long id) { return byId.get(id); }
+
+        public static IAnimal byId(final long id) {
+            return variants.computeIfAbsent(id, _id -> new IAnimal.Unknown(id));
+        }
+
+        private Animal(long id) { this.id = id; }
+
+        @Override
+        public long id() { return id; }
     }
 
     public EnumToIClassBorder1(KaitaiStream _io) {
@@ -64,20 +90,20 @@ public class EnumToIClassBorder1 extends KaitaiStruct {
         this._io.seek(_pos);
         return this.checker;
     }
-    public Animal someDog() {
+    public IAnimal someDog() {
         if (this.someDog != null)
             return this.someDog;
         this.someDog = Animal.byId(4);
         return this.someDog;
     }
-    public Animal pet1() { return pet1; }
-    public Animal pet2() { return pet2; }
+    public IAnimal pet1() { return pet1; }
+    public IAnimal pet2() { return pet2; }
     public EnumToIClassBorder1 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
     private EnumToIClassBorder2 checker;
-    private Animal someDog;
-    private Animal pet1;
-    private Animal pet2;
+    private IAnimal someDog;
+    private IAnimal pet1;
+    private IAnimal pet2;
     private EnumToIClassBorder1 _root;
     private KaitaiStruct _parent;
 }

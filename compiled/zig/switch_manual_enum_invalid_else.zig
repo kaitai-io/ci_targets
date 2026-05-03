@@ -30,6 +30,7 @@ pub const SwitchManualEnumInvalidElse = struct {
     }
     pub const Opcode = struct {
         pub const CodeEnum = enum(i32) {
+            foo = 1,
             intval = 73,
             strval = 83,
             _,

@@ -170,6 +170,7 @@ impl SwitchManualEnumInvalidElse_Opcode {
 }
 #[derive(Debug, PartialEq, Clone)]
 pub enum SwitchManualEnumInvalidElse_Opcode_CodeEnum {
+    Foo,
     Intval,
     Strval,
     Unknown(i64),
@@ -179,6 +180,7 @@ impl TryFrom<i64> for SwitchManualEnumInvalidElse_Opcode_CodeEnum {
     type Error = KError;
     fn try_from(flag: i64) -> KResult<SwitchManualEnumInvalidElse_Opcode_CodeEnum> {
         match flag {
+            1 => Ok(SwitchManualEnumInvalidElse_Opcode_CodeEnum::Foo),
             73 => Ok(SwitchManualEnumInvalidElse_Opcode_CodeEnum::Intval),
             83 => Ok(SwitchManualEnumInvalidElse_Opcode_CodeEnum::Strval),
             _ => Ok(SwitchManualEnumInvalidElse_Opcode_CodeEnum::Unknown(flag)),
@@ -189,6 +191,7 @@ impl TryFrom<i64> for SwitchManualEnumInvalidElse_Opcode_CodeEnum {
 impl From<&SwitchManualEnumInvalidElse_Opcode_CodeEnum> for i64 {
     fn from(v: &SwitchManualEnumInvalidElse_Opcode_CodeEnum) -> Self {
         match *v {
+            SwitchManualEnumInvalidElse_Opcode_CodeEnum::Foo => 1,
             SwitchManualEnumInvalidElse_Opcode_CodeEnum::Intval => 73,
             SwitchManualEnumInvalidElse_Opcode_CodeEnum::Strval => 83,
             SwitchManualEnumInvalidElse_Opcode_CodeEnum::Unknown(v) => v

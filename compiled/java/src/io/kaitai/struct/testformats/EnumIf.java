@@ -6,8 +6,8 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.util.Map;
 import java.util.HashMap;
+import io.kaitai.struct.IKaitaiEnum;
 import java.nio.charset.StandardCharsets;
 
 public class EnumIf extends KaitaiStruct {
@@ -15,19 +15,45 @@ public class EnumIf extends KaitaiStruct {
         return new EnumIf(new ByteBufferKaitaiStream(fileName));
     }
 
-    public enum Opcodes {
+    public interface IOpcodes extends IKaitaiEnum {
+        public static final class Unknown extends IKaitaiEnum.Unknown implements IOpcodes {
+            Unknown(long id) { super(id); }
+
+            @Override
+            public String toString() { return "Opcodes(" + this.id + ")"; }
+
+            @Override
+            public int hashCode() {
+                final int result = 31 + "Opcodes".hashCode();
+                return 31 * result + Long.hashCode(this.id);
+            }
+
+            @Override
+            public boolean equals(Object other) {
+                return other instanceof IOpcodes.Unknown && this.id == ((IOpcodes.Unknown)other).id;
+            }
+        }
+    }
+    public enum Opcodes implements IOpcodes {
         A_STRING(83),
         A_TUPLE(84);
 
         private final long id;
-        Opcodes(long id) { this.id = id; }
-        public long id() { return id; }
-        private static final Map<Long, Opcodes> byId = new HashMap<Long, Opcodes>(2);
+        private static final HashMap<Long, IOpcodes> variants = new HashMap<>(2);
         static {
-            for (Opcodes e : Opcodes.values())
-                byId.put(e.id(), e);
+            for (Opcodes e : values()) {
+                variants.put(e.id, e);
+            }
         }
-        public static Opcodes byId(long id) { return byId.get(id); }
+
+        public static IOpcodes byId(final long id) {
+            return variants.computeIfAbsent(id, _id -> new IOpcodes.Unknown(id));
+        }
+
+        private Opcodes(long id) { this.id = id; }
+
+        @Override
+        public long id() { return id; }
     }
 
     public EnumIf(KaitaiStream _io) {
@@ -162,12 +188,12 @@ public class EnumIf extends KaitaiStruct {
                 this.argStr._fetchInstances();
             }
         }
-        public Opcodes opcode() { return opcode; }
+        public IOpcodes opcode() { return opcode; }
         public ArgTuple argTuple() { return argTuple; }
         public ArgStr argStr() { return argStr; }
         public EnumIf _root() { return _root; }
         public EnumIf _parent() { return _parent; }
-        private Opcodes opcode;
+        private IOpcodes opcode;
         private ArgTuple argTuple;
         private ArgStr argStr;
         private EnumIf _root;

@@ -62,6 +62,7 @@ class SwitchManualEnumInvalid(ReadWriteKaitaiStruct):
     class Opcode(ReadWriteKaitaiStruct):
 
         class CodeEnum(IntEnum):
+            foo = 1
             intval = 73
             strval = 83
         def __init__(self, _io=None, _parent=None, _root=None):

@@ -32,7 +32,7 @@ function EnumToI.property.one_lt_two:get()
     return self._m_one_lt_two
   end
 
-  self._m_one_lt_two = self.pet_1.value < self.pet_2.value
+  self._m_one_lt_two = enum.to_int(self.pet_1) < enum.to_int(self.pet_2)
   return self._m_one_lt_two
 end
 
@@ -42,7 +42,7 @@ function EnumToI.property.pet_1_eq_int:get()
     return self._m_pet_1_eq_int
   end
 
-  self._m_pet_1_eq_int = self.pet_1.value == 7
+  self._m_pet_1_eq_int = enum.to_int(self.pet_1) == 7
   return self._m_pet_1_eq_int
 end
 
@@ -52,7 +52,7 @@ function EnumToI.property.pet_1_i:get()
     return self._m_pet_1_i
   end
 
-  self._m_pet_1_i = self.pet_1.value
+  self._m_pet_1_i = enum.to_int(self.pet_1)
   return self._m_pet_1_i
 end
 
@@ -62,7 +62,7 @@ function EnumToI.property.pet_1_i_to_s:get()
     return self._m_pet_1_i_to_s
   end
 
-  self._m_pet_1_i_to_s = tostring(self.pet_1.value)
+  self._m_pet_1_i_to_s = tostring(enum.to_int(self.pet_1))
   return self._m_pet_1_i_to_s
 end
 
@@ -72,7 +72,7 @@ function EnumToI.property.pet_1_mod:get()
     return self._m_pet_1_mod
   end
 
-  self._m_pet_1_mod = self.pet_1.value + 32768
+  self._m_pet_1_mod = enum.to_int(self.pet_1) + 32768
   return self._m_pet_1_mod
 end
 
@@ -82,7 +82,7 @@ function EnumToI.property.pet_2_eq_int:get()
     return self._m_pet_2_eq_int
   end
 
-  self._m_pet_2_eq_int = self.pet_2.value == 5
+  self._m_pet_2_eq_int = enum.to_int(self.pet_2) == 5
   return self._m_pet_2_eq_int
 end
 
