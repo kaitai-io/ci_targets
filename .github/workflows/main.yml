@@ -155,7 +155,7 @@ jobs:
           - target: construct
             implementation: python3.6
           - target: construct
-            implementation: python3.14
+            implementation: python3.15
           - target: cpp_stl
             subtarget: _98
             implementation: clang3.4
@@ -185,7 +185,7 @@ jobs:
           - target: csharp
             implementation: net10.0
           - target: go
-            implementation: '1.26'
+            implementation: '1.27'
           - target: graphviz
             implementation: '12'
           - target: java
@@ -203,7 +203,7 @@ jobs:
           - target: javascript
             implementation: nodejs18
           - target: javascript
-            implementation: nodejs24
+            implementation: nodejs26
           # - target: julia
           #   implementation: '1.9'
           - target: lua
@@ -215,11 +215,9 @@ jobs:
           - target: nim
             implementation: '1.6.20'
           - target: nim
-            implementation: '2.2.10'
+            implementation: '2.2.12'
           - target: perl
-            implementation: '5.30'
-          - target: perl
-            implementation: '5.42'
+            implementation: '5.44'
           - target: php
             implementation: '7.1'
           - target: php
@@ -227,15 +225,15 @@ jobs:
           - target: python
             implementation: '3.8'
           - target: python
-            implementation: '3.14'
+            implementation: '3.15'
           - target: ruby
             implementation: '2.4'
           - target: ruby
             implementation: '4.0'
           - target: rust
-            implementation: '1.95'
+            implementation: '1.99'
           - target: zig
-            implementation: '0.15.2'
+            implementation: '0.16.0'
     env:
       TARGET: ${{matrix.tsv.target}}
       SUBTARGET: ${{matrix.tsv.subtarget}}
