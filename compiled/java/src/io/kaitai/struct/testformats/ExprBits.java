@@ -40,7 +40,7 @@ public class ExprBits extends KaitaiStruct {
         BAR(2);
 
         private final long id;
-        private static final HashMap<Long, IItems> variants = new HashMap<>(2);
+        private static final HashMap<Long, Items> variants = new HashMap<>(2);
         static {
             for (Items e : values()) {
                 variants.put(e.id, e);
@@ -48,7 +48,10 @@ public class ExprBits extends KaitaiStruct {
         }
 
         public static IItems byId(final long id) {
-            return variants.computeIfAbsent(id, _id -> new IItems.Unknown(id));
+            final Items entry = variants.get(id);
+            if (entry != null)
+                return entry;
+            return new IItems.Unknown(id);
         }
 
         private Items(long id) { this.id = id; }

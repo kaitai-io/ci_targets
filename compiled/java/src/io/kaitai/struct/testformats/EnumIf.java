@@ -39,7 +39,7 @@ public class EnumIf extends KaitaiStruct {
         A_TUPLE(84);
 
         private final long id;
-        private static final HashMap<Long, IOpcodes> variants = new HashMap<>(2);
+        private static final HashMap<Long, Opcodes> variants = new HashMap<>(2);
         static {
             for (Opcodes e : values()) {
                 variants.put(e.id, e);
@@ -47,7 +47,10 @@ public class EnumIf extends KaitaiStruct {
         }
 
         public static IOpcodes byId(final long id) {
-            return variants.computeIfAbsent(id, _id -> new IOpcodes.Unknown(id));
+            final Opcodes entry = variants.get(id);
+            if (entry != null)
+                return entry;
+            return new IOpcodes.Unknown(id);
         }
 
         private Opcodes(long id) { this.id = id; }

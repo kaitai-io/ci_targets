@@ -77,7 +77,7 @@ public class SwitchManualEnumInvalid extends KaitaiStruct {
             STRVAL(83);
 
             private final long id;
-            private static final HashMap<Long, ICodeEnum> variants = new HashMap<>(3);
+            private static final HashMap<Long, CodeEnum> variants = new HashMap<>(3);
             static {
                 for (CodeEnum e : values()) {
                     variants.put(e.id, e);
@@ -85,7 +85,10 @@ public class SwitchManualEnumInvalid extends KaitaiStruct {
             }
 
             public static ICodeEnum byId(final long id) {
-                return variants.computeIfAbsent(id, _id -> new ICodeEnum.Unknown(id));
+                final CodeEnum entry = variants.get(id);
+                if (entry != null)
+                    return entry;
+                return new ICodeEnum.Unknown(id);
             }
 
             private CodeEnum(long id) { this.id = id; }

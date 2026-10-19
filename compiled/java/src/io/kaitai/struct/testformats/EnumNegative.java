@@ -38,7 +38,7 @@ public class EnumNegative extends KaitaiStruct {
         POSITIVE_ONE(1);
 
         private final long id;
-        private static final HashMap<Long, IConstants> variants = new HashMap<>(2);
+        private static final HashMap<Long, Constants> variants = new HashMap<>(2);
         static {
             for (Constants e : values()) {
                 variants.put(e.id, e);
@@ -46,7 +46,10 @@ public class EnumNegative extends KaitaiStruct {
         }
 
         public static IConstants byId(final long id) {
-            return variants.computeIfAbsent(id, _id -> new IConstants.Unknown(id));
+            final Constants entry = variants.get(id);
+            if (entry != null)
+                return entry;
+            return new IConstants.Unknown(id);
         }
 
         private Constants(long id) { this.id = id; }

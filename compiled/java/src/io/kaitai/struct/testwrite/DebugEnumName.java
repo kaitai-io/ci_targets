@@ -47,7 +47,7 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
         ENUM_VALUE_80(80);
 
         private final long id;
-        private static final HashMap<Long, ITestEnum1> variants = new HashMap<>(1);
+        private static final HashMap<Long, TestEnum1> variants = new HashMap<>(1);
         static {
             for (TestEnum1 e : values()) {
                 variants.put(e.id, e);
@@ -55,7 +55,10 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
         }
 
         public static ITestEnum1 byId(final long id) {
-            return variants.computeIfAbsent(id, _id -> new ITestEnum1.Unknown(id));
+            final TestEnum1 entry = variants.get(id);
+            if (entry != null)
+                return entry;
+            return new ITestEnum1.Unknown(id);
         }
 
         private TestEnum1(long id) { this.id = id; }
@@ -87,7 +90,7 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
         ENUM_VALUE_65(65);
 
         private final long id;
-        private static final HashMap<Long, ITestEnum2> variants = new HashMap<>(1);
+        private static final HashMap<Long, TestEnum2> variants = new HashMap<>(1);
         static {
             for (TestEnum2 e : values()) {
                 variants.put(e.id, e);
@@ -95,7 +98,10 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
         }
 
         public static ITestEnum2 byId(final long id) {
-            return variants.computeIfAbsent(id, _id -> new ITestEnum2.Unknown(id));
+            final TestEnum2 entry = variants.get(id);
+            if (entry != null)
+                return entry;
+            return new ITestEnum2.Unknown(id);
         }
 
         private TestEnum2(long id) { this.id = id; }
@@ -213,7 +219,7 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
             ENUM_VALUE_67(67);
 
             private final long id;
-            private static final HashMap<Long, IInnerEnum1> variants = new HashMap<>(1);
+            private static final HashMap<Long, InnerEnum1> variants = new HashMap<>(1);
             static {
                 for (InnerEnum1 e : values()) {
                     variants.put(e.id, e);
@@ -221,7 +227,10 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
             }
 
             public static IInnerEnum1 byId(final long id) {
-                return variants.computeIfAbsent(id, _id -> new IInnerEnum1.Unknown(id));
+                final InnerEnum1 entry = variants.get(id);
+                if (entry != null)
+                    return entry;
+                return new IInnerEnum1.Unknown(id);
             }
 
             private InnerEnum1(long id) { this.id = id; }
@@ -253,7 +262,7 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
             ENUM_VALUE_11(11);
 
             private final long id;
-            private static final HashMap<Long, IInnerEnum2> variants = new HashMap<>(1);
+            private static final HashMap<Long, InnerEnum2> variants = new HashMap<>(1);
             static {
                 for (InnerEnum2 e : values()) {
                     variants.put(e.id, e);
@@ -261,7 +270,10 @@ public class DebugEnumName extends KaitaiStruct.ReadWrite {
             }
 
             public static IInnerEnum2 byId(final long id) {
-                return variants.computeIfAbsent(id, _id -> new IInnerEnum2.Unknown(id));
+                final InnerEnum2 entry = variants.get(id);
+                if (entry != null)
+                    return entry;
+                return new IInnerEnum2.Unknown(id);
             }
 
             private InnerEnum2(long id) { this.id = id; }

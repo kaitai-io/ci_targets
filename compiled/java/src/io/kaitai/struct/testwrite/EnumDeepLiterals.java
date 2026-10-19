@@ -78,7 +78,7 @@ public class EnumDeepLiterals extends KaitaiStruct.ReadWrite {
             CHICKEN(12);
 
             private final long id;
-            private static final HashMap<Long, IAnimal> variants = new HashMap<>(3);
+            private static final HashMap<Long, Animal> variants = new HashMap<>(3);
             static {
                 for (Animal e : values()) {
                     variants.put(e.id, e);
@@ -86,7 +86,10 @@ public class EnumDeepLiterals extends KaitaiStruct.ReadWrite {
             }
 
             public static IAnimal byId(final long id) {
-                return variants.computeIfAbsent(id, _id -> new IAnimal.Unknown(id));
+                final Animal entry = variants.get(id);
+                if (entry != null)
+                    return entry;
+                return new IAnimal.Unknown(id);
             }
 
             private Animal(long id) { this.id = id; }
@@ -155,7 +158,7 @@ public class EnumDeepLiterals extends KaitaiStruct.ReadWrite {
                 HARE(12);
 
                 private final long id;
-                private static final HashMap<Long, IAnimal> variants = new HashMap<>(3);
+                private static final HashMap<Long, Animal> variants = new HashMap<>(3);
                 static {
                     for (Animal e : values()) {
                         variants.put(e.id, e);
@@ -163,7 +166,10 @@ public class EnumDeepLiterals extends KaitaiStruct.ReadWrite {
                 }
 
                 public static IAnimal byId(final long id) {
-                    return variants.computeIfAbsent(id, _id -> new IAnimal.Unknown(id));
+                    final Animal entry = variants.get(id);
+                    if (entry != null)
+                        return entry;
+                    return new IAnimal.Unknown(id);
                 }
 
                 private Animal(long id) { this.id = id; }

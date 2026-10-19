@@ -44,7 +44,7 @@ public class TsPacketHeader extends KaitaiStruct {
         ADAPTATION_FIELD_AND_PAYLOAD(3);
 
         private final long id;
-        private static final HashMap<Long, IAdaptationFieldControlEnum> variants = new HashMap<>(4);
+        private static final HashMap<Long, AdaptationFieldControlEnum> variants = new HashMap<>(4);
         static {
             for (AdaptationFieldControlEnum e : values()) {
                 variants.put(e.id, e);
@@ -52,7 +52,10 @@ public class TsPacketHeader extends KaitaiStruct {
         }
 
         public static IAdaptationFieldControlEnum byId(final long id) {
-            return variants.computeIfAbsent(id, _id -> new IAdaptationFieldControlEnum.Unknown(id));
+            final AdaptationFieldControlEnum entry = variants.get(id);
+            if (entry != null)
+                return entry;
+            return new IAdaptationFieldControlEnum.Unknown(id);
         }
 
         private AdaptationFieldControlEnum(long id) { this.id = id; }
